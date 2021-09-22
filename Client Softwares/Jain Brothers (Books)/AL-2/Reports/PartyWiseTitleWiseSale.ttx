@@ -1,0 +1,8 @@
+Account	String	250
+Address	String	250
+BookName	String	250
+SaleQty	Currency
+ReturnQty	Currency
+FromDate	Date
+ToDate	Date
+

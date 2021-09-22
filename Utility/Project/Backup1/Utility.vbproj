@@ -1,0 +1,447 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003" ToolsVersion="3.5">
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProductVersion>9.0.21022</ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{0C3ABDD2-A644-45D0-86D0-FA53CA1FF91E}</ProjectGuid>
+    <OutputType>WinExe</OutputType>
+    <StartupObject>Utility.My.MyApplication</StartupObject>
+    <RootNamespace>Utility</RootNamespace>
+    <AssemblyName>Utility</AssemblyName>
+    <MyType>WindowsForms</MyType>
+    <FileUpgradeFlags>
+    </FileUpgradeFlags>
+    <OldToolsVersion>2.0</OldToolsVersion>
+    <TargetFrameworkVersion>v3.5</TargetFrameworkVersion>
+    <UpgradeBackupLocation>
+    </UpgradeBackupLocation>
+    <IsWebBootstrapper>false</IsWebBootstrapper>
+    <PublishUrl>publish\</PublishUrl>
+    <Install>true</Install>
+    <InstallFrom>Disk</InstallFrom>
+    <UpdateEnabled>false</UpdateEnabled>
+    <UpdateMode>Foreground</UpdateMode>
+    <UpdateInterval>7</UpdateInterval>
+    <UpdateIntervalUnits>Days</UpdateIntervalUnits>
+    <UpdatePeriodically>false</UpdatePeriodically>
+    <UpdateRequired>false</UpdateRequired>
+    <MapFileExtensions>true</MapFileExtensions>
+    <ApplicationRevision>0</ApplicationRevision>
+    <ApplicationVersion>1.0.0.%2a</ApplicationVersion>
+    <UseApplicationTrust>false</UseApplicationTrust>
+    <BootstrapperEnabled>true</BootstrapperEnabled>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <DefineDebug>true</DefineDebug>
+    <DefineTrace>true</DefineTrace>
+    <OutputPath>..\Release\</OutputPath>
+    <DocumentationFile>Utility.xml</DocumentationFile>
+    <NoWarn>42016,41999,42017,42018,42019,42032,42036,42020,42021,42022</NoWarn>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <DefineDebug>false</DefineDebug>
+    <DefineTrace>true</DefineTrace>
+    <Optimize>true</Optimize>
+    <OutputPath>..\Release\</OutputPath>
+    <DocumentationFile>Utility.xml</DocumentationFile>
+    <NoWarn>42016,41999,42017,42018,42019,42032,42036,42020,42021,42022</NoWarn>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="AgControls, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\Release\AgControls.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="AgCustomFields, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="AgLibrary, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\Release\AgLibrary.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="AgStructure, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <ExecutableExtension>.exe</ExecutableExtension>
+      <HintPath>..\Release\AgStructure.exe</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="AgTemplate, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="DMHelpGrid, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="Interop.ADODB, Version=2.8.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Deployment" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Windows.Forms" />
+    <Reference Include="System.Xml" />
+    <Reference Include="Topctrl, Version=1.0.4168.34907, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\Release\Topctrl.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+  </ItemGroup>
+  <ItemGroup>
+    <Import Include="Microsoft.VisualBasic" />
+    <Import Include="System" />
+    <Import Include="System.Collections" />
+    <Import Include="System.Collections.Generic" />
+    <Import Include="System.Data" />
+    <Import Include="System.Drawing" />
+    <Import Include="System.Diagnostics" />
+    <Import Include="System.Windows.Forms" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Class\ClsFunction.vb" />
+    <Compile Include="Class\ClsMain.vb" />
+    <Compile Include="Class\ClsReportProcedures.vb" />
+    <Compile Include="Form\FrmComputer.Designer.vb">
+      <DependentUpon>FrmComputer.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Form\FrmComputer.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Form\FrmCopySettings.Designer.vb">
+      <DependentUpon>FrmCopySettings.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Form\FrmCopySettings.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Form\FrmUserVoucherTypePermission.Designer.vb">
+      <DependentUpon>FrmUserVoucherTypePermission.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Form\FrmUserVoucherTypePermission.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Form\FrmVoucherTypeRestriction.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Form\FrmVoucherTypeSettingPrint.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Form\FrmVoucherTypeSetting.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Form\FrmChangePassword.Designer.vb">
+      <DependentUpon>FrmChangePassword.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Form\FrmChangePassword.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Form\FrmCompanyMaster.Designer.vb">
+      <DependentUpon>FrmCompanyMaster.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Form\FrmCompanyMaster.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Form\FrmDatabaseBackup.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Form\FrmDivision.designer.vb">
+      <DependentUpon>FrmDivision.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Form\FrmDivision.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Form\FrmDivisionList.designer.vb">
+      <DependentUpon>FrmDivisionList.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Form\FrmDivisionList.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Form\FrmModuleList.designer.vb">
+      <DependentUpon>FrmModuleList.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Form\FrmModuleList.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Form\FrmNCat.Designer.vb">
+      <DependentUpon>FrmNCat.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Form\FrmNCat.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Form\FrmReportMaster.Designer.vb">
+      <DependentUpon>FrmReportMaster.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Form\FrmReportMaster.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Form\FrmSiteList.designer.vb">
+      <DependentUpon>FrmSiteList.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Form\FrmSiteList.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Form\FrmSiteMaster.designer.vb">
+      <DependentUpon>FrmSiteMaster.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Form\FrmSiteMaster.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Form\FrmSynchroniseData.Designer.vb">
+      <DependentUpon>FrmSynchroniseData.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Form\FrmSynchroniseData.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Form\FrmSynchroniseError.Designer.vb">
+      <DependentUpon>FrmSynchroniseError.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Form\FrmSynchroniseError.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Form\FrmTableSearchFields.Designer.vb">
+      <DependentUpon>FrmTableSearchFields.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Form\FrmTableSearchFields.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Form\FrmUser.Designer.vb">
+      <DependentUpon>FrmUser.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Form\FrmUser.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Form\FrmUserControlPermission.Designer.vb">
+      <DependentUpon>FrmUserControlPermission.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Form\FrmUserControlPermission.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Form\FrmUserPasswardChange.Designer.vb">
+      <DependentUpon>FrmUserPasswardChange.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Form\FrmUserPasswardChange.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Form\FrmUserPermission.Designer.vb">
+      <DependentUpon>FrmUserPermission.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Form\FrmUserPermission.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Form\FrmUserSite.Designer.vb">
+      <DependentUpon>FrmUserSite.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Form\FrmUserSite.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Form\FrmUserTarget.designer.vb">
+      <DependentUpon>FrmUserTarget.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Form\FrmUserTarget.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Form\FrmVoucherTypeMaster.Designer.vb">
+      <DependentUpon>FrmVoucherTypeMaster.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Form\FrmVoucherTypeMaster.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Form\FrmVoucherTypePrintSetting.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Form\FrmQueryResult.Designer.vb">
+      <DependentUpon>FrmQueryResult.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Form\FrmQueryResult.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Form\MDIMain.designer.vb">
+      <DependentUpon>MDIMain.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Form\MDIMain.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Modules\MdlFunction.vb" />
+    <Compile Include="Modules\MdlVar.vb" />
+    <Compile Include="My Project\AssemblyInfo.vb" />
+    <Compile Include="My Project\Application.Designer.vb">
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Application.myapp</DependentUpon>
+    </Compile>
+    <Compile Include="My Project\Resources.Designer.vb">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Resources.resx</DependentUpon>
+    </Compile>
+    <Compile Include="My Project\Settings.Designer.vb">
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Settings.settings</DependentUpon>
+      <DesignTimeSharedInput>True</DesignTimeSharedInput>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Form\FrmComputer.resx">
+      <DependentUpon>FrmComputer.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Form\FrmCopySettings.resx">
+      <DependentUpon>FrmCopySettings.vb</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Form\FrmUserVoucherTypePermission.resx">
+      <DependentUpon>FrmUserVoucherTypePermission.vb</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Form\FrmVoucherTypeRestriction.resx">
+      <DependentUpon>FrmVoucherTypeRestriction.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Form\FrmVoucherTypeSettingPrint.resx">
+      <DependentUpon>FrmVoucherTypeSettingPrint.vb</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Form\FrmVoucherTypeSetting.resx">
+      <DependentUpon>FrmVoucherTypeSetting.vb</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Form\FrmChangePassword.resx">
+      <DependentUpon>FrmChangePassword.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Form\FrmCompanyMaster.resx">
+      <DependentUpon>FrmCompanyMaster.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Form\FrmDivision.resx">
+      <DependentUpon>FrmDivision.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Form\FrmDivisionList.resx">
+      <DependentUpon>FrmDivisionList.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Form\FrmModuleList.resx">
+      <DependentUpon>FrmModuleList.vb</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Form\FrmNCat.resx">
+      <DependentUpon>FrmNCat.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Form\FrmReportMaster.resx">
+      <SubType>Designer</SubType>
+      <DependentUpon>FrmReportMaster.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Form\FrmSiteList.resx">
+      <DependentUpon>FrmSiteList.vb</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Form\FrmSiteMaster.resx">
+      <DependentUpon>FrmSiteMaster.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Form\FrmSynchroniseData.resx">
+      <SubType>Designer</SubType>
+      <DependentUpon>FrmSynchroniseData.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Form\FrmSynchroniseError.resx">
+      <SubType>Designer</SubType>
+      <DependentUpon>FrmSynchroniseError.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Form\FrmTableSearchFields.resx">
+      <SubType>Designer</SubType>
+      <DependentUpon>FrmTableSearchFields.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Form\FrmUser.resx">
+      <SubType>Designer</SubType>
+      <DependentUpon>FrmUser.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Form\FrmUserControlPermission.resx">
+      <SubType>Designer</SubType>
+      <DependentUpon>FrmUserControlPermission.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Form\FrmUserPasswardChange.resx">
+      <DependentUpon>FrmUserPasswardChange.vb</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Form\FrmUserPermission.resx">
+      <SubType>Designer</SubType>
+      <DependentUpon>FrmUserPermission.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Form\FrmUserSite.resx">
+      <DependentUpon>FrmUserSite.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Form\FrmUserTarget.resx">
+      <DependentUpon>FrmUserTarget.vb</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Form\FrmVoucherTypeMaster.resx">
+      <DependentUpon>FrmVoucherTypeMaster.vb</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Form\FrmVoucherTypePrintSetting.resx">
+      <DependentUpon>FrmVoucherTypePrintSetting.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Form\FrmQueryResult.resx">
+      <DependentUpon>FrmQueryResult.vb</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Form\MDIMain.resx">
+      <DependentUpon>MDIMain.vb</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="My Project\Resources.resx">
+      <Generator>VbMyResourcesResXFileCodeGenerator</Generator>
+      <LastGenOutput>Resources.Designer.vb</LastGenOutput>
+      <CustomToolNamespace>My.Resources</CustomToolNamespace>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="My Project\Application.myapp">
+      <Generator>MyApplicationCodeGenerator</Generator>
+      <LastGenOutput>Application.Designer.vb</LastGenOutput>
+    </None>
+    <None Include="My Project\Settings.settings">
+      <Generator>SettingsSingleFileGenerator</Generator>
+      <CustomToolNamespace>My</CustomToolNamespace>
+      <LastGenOutput>Settings.Designer.vb</LastGenOutput>
+    </None>
+  </ItemGroup>
+  <ItemGroup>
+    <BootstrapperPackage Include="Microsoft.Net.Client.3.5">
+      <Visible>False</Visible>
+      <ProductName>.NET Framework Client Profile</ProductName>
+      <Install>false</Install>
+    </BootstrapperPackage>
+    <BootstrapperPackage Include="Microsoft.Net.Framework.2.0">
+      <Visible>False</Visible>
+      <ProductName>.NET Framework 2.0 %28x86%29</ProductName>
+      <Install>false</Install>
+    </BootstrapperPackage>
+    <BootstrapperPackage Include="Microsoft.Net.Framework.3.0">
+      <Visible>False</Visible>
+      <ProductName>.NET Framework 3.0 %28x86%29</ProductName>
+      <Install>false</Install>
+    </BootstrapperPackage>
+    <BootstrapperPackage Include="Microsoft.Net.Framework.3.5">
+      <Visible>False</Visible>
+      <ProductName>.NET Framework 3.5</ProductName>
+      <Install>false</Install>
+    </BootstrapperPackage>
+    <BootstrapperPackage Include="Microsoft.Net.Framework.3.5.SP1">
+      <Visible>False</Visible>
+      <ProductName>.NET Framework 3.5 SP1</ProductName>
+      <Install>true</Install>
+    </BootstrapperPackage>
+    <BootstrapperPackage Include="Microsoft.Windows.Installer.3.1">
+      <Visible>False</Visible>
+      <ProductName>Windows Installer 3.1</ProductName>
+      <Install>true</Install>
+    </BootstrapperPackage>
+  </ItemGroup>
+  <Import Project="$(MSBuildBinPath)\Microsoft.VisualBasic.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

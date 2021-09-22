@@ -1,0 +1,201 @@
+<?xml version="1.0" standalone="yes"?>
+<NewDataSet>
+  <Table>
+    <Copies>1</Copies>
+    <CopyPrintingCaption />
+    <DocID>D1    JV 2019       4</DocID>
+    <Sr>1</Sr>
+    <V_Date>2020-01-10T00:00:00+05:30</V_Date>
+    <Voucher_Type>Journal</Voucher_Type>
+    <NCat>JV</NCat>
+    <VoucherNo>D1-JV-1</VoucherNo>
+    <PartyName xml:space="preserve"> </PartyName>
+    <PartyAddress xml:space="preserve"> </PartyAddress>
+    <CityName xml:space="preserve"> </CityName>
+    <StateCode xml:space="preserve"> </StateCode>
+    <StateName xml:space="preserve"> </StateName>
+    <PartyMobile xml:space="preserve"> </PartyMobile>
+    <ContactPerson xml:space="preserve"> </ContactPerson>
+    <PartySalesTaxNo xml:space="preserve"> </PartySalesTaxNo>
+    <PartyAadharNo xml:space="preserve"> </PartyAadharNo>
+    <AccountNameLine>ARPIT GUPTA</AccountNameLine>
+    <LineSpecification xml:space="preserve"> </LineSpecification>
+    <HSN xml:space="preserve"> </HSN>
+    <SalesTaxGroupItem xml:space="preserve"> </SalesTaxGroupItem>
+    <GrossTaxRate>0</GrossTaxRate>
+    <Qty>0</Qty>
+    <Rate>0</Rate>
+    <Unit xml:space="preserve"> </Unit>
+    <UnitDecimalPlaces>0</UnitDecimalPlaces>
+    <Amount>5000</Amount>
+    <Taxable_Amount xsi:type="xs:string" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"> </Taxable_Amount>
+    <Tax1_Per xsi:type="xs:string" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"> </Tax1_Per>
+    <Tax1 xsi:type="xs:string" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"> </Tax1>
+    <Tax2_Per xsi:type="xs:string" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"> </Tax2_Per>
+    <Tax2 xsi:type="xs:string" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"> </Tax2>
+    <Tax3_Per xsi:type="xs:string" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"> </Tax3_Per>
+    <Tax3 xsi:type="xs:string" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"> </Tax3>
+    <Tax4_Per xsi:type="xs:string" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"> </Tax4_Per>
+    <Tax4 xsi:type="xs:string" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"> </Tax4>
+    <Tax5_Per xsi:type="xs:string" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"> </Tax5_Per>
+    <Tax5 xsi:type="xs:string" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"> </Tax5>
+    <Net_Amount xsi:type="xs:string" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"> </Net_Amount>
+    <LRemarks xml:space="preserve"> </LRemarks>
+    <HRemarks>ssdfsdfsda</HRemarks>
+    <H_Gross_Amount>0</H_Gross_Amount>
+    <H_Taxable_Amount>0</H_Taxable_Amount>
+    <H_Tax1_Per>0</H_Tax1_Per>
+    <H_Tax1>0</H_Tax1>
+    <H_Tax2_Per>0</H_Tax2_Per>
+    <H_Tax2>0</H_Tax2>
+    <H_Tax3_Per>0</H_Tax3_Per>
+    <H_Tax3>0</H_Tax3>
+    <H_Tax4_Per>0</H_Tax4_Per>
+    <H_Tax4>0</H_Tax4>
+    <H_Tax5_Per>0</H_Tax5_Per>
+    <H_Tax5>0</H_Tax5>
+    <H_Deduction_Per>0</H_Deduction_Per>
+    <H_Deduction>0</H_Deduction>
+    <H_Other_Charge_Per>0</H_Other_Charge_Per>
+    <H_Other_Charge>0</H_Other_Charge>
+    <Round_Off>0</Round_Off>
+    <H_Net_Amount>0</H_Net_Amount>
+    <Default_BankAccountDetail />
+    <Current_Balance>5000</Current_Balance>
+    <IsCenterAlignedCompanyInfoOnDocuments>0</IsCenterAlignedCompanyInfoOnDocuments>
+    <PrintedByUser>SUPER</PrintedByUser>
+    <PrintTitle>Journal</PrintTitle>
+  </Table>
+  <Table>
+    <Copies>1</Copies>
+    <CopyPrintingCaption />
+    <DocID>D1    JV 2019       4</DocID>
+    <Sr>2</Sr>
+    <V_Date>2020-01-10T00:00:00+05:30</V_Date>
+    <Voucher_Type>Journal</Voucher_Type>
+    <NCat>JV</NCat>
+    <VoucherNo>D1-JV-1</VoucherNo>
+    <PartyName xml:space="preserve"> </PartyName>
+    <PartyAddress xml:space="preserve"> </PartyAddress>
+    <CityName xml:space="preserve"> </CityName>
+    <StateCode xml:space="preserve"> </StateCode>
+    <StateName xml:space="preserve"> </StateName>
+    <PartyMobile xml:space="preserve"> </PartyMobile>
+    <ContactPerson xml:space="preserve"> </ContactPerson>
+    <PartySalesTaxNo xml:space="preserve"> </PartySalesTaxNo>
+    <PartyAadharNo xml:space="preserve"> </PartyAadharNo>
+    <AccountNameLine>A J TRADERS KANPUR</AccountNameLine>
+    <LineSpecification xml:space="preserve"> </LineSpecification>
+    <HSN xml:space="preserve"> </HSN>
+    <SalesTaxGroupItem xml:space="preserve"> </SalesTaxGroupItem>
+    <GrossTaxRate>0</GrossTaxRate>
+    <Qty>0</Qty>
+    <Rate>0</Rate>
+    <Unit xml:space="preserve"> </Unit>
+    <UnitDecimalPlaces>0</UnitDecimalPlaces>
+    <Amount>0</Amount>
+    <Taxable_Amount xsi:type="xs:string" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"> </Taxable_Amount>
+    <Tax1_Per xsi:type="xs:string" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"> </Tax1_Per>
+    <Tax1 xsi:type="xs:string" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"> </Tax1>
+    <Tax2_Per xsi:type="xs:string" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"> </Tax2_Per>
+    <Tax2 xsi:type="xs:string" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"> </Tax2>
+    <Tax3_Per xsi:type="xs:string" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"> </Tax3_Per>
+    <Tax3 xsi:type="xs:string" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"> </Tax3>
+    <Tax4_Per xsi:type="xs:string" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"> </Tax4_Per>
+    <Tax4 xsi:type="xs:string" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"> </Tax4>
+    <Tax5_Per xsi:type="xs:string" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"> </Tax5_Per>
+    <Tax5 xsi:type="xs:string" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"> </Tax5>
+    <Net_Amount xsi:type="xs:string" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"> </Net_Amount>
+    <LRemarks xml:space="preserve"> </LRemarks>
+    <HRemarks>ssdfsdfsda</HRemarks>
+    <H_Gross_Amount>0</H_Gross_Amount>
+    <H_Taxable_Amount>0</H_Taxable_Amount>
+    <H_Tax1_Per>0</H_Tax1_Per>
+    <H_Tax1>0</H_Tax1>
+    <H_Tax2_Per>0</H_Tax2_Per>
+    <H_Tax2>0</H_Tax2>
+    <H_Tax3_Per>0</H_Tax3_Per>
+    <H_Tax3>0</H_Tax3>
+    <H_Tax4_Per>0</H_Tax4_Per>
+    <H_Tax4>0</H_Tax4>
+    <H_Tax5_Per>0</H_Tax5_Per>
+    <H_Tax5>0</H_Tax5>
+    <H_Deduction_Per>0</H_Deduction_Per>
+    <H_Deduction>0</H_Deduction>
+    <H_Other_Charge_Per>0</H_Other_Charge_Per>
+    <H_Other_Charge>0</H_Other_Charge>
+    <Round_Off>0</Round_Off>
+    <H_Net_Amount>0</H_Net_Amount>
+    <Default_BankAccountDetail />
+    <Current_Balance>-2000</Current_Balance>
+    <IsCenterAlignedCompanyInfoOnDocuments>0</IsCenterAlignedCompanyInfoOnDocuments>
+    <PrintedByUser>SUPER</PrintedByUser>
+    <PrintTitle>Journal</PrintTitle>
+  </Table>
+  <Table>
+    <Copies>1</Copies>
+    <CopyPrintingCaption />
+    <DocID>D1    JV 2019       4</DocID>
+    <Sr>3</Sr>
+    <V_Date>2020-01-10T00:00:00+05:30</V_Date>
+    <Voucher_Type>Journal</Voucher_Type>
+    <NCat>JV</NCat>
+    <VoucherNo>D1-JV-1</VoucherNo>
+    <PartyName xml:space="preserve"> </PartyName>
+    <PartyAddress xml:space="preserve"> </PartyAddress>
+    <CityName xml:space="preserve"> </CityName>
+    <StateCode xml:space="preserve"> </StateCode>
+    <StateName xml:space="preserve"> </StateName>
+    <PartyMobile xml:space="preserve"> </PartyMobile>
+    <ContactPerson xml:space="preserve"> </ContactPerson>
+    <PartySalesTaxNo xml:space="preserve"> </PartySalesTaxNo>
+    <PartyAadharNo xml:space="preserve"> </PartyAadharNo>
+    <AccountNameLine>FANTASTIC GIRLZ</AccountNameLine>
+    <LineSpecification xml:space="preserve"> </LineSpecification>
+    <HSN xml:space="preserve"> </HSN>
+    <SalesTaxGroupItem xml:space="preserve"> </SalesTaxGroupItem>
+    <GrossTaxRate>0</GrossTaxRate>
+    <Qty>0</Qty>
+    <Rate>0</Rate>
+    <Unit xml:space="preserve"> </Unit>
+    <UnitDecimalPlaces>0</UnitDecimalPlaces>
+    <Amount>0</Amount>
+    <Taxable_Amount xsi:type="xs:string" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"> </Taxable_Amount>
+    <Tax1_Per xsi:type="xs:string" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"> </Tax1_Per>
+    <Tax1 xsi:type="xs:string" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"> </Tax1>
+    <Tax2_Per xsi:type="xs:string" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"> </Tax2_Per>
+    <Tax2 xsi:type="xs:string" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"> </Tax2>
+    <Tax3_Per xsi:type="xs:string" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"> </Tax3_Per>
+    <Tax3 xsi:type="xs:string" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"> </Tax3>
+    <Tax4_Per xsi:type="xs:string" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"> </Tax4_Per>
+    <Tax4 xsi:type="xs:string" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"> </Tax4>
+    <Tax5_Per xsi:type="xs:string" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"> </Tax5_Per>
+    <Tax5 xsi:type="xs:string" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"> </Tax5>
+    <Net_Amount xsi:type="xs:string" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"> </Net_Amount>
+    <LRemarks xml:space="preserve"> </LRemarks>
+    <HRemarks>ssdfsdfsda</HRemarks>
+    <H_Gross_Amount>0</H_Gross_Amount>
+    <H_Taxable_Amount>0</H_Taxable_Amount>
+    <H_Tax1_Per>0</H_Tax1_Per>
+    <H_Tax1>0</H_Tax1>
+    <H_Tax2_Per>0</H_Tax2_Per>
+    <H_Tax2>0</H_Tax2>
+    <H_Tax3_Per>0</H_Tax3_Per>
+    <H_Tax3>0</H_Tax3>
+    <H_Tax4_Per>0</H_Tax4_Per>
+    <H_Tax4>0</H_Tax4>
+    <H_Tax5_Per>0</H_Tax5_Per>
+    <H_Tax5>0</H_Tax5>
+    <H_Deduction_Per>0</H_Deduction_Per>
+    <H_Deduction>0</H_Deduction>
+    <H_Other_Charge_Per>0</H_Other_Charge_Per>
+    <H_Other_Charge>0</H_Other_Charge>
+    <Round_Off>0</Round_Off>
+    <H_Net_Amount>0</H_Net_Amount>
+    <Default_BankAccountDetail />
+    <Current_Balance>-3000</Current_Balance>
+    <IsCenterAlignedCompanyInfoOnDocuments>0</IsCenterAlignedCompanyInfoOnDocuments>
+    <PrintedByUser>SUPER</PrintedByUser>
+    <PrintTitle>Journal</PrintTitle>
+  </Table>
+</NewDataSet>

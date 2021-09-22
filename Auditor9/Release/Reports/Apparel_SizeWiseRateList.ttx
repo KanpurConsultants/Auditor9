@@ -1,0 +1,7 @@
+; Field definition file for table: ADORecordset
+Item	string	255		
+ItemDesc	string	255		
+ItemCategory	string	255	FULL SHIRT	
+Dimension1	string	255	SUPER	
+Size	string	255	32	
+StockQty	number	140	

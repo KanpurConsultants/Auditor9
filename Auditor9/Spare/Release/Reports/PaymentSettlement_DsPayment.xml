@@ -1,0 +1,9 @@
+<?xml version="1.0" standalone="yes"?>
+<NewDataSet>
+  <Table>
+    <PaymentNo>1/6539</PaymentNo>
+    <V_Date>2020-03-18T00:00:00+05:30</V_Date>
+    <Narration>Purchase Return</Narration>
+    <PaidAmount>14559</PaidAmount>
+  </Table>
+</NewDataSet>

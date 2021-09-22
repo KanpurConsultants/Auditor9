@@ -1,0 +1,7 @@
+TNetAmount	Currency
+TaxableAmount	Currency
+GSTPer	Currency
+SGSTAmount	Currency
+CGSTAmount	Currency
+IGSTAmount	Currency
+

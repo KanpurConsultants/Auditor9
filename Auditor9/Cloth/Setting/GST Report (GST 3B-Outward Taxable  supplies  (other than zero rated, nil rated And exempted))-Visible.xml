@@ -1,0 +1,87 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<GridSave>
+  <Column>
+    <Name>Search Code</Name>
+    <Index>2</Index>
+    <Width>110</Width>
+    <Visible>False</Visible>
+    <AggregateFunction />
+  </Column>
+  <Column>
+    <Name>Voucher Date</Name>
+    <Index>3</Index>
+    <Width>115</Width>
+    <Visible>True</Visible>
+    <AggregateFunction />
+  </Column>
+  <Column>
+    <Name>Voucher Type</Name>
+    <Index>0</Index>
+    <Width>98</Width>
+    <Visible>True</Visible>
+    <AggregateFunction />
+  </Column>
+  <Column>
+    <Name>Party Name</Name>
+    <Index>4</Index>
+    <Width>202</Width>
+    <Visible>True</Visible>
+    <AggregateFunction />
+  </Column>
+  <Column>
+    <Name>Party Gst No</Name>
+    <Index>5</Index>
+    <Width>150</Width>
+    <Visible>True</Visible>
+    <AggregateFunction />
+  </Column>
+  <Column>
+    <Name>Voucher No</Name>
+    <Index>1</Index>
+    <Width>73</Width>
+    <Visible>True</Visible>
+    <AggregateFunction />
+  </Column>
+  <Column>
+    <Name>Taxable Value</Name>
+    <Index>6</Index>
+    <Width>152</Width>
+    <Visible>True</Visible>
+    <AggregateFunction />
+  </Column>
+  <Column>
+    <Name>Integrated Tax</Name>
+    <Index>7</Index>
+    <Width>123</Width>
+    <Visible>True</Visible>
+    <AggregateFunction />
+  </Column>
+  <Column>
+    <Name>Central Tax</Name>
+    <Index>8</Index>
+    <Width>138</Width>
+    <Visible>True</Visible>
+    <AggregateFunction />
+  </Column>
+  <Column>
+    <Name>State Tax</Name>
+    <Index>9</Index>
+    <Width>119</Width>
+    <Visible>True</Visible>
+    <AggregateFunction />
+  </Column>
+  <Column>
+    <Name>Cess</Name>
+    <Index>10</Index>
+    <Width>67</Width>
+    <Visible>False</Visible>
+    <AggregateFunction />
+  </Column>
+  <Column>
+    <Name>Total Tax Amount</Name>
+    <Index>11</Index>
+    <Width>139</Width>
+    <Visible>True</Visible>
+    <AggregateFunction />
+  </Column>
+</GridSave>

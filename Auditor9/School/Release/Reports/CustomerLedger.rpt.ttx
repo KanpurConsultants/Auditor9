@@ -1,0 +1,40 @@
+; Field definition file for table: ADORecordset
+DocId	string	255	D1   WOB 2018     311	
+V_type	string	255	WOB	
+RecId	string	255	5932	
+V_Date	datetime	16/Nov/2018 12:00:00 AM	
+Site_Code	string	255	1	
+Div_Code	string	255	D	
+Subcode	string	255	D100001925	
+LinkedSubcode	string	255	D100001925	
+GoodsReturn	number	0	
+Adjustment	number	0	
+Payment	number	0	
+Balance	number	688.77	
+AmtDr	number	688.77	
+AmtCr	number	0	
+Narration	string	255	RINKA(NET) 504597-2 Ref.No. : 5932 Dated 16/Nov/2018. 	
+AdjDocID	string	255		
+DueDate	datetime		
+AdjDate	datetime		
+AdjAmount	string	255		
+InterestBalance	string	255		
+PartyName	string	255	SHIV SHAKTI DRESSES-TANDA [W], TANDA	
+PartyCity	string	255	TANDA	
+LrNo	string	255		
+Brand	string	255		
+AmsInvNo	string	255		
+AmsInvAmt	number	0	
+GoodsValue	number	0	
+Discount	number	0	
+TaxableAmt	number	0	
+TaxAmt	number	0	
+OtherChgAmt	number	0	
+Deduction	number	0	
+BillAmt	number	688.77	
+Commission	number	0	
+NetPurAmt	number	0	
+Div_Name	string	255	DEMO	
+Site_Name	string	255	KANPUR	
+LeaverageDays	number	60	
+AveragePaymentDays	number		

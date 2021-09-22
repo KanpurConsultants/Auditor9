@@ -1,0 +1,59 @@
+{DB D:\S2k\Pharma_W\Data\Company.001\S2K2002.mdb DB}
+{Sql SELECT Product.ProductKey, Sum(IIf([Dated]< #{Pm DateFrom Pm}#,IIf([TranstypeID]=5,[Qty],0)-IIf([TranstypeID]=7,[Qty],0),0)) AS Opening, Sum(IIf([Dated]>= #{Pm DateFrom Pm}# And [Dated]<= #{Pm DateTo Pm}# And [TranstypeID]=5,[Qty],0)) AS Purchase, [Opening]+[Purchase] AS Total, Sum(IIf([Dated]>=#{Pm DateFrom Pm}# And [Dated]<= #{Pm DateTo Pm}# And [TranstypeID]=7,[Qty],0)) AS Sale, [Opening]+[Purchase]-[Sale] AS CurrentStock, ProductStock.PRate AS Rate, [Rate]*[Sale] AS ValueofSale, [Rate]*[CurrentStock] AS ValofCStock
+FROM (ProductStock LEFT JOIN Product ON ProductStock.ProductID = Product.ProductID) LEFT JOIN Account ON Product.AccountID = Account.AccountID
+GROUP BY Product.ProductKey, ProductStock.PRate
+Order by Productkey Sql}
+{Xdr Settings
+Columns=120
+Lines=60
+Page Break=True
+Condense=True
+Character Per Inch=12
+Vertical Lines=False
+Xdr Settings}
+
+{Formula
+ = 
+Formula}
+
+{GroupSection
+Report Header;
+Page Header;
+Detail;
+Grand;
+Page Footer;
+Report Footer;
+GroupSection}
+
+{Parameter
+DateFromToParameter}
+{Report Header
+Report Header}
+========================================================================================================================
+{Page Header
+lbl;OwnerName;50;0;1
+lbl;OwnerAdd1  OwnerAdd2;71;0;0
+lbl;Stock List;31;0;1
+lbl;Form Period;15;0;1}{lbl;{Pm DateFrom Pm};12;0;0}{lbl;to;4;0;1}{lbl;{Pm DateFrom Pm};12;0;1}{lbl;PAGE NO:;12;1;0
+lbl;------------------------------------------------------------------------------------------------------------------------;113;0;0
+lbl;Product & Qty;37;0;0}{lbl;;2;0;1}{lbl;Opening;12;0;0}{lbl;Purchase;12;0;0}{lbl;Total;8;0;0}{lbl;Sale;8;0;0}{lbl;SaleAmt;10;0;0}{lbl;CStock;10;0;0}{lbl;CstockAmt;12;1;0
+lbl;------------------------------------------------------------------------------------------------------------------------;113;0;0
+Page Header}
+========================================================================================================================
+{Detail
+fld;Productkey;37;0;0}{lbl;;2;0;1}{fld;Opening;12;0;0}{fld;Purchase;12;0;0}{fld;Total;8;0;0}{fld;Sale;8;0;0}{fld;ValueofSale;10;0;0}{fld;CurrentStock;10;0;0}{fld;ValofCStock;12;1;0
+
+Detail}
+========================================================================================================================
+{Grand
+lbl;------------------------------------------------------------------------------------------------------------------------;113;0;0
+lbl2:41 PM 8/7/2007;;37;0;0}{lbl;;2;0;1}{fml;Sum(Opening);12;0;0}{fml;Sum(Purchase);12;0;0}{fml;Sum(Total);8;0;0}{fml;Sum(Sale);8;0;0}{fml;Sum(ValueofSale);10;0;0}{fml;Sum(CurrentStock);10;0;0}{fml;Sum(ValofCStock);12;1;0
+Grand}
+========================================================================================================================
+{Page Footer
+Page Footer}
+========================================================================================================================
+{Report Footer
+Report Footer}
+========================================================================================================================
+

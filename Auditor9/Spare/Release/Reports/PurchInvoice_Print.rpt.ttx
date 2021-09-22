@@ -1,0 +1,127 @@
+; Field definition file for table: ADORecordset
+Copies	string	255	1	
+CopyPrintingCaption	string	255		
+DocNoCaption	string	255	Doc.No.	
+DocDateCaption	string	255	Doc.Date	
+DocID	string	255	D5    PR 2020       5	
+SiteStateCode	string	255	09	
+SiteStateName	string	255	Uttar Pradesh	
+Sr	number	1	
+V_Date	datetime	04/Sep/2020 12:00:00 AM	
+Voucher_Type	string	255	Purchase Return	
+NCat	string	255	PR	
+DocNo	string	255	D5-PR-4	
+AgentName	string	255		
+AgentCaption	string	255	Agent	
+PartyName	string	255	BHARTI BHAWAN PUBLISHERS & DISTRIBUTORS	
+PartyAddress	string	255	A-61 B/2,SECTOR 63	
+PartyPinCode	string	255	201307	
+PartyCityName	string	255	NOIDA	
+PartyStateCode	string	255	09	
+PartyStateName	string	255	Uttar Pradesh	
+PartyMobile	string	255		
+ContactPerson	string	255		
+PartySalesTaxNo	string	255	09AADFB1223F1Z1	
+PartyAadharNo	string	255		
+PartyPanNo	string	255	AADFB1223F	
+ShipToPartyName	string	255	BHARTI BHAWAN PUBLISHERS & DISTRIBUTORS	
+ShipToPartyAddress	string	255	A-61 B/2,SECTOR 63	
+ShipToPartyCity	string	255	NOIDA	
+ShipToPartyPincode	string	255	201307	
+ShipToPartyStateCode	string	255	09	
+ShipToPartyStateName	string	255	Uttar Pradesh	
+ShipToPartyMobile	string	255		
+ShipToPartySalesTaxNo	string	255	09AADFB1223F1Z1	
+ShipToPartyAadharNo	string	255		
+ShipToPartyPanNo	string	255		
+TransporterName	string	255	PUBLIC GOODS TRANSPORT, SAHARANPUR1	
+LrNo	string	255	10	
+LrDate	datetime		
+PrivateMark	string	255	700/7	
+Weight	number	0	
+Freight	number	0	
+FreightType	string	255	PAID	
+RoadPermitNo	string	255		
+RoadPermitDate	datetime		
+ReferenceNo	string	255	CRB/3397	
+ItemName	string	255	MATHEMATICS RS AGGARWAL-10 - BHARTI BHAWAN - BOOKS	
+ItemGroupName	string	255	BHARTI BHAWAN	
+ItemCatName	string	255	BOOKS	
+ItemSpecification	string	255	MATHEMATICS RS AGGARWAL-10	
+InvoiceLineSpecification	string	255	MATHEMATICS RS AGGARWAL-10	
+HSN	string	255	4901	
+D1Spec	string	255		
+D2Spec	string	255		
+D3Spec	string	255		
+D4Spec	string	255		
+SizeSpec	string	255		
+ItemTypeCaption	string	255	Item Type	
+ItemCategoryCaption	string	255	Item Category	
+ItemGroupCaption	string	255	Publisher	
+ItemCaption	string	255	Item	
+BarcodeCaption	string	255		
+D1Caption	string	255		
+D2Caption	string	255		
+D3Caption	string	255		
+D4Caption	string	255		
+SalesTaxGroupItem	string	255	GST 0%	
+GrossTaxRate	number	0	
+Pcs	number	0	
+Qty	number	133	
+Rate	number	595	
+Unit	string	255	Pcs	
+UnitDecimalPlaces	number	0	
+DiscountPer	number	20	
+DiscountAmount	number	15827	
+AdditionalDiscountPer	number	0	
+AdditionalDiscountAmount	number	0	
+TotalDiscount	number	15827	
+AmountBeforeDiscount	number	79135	
+Amount	number	63308	
+Taxable_Amount	number	63308	
+Tax1_Per	number	0	
+Tax1	number	0	
+Tax2_Per	number	0	
+Tax2	number	0	
+Tax3_Per	number	0	
+Tax3	number	0	
+Tax4_Per	number	0	
+Tax4	number	0	
+Tax5_Per	number	0	
+Tax5	number	0	
+Net_Amount	number	63308	
+HRemarks	string	255		
+LRemarks	string	255		
+H_Gross_Amount	number	124850	
+H_SpecialDiscount_Per	number	0	
+H_SpecialDiscount	number	0	
+H_Taxable_Amount	number	124850	
+H_Tax1_Per	number	0	
+H_Tax1	number	0	
+H_Tax2_Per	number	0	
+H_Tax2	number	0	
+H_Tax3_Per	number	0	
+H_Tax3	number	0	
+H_Tax4_Per	number	0	
+H_Tax4	number	0	
+H_Tax5_Per	number	0	
+H_Tax5	number	0	
+H_Deduction_Per	number	0	
+H_Deduction	number	0	
+H_Other_Charge_Per	number	0	
+H_Other_Charge	number	0	
+Round_Off	number	0	
+H_Net_Amount	number	124850	
+H_TotalDiscount	number	31985	
+H_AmountBeforeDiscount	number	156835	
+Default_BankAccountDetail	string	255	<b> BANK DETAIL : BOOK SHOPEE
+<br> Bank of Baroda Delhi Road Saharanpur 
+<br> A/C 51440200000025
+<br> IFSC- BARB0DELSAH <b>	
+DocumentPrintHeaderPattern	string	255	Center Aligned	
+DimDetail	string	255		
+HsnDescription	string	255		
+PrintedByUser	string	255	SUPER	
+PrintTitle	string	255	Purchase Return (Debit Note)	
+CompanyLogo	BLOB		
+CompanyAuthorisedSignature	BLOB		

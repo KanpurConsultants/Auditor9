@@ -1,0 +1,50 @@
+; Field definition file for table: ADORecordset
+RecordType	string	255		
+DocId	string	255	D1    JV 2021     165	
+V_type	string	255	JV	
+RecId	string	255	165	
+V_Date	datetime	01/Apr/2021 00:00:00	
+Site_Code	string	255	1	
+Div_Code	string	255	D	
+Subcode	string	255	D100000166	
+LinkedSubcode	string	255		
+GoodsReturn	number	0	
+Adjustment	number	9000	
+Payment	number	0	
+Balance	number	9000	
+AmtDr	number	9000	
+AmtCr	number	0	
+Narration	string	255	Receipt Received.  CASH A/C recive from shama 	
+AdjDocID	string	255	RCT-202	
+DueDate	datetime	01/Apr/2021 00:00:00	
+AdjDate	datetime	06/Jul/2021 00:00:00	
+AdjPayment	number	350	
+ChqNo	string	255		
+AdjAmount	number	350	
+InterestBalance	number	0	
+SalePartyName	string	255		
+PartyName	string	255	GOVIND SALES, AGRA 	
+PartyCity	string	255	AGRA 	
+LinkedPartyName	string	255		
+LinkedPartyCity	string	255		
+LrNo	string	255		
+Brand	string	255		
+AmsInvNo	string	255		
+AmsInvAmt	number	0	
+TaxableAmt	string	255		
+TaxAmt	string	255		
+OtherChgAmt	string	255		
+BillAmt	string	255		
+Div_Name	string	255	Main	
+Site_Name	string	255	HO	
+InterestDays	number	96	
+Narration1	string	255	Receipt Received.  CASH A/C recive from shama 	
+IntRate	number		
+InterestAmount	number	0	
+InterestLeaverageDays	number		
+InterestSlabDescription	string	255		
+CreditLimit	number	0	
+PakkaBalance	number	0	
+PakkaPartyCount	long	1	
+AveragePaymentDays	number	47.309434103034	
+SiteShortName	string	255		

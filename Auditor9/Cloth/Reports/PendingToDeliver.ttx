@@ -1,0 +1,14 @@
+; Field definition file for table: ADORecordset
+DocID	string	255	D5   SIR 2020     428	
+ManualRefNo	string	255	352	
+V_Date	datetime	05/May/2020 12:00:00 AM	
+SaleToParty	string	255	RevenuePnt	
+SaleToPartyName	string	255	MANI KALRA	
+SaleToPartyMobile	string	255		
+ItemSpecification	string	255	ASSIGNMENT PRACTICE	
+ItemGroupDescription	string	255	BS	
+ItemCategoryDescription	string	255	BOOKS	
+Qty	number	1	
+ItemStateDescription	string	255	Out Of Stock	
+Description	string	255	PWS ANIMATION CLASS-4	
+SiteName	string	255	PINE WOOD PUBLIC SCHOOL	

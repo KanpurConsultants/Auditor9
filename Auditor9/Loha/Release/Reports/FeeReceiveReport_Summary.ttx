@@ -1,0 +1,5 @@
+; Field definition file for table: ADORecordset
+Student	string	255	AJAY SINGH	
+FatherName	string	255	VIJAY SINGH	
+Class	string	255	1ST	
+Amount	number	5400	

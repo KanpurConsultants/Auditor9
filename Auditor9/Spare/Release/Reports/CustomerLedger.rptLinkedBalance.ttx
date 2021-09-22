@@ -1,0 +1,5 @@
+; Field definition file for table: ADORecordset
+Subcode	string	255	D100000001	
+LinkedSubcode	string	255		
+Name	string	255	KULDIP OSWAL HOSIERY MILLS PVT. LTD-LUDHIANA	
+Balance	number	3864.62	

@@ -1,0 +1,101 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<GridSave>
+  <Column>
+    <Name>Search Code</Name>
+    <Index>0</Index>
+    <Width>110</Width>
+    <Visible>False</Visible>
+    <AggregateFunction />
+  </Column>
+  <Column>
+    <Name>Voucher Date</Name>
+    <Index>1</Index>
+    <Width>115</Width>
+    <Visible>True</Visible>
+    <AggregateFunction />
+  </Column>
+  <Column>
+    <Name>Voucher Type</Name>
+    <Index>2</Index>
+    <Width>101</Width>
+    <Visible>True</Visible>
+    <AggregateFunction />
+  </Column>
+  <Column>
+    <Name>Voucher No</Name>
+    <Index>3</Index>
+    <Width>62</Width>
+    <Visible>True</Visible>
+    <AggregateFunction />
+  </Column>
+  <Column>
+    <Name>Party Doc No</Name>
+    <Index>4</Index>
+    <Width>86</Width>
+    <Visible>True</Visible>
+    <AggregateFunction />
+  </Column>
+  <Column>
+    <Name>Party Doc Date</Name>
+    <Index>5</Index>
+    <Width>97</Width>
+    <Visible>True</Visible>
+    <AggregateFunction />
+  </Column>
+  <Column>
+    <Name>Party Name</Name>
+    <Index>6</Index>
+    <Width>161</Width>
+    <Visible>True</Visible>
+    <AggregateFunction />
+  </Column>
+  <Column>
+    <Name>Party Gst No</Name>
+    <Index>7</Index>
+    <Width>141</Width>
+    <Visible>True</Visible>
+    <AggregateFunction />
+  </Column>
+  <Column>
+    <Name>Taxable Value</Name>
+    <Index>8</Index>
+    <Width>110</Width>
+    <Visible>True</Visible>
+    <AggregateFunction />
+  </Column>
+  <Column>
+    <Name>Integrated Tax</Name>
+    <Index>9</Index>
+    <Width>93</Width>
+    <Visible>True</Visible>
+    <AggregateFunction />
+  </Column>
+  <Column>
+    <Name>Central Tax</Name>
+    <Index>10</Index>
+    <Width>95</Width>
+    <Visible>True</Visible>
+    <AggregateFunction />
+  </Column>
+  <Column>
+    <Name>State Tax</Name>
+    <Index>11</Index>
+    <Width>90</Width>
+    <Visible>True</Visible>
+    <AggregateFunction />
+  </Column>
+  <Column>
+    <Name>Cess</Name>
+    <Index>12</Index>
+    <Width>45</Width>
+    <Visible>True</Visible>
+    <AggregateFunction />
+  </Column>
+  <Column>
+    <Name>Total Tax Amount</Name>
+    <Index>13</Index>
+    <Width>152</Width>
+    <Visible>True</Visible>
+    <AggregateFunction />
+  </Column>
+</GridSave>

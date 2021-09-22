@@ -1,0 +1,94 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<GridSave>
+  <Column>
+    <Name>Search Code</Name>
+    <Index>0</Index>
+    <Width>112</Width>
+    <Visible>False</Visible>
+    <AggregateFunction />
+  </Column>
+  <Column>
+    <Name>Party</Name>
+    <Index>1</Index>
+    <Width>199</Width>
+    <Visible>True</Visible>
+    <AggregateFunction />
+  </Column>
+  <Column>
+    <Name>City</Name>
+    <Index>2</Index>
+    <Width>100</Width>
+    <Visible>True</Visible>
+    <AggregateFunction />
+  </Column>
+  <Column>
+    <Name>Contact No</Name>
+    <Index>3</Index>
+    <Width>102</Width>
+    <Visible>False</Visible>
+    <AggregateFunction />
+  </Column>
+  <Column>
+    <Name>Agent Name</Name>
+    <Index>4</Index>
+    <Width>107</Width>
+    <Visible>False</Visible>
+    <AggregateFunction />
+  </Column>
+  <Column>
+    <Name>Amount</Name>
+    <Index>5</Index>
+    <Width>110</Width>
+    <Visible>True</Visible>
+    <AggregateFunction />
+  </Column>
+  <Column>
+    <Name>F 0 T 30</Name>
+    <Index>6</Index>
+    <Width>112</Width>
+    <Visible>True</Visible>
+    <AggregateFunction />
+  </Column>
+  <Column>
+    <Name>F 30 T 60</Name>
+    <Index>7</Index>
+    <Width>105</Width>
+    <Visible>True</Visible>
+    <AggregateFunction />
+  </Column>
+  <Column>
+    <Name>F 60 T 90</Name>
+    <Index>8</Index>
+    <Width>94</Width>
+    <Visible>True</Visible>
+    <AggregateFunction />
+  </Column>
+  <Column>
+    <Name>F 90 T 120</Name>
+    <Index>9</Index>
+    <Width>101</Width>
+    <Visible>True</Visible>
+    <AggregateFunction />
+  </Column>
+  <Column>
+    <Name>F 120 T 150</Name>
+    <Index>10</Index>
+    <Width>82</Width>
+    <Visible>True</Visible>
+    <AggregateFunction />
+  </Column>
+  <Column>
+    <Name>F 150 T 180</Name>
+    <Index>11</Index>
+    <Width>98</Width>
+    <Visible>True</Visible>
+    <AggregateFunction />
+  </Column>
+  <Column>
+    <Name>GE 180</Name>
+    <Index>12</Index>
+    <Width>89</Width>
+    <Visible>True</Visible>
+    <AggregateFunction />
+  </Column>
+</GridSave>

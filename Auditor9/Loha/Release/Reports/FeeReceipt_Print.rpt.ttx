@@ -1,0 +1,31 @@
+; Field definition file for table: ADORecordset
+Copies	string	255	1	
+CopyPrintingCaption	string	255		
+DocNoCaption	string	255	Doc.No.	
+DocDateCaption	string	255	Doc.Date	
+SiteStateCode	string	255	09	
+SiteStateName	string	255	Uttar Pradesh	
+DocID	string	255	D1    FR 2020      28	
+Sr	number	0	
+V_Date	datetime	01/May/2020 12:00:00 AM	
+Voucher_Type	string	255	Fee Receipt	
+NCat	string	255	FR	
+ReceiptNo	string	255	FR1	
+StudemtName	string	255	KARAN PATEL	
+ClassName	string	255	1ST	
+PaidAmount	number	24000	
+FeeName	string	255	Late Fee	
+SubHeadName	string	255		
+FeeDueAmount	number	1000	
+FeeAdjustedAmount	number	1000	
+DocumentPrintHeaderPattern	string	255	Center Aligned	
+PrintedByUser	string	255	SUPER	
+EntryByUser	string	255	SUPER	
+PrintTitle	string	255	Fee Receipt	
+DocumentPrintShowPrintDateTimeYn	string	255	1	
+ChqRefNo	string	255		
+ChqRefDate	string	255		
+LRemarks	string	255		
+HRemarks	string	255		
+CompanyLogo	BLOB		
+CompanyAuthorisedSignature	BLOB		

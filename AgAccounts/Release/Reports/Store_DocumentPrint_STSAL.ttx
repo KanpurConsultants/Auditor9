@@ -1,0 +1,165 @@
+; Field definition file for table: ADORecordset
+CompanyName	string	255	DATAMAN DEMONSTRATION PACKAGE	
+SiteName	string	255	KANPUR	
+H_DocId	string	255	S1 STSAL 2010      13	
+H_Div_Code	string	255	S	
+H_Site_Code	string	255	1	
+H_V_Type	string	255	STSAL	
+H_V_Prefix	string	255	2010	
+H_V_No	long	13	
+H_V_Date	date	31/Mar/2011 12:00:00 AM	
+H_ReferenceNo	string	255		
+H_AcCode	string	255	S100000002	
+H_AcName	string	255	ARPIT GUPTA {PR2}	
+H_Add1	string	255	PARMAT	
+H_Add2	string	255		
+H_Add3	string	255		
+H_City	string	255	S10002	
+H_Phone	string	255	9935031423	
+H_Mobile	string	255		
+H_Fax	string	255		
+H_Email	string	255		
+H_SalesTaxRegNoState	string	255		
+H_PostingGroupSalesTaxParty	string	255	STATE	
+H_Amount	number	4.19	
+H_Addition	number	0	
+H_Deduction	number	0	
+H_NetAmount	number	4	
+H_LandedAmount	number	4.19	
+H_Remark	string	255		
+H_PreparedBy	string	255	sa	
+H_U_EntDt	date	02/May/2011 12:00:00 AM	
+H_U_AE	string	255	E	
+H_Edit_Date	date	30/May/2011 12:00:00 AM	
+H_ModifiedBy	string	255	SUPER	
+H_RowId	long	81	
+H_UpLoadDate	date		
+Sr	number	1	
+L_ProductService	string	255	P	
+L_ChargeType	string	255	Paid	
+L_Item	string	255	S119023	
+ItemSpecification	string	255	1121	
+L_PostingGroupSalesTaxItem	string	255	SPARE	
+L_UniqueID1	string	255		
+L_UniqueID2	string	255		
+L_Item_Nature1	string	255		
+L_Item_Nature2	string	255		
+L_BatchNo	string	255		
+L_IssueReceive	string	255		
+L_Qty	number	1	
+L_Qty_Free	number	0	
+L_Qty_Net	number	1	
+L_Qty_Iss	number	1	
+L_Qty_Rec	number	0	
+L_Rate	number	4.19	
+L_Amount	number	4.19	
+L_Addition	number	0	
+L_Deduction	number	0	
+L_NetAmount	number	4	
+L_LandedAmount	number	4.19	
+L_Remark	string	255		
+L_RowId	long	195	
+L_UpLoadDate	date		
+L_Godown	string	255	S1000001	
+ItemManualCode	string	255	ITEM20	
+ItemDescription	string	255	ITEM20	
+GodownDescription	string	255	SPARE GODOWN	
+GodownManualCode	string	255	SPARE	
+CityName	string	255	KANPUR	
+SiteName1	string	255	KANPUR	
+NCat	string	255	STSAL	
+VoucherCategory	string	255	STSAL	
+VouhcerTypeDesc	string	255	Store Sale Bill	
+AcNature	string	255	Customer	
+AcManualCode	string	255	PR2	
+AcNameMaster	string	255	ARPIT GUPTA {PR2}	
+AcDispNameMaster	string	255	ARPIT GUPTA	
+Item_Nature1Description	string	255		
+Item_Nature2Description	string	255		
+UniqueID1Text	string	255		
+UniqueID2Text	string	255		
+ItemNature1Text	string	255		
+ItemNature2Text	string	255		
+ItemBatchText	string	255		
+FinancerName	string	255	Address1	
+FinancerAdd1	string	255	Address1	
+FinancerAdd2	string	255	Address2	
+FinancerAdd3	string	255	Address3	
+FinancerCity	string	255		
+FinancerCityName	string	255		
+FinancerPhone	string	255	AgTextBox2	
+FinancerMobile	string	255	AgTextBox4	
+FinancerFax	string	255	AgTextBox5	
+FinancerEmail	string	255	AgTextBox6	
+FinanceAmount	number	0	
+FinanceRemark	string	255	AgTextBox6	
+Job_DocID	string	255		
+Job_V_Date	date		
+Job_ReferenceNo	string	255		
+Job_EstimatedExpenses	number		
+Job_ItemDescription	string	255		
+UniqueID1	string	255		
+UniqueID2	string	255		
+UniqueID3	string	255		
+UniqueID4	string	255		
+Job_ItemNature1Desc	string	255		
+Job_ItemNature2Desc	string	255		
+Job_ServiceTypeDesc	string	255		
+Job_ServiceAdvisorName	string	255		
+UnitDesc	string	255	PCS	
+SALESMAN_NAME	string	255		
+DocID	string	255	S1 STSAL 2010      13	
+SF_GROSS AMOUNT	number	4.19	
+SF_VAT	number	0	
+SF_VAT_Per	number	0	
+SF_SAT	number	0	
+SF_SAT_Per	number	0	
+SF_TAXABLE AMOUNT	number	4.19	
+SF_E.CESS	number	0	
+SF_E.CESS_Per	number	0	
+SF_H.E.CESS	number	0	
+SF_H.E.CESS_Per	number	0	
+SF_NET AMOUNT	number	4	
+SF_TOTAL ADDITIONS	number	0	
+SF_TOTAL DEDCUTIONS	number	0	
+SF_COST	number	4.19	
+SF_ROUND OFF	number	0	
+SF_SUB TOTAL	number	4.19	
+SF_BASIC EXCISE DUTY	number	0	
+SF_BASIC EXCISE DUTY_Per	number	0	
+SF_CESS	number	0	
+SF_CESS_Per	number	0	
+SF_ADMINISTRATIVE CHARGES	number	0	
+SF_ENTRY TAX	number	0	
+SF_ENTRY TAX_Per	number	0	
+SF_OTHER CHARGES	number	0	
+SF_EXCISE ASSESSABLE AMOUNT	number	4.19	
+SF_RecordCount	number	18	
+DocID1	string	255	S1 STSAL 2010      13	
+TSR	long	1	
+SL_GROSS AMOUNT	number	4.19	
+SL_VAT	number	0	
+SL_VAT_Per	number	0	
+SL_SAT	number	0	
+SL_SAT_Per	number	0	
+SL_TAXABLE AMOUNT	number	4.19	
+SL_E.CESS	number	0	
+SL_E.CESS_Per	number	0	
+SL_H.E.CESS	number	0	
+SL_H.E.CESS_Per	number	0	
+SL_NET AMOUNT	number	4	
+SL_TOTAL ADDITIONS	number	0	
+SL_TOTAL DEDCUTIONS	number	0	
+SL_COST	number	4.19	
+SL_ROUND OFF	number	0	
+SL_SUB TOTAL	number	4.19	
+SL_BASIC EXCISE DUTY	number	0	
+SL_BASIC EXCISE DUTY_Per	number	0	
+SL_CESS	number	0	
+SL_CESS_Per	number	0	
+SL_ADMINISTRATIVE CHARGES	number	0	
+SL_ENTRY TAX	number	0	
+SL_ENTRY TAX_Per	number	0	
+SL_OTHER CHARGES	number	0	
+SL_EXCISE ASSESSABLE AMOUNT	number	4.19	
+SL_RecordCount	number	18	

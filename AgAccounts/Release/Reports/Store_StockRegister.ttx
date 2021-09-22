@@ -1,0 +1,13 @@
+; Field definition file for table: ADORecordset
+V_Date	date	01/Nov/2010 12:00:00 AM	
+RowID	long	108	
+DocID	string	255	S1 STISS 2010       1	
+VType	string	255	Store Issue	
+Name	string	255	CEAT TYRE	
+itemgroup	string	255	SPARE	
+Rate	number	0	
+Opening	number	0	
+receivedQty	number	0	
+Issued	number	1	
+UniqueID1	string	255		
+UniqueID2	string	255		

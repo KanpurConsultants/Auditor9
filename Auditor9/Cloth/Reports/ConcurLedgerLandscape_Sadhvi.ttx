@@ -1,0 +1,46 @@
+; Field definition file for table: ADORecordset
+DivisionName	string	255	SADHVI ENTERPRISES {ENTERPRISES}, KANPUR	
+PartyName	string	255	ARADHYA  GARMENTS, BHOJPUR	
+Address	string	255	BANK OF BARODA KE SAMNE BHOJPUR DIST-RAIBARELY	
+Mobile	string	255	9793145086	
+AgentName	string	255	RAM KUMAR DIWEDI, KANPUR	
+SalesRepresentativeName	string	255		
+AreaName	string	255		
+DrDocID	string	255	D1    SI 2019    2670	
+DrDivision	string	255	D	
+DrSubcode	string	255	D100004007	
+DrSr	number	0	
+DrDate	datetime	30/Apr/2019 12:00:00 AM	
+DrDocNo	string	255	SI-1898	
+DrAmount	number	62420	
+DrTaxableAmount	number	59448	
+DrTaxAmount	number	2972.44	
+DrDays	number	457	
+DrInterest	number	0	
+DrCumAmount	number	62420	
+DrBalAmount	number	0	
+DrTotal	number	136801	
+DrNarration	string	255	Tax Invoice	
+CrDocID	string	255	D1    CR 2019    2072	
+CrDivision	string	255	D	
+CrSubcode	string	255	D100004007	
+CrSr	number	0	
+CrDate	datetime	03/Jun/2019 12:00:00 AM	
+CrDocNo	string	255	CR-1345	
+CrAmount	number	10000	
+CrTaxableAmount	number	0	
+CrTaxAmount	number	0	
+CrDays	number	424	
+CrInterest	number	0	
+CrCumAmount	number	10000	
+CrBalAmount	number	0	
+CrTotal	number	119494	
+CrNarration	string	255	Cash Received	
+AdditionPer	number	0	
+AdditionAmount	number	0	
+GrReturnAmt	number	7742	
+GrSaleAmt	number	126683	
+ReturnPer	number	6.11	
+AveragePaymentDays	number	119.606046011934	
+DrMonth	string	255	04/2019	
+CrMonth	string	255	06/2019	

@@ -1,0 +1,73 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<GridSave>
+  <Column>
+    <Name>Search Code</Name>
+    <Index>0</Index>
+    <Width>110</Width>
+    <Visible>False</Visible>
+    <AggregateFunction />
+  </Column>
+  <Column>
+    <Name>Doc Type</Name>
+    <Index>1</Index>
+    <Width>90</Width>
+    <Visible>True</Visible>
+    <AggregateFunction />
+  </Column>
+  <Column>
+    <Name>Doc No</Name>
+    <Index>2</Index>
+    <Width>61</Width>
+    <Visible>True</Visible>
+    <AggregateFunction />
+  </Column>
+  <Column>
+    <Name>Doc Date</Name>
+    <Index>3</Index>
+    <Width>91</Width>
+    <Visible>True</Visible>
+    <AggregateFunction />
+  </Column>
+  <Column>
+    <Name>Doc Type Desc</Name>
+    <Index>4</Index>
+    <Width>122</Width>
+    <Visible>True</Visible>
+    <AggregateFunction />
+  </Column>
+  <Column>
+    <Name>Party Name</Name>
+    <Index>5</Index>
+    <Width>226</Width>
+    <Visible>True</Visible>
+    <AggregateFunction />
+  </Column>
+  <Column>
+    <Name>Narration</Name>
+    <Index>6</Index>
+    <Width>99</Width>
+    <Visible>True</Visible>
+    <AggregateFunction />
+  </Column>
+  <Column>
+    <Name>Qty</Name>
+    <Index>7</Index>
+    <Width>60</Width>
+    <Visible>True</Visible>
+    <AggregateFunction />
+  </Column>
+  <Column>
+    <Name>Unit</Name>
+    <Index>8</Index>
+    <Width>63</Width>
+    <Visible>True</Visible>
+    <AggregateFunction />
+  </Column>
+  <Column>
+    <Name>Net Amount</Name>
+    <Index>9</Index>
+    <Width>104</Width>
+    <Visible>True</Visible>
+    <AggregateFunction />
+  </Column>
+</GridSave>

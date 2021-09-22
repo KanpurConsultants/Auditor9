@@ -1,0 +1,29 @@
+; Field definition file for table: ADORecordset
+DocID	string	255	D1   PMT 2020       4	
+Sr	long	1	
+ChequeText	string	255	
+
+
+                                                                                                                                                                      0   5   0   8   2   0   2   0   
+
+
+
+
+           DHANLAXMI ENTERPRISE
+
+
+
+
+                 Forty  Thousand  Only
+
+
+
+
+                                                                                                                                                                  *** 40000.00
+
+
+.
+	
+AccountPayeeYn	string	255	Yes	
+CompanyLogo	BLOB		
+CompanyAuthorisedSignature	BLOB		

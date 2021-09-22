@@ -1,0 +1,46 @@
+; Field definition file for table: ADORecordset
+DivisionName	string	255	SADHVI EMBROIDERY {EMBROIDERY}, KANPUR	
+PartyName	string	255	HAZEE ABDUL ZABBAR & CO., GAURABADHSHAPUR	
+Address	string	255	GAORABADSHAHPUR	
+Mobile	string	255	7052010062	
+AgentName	string	255	ARCHANA, KANPUR	
+SalesRepresentativeName	string	255		
+AreaName	string	255		
+DrDocID	string	255	E1    SI 2019   13028	
+DrDivision	string	255	E	
+DrSubcode	string	255	D100001450	
+DrSr	number	46	
+DrDate	datetime	30/Jan/2020 12:00:00 AM	
+DrDocNo	string	255	SI-3209	
+DrAmount	number	30708	
+DrTaxableAmount	number	28481.25	
+DrTaxAmount	number	2227.12	
+DrDays	number	96	
+DrInterest	number	0	
+DrCumAmount	number	1334859	
+DrBalAmount	number	25473	
+DrTotal	number	1380338	
+DrNarration	string	255	RT : DharaTax Invoice	
+CrDocID	string	255	E1   CNC 2019     260	
+CrDivision	string	255	E	
+CrSubcode	string	255	D100001450	
+CrSr	number	46	
+CrDate	datetime	21/Mar/2020 12:00:00 AM	
+CrDocNo	string	255	CNC-85	
+CrAmount	number	3811.28	
+CrTaxableAmount	number	0	
+CrTaxAmount	number	0	
+CrDays	number	75	
+CrInterest	number	0	
+CrCumAmount	number	1307962.28	
+CrBalAmount	number	0	
+CrTotal	number	1309386	
+CrNarration	string	255	CREDIT NOTE (Customers) : DHAR	
+AdditionPer	number	5	
+AdditionAmount	number	1356.25	
+GrReturnAmt	number	36857	
+GrSaleAmt	number	1380338	
+ReturnPer	number	2.67	
+AveragePaymentDays	number	70.8064790070076	
+DrMonth	string	255	01/2020	
+CrMonth	string	255	03/2020	

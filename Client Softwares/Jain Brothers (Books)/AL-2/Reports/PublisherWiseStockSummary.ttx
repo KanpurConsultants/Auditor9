@@ -1,0 +1,14 @@
+BookName	String	250
+Publisher	String	250
+BookID	Number
+OPBQty	Currency
+PurQty	Currency
+PurRetQty	Currency
+SaleQty	Currency
+SaleRetQty	Currency
+NetQty	Currency
+StockValue	Currency
+OwnerID	String	250
+FromDate	Date
+ToDate	Date
+

@@ -1,0 +1,12 @@
+D:\VineetJ\Project\Individual Projects\ReportLayout\obj\Release\ResolveAssemblyReference.cache
+D:\VineetJ\Project\Individual Projects\ReportLayout\obj\Release\ReportLayout.FrmReportLayout.resources
+D:\VineetJ\Project\Individual Projects\ReportLayout\obj\Release\ReportLayout.MDIMain.resources
+D:\VineetJ\Project\Individual Projects\ReportLayout\obj\Release\ReportLayout.RepView.resources
+D:\VineetJ\Project\Individual Projects\ReportLayout\obj\Release\ReportLayout.Resources.resources
+D:\VineetJ\Project\Individual Projects\ReportLayout\obj\Release\ReportLayout.vbproj.GenerateResource.Cache
+D:\VineetJ\Project\Individual Projects\ReportLayout\obj\Release\ReportLayout.dll
+D:\VineetJ\Project\Individual Projects\ReportLayout\obj\Release\ReportLayout.xml
+D:\VineetJ\Project\Individual Projects\ReportLayout\obj\Release\ReportLayout.pdb
+D:\Individual Projects\Support\ReportLayout\Release\ReportLayout.dll
+D:\Individual Projects\Support\ReportLayout\Release\ReportLayout.pdb
+D:\Individual Projects\Support\ReportLayout\Release\ReportLayout.xml

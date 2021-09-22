@@ -1,0 +1,150 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<GridSave>
+  <Column>
+    <Name>Search Code</Name>
+    <Index>0</Index>
+    <Width>140</Width>
+    <Visible>False</Visible>
+    <AggregateFunction />
+  </Column>
+  <Column>
+    <Name>Division</Name>
+    <Index>1</Index>
+    <Width>89</Width>
+    <Visible>False</Visible>
+    <AggregateFunction />
+  </Column>
+  <Column>
+    <Name>Site</Name>
+    <Index>2</Index>
+    <Width>62</Width>
+    <Visible>False</Visible>
+    <AggregateFunction />
+  </Column>
+  <Column>
+    <Name>Invoice Date</Name>
+    <Index>3</Index>
+    <Width>105</Width>
+    <Visible>True</Visible>
+    <AggregateFunction />
+  </Column>
+  <Column>
+    <Name>Doc Type</Name>
+    <Index>4</Index>
+    <Width>90</Width>
+    <Visible>False</Visible>
+    <AggregateFunction />
+  </Column>
+  <Column>
+    <Name>Entry No</Name>
+    <Index>5</Index>
+    <Width>111</Width>
+    <Visible>True</Visible>
+    <AggregateFunction />
+  </Column>
+  <Column>
+    <Name>Party</Name>
+    <Index>6</Index>
+    <Width>190</Width>
+    <Visible>True</Visible>
+    <AggregateFunction />
+  </Column>
+  <Column>
+    <Name>Sales Tax Group Party</Name>
+    <Index>7</Index>
+    <Width>107</Width>
+    <Visible>False</Visible>
+    <AggregateFunction />
+  </Column>
+  <Column>
+    <Name>Amount Ex Discount</Name>
+    <Index>8</Index>
+    <Width>101</Width>
+    <Visible>False</Visible>
+    <AggregateFunction />
+  </Column>
+  <Column>
+    <Name>Discount</Name>
+    <Index>9</Index>
+    <Width>93</Width>
+    <Visible>False</Visible>
+    <AggregateFunction />
+  </Column>
+  <Column>
+    <Name>Amount</Name>
+    <Index>10</Index>
+    <Width>86</Width>
+    <Visible>False</Visible>
+    <AggregateFunction />
+  </Column>
+  <Column>
+    <Name>Taxable Amount</Name>
+    <Index>11</Index>
+    <Width>130</Width>
+    <Visible>False</Visible>
+    <AggregateFunction />
+  </Column>
+  <Column>
+    <Name>Tax Amount</Name>
+    <Index>12</Index>
+    <Width>105</Width>
+    <Visible>False</Visible>
+    <AggregateFunction />
+  </Column>
+  <Column>
+    <Name>Net Amount</Name>
+    <Index>13</Index>
+    <Width>164</Width>
+    <Visible>True</Visible>
+    <AggregateFunction />
+  </Column>
+  <Column>
+    <Name>Cash</Name>
+    <Index>14</Index>
+    <Width>111</Width>
+    <Visible>True</Visible>
+    <AggregateFunction />
+  </Column>
+  <Column>
+    <Name>Credit</Name>
+    <Index>15</Index>
+    <Width>101</Width>
+    <Visible>True</Visible>
+    <AggregateFunction />
+  </Column>
+  <Column>
+    <Name>Paytm</Name>
+    <Index>16</Index>
+    <Width>78</Width>
+    <Visible>False</Visible>
+    <AggregateFunction />
+  </Column>
+  <Column>
+    <Name>Card</Name>
+    <Index>17</Index>
+    <Width>67</Width>
+    <Visible>False</Visible>
+    <AggregateFunction />
+  </Column>
+  <Column>
+    <Name>CARD SBI</Name>
+    <Index>18</Index>
+    <Width>93</Width>
+    <Visible>False</Visible>
+    <AggregateFunction />
+  </Column>
+  <Column>
+    <Name>CARD HDFC HANDLOOM</Name>
+    <Index>19</Index>
+    <Width>141</Width>
+    <Visible>True</Visible>
+    <AggregateFunction />
+  </Column>
+  <Column>
+    <Name>Goods Return</Name>
+    <Index>20</Index>
+    <Width>115</Width>
+    <Visible>False</Visible>
+    <AggregateFunction />
+  </Column>
+</GridSave>

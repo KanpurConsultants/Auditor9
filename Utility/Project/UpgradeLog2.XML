@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?><?xml-stylesheet type='text/xsl' href='_UpgradeReport_Files/UpgradeReport.xslt'?><UpgradeLog>
+<Properties><Property Name="Solution" Value="Utility">
+</Property><Property Name="Solution File" Value="\\node2\Common\Utility\Project\Utility.sln">
+</Property><Property Name="Date" Value="17/Aug/2011">
+</Property><Property Name="Time" Value="15:51 PM">
+</Property><Property Name="Log Number" Value="2">
+</Property></Properties><Event ErrorLevel="0" Project="Utility" Source="Utility.vbproj" Description="The project file does not require conversion.">
+</Event><Event ErrorLevel="3" Project="Utility" Source="Utility.vbproj" Description="No Conversion Required">
+</Event><Event ErrorLevel="0" Project="" Source="Utility.sln" Description="Solution converted successfully">
+</Event><Event ErrorLevel="3" Project="" Source="Utility.sln" Description="Converted">
+</Event></UpgradeLog>

@@ -1,0 +1,432 @@
+Imports System.IO
+Imports AgLibrary
+Imports AgLibrary.ClsMain
+Imports AgLibrary.ClsMain.agConstants
+Imports Customised.ClsMain
+Imports Microsoft.Reporting.WinForms
+Public Class ClsReverseChargeWizard
+
+    Dim StrArr1() As String = Nothing, StrArr2() As String = Nothing, StrArr3() As String = Nothing, StrArr4() As String = Nothing, StrArr5() As String = Nothing
+
+    Dim mGRepFormName As String = ""
+    Dim mQry As String = ""
+    Dim RepTitle As String = ""
+
+    Dim DsReport As DataSet = New DataSet
+    Dim DTReport As DataTable = New DataTable
+    Dim IntLevel As Int16 = 0
+
+    Dim WithEvents ReportFrm As FrmRepDisplay
+    Public Const GFilter As Byte = 2
+    Public Const GFilterCode As Byte = 4
+    Dim StrSQLQuery As String = ""
+    Private Const CnsProfitAndLoss As String = "PRLS"
+
+    Dim mShowReportType As String = ""
+    Dim mV_Type As String = ""
+    Dim mObjFrm As Object
+
+    Public Const Col1Select As String = "Tick"
+    Public Const Col1DocId As String = "Search Code"
+    Public Const Col1VoucherDate As String = "Voucher Date"
+    Public Const Col1VoucherType As String = "Voucher Type"
+    Public Const Col1VoucherNo As String = "Voucher No"
+    Public Const Col1PartyCode As String = "Party Code"
+    Public Const Col1Party As String = "Party"
+    Public Const Col1HSN As String = "HSN"
+    Public Const Col1SalesTaxGroupItem As String = "Sales Tax Group Item"
+    Public Const Col1TaxableValue As String = "Taxable Value"
+    Public Const Col1Tax1_Per As String = "Integrated Tax Per"
+    Public Const Col1Tax1 As String = "Integrated Tax"
+    Public Const Col1Tax2_Per As String = "Central Tax Per"
+    Public Const Col1Tax2 As String = "Central Tax"
+    Public Const Col1Tax3_Per As String = "State Tax Per"
+    Public Const Col1Tax3 As String = "State Tax"
+    Public Const Col1TaxAmount As String = "Tax Amount"
+    Public Const Col1Remark As String = "Remark"
+    Public Property GRepFormName() As String
+        Get
+            GRepFormName = mGRepFormName
+        End Get
+        Set(ByVal value As String)
+            mGRepFormName = value
+        End Set
+    End Property
+    Public Property V_Type() As String
+        Get
+            V_Type = mV_Type
+        End Get
+        Set(ByVal value As String)
+            mV_Type = value
+        End Set
+    End Property
+    Public Property ShowReportType() As String
+        Get
+            ShowReportType = mShowReportType
+        End Get
+        Set(ByVal value As String)
+            mShowReportType = value
+        End Set
+    End Property
+    Public Property ObjFrm() As Object
+        Get
+            ObjFrm = mObjFrm
+        End Get
+        Set(ByVal value As Object)
+            mObjFrm = value
+        End Set
+    End Property
+
+    Dim mHelpSiteQry$ = "Select 'o' As Tick, Code, Name FROM SiteMast "
+    Dim mHelpDivisionQry$ = "Select 'o' As Tick, Div_Code As Code, Div_Name As Name From Division "
+    Dim mHelpYesNoQry$ = " Select 'Yes' As Code, 'Yes' AS [Value] Union All Select 'No' As Code, 'No' AS [Value] "
+    Dim mHelpSubGroupQry$ = "Select 'o' As Tick, Sg.Code, Sg.Name FROM ViewHelpSubgroup Sg Where Sg.SubGroupType = '" & SubgroupType.Customer & "' "
+    Dim mHelpSaleOrderQry$ = "SELECT 'o' As Tick, H.DocID, H.ManualRefNo AS SaleOrderNo FROM SaleOrder H  "
+    Public Sub Ini_Grid()
+        Try
+            Dim mLastMonthDate As String = DateAdd(DateInterval.Month, -1, CDate(AgL.Dman_Execute("SELECT date('now')", AgL.GCn).ExecuteScalar()))
+            ReportFrm.CreateHelpGrid("FromDate", "From Date", FrmRepDisplay.FieldFilterDataType.StringType, FrmRepDisplay.FieldDataType.DateType, "", AgL.RetMonthStartDate(mLastMonthDate))
+            ReportFrm.CreateHelpGrid("ToDate", "To Date", FrmRepDisplay.FieldFilterDataType.StringType, FrmRepDisplay.FieldDataType.DateType, "", AgL.RetMonthEndDate(mLastMonthDate))
+            ReportFrm.CreateHelpGrid("Site", "Site", FrmRepDisplay.FieldFilterDataType.StringType, FrmRepDisplay.FieldDataType.MultiSelection, mHelpSiteQry, "[SITECODE]")
+            ReportFrm.CreateHelpGrid("Division", "Division", FrmRepDisplay.FieldFilterDataType.StringType, FrmRepDisplay.FieldDataType.MultiSelection, mHelpDivisionQry, "[DIVISIONCODE]")
+            ReportFrm.CreateHelpGrid("Remarks", "Remarks", FrmRepDisplay.FieldFilterDataType.StringType, FrmRepDisplay.FieldDataType.StringType, "", "")
+            ReportFrm.BtnProceed.Visible = True
+        Catch ex As Exception
+            MsgBox(ex.Message)
+        End Try
+    End Sub
+    Private Sub ObjRepFormGlobal_ProcessReport() Handles ReportFrm.ProcessReport
+        ProcReverseCharge()
+    End Sub
+    Public Sub New(ByVal mReportFrm As FrmRepDisplay)
+        ReportFrm = mReportFrm
+    End Sub
+    Public Sub ProcReverseCharge(Optional mFilterGrid As AgControls.AgDataGrid = Nothing,
+                                Optional mGridRow As DataGridViewRow = Nothing)
+        Try
+            Dim mCondStr$ = ""
+            Dim strGrpFld As String = "''", strGrpFldHead As String = "''", strGrpFldDesc As String = "''"
+
+            RepTitle = "Reverse Charge"
+
+            If mFilterGrid IsNot Nothing And mGridRow IsNot Nothing Then
+                If mGridRow.DataGridView.Columns.Contains("Search Code") = True Then
+                    ClsMain.FOpenForm(mGridRow.Cells("Search Code").Value, ReportFrm)
+                    ReportFrm.FiterGridCopy_Arr.RemoveAt(ReportFrm.FiterGridCopy_Arr.Count - 1)
+                    Exit Sub
+                Else
+                    Exit Sub
+                End If
+            End If
+
+            mCondStr = " Where 1=1"
+            mCondStr = mCondStr & " AND Date(H.V_Date) Between " & AgL.Chk_Date(CDate(ReportFrm.FGetText(0)).ToString("s")) & " And " & AgL.Chk_Date(CDate(ReportFrm.FGetText(1)).ToString("s")) & " "
+            mCondStr = mCondStr & Replace(ReportFrm.GetWhereCondition("H.Site_Code", 2), "''", "'")
+            mCondStr = mCondStr & Replace(ReportFrm.GetWhereCondition("H.Div_Code", 3), "''", "'")
+
+            mQry = " SELECT 'o' As Tick, L.DocId As SearchCode, H.V_Date As VoucherDate, Vt.Description As VoucherType, 
+                        H.ManualRefNo As VoucherNo, IfNull(H.VendorName,Sg.Name) As Party, H.Vendor As PartyCode, L.SalesTaxGroupItem,
+                        IfNull(I.HSN,Ic.HSN) As HSN, Sum(L.Taxable_Amount) as TaxableValue, 
+                        Max(Case When H.PlaceOfSupply = '" & PlaceOfSupplay.OutsideState & "' Then  Psi.GrossTaxRate Else 0 End) As IntegratedTaxPer, 
+                        Sum(Case When H.PlaceOfSupply = '" & PlaceOfSupplay.OutsideState & "' Then  L.Taxable_Amount * Psi.GrossTaxRate / 100 Else 0 End) As IntegratedTax, 
+                        Max(Case When H.PlaceOfSupply = '" & PlaceOfSupplay.WithinState & "' Then  Psi.GrossTaxRate / 2 Else 0 End) As CentralTaxPer, 
+                        Sum(Case When H.PlaceOfSupply = '" & PlaceOfSupplay.WithinState & "' Then  L.Taxable_Amount * Psi.GrossTaxRate / 2 / 100 Else 0 End) As CentralTax, 
+                        Max(Case When H.PlaceOfSupply = '" & PlaceOfSupplay.WithinState & "' Then  Psi.GrossTaxRate / 2 Else 0 End) As StateTaxPer, 
+                        Sum(Case When H.PlaceOfSupply = '" & PlaceOfSupplay.WithinState & "' Then  L.Taxable_Amount * Psi.GrossTaxRate / 2 / 100 Else 0 End) As StateTax, 
+                        Sum(Case When H.PlaceOfSupply = '" & PlaceOfSupplay.OutsideState & "' Then  L.Taxable_Amount * Psi.GrossTaxRate / 100 Else 0 End +
+                        Case When H.PlaceOfSupply = '" & PlaceOfSupplay.WithinState & "' Then  L.Taxable_Amount * Psi.GrossTaxRate / 2 / 100 Else 0 End +
+                        Case When H.PlaceOfSupply = '" & PlaceOfSupplay.WithinState & "' Then  L.Taxable_Amount * Psi.GrossTaxRate / 2 / 100 Else 0 End) As TaxAmount
+                        from PurchInvoice H 
+                        left join PurchInvoiceDetail L On H.DocID = L.DocID 
+                        LEFT JOIN Item I ON L.Item = I.Code
+                        LEFT JOIN ItemCategory Ic On I.ItemCategory = Ic.Code
+                        LEFT JOIN (
+	                        SELECT L.SpecificationDocID
+	                        FROM LedgerHead H 
+	                        LEFT JOIN LedgerHeadDetail L ON H.DocID = L.DocID
+	                        LEFT JOIN Voucher_Type Vt ON H.V_Type = Vt.V_Type
+	                        WHERE Vt.NCat = '" & Ncat.ReverseCharge & "'
+	                        GROUP BY L.SpecificationDocID
+                        ) AS VRc ON H.DocID = VRc.SpecificationDocID
+                        LEFT JOIN PostingGroupSalesTaxItem Psi On L.SalesTaxGroupItem = PSi.Description
+                        LEFT JOIN SubGroup Sg ON H.Vendor = Sg.SubCode
+                        LEFT JOIN Voucher_Type Vt On H.V_Type = Vt.V_Type " & mCondStr &
+                        " AND VRc.SpecificationDocID IS NULL
+                        And Vt.Nature In ('" & NCatNature.Invoice & "')
+                        And H.SalesTaxGroupParty = '" & ClsMain.PostingGroupSalesTaxParty.Unregistered & "' 
+                        Group By L.DocId, H.V_Date, Vt.Description, IfNull(H.VendorName,Sg.Name), 
+                        H.Vendor, H.ManualRefNo, L.SalesTaxGroupItem, IfNull(I.HSN,Ic.HSN) "
+
+            mQry += " UNION ALL "
+
+            mQry += " SELECT 'o' As Tick, L.DocId As SearchCode, H.V_Date As VoucherDate, Vt.Description As VoucherType, 
+                        H.ManualRefNo As VoucherNo, IfNull(H.PartyName,Sg.Name) As Party, H.SubCode As PartyCode, L.SalesTaxGroupItem,
+                        L.HSN As HSN, Sum(Lc.Taxable_Amount) as TaxableValue, 
+                        Max(Case When H.PlaceOfSupply = '" & PlaceOfSupplay.OutsideState & "' Then  Psi.GrossTaxRate Else 0 End) As IntegratedTaxPer, 
+                        Sum(Case When H.PlaceOfSupply = '" & PlaceOfSupplay.OutsideState & "' Then  Lc.Taxable_Amount * Psi.GrossTaxRate / 100 Else 0 End) As IntegratedTax, 
+                        Max(Case When H.PlaceOfSupply = '" & PlaceOfSupplay.WithinState & "' Then  Psi.GrossTaxRate / 2 Else 0 End) As CentralTaxPer, 
+                        Sum(Case When H.PlaceOfSupply = '" & PlaceOfSupplay.WithinState & "' Then  Lc.Taxable_Amount * Psi.GrossTaxRate / 2 / 100 Else 0 End) As CentralTax, 
+                        Max(Case When H.PlaceOfSupply = '" & PlaceOfSupplay.WithinState & "' Then  Psi.GrossTaxRate / 2 Else 0 End) As StateTaxPer, 
+                        Sum(Case When H.PlaceOfSupply = '" & PlaceOfSupplay.WithinState & "' Then  Lc.Taxable_Amount * Psi.GrossTaxRate / 2 / 100 Else 0 End) As StateTax, 
+                        Sum(Case When H.PlaceOfSupply = '" & PlaceOfSupplay.OutsideState & "' Then  Lc.Taxable_Amount * Psi.GrossTaxRate / 100 Else 0 End +
+                        Case When H.PlaceOfSupply = '" & PlaceOfSupplay.WithinState & "' Then  Lc.Taxable_Amount * Psi.GrossTaxRate / 2 / 100 Else 0 End +
+                        Case When H.PlaceOfSupply = '" & PlaceOfSupplay.WithinState & "' Then  Lc.Taxable_Amount * Psi.GrossTaxRate / 2 / 100 Else 0 End) As TaxAmount
+                        from LedgerHead H 
+                        left join LedgerHeadDetail L On H.DocID = L.DocID 
+                        LEFT JOIN LedgerHeadDetailCharges Lc On L.DocID = Lc.DocId And L.Sr = Lc.Sr
+                        LEFT JOIN (
+	                        SELECT L.SpecificationDocID
+	                        FROM LedgerHead H 
+	                        LEFT JOIN LedgerHeadDetail L ON H.DocID = L.DocID
+	                        LEFT JOIN Voucher_Type Vt ON H.V_Type = Vt.V_Type
+	                        WHERE Vt.NCat = '" & Ncat.ReverseCharge & "'
+	                        GROUP BY L.SpecificationDocID
+                        ) AS VRc ON H.DocID = VRc.SpecificationDocID
+                        LEFT JOIN PostingGroupSalesTaxItem Psi On L.SalesTaxGroupItem = PSi.Description
+                        LEFT JOIN SubGroup Sg ON H.SubCode = Sg.SubCode
+                        LEFT JOIN Voucher_Type Vt On H.V_Type = Vt.V_Type " & mCondStr &
+                        " AND VRc.SpecificationDocID IS NULL
+                        And Vt.NCat = '" & Ncat.ExpenseVoucher & "'
+                        And H.SalesTaxGroupParty = '" & ClsMain.PostingGroupSalesTaxParty.Unregistered & "' 
+                        Group By L.DocId, H.V_Date, Vt.Description, IfNull(H.PartyName,Sg.Name), 
+                        H.SubCode, H.ManualRefNo, L.SalesTaxGroupItem, L.HSN "
+
+            mQry += " UNION ALL "
+
+            mQry += "SELECT 'o' As Tick, L.DocId As SearchCode, H.V_Date As VoucherDate, Vt.Description As VoucherType, 
+                    H.ManualRefNo As VoucherNo, IsNull(H.PartyName,Sg.Name) As Party, H.SubCode As PartyCode, IsNull(L.SalesTaxGroupItem,'GST 5%') As SalesTaxGroupItem,
+                    L.HSN As HSN, Sum(L.Amount) as TaxableValue, 
+                    Max(Case When H.PlaceOfSupply = '" & PlaceOfSupplay.OutsideState & "' Then  Psi.GrossTaxRate Else 0 End) As IntegratedTaxPer, 
+                    Sum(Case When H.PlaceOfSupply = '" & PlaceOfSupplay.OutsideState & "' Then  L.Amount * Psi.GrossTaxRate / 100 Else 0 End) As IntegratedTax, 
+                    Max(Case When H.PlaceOfSupply = '" & PlaceOfSupplay.WithinState & "' Then  Psi.GrossTaxRate / 2 Else 0 End) As CentralTaxPer, 
+                    Sum(Case When H.PlaceOfSupply = '" & PlaceOfSupplay.WithinState & "' Then  L.Amount * Psi.GrossTaxRate / 2 / 100 Else 0 End) As CentralTax, 
+                    Max(Case When H.PlaceOfSupply = '" & PlaceOfSupplay.WithinState & "' Then  Psi.GrossTaxRate / 2 Else 0 End) As StateTaxPer, 
+                    Sum(Case When H.PlaceOfSupply = '" & PlaceOfSupplay.WithinState & "' Then  L.Amount * Psi.GrossTaxRate / 2 / 100 Else 0 End) As StateTax, 
+                    Sum(Case When H.PlaceOfSupply = '" & PlaceOfSupplay.OutsideState & "' Then  L.Amount * Psi.GrossTaxRate / 100 Else 0 End +
+                    Case When H.PlaceOfSupply = '" & PlaceOfSupplay.WithinState & "' Then  L.Amount * Psi.GrossTaxRate / 2 / 100 Else 0 End +
+                    Case When H.PlaceOfSupply = '" & PlaceOfSupplay.WithinState & "' Then  L.Amount * Psi.GrossTaxRate / 2 / 100 Else 0 End) As TaxAmount
+                    from LedgerHead H 
+                    left join LedgerHeadDetail L On H.DocID = L.DocID 
+                    LEFT JOIN LedgerHeadDetailCharges Lc On L.DocID = Lc.DocId And L.Sr = Lc.Sr
+                    LEFT JOIN (
+                        SELECT L.SpecificationDocID
+                        FROM LedgerHead H 
+                        LEFT JOIN LedgerHeadDetail L ON H.DocID = L.DocID
+                        LEFT JOIN Voucher_Type Vt ON H.V_Type = Vt.V_Type
+                        WHERE Vt.NCat = '" & Ncat.ReverseCharge & "'
+                        GROUP BY L.SpecificationDocID
+                    ) AS VRc ON H.DocID = VRc.SpecificationDocID
+                    LEFT JOIN PostingGroupSalesTaxItem Psi On IsNull(L.SalesTaxGroupItem,'GST 5%') = PSi.Description
+                    LEFT JOIN SubGroup Sg ON H.SubCode = Sg.SubCode
+                    LEFT JOIN Voucher_Type Vt On H.V_Type = Vt.V_Type " & mCondStr &
+                    " AND VRc.SpecificationDocID IS NULL
+                    And Vt.NCat = 'LF'
+                    And IfNull(H.SalesTaxGroupParty,'') <> '" & ClsMain.PostingGroupSalesTaxParty.Registered & "'
+                    Group By L.DocId, H.V_Date, Vt.Description, IsNull(H.PartyName,Sg.Name), 
+                    H.SubCode, H.ManualRefNo, L.SalesTaxGroupItem, L.HSN "
+
+
+            DsReport = AgL.FillData(mQry, AgL.GCn)
+
+            If DsReport.Tables(0).Rows.Count = 0 Then Err.Raise(1, , "No Records To Print!")
+
+            ReportFrm.Text = "Reverse Charge Liable Invoices"
+            ReportFrm.ClsRep = Me
+            ReportFrm.ReportProcName = "ProcReverseCharge"
+
+            ReportFrm.InputColumnsStr = "|" + Col1Remark + "|"
+            ReportFrm.ProcFillGrid(DsReport)
+
+            ReportFrm.DGL1.Columns(Col1PartyCode).Visible = False
+            ReportFrm.DGL1.Columns(Col1Tax1_Per).Visible = False
+            ReportFrm.DGL1.Columns(Col1Tax2_Per).Visible = False
+            ReportFrm.DGL1.Columns(Col1Tax3_Per).Visible = False
+
+
+
+
+            ReportFrm.BtnProceed.Text = "Save"
+            AgL.FSetDimensionCaptionForHorizontalGrid(ReportFrm.DGL1, AgL)
+        Catch ex As Exception
+            MsgBox(ex.Message)
+            DsReport = Nothing
+        Finally
+            For I As Integer = 0 To ReportFrm.DGL1.Columns.Count - 1
+                ReportFrm.DGL2.Columns(I).Visible = ReportFrm.DGL1.Columns(I).Visible
+                ReportFrm.DGL2.Columns(I).Width = ReportFrm.DGL1.Columns(I).Width
+                ReportFrm.DGL2.Columns(I).DisplayIndex = ReportFrm.DGL1.Columns(I).DisplayIndex
+            Next
+        End Try
+    End Sub
+    Private Sub ReportFrm_BtnProceedPressed() Handles ReportFrm.BtnProceedPressed
+        Dim I As Integer = 0, J As Integer = 0, bSr As Integer = 0
+        If FDataValidation() = False Then Exit Sub
+
+        Try
+            Dim mTrans As String = ""
+            AgL.ECmd = AgL.GCn.CreateCommand
+            AgL.ETrans = AgL.GCn.BeginTransaction(IsolationLevel.ReadCommitted)
+            AgL.ECmd.Transaction = AgL.ETrans
+            mTrans = "Begin"
+
+            Dim LedgerHeadTableList(0) As FrmVoucherEntry.StructLedgerHead
+            Dim LedgerHeadTable As New FrmVoucherEntry.StructLedgerHead
+
+            LedgerHeadTable.DocID = ""
+            LedgerHeadTable.V_Type = Ncat.ReverseCharge
+            LedgerHeadTable.V_Prefix = ""
+            LedgerHeadTable.Site_Code = AgL.PubSiteCode
+            LedgerHeadTable.Div_Code = AgL.PubDivCode
+            LedgerHeadTable.V_No = 0
+            LedgerHeadTable.V_Date = ReportFrm.FGetText(1)
+            LedgerHeadTable.ManualRefNo = ""
+            LedgerHeadTable.Subcode = "RCP"
+            LedgerHeadTable.SubcodeName = ""
+            LedgerHeadTable.SalesTaxGroupParty = ""
+            LedgerHeadTable.PlaceOfSupply = ""
+            LedgerHeadTable.StructureCode = ""
+            LedgerHeadTable.CustomFields = ""
+            LedgerHeadTable.PartyDocNo = ""
+            LedgerHeadTable.PartyDocDate = ""
+            LedgerHeadTable.Remarks = ""
+            LedgerHeadTable.Status = "Active"
+            LedgerHeadTable.EntryBy = AgL.PubUserName
+            LedgerHeadTable.EntryDate = AgL.GetDateTime(AgL.GcnRead)
+            LedgerHeadTable.ApproveBy = ""
+            LedgerHeadTable.ApproveDate = ""
+            LedgerHeadTable.MoveToLog = ""
+            LedgerHeadTable.MoveToLogDate = ""
+            LedgerHeadTable.UploadDate = ""
+            LedgerHeadTable.OMSId = ""
+            LedgerHeadTable.LockText = ""
+
+            For I = 0 To ReportFrm.DGL1.RowCount - 1
+                If ReportFrm.DGL1.Item(Col1Select, I).Value = "þ" Then
+                    bSr += 1
+                    LedgerHeadTable.Line_Sr = bSr
+                    LedgerHeadTable.Line_SubCode = ReportFrm.DGL1.Item(Col1PartyCode, I).Value
+                    LedgerHeadTable.Line_SubCodeName = ReportFrm.DGL1.Item(Col1Party, I).Value
+                    LedgerHeadTable.Line_SpecificationDocID = ReportFrm.DGL1.Item(Col1DocId, I).Value
+                    LedgerHeadTable.Line_SalesTaxGroupItem = ReportFrm.DGL1.Item(Col1SalesTaxGroupItem, I).Value
+                    LedgerHeadTable.Line_HSN = AgL.XNull(ReportFrm.DGL1.Item(Col1HSN, I).Value)
+                    LedgerHeadTable.Line_Qty = 0
+                    LedgerHeadTable.Line_Unit = ""
+                    LedgerHeadTable.Line_Rate = 0
+                    LedgerHeadTable.Line_Amount = ReportFrm.DGL1.Item(Col1TaxAmount, I).Value
+                    LedgerHeadTable.Line_ChqRefNo = ""
+                    LedgerHeadTable.Line_ChqRefDate = ""
+                    LedgerHeadTable.Line_Remarks = ""
+
+                    LedgerHeadTable.Line_Gross_Amount = AgL.VNull(ReportFrm.DGL1.Item(Col1TaxableValue, I).Value)
+                    LedgerHeadTable.Line_Taxable_Amount = AgL.VNull(ReportFrm.DGL1.Item(Col1TaxableValue, I).Value)
+                    LedgerHeadTable.Line_Tax1_Per = AgL.VNull(ReportFrm.DGL1.Item(Col1Tax1_Per, I).Value)
+                    LedgerHeadTable.Line_Tax1 = AgL.VNull(ReportFrm.DGL1.Item(Col1Tax1, I).Value)
+                    LedgerHeadTable.Line_Tax2_Per = AgL.VNull(ReportFrm.DGL1.Item(Col1Tax2_Per, I).Value)
+                    LedgerHeadTable.Line_Tax2 = AgL.VNull(ReportFrm.DGL1.Item(Col1Tax2, I).Value)
+                    LedgerHeadTable.Line_Tax3_Per = AgL.VNull(ReportFrm.DGL1.Item(Col1Tax3_Per, I).Value)
+                    LedgerHeadTable.Line_Tax3 = AgL.VNull(ReportFrm.DGL1.Item(Col1Tax3, I).Value)
+                    LedgerHeadTable.Line_Net_Amount = AgL.VNull(ReportFrm.DGL1.Item(Col1TaxAmount, I).Value)
+
+                    LedgerHeadTableList(UBound(LedgerHeadTableList)) = LedgerHeadTable
+                    ReDim Preserve LedgerHeadTableList(UBound(LedgerHeadTableList) + 1)
+                End If
+            Next
+
+            Dim mDocId As String = FrmVoucherEntry.InsertLedgerHead(LedgerHeadTableList)
+
+            FLedgerPost(mDocId, AgL.GCn, AgL.ECmd)
+
+            AgL.ETrans.Commit()
+            mTrans = "Commit"
+            MsgBox("Process Completed...!", MsgBoxStyle.Information)
+            ReportFrm.DGL1.DataSource = Nothing
+
+            Try
+                ObjFrm.FRefreshMovRec()
+            Catch ex As Exception
+            End Try
+        Catch ex As Exception
+            AgL.ETrans.Rollback()
+            MsgBox(ex.Message)
+        End Try
+    End Sub
+
+    Private Function FDataValidation() As Boolean
+        FDataValidation = False
+
+        'If AgL.XNull(ReportFrm.FGetText(6)).ToString() = "" Then
+        '    MsgBox("Plan No is required...!", MsgBoxStyle.Information)
+        '    Exit Function
+        'End If
+
+        FDataValidation = True
+    End Function
+    Private Sub FLedgerPost(mDocId As String, Cmd As Object, Conn As Object)
+        Dim mSr As Integer = 0
+        mQry = "Delete From Ledger Where DocId = '" & mDocId & "'"
+        AgL.Dman_ExecuteNonQry(mQry, AgL.GCn, AgL.ECmd)
+
+        mQry = " Select H.V_No, H.V_Type, H.V_Prefix, H.V_Date, H.SubCode As HeadSubCode, H.ManualRefNo, L.*, Lc.*,
+                Sg.Name as PartyName, IfNull(Pi.V_Type || '-' || Pi.ManualRefNo, Lh.V_Type || '-' || Lh.ManualRefNo) As VoucherNo
+                From LedgerHead H With (NoLock)
+                LEFT JOIN LedgerHeadDetail L With (NoLock) On H.DocId = L.DocId
+                LEFT JOIN LedgerHeadDetailCharges Lc With (NoLock) On L.DocId = Lc.DocId And L.Sr = Lc.Sr
+                LEFT JOIN viewHelpSubgroup Sg  With (NoLock) ON L.Subcode = Sg.Code 
+                LEFT JOIN PurchInvoice PI On L.SpecificationDocId = Pi.DocId
+                LEFT JOIN LedgerHead LH On L.SpecificationDocId = Lh.DocId
+                Where L.DocId = '" & mDocId & "'"
+        Dim DtTemp As DataTable = AgL.FillData(mQry, IIf(AgL.PubServerName = "", AgL.GCn, AgL.GcnRead)).Tables(0)
+
+
+        For I As Integer = 0 To DtTemp.Rows.Count - 1
+            mSr += 1
+            If AgL.VNull(DtTemp.Rows(I)("Tax1")) > 0 Then
+                FInsertInLedger(DtTemp, I, AgL.VNull(DtTemp.Rows(I)("Tax1")), "RIIGST" + (AgL.VNull(DtTemp.Rows(I)("Tax1_Per")) + AgL.VNull(DtTemp.Rows(I)("Tax2_Per")) + AgL.VNull(DtTemp.Rows(I)("Tax3_Per"))).ToString())
+            End If
+            If AgL.VNull(DtTemp.Rows(I)("Tax2")) > 0 Then
+                FInsertInLedger(DtTemp, I, AgL.VNull(DtTemp.Rows(I)("Tax2")), "RICGST" + (AgL.VNull(DtTemp.Rows(I)("Tax1_Per")) + AgL.VNull(DtTemp.Rows(I)("Tax2_Per")) + AgL.VNull(DtTemp.Rows(I)("Tax3_Per"))).ToString())
+            End If
+            If AgL.VNull(DtTemp.Rows(I)("Tax3")) > 0 Then
+                FInsertInLedger(DtTemp, I, AgL.VNull(DtTemp.Rows(I)("Tax3")), "RISGST" + (AgL.VNull(DtTemp.Rows(I)("Tax1_Per")) + AgL.VNull(DtTemp.Rows(I)("Tax2_Per")) + AgL.VNull(DtTemp.Rows(I)("Tax3_Per"))).ToString())
+            End If
+        Next
+    End Sub
+    Private Sub FInsertInLedger(DtTemp As DataTable, I As Integer, bAmount As Double, bLineSubCode As String)
+        Dim mSr As Integer = 0
+
+        mSr = AgL.VNull(AgL.Dman_Execute("Select IfNull(Max(V_SNo),0) + 1 From Ledger With (NoLock)
+                Where DocId = '" & AgL.XNull(DtTemp.Rows(0)("DocId")) & "'", IIf(AgL.PubServerName = "", AgL.GCn, AgL.GcnRead)).ExecuteScalar())
+
+        mQry = "INSERT INTO Ledger (DocId, V_SNo, V_No, V_Type, V_Prefix, V_Date, 
+                        SubCode, ContraSub, AmtDr, AmtCr, Narration, Site_Code, 
+                        U_Name, U_EntDt, U_AE, DivCode, RecId)
+                        VALUES ('" & AgL.XNull(DtTemp.Rows(0)("DocId")) & "', " & mSr & ", 
+                        " & AgL.VNull(DtTemp.Rows(I)("V_No")) & ", 
+                        " & AgL.Chk_Text(AgL.XNull(DtTemp.Rows(I)("V_Type"))) & ", 
+                        " & AgL.Chk_Text(AgL.XNull(DtTemp.Rows(I)("V_Prefix"))) & ", 
+                        " & AgL.Chk_Date(AgL.XNull(DtTemp.Rows(I)("V_Date"))) & ", 
+                        " & AgL.Chk_Text(AgL.XNull(DtTemp.Rows(I)("HeadSubCode"))) & ", 
+                        " & AgL.Chk_Text(AgL.XNull(bLineSubCode)) & ", 
+                        0, " & Val(bAmount) & ", 'Reverse Charge : Party : " & AgL.XNull(DtTemp.Rows(I)("PartyName")) & ", Voucher No : " & AgL.XNull(DtTemp.Rows(I)("VoucherNo")) & " ', 
+                        '" & AgL.PubSiteCode & "', '" & AgL.PubUserName & "', 
+                        " & AgL.Chk_Date(AgL.PubLoginDate) & ", 'A', '" & AgL.PubDivCode & "', 
+                        " & AgL.Chk_Text(AgL.XNull(DtTemp.Rows(I)("ManualRefNo"))) & ") "
+        AgL.Dman_ExecuteNonQry(mQry, AgL.GCn, AgL.ECmd)
+
+        mSr += 1
+        mQry = "INSERT INTO Ledger (DocId, V_SNo, V_No, V_Type, V_Prefix, V_Date, 
+                        SubCode, ContraSub, AmtDr, AmtCr, Narration, Site_Code, 
+                        U_Name, U_EntDt, U_AE, DivCode, RecId)
+                        VALUES ('" & AgL.XNull(DtTemp.Rows(0)("DocId")) & "', " & mSr & ", " & AgL.VNull(DtTemp.Rows(I)("V_No")) & ", 
+                        " & AgL.Chk_Text(AgL.XNull(DtTemp.Rows(I)("V_Type"))) & ", 
+                        " & AgL.Chk_Text(AgL.XNull(DtTemp.Rows(I)("V_Prefix"))) & ", 
+                        " & AgL.Chk_Date(AgL.XNull(DtTemp.Rows(I)("V_Date"))) & ", 
+                        " & AgL.Chk_Text(AgL.XNull(bLineSubCode)) & ", 
+                        " & AgL.Chk_Text(AgL.XNull(DtTemp.Rows(I)("HeadSubCode"))) & ", 
+                        " & Val(bAmount) & ", 0, 'Reverse Charge : Party : " & AgL.XNull(DtTemp.Rows(I)("PartyName")) & ",  Voucher No : " & AgL.XNull(DtTemp.Rows(I)("VoucherNo")) & " ', 
+                        '" & AgL.PubSiteCode & "', '" & AgL.PubUserName & "', 
+                        " & AgL.Chk_Date(AgL.PubLoginDate) & ", 'A', '" & AgL.PubDivCode & "', 
+                        " & AgL.Chk_Text(AgL.XNull(DtTemp.Rows(I)("ManualRefNo"))) & ") "
+        AgL.Dman_ExecuteNonQry(mQry, AgL.GCn, AgL.ECmd)
+    End Sub
+End Class

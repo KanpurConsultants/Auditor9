@@ -1,0 +1,10 @@
+DocNo	String	250
+Dated	Date
+Account	String	250
+Address	String	250
+TotalAmount	Currency
+Freight	Currency
+GrandTotal	Currency
+FromDate	Date
+ToDate	Date
+

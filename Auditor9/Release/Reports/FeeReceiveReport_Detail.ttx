@@ -1,0 +1,17 @@
+; Field definition file for table: ADORecordset
+DocID	string	255	D1    FR 2020      35	
+OrderByDate	string	255	2020-04-01	
+Comp_Code	string	255	3	
+Comp_Name	string	255	School	
+StudentCode	string	255	D100000177	
+Student	string	255	PRIYANSHU DUBEY , 87	
+FatherName	string	255	AWADHESH DUBEY 	
+ClassCode	string	255	D100000171	
+Class	string	255	9TH 	
+FeeCode	string	255	D100000172	
+Fee	string	255	RAGISTRATION FEE	
+SubHeadCode	string	255	D100000173	
+SubHead	string	255		
+FeeDueDate	datetime	01/Apr/2020 12:00:00 AM	
+CashAmount	long	0	
+NonCashAmount	number	4500	

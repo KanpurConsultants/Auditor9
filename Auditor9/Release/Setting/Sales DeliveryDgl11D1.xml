@@ -1,0 +1,59 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<GridSave>
+  <Column>
+    <Name>S.No.</Name>
+    <Index>0</Index>
+    <Width>40</Width>
+    <Visible>True</Visible>
+    <AggregateFunction />
+  </Column>
+  <Column>
+    <Name>Tick</Name>
+    <Index>1</Index>
+    <Width>50</Width>
+    <Visible>True</Visible>
+    <AggregateFunction />
+  </Column>
+  <Column>
+    <Name>Invoice No</Name>
+    <Index>2</Index>
+    <Width>150</Width>
+    <Visible>True</Visible>
+    <AggregateFunction />
+  </Column>
+  <Column>
+    <Name>Invoice Date</Name>
+    <Index>3</Index>
+    <Width>150</Width>
+    <Visible>True</Visible>
+    <AggregateFunction />
+  </Column>
+  <Column>
+    <Name>Qty</Name>
+    <Index>4</Index>
+    <Width>100</Width>
+    <Visible>True</Visible>
+    <AggregateFunction />
+  </Column>
+  <Column>
+    <Name>Amount</Name>
+    <Index>5</Index>
+    <Width>100</Width>
+    <Visible>True</Visible>
+    <AggregateFunction />
+  </Column>
+  <Column>
+    <Name>Remark</Name>
+    <Index>6</Index>
+    <Width>350</Width>
+    <Visible>True</Visible>
+    <AggregateFunction />
+  </Column>
+  <Column>
+    <Name>Is Record Locked</Name>
+    <Index>7</Index>
+    <Width>150</Width>
+    <Visible>False</Visible>
+    <AggregateFunction />
+  </Column>
+</GridSave>

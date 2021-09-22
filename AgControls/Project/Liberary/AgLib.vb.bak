@@ -1,0 +1,535 @@
+Imports System.Data.SqlClient
+
+Public Class AgLib
+    Public ECmd As SqlClient.SqlCommand
+    Public EAdptr As SqlClient.SqlDataAdapter
+    Public ETrans As SqlClient.SqlTransaction
+
+    Public Sub AgSetDataGridAutoWidths(ByVal DataGrid As AgDataGrid, ByVal NumberOfRowsToScan As Integer, Optional ByVal ChangeGridWidth As Boolean = True, Optional ByVal HideLastColumns As Integer = 0)
+
+        Dim Graphics As Graphics = DataGrid.CreateGraphics()
+        Dim I As Int16
+
+        Try
+            NumberOfRowsToScan = System.Math.Min(NumberOfRowsToScan, DataGrid.Rows.Count)
+
+            Dim Width As Integer
+            Dim mTotalWidth As Integer = 0
+            For I = 0 To DataGrid.Columns.Count - 1
+                Width = Graphics.MeasureString(DataGrid.Columns(I).HeaderText, DataGrid.Font).Width
+
+                Dim iRow As Integer
+
+                For iRow = 0 To NumberOfRowsToScan - 1
+                    If Not IsDBNull(DataGrid.Item(I, iRow).Value) And DataGrid.Item(I, iRow).Value IsNot Nothing Then
+                        Width = System.Math.Max(Width, Graphics.MeasureString(DataGrid.Item(I, iRow).Value.ToString, DataGrid.Font).Width)
+                    End If
+                Next
+                Width = Width + 4
+
+                DataGrid.Columns(I).Width = Width
+
+
+                If I >= DataGrid.ColumnCount - HideLastColumns Then
+                    DataGrid.Columns(I).Visible = False
+                Else
+                    mTotalWidth = mTotalWidth + Width
+                End If
+
+
+            Next
+            If ChangeGridWidth Then
+                If DataGrid.RowHeadersVisible Then
+                    DataGrid.Width = mTotalWidth + 50
+                Else
+                    If mTotalWidth > (DataGrid.FindForm.Width + 50) Then
+                        mTotalWidth = (DataGrid.FindForm.Width - 200)
+                    End If
+                    DataGrid.Width = mTotalWidth - DataGrid.RowHeadersWidth + 50
+                End If
+            End If
+        Finally
+            Graphics.Dispose()
+        End Try
+    End Sub
+
+
+
+    Public Function RowsFilter(ByVal TXT As Object, ByVal Dg As AgDataGrid, ByVal e As System.Windows.Forms.KeyPressEventArgs, Optional ByVal MasterHelp As Boolean = False) As Int16
+        Try
+            Dim findStr As String, FndFldName$
+            Dim sa As String
+            Dim mLen%
+            Dim IntRow As Int16
+            Dim J As Int16
+            sa = TXT.Text
+            FndFldName = Dg.Columns(1).HeaderText
+            If sa.Length = 0 And Asc(e.KeyChar) = 8 Then IntRow = 0 : Dg.CurrentCell = Dg(FndFldName, IntRow) : Exit Function
+            If TXT.Text = "(null)" Then
+                findStr = e.KeyChar
+            Else
+                findStr = IIf(Asc(e.KeyChar) = Keys.Back Or Asc(e.KeyChar) = 4 Or Asc(e.KeyChar) = 19, TXT.Text, TXT.Text + e.KeyChar)
+            End If
+
+
+            For J = 0 To Dg.RowCount - 1
+                If Len(XNull(Dg.Item(FndFldName, J).Value)) < Len(findStr) Then
+                    mLen = Len(XNull(Dg.Item(FndFldName, J).Value))
+                Else
+                    mLen = Len(findStr)
+                End If
+                If XNull(Dg.Item(FndFldName, J).Value) <> "" Then
+                    If UCase(XNull(Dg.Item(FndFldName, J).Value).ToString.Substring(0, mLen)) = UCase(findStr) Then
+                        Dg.CurrentCell = Dg(FndFldName, J)
+                        If Not MasterHelp Then
+                            TXT.Text = TXT.Text + IIf(Asc(e.KeyChar) = Keys.Back Or Asc(e.KeyChar) = 4 Or Asc(e.KeyChar) = 19, "", e.KeyChar)
+                        End If
+                        Exit Try
+                    End If
+                End If
+            Next
+
+
+
+            For J = 0 To Dg.RowCount - 1
+                If Len(XNull(Dg.Item(FndFldName, J).Value)) < Len(sa) Then
+                    mLen = Len(XNull(Dg.Item(FndFldName, J).Value))
+                Else
+                    mLen = Len(sa)
+                End If
+                If XNull(Dg.Item(FndFldName, J).Value) <> "" Then
+                    If UCase(XNull(Dg.Item(FndFldName, J).Value).ToString.Substring(0, mLen)) = UCase(sa) Then
+                        Dg.CurrentCell = Dg(FndFldName, J)
+                        'TXT.Text = TXT.Text + IIf(Asc(e.KeyChar) = Keys.Back Or Asc(e.KeyChar) = 4 Or Asc(e.KeyChar) = 19, "", e.KeyChar)
+                        Exit Try
+                    End If
+                End If
+            Next
+
+
+
+
+
+        Catch ex As Exception
+        Finally
+            TXT.SelectionStart = TXT.Text.Length
+            If Asc(e.KeyChar) <> Keys.Back And Not MasterHelp Then e.Handled = True 'e.KeyChar = ""
+        End Try
+
+    End Function
+
+    Public Sub AddAgDataListColumn(ByVal Dg1 As DataGridView, ByVal ListItem As String, ByVal columnName As String, ByVal ColWidth As Integer, Optional ByVal DatabaseValue As String = "", Optional ByVal columnHeaderTxt As String = "", Optional ByVal columnVisible As Boolean = True, Optional ByVal isReadOnly As Boolean = False)
+        Dim column As DataGridViewColumn
+        column = New agtextcolumn
+        '' Populate the drop-down list with the enumeration values.
+        column.Name = columnName
+        column.Width = ColWidth
+        column.HeaderText = IIf(columnHeaderTxt = "", columnName, columnHeaderTxt)
+        'column.DisplayStyleForCurrentCellOnly = True
+
+        IniAgGridList(column, ListItem, DatabaseValue)
+        column.ReadOnly = isReadOnly
+        Dg1.Columns.Add(column)
+        column.Visible = columnVisible
+    End Sub
+
+    
+
+    Public Sub AddAgNumberColumn(ByVal Dg1 As DataGridView, ByVal ColumnName As String, ByVal ColWidth As Integer, ByVal LeftPlaces As Integer, ByVal RightPlaces As Integer, ByVal AllowNegetive As Boolean, Optional ByVal columnHeaderTxt As String = "", Optional ByVal columnVisible As Boolean = True, Optional ByVal isReadOnly As Boolean = False, Optional ByVal isRightAlign As Boolean = False, Optional ByVal isMandatory As Boolean = False)
+        Dim column As AgControls.AgTextColumn
+        column = New AgControls.AgTextColumn
+
+        '' Populate the drop-down list with the enumeration values.
+        column.Name = ColumnName
+        column.HeaderText = IIf(columnHeaderTxt = "", ColumnName, columnHeaderTxt)
+        column.Width = ColWidth
+        column.AgValueType = AgControls.AgTextColumn.TxtValueType.Number_Value
+        column.AgNumberLeftPlaces = LeftPlaces
+        column.AgNumberRightPlaces = RightPlaces
+        column.AgNumberNegetiveAllow = AllowNegetive
+        column.AgMandatory = isMandatory
+        If isRightAlign = True Then
+            CType(column, DataGridViewTextBoxColumn).CellTemplate.Style.Alignment = DataGridViewContentAlignment.MiddleRight
+        End If
+        CType(column, DataGridViewTextBoxColumn).ReadOnly = isReadOnly
+        Dg1.Columns.Add(column)
+        column.Visible = columnVisible
+    End Sub
+
+
+    Public Sub AddAgTextColumn(ByVal Dg1 As DataGridView, ByVal ColumnName As String, ByVal ColWidth As Integer, ByVal mMaxInputLength As Integer, Optional ByVal columnHeaderTxt As String = "", Optional ByVal columnVisible As Boolean = True, Optional ByVal isReadOnly As Boolean = False, Optional ByVal isRightAlign As Boolean = False, Optional ByVal isMandatory As Boolean = False)
+        Dim column As AgControls.AgTextColumn
+        column = New AgControls.AgTextColumn
+
+        '' Populate the drop-down list with the enumeration values.
+        column.Name = ColumnName
+        column.HeaderText = IIf(columnHeaderTxt = "", ColumnName, columnHeaderTxt)
+        column.MaxInputLength = mMaxInputLength
+        column.Width = ColWidth
+        column.AgValueType = AgControls.AgTextColumn.TxtValueType.Text_Value
+        column.AgMandatory = isMandatory
+        If isRightAlign = True Then
+            CType(column, DataGridViewTextBoxColumn).CellTemplate.Style.Alignment = DataGridViewContentAlignment.MiddleRight
+        End If
+        CType(column, DataGridViewTextBoxColumn).ReadOnly = isReadOnly
+        Dg1.Columns.Add(column)
+        column.Visible = columnVisible
+    End Sub
+
+    Public Sub AddAgDateColumn(ByVal Dg1 As DataGridView, ByVal ColumnName As String, ByVal ColWidth As Integer, Optional ByVal columnHeaderTxt As String = "", Optional ByVal columnVisible As Boolean = True, Optional ByVal isReadOnly As Boolean = False, Optional ByVal isRightAlign As Boolean = False, Optional ByVal IsMandatory As Boolean = False)
+        Dim column As AgControls.AgTextColumn
+        column = New AgControls.AgTextColumn
+
+        '' Populate the drop-down list with the enumeration values.
+        column.Name = ColumnName
+        column.HeaderText = IIf(columnHeaderTxt = "", ColumnName, columnHeaderTxt)
+        column.Width = ColWidth
+        column.AgValueType = AgControls.AgTextColumn.TxtValueType.Date_Value
+        column.AgMandatory = IsMandatory
+        If isRightAlign = True Then
+            CType(column, DataGridViewTextBoxColumn).CellTemplate.Style.Alignment = DataGridViewContentAlignment.MiddleRight
+        End If
+        CType(column, DataGridViewTextBoxColumn).ReadOnly = isReadOnly
+        Dg1.Columns.Add(column)
+        column.Visible = columnVisible
+    End Sub
+
+    Public Sub AddAgYesNoColumn(ByVal Dg1 As DataGridView, ByVal ColumnName As String, ByVal ColWidth As Integer, Optional ByVal columnHeaderTxt As String = "", Optional ByVal columnVisible As Boolean = True, Optional ByVal isReadOnly As Boolean = False, Optional ByVal isRightAlign As Boolean = False)
+        Dim column As AgControls.AgTextColumn
+        column = New AgControls.AgTextColumn
+
+        '' Populate the drop-down list with the enumeration values.
+        column.Name = ColumnName
+        column.HeaderText = IIf(columnHeaderTxt = "", ColumnName, columnHeaderTxt)
+        column.Width = ColWidth
+        column.AgValueType = AgControls.AgTextColumn.TxtValueType.YesNo_Value
+        If isRightAlign = True Then
+            CType(column, DataGridViewTextBoxColumn).CellTemplate.Style.Alignment = DataGridViewContentAlignment.MiddleRight
+        End If
+        CType(column, DataGridViewTextBoxColumn).ReadOnly = isReadOnly
+        Dg1.Columns.Add(column)
+        column.Visible = columnVisible
+    End Sub
+
+    'Public Sub IniMasterHelpList(ByVal mConn As SqlClient.SqlConnection, ByVal ListBox As System.Windows.Forms.ComboBox, ByVal QryStr As String, ByVal DispField As String, ByVal HiddenField As String)
+    '    Dim mSelectedValue As String
+    '    Dim mText As String
+
+    '    Try
+    '        mSelectedValue = ListBox.SelectedValue
+    '        mText = ListBox.Text
+
+    '        ListBox.DropDownStyle = ComboBoxStyle.DropDown
+    '        ListBox.AutoCompleteSource = AutoCompleteSource.ListItems
+    '        ListBox.AutoCompleteMode = AutoCompleteMode.SuggestAppend
+
+    '        Dim DS As New DataTable
+    '        EAdptr = New SqlClient.SqlDataAdapter(QryStr, mConn)
+    '        EAdptr.Fill(DS)
+    '        ListBox.DataSource = DS
+    '        ListBox.DisplayMember = DispField
+    '        ListBox.ValueMember = HiddenField
+    '        If ListBox.Items.Count = 0 Then ListBox.Text = ""
+    '        ListBox.SelectedValue = IIf(mSelectedValue Is Nothing, "", mSelectedValue)
+    '        ListBox.Text = mText
+    '    Catch Ex As Exception
+    '        MsgBox(Ex.Message)
+    '    End Try
+    'End Sub
+
+    'Public Sub IniHelpList(ByVal mConn As SqlClient.SqlConnection, ByVal ListBox As System.Windows.Forms.ComboBox, ByVal QryStr As String, ByVal DispField As String, ByVal HiddenField As String)
+    '    Dim mSelectedValue As String
+    '    Try
+    '        mSelectedValue = ListBox.SelectedValue
+
+    '        ListBox.DropDownStyle = ComboBoxStyle.DropDown
+    '        ListBox.AutoCompleteSource = AutoCompleteSource.ListItems
+    '        ListBox.AutoCompleteMode = AutoCompleteMode.Suggest
+
+    '        Dim DS As New DataTable
+    '        EAdptr = New SqlClient.SqlDataAdapter(QryStr, mConn)
+    '        EAdptr.Fill(DS)
+    '        ListBox.DataSource = DS
+    '        ListBox.DisplayMember = DispField
+    '        ListBox.ValueMember = HiddenField
+    '        If ListBox.Items.Count = 0 Then ListBox.Text = ""
+    '        If mSelectedValue Is Nothing Then
+    '            ListBox.SelectedValue = ""
+    '        Else
+    '            ListBox.SelectedValue = mSelectedValue
+    '        End If
+    '    Catch Ex As Exception
+    '        MsgBox(Ex.Message)
+    '    End Try
+    'End Sub
+
+    Public Sub IniAgHelpList(ByVal mConn As SqlClient.SqlConnection, ByVal ListBox As System.Windows.Forms.ComboBox, ByVal QryStr As String, ByVal DispField As String, ByVal HiddenField As String)
+        Dim mSelectedValue As String
+        Dim mText As String
+
+        mSelectedValue = ListBox.SelectedValue
+        mText = ListBox.Text
+
+        ListBox.DropDownStyle = ComboBoxStyle.DropDown
+        ListBox.AutoCompleteSource = AutoCompleteSource.ListItems
+        ListBox.AutoCompleteMode = AutoCompleteMode.Suggest
+
+        Dim DS As New DataTable
+        EAdptr = New SqlClient.SqlDataAdapter(QryStr, mConn)
+        EAdptr.Fill(DS)
+        ListBox.DataSource = DS
+        ListBox.DisplayMember = DispField
+        ListBox.ValueMember = HiddenField
+        If ListBox.Items.Count = 0 Then ListBox.Text = ""
+        ListBox.SelectedValue = IIf(mSelectedValue Is Nothing, "", mSelectedValue)
+        ListBox.Text = mText
+    End Sub
+
+    Public Sub IniAgHelpList(ByVal ListBox As System.Windows.Forms.ComboBox, ByVal ListItem As String, Optional ByVal DatabaseValue As String = "")
+        Dim ListItemStr() As String = Split(ListItem, ",")
+        Dim DatabaseValueStr() As String = Nothing
+        If DatabaseValue <> "" Then DatabaseValueStr = Split(DatabaseValue, ",")
+        Dim DS As New DataTable
+
+        DS.Columns.Add("Name")
+        DS.Columns.Add("Code")
+        For i As Integer = 0 To ListItemStr.Length - 1
+            DS.Rows.Add(i)
+            DS.Rows(i).Item("Name") = ListItemStr(i)
+            If DatabaseValue <> "" Then
+                DS.Rows(i).Item("Code") = DatabaseValueStr(i)
+            Else
+                DS.Rows(i).Item("Code") = ListItemStr(i)
+            End If
+        Next
+        ListBox.DataSource = DS
+        ListBox.DisplayMember = "name"
+        ListBox.ValueMember = "code"
+    End Sub
+
+    Public Sub IniAgHelpList(ByVal ListBox As AgTextBox, ByVal ListItem As String, Optional ByVal DatabaseValue As String = "")
+        Dim ListItemStr() As String = Split(ListItem, ",")
+        Dim DatabaseValueStr() As String = Nothing
+        If DatabaseValue <> "" Then DatabaseValueStr = Split(DatabaseValue, ",")
+        Dim DS As New DataTable
+        Dim DsTemp As New DataSet
+
+        DS.Columns.Add("Code")
+        DS.Columns.Add("Name")
+        For i As Integer = 0 To ListItemStr.Length - 1
+            DS.Rows.Add(i)
+            DS.Rows(i).Item("Name") = ListItemStr(i)
+            If DatabaseValue <> "" Then
+                DS.Rows(i).Item("Code") = DatabaseValueStr(i)
+            Else
+                DS.Rows(i).Item("Code") = ListItemStr(i)
+            End If
+        Next
+        DsTemp.Tables.Add(DS)
+        ListBox.AgHelpDataSet = DsTemp
+
+        DsTemp.Dispose()
+        DS.Dispose()
+    End Sub
+
+
+    Public Sub AddAgCheckBoxColumn(ByVal Dg1 As DataGridView, ByVal columnName As String, ByVal ColWidth As Integer, Optional ByVal columnHeaderTxt As String = "", Optional ByVal columnVisible As Boolean = True, Optional ByVal isReadOnly As Boolean = False, Optional ByVal isRightAlign As Boolean = False)
+        Dim column As AgCheckBoxColumn
+        column = New AgCheckBoxColumn()
+
+
+        CType(column, AgCheckBoxColumn).Name = columnName
+        CType(column, AgCheckBoxColumn).HeaderText = IIf(columnHeaderTxt = "", columnName, columnHeaderTxt)
+        CType(column, AgCheckBoxColumn).Width = ColWidth
+        column.ReadOnly = isReadOnly
+        Dg1.Columns.Add(column)
+        column.Visible = columnVisible
+    End Sub
+
+
+    Public Sub AddAgComboColumn(ByVal mConn As SqlConnection, ByVal Dg1 As DataGridView, ByVal QryStr As String, ByVal columnName As String, ByVal ColWidth As Integer, Optional ByVal columnHeaderTxt As String = "", Optional ByVal columnVisible As Boolean = True, Optional ByVal isReadOnly As Boolean = False)
+        Dim column As AgComboColumn
+        column = New AgComboColumn()
+
+
+        CType(column, AgComboColumn).Name = columnName
+        CType(column, AgComboColumn).Width = ColWidth
+        CType(column, AgComboColumn).HeaderText = IIf(columnHeaderTxt = "", columnName, columnHeaderTxt)
+        CType(column, AgComboColumn).DisplayStyleForCurrentCellOnly = True
+
+        IniGridHelp(mConn, column, QryStr)
+        column.ReadOnly = isReadOnly
+        Dg1.Columns.Add(column)
+        column.Visible = columnVisible
+    End Sub
+
+
+    Public Sub RefGridHelp(ByVal mConn As SqlConnection, ByVal Dg1 As DataGridView, ByVal ColumnIndex As Byte, ByVal QryStr As String)
+        If Dg1.Item(ColumnIndex, 0).Visible = False Then Exit Sub
+        Dg1.CurrentCell = Dg1.Item(ColumnIndex, 0)
+        IniGridHelp(mConn, Dg1.CurrentCell.OwningColumn, QryStr)
+    End Sub
+
+    Public Sub RefGridHelp_Line(ByVal mConn As SqlConnection, ByVal Dg1 As DataGridView, ByVal ColumnIndex As Byte, ByVal QryStr As String)
+        If Dg1.Item(ColumnIndex, 0).Visible = False Then Exit Sub        
+        IniGridHelp(mConn, Dg1.CurrentCell.OwningColumn, QryStr)
+    End Sub
+
+    Public Function XNull(ByVal temp As Object) As Object
+        XNull = CStr(IIf(IsDBNull(temp), "", temp))
+    End Function
+
+    Public Function VNull(ByRef temp As Object) As Object
+        VNull = Val(IIf(IsDBNull(temp), 0, temp))
+    End Function
+
+    Private Sub IniAgGridList(ByVal column As DataGridViewColumn, ByVal ListItem As String, Optional ByVal DatabaseValue As String = "")
+        Dim ListItemStr() As String = Split(ListItem, ",")
+        Dim DatabaseValueStr() As String = Nothing
+        If DatabaseValue <> "" Then DatabaseValueStr = Split(DatabaseValue, ",")
+        Dim DS As New DataTable
+        Dim myDs As New DataSet
+        DS.Columns.Add("Code")
+        DS.Columns.Add("Name")
+        For i As Integer = 0 To ListItemStr.Length - 1
+            DS.Rows.Add(i)
+            DS.Rows(i).Item("Name") = ListItemStr(i)
+            If DatabaseValue <> "" Then
+                DS.Rows(i).Item("Code") = DatabaseValueStr(i)
+            Else
+                DS.Rows(i).Item("Code") = ListItemStr(i)
+            End If
+        Next
+        myDs.Tables.Add(DS)
+        CType(column, AgTextColumn).AgHelpDataSet = myDs
+        'CType(column, DataGridViewComboBoxColumn).DisplayMember = "name"
+        'CType(column, DataGridViewComboBoxColumn).ValueMember = "code"
+    End Sub
+
+    Private Sub IniGridHelp(ByVal mConn As SqlConnection, ByVal column As DataGridViewColumn, ByVal QryStr As String)
+        Dim DS As New DataTable
+        DS.Clear()
+        EAdptr = New SqlClient.SqlDataAdapter(QryStr, mConn)
+        EAdptr.Fill(DS)
+        CType(column, DataGridViewComboBoxColumn).DataSource = DS
+        CType(column, DataGridViewComboBoxColumn).DisplayMember = "name"
+        CType(column, DataGridViewComboBoxColumn).ValueMember = "code"
+    End Sub
+
+
+    Public Function AgCheckMandatory(ByVal Frm As Form) As Boolean
+        Dim Obj As Control
+        Dim Dg As AgDataGrid
+        Dim I%, J%
+
+        Try
+            AgCheckMandatory = True
+            For Each Obj In Frm.Controls
+                If TypeOf Obj Is AgTextBox Then
+                    With CType(Obj, AgTextBox)
+                        If .AgMandatory = True Then
+                            If .Text.Trim = "" And .AgValueType <> AgTextBox.TxtValueType.Number_Value Then
+                                .Focus()
+                                err.raise(1, , ("Required Field" & vbCrLf & "Can't Be Blank!"))
+                            ElseIf Val(.Text) = 0 And .AgValueType = AgTextBox.TxtValueType.Number_Value Then
+                                .Focus()
+                                err.raise(1, , ("Required Field" & vbCrLf & "Can't Be Blank/Zero!"))
+                            End If
+                        End If
+                    End With
+                ElseIf TypeOf Obj Is AgDataGrid Then
+                    Dg = Obj
+
+                    For I = 0 To Dg.ColumnCount - 1
+                        If TypeOf Dg.Columns(I) Is AgTextColumn Then
+                            With CType(Dg.Columns(I), AgTextColumn)
+                                If .AgMandatory = True Then
+                                    For J = 0 To Dg.RowCount - 2
+                                        If .AgValueType <> AgControls.AgTextColumn.TxtValueType.Number_Value Then
+                                            If Dg.Item(I, J).Value = "" Then
+                                                Dg.CurrentCell = Dg(I, J) : Dg.Focus()
+                                                Err.Raise(1, , Dg.Columns(I).HeaderText & " is a Required Field" & vbCrLf & "Can't Be Blank!")
+                                            End If
+                                        ElseIf .AgValueType = AgControls.AgTextColumn.TxtValueType.Number_Value Then
+                                            If Val(Dg.Item(I, J).Value) = 0 Then
+                                                Dg.CurrentCell = Dg(I, J) : Dg.Focus()
+                                                Err.Raise(1, , Dg.Columns(I).HeaderText & " is a Required Field" & vbCrLf & "Can't Be Blank/Zero!")
+                                            End If
+                                        End If
+                                    Next J
+                                End If
+                            End With
+                        End If
+                    Next I
+                End If
+            Next
+        Catch Ex As Exception
+            MsgBox(Ex.Message)
+            AgCheckMandatory = False
+        End Try
+    End Function
+
+    Public Function AgIsBlankGrid(ByVal Dg As DataGridView, ByVal ColumnIndex As Integer) As Boolean
+        Dim I%, Count%
+
+        Try
+            For I = 0 To Dg.RowCount - 1
+                If Dg.Item(ColumnIndex, I).Value IsNot Nothing Then
+                    If Dg.Item(ColumnIndex, I).Value.ToString <> "" Then
+                        Count += 1
+                    End If
+                End If
+            Next I
+
+            If Count = 0 Then
+                Dg.CurrentCell = Dg(ColumnIndex, 0) : Dg.Focus()
+                Err.Raise(1, , "No Transaction Data in Grid")
+            End If
+
+        Catch Ex As Exception
+            MsgBox(Ex.Message)
+            AgIsBlankGrid = True
+        End Try
+    End Function
+
+
+
+    Public Function AgIsDuplicate(ByVal Dg As AgDataGrid, ByVal ColumnList As String) As Boolean
+        Dim myArrColstr() As String = Split(ColumnList, ",")
+        Dim myArrCol(myArrColstr.Length - 1) As Integer
+        Dim i As Integer, J As Integer, K As Integer
+        Dim StrTemp$, StrSearch$
+
+        Try
+            For i = 0 To myArrColstr.Length - 1
+                myArrCol(i) = Val(myArrColstr(i))
+            Next
+
+
+            For i = 0 To Dg.RowCount - 1
+                StrSearch = ""
+                For K = 0 To myArrCol.Length - 1
+                    StrSearch = StrSearch & CStr(Dg.Item(myArrCol(K), i).Value)
+                Next
+
+                For J = 0 To Dg.RowCount - 1
+                    If J <> i Then
+                        StrTemp = ""
+                        For K = 0 To myArrCol.Length - 1
+                            StrTemp = StrTemp & CStr(Dg.Item(myArrCol(K), J).Value)
+                        Next
+
+                        If StrTemp = StrSearch Then
+                            Err.Raise(1, , " Duplicate Key In Row  " & i & " And Row  " & J)
+                        End If
+                    End If
+                Next
+            Next
+        Catch Ex As Exception
+            MsgBox(Ex.Message)
+            AgIsDuplicate = True
+        End Try
+    End Function
+
+
+End Class

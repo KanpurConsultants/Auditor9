@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?><?xml-stylesheet type='text/xsl' href='_UpgradeReport_Files/UpgradeReport.xslt'?><UpgradeLog>
+<Properties><Property Name="Solution" Value="AgTemplate">
+</Property><Property Name="Solution File" Value="D:\Active Projects\RUG CARE\Project\AgTemplate\AgTemplate.sln">
+</Property><Property Name="Date" Value="Tuesday, July 12, 2011">
+</Property><Property Name="Time" Value="17:09 PM">
+</Property></Properties><Event ErrorLevel="0" Project="AgTemplate" Source="AgTemplate.vbproj" Description="Project converted successfully">
+</Event><Event ErrorLevel="3" Project="AgTemplate" Source="AgTemplate.vbproj" Description="Converted">
+</Event><Event ErrorLevel="0" Project="" Source="AgTemplate.sln" Description="Solution converted successfully">
+</Event><Event ErrorLevel="3" Project="" Source="AgTemplate.sln" Description="Converted">
+</Event><Event ErrorLevel="0" Project="AgTemplate" Source="AgTemplate.vbproj" Description="Scan complete: Upgrade not required for project files.">
+</Event></UpgradeLog>

@@ -1,0 +1,75 @@
+{DB D:\S2k\Consumer\Data\Company.001\S2K2002.mdb DB}
+{Sql
+SELECT Book.BookName, Account.Account, ProductStock.VoucherNo, ProductStock.Dated, Sum(ProductStock.Qty) AS Qty
+FROM ((ProductStock LEFT JOIN Book ON ProductStock.BookID = Book.BookID) LEFT JOIN Sale ON ProductStock.VoucherID = Sale.SaleID) LEFT JOIN Account ON Sale.AccountID = Account.AccountID
+WHERE (((ProductStock.Dated) Between #{Pm DateFrom Pm}# And #{Pm DateTo Pm}#) AND ((ProductStock.BookID) In ({Pm BookID Pm})) AND ((ProductStock.TransTypeID)=7))
+GROUP BY Book.BookName, Account.Account, ProductStock.VoucherNo, ProductStock.Dated
+ORDER BY Book.BookName, ProductStock.Dated, ProductStock.VoucherNo
+Sql}
+{Xdr Settings
+Columns=80
+Lines=60
+Page Break=True
+Condense=False
+Character Per Inch=12
+Xdr Settings}
+
+{Formula
+ = 
+Formula}
+
+{GroupSection
+Report Header;
+Page Header;
+Header (BookName);
+Detail;
+Footer (BookName);
+Grand;
+Page Footer;
+Report Footer;
+GroupSection}
+
+{Parameter
+{Browser
+SELECT Book.BookName, BookID,Publisher FROM Book ORDER BY BookName;|4000;0;3000|1|1=BookID
+Browser}
+DateFromToParameter}
+{Report Header
+Report Header}
+========================================================================================================================
+{Page Header
+lbl;Book WISE SALES.;62;0;1
+lbl;FOR PERIOD ;12;0;1}{lbl;{Pm DateFrom Pm};12;0;1}{lbl;to ;3;0;1}{lbl;{Pm DateTo Pm};36;0;1
+
+lbl;---------------------------------------------------------------------------;75;0;0
+lbl;;5;0;0}{lbl;Party;40;0;0}{lbl;BillNo;12;0;0}{lbl;Date;12;0;0}{lbl;Qty;6;1;0
+lbl;---------------------------------------------------------------------------;75;0;0
+Page Header}
+========================================================================================================================
+{Header (BookName)
+fld;BookName;33;0;1
+Header (BookName)}
+========================================================================================================================
+{Detail
+lbl;;5;0;0}{fld;Account;40;0;0}{fld;VoucherNo;12;0;0}{fld;Dated;12;0;0}{fld;Qty;6;1;0
+Detail}
+========================================================================================================================
+{Footer (BookName)
+lbl;------------------------------------------------------------------------------------------------------------------------------------------------------------;75;0;0
+lbl;TOTAL :;69;0;0}{fml;SUM(Qty);6;1;1
+Footer (BookName)}
+========================================================================================================================
+{Grand
+lbl;------------------------------------------------------------------------------------------------------------------------------------------------------------;75;0;0
+lbl;GRAND TOTAL :;69;0;0}{fml;SUM(Qty);6;1;1
+Grand}
+========================================================================================================================
+{Page Footer
+
+Page Footer}
+========================================================================================================================
+{Report Footer
+
+Report Footer}
+========================================================================================================================
+

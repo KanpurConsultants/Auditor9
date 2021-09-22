@@ -1,0 +1,31 @@
+<?xml version="1.0" standalone="yes"?>
+<xs:schema id="NewDataSet" xmlns="" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
+  <xs:element name="NewDataSet" msdata:IsDataSet="true" msdata:MainDataTable="T" msdata:UseCurrentLocale="true">
+    <xs:complexType>
+      <xs:choice minOccurs="0" maxOccurs="unbounded">
+        <xs:element name="T">
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element name="GRCode" type="xs:string" minOccurs="0" />
+              <xs:element name="DocId" type="xs:string" minOccurs="0" />
+              <xs:element name="GRName" type="xs:string" minOccurs="0" />
+              <xs:element name="VNo" type="xs:string" minOccurs="0" />
+              <xs:element name="VType" type="xs:string" minOccurs="0" />
+              <xs:element name="VDate" type="xs:string" minOccurs="0" />
+              <xs:element name="Narration" type="xs:string" minOccurs="0" />
+              <xs:element name="Opening" type="xs:double" minOccurs="0" />
+              <xs:element name="DR_CR_OP" type="xs:string" minOccurs="0" />
+              <xs:element name="Debit" type="xs:double" minOccurs="0" />
+              <xs:element name="GRCodeCredit" type="xs:string" minOccurs="0" />
+              <xs:element name="GRNameCredit" type="xs:string" minOccurs="0" />
+              <xs:element name="Credit" type="xs:double" minOccurs="0" />
+              <xs:element name="Closing" type="xs:double" minOccurs="0" />
+              <xs:element name="DR_CR_CL" type="xs:string" minOccurs="0" />
+              <xs:element name="GR_SG" type="xs:string" minOccurs="0" />
+            </xs:sequence>
+          </xs:complexType>
+        </xs:element>
+      </xs:choice>
+    </xs:complexType>
+  </xs:element>
+</xs:schema>

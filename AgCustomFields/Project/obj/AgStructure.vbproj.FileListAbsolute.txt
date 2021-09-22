@@ -1,0 +1,40 @@
+D:\Dataman\Release\AgStructure.pdb
+D:\Dataman\Release\AgStructure.xml
+D:\Matrix\Common\AgStructure\AgStructure\obj\Release\ResolveAssemblyReference.cache
+D:\Matrix\Common\AgStructure\AgStructure\obj\Release\AgStructure.Resources.resources
+D:\Matrix\Common\AgStructure\AgStructure\obj\Release\AgStructure.vbproj.GenerateResource.Cache
+D:\Matrix\Common\AgStructure\AgStructure\obj\Release\AgStructure.dll
+D:\Matrix\Common\AgStructure\AgStructure\obj\Release\AgStructure.xml
+D:\Matrix\Common\AgStructure\AgStructure\obj\Release\AgStructure.pdb
+E:\Matrix\Common\AgStructure\AgStructure\obj\Release\ResolveAssemblyReference.cache
+E:\Matrix\Common\AgStructure\AgStructure\obj\Release\AgStructure.Resources.resources
+E:\Matrix\Common\AgStructure\AgStructure\obj\Release\AgStructure.vbproj.GenerateResource.Cache
+E:\Matrix\Common\AgStructure\AgStructure\obj\Release\AgStructure.dll
+E:\Matrix\Common\AgStructure\AgStructure\obj\Release\AgStructure.xml
+E:\Matrix\Common\AgStructure\AgStructure\obj\Release\AgStructure.pdb
+E:\Matrix\Common\AgStructure\AgStructure\obj\Debug\ResolveAssemblyReference.cache
+E:\Matrix\Common\AgStructure\AgStructure\obj\Debug\AgStructure.Resources.resources
+E:\Matrix\Common\AgStructure\AgStructure\obj\Debug\AgStructure.vbproj.GenerateResource.Cache
+E:\Matrix\Common\AgStructure\AgStructure\obj\Debug\AgStructure.dll
+E:\Matrix\Common\AgStructure\AgStructure\obj\Debug\AgStructure.xml
+E:\Matrix\Common\AgStructure\AgStructure\obj\Debug\AgStructure.pdb
+D:\Support\Project\AgControls\Release\AgStructure.dll
+D:\Support\Project\AgControls\Release\AgStructure.pdb
+D:\Support\Project\AgControls\Release\AgStructure.xml
+E:\Arpit Gupta\Personal\VS\AgStru\AgStructure\AgStructure\obj\Release\ResolveAssemblyReference.cache
+E:\Arpit Gupta\Personal\VS\AgStru\AgStructure\AgStructure\obj\Release\AgStructure.Resources.resources
+E:\Arpit Gupta\Personal\VS\AgStru\AgStructure\AgStructure\obj\Release\AgStructure.vbproj.GenerateResource.Cache
+E:\Arpit Gupta\Personal\VS\AgStru\AgStructure\AgStructure\obj\Release\AgStructure.dll
+E:\Arpit Gupta\Personal\VS\AgStru\AgStructure\AgStructure\obj\Release\AgStructure.xml
+E:\Arpit Gupta\Personal\VS\AgStru\AgStructure\AgStructure\obj\Release\AgStructure.pdb
+E:\Arpit Gupta\Active Projects\AgStructure\AgStructure\obj\Release\AgStructure.xml
+E:\Arpit Gupta\Active Projects\AgStructure\AgStructure\obj\Release\AgStructure.pdb
+E:\Arpit Gupta\Active Projects\AgStructure\AgStructure\obj\Release\ResolveAssemblyReference.cache
+E:\Arpit Gupta\Active Projects\AgStructure\AgStructure\obj\Release\AgStructure.FrmCharges.resources
+E:\Arpit Gupta\Active Projects\AgStructure\AgStructure\obj\Release\AgStructure.FrmStructure.resources
+E:\Arpit Gupta\Active Projects\AgStructure\AgStructure\obj\Release\AgStructure.FrmStructureAcPosting.resources
+E:\Arpit Gupta\Active Projects\AgStructure\AgStructure\obj\Release\AgStructure.MDIMain.resources
+E:\Arpit Gupta\Active Projects\AgStructure\AgStructure\obj\Release\AgStructure.Resources.resources
+E:\Arpit Gupta\Active Projects\AgStructure\AgStructure\obj\Release\AgStructure.vbproj.GenerateResource.Cache
+D:\Dataman\Release\AgStructure.dll
+E:\Arpit Gupta\Active Projects\AgStructure\AgStructure\obj\Release\AgStructure.dll

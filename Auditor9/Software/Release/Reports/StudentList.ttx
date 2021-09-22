@@ -1,0 +1,8 @@
+; Field definition file for table: ADORecordset
+Code	string	255	D100000028	
+Student	string	255	ABHINAV YADAV	
+FatherName	string	255	SHUBH YADAV	
+Address	string	255	KIDWAI NAGAR, Kanpur	
+Class	string	255	2ND	
+ContactNo	string	255	, 	
+Email	string	255		

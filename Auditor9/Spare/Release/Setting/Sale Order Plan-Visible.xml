@@ -1,0 +1,136 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<GridSave>
+  <Column>
+    <Name>Tick</Name>
+    <Index>0</Index>
+    <Width>63</Width>
+    <Visible>True</Visible>
+    <AggregateFunction />
+  </Column>
+  <Column>
+    <Name>Sale Order</Name>
+    <Index>1</Index>
+    <Width>100</Width>
+    <Visible>False</Visible>
+    <AggregateFunction />
+  </Column>
+  <Column>
+    <Name>Sale Order Sr</Name>
+    <Index>2</Index>
+    <Width>87</Width>
+    <Visible>False</Visible>
+    <AggregateFunction />
+  </Column>
+  <Column>
+    <Name>Party</Name>
+    <Index>3</Index>
+    <Width>202</Width>
+    <Visible>True</Visible>
+    <AggregateFunction />
+  </Column>
+  <Column>
+    <Name>Sale Order No</Name>
+    <Index>4</Index>
+    <Width>90</Width>
+    <Visible>True</Visible>
+    <AggregateFunction />
+  </Column>
+  <Column>
+    <Name>Sale Order Date</Name>
+    <Index>5</Index>
+    <Width>103</Width>
+    <Visible>True</Visible>
+    <AggregateFunction />
+  </Column>
+  <Column>
+    <Name>Item</Name>
+    <Index>6</Index>
+    <Width>69</Width>
+    <Visible>False</Visible>
+    <AggregateFunction />
+  </Column>
+  <Column>
+    <Name>Specification</Name>
+    <Index>7</Index>
+    <Width>121</Width>
+    <Visible>False</Visible>
+    <AggregateFunction />
+  </Column>
+  <Column>
+    <Name>Dimension1</Name>
+    <Index>8</Index>
+    <Width>114</Width>
+    <Visible>False</Visible>
+    <AggregateFunction />
+  </Column>
+  <Column>
+    <Name>Dimension2</Name>
+    <Index>9</Index>
+    <Width>114</Width>
+    <Visible>False</Visible>
+    <AggregateFunction />
+  </Column>
+  <Column>
+    <Name>Dimension3</Name>
+    <Index>10</Index>
+    <Width>114</Width>
+    <Visible>False</Visible>
+    <AggregateFunction />
+  </Column>
+  <Column>
+    <Name>Dimension4</Name>
+    <Index>11</Index>
+    <Width>114</Width>
+    <Visible>False</Visible>
+    <AggregateFunction />
+  </Column>
+  <Column>
+    <Name>Item Desc</Name>
+    <Index>12</Index>
+    <Width>413</Width>
+    <Visible>True</Visible>
+    <AggregateFunction />
+  </Column>
+  <Column>
+    <Name>Specification1</Name>
+    <Index>13</Index>
+    <Width>130</Width>
+    <Visible>False</Visible>
+    <AggregateFunction />
+  </Column>
+  <Column>
+    <Name>Dimension1Desc</Name>
+    <Index>14</Index>
+    <Width>146</Width>
+    <Visible>False</Visible>
+    <AggregateFunction />
+  </Column>
+  <Column>
+    <Name>Dimension2Desc</Name>
+    <Index>15</Index>
+    <Width>146</Width>
+    <Visible>False</Visible>
+    <AggregateFunction />
+  </Column>
+  <Column>
+    <Name>Dimension3Desc</Name>
+    <Index>16</Index>
+    <Width>146</Width>
+    <Visible>False</Visible>
+    <AggregateFunction />
+  </Column>
+  <Column>
+    <Name>Dimension4Desc</Name>
+    <Index>17</Index>
+    <Width>146</Width>
+    <Visible>False</Visible>
+    <AggregateFunction />
+  </Column>
+  <Column>
+    <Name>Qty</Name>
+    <Index>18</Index>
+    <Width>60</Width>
+    <Visible>True</Visible>
+    <AggregateFunction />
+  </Column>
+</GridSave>

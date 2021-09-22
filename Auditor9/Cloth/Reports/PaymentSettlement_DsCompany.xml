@@ -1,0 +1,16 @@
+<?xml version="1.0" standalone="yes"?>
+<NewDataSet>
+  <Table>
+    <Code>1</Code>
+    <EffectiveUptoDate>2000-01-01T00:00:00+05:30</EffectiveUptoDate>
+    <DocumentHeaderRow1Left>.</DocumentHeaderRow1Left>
+    <DocumentHeaderRow2Left />
+    <DocumentHeaderRow3Left />
+    <DocumentHeaderRow1Right />
+    <DocumentHeaderRow2Right />
+    <IsSalesTaxApplicable>true</IsSalesTaxApplicable>
+    <WeekOffDays>0</WeekOffDays>
+    <EntryBy>System</EntryBy>
+    <EntryDate>2019-12-02T08:08:10+05:30</EntryDate>
+  </Table>
+</NewDataSet>

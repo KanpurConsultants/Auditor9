@@ -1,0 +1,71 @@
+{DB D:\S2k\Pharma_W\Data\Company.001\S2K2002.mdb DB}
+{Sql SELECT Account.Account, Account.Description1, Account.TinNo,RefNo, Purchase.DocNo, Purchase.Dated, Product.Category, Product.Code, Sum(ProductStock.Qty) AS TotalQty,Sum(IIf(Val([TaxPer])=0,Val([ProductStock.Amount]),0)) AS PurchaseWithOutVat, Sum(IIf(Val([TaxPer])=4,Val([ProductStock.Amount]),0)) AS Purchase4, Sum(IIf(Val([TaxPer])=4,Val([productStock.TaxAmount]),0)) AS Vat4, Sum(IIf(Val([TaxPer])=12.5,Val([ProductStock.Amount]),0)) AS Purchase125, Sum(IIf(Val([TaxPer])=12.5,Val([ProductStock.TaxAmount]),0)) AS Vat125, Sum(Val([Amount])+Val([Taxamount])) AS NetAmount
+FROM ((ProductStock LEFT JOIN Product ON ProductStock.ProductID = Product.ProductID) LEFT JOIN Purchase ON ProductStock.VoucherID = Purchase.PurchaseID) LEFT JOIN Account ON Purchase.AccountID = Account.AccountID
+WHERE (((Purchase.Dated) Between #{Pm DateFrom Pm}# And #{Pm DateTo Pm}#) AND ((ProductStock.CalculationRate)<>0))
+GROUP BY Account.Account, Account.Description1, Account.TinNo,RefNo, Purchase.DocNo, Purchase.Dated, Product.Category, Product.Code, Account.Account, ProductStock.TransTypeID
+HAVING (((ProductStock.TransTypeID)=5))
+ORDER BY Purchase.Dated, Account.Account;Sql}
+{Xdr Settings
+Columns=160
+Lines=60
+Page Break=False
+Condense=True
+Character Per Inch=12
+Xdr Settings}
+
+{Formula
+ = 
+Formula}
+
+{GroupSection
+Report Header;
+Page Header;
+Detail;
+Grand;
+Page Footer;
+Report Footer;
+GroupSection}
+
+{Parameter
+DateFromToParameter}
+{Report Header
+Report Header}
+========================================================================================================================
+{Page Header
+lbl;OwnerName;42;0;1
+lbl;OwnerAdd1  OwnerAdd2;47;0;0
+lbl;PURCHASE REGISTER;130;0;1}{lbl;PAGE NO:;13;1;0
+fml;"FOR PERIOD " + "{Pm DateFrom Pm}" + " to "+ "{Pm DateTo Pm}";47;0;0
+lbl;--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------;153;0;0
+lbl;SNO;4;0;0}{lbl;PARTY NAME & Address;40;0;0}{lbl;TIN;12;0;0}{lbl;INV NO;10;0;0}{lbl;DATE;12;0;0}{lbl;PRODUCT;11;0;0}{lbl;Code;11;0;0}{lbl;QTY;9;1;0}{lbl;Pur;14;1;0}{lbl;VAT;14;1;0}{lbl;NET TOTAL;14;1;0
+lbl;;4;0;0}{lbl;;40;0;0}{lbl;;12;0;0}{lbl;;10;0;0}{lbl;;12;0;0}{lbl;;11;0;0}{lbl;;11;0;0}{lbl;;9;1;0}{lbl;4%;14;1;0}{lbl; 4%;14;1;0}{lbl;;14;1;0
+lbl;--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------;153;0;0
+Page Header}
+========================================================================================================================
+{Detail
+fml;RecordNo()+ ".";4;0;0}{fml;Left(Account,39);40;0;0}{fld;TinNo;14;0;0}{fld;RefNo;10;2;0}{fld;Dated;12;0;0}{fld;Category;11;0;0}{fld;Code;11;0;0}{fml;CF(TotalQty);9;1;0}{fml;CF(Purchase4);14;1;0}{fml;CF(Vat4);14;1;0}{fml;CF(NETAMOUNT);14;1;0
+lbl;;4;0;0}{fld;Description1;40;0;0
+Detail}
+========================================================================================================================
+{Grand
+lbl;-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------;131;0;0
+lbl;;30;0;0}{lbl;PURCHASE 4%     : ;18;1;0}{fml;SUM(Purchase4);12;1;0
+lbl;;30;0;0}{lbl;VAT 4%          : ;18;1;0}{fml;SUM(vAT4);12;1;0
+lbl;;30;0;0}{lbl;                  ;18;1;0}{lbl;------------;12;1;0
+lbl;;30;0;0}{lbl;NET AMOUNT      : ;18;1;0}{fml;SUM(NetAmount);12;1;0
+
+
+lbl;;94;0;0}{lbl;Authorised Person Name & Signature;35;0;0
+lbl;;94;0;0}{lbl;Date :;35;0;0
+Grand}
+========================================================================================================================
+{Page Footer
+lbl;CONTINUE TO:      ;120;1;0
+
+Page Footer}
+========================================================================================================================
+{Report Footer
+
+Report Footer}
+========================================================================================================================
+

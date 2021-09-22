@@ -1,0 +1,42 @@
+; Field definition file for table: ADORecordset
+DivisionName	string	255	SHRI PARWATI SAREE CENTRE, Kanpur	
+PartyName	string	255	SAWARIYA SAREE CENTER-SHUKLA GANJ, UNNAO	
+Address	string	255	Durga Chock Gandhi Nagar ShukL A Ganj	
+Mobile	string	255		
+AgentName	string	255	ASHOK BACHANI, 	
+SalesRepresentativeName	string	255		
+AreaName	string	255		
+DrDivision	string	255	D	
+DrSubcode	string	255	D100000525	
+DrSr	number	32	
+DrDate	datetime	29/Jul/2019 12:00:00 AM	
+DrDocNo	string	255	SI-2718	
+DrAmount	number	78942	
+DrTaxableAmount	number	75182.46	
+DrTaxAmount	number	3759.16	
+DrDays	number	144	
+DrInterest	number	3737.31	
+DrCumAmount	number	1565477	
+DrBalAmount	number	78942	
+DrTotal	number	1949976	
+DrNarration	string	255		
+CrDivision	string	255	D	
+CrSubcode	string	255	D100000525	
+CrSr	number	32	
+CrDate	datetime		
+CrDocNo	string	255		
+CrAmount	number	0	
+CrTaxableAmount	number	0	
+CrTaxAmount	number	0	
+CrDays	number		
+CrInterest	number		
+CrCumAmount	number	1486535	
+CrBalAmount	number	0	
+CrTotal	number	1486535	
+CrNarration	string	255		
+GrReturnAmt	number		
+GrSaleAmt	number		
+ReturnPer	number		
+AveragePaymentDays	number	134.224339575309	
+DrMonth	string	255	07/2019	
+CrMonth	string	255		

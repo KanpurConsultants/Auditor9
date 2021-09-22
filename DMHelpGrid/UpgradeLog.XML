@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?><?xml-stylesheet type='text/xsl' href='_UpgradeReport_Files/UpgradeReport.xslt'?><UpgradeLog>
+<Properties><Property Name="Solution" Value="DMHelpGrid">
+</Property><Property Name="Solution File" Value="I:\Common\DMHelpGrid\DMHelpGrid.sln">
+</Property><Property Name="User Options File" Value="I:\Common\DMHelpGrid\DMHelpGrid.suo">
+</Property><Property Name="Date" Value="Wednesday, May 29, 2013">
+</Property><Property Name="Time" Value="0:21 AM">
+</Property></Properties><Event ErrorLevel="0" Project="" Source="DMHelpGrid.sln" Description="File successfully backed up as I:\Common\DMHelpGrid\Backup\DMHelpGrid.sln">
+</Event><Event ErrorLevel="0" Project="" Source="DMHelpGrid.suo" Description="File successfully backed up as I:\Common\DMHelpGrid\Backup\DMHelpGrid.suo">
+</Event><Event ErrorLevel="0" Project="DMHelpGrid" Source="DMHelpGrid.vbproj" Description="Project file successfully backed up as I:\Common\DMHelpGrid\Backup\DMHelpGrid.vbproj">
+</Event><Event ErrorLevel="0" Project="DMHelpGrid" Source="DMHelpGrid.vbproj.user" Description="Project user file successfully backed up as I:\Common\DMHelpGrid\Backup\DMHelpGrid.vbproj.user">
+</Event><Event ErrorLevel="0" Project="DMHelpGrid" Source="Forms\FrmHelpGrid.designer.vb" Description="File successfully backed up as I:\Common\DMHelpGrid\Backup\Forms\FrmHelpGrid.designer.vb">
+</Event><Event ErrorLevel="0" Project="DMHelpGrid" Source="Forms\FrmHelpGrid.vb" Description="File successfully backed up as I:\Common\DMHelpGrid\Backup\Forms\FrmHelpGrid.vb">
+</Event><Event ErrorLevel="0" Project="DMHelpGrid" Source="Forms\FrmHelpGrid_Multi.designer.vb" Description="File successfully backed up as I:\Common\DMHelpGrid\Backup\Forms\FrmHelpGrid_Multi.designer.vb">
+</Event><Event ErrorLevel="0" Project="DMHelpGrid" Source="Forms\FrmHelpGrid_Multi.vb" Description="File successfully backed up as I:\Common\DMHelpGrid\Backup\Forms\FrmHelpGrid_Multi.vb">
+</Event><Event ErrorLevel="0" Project="DMHelpGrid" Source="Forms\FrmTest.Designer.vb" Description="File successfully backed up as I:\Common\DMHelpGrid\Backup\Forms\FrmTest.Designer.vb">
+</Event><Event ErrorLevel="0" Project="DMHelpGrid" Source="Forms\FrmTest.vb" Description="File successfully backed up as I:\Common\DMHelpGrid\Backup\Forms\FrmTest.vb">
+</Event><Event ErrorLevel="0" Project="DMHelpGrid" Source="Modules\MdlLib.vb" Description="File successfully backed up as I:\Common\DMHelpGrid\Backup\Modules\MdlLib.vb">
+</Event><Event ErrorLevel="0" Project="DMHelpGrid" Source="My Project\AssemblyInfo.vb" Description="File successfully backed up as I:\Common\DMHelpGrid\Backup\My Project\AssemblyInfo.vb">
+</Event><Event ErrorLevel="0" Project="DMHelpGrid" Source="My Project\Application.Designer.vb" Description="File successfully backed up as I:\Common\DMHelpGrid\Backup\My Project\Application.Designer.vb">
+</Event><Event ErrorLevel="0" Project="DMHelpGrid" Source="My Project\Resources.Designer.vb" Description="File successfully backed up as I:\Common\DMHelpGrid\Backup\My Project\Resources.Designer.vb">
+</Event><Event ErrorLevel="0" Project="DMHelpGrid" Source="My Project\Settings.Designer.vb" Description="File successfully backed up as I:\Common\DMHelpGrid\Backup\My Project\Settings.Designer.vb">
+</Event><Event ErrorLevel="0" Project="DMHelpGrid" Source="My Project\Application.myapp" Description="File successfully backed up as I:\Common\DMHelpGrid\Backup\My Project\Application.myapp">
+</Event><Event ErrorLevel="0" Project="DMHelpGrid" Source="My Project\Settings.settings" Description="File successfully backed up as I:\Common\DMHelpGrid\Backup\My Project\Settings.settings">
+</Event><Event ErrorLevel="0" Project="DMHelpGrid" Source="Forms\FrmHelpGrid.resx" Description="File successfully backed up as I:\Common\DMHelpGrid\Backup\Forms\FrmHelpGrid.resx">
+</Event><Event ErrorLevel="0" Project="DMHelpGrid" Source="Forms\FrmHelpGrid_Multi.resx" Description="File successfully backed up as I:\Common\DMHelpGrid\Backup\Forms\FrmHelpGrid_Multi.resx">
+</Event><Event ErrorLevel="0" Project="DMHelpGrid" Source="Forms\FrmTest.resx" Description="File successfully backed up as I:\Common\DMHelpGrid\Backup\Forms\FrmTest.resx">
+</Event><Event ErrorLevel="0" Project="DMHelpGrid" Source="My Project\Resources.resx" Description="File successfully backed up as I:\Common\DMHelpGrid\Backup\My Project\Resources.resx">
+</Event><Event ErrorLevel="0" Project="DMHelpGrid" Source="DMHelpGrid.vbproj" Description="Project converted successfully">
+</Event><Event ErrorLevel="3" Project="DMHelpGrid" Source="DMHelpGrid.vbproj" Description="Converted">
+</Event><Event ErrorLevel="0" Project="" Source="DMHelpGrid.sln" Description="Solution converted successfully">
+</Event><Event ErrorLevel="3" Project="" Source="DMHelpGrid.sln" Description="Converted">
+</Event><Event ErrorLevel="0" Project="DMHelpGrid" Source="DMHelpGrid.vbproj" Description="Scan complete: Upgrade not required for project files.">
+</Event></UpgradeLog>

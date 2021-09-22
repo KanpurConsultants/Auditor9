@@ -1,0 +1,11 @@
+TransAccID	Number
+Dated	Date
+Account	String	250
+DocNo	String	250
+Narration	String	250
+Amount	Currency
+TransType	String	250
+FromDate	Date
+ToDate	Date
+AgAccount	String	250
+

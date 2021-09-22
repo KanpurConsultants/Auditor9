@@ -1,0 +1,91 @@
+{DB D:\S2k\Consumer\Data\Company.001\S2K2002.mdb DB}
+{Sql Select
+Product.*,
+QryStockInOut.*,
+{Pm Opening Pm}  as Opening,
+{Pm Ins Pm} as Ins,
+{Pm Out Pm} as Out,
+{Pm Balance Pm} as Balance
+From QryStockInOut,Product
+Where QryStockInOut.ProductID=Product.ProductID and
+Product.ProductID in ({Pm ProductID Pm}) and 
+Dated <= #{Pm DateTo Pm}# 
+Order By Product,Dated,TransTypeID Sql}
+{Xdr Settings
+Columns=80
+Lines=60
+Page Break=True
+Condense=False
+Character Per Inch=12
+Xdr Settings}
+
+{Formula
+ = 
+Formula}
+
+{GroupSection
+Report Header;
+Page Header;
+Header (Product.ProductID);
+Detail;Dated>={Pm DateFrom Pm}
+Footer (Product.ProductID);
+Grand;
+Page Footer;
+Report Footer;
+GroupSection}
+
+{Parameter
+{Variable
+Ins=iif(Trans=0 ,Qty,0)
+Out=iif(Trans=1 ,Qty,0)
+Opening={Pm Ins Pm} - {Pm Out Pm}
+Balance={Pm Ins Pm} - {Pm Out Pm}
+Variable}
+
+{Browser
+SELECT product.Product AS [Product Name], product.ProductID, Account.Account FROM product LEFT JOIN Account ON product.CompanyID = Account.AccountID ORDER BY Account,product.Product;|4000;0;2000|1|1=ProductID
+Browser}
+DateFromToParameter}
+{Report Header
+Report Header}
+========================================================================================================================
+{Page Header
+lbl;OwnerName;62;0;4
+lbl;OwnerAdd1  OwnerAdd2;62;0;0
+
+lbl;STOCK REGISTER;80;0;1
+lbl;FOR PERIOD {Pm DateFrom Pm}   to  {Pm DateTo Pm};67;0;0}{lbl;PAGE NO:;13;1;0
+
+lbl;-------------------------------------------------------------------------------------------------------------------------;80;0;0
+lbl;DATE;12;0;0}{lbl; |;4;0;0}{lbl;VOUCHERNO;11;0;0}{lbl; |;4;0;0}{lbl;OPB;9;1;0}{lbl; |;4;0;0}{lbl;IN;8;1;0}{lbl; |;4;0;0}{lbl;OUT;8;1;0}{lbl; |;4;0;0}{lbl;BALANCE;12;1;0
+lbl;-------------------------------------------------------------------------------------------------------------------------;80;0;0
+Page Header}
+========================================================================================================================
+{Header (Product.ProductID)
+
+fld;Product;67;0;0
+lbl;-------------------------------------------------------------------------------------------------------------------------;80;0;0
+Header (Product.ProductID)}
+========================================================================================================================
+{Detail
+fld;Dated;12;0;0}{lbl; |;4;0;0}{fld;VoucherNo;11;0;0}{lbl; |;4;0;0}{fml;Sum(OPB(Balance));9;1;0}{lbl; |;4;0;0}{fld;Ins;8;1;0}{lbl; |;4;0;0}{fld;Out;8;1;0}{lbl; |;4;0;0}{fml;sum(Balance);12;1;0
+Detail}
+========================================================================================================================
+{Footer (Product.ProductID)
+lbl;-------------------------------------------------------------------------------------------------------------------------;80;0;0
+lbl;;44;0;0}{fml;SUm(Ins);8;1;0}{lbl;;4;0;0}{fml;Sum(Out);8;1;0
+Footer (Product.ProductID)}
+========================================================================================================================
+{Grand
+
+Grand}
+========================================================================================================================
+{Page Footer
+
+Page Footer}
+========================================================================================================================
+{Report Footer
+
+Report Footer}
+========================================================================================================================
+

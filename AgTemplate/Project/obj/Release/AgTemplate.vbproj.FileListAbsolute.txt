@@ -1,0 +1,875 @@
+E:\Dataman\Active Project\Rug Care\Release\AgTemplate.dll
+E:\Dataman\Active Project\Rug Care\Release\AgTemplate.pdb
+E:\Dataman\Active Project\AgTemplate\obj\Release\ResolveAssemblyReference.cache
+E:\Dataman\Active Project\AgTemplate\obj\Release\AgTemplate.FrmReportFormat.resources
+E:\Dataman\Active Project\AgTemplate\obj\Release\AgTemplate.FrmReportWindow.resources
+E:\Dataman\Active Project\AgTemplate\obj\Release\AgTemplate.FrmSearchReport.resources
+E:\Dataman\Active Project\AgTemplate\obj\Release\AgTemplate.TempJobInvoice.resources
+E:\Dataman\Active Project\AgTemplate\obj\Release\AgTemplate.FrmProcess.resources
+E:\Dataman\Active Project\AgTemplate\obj\Release\AgTemplate.TempJobExchange.resources
+E:\Dataman\Active Project\AgTemplate\obj\Release\AgTemplate.TempJobIssue.resources
+E:\Dataman\Active Project\AgTemplate\obj\Release\AgTemplate.FrmJobQcDetail.resources
+E:\Dataman\Active Project\AgTemplate\obj\Release\AgTemplate.FrmReminder.resources
+E:\Dataman\Active Project\AgTemplate\obj\Release\AgTemplate.FrmRemindMe.resources
+E:\Dataman\Active Project\AgTemplate\obj\Release\AgTemplate.TempInvoice.resources
+E:\Dataman\Active Project\AgTemplate\obj\Release\AgTemplate.TempJobReceive.resources
+E:\Dataman\Active Project\AgTemplate\obj\Release\AgTemplate.TempJobReturn.resources
+E:\Dataman\Active Project\AgTemplate\obj\Release\AgTemplate.TempJobWorkerRateMaster.resources
+E:\Dataman\Active Project\AgTemplate\obj\Release\AgTemplate.TempPaymentMultipleParty.resources
+E:\Dataman\Active Project\AgTemplate\obj\Release\AgTemplate.TempPurchInvoice.resources
+E:\Dataman\Active Project\AgTemplate\obj\Release\AgTemplate.FrmLotWiseStock.resources
+E:\Dataman\Active Project\AgTemplate\obj\Release\AgTemplate.FrmSiteMaster.resources
+E:\Dataman\Active Project\AgTemplate\obj\Release\AgTemplate.TempGateInOut.resources
+E:\Dataman\Active Project\AgTemplate\obj\Release\AgTemplate.TempPayment.resources
+E:\Dataman\Active Project\AgTemplate\obj\Release\AgTemplate.TempPhysicalStockEntry.resources
+E:\Dataman\Active Project\AgTemplate\obj\Release\AgTemplate.TempPurchQuotSelectionSelection.resources
+E:\Dataman\Active Project\AgTemplate\obj\Release\AgTemplate.TempQCParameterDetail.resources
+E:\Dataman\Active Project\AgTemplate\obj\Release\AgTemplate.FrmTransporter.resources
+E:\Dataman\Active Project\AgTemplate\obj\Release\AgTemplate.TempBom.resources
+E:\Dataman\Active Project\AgTemplate\obj\Release\AgTemplate.TempCity.resources
+E:\Dataman\Active Project\AgTemplate\obj\Release\AgTemplate.TempDocumentEntry.resources
+E:\Dataman\Active Project\AgTemplate\obj\Release\AgTemplate.TempDocumentMaster.resources
+E:\Dataman\Active Project\AgTemplate\obj\Release\AgTemplate.TempFormIssue.resources
+E:\Dataman\Active Project\AgTemplate\obj\Release\AgTemplate.TempFormReceive.resources
+E:\Dataman\Active Project\AgTemplate\obj\Release\AgTemplate.TempFormMaster.resources
+E:\Dataman\Active Project\AgTemplate\obj\Release\AgTemplate.TempGodown.resources
+E:\Dataman\Active Project\AgTemplate\obj\Release\AgTemplate.TempGr.resources
+E:\Dataman\Active Project\AgTemplate\obj\Release\AgTemplate.TempItem.resources
+E:\Dataman\Active Project\AgTemplate\obj\Release\AgTemplate.TempJobOrder.resources
+E:\Dataman\Active Project\AgTemplate\obj\Release\AgTemplate.TempSaleChallan.resources
+E:\Dataman\Active Project\AgTemplate\obj\Release\AgTemplate.TempMaster.resources
+E:\Dataman\Active Project\AgTemplate\obj\Release\AgTemplate.TempMaterialPlan.resources
+E:\Dataman\Active Project\AgTemplate\obj\Release\AgTemplate.TempProductionOrder.resources
+E:\Dataman\Active Project\AgTemplate\obj\Release\AgTemplate.TempProductionPlan.resources
+E:\Dataman\Active Project\AgTemplate\obj\Release\AgTemplate.TempPurchIndentReq.resources
+E:\Dataman\Active Project\AgTemplate\obj\Release\AgTemplate.TempPurchaseOrder.resources
+E:\Dataman\Active Project\AgTemplate\obj\Release\AgTemplate.TempPurchaseOrderConfirmation.resources
+E:\Dataman\Active Project\AgTemplate\obj\Release\AgTemplate.TempPurchaseReturn.resources
+E:\Dataman\Active Project\AgTemplate\obj\Release\AgTemplate.TempPurchIndent.resources
+E:\Dataman\Active Project\AgTemplate\obj\Release\AgTemplate.TempPurchInvoiceCommon.resources
+E:\Dataman\Active Project\AgTemplate\obj\Release\AgTemplate.TempPurchQuotation.resources
+E:\Dataman\Active Project\AgTemplate\obj\Release\AgTemplate.TempQC.resources
+E:\Dataman\Active Project\AgTemplate\obj\Release\AgTemplate.TempQCGroup.resources
+E:\Dataman\Active Project\AgTemplate\obj\Release\AgTemplate.TempRequisition.resources
+E:\Dataman\Active Project\AgTemplate\obj\Release\AgTemplate.TempSaleOrder.resources
+E:\Dataman\Active Project\AgTemplate\obj\Release\AgTemplate.TempShipmentEntry.resources
+E:\Dataman\Active Project\AgTemplate\obj\Release\AgTemplate.TempStockAdjustment.resources
+E:\Dataman\Active Project\AgTemplate\obj\Release\AgTemplate.TempStockAdjustmentIssue.resources
+E:\Dataman\Active Project\AgTemplate\obj\Release\AgTemplate.TempStockTransferIssue.resources
+E:\Dataman\Active Project\AgTemplate\obj\Release\AgTemplate.TempStockTransferReceive.resources
+E:\Dataman\Active Project\AgTemplate\obj\Release\AgTemplate.TempSubGroup.resources
+E:\Dataman\Active Project\AgTemplate\obj\Release\AgTemplate.TempTransaction.resources
+E:\Dataman\Active Project\AgTemplate\obj\Release\AgTemplate.TempVisitorsGateInOut.resources
+E:\Dataman\Active Project\AgTemplate\obj\Release\AgTemplate.Resources.resources
+E:\Dataman\Active Project\AgTemplate\obj\Release\AgTemplate.MDIMain.resources
+E:\Dataman\Active Project\AgTemplate\obj\Release\AgTemplate.vbproj.GenerateResource.Cache
+E:\Dataman\Active Project\AgTemplate\obj\Release\AgTemplate.dll
+E:\Dataman\Active Project\AgTemplate\obj\Release\AgTemplate.pdb
+E:\Dataman\Active Project\AgTemplate\obj\Release\AgTemplate.FrmPurchOrderDelivery.resources
+E:\Dataman\Active Project\Rug Care\Release\AgTemplate.xml
+E:\Dataman\Active Project\AgTemplate\obj\Release\AgTemplate.xml
+D:\Satyam\Active Project\Rug Care\Release\AgTemplate.dll
+D:\Satyam\Active Project\Rug Care\Release\AgTemplate.pdb
+D:\Satyam\Active Project\Rug Care\Release\AgTemplate.xml
+D:\Satyam\Active Project\AgTemplate\obj\Release\ResolveAssemblyReference.cache
+D:\Satyam\Active Project\AgTemplate\obj\Release\AgTemplate.FrmReportFormat.resources
+D:\Satyam\Active Project\AgTemplate\obj\Release\AgTemplate.FrmReportWindow.resources
+D:\Satyam\Active Project\AgTemplate\obj\Release\AgTemplate.FrmSearchReport.resources
+D:\Satyam\Active Project\AgTemplate\obj\Release\AgTemplate.TempJobInvoice.resources
+D:\Satyam\Active Project\AgTemplate\obj\Release\AgTemplate.FrmProcess.resources
+D:\Satyam\Active Project\AgTemplate\obj\Release\AgTemplate.TempJobExchange.resources
+D:\Satyam\Active Project\AgTemplate\obj\Release\AgTemplate.TempJobIssue.resources
+D:\Satyam\Active Project\AgTemplate\obj\Release\AgTemplate.FrmJobQcDetail.resources
+D:\Satyam\Active Project\AgTemplate\obj\Release\AgTemplate.FrmReminder.resources
+D:\Satyam\Active Project\AgTemplate\obj\Release\AgTemplate.FrmRemindMe.resources
+D:\Satyam\Active Project\AgTemplate\obj\Release\AgTemplate.TempInvoice.resources
+D:\Satyam\Active Project\AgTemplate\obj\Release\AgTemplate.TempJobReceive.resources
+D:\Satyam\Active Project\AgTemplate\obj\Release\AgTemplate.TempJobReturn.resources
+D:\Satyam\Active Project\AgTemplate\obj\Release\AgTemplate.TempJobWorkerRateMaster.resources
+D:\Satyam\Active Project\AgTemplate\obj\Release\AgTemplate.TempPaymentMultipleParty.resources
+D:\Satyam\Active Project\AgTemplate\obj\Release\AgTemplate.FrmPurchOrderDelivery.resources
+D:\Satyam\Active Project\AgTemplate\obj\Release\AgTemplate.TempPurchInvoice.resources
+D:\Satyam\Active Project\AgTemplate\obj\Release\AgTemplate.FrmLotWiseStock.resources
+D:\Satyam\Active Project\AgTemplate\obj\Release\AgTemplate.FrmSiteMaster.resources
+D:\Satyam\Active Project\AgTemplate\obj\Release\AgTemplate.TempGateInOut.resources
+D:\Satyam\Active Project\AgTemplate\obj\Release\AgTemplate.TempPayment.resources
+D:\Satyam\Active Project\AgTemplate\obj\Release\AgTemplate.TempPhysicalStockEntry.resources
+D:\Satyam\Active Project\AgTemplate\obj\Release\AgTemplate.TempPurchQuotSelectionSelection.resources
+D:\Satyam\Active Project\AgTemplate\obj\Release\AgTemplate.TempQCParameterDetail.resources
+D:\Satyam\Active Project\AgTemplate\obj\Release\AgTemplate.FrmTransporter.resources
+D:\Satyam\Active Project\AgTemplate\obj\Release\AgTemplate.TempBom.resources
+D:\Satyam\Active Project\AgTemplate\obj\Release\AgTemplate.TempCity.resources
+D:\Satyam\Active Project\AgTemplate\obj\Release\AgTemplate.TempDocumentEntry.resources
+D:\Satyam\Active Project\AgTemplate\obj\Release\AgTemplate.TempDocumentMaster.resources
+D:\Satyam\Active Project\AgTemplate\obj\Release\AgTemplate.TempFormIssue.resources
+D:\Satyam\Active Project\AgTemplate\obj\Release\AgTemplate.TempFormReceive.resources
+D:\Satyam\Active Project\AgTemplate\obj\Release\AgTemplate.TempFormMaster.resources
+D:\Satyam\Active Project\AgTemplate\obj\Release\AgTemplate.TempGodown.resources
+D:\Satyam\Active Project\AgTemplate\obj\Release\AgTemplate.TempGr.resources
+D:\Satyam\Active Project\AgTemplate\obj\Release\AgTemplate.TempItem.resources
+D:\Satyam\Active Project\AgTemplate\obj\Release\AgTemplate.TempJobOrder.resources
+D:\Satyam\Active Project\AgTemplate\obj\Release\AgTemplate.TempSaleChallan.resources
+D:\Satyam\Active Project\AgTemplate\obj\Release\AgTemplate.TempMaster.resources
+D:\Satyam\Active Project\AgTemplate\obj\Release\AgTemplate.TempMaterialPlan.resources
+D:\Satyam\Active Project\AgTemplate\obj\Release\AgTemplate.TempProductionOrder.resources
+D:\Satyam\Active Project\AgTemplate\obj\Release\AgTemplate.TempProductionPlan.resources
+D:\Satyam\Active Project\AgTemplate\obj\Release\AgTemplate.TempPurchIndentReq.resources
+D:\Satyam\Active Project\AgTemplate\obj\Release\AgTemplate.TempPurchaseOrder.resources
+D:\Satyam\Active Project\AgTemplate\obj\Release\AgTemplate.TempPurchaseOrderConfirmation.resources
+D:\Satyam\Active Project\AgTemplate\obj\Release\AgTemplate.TempPurchaseReturn.resources
+D:\Satyam\Active Project\AgTemplate\obj\Release\AgTemplate.TempPurchIndent.resources
+D:\Satyam\Active Project\AgTemplate\obj\Release\AgTemplate.TempPurchInvoiceCommon.resources
+D:\Satyam\Active Project\AgTemplate\obj\Release\AgTemplate.TempPurchQuotation.resources
+D:\Satyam\Active Project\AgTemplate\obj\Release\AgTemplate.TempQC.resources
+D:\Satyam\Active Project\AgTemplate\obj\Release\AgTemplate.TempQCGroup.resources
+D:\Satyam\Active Project\AgTemplate\obj\Release\AgTemplate.TempRequisition.resources
+D:\Satyam\Active Project\AgTemplate\obj\Release\AgTemplate.TempSaleOrder.resources
+D:\Satyam\Active Project\AgTemplate\obj\Release\AgTemplate.TempShipmentEntry.resources
+D:\Satyam\Active Project\AgTemplate\obj\Release\AgTemplate.TempStockAdjustment.resources
+D:\Satyam\Active Project\AgTemplate\obj\Release\AgTemplate.TempStockAdjustmentIssue.resources
+D:\Satyam\Active Project\AgTemplate\obj\Release\AgTemplate.TempStockTransferIssue.resources
+D:\Satyam\Active Project\AgTemplate\obj\Release\AgTemplate.TempStockTransferReceive.resources
+D:\Satyam\Active Project\AgTemplate\obj\Release\AgTemplate.TempSubGroup.resources
+D:\Satyam\Active Project\AgTemplate\obj\Release\AgTemplate.TempTransaction.resources
+D:\Satyam\Active Project\AgTemplate\obj\Release\AgTemplate.TempVisitorsGateInOut.resources
+D:\Satyam\Active Project\AgTemplate\obj\Release\AgTemplate.Resources.resources
+D:\Satyam\Active Project\AgTemplate\obj\Release\AgTemplate.MDIMain.resources
+D:\Satyam\Active Project\AgTemplate\obj\Release\AgTemplate.vbproj.GenerateResource.Cache
+D:\Satyam\Active Project\AgTemplate\obj\Release\AgTemplate.dll
+D:\Satyam\Active Project\AgTemplate\obj\Release\AgTemplate.xml
+D:\Satyam\Active Project\AgTemplate\obj\Release\AgTemplate.pdb
+\\node3\Active Projects\Rug Care\Release\AgTemplate.dll
+\\node3\Active Projects\Rug Care\Release\AgTemplate.pdb
+\\node3\Active Projects\Rug Care\Release\AgTemplate.xml
+\\node3\Active Projects\AgTemplate\obj\Release\ResolveAssemblyReference.cache
+\\node3\Active Projects\AgTemplate\obj\Release\AgTemplate.FrmReportFormat.resources
+\\node3\Active Projects\AgTemplate\obj\Release\AgTemplate.FrmReportWindow.resources
+\\node3\Active Projects\AgTemplate\obj\Release\AgTemplate.FrmSearchReport.resources
+\\node3\Active Projects\AgTemplate\obj\Release\AgTemplate.TempJobInvoice.resources
+\\node3\Active Projects\AgTemplate\obj\Release\AgTemplate.FrmProcess.resources
+\\node3\Active Projects\AgTemplate\obj\Release\AgTemplate.TempJobExchange.resources
+\\node3\Active Projects\AgTemplate\obj\Release\AgTemplate.TempJobIssue.resources
+\\node3\Active Projects\AgTemplate\obj\Release\AgTemplate.FrmJobQcDetail.resources
+\\node3\Active Projects\AgTemplate\obj\Release\AgTemplate.FrmReminder.resources
+\\node3\Active Projects\AgTemplate\obj\Release\AgTemplate.FrmRemindMe.resources
+\\node3\Active Projects\AgTemplate\obj\Release\AgTemplate.TempInvoice.resources
+\\node3\Active Projects\AgTemplate\obj\Release\AgTemplate.TempJobReceive.resources
+\\node3\Active Projects\AgTemplate\obj\Release\AgTemplate.TempJobReturn.resources
+\\node3\Active Projects\AgTemplate\obj\Release\AgTemplate.TempJobWorkerRateMaster.resources
+\\node3\Active Projects\AgTemplate\obj\Release\AgTemplate.TempPaymentMultipleParty.resources
+\\node3\Active Projects\AgTemplate\obj\Release\AgTemplate.FrmPurchOrderDelivery.resources
+\\node3\Active Projects\AgTemplate\obj\Release\AgTemplate.TempPurchInvoice.resources
+\\node3\Active Projects\AgTemplate\obj\Release\AgTemplate.FrmLotWiseStock.resources
+\\node3\Active Projects\AgTemplate\obj\Release\AgTemplate.FrmSiteMaster.resources
+\\node3\Active Projects\AgTemplate\obj\Release\AgTemplate.TempGateInOut.resources
+\\node3\Active Projects\AgTemplate\obj\Release\AgTemplate.TempPayment.resources
+\\node3\Active Projects\AgTemplate\obj\Release\AgTemplate.TempPhysicalStockEntry.resources
+\\node3\Active Projects\AgTemplate\obj\Release\AgTemplate.TempPurchQuotSelectionSelection.resources
+\\node3\Active Projects\AgTemplate\obj\Release\AgTemplate.TempQCParameterDetail.resources
+\\node3\Active Projects\AgTemplate\obj\Release\AgTemplate.FrmTransporter.resources
+\\node3\Active Projects\AgTemplate\obj\Release\AgTemplate.TempBom.resources
+\\node3\Active Projects\AgTemplate\obj\Release\AgTemplate.TempCity.resources
+\\node3\Active Projects\AgTemplate\obj\Release\AgTemplate.TempDocumentEntry.resources
+\\node3\Active Projects\AgTemplate\obj\Release\AgTemplate.TempDocumentMaster.resources
+\\node3\Active Projects\AgTemplate\obj\Release\AgTemplate.TempFormIssue.resources
+\\node3\Active Projects\AgTemplate\obj\Release\AgTemplate.TempFormReceive.resources
+\\node3\Active Projects\AgTemplate\obj\Release\AgTemplate.TempFormMaster.resources
+\\node3\Active Projects\AgTemplate\obj\Release\AgTemplate.TempGodown.resources
+\\node3\Active Projects\AgTemplate\obj\Release\AgTemplate.TempGr.resources
+\\node3\Active Projects\AgTemplate\obj\Release\AgTemplate.TempItem.resources
+\\node3\Active Projects\AgTemplate\obj\Release\AgTemplate.TempJobOrder.resources
+\\node3\Active Projects\AgTemplate\obj\Release\AgTemplate.TempSaleChallan.resources
+\\node3\Active Projects\AgTemplate\obj\Release\AgTemplate.TempMaster.resources
+\\node3\Active Projects\AgTemplate\obj\Release\AgTemplate.TempMaterialPlan.resources
+\\node3\Active Projects\AgTemplate\obj\Release\AgTemplate.TempProductionOrder.resources
+\\node3\Active Projects\AgTemplate\obj\Release\AgTemplate.TempProductionPlan.resources
+\\node3\Active Projects\AgTemplate\obj\Release\AgTemplate.TempPurchIndentReq.resources
+\\node3\Active Projects\AgTemplate\obj\Release\AgTemplate.TempPurchaseOrder.resources
+\\node3\Active Projects\AgTemplate\obj\Release\AgTemplate.TempPurchaseOrderConfirmation.resources
+\\node3\Active Projects\AgTemplate\obj\Release\AgTemplate.TempPurchaseReturn.resources
+\\node3\Active Projects\AgTemplate\obj\Release\AgTemplate.TempPurchIndent.resources
+\\node3\Active Projects\AgTemplate\obj\Release\AgTemplate.TempPurchInvoiceCommon.resources
+\\node3\Active Projects\AgTemplate\obj\Release\AgTemplate.TempPurchQuotation.resources
+\\node3\Active Projects\AgTemplate\obj\Release\AgTemplate.TempQC.resources
+\\node3\Active Projects\AgTemplate\obj\Release\AgTemplate.TempQCGroup.resources
+\\node3\Active Projects\AgTemplate\obj\Release\AgTemplate.TempRequisition.resources
+\\node3\Active Projects\AgTemplate\obj\Release\AgTemplate.TempSaleOrder.resources
+\\node3\Active Projects\AgTemplate\obj\Release\AgTemplate.TempShipmentEntry.resources
+\\node3\Active Projects\AgTemplate\obj\Release\AgTemplate.TempStockAdjustment.resources
+\\node3\Active Projects\AgTemplate\obj\Release\AgTemplate.TempStockAdjustmentIssue.resources
+\\node3\Active Projects\AgTemplate\obj\Release\AgTemplate.TempStockTransferIssue.resources
+\\node3\Active Projects\AgTemplate\obj\Release\AgTemplate.TempStockTransferReceive.resources
+\\node3\Active Projects\AgTemplate\obj\Release\AgTemplate.TempSubGroup.resources
+\\node3\Active Projects\AgTemplate\obj\Release\AgTemplate.TempTransaction.resources
+\\node3\Active Projects\AgTemplate\obj\Release\AgTemplate.TempVisitorsGateInOut.resources
+\\node3\Active Projects\AgTemplate\obj\Release\AgTemplate.Resources.resources
+\\node3\Active Projects\AgTemplate\obj\Release\AgTemplate.MDIMain.resources
+\\node3\Active Projects\AgTemplate\obj\Release\AgTemplate.vbproj.GenerateResource.Cache
+\\node3\Active Projects\AgTemplate\obj\Release\AgTemplate.dll
+\\node3\Active Projects\AgTemplate\obj\Release\AgTemplate.xml
+\\node3\Active Projects\AgTemplate\obj\Release\AgTemplate.pdb
+E:\Dataman\Active Project\AgTemplate\obj\Release\AgTemplate.FrmUpdateStatus.resources
+D:\Satyam\Active Project\AgTemplate\obj\Release\AgTemplate.FrmUpdateStatus.resources
+C:\Documents and Settings\dataman\Desktop\Satyam\Active Project\Rug Care\Release\AgTemplate.dll
+C:\Documents and Settings\dataman\Desktop\Satyam\Active Project\Rug Care\Release\AgTemplate.pdb
+C:\Documents and Settings\dataman\Desktop\Satyam\Active Project\Rug Care\Release\AgTemplate.xml
+C:\Documents and Settings\dataman\Desktop\Satyam\Active Project\AgTemplate\obj\Release\ResolveAssemblyReference.cache
+C:\Documents and Settings\dataman\Desktop\Satyam\Active Project\AgTemplate\obj\Release\AgTemplate.FrmReportFormat.resources
+C:\Documents and Settings\dataman\Desktop\Satyam\Active Project\AgTemplate\obj\Release\AgTemplate.FrmReportWindow.resources
+C:\Documents and Settings\dataman\Desktop\Satyam\Active Project\AgTemplate\obj\Release\AgTemplate.FrmSearchReport.resources
+C:\Documents and Settings\dataman\Desktop\Satyam\Active Project\AgTemplate\obj\Release\AgTemplate.FrmUpdateStatus.resources
+C:\Documents and Settings\dataman\Desktop\Satyam\Active Project\AgTemplate\obj\Release\AgTemplate.TempJobInvoice.resources
+C:\Documents and Settings\dataman\Desktop\Satyam\Active Project\AgTemplate\obj\Release\AgTemplate.FrmProcess.resources
+C:\Documents and Settings\dataman\Desktop\Satyam\Active Project\AgTemplate\obj\Release\AgTemplate.TempJobExchange.resources
+C:\Documents and Settings\dataman\Desktop\Satyam\Active Project\AgTemplate\obj\Release\AgTemplate.TempJobIssue.resources
+C:\Documents and Settings\dataman\Desktop\Satyam\Active Project\AgTemplate\obj\Release\AgTemplate.FrmJobQcDetail.resources
+C:\Documents and Settings\dataman\Desktop\Satyam\Active Project\AgTemplate\obj\Release\AgTemplate.FrmReminder.resources
+C:\Documents and Settings\dataman\Desktop\Satyam\Active Project\AgTemplate\obj\Release\AgTemplate.FrmRemindMe.resources
+C:\Documents and Settings\dataman\Desktop\Satyam\Active Project\AgTemplate\obj\Release\AgTemplate.TempInvoice.resources
+C:\Documents and Settings\dataman\Desktop\Satyam\Active Project\AgTemplate\obj\Release\AgTemplate.TempJobReceive.resources
+C:\Documents and Settings\dataman\Desktop\Satyam\Active Project\AgTemplate\obj\Release\AgTemplate.TempJobReturn.resources
+C:\Documents and Settings\dataman\Desktop\Satyam\Active Project\AgTemplate\obj\Release\AgTemplate.TempJobWorkerRateMaster.resources
+C:\Documents and Settings\dataman\Desktop\Satyam\Active Project\AgTemplate\obj\Release\AgTemplate.TempPaymentMultipleParty.resources
+C:\Documents and Settings\dataman\Desktop\Satyam\Active Project\AgTemplate\obj\Release\AgTemplate.FrmPurchOrderDelivery.resources
+C:\Documents and Settings\dataman\Desktop\Satyam\Active Project\AgTemplate\obj\Release\AgTemplate.TempPurchInvoice.resources
+C:\Documents and Settings\dataman\Desktop\Satyam\Active Project\AgTemplate\obj\Release\AgTemplate.FrmLotWiseStock.resources
+C:\Documents and Settings\dataman\Desktop\Satyam\Active Project\AgTemplate\obj\Release\AgTemplate.FrmSiteMaster.resources
+C:\Documents and Settings\dataman\Desktop\Satyam\Active Project\AgTemplate\obj\Release\AgTemplate.TempGateInOut.resources
+C:\Documents and Settings\dataman\Desktop\Satyam\Active Project\AgTemplate\obj\Release\AgTemplate.TempPayment.resources
+C:\Documents and Settings\dataman\Desktop\Satyam\Active Project\AgTemplate\obj\Release\AgTemplate.TempPhysicalStockEntry.resources
+C:\Documents and Settings\dataman\Desktop\Satyam\Active Project\AgTemplate\obj\Release\AgTemplate.TempPurchQuotSelectionSelection.resources
+C:\Documents and Settings\dataman\Desktop\Satyam\Active Project\AgTemplate\obj\Release\AgTemplate.TempQCParameterDetail.resources
+C:\Documents and Settings\dataman\Desktop\Satyam\Active Project\AgTemplate\obj\Release\AgTemplate.FrmTransporter.resources
+C:\Documents and Settings\dataman\Desktop\Satyam\Active Project\AgTemplate\obj\Release\AgTemplate.TempBom.resources
+C:\Documents and Settings\dataman\Desktop\Satyam\Active Project\AgTemplate\obj\Release\AgTemplate.TempCity.resources
+C:\Documents and Settings\dataman\Desktop\Satyam\Active Project\AgTemplate\obj\Release\AgTemplate.TempDocumentEntry.resources
+C:\Documents and Settings\dataman\Desktop\Satyam\Active Project\AgTemplate\obj\Release\AgTemplate.TempDocumentMaster.resources
+C:\Documents and Settings\dataman\Desktop\Satyam\Active Project\AgTemplate\obj\Release\AgTemplate.TempFormIssue.resources
+C:\Documents and Settings\dataman\Desktop\Satyam\Active Project\AgTemplate\obj\Release\AgTemplate.TempFormReceive.resources
+C:\Documents and Settings\dataman\Desktop\Satyam\Active Project\AgTemplate\obj\Release\AgTemplate.TempFormMaster.resources
+C:\Documents and Settings\dataman\Desktop\Satyam\Active Project\AgTemplate\obj\Release\AgTemplate.TempGodown.resources
+C:\Documents and Settings\dataman\Desktop\Satyam\Active Project\AgTemplate\obj\Release\AgTemplate.TempGr.resources
+C:\Documents and Settings\dataman\Desktop\Satyam\Active Project\AgTemplate\obj\Release\AgTemplate.TempItem.resources
+C:\Documents and Settings\dataman\Desktop\Satyam\Active Project\AgTemplate\obj\Release\AgTemplate.TempJobOrder.resources
+C:\Documents and Settings\dataman\Desktop\Satyam\Active Project\AgTemplate\obj\Release\AgTemplate.TempSaleChallan.resources
+C:\Documents and Settings\dataman\Desktop\Satyam\Active Project\AgTemplate\obj\Release\AgTemplate.TempMaster.resources
+C:\Documents and Settings\dataman\Desktop\Satyam\Active Project\AgTemplate\obj\Release\AgTemplate.TempMaterialPlan.resources
+C:\Documents and Settings\dataman\Desktop\Satyam\Active Project\AgTemplate\obj\Release\AgTemplate.TempProductionOrder.resources
+C:\Documents and Settings\dataman\Desktop\Satyam\Active Project\AgTemplate\obj\Release\AgTemplate.TempProductionPlan.resources
+C:\Documents and Settings\dataman\Desktop\Satyam\Active Project\AgTemplate\obj\Release\AgTemplate.TempPurchIndentReq.resources
+C:\Documents and Settings\dataman\Desktop\Satyam\Active Project\AgTemplate\obj\Release\AgTemplate.TempPurchaseOrder.resources
+C:\Documents and Settings\dataman\Desktop\Satyam\Active Project\AgTemplate\obj\Release\AgTemplate.TempPurchaseOrderConfirmation.resources
+C:\Documents and Settings\dataman\Desktop\Satyam\Active Project\AgTemplate\obj\Release\AgTemplate.TempPurchaseReturn.resources
+C:\Documents and Settings\dataman\Desktop\Satyam\Active Project\AgTemplate\obj\Release\AgTemplate.TempPurchIndent.resources
+C:\Documents and Settings\dataman\Desktop\Satyam\Active Project\AgTemplate\obj\Release\AgTemplate.TempPurchInvoiceCommon.resources
+C:\Documents and Settings\dataman\Desktop\Satyam\Active Project\AgTemplate\obj\Release\AgTemplate.TempPurchQuotation.resources
+C:\Documents and Settings\dataman\Desktop\Satyam\Active Project\AgTemplate\obj\Release\AgTemplate.TempQC.resources
+C:\Documents and Settings\dataman\Desktop\Satyam\Active Project\AgTemplate\obj\Release\AgTemplate.TempQCGroup.resources
+C:\Documents and Settings\dataman\Desktop\Satyam\Active Project\AgTemplate\obj\Release\AgTemplate.TempRequisition.resources
+C:\Documents and Settings\dataman\Desktop\Satyam\Active Project\AgTemplate\obj\Release\AgTemplate.TempSaleOrder.resources
+C:\Documents and Settings\dataman\Desktop\Satyam\Active Project\AgTemplate\obj\Release\AgTemplate.TempShipmentEntry.resources
+C:\Documents and Settings\dataman\Desktop\Satyam\Active Project\AgTemplate\obj\Release\AgTemplate.TempStockAdjustment.resources
+C:\Documents and Settings\dataman\Desktop\Satyam\Active Project\AgTemplate\obj\Release\AgTemplate.TempStockAdjustmentIssue.resources
+C:\Documents and Settings\dataman\Desktop\Satyam\Active Project\AgTemplate\obj\Release\AgTemplate.TempStockTransferIssue.resources
+C:\Documents and Settings\dataman\Desktop\Satyam\Active Project\AgTemplate\obj\Release\AgTemplate.TempStockTransferReceive.resources
+C:\Documents and Settings\dataman\Desktop\Satyam\Active Project\AgTemplate\obj\Release\AgTemplate.TempSubGroup.resources
+C:\Documents and Settings\dataman\Desktop\Satyam\Active Project\AgTemplate\obj\Release\AgTemplate.TempTransaction.resources
+C:\Documents and Settings\dataman\Desktop\Satyam\Active Project\AgTemplate\obj\Release\AgTemplate.TempVisitorsGateInOut.resources
+C:\Documents and Settings\dataman\Desktop\Satyam\Active Project\AgTemplate\obj\Release\AgTemplate.Resources.resources
+C:\Documents and Settings\dataman\Desktop\Satyam\Active Project\AgTemplate\obj\Release\AgTemplate.MDIMain.resources
+C:\Documents and Settings\dataman\Desktop\Satyam\Active Project\AgTemplate\obj\Release\AgTemplate.vbproj.GenerateResource.Cache
+C:\Documents and Settings\dataman\Desktop\Satyam\Active Project\AgTemplate\obj\Release\AgTemplate.dll
+C:\Documents and Settings\dataman\Desktop\Satyam\Active Project\AgTemplate\obj\Release\AgTemplate.xml
+C:\Documents and Settings\dataman\Desktop\Satyam\Active Project\AgTemplate\obj\Release\AgTemplate.pdb
+D:\Active Project\Rug Care\Release\AgTemplate.dll
+D:\Active Project\Rug Care\Release\AgTemplate.pdb
+D:\Active Project\Rug Care\Release\AgTemplate.xml
+D:\Active Project\AgTemplate\obj\Release\ResolveAssemblyReference.cache
+D:\Active Project\AgTemplate\obj\Release\AgTemplate.FrmReportFormat.resources
+D:\Active Project\AgTemplate\obj\Release\AgTemplate.FrmReportWindow.resources
+D:\Active Project\AgTemplate\obj\Release\AgTemplate.FrmSearchReport.resources
+D:\Active Project\AgTemplate\obj\Release\AgTemplate.FrmUpdateStatus.resources
+D:\Active Project\AgTemplate\obj\Release\AgTemplate.TempJobInvoice.resources
+D:\Active Project\AgTemplate\obj\Release\AgTemplate.FrmProcess.resources
+D:\Active Project\AgTemplate\obj\Release\AgTemplate.TempJobExchange.resources
+D:\Active Project\AgTemplate\obj\Release\AgTemplate.TempJobIssue.resources
+D:\Active Project\AgTemplate\obj\Release\AgTemplate.FrmJobQcDetail.resources
+D:\Active Project\AgTemplate\obj\Release\AgTemplate.FrmReminder.resources
+D:\Active Project\AgTemplate\obj\Release\AgTemplate.FrmRemindMe.resources
+D:\Active Project\AgTemplate\obj\Release\AgTemplate.TempInvoice.resources
+D:\Active Project\AgTemplate\obj\Release\AgTemplate.TempJobReceive.resources
+D:\Active Project\AgTemplate\obj\Release\AgTemplate.TempJobReturn.resources
+D:\Active Project\AgTemplate\obj\Release\AgTemplate.TempJobWorkerRateMaster.resources
+D:\Active Project\AgTemplate\obj\Release\AgTemplate.TempPaymentMultipleParty.resources
+D:\Active Project\AgTemplate\obj\Release\AgTemplate.FrmPurchOrderDelivery.resources
+D:\Active Project\AgTemplate\obj\Release\AgTemplate.TempPurchInvoice.resources
+D:\Active Project\AgTemplate\obj\Release\AgTemplate.FrmLotWiseStock.resources
+D:\Active Project\AgTemplate\obj\Release\AgTemplate.FrmSiteMaster.resources
+D:\Active Project\AgTemplate\obj\Release\AgTemplate.TempGateInOut.resources
+D:\Active Project\AgTemplate\obj\Release\AgTemplate.TempPayment.resources
+D:\Active Project\AgTemplate\obj\Release\AgTemplate.TempPhysicalStockEntry.resources
+D:\Active Project\AgTemplate\obj\Release\AgTemplate.TempPurchQuotSelectionSelection.resources
+D:\Active Project\AgTemplate\obj\Release\AgTemplate.TempQCParameterDetail.resources
+D:\Active Project\AgTemplate\obj\Release\AgTemplate.FrmTransporter.resources
+D:\Active Project\AgTemplate\obj\Release\AgTemplate.TempBom.resources
+D:\Active Project\AgTemplate\obj\Release\AgTemplate.TempCity.resources
+D:\Active Project\AgTemplate\obj\Release\AgTemplate.TempDocumentEntry.resources
+D:\Active Project\AgTemplate\obj\Release\AgTemplate.TempDocumentMaster.resources
+D:\Active Project\AgTemplate\obj\Release\AgTemplate.TempFormIssue.resources
+D:\Active Project\AgTemplate\obj\Release\AgTemplate.TempFormReceive.resources
+D:\Active Project\AgTemplate\obj\Release\AgTemplate.TempFormMaster.resources
+D:\Active Project\AgTemplate\obj\Release\AgTemplate.TempGodown.resources
+D:\Active Project\AgTemplate\obj\Release\AgTemplate.TempGr.resources
+D:\Active Project\AgTemplate\obj\Release\AgTemplate.TempItem.resources
+D:\Active Project\AgTemplate\obj\Release\AgTemplate.TempJobOrder.resources
+D:\Active Project\AgTemplate\obj\Release\AgTemplate.TempSaleChallan.resources
+D:\Active Project\AgTemplate\obj\Release\AgTemplate.TempMaster.resources
+D:\Active Project\AgTemplate\obj\Release\AgTemplate.TempMaterialPlan.resources
+D:\Active Project\AgTemplate\obj\Release\AgTemplate.TempProductionOrder.resources
+D:\Active Project\AgTemplate\obj\Release\AgTemplate.TempProductionPlan.resources
+D:\Active Project\AgTemplate\obj\Release\AgTemplate.TempPurchIndentReq.resources
+D:\Active Project\AgTemplate\obj\Release\AgTemplate.TempPurchaseOrder.resources
+D:\Active Project\AgTemplate\obj\Release\AgTemplate.TempPurchaseOrderConfirmation.resources
+D:\Active Project\AgTemplate\obj\Release\AgTemplate.TempPurchaseReturn.resources
+D:\Active Project\AgTemplate\obj\Release\AgTemplate.TempPurchIndent.resources
+D:\Active Project\AgTemplate\obj\Release\AgTemplate.TempPurchInvoiceCommon.resources
+D:\Active Project\AgTemplate\obj\Release\AgTemplate.TempPurchQuotation.resources
+D:\Active Project\AgTemplate\obj\Release\AgTemplate.TempQC.resources
+D:\Active Project\AgTemplate\obj\Release\AgTemplate.TempQCGroup.resources
+D:\Active Project\AgTemplate\obj\Release\AgTemplate.TempRequisition.resources
+D:\Active Project\AgTemplate\obj\Release\AgTemplate.TempSaleOrder.resources
+D:\Active Project\AgTemplate\obj\Release\AgTemplate.TempShipmentEntry.resources
+D:\Active Project\AgTemplate\obj\Release\AgTemplate.TempStockAdjustment.resources
+D:\Active Project\AgTemplate\obj\Release\AgTemplate.TempStockAdjustmentIssue.resources
+D:\Active Project\AgTemplate\obj\Release\AgTemplate.TempStockTransferIssue.resources
+D:\Active Project\AgTemplate\obj\Release\AgTemplate.TempStockTransferReceive.resources
+D:\Active Project\AgTemplate\obj\Release\AgTemplate.TempSubGroup.resources
+D:\Active Project\AgTemplate\obj\Release\AgTemplate.TempTransaction.resources
+D:\Active Project\AgTemplate\obj\Release\AgTemplate.TempVisitorsGateInOut.resources
+D:\Active Project\AgTemplate\obj\Release\AgTemplate.Resources.resources
+D:\Active Project\AgTemplate\obj\Release\AgTemplate.MDIMain.resources
+D:\Active Project\AgTemplate\obj\Release\AgTemplate.vbproj.GenerateResource.Cache
+D:\Active Project\AgTemplate\obj\Release\AgTemplate.dll
+D:\Active Project\AgTemplate\obj\Release\AgTemplate.xml
+D:\Active Project\AgTemplate\obj\Release\AgTemplate.pdb
+F:\Arpit\Active Project\AgTemplate\Release\AgTemplate.dll
+F:\Arpit\Active Project\AgTemplate\Release\AgTemplate.pdb
+F:\Arpit\Active Project\AgTemplate\Release\AgTemplate.xml
+F:\Arpit\Active Project\AgTemplate\Project\obj\Release\ResolveAssemblyReference.cache
+F:\Arpit\Active Project\AgTemplate\Project\obj\Release\AgTemplate.FrmReportFormat.resources
+F:\Arpit\Active Project\AgTemplate\Project\obj\Release\AgTemplate.FrmReportWindow.resources
+F:\Arpit\Active Project\AgTemplate\Project\obj\Release\AgTemplate.FrmSearchReport.resources
+F:\Arpit\Active Project\AgTemplate\Project\obj\Release\AgTemplate.FrmUpdateStatus.resources
+F:\Arpit\Active Project\AgTemplate\Project\obj\Release\AgTemplate.TempJobInvoice.resources
+F:\Arpit\Active Project\AgTemplate\Project\obj\Release\AgTemplate.FrmProcess.resources
+F:\Arpit\Active Project\AgTemplate\Project\obj\Release\AgTemplate.TempJobExchange.resources
+F:\Arpit\Active Project\AgTemplate\Project\obj\Release\AgTemplate.TempJobIssue.resources
+F:\Arpit\Active Project\AgTemplate\Project\obj\Release\AgTemplate.FrmJobQcDetail.resources
+F:\Arpit\Active Project\AgTemplate\Project\obj\Release\AgTemplate.FrmReminder.resources
+F:\Arpit\Active Project\AgTemplate\Project\obj\Release\AgTemplate.FrmRemindMe.resources
+F:\Arpit\Active Project\AgTemplate\Project\obj\Release\AgTemplate.TempInvoice.resources
+F:\Arpit\Active Project\AgTemplate\Project\obj\Release\AgTemplate.TempJobReceive.resources
+F:\Arpit\Active Project\AgTemplate\Project\obj\Release\AgTemplate.TempJobReturn.resources
+F:\Arpit\Active Project\AgTemplate\Project\obj\Release\AgTemplate.TempJobWorkerRateMaster.resources
+F:\Arpit\Active Project\AgTemplate\Project\obj\Release\AgTemplate.TempPaymentMultipleParty.resources
+F:\Arpit\Active Project\AgTemplate\Project\obj\Release\AgTemplate.TempPurchInvoice.resources
+F:\Arpit\Active Project\AgTemplate\Project\obj\Release\AgTemplate.FrmLotWiseStock.resources
+F:\Arpit\Active Project\AgTemplate\Project\obj\Release\AgTemplate.FrmSiteMaster.resources
+F:\Arpit\Active Project\AgTemplate\Project\obj\Release\AgTemplate.TempGateInOut.resources
+F:\Arpit\Active Project\AgTemplate\Project\obj\Release\AgTemplate.TempPayment.resources
+F:\Arpit\Active Project\AgTemplate\Project\obj\Release\AgTemplate.TempPhysicalStockEntry.resources
+F:\Arpit\Active Project\AgTemplate\Project\obj\Release\AgTemplate.TempPurchQuotSelectionSelection.resources
+F:\Arpit\Active Project\AgTemplate\Project\obj\Release\AgTemplate.TempQCParameterDetail.resources
+F:\Arpit\Active Project\AgTemplate\Project\obj\Release\AgTemplate.FrmTransporter.resources
+F:\Arpit\Active Project\AgTemplate\Project\obj\Release\AgTemplate.TempCity.resources
+F:\Arpit\Active Project\AgTemplate\Project\obj\Release\AgTemplate.TempDocumentEntry.resources
+F:\Arpit\Active Project\AgTemplate\Project\obj\Release\AgTemplate.TempDocumentMaster.resources
+F:\Arpit\Active Project\AgTemplate\Project\obj\Release\AgTemplate.TempFormIssue.resources
+F:\Arpit\Active Project\AgTemplate\Project\obj\Release\AgTemplate.TempFormReceive.resources
+F:\Arpit\Active Project\AgTemplate\Project\obj\Release\AgTemplate.TempFormMaster.resources
+F:\Arpit\Active Project\AgTemplate\Project\obj\Release\AgTemplate.TempGodown.resources
+F:\Arpit\Active Project\AgTemplate\Project\obj\Release\AgTemplate.TempItem.resources
+F:\Arpit\Active Project\AgTemplate\Project\obj\Release\AgTemplate.TempJobOrder.resources
+F:\Arpit\Active Project\AgTemplate\Project\obj\Release\AgTemplate.TempSaleChallan.resources
+F:\Arpit\Active Project\AgTemplate\Project\obj\Release\AgTemplate.TempMaster.resources
+F:\Arpit\Active Project\AgTemplate\Project\obj\Release\AgTemplate.TempMaterialPlan.resources
+F:\Arpit\Active Project\AgTemplate\Project\obj\Release\AgTemplate.TempProductionPlan.resources
+F:\Arpit\Active Project\AgTemplate\Project\obj\Release\AgTemplate.TempPurchIndentReq.resources
+F:\Arpit\Active Project\AgTemplate\Project\obj\Release\AgTemplate.TempPurchaseReturn.resources
+F:\Arpit\Active Project\AgTemplate\Project\obj\Release\AgTemplate.TempPurchIndent.resources
+F:\Arpit\Active Project\AgTemplate\Project\obj\Release\AgTemplate.TempPurchInvoiceCommon.resources
+F:\Arpit\Active Project\AgTemplate\Project\obj\Release\AgTemplate.TempPurchQuotation.resources
+F:\Arpit\Active Project\AgTemplate\Project\obj\Release\AgTemplate.TempQC.resources
+F:\Arpit\Active Project\AgTemplate\Project\obj\Release\AgTemplate.TempQCGroup.resources
+F:\Arpit\Active Project\AgTemplate\Project\obj\Release\AgTemplate.TempRequisition.resources
+F:\Arpit\Active Project\AgTemplate\Project\obj\Release\AgTemplate.TempShipmentEntry.resources
+F:\Arpit\Active Project\AgTemplate\Project\obj\Release\AgTemplate.TempStockAdjustment.resources
+F:\Arpit\Active Project\AgTemplate\Project\obj\Release\AgTemplate.TempStockAdjustmentIssue.resources
+F:\Arpit\Active Project\AgTemplate\Project\obj\Release\AgTemplate.TempStockTransferIssue.resources
+F:\Arpit\Active Project\AgTemplate\Project\obj\Release\AgTemplate.TempStockTransferReceive.resources
+F:\Arpit\Active Project\AgTemplate\Project\obj\Release\AgTemplate.TempSubGroup.resources
+F:\Arpit\Active Project\AgTemplate\Project\obj\Release\AgTemplate.TempTransaction.resources
+F:\Arpit\Active Project\AgTemplate\Project\obj\Release\AgTemplate.TempVisitorsGateInOut.resources
+F:\Arpit\Active Project\AgTemplate\Project\obj\Release\AgTemplate.Resources.resources
+F:\Arpit\Active Project\AgTemplate\Project\obj\Release\AgTemplate.MDIMain.resources
+F:\Arpit\Active Project\AgTemplate\Project\obj\Release\AgTemplate.vbproj.GenerateResource.Cache
+F:\Arpit\Active Project\AgTemplate\Project\obj\Release\AgTemplate.dll
+F:\Arpit\Active Project\AgTemplate\Project\obj\Release\AgTemplate.xml
+F:\Arpit\Active Project\AgTemplate\Project\obj\Release\AgTemplate.pdb
+F:\Arpit\Active Project\Common\AgTemplate\Release\AgTemplate.dll
+F:\Arpit\Active Project\Common\AgTemplate\Release\AgTemplate.pdb
+F:\Arpit\Active Project\Common\AgTemplate\Release\AgTemplate.xml
+F:\Arpit\Active Project\Common\AgTemplate\Project\obj\Release\ResolveAssemblyReference.cache
+F:\Arpit\Active Project\Common\AgTemplate\Project\obj\Release\AgTemplate.FrmReportFormat.resources
+F:\Arpit\Active Project\Common\AgTemplate\Project\obj\Release\AgTemplate.FrmReportWindow.resources
+F:\Arpit\Active Project\Common\AgTemplate\Project\obj\Release\AgTemplate.FrmSearchReport.resources
+F:\Arpit\Active Project\Common\AgTemplate\Project\obj\Release\AgTemplate.FrmUpdateStatus.resources
+F:\Arpit\Active Project\Common\AgTemplate\Project\obj\Release\AgTemplate.TempJobInvoice.resources
+F:\Arpit\Active Project\Common\AgTemplate\Project\obj\Release\AgTemplate.FrmProcess.resources
+F:\Arpit\Active Project\Common\AgTemplate\Project\obj\Release\AgTemplate.TempJobExchange.resources
+F:\Arpit\Active Project\Common\AgTemplate\Project\obj\Release\AgTemplate.TempJobIssue.resources
+F:\Arpit\Active Project\Common\AgTemplate\Project\obj\Release\AgTemplate.FrmJobQcDetail.resources
+F:\Arpit\Active Project\Common\AgTemplate\Project\obj\Release\AgTemplate.FrmReminder.resources
+F:\Arpit\Active Project\Common\AgTemplate\Project\obj\Release\AgTemplate.FrmRemindMe.resources
+F:\Arpit\Active Project\Common\AgTemplate\Project\obj\Release\AgTemplate.TempInvoice.resources
+F:\Arpit\Active Project\Common\AgTemplate\Project\obj\Release\AgTemplate.TempJobReceive.resources
+F:\Arpit\Active Project\Common\AgTemplate\Project\obj\Release\AgTemplate.TempJobReturn.resources
+F:\Arpit\Active Project\Common\AgTemplate\Project\obj\Release\AgTemplate.TempJobWorkerRateMaster.resources
+F:\Arpit\Active Project\Common\AgTemplate\Project\obj\Release\AgTemplate.TempPaymentMultipleParty.resources
+F:\Arpit\Active Project\Common\AgTemplate\Project\obj\Release\AgTemplate.TempPurchInvoice.resources
+F:\Arpit\Active Project\Common\AgTemplate\Project\obj\Release\AgTemplate.FrmLotWiseStock.resources
+F:\Arpit\Active Project\Common\AgTemplate\Project\obj\Release\AgTemplate.FrmSiteMaster.resources
+F:\Arpit\Active Project\Common\AgTemplate\Project\obj\Release\AgTemplate.TempGateInOut.resources
+F:\Arpit\Active Project\Common\AgTemplate\Project\obj\Release\AgTemplate.TempPayment.resources
+F:\Arpit\Active Project\Common\AgTemplate\Project\obj\Release\AgTemplate.TempPhysicalStockEntry.resources
+F:\Arpit\Active Project\Common\AgTemplate\Project\obj\Release\AgTemplate.TempPurchQuotSelectionSelection.resources
+F:\Arpit\Active Project\Common\AgTemplate\Project\obj\Release\AgTemplate.TempQCParameterDetail.resources
+F:\Arpit\Active Project\Common\AgTemplate\Project\obj\Release\AgTemplate.FrmTransporter.resources
+F:\Arpit\Active Project\Common\AgTemplate\Project\obj\Release\AgTemplate.TempCity.resources
+F:\Arpit\Active Project\Common\AgTemplate\Project\obj\Release\AgTemplate.TempDocumentEntry.resources
+F:\Arpit\Active Project\Common\AgTemplate\Project\obj\Release\AgTemplate.TempDocumentMaster.resources
+F:\Arpit\Active Project\Common\AgTemplate\Project\obj\Release\AgTemplate.TempFormIssue.resources
+F:\Arpit\Active Project\Common\AgTemplate\Project\obj\Release\AgTemplate.TempFormReceive.resources
+F:\Arpit\Active Project\Common\AgTemplate\Project\obj\Release\AgTemplate.TempFormMaster.resources
+F:\Arpit\Active Project\Common\AgTemplate\Project\obj\Release\AgTemplate.TempGodown.resources
+F:\Arpit\Active Project\Common\AgTemplate\Project\obj\Release\AgTemplate.TempItem.resources
+F:\Arpit\Active Project\Common\AgTemplate\Project\obj\Release\AgTemplate.TempJobOrder.resources
+F:\Arpit\Active Project\Common\AgTemplate\Project\obj\Release\AgTemplate.TempSaleChallan.resources
+F:\Arpit\Active Project\Common\AgTemplate\Project\obj\Release\AgTemplate.TempMaster.resources
+F:\Arpit\Active Project\Common\AgTemplate\Project\obj\Release\AgTemplate.TempMaterialPlan.resources
+F:\Arpit\Active Project\Common\AgTemplate\Project\obj\Release\AgTemplate.TempProductionPlan.resources
+F:\Arpit\Active Project\Common\AgTemplate\Project\obj\Release\AgTemplate.TempPurchIndentReq.resources
+F:\Arpit\Active Project\Common\AgTemplate\Project\obj\Release\AgTemplate.TempPurchaseReturn.resources
+F:\Arpit\Active Project\Common\AgTemplate\Project\obj\Release\AgTemplate.TempPurchIndent.resources
+F:\Arpit\Active Project\Common\AgTemplate\Project\obj\Release\AgTemplate.TempPurchInvoiceCommon.resources
+F:\Arpit\Active Project\Common\AgTemplate\Project\obj\Release\AgTemplate.TempPurchQuotation.resources
+F:\Arpit\Active Project\Common\AgTemplate\Project\obj\Release\AgTemplate.TempQC.resources
+F:\Arpit\Active Project\Common\AgTemplate\Project\obj\Release\AgTemplate.TempQCGroup.resources
+F:\Arpit\Active Project\Common\AgTemplate\Project\obj\Release\AgTemplate.TempRequisition.resources
+F:\Arpit\Active Project\Common\AgTemplate\Project\obj\Release\AgTemplate.TempShipmentEntry.resources
+F:\Arpit\Active Project\Common\AgTemplate\Project\obj\Release\AgTemplate.TempStockAdjustment.resources
+F:\Arpit\Active Project\Common\AgTemplate\Project\obj\Release\AgTemplate.TempStockAdjustmentIssue.resources
+F:\Arpit\Active Project\Common\AgTemplate\Project\obj\Release\AgTemplate.TempStockTransferIssue.resources
+F:\Arpit\Active Project\Common\AgTemplate\Project\obj\Release\AgTemplate.TempStockTransferReceive.resources
+F:\Arpit\Active Project\Common\AgTemplate\Project\obj\Release\AgTemplate.TempSubGroup.resources
+F:\Arpit\Active Project\Common\AgTemplate\Project\obj\Release\AgTemplate.TempTransaction.resources
+F:\Arpit\Active Project\Common\AgTemplate\Project\obj\Release\AgTemplate.TempVisitorsGateInOut.resources
+F:\Arpit\Active Project\Common\AgTemplate\Project\obj\Release\AgTemplate.Resources.resources
+F:\Arpit\Active Project\Common\AgTemplate\Project\obj\Release\AgTemplate.MDIMain.resources
+F:\Arpit\Active Project\Common\AgTemplate\Project\obj\Release\AgTemplate.vbproj.GenerateResource.Cache
+F:\Arpit\Active Project\Common\AgTemplate\Project\obj\Release\AgTemplate.dll
+F:\Arpit\Active Project\Common\AgTemplate\Project\obj\Release\AgTemplate.xml
+F:\Arpit\Active Project\Common\AgTemplate\Project\obj\Release\AgTemplate.pdb
+G:\Common\AgTemplate\Release\AgTemplate.dll
+G:\Common\AgTemplate\Release\AgTemplate.pdb
+G:\Common\AgTemplate\Release\AgTemplate.xml
+G:\Common\AgTemplate\Project\obj\Release\ResolveAssemblyReference.cache
+G:\Common\AgTemplate\Project\obj\Release\AgTemplate.FrmReportFormat.resources
+G:\Common\AgTemplate\Project\obj\Release\AgTemplate.FrmReportWindow.resources
+G:\Common\AgTemplate\Project\obj\Release\AgTemplate.FrmSearchReport.resources
+G:\Common\AgTemplate\Project\obj\Release\AgTemplate.FrmUpdateStatus.resources
+G:\Common\AgTemplate\Project\obj\Release\AgTemplate.TempJobInvoice.resources
+G:\Common\AgTemplate\Project\obj\Release\AgTemplate.FrmProcess.resources
+G:\Common\AgTemplate\Project\obj\Release\AgTemplate.TempJobExchange.resources
+G:\Common\AgTemplate\Project\obj\Release\AgTemplate.FrmJobQcDetail.resources
+G:\Common\AgTemplate\Project\obj\Release\AgTemplate.FrmReminder.resources
+G:\Common\AgTemplate\Project\obj\Release\AgTemplate.FrmRemindMe.resources
+G:\Common\AgTemplate\Project\obj\Release\AgTemplate.TempInvoice.resources
+G:\Common\AgTemplate\Project\obj\Release\AgTemplate.TempJobReceive.resources
+G:\Common\AgTemplate\Project\obj\Release\AgTemplate.TempJobWorkerRateMaster.resources
+G:\Common\AgTemplate\Project\obj\Release\AgTemplate.TempPaymentMultipleParty.resources
+G:\Common\AgTemplate\Project\obj\Release\AgTemplate.TempPurchInvoice.resources
+G:\Common\AgTemplate\Project\obj\Release\AgTemplate.FrmLotWiseStock.resources
+G:\Common\AgTemplate\Project\obj\Release\AgTemplate.FrmSiteMaster.resources
+G:\Common\AgTemplate\Project\obj\Release\AgTemplate.TempGateInOut.resources
+G:\Common\AgTemplate\Project\obj\Release\AgTemplate.TempPayment.resources
+G:\Common\AgTemplate\Project\obj\Release\AgTemplate.TempPhysicalStockEntry.resources
+G:\Common\AgTemplate\Project\obj\Release\AgTemplate.TempPurchQuotSelectionSelection.resources
+G:\Common\AgTemplate\Project\obj\Release\AgTemplate.TempQCParameterDetail.resources
+G:\Common\AgTemplate\Project\obj\Release\AgTemplate.FrmTransporter.resources
+G:\Common\AgTemplate\Project\obj\Release\AgTemplate.TempCity.resources
+G:\Common\AgTemplate\Project\obj\Release\AgTemplate.TempDocumentEntry.resources
+G:\Common\AgTemplate\Project\obj\Release\AgTemplate.TempDocumentMaster.resources
+G:\Common\AgTemplate\Project\obj\Release\AgTemplate.TempFormIssue.resources
+G:\Common\AgTemplate\Project\obj\Release\AgTemplate.TempFormReceive.resources
+G:\Common\AgTemplate\Project\obj\Release\AgTemplate.TempFormMaster.resources
+G:\Common\AgTemplate\Project\obj\Release\AgTemplate.TempGodown.resources
+G:\Common\AgTemplate\Project\obj\Release\AgTemplate.TempItem.resources
+G:\Common\AgTemplate\Project\obj\Release\AgTemplate.TempJobOrder.resources
+G:\Common\AgTemplate\Project\obj\Release\AgTemplate.TempSaleChallan.resources
+G:\Common\AgTemplate\Project\obj\Release\AgTemplate.TempMaster.resources
+G:\Common\AgTemplate\Project\obj\Release\AgTemplate.TempMaterialPlan.resources
+G:\Common\AgTemplate\Project\obj\Release\AgTemplate.TempProductionPlan.resources
+G:\Common\AgTemplate\Project\obj\Release\AgTemplate.TempPurchIndentReq.resources
+G:\Common\AgTemplate\Project\obj\Release\AgTemplate.TempPurchaseReturn.resources
+G:\Common\AgTemplate\Project\obj\Release\AgTemplate.TempPurchIndent.resources
+G:\Common\AgTemplate\Project\obj\Release\AgTemplate.TempPurchInvoiceCommon.resources
+G:\Common\AgTemplate\Project\obj\Release\AgTemplate.TempPurchQuotation.resources
+G:\Common\AgTemplate\Project\obj\Release\AgTemplate.TempQC.resources
+G:\Common\AgTemplate\Project\obj\Release\AgTemplate.TempQCGroup.resources
+G:\Common\AgTemplate\Project\obj\Release\AgTemplate.TempRequisition.resources
+G:\Common\AgTemplate\Project\obj\Release\AgTemplate.TempShipmentEntry.resources
+G:\Common\AgTemplate\Project\obj\Release\AgTemplate.TempStockAdjustment.resources
+G:\Common\AgTemplate\Project\obj\Release\AgTemplate.TempStockAdjustmentIssue.resources
+G:\Common\AgTemplate\Project\obj\Release\AgTemplate.TempStockTransferIssue.resources
+G:\Common\AgTemplate\Project\obj\Release\AgTemplate.TempStockTransferReceive.resources
+G:\Common\AgTemplate\Project\obj\Release\AgTemplate.TempSubGroup.resources
+G:\Common\AgTemplate\Project\obj\Release\AgTemplate.TempTransaction.resources
+G:\Common\AgTemplate\Project\obj\Release\AgTemplate.TempVisitorsGateInOut.resources
+G:\Common\AgTemplate\Project\obj\Release\AgTemplate.Resources.resources
+G:\Common\AgTemplate\Project\obj\Release\AgTemplate.MDIMain.resources
+G:\Common\AgTemplate\Project\obj\Release\AgTemplate.vbproj.GenerateResource.Cache
+G:\Common\AgTemplate\Project\obj\Release\AgTemplate.dll
+G:\Common\AgTemplate\Project\obj\Release\AgTemplate.xml
+G:\Common\AgTemplate\Project\obj\Release\AgTemplate.pdb
+I:\Common\AgTemplate\Release\AgTemplate.dll
+I:\Common\AgTemplate\Release\AgTemplate.pdb
+I:\Common\AgTemplate\Release\AgTemplate.xml
+I:\Common\AgTemplate\Project\obj\Release\ResolveAssemblyReference.cache
+I:\Common\AgTemplate\Project\obj\Release\AgTemplate.FrmReportFormat.resources
+I:\Common\AgTemplate\Project\obj\Release\AgTemplate.FrmReportWindow.resources
+I:\Common\AgTemplate\Project\obj\Release\AgTemplate.FrmSearchReport.resources
+I:\Common\AgTemplate\Project\obj\Release\AgTemplate.FrmUpdateStatus.resources
+I:\Common\AgTemplate\Project\obj\Release\AgTemplate.TempJobInvoice.resources
+I:\Common\AgTemplate\Project\obj\Release\AgTemplate.FrmProcess.resources
+I:\Common\AgTemplate\Project\obj\Release\AgTemplate.TempJobExchange.resources
+I:\Common\AgTemplate\Project\obj\Release\AgTemplate.FrmJobQcDetail.resources
+I:\Common\AgTemplate\Project\obj\Release\AgTemplate.FrmReminder.resources
+I:\Common\AgTemplate\Project\obj\Release\AgTemplate.FrmRemindMe.resources
+I:\Common\AgTemplate\Project\obj\Release\AgTemplate.TempInvoice.resources
+I:\Common\AgTemplate\Project\obj\Release\AgTemplate.TempJobReceive.resources
+I:\Common\AgTemplate\Project\obj\Release\AgTemplate.TempJobWorkerRateMaster.resources
+I:\Common\AgTemplate\Project\obj\Release\AgTemplate.TempPaymentMultipleParty.resources
+I:\Common\AgTemplate\Project\obj\Release\AgTemplate.TempPurchInvoice.resources
+I:\Common\AgTemplate\Project\obj\Release\AgTemplate.FrmLotWiseStock.resources
+I:\Common\AgTemplate\Project\obj\Release\AgTemplate.FrmSiteMaster.resources
+I:\Common\AgTemplate\Project\obj\Release\AgTemplate.TempGateInOut.resources
+I:\Common\AgTemplate\Project\obj\Release\AgTemplate.TempPayment.resources
+I:\Common\AgTemplate\Project\obj\Release\AgTemplate.TempPhysicalStockEntry.resources
+I:\Common\AgTemplate\Project\obj\Release\AgTemplate.TempPurchQuotSelectionSelection.resources
+I:\Common\AgTemplate\Project\obj\Release\AgTemplate.TempQCParameterDetail.resources
+I:\Common\AgTemplate\Project\obj\Release\AgTemplate.FrmTransporter.resources
+I:\Common\AgTemplate\Project\obj\Release\AgTemplate.TempCity.resources
+I:\Common\AgTemplate\Project\obj\Release\AgTemplate.TempDocumentEntry.resources
+I:\Common\AgTemplate\Project\obj\Release\AgTemplate.TempDocumentMaster.resources
+I:\Common\AgTemplate\Project\obj\Release\AgTemplate.TempFormIssue.resources
+I:\Common\AgTemplate\Project\obj\Release\AgTemplate.TempFormReceive.resources
+I:\Common\AgTemplate\Project\obj\Release\AgTemplate.TempFormMaster.resources
+I:\Common\AgTemplate\Project\obj\Release\AgTemplate.TempGodown.resources
+I:\Common\AgTemplate\Project\obj\Release\AgTemplate.TempItem.resources
+I:\Common\AgTemplate\Project\obj\Release\AgTemplate.TempJobOrder.resources
+I:\Common\AgTemplate\Project\obj\Release\AgTemplate.TempSaleChallan.resources
+I:\Common\AgTemplate\Project\obj\Release\AgTemplate.TempMaster.resources
+I:\Common\AgTemplate\Project\obj\Release\AgTemplate.TempMaterialPlan.resources
+I:\Common\AgTemplate\Project\obj\Release\AgTemplate.TempProductionPlan.resources
+I:\Common\AgTemplate\Project\obj\Release\AgTemplate.TempPurchIndentReq.resources
+I:\Common\AgTemplate\Project\obj\Release\AgTemplate.TempPurchaseReturn.resources
+I:\Common\AgTemplate\Project\obj\Release\AgTemplate.TempPurchIndent.resources
+I:\Common\AgTemplate\Project\obj\Release\AgTemplate.TempPurchInvoiceCommon.resources
+I:\Common\AgTemplate\Project\obj\Release\AgTemplate.TempPurchQuotation.resources
+I:\Common\AgTemplate\Project\obj\Release\AgTemplate.TempQC.resources
+I:\Common\AgTemplate\Project\obj\Release\AgTemplate.TempQCGroup.resources
+I:\Common\AgTemplate\Project\obj\Release\AgTemplate.TempRequisition.resources
+I:\Common\AgTemplate\Project\obj\Release\AgTemplate.TempShipmentEntry.resources
+I:\Common\AgTemplate\Project\obj\Release\AgTemplate.TempStockAdjustment.resources
+I:\Common\AgTemplate\Project\obj\Release\AgTemplate.TempStockAdjustmentIssue.resources
+I:\Common\AgTemplate\Project\obj\Release\AgTemplate.TempStockTransferIssue.resources
+I:\Common\AgTemplate\Project\obj\Release\AgTemplate.TempStockTransferReceive.resources
+I:\Common\AgTemplate\Project\obj\Release\AgTemplate.TempSubGroup.resources
+I:\Common\AgTemplate\Project\obj\Release\AgTemplate.TempTransaction.resources
+I:\Common\AgTemplate\Project\obj\Release\AgTemplate.TempVisitorsGateInOut.resources
+I:\Common\AgTemplate\Project\obj\Release\AgTemplate.Resources.resources
+I:\Common\AgTemplate\Project\obj\Release\AgTemplate.MDIMain.resources
+I:\Common\AgTemplate\Project\obj\Release\AgTemplate.vbproj.GenerateResource.Cache
+I:\Common\AgTemplate\Project\obj\Release\AgTemplate.dll
+I:\Common\AgTemplate\Project\obj\Release\AgTemplate.xml
+I:\Common\AgTemplate\Project\obj\Release\AgTemplate.pdb
+\\arpit-pc\Active Project\AgTemplate\Release\AgTemplate.dll
+\\arpit-pc\Active Project\AgTemplate\Release\AgTemplate.pdb
+\\arpit-pc\Active Project\AgTemplate\Release\AgTemplate.xml
+\\arpit-pc\Active Project\AgTemplate\Project\obj\Release\ResolveAssemblyReference.cache
+\\arpit-pc\Active Project\AgTemplate\Project\obj\Release\AgTemplate.FrmReportFormat.resources
+\\arpit-pc\Active Project\AgTemplate\Project\obj\Release\AgTemplate.FrmReportWindow.resources
+\\arpit-pc\Active Project\AgTemplate\Project\obj\Release\AgTemplate.FrmSearchReport.resources
+\\arpit-pc\Active Project\AgTemplate\Project\obj\Release\AgTemplate.FrmUpdateStatus.resources
+\\arpit-pc\Active Project\AgTemplate\Project\obj\Release\AgTemplate.TempJobInvoice.resources
+\\arpit-pc\Active Project\AgTemplate\Project\obj\Release\AgTemplate.FrmProcess.resources
+\\arpit-pc\Active Project\AgTemplate\Project\obj\Release\AgTemplate.TempJobExchange.resources
+\\arpit-pc\Active Project\AgTemplate\Project\obj\Release\AgTemplate.FrmJobQcDetail.resources
+\\arpit-pc\Active Project\AgTemplate\Project\obj\Release\AgTemplate.FrmReminder.resources
+\\arpit-pc\Active Project\AgTemplate\Project\obj\Release\AgTemplate.FrmRemindMe.resources
+\\arpit-pc\Active Project\AgTemplate\Project\obj\Release\AgTemplate.TempInvoice.resources
+\\arpit-pc\Active Project\AgTemplate\Project\obj\Release\AgTemplate.TempJobReceive.resources
+\\arpit-pc\Active Project\AgTemplate\Project\obj\Release\AgTemplate.TempJobWorkerRateMaster.resources
+\\arpit-pc\Active Project\AgTemplate\Project\obj\Release\AgTemplate.TempPaymentMultipleParty.resources
+\\arpit-pc\Active Project\AgTemplate\Project\obj\Release\AgTemplate.TempPurchInvoice.resources
+\\arpit-pc\Active Project\AgTemplate\Project\obj\Release\AgTemplate.FrmLotWiseStock.resources
+\\arpit-pc\Active Project\AgTemplate\Project\obj\Release\AgTemplate.FrmSiteMaster.resources
+\\arpit-pc\Active Project\AgTemplate\Project\obj\Release\AgTemplate.TempGateInOut.resources
+\\arpit-pc\Active Project\AgTemplate\Project\obj\Release\AgTemplate.TempPayment.resources
+\\arpit-pc\Active Project\AgTemplate\Project\obj\Release\AgTemplate.TempPhysicalStockEntry.resources
+\\arpit-pc\Active Project\AgTemplate\Project\obj\Release\AgTemplate.TempPurchQuotSelectionSelection.resources
+\\arpit-pc\Active Project\AgTemplate\Project\obj\Release\AgTemplate.TempQCParameterDetail.resources
+\\arpit-pc\Active Project\AgTemplate\Project\obj\Release\AgTemplate.FrmTransporter.resources
+\\arpit-pc\Active Project\AgTemplate\Project\obj\Release\AgTemplate.TempCity.resources
+\\arpit-pc\Active Project\AgTemplate\Project\obj\Release\AgTemplate.TempDocumentEntry.resources
+\\arpit-pc\Active Project\AgTemplate\Project\obj\Release\AgTemplate.TempDocumentMaster.resources
+\\arpit-pc\Active Project\AgTemplate\Project\obj\Release\AgTemplate.TempFormIssue.resources
+\\arpit-pc\Active Project\AgTemplate\Project\obj\Release\AgTemplate.TempFormReceive.resources
+\\arpit-pc\Active Project\AgTemplate\Project\obj\Release\AgTemplate.TempFormMaster.resources
+\\arpit-pc\Active Project\AgTemplate\Project\obj\Release\AgTemplate.TempGodown.resources
+\\arpit-pc\Active Project\AgTemplate\Project\obj\Release\AgTemplate.TempItem.resources
+\\arpit-pc\Active Project\AgTemplate\Project\obj\Release\AgTemplate.TempJobOrder.resources
+\\arpit-pc\Active Project\AgTemplate\Project\obj\Release\AgTemplate.TempSaleChallan.resources
+\\arpit-pc\Active Project\AgTemplate\Project\obj\Release\AgTemplate.TempMaster.resources
+\\arpit-pc\Active Project\AgTemplate\Project\obj\Release\AgTemplate.TempMaterialPlan.resources
+\\arpit-pc\Active Project\AgTemplate\Project\obj\Release\AgTemplate.TempProductionPlan.resources
+\\arpit-pc\Active Project\AgTemplate\Project\obj\Release\AgTemplate.TempPurchIndentReq.resources
+\\arpit-pc\Active Project\AgTemplate\Project\obj\Release\AgTemplate.TempPurchaseReturn.resources
+\\arpit-pc\Active Project\AgTemplate\Project\obj\Release\AgTemplate.TempPurchIndent.resources
+\\arpit-pc\Active Project\AgTemplate\Project\obj\Release\AgTemplate.TempPurchInvoiceCommon.resources
+\\arpit-pc\Active Project\AgTemplate\Project\obj\Release\AgTemplate.TempPurchQuotation.resources
+\\arpit-pc\Active Project\AgTemplate\Project\obj\Release\AgTemplate.TempQC.resources
+\\arpit-pc\Active Project\AgTemplate\Project\obj\Release\AgTemplate.TempQCGroup.resources
+\\arpit-pc\Active Project\AgTemplate\Project\obj\Release\AgTemplate.TempRequisition.resources
+\\arpit-pc\Active Project\AgTemplate\Project\obj\Release\AgTemplate.TempShipmentEntry.resources
+\\arpit-pc\Active Project\AgTemplate\Project\obj\Release\AgTemplate.TempStockAdjustment.resources
+\\arpit-pc\Active Project\AgTemplate\Project\obj\Release\AgTemplate.TempStockAdjustmentIssue.resources
+\\arpit-pc\Active Project\AgTemplate\Project\obj\Release\AgTemplate.TempStockTransferIssue.resources
+\\arpit-pc\Active Project\AgTemplate\Project\obj\Release\AgTemplate.TempStockTransferReceive.resources
+\\arpit-pc\Active Project\AgTemplate\Project\obj\Release\AgTemplate.TempSubGroup.resources
+\\arpit-pc\Active Project\AgTemplate\Project\obj\Release\AgTemplate.TempTransaction.resources
+\\arpit-pc\Active Project\AgTemplate\Project\obj\Release\AgTemplate.TempVisitorsGateInOut.resources
+\\arpit-pc\Active Project\AgTemplate\Project\obj\Release\AgTemplate.Resources.resources
+\\arpit-pc\Active Project\AgTemplate\Project\obj\Release\AgTemplate.MDIMain.resources
+\\arpit-pc\Active Project\AgTemplate\Project\obj\Release\AgTemplate.vbproj.GenerateResource.Cache
+\\arpit-pc\Active Project\AgTemplate\Project\obj\Release\AgTemplate.dll
+\\arpit-pc\Active Project\AgTemplate\Project\obj\Release\AgTemplate.xml
+\\arpit-pc\Active Project\AgTemplate\Project\obj\Release\AgTemplate.pdb
+E:\Arpit\Active Project\AgTemplate\Release\AgTemplate.dll
+E:\Arpit\Active Project\AgTemplate\Release\AgTemplate.pdb
+E:\Arpit\Active Project\AgTemplate\Release\AgTemplate.xml
+E:\Arpit\Active Project\AgTemplate\Project\obj\Release\ResolveAssemblyReference.cache
+E:\Arpit\Active Project\AgTemplate\Project\obj\Release\AgTemplate.FrmReportFormat.resources
+E:\Arpit\Active Project\AgTemplate\Project\obj\Release\AgTemplate.FrmReportWindow.resources
+E:\Arpit\Active Project\AgTemplate\Project\obj\Release\AgTemplate.FrmSearchReport.resources
+E:\Arpit\Active Project\AgTemplate\Project\obj\Release\AgTemplate.FrmUpdateStatus.resources
+E:\Arpit\Active Project\AgTemplate\Project\obj\Release\AgTemplate.TempGateInOut.resources
+E:\Arpit\Active Project\AgTemplate\Project\obj\Release\AgTemplate.TempVisitorsGateInOut.resources
+E:\Arpit\Active Project\AgTemplate\Project\obj\Release\AgTemplate.TempJobInvoice.resources
+E:\Arpit\Active Project\AgTemplate\Project\obj\Release\AgTemplate.FrmProcess.resources
+E:\Arpit\Active Project\AgTemplate\Project\obj\Release\AgTemplate.TempJobExchange.resources
+E:\Arpit\Active Project\AgTemplate\Project\obj\Release\AgTemplate.FrmJobQcDetail.resources
+E:\Arpit\Active Project\AgTemplate\Project\obj\Release\AgTemplate.FrmReminder.resources
+E:\Arpit\Active Project\AgTemplate\Project\obj\Release\AgTemplate.FrmRemindMe.resources
+E:\Arpit\Active Project\AgTemplate\Project\obj\Release\AgTemplate.TempJobReceive.resources
+E:\Arpit\Active Project\AgTemplate\Project\obj\Release\AgTemplate.TempJobWorkerRateMaster.resources
+E:\Arpit\Active Project\AgTemplate\Project\obj\Release\AgTemplate.FrmLotWiseStock.resources
+E:\Arpit\Active Project\AgTemplate\Project\obj\Release\AgTemplate.TempQCGroup.resources
+E:\Arpit\Active Project\AgTemplate\Project\obj\Release\AgTemplate.TempPhysicalStockEntry.resources
+E:\Arpit\Active Project\AgTemplate\Project\obj\Release\AgTemplate.TempPurchQuotSelectionSelection.resources
+E:\Arpit\Active Project\AgTemplate\Project\obj\Release\AgTemplate.TempQCParameterDetail.resources
+E:\Arpit\Active Project\AgTemplate\Project\obj\Release\AgTemplate.TempDocumentEntry.resources
+E:\Arpit\Active Project\AgTemplate\Project\obj\Release\AgTemplate.TempDocumentMaster.resources
+E:\Arpit\Active Project\AgTemplate\Project\obj\Release\AgTemplate.TempFormIssue.resources
+E:\Arpit\Active Project\AgTemplate\Project\obj\Release\AgTemplate.TempFormReceive.resources
+E:\Arpit\Active Project\AgTemplate\Project\obj\Release\AgTemplate.TempFormMaster.resources
+E:\Arpit\Active Project\AgTemplate\Project\obj\Release\AgTemplate.TempItem.resources
+E:\Arpit\Active Project\AgTemplate\Project\obj\Release\AgTemplate.TempJobOrder.resources
+E:\Arpit\Active Project\AgTemplate\Project\obj\Release\AgTemplate.TempMaster.resources
+E:\Arpit\Active Project\AgTemplate\Project\obj\Release\AgTemplate.TempPurchIndentReq.resources
+E:\Arpit\Active Project\AgTemplate\Project\obj\Release\AgTemplate.TempPurchQuotation.resources
+E:\Arpit\Active Project\AgTemplate\Project\obj\Release\AgTemplate.TempQC.resources
+E:\Arpit\Active Project\AgTemplate\Project\obj\Release\AgTemplate.TempShipmentEntry.resources
+E:\Arpit\Active Project\AgTemplate\Project\obj\Release\AgTemplate.TempStockAdjustment.resources
+E:\Arpit\Active Project\AgTemplate\Project\obj\Release\AgTemplate.TempStockAdjustmentIssue.resources
+E:\Arpit\Active Project\AgTemplate\Project\obj\Release\AgTemplate.TempStockTransferIssue.resources
+E:\Arpit\Active Project\AgTemplate\Project\obj\Release\AgTemplate.TempStockTransferReceive.resources
+E:\Arpit\Active Project\AgTemplate\Project\obj\Release\AgTemplate.TempSubGroup.resources
+E:\Arpit\Active Project\AgTemplate\Project\obj\Release\AgTemplate.TempTransaction.resources
+E:\Arpit\Active Project\AgTemplate\Project\obj\Release\AgTemplate.Resources.resources
+E:\Arpit\Active Project\AgTemplate\Project\obj\Release\AgTemplate.MDIMain.resources
+E:\Arpit\Active Project\AgTemplate\Project\obj\Release\AgTemplate.vbproj.GenerateResource.Cache
+E:\Arpit\Active Project\AgTemplate\Project\obj\Release\AgTemplate.dll
+E:\Arpit\Active Project\AgTemplate\Project\obj\Release\AgTemplate.xml
+E:\Arpit\Active Project\AgTemplate\Project\obj\Release\AgTemplate.pdb
+E:\Arpit\Active Project\AgTemplate\Project\obj\Release\AgTemplate.FrmErrorBox.resources
+E:\Active Projects\AgTemplate\Release\AgTemplate.dll
+E:\Active Projects\AgTemplate\Release\AgTemplate.pdb
+E:\Active Projects\AgTemplate\Release\AgTemplate.xml
+E:\Active Projects\AgTemplate\Project\obj\Release\ResolveAssemblyReference.cache
+E:\Active Projects\AgTemplate\Project\obj\Release\AgTemplate.FrmErrorBox.resources
+E:\Active Projects\AgTemplate\Project\obj\Release\AgTemplate.FrmReportFormat.resources
+E:\Active Projects\AgTemplate\Project\obj\Release\AgTemplate.FrmReportWindow.resources
+E:\Active Projects\AgTemplate\Project\obj\Release\AgTemplate.FrmSearchReport.resources
+E:\Active Projects\AgTemplate\Project\obj\Release\AgTemplate.FrmUpdateStatus.resources
+E:\Active Projects\AgTemplate\Project\obj\Release\AgTemplate.TempGateInOut.resources
+E:\Active Projects\AgTemplate\Project\obj\Release\AgTemplate.TempVisitorsGateInOut.resources
+E:\Active Projects\AgTemplate\Project\obj\Release\AgTemplate.TempJobInvoice.resources
+E:\Active Projects\AgTemplate\Project\obj\Release\AgTemplate.FrmProcess.resources
+E:\Active Projects\AgTemplate\Project\obj\Release\AgTemplate.TempJobExchange.resources
+E:\Active Projects\AgTemplate\Project\obj\Release\AgTemplate.FrmJobQcDetail.resources
+E:\Active Projects\AgTemplate\Project\obj\Release\AgTemplate.FrmReminder.resources
+E:\Active Projects\AgTemplate\Project\obj\Release\AgTemplate.FrmRemindMe.resources
+E:\Active Projects\AgTemplate\Project\obj\Release\AgTemplate.TempJobReceive.resources
+E:\Active Projects\AgTemplate\Project\obj\Release\AgTemplate.TempJobWorkerRateMaster.resources
+E:\Active Projects\AgTemplate\Project\obj\Release\AgTemplate.FrmLotWiseStock.resources
+E:\Active Projects\AgTemplate\Project\obj\Release\AgTemplate.TempQCGroup.resources
+E:\Active Projects\AgTemplate\Project\obj\Release\AgTemplate.TempPhysicalStockEntry.resources
+E:\Active Projects\AgTemplate\Project\obj\Release\AgTemplate.TempPurchQuotSelectionSelection.resources
+E:\Active Projects\AgTemplate\Project\obj\Release\AgTemplate.TempQCParameterDetail.resources
+E:\Active Projects\AgTemplate\Project\obj\Release\AgTemplate.TempDocumentEntry.resources
+E:\Active Projects\AgTemplate\Project\obj\Release\AgTemplate.TempDocumentMaster.resources
+E:\Active Projects\AgTemplate\Project\obj\Release\AgTemplate.TempFormIssue.resources
+E:\Active Projects\AgTemplate\Project\obj\Release\AgTemplate.TempFormReceive.resources
+E:\Active Projects\AgTemplate\Project\obj\Release\AgTemplate.TempFormMaster.resources
+E:\Active Projects\AgTemplate\Project\obj\Release\AgTemplate.TempItem.resources
+E:\Active Projects\AgTemplate\Project\obj\Release\AgTemplate.TempJobOrder.resources
+E:\Active Projects\AgTemplate\Project\obj\Release\AgTemplate.TempMaster.resources
+E:\Active Projects\AgTemplate\Project\obj\Release\AgTemplate.TempPurchIndentReq.resources
+E:\Active Projects\AgTemplate\Project\obj\Release\AgTemplate.TempPurchQuotation.resources
+E:\Active Projects\AgTemplate\Project\obj\Release\AgTemplate.TempQC.resources
+E:\Active Projects\AgTemplate\Project\obj\Release\AgTemplate.TempShipmentEntry.resources
+E:\Active Projects\AgTemplate\Project\obj\Release\AgTemplate.TempStockAdjustment.resources
+E:\Active Projects\AgTemplate\Project\obj\Release\AgTemplate.TempStockAdjustmentIssue.resources
+E:\Active Projects\AgTemplate\Project\obj\Release\AgTemplate.TempStockTransferIssue.resources
+E:\Active Projects\AgTemplate\Project\obj\Release\AgTemplate.TempStockTransferReceive.resources
+E:\Active Projects\AgTemplate\Project\obj\Release\AgTemplate.TempSubGroup.resources
+E:\Active Projects\AgTemplate\Project\obj\Release\AgTemplate.TempTransaction.resources
+E:\Active Projects\AgTemplate\Project\obj\Release\AgTemplate.Resources.resources
+E:\Active Projects\AgTemplate\Project\obj\Release\AgTemplate.MDIMain.resources
+E:\Active Projects\AgTemplate\Project\obj\Release\AgTemplate.vbproj.GenerateResource.Cache
+E:\Active Projects\AgTemplate\Project\obj\Release\AgTemplate.dll
+E:\Active Projects\AgTemplate\Project\obj\Release\AgTemplate.xml
+E:\Active Projects\AgTemplate\Project\obj\Release\AgTemplate.pdb
+D:\Satyam\Active Projects\SqLite\AgTemplate\Project\obj\Release\AgTemplate.FrmErrorBox.resources
+D:\Satyam\Active Projects\SqLite\AgTemplate\Project\obj\Release\AgTemplate.FrmReportFormat.resources
+D:\Satyam\Active Projects\SqLite\AgTemplate\Project\obj\Release\AgTemplate.FrmReportWindow.resources
+D:\Satyam\Active Projects\SqLite\AgTemplate\Project\obj\Release\AgTemplate.FrmUpdateStatus.resources
+D:\Satyam\Active Projects\SqLite\AgTemplate\Project\obj\Release\AgTemplate.FrmReminder.resources
+D:\Satyam\Active Projects\SqLite\AgTemplate\Project\obj\Release\AgTemplate.FrmRemindMe.resources
+D:\Satyam\Active Projects\SqLite\AgTemplate\Project\obj\Release\AgTemplate.TempMaster.resources
+D:\Satyam\Active Projects\SqLite\AgTemplate\Project\obj\Release\AgTemplate.TempSubGroup.resources
+D:\Satyam\Active Projects\SqLite\AgTemplate\Project\obj\Release\AgTemplate.TempTransaction.resources
+D:\Satyam\Active Projects\SqLite\AgTemplate\Project\obj\Release\AgTemplate.Resources.resources
+D:\Satyam\Active Projects\SqLite\AgTemplate\Project\obj\Release\AgTemplate.MDIMain.resources
+D:\Satyam\Active Projects\SqLite\AgTemplate\Project\obj\Release\AgTemplate.vbproj.GenerateResource.Cache
+D:\Satyam\Active Projects\SqLite\AgTemplate\Release\AgTemplate.dll.config
+D:\Satyam\Active Projects\SqLite\AgTemplate\Release\AgTemplate.dll
+D:\Satyam\Active Projects\SqLite\AgTemplate\Release\AgTemplate.pdb
+D:\Satyam\Active Projects\SqLite\AgTemplate\Release\AgTemplate.xml
+D:\Satyam\Active Projects\SqLite\AgTemplate\Project\obj\Release\AgTemplate.dll
+D:\Satyam\Active Projects\SqLite\AgTemplate\Project\obj\Release\AgTemplate.xml
+D:\Satyam\Active Projects\SqLite\AgTemplate\Project\obj\Release\AgTemplate.pdb
+D:\KC\Source\Sqlite\AgTemplate\Release\AgTemplate.dll.config
+D:\KC\Source\Sqlite\AgTemplate\Release\AgTemplate.dll
+D:\KC\Source\Sqlite\AgTemplate\Release\AgTemplate.pdb
+D:\KC\Source\Sqlite\AgTemplate\Release\AgTemplate.xml
+D:\KC\Source\Sqlite\AgTemplate\Project\obj\Release\AgTemplate.FrmErrorBox.resources
+D:\KC\Source\Sqlite\AgTemplate\Project\obj\Release\AgTemplate.FrmReportFormat.resources
+D:\KC\Source\Sqlite\AgTemplate\Project\obj\Release\AgTemplate.FrmReportWindow.resources
+D:\KC\Source\Sqlite\AgTemplate\Project\obj\Release\AgTemplate.FrmUpdateStatus.resources
+D:\KC\Source\Sqlite\AgTemplate\Project\obj\Release\AgTemplate.FrmReminder.resources
+D:\KC\Source\Sqlite\AgTemplate\Project\obj\Release\AgTemplate.FrmRemindMe.resources
+D:\KC\Source\Sqlite\AgTemplate\Project\obj\Release\AgTemplate.TempMaster.resources
+D:\KC\Source\Sqlite\AgTemplate\Project\obj\Release\AgTemplate.TempSubGroup.resources
+D:\KC\Source\Sqlite\AgTemplate\Project\obj\Release\AgTemplate.TempTransaction.resources
+D:\KC\Source\Sqlite\AgTemplate\Project\obj\Release\AgTemplate.Resources.resources
+D:\KC\Source\Sqlite\AgTemplate\Project\obj\Release\AgTemplate.MDIMain.resources
+D:\KC\Source\Sqlite\AgTemplate\Project\obj\Release\AgTemplate.vbproj.GenerateResource.Cache
+D:\KC\Source\Sqlite\AgTemplate\Project\obj\Release\AgTemplate.dll
+D:\KC\Source\Sqlite\AgTemplate\Project\obj\Release\AgTemplate.xml
+D:\KC\Source\Sqlite\AgTemplate\Project\obj\Release\AgTemplate.pdb
+D:\KC\Source\Sqlite\AgTemplate\Project\obj\Release\AgTemplate.vbprojResolveAssemblyReference.cache
+D:\Working Copy\trunk\AgTemplate\Release\AgTemplate.dll.config
+D:\Working Copy\trunk\AgTemplate\Release\AgTemplate.dll
+D:\Working Copy\trunk\AgTemplate\Release\AgTemplate.pdb
+D:\Working Copy\trunk\AgTemplate\Release\AgTemplate.xml
+D:\Working Copy\trunk\AgTemplate\Project\obj\Release\AgTemplate.vbprojResolveAssemblyReference.cache
+D:\Working Copy\trunk\AgTemplate\Project\obj\Release\AgTemplate.FrmErrorBox.resources
+D:\Working Copy\trunk\AgTemplate\Project\obj\Release\AgTemplate.FrmUpdateStatus.resources
+D:\Working Copy\trunk\AgTemplate\Project\obj\Release\AgTemplate.FrmReminder.resources
+D:\Working Copy\trunk\AgTemplate\Project\obj\Release\AgTemplate.FrmRemindMe.resources
+D:\Working Copy\trunk\AgTemplate\Project\obj\Release\AgTemplate.TempMaster.resources
+D:\Working Copy\trunk\AgTemplate\Project\obj\Release\AgTemplate.TempSubGroup.resources
+D:\Working Copy\trunk\AgTemplate\Project\obj\Release\AgTemplate.TempTransaction.resources
+D:\Working Copy\trunk\AgTemplate\Project\obj\Release\AgTemplate.Resources.resources
+D:\Working Copy\trunk\AgTemplate\Project\obj\Release\AgTemplate.MDIMain.resources
+D:\Working Copy\trunk\AgTemplate\Project\obj\Release\AgTemplate.vbproj.GenerateResource.Cache
+D:\Working Copy\trunk\AgTemplate\Project\obj\Release\AgTemplate.dll
+D:\Working Copy\trunk\AgTemplate\Project\obj\Release\AgTemplate.xml
+D:\Working Copy\trunk\AgTemplate\Project\obj\Release\AgTemplate.pdb
+E:\08-Jun-18\trunk\AgTemplate\Release\AgTemplate.dll.config
+E:\08-Jun-18\trunk\AgTemplate\Release\AgTemplate.dll
+E:\08-Jun-18\trunk\AgTemplate\Release\AgTemplate.pdb
+E:\08-Jun-18\trunk\AgTemplate\Release\AgTemplate.xml
+E:\08-Jun-18\trunk\AgTemplate\Project\obj\Release\AgTemplate.vbprojResolveAssemblyReference.cache
+E:\08-Jun-18\trunk\AgTemplate\Project\obj\Release\AgTemplate.FrmErrorBox.resources
+E:\08-Jun-18\trunk\AgTemplate\Project\obj\Release\AgTemplate.FrmReportFormat.resources
+E:\08-Jun-18\trunk\AgTemplate\Project\obj\Release\AgTemplate.FrmReportWindow.resources
+E:\08-Jun-18\trunk\AgTemplate\Project\obj\Release\AgTemplate.FrmUpdateStatus.resources
+E:\08-Jun-18\trunk\AgTemplate\Project\obj\Release\AgTemplate.FrmReminder.resources
+E:\08-Jun-18\trunk\AgTemplate\Project\obj\Release\AgTemplate.FrmRemindMe.resources
+E:\08-Jun-18\trunk\AgTemplate\Project\obj\Release\AgTemplate.TempMaster.resources
+E:\08-Jun-18\trunk\AgTemplate\Project\obj\Release\AgTemplate.TempSubGroup.resources
+E:\08-Jun-18\trunk\AgTemplate\Project\obj\Release\AgTemplate.TempTransaction.resources
+E:\08-Jun-18\trunk\AgTemplate\Project\obj\Release\AgTemplate.Resources.resources
+E:\08-Jun-18\trunk\AgTemplate\Project\obj\Release\AgTemplate.MDIMain.resources
+E:\08-Jun-18\trunk\AgTemplate\Project\obj\Release\AgTemplate.vbproj.GenerateResource.Cache
+E:\08-Jun-18\trunk\AgTemplate\Project\obj\Release\AgTemplate.dll
+E:\08-Jun-18\trunk\AgTemplate\Project\obj\Release\AgTemplate.xml
+E:\08-Jun-18\trunk\AgTemplate\Project\obj\Release\AgTemplate.pdb
+D:\WorkingCopy\DesktopApp\trunk\AgTemplate\Release\AgTemplate.dll.config
+D:\WorkingCopy\DesktopApp\trunk\AgTemplate\Release\AgTemplate.dll
+D:\WorkingCopy\DesktopApp\trunk\AgTemplate\Release\AgTemplate.pdb
+D:\WorkingCopy\DesktopApp\trunk\AgTemplate\Release\AgTemplate.xml
+D:\WorkingCopy\DesktopApp\trunk\AgTemplate\Project\obj\Release\AgTemplate.FrmErrorBox.resources
+D:\WorkingCopy\DesktopApp\trunk\AgTemplate\Project\obj\Release\AgTemplate.FrmUpdateStatus.resources
+D:\WorkingCopy\DesktopApp\trunk\AgTemplate\Project\obj\Release\AgTemplate.FrmReminder.resources
+D:\WorkingCopy\DesktopApp\trunk\AgTemplate\Project\obj\Release\AgTemplate.FrmRemindMe.resources
+D:\WorkingCopy\DesktopApp\trunk\AgTemplate\Project\obj\Release\AgTemplate.TempMaster.resources
+D:\WorkingCopy\DesktopApp\trunk\AgTemplate\Project\obj\Release\AgTemplate.TempSubGroup.resources
+D:\WorkingCopy\DesktopApp\trunk\AgTemplate\Project\obj\Release\AgTemplate.TempTransaction.resources
+D:\WorkingCopy\DesktopApp\trunk\AgTemplate\Project\obj\Release\AgTemplate.Resources.resources
+D:\WorkingCopy\DesktopApp\trunk\AgTemplate\Project\obj\Release\AgTemplate.MDIMain.resources
+D:\WorkingCopy\DesktopApp\trunk\AgTemplate\Project\obj\Release\AgTemplate.vbproj.GenerateResource.Cache
+D:\WorkingCopy\DesktopApp\trunk\AgTemplate\Project\obj\Release\AgTemplate.dll
+D:\WorkingCopy\DesktopApp\trunk\AgTemplate\Project\obj\Release\AgTemplate.xml
+D:\WorkingCopy\DesktopApp\trunk\AgTemplate\Project\obj\Release\AgTemplate.pdb
+D:\DesktopApp\trunk\AgTemplate\Release\AgTemplate.dll.config
+D:\DesktopApp\trunk\AgTemplate\Release\AgTemplate.dll
+D:\DesktopApp\trunk\AgTemplate\Release\AgTemplate.pdb
+D:\DesktopApp\trunk\AgTemplate\Release\AgTemplate.xml
+D:\DesktopApp\trunk\AgTemplate\Project\obj\Release\AgTemplate.FrmErrorBox.resources
+D:\DesktopApp\trunk\AgTemplate\Project\obj\Release\AgTemplate.FrmUpdateStatus.resources
+D:\DesktopApp\trunk\AgTemplate\Project\obj\Release\AgTemplate.FrmReminder.resources
+D:\DesktopApp\trunk\AgTemplate\Project\obj\Release\AgTemplate.FrmRemindMe.resources
+D:\DesktopApp\trunk\AgTemplate\Project\obj\Release\AgTemplate.TempMaster.resources
+D:\DesktopApp\trunk\AgTemplate\Project\obj\Release\AgTemplate.TempSubGroup.resources
+D:\DesktopApp\trunk\AgTemplate\Project\obj\Release\AgTemplate.TempTransaction.resources
+D:\DesktopApp\trunk\AgTemplate\Project\obj\Release\AgTemplate.Resources.resources
+D:\DesktopApp\trunk\AgTemplate\Project\obj\Release\AgTemplate.MDIMain.resources
+D:\DesktopApp\trunk\AgTemplate\Project\obj\Release\AgTemplate.vbproj.GenerateResource.Cache
+D:\DesktopApp\trunk\AgTemplate\Project\obj\Release\AgTemplate.dll
+D:\DesktopApp\trunk\AgTemplate\Project\obj\Release\AgTemplate.xml
+D:\DesktopApp\trunk\AgTemplate\Project\obj\Release\AgTemplate.pdb

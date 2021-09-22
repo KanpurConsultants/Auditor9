@@ -1,0 +1,16 @@
+<?xml version="1.0" standalone="yes"?>
+<NewDataSet>
+  <Table>
+    <Code>1</Code>
+    <EffectiveUptoDate>2000-01-01T00:00:00+05:30</EffectiveUptoDate>
+    <DocumentHeaderRow1Left>SHRI PARWATI SAREE CENTRE</DocumentHeaderRow1Left>
+    <DocumentHeaderRow2Left>50/288, SHYAMA CHARAN AGARWAL MARKET, BADSHAHI NAKA</DocumentHeaderRow2Left>
+    <DocumentHeaderRow3Left>Kanpur,208001</DocumentHeaderRow3Left>
+    <DocumentHeaderRow1Right>GST No : 09AAOPB2757R1ZZ</DocumentHeaderRow1Right>
+    <DocumentHeaderRow2Right>PHONE : 9450349488,8707249259</DocumentHeaderRow2Right>
+    <IsSalesTaxApplicable>true</IsSalesTaxApplicable>
+    <WeekOffDays>0</WeekOffDays>
+    <EntryBy>System</EntryBy>
+    <EntryDate>2019-03-30T11:38:00+05:30</EntryDate>
+  </Table>
+</NewDataSet>

@@ -1,0 +1,7 @@
+BookName	String	150
+Author	String	150
+Publisher	String	150
+BookCode	String	150
+Rate	Currency
+SaleQty	Currency
+

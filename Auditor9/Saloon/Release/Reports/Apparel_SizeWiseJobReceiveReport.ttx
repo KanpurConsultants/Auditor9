@@ -1,0 +1,12 @@
+; Field definition file for table: ADORecordset
+DocID	string	255	D1  SORD 2019     167	
+V_Date	datetime	02/Dec/2019 12:00:00 AM	
+ItemSpecification	string	255		
+ItemDesc	string	255	COAT FUSE-LEADER-MAHROON-28 - COAT FUSE	
+ItemGroupName	string	255		
+ItemCategoryDescription	string	255	COAT FUSE	
+D1Specification	string	255	LEADER	
+D2Specification	string	255	MAHROON	
+D3Specification	string	255		
+SizeSpecification	string	255	28	
+Qty	number	25	

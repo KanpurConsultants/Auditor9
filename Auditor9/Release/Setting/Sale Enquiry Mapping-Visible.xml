@@ -1,0 +1,297 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<GridSave>
+  <Column>
+    <Name>Search Code</Name>
+    <Index>0</Index>
+    <Width>110</Width>
+    <Visible>False</Visible>
+    <AggregateFunction />
+  </Column>
+  <Column>
+    <Name>Sr</Name>
+    <Index>1</Index>
+    <Width>51</Width>
+    <Visible>False</Visible>
+    <AggregateFunction />
+  </Column>
+  <Column>
+    <Name>Enquiry No</Name>
+    <Index>2</Index>
+    <Width>71</Width>
+    <Visible>True</Visible>
+    <AggregateFunction />
+  </Column>
+  <Column>
+    <Name>Enquiry Date</Name>
+    <Index>3</Index>
+    <Width>99</Width>
+    <Visible>True</Visible>
+    <AggregateFunction />
+  </Column>
+  <Column>
+    <Name>Party Name</Name>
+    <Index>4</Index>
+    <Width>126</Width>
+    <Visible>True</Visible>
+    <AggregateFunction />
+  </Column>
+  <Column>
+    <Name>Party Doc No</Name>
+    <Index>5</Index>
+    <Width>62</Width>
+    <Visible>True</Visible>
+    <AggregateFunction />
+  </Column>
+  <Column>
+    <Name>Party Doc Date</Name>
+    <Index>6</Index>
+    <Width>93</Width>
+    <Visible>True</Visible>
+    <AggregateFunction />
+  </Column>
+  <Column>
+    <Name>Party Item</Name>
+    <Index>7</Index>
+    <Width>99</Width>
+    <Visible>True</Visible>
+    <AggregateFunction />
+  </Column>
+  <Column>
+    <Name>Party Item Specification1</Name>
+    <Index>8</Index>
+    <Width>80</Width>
+    <Visible>True</Visible>
+    <AggregateFunction />
+  </Column>
+  <Column>
+    <Name>Party Item Specification2</Name>
+    <Index>9</Index>
+    <Width>81</Width>
+    <Visible>True</Visible>
+    <AggregateFunction />
+  </Column>
+  <Column>
+    <Name>Party Item Specification3</Name>
+    <Index>10</Index>
+    <Width>88</Width>
+    <Visible>True</Visible>
+    <AggregateFunction />
+  </Column>
+  <Column>
+    <Name>Party Item Specification4</Name>
+    <Index>11</Index>
+    <Width>187</Width>
+    <Visible>False</Visible>
+    <AggregateFunction />
+  </Column>
+  <Column>
+    <Name>Party Item Specification5</Name>
+    <Index>12</Index>
+    <Width>187</Width>
+    <Visible>False</Visible>
+    <AggregateFunction />
+  </Column>
+  <Column>
+    <Name>Sale Enquiry Mapping Doc Id</Name>
+    <Index>13</Index>
+    <Width>114</Width>
+    <Visible>False</Visible>
+    <AggregateFunction />
+  </Column>
+  <Column>
+    <Name>Sale Order Doc Id</Name>
+    <Index>14</Index>
+    <Width>103</Width>
+    <Visible>False</Visible>
+    <AggregateFunction />
+  </Column>
+  <Column>
+    <Name>Sku Code</Name>
+    <Index>15</Index>
+    <Width>93</Width>
+    <Visible>False</Visible>
+    <AggregateFunction />
+  </Column>
+  <Column>
+    <Name>Item Code</Name>
+    <Index>16</Index>
+    <Width>96</Width>
+    <Visible>False</Visible>
+    <AggregateFunction />
+  </Column>
+  <Column>
+    <Name>Item Category Code</Name>
+    <Index>17</Index>
+    <Width>124</Width>
+    <Visible>False</Visible>
+    <AggregateFunction />
+  </Column>
+  <Column>
+    <Name>Item Group Code</Name>
+    <Index>18</Index>
+    <Width>106</Width>
+    <Visible>False</Visible>
+    <AggregateFunction />
+  </Column>
+  <Column>
+    <Name>Dimension1Code</Name>
+    <Index>19</Index>
+    <Width>147</Width>
+    <Visible>False</Visible>
+    <AggregateFunction />
+  </Column>
+  <Column>
+    <Name>Dimension2Code</Name>
+    <Index>20</Index>
+    <Width>147</Width>
+    <Visible>False</Visible>
+    <AggregateFunction />
+  </Column>
+  <Column>
+    <Name>Dimension3Code</Name>
+    <Index>21</Index>
+    <Width>147</Width>
+    <Visible>False</Visible>
+    <AggregateFunction />
+  </Column>
+  <Column>
+    <Name>Dimension4Code</Name>
+    <Index>22</Index>
+    <Width>147</Width>
+    <Visible>False</Visible>
+    <AggregateFunction />
+  </Column>
+  <Column>
+    <Name>Size Code</Name>
+    <Index>23</Index>
+    <Width>93</Width>
+    <Visible>False</Visible>
+    <AggregateFunction />
+  </Column>
+  <Column>
+    <Name>Unit</Name>
+    <Index>24</Index>
+    <Width>63</Width>
+    <Visible>True</Visible>
+    <AggregateFunction />
+  </Column>
+  <Column>
+    <Name>Sku</Name>
+    <Index>25</Index>
+    <Width>266</Width>
+    <Visible>False</Visible>
+    <AggregateFunction />
+  </Column>
+  <Column>
+    <Name>Item Category</Name>
+    <Index>26</Index>
+    <Width>84</Width>
+    <Visible>True</Visible>
+    <AggregateFunction />
+  </Column>
+  <Column>
+    <Name>Item Group</Name>
+    <Index>27</Index>
+    <Width>102</Width>
+    <Visible>False</Visible>
+    <AggregateFunction />
+  </Column>
+  <Column>
+    <Name>Item</Name>
+    <Index>28</Index>
+    <Width>266</Width>
+    <Visible>False</Visible>
+    <AggregateFunction />
+  </Column>
+  <Column>
+    <Name>Dimension1</Name>
+    <Index>29</Index>
+    <Width>93</Width>
+    <Visible>True</Visible>
+    <AggregateFunction />
+  </Column>
+  <Column>
+    <Name>Dimension2</Name>
+    <Index>30</Index>
+    <Width>102</Width>
+    <Visible>True</Visible>
+    <AggregateFunction />
+  </Column>
+  <Column>
+    <Name>Dimension3</Name>
+    <Index>31</Index>
+    <Width>114</Width>
+    <Visible>True</Visible>
+    <AggregateFunction />
+  </Column>
+  <Column>
+    <Name>Dimension4</Name>
+    <Index>32</Index>
+    <Width>114</Width>
+    <Visible>False</Visible>
+    <AggregateFunction />
+  </Column>
+  <Column>
+    <Name>Size</Name>
+    <Index>33</Index>
+    <Width>64</Width>
+    <Visible>True</Visible>
+    <AggregateFunction />
+  </Column>
+  <Column>
+    <Name>Main Item Category</Name>
+    <Index>34</Index>
+    <Width>98</Width>
+    <Visible>False</Visible>
+    <AggregateFunction />
+  </Column>
+  <Column>
+    <Name>Main Item Group</Name>
+    <Index>35</Index>
+    <Width>98</Width>
+    <Visible>False</Visible>
+    <AggregateFunction />
+  </Column>
+  <Column>
+    <Name>Main Item Specification</Name>
+    <Index>36</Index>
+    <Width>174</Width>
+    <Visible>False</Visible>
+    <AggregateFunction />
+  </Column>
+  <Column>
+    <Name>MDimension1</Name>
+    <Index>37</Index>
+    <Width>125</Width>
+    <Visible>False</Visible>
+    <AggregateFunction />
+  </Column>
+  <Column>
+    <Name>MDimension2</Name>
+    <Index>38</Index>
+    <Width>125</Width>
+    <Visible>False</Visible>
+    <AggregateFunction />
+  </Column>
+  <Column>
+    <Name>MDimension3</Name>
+    <Index>39</Index>
+    <Width>125</Width>
+    <Visible>False</Visible>
+    <AggregateFunction />
+  </Column>
+  <Column>
+    <Name>MDimension4</Name>
+    <Index>40</Index>
+    <Width>125</Width>
+    <Visible>False</Visible>
+    <AggregateFunction />
+  </Column>
+  <Column>
+    <Name>Main Size</Name>
+    <Index>41</Index>
+    <Width>92</Width>
+    <Visible>False</Visible>
+    <AggregateFunction />
+  </Column>
+</GridSave>

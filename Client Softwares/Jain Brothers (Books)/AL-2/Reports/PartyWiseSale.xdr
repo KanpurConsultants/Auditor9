@@ -1,0 +1,76 @@
+{DB D:\S2k\Consumer\Data\Company.001\S2K2002.mdb DB}
+
+{Sql SELECT * FROM Sale LEFT JOIN Account ON Sale.AccountID = Account.AccountID
+where Account.AccountID in ({Pm vAccountID Pm}) and
+Dated between #{Pm DateFrom Pm}# and #{Pm DateTo Pm}#
+order by Account.Account,Dated,DocNo
+Sql}
+
+{Xdr Settings
+Columns=80
+Lines=60
+Page Break=True
+Condense=False
+Character Per Inch=12
+Xdr Settings}
+
+{Formula
+ = 
+Formula}
+
+{GroupSection
+Report Header;
+Page Header;
+Header (Account);
+Detail;
+Footer (Account);
+Grand;
+Page Footer;
+Report Footer;
+GroupSection}
+
+{Parameter
+{Browser
+Select Account,AccountID from Account order by Account|3000;0|1|1=vAccountID
+Browser}
+DateFromToParameter}
+{Report Header
+Report Header}
+========================================================================================================================
+{Page Header
+lbl;PARTY WISE SALES.;62;0;1
+lbl;FOR PERIOD ;12;0;1}{lbl;{Pm DateFrom Pm};12;0;1}{lbl;to ;3;0;1}{lbl;{Pm DateTo Pm};36;0;1
+
+lbl;---------------------------------------------------------------------------;75;0;0
+lbl;DATE;12;0;0}{lbl;BILLNO;12;0;0}{lbl;;36;0;0}{lbl;AMOUNT;15;1;0
+lbl;---------------------------------------------------------------------------;75;0;0
+Page Header}
+========================================================================================================================
+{Header (Account)
+
+fld;Account;33;0;1
+Header (Account)}
+========================================================================================================================
+{Detail
+fld;DATED;12;0;0}{fml;DocNo;12;0;0}{lbl;;36;0;0}{fml;CF(GrandTotal);15;1;0
+Detail}
+========================================================================================================================
+{Footer (Account)
+lbl;------------------------------------------------------------------------------------------------------------------------------------------------------------;75;0;0
+lbl;TOTAL :;60;0;0}{fml;SUM(GrandTotal);15;1;1
+Footer (Account)}
+========================================================================================================================
+{Grand
+lbl;------------------------------------------------------------------------------------------------------------------------------------------------------------;75;0;0
+lbl;GRAND TOTAL :;60;0;0}{fml;SUM(GrandTotal);15;1;1
+Grand}
+========================================================================================================================
+{Page Footer
+
+Page Footer}
+========================================================================================================================
+{Report Footer
+
+Report Footer}
+========================================================================================================================
+

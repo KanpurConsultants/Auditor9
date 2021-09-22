@@ -1,0 +1,18 @@
+RefAccountID	Number
+Account	String	250
+BookName	String	250
+Publisher	String	250
+BookID	Number
+PurQty	Currency
+RetQty	Currency
+NetQty	Currency
+CalculationRate	Currency
+DisPer	Currency
+GrossTotal	Currency
+TNetAmount	Currency
+OwnerID	String	250
+vCalcOn	String	250
+CalcDisPer	Number
+FromDate	Date
+ToDate	Date
+

@@ -1,0 +1,70 @@
+{DB D:\S2k\Consumer\Data\Company.001\S2K2002.mdb DB}
+{Sql SELECT Book.BookName, Book.Publisher, Book.Author, Book.ISBN, Sum(ProductStock.Qty) AS SumOfQty, Sum(ProductStock.NetAmount) AS SumOfNetAmount
+FROM ProductStock LEFT JOIN Book ON ProductStock.BookID = Book.BookID
+where TransTypeID=7 and ProductStock.BookID in({Pm bOOKID Pm}) and 
+Dated between #{Pm DateFrom Pm}# and #{Pm DateTo Pm}#
+GROUP BY Book.BookName, Book.Publisher, Book.Author, Book.ISBN
+ORDER BY Book.Publisher,BookName, Book.Author; Sql}
+{Xdr Settings
+Columns=90
+Lines=60
+Page Break=True
+Condense=False
+Character Per Inch=12
+Xdr Settings}
+
+{Formula
+ = 
+Formula}
+
+{GroupSection
+Report Header;
+Page Header;
+Detail;
+Footer (Publisher);
+Grand;
+Page Footer;
+Report Footer;
+GroupSection}
+
+{Parameter
+{Browser
+Select BookName,Publisher,Author,BookID from Book order by BooknAME|3000;2000;1000;0|1|3=bOOKID
+Browser}
+DateFromToParameter}
+{Report Header
+Report Header}
+========================================================================================================================
+{Page Header
+lbl;Publisher WISE SALES.;83;0;0
+lbl;FOR PERIOD ;12;0;1}{lbl;{Pm DateFrom Pm};12;0;1}{lbl;to ;3;0;1}{lbl;{Pm DateTo Pm};36;0;1
+
+lbl;-------------------------------------------------------------------------------------------------;97;0;0
+lbl;Publisher;20;0;0}{lbl;BookName;37;0;0}{lbl;Author;20;0;0}{lbl;TotalQty;8;1;0}{lbl;NetAmount;12;1;0
+lbl;-------------------------------------------------------------------------------------------------;97;0;0
+Page Header}
+========================================================================================================================
+{Detail
+fml;NoDuplicate{Publisher,Publisher};20;0;0}{fld;BookName;37;0;0}{fld;Author;20;0;0}{fld;SumofQty;8;1;0}{fml;CF(SumofNetAmount);12;1;0
+Detail}
+========================================================================================================================
+{Footer (Publisher)
+lbl;-------------------------------------------------------------------------------------------------;97;0;0
+lbl;TOTAL :;85;0;0}{fml;Sum(SumofNetAmount);12;1;0
+lbl;-------------------------------------------------------------------------------------------------;97;0;0
+Footer (Publisher)}
+========================================================================================================================
+{Grand
+
+lbl;GRAND TOTAL :;85;0;0}{fml;Sum(SumofNetAMOUNT);12;1;0
+Grand}
+========================================================================================================================
+{Page Footer
+
+Page Footer}
+========================================================================================================================
+{Report Footer
+
+Report Footer}
+========================================================================================================================
+

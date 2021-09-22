@@ -1,0 +1,11 @@
+D:\DesktopApp\trunk\ValidateImportFiles\ValidateImportFiles\bin\Debug\ValidateImportFiles.exe.config
+D:\DesktopApp\trunk\ValidateImportFiles\ValidateImportFiles\obj\Debug\ValidateImportFiles.vbprojResolveAssemblyReference.cache
+D:\DesktopApp\trunk\ValidateImportFiles\ValidateImportFiles\obj\Debug\ValidateImportFiles.FrmCheckValidation.resources
+D:\DesktopApp\trunk\ValidateImportFiles\ValidateImportFiles\obj\Debug\ValidateImportFiles.Resources.resources
+D:\DesktopApp\trunk\ValidateImportFiles\ValidateImportFiles\obj\Debug\ValidateImportFiles.vbproj.GenerateResource.Cache
+D:\DesktopApp\trunk\ValidateImportFiles\ValidateImportFiles\obj\Debug\ValidateImportFiles.xml
+D:\DesktopApp\trunk\ValidateImportFiles\ValidateImportFiles\bin\Debug\ValidateImportFiles.exe
+D:\DesktopApp\trunk\ValidateImportFiles\ValidateImportFiles\bin\Debug\ValidateImportFiles.pdb
+D:\DesktopApp\trunk\ValidateImportFiles\ValidateImportFiles\bin\Debug\ValidateImportFiles.xml
+D:\DesktopApp\trunk\ValidateImportFiles\ValidateImportFiles\obj\Debug\ValidateImportFiles.exe
+D:\DesktopApp\trunk\ValidateImportFiles\ValidateImportFiles\obj\Debug\ValidateImportFiles.pdb

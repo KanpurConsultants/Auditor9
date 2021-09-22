@@ -1,0 +1,25 @@
+; Field definition file for table: ADORecordset
+Code	string	255	626	
+Barcode	string	255	8566208	
+BarCodeImg	BLOB		
+ItemDesc	string	255	GHUNGHAT	
+ItemCategoryDesc	string	255	SAREE	
+ItemGroupDesc	string	255	S.K	
+Dimension1Desc	string	255		
+Dimension2Desc	string	255		
+Dimension3Desc	string	255		
+Dimension4Desc	string	255		
+SizeDesc	string	255		
+PurchaseRate	number	797	
+SaleRate	number	0	
+MRP	number	0	
+ReceiveQty	number	6	
+GenSr	number	1	
+ItemMasterPurchaseRate	number	797	
+ItemMasterSaleRate	number	876	
+Title1	string	255	Surjeet Singh Satpal Singh	
+Title2	string	255		
+Title3	string	255		
+NETT	number	995	
+RandomNo1	long	303	
+RandomNo2	long	375	

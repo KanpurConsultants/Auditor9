@@ -1,0 +1,9 @@
+Account	String	250
+AccountId	Number
+Dated	Date
+NAmt	Currency
+TPaid	Currency
+Pending	Currency
+FromDate	Date
+ToDate	Date
+

@@ -1,0 +1,176 @@
+; Field definition file for table: ADORecordset
+Copies	string	255	1	
+CopyPrintingCaption	string	255		
+DocNoCaption	string	255	Invoice No.	
+DocDateCaption	string	255	Invoice Date	
+SiteStateCode	string	255	09	
+SiteStateName	string	255	Uttar Pradesh	
+DocID	string	255	D1    SI 2019    3620	
+Sr	number	1	
+V_Date	datetime	09/Mar/2020 12:00:00 AM	
+DeliveryDate	datetime		
+Voucher_Type	string	255	Tax Invoice	
+NCat	string	255	SI	
+InvoiceNo	string	255	BS/1532	
+GenDocNo	string	255		
+AmsDocNo	string	255		
+AmsDocDate	datetime		
+AmsDocNetAmount	number	0	
+RateType	string	255	Super Net	
+DocumentPrintShowRateType	string	255	Show If Not Blank	
+AgentName	string	255		
+SalesRepName	string	255		
+SalesRepCode	string	255		
+AgentCaption	string	255	Agent	
+SaleToPartyName	string	255	A TO Z CLOTH STORE	
+SaleToPartyAddress	string	255	lovely chauraha pratap nagar konch jalaun	
+CityName	string	255	KONCH	
+SaleToPartyPincode	string	255		
+StateCode	string	255	09	
+StateName	string	255	Uttar Pradesh	
+SaleToPartyMobile	string	255		
+ContactPerson	string	255		
+SaleToPartySalesTaxNo	string	255	09BGEPA3052K1ZL	
+SaleToPartyAadharNo	string	255		
+SaleToPartyPanNo	string	255		
+SaleToPartyLicenseNo	string	255		
+ShipToPartyName	string	255	A TO Z CLOTH STORE	
+ShipToPartyAddress	string	255	lovely chauraha pratap nagar konch jalaun	
+ShipToPartyCity	string	255	KONCH	
+ShipToPartyPincode	string	255		
+ShipToPartyStateCode	string	255	09	
+ShipToPartyStateName	string	255	Uttar Pradesh	
+ShipToPartyMobile	string	255		
+ShipToPartySalesTaxNo	string	255	09BGEPA3052K1ZL	
+ShipToPartyAadharNo	string	255		
+ShipToPartyPanNo	string	255		
+ShipToPartyLicenseNo	string	255		
+ShipToAddress	string	255		
+TermsAndConditions	string	255	(1) Payment within <CreditDays> days from date of Invoice. <BR>(2) Overdue Interest @ <Default_DebtorsInterestRate> P.A. after due date. <BR>(3) Goods dispatched by transport at the owner risk. <BR>(4) All disputes are subject to <CompanyCity> jurisdiction only.	
+TransporterName	string	255		
+LrNo	string	255		
+LrDate	datetime		
+NoOfBales	number		
+PrivateMark	string	255		
+Weight	number		
+Freight	number		
+ChargedWeight	number		
+FreightType	string	255		
+RoadPermitNo	string	255		
+RoadPermitDate	datetime		
+VehicleNo	string	255		
+ShipMethod	string	255		
+PreCarriageBy	string	255		
+PreCarriagePlace	string	255		
+BookedFrom	string	255		
+BookedTo	string	255		
+Destination	string	255		
+DescriptionOfGoods	string	255		
+DescriptionOfPacking	string	255		
+ReferenceNo	string	255		
+BarcodeName	string	255		
+ItemName	string	255	AIR CRAFT          [.... | SUITING]	
+ItemGroupName	string	255	....	
+ItemCatName	string	255	SUITING	
+ItemSpecification	string	255	AIR CRAFT	
+InvoiceLineSpecification	string	255		
+HSN	string	255	5515	
+MaintainStockYn	boolean	True	
+D1Spec	string	255		
+D2Spec	string	255		
+D3Spec	string	255		
+D4Spec	string	255		
+SizeSpec	string	255		
+ItemInvoiceGroupCode	string	255		
+ItemInvoiceGroupDesc	string	255		
+ItemTypeCaption	string	255	Item Type	
+ItemCategoryCaption	string	255	Item Category	
+ItemGroupCaption	string	255	Item Group	
+ItemCaption	string	255	Item	
+BarcodeCaption	string	255		
+D1Caption	string	255		
+D2Caption	string	255		
+D3Caption	string	255		
+D4Caption	string	255		
+SalesTaxGroupItem	string	255	GST 5%	
+GrossTaxRate	number	5	
+MRP	number	0	
+LotNo	string	255		
+ExpiryDate	datetime		
+ItemRemark1	string	255		
+Pcs	number	6	
+Qty	number	75	
+Rate	number	120	
+ItemState	string	255		
+CatalogSpecification	string	255		
+Unit	string	255	Meter	
+UnitDecimalPlaces	number	2	
+DiscountPer	number	0	
+DiscountAmount	number	0	
+AdditionalDiscountPer	number	0	
+AdditionalDiscountAmount	number	0	
+AdditionPer	number	0	
+AdditionAmount	number	0	
+TotalDiscount	number	0	
+Deal	string	255		
+AmountBeforeDiscount	number	9000	
+Amount	number	9000	
+Taxable_Amount	number	9000	
+Tax1_Per	number	0	
+Tax1	number	0	
+Tax2_Per	number	2.5	
+Tax2	number	225	
+Tax3_Per	number	2.5	
+Tax3	number	225	
+Tax4_Per	number	0	
+Tax4	number	0	
+Tax5_Per	number	0	
+Tax5	number	0	
+Net_Amount	number	9450	
+LRemarks	string	255		
+HRemarks	string	255		
+SalesTaxSummaryStr	string	255		
+H_Discount	number	0	
+H_AdditionalDiscount	number	0	
+H_Additional	number	0	
+H_TotalDiscount	number	0	
+H_AmountBeforeDiscount	number	9000	
+H_Gross_Amount	number	9000	
+H_SpecialDiscount_Per	number	0	
+H_SpecialDiscount	number	0	
+H_Taxable_Amount	number	9000	
+H_Tax1_Per	number	0	
+H_Tax1	number	0	
+H_Tax2_Per	number	0	
+H_Tax2	number	225	
+H_Tax3_Per	number	0	
+H_Tax3	number	225	
+H_Tax4_Per	number	0	
+H_Tax4	number	0	
+H_Tax5_Per	number	0	
+H_Tax5	number	0	
+H_Deduction_Per	number	0	
+H_Deduction	number	0	
+H_Other_Charge_Per	number	0	
+H_Other_Charge	number	0	
+H_Other_Charge1_Per	number	0	
+H_Other_Charge1	number	0	
+H_Other_Charge2_Per	number	0	
+H_Other_Charge2	number	0	
+Round_Off	number	0	
+H_Net_Amount	number	9450	
+Default_BankAccountDetail	string	255	 CBI A/C NO 3142400392  IFSC CODE : CBIN0282150 <BR>
+ BOB A/C NO 08220400000199 IFSC CODE : BARBOTILAKN <BR>  PNB A/C NO 0254002130000382  IFSC CODE : 25400	
+DocumentPrintHeaderPattern	string	255	Center Aligned	
+DimDetail	string	255	12.50 X 6	
+PrintedByUser	string	255	SUPER	
+EntryByUser	string	255	SUPER	
+PrintTitle	string	255	TAX INVOICE	
+DocumentPrintShowPrintDateTimeYn	string	255	1	
+DocumentPrintShowPartyBalance	string	255	Hide	
+TodaysOpeningBalance	long	0	
+TodaysDr	long	0	
+TodaysCr	long	0	
+TodaysClosingBalance	long	0	
+CompanyLogo	BLOB		
+CompanyAuthorisedSignature	BLOB		

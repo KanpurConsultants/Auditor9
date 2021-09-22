@@ -1,0 +1,24 @@
+; Field definition file for table: ADORecordset
+Code	string	255	4307	
+Barcode	string	255	4306	
+BarCodeImg	BLOB		
+ItemDesc	string	255	KAJU	
+ItemCategoryDesc	string	255	SAREE	
+ItemGroupDesc	string	255	VBKP	
+Dimension1Desc	string	255		
+Dimension2Desc	string	255		
+Dimension3Desc	string	255		
+Dimension4Desc	string	255		
+SizeDesc	string	255		
+PurchaseRate	number	1280	
+SaleRate	number	1882	
+MRP	number	1280	
+ReceiveQty	number	4	
+GenSr	number	1	
+ItemMasterPurchaseRate	number	1280	
+ItemMasterSaleRate	number	1882	
+Title1	string	255	GUR SHEEL	
+Title2	string	255	MAMA KAPDE WALE	
+Title3	number		
+RandomNo1	number	607	
+RandomNo2	number	825	

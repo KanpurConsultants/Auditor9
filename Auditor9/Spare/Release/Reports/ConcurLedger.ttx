@@ -1,0 +1,46 @@
+; Field definition file for table: ADORecordset
+DivisionName	string	255	EQUAL2 SAREES, KANPUR	
+PartyName	string	255	KESHAV SAREE MEHAL {674}, FAIZABAD	
+Address	string	255	AKBERPUR	
+Mobile	string	255	7652069384	
+AgentName	string	255	DIRECT {1793}, KANPUR	
+SalesRepresentativeName	string	255		
+AreaName	string	255	GOSAIGANJ	
+DrDocID	string	255	D1    SI 2018      52	
+DrDivision	string	255	D	
+DrSubcode	string	255	D100000675	
+DrSr	long	35	
+DrDate	datetime	11/Apr/2018 5:30:00 AM	
+DrDocNo	string	255	SI-180052	
+DrAmount	number	49141.02	
+DrTaxableAmount	number	46801.12	
+DrTaxAmount	number	2340.04	
+DrDays	long	921	
+DrInterest	number	22319.45	
+DrCumAmount	number	300702.1	
+DrBalAmount	number	34141.02	
+DrTotal	number	597175.1	
+DrNarration	string	255	Sale Invoice	
+CrDocID	string	255	D1    VR 2019     912	
+CrDivision	string	255	D	
+CrSubcode	string	255	D100000675	
+CrSr	long	35	
+CrDate	datetime	07/Jun/2019 12:00:00 AM	
+CrDocNo	string	255	VR-146	
+CrAmount	number	10000	
+CrTaxableAmount	number	0	
+CrTaxAmount	number	0	
+CrDays	long	530	
+CrInterest	number	2613.7	
+CrCumAmount	number	261561.08	
+CrBalAmount	number	0	
+CrTotal	number	266561.08	
+CrNarration	string	255	 CASH A/C. 	
+AdditionPer	number	0	
+AdditionAmount	number	0	
+GrReturnAmt	number	5351.02	
+GrSaleAmt	number	597175.1	
+ReturnPer	number	0.9	
+AveragePaymentDays	number	497.122958771929	
+DrMonth	string	255	04-2018	
+CrMonth	string	255	06-2019	

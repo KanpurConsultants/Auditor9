@@ -1,0 +1,61 @@
+{DB D:\S2k\Pharma_W\Data\Company.001\S2K2002.mdb DB}
+{Sql SELECT Sale.TmpParty, Sale.TmpAdd, Sale.TmpTinNo, Sale.DocNo, Sale.Dated, Product.Category, Product.Code, Sum(ProductStock.Qty) AS TotalQty, Sum([ProductStock].[NetAmount]-[ProductStock].[TaxAmount]) AS GrossAmount, Sum(ProductStock.Taxamount) AS Tax, Sum(IIf([TaxPer]=0,[ProductStock.NetAmount],0)) AS SaleWithOutVat, Sum(IIf([TaxPer]=4,[ProductStock.NetAmount]-[ProductStock.TaxAmount],0)) AS Sale4, Sum(IIf([TaxPer]=4,[ProductStock.TaxAmount],0)) AS Vat4, Sum(IIf([TaxPer]=12.5,[ProductStock.NetAmount]-[ProductStock.TaxAmount],0)) AS Sale125, Sum(IIf([TaxPer]=12.5,[ProductStock.TaxAmount],0)) AS Vat125, Sum(ProductStock.NetAmount) AS NetAmount
+FROM (ProductStock LEFT JOIN (Account RIGHT JOIN Sale ON Account.AccountID = Sale.AccountID) ON ProductStock.VoucherID = Sale.SaleID) LEFT JOIN Product ON ProductStock.ProductID = Product.ProductID
+WHERE (((Sale.Dated) Between #{Pm DateFrom Pm}# And #{Pm DateTo Pm}#) AND ((ProductStock.NetAmount)<>0))
+GROUP BY Sale.TmpParty, Sale.TmpAdd, Sale.TmpTinNo, Sale.DocNo, Sale.Dated, Product.Category, Product.Code, Account.Account, Sale.BookType
+ORDER BY Sale.Dated, Sale.DocNo, Account.Account Sql}
+{Xdr Settings
+Columns=160
+Lines=60
+Page Break=False
+Condense=True
+Character Per Inch=12
+Xdr Settings}
+
+{Formula
+ = 
+Formula}
+
+{GroupSection
+Report Header;
+Page Header;
+Detail;
+Grand;
+Page Footer;
+Report Footer;
+GroupSection}
+
+{Parameter
+DateFromToParameter}
+{Report Header
+Report Header}
+========================================================================================================================
+{Page Header
+lbl;OwnerName;42;0;1
+lbl;OwnerAdd1  OwnerAdd2;47;0;0
+lbl;INVOICE STATEMENT;130;0;1}{lbl;PAGE NO:;13;1;0
+fml;"FOR PERIOD " + "{Pm DateFrom Pm}" + " to "+ "{Pm DateTo Pm}";47;0;0
+lbl;----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------;152;0;0
+lbl;SNO;4;0;0}{lbl;PARTY NAME;34;0;0}{lbl;ADDRESS;15;0;0}{lbl;TIN;12;0;0}{lbl;INVOICE NO;12;0;0}{lbl;DATE;12;0;0}{lbl;PRODUCT;11;0;0}{lbl;Code;4;0;0}{lbl;QTY;5;1;0}{lbl;Sale 0%;11;1;0}{lbl;Sale 4%;11;1;0}{lbl;Vat 4%;11;1;0}{lbl;TOTAL;9;1;0
+lbl;----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------;152;0;0
+Page Header}
+========================================================================================================================
+{Detail
+fml;RecordNo()+ ".";4;0;0}{fld;TmpParty;34;0;0}{fld;TmpAdd;15;0;0}{fld;TmpTinNo;12;0;0}{fld;DocNo;12;0;0}{fld;Dated;12;0;0}{fld;Category;11;0;0}{fld;Code;4;0;0}{fml;CF(TotalQty);5;1;0}{fml;CF(SaleWithOutVat);11;1;0}{fml;CF(Sale4);11;1;0}{fml;CF(Vat4);8;1;0}{fml;CF(Sale125);11;1;0}{fml;CF(Vat125);8;1;0}{fml;CF(NETAMOUNT);9;1;0
+Detail}
+========================================================================================================================
+{Grand
+lbl;;109;0;0}{lbl;----------;11;1;0}{lbl;----------;11;1;0}{lbl;----------;11;1;0}{lbl;----------;9;1;0
+lbl;;109;0;0}{fml;SUM(SaleWithOutVat);11;1;0}{fml;SUM(Sale4);11;1;0}{fml;SUM(Vat4);11;1;0}{fml;SUM(NETAMOUNT);9;1;0
+Grand}
+========================================================================================================================
+{Page Footer
+lbl;CONTINUE TO:      ;120;1;0
+
+Page Footer}
+========================================================================================================================
+{Report Footer
+
+Report Footer}
+========================================================================================================================
+

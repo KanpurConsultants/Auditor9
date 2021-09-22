@@ -1,0 +1,7 @@
+SchoolName	String	250
+DocNo	String	250
+ClassName	String	250
+StudentName	String	250
+TypeofList	String	250
+TAmount	Currency
+

@@ -1,0 +1,30 @@
+Serial	Number
+ProductStockID	Number
+BookName	String	250
+ISBN	String	250
+Author	String	250
+Publisher	String	250
+BookID	Number
+Qty	Currency
+CalculationRate	Currency
+Amount	Currency
+NetAmount	Currency
+SchoolName	String	250
+SchoolAdd	String	250
+Account	String	250
+Address	String	250
+AmountInWords	String	250
+DiscountPercentage	Currency
+DiscountAmount	Currency
+SchoolChallanID	Number
+SchoolID	Number
+ClassName	String	250
+AccountID	Number
+DocNo	String	250
+Dated	Date
+StudentName	String	250
+Remark	String	250
+IssuePerson	String	250
+UserName	String	250
+BookCode	String	250
+

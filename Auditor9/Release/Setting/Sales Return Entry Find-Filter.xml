@@ -1,0 +1,10 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<SaveFilterSettings>
+  <Column>
+    <DataType>2</DataType>
+    <FieldName>Sales_Tax_Group_Party</FieldName>
+    <FilterOperator>=</FilterOperator>
+    <Value1>Unregistered</Value1>
+    <Value2 />
+  </Column>
+</SaveFilterSettings>

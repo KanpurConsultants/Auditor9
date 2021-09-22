@@ -1,0 +1,47 @@
+; Field definition file for table: ADORecordset
+RecordType	string	255		
+DocId	string	255	D1    OB 2018      26	
+V_type	string	255	OB	
+RecId	string	255	50	
+V_Date	datetime	01/Nov/2019 12:00:00 AM	
+Site_Code	string	255	1	
+Div_Code	string	255	D	
+Subcode	string	255	D100000833	
+LinkedSubcode	string	255		
+GoodsReturn	number	0	
+Adjustment	number	0	
+Payment	number	0	
+Balance	number	27000	
+AmtDr	number	27000	
+AmtCr	number	0	
+Narration	string	255	net  opening bal. 	
+AdjDocID	string	255	OB-CASH	
+DueDate	datetime	01/Nov/2019 12:00:00 AM	
+AdjDate	datetime	26/Nov/2019 12:00:00 AM	
+AdjPayment	number	3000	
+ChqNo	string	255		
+AdjAmount	number	3000	
+InterestBalance	number	0	
+SalePartyName	string	255		
+PartyName	string	255	GURU RAM DAS(PB/LDH/W/D0095), LUDHIANA	
+PartyCity	string	255	LUDHIANA	
+LinkedPartyName	string	255		
+LinkedPartyCity	string	255		
+LrNo	string	255		
+Brand	string	255		
+AmsInvNo	string	255		
+AmsInvAmt	number	0	
+TaxableAmt	string	255		
+TaxAmt	string	255		
+OtherChgAmt	string	255		
+BillAmt	string	255		
+Div_Name	string	255	Main	
+Site_Name	string	255	HO	
+InterestDays	number	-35	
+Narration1	string	255	net  opening bal. 	
+InterestAmount	number	0	
+InterestLeaverageDays	number	60	
+InterestSlabDescription	string	255	60 Days @ 12P	
+CreditLimit	number	0	
+PakkaBalance	long	0	
+AveragePaymentDays	number	124.019632824074	

@@ -1,0 +1,36 @@
+<?xml version="1.0" standalone="yes"?>
+<xs:schema id="NewDataSet" xmlns="" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
+  <xs:element name="NewDataSet" msdata:IsDataSet="true" msdata:MainDataTable="T" msdata:UseCurrentLocale="true">
+    <xs:complexType>
+      <xs:choice minOccurs="0" maxOccurs="unbounded">
+        <xs:element name="T">
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element name="V_Date" type="xs:dateTime" minOccurs="0" />
+              <xs:element name="Consignor" type="xs:string" minOccurs="0" />
+              <xs:element name="Consignee" type="xs:string" minOccurs="0" />
+              <xs:element name="VehicleNo" type="xs:string" minOccurs="0" />
+              <xs:element name="Description" type="xs:string" minOccurs="0" />
+              <xs:element name="FrPlace" type="xs:string" minOccurs="0" />
+              <xs:element name="ToPlace" type="xs:string" minOccurs="0" />
+              <xs:element name="ConsignorBill" type="xs:string" minOccurs="0" />
+              <xs:element name="ConsigneeBill" type="xs:string" minOccurs="0" />
+              <xs:element name="EntryType" type="xs:string" minOccurs="0" />
+              <xs:element name="Remark" type="xs:string" minOccurs="0" />
+              <xs:element name="Month" type="xs:string" minOccurs="0" />
+              <xs:element name="Gamount" type="xs:double" minOccurs="0" />
+              <xs:element name="Exempted" type="xs:double" minOccurs="0" />
+              <xs:element name="TaxableAmt" type="xs:double" minOccurs="0" />
+              <xs:element name="ServiceTaxAmt" type="xs:double" minOccurs="0" />
+              <xs:element name="ECessAmt" type="xs:double" minOccurs="0" />
+              <xs:element name="SHCessAmt" type="xs:double" minOccurs="0" />
+              <xs:element name="V_Type" type="xs:string" minOccurs="0" />
+              <xs:element name="PtyBillNo" type="xs:string" minOccurs="0" />
+              <xs:element name="PtyBillDt" type="xs:dateTime" minOccurs="0" />
+            </xs:sequence>
+          </xs:complexType>
+        </xs:element>
+      </xs:choice>
+    </xs:complexType>
+  </xs:element>
+</xs:schema>

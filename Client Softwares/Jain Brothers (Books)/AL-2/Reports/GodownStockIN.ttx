@@ -1,0 +1,94 @@
+ProductStockID	Number
+VoucherID	Number
+TransTypeID	String	150
+IO	String	150
+VoucherNo	String	150
+Dated	Date
+RefAccountID	Number
+Serial	String	150
+BookID	Number
+Qty	Currency
+Rate	Currency
+CalculationRate	Currency
+DiscountPercentage	Currency
+DiscountAmount	Currency
+TaxPer	Currency
+Taxamount	Currency
+VatAccountID	Number
+VatSideID	String	150
+Amount	Currency
+NetAmount	Currency
+CstPer	Currency
+CstAmount	Currency
+ProductCurrency	String	150
+ProductConversion	Currency
+SATPer	Currency
+SATAmount	Currency
+SchoolID	Number
+ClassName	String	150
+IssuePerson	String	150
+CounterDetailAssociateID	Number
+IsCancel	String	150
+IsShort	String	150
+ExtraDiscountPercentage	Currency
+ExtraDiscountAmount	Currency
+IGSTPer	Currency
+IGSTAmount	Currency
+TempParty	String	150
+BookName	String	150
+Book.Category	String	150
+BookCode	String	150
+BookGroup	String	150
+TotalAmount	Currency
+Address	String	150
+GrandTotal	Currency
+GrNo	String	150
+Transport	String	150
+Remark	Memo
+AdjustmentNarration	String	150
+AdjustmentAmount	Currency
+RoundOff	Currency
+AmountInword	String	150
+Publisher	String	150
+UserName	String	150
+AccountID	Number
+AccountGroupID	Number
+Series	String	150
+Account	String	150
+NatureID	Number
+Description1	String	150
+Description2	String	150
+Description3	String	150
+CityID	Number
+OPBAmount	Currency
+OPBSide	String	150
+CLBAmount	Currency
+CLBSide	String	150
+Phone1	String	150
+Phone2	String	150
+Fax	String	150
+Mobile	String	150
+STNo	String	150
+CSTNo	String	150
+Contact	String	150
+Email	String	150
+AssociateID	Number
+MaintainBillByBill	String	150
+Default	String	150
+TinNo	String	150
+TinEffectedFrom	String	150
+DLNo	String	150
+SaleRegistrationNo	String	150
+CreditDays	Number
+Code	String	150
+TransportName	String	150
+City	String	150
+Account.Category	String	150
+StateCode	String	150
+PartyType	String	150
+AadharNo	String	150
+PANNo	String	150
+StateID	String	150
+HSNCode	String	150
+GSTPer	String	150
+

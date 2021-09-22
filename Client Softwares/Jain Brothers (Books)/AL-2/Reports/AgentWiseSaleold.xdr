@@ -1,0 +1,72 @@
+{DB D:\S2k\Consumer\Data\Company.001\S2K2002.mdb DB}
+{Sql SELECT Account.Account,*
+FROM (Sale LEFT JOIN Agent ON Sale.AgentID = Agent.AgentID) LEFT JOIN Account ON Sale.AccountID = Account.AccountID
+where Agent.AgentID in ({Pm AgentID Pm}) and
+Dated between #{Pm DateFrom Pm}# and #{Pm DateTo Pm}#
+order by Agent,Dated,DocNo
+Sql}
+{Xdr Settings
+Columns=80
+Lines=60
+Page Break=True
+Condense=False
+Character Per Inch=12
+Xdr Settings}
+
+{Formula
+ = 
+Formula}
+
+{GroupSection
+Report Header;
+Page Header;
+Header (Agent.AgentID);
+Detail;
+Footer (Agent.AgentID);
+Grand;
+Page Footer;
+Report Footer;
+GroupSection}
+
+{Parameter
+Parameter}
+{Report Header
+Report Header}
+========================================================================================================================
+{Page Header
+lbl;AGENT WISE SALES.;62;0;1
+lbl;FOR PERIOD ;12;0;1}{lbl;{Pm DateFrom Pm};12;0;1}{lbl;to ;3;0;1}{lbl;{Pm DateTo Pm};36;0;1
+
+lbl;------------------------------------------------------------------------------------------------------------------------------------------------------------;75;0;0
+lbl;DATE;12;0;0}{lbl;BILLNO;12;0;0}{lbl;PARTY;36;0;0}{lbl;AMOUNT;15;1;0
+lbl;----------------------------------------------------------------------------;75;0;0
+Page Header}
+========================================================================================================================
+{Header (Agent.AgentID)
+
+fld;AGENT;33;0;1
+Header (Agent.AgentID)}
+========================================================================================================================
+{Detail
+fld;DATED;12;0;0}{fml;DOCNO;12;0;0}{fld;Account;34;0;0}{lbl;;2;0;0}{fml;CF(NETAMOUNT);15;1;0
+Detail}
+========================================================================================================================
+{Footer (Agent.AgentID)
+lbl;------------------------------------------------------------------------------------------------------------------------------------------------------------;75;0;0
+lbl;AGENT TOTAL :;60;0;0}{fml;SUM(NETAMOUNT);15;1;1
+Footer (Agent.AgentID)}
+========================================================================================================================
+{Grand
+lbl;------------------------------------------------------------------------------------------------------------------------------------------------------------;75;0;0
+lbl;GRAND TOTAL :;60;0;0}{fml;SUM(NETAMOUNT);15;1;1
+Grand}
+========================================================================================================================
+{Page Footer
+
+Page Footer}
+========================================================================================================================
+{Report Footer
+
+Report Footer}
+========================================================================================================================
+

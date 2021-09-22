@@ -1,0 +1,12 @@
+D:\Dataman\Release\Carpet_Main.exe
+D:\Dataman\Release\Carpet_Main.pdb
+D:\Dataman\Release\Carpet_Main.xml
+obj\Debug\ResolveAssemblyReference.cache
+obj\Debug\Carpet_Main.FrmDyeingIndent.resources
+obj\Debug\Carpet_Main.FrmEnviro.resources
+obj\Debug\Carpet_Main.Resources.resources
+obj\Debug\Carpet_Main.MDIMain.resources
+obj\Debug\Carpet_Dyeing.vbproj.GenerateResource.Cache
+obj\Debug\Carpet_Main.exe
+obj\Debug\Carpet_Main.xml
+obj\Debug\Carpet_Main.pdb

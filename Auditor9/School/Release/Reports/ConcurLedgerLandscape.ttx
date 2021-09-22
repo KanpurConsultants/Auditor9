@@ -1,0 +1,42 @@
+; Field definition file for table: ADORecordset
+DivisionName	string	255	SADHVI EMBROIDERY {EMBROIDERY}, KANPUR	
+PartyName	string	255	KUMAR FASHION SAREE, SHAHJADPUR	
+Address	string	255	GALLA MANDI SHAJADPUR (AKABARPUR)	
+Mobile	string	255	8318302585	
+AgentName	string	255	SHASHANK MITTAL, KANPUR	
+SalesRepresentativeName	string	255		
+AreaName	string	255		
+DrDivision	string	255	E	
+DrSubcode	string	255	D100003337	
+DrSr	number	16	
+DrDate	datetime	11/Nov/2019 12:00:00 AM	
+DrDocNo	string	255	SI-2210	
+DrAmount	number	87003	
+DrTaxableAmount	number	82860	
+DrTaxAmount	number	4143.02	
+DrDays	number	56	
+DrInterest	number	0	
+DrCumAmount	number	778573	
+DrBalAmount	number	87003	
+DrTotal	number	931095	
+DrNarration	string	255		
+CrDivision	string	255	E	
+CrSubcode	string	255	D100003337	
+CrSr	number	16	
+CrDate	datetime		
+CrDocNo	string	255		
+CrAmount	number	0	
+CrTaxableAmount	number	0	
+CrTaxAmount	number	0	
+CrDays	number		
+CrInterest	number		
+CrCumAmount	number	691570	
+CrBalAmount	number	0	
+CrTotal	number	691570	
+CrNarration	string	255		
+GrReturnAmt	number	2468	
+GrSaleAmt	number	931095	
+ReturnPer	number	0.27	
+AveragePaymentDays	number	93.7595351297741	
+DrMonth	string	255	11/2019	
+CrMonth	string	255		

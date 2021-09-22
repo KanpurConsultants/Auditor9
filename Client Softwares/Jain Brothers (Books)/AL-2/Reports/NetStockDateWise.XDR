@@ -1,0 +1,53 @@
+{DB D:\S2k\Pharma_W\Data\Company.001\S2K2002.mdb DB}
+{Sql SELECT Sum(IIf([IO]=0,[Qty],0)) AS StockIn, Sum(IIf([IO]=1,[Qty],0)) AS StockOut, [StockIn]-[StockOut] AS NetStock
+FROM ProductStock where Dated Between #{Pm DateFrom Pm}# and #{Pm DateTo Pm}# Sql}
+{Xdr Settings
+Columns=80
+Lines=70
+Page Break=False
+Condense=True
+Character Per Inch=12
+Xdr Settings}
+
+{Formula
+ = 
+Formula}
+
+{GroupSection
+Report Header;
+Page Header;
+Detail;
+Grand;
+Page Footer;
+Report Footer;
+GroupSection}
+
+{Parameter
+DateFromToParameter}
+{Report Header
+Report Header}
+========================================================================================================================
+{Page Header
+lbl;;1;0;0
+lbl;OwnerName;80;0;1
+lbl;OwnerAdd1  OwnerAdd2;80;0;0
+lbl;TIN NUMBER     :;16;0;0}{lbl;OwnerTinNo;60;0;0
+fml;"FOR PERIOD " + "{Pm DateFrom Pm}" + " to "+ "{Pm DateTo Pm}";70;0;0
+lbl;--------------------------------------------------------------------------------;80;0;0
+lbl;StockIn;20;0;0}{lbl;StockOut;20;0;0}{lbl;NetStock;20;1;0
+lbl;--------------------------------------------------------------------------------;80;0;0
+Page Header}
+========================================================================================================================
+{Detail
+fld;StockIn;20;0;0}{fld;StockOut;20;0;0}{fld;NetStock;20;1;0
+Detail}
+========================================================================================================================
+{Grand
+Grand}
+========================================================================================================================
+{Page Footer
+Page Footer}
+========================================================================================================================
+{Report Footer
+Report Footer}
+========================================================================================================================

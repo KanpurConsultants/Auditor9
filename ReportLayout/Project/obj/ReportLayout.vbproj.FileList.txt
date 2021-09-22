@@ -1,0 +1,28 @@
+D:\RetailSoft\Support\ReportLayout\Debug\ReportLayout.exe
+D:\RetailSoft\Support\ReportLayout\Debug\ReportLayout.pdb
+D:\RetailSoft\Support\ReportLayout\Debug\ReportLayout.xml
+obj\Debug\ResolveAssemblyReference.cache
+obj\Debug\ReportLayout.FrmReportLayout.resources
+obj\Debug\ReportLayout.MDIMain.resources
+obj\Debug\ReportLayout.RepView.resources
+obj\Debug\ReportLayout.Resources.resources
+obj\Debug\ReportLayout.vbproj.GenerateResource.Cache
+obj\Debug\ReportLayout.xml
+obj\Debug\ReportLayout.pdb
+D:\RetailSoft\Support\ReportLayout\Release\ReportLayout.pdb
+D:\RetailSoft\Support\ReportLayout\Release\ReportLayout.xml
+obj\Release\ResolveAssemblyReference.cache
+obj\Release\ReportLayout.FrmReportLayout.resources
+obj\Release\ReportLayout.Resources.resources
+obj\Release\ReportLayout.vbproj.GenerateResource.Cache
+obj\Release\ReportLayout.xml
+obj\Release\ReportLayout.pdb
+D:\RetailSoft\Support\ReportLayout\Release\ReportLayout.dll
+D:\Individual Projects\Support\ReportLayout\Release\ReportLayout.pdb
+D:\Individual Projects\Support\ReportLayout\Release\ReportLayout.xml
+D:\Individual Projects\Support\ReportLayout\Debug\ReportLayout.dll
+D:\Individual Projects\Support\ReportLayout\Debug\ReportLayout.pdb
+D:\Individual Projects\Support\ReportLayout\Debug\ReportLayout.xml
+obj\Debug\ReportLayout.dll
+D:\Individual Projects\Support\ReportLayout\Release\ReportLayout.dll
+obj\Release\ReportLayout.dll

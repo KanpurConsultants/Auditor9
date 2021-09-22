@@ -1,0 +1,36 @@
+bin\Debug\DMHelpGrid.pdb
+bin\Debug\DMHelpGrid.xml
+obj\Debug\ResolveAssemblyReference.cache
+obj\Debug\DMHelpGrid.Resources.resources
+obj\Debug\DMHelpGrid.vbproj.GenerateResource.Cache
+obj\Debug\DMHelpGrid.xml
+obj\Debug\DMHelpGrid.pdb
+obj\Debug\DMHelpGrid.FrmHelpGrid.resources
+bin\Release\DMHelpGrid.pdb
+bin\Release\DMHelpGrid.xml
+obj\Release\ResolveAssemblyReference.cache
+obj\Release\DMHelpGrid.FrmHelpGrid.resources
+obj\Release\DMHelpGrid.Resources.resources
+obj\Release\DMHelpGrid.vbproj.GenerateResource.Cache
+obj\Release\DMHelpGrid.xml
+obj\Release\DMHelpGrid.pdb
+obj\Release\DMHelpGrid.FrmHelpGrid_Multi.resources
+obj\Debug\DMHelpGrid.FrmHelpGrid_Multi.resources
+bin\Debug\DMHelpGrid.exe
+obj\Debug\DMHelpGrid.FrmTest.resources
+obj\Debug\DMHelpGrid.exe
+bin\Release\DMHelpGrid.dll
+..\..\..\..\Individual Projects\Support\DMHelpGrid\Release\DMHelpGrid.pdb
+..\..\..\..\Individual Projects\Support\DMHelpGrid\Release\DMHelpGrid.xml
+..\..\..\..\Individual Projects\Support\DMHelpGrid\Release\DMHelpGrid.dll
+obj\Release\DMHelpGrid.dll
+D:\Individual Projects\Support\DMHelpGrid\Release\DMHelpGrid.dll
+D:\Individual Projects\Support\DMHelpGrid\Release\DMHelpGrid.pdb
+D:\Individual Projects\Support\DMHelpGrid\Release\DMHelpGrid.xml
+D:\Individual Projects\Support\DMHelpGrid\Debug\DMHelpGrid.exe
+D:\Individual Projects\Support\DMHelpGrid\Debug\DMHelpGrid.pdb
+D:\Individual Projects\Support\DMHelpGrid\Debug\DMHelpGrid.xml
+obj\Release\DMHelpGrid.FrmTest.resources
+D:\Dataman\Release\DMHelpGrid.dll
+D:\Dataman\Release\DMHelpGrid.pdb
+D:\Dataman\Release\DMHelpGrid.xml

@@ -1,0 +1,21 @@
+D:\Dataman\Release\AgLibrary.dll
+D:\Dataman\Release\AgLibrary.pdb
+D:\Dataman\Release\AgLibrary.xml
+E:\Ashish Gupta\Active Projects\Common\AgLibrary\obj\Release\ResolveAssemblyReference.cache
+E:\Ashish Gupta\Active Projects\Common\AgLibrary\obj\Release\AgLibrary.FrmAgZip.resources
+E:\Ashish Gupta\Active Projects\Common\AgLibrary\obj\Release\AgLibrary.FrmBackupDatase.resources
+E:\Ashish Gupta\Active Projects\Common\AgLibrary\obj\Release\AgLibrary.FrmCommonMaster1.resources
+E:\Ashish Gupta\Active Projects\Common\AgLibrary\obj\Release\AgLibrary.FrmCommonMaster2.resources
+E:\Ashish Gupta\Active Projects\Common\AgLibrary\obj\Release\AgLibrary.FrmEmploeeMaster.resources
+E:\Ashish Gupta\Active Projects\Common\AgLibrary\obj\Release\AgLibrary.FrmPaymentDetail.resources
+E:\Ashish Gupta\Active Projects\Common\AgLibrary\obj\Release\AgLibrary.frmFind.resources
+E:\Ashish Gupta\Active Projects\Common\AgLibrary\obj\Release\AgLibrary.FrmPartyMaster.resources
+E:\Ashish Gupta\Active Projects\Common\AgLibrary\obj\Release\AgLibrary.FrmProgressBar.resources
+E:\Ashish Gupta\Active Projects\Common\AgLibrary\obj\Release\AgLibrary.MDIMain.resources
+E:\Ashish Gupta\Active Projects\Common\AgLibrary\obj\Release\AgLibrary.RepFormGlobal.resources
+E:\Ashish Gupta\Active Projects\Common\AgLibrary\obj\Release\AgLibrary.RepView.resources
+E:\Ashish Gupta\Active Projects\Common\AgLibrary\obj\Release\AgLibrary.Resources.resources
+E:\Ashish Gupta\Active Projects\Common\AgLibrary\obj\Release\AgLibrary.vbproj.GenerateResource.Cache
+E:\Ashish Gupta\Active Projects\Common\AgLibrary\obj\Release\AgLibrary.dll
+E:\Ashish Gupta\Active Projects\Common\AgLibrary\obj\Release\AgLibrary.xml
+E:\Ashish Gupta\Active Projects\Common\AgLibrary\obj\Release\AgLibrary.pdb

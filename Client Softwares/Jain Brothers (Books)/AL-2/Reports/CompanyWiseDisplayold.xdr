@@ -1,0 +1,72 @@
+{DB D:\S2k\Consumer\Data\Company.001\S2K2002.mdb DB}
+
+{Sql SELECT Company.Account As Company, Account.Account, ProductStock.VoucherNo, ProductStock.Dated, Sum(ProductStock.Display) AS Display
+FROM ((ProductStock LEFT JOIN Product ON ProductStock.ProductID = Product.ProductID) LEFT JOIN Account AS Company ON Product.CompanyID = Company.AccountID) LEFT JOIN (Sale LEFT JOIN Account ON Sale.AccountID = Account.AccountID) ON ProductStock.VoucherID = Sale.SaleID
+WHERE (((ProductStock.TransTypeID)=7) AND (([Company].[AccountID]) In (929)))
+GROUP BY Company.Account, Account.Account, ProductStock.VoucherNo, ProductStock.Dated, Sale.DisplayMonth
+HAVING (((Sale.DisplayMonth) Between '{Pm DateFrom Pm}' And '{Pm DateTo Pm}') AND ((Sum(ProductStock.Display))<>0))
+ORDER BY Company.Account, Account.Account, ProductStock.VoucherNo, ProductStock.Dated;
+Sql}
+
+{Xdr Settings
+Columns=80
+Lines=60
+Page Break=True
+Condense=False
+Character Per Inch=12
+Xdr Settings}
+
+{Formula
+ = 
+Formula}
+
+{GroupSection
+Report Header;
+Page Header;
+Detail;
+Footer (Company);
+Grand;
+Page Footer;
+Report Footer;
+GroupSection}
+
+{Parameter
+{Browser
+Select Account,AccountID from Account where AccountGroupID=28 order by Account|3000;0|1|1=PAccountID
+Browser}
+Parameter}
+{Report Header
+Report Header}
+========================================================================================================================
+{Page Header
+lbl;COMPNAY WISE Display;80;0;0
+fml;"FOR PERIOD " + "{Pm DateFrom1 Pm}" + " to "+ "{Pm DateTo1 Pm}";68;0;0}{lbl;PAGE NO:;12;1;0
+
+lbl;--------------------------------------------------------------------------------;80;0;0
+lbl;Party;48;0;0}{lbl;Bill No;12;0;0}{lbl;Date;12;0;0}{lbl;Dis.Amt.;8;1;0
+lbl;--------------------------------------------------------------------------------;80;0;0
+Page Header}
+========================================================================================================================
+{Detail
+fld;Account;48;0;0}{fld;VoucherNo;12;0;0}{fld;DATED;12;0;0}{fml;cf(Display);8;1;0
+Detail}
+========================================================================================================================
+{Footer (Company)
+lbl;--------------------------------------------------------------------------------;80;0;0
+lbl;TOTAL :;72;0;0}{fml;Sum(Display);8;1;0
+Footer (Company)}
+========================================================================================================================
+{Grand
+lbl;--------------------------------------------------------------------------------;80;0;0
+lbl;GRAND TOTAL :;72;0;0}{fml;Sum(Display);8;1;0
+Grand}
+========================================================================================================================
+{Page Footer
+
+Page Footer}
+========================================================================================================================
+{Report Footer
+
+Report Footer}
+========================================================================================================================
+

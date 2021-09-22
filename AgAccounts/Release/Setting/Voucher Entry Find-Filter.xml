@@ -1,0 +1,17 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<SaveFilterSettings>
+  <Column>
+    <DataType>2</DataType>
+    <FieldName>VDate</FieldName>
+    <FilterOperator>=</FilterOperator>
+    <Value1>Nov 17 2018 12:00AM</Value1>
+    <Value2 />
+  </Column>
+  <Column>
+    <DataType>2</DataType>
+    <FieldName>V_Type</FieldName>
+    <FilterOperator>=</FilterOperator>
+    <Value1>BR</Value1>
+    <Value2 />
+  </Column>
+</SaveFilterSettings>

@@ -1,0 +1,118 @@
+﻿<?xml version="1.0"?>
+<doc>
+<assembly>
+<name>
+AgControls
+</name>
+</assembly>
+<members>
+<member name="T:AgControls.My.Resources.Resources">
+<summary>
+  A strongly-typed resource class, for looking up localized strings, etc.
+</summary>
+</member>
+<member name="P:AgControls.My.Resources.Resources.ResourceManager">
+<summary>
+  Returns the cached ResourceManager instance used by this class.
+</summary>
+</member>
+<member name="P:AgControls.My.Resources.Resources.Culture">
+<summary>
+  Overrides the current thread's CurrentUICulture property for all
+  resource lookups using this strongly typed resource class.
+</summary>
+</member>
+<member name="P:AgControls.My.Resources.Resources.SearchIcon">
+<summary>
+  Looks up a localized resource of type System.Drawing.Bitmap.
+</summary>
+</member>
+<member name="F:AgControls.OutlookStyleControls.AgSideBar.components">
+ <summary> 
+ Required designer variable.
+ </summary>
+</member>
+<member name="M:AgControls.OutlookStyleControls.AgSideBar.Dispose(System.Boolean)">
+ <summary> 
+ Clean up any resources being used.
+ </summary>
+ <param name="disposing">true if managed resources should be disposed; otherwise, false.</param>
+</member>
+<member name="M:AgControls.OutlookStyleControls.AgSideBar.InitializeComponent">
+ <summary> 
+ Required method for Designer support - do not modify 
+ the contents of this method with the code editor.
+ </summary>
+</member>
+<member name="T:AgControls.OutlookStyleControls.AgSideBar.OutlookBarButtons">
+ <summary>
+ the OutlookBarButtons class contains the list of buttons
+ it manages adding and removing buttons, and updates the Outlookbar control
+ respectively. Note that this is a class, not a control!
+ </summary>
+</member>
+<member name="F:AgControls.OutlookStyleControls.AgSideBar.m_buttons">
+ <summary>
+ buttons contains the list of clickable OutlookBarButtons
+ </summary>
+</member>
+<member name="F:AgControls.OutlookStyleControls.AgSideBar.m_selectedButton">
+ <summary>
+ this variable remembers which button is currently selected
+ </summary>
+</member>
+<member name="F:AgControls.OutlookStyleControls.AgSideBar.hoveringButtonIndex">
+ <summary>
+ this variable remembers the button index over which the mouse is moving
+ </summary>
+</member>
+<member name="F:AgControls.OutlookStyleControls.AgSideBar.m_buttonHeight">
+ <summary>
+ property to set the buttonHeigt
+ default is 30
+ </summary>
+</member>
+<member name="P:AgControls.OutlookStyleControls.AgSideBar.SelectedButton">
+ <summary>
+ when a button is selected programatically, it must update the control
+ and repaint the buttons
+ </summary>
+</member>
+<member name="M:AgControls.OutlookStyleControls.AgSideBar.HitTest(System.Int32,System.Int32)">
+ <summary>
+ returns the button given the coordinates relative to the Outlookbar control
+ </summary>
+ <param name="x"></param>
+ <param name="y"></param>
+ <returns></returns>
+</member>
+<member name="M:AgControls.OutlookStyleControls.AgSideBar.ButtonlistChanged">
+ <summary>
+ this function will setup the control to cope with changes in the buttonlist 
+ that is, addition and removal of buttons
+ </summary>
+</member>
+<member name="F:AgControls.OutlookStyleControls.AgSideBar.isResizing">
+ <summary>
+ isResizing is used as a signal, so this method is not called recusively
+ this prevents a stack overflow
+ </summary>
+</member>
+<member name="T:AgControls.OutlookStyleControls.OutlookBarButton">
+ <summary>
+ OutlookbarButton represents a button on the Outlookbar
+ this is an internally used class (not a control!)
+ </summary>
+</member>
+<member name="M:AgControls.OutlookStyleControls.OutlookBarButton.PaintButton(System.Drawing.Graphics,System.Int32,System.Int32,System.Boolean,System.Boolean)">
+ <summary>
+ the outlook button will paint itself on its container (the OutlookBar)
+ </summary>
+ <param name="graphics"></param>
+ <param name="x"></param>
+ <param name="y"></param>
+ <param name="IsSelected"></param>
+ <param name="IsHovering"></param>
+</member>
+</members>
+</doc>

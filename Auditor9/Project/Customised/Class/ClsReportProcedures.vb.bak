@@ -1,0 +1,2105 @@
+Imports System.IO
+Imports AgLibrary.ClsMain
+Imports AgLibrary.ClsMain.agConstants
+
+Public Class ClsReportProcedures
+
+#Region "Danger Zone"
+    Dim StrArr1() As String = Nothing, StrArr2() As String = Nothing, StrArr3() As String = Nothing, StrArr4() As String = Nothing, StrArr5() As String = Nothing
+
+    Dim mGRepFormName As String = ""
+    Dim ErrorLog As String = ""
+
+    Dim WithEvents ReportFrm As ReportLayout.FrmReportLayout
+
+    Public Property GRepFormName() As String
+        Get
+            GRepFormName = mGRepFormName
+        End Get
+        Set(ByVal value As String)
+            mGRepFormName = value
+        End Set
+    End Property
+
+#End Region
+
+#Region "Common Reports Constant"
+    Private Const CityList As String = "CityList"
+    Private Const UserWiseEntryReport As String = "UserWiseEntryReport"
+    Private Const UserWiseEntryTargetReport As String = "UserWiseEntryTargetReport"
+#End Region
+
+#Region "Reports Constant"
+    Private Const SaleChallanReport As String = "SaleChallanReport"
+    Private Const SaleInvoiceReport As String = "SaleInvoiceReport"
+    Private Const PurchaseChallanReport As String = "PurchaseChallanReport"
+    Private Const PurchaseInvoiceReport As String = "PurchaseInvoiceReport"
+    Private Const PurchaseAdviseReport As String = "PurchaseAdviseReport"
+    Private Const ItemExpiryReport As String = "ItemExpiryReport"
+    Private Const PurchaseIndentReport As String = "PurchaseIndentReport"
+    Private Const VATReports As String = "VATReports"
+    Private Const PartyOutstandingReport As String = "PartyOutstandingReport"
+    Private Const BillWiseProfitability As String = "BillWiseProfitability"
+    Private Const DebtorsOutstandingOverDue As String = "DebtorsOutstandingOverDue"
+    Private Const WeavingOrderRatio As String = "WeavingOrderRatio"
+    Private Const CurrentStockReport As String = "CurrentStockReport"
+    Private Const GSTReports As String = "GSTReports"
+    Private Const ConcurLedger As String = "ChuktiLedger"
+#End Region
+
+#Region "Queries Definition"
+    Dim mHelpAreaQry$ = "Select 'o' As Tick, Code, Description From Area "
+    Dim mHelpCityQry$ = "Select 'o' As Tick, CityCode, CityName From City "
+    Dim mHelpStateQry$ = "Select 'o' As Tick, State_Code, State_Desc From State "
+    Dim mHelpUserQry$ = "Select 'o' As Tick, User_Name As Code, User_Name As [User] From UserMast "
+    Dim mHelpSiteQry$ = "Select 'o' As Tick, Code, Name As [Site] From SiteMast Where " & AgL.PubSiteCondition("Code", AgL.PubSiteCode) & " "
+    'Dim mHelpDivisionQry$ = "Select 'o' As Tick, Div_Code as Code, Div_Name As [Division] From Division Where Div_Code In (" & AgL.PubDivisionList & ") "
+    Dim mHelpDivisionQry$ = "Select 'o' As Tick, Div_Code as Code, Div_Name As [Division] From Division "
+    Dim mHelpItemQry$ = "Select 'o' As Tick, Code, Description As [Item] From Item "
+    Dim mHelpItemGroupQry$ = "Select 'o' As Tick, Code, Description As [Item Group] From ItemGroup "
+    Dim mHelpVendorQry$ = " Select 'o' As Tick,  H.SubCode As Code, Sg.DispName AS Vendor FROM Vendor H LEFT JOIN SubGroup Sg ON H.SubCode = Sg.SubCode "
+    Dim mHelpTableQry$ = "Select 'o' As Tick, H.Code, H.Description AS [Table] FROM HT_Table H "
+    Dim mHelpPaymentModeQry$ = "Select 'o' As Tick, 'Cash' As Code, 'Cash' As Description " &
+                                " UNION ALL " &
+                                " Select 'o' As Tick, 'Credit' As Code, 'Credit' As Description "
+    Dim mHelpOutletQry$ = "Select 'o' As Tick, H.Code, H.Description AS [Table] FROM Outlet H "
+    Dim mHelpStewardQry$ = "Select 'o' As Tick,  Sg.SubCode AS Code, Sg.DispName AS Steward FROM SubGroup Sg  "
+    Dim mHelpPartyQry$ = " Select 'o' As Tick,  Sg.Code, Sg.Name AS Party, Sg.Address FROM viewHelpSubGroup Sg Where Sg.Nature In ('Customer','Supplier','Cash') "
+    Dim mHelpPartySingleQry$ = " Select Sg.Code, Sg.Name AS Party FROM viewHelpSubGroup Sg Where Sg.Nature In ('Customer','Supplier','Cash') "
+    Dim mHelpAgentQry$ = " Select 'o' As Tick,  Sg.Code, Sg.Name AS Agent FROM viewHelpSubgroup Sg Where Sg.SubgroupType = '" & SubgroupType.SalesAgent & "' "
+    Dim mHelpYesNo$ = " Select 'Yes' As Code, 'Yes' AS [Value] Union All Select 'No' As Code, 'No' AS [Value] "
+    Dim mHelpSaleOrderQry$ = " Select 'o' As Tick,  H.DocID AS Code, H.V_Type || '-' || H.ManualRefNo  FROM SaleOrder H "
+    Dim mHelpSaleBillQry$ = " SELECT 'o' As Tick,DocId, ReferenceNo AS BillNo, V_Date AS Date FROM SaleChallan "
+    Dim mHelpItemReportingGroupQry$ = "Select 'o' As Tick,I.Code,I.Description  AS ItemReportingGroup FROM ItemReportingGroup I "
+#End Region
+
+    Dim DsRep As DataSet = Nothing, DsRep1 As DataSet = Nothing, DsRep2 As DataSet = Nothing
+    Dim mQry$ = "", RepName$ = "", RepTitle$ = "", OrderByStr$ = ""
+
+    Dim StrMonth$ = ""
+    Dim StrQuarter$ = ""
+    Dim StrFinancialYear$ = ""
+    Dim StrTaxPeriod$ = ""
+
+#Region "Initializing Grid"
+    Public Sub Ini_Grid()
+        Try
+            Dim mQry As String
+            Dim I As Integer = 0
+            Select Case GRepFormName
+                Case SaleInvoiceReport, SaleChallanReport
+                    mQry = "Select 'Invoice Wise Detail' as Code, 'Invoice Wise Detail' as Name 
+                            Union All Select 'Item Wise Detail' as Code, 'Item Wise Detail' as Name 
+                            Union All Select 'Month Wise Summary' as Code, 'Month Wise Summary' as Name 
+                            Union All Select 'Party Wise Summary' as Code, 'Party Wise Summary' as Name 
+                            Union All Select 'Agent Wise Summary' as Code, 'Agent Wise Summary' as Name 
+                            Union All Select 'Item Wise Summary' as Code, 'Item Wise Summary' as Name 
+                            Union All Select 'Item Group Wise Summary' as Code, 'Item Group Wise Summary' as Name 
+                            Union All Select 'Item Category Wise Summary' as Code, 'Item Category Wise Summary' as Name 
+                            Union All Select 'City Wise Summary' as Code, 'City Wise Summary' as Name 
+                            Union All Select 'State Wise Summary' as Code, 'State Wise Summary' as Name                             
+                            "
+                    ReportFrm.CreateHelpGrid("Report Type", "Report Type", ReportLayout.FrmReportLayout.FieldFilterDataType.StringType, ReportLayout.FrmReportLayout.FieldDataType.SingleSelection, mQry, "Invoice Wise Detail")
+                    ReportFrm.CreateHelpGrid("FromDate", "From Date", ReportLayout.FrmReportLayout.FieldFilterDataType.StringType, ReportLayout.FrmReportLayout.FieldDataType.DateType, "", AgL.PubStartDate)
+                    ReportFrm.CreateHelpGrid("ToDate", "To Date", ReportLayout.FrmReportLayout.FieldFilterDataType.StringType, ReportLayout.FrmReportLayout.FieldDataType.DateType, "", AgL.PubEndDate)
+                    ReportFrm.CreateHelpGrid("Party", "Party", ReportLayout.FrmReportLayout.FieldFilterDataType.StringType, ReportLayout.FrmReportLayout.FieldDataType.MultiSelection, mHelpPartyQry)
+                    ReportFrm.CreateHelpGrid("Item", "Item", ReportLayout.FrmReportLayout.FieldFilterDataType.StringType, ReportLayout.FrmReportLayout.FieldDataType.MultiSelection, mHelpItemQry)
+                    ReportFrm.CreateHelpGrid("Site", "Site", ReportLayout.FrmReportLayout.FieldFilterDataType.StringType, ReportLayout.FrmReportLayout.FieldDataType.MultiSelection, mHelpSiteQry)
+                    ReportFrm.CreateHelpGrid("VoucherType", "Voucher Type", ReportLayout.FrmReportLayout.FieldFilterDataType.StringType, ReportLayout.FrmReportLayout.FieldDataType.MultiSelection, FGetVoucher_TypeQry("SaleInvoice"))
+                    ReportFrm.CreateHelpGrid("CashCredit", "Cash/Credit", ReportLayout.FrmReportLayout.FieldFilterDataType.StringType, ReportLayout.FrmReportLayout.FieldDataType.SingleSelection, "Select 'Cash' as Code, 'Cash' as Name Union All Select 'Credit' as Code, 'Credit' as Name Union All Select 'Both' as Code, 'Both' as Name", "Both")
+                    ReportFrm.CreateHelpGrid("Agent", "Agent", ReportLayout.FrmReportLayout.FieldFilterDataType.StringType, ReportLayout.FrmReportLayout.FieldDataType.SingleSelection, mHelpAgentQry)
+
+                Case PurchaseInvoiceReport, PurchaseChallanReport
+                    ReportFrm.CreateHelpGrid("FromDate", "From Date", ReportLayout.FrmReportLayout.FieldFilterDataType.StringType, ReportLayout.FrmReportLayout.FieldDataType.DateType, "", AgL.PubStartDate)
+                    ReportFrm.CreateHelpGrid("ToDate", "To Date", ReportLayout.FrmReportLayout.FieldFilterDataType.StringType, ReportLayout.FrmReportLayout.FieldDataType.DateType, "", AgL.PubEndDate)
+                    ReportFrm.CreateHelpGrid("Report Type", "Report Type", ReportLayout.FrmReportLayout.FieldFilterDataType.StringType, ReportLayout.FrmReportLayout.FieldDataType.SingleSelection, "Select 'Summary' as Code, 'Summary' as Name Union All Select 'Month Wise Summary' as Code, 'Party Wise Summary' as Name Union All Select 'Party Wise Summary' as Code, 'Month Wise Summary' as Name Union All Select 'Item Wise Detail' as Code, 'Item Wise Detail' as Name", "Summary", , , , , False)
+                    ReportFrm.CreateHelpGrid("Item", "Item", ReportLayout.FrmReportLayout.FieldFilterDataType.StringType, ReportLayout.FrmReportLayout.FieldDataType.MultiSelection, mHelpItemQry)
+                    ReportFrm.CreateHelpGrid("Party", "Party", ReportLayout.FrmReportLayout.FieldFilterDataType.StringType, ReportLayout.FrmReportLayout.FieldDataType.MultiSelection, mHelpPartyQry)
+                    ReportFrm.CreateHelpGrid("Site", "Site", ReportLayout.FrmReportLayout.FieldFilterDataType.StringType, ReportLayout.FrmReportLayout.FieldDataType.MultiSelection, mHelpSiteQry)
+                    ReportFrm.CreateHelpGrid("VoucherType", "Voucher Type", ReportLayout.FrmReportLayout.FieldFilterDataType.StringType, ReportLayout.FrmReportLayout.FieldDataType.MultiSelection, FGetVoucher_TypeQry("PurchInvoice"))
+
+                Case PurchaseAdviseReport
+                    ReportFrm.CreateHelpGrid("AsOnDate", "As On Date", ReportLayout.FrmReportLayout.FieldFilterDataType.StringType, ReportLayout.FrmReportLayout.FieldDataType.DateType, "", AgL.PubLoginDate)
+                    ReportFrm.CreateHelpGrid("Item", "Item", ReportLayout.FrmReportLayout.FieldFilterDataType.StringType, ReportLayout.FrmReportLayout.FieldDataType.MultiSelection, mHelpItemQry)
+                    ReportFrm.CreateHelpGrid("ItemGroup", "Item Group", ReportLayout.FrmReportLayout.FieldFilterDataType.StringType, ReportLayout.FrmReportLayout.FieldDataType.MultiSelection, mHelpItemGroupQry)
+                    ReportFrm.CreateHelpGrid("Item ActiveInActive", "Item Active/InActive", ReportLayout.FrmReportLayout.FieldFilterDataType.StringType, ReportLayout.FrmReportLayout.FieldDataType.SingleSelection, "Select 'Active' As Code, 'Active' as Name Union All Select 'InActive' as Code, 'InActive' as Name Union All Select 'Both' as Code, 'Both' as Name", "Active")
+
+                Case ItemExpiryReport
+                    ReportFrm.CreateHelpGrid("AsOnDate", "Before Date", ReportLayout.FrmReportLayout.FieldFilterDataType.StringType, ReportLayout.FrmReportLayout.FieldDataType.DateType, "", AgL.PubLoginDate)
+                    ReportFrm.CreateHelpGrid("Item", "Item", ReportLayout.FrmReportLayout.FieldFilterDataType.StringType, ReportLayout.FrmReportLayout.FieldDataType.MultiSelection, mHelpItemQry)
+                    ReportFrm.CreateHelpGrid("ItemGroup", "Item Group", ReportLayout.FrmReportLayout.FieldFilterDataType.StringType, ReportLayout.FrmReportLayout.FieldDataType.MultiSelection, mHelpItemGroupQry)
+                    ReportFrm.CreateHelpGrid("Item ActiveInActive", "Item Active/InActive", ReportLayout.FrmReportLayout.FieldFilterDataType.StringType, ReportLayout.FrmReportLayout.FieldDataType.SingleSelection, "Select 'Active' As Code, 'Active' as Name Union All Select 'InActive' as Code, 'InActive' as Name Union All Select 'Both' as Code, 'Both' as Name", "Active")
+
+                Case PurchaseIndentReport
+                    ReportFrm.CreateHelpGrid("FromDate", "Order From Date", ReportLayout.FrmReportLayout.FieldFilterDataType.StringType, ReportLayout.FrmReportLayout.FieldDataType.DateType, "", AgL.PubStartDate)
+                    ReportFrm.CreateHelpGrid("ToDate", "Order Upto Date", ReportLayout.FrmReportLayout.FieldFilterDataType.StringType, ReportLayout.FrmReportLayout.FieldDataType.DateType, "", AgL.PubEndDate)
+                    ReportFrm.CreateHelpGrid("Item", "Item", ReportLayout.FrmReportLayout.FieldFilterDataType.StringType, ReportLayout.FrmReportLayout.FieldDataType.MultiSelection, mHelpItemQry)
+
+                Case CurrentStockReport
+                    ReportFrm.CreateHelpGrid("AsOnDate", "As On Date", ReportLayout.FrmReportLayout.FieldFilterDataType.StringType, ReportLayout.FrmReportLayout.FieldDataType.DateType, "", AgL.PubStartDate)
+                    ReportFrm.CreateHelpGrid("Item", "Item", ReportLayout.FrmReportLayout.FieldFilterDataType.StringType, ReportLayout.FrmReportLayout.FieldDataType.MultiSelection, mHelpItemQry)
+                    ReportFrm.CreateHelpGrid("Item Reporting Group", "Item Reporting Group", ReportLayout.FrmReportLayout.FieldFilterDataType.StringType, ReportLayout.FrmReportLayout.FieldDataType.MultiSelection, mHelpItemReportingGroupQry)
+
+                Case VATReports
+                    mQry = "Select 'Annexure A' AS Code, 'Annexure A' AS Name "
+                    mQry += "Union All Select 'Annexure A1' as Code, 'Annexure A1' AS Name "
+                    mQry += "Union All Select 'Annexure B' as Code, 'Annexure B' as Name "
+                    mQry += "Union All Select 'Annexure B1' as Code, 'Annexure B1' as Name "
+                    mQry += "Union All Select 'Annexure C' as Code, 'Annexure C' as Name "
+                    mQry += "Union All Select 'Return Of Tax' as Code, 'Return Of Tax' as Name "
+                    mQry += "Union All Select 'Return Form 24' as Code, 'Return Form 24' as Name "
+                    ReportFrm.CreateHelpGrid("FromDate", "Order From Date", ReportLayout.FrmReportLayout.FieldFilterDataType.StringType, ReportLayout.FrmReportLayout.FieldDataType.DateType, "", AgL.PubStartDate)
+                    ReportFrm.CreateHelpGrid("ToDate", "Order Upto Date", ReportLayout.FrmReportLayout.FieldFilterDataType.StringType, ReportLayout.FrmReportLayout.FieldDataType.DateType, "", AgL.PubEndDate)
+                    ReportFrm.CreateHelpGrid("Report Type", "Report Type", ReportLayout.FrmReportLayout.FieldFilterDataType.StringType, ReportLayout.FrmReportLayout.FieldDataType.SingleSelection, mQry, "", , , , , False)
+
+                Case PartyOutstandingReport
+                    ReportFrm.CreateHelpGrid("As On Date", "As On Date", ReportLayout.FrmReportLayout.FieldFilterDataType.StringType, ReportLayout.FrmReportLayout.FieldDataType.DateType, "", AgL.PubLoginDate)
+                    ReportFrm.CreateHelpGrid("Party", "Party", ReportLayout.FrmReportLayout.FieldFilterDataType.StringType, ReportLayout.FrmReportLayout.FieldDataType.MultiSelection, mHelpPartyQry)
+
+                Case BillWiseProfitability
+                    ReportFrm.CreateHelpGrid("FromDate", "From Date", ReportLayout.FrmReportLayout.FieldFilterDataType.StringType, ReportLayout.FrmReportLayout.FieldDataType.DateType, "", AgL.PubStartDate)
+                    ReportFrm.CreateHelpGrid("ToDate", "To Date", ReportLayout.FrmReportLayout.FieldFilterDataType.StringType, ReportLayout.FrmReportLayout.FieldDataType.DateType, "", AgL.PubEndDate)
+                    ReportFrm.CreateHelpGrid("Party", "Party", ReportLayout.FrmReportLayout.FieldFilterDataType.StringType, ReportLayout.FrmReportLayout.FieldDataType.MultiSelection, mHelpPartyQry)
+                    ReportFrm.CreateHelpGrid("Item", "Item", ReportLayout.FrmReportLayout.FieldFilterDataType.StringType, ReportLayout.FrmReportLayout.FieldDataType.MultiSelection, mHelpItemQry)
+                    ReportFrm.CreateHelpGrid("Bill No", "Bill No", ReportLayout.FrmReportLayout.FieldFilterDataType.StringType, ReportLayout.FrmReportLayout.FieldDataType.MultiSelection, mHelpSaleBillQry)
+                    ReportFrm.CreateHelpGrid("Item Reporting Group", "Item Reporting Group", ReportLayout.FrmReportLayout.FieldFilterDataType.StringType, ReportLayout.FrmReportLayout.FieldDataType.MultiSelection, mHelpItemReportingGroupQry)
+
+                Case DebtorsOutstandingOverDue
+                    ReportFrm.CreateHelpGrid("As On Date", "As On Date", ReportLayout.FrmReportLayout.FieldFilterDataType.StringType, ReportLayout.FrmReportLayout.FieldDataType.DateType, "", AgL.PubLoginDate)
+                    ReportFrm.CreateHelpGrid("NoofDays", "No of Days", ReportLayout.FrmReportLayout.FieldFilterDataType.NumericType, ReportLayout.FrmReportLayout.FieldDataType.NumericType, "", "")
+                    ReportFrm.CreateHelpGrid("Party", "Party", ReportLayout.FrmReportLayout.FieldFilterDataType.StringType, ReportLayout.FrmReportLayout.FieldDataType.MultiSelection, mHelpPartyQry)
+
+                Case ConcurLedger
+                    ReportFrm.CreateHelpGrid("As On Date", "As On Date", ReportLayout.FrmReportLayout.FieldFilterDataType.StringType, ReportLayout.FrmReportLayout.FieldDataType.DateType, "", AgL.PubLoginDate)
+                    ReportFrm.CreateHelpGrid("Grace Days", "Grace Days", ReportLayout.FrmReportLayout.FieldFilterDataType.NumericType, ReportLayout.FrmReportLayout.FieldDataType.NumericType, "", AgL.VNull(AgL.PubDtEnviro.Rows(0)("Default_DebtorsCreditDays")))
+                    ReportFrm.CreateHelpGrid("Party", "Party", ReportLayout.FrmReportLayout.FieldFilterDataType.StringType, ReportLayout.FrmReportLayout.FieldDataType.MultiSelection, mHelpPartyQry, , 450, 600, 300)
+                    ReportFrm.CreateHelpGrid("After Concur (Y/N)", "After Concur (Y/N)", ReportLayout.FrmReportLayout.FieldFilterDataType.StringType, ReportLayout.FrmReportLayout.FieldDataType.SingleSelection, mHelpYesNo, "Yes")
+                    ReportFrm.CreateHelpGrid("Agent", "Agent", ReportLayout.FrmReportLayout.FieldFilterDataType.StringType, ReportLayout.FrmReportLayout.FieldDataType.MultiSelection, mHelpAgentQry)
+                    ReportFrm.CreateHelpGrid("City", "City", ReportLayout.FrmReportLayout.FieldFilterDataType.StringType, ReportLayout.FrmReportLayout.FieldDataType.MultiSelection, mHelpCityQry)
+                    ReportFrm.CreateHelpGrid("Area", "Area", ReportLayout.FrmReportLayout.FieldFilterDataType.StringType, ReportLayout.FrmReportLayout.FieldDataType.MultiSelection, mHelpAreaQry)
+                    ReportFrm.CreateHelpGrid("Division", "Division", ReportLayout.FrmReportLayout.FieldFilterDataType.StringType, ReportLayout.FrmReportLayout.FieldDataType.MultiSelection, mHelpDivisionQry, "[DIVISIONCODE]")
+                    ReportFrm.CreateHelpGrid("Site", "Site", ReportLayout.FrmReportLayout.FieldFilterDataType.StringType, ReportLayout.FrmReportLayout.FieldDataType.MultiSelection, mHelpSiteQry, "[SITECODE]")
+
+
+                Case WeavingOrderRatio
+                    ReportFrm.CreateHelpGrid("FromDate", "From Date", ReportLayout.FrmReportLayout.FieldFilterDataType.StringType, ReportLayout.FrmReportLayout.FieldDataType.DateType, "", AgL.PubStartDate)
+                    ReportFrm.CreateHelpGrid("ToDate", "To Date", ReportLayout.FrmReportLayout.FieldFilterDataType.StringType, ReportLayout.FrmReportLayout.FieldDataType.DateType, "", AgL.PubEndDate)
+                    ReportFrm.CreateHelpGrid("Party", "Party", ReportLayout.FrmReportLayout.FieldFilterDataType.StringType, ReportLayout.FrmReportLayout.FieldDataType.MultiSelection, mHelpPartyQry)
+
+
+                Case GSTReports
+                    mQry = "Select 'GST 3B' as Code, 'GST 3B' as Name 
+                            Union All Select 'GSTR1' as Code, 'GSTR1' as Name "
+                    ReportFrm.CreateHelpGrid("Report Type", "Report Type", ReportLayout.FrmReportLayout.FieldFilterDataType.StringType, ReportLayout.FrmReportLayout.FieldDataType.SingleSelection, mQry, "GST 3B")
+
+                    Dim mLastMonthDate As String = DateAdd(DateInterval.Month, -1, CDate(AgL.Dman_Execute("SELECT date('now')", AgL.GCn).ExecuteScalar()))
+                    ReportFrm.CreateHelpGrid("FromDate", "From Date", ReportLayout.FrmReportLayout.FieldFilterDataType.StringType, ReportLayout.FrmReportLayout.FieldDataType.DateType, "", AgL.RetMonthStartDate(mLastMonthDate))
+                    ReportFrm.CreateHelpGrid("ToDate", "To Date", ReportLayout.FrmReportLayout.FieldFilterDataType.StringType, ReportLayout.FrmReportLayout.FieldDataType.DateType, "", AgL.RetMonthEndDate(mLastMonthDate))
+            End Select
+        Catch ex As Exception
+            MsgBox(ex.Message)
+        End Try
+    End Sub
+#End Region
+
+    Private Function FGetVoucher_TypeQry(ByVal TableName As String) As String
+        FGetVoucher_TypeQry = " SELECT Distinct 'o' As Tick, H.V_Type AS Code, Vt.Description AS [Voucher Type] " &
+                                " FROM " & TableName & " H  " &
+                                " LEFT JOIN Voucher_Type Vt ON H.V_Type = Vt.V_Type "
+    End Function
+
+    Private Sub ObjRepFormGlobal_ProcessReport() Handles ReportFrm.ProcessReport
+        Select Case mGRepFormName
+            Case SaleChallanReport
+                ProcSaleReport("SaleChallan", "SaleChallanDetail")
+
+            Case SaleInvoiceReport
+                ProcSaleReport("SaleInvoice", "SaleInvoiceDetail")
+
+            Case PurchaseChallanReport
+                ProcPurchaseInvoiceReport("PurchChallan", "PurchChallanDetail")
+
+            Case PurchaseInvoiceReport
+                ProcPurchaseInvoiceReport("PurchInvoice", "PurchInvoiceDetail")
+
+            Case PurchaseAdviseReport
+                ProcPurchaseAdviseReport()
+
+            Case ItemExpiryReport
+                ProcItemExpiryReport()
+
+            Case PurchaseIndentReport
+                ProcPurchaseIndentReport()
+
+
+            Case PartyOutstandingReport
+                ProcPartyOutstandingReport()
+
+            Case BillWiseProfitability
+                ProcBillWiseProfitabilty()
+
+            Case DebtorsOutstandingOverDue
+                ProcDebtorsOutstandingOverDue()
+
+            Case ConcurLedger
+                ProcConcurLedger()
+
+            Case CurrentStockReport
+                ProcCurrentStockReport()
+
+            Case GSTReports
+                ProcGSTReports()
+        End Select
+    End Sub
+
+    Public Sub New(ByVal mReportFrm As ReportLayout.FrmReportLayout)
+        ReportFrm = mReportFrm
+    End Sub
+
+#Region "Sale Report"
+    Private Sub ProcSaleReport(ByVal HeaderTable As String, ByVal LineTable As String)
+        Try
+            RepName = "Trade_SaleReport" : RepTitle = "Sale Report"
+
+
+            Dim mCondStr$ = ""
+            Dim strGrpFld As String = "''", strGrpFldHead As String = "''", strGrpFldDesc As String = "''"
+
+            RepTitle = "Sale Invoice Report"
+            If ReportFrm.FGetText(0) = "Invoice Wise Detail" Then
+                RepName = "Trade_SaleReport"
+            ElseIf ReportFrm.FGetText(0) = "Item Wise Detail" Then
+                RepName = "Trade_ItemWiseSaleReport"
+            ElseIf ReportFrm.FGetText(0) = "Party Wise Summary" Then
+                RepName = "Trade_SaleReportSummary"
+                strGrpFld = "H.SaleToParty"
+                strGrpFldDesc = "Party.Name"
+                strGrpFldHead = "'Party Name'"
+            ElseIf ReportFrm.FGetText(0) = "Item Group Wise Summary" Then
+                RepName = "Trade_SaleReportSummary"
+                strGrpFld = "I.ItemGroup"
+                strGrpFldDesc = "IG.Description"
+                strGrpFldHead = "'Item Group'"
+            ElseIf ReportFrm.FGetText(0) = "Item Category Wise Summary" Then
+                RepName = "Trade_SaleReportSummary"
+                strGrpFld = "I.ItemCategory"
+                strGrpFldDesc = "IC.Description"
+                strGrpFldHead = "'Item Category'"
+            ElseIf ReportFrm.FGetText(0) = "City Wise Summary" Then
+                RepName = "Trade_SaleReportSummary"
+                strGrpFld = "H.SaleToPartyCity"
+                strGrpFldDesc = "City.CityName"
+                strGrpFldHead = "'City'"
+            ElseIf ReportFrm.FGetText(0) = "State Wise Summary" Then
+                RepName = "Trade_SaleReportSummary"
+                strGrpFld = "City.State"
+                strGrpFldDesc = "State.Description"
+                strGrpFldHead = "'State'"
+
+            ElseIf ReportFrm.FGetText(0) = "Agent Wise Summary" Then
+                RepName = "Trade_SaleReportSummary"
+                strGrpFld = "Agent.Name"
+                strGrpFldDesc = "Agent.Name"
+                strGrpFldHead = "'AgentName'"
+            ElseIf ReportFrm.FGetText(0) = "Month Wise Summary" Then
+                RepName = "Trade_SaleReportSummary_Month"
+                strGrpFld = "strftime('%m-%Y',H.V_Date) "
+                strGrpFldDesc = "H.V_Date"
+                strGrpFldHead = "'Month'"
+            End If
+
+
+            mCondStr = " Where 1 = 1 "
+
+
+
+            mCondStr = mCondStr & " AND H.V_Date Between '" & CDate(ReportFrm.FGetText(1)).ToString("s") & "' And '" & CDate(ReportFrm.FGetText(2)).ToString("s") & "' "
+            mCondStr = mCondStr & ReportFrm.GetWhereCondition("H.BillToParty", 3)
+            mCondStr = mCondStr & ReportFrm.GetWhereCondition("L.Item", 4)
+            mCondStr = mCondStr & ReportFrm.GetWhereCondition("H.Site_Code", 5)
+            mCondStr = mCondStr & ReportFrm.GetWhereCondition("H.V_Type", 6)
+            If ReportFrm.FGetText(7) = "Cash" Then
+                mCondStr = mCondStr & " AND Sg.Nature = 'Cash'"
+            ElseIf ReportFrm.FGetText(7) = "Credit" Then
+                mCondStr = mCondStr & " AND Sg.Nature <> 'Cash'"
+            End If
+            mCondStr = mCondStr & ReportFrm.GetWhereCondition("H.Agent", 8)
+
+            'If ReportFrm.FGetText(8) <> "All" Then mCondStr += " And H.Agent = '" & ReportFrm.FGetCode(8) & "'"
+
+
+
+            mQry = " SELECT " & strGrpFld & " as GrpField, " & strGrpFldDesc & " as GrpFieldDesc, " & strGrpFldHead & " as GrpFieldHead, 
+                    H.DocID, H.V_Date, 
+                    Party.Name As SaleToPartyName , 
+                    Agent.Name As AgentName , 
+                    H.Div_Code || H.Site_Code || '-' || H.V_Type || '-' || H.ManualRefNo as InvoiceNo, H.ManualRefNo, 
+                    I.Specification as ItemSpecification, I.Description As ItemDesc,IG.Description as ItemGroupName, IC.Description as ItemCategoryDescription,  
+                    Cast((Case When L.DiscountPer = 0 Then '' else L.DiscountPer End) as nVarchar) || (Case When L.AdditionalDiscountPer>0 Then '+' else '' End) || Cast((Case When L.AdditionalDiscountPer=0 Then '' else L.AdditionalDiscountPer End) as nVarchar) as DiscountPer, L.DiscountAmount + L.AdditionalDiscountAmount as Discount, L.Taxable_Amount, L.Net_Amount, L.Qty, L.Unit, L.Rate, L.Amount -(L.DiscountAmount + L.AdditionalDiscountAmount) as AmountExDiscount,
+                    L.Tax1+L.Tax2+L.Tax3+L.Tax4+L.Tax5 as TotalTax
+                    FROM SaleInvoice H 
+                    Left Join SaleInvoiceDetail L On H.DocID = L.DocID 
+                    Left Join Item I On L.Item = I.Code 
+                    Left Join ItemGroup IG On I.ItemGroup = IG.Code
+                    Left Join ItemCategory IC On I.ItemCategory = IC.Code
+                    Left Join viewHelpSubgroup Party On H.SaleToParty = Party.Code 
+                    Left Join viewHelpSubGroup Agent On H.Agent = Agent.Code 
+                    Left Join City On H.SaleToPartyCity = City.CityCode 
+                    Left Join State On City.State = State.Code
+                    LEFT JOIN Voucher_Type Vt On H.V_Type = Vt.V_Type " & mCondStr & OrderByStr
+            DsRep = AgL.FillData(mQry, AgL.GCn)
+
+            If DsRep.Tables(0).Rows.Count = 0 Then Err.Raise(1, , "No Records To Print!")
+
+            ReportFrm.PrintReport(DsRep, RepName, RepTitle)
+        Catch ex As Exception
+            MsgBox(ex.Message)
+            DsRep = Nothing
+        End Try
+    End Sub
+#End Region
+
+#Region "Purchase Invoice Report"
+    Private Sub ProcPurchaseInvoiceReport(ByVal HeaderTable As String, ByVal LineTable As String)
+        Dim strGrpFld As String = "''", strGrpFldHead As String = "''", strGrpFldDesc As String = "''"
+        Try
+            If ReportFrm.FGetText(2) = "Summary" Then
+                RepName = "Trade_PurchaseReport" : RepTitle = "Purchase Invoice Report"
+            ElseIf ReportFrm.FGetText(2) = "Party Wise Summary" Then
+                RepName = "Trade_PurchaseReportSummary" : RepTitle = "Purchase Invoice Report (" & ReportFrm.FGetText(2) & ")"
+                strGrpFld = "Sg.Name"
+                strGrpFldDesc = "Sg.Name || ',' || IfNull(C.CityName,'')"
+                strGrpFldHead = "'Party Name'"
+            ElseIf ReportFrm.FGetText(2) = "Month Wise Summary" Then
+                RepName = "Trade_PurchaseReportSummary" : RepTitle = "Purchase Invoice Report (" & ReportFrm.FGetText(2) & ")"
+                strGrpFld = "Substring(convert(nvarchar,H.V_Date,11),0,6)"
+                strGrpFldDesc = "Replace(SubString(Convert(VARCHAR,H.v_Date,6),4,6),' ','-')"
+                strGrpFldHead = "'Month'"
+            ElseIf ReportFrm.FGetText(2) = "Item Wise Detail" Then
+                RepName = "Trade_ItemWisePurchaseReport" : RepTitle = "Item Wise Purchase Invoice Report"
+            End If
+
+            Dim mCondStr$ = ""
+            mCondStr = " Where Vt.NCat = '" & AgTemplate.ClsMain.Temp_NCat.PurchaseInvoice & "' "
+
+            mCondStr = mCondStr & " AND H.V_Date Between '" & CDate(ReportFrm.FGetText(0)).ToString("s") & "' And '" & CDate(ReportFrm.FGetText(1)).ToString("s") & "' "
+            mCondStr = mCondStr & ReportFrm.GetWhereCondition("L.Item", 3)
+            mCondStr = mCondStr & ReportFrm.GetWhereCondition("H.Vendor", 4)
+            mCondStr = mCondStr & ReportFrm.GetWhereCondition("H.Site_Code", 5)
+            mCondStr = mCondStr & ReportFrm.GetWhereCondition("H.V_Type", 6)
+
+            mQry = " SELECT " & strGrpFld & " as GrpField, " & strGrpFldDesc & " as GrpFieldDesc, " & strGrpFldHead & " as GrpFieldHead, " &
+                        " L.DocId, L.Qty, L.Unit, L.Net_Amount, " &
+                        " I.Description AS ItemDesc, H.V_Date, H.ManualRefNo, Sg.DispName || ',' || IfNull(C.CityName,'') As VendorName, L.Remark " &
+                        " FROM " & LineTable & " L " &
+                        " LEFT JOIN " & HeaderTable & " H ON L.DocId = H.DocId " &
+                        " LEFT JOIN Voucher_Type Vt On H.V_Type = Vt.V_Type " &
+                        " LEFT JOIN Item I ON L.Item = I.Code " &
+                        " LEFT JOIN SubGroup Sg On H.Vendor = Sg.SubCode " &
+                        " LEFT JOIN City C On Sg.CityCode = C.CityCode " & mCondStr
+
+            DsRep = AgL.FillData(mQry, AgL.GCn)
+
+            If DsRep.Tables(0).Rows.Count = 0 Then Err.Raise(1, , "No Records to Print!")
+
+            ReportFrm.PrintReport(DsRep, RepName, RepTitle)
+        Catch ex As Exception
+            MsgBox(ex.Message)
+            DsRep = Nothing
+        End Try
+    End Sub
+#End Region
+
+#Region "Purchase Advise Report"
+    Private Sub ProcPurchaseAdviseReport()
+        Try
+            Dim mCondStr$ = ""
+            Dim strGrpFld As String = "''", strGrpFldHead As String = "''", strGrpFldDesc As String = "''"
+
+            RepName = "Med_PurchaseAdviseReport" : RepTitle = "Purchase Advise Report"
+
+
+            mCondStr = " Where 1 = 1 "
+            mCondStr = mCondStr & " AND L.V_Date <= '" & ReportFrm.FGetText(0) & "' "
+            mCondStr = mCondStr & ReportFrm.GetWhereCondition("L.Item", 1)
+            mCondStr = mCondStr & ReportFrm.GetWhereCondition("I.ItemGroup", 2)
+
+            If ReportFrm.FGetText(3) <> "Both" Then
+                mCondStr = mCondStr & " And I.Status = '" & ReportFrm.FGetText(3) & "'"
+            End If
+
+            mQry = " SELECT L.Item, Max(I.Description) AS ItemDesc, Max(I.ReorderLevel) AS ReorderLevel, " &
+                    " IfNull(Sum(L.Qty_Rec),0) - IfNull(Sum(L.Qty_Iss),0) AS StockQty " &
+                    " FROM Stock L " &
+                    " LEFT JOIN Item  I ON L.Item = I.Code " & mCondStr &
+                    " GROUP BY L.Item " &
+                    " HAVING(IfNull(Sum(L.Qty_Rec), 0) - IfNull(Sum(L.Qty_Iss), 0) <= Max(I.ReorderLevel)) "
+            DsRep = AgL.FillData(mQry, AgL.GCn)
+
+            If DsRep.Tables(0).Rows.Count = 0 Then Err.Raise(1, , "No Records to Print!")
+
+            ReportFrm.PrintReport(DsRep, RepName, RepTitle)
+        Catch ex As Exception
+            MsgBox(ex.Message)
+            DsRep = Nothing
+        End Try
+    End Sub
+#End Region
+
+#Region "Item Expiry Report"
+    Private Sub ProcItemExpiryReport()
+        Try
+            Dim mCondStr$ = ""
+            Dim strGrpFld As String = "''", strGrpFldHead As String = "''", strGrpFldDesc As String = "''"
+
+            RepName = "Med_ItemExpiryReport" : RepTitle = "Item Expiry Report"
+
+            mCondStr = " Where 1 = 1 "
+            mCondStr = mCondStr & ReportFrm.GetWhereCondition("L.Item", 1)
+            mCondStr = mCondStr & ReportFrm.GetWhereCondition("I.ItemGroup", 2)
+
+            If ReportFrm.FGetText(3) <> "Both" Then
+                mCondStr = mCondStr & " And I.Status = '" & ReportFrm.FGetText(3) & "'"
+            End If
+
+            mQry = " SELECT L.ReferenceDocID, L.ReferenceDocIDSr, Max(I.Description) As ItemDesc, " &
+                    " IfNull(Sum(L.Qty_Rec),0) - IfNull(Sum(L.Qty_Iss),0) AS StockQty, " &
+                    " Max(L.ExpiryDate) As ExpiryDate " &
+                    " FROM Stock L  " &
+                    " LEFT JOIN Item I ON L.Item = I.Code " & mCondStr &
+                    " GROUP BY L.ReferenceDocID, L.ReferenceDocIDSr " &
+                    " HAVING IfNull(Sum(L.Qty_Rec), 0) - IfNull(Sum(L.Qty_Iss), 0) > 0 " &
+                    " And Max(L.ExpiryDate) <= '" & ReportFrm.FGetText(0) & "' "
+            DsRep = AgL.FillData(mQry, AgL.GCn)
+
+            If DsRep.Tables(0).Rows.Count = 0 Then Err.Raise(1, , "No Records to Print!")
+
+            ReportFrm.PrintReport(DsRep, RepName, RepTitle)
+        Catch ex As Exception
+            MsgBox(ex.Message)
+            DsRep = Nothing
+        End Try
+    End Sub
+#End Region
+
+#Region "Purchase Indent Report"
+    Private Sub ProcPurchaseIndentReport()
+        Try
+            RepName = "Med_PurchaseIndentReport" : RepTitle = "Purhcase Indent Report"
+
+            Dim mCondStr$ = ""
+
+            mCondStr = " Where 1=1 "
+            mCondStr = mCondStr & " AND H.V_Date Between '" & CDate(ReportFrm.FGetText(0)).ToString("s") & "' And '" & CDate(ReportFrm.FGetText(1)).ToString("s") & "' "
+            mCondStr = mCondStr & ReportFrm.GetWhereCondition("L.Item", 2)
+
+            mQry = " SELECT H.V_Date, I.Description As ItemDesc, IfNull(VStock.CurrentStock,0) As StockQty " &
+                    " FROM PurchIndent H  " &
+                    " LEFT JOIN PurchIndentDetail L ON H.DocID = L.DocId " &
+                    " LEFT JOIN ( " &
+                    "   Select S.Item, IfNull(Sum(S.Qty_Rec),0) - IfNull(Sum(S.Qty_Iss),0) As CurrentStock " &
+                    "   From Stock S Group By S.Item " &
+                    " ) As VStock On L.Item = VStock.Item " &
+                    " LEFT JOIN Item I ON L.Item = I.Code " & mCondStr
+
+            DsRep = AgL.FillData(mQry, AgL.GCn)
+
+            If DsRep.Tables(0).Rows.Count = 0 Then Err.Raise(1, , "No Records to Print!")
+
+            ReportFrm.PrintReport(DsRep, RepName, RepTitle)
+        Catch ex As Exception
+            MsgBox(ex.Message)
+            DsRep = Nothing
+        End Try
+    End Sub
+#End Region
+
+#Region "Current Stock Report"
+    Private Sub ProcCurrentStockReport()
+        Try
+            RepName = "Med_CurrentStockReport" : RepTitle = "Current Stock Report"
+
+            Dim mCondStr$ = "", mCondstr1$ = ""
+
+            mCondStr = "  And H.Site_Code ='" & AgL.PubSiteCode & "' "
+            mCondStr = mCondStr & " AND H.V_Date <= '" & ReportFrm.FGetText(0) & "'  "
+            mCondStr = mCondStr & ReportFrm.GetWhereCondition("H.Item", 1)
+
+            mCondstr1 = " And Stock.Site_Code ='" & AgL.PubSiteCode & "' "
+            mCondstr1 = mCondstr1 & " AND Stock.V_Date <= '" & ReportFrm.FGetText(0) & "'  "
+            mCondstr1 = mCondstr1 & ReportFrm.GetWhereCondition("Stock.Item", 1)
+
+
+            If ReportFrm.GetWhereCondition("ItemRrportingGroup", 2) <> "" Then
+                mQry = " Select '''' ||  replace(ItemList,',',''',''')  || ''''  From ItemReportingGroup Where 1=1 " & ReportFrm.GetWhereCondition("Code", 2)
+                mCondStr = mCondStr & " And H.Item In (" & AgL.Dman_Execute(mQry, AgL.GCn).ExecuteScalar & ")"
+                mCondstr1 = mCondstr1 & " And Stock.Item In (" & AgL.Dman_Execute(mQry, AgL.GCn).ExecuteScalar & ")"
+            End If
+
+
+
+
+            mQry = "SELECT I.Code, I.Description, H.LotNo AS LotNo, " &
+                    "IfNull(H.Qty_Rec, 0) - IfNull(SAdj.AdjQty, 0) AS [Bal.Qty], I.Unit,  " &
+                    "H.V_Type || '-' || H.RecId As StockInNo, H.V_Date AS Purchase_Date,   " &
+                    "H.Sale_Rate, H.MRP, H.ExpiryDate,   " &
+                    "   I.ManualCode,   " &
+                    "I.SalesTaxPostingGroup, H.MeasureUnit, " &
+                    "         H.MeasurePerPcs,  Sg.Name AS Vendor,   " &
+                    "        U.DecimalPlaces As QtyDecimalPlaces, U1.DecimalPlaces As MeasureDecimalPlaces,   " &
+                    "       I.BillingOn as BillingType,H.DocId As StockInDocID, H.Sr As StockInDocIDSr,    " &
+                    "      (H.Landed_Value/H.Qty_Rec)  as PurchaseRate, (H.Landed_Value/H.Qty_Rec)*(IfNull(H.Qty_Rec, 0) - IfNull(SAdj.AdjQty, 0)) as StockAmount  " &
+                    "     FROM Stock H    " &
+                    "    LEFT JOIN (  " &
+                    "    			SELECT StockInDocID, StockInSr, Sum(AdjQty) AS AdjQty    " &
+                    "    			FROM StockAdj   " &
+                    "    			LEFT JOIN Stock ON StockAdj.StockOutDocID = Stock.DocID AND StockAdj.StockOutSr = Stock.Sr    " &
+                    "    			WHERE 1=1 " & mCondstr1 &
+                    "    			GROUP BY StockInDocID, StockInSr    " &
+                    "             	) AS SAdj ON H.DocID = SAdj.StockInDocID AND H.Sr = Sadj.StockInSr   " &
+                    "    LEFT JOIN Item I ON H.Item = I.Code   " &
+                    "    LEFT JOIN SubGroup Sg ON H.SubCode = Sg.SubCode    " &
+                    "    LEFT JOIN Unit U On I.Unit = U.Code   " &
+                    "    LEFT JOIN Unit U1 On I.MeasureUnit = U1.Code   " &
+                    "    Where IfNull(H.Qty_Rec, 0) - IfNull(SAdj.AdjQty, 0) > 0  And IfNull(H.Qty_Rec, 0)>0   " & mCondStr &
+                    "  And H.Site_Code ='" & AgL.PubSiteCode & "' "
+
+
+            DsRep = AgL.FillData(mQry, AgL.GCn)
+
+            If DsRep.Tables(0).Rows.Count = 0 Then Err.Raise(1, , "No Records to Print!")
+
+            ReportFrm.PrintReport(DsRep, RepName, RepTitle)
+        Catch ex As Exception
+            MsgBox(ex.Message)
+            DsRep = Nothing
+        End Try
+    End Sub
+#End Region
+
+#Region "Bill Wise Profitabilty"
+    Private Sub ProcBillWiseProfitabilty()
+        Try
+            RepName = "Trade_BillWiseProfitabilty" : RepTitle = "Bill Wise Profitabilty"
+
+
+            Dim mCondStr$ = ""
+            Dim strGrpFld As String = "''", strGrpFldHead As String = "''", strGrpFldDesc As String = "''"
+
+            mCondStr = " Where 1 = 1 "
+            mCondStr = mCondStr & " AND H.V_Date Between '" & CDate(ReportFrm.FGetText(0)).ToString("s") & "' And '" & CDate(ReportFrm.FGetText(1)).ToString("s") & "' "
+            mCondStr = mCondStr & ReportFrm.GetWhereCondition("H.SaleToParty", 2)
+            mCondStr = mCondStr & ReportFrm.GetWhereCondition("L.Item", 3)
+            mCondStr = mCondStr & ReportFrm.GetWhereCondition("H.DocID", 4)
+
+            If ReportFrm.GetWhereCondition("ItemRrportingGroup", 5) <> "" Then
+                mQry = " Select '''' ||  replace(ItemList,',',''',''')  || ''''  From ItemReportingGroup Where 1=1 " & ReportFrm.GetWhereCondition("Code", 5)
+                mCondStr = mCondStr & " And L.Item In (" & AgL.Dman_Execute(mQry, AgL.GCn).ExecuteScalar & ")"
+            End If
+
+            mQry = " SELECT H.DocID , H.V_Type, H.V_Date, H.ManualRefNo, Sg.Name As SaleToPartyName, H.SaleToParty , " &
+                    " L.Sr, L.Item , L.Qty, L.Unit, L.Rate, L.Amount, L.Landed_Value AS SaleValue, " &
+                    " I.Description AS ItemDesc , PCD.Landed_Value/PCD.Qty * L.Qty AS PurchaseValue ,  " &
+                    " L.Landed_Value - PCD.Landed_Value/PCD.Qty * L.Qty AS Profit,  " &
+                    " CASE WHEN IfNull(PCD.Landed_Value/PCD.Qty * L.Qty,0) > 0 THEN ( L.Landed_Value - PCD.Landed_Value/PCD.Qty * L.Qty) * 100 / ( PCD.Landed_Value/PCD.Qty * L.Qty) ELSE 0 END AS ProfitPer " &
+                    " FROM SaleInvoice  H " &
+                    " LEFT JOIN SubGroup Sg On H.SaleToParty = Sg.SubCode " &
+                    " LEFT JOIN SaleInvoiceDetail L ON L.DocId = H.DocID  " &
+                    " LEFT JOIN Item I ON I.Code = L.Item  " &
+                    " LEFT JOIN PurchChallanDetail PCD ON PCD.DocId = L.ReferenceDocId AND PCD.Sr  = L.ReferenceDocIdSr " & mCondStr
+            DsRep = AgL.FillData(mQry, AgL.GCn)
+
+
+
+            If DsRep.Tables(0).Rows.Count = 0 Then Err.Raise(1, , "No Records to Print!")
+
+            ReportFrm.PrintReport(DsRep, RepName, RepTitle)
+        Catch ex As Exception
+            MsgBox(ex.Message)
+            DsRep = Nothing
+        End Try
+    End Sub
+#End Region
+
+#Region "Debtors Outstanding Over Due Days"
+    Private Sub ProcDebtorsOutstandingOverDue()
+        Dim mCondStr$ = ""
+        Dim NoofDays As Integer = 0
+
+        Try
+            RepName = "Trade_DebtorsOutstandingOverDue" : RepTitle = "Debtors Outstanding Over Due"
+
+            If Val(ReportFrm.FGetText(1)) <> 0 Then
+                NoofDays = Val(ReportFrm.FGetText(1))
+            Else
+                MsgBox("Please Enter Valid No. Of Days.") : Exit Sub
+            End If
+
+            mCondStr = " Where H.V_Date <= '" & ReportFrm.FGetText(0) & "' "
+            mCondStr = mCondStr & ReportFrm.GetWhereCondition("H.SubCode", 2)
+            mCondStr = mCondStr & " And  H.Site_Code = " & AgL.Chk_Text(AgL.PubSiteCode) & " "
+            mCondStr = mCondStr & " And  Sg.Nature In ('" & ClsMain.SubGroupNature.Customer & "') "
+
+
+            mQry = "SELECT VRep.SubCode, Max(VRep.PartyName) AS PartyName, Max(VRep.TotalBal) AS TotalBal, Sum(VRep.NetBalAmount) AS BalAboveDays, '" & ReportFrm.FGetText(1) & "' AS OnOfDays " &
+                    " FROM " &
+                    " ( " &
+                    " SELECT VMain.*,    SUM(NetAmount) OVER( PARTITION BY SubCode ORDER BY V_Date DESC , DocId ) sum_stock1,  " &
+                    " CASE WHEN VMain.NetAmount = 0 THEN  VMain.TotalBal - SUM(NetAmount) OVER( PARTITION BY SubCode ORDER BY V_Date DESC , DocId )  ELSE VMain.NetAmount END AS NetBalAmount " &
+                    " FROM  ( " &
+                    " SELECT P.PartyName, P.TotalBal, SD.*,  CASE WHEN P.TotalBal > SD.Sum_Dr THEN SD.AmtDr ELSE 0 END AS NetAmount " &
+                    " FROM " &
+                    " ( " &
+                    " SELECT SG.SubCode AS SubCode, max(SG.Name) AS PartyName, IfNull(sum(H.AmtDr),0)- IfNull(sum(H.AmtCR),0) AS TotalBal " &
+                    " FROM Ledger H   " &
+                    " LEFT JOIN SubGroup SG  ON SG.SubCode = H.SubCode " & mCondStr &
+                    " GROUP BY SG.SubCode  " &
+                    " Having IfNull(sum(H.AmtDr),0)- IfNull(sum(H.AmtCR),0)  > 0 " &
+                    " ) As P " &
+                    " LEFT JOIN " &
+                    " ( " &
+                    " SELECT s.*, SUM(AmtDr) OVER( PARTITION BY SubCode ORDER BY V_Date DESC, DocId  ) Sum_Dr " &
+                    " FROM " &
+                    " ( " &
+                    " SELECT H.DocID, H.RecId, H.V_TYpe, H.V_Date, H.AmtDr , H.SubCode " &
+                    " FROM Ledger H  " &
+                    " LEFT JOIN SubGroup SG  ON SG.SubCode = H.SubCode " & mCondStr &
+                    " AND IfNull(H.AmtDr,0) <> 0 " &
+                    " )  s  " &
+                    " ) SD ON SD.SubCode = p.SubCode  AND IfNull(P.TotalBal,0)  > IfNull(SD.Sum_Dr,0)  - IfNull(SD.AmtDr,0) " &
+                    " ) VMain " &
+                    " ) VRep " &
+                    " WHERE DateDiff(Day,VRep.V_Date," & AgL.Chk_Text(ReportFrm.FGetText(0)) & " ) >=  " & NoofDays & " " &
+                    " GROUP BY VRep.SubCode "
+
+
+            DsRep = AgL.FillData(mQry, AgL.GCn)
+
+            If DsRep.Tables(0).Rows.Count = 0 Then Err.Raise(1, , "No Records to Print!")
+
+            ReportFrm.PrintReport(DsRep, RepName, RepTitle)
+        Catch ex As Exception
+            MsgBox(ex.Message)
+            DsRep = Nothing
+        End Try
+    End Sub
+#End Region
+
+#Region "Concur Ledger"
+    Private Sub ProcConcurLedger()
+        Dim mCondStr$ = ""
+        Dim NoofDays As Integer = 0
+        Dim DtSubcode As DataTable
+        Dim iSubcode As Integer
+        Dim DtDivision As DataTable
+        Dim iDivision As Integer
+        Dim DtDr As DataTable
+        Dim DtCr As DataTable
+        Dim DtTemp As DataTable
+        Dim DrRecordCount As Integer
+        Dim CrRecordCount As Integer
+        Dim LoopLimit As Integer
+        Dim I As Integer, J As Integer
+        Dim iDr As Integer
+        Dim iCr As Integer
+        Dim DrSr As Integer
+        Dim CrSr As Integer
+        Dim ConcurSr As Integer = -1
+        Dim mSubcode As String
+        Dim mDivision As String
+        Dim mLastChuktiAmount As Double
+
+        Try
+            RepName = "ConcurLedger" : RepTitle = "Chukti Ledger"
+
+            If Val(ReportFrm.FGetText(1)) <> 0 Then
+                NoofDays = Val(ReportFrm.FGetText(1))
+            Else
+                MsgBox("Please Enter Valid No. Of Days.") : Exit Sub
+            End If
+
+
+
+
+            Try
+                mQry = "Drop Table #TempTblDr "
+                AgL.Dman_ExecuteNonQry(mQry, AgL.GCn)
+            Catch ex As Exception
+            End Try
+
+
+
+            mQry = "Create Temporary Table #TempTblDr 
+                    (
+                        DrDivision nVarchar(1),
+                        DrSubcode nVarchar(10),
+                        DrSr Integer,
+                        DrDate DateTime,
+                        DrDocNo nVarchar(21)  Collate NoCase,
+                        DrAmount Float Default 0,
+                        DrDays Integer,
+                        DrInterest Float
+                    )
+                    "
+
+                AgL.Dman_ExecuteNonQry(mQry, AgL.GCn)
+
+
+            Try
+                mQry = "Drop Table #TempTblCr "
+                AgL.Dman_ExecuteNonQry(mQry, AgL.GCn)
+            Catch ex As Exception
+            End Try
+
+
+            mQry = "Create Temporary Table #TempTblCr 
+                    (
+                        CrDivision nVarchar(1),
+                        CrSubcode nVarchar(10),
+                        CrSr Integer,
+                        CrDate DateTime,
+                        CrDocNo nVarchar(21)  Collate NoCase,
+                        CrAmount Float Default 0,
+                        CrDays Integer,
+                        CrInterest Float                        
+                    )
+                    "
+
+                AgL.Dman_ExecuteNonQry(mQry, AgL.GCn)
+
+
+            Try
+                mQry = "Drop Table #TempTblDrCr "
+                AgL.Dman_ExecuteNonQry(mQry, AgL.GCn)
+            Catch ex As Exception
+            End Try
+
+
+            mQry = "Create Temporary Table #TempTblDrCr 
+                    (
+                        DrDivision nVarchar(1),
+                        DrSubcode nVarchar(10),
+                        DrSr Integer,
+                        DrDate DateTime,
+                        DrDocNo nVarchar(21)  Collate NoCase,
+                        DrAmount Float Default 0,
+                        DrDays Integer,
+                        DrInterest Float,
+                        CrDivision nVarchar(1),
+                        CrSubcode nVarchar(10),
+                        CrSr Integer,
+                        CrDate DateTime,
+                        CrDocNo nVarchar(21)  Collate NoCase,
+                        CrAmount Float Default 0,
+                        CrDays Integer,
+                        CrInterest Float
+                    )
+                    "
+                AgL.Dman_ExecuteNonQry(mQry, AgL.GCn)
+
+
+
+                If AgL.XNull(ReportFrm.FGetText(7)) = "All" Then
+                mQry = "Select D.Div_Code as Code, D.Div_Name As [Division] From Division D With (Nolock) Where Div_Code In (" & AgL.PubDivisionList & ") "
+                DtDivision = AgL.FillData(mQry, AgL.GCn).Tables(0)
+                Else
+                    mQry = "Select D.Div_Code as Code, D.Div_Name As [Division] From Division D Where 1=1 "
+                    mQry = mQry & Replace(ReportFrm.GetWhereCondition("D.Div_Code", 7), "''", "'")
+                    DtDivision = AgL.FillData(mQry, AgL.GCn).Tables(0)
+                End If
+
+
+
+
+
+                mQry = "Select Sg.Subcode 
+                    From subgroup sg 
+                    Left Join Area A On Sg.Area = A.Code
+                    Left Join City C On Sg.CityCode = C.CityCode
+                    Left Join SaleInvoiceLastTransactionValues L On L.Subcode = Sg.Subcode
+                    Where 1=1 And Sg.Subcode Is Not Null "
+
+                mCondStr = mCondStr & ReportFrm.GetWhereCondition("Sg.SubCode", 2)
+                mCondStr = mCondStr & ReportFrm.GetWhereCondition("L.Agent", 4)
+                mCondStr = mCondStr & ReportFrm.GetWhereCondition("Sg.CityCode", 5)
+                mCondStr = mCondStr & ReportFrm.GetWhereCondition("Sg.Area", 6)
+                mQry = mQry + mCondStr + " Group By Sg.Subcode "
+
+                DtSubcode = AgL.FillData(mQry, AgL.GCn).Tables(0)
+
+            For iSubcode = 0 To DtSubcode.Rows.Count - 1
+                Debug.Print(iSubcode.ToString + " / " + DtSubcode.Rows.Count.ToString)
+                For iDivision = 0 To DtDivision.Rows.Count - 1
+
+                    mDivision = AgL.XNull(DtDivision.Rows(iDivision)("Code"))
+                    mSubcode = AgL.XNull(DtSubcode.Rows(iSubcode)("Subcode"))
+                    iDr = 0 : iCr = 0 : DrSr = 0 : CrSr = 0
+                    mCondStr = " And L.V_Date <= " & AgL.Chk_Date(CDate(ReportFrm.FGetText(0)).ToString("s")) & " "
+                    mCondStr = mCondStr & " And L.Subcode = " & AgL.Chk_Text(mSubcode) & " "
+                    mCondStr = mCondStr & " And L.DivCode = " & AgL.Chk_Text(mDivision) & " "
+                    'mCondStr = mCondStr & Replace(ReportFrm.GetWhereCondition("L.DivCode", 7), "''", "'")
+                    'mCondStr = mCondStr & Replace(ReportFrm.GetWhereCondition("L.Site_Code", 8), "''", "'")
+
+
+                    mQry = "select L.DocId, L.V_Date, L.DivCode || L.site_Code || '-' || L.V_Type || '-' || L.RecId as DocNo, L.AmtDr 
+                    from ledger L
+                    where L.AmtDr>0  " & mCondStr & " Order By L.V_Date, Try_Parse(L.RecId as Integer) "
+
+                    DtDr = AgL.FillData(mQry, AgL.GCn).Tables(0)
+                    DrRecordCount = DtDr.Rows.Count
+
+                    mQry = "
+                    select L.DocId, L.V_Date, L.DivCode || L.site_Code || '-' || L.V_Type || '-' || L.RecId as DocNo, L.AmtCr 
+                    from ledger L
+                    where L.AmtCr>0  " & mCondStr & " Order By L.V_Date,  Try_Parse(L.RecId as Integer) "
+
+                    DtCr = AgL.FillData(mQry, AgL.GCn).Tables(0)
+                    CrRecordCount = DtCr.Rows.Count
+
+
+                    Dim mRunningTotalDr As Double
+                    Dim mRunningTotalCr As Double
+                    Dim mDays As Integer
+                    Dim mInterest As Integer
+                    mRunningTotalDr = 0 : mRunningTotalCr = 0 : mLastChuktiAmount = 0 : mDays = 0 : mInterest = 0 : ConcurSr = -1
+
+                    LoopLimit = DrRecordCount + CrRecordCount ' IIf(DrRecordCount >= CrRecordCount, DrRecordCount, CrRecordCount)
+                    For I = 0 To LoopLimit
+
+
+                        If DrRecordCount > iDr Then
+                            If iDr = 0 Or iCr >= CrRecordCount Or mRunningTotalDr <= mRunningTotalCr Then
+                                mDays = DateDiff(DateInterval.Day, DateAdd(DateInterval.Day, Val(ReportFrm.FGetText(1)), DtDr.Rows(iDr)("V_Date")), CDate(ReportFrm.FGetText(0)))
+                                If mDays < 0 Then mDays = 0
+                                mInterest = Math.Round(Val(DtDr.Rows(iDr)("AmtDr")) * AgL.VNull(AgL.PubDtEnviro.Rows(0)("Default_DebtorsInterestRate")) * (mDays / 36500), 2)
+                                mQry = "Insert Into #TempTblDr (DrDivision,DrSubcode,DrSr,DrDate,DrDocNo,DrAmount,DrDays,DrInterest)
+                                        Values(" & AgL.Chk_Text(mDivision) & ", " & AgL.Chk_Text(mSubcode) & ", " & DrSr & ", " & AgL.Chk_Date(AgL.XNull(DtDr.Rows(iDr)("V_Date"))) & ", " & AgL.Chk_Text(AgL.XNull(DtDr.Rows(iDr)("DocNo"))) & "," & AgL.VNull(DtDr.Rows(iDr)("AmtDr")) & ", " & mDays & ", " & mInterest & ")
+                                       "
+                                AgL.Dman_ExecuteNonQry(mQry, AgL.GCn)
+                                mRunningTotalDr += AgL.VNull(DtDr.Rows(iDr)("AmtDr"))
+                                iDr += 1
+                                DrSr += 1
+                            End If
+                        End If
+
+
+                        If Math.Round(mRunningTotalDr, 2) = Math.Round(mRunningTotalCr, 2) And mLastChuktiAmount <> mRunningTotalDr And mRunningTotalDr > 0 Then
+                            J = 0
+                            mLastChuktiAmount = mRunningTotalDr
+                            If DrSr > CrSr Then
+                                For J = CrSr To DrSr - 1
+                                    mQry = "Insert Into #TempTblCr(CrDivision,CrSubcode, CrSr) Values(" & AgL.Chk_Text(mDivision) & ", " & AgL.Chk_Text(mSubcode) & ", " & J & ")"
+                                    AgL.Dman_ExecuteNonQry(mQry, AgL.GCn)
+                                Next
+                            ElseIf CrSr > DrSr Then
+                                For J = DrSr To CrSr - 1
+                                    mQry = "Insert Into #TempTblDr(DrDivision,DrSubcode,DrSr) Values(" & AgL.Chk_Text(mDivision) & ", " & AgL.Chk_Text(mSubcode) & "," & J & ")"
+                                    AgL.Dman_ExecuteNonQry(mQry, AgL.GCn)
+                                Next
+                            End If
+
+
+
+                            If iDr <= DrRecordCount Or iCr <= CrRecordCount Then
+                                If J = 0 Then J = DrSr + 1
+                                mQry = "Insert Into #TempTblDr(DrDivision,DrSubcode,DrSr) Values(" & AgL.Chk_Text(mDivision) & ", " & AgL.Chk_Text(mSubcode) & ", " & J & ")"
+                                AgL.Dman_ExecuteNonQry(mQry, AgL.GCn)
+
+
+                                mQry = "Insert Into #TempTblCr(CrDivision,CrSubcode, CrSr) Values(" & AgL.Chk_Text(mDivision) & ", " & AgL.Chk_Text(mSubcode) & ", " & J & ")"
+                                AgL.Dman_ExecuteNonQry(mQry, AgL.GCn)
+
+                                ConcurSr = J
+                                DrSr = J + 1
+                                CrSr = J + 1
+
+                                LoopLimit += 1
+                            End If
+                        End If
+
+
+
+                        If CrRecordCount > iCr Then
+                            If iCr = 0 Or iDr >= DrRecordCount Or mRunningTotalDr > mRunningTotalCr Then
+                                'mDays = DateDiff(DateInterval.Day, DateAdd(DateInterval.Day, Val(ReportFrm.FGetText(1)), AgL.XNull(DtCr.Rows(iCr)("V_Date"))), CDate(ReportFrm.FGetText(0)))
+                                mDays = DateDiff(DateInterval.Day, AgL.XNull(DtCr.Rows(iCr)("V_Date")), CDate(ReportFrm.FGetText(0)))
+                                mInterest = Math.Round(Val(DtCr.Rows(iCr)("AmtCr")) * AgL.VNull(AgL.PubDtEnviro.Rows(0)("Default_DebtorsInterestRate")) * (mDays / 36500), 2)
+                                mQry = "Insert Into #TempTblCr (CrDivision, CrSubcode, CrSr,CrDate,CrDocNo,CrAmount,CrDays,CrInterest)
+                                        Values(" & AgL.Chk_Text(mDivision) & ", " & AgL.Chk_Text(mSubcode) & ", " & CrSr & ", " & AgL.Chk_Date(AgL.XNull(DtCr.Rows(iCr)("V_Date"))) & ", " & AgL.Chk_Text(AgL.XNull(DtCr.Rows(iCr)("DocNo"))) & "," & AgL.VNull(DtCr.Rows(iCr)("AmtCr")) & ", " & mDays & ", " & mInterest & ")
+                                       "
+                                AgL.Dman_ExecuteNonQry(mQry, AgL.GCn)
+                                mRunningTotalCr += AgL.VNull(DtCr.Rows(iCr)("AmtCr"))
+                                iCr += 1
+                                CrSr += 1
+                            End If
+                        End If
+
+                        'Try
+                        '    Debug.Print("Dr : " + AgL.XNull(DtDr.Rows(iDr - 1)("V_Date")) + "   Amt : " + Val(DtDr.Rows(iDr - 1)("AmtDr")).ToString() + "   RunningTotal : " + mRunningTotalDr.ToString)
+                        'Catch ex As Exception
+                        'End Try
+                        'Try
+                        '    Debug.Print("Cr : " + AgL.XNull(DtCr.Rows(iCr - 1)("V_Date")) + "   Amt : " + Val(DtCr.Rows(iCr - 1)("AmtCr")).ToString() + "   RunningTotal : " + mRunningTotalCr.ToString)
+                        'Catch ex As Exception
+                        'End Try
+
+
+                        If Math.Round(mRunningTotalDr, 2) = Math.Round(mRunningTotalCr, 2) And mLastChuktiAmount <> mRunningTotalDr And mRunningTotalDr > 0 Then
+                            J = 0
+                            mLastChuktiAmount = mRunningTotalDr
+                            If DrSr > CrSr Then
+                                For J = CrSr To DrSr - 1
+                                    mQry = "Insert Into #TempTblCr(CrDivision,CrSubcode, CrSr) Values(" & AgL.Chk_Text(mDivision) & ", " & AgL.Chk_Text(mSubcode) & ", " & J & ")"
+                                    AgL.Dman_ExecuteNonQry(mQry, AgL.GCn)
+                                Next
+                            ElseIf CrSr > DrSr Then
+                                For J = DrSr To CrSr - 1
+                                    mQry = "Insert Into #TempTblDr(DrDivision,DrSubcode,DrSr) Values(" & AgL.Chk_Text(mDivision) & ", " & AgL.Chk_Text(mSubcode) & "," & J & ")"
+                                    AgL.Dman_ExecuteNonQry(mQry, AgL.GCn)
+                                Next
+                            End If
+
+
+
+                            If iDr <= DrRecordCount Or iCr <= CrRecordCount Then
+                                If J = 0 Then J = DrSr + 1
+                                mQry = "Insert Into #TempTblDr(DrDivision,DrSubcode,DrSr) Values(" & AgL.Chk_Text(mDivision) & ", " & AgL.Chk_Text(mSubcode) & ", " & J & ")"
+                                AgL.Dman_ExecuteNonQry(mQry, AgL.GCn)
+
+
+                                mQry = "Insert Into #TempTblCr(CrDivision,CrSubcode, CrSr) Values(" & AgL.Chk_Text(mDivision) & ", " & AgL.Chk_Text(mSubcode) & ", " & J & ")"
+                                AgL.Dman_ExecuteNonQry(mQry, AgL.GCn)
+
+                                ConcurSr = J
+                                DrSr = J + 1
+                                CrSr = J + 1
+
+                                LoopLimit += 1
+                            End If
+                        End If
+                    Next
+
+                    If DrSr > CrSr Then
+                        For J = CrSr To DrSr - 1
+                            mQry = "Insert Into #TempTblCr(CrDivision,CrSubcode, CrSr) Values(" & AgL.Chk_Text(mDivision) & ", " & AgL.Chk_Text(mSubcode) & ", " & J & ")"
+                            AgL.Dman_ExecuteNonQry(mQry, AgL.GCn)
+                        Next
+                    ElseIf CrSr > DrSr Then
+                        For J = DrSr To CrSr - 1
+                            mQry = "Insert Into #TempTblDr(DrDivision,DrSubcode, DrSr) Values(" & AgL.Chk_Text(mDivision) & ", " & AgL.Chk_Text(mSubcode) & ", " & J & ")"
+                            AgL.Dman_ExecuteNonQry(mQry, AgL.GCn)
+                        Next
+                    End If
+
+
+                    mQry = "Insert Into #TempTblDrCr (DrDivision,DrSubcode, DrSr, DrDate, DrDocNo, DrAmount, DrDays, DrInterest,
+                        CrDivision,CrSubcode, CrSr, CrDate, CrDocNo, CrAmount, CrDays, CrInterest) 
+                    Select Dr.DrDivision, Dr.DrSubcode, Dr.DrSr, Dr.DrDate, Dr.DrDocNo, Dr.DrAmount, Dr.DrDays, Dr.DrInterest, 
+                        Cr.CrDivision,Cr.CrSubcode, Cr.CrSr, Cr.CrDate, Cr.CrDocNo, Cr.CrAmount, Cr.CrDays, Cr.CrInterest
+                    From #TempTblDr Dr, #TempTblCr Cr Where Dr.DrDivision = Cr.CrDivision And  Dr.DrSubcode = Cr.CrSubcode And Dr.DrSr = Cr.CrSr "
+                    If ReportFrm.FGetText(3) = "Yes" Then
+                        mQry = mQry & " And Dr.DrSr > " & ConcurSr & ""
+                    End If
+                    mQry = mQry & " Order By Dr.DrSr "
+
+                    AgL.Dman_ExecuteNonQry(mQry, AgL.GCn)
+
+                    mQry = "Delete From #TempTblDr"
+                    AgL.Dman_ExecuteNonQry(mQry, AgL.GCn)
+
+                    mQry = "Delete From #TempTblCr"
+                    AgL.Dman_ExecuteNonQry(mQry, AgL.GCn)
+                Next iDivision
+            Next iSubcode
+
+
+
+
+
+
+            mQry = "Select D.Name as DivisionName, Sg.Name as PartyName, Sg.Address, Sg.Mobile, Agent.Name as AgentName, H.* 
+                    from #TempTblDrCr H 
+                    Left Join viewHelpSubgroup Sg on H.DrSubcode COLLATE DATABASE_DEFAULT = Sg.Code COLLATE DATABASE_DEFAULT
+                    Left Join viewHelpSubgroup D On D.Code COLLATE DATABASE_DEFAULT = H.DrDivision COLLATE DATABASE_DEFAULT
+                    Left Join (
+                                select subcode, Max(Agent) as Agent
+                                From SaleInvoiceLastTransactionValues
+                                Group By Subcode
+                              ) as LTV On LTV.Subcode = Sg.Code
+                    Left Join viewHelpSubgroup Agent  On LTV.Agent COLLATE DATABASE_DEFAULT = Agent.Code COLLATE DATABASE_DEFAULT
+                    Order By H.DrSubcode, H.DrSr"
+            DsRep = AgL.FillData(mQry, AgL.GCn)
+
+                If DsRep.Tables(0).Rows.Count = 0 Then Err.Raise(1, , "No Records to Print!")
+
+                ReportFrm.PrintReport(DsRep, RepName, RepTitle)
+            Catch ex As Exception
+                MsgBox(ex.Message)
+            DsRep = Nothing
+        End Try
+    End Sub
+
+    Private Sub ProcConcurLedgerBackup()
+        Dim mCondStr$ = ""
+        Dim NoofDays As Integer = 0
+        Dim DtDr As DataTable
+        Dim DtCr As DataTable
+        Dim DtTemp As DataTable
+        Dim DrRecordCount As Integer
+        Dim CrRecordCount As Integer
+        Dim LoopLimit As Integer
+        Dim I As Integer, J As Integer
+        Dim iDr As Integer
+        Dim iCr As Integer
+        Dim DrSr As Integer
+        Dim CrSr As Integer
+        Dim ConcurSr As Integer = -1
+        Dim mSubcode As String
+
+        Try
+            RepName = "ConcurLedger" : RepTitle = "Concur Ledger"
+
+            If Val(ReportFrm.FGetText(1)) <> 0 Then
+                NoofDays = Val(ReportFrm.FGetText(1))
+            Else
+                MsgBox("Please Enter Valid No. Of Days.") : Exit Sub
+            End If
+
+            If ReportFrm.FGetText(2) = "" Then
+                MsgBox("Please select any party") : Exit Sub
+            End If
+
+
+
+            mQry = "Drop Table If Exists TempTblDr "
+            AgL.Dman_ExecuteNonQry(mQry, AgL.GCn)
+
+            mQry = "Create Temp Table TempTblDr 
+                    (
+                        DrSubcode nVarchar(10),
+                        DrSr Integer,
+                        DrDate DateTime,
+                        DrDocNo nVarchar(21)  Collate NoCase,
+                        DrAmount Float Default 0,
+                        DrDays Integer,
+                        DrInterest Float
+                    )
+                    "
+
+            AgL.Dman_ExecuteNonQry(mQry, AgL.GCn)
+
+
+            mQry = "Drop Table If Exists TempTblCr "
+            AgL.Dman_ExecuteNonQry(mQry, AgL.GCn)
+
+            mQry = "Create Temp Table TempTblCr 
+                    (
+                        CrSubcode nVarchar(10),
+                        CrSr Integer,
+                        CrDate DateTime,
+                        CrDocNo nVarchar(21)  Collate NoCase,
+                        CrAmount Float Default 0,
+                        CrDays Integer,
+                        CrInterest Float                        
+                    )
+                    "
+
+            AgL.Dman_ExecuteNonQry(mQry, AgL.GCn)
+
+
+
+            mQry = "Drop Table If Exists TempTblDrCr "
+            AgL.Dman_ExecuteNonQry(mQry, AgL.GCn)
+
+            mQry = "Create Temp Table TempTblDrCr 
+                    (
+                        DrSubcode nVarchar(10),
+                        DrSr Integer,
+                        DrDate DateTime,
+                        DrDocNo nVarchar(21)  Collate NoCase,
+                        DrAmount Float Default 0,
+                        DrDays Integer,
+                        DrInterest Float,
+                        CrSubcode nVarchar(10),
+                        CrSr Integer,
+                        CrDate DateTime,
+                        CrDocNo nVarchar(21)  Collate NoCase,
+                        CrAmount Float Default 0,
+                        CrDays Integer,
+                        CrInterest Float
+                    )
+                    "
+            AgL.Dman_ExecuteNonQry(mQry, AgL.GCn)
+
+
+
+            mSubcode = ReportFrm.FGetCode(2)
+            mCondStr = " And L.V_Date <= " & AgL.Chk_Date(ReportFrm.FGetText(0)) & " "
+            mCondStr = mCondStr & ReportFrm.GetWhereCondition("L.SubCode", 2)
+            mCondStr = mCondStr & ReportFrm.GetWhereCondition("L.DivCode", 7)
+            mCondStr = mCondStr & ReportFrm.GetWhereCondition("L.Site_Code", 8)
+            'mCondStr = mCondStr & " And  Sg.Nature In ('" & ClsMain.SubGroupNature.Customer & "') "
+
+
+            mQry = "select L.DocId, L.V_Date, L.DivCode || L.site_Code || '-' || L.V_Type || '-' || L.RecId as DocNo, L.AmtDr 
+                    from ledger L
+                    where L.AmtDr>0  " & mCondStr & " Order By L.V_Date, L.V_No "
+
+            DtDr = AgL.FillData(mQry, AgL.GCn).Tables(0)
+            DrRecordCount = DtDr.Rows.Count
+
+            mQry = "
+                    select L.DocId, L.V_Date, L.DivCode || L.site_Code || '-' || L.V_Type || '-' || L.RecId as DocNo, L.AmtCr 
+                    from ledger L
+                    where L.AmtCr>0  " & mCondStr & " Order By L.V_Date, L.V_No "
+
+            DtCr = AgL.FillData(mQry, AgL.GCn).Tables(0)
+            CrRecordCount = DtCr.Rows.Count
+
+
+            Dim mRunningTotalDr As Double
+            Dim mRunningTotalCr As Double
+            Dim mDays As Integer
+            Dim mInterest As Integer
+
+            LoopLimit = DrRecordCount + CrRecordCount  'IIf(DrRecordCount >= CrRecordCount, DrRecordCount, CrRecordCount)
+            For I = 0 To LoopLimit
+                If DrRecordCount > iDr Then
+                    If iDr = 0 Or iCr >= CrRecordCount Or mRunningTotalDr <= mRunningTotalCr Then
+                        mDays = DateDiff(DateInterval.Day, DateAdd(DateInterval.Day, Val(ReportFrm.FGetText(1)), DtDr.Rows(iDr)("V_Date")), CDate(ReportFrm.FGetText(0)))
+                        If mDays < 0 Then mDays = 0
+                        mInterest = Math.Round(Val(DtDr.Rows(iDr)("AmtDr")) * AgL.VNull(AgL.PubDtEnviro.Rows(0)("Default_DebtorsInterestRate")) * (mDays / 36500), 2)
+                        mQry = "Insert Into TempTblDr (DrSubcode,DrSr,DrDate,DrDocNo,DrAmount,DrDays,DrInterest)
+                            Values(" & AgL.Chk_Text(mSubcode) & ", " & DrSr & ", " & AgL.Chk_Date(AgL.XNull(DtDr.Rows(iDr)("V_Date"))) & ", " & AgL.Chk_Text(AgL.XNull(DtDr.Rows(iDr)("DocNo"))) & "," & AgL.VNull(DtDr.Rows(iDr)("AmtDr")) & ", " & mDays & ", " & mInterest & ")
+                          "
+                        AgL.Dman_ExecuteNonQry(mQry, AgL.GCn)
+                        mRunningTotalDr += AgL.VNull(DtDr.Rows(iDr)("AmtDr"))
+                        iDr += 1
+                        DrSr += 1
+                    End If
+                End If
+
+                If CrRecordCount > iCr Then
+                    If iCr = 0 Or iDr > DrRecordCount Or mRunningTotalDr > mRunningTotalCr Then
+                        'mDays = DateDiff(DateInterval.Day, DateAdd(DateInterval.Day, Val(ReportFrm.FGetText(1)), AgL.XNull(DtCr.Rows(iCr)("V_Date"))), CDate(ReportFrm.FGetText(0)))
+                        mDays = DateDiff(DateInterval.Day, AgL.XNull(DtCr.Rows(iCr)("V_Date")), CDate(ReportFrm.FGetText(0)))
+                        mInterest = Math.Round(Val(DtCr.Rows(iCr)("AmtCr")) * AgL.VNull(AgL.PubDtEnviro.Rows(0)("Default_DebtorsInterestRate")) * (mDays / 36500), 2)
+                        mQry = "Insert Into TempTblCr (CrSubcode, CrSr,CrDate,CrDocNo,CrAmount,CrDays,CrInterest)
+                            Values(" & AgL.Chk_Text(mSubcode) & ", " & CrSr & ", " & AgL.Chk_Date(AgL.XNull(DtCr.Rows(iCr)("V_Date"))) & ", " & AgL.Chk_Text(AgL.XNull(DtCr.Rows(iCr)("DocNo"))) & "," & AgL.VNull(DtCr.Rows(iCr)("AmtCr")) & ", " & mDays & ", " & mInterest & ")
+                          "
+                        AgL.Dman_ExecuteNonQry(mQry, AgL.GCn)
+                        mRunningTotalCr += AgL.VNull(DtCr.Rows(iCr)("AmtCr"))
+                        iCr += 1
+                        CrSr += 1
+                    End If
+                End If
+
+                If mRunningTotalDr = mRunningTotalCr Then
+                    If DrSr > CrSr Then
+                        For J = CrSr To DrSr - 1
+                            mQry = "Insert Into TempTblCr(CrSubcode, CrSr) Values(" & AgL.Chk_Text(mSubcode) & ", " & J & ")"
+                            AgL.Dman_ExecuteNonQry(mQry, AgL.GCn)
+                        Next
+                    ElseIf CrSr > DrSr Then
+                        For J = DrSr To CrSr - 1
+                            mQry = "Insert Into TempTblDr(DrSubcode,DrSr) Values(" & AgL.Chk_Text(mSubcode) & "," & J & ")"
+                            AgL.Dman_ExecuteNonQry(mQry, AgL.GCn)
+                        Next
+                    End If
+
+
+                    mQry = "Insert Into TempTblDr(DrSubcode,DrSr) Values(" & AgL.Chk_Text(mSubcode) & ", " & J & ")"
+                    AgL.Dman_ExecuteNonQry(mQry, AgL.GCn)
+
+
+                    mQry = "Insert Into TempTblCr(CrSubcode, CrSr) Values(" & AgL.Chk_Text(mSubcode) & ", " & J & ")"
+                    AgL.Dman_ExecuteNonQry(mQry, AgL.GCn)
+
+                    ConcurSr = J
+                    DrSr = J + 1
+                    CrSr = J + 1
+
+                    LoopLimit += 1
+                End If
+
+            Next
+
+            If DrSr > CrSr Then
+                For J = CrSr To DrSr - 1
+                    mQry = "Insert Into TempTblCr(CrSubcode, CrSr) Values(" & AgL.Chk_Text(mSubcode) & ", " & J & ")"
+                    AgL.Dman_ExecuteNonQry(mQry, AgL.GCn)
+                Next
+            ElseIf CrSr > DrSr Then
+                For J = DrSr To CrSr - 1
+                    mQry = "Insert Into TempTblDr(DrSubcode, DrSr) Values(" & AgL.Chk_Text(mSubcode) & ", " & J & ")"
+                    AgL.Dman_ExecuteNonQry(mQry, AgL.GCn)
+                Next
+            End If
+
+
+            mQry = "Insert Into TempTblDrCr (DrSubcode, DrSr, DrDate, DrDocNo, DrAmount, DrDays, DrInterest,
+                        CrSubcode, CrSr, CrDate, CrDocNo, CrAmount, CrDays, CrInterest) 
+                    Select Dr.DrSubcode, Dr.DrSr, Dr.DrDate, Dr.DrDocNo, Dr.DrAmount, Dr.DrDays, Dr.DrInterest, 
+                        Cr.CrSubcode, Cr.CrSr, Cr.CrDate, Cr.CrDocNo, Cr.CrAmount, Cr.CrDays, Cr.CrInterest
+                    From TempTblDr Dr, TempTblCr Cr Where Dr.DrSr = Cr.CrSr "
+            If ReportFrm.FGetText(3) = "Yes" Then
+                mQry = mQry & " And Dr.DrSr > " & ConcurSr & ""
+            End If
+            mQry = mQry & " Order By Dr.DrSr "
+
+            AgL.Dman_ExecuteNonQry(mQry, AgL.GCn)
+
+            mQry = "Select * from TempTblDrCr Order By DrSubcode, DrSr"
+            DsRep = AgL.FillData(mQry, AgL.GCn)
+
+            If DsRep.Tables(0).Rows.Count = 0 Then Err.Raise(1, , "No Records to Print!")
+
+            ReportFrm.PrintReport(DsRep, RepName, RepTitle)
+        Catch ex As Exception
+            MsgBox(ex.Message)
+            DsRep = Nothing
+        End Try
+    End Sub
+
+
+#End Region
+
+
+#Region "Party Outstanding Report"
+    Private Sub ProcPartyOutstandingReport()
+        Dim mCondStr1$ = ""
+        Dim mCondStr2$ = ""
+        Try
+            RepName = "BillWiseOutstandingReport" : RepTitle = "Party Outstanding Report"
+
+            mCondStr1 = " Where LG.V_Date <= '" & ReportFrm.FGetText(0) & "' "
+            mCondStr2 = " Where LG.V_Date <= '" & ReportFrm.FGetText(0) & "' "
+
+            mCondStr1 = mCondStr1 & ReportFrm.GetWhereCondition("LG.SubCode", 1)
+            mCondStr2 = mCondStr2 & ReportFrm.GetWhereCondition("LG.SubCode", 1)
+
+            mCondStr1 = mCondStr1 & " And  LG.Site_Code IN (" & AgL.PubSiteCode & ") "
+            mCondStr2 = mCondStr2 & " And  LG.Site_Code IN (" & AgL.PubSiteCode & ") "
+
+            mCondStr1 = mCondStr1 & " And  Sg.Nature In ('" & ClsMain.SubGroupNature.Customer & "','" & ClsMain.SubGroupNature.Supplier & "') "
+            mCondStr2 = mCondStr2 & " And  Sg.Nature In ('" & ClsMain.SubGroupNature.Customer & "','" & ClsMain.SubGroupNature.Supplier & "') "
+
+            mCondStr1 = mCondStr1 & " And  IfNull(Lg.AmtDr,0) > 0 "
+
+            mQry = "Select DocId, V_SNo, Max(RecId) As RecId, Max(V_Type) As V_Type, " &
+                            " Max(V_Date) As V_Date, Max(Narration) As Narration, " &
+                            " Max(Sg.Name) As PartyName, Max(C.CityName) As CityName, " &
+                            " Max(BillAmt) As BillAmt, Abs(Sum(Adjusted)) As 
+                            , " &
+                            " Max(BillAmt) - Abs(Sum(Adjusted)) As Balance," &
+                            " Max(DateAdd(Day,IfNull(Sg.CreditDays,0),Tmp.V_Date)) As DueDate, " &
+                            " Max(Datediff(Day, Dateadd(Day,Sg.CreditDays,Tmp.V_Date),getdate())) AS OverDue  " &
+                            " From ( " &
+                            "       Select  LG.DocId,LG.V_SNo, LG.RecId As RecId, " &
+                            "       LG.V_Type, LG.V_Date, LG.Narration, Lg.SubCode, " &
+                            "       IfNull(Lg.AmtDr,0) As BillAmt,0 As Adjusted " &
+                            "       From Ledger LG " &
+                            "       LEFT JOIN SubGroup Sg On Lg.SubCode = Sg.SubCode " & mCondStr1 &
+                            "       And IfNull(Lg.AmtDr,0) > 0 " &
+                            " Union All " &
+                            "       Select	LA.Adj_DocId As DocId,LA.Adj_V_SNo As V_SNo,Null As RecId,Null As V_Type,Null As V_Date, " &
+                            "       Null As Narration, Lg.SubCode,0 As BillAmt,LA.Amount As Adjusted	 " &
+                            "       From LedgerAdj LA " &
+                            "       Left Join Ledger LG On LA.Adj_DocId = LG.DocId And LA.Adj_V_SNo = LG.V_SNo " &
+                            "       Left Join SubGroup Sg On Lg.SubCode = Sg.SubCode " & mCondStr2 &
+                            " ) As Tmp " &
+                            " LEFT JOIN SubGroup Sg On Tmp.SubCode = Sg.SubCode " &
+                            " LEFT JOIN City C On SG.CityCode = C.CityCode " &
+                            " Group By DocId, V_SNo " &
+                            " Having (IfNull(Max(BillAmt),0)-IfNull(Sum(Adjusted),0))>0" &
+                            " Order By Max(V_Date),Max(RecId) "
+
+
+            'mQry = "Select LG.DocId,LG.V_SNo,Convert(Varchar,Max(LG.V_No)) as VNo,Max(LG.V_Type) as VType,Max(LG.V_Date) as VDate,Max(SG.Name) As PName,"
+            'mQry = mQry + "Max(LG.SubCode) as SubCode,Max(LG.Narration) as Narration,Max(LG.AmtDr) as Amt1,0 As Amt2,IfNull(Sum(LA.Amount),0) as Amt, "
+            'mQry = mQry + "Max(SG.Add1)As Add1,Max(SG.Add2)As Add2,Max(C.CityName)As CityName,Max(CT.Name) as Country,MAx(St.name) As SiteName,max(Ag.GroupName) as AcGroupName, Max(Lg.RecId) As RecId, "
+            'mQry = mQry + "Max(DateAdd(Day,IfNull(Sg.CreditDays,0),Lg.V_Date)) As DueDate, "
+            'mQry = mQry + "Max(Datediff(Day, Dateadd(Day,Sg.CreditDays,Lg.V_Date),getdate())) AS OverDue "
+            'mQry = mQry + "From Ledger LG Left Join SubGroup SG On LG.Subcode=SG.SubCode Left Join "
+            'mQry = mQry + "City C on SG.CityCode=C.CityCode Left Join Country CT on SG.CountryCode=CT.Code LEFT JOIN AcGroup AG ON SG.GroupCode =AG.GroupCode  "
+            'mQry = mQry + "Left Join LedgerAdj LA On LG.DocId=LA.Adj_DocID  And LG.V_SNo=LA.Adj_V_SNo "
+            'mQry = mQry + "LEFT JOIN SiteMast ST ON LG.Site_Code =St.code  "
+            'mQry = mQry + "LEFT JOIN ZoneMast ZM ON ZM.Code =SG.Zone "
+            'mQry = mQry + mCondStr1
+            'mQry = mQry + "Group By LG.DocId,LG.V_SNo "
+            'mQry = mQry + "HAVING(IfNull(Sum(LA.Amount), 0) <> Max(LG.AmtDr))"
+            'mQry = mQry + "Union All "
+            'mQry = mQry + "Select	LG.DocId,LG.V_SNo,Convert(Varchar,LG.V_No) As V_No,LG.V_Type,LG.V_Date,SG.Name As PName,LG.SubCode, "
+            'mQry = mQry + "LG.Narration,0 As Amt1,IfNull(LG.AmtCr,0)-IfNull(T.AMOUNT,0) as Amt2,0 As Amount,Null As Add1,Null As Add2,"
+            'mQry = mQry + "Null As CityName,Null As Country,ST.name As sitename,IfNull(Ag.GroupName,'') as AcGroupName, Lg.RecId As RecId,  "
+            'mQry = mQry + "DateAdd(Day,IfNull(Sg.CreditDays,0),Lg.V_Date) As DueDate, "
+            'mQry = mQry + "Datediff(Day, Dateadd(Day,Sg.CreditDays,Lg.V_Date),getdate()) AS OverDue "
+            'mQry = mQry + "From Ledger LG Left Join SubGroup SG On SG.SubCode=LG.SubCode LEFT JOIN AcGroup AG ON SG.GroupCode =AG.GroupCode LEFT JOIN ZoneMast ZM ON ZM.Code =SG.Zone  LEFT JOIN SiteMast ST ON LG.Site_Code =St.code   "
+            'mQry = mQry + "LEFT JOIN (SELECT LA.Vr_Docid AS Docid,LA.Vr_V_SNo AS S_No,SUM(AMOUNT) AS AMOUNT FROM LedgerAdj LA GROUP BY LA.Vr_DocId,LA.Vr_V_SNo) T ON T.DOCID=LG.DOCID AND T.S_NO=LG.V_SNO  "
+            'mQry = mQry + mCondStr2
+
+            DsRep = AgL.FillData(mQry, AgL.GCn)
+
+            If DsRep.Tables(0).Rows.Count = 0 Then Err.Raise(1, , "No Records to Print!")
+
+            ReportFrm.PrintReport(DsRep, RepName, RepTitle)
+        Catch ex As Exception
+            MsgBox(ex.Message)
+            DsRep = Nothing
+        End Try
+    End Sub
+#End Region
+
+
+
+#Region "Weaving Order Ratio"
+    Private Sub ProcWeavingOrderRatio()
+        Try
+            RepName = "Trade_WeavingOrderRatio" : RepTitle = "Weaving Order Ratio"
+            Dim bTempTable$ = ""
+            Dim bTempItem$ = ""
+
+            bTempItem = AgL.GetGUID(AgL.GCn).ToString
+            bTempTable = AgL.GetGUID(AgL.GCn).ToString
+            mQry = "CREATE TABLE [#" & bTempTable & "] " &
+                    " (Party NVARCHAR(10), ClothQty Float, ClothWeight Float, " &
+                    " WeavingOrderQty Float, WeavingOrderMeasure Float )  "
+            AgL.Dman_ExecuteNonQry(mQry, AgL.GCn)
+
+            Dim mSaleCondStr$ = ""
+            Dim mWeavingCondStr$ = ""
+
+
+            mSaleCondStr = mSaleCondStr & " AND H.V_Date Between '" & CDate(ReportFrm.FGetText(0)).ToString("s") & "' And '" & CDate(ReportFrm.FGetText(1)).ToString("s") & "' "
+            mSaleCondStr = mSaleCondStr & ReportFrm.GetWhereCondition("H.SaleToParty", 2)
+
+            Dim mSaleQry$ = "SELECT H.SaleToParty AS Party, sum(L.Qty) AS Qty, sum(L.TotalMeasure) AS AS ClothWeaight " &
+                            " FROM SaleInvoice H " &
+                            " LEFT JOIN SaleInvoiceDetail L ON L.DocId = H.DocID  " &
+                            " WHERE 1=1 " & mSaleCondStr &
+                            " AND H.Site_Code = " & AgL.Chk_Text(AgL.PubSiteCode) & " AND H.Div_Code = " & AgL.Chk_Text(AgL.PubDivCode) & " " &
+                            " GROUP BY H.SaleToParty "
+
+            mWeavingCondStr = " AND H.V_Date Between '" & CDate(ReportFrm.FGetText(0)).ToString("s") & "' And '" & CDate(ReportFrm.FGetText(1)).ToString("s") & "' "
+            mWeavingCondStr = mWeavingCondStr & ReportFrm.GetWhereCondition("H.JobWorker", 2)
+
+            'For Inserting Carpet Consumption
+            mQry = "INSERT INTO [#" & bTempTable & "](Party, ClothQty, ClothWeight ) " &
+                      mSaleQry
+            AgL.Dman_ExecuteNonQry(mQry, AgL.GCn)
+
+            Dim mWeavingOrderQry$ = "SELECT H.JobWorker, sum(L.Qty) AS Qty, sum(L.TotalMeasure) AS TotalMeasure, max(L.MeasureUnit) AS OrdMeasure " &
+                    " FROM JobOrderDetail L  " &
+                    " LEFT JOIN JobOrder H  ON H.DocID = L.JobOrder  " &
+                    " LEFT JOIN Voucher_Type Vt  ON Vt.V_Type = H.V_Type  " &
+                    " WHERE Vt.NCat IN ('WVORD', 'WVCNL') " &
+                    " AND H.Site_Code = " & AgL.Chk_Text(AgL.PubSiteCode) & " AND H.Div_Code = " & AgL.Chk_Text(AgL.PubDivCode) & " " &
+                    " GROUP BY H.JobWorker "
+
+
+
+
+            If DsRep.Tables(0).Rows.Count = 0 Then Err.Raise(1, , "No Records to Print!")
+
+            ReportFrm.PrintReport(DsRep, RepName, RepTitle)
+        Catch ex As Exception
+            MsgBox(ex.Message)
+            DsRep = Nothing
+        End Try
+    End Sub
+#End Region
+
+#Region "GST Reports"
+    Private Sub ProcGSTReports()
+        If CDate(ReportFrm.FGetText(1)).Day <> 1 Then
+            MsgBox("From Date should be start date of month...!", MsgBoxStyle.Information)
+            Exit Sub
+        End If
+
+        If AgL.RetMonthEndDate(CDate(ReportFrm.FGetText(2))) <> CDate(ReportFrm.FGetText(2)) Then
+            MsgBox("To Date should be end date of month...!", MsgBoxStyle.Information)
+            Exit Sub
+        End If
+
+        If ReportFrm.FGetText(0) = "GST 3B" Then
+            ProcGSTR3BReports()
+        ElseIf ReportFrm.FGetText(0) = "GSTR1" Then
+            ProcGSTR1Reports()
+        Else
+            MsgBox("Please select Report Type...!")
+        End If
+    End Sub
+    Private Sub ProcGSTR3BReports()
+        Dim DtTable As DataTable = Nothing
+        Dim SubTitle$ = ""
+        Dim GroupHeaderTitle1$ = "", GroupHeaderTitle2$ = ""
+        Dim IsReturn As Integer = 0
+        Dim AssessmentYear$ = ""
+        'Dim OutputFile As String = My.Application.Info.DirectoryPath + "\TaxReturns\GSTR3B.xlsm"
+        Dim OutputFile As String = ""
+        Dim mCondStr$ = ""
+
+        Dim ToDate As DateTime = ReportFrm.FGetText(2)
+        Dim newdate = String.Format("{0:yyyy-MM-dd}", ToDate)
+        Dim MonthName As String = AgL.XNull(AgL.Dman_Execute(" select case strftime('%m', '" & newdate & "') when '01' then 'January' when '02' then 'Febuary' when '03' then 'March' 
+                    when '04' then 'April' when '05' then 'May' when '06' then 'June' when '07' then 'July' 
+                    when '08' then 'August' when '09' then 'September' when '10' then 'October' when '11' then 'November' 
+                    when '12' then 'December' else '' end as month ", AgL.GCn).ExecuteScalar)
+
+
+        Dim FilePath As String = ""
+        Dim SaveFileDialogBox As SaveFileDialog
+        Dim sFilePath As String = ""
+        SaveFileDialogBox = New SaveFileDialog
+
+        SaveFileDialogBox.Title = "File Name"
+        FilePath = My.Computer.FileSystem.SpecialDirectories.Desktop
+        SaveFileDialogBox.InitialDirectory = FilePath
+        SaveFileDialogBox.FilterIndex = 1
+        SaveFileDialogBox.FileName = "GSTR3B_" + MonthName + ".xlsm"
+        If SaveFileDialogBox.ShowDialog = Windows.Forms.DialogResult.Cancel Then Exit Sub
+        OutputFile = SaveFileDialogBox.FileName
+
+
+
+
+        Dim xlApp As Excel.Application
+        Dim TemplateWorkBook As Excel.Workbook
+        Dim OutputWorkBook As Excel.Workbook
+
+        xlApp = New Excel.Application
+        xlApp.AlertBeforeOverwriting = False
+        xlApp.DisplayAlerts = False
+
+        TemplateWorkBook = xlApp.Workbooks.Open(My.Application.Info.DirectoryPath + "\Templates\" + "GSTR3B_Excel_Utility_V3.0.xlsm")
+        TemplateWorkBook.SaveAs(OutputFile)
+        xlApp.Workbooks.Close()
+        OutputWorkBook = xlApp.Workbooks.Open(OutputFile)
+
+        Try
+            Dim xlWorkSheet As Excel.Worksheet
+            xlWorkSheet = OutputWorkBook.Worksheets("GSTR-3B")
+
+            mCondStr = " Where 1=1"
+            mCondStr = mCondStr & " AND H.Div_Code = '" & AgL.PubDivCode & "' "
+            mCondStr = mCondStr & " AND H.V_Date Between '" & CDate(ReportFrm.FGetText(1)).ToString("s") & "' And '" & CDate(ReportFrm.FGetText(2)).ToString("s") & "' "
+
+
+            'For GSTIN, Legal Name of the registered person
+            mQry = " Select VReg.SalesTaxNo As RegistrationNo, Sg.DispName As Name
+                From Division D
+                LEFT JOIN SubGroup Sg On D.SubCode = Sg.SubCode
+                LEFT JOIN City C On Sg.CityCode = C.CityCode
+                LEFT JOIN State S On C.State = S.Code
+                LEFT JOIN (Select Subcode, RegistrationNo As SalesTaxNo
+                            From SubgroupRegistration 
+                            Where RegistrationType = 'Sales Tax No') As VReg On D.SubCode = VReg.SubCode
+                Where D.Div_Code = '" & AgL.PubDivCode & "'"
+            DtTable = AgL.FillData(mQry, AgL.GCn).Tables(0)
+            If DtTable.Rows.Count > 0 Then
+                xlWorkSheet.Cells.Item(5, 3).Value = DtTable.Rows(0)("RegistrationNo")
+                xlWorkSheet.Cells.Item(6, 3).Value = DtTable.Rows(0)("Name")
+            End If
+
+            'For Year
+            xlWorkSheet.Cells.Item(5, 7).Value = AgL.XNull(AgL.Dman_Execute(" Select cyear From Company Where Comp_Code = '" & AgL.PubCompCode & "' ", AgL.GCn).ExecuteScalar)
+
+            'Month	
+
+            xlWorkSheet.Cells.Item(6, 7).Value = MonthName
+
+
+            '3.1 (a) Outward Taxable  supplies  (other than zero rated, nil rated and exempted)
+            'Sales Amount And Tax On It (Both Local And Central Combined)
+            'mQry = " SELECT Sum(L.Taxable_Amount) as TotalTaxablevalue, Sum(L.Tax1) As IntegratedTax, Sum(L.Tax2) as CentralTax, Sum(L.Tax3) as StateTax, 0 As Cess
+            '        from SaleInvoice H 
+            '        left join SaleInvoiceDetail L On H.DocID = L.DocID " & mCondStr &
+            '        " And ifnull(L.Tax1,0) + ifnull(L.Tax2,0) + ifnull(L.Tax3,0) <> 0 "
+
+            mQry = " Select Sum(VMain.TotalTaxablevalue) as TotalTaxablevalue, Sum(VMain.IntegratedTax) As IntegratedTax, 
+                    Sum(VMain.CentralTax) as CentralTax, Sum(VMain.StateTax) as StateTax, Sum(VMain.Cess)  As Cess
+                    From
+                    (
+                        SELECT L.Taxable_Amount as TotalTaxablevalue, L.Tax1 As IntegratedTax, L.Tax2 as CentralTax, L.Tax3 as StateTax, 0 As Cess
+                        from SaleInvoice H 
+                        left join SaleInvoiceDetail L On H.DocID = L.DocID " & mCondStr &
+                        " And ifnull(L.Tax1,0) + ifnull(L.Tax2,0) + ifnull(L.Tax3,0) <> 0
+                        UNION ALL 
+                        Select -L.Taxable_Amount As TotalTaxablevalue, -L.Tax1 As IntegratedTax, -L.Tax2 As CentralTax, -L.Tax3 As StateTax, 0 As Cess
+                        From LedgerHead H 
+                        LEFT JOIN LedgerHeadDetailCharges L On H.DocId = L.DocId 
+                        LEFT JOIN Voucher_Type Vt On H.V_Type = Vt.V_Type " & mCondStr &
+                        " And Vt.NCat = '" & agConstants.Ncat.CreditNote & "' 
+                    ) As VMain "
+            DtTable = AgL.FillData(mQry, AgL.GCn).Tables(0)
+            If DtTable.Rows.Count > 0 Then
+                xlWorkSheet.Cells.Item(11, 3).Value = DtTable.Rows(0)("TotalTaxablevalue")
+                xlWorkSheet.Cells.Item(11, 4).Value = DtTable.Rows(0)("IntegratedTax")
+                xlWorkSheet.Cells.Item(11, 5).Value = DtTable.Rows(0)("CentralTax")
+                xlWorkSheet.Cells.Item(11, 7).Value = DtTable.Rows(0)("Cess")
+            End If
+
+            '3.1 (b) Outward Taxable  supplies  (zero rated )
+            'Export Sales (Both on Bond Without Bond)
+            mQry = " SELECT 0 as TotalTaxablevalue, 0 As IntegratedTax, 0 As Cess "
+            DtTable = AgL.FillData(mQry, AgL.GCn).Tables(0)
+            If DtTable.Rows.Count > 0 Then
+                xlWorkSheet.Cells.Item(12, 3).Value = DtTable.Rows(0)("TotalTaxablevalue")
+                xlWorkSheet.Cells.Item(12, 4).Value = DtTable.Rows(0)("IntegratedTax")
+                xlWorkSheet.Cells.Item(12, 7).Value = DtTable.Rows(0)("Cess")
+            End If
+
+            '3.1 (c) Other Outward Taxable  supplies (Nil rated, exempted)
+            'Goods Covered in Excemtion Notification & Goods Having rate 0%
+            mQry = " SELECT ifnull(Sum(L.Taxable_Amount),0) as TotalTaxablevalue
+                    from SaleInvoice H 
+                    left join SaleInvoiceDetail L On H.DocID = L.DocID " & mCondStr &
+                    " And ifnull(L.Tax1,0) + ifnull(L.Tax2,0) + ifnull(L.Tax3,0) = 0 "
+            DtTable = AgL.FillData(mQry, AgL.GCn).Tables(0)
+            If DtTable.Rows.Count > 0 Then
+                xlWorkSheet.Cells.Item(13, 3).Value = DtTable.Rows(0)("TotalTaxablevalue")
+            End If
+
+            '3.1 (d) Inward supplies (liable to reverse charge) 
+            'Tax to be Paid on reverse charge.
+            'mQry = " SELECT Sum(L.Taxable_Amount) as TotalTaxablevalue, Sum(L.Tax1) As IntegratedTax, Sum(L.Tax2) as CentralTax, Sum(L.Tax3) as StateTax, 0 As Cess
+            '        from PurchInvoice H 
+            '        left join PurchInvoiceDetail L On H.DocID = L.DocID  " & mCondStr &
+            '        " And H.SalesTaxGroupParty = '" & PostingGroupSalesTaxParty.Unregistered & "' "
+
+
+            mQry = " SELECT 
+                    Round(Sum(Case When Ps.ChargeType = 'TAXABLE AMOUNT' Then L.Taxable_Amount Else 0 End),2) as TotalTaxablevalue, 
+                    Round(Sum(Case When Ps.ChargeType = 'TAX1' Then L.Taxable_Amount * Ps.Percentage / 100  Else 0 End),2) As IntegratedTax,
+                    Round(Sum(Case When Ps.ChargeType = 'TAX2' Then L.Taxable_Amount * Ps.Percentage / 100  Else 0 End),2) As CentralTax,
+                    Round(Sum(Case When Ps.ChargeType = 'TAX3' Then L.Taxable_Amount * Ps.Percentage / 100  Else 0 End),2) As StateTax,
+                    0 As Cess
+                    from PurchInvoice H 
+                    left join PurchInvoiceDetail L On H.DocID = L.DocID   
+                    LEFT JOIN Item I ON L.Item = I.Code
+                    LEFT JOIN ItemCategory Ic On I.ItemCategory = Ic.Code
+                    LEFT JOIN PostingGroupSalesTax Ps On 'Registered' = Ps.PostingGroupSalesTaxParty
+                            And IfNull(I.SalesTaxPostingGroup,Ic.SalesTaxGroup)  =  Ps.PostingGroupSalesTaxItem
+                            And H.PlaceOfSupply = Ps.PlaceOfSupply
+                            And Ps.Process = 'PURCH' " & mCondStr &
+                    " And H.SalesTaxGroupParty = '" & PostingGroupSalesTaxParty.Unregistered & "' "
+            DtTable = AgL.FillData(mQry, AgL.GCn).Tables(0)
+            If DtTable.Rows.Count > 0 Then
+                xlWorkSheet.Cells.Item(14, 3).Value = DtTable.Rows(0)("TotalTaxablevalue")
+                xlWorkSheet.Cells.Item(14, 4).Value = DtTable.Rows(0)("IntegratedTax")
+                xlWorkSheet.Cells.Item(14, 5).Value = DtTable.Rows(0)("CentralTax")
+                xlWorkSheet.Cells.Item(14, 7).Value = DtTable.Rows(0)("Cess")
+            End If
+
+            '3.1 (e) Non-GST Outward supplies
+            'Goods not covered in GST, Like Diesel
+            mQry = " SELECT 0 as TotalTaxablevalue "
+            DtTable = AgL.FillData(mQry, AgL.GCn).Tables(0)
+            If DtTable.Rows.Count > 0 Then
+                xlWorkSheet.Cells.Item(15, 3).Value = DtTable.Rows(0)("TotalTaxablevalue")
+            End If
+
+
+            '3.2  Of the supplies shown in 3.1 (a), details of inter-state supplies made to unregistered persons, composition taxable person and UIN holders						
+            'Suppliers Made to UnRegistered Person : Only InterState Sales to Unregistered
+            'Suppliers Made to Composition Taxable Person : Only InterState Sales to Composition Dealer
+            'Suppliers Made to UiN Holders : Only InterState Sales to UIN Holders like Embassy
+            mQry = " SELECT S.Description As PlaceOfSupply,
+                    Sum(CASE when H.SalesTaxGroupParty =  '" & PostingGroupSalesTaxParty.Unregistered & "' THEN L.Taxable_Amount Else 0 END) As TotalTaxablevalue_Unregistered,
+                    0 As AmountOfIntegratedTax_Unregistered,
+                    Sum(CASE when H.SalesTaxGroupParty = 'Composition' THEN L.Taxable_Amount Else 0 END) As TotalTaxablevalue_Composition,
+                    0 As AmountOfIntegratedTax_Composition,
+                    0 As TotalTaxablevalue_UINholders,
+                    0 As AmountOfIntegratedTax_UINholders
+                    From SaleInvoice H 
+                    left join SaleInvoiceDetail L on H.DocID = L.DocID
+                    Left join City C On H.SaleToPartyCity = C.CityCode
+                    left join State S on C.State = S.Code " & mCondStr &
+                    " And H.PlaceOfSupply = '" & PlaceOfSupplay.OutsideState & "' 
+                    Group By S.Description 
+                    Having Sum(CASE when H.SalesTaxGroupParty =  'Unregistered' THEN L.Taxable_Amount Else 0 END) > 0
+                    And Sum(CASE when H.SalesTaxGroupParty = 'Composition' THEN L.Taxable_Amount Else 0 END) > 0 "
+            DtTable = AgL.FillData(mQry, AgL.GCn).Tables(0)
+            If DtTable.Rows.Count > 0 Then
+                xlWorkSheet.Cells.Item(79, 2).Value = DtTable.Rows(0)("PlaceOfSupply")
+
+                xlWorkSheet.Cells.Item(79, 3).Value = DtTable.Rows(0)("TotalTaxablevalue_Unregistered")
+                xlWorkSheet.Cells.Item(79, 4).Value = DtTable.Rows(0)("AmountOfIntegratedTax_Unregistered")
+
+                xlWorkSheet.Cells.Item(79, 5).Value = DtTable.Rows(0)("TotalTaxablevalue_Composition")
+                xlWorkSheet.Cells.Item(79, 6).Value = DtTable.Rows(0)("AmountOfIntegratedTax_Composition")
+
+                xlWorkSheet.Cells.Item(79, 7).Value = DtTable.Rows(0)("TotalTaxablevalue_UINholders")
+                xlWorkSheet.Cells.Item(79, 8).Value = DtTable.Rows(0)("AmountOfIntegratedTax_UINholders")
+            End If
+
+
+            '4. Eligible ITC	(1)   Import of goods 
+            'Tax Charged on Import of Goods liKe IGST
+            mQry = " SELECT 0 as IntegratedTax, 0 As Cess "
+            DtTable = AgL.FillData(mQry, AgL.GCn).Tables(0)
+            If DtTable.Rows.Count > 0 Then
+                xlWorkSheet.Cells.Item(22, 3).Value = DtTable.Rows(0)("IntegratedTax")
+                xlWorkSheet.Cells.Item(22, 6).Value = DtTable.Rows(0)("Cess")
+            End If
+
+            '4. Eligible ITC	(2)   Import of services
+            'Tax paid on Import of service (Covered under Reverse Charge) 
+            mQry = " SELECT 0 as IntegratedTax, 0 As Cess "
+            DtTable = AgL.FillData(mQry, AgL.GCn).Tables(0)
+            If DtTable.Rows.Count > 0 Then
+                xlWorkSheet.Cells.Item(23, 3).Value = DtTable.Rows(0)("IntegratedTax")
+                xlWorkSheet.Cells.Item(23, 6).Value = DtTable.Rows(0)("Cess")
+            End If
+
+            '4. Eligible ITC	(3)   Inward supplies liable to reverse charge        (other than 1 &2 above)
+            'All Other purchase from unregistered Dealer (Local Purchase)
+            mQry = " SELECT 0 as IntegratedTax, 0 As CentralTax, 0 As Cess "
+            DtTable = AgL.FillData(mQry, AgL.GCn).Tables(0)
+            If DtTable.Rows.Count > 0 Then
+                xlWorkSheet.Cells.Item(24, 3).Value = DtTable.Rows(0)("IntegratedTax")
+                xlWorkSheet.Cells.Item(24, 4).Value = DtTable.Rows(0)("CentralTax")
+                xlWorkSheet.Cells.Item(24, 6).Value = DtTable.Rows(0)("Cess")
+            End If
+
+            '4. Eligible ITC	(4)   Inward supplies from ISD
+            'Input from other Branches (Input Service Distributors)
+            mQry = " SELECT 0 as IntegratedTax, 0 As CentralTax, 0 As Cess "
+            DtTable = AgL.FillData(mQry, AgL.GCn).Tables(0)
+            If DtTable.Rows.Count > 0 Then
+                xlWorkSheet.Cells.Item(25, 3).Value = DtTable.Rows(0)("IntegratedTax")
+                xlWorkSheet.Cells.Item(25, 4).Value = DtTable.Rows(0)("CentralTax")
+                xlWorkSheet.Cells.Item(25, 6).Value = DtTable.Rows(0)("Cess")
+            End If
+
+            '4. Eligible ITC	(5)   All other ITC
+            'Normal Purchase from Registered Dealer
+            mQry = " Select Sum(VMain.IntegratedTax) As IntegratedTax, 
+                    Sum(VMain.CentralTax) as CentralTax, Sum(VMain.StateTax) as StateTax, Sum(VMain.Cess)  As Cess
+                    From
+                    (
+                        SELECT L.Tax1 As IntegratedTax, L.Tax2 as CentralTax, L.Tax3 as StateTax, 0 As Cess
+                        from PurchInvoice H 
+                        left join PurchInvoiceDetail L on H.DocID = L.DocID " & mCondStr &
+                        " And H.SalesTaxGroupParty = '" & PostingGroupSalesTaxParty.Registered & "' 
+                        And ifnull(L.Tax1,0) + ifnull(L.Tax2,0) + ifnull(L.Tax3,0) <> 0 
+                        UNION ALL 
+                        Select -L.Tax1 As IntegratedTax, -L.Tax2 as CentralTax, -L.Tax3 as StateTax, 0 As Cess
+                        From LedgerHead H 
+                        LEFT JOIN LedgerHeadDetailCharges L On H.DocId = L.DocId 
+                        LEFT JOIN Voucher_Type Vt On H.V_Type = Vt.V_Type " & mCondStr &
+                        " And Vt.NCat = '" & agConstants.Ncat.DebitNote & "' 
+                    ) As VMain "
+            DtTable = AgL.FillData(mQry, AgL.GCn).Tables(0)
+            If DtTable.Rows.Count > 0 Then
+                xlWorkSheet.Cells.Item(26, 3).Value = DtTable.Rows(0)("IntegratedTax")
+                xlWorkSheet.Cells.Item(26, 4).Value = DtTable.Rows(0)("CentralTax")
+                xlWorkSheet.Cells.Item(26, 6).Value = DtTable.Rows(0)("Cess")
+            End If
+
+
+            '4. (D)  Ineligible ITC	(1)   As per section 17(5) of CGST//SGST Act
+            mQry = " SELECT 
+                    Round(Sum(Case When Ps.ChargeType = 'TAX1' Then L.Taxable_Amount * Ps.Percentage / 100  Else 0 End),2) As IntegratedTax,
+                    Round(Sum(Case When Ps.ChargeType = 'TAX2' Then L.Taxable_Amount * Ps.Percentage / 100  Else 0 End),2) As CentralTax,
+                    Round(Sum(Case When Ps.ChargeType = 'TAX3' Then L.Taxable_Amount * Ps.Percentage / 100  Else 0 End),2) As StateTax,
+                    0 As Cess
+                    from PurchInvoice H 
+                    left join PurchInvoiceDetail L On H.DocID = L.DocID   
+                    LEFT JOIN Item I ON L.Item = I.Code
+                    LEFT JOIN ItemCategory Ic On I.ItemCategory = Ic.Code
+                    LEFT JOIN PostingGroupSalesTax Ps On 'Registered' = Ps.PostingGroupSalesTaxParty
+                            And IfNull(I.SalesTaxPostingGroup,Ic.SalesTaxGroup)  =  Ps.PostingGroupSalesTaxItem
+                            And H.PlaceOfSupply = Ps.PlaceOfSupply
+                            And Ps.Process = 'PURCH' " & mCondStr &
+                    " And H.SalesTaxGroupParty = '" & PostingGroupSalesTaxParty.Unregistered & "' "
+            DtTable = AgL.FillData(mQry, AgL.GCn).Tables(0)
+            If DtTable.Rows.Count > 0 Then
+                xlWorkSheet.Cells.Item(32, 3).Value = DtTable.Rows(0)("IntegratedTax")
+                xlWorkSheet.Cells.Item(32, 4).Value = DtTable.Rows(0)("CentralTax")
+                xlWorkSheet.Cells.Item(32, 5).Value = DtTable.Rows(0)("StateTax")
+                xlWorkSheet.Cells.Item(32, 6).Value = DtTable.Rows(0)("Cess")
+            End If
+
+
+            '5. Values of exempt, From a supplier under composition scheme, Exempt  and Nil rated supply	
+            'Purchase of Goods 0%, Exempted etc
+            mQry = " Select Case When H.PlaceOfSupply = '" & PlaceOfSupplay.OutsideState & "' Then Sum(L.Taxable_Amount) Else 0 End As InterStatesupplies,
+                    Case When H.PlaceOfSupply <> '" & PlaceOfSupplay.OutsideState & "' Then   Sum(L.Taxable_Amount) Else 0 End As Intrastatesupplies
+                    from PurchInvoice H 
+                    left join PurchInvoiceDetail L on H.DocID = L.DocID " & mCondStr &
+                    " And L.SalesTaxGroupItem = 'GST 0%' Group By H.PlaceOfSupply"
+            DtTable = AgL.FillData(mQry, AgL.GCn).Tables(0)
+            If DtTable.Rows.Count > 0 Then
+                xlWorkSheet.Cells.Item(39, 4).Value = DtTable.Rows(0)("InterStatesupplies")
+                xlWorkSheet.Cells.Item(39, 5).Value = DtTable.Rows(0)("Intrastatesupplies")
+            End If
+
+            '5. Values of exempt, Non GST supply	
+            'Purchase of Goods not Covered on GST
+            mQry = " SELECT 0 as InterStatesupplies, 0 As Intrastatesupplies "
+            DtTable = AgL.FillData(mQry, AgL.GCn).Tables(0)
+            If DtTable.Rows.Count > 0 Then
+                xlWorkSheet.Cells.Item(40, 4).Value = DtTable.Rows(0)("InterStatesupplies")
+                xlWorkSheet.Cells.Item(40, 5).Value = DtTable.Rows(0)("Intrastatesupplies")
+            End If
+
+
+            '5.1 Interest & late fee payable	
+            'Intrest @18% on late payment of tax
+            mQry = " SELECT 0 as IntegratedTax, 0 As CentralTax, 0 As StateTax, 0 As Cess "
+            DtTable = AgL.FillData(mQry, AgL.GCn).Tables(0)
+            If DtTable.Rows.Count > 0 Then
+                xlWorkSheet.Cells.Item(56, 3).Value = DtTable.Rows(0)("IntegratedTax")
+                xlWorkSheet.Cells.Item(56, 4).Value = DtTable.Rows(0)("CentralTax")
+                xlWorkSheet.Cells.Item(56, 5).Value = DtTable.Rows(0)("StateTax")
+                xlWorkSheet.Cells.Item(56, 6).Value = DtTable.Rows(0)("Cess")
+            End If
+
+
+            ClsMain.FReleaseObjects(xlWorkSheet)
+
+            OutputWorkBook.Save()
+            OutputWorkBook.Close()
+            xlApp.Quit()
+
+            ClsMain.FReleaseObjects(xlApp)
+            ClsMain.FReleaseObjects(TemplateWorkBook)
+
+            System.Diagnostics.Process.Start(OutputFile)
+
+        Catch ex As Exception
+            MsgBox(ex.Message)
+            DsRep = Nothing
+            OutputWorkBook.Close()
+            xlApp.Quit()
+            ClsMain.FReleaseObjects(xlApp)
+            ClsMain.FReleaseObjects(TemplateWorkBook)
+        End Try
+    End Sub
+    Private Sub ProcGSTR1Reports()
+        Dim SubTitle$ = ""
+        Dim GroupHeaderTitle1$ = "", GroupHeaderTitle2$ = ""
+        Dim IsReturn As Integer = 0
+        Dim AssessmentYear$ = ""
+        'Dim OutputFile As String = My.Application.Info.DirectoryPath + "\TaxReturns\GSTR1.xlsx"
+        Dim OutputFile As String = ""
+        Dim I As Integer
+        Dim mCondStr$ = ""
+
+
+
+
+        Dim ToDate As DateTime = ReportFrm.FGetText(2)
+        Dim newdate = String.Format("{0:yyyy-MM-dd}", ToDate)
+        Dim MonthName As String = AgL.XNull(AgL.Dman_Execute(" select case strftime('%m', '" & newdate & "') when '01' then 'January' when '02' then 'Febuary' when '03' then 'March' 
+                    when '04' then 'April' when '05' then 'May' when '06' then 'June' when '07' then 'July' 
+                    when '08' then 'August' when '09' then 'September' when '10' then 'October' when '11' then 'November' 
+                    when '12' then 'December' else '' end as month ", AgL.GCn).ExecuteScalar)
+
+        Dim FilePath As String = ""
+        Dim SaveFileDialogBox As SaveFileDialog
+        Dim sFilePath As String = ""
+        SaveFileDialogBox = New SaveFileDialog
+
+        SaveFileDialogBox.Title = "File Name"
+        FilePath = My.Computer.FileSystem.SpecialDirectories.Desktop
+        SaveFileDialogBox.InitialDirectory = FilePath
+        SaveFileDialogBox.FilterIndex = 1
+        SaveFileDialogBox.FileName = "GSTR1_" + MonthName + ".xlsx"
+        If SaveFileDialogBox.ShowDialog = Windows.Forms.DialogResult.Cancel Then Exit Sub
+        OutputFile = SaveFileDialogBox.FileName
+
+        Dim xlApp As Excel.Application
+        Dim TemplateWorkBook As Excel.Workbook
+        Dim OutputWorkBook As Excel.Workbook
+
+        xlApp = New Excel.Application
+        xlApp.AlertBeforeOverwriting = False
+        xlApp.DisplayAlerts = False
+
+
+
+        TemplateWorkBook = xlApp.Workbooks.Open(My.Application.Info.DirectoryPath + "\Templates\" + "GSTR1_Excel_Workbook_Template_V1.5.xlsx")
+        TemplateWorkBook.SaveAs(OutputFile)
+        xlApp.Workbooks.Close()
+        OutputWorkBook = xlApp.Workbooks.Open(OutputFile)
+
+
+        Try
+            mCondStr = " Where 1=1"
+            mCondStr = mCondStr & " AND H.Div_Code = '" & AgL.PubDivCode & "' "
+            mCondStr = mCondStr & " AND H.V_Date Between '" & CDate(ReportFrm.FGetText(1)).ToString("s") & "' And '" & CDate(ReportFrm.FGetText(2)).ToString("s") & "' "
+
+
+            FWriteGSTR1B2B(OutputWorkBook, mCondStr)
+            FWriteGSTR1B2CL(OutputWorkBook, mCondStr)
+            FWriteGSTR1B2CS(OutputWorkBook, mCondStr)
+            FWriteGSTR1CDNR(OutputWorkBook, mCondStr)
+            FWriteGSTR1CDNUR(OutputWorkBook, mCondStr)
+            FWriteGSTR1EXEMP(OutputWorkBook, mCondStr)
+            FWriteGSTR1HSN(OutputWorkBook, mCondStr)
+            FWriteGSTR1DOC(OutputWorkBook, mCondStr)
+
+            OutputWorkBook.Save()
+            OutputWorkBook.Close()
+            xlApp.Quit()
+
+            ClsMain.FReleaseObjects(xlApp)
+            ClsMain.FReleaseObjects(TemplateWorkBook)
+            ClsMain.FReleaseObjects(OutputWorkBook)
+
+            If ErrorLog <> "" Then
+                If File.Exists(My.Application.Info.DirectoryPath + " \ " + "ErrorLog.txt") Then
+                    My.Computer.FileSystem.WriteAllText(My.Application.Info.DirectoryPath + "\" + "ErrorLog.txt", ErrorLog, False)
+                Else
+                    File.Create(My.Application.Info.DirectoryPath + " \ " + "ErrorLog.txt")
+                    My.Computer.FileSystem.WriteAllText(My.Application.Info.DirectoryPath + " \ " + "ErrorLog.txt", ErrorLog, False)
+                End If
+                System.Diagnostics.Process.Start("notepad.exe", My.Application.Info.DirectoryPath + "\" + "ErrorLog.txt")
+                Exit Sub
+            End If
+
+            System.Diagnostics.Process.Start(OutputFile)
+
+        Catch ex As Exception
+            MsgBox(ex.Message)
+            DsRep = Nothing
+            OutputWorkBook.Close()
+            xlApp.Quit()
+            ClsMain.FReleaseObjects(xlApp)
+            ClsMain.FReleaseObjects(TemplateWorkBook)
+        End Try
+    End Sub
+
+    Private Sub FWriteGSTR1B2B(ByVal xlWorkBook As Excel.Workbook, mCondStr As String)
+        Dim DtTable As DataTable = Nothing
+        Dim xlWorkSheet As Excel.Worksheet
+        Dim I As Integer = 0
+        xlWorkSheet = xlWorkBook.Worksheets("b2b")
+
+        mQry = " SELECT Max(Sgr.RegistrationNo) As GSTINofRecipient, Max(Sg.Name) As ReceiverName, Max(H.ManualRefNo) As InvoiceNumber,
+                    Max(strftime('%d/%m/%Y', H.V_Date)) As InvoiceDate, Max(H.Net_Amount) As InvoiceValue, Max(S.ManualCode || '-' || S.Description) As PlaceOfSupply, 'N' As ReverseCharge,
+                    '' As ApplicableTaxRate, 'Regular' As InvoiceType,	Null As ECommerceGSTIN,	 
+                    Max(IfNull(L.Tax1_Per,0) + IfNull(L.Tax2_Per,0) + IfNull(L.Tax3_Per,0)) As Rate,	
+                    Sum(L.Taxable_Amount) As TaxableValue, 0 As CessAmount
+                    From SaleInvoice H 
+                    left join SaleInvoiceDetail L On H.DocID = L.DocID
+                    left join SubGroup Sg On H.SaleToParty = Sg.SubCode
+                    LEFT JOIN SubGroupRegistration Sgr On Sg.SubCode = Sgr.SubCode And Sgr.RegistrationType = 'Sales Tax No'
+                    LEFT JOIN City C On H.SaleToPartyCity = C.CityCode
+                    LEFT JOIN State S on C.State = S.Code " & mCondStr &
+                    " And H.SalesTaxGroupParty In ('" & PostingGroupSalesTaxParty.Registered & "','" & PostingGroupSalesTaxParty.Composition & "') 
+                    Group BY L.DocID, SalesTaxGroupItem "
+        DtTable = AgL.FillData(mQry, AgL.GCn).Tables(0)
+
+        For I = 0 To DtTable.Rows.Count - 1
+            If AgL.XNull(DtTable.Rows(I)("GSTINofRecipient")) = "" Then
+                ErrorLog += "GST No. is blank for " & AgL.XNull(DtTable.Rows(I)("ReceiverName")) & vbCrLf
+            End If
+        Next
+
+        FillGSTR1ExcelFiles(DtTable, xlWorkSheet)
+    End Sub
+
+    Private Sub FWriteGSTR1B2CL(ByVal xlWorkBook As Excel.Workbook, mCondStr As String)
+        Dim DtTable As DataTable = Nothing
+        Dim xlWorkSheet As Excel.Worksheet
+        Dim I As Integer = 0
+        xlWorkSheet = xlWorkBook.Worksheets("b2cl")
+
+        mQry = " SELECT Max(Sgr.RegistrationNo) As GSTINofRecipient, Max(Sg.Name) As ReceiverName, Max(H.ManualRefNo) As InvoiceNumber,
+                    Max(H.V_Date) As InvoiceDate, Max(H.Net_Amount) As InvoiceValue, Max(S.Code + '-' + S.Description) As PlaceOfSupply, 'N' As ReverseCharge,
+                    0 As ApplicableTaxRate, 'Regular' As InvoiceType,	Null As ECommerceGSTIN,	 
+                    Max(IfNull(L.Tax1_Per,0) + IfNull(L.Tax2_Per,0) + IfNull(L.Tax3_Per,0)) As Rate,	
+                    Sum(L.Taxable_Amount) As TaxableValue, 0 As CessAmount
+                    From SaleInvoice H 
+                    left join SaleInvoiceDetail L On H.DocID = L.DocID
+                    left join SubGroup Sg On H.SaleToParty = Sg.SubCode
+                    LEFT JOIN SubGroupRegistration Sgr On Sg.SubCode = Sgr.SubCode And Sgr.RegistrationType = 'GSTIN'
+                    LEFT JOIN City C On H.SaleToPartyCity = C.CityCode
+                    LEFT JOIN State S on C.State = S.Code " & mCondStr &
+                    " And H.SalesTaxGroupParty = '" & PostingGroupSalesTaxParty.Registered & "'  
+                    And H.PlaceOfSupply = '" & PlaceOfSupplay.OutsideState & "'
+                    And H.Net_Amount > 250000
+                    Group BY L.DocID, SalesTaxGroupItem "
+        DtTable = AgL.FillData(mQry, AgL.GCn).Tables(0)
+
+
+
+        FillGSTR1ExcelFiles(DtTable, xlWorkSheet)
+    End Sub
+    Private Sub FWriteGSTR1B2CS(ByVal xlWorkBook As Excel.Workbook, mCondStr As String)
+        Dim DtTable As DataTable = Nothing
+        Dim xlWorkSheet As Excel.Worksheet
+        Dim I As Integer = 0
+        xlWorkSheet = xlWorkBook.Worksheets("b2cs")
+
+
+
+        mQry = " SELECT 'OE' As Type, S.ManualCode || '-' || S.Description As PlaceOfSupply,  Null As ApplicablePercentOfTaxRate,
+                    IfNull(L.Tax1_Per,0) + IfNull(L.Tax2_Per,0) + IfNull(L.Tax3_Per,0) As Rate,
+                    Sum(L.Taxable_Amount) As TaxableValue, 0 As CessAmount, Null As ECommerceGSTIN
+                    From SaleInvoice H 
+                    left join SaleInvoiceDetail L On H.DocID = L.DocID
+                    left join SubGroup Sg On H.SaleToParty = Sg.SubCode
+                    LEFT JOIN SubGroupRegistration Sgr On Sg.SubCode = Sgr.SubCode And Sgr.RegistrationType = 'GSTIN'
+                    LEFT JOIN City C On H.SaleToPartyCity = C.CityCode
+                    LEFT JOIN State S on C.State = S.Code " & mCondStr &
+                    " And H.SalesTaxGroupParty = '" & PostingGroupSalesTaxParty.Unregistered & "'
+                    And H.PlaceOfSupply = '" & PlaceOfSupplay.WithinState & "'
+                    Group BY S.ManualCode || '-' || S.Description, SalesTaxGroupItem, 
+                    IfNull(L.Tax1_Per,0) + IfNull(L.Tax2_Per,0) + IfNull(L.Tax3_Per,0) "
+        DtTable = AgL.FillData(mQry, AgL.GCn).Tables(0)
+
+        FillGSTR1ExcelFiles(DtTable, xlWorkSheet)
+    End Sub
+    Private Sub FWriteGSTR1CDNR(ByVal xlWorkBook As Excel.Workbook, mCondStr As String)
+        Dim DtTable As DataTable = Nothing
+        Dim xlWorkSheet As Excel.Worksheet
+        Dim I As Integer = 0
+        xlWorkSheet = xlWorkBook.Worksheets("cdnr")
+
+        mQry = " SELECT Sgr.RegistrationNo As GSTINofRecipient, Sg.Name As ReceiverName, Si.ManualRefNo As InvoiceNumber, Si.V_Date As InvoiceDate,
+                H.ReferenceNo As LedgerHeadNo, H.V_Date As LedgerHeadDate, substr(Vt.Description,1,1) As DocumentType,
+                S.ManualCode || '-' || S.Description As PlaceOfSupply, Lc.Net_Amount As LedgerHeadValue, 
+                Null As ApplicableTaxRate, L.SalesTaxGroupItem As Rate,
+                0 As TaxableValue, 0 As CessAmount, NUll As PreGST
+                From LedgerHead H 
+                Left join LedgerHeadDetail L on H.DocID = L.DocID
+                LEft join LedgerHeadDetailCharges Lc ON L.DocID = Lc.DocID and L.Sr = Lc.Sr
+                left join Voucher_Type Vt On H.V_Type = Vt.V_Type
+                left join SubGroup Sg On H.Subcode = Sg.SubCode
+                LEFT JOIN SubGroupRegistration Sgr On Sg.SubCode = Sgr.SubCode And Sgr.RegistrationType = 'Sales Tax No'
+                Left join SaleInvoiceDetail Sid On L.SpecificationDocID = Sid.DocID And L.SpecificationDocIDSr = Sid.Sr
+                Left join SaleInvoice Si On Sid.DocID = Si.DocID
+                LEFT JOIN City C On Si.SaleToPartyCity = C.CityCode
+                LEFT JOIN State S on C.State = S.Code " & mCondStr &
+                " And 1=2 "
+        DtTable = AgL.FillData(mQry, AgL.GCn).Tables(0)
+
+        FillGSTR1ExcelFiles(DtTable, xlWorkSheet)
+    End Sub
+    Private Sub FWriteGSTR1CDNUR(ByVal xlWorkBook As Excel.Workbook, mCondStr As String)
+        Dim DtTable As DataTable = Nothing
+        Dim xlWorkSheet As Excel.Worksheet
+        Dim I As Integer = 0
+        xlWorkSheet = xlWorkBook.Worksheets("cdnur")
+
+        mQry = " SELECT Si.V_Date As InvoiceDate, S.ManualCode || '-' || S.Description As PlaceOfSupply, 
+                Lc.Net_Amount As LedgerLineValue, Null As ApplicableTaxRate, L.SalesTaxGroupItem As Rate,
+                0 As TaxableValue, 0 As CessAmount, NUll As PreGST
+                From LedgerHead H 
+                Left join LedgerHeadDetail L on H.DocID = L.DocID
+                LEft join LedgerHeadDetailCharges Lc ON L.DocID = Lc.DocID and L.Sr = Lc.Sr
+                left join Voucher_Type Vt On H.V_Type = Vt.V_Type
+                left join SubGroup Sg On H.Subcode = Sg.SubCode
+                LEFT JOIN SubGroupRegistration Sgr On Sg.SubCode = Sgr.SubCode And Sgr.RegistrationType = 'GSTIN'
+                Left join SaleInvoiceDetail Sid On L.SpecificationDocID = Sid.DocID And L.SpecificationDocIDSr = Sid.Sr
+                Left join SaleInvoice Si On Sid.DocID = Si.DocID
+                LEFT JOIN City C On Si.SaleToPartyCity = C.CityCode
+                LEFT JOIN State S on C.State = S.Code " & mCondStr &
+                " And Si.SalesTaxGroupParty = '" & PostingGroupSalesTaxParty.Unregistered & "'
+                And Si.PlaceOfSupply = '" & PlaceOfSupplay.OutsideState & "'
+                And Si.Net_Amount > 250000 "
+        DtTable = AgL.FillData(mQry, AgL.GCn).Tables(0)
+
+
+
+        FillGSTR1ExcelFiles(DtTable, xlWorkSheet)
+    End Sub
+    Private Sub FWriteGSTR1EXEMP(ByVal xlWorkBook As Excel.Workbook, mCondStr As String)
+        Dim DtTable As DataTable = Nothing
+        Dim xlWorkSheet As Excel.Worksheet
+        Dim I As Integer = 0
+        xlWorkSheet = xlWorkBook.Worksheets("exemp")
+
+        mQry = " SELECT Ic.Description As Description, 
+                Sum(Case When L.SalesTaxGroupItem = 'GST 0%' Then L.Amount Else 0 End) As NilRatedSupplies,
+                Sum(Case When L.SalesTaxGroupItem = 'GST Excempt' Then L.Amount Else 0 End) As ExemptedSupplies,
+                0 As NonGSTSupplies
+                From SaleInvoice H 
+                Left join SaleInvoiceDetail L on H.DocId = L.DocID 
+                Left join Item I on L.Item = I.Code
+                Left Join ItemCategory Ic On I.ItemCategory = Ic.Code " & mCondStr &
+                " And L.SalesTaxGroupItem In ('GST 0%','GST Excempt')
+                Group By Ic.Description "
+        DtTable = AgL.FillData(mQry, AgL.GCn).Tables(0)
+
+        FillGSTR1ExcelFiles(DtTable, xlWorkSheet)
+    End Sub
+    Private Sub FWriteGSTR1HSN(ByVal xlWorkBook As Excel.Workbook, mCondStr As String)
+        Dim DtTable As DataTable = Nothing
+        Dim xlWorkSheet As Excel.Worksheet
+        Dim I As Integer = 0
+        xlWorkSheet = xlWorkBook.Worksheets("hsn")
+
+        mQry = " SELECT I.HSN, Max(Ic.Description) As Description, 'PCS-PIECES' As UQC,
+                Sum(L.Qty) As TotalQuantity, Sum(L.Amount) As TotalValue, Sum(L.Taxable_Amount) As TaxableValue,
+                Sum(L.Tax1) As IntegratedTaxAmount,
+                Sum(L.Tax2) As CentralTaxAmount,
+                Sum(L.Tax3) As StateTaxAmount,
+                0 As CessAmount
+                From SaleInvoice H 
+                Left join SaleInvoiceDetail L on H.DocId = L.DocID 
+                Left join Item I on L.Item = I.Code
+                Left Join Unit U on I.Unit = U.Code
+                Left Join ItemCategory Ic On I.ItemCategory = Ic.Code " & mCondStr &
+                " Group By I.HSN "
+        DtTable = AgL.FillData(mQry, AgL.GCn).Tables(0)
+
+
+        For I = 0 To DtTable.Rows.Count - 1
+            If AgL.XNull(DtTable.Rows(I)("HSN")) = "" Then
+                ErrorLog += "Some product has blank HSN Code under Category " & AgL.XNull(DtTable.Rows(I)("Description")) & vbCrLf
+            End If
+        Next
+
+        FillGSTR1ExcelFiles(DtTable, xlWorkSheet)
+    End Sub
+    Private Sub FWriteGSTR1DOC(ByVal xlWorkBook As Excel.Workbook, mCondStr As String)
+        Dim DtTable As DataTable = Nothing
+        Dim xlWorkSheet As Excel.Worksheet
+        Dim I As Integer = 0
+        xlWorkSheet = xlWorkBook.Worksheets("docs")
+
+        mQry = " SELECT 'Invoices for outward supply' As NatureOfDocument, Min(H.ManualRefNo) As SrNoFrom, Max(H.ManualRefNo) As SrNoTo, Count(*) As TotalNumber, 0 As Cancelled
+                    From SaleInvoice H 
+                    Left JOIN Voucher_Type Vt On H.V_Type = Vt.V_Type " & mCondStr
+        DtTable = AgL.FillData(mQry, AgL.GCn).Tables(0)
+
+        FillGSTR1ExcelFiles(DtTable, xlWorkSheet)
+    End Sub
+    Private Sub FillGSTR1ExcelFiles(DtTable As DataTable, xlWorkSheet As Excel.Worksheet)
+        If DtTable.Rows.Count > 0 Then
+            For ColIndex As Integer = 0 To DtTable.Columns.Count - 1
+                Dim ColumnValues(0, 0) As Object
+                ReDim ColumnValues(0 To DtTable.Rows.Count - 1, 0)
+                For I As Integer = 0 To DtTable.Rows.Count - 1
+                    If DtTable.Columns(ColIndex).ColumnName.Contains("Date") Then
+                        ColumnValues(I, 0) = AgL.XNull(AgL.RetDate(DtTable.Rows(I)(ColIndex)))
+                    Else
+                        ColumnValues(I, 0) = AgL.XNull(DtTable.Rows(I)(ColIndex)).ToString().Replace("(", "").Replace(")", "")
+                    End If
+                Next
+                xlWorkSheet.Range(GetExcelColumnName(ColIndex + 1) + (5).ToString + ":" + GetExcelColumnName(ColIndex + 1) + (5 + DtTable.Rows.Count - 1).ToString).Value = ColumnValues
+            Next
+        End If
+        ClsMain.FReleaseObjects(xlWorkSheet)
+    End Sub
+#End Region
+
+    Private Function GetExcelColumnName(columnNumber As Integer) As String
+        Dim dividend As Integer = columnNumber
+        Dim columnName As String = String.Empty
+        Dim modulo As Integer
+
+        While dividend > 0
+            modulo = (dividend - 1) Mod 26
+            columnName = Convert.ToChar(65 + modulo).ToString() & columnName
+            dividend = CInt((dividend - modulo) / 26)
+        End While
+
+        Return columnName
+    End Function
+End Class

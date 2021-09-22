@@ -1,0 +1,3 @@
+; Field definition file for table: ADORecordset
+Class	string	255	NINTH (A)	
+Fee Category	string	255		

@@ -1,0 +1,4 @@
+; Field definition file for table: ADORecordset
+Category	string	255	JEANS	
+Brand	string	255	9 DEGREE	
+CityName	string	255	DELHI	

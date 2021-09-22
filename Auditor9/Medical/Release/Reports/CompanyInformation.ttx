@@ -1,0 +1,12 @@
+; Field definition file for table: ADORecordset
+CompanyName	string	255	EQUAL2 SAREE CENTRE	
+Add1	string	255	13/152, PARMAT, CIVIL LINES	
+Add2	string	255		
+Add3	string	255		
+City	string	255	Kanpur	
+Phone	string	255		
+Fax	string	255		
+Pin	string	255	208001	
+Email	string	255		
+CSTNo	string	255	-	
+TIN	string	255		

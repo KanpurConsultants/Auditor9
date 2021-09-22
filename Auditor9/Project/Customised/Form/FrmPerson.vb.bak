@@ -1,0 +1,3455 @@
+Imports System.IO
+Imports AgLibrary.ClsMain.agConstants
+Imports System.Xml
+Imports Customised.ClsMain
+Imports System.ComponentModel
+Imports System.Linq
+
+Public Class FrmPerson
+
+    Inherits AgTemplate.TempMaster
+    Dim mQry$ = ""
+    Protected mGroupNature As String = "", mNature As String = ""
+
+    Dim mSubgroupType$ = ""
+
+    Dim mSubGroupNature As ESubgroupNature
+    Friend WithEvents Pnl1 As Panel
+    Dim mIsReturnValue As Boolean = False
+
+    Public Const ColSNo As String = "S.No."
+    Public WithEvents Dgl1 As New AgControls.AgDataGrid
+    Public Const Col1Head As String = "Head"
+    Public Const Col1Mandatory As String = ""
+    Public Const Col1Value As String = "Value"
+    Public Const Col1BtnDetail As String = "Detail"
+
+
+
+    Public Const rowContactPerson As Integer = 0
+    Public Const rowSalesTaxNo As Integer = 1
+    Public Const rowPanNo As Integer = 2
+    Public Const rowAadharNo As Integer = 3
+    Protected WithEvents Label1 As Label
+    Public Const rowParent As Integer = 4
+    Public Const rowArea As Integer = 5
+    Public Const rowAgent As Integer = 6
+    Public Const rowTransporter As Integer = 7
+    Public Const rowInterestSlab As Integer = 8
+    Public Const rowRateType As Integer = 9
+    Public Const rowDistance As Integer = 10
+    Public Const rowDiscount As Integer = 11
+
+
+    Friend WithEvents MnuOptions As ContextMenuStrip
+    Private components As System.ComponentModel.IContainer
+    Friend WithEvents MnuImportFromExcel As ToolStripMenuItem
+    Friend WithEvents MnuImportFromTally As ToolStripMenuItem
+    Public WithEvents OFDMain As OpenFileDialog
+    Friend WithEvents MnuBulkEdit As ToolStripMenuItem
+    Friend WithEvents MnuImportFromDos As ToolStripMenuItem
+    Public WithEvents TxtDispName As AgControls.AgTextBox
+    Protected WithEvents LblSuffix As Label
+    Dim gStateCode As String
+    Protected WithEvents BtnAttachments As Button
+    Dim DtSubgroupTypeSettings As DataTable
+
+    Public Sub New(ByVal StrUPVar As String, ByVal DTUP As DataTable)
+        ' This call is required by the Windows Form Designer.
+        InitializeComponent()
+        ' Add any initialization after the InitializeComponent() call.
+        Topctrl1.FSetParent(Me, StrUPVar, DTUP)
+        Topctrl1.SetDisp(True)
+    End Sub
+
+    Public Sub New(ByVal StrUPVar As String, ByVal DTUP As DataTable, ByVal SubgroupType As String)
+        ' This call is required by the Windows Form Designer.
+        InitializeComponent()
+        ' Add any initialization after the InitializeComponent() call.
+        Topctrl1.FSetParent(Me, StrUPVar, DTUP)
+        Topctrl1.SetDisp(True)
+        mSubgroupType = SubgroupType
+
+    End Sub
+
+
+    Public Property IsReturnValue() As Boolean
+        Get
+            IsReturnValue = mIsReturnValue
+        End Get
+        Set(ByVal value As Boolean)
+            mIsReturnValue = value
+        End Set
+    End Property
+
+    Public Enum ESubgroupNature
+        Customer = 0
+        Supplier = 1
+    End Enum
+
+    Public Class SubGroupConst
+        Public Const GroupNature_Debtors As String = "A"
+        Public Const Nature_Debtors As String = "Customer"
+        Public Const GroupCode_Debtors As String = "0020"
+        Public Const GroupNature_Creditors As String = "L"
+        Public Const Nature_Creditors As String = "Supplier"
+        Public Const GroupCode_Creditors As String = "0016"
+    End Class
+
+    Public Property SubGroupNature() As ESubgroupNature
+        Get
+            SubGroupNature = mSubGroupNature
+        End Get
+        Set(ByVal value As ESubgroupNature)
+            mSubGroupNature = value
+        End Set
+    End Property
+
+    Public Property SubgroupType() As String
+        Get
+            Return mSubgroupType
+        End Get
+        Set(ByVal value As String)
+            mSubgroupType = value
+        End Set
+    End Property
+
+#Region "Designer Code"
+    Private Sub InitializeComponent()
+        Me.components = New System.ComponentModel.Container()
+        Dim resources As System.ComponentModel.ComponentResourceManager = New System.ComponentModel.ComponentResourceManager(GetType(FrmPerson))
+        Me.TxtEMail = New AgControls.AgTextBox()
+        Me.LblEMail = New System.Windows.Forms.Label()
+        Me.TxtMobile = New AgControls.AgTextBox()
+        Me.LblMobile = New System.Windows.Forms.Label()
+        Me.LblCityReq = New System.Windows.Forms.Label()
+        Me.TxtCity = New AgControls.AgTextBox()
+        Me.LblCity = New System.Windows.Forms.Label()
+        Me.LblAddressReq = New System.Windows.Forms.Label()
+        Me.TxtAddress = New AgControls.AgTextBox()
+        Me.LblAddress = New System.Windows.Forms.Label()
+        Me.LblNameReq = New System.Windows.Forms.Label()
+        Me.LblManualCodeReq = New System.Windows.Forms.Label()
+        Me.TxtManualCode = New AgControls.AgTextBox()
+        Me.LblManualCode = New System.Windows.Forms.Label()
+        Me.TxtName = New AgControls.AgTextBox()
+        Me.LblName = New System.Windows.Forms.Label()
+        Me.TxtAcGroup = New AgControls.AgTextBox()
+        Me.LblAcGroup = New System.Windows.Forms.Label()
+        Me.LblAcGroupReq = New System.Windows.Forms.Label()
+        Me.TxtCreditDays = New AgControls.AgTextBox()
+        Me.LblCreditDays = New System.Windows.Forms.Label()
+        Me.TxtCreditLimit = New AgControls.AgTextBox()
+        Me.LblCreditLimit = New System.Windows.Forms.Label()
+        Me.GrpCreditDetail = New System.Windows.Forms.GroupBox()
+        Me.TxtPhone = New AgControls.AgTextBox()
+        Me.LblPhone = New System.Windows.Forms.Label()
+        Me.TxtSalesTaxGroup = New AgControls.AgTextBox()
+        Me.LblSalesTaxGroup = New System.Windows.Forms.Label()
+        Me.TxtPinNo = New AgControls.AgTextBox()
+        Me.LblPinNo = New System.Windows.Forms.Label()
+        Me.TxtPartyType = New AgControls.AgTextBox()
+        Me.LblPartyType = New System.Windows.Forms.Label()
+        Me.Label2 = New System.Windows.Forms.Label()
+        Me.GBoxImportFromExcel = New System.Windows.Forms.GroupBox()
+        Me.BtnImprtFromExcel = New System.Windows.Forms.Button()
+        Me.Pnl1 = New System.Windows.Forms.Panel()
+        Me.Label1 = New System.Windows.Forms.Label()
+        Me.MnuOptions = New System.Windows.Forms.ContextMenuStrip(Me.components)
+        Me.MnuImportFromExcel = New System.Windows.Forms.ToolStripMenuItem()
+        Me.MnuImportFromDos = New System.Windows.Forms.ToolStripMenuItem()
+        Me.MnuImportFromTally = New System.Windows.Forms.ToolStripMenuItem()
+        Me.MnuBulkEdit = New System.Windows.Forms.ToolStripMenuItem()
+        Me.OFDMain = New System.Windows.Forms.OpenFileDialog()
+        Me.TxtDispName = New AgControls.AgTextBox()
+        Me.LblSuffix = New System.Windows.Forms.Label()
+        Me.BtnAttachments = New System.Windows.Forms.Button()
+        Me.GrpUP.SuspendLayout()
+        Me.GBoxEntryType.SuspendLayout()
+        Me.GBoxMoveToLog.SuspendLayout()
+        Me.GBoxApprove.SuspendLayout()
+        Me.GroupBox2.SuspendLayout()
+        Me.GBoxDivision.SuspendLayout()
+        CType(Me.DTMaster, System.ComponentModel.ISupportInitialize).BeginInit()
+        Me.GrpCreditDetail.SuspendLayout()
+        Me.GBoxImportFromExcel.SuspendLayout()
+        Me.MnuOptions.SuspendLayout()
+        Me.SuspendLayout()
+        '
+        'Topctrl1
+        '
+        Me.Topctrl1.Size = New System.Drawing.Size(974, 41)
+        Me.Topctrl1.tAdd = False
+        Me.Topctrl1.tDel = False
+        Me.Topctrl1.tEdit = False
+        '
+        'GroupBox1
+        '
+        Me.GroupBox1.Location = New System.Drawing.Point(0, 396)
+        Me.GroupBox1.Size = New System.Drawing.Size(1016, 4)
+        '
+        'GrpUP
+        '
+        Me.GrpUP.Location = New System.Drawing.Point(6, 400)
+        '
+        'TxtEntryBy
+        '
+        Me.TxtEntryBy.Tag = ""
+        Me.TxtEntryBy.Text = ""
+        '
+        'GBoxEntryType
+        '
+        Me.GBoxEntryType.Location = New System.Drawing.Point(142, 470)
+        '
+        'TxtEntryType
+        '
+        Me.TxtEntryType.Tag = ""
+        '
+        'GBoxMoveToLog
+        '
+        Me.GBoxMoveToLog.Location = New System.Drawing.Point(215, 400)
+        '
+        'TxtMoveToLog
+        '
+        Me.TxtMoveToLog.Tag = ""
+        '
+        'GBoxApprove
+        '
+        Me.GBoxApprove.Location = New System.Drawing.Point(400, 400)
+        Me.GBoxApprove.Size = New System.Drawing.Size(147, 44)
+        Me.GBoxApprove.Text = "Approved By"
+        '
+        'TxtApproveBy
+        '
+        Me.TxtApproveBy.Location = New System.Drawing.Point(3, 23)
+        Me.TxtApproveBy.Size = New System.Drawing.Size(141, 18)
+        Me.TxtApproveBy.Tag = ""
+        '
+        'CmdDiscard
+        '
+        Me.CmdDiscard.Location = New System.Drawing.Point(118, 18)
+        '
+        'GroupBox2
+        '
+        Me.GroupBox2.Location = New System.Drawing.Point(702, 400)
+        '
+        'GBoxDivision
+        '
+        Me.GBoxDivision.Location = New System.Drawing.Point(459, 400)
+        Me.GBoxDivision.Size = New System.Drawing.Size(132, 44)
+        '
+        'TxtDivision
+        '
+        Me.TxtDivision.AgSelectedValue = ""
+        Me.TxtDivision.Size = New System.Drawing.Size(126, 18)
+        Me.TxtDivision.Tag = ""
+        '
+        'TxtStatus
+        '
+        Me.TxtStatus.AgSelectedValue = ""
+        Me.TxtStatus.Tag = ""
+        '
+        'TxtEMail
+        '
+        Me.TxtEMail.AgAllowUserToEnableMasterHelp = False
+        Me.TxtEMail.AgLastValueTag = Nothing
+        Me.TxtEMail.AgLastValueText = Nothing
+        Me.TxtEMail.AgMandatory = False
+        Me.TxtEMail.AgMasterHelp = False
+        Me.TxtEMail.AgNumberLeftPlaces = 0
+        Me.TxtEMail.AgNumberNegetiveAllow = False
+        Me.TxtEMail.AgNumberRightPlaces = 0
+        Me.TxtEMail.AgPickFromLastValue = False
+        Me.TxtEMail.AgRowFilter = ""
+        Me.TxtEMail.AgSearchMethod = AgControls.AgLib.TxtSearchMethod.Simple
+        Me.TxtEMail.AgSelectedValue = Nothing
+        Me.TxtEMail.AgTxtCase = AgControls.AgTextBox.TxtCase.None
+        Me.TxtEMail.AgValueType = AgControls.AgTextBox.TxtValueType.Text_Value
+        Me.TxtEMail.BorderStyle = System.Windows.Forms.BorderStyle.None
+        Me.TxtEMail.Font = New System.Drawing.Font("Verdana", 9.75!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.TxtEMail.Location = New System.Drawing.Point(147, 196)
+        Me.TxtEMail.MaxLength = 100
+        Me.TxtEMail.Name = "TxtEMail"
+        Me.TxtEMail.Size = New System.Drawing.Size(292, 16)
+        Me.TxtEMail.TabIndex = 10
+        '
+        'LblEMail
+        '
+        Me.LblEMail.AutoSize = True
+        Me.LblEMail.Font = New System.Drawing.Font("Verdana", 9.75!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.LblEMail.Location = New System.Drawing.Point(10, 197)
+        Me.LblEMail.Name = "LblEMail"
+        Me.LblEMail.Size = New System.Drawing.Size(46, 16)
+        Me.LblEMail.TabIndex = 799
+        Me.LblEMail.Text = "EMail"
+        '
+        'TxtMobile
+        '
+        Me.TxtMobile.AgAllowUserToEnableMasterHelp = False
+        Me.TxtMobile.AgLastValueTag = Nothing
+        Me.TxtMobile.AgLastValueText = Nothing
+        Me.TxtMobile.AgMandatory = False
+        Me.TxtMobile.AgMasterHelp = False
+        Me.TxtMobile.AgNumberLeftPlaces = 0
+        Me.TxtMobile.AgNumberNegetiveAllow = False
+        Me.TxtMobile.AgNumberRightPlaces = 0
+        Me.TxtMobile.AgPickFromLastValue = False
+        Me.TxtMobile.AgRowFilter = ""
+        Me.TxtMobile.AgSearchMethod = AgControls.AgLib.TxtSearchMethod.Simple
+        Me.TxtMobile.AgSelectedValue = Nothing
+        Me.TxtMobile.AgTxtCase = AgControls.AgTextBox.TxtCase.None
+        Me.TxtMobile.AgValueType = AgControls.AgTextBox.TxtValueType.Text_Value
+        Me.TxtMobile.BorderStyle = System.Windows.Forms.BorderStyle.None
+        Me.TxtMobile.Font = New System.Drawing.Font("Verdana", 9.75!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.TxtMobile.Location = New System.Drawing.Point(326, 178)
+        Me.TxtMobile.MaxLength = 35
+        Me.TxtMobile.Name = "TxtMobile"
+        Me.TxtMobile.Size = New System.Drawing.Size(113, 16)
+        Me.TxtMobile.TabIndex = 9
+        '
+        'LblMobile
+        '
+        Me.LblMobile.AutoSize = True
+        Me.LblMobile.Font = New System.Drawing.Font("Verdana", 9.75!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.LblMobile.Location = New System.Drawing.Point(267, 179)
+        Me.LblMobile.Name = "LblMobile"
+        Me.LblMobile.Size = New System.Drawing.Size(55, 16)
+        Me.LblMobile.TabIndex = 793
+        Me.LblMobile.Text = "Mobile"
+        '
+        'LblCityReq
+        '
+        Me.LblCityReq.AutoSize = True
+        Me.LblCityReq.Font = New System.Drawing.Font("Wingdings 2", 5.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(2, Byte))
+        Me.LblCityReq.ForeColor = System.Drawing.Color.FromArgb(CType(CType(227, Byte), Integer), CType(CType(0, Byte), Integer), CType(CType(0, Byte), Integer))
+        Me.LblCityReq.Location = New System.Drawing.Point(130, 167)
+        Me.LblCityReq.Name = "LblCityReq"
+        Me.LblCityReq.Size = New System.Drawing.Size(10, 7)
+        Me.LblCityReq.TabIndex = 791
+        Me.LblCityReq.Text = "Ä"
+        '
+        'TxtCity
+        '
+        Me.TxtCity.AgAllowUserToEnableMasterHelp = False
+        Me.TxtCity.AgLastValueTag = Nothing
+        Me.TxtCity.AgLastValueText = Nothing
+        Me.TxtCity.AgMandatory = True
+        Me.TxtCity.AgMasterHelp = False
+        Me.TxtCity.AgNumberLeftPlaces = 0
+        Me.TxtCity.AgNumberNegetiveAllow = False
+        Me.TxtCity.AgNumberRightPlaces = 0
+        Me.TxtCity.AgPickFromLastValue = False
+        Me.TxtCity.AgRowFilter = ""
+        Me.TxtCity.AgSearchMethod = AgControls.AgLib.TxtSearchMethod.Simple
+        Me.TxtCity.AgSelectedValue = Nothing
+        Me.TxtCity.AgTxtCase = AgControls.AgTextBox.TxtCase.None
+        Me.TxtCity.AgValueType = AgControls.AgTextBox.TxtValueType.Text_Value
+        Me.TxtCity.BorderStyle = System.Windows.Forms.BorderStyle.None
+        Me.TxtCity.Font = New System.Drawing.Font("Verdana", 9.75!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.TxtCity.Location = New System.Drawing.Point(147, 160)
+        Me.TxtCity.MaxLength = 0
+        Me.TxtCity.Name = "TxtCity"
+        Me.TxtCity.Size = New System.Drawing.Size(115, 16)
+        Me.TxtCity.TabIndex = 6
+        '
+        'LblCity
+        '
+        Me.LblCity.AutoSize = True
+        Me.LblCity.Font = New System.Drawing.Font("Verdana", 9.75!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.LblCity.Location = New System.Drawing.Point(10, 160)
+        Me.LblCity.Name = "LblCity"
+        Me.LblCity.Size = New System.Drawing.Size(37, 16)
+        Me.LblCity.TabIndex = 790
+        Me.LblCity.Text = "City"
+        '
+        'LblAddressReq
+        '
+        Me.LblAddressReq.AutoSize = True
+        Me.LblAddressReq.Font = New System.Drawing.Font("Wingdings 2", 5.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(2, Byte))
+        Me.LblAddressReq.ForeColor = System.Drawing.Color.FromArgb(CType(CType(227, Byte), Integer), CType(CType(0, Byte), Integer), CType(CType(0, Byte), Integer))
+        Me.LblAddressReq.Location = New System.Drawing.Point(130, 116)
+        Me.LblAddressReq.Name = "LblAddressReq"
+        Me.LblAddressReq.Size = New System.Drawing.Size(10, 7)
+        Me.LblAddressReq.TabIndex = 785
+        Me.LblAddressReq.Text = "Ä"
+        '
+        'TxtAddress
+        '
+        Me.TxtAddress.AgAllowUserToEnableMasterHelp = False
+        Me.TxtAddress.AgLastValueTag = Nothing
+        Me.TxtAddress.AgLastValueText = Nothing
+        Me.TxtAddress.AgMandatory = True
+        Me.TxtAddress.AgMasterHelp = True
+        Me.TxtAddress.AgNumberLeftPlaces = 8
+        Me.TxtAddress.AgNumberNegetiveAllow = False
+        Me.TxtAddress.AgNumberRightPlaces = 2
+        Me.TxtAddress.AgPickFromLastValue = False
+        Me.TxtAddress.AgRowFilter = ""
+        Me.TxtAddress.AgSearchMethod = AgControls.AgLib.TxtSearchMethod.Simple
+        Me.TxtAddress.AgSelectedValue = Nothing
+        Me.TxtAddress.AgTxtCase = AgControls.AgTextBox.TxtCase.None
+        Me.TxtAddress.AgValueType = AgControls.AgTextBox.TxtValueType.Text_Value
+        Me.TxtAddress.BorderStyle = System.Windows.Forms.BorderStyle.None
+        Me.TxtAddress.Font = New System.Drawing.Font("Verdana", 9.75!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.TxtAddress.Location = New System.Drawing.Point(147, 108)
+        Me.TxtAddress.MaxLength = 255
+        Me.TxtAddress.Multiline = True
+        Me.TxtAddress.Name = "TxtAddress"
+        Me.TxtAddress.ScrollBars = System.Windows.Forms.ScrollBars.Vertical
+        Me.TxtAddress.Size = New System.Drawing.Size(292, 50)
+        Me.TxtAddress.TabIndex = 5
+        '
+        'LblAddress
+        '
+        Me.LblAddress.AutoSize = True
+        Me.LblAddress.Font = New System.Drawing.Font("Verdana", 9.75!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.LblAddress.Location = New System.Drawing.Point(10, 108)
+        Me.LblAddress.Name = "LblAddress"
+        Me.LblAddress.Size = New System.Drawing.Size(67, 16)
+        Me.LblAddress.TabIndex = 784
+        Me.LblAddress.Text = "Address"
+        '
+        'LblNameReq
+        '
+        Me.LblNameReq.AutoSize = True
+        Me.LblNameReq.Font = New System.Drawing.Font("Wingdings 2", 5.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(2, Byte))
+        Me.LblNameReq.ForeColor = System.Drawing.Color.FromArgb(CType(CType(227, Byte), Integer), CType(CType(0, Byte), Integer), CType(CType(0, Byte), Integer))
+        Me.LblNameReq.Location = New System.Drawing.Point(130, 79)
+        Me.LblNameReq.Name = "LblNameReq"
+        Me.LblNameReq.Size = New System.Drawing.Size(10, 7)
+        Me.LblNameReq.TabIndex = 781
+        Me.LblNameReq.Text = "Ä"
+        '
+        'LblManualCodeReq
+        '
+        Me.LblManualCodeReq.AutoSize = True
+        Me.LblManualCodeReq.Font = New System.Drawing.Font("Wingdings 2", 5.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(2, Byte))
+        Me.LblManualCodeReq.ForeColor = System.Drawing.Color.FromArgb(CType(CType(227, Byte), Integer), CType(CType(0, Byte), Integer), CType(CType(0, Byte), Integer))
+        Me.LblManualCodeReq.Location = New System.Drawing.Point(330, 59)
+        Me.LblManualCodeReq.Name = "LblManualCodeReq"
+        Me.LblManualCodeReq.Size = New System.Drawing.Size(10, 7)
+        Me.LblManualCodeReq.TabIndex = 778
+        Me.LblManualCodeReq.Text = "Ä"
+        '
+        'TxtManualCode
+        '
+        Me.TxtManualCode.AgAllowUserToEnableMasterHelp = False
+        Me.TxtManualCode.AgLastValueTag = Nothing
+        Me.TxtManualCode.AgLastValueText = Nothing
+        Me.TxtManualCode.AgMandatory = True
+        Me.TxtManualCode.AgMasterHelp = True
+        Me.TxtManualCode.AgNumberLeftPlaces = 0
+        Me.TxtManualCode.AgNumberNegetiveAllow = False
+        Me.TxtManualCode.AgNumberRightPlaces = 0
+        Me.TxtManualCode.AgPickFromLastValue = False
+        Me.TxtManualCode.AgRowFilter = ""
+        Me.TxtManualCode.AgSearchMethod = AgControls.AgLib.TxtSearchMethod.Simple
+        Me.TxtManualCode.AgSelectedValue = Nothing
+        Me.TxtManualCode.AgTxtCase = AgControls.AgTextBox.TxtCase.None
+        Me.TxtManualCode.AgValueType = AgControls.AgTextBox.TxtValueType.Text_Value
+        Me.TxtManualCode.BorderStyle = System.Windows.Forms.BorderStyle.None
+        Me.TxtManualCode.Font = New System.Drawing.Font("Verdana", 9.75!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.TxtManualCode.Location = New System.Drawing.Point(344, 54)
+        Me.TxtManualCode.MaxLength = 20
+        Me.TxtManualCode.Name = "TxtManualCode"
+        Me.TxtManualCode.Size = New System.Drawing.Size(95, 16)
+        Me.TxtManualCode.TabIndex = 2
+        '
+        'LblManualCode
+        '
+        Me.LblManualCode.AutoSize = True
+        Me.LblManualCode.Font = New System.Drawing.Font("Verdana", 9.75!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.LblManualCode.Location = New System.Drawing.Point(286, 55)
+        Me.LblManualCode.Name = "LblManualCode"
+        Me.LblManualCode.Size = New System.Drawing.Size(45, 16)
+        Me.LblManualCode.TabIndex = 775
+        Me.LblManualCode.Text = "Code"
+        '
+        'TxtName
+        '
+        Me.TxtName.AgAllowUserToEnableMasterHelp = False
+        Me.TxtName.AgLastValueTag = Nothing
+        Me.TxtName.AgLastValueText = Nothing
+        Me.TxtName.AgMandatory = True
+        Me.TxtName.AgMasterHelp = True
+        Me.TxtName.AgNumberLeftPlaces = 0
+        Me.TxtName.AgNumberNegetiveAllow = False
+        Me.TxtName.AgNumberRightPlaces = 0
+        Me.TxtName.AgPickFromLastValue = False
+        Me.TxtName.AgRowFilter = ""
+        Me.TxtName.AgSearchMethod = AgControls.AgLib.TxtSearchMethod.Simple
+        Me.TxtName.AgSelectedValue = Nothing
+        Me.TxtName.AgTxtCase = AgControls.AgTextBox.TxtCase.None
+        Me.TxtName.AgValueType = AgControls.AgTextBox.TxtValueType.Text_Value
+        Me.TxtName.BorderStyle = System.Windows.Forms.BorderStyle.None
+        Me.TxtName.Font = New System.Drawing.Font("Verdana", 9.75!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.TxtName.Location = New System.Drawing.Point(147, 72)
+        Me.TxtName.MaxLength = 255
+        Me.TxtName.Name = "TxtName"
+        Me.TxtName.Size = New System.Drawing.Size(292, 16)
+        Me.TxtName.TabIndex = 3
+        '
+        'LblName
+        '
+        Me.LblName.AutoSize = True
+        Me.LblName.Font = New System.Drawing.Font("Verdana", 9.75!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.LblName.Location = New System.Drawing.Point(10, 72)
+        Me.LblName.Name = "LblName"
+        Me.LblName.Size = New System.Drawing.Size(50, 16)
+        Me.LblName.TabIndex = 777
+        Me.LblName.Text = "Name"
+        '
+        'TxtAcGroup
+        '
+        Me.TxtAcGroup.AgAllowUserToEnableMasterHelp = False
+        Me.TxtAcGroup.AgLastValueTag = Nothing
+        Me.TxtAcGroup.AgLastValueText = Nothing
+        Me.TxtAcGroup.AgMandatory = True
+        Me.TxtAcGroup.AgMasterHelp = False
+        Me.TxtAcGroup.AgNumberLeftPlaces = 0
+        Me.TxtAcGroup.AgNumberNegetiveAllow = False
+        Me.TxtAcGroup.AgNumberRightPlaces = 0
+        Me.TxtAcGroup.AgPickFromLastValue = False
+        Me.TxtAcGroup.AgRowFilter = ""
+        Me.TxtAcGroup.AgSearchMethod = AgControls.AgLib.TxtSearchMethod.Simple
+        Me.TxtAcGroup.AgSelectedValue = Nothing
+        Me.TxtAcGroup.AgTxtCase = AgControls.AgTextBox.TxtCase.None
+        Me.TxtAcGroup.AgValueType = AgControls.AgTextBox.TxtValueType.Text_Value
+        Me.TxtAcGroup.BorderStyle = System.Windows.Forms.BorderStyle.None
+        Me.TxtAcGroup.Font = New System.Drawing.Font("Verdana", 9.75!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.TxtAcGroup.Location = New System.Drawing.Point(147, 214)
+        Me.TxtAcGroup.MaxLength = 100
+        Me.TxtAcGroup.Name = "TxtAcGroup"
+        Me.TxtAcGroup.Size = New System.Drawing.Size(292, 16)
+        Me.TxtAcGroup.TabIndex = 11
+        '
+        'LblAcGroup
+        '
+        Me.LblAcGroup.AutoSize = True
+        Me.LblAcGroup.Font = New System.Drawing.Font("Verdana", 9.75!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.LblAcGroup.Location = New System.Drawing.Point(10, 214)
+        Me.LblAcGroup.Name = "LblAcGroup"
+        Me.LblAcGroup.Size = New System.Drawing.Size(82, 16)
+        Me.LblAcGroup.TabIndex = 860
+        Me.LblAcGroup.Text = "A/c Group"
+        '
+        'LblAcGroupReq
+        '
+        Me.LblAcGroupReq.AutoSize = True
+        Me.LblAcGroupReq.Font = New System.Drawing.Font("Wingdings 2", 5.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(2, Byte))
+        Me.LblAcGroupReq.ForeColor = System.Drawing.Color.FromArgb(CType(CType(227, Byte), Integer), CType(CType(0, Byte), Integer), CType(CType(0, Byte), Integer))
+        Me.LblAcGroupReq.Location = New System.Drawing.Point(128, 220)
+        Me.LblAcGroupReq.Name = "LblAcGroupReq"
+        Me.LblAcGroupReq.Size = New System.Drawing.Size(10, 7)
+        Me.LblAcGroupReq.TabIndex = 861
+        Me.LblAcGroupReq.Text = "Ä"
+        '
+        'TxtCreditDays
+        '
+        Me.TxtCreditDays.AgAllowUserToEnableMasterHelp = False
+        Me.TxtCreditDays.AgLastValueTag = Nothing
+        Me.TxtCreditDays.AgLastValueText = Nothing
+        Me.TxtCreditDays.AgMandatory = False
+        Me.TxtCreditDays.AgMasterHelp = False
+        Me.TxtCreditDays.AgNumberLeftPlaces = 0
+        Me.TxtCreditDays.AgNumberNegetiveAllow = False
+        Me.TxtCreditDays.AgNumberRightPlaces = 0
+        Me.TxtCreditDays.AgPickFromLastValue = False
+        Me.TxtCreditDays.AgRowFilter = ""
+        Me.TxtCreditDays.AgSearchMethod = AgControls.AgLib.TxtSearchMethod.Simple
+        Me.TxtCreditDays.AgSelectedValue = Nothing
+        Me.TxtCreditDays.AgTxtCase = AgControls.AgTextBox.TxtCase.None
+        Me.TxtCreditDays.AgValueType = AgControls.AgTextBox.TxtValueType.Text_Value
+        Me.TxtCreditDays.BorderStyle = System.Windows.Forms.BorderStyle.None
+        Me.TxtCreditDays.Font = New System.Drawing.Font("Verdana", 9.75!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.TxtCreditDays.Location = New System.Drawing.Point(114, 19)
+        Me.TxtCreditDays.MaxLength = 5
+        Me.TxtCreditDays.Name = "TxtCreditDays"
+        Me.TxtCreditDays.Size = New System.Drawing.Size(77, 16)
+        Me.TxtCreditDays.TabIndex = 13
+        '
+        'LblCreditDays
+        '
+        Me.LblCreditDays.AutoSize = True
+        Me.LblCreditDays.Font = New System.Drawing.Font("Verdana", 9.75!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.LblCreditDays.Location = New System.Drawing.Point(19, 20)
+        Me.LblCreditDays.Name = "LblCreditDays"
+        Me.LblCreditDays.Size = New System.Drawing.Size(92, 16)
+        Me.LblCreditDays.TabIndex = 863
+        Me.LblCreditDays.Text = "Credit Days"
+        '
+        'TxtCreditLimit
+        '
+        Me.TxtCreditLimit.AgAllowUserToEnableMasterHelp = False
+        Me.TxtCreditLimit.AgLastValueTag = Nothing
+        Me.TxtCreditLimit.AgLastValueText = Nothing
+        Me.TxtCreditLimit.AgMandatory = False
+        Me.TxtCreditLimit.AgMasterHelp = False
+        Me.TxtCreditLimit.AgNumberLeftPlaces = 0
+        Me.TxtCreditLimit.AgNumberNegetiveAllow = False
+        Me.TxtCreditLimit.AgNumberRightPlaces = 0
+        Me.TxtCreditLimit.AgPickFromLastValue = False
+        Me.TxtCreditLimit.AgRowFilter = ""
+        Me.TxtCreditLimit.AgSearchMethod = AgControls.AgLib.TxtSearchMethod.Simple
+        Me.TxtCreditLimit.AgSelectedValue = Nothing
+        Me.TxtCreditLimit.AgTxtCase = AgControls.AgTextBox.TxtCase.None
+        Me.TxtCreditLimit.AgValueType = AgControls.AgTextBox.TxtValueType.Text_Value
+        Me.TxtCreditLimit.BorderStyle = System.Windows.Forms.BorderStyle.None
+        Me.TxtCreditLimit.Font = New System.Drawing.Font("Verdana", 9.75!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.TxtCreditLimit.Location = New System.Drawing.Point(313, 18)
+        Me.TxtCreditLimit.MaxLength = 10
+        Me.TxtCreditLimit.Name = "TxtCreditLimit"
+        Me.TxtCreditLimit.Size = New System.Drawing.Size(77, 16)
+        Me.TxtCreditLimit.TabIndex = 14
+        '
+        'LblCreditLimit
+        '
+        Me.LblCreditLimit.AutoSize = True
+        Me.LblCreditLimit.Font = New System.Drawing.Font("Verdana", 9.75!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.LblCreditLimit.Location = New System.Drawing.Point(212, 19)
+        Me.LblCreditLimit.Name = "LblCreditLimit"
+        Me.LblCreditLimit.Size = New System.Drawing.Size(92, 16)
+        Me.LblCreditLimit.TabIndex = 865
+        Me.LblCreditLimit.Text = "Credit Limit"
+        '
+        'GrpCreditDetail
+        '
+        Me.GrpCreditDetail.AutoSize = True
+        Me.GrpCreditDetail.BackColor = System.Drawing.Color.Transparent
+        Me.GrpCreditDetail.Controls.Add(Me.TxtCreditLimit)
+        Me.GrpCreditDetail.Controls.Add(Me.LblCreditDays)
+        Me.GrpCreditDetail.Controls.Add(Me.LblCreditLimit)
+        Me.GrpCreditDetail.Controls.Add(Me.TxtCreditDays)
+        Me.GrpCreditDetail.FlatStyle = System.Windows.Forms.FlatStyle.Flat
+        Me.GrpCreditDetail.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.GrpCreditDetail.Location = New System.Drawing.Point(19, 281)
+        Me.GrpCreditDetail.Name = "GrpCreditDetail"
+        Me.GrpCreditDetail.Size = New System.Drawing.Size(413, 56)
+        Me.GrpCreditDetail.TabIndex = 22
+        Me.GrpCreditDetail.TabStop = False
+        Me.GrpCreditDetail.Text = "Credit Detail"
+        '
+        'TxtPhone
+        '
+        Me.TxtPhone.AgAllowUserToEnableMasterHelp = False
+        Me.TxtPhone.AgLastValueTag = Nothing
+        Me.TxtPhone.AgLastValueText = Nothing
+        Me.TxtPhone.AgMandatory = False
+        Me.TxtPhone.AgMasterHelp = False
+        Me.TxtPhone.AgNumberLeftPlaces = 0
+        Me.TxtPhone.AgNumberNegetiveAllow = False
+        Me.TxtPhone.AgNumberRightPlaces = 0
+        Me.TxtPhone.AgPickFromLastValue = False
+        Me.TxtPhone.AgRowFilter = ""
+        Me.TxtPhone.AgSearchMethod = AgControls.AgLib.TxtSearchMethod.Simple
+        Me.TxtPhone.AgSelectedValue = Nothing
+        Me.TxtPhone.AgTxtCase = AgControls.AgTextBox.TxtCase.None
+        Me.TxtPhone.AgValueType = AgControls.AgTextBox.TxtValueType.Text_Value
+        Me.TxtPhone.BorderStyle = System.Windows.Forms.BorderStyle.None
+        Me.TxtPhone.Font = New System.Drawing.Font("Verdana", 9.75!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.TxtPhone.Location = New System.Drawing.Point(147, 178)
+        Me.TxtPhone.MaxLength = 35
+        Me.TxtPhone.Name = "TxtPhone"
+        Me.TxtPhone.Size = New System.Drawing.Size(115, 16)
+        Me.TxtPhone.TabIndex = 8
+        '
+        'LblPhone
+        '
+        Me.LblPhone.AutoSize = True
+        Me.LblPhone.Font = New System.Drawing.Font("Verdana", 9.75!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.LblPhone.Location = New System.Drawing.Point(10, 179)
+        Me.LblPhone.Name = "LblPhone"
+        Me.LblPhone.Size = New System.Drawing.Size(93, 16)
+        Me.LblPhone.TabIndex = 864
+        Me.LblPhone.Text = "Contact No."
+        '
+        'TxtSalesTaxGroup
+        '
+        Me.TxtSalesTaxGroup.AgAllowUserToEnableMasterHelp = False
+        Me.TxtSalesTaxGroup.AgLastValueTag = Nothing
+        Me.TxtSalesTaxGroup.AgLastValueText = Nothing
+        Me.TxtSalesTaxGroup.AgMandatory = True
+        Me.TxtSalesTaxGroup.AgMasterHelp = False
+        Me.TxtSalesTaxGroup.AgNumberLeftPlaces = 0
+        Me.TxtSalesTaxGroup.AgNumberNegetiveAllow = False
+        Me.TxtSalesTaxGroup.AgNumberRightPlaces = 0
+        Me.TxtSalesTaxGroup.AgPickFromLastValue = False
+        Me.TxtSalesTaxGroup.AgRowFilter = ""
+        Me.TxtSalesTaxGroup.AgSearchMethod = AgControls.AgLib.TxtSearchMethod.Simple
+        Me.TxtSalesTaxGroup.AgSelectedValue = Nothing
+        Me.TxtSalesTaxGroup.AgTxtCase = AgControls.AgTextBox.TxtCase.None
+        Me.TxtSalesTaxGroup.AgValueType = AgControls.AgTextBox.TxtValueType.Text_Value
+        Me.TxtSalesTaxGroup.BorderStyle = System.Windows.Forms.BorderStyle.None
+        Me.TxtSalesTaxGroup.Font = New System.Drawing.Font("Verdana", 9.75!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.TxtSalesTaxGroup.Location = New System.Drawing.Point(147, 232)
+        Me.TxtSalesTaxGroup.MaxLength = 20
+        Me.TxtSalesTaxGroup.Name = "TxtSalesTaxGroup"
+        Me.TxtSalesTaxGroup.Size = New System.Drawing.Size(292, 16)
+        Me.TxtSalesTaxGroup.TabIndex = 12
+        '
+        'LblSalesTaxGroup
+        '
+        Me.LblSalesTaxGroup.AutoSize = True
+        Me.LblSalesTaxGroup.Font = New System.Drawing.Font("Verdana", 9.75!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.LblSalesTaxGroup.Location = New System.Drawing.Point(9, 231)
+        Me.LblSalesTaxGroup.Name = "LblSalesTaxGroup"
+        Me.LblSalesTaxGroup.Size = New System.Drawing.Size(124, 16)
+        Me.LblSalesTaxGroup.TabIndex = 867
+        Me.LblSalesTaxGroup.Text = "Sales Tax Group"
+        '
+        'TxtPinNo
+        '
+        Me.TxtPinNo.AgAllowUserToEnableMasterHelp = False
+        Me.TxtPinNo.AgLastValueTag = Nothing
+        Me.TxtPinNo.AgLastValueText = Nothing
+        Me.TxtPinNo.AgMandatory = False
+        Me.TxtPinNo.AgMasterHelp = False
+        Me.TxtPinNo.AgNumberLeftPlaces = 0
+        Me.TxtPinNo.AgNumberNegetiveAllow = False
+        Me.TxtPinNo.AgNumberRightPlaces = 0
+        Me.TxtPinNo.AgPickFromLastValue = False
+        Me.TxtPinNo.AgRowFilter = ""
+        Me.TxtPinNo.AgSearchMethod = AgControls.AgLib.TxtSearchMethod.Simple
+        Me.TxtPinNo.AgSelectedValue = Nothing
+        Me.TxtPinNo.AgTxtCase = AgControls.AgTextBox.TxtCase.None
+        Me.TxtPinNo.AgValueType = AgControls.AgTextBox.TxtValueType.Text_Value
+        Me.TxtPinNo.BorderStyle = System.Windows.Forms.BorderStyle.None
+        Me.TxtPinNo.Font = New System.Drawing.Font("Verdana", 9.75!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.TxtPinNo.Location = New System.Drawing.Point(326, 160)
+        Me.TxtPinNo.MaxLength = 6
+        Me.TxtPinNo.Name = "TxtPinNo"
+        Me.TxtPinNo.Size = New System.Drawing.Size(113, 16)
+        Me.TxtPinNo.TabIndex = 7
+        '
+        'LblPinNo
+        '
+        Me.LblPinNo.AutoSize = True
+        Me.LblPinNo.Font = New System.Drawing.Font("Verdana", 9.75!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.LblPinNo.Location = New System.Drawing.Point(267, 161)
+        Me.LblPinNo.Name = "LblPinNo"
+        Me.LblPinNo.Size = New System.Drawing.Size(61, 16)
+        Me.LblPinNo.TabIndex = 885
+        Me.LblPinNo.Text = "PIN No."
+        '
+        'TxtPartyType
+        '
+        Me.TxtPartyType.AgAllowUserToEnableMasterHelp = False
+        Me.TxtPartyType.AgLastValueTag = Nothing
+        Me.TxtPartyType.AgLastValueText = Nothing
+        Me.TxtPartyType.AgMandatory = True
+        Me.TxtPartyType.AgMasterHelp = False
+        Me.TxtPartyType.AgNumberLeftPlaces = 0
+        Me.TxtPartyType.AgNumberNegetiveAllow = False
+        Me.TxtPartyType.AgNumberRightPlaces = 0
+        Me.TxtPartyType.AgPickFromLastValue = False
+        Me.TxtPartyType.AgRowFilter = ""
+        Me.TxtPartyType.AgSearchMethod = AgControls.AgLib.TxtSearchMethod.Simple
+        Me.TxtPartyType.AgSelectedValue = Nothing
+        Me.TxtPartyType.AgTxtCase = AgControls.AgTextBox.TxtCase.None
+        Me.TxtPartyType.AgValueType = AgControls.AgTextBox.TxtValueType.Text_Value
+        Me.TxtPartyType.BorderStyle = System.Windows.Forms.BorderStyle.None
+        Me.TxtPartyType.Font = New System.Drawing.Font("Verdana", 9.75!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.TxtPartyType.Location = New System.Drawing.Point(146, 54)
+        Me.TxtPartyType.MaxLength = 50
+        Me.TxtPartyType.Name = "TxtPartyType"
+        Me.TxtPartyType.Size = New System.Drawing.Size(136, 16)
+        Me.TxtPartyType.TabIndex = 1
+        Me.TxtPartyType.Text = "Customer"
+        '
+        'LblPartyType
+        '
+        Me.LblPartyType.AutoSize = True
+        Me.LblPartyType.Font = New System.Drawing.Font("Verdana", 9.75!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.LblPartyType.Location = New System.Drawing.Point(11, 54)
+        Me.LblPartyType.Name = "LblPartyType"
+        Me.LblPartyType.Size = New System.Drawing.Size(86, 16)
+        Me.LblPartyType.TabIndex = 887
+        Me.LblPartyType.Text = "Party Type"
+        '
+        'Label2
+        '
+        Me.Label2.AutoSize = True
+        Me.Label2.Font = New System.Drawing.Font("Wingdings 2", 5.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(2, Byte))
+        Me.Label2.ForeColor = System.Drawing.Color.FromArgb(CType(CType(227, Byte), Integer), CType(CType(0, Byte), Integer), CType(CType(0, Byte), Integer))
+        Me.Label2.Location = New System.Drawing.Point(130, 238)
+        Me.Label2.Name = "Label2"
+        Me.Label2.Size = New System.Drawing.Size(10, 7)
+        Me.Label2.TabIndex = 890
+        Me.Label2.Text = "Ä"
+        '
+        'GBoxImportFromExcel
+        '
+        Me.GBoxImportFromExcel.Anchor = CType((System.Windows.Forms.AnchorStyles.Bottom Or System.Windows.Forms.AnchorStyles.Left), System.Windows.Forms.AnchorStyles)
+        Me.GBoxImportFromExcel.BackColor = System.Drawing.Color.Transparent
+        Me.GBoxImportFromExcel.Controls.Add(Me.BtnImprtFromExcel)
+        Me.GBoxImportFromExcel.FlatStyle = System.Windows.Forms.FlatStyle.Flat
+        Me.GBoxImportFromExcel.Font = New System.Drawing.Font("Courier New", 9.75!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.GBoxImportFromExcel.ForeColor = System.Drawing.Color.Maroon
+        Me.GBoxImportFromExcel.Location = New System.Drawing.Point(909, 105)
+        Me.GBoxImportFromExcel.Name = "GBoxImportFromExcel"
+        Me.GBoxImportFromExcel.Size = New System.Drawing.Size(99, 47)
+        Me.GBoxImportFromExcel.TabIndex = 1015
+        Me.GBoxImportFromExcel.TabStop = False
+        Me.GBoxImportFromExcel.Tag = "UP"
+        Me.GBoxImportFromExcel.Text = "Import From Excel"
+        Me.GBoxImportFromExcel.Visible = False
+        '
+        'BtnImprtFromExcel
+        '
+        Me.BtnImprtFromExcel.FlatStyle = System.Windows.Forms.FlatStyle.Flat
+        Me.BtnImprtFromExcel.Image = CType(resources.GetObject("BtnImprtFromExcel.Image"), System.Drawing.Image)
+        Me.BtnImprtFromExcel.Location = New System.Drawing.Point(58, 9)
+        Me.BtnImprtFromExcel.Name = "BtnImprtFromExcel"
+        Me.BtnImprtFromExcel.Size = New System.Drawing.Size(36, 34)
+        Me.BtnImprtFromExcel.TabIndex = 669
+        Me.BtnImprtFromExcel.TabStop = False
+        Me.BtnImprtFromExcel.UseVisualStyleBackColor = True
+        '
+        'Pnl1
+        '
+        Me.Pnl1.Font = New System.Drawing.Font("Verdana", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.Pnl1.Location = New System.Drawing.Point(459, 54)
+        Me.Pnl1.Name = "Pnl1"
+        Me.Pnl1.Size = New System.Drawing.Size(444, 282)
+        Me.Pnl1.TabIndex = 15
+        '
+        'Label1
+        '
+        Me.Label1.AutoSize = True
+        Me.Label1.Font = New System.Drawing.Font("Wingdings 2", 5.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(2, Byte))
+        Me.Label1.ForeColor = System.Drawing.Color.FromArgb(CType(CType(227, Byte), Integer), CType(CType(0, Byte), Integer), CType(CType(0, Byte), Integer))
+        Me.Label1.Location = New System.Drawing.Point(130, 61)
+        Me.Label1.Name = "Label1"
+        Me.Label1.Size = New System.Drawing.Size(10, 7)
+        Me.Label1.TabIndex = 1016
+        Me.Label1.Text = "Ä"
+        '
+        'MnuOptions
+        '
+        Me.MnuOptions.Items.AddRange(New System.Windows.Forms.ToolStripItem() {Me.MnuImportFromExcel, Me.MnuImportFromDos, Me.MnuImportFromTally, Me.MnuBulkEdit})
+        Me.MnuOptions.Name = "MnuOptions"
+        Me.MnuOptions.Size = New System.Drawing.Size(171, 92)
+        '
+        'MnuImportFromExcel
+        '
+        Me.MnuImportFromExcel.Name = "MnuImportFromExcel"
+        Me.MnuImportFromExcel.Size = New System.Drawing.Size(170, 22)
+        Me.MnuImportFromExcel.Text = "Import From Excel"
+        '
+        'MnuImportFromDos
+        '
+        Me.MnuImportFromDos.Name = "MnuImportFromDos"
+        Me.MnuImportFromDos.Size = New System.Drawing.Size(170, 22)
+        Me.MnuImportFromDos.Text = "Import From Dos"
+        '
+        'MnuImportFromTally
+        '
+        Me.MnuImportFromTally.Name = "MnuImportFromTally"
+        Me.MnuImportFromTally.Size = New System.Drawing.Size(170, 22)
+        Me.MnuImportFromTally.Text = "Import From Tally"
+        '
+        'MnuBulkEdit
+        '
+        Me.MnuBulkEdit.Name = "MnuBulkEdit"
+        Me.MnuBulkEdit.Size = New System.Drawing.Size(170, 22)
+        Me.MnuBulkEdit.Text = "Bulk Edit"
+        '
+        'OFDMain
+        '
+        Me.OFDMain.FileName = "price.xls"
+        Me.OFDMain.Filter = "*.xls|*.Xls"
+        Me.OFDMain.InitialDirectory = "D:\"
+        Me.OFDMain.ShowHelp = True
+        Me.OFDMain.Title = "Select Excel File"
+        '
+        'TxtDispName
+        '
+        Me.TxtDispName.AgAllowUserToEnableMasterHelp = False
+        Me.TxtDispName.AgLastValueTag = Nothing
+        Me.TxtDispName.AgLastValueText = Nothing
+        Me.TxtDispName.AgMandatory = False
+        Me.TxtDispName.AgMasterHelp = True
+        Me.TxtDispName.AgNumberLeftPlaces = 0
+        Me.TxtDispName.AgNumberNegetiveAllow = False
+        Me.TxtDispName.AgNumberRightPlaces = 0
+        Me.TxtDispName.AgPickFromLastValue = False
+        Me.TxtDispName.AgRowFilter = ""
+        Me.TxtDispName.AgSearchMethod = AgControls.AgLib.TxtSearchMethod.Simple
+        Me.TxtDispName.AgSelectedValue = Nothing
+        Me.TxtDispName.AgTxtCase = AgControls.AgTextBox.TxtCase.None
+        Me.TxtDispName.AgValueType = AgControls.AgTextBox.TxtValueType.Text_Value
+        Me.TxtDispName.BorderStyle = System.Windows.Forms.BorderStyle.None
+        Me.TxtDispName.Font = New System.Drawing.Font("Verdana", 9.75!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.TxtDispName.Location = New System.Drawing.Point(147, 90)
+        Me.TxtDispName.MaxLength = 255
+        Me.TxtDispName.Name = "TxtDispName"
+        Me.TxtDispName.Size = New System.Drawing.Size(292, 16)
+        Me.TxtDispName.TabIndex = 4
+        '
+        'LblSuffix
+        '
+        Me.LblSuffix.AutoSize = True
+        Me.LblSuffix.Font = New System.Drawing.Font("Verdana", 9.75!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.LblSuffix.Location = New System.Drawing.Point(10, 90)
+        Me.LblSuffix.Name = "LblSuffix"
+        Me.LblSuffix.Size = New System.Drawing.Size(110, 16)
+        Me.LblSuffix.TabIndex = 1018
+        Me.LblSuffix.Text = "Printing Name"
+        '
+        'BtnAttachments
+        '
+        Me.BtnAttachments.FlatStyle = System.Windows.Forms.FlatStyle.Flat
+        Me.BtnAttachments.Font = New System.Drawing.Font("Verdana", 8.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.BtnAttachments.ForeColor = System.Drawing.Color.FromArgb(CType(CType(192, Byte), Integer), CType(CType(0, Byte), Integer), CType(CType(0, Byte), Integer))
+        Me.BtnAttachments.Location = New System.Drawing.Point(19, 370)
+        Me.BtnAttachments.Margin = New System.Windows.Forms.Padding(0)
+        Me.BtnAttachments.Name = "BtnAttachments"
+        Me.BtnAttachments.Size = New System.Drawing.Size(136, 23)
+        Me.BtnAttachments.TabIndex = 1019
+        Me.BtnAttachments.TabStop = False
+        Me.BtnAttachments.Text = "Add Attachments"
+        Me.BtnAttachments.TextAlign = System.Drawing.ContentAlignment.TopCenter
+        Me.BtnAttachments.UseVisualStyleBackColor = True
+        '
+        'FrmPerson
+        '
+        Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
+        Me.ClientSize = New System.Drawing.Size(974, 444)
+        Me.ContextMenuStrip = Me.MnuOptions
+        Me.Controls.Add(Me.BtnAttachments)
+        Me.Controls.Add(Me.TxtDispName)
+        Me.Controls.Add(Me.LblSuffix)
+        Me.Controls.Add(Me.Label1)
+        Me.Controls.Add(Me.Pnl1)
+        Me.Controls.Add(Me.GBoxImportFromExcel)
+        Me.Controls.Add(Me.Label2)
+        Me.Controls.Add(Me.TxtPartyType)
+        Me.Controls.Add(Me.LblPartyType)
+        Me.Controls.Add(Me.TxtPinNo)
+        Me.Controls.Add(Me.LblPinNo)
+        Me.Controls.Add(Me.TxtSalesTaxGroup)
+        Me.Controls.Add(Me.LblSalesTaxGroup)
+        Me.Controls.Add(Me.TxtPhone)
+        Me.Controls.Add(Me.LblPhone)
+        Me.Controls.Add(Me.GrpCreditDetail)
+        Me.Controls.Add(Me.LblAcGroupReq)
+        Me.Controls.Add(Me.TxtAcGroup)
+        Me.Controls.Add(Me.LblAcGroup)
+        Me.Controls.Add(Me.TxtEMail)
+        Me.Controls.Add(Me.LblEMail)
+        Me.Controls.Add(Me.TxtMobile)
+        Me.Controls.Add(Me.LblMobile)
+        Me.Controls.Add(Me.LblCityReq)
+        Me.Controls.Add(Me.TxtCity)
+        Me.Controls.Add(Me.LblCity)
+        Me.Controls.Add(Me.LblAddressReq)
+        Me.Controls.Add(Me.TxtAddress)
+        Me.Controls.Add(Me.LblAddress)
+        Me.Controls.Add(Me.LblNameReq)
+        Me.Controls.Add(Me.LblManualCodeReq)
+        Me.Controls.Add(Me.TxtManualCode)
+        Me.Controls.Add(Me.LblManualCode)
+        Me.Controls.Add(Me.TxtName)
+        Me.Controls.Add(Me.LblName)
+        Me.Name = "FrmPerson"
+        Me.Text = "Buyer Master"
+        Me.Controls.SetChildIndex(Me.LblName, 0)
+        Me.Controls.SetChildIndex(Me.TxtName, 0)
+        Me.Controls.SetChildIndex(Me.LblManualCode, 0)
+        Me.Controls.SetChildIndex(Me.TxtManualCode, 0)
+        Me.Controls.SetChildIndex(Me.LblManualCodeReq, 0)
+        Me.Controls.SetChildIndex(Me.LblNameReq, 0)
+        Me.Controls.SetChildIndex(Me.LblAddress, 0)
+        Me.Controls.SetChildIndex(Me.TxtAddress, 0)
+        Me.Controls.SetChildIndex(Me.LblAddressReq, 0)
+        Me.Controls.SetChildIndex(Me.LblCity, 0)
+        Me.Controls.SetChildIndex(Me.TxtCity, 0)
+        Me.Controls.SetChildIndex(Me.LblCityReq, 0)
+        Me.Controls.SetChildIndex(Me.LblMobile, 0)
+        Me.Controls.SetChildIndex(Me.TxtMobile, 0)
+        Me.Controls.SetChildIndex(Me.LblEMail, 0)
+        Me.Controls.SetChildIndex(Me.TxtEMail, 0)
+        Me.Controls.SetChildIndex(Me.LblAcGroup, 0)
+        Me.Controls.SetChildIndex(Me.TxtAcGroup, 0)
+        Me.Controls.SetChildIndex(Me.LblAcGroupReq, 0)
+        Me.Controls.SetChildIndex(Me.GrpCreditDetail, 0)
+        Me.Controls.SetChildIndex(Me.LblPhone, 0)
+        Me.Controls.SetChildIndex(Me.TxtPhone, 0)
+        Me.Controls.SetChildIndex(Me.LblSalesTaxGroup, 0)
+        Me.Controls.SetChildIndex(Me.TxtSalesTaxGroup, 0)
+        Me.Controls.SetChildIndex(Me.LblPinNo, 0)
+        Me.Controls.SetChildIndex(Me.TxtPinNo, 0)
+        Me.Controls.SetChildIndex(Me.LblPartyType, 0)
+        Me.Controls.SetChildIndex(Me.TxtPartyType, 0)
+        Me.Controls.SetChildIndex(Me.Topctrl1, 0)
+        Me.Controls.SetChildIndex(Me.GroupBox1, 0)
+        Me.Controls.SetChildIndex(Me.GrpUP, 0)
+        Me.Controls.SetChildIndex(Me.GBoxEntryType, 0)
+        Me.Controls.SetChildIndex(Me.GBoxApprove, 0)
+        Me.Controls.SetChildIndex(Me.GBoxMoveToLog, 0)
+        Me.Controls.SetChildIndex(Me.GroupBox2, 0)
+        Me.Controls.SetChildIndex(Me.GBoxDivision, 0)
+        Me.Controls.SetChildIndex(Me.Label2, 0)
+        Me.Controls.SetChildIndex(Me.GBoxImportFromExcel, 0)
+        Me.Controls.SetChildIndex(Me.Pnl1, 0)
+        Me.Controls.SetChildIndex(Me.Label1, 0)
+        Me.Controls.SetChildIndex(Me.LblSuffix, 0)
+        Me.Controls.SetChildIndex(Me.TxtDispName, 0)
+        Me.Controls.SetChildIndex(Me.BtnAttachments, 0)
+        Me.GrpUP.ResumeLayout(False)
+        Me.GrpUP.PerformLayout()
+        Me.GBoxEntryType.ResumeLayout(False)
+        Me.GBoxEntryType.PerformLayout()
+        Me.GBoxMoveToLog.ResumeLayout(False)
+        Me.GBoxMoveToLog.PerformLayout()
+        Me.GBoxApprove.ResumeLayout(False)
+        Me.GBoxApprove.PerformLayout()
+        Me.GroupBox2.ResumeLayout(False)
+        Me.GroupBox2.PerformLayout()
+        Me.GBoxDivision.ResumeLayout(False)
+        Me.GBoxDivision.PerformLayout()
+        CType(Me.DTMaster, System.ComponentModel.ISupportInitialize).EndInit()
+        Me.GrpCreditDetail.ResumeLayout(False)
+        Me.GrpCreditDetail.PerformLayout()
+        Me.GBoxImportFromExcel.ResumeLayout(False)
+        Me.MnuOptions.ResumeLayout(False)
+        Me.ResumeLayout(False)
+        Me.PerformLayout()
+
+    End Sub
+
+    Protected WithEvents LblName As System.Windows.Forms.Label
+    Public WithEvents TxtName As AgControls.AgTextBox
+    Protected WithEvents LblManualCode As System.Windows.Forms.Label
+    Protected WithEvents TxtManualCode As AgControls.AgTextBox
+    Protected WithEvents LblManualCodeReq As System.Windows.Forms.Label
+    Protected WithEvents LblNameReq As System.Windows.Forms.Label
+    Protected WithEvents LblAddress As System.Windows.Forms.Label
+    Protected WithEvents TxtAddress As AgControls.AgTextBox
+    Protected WithEvents LblAddressReq As System.Windows.Forms.Label
+    Protected WithEvents LblCity As System.Windows.Forms.Label
+    Protected WithEvents TxtCity As AgControls.AgTextBox
+    Protected WithEvents LblCityReq As System.Windows.Forms.Label
+    Protected WithEvents LblMobile As System.Windows.Forms.Label
+    Protected WithEvents TxtMobile As AgControls.AgTextBox
+    Protected WithEvents LblEMail As System.Windows.Forms.Label
+    Protected WithEvents TxtEMail As AgControls.AgTextBox
+    Protected WithEvents TxtAcGroup As AgControls.AgTextBox
+    Protected WithEvents LblAcGroup As System.Windows.Forms.Label
+    Protected WithEvents TxtCreditDays As AgControls.AgTextBox
+    Protected WithEvents LblCreditDays As System.Windows.Forms.Label
+    Protected WithEvents TxtCreditLimit As AgControls.AgTextBox
+    Protected WithEvents LblCreditLimit As System.Windows.Forms.Label
+    Protected WithEvents GrpCreditDetail As System.Windows.Forms.GroupBox
+    Protected WithEvents TxtPhone As AgControls.AgTextBox
+    Protected WithEvents LblPhone As System.Windows.Forms.Label
+    Protected WithEvents TxtSalesTaxGroup As AgControls.AgTextBox
+    Protected WithEvents LblSalesTaxGroup As System.Windows.Forms.Label
+    Protected WithEvents TxtPinNo As AgControls.AgTextBox
+    Protected WithEvents LblPinNo As System.Windows.Forms.Label
+    Public WithEvents TxtPartyType As AgControls.AgTextBox
+    Protected WithEvents LblPartyType As System.Windows.Forms.Label
+    Protected WithEvents LblAcGroupReq As System.Windows.Forms.Label
+    Protected WithEvents Label2 As System.Windows.Forms.Label
+    Public WithEvents GBoxImportFromExcel As System.Windows.Forms.GroupBox
+    Public WithEvents BtnImprtFromExcel As System.Windows.Forms.Button
+#End Region
+
+    Private Sub FrmShade_BaseEvent_FindMain() Handles Me.BaseEvent_FindMain
+        AgL.PubFindQry = " SELECT H.SubCode AS SearchCode,  H.Name AS [Name], 
+                         H.ManualCode As [Code], H.SubgroupType as [Subgroup Type], H.Address, C.CityName As [City Name], 
+                         H.Mobile, H.EMail, H.SalesTaxPostingGroup,
+                         H.EntryBy As [Entry By], H.EntryDate As [Entry Date], H.EntryType As [Entry Type], 
+                         H.Status, AG.GroupName As [GROUP Name], D.Div_Name As Division,SM.Name As [Site Name],
+                        (SELECT Max(RegistrationNo) FROM SubgroupRegistration WHERE RegistrationType ='Sales Tax No' AND Subcode =H.Subcode) as [Gst No]
+                         FROM SubGroup H 
+                         LEFT JOIN Division D On D.Div_Code=H.Div_Code  
+                         LEFT JOIN SiteMast SM On SM.Code=H.Site_Code 
+                         LEFT JOIN AcGroup AG On AG.GroupCode = H.GroupCode 
+                         LEFT JOIN City C On C.CityCode = H.CityCode  
+                         Left Join SubgroupType ST On H.SubgroupType = ST.SubgroupType
+                        Where 1=1 
+                        "
+        If mSubgroupType <> "" Then
+            AgL.PubFindQry += " And   H.SubgroupType = '" & mSubgroupType & "' "
+        Else
+            AgL.PubFindQry += " And   ST.IsCustomUI=0 "
+        End If
+        'AgL.PubFindQry += " Order By H.Name "
+
+
+        AgL.PubFindQryOrdBy = "[Name]"
+    End Sub
+
+    Private Sub FrmShade_BaseEvent_Form_PreLoad() Handles Me.BaseEvent_Form_PreLoad
+        MainTableName = "SubGroup"
+        MainLineTableCsv = "SubgroupSiteDivisionDetail"
+        LogTableName = "SubGroup_Log"
+
+        PrimaryField = "SubCode"
+    End Sub
+
+    Private Sub ApplySubgroupTypeSetting(SubgroupType As String)
+        Dim mQry As String
+        Dim DsTemp As DataSet
+        Try
+            mQry = "Select S.*, A.GroupName As AcGroupName, A.GroupNature, A.Nature 
+                    from subgroupTypeSetting S
+                    Left Join AcGroup A On S.AcGroupCode = A.GroupCode
+                   Where SubgroupType = '" & SubgroupType & "' "
+            DsTemp = AgL.FillData(mQry, AgL.GCn)
+            DtSubgroupTypeSettings = DsTemp.Tables(0)
+            With DsTemp.Tables(0)
+                If DsTemp.Tables(0).Rows.Count > 0 Then
+                    Dgl1.Rows(rowContactPerson).Visible = CBool(AgL.XNull(.Rows(0)("IsVisible_ContactPerson")))
+                    Dgl1.Rows(rowPanNo).Visible = CBool(AgL.XNull(.Rows(0)("IsVisible_PanNo")))
+                    Dgl1.Rows(rowAadharNo).Visible = CBool(AgL.XNull(.Rows(0)("IsVisible_AadharNo")))
+                    Dgl1.Rows(rowSalesTaxNo).Visible = CBool(AgL.XNull(.Rows(0)("IsVisible_SalesTaxNo")))
+                    Dgl1.Rows(rowParent).Visible = CBool(AgL.XNull(.Rows(0)("IsVisible_Parent")))
+                    Dgl1.Rows(rowTransporter).Visible = CBool(AgL.XNull(.Rows(0)("IsVisible_Transporter")))
+                    Dgl1.Rows(rowAgent).Visible = CBool(AgL.XNull(.Rows(0)("IsVisible_Agent")))
+                    Dgl1.Rows(rowDiscount).Visible = CBool(AgL.XNull(.Rows(0)("IsVisible_Discount")))
+                    Dgl1.Rows(rowInterestSlab).Visible = CBool(AgL.XNull(.Rows(0)("IsVisible_InterestSlab")))
+                    If SubgroupType = AgLibrary.ClsMain.agConstants.SubgroupType.Customer Then
+                        Dgl1.Rows(rowRateType).Visible = AgL.IsFeatureApplicable_RateType
+                        Dgl1.Rows(rowArea).Visible = AgL.IsFeatureApplicable_Area
+                    Else
+                        Dgl1.Rows(rowRateType).Visible = False
+                        Dgl1.Rows(rowArea).Visible = False
+                    End If
+
+                    If AgL.XNull(.Rows(0)("Caption_Parent")) <> "" Then
+                        Dgl1.Item(Col1Head, rowParent).Value = AgL.XNull(.Rows(0)("Caption_Parent"))
+                    End If
+
+
+                    If AgL.VNull(DtSubgroupTypeSettings.Rows(0)("PersonCanHaveDivisionWiseAgentYn")) = True Or AgL.VNull(DtSubgroupTypeSettings.Rows(0)("PersonCanHaveSiteWiseAgentYn")) = True Then
+                        Dgl1.Item(Col1BtnDetail, rowAgent) = New DataGridViewButtonCell
+                        Dgl1(Col1BtnDetail, rowAgent).ReadOnly = False
+                    Else
+                        Dgl1.Item(Col1BtnDetail, rowAgent) = New DataGridViewTextBoxCell
+                        Dgl1(Col1BtnDetail, rowAgent).ReadOnly = True
+                    End If
+
+
+                    If AgL.VNull(DtSubgroupTypeSettings.Rows(0)("PersonCanHaveDivisionWiseTransporterYn")) = True Or AgL.VNull(DtSubgroupTypeSettings.Rows(0)("PersonCanHaveSiteWiseTransporterYn")) = True Then
+                        Dgl1.Item(Col1BtnDetail, rowTransporter) = New DataGridViewButtonCell
+                        Dgl1(Col1BtnDetail, rowTransporter).ReadOnly = False
+                    Else
+                        Dgl1.Item(Col1BtnDetail, rowTransporter) = New DataGridViewTextBoxCell
+                        Dgl1(Col1BtnDetail, rowTransporter).ReadOnly = True
+                    End If
+
+                    If AgL.VNull(DtSubgroupTypeSettings.Rows(0)("PersonCanHaveDivisionWiseRateTypeYn")) = True Or AgL.VNull(DtSubgroupTypeSettings.Rows(0)("PersonCanHaveSiteWiseRateTypeYn")) = True Then
+                        Dgl1.Item(Col1BtnDetail, rowRateType) = New DataGridViewButtonCell
+                        Dgl1(Col1BtnDetail, rowRateType).ReadOnly = False
+                    Else
+                        Dgl1.Item(Col1BtnDetail, rowRateType) = New DataGridViewTextBoxCell
+                        Dgl1(Col1BtnDetail, rowRateType).ReadOnly = True
+                    End If
+
+                    If AgL.VNull(DtSubgroupTypeSettings.Rows(0)("PersonCanHaveItemGroupWiseInterestSlabYn")) = True Or AgL.VNull(DtSubgroupTypeSettings.Rows(0)("PersonCanHaveItemCategoryWiseInterestSlabYn")) = True Then
+                        Dgl1.Item(Col1BtnDetail, rowInterestSlab) = New DataGridViewButtonCell
+                        Dgl1(Col1BtnDetail, rowInterestSlab).ReadOnly = False
+                    Else
+                        Dgl1.Item(Col1BtnDetail, rowInterestSlab) = New DataGridViewTextBoxCell
+                        Dgl1(Col1BtnDetail, rowInterestSlab).ReadOnly = True
+                    End If
+
+                    If AgL.VNull(DtSubgroupTypeSettings.Rows(0)("PersonCanHaveItemGroupWiseDiscountYn")) = True Or AgL.VNull(DtSubgroupTypeSettings.Rows(0)("PersonCanHaveItemCategoryWiseDiscountYn")) = True Then
+                        Dgl1.Item(Col1BtnDetail, rowDiscount) = New DataGridViewButtonCell
+                        Dgl1(Col1BtnDetail, rowDiscount).ReadOnly = False
+                    Else
+                        Dgl1.Item(Col1BtnDetail, rowDiscount) = New DataGridViewTextBoxCell
+                        Dgl1(Col1BtnDetail, rowDiscount).ReadOnly = True
+                    End If
+
+
+                    TxtAcGroup.Tag = AgL.XNull(.Rows(0)("AcGroupCode"))
+                    TxtAcGroup.Text = AgL.XNull(.Rows(0)("AcGroupName"))
+                    mGroupNature = AgL.XNull(.Rows(0)("GroupNature"))
+                    mNature = AgL.XNull(.Rows(0)("Nature"))
+                    GrpCreditDetail.Visible = CBool(AgL.XNull(.Rows(0)("IsVisible_CreditLimit")))
+                End If
+
+            End With
+        Catch ex As Exception
+            MsgBox(ex.Message & " [ApplySubgroupTypeSetting]")
+        End Try
+    End Sub
+
+    Private Sub FrmQuality1_BaseFunction_FIniList() Handles Me.BaseFunction_FIniList
+        mQry = "Select S.SubCode as Code, S.ManualCode, S.Name as [Name], C.CityName " &
+                " From SubGroup S  " &
+                " Left Join City C On S.CityCode = C.CityCode " &
+                " Order By S.ManualCode "
+        TxtManualCode.AgHelpDataSet() = AgL.FillData(mQry, AgL.GCn)
+
+        mQry = "Select S.SubCode as Code, S.Name As [Name], C.CityName  
+                From SubGroup S 
+                Left Join City C On S.CityCode = C.CityCode
+                Order By S.Name "
+        TxtName.AgHelpDataSet() = AgL.FillData(mQry, AgL.GCn)
+
+        mQry = "Select A.GroupCode As Code, A.GroupName As Name, A.GroupNature , A.Nature  " &
+                  " FROM AcGroup A "
+        TxtAcGroup.AgHelpDataSet(2) = AgL.FillData(mQry, AgL.GCn)
+
+        mQry = " Select H.SubgroupType As Code, SubgroupType As Name FROM SubGroupType H Where IfNull(IsActive,1)=1 And IFNull(IsCustomUI,0)=0  "
+        TxtPartyType.AgHelpDataSet(0) = AgL.FillData(mQry, AgL.GCn)
+
+        mQry = " Select Description As Code, Description  FROM PostingGroupSalesTaxParty "
+        TxtSalesTaxGroup.AgHelpDataSet(0) = AgL.FillData(mQry, AgL.GCn)
+    End Sub
+
+    Private Sub FrmShade_BaseFunction_FIniMast(ByVal BytDel As Byte, ByVal BytRefresh As Byte) Handles Me.BaseFunction_FIniMast
+        mQry = "Select S.SubCode As SearchCode 
+            From SubGroup S 
+            Left Join SubgroupType ST On S.SubgroupType = ST.SubgroupType
+            Where 1=1 
+            "
+        If mSubgroupType <> "" Then
+            mQry += " And   S.SubgroupType = '" & mSubgroupType & "' "
+        Else
+            mQry += " And   ST.IsCustomUI=0 "
+        End If
+
+        mQry += " Order by S.Name "
+        Topctrl1.FIniForm(DTMaster, AgL.GCn, mQry, , , , , BytDel, BytRefresh)
+    End Sub
+
+    Private Sub FrmQuality1_BaseFunction_MoveRec(ByVal SearchCode As String) Handles Me.BaseFunction_MoveRec
+        Dim DsTemp As DataSet
+        Dim DrTemp As DataRow() = Nothing
+        Dim DtSiteDivisionCount As DataTable
+        Dim I As Integer
+
+        mQry = "Select S.*, P.Name as ParentName, C.CityName, State.ManualCode as StateCode, 
+                    A.Description as AreaName, Ins.Description as InterestSlabName 
+                    From SubGroup S 
+                    Left Join viewHelpSubgroup P on S.Parent = P.Code
+                    Left Join City C On S.CityCode = C.CityCode   
+                    Left Join State On C.State = State.Code
+                    Left Join Area A On S.Area = A.Code
+                    Left Join InterestSlab InS on S.InterestSlab = Ins.Code
+                    Where S.SubCode='" & SearchCode & "'"
+        DsTemp = AgL.FillData(mQry, AgL.GCn)
+
+        With DsTemp.Tables(0)
+            If .Rows.Count > 0 Then
+                TxtPartyType.Tag = AgL.XNull(.Rows(0)("SubgroupType"))
+                TxtPartyType.Text = AgL.XNull(.Rows(0)("SubgroupType"))
+                ApplySubgroupTypeSetting(TxtPartyType.Text)
+                mInternalCode = AgL.XNull(.Rows(0)("SubCode"))
+                TxtManualCode.Text = AgL.XNull(.Rows(0)("ManualCode"))
+                TxtName.Text = AgL.XNull(.Rows(0)("Name"))
+                TxtDispName.Text = AgL.XNull(.Rows(0)("DispName"))
+                TxtAcGroup.AgSelectedValue = AgL.XNull(.Rows(0)("GroupCode"))
+                TxtAddress.Text = AgL.XNull(.Rows(0)("Address"))
+                TxtCity.Tag = AgL.XNull(.Rows(0)("CityCode"))
+                TxtCity.Text = AgL.XNull(.Rows(0)("CityName"))
+                gStateCode = AgL.XNull(.Rows(0)("StateCode"))
+                TxtPinNo.Text = AgL.XNull(.Rows(0)("PIN"))
+                TxtMobile.Text = AgL.XNull(.Rows(0)("Mobile"))
+                TxtPhone.Text = AgL.XNull(.Rows(0)("Phone"))
+                TxtCreditDays.Text = AgL.XNull(.Rows(0)("CreditDays"))
+                TxtCreditLimit.Text = AgL.XNull(.Rows(0)("CreditLimit"))
+                TxtEMail.Text = AgL.XNull(.Rows(0)("EMail"))
+                TxtSalesTaxGroup.AgSelectedValue = AgL.XNull(.Rows(0)("SalesTaxPostingGroup"))
+                mNature = AgL.XNull(.Rows(0)("Nature"))
+                mGroupNature = AgL.XNull(.Rows(0)("GroupNature"))
+
+
+                Dgl1.Item(Col1Value, rowContactPerson).Value = AgL.XNull(.Rows(0)("ContactPerson"))
+                Dgl1.Item(Col1Value, rowParent).Tag = AgL.XNull(.Rows(0)("Parent"))
+                Dgl1.Item(Col1Value, rowParent).Value = AgL.XNull(.Rows(0)("ParentName"))
+                Dgl1.Item(Col1Value, rowArea).Tag = AgL.XNull(.Rows(0)("Area"))
+                Dgl1.Item(Col1Value, rowArea).Value = AgL.XNull(.Rows(0)("AreaName"))
+                Dgl1.Item(Col1Value, rowInterestSlab).Tag = AgL.XNull(.Rows(0)("InterestSlab"))
+                Dgl1.Item(Col1Value, rowInterestSlab).Value = AgL.XNull(.Rows(0)("InterestSlabName"))
+
+            End If
+        End With
+
+        mQry = "Select * From SubgroupRegistration where Subcode = '" & mSearchCode & "'"
+        DsTemp = AgL.FillData(mQry, AgL.GCn)
+        If DsTemp.Tables(0).Rows.Count > 0 Then
+            For I = 0 To DsTemp.Tables(0).Rows.Count - 1
+                If UCase(AgL.XNull(DsTemp.Tables(0).Rows(I)("RegistrationType"))) = SubgroupRegistrationType.SalesTaxNo.ToUpper Then
+                    Dgl1.Item(Col1Value, rowSalesTaxNo).Value = AgL.XNull(DsTemp.Tables(0).Rows(I)("RegistrationNo"))
+                ElseIf UCase(AgL.XNull(DsTemp.Tables(0).Rows(I)("RegistrationType"))) = SubgroupRegistrationType.PanNo.ToUpper Then
+                    Dgl1.Item(Col1Value, rowPanNo).Value = AgL.XNull(DsTemp.Tables(0).Rows(I)("RegistrationNo"))
+                ElseIf UCase(AgL.XNull(DsTemp.Tables(0).Rows(I)("RegistrationType"))) = SubgroupRegistrationType.AadharNo.ToUpper Then
+                    Dgl1.Item(Col1Value, rowAadharNo).Value = AgL.XNull(DsTemp.Tables(0).Rows(I)("RegistrationNo"))
+                End If
+            Next
+        End If
+
+
+        mQry = "Select H.Agent, H.Transporter, A.Name as AgentName, T.Name as TransporterName, H.RateType, RT.Description as RateTypeName 
+                From SubgroupSiteDivisionDetail H
+                Left Join viewHelpSubgroup A On H.Agent = A.Code 
+                Left Join viewHelpSubgroup T On H.Transporter = T.Code 
+                Left Join RateType RT On H.RateType = RT.Code
+                Where H.Subcode = '" & mSearchCode & "' And H.Div_Code = '" & AgL.PubDivCode & "' And H.Site_Code ='" & AgL.PubSiteCode & "' "
+        DsTemp = AgL.FillData(mQry, AgL.GCn)
+        If DsTemp.Tables(0).Rows.Count > 0 Then
+
+            Dgl1.Item(Col1Value, rowAgent).Value = AgL.XNull(DsTemp.Tables(0).Rows(0)("AgentName"))
+            Dgl1.Item(Col1Value, rowAgent).Tag = AgL.XNull(DsTemp.Tables(0).Rows(0)("Agent"))
+            Dgl1.Item(Col1Value, rowTransporter).Value = AgL.XNull(DsTemp.Tables(0).Rows(0)("TransporterName"))
+            Dgl1.Item(Col1Value, rowTransporter).Tag = AgL.XNull(DsTemp.Tables(0).Rows(0)("Transporter"))
+            Dgl1.Item(Col1Value, rowRateType).Value = AgL.XNull(DsTemp.Tables(0).Rows(0)("RateTypeName"))
+            Dgl1.Item(Col1Value, rowRateType).Tag = AgL.XNull(DsTemp.Tables(0).Rows(0)("RateType"))
+            Dgl1.Item(Col1Value, rowDistance).Value = AgL.XNull(DsTemp.Tables(0).Rows(0)("Distance"))
+
+
+            mQry = "SELECT Count(DISTINCT IfNull(RateType,'')) AS RateType, Count(DISTINCT IfNull(Agent,'')) AS Agent, Count(Distinct IfNull(Transporter,'')) as Transporter  
+                    From SubgroupSiteDivisionDetail L With (NoLock)
+                    Where L.Subcode = '" & mSearchCode & "'"
+            DtSiteDivisionCount = AgL.FillData(mQry, AgL.GCn).Tables(0)
+
+            If AgL.VNull(DtSiteDivisionCount.Rows(0)("Agent")) > 1 Then
+                Dgl1.Item(Col1Value, rowAgent).Value = ""
+                Dgl1.Item(Col1Value, rowAgent).Tag = ""
+                Dgl1.Item(Col1BtnDetail, rowAgent).Value = AgL.VNull(DtSiteDivisionCount.Rows(0)("Agent"))
+
+            End If
+
+            If AgL.VNull(DtSiteDivisionCount.Rows(0)("Transporter")) > 1 Then
+                Dgl1.Item(Col1Value, rowTransporter).Value = ""
+                Dgl1.Item(Col1Value, rowTransporter).Tag = ""
+                Dgl1.Item(Col1BtnDetail, rowTransporter).Value = AgL.VNull(DtSiteDivisionCount.Rows(0)("Transporter"))
+
+            End If
+
+            If AgL.VNull(DtSiteDivisionCount.Rows(0)("RateType")) > 1 Then
+                Dgl1.Item(Col1Value, rowRateType).Value = ""
+                Dgl1.Item(Col1Value, rowRateType).Tag = ""
+                Dgl1.Item(Col1BtnDetail, rowRateType).Value = AgL.VNull(DtSiteDivisionCount.Rows(0)("RateType"))
+
+            End If
+        End If
+
+
+
+
+
+
+
+
+
+        SetAttachmentCaption()
+
+        Topctrl1.tPrn = False
+    End Sub
+
+    Private Sub Control_Enter(ByVal sender As Object, ByVal e As System.EventArgs)
+        Try
+            Select Case sender.name
+            End Select
+        Catch ex As Exception
+        End Try
+    End Sub
+
+    Public Overrides Sub ProcSave()
+        Dim MastPos As Long
+        Dim mTrans As Boolean = False
+        Dim ChildDataPassed As Boolean = True
+        Dim mUpLineStr$ = ""
+        Try
+            If EntryPointIniMode <> AgTemplate.ClsMain.EntryPointIniMode.Insertion Then
+                MastPos = BMBMaster.Position
+            End If
+
+            'For Data Validation
+            If AgCL.AgCheckMandatory(Me) = False Then Exit Sub
+            If AgL.RequiredField(TxtName, LblName.Text) Then Exit Sub
+
+
+            If TxtSalesTaxGroup.Text.ToUpper = "REGISTERED" Or TxtSalesTaxGroup.Text.ToUpper = "COMPOSITION" Then
+                If Dgl1.Item(Col1Value, rowSalesTaxNo).Value = "" Then
+                    MsgBox("GST No. is mandatory for registered dealers.")
+                    Exit Sub
+                End If
+            End If
+
+            If Not ChildDataPassed Then
+                Exit Sub
+            End If
+
+            If Topctrl1.Mode = "Add" Then
+                If AgL.StrCmp(TxtPartyType.Tag, AgLibrary.ClsMain.agConstants.SubgroupType.Division) Then
+                    Dim MaxDiv_Code As String = AgL.Dman_Execute("Select Max(Div_Code) As Div_Cde From Division ", AgL.GCn).ExecuteScalar()
+                    mSearchCode = Chr(Asc(MaxDiv_Code) + 1)
+                Else
+                    mSearchCode = AgL.GetMaxId("SubGroup", "SubCode", AgL.GCn, AgL.PubDivCode, AgL.PubSiteCode, 8, True, True, AgL.ECmd, AgL.Gcn_ConnectionString)
+                End If
+                mInternalCode = mSearchCode
+            End If
+
+            If TxtAcGroup.Visible = False Then
+                If mSubGroupNature = ESubgroupNature.Customer Then
+                    TxtAcGroup.AgSelectedValue = SubGroupConst.GroupCode_Debtors
+                    mGroupNature = SubGroupConst.GroupNature_Debtors
+                    mNature = SubGroupConst.Nature_Debtors
+                Else
+                    TxtAcGroup.AgSelectedValue = SubGroupConst.GroupCode_Creditors
+                    mGroupNature = SubGroupConst.GroupNature_Creditors
+                    mNature = SubGroupConst.Nature_Creditors
+                End If
+            End If
+
+            If AgL.RequiredField(TxtManualCode, LblManualCode.Text) Then Exit Sub
+
+
+            If Topctrl1.Mode = "Add" Then
+                If AgL.PubServerName = "" Then
+                    TxtManualCode.Text = AgL.XNull(AgL.Dman_Execute("SELECT  IfNull(Max(CAST(ManualCode AS INTEGER)),0) +1 FROM Subgroup  WHERE ABS(ManualCode)>0", AgL.GcnRead).ExecuteScalar)
+                Else
+                    TxtManualCode.Text = AgL.XNull(AgL.Dman_Execute("SELECT  IfNull(Max(CAST(ManualCode AS INTEGER)),0) +1 FROM Subgroup  WHERE IsNumeric(ManualCode)>0", AgL.GcnRead).ExecuteScalar)
+                End If
+
+                mQry = "Select count(*) From SubGroup Where ManualCode='" & TxtManualCode.Text & "'"
+                If AgL.Dman_Execute(mQry, AgL.GCn).ExecuteScalar > 0 Then Err.Raise(1, , "Code Already Exists")
+
+                mQry = "Select count(*) From SubGroup Where Replace(Replace(Replace(Replace(Name,' ',''),'.',''),'-',''),'*','')='" & Replace(Replace(Replace(Replace(TxtName.Text, " ", ""), ".", ""), "-", ""), "*", "") & "' And CityCode = '" & TxtCity.Tag & "' "
+                If AgL.Dman_Execute(mQry, AgL.GCn).ExecuteScalar > 0 Then Err.Raise(1, , "Name Already Exists")
+            Else
+                mQry = "Select count(*) From SubGroup Where ManualCode ='" & TxtManualCode.Text & "' And SubCode<>'" & mInternalCode & "'"
+                If AgL.Dman_Execute(mQry, AgL.GCn).ExecuteScalar > 0 Then Err.Raise(1, , "Code Already Exists")
+
+                mQry = "Select count(*) From SubGroup Where Replace(Replace(Replace(Replace(Name,' ',''),'.',''),'-',''),'*','')='" & Replace(Replace(Replace(Replace(TxtName.Text, " ", ""), ".", ""), "-", ""), "*", "") & "' And CityCode = '" & TxtCity.Tag & "' And SubCode<>'" & mInternalCode & "'"
+                If AgL.Dman_Execute(mQry, AgL.GCn).ExecuteScalar > 0 Then Err.Raise(1, , "Name Already Exists")
+            End If
+
+            AgL.ECmd = AgL.GCn.CreateCommand
+            AgL.ETrans = AgL.GCn.BeginTransaction(IsolationLevel.ReadCommitted)
+            AgL.ECmd.Transaction = AgL.ETrans
+            mTrans = True
+
+
+
+
+            If Topctrl1.Mode = "Add" Then
+                mQry = "INSERT INTO SubGroup(SubCode, Site_Code, Name, DispName, " &
+                        " GroupCode, GroupNature, ManualCode,	Nature,	Address, CityCode,  " &
+                        " PIN, Phone,  ContactPerson, SubgroupType, " &
+                        " Mobile, CreditDays, CreditLimit, EMail, Parent, Area, InterestSlab, SalesTaxPostingGroup, " &
+                        " EntryBy, EntryDate,  EntryType, EntryStatus, Div_Code, Status) " &
+                        " VALUES(" & AgL.Chk_Text(mSearchCode) & ", " &
+                        " '" & AgL.PubSiteCode & "', " & AgL.Chk_Text(TxtName.Text) & ",	" &
+                        " " & AgL.Chk_Text(IIf(TxtDispName.Text = "", TxtName.Text, TxtDispName.Text)) & ", " & AgL.Chk_Text(TxtAcGroup.AgSelectedValue) & ", " &
+                        " " & AgL.Chk_Text(mGroupNature) & ", " & AgL.Chk_Text(TxtManualCode.Text) & ", " &
+                        " " & AgL.Chk_Text(mNature) & ", " & AgL.Chk_Text(TxtAddress.Text) & ", " &
+                        " " & AgL.Chk_Text(TxtCity.AgSelectedValue) & ", " &
+                        " " & AgL.Chk_Text(TxtPinNo.Text) & ", " & AgL.Chk_Text(TxtPhone.Text) & ", " &
+                        " " & AgL.Chk_Text(Dgl1.Item(Col1Value, rowContactPerson).Value) & ", " &
+                        " " & AgL.Chk_Text(TxtPartyType.AgSelectedValue) & ", " &
+                        " " & AgL.Chk_Text(TxtMobile.Text) & ", " &
+                        " " & Val(TxtCreditDays.Text) & ", " &
+                        " " & Val(TxtCreditLimit.Text) & ", " &
+                        " " & AgL.Chk_Text(TxtEMail.Text) & ", " &
+                        " " & AgL.Chk_Text(Dgl1.Item(Col1Value, rowParent).Tag) & ", " &
+                        " " & AgL.Chk_Text(Dgl1.Item(Col1Value, rowArea).Tag) & ", " &
+                        " " & AgL.Chk_Text(Dgl1.Item(Col1Value, rowInterestSlab).Tag) & ", " &
+                        " " & AgL.Chk_Text(TxtSalesTaxGroup.AgSelectedValue) & ", " &
+                        " " & AgL.Chk_Text(AgL.PubUserName) & ", " & AgL.Chk_Text(AgL.GetDateTime(AgL.GcnRead)) & ", " &
+                        " " & AgL.Chk_Text(Topctrl1.Mode) & ", " & AgL.Chk_Text(LogStatus.LogOpen) & ", " &
+                        " " & AgL.Chk_Text(TxtDivision.AgSelectedValue) & ", " & AgL.Chk_Text(TxtStatus.Text) & ") "
+                AgL.Dman_ExecuteNonQry(mQry, AgL.GCn, AgL.ECmd)
+            Else
+                mQry = "UPDATE SubGroup " &
+                        " SET " &
+                        " Name = " & AgL.Chk_Text(TxtName.Text) & ", " &
+                        " DispName = " & AgL.Chk_Text(IIf(TxtDispName.Text = "", TxtName.Text, TxtDispName.Text)) & ", " &
+                        " GroupCode = " & AgL.Chk_Text(TxtAcGroup.AgSelectedValue) & ", " &
+                        " GroupNature = " & AgL.Chk_Text(mGroupNature) & ", " &
+                        " ManualCode = " & AgL.Chk_Text(TxtManualCode.Text) & ", " &
+                        " Nature = " & AgL.Chk_Text(mNature) & ", " &
+                        " Address = " & AgL.Chk_Text(TxtAddress.Text) & ", " &
+                        " CityCode = " & AgL.Chk_Text(TxtCity.AgSelectedValue) & ", " &
+                        " Mobile = " & AgL.Chk_Text(TxtMobile.Text) & ", " &
+                        " CreditDays = " & Val(TxtCreditDays.Text) & ", " &
+                        " CreditLimit = " & Val(TxtCreditLimit.Text) & ", " &
+                        " EMail = " & AgL.Chk_Text(TxtEMail.Text) & ", " &
+                        " PIN = " & AgL.Chk_Text(TxtPinNo.Text) & ", " &
+                        " Phone = " & AgL.Chk_Text(TxtPhone.Text) & ", " &
+                        " ContactPerson = " & AgL.Chk_Text(Dgl1.Item(Col1Value, rowContactPerson).Value) & ", " &
+                        " Parent = " & AgL.Chk_Text(Dgl1.Item(Col1Value, rowParent).Tag) & ", " &
+                        " Area = " & AgL.Chk_Text(Dgl1.Item(Col1Value, rowArea).Tag) & ", " &
+                        " InterestSlab = " & AgL.Chk_Text(Dgl1.Item(Col1Value, rowInterestSlab).Tag) & ", " &
+                        " SalesTaxPostingGroup = " & AgL.Chk_Text(TxtSalesTaxGroup.AgSelectedValue) & ", " &
+                        " SubgroupType = " & AgL.Chk_Text(TxtPartyType.Tag) & ", " &
+                        " EntryType = " & AgL.Chk_Text(Topctrl1.Mode) & ", " &
+                        " EntryStatus = " & AgL.Chk_Text(LogStatus.LogOpen) & ", " &
+                        " Div_Code = " & AgL.Chk_Text(TxtDivision.AgSelectedValue) & ", " &
+                        " MoveToLogDate = " & AgL.Chk_Date(CDate(AgL.PubLoginDate).ToString("u")) & ", " &
+                        " MoveToLog = '" & AgL.PubUserName & "' " &
+                        " Where Subcode = " & AgL.Chk_Text(mSearchCode) & "  "
+                AgL.Dman_ExecuteNonQry(mQry, AgL.GCn, AgL.ECmd)
+            End If
+
+            SaveDataInPersonLastTransactionValues(mSearchCode, AgL.GCn, AgL.ECmd)
+
+
+            If Dgl1.Item(Col1BtnDetail, rowDiscount).Tag IsNot Nothing And TypeOf (Dgl1(Col1BtnDetail, rowDiscount)) Is DataGridViewButtonCell Then
+                CType(Dgl1.Item(Col1BtnDetail, rowDiscount).Tag, FrmPersonWiseDiscount).FSave(mSearchCode, AgL.GCn, AgL.ECmd)
+            End If
+
+            If Dgl1.Item(Col1BtnDetail, rowInterestSlab).Tag IsNot Nothing And TypeOf (Dgl1(Col1BtnDetail, rowInterestSlab)) Is DataGridViewButtonCell Then
+                CType(Dgl1.Item(Col1BtnDetail, rowInterestSlab).Tag, FrmPersonItemGroupInterest).FSave(mSearchCode, AgL.GCn, AgL.ECmd)
+            End If
+
+            If Dgl1.Item(Col1BtnDetail, rowRateType).Tag IsNot Nothing And TypeOf (Dgl1(Col1BtnDetail, rowRateType)) Is DataGridViewButtonCell Then
+                CType(Dgl1.Item(Col1BtnDetail, rowRateType).Tag, FrmPersonSiteRateType).FSave(mSearchCode, AgL.GCn, AgL.ECmd)
+            End If
+
+            If Dgl1.Item(Col1BtnDetail, rowAgent).Tag IsNot Nothing And TypeOf (Dgl1(Col1BtnDetail, rowAgent)) Is DataGridViewButtonCell Then
+                CType(Dgl1.Item(Col1BtnDetail, rowAgent).Tag, FrmPersonSiteAgent).FSave(mSearchCode, AgL.GCn, AgL.ECmd)
+            End If
+
+            If Dgl1.Item(Col1BtnDetail, rowTransporter).Tag IsNot Nothing And TypeOf (Dgl1(Col1BtnDetail, rowTransporter)) Is DataGridViewButtonCell Then
+                CType(Dgl1.Item(Col1BtnDetail, rowTransporter).Tag, FrmPersonSiteTransporter).FSave(mSearchCode, AgL.GCn, AgL.ECmd)
+            End If
+
+
+            If AgL.StrCmp(TxtPartyType.Tag, AgLibrary.ClsMain.agConstants.SubgroupType.Division) Then
+                If AgL.Dman_Execute("Select Count(*) From Division D Where D.SubCode = " & AgL.Chk_Text(mSearchCode) & "", AgL.GcnRead).ExecuteScalar = 0 Then
+                    mQry = " INSERT INTO Division (Div_Code, Div_Name, Subcode, ScopeOfWork)
+                        VALUES (" & AgL.Chk_Text(mSearchCode) & ", " & AgL.Chk_Text(TxtManualCode.Text) & ", " & AgL.Chk_Text(mSearchCode) & ", Null) "
+                    AgL.Dman_ExecuteNonQry(mQry, AgL.GCn, AgL.ECmd)
+                Else
+                    mQry = "UPDATE Division " &
+                            " SET " &
+                            " Div_Name = " & AgL.Chk_Text(TxtManualCode.Text) & " " &
+                            " Where Subcode = " & AgL.Chk_Text(mSearchCode) & "  "
+                    AgL.Dman_ExecuteNonQry(mQry, AgL.GCn, AgL.ECmd)
+                End If
+            End If
+
+            Dim mRegSr As Integer = 0
+
+            mQry = "Delete From SubgroupRegistration Where Subcode = '" & mSearchCode & "'"
+            AgL.Dman_ExecuteNonQry(mQry, AgL.GCn, AgL.ECmd)
+
+            If Dgl1.Item(Col1Value, rowSalesTaxNo).Value <> "" Then
+                mRegSr += 1
+                mQry = "Insert Into SubgroupRegistration(Subcode, Sr, RegistrationType, RegistrationNo)
+                        Values ('" & mSearchCode & "', " & mRegSr & ", '" & SubgroupRegistrationType.SalesTaxNo & "', " & AgL.Chk_Text(Dgl1.Item(Col1Value, rowSalesTaxNo).Value) & ") "
+                AgL.Dman_ExecuteNonQry(mQry, AgL.GCn, AgL.ECmd)
+            End If
+
+
+            If Dgl1.Item(Col1Value, rowPanNo).Value <> "" Then
+                mRegSr += 1
+                mQry = "Insert Into SubgroupRegistration(Subcode, Sr, RegistrationType, RegistrationNo)
+                       Values ('" & mSearchCode & "', " & mRegSr & ", '" & SubgroupRegistrationType.PanNo & "', " & AgL.Chk_Text(Dgl1.Item(Col1Value, rowPanNo).Value) & ") "
+                AgL.Dman_ExecuteNonQry(mQry, AgL.GCn, AgL.ECmd)
+            End If
+
+            If Dgl1.Item(Col1Value, rowAadharNo).Value <> "" Then
+                mRegSr += 1
+                mQry = "Insert Into SubgroupRegistration(Subcode, Sr, RegistrationType, RegistrationNo)
+                       Values ('" & mSearchCode & "', " & mRegSr & ", '" & SubgroupRegistrationType.AadharNo.ToUpper & "', " & AgL.Chk_Text(Dgl1.Item(Col1Value, rowAadharNo).Value) & ") "
+                AgL.Dman_ExecuteNonQry(mQry, AgL.GCn, AgL.ECmd)
+            End If
+
+
+            If Val(Dgl1.Item(Col1BtnDetail, rowTransporter).Value) = 0 Then
+                mQry = "Update SubgroupSiteDivisionDetail Set 
+                        Transporter = " & AgL.Chk_Text(Dgl1.Item(Col1Value, rowTransporter).Tag) & "
+                        Where SubCode = '" & mSearchCode & "'"
+                AgL.Dman_ExecuteNonQry(mQry, AgL.GCn, AgL.ECmd)
+            End If
+
+
+            If Val(Dgl1.Item(Col1BtnDetail, rowAgent).Value) = 0 Then
+                mQry = "Update SubgroupSiteDivisionDetail Set 
+                        Agent = " & AgL.Chk_Text(Dgl1.Item(Col1Value, rowAgent).Tag) & " 
+                        Where SubCode = '" & mSearchCode & "'"
+                AgL.Dman_ExecuteNonQry(mQry, AgL.GCn, AgL.ECmd)
+            End If
+
+            If Val(Dgl1.Item(Col1BtnDetail, rowRateType).Value) = 0 Then
+                mQry = "Update SubgroupSiteDivisionDetail Set 
+                        RateType = " & AgL.Chk_Text(Dgl1.Item(Col1Value, rowRateType).Tag) & " 
+                        Where SubCode = '" & mSearchCode & "'"
+                AgL.Dman_ExecuteNonQry(mQry, AgL.GCn, AgL.ECmd)
+            End If
+
+            mQry = " Select Code From SiteMast "
+            DtTemp = AgL.FillData(mQry, AgL.GcnRead).Tables(0)
+            For i = 0 To DtTemp.Rows.Count - 1
+                mQry = "Update SubGroupSiteDivisionDetail Set Distance=(Select Distance From CitySiteDivisionDetail Where CityCode = '" & TxtCity.Tag & "' And Site_Code = '" & DtTemp.Rows(I)("Code") & "') 
+                        Where subcode = '" & mSearchCode & "'  And Site_Code = '" & DtTemp.Rows(I)("Code") & "' "
+                AgL.Dman_ExecuteNonQry(mQry, AgL.GCn, AgL.ECmd)
+            Next
+
+
+
+
+
+            Call AgL.LogTableEntry(mSearchCode, Me.Text, AgL.MidStr(Topctrl1.Mode, 0, 1), AgL.PubMachineName, AgL.PubUserName, AgL.PubLoginDate, AgL.GCn, AgL.ECmd)
+
+            AgL.ETrans.Commit()
+            mTrans = False
+
+
+            If EntryPointIniMode = AgTemplate.ClsMain.EntryPointIniMode.Insertion Then
+                Me.Close()
+                Exit Sub
+            End If
+
+
+            If AgL.PubMoveRecApplicable Then
+                FIniMaster(0, 1)
+                Topctrl1_tbRef()
+            End If
+
+            If Topctrl1.Mode = "Add" Then
+                If mIsReturnValue = True Then Me.Close() : Exit Sub
+                Topctrl1.LblDocId.Text = mSearchCode
+                Topctrl1.FButtonClick(0)
+                Exit Sub
+            Else
+                Topctrl1.SetDisp(True)
+                If AgL.PubMoveRecApplicable Then MoveRec()
+            End If
+
+        Catch ex As Exception
+            If mTrans = True Then AgL.ETrans.Rollback()
+            MsgBox(ex.Message)
+        End Try
+    End Sub
+
+    Public Sub SaveDataInPersonLastTransactionValues(DocId As String, ByVal Conn As Object, ByVal Cmd As Object)
+        Dim I As Integer, J As Integer
+        Dim DtDivision As DataTable
+        Dim DtSite As DataTable
+
+        'mQry = "Delete from SubgroupSiteDivisionDetail Where Subcode='" & DocId & "'"
+        'AgL.Dman_ExecuteNonQry(mQry, Conn, Cmd)
+
+        mQry = "Select Div_Code, Div_Name From Division Order By Div_Name"
+        DtDivision = AgL.FillData(mQry, IIf(AgL.PubServerName = "", Conn, AgL.GcnRead)).Tables(0)
+
+        mQry = "Select Code, Name From SiteMast Order By Name"
+        DtSite = AgL.FillData(mQry, IIf(AgL.PubServerName = "", Conn, AgL.GcnRead)).Tables(0)
+
+        For J = 0 To DtDivision.Rows.Count - 1
+            For I = 0 To DtSite.Rows.Count - 1
+                If Topctrl1.Mode = "Add" Then
+                    mQry = " INSERT INTO SubgroupSiteDivisionDetail (Subcode, Div_Code, Site_Code) 
+                                    VALUES (" & AgL.Chk_Text(DocId) & ", 
+                                    " & AgL.Chk_Text(DtDivision.Rows(J)("Div_Code")) & ", 
+                                    " & AgL.Chk_Text(DtSite.Rows(I)("Code")) & "                                     
+                                    )"
+                    AgL.Dman_ExecuteNonQry(mQry, Conn, Cmd)
+                Else
+                    mQry = "Select Count(*) from SubgroupSiteDivisionDetail Where Div_Code = '" & DtDivision.Rows(J)("Div_Code") & "' And  Site_Code = '" & DtSite.Rows(I)("Code") & "' And Subcode = '" & DocId & "' "
+                    If AgL.Dman_Execute(mQry, IIf(AgL.PubServerName = "", Conn, AgL.GcnRead)).ExecuteScalar() = 0 Then
+                        mQry = " INSERT INTO SubgroupSiteDivisionDetail (Subcode, Div_Code, Site_Code) 
+                                    VALUES (" & AgL.Chk_Text(DocId) & ", 
+                                    " & AgL.Chk_Text(DtDivision.Rows(J)("Div_Code")) & ", 
+                                    " & AgL.Chk_Text(DtSite.Rows(I)("Code")) & "                                     
+                                    )"
+                        AgL.Dman_ExecuteNonQry(mQry, Conn, Cmd)
+                    End If
+                End If
+            Next
+        Next
+    End Sub
+
+
+
+    Private Sub TxtCity_Enter(ByVal sender As Object, ByVal e As System.EventArgs) Handles TxtCity.Enter
+        Select Case sender.name
+            Case TxtCity.Name
+
+        End Select
+    End Sub
+
+    Private Sub Control_Validating(ByVal sender As Object, ByVal e As System.ComponentModel.CancelEventArgs) Handles TxtCity.Validating, TxtAcGroup.Validating, TxtCity.Validating, TxtPartyType.Validating
+        Dim DtTemp As DataTable = Nothing
+        Dim DrTemp As DataRow() = Nothing
+        Try
+            Select Case sender.NAME
+                Case TxtAcGroup.Name
+                    If sender.text.ToString.Trim = "" Or sender.AgSelectedValue.Trim = "" Then
+                        mGroupNature = ""
+                        mNature = ""
+                    Else
+                        If sender.AgHelpDataSet IsNot Nothing Then
+                            DrTemp = TxtAcGroup.AgHelpDataSet.Tables(0).Select("Code = " & AgL.Chk_Text(TxtAcGroup.AgSelectedValue) & "")
+                            mGroupNature = AgL.XNull(DrTemp(0)("GroupNature"))
+                            mNature = AgL.XNull(DrTemp(0)("Nature"))
+                        End If
+                    End If
+                Case TxtPartyType.Name
+                    ApplySubgroupTypeSetting(TxtPartyType.Text)
+                    Dgl1.Item(Col1Head, rowAgent).Tag = Nothing
+                Case TxtCity.Name
+                    If TxtCity.Text <> "" Then
+                        mQry = "Select ManualCode From State Where Code = (Select State From City Where CityCode = '" & TxtCity.Tag & "')"
+                        DtTemp = AgL.FillData(mQry, AgL.GCn).Tables(0)
+                        If DtTemp.Rows.Count > 0 Then
+                            gStateCode = AgL.XNull(DtTemp.Rows(0)("ManualCode"))
+                        Else
+                            MsgBox("State Code is not defined for selected city.")
+                        End If
+                    End If
+            End Select
+        Catch ex As Exception
+            MsgBox(ex.Message)
+        End Try
+    End Sub
+
+    Private Sub FrmSteward_Load(ByVal sender As Object, ByVal e As System.EventArgs) Handles Me.Load
+        If IsReturnValue = False Then
+            ''AgL.WinSetting(Me, 418, 913, 0, 0)
+        Else
+            Topctrl1.FButtonClick(0)
+        End If
+
+        If Not AgL.StrCmp(AgL.PubUserName, AgLibrary.ClsConstant.PubSuperUserName) Then
+            MnuImportFromExcel.Visible = False
+            MnuImportFromTally.Visible = False
+            MnuImportFromDos.Visible = False
+        End If
+    End Sub
+
+    Private Sub Form_Paint(ByVal sender As Object, ByVal e As System.Windows.Forms.PaintEventArgs) Handles Me.Paint
+        AgL.FPaintForm(Me, e, Topctrl1.Height)
+    End Sub
+
+    Private Sub TxtDescription_KeyDown(ByVal sender As Object, ByVal e As System.Windows.Forms.KeyEventArgs) Handles TxtCreditLimit.KeyDown, TxtCity.KeyDown
+        Select Case sender.Name
+            Case TxtCreditDays.Name
+                If e.KeyCode = Keys.Enter Then
+                    If MsgBox("Do you want to save?", MsgBoxStyle.YesNo + MsgBoxStyle.DefaultButton2, "Save") = MsgBoxResult.Yes Then
+                        Topctrl1.FButtonClick(13)
+                    End If
+                End If
+            Case TxtCity.Name
+                If e.KeyCode = Keys.Insert Then
+                    FOpenCityMaster()
+                ElseIf e.KeyCode <> Keys.Enter Then
+                    If sender.AgHelpDataSet Is Nothing Then
+                        mQry = "Select CityCode, CityName From City Order By CityName"
+                        sender.aghelpdataset = AgL.FillData(mQry, AgL.GCn)
+                        TxtCity.AgCreateHelpGrid(sender)
+                    End If
+                End If
+        End Select
+    End Sub
+
+    Private Sub FOpenCityMaster()
+        Dim DrTemp As DataRow() = Nothing
+        Dim bCityCode$ = ""
+        Dim objMdi As New MDIMain
+        Dim StrUserPermission As String
+        Dim DTUP As DataTable
+
+        StrUserPermission = AgIniVar.FunGetUserPermission(ClsMain.ModuleName, objMdi.MnuCityMaster.Name, objMdi.MnuCityMaster.Text, DTUP)
+
+        Dim frmObj As FrmCity
+
+        frmObj = New FrmCity(StrUserPermission, DTUP)
+        frmObj.EntryPointIniMode = AgTemplate.ClsMain.EntryPointIniMode.Insertion
+        frmObj.StartPosition = FormStartPosition.CenterParent
+        frmObj.IniGrid()
+        frmObj.ShowDialog()
+        bCityCode = frmObj.mSearchCode
+        frmObj = Nothing
+
+
+
+
+        TxtCity.Tag = bCityCode
+        TxtCity.Text = AgL.XNull(AgL.Dman_Execute("Select CityName From City Where CityCode = '" & bCityCode & "'", AgL.GCn).ExecuteScalar)
+        'Validating_ItemCode(bCityCode, ColumnIndex, RowIndex)
+
+        SendKeys.Send("{Enter}")
+    End Sub
+
+
+    Public Function FOpenPersonMaster(SubgroupType As String) As String
+        Dim DrTemp As DataRow() = Nothing
+        Dim bSubCode$ = ""
+        Dim objMdi As New MDIMain
+        Dim StrUserPermission As String
+        Dim DTUP As DataTable
+
+        StrUserPermission = AgIniVar.FunGetUserPermission(ClsMain.ModuleName, objMdi.MnuCustomerMaster.Name, objMdi.MnuCustomerMaster.Text, DTUP)
+
+        Dim frmObj As FrmPerson
+
+        frmObj = New FrmPerson(StrUserPermission, DTUP)
+        frmObj.EntryPointIniMode = AgTemplate.ClsMain.EntryPointIniMode.Insertion
+        frmObj.StartPosition = FormStartPosition.CenterParent
+        frmObj.TxtPartyType.Text = SubgroupType
+        frmObj.TxtPartyType.Tag = SubgroupType
+        Control_Validating(TxtPartyType, New CancelEventArgs)
+        frmObj.IniGrid()
+        frmObj.ShowDialog()
+        bSubCode = frmObj.mSearchCode
+        frmObj = Nothing
+    End Function
+
+
+    Private Sub FrmParty_BaseEvent_Topctrl_tbAdd() Handles Me.BaseEvent_Topctrl_tbAdd
+        If AgL.PubServerName = "" Then
+            TxtManualCode.Text = AgL.XNull(AgL.Dman_Execute("SELECT  IfNull(Max(CAST(ManualCode AS INTEGER)),0) +1 FROM Subgroup  WHERE ABS(ManualCode)>0", AgL.GcnRead).ExecuteScalar)
+        Else
+            TxtManualCode.Text = AgL.XNull(AgL.Dman_Execute("SELECT  IfNull(Max(CAST(ManualCode AS INTEGER)),0) +1 FROM Subgroup  WHERE IsNumeric(ManualCode)>0", AgL.GcnRead).ExecuteScalar)
+        End If
+        TxtSalesTaxGroup.Tag = AgL.XNull(AgL.PubDtEnviro.Rows(0)("Default_SalesTaxGroupParty"))
+        TxtSalesTaxGroup.Text = AgL.XNull(AgL.PubDtEnviro.Rows(0)("Default_SalesTaxGroupParty"))
+
+        'If mSubGroupNature = ESubgroupNature.Customer Then
+        '    TxtAcGroup.AgSelectedValue = SubGroupConst.GroupCode_Debtors
+        '    mNature = SubGroupConst.Nature_Debtors
+        '    mGroupNature = SubGroupConst.GroupNature_Debtors
+        'Else
+        '    TxtAcGroup.AgSelectedValue = SubGroupConst.GroupCode_Creditors
+        '    mNature = SubGroupConst.Nature_Creditors
+        '    mGroupNature = SubGroupConst.GroupNature_Creditors
+        'End If
+
+
+        If TxtPartyType.AgLastValueText = "" Then
+            TxtPartyType.Tag = "Customer"
+            TxtPartyType.Text = "Customer"
+        Else
+            TxtPartyType.Tag = TxtPartyType.AgLastValueTag
+            TxtPartyType.Text = TxtPartyType.AgLastValueText
+        End If
+
+        SetAttachmentCaption()
+        TxtPartyType.Focus()
+    End Sub
+
+    Protected Overrides Sub Finalize()
+        MyBase.Finalize()
+    End Sub
+
+    Private Sub FrmParty_BaseEvent_Topctrl_tbEdit(ByRef Passed As Boolean) Handles Me.BaseEvent_Topctrl_tbEdit
+        TxtManualCode.Focus()
+    End Sub
+
+    Private Function FRetUpline(ByVal SubCode As String, ByRef mUpLineStr As String, Optional ByVal Parent As String = "") As String
+        Dim mParent As String = ""
+        If Parent = "" Then
+            mQry = " SELECT Sg.Parent FROM SubGroup Sg  WHERE Sg.SubCode = '" & SubCode & "'"
+            mParent = AgL.XNull(AgL.Dman_Execute(mQry, AgL.GcnRead).ExecuteScalar)
+        Else
+            mParent = Parent
+        End If
+
+        If InStr(mUpLineStr, mSearchCode) > 0 Then
+            Err.Raise(1, , "Parent Name Is Invalid.It is creating a cycle.")
+        End If
+
+        If mParent <> SubCode And mParent <> "" Then
+            mUpLineStr += IIf(mUpLineStr = "", "|" + mParent + "|", "," + "|" + mParent + "|")
+            FRetUpline(mParent, mUpLineStr)
+        End If
+        FRetUpline = mUpLineStr
+    End Function
+
+    Private Sub BtnImprtFromExcel_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles BtnImprtFromExcel.Click
+        Dim DtTemp As DataTable
+        Dim DtMain As DataTable = Nothing
+        Dim I As Integer
+        Dim CityCode$ = "", ErrorLog$ = ""
+        Dim StrErrLog As String = ""
+        mQry = "Select '' as Srl, 'Code' as [Field Name], 'Text' as [Data Type], 20 as [Length], 'Yes' As [Mandatory] "
+        mQry = mQry + "Union All Select  '' as Srl,'Name' as [Field Name], 'Text' as [Data Type], 50 as [Length] , 'Yes' As [Mandatory] "
+        mQry = mQry + "Union All Select  '' as Srl,'Add1' as [Field Name], 'Text' as [Data Type], 50 as [Length] , 'No' As [Mandatory] "
+        mQry = mQry + "Union All Select  '' as Srl,'Add2' as [Field Name], 'Text' as [Data Type], 50 as [Length] , 'No' As [Mandatory] "
+        mQry = mQry + "Union All Select  '' as Srl,'City' as [Field Name], 'Text' as [Data Type], 50 as [Length] , 'Yes' As [Mandatory] "
+        mQry = mQry + "Union All Select  '' as Srl,'Pin' as [Field Name], 'Text' as [Data Type], 6 as [Length] , 'No' As [Mandatory] "
+        mQry = mQry + "Union All Select  '' as Srl,'Contact No' as [Field Name], 'Text' as [Data Type], 35 as [Length] , 'No' As [Mandatory] "
+        mQry = mQry + "Union All Select  '' as Srl,'Mobile' as [Field Name], 'Text' as [Data Type], 35 as [Length] , 'No' As [Mandatory] "
+        mQry = mQry + "Union All Select  '' as Srl,'EMail' as [Field Name], 'Text' as [Data Type], 100 as [Length] , 'No' As [Mandatory] "
+        mQry = mQry + "Union All Select  '' as Srl,'Contact Person' as [Field Name], 'Text' as [Data Type], 100 as [Length] , 'No' As [Mandatory] "
+        mQry = mQry + "Union All Select  '' as Srl,'Fax No' as [Field Name], 'Text' as [Data Type], 35 as [Length] , 'No' As [Mandatory] "
+        mQry = mQry + "Union All Select  '' as Srl,'CST No' as [Field Name], 'Text' as [Data Type], 40 as [Length] , 'No' As [Mandatory] "
+        mQry = mQry + "Union All Select  '' as Srl,'TIN No' as [Field Name], 'Text' as [Data Type], 20 as [Length] , 'No' As [Mandatory] "
+        mQry = mQry + "Union All Select  '' as Srl,'Service Tax No' as [Field Name], 'Text' as [Data Type], 40 as [Length] , 'No' As [Mandatory] "
+        mQry = mQry + "Union All Select  '' as Srl,'Pan No' as [Field Name], 'Text' as [Data Type], 20 as [Length] , 'No' As [Mandatory] "
+        mQry = mQry + "Union All Select  '' as Srl,'A/c Group' as [Field Name], 'Text' as [Data Type], 50 as [Length] , 'Yes' As [Mandatory] "
+
+        DtTemp = AgL.FillData(mQry, AgL.GCn).Tables(0)
+
+        Dim ObjFrmImport As New FrmImportFromExcel
+        ObjFrmImport.Text = "Party Master Import"
+        ObjFrmImport.Dgl1.DataSource = DtTemp
+        ObjFrmImport.ShowDialog()
+
+        If Not AgL.StrCmp(ObjFrmImport.UserAction, "OK") Then Exit Sub
+
+        DtTemp = ObjFrmImport.P_DsExcelData.Tables(0)
+
+
+        For I = 0 To DtTemp.Rows.Count - 1
+            If AgL.XNull(DtTemp.Rows(I)("A/c Group")) <> "" Then
+                mQry = " Select GroupCode From AcGroup Where GroupName = " & AgL.Chk_Text(AgL.XNull(DtTemp.Rows(I)("A/c Group"))) & " "
+                If AgL.Dman_Execute(mQry, AgL.GCn).ExecuteScalar = 0 Then
+                    If ErrorLog = "" Then
+                        ErrorLog = vbCrLf & "These A/c Groups Are Not Present In Master" & vbCrLf
+                        ErrorLog += AgL.XNull(DtTemp.Rows(I)("A/c Group")) & ", "
+                    Else
+                        ErrorLog += AgL.XNull(DtTemp.Rows(I)("A/c Group")) & ", "
+                    End If
+                End If
+            End If
+        Next
+
+        If ErrorLog <> "" Then
+            If File.Exists(My.Application.Info.DirectoryPath + " \ " + "ErrorLog.txt") Then
+                My.Computer.FileSystem.WriteAllText(My.Application.Info.DirectoryPath + "\" + "ErrorLog.txt", ErrorLog, False)
+            Else
+                File.Create(My.Application.Info.DirectoryPath + " \ " + "ErrorLog.txt")
+                My.Computer.FileSystem.WriteAllText(My.Application.Info.DirectoryPath + " \ " + "ErrorLog.txt", ErrorLog, False)
+            End If
+            System.Diagnostics.Process.Start("notepad.exe", My.Application.Info.DirectoryPath + "\" + "ErrorLog.txt")
+            Exit Sub
+        End If
+
+        For I = 0 To DtTemp.Rows.Count - 1
+            Topctrl1.FButtonClick(0)
+
+            If DtTemp.Columns.Contains("Code") Then TxtManualCode.Text = AgL.XNull(DtTemp.Rows(I)("Code")) Else MsgBox("Code Is Mandatory") : Exit Sub
+            If DtTemp.Columns.Contains("Name") Then TxtName.Text = AgL.XNull(DtTemp.Rows(I)("Name")) Else MsgBox("Name Is Mandatory") : Exit Sub
+            If DtTemp.Columns.Contains("Add1") Then TxtAddress.Text = AgL.XNull(DtTemp.Rows(I)("Add1"))
+
+
+            If DtTemp.Columns.Contains("City") Then TxtCity.Text = AgL.XNull(DtTemp.Rows(I)("City")) Else MsgBox("City Is Mandatory") : Exit Sub
+
+            If AgL.VNull(AgL.Dman_Execute("Select Count(*) From City Where CityName = '" & TxtCity.Text & "'", AgL.GcnRead).ExecuteScalar) = 0 Then
+                CityCode = AgL.GetMaxId("City", "CityCode", AgL.GcnRead, AgL.PubDivCode, AgL.PubSiteCode)
+                mQry = " INSERT INTO City(CityCode,CityName) VALUES(" & AgL.Chk_Text(CityCode) & ", " & AgL.Chk_Text(TxtCity.Text) & ") "
+                AgL.Dman_ExecuteNonQry(mQry, AgL.GCn, AgL.ECmd)
+            End If
+
+
+            If DtTemp.Columns.Contains("Pin") Then TxtPinNo.Text = AgL.XNull(DtTemp.Rows(I)("Pin"))
+            If DtTemp.Columns.Contains("Contact No") Then TxtPhone.Text = AgL.XNull(DtTemp.Rows(I)("Contact No"))
+            If DtTemp.Columns.Contains("Mobile") Then TxtMobile.Text = AgL.XNull(DtTemp.Rows(I)("Mobile"))
+            If DtTemp.Columns.Contains("EMail") Then TxtEMail.Text = AgL.XNull(DtTemp.Rows(I)("EMail"))
+            If DtTemp.Columns.Contains("Contact Person") Then Dgl1.Item(Col1Value, rowContactPerson).Value = AgL.XNull(DtTemp.Rows(I)("Contact Person"))
+
+            If DtTemp.Columns.Contains("STRegNo") Then Dgl1.Item(Col1Value, rowContactPerson) = AgL.XNull(DtTemp.Rows(I)("GST NO"))
+            If DtTemp.Columns.Contains("Pan No") Then Dgl1.Item(Col1Value, rowPanNo) = AgL.XNull(DtTemp.Rows(I)("Pan No"))
+            If DtTemp.Columns.Contains("A/c Group") Then TxtAcGroup.Text = AgL.XNull(DtTemp.Rows(I)("A/c Group")) Else MsgBox("A/c Group Is Mandatory") : Exit Sub
+            If TxtAcGroup.Text <> "" Then TxtAcGroup.Tag = AgL.XNull(AgL.Dman_Execute("Select GroupCode From AcGroup Where GroupName = '" & TxtAcGroup.Text & "' ", AgL.GcnRead).ExecuteScalar)
+
+            Topctrl1.FButtonClick(13)
+        Next
+    End Sub
+
+    Private Sub FrmParty_BaseFunction_DispText() Handles Me.BaseFunction_DispText
+        GBoxImportFromExcel.Enabled = True
+
+
+    End Sub
+
+    Private Sub FrmPerson_BaseFunction_IniGrid() Handles Me.BaseFunction_IniGrid
+        Dgl1.ColumnCount = 0
+        With AgCL
+            .AddAgTextColumn(Dgl1, ColSNo, 35, 5, ColSNo, False, True, False)
+            .AddAgTextColumn(Dgl1, Col1Head, 150, 255, Col1Head, True, True)
+            .AddAgTextColumn(Dgl1, Col1Mandatory, 10, 20, Col1Mandatory, True, True)
+            .AddAgTextColumn(Dgl1, Col1Value, 220, 255, Col1Value, True, False)
+            .AddAgButtonColumn(Dgl1, Col1BtnDetail, 35, Col1BtnDetail, True, True)
+
+        End With
+        AgL.AddAgDataGrid(Dgl1, Pnl1)
+        Dgl1.EnableHeadersVisualStyles = False
+        Dgl1.ColumnHeadersHeight = 35
+        Dgl1.AgSkipReadOnlyColumns = True
+        Dgl1.AllowUserToAddRows = False
+        Dgl1.RowHeadersVisible = False
+        Dgl1.ColumnHeadersVisible = False
+        AgL.GridDesign(Dgl1)
+
+
+
+        Dgl1.Rows.Add(12)
+        Dgl1.Item(Col1Head, rowContactPerson).Value = "Contact Person"
+        Dgl1.Item(Col1Head, rowPanNo).Value = "PAN No."
+        Dgl1.Item(Col1Head, rowSalesTaxNo).Value = "GST No."
+        Dgl1.Item(Col1Head, rowAadharNo).Value = "Aadhar No."
+        Dgl1.Item(Col1Head, rowParent).Value = "Master Party"
+        Dgl1.Item(Col1Head, rowArea).Value = "Area"
+        Dgl1.Item(Col1Head, rowInterestSlab).Value = "Interest Slab"
+        Dgl1.Item(Col1Head, rowAgent).Value = "Agent"
+        Dgl1.Item(Col1Head, rowTransporter).Value = "Transporter"
+        Dgl1.Item(Col1Head, rowRateType).Value = "Rate Type"
+        Dgl1.Item(Col1Head, rowDistance).Value = "Distance from here"
+        Dgl1.Item(Col1Head, rowDiscount).Value = "Discount"
+    End Sub
+
+    Private Sub Dgl1_CellEnter(ByVal sender As Object, ByVal e As System.Windows.Forms.DataGridViewCellEventArgs) Handles Dgl1.CellEnter
+        Try
+
+            If Dgl1.CurrentCell Is Nothing Then Exit Sub
+            If Topctrl1.Mode = "BROWSE" Then
+                Dgl1.CurrentCell.ReadOnly = True
+            End If
+
+            If Dgl1.CurrentCell.ColumnIndex <> Dgl1.Columns(Col1Value).Index Then Exit Sub
+
+
+            Dgl1.AgHelpDataSet(Dgl1.CurrentCell.ColumnIndex) = Nothing
+            CType(Dgl1.Columns(Col1Value), AgControls.AgTextColumn).AgValueType = AgControls.AgTextColumn.TxtValueType.Text_Value
+            CType(Dgl1.Columns(Col1Value), AgControls.AgTextColumn).MaxInputLength = 0
+
+            Select Case Dgl1.CurrentCell.RowIndex
+                Case rowContactPerson
+                    CType(Dgl1.Columns(Col1Value), AgControls.AgTextColumn).MaxInputLength = 100
+                Case rowPanNo
+                    CType(Dgl1.Columns(Col1Value), AgControls.AgTextColumn).MaxInputLength = 10
+                Case rowAadharNo
+                    CType(Dgl1.Columns(Col1Value), AgControls.AgTextColumn).MaxInputLength = 12
+                Case rowSalesTaxNo
+                    CType(Dgl1.Columns(Col1Value), AgControls.AgTextColumn).MaxInputLength = 15
+            End Select
+        Catch ex As Exception
+            MsgBox(ex.Message)
+        End Try
+    End Sub
+
+
+    Private Sub Dgl1_EditingControl_KeyDown(ByVal sender As Object, ByVal e As System.Windows.Forms.KeyEventArgs) Handles Dgl1.EditingControl_KeyDown
+        Dim bRowIndex As Integer = 0, bColumnIndex As Integer = 0
+        Dim bItemCode As String = ""
+        Dim bNewMasterCode As String = ""
+        Dim DrTemp As DataRow() = Nothing
+        Try
+            bRowIndex = Dgl1.CurrentCell.RowIndex
+            bColumnIndex = Dgl1.CurrentCell.ColumnIndex
+
+            If e.KeyCode = Keys.Enter Then Exit Sub
+            If bColumnIndex <> Dgl1.Columns(Col1Value).Index Then Exit Sub
+
+            Select Case Dgl1.CurrentCell.RowIndex
+                Case rowParent
+                    If e.KeyCode = Keys.Insert Then
+                        bNewMasterCode = FOpenPersonMaster(TxtPartyType.Text)
+                        Dgl1(Col1Value, Dgl1.CurrentCell.RowIndex).Tag = bNewMasterCode
+                        Dgl1(Col1Value, Dgl1.CurrentCell.RowIndex).Value = AgL.XNull(AgL.Dman_Execute("Select Name From viewHelpSubgroup Where Code = '" & bNewMasterCode & "'", AgL.GCn).ExecuteScalar)
+
+                        SendKeys.Send("{Enter}")
+                    End If
+                    If Dgl1.Item(Col1Head, Dgl1.CurrentCell.RowIndex).Tag Is Nothing Then
+                            mQry = "select Code, Name From viewHelpSubgroup Where Code<>'" & mSearchCode & "' Order By Name"
+                            Dgl1.Item(Col1Head, Dgl1.CurrentCell.RowIndex).Tag = AgL.FillData(mQry, AgL.GCn)
+                        End If
+                        If Dgl1.AgHelpDataSet(Col1Value) Is Nothing Then
+                        Dgl1.AgHelpDataSet(Col1Value) = Dgl1.Item(Col1Head, Dgl1.CurrentCell.RowIndex).Tag
+                    End If
+                Case rowArea
+                    If Dgl1.Item(Col1Head, Dgl1.CurrentCell.RowIndex).Tag Is Nothing Then
+                        mQry = "select Code, Description From area Order By Description"
+                        Dgl1.Item(Col1Head, Dgl1.CurrentCell.RowIndex).Tag = AgL.FillData(mQry, AgL.GCn)
+                    End If
+                    If Dgl1.AgHelpDataSet(Col1Value) Is Nothing Then
+                        Dgl1.AgHelpDataSet(Col1Value) = Dgl1.Item(Col1Head, Dgl1.CurrentCell.RowIndex).Tag
+                    End If
+                Case rowInterestSlab
+                    If Dgl1.Item(Col1Head, Dgl1.CurrentCell.RowIndex).Tag Is Nothing Then
+                        mQry = "select Code, Description From InterestSlab Order By Description"
+                        Dgl1.Item(Col1Head, Dgl1.CurrentCell.RowIndex).Tag = AgL.FillData(mQry, AgL.GCn)
+                    End If
+                    If Dgl1.AgHelpDataSet(Col1Value) Is Nothing Then
+                        Dgl1.AgHelpDataSet(Col1Value) = Dgl1.Item(Col1Head, Dgl1.CurrentCell.RowIndex).Tag
+                    End If
+
+                Case rowAgent
+                    If Dgl1.Item(Col1Head, Dgl1.CurrentCell.RowIndex).Tag Is Nothing Then
+                        If TxtPartyType.Text = AgLibrary.ClsMain.agConstants.SubgroupType.Supplier Then
+                            mQry = "select Code, Name From viewHelpSubgroup Where subgroupType = '" & AgLibrary.ClsMain.agConstants.SubgroupType.PurchaseAgent & "' Order By Name"
+                        Else
+                            mQry = "select Code, Name From viewHelpSubgroup Where subgroupType = '" & AgLibrary.ClsMain.agConstants.SubgroupType.SalesAgent & "' Order By Name"
+                        End If
+
+                        Dgl1.Item(Col1Head, Dgl1.CurrentCell.RowIndex).Tag = AgL.FillData(mQry, AgL.GCn)
+                    End If
+                    If Dgl1.AgHelpDataSet(Col1Value) Is Nothing Then
+                        Dgl1.AgHelpDataSet(Col1Value) = Dgl1.Item(Col1Head, Dgl1.CurrentCell.RowIndex).Tag
+                    End If
+
+                Case rowTransporter
+                    If Dgl1.Item(Col1Head, Dgl1.CurrentCell.RowIndex).Tag Is Nothing Then
+                        mQry = "select Code, Name From viewHelpSubgroup Where subgroupType = '" & AgLibrary.ClsMain.agConstants.SubgroupType.Transporter & "' Order By Name"
+                        Dgl1.Item(Col1Head, Dgl1.CurrentCell.RowIndex).Tag = AgL.FillData(mQry, AgL.GCn)
+                    End If
+                    If Dgl1.AgHelpDataSet(Col1Value) Is Nothing Then
+                        Dgl1.AgHelpDataSet(Col1Value) = Dgl1.Item(Col1Head, Dgl1.CurrentCell.RowIndex).Tag
+                    End If
+
+
+                Case rowRateType
+                    If Dgl1.Item(Col1Head, Dgl1.CurrentCell.RowIndex).Tag Is Nothing Then
+                        mQry = "select Code, Description From RateType Order By Description"
+                        Dgl1.Item(Col1Head, Dgl1.CurrentCell.RowIndex).Tag = AgL.FillData(mQry, AgL.GCn)
+                    End If
+                    If Dgl1.AgHelpDataSet(Col1Value) Is Nothing Then
+                        Dgl1.AgHelpDataSet(Col1Value) = Dgl1.Item(Col1Head, Dgl1.CurrentCell.RowIndex).Tag
+                    End If
+
+            End Select
+        Catch ex As Exception
+            MsgBox(ex.Message)
+        End Try
+    End Sub
+
+    Private Sub FrmPerson_BaseFunction_BlankText() Handles Me.BaseFunction_BlankText
+        Dim I As Integer
+        For I = 0 To Dgl1.Rows.Count - 1
+            Dgl1.Item(Col1Value, I).Value = ""
+            Dgl1.Item(Col1Value, I).Tag = ""
+            Dgl1.Item(Col1BtnDetail, I).Tag = Nothing
+            Dgl1.Item(Col1BtnDetail, I) = New DataGridViewTextBoxCell
+            Dgl1(Col1BtnDetail, I).ReadOnly = True
+        Next
+
+        gStateCode = ""
+    End Sub
+
+    Private Sub FrmPerson_BaseEvent_Data_Validation(ByRef passed As Boolean) Handles Me.BaseEvent_Data_Validation
+
+    End Sub
+
+    Public Function ValidateGstNoForParty(Subcode As String) As Boolean
+        Try
+            Dim mQry As String
+            Dim DtSubcode As DataTable
+            Dim mReason As String
+
+            mQry = "Select Sg.*, S.ManualCode as StateCode 
+                    From SubGroup Sg 
+                    Left Join City C On Sg.CityCode = C.CityCode 
+                    Left Join State S On C.State = S.Code
+                    Where Sg.Subcode='" & Subcode & "'"
+            DtSubcode = AgL.FillData(mQry, AgL.GCn).Tables(0)
+            If DtSubcode.Rows.Count > 0 Then
+                If AgL.XNull(DtSubcode.Rows(0)("SalesTaxPostingGroup")) = "REGISTERED" Or AgL.XNull(DtSubcode.Rows(0)("SalesTaxPostingGroup")) = "COMPOSITION" Then
+                    If AgL.XNull(DtSubcode.Rows(0)("STRegNo")) = "" Then
+                        mReason = "Gst No. Can not be blank"
+                    ElseIf Len(AgL.XNull(DtSubcode.Rows(0)("STRegNo"))) <> 15 Then
+                        mReason = "Gst No. should be of 15 characters"
+                    ElseIf AgL.XNull(DtSubcode.Rows(0)("STRegNo")).ToString.Substring(0, 2) <> AgL.XNull(DtSubcode.Rows(0)("StateCode")) Then
+                        mReason = "First two characteres of gst no are not matching with state code"
+                    Else
+                        ValidateGstNoForParty = True
+                    End If
+                Else
+                    MsgBox("Gst No. is only for registered / composition dealers")
+                End If
+            Else
+                MsgBox("Record not found for passed subcode")
+            End If
+
+            If TxtSalesTaxGroup.Text.ToUpper = "REGISTERED" Then
+                If Len(Dgl1.Item(Col1Value, rowSalesTaxNo).Value) <> 15 Then
+
+                End If
+            End If
+
+        Catch ex As Exception
+
+        End Try
+    End Function
+
+
+    Public Function ValidatePanNo(PANNo As String) As Boolean
+        Dim mReason As String = ""
+
+        If PANNo = "" Then Exit Function
+
+        If Len(PANNo) <> 10 Then
+            mReason = "PAN No. should be of 10 characters. Currently It is " & Len(PANNo).ToString
+        Else
+            If Not System.Text.RegularExpressions.Regex.IsMatch(PANNo, "[a-zA-Z]{5}[0-9]{4}[a-zA-Z]{1}") Then
+                mReason = "Some thing wrong in the given PAN No."
+            End If
+        End If
+
+        If mReason <> "" Then
+            MsgBox(mReason)
+            ValidatePanNo = False
+        Else
+            ValidatePanNo = True
+        End If
+    End Function
+    Public Function ValidateAadharNo(AadharNo As String) As Boolean
+        Dim mReason As String = ""
+
+        If AadharNo = "" Then Exit Function
+
+        If Len(AadharNo) <> 12 Then
+            mReason = "Aadhar No. should be of 12 characters. Currently It is " & Len(AadharNo).ToString
+        Else
+            If Not System.Text.RegularExpressions.Regex.IsMatch(AadharNo, "[0-9]{12}") Then
+                mReason = "Some thing wrong in the given Aadhar No."
+            End If
+        End If
+
+        If mReason <> "" Then
+            MsgBox(mReason)
+            ValidateAadharNo = False
+        Else
+            ValidateAadharNo = True
+        End If
+    End Function
+    Public Sub FImportFromExcel_Old()
+        Dim mTrans As String = ""
+        Dim ErrorLog As String = ""
+        Dim DtTemp As DataTable
+        Dim DtMain As DataTable = Nothing
+        Dim I As Integer
+        'Dim FW As System.IO.StreamWriter = New System.IO.StreamWriter("C:\ImportLog.Txt", False, System.Text.Encoding.Default)
+        Dim StrErrLog As String = ""
+        mQry = "Select '' as Srl, 'Party Type' as [Field Name], 'Text' as [Data Type], 10 as [Length], 'Mandatory, Customer / Supplier / Transporter / Sales Agent / Purchase Agent' as Remark "
+        mQry = mQry + "Union All Select  '' as Srl,'Code' as [Field Name], 'Text' as [Data Type], 20 as [Length], 'Mandatory, Should be unique.' as Remark "
+        mQry = mQry + "Union All Select  '' as Srl,'Display Name' as [Field Name], 'Text' as [Data Type], 255 as [Length], 'Mandatory' as Remark "
+        mQry = mQry + "Union All Select  '' as Srl,'Name' as [Field Name], 'Text' as [Data Type], 255 as [Length], 'Mandatory, Should be unique.' as Remark "
+        mQry = mQry + "Union All Select  '' as Srl,'Address' as [Field Name], 'Text' as [Data Type], 255 as [Length], 'Mandatory' as Remark "
+        mQry = mQry + "Union All Select  '' as Srl,'City' as [Field Name], 'Text' as [Data Type], 50 as [Length], '' as Remark "
+        mQry = mQry + "Union All Select  '' as Srl,'State' as [Field Name], 'Text' as [Data Type], 50 as [Length], '' as Remark "
+        mQry = mQry + "Union All Select  '' as Srl,'Pin No' as [Field Name], 'Text' as [Data Type], 6 as [Length], '' as Remark "
+        mQry = mQry + "Union All Select  '' as Srl,'Contact No' as [Field Name], 'Text' as [Data Type], 35 as [Length], '' as Remark "
+        mQry = mQry + "Union All Select  '' as Srl,'Mobile' as [Field Name], 'Text' as [Data Type], 10 as [Length], 'Mandatory' as Remark "
+        mQry = mQry + "Union All Select  '' as Srl,'EMail' as [Field Name], 'Text' as [Data Type], 255 as [Length], '' as Remark "
+        mQry = mQry + "Union All Select  '' as Srl,'Account Group' as [Field Name], 'Text' as [Data Type], 50 as [Length], 'Mandatory, Sundry Debtors / Sundry Creditors' as Remark "
+        mQry = mQry + "Union All Select  '' as Srl,'Sales Tax Group' as [Field Name], 'Text' as [Data Type], 20 as [Length], 'Mandatory, Registered / Unregistered / Composition' as Remark "
+        mQry = mQry + "Union All Select  '' as Srl,'Credit Days' as [Field Name], 'Number' as [Data Type], Null as [Length], '' as Remark "
+        mQry = mQry + "Union All Select  '' as Srl,'Credit Limit' as [Field Name], 'Number' as [Data Type], Null as [Length], '' as Remark "
+        mQry = mQry + "Union All Select  '' as Srl,'Contact Person' as [Field Name], 'Text' as [Data Type], 255 as [Length], '' as Remark "
+        mQry = mQry + "Union All Select  '' as Srl,'GST No' as [Field Name], 'Text' as [Data Type], 50 as [Length], '' as Remark "
+        mQry = mQry + "Union All Select  '' as Srl,'PAN No' as [Field Name], 'Text' as [Data Type], 50 as [Length], '' as Remark "
+        mQry = mQry + "Union All Select  '' as Srl,'Aadhar No' as [Field Name], 'Text' as [Data Type], 50 as [Length], '' as Remark "
+        mQry = mQry + "Union All Select  '' as Srl,'Master Party' as [Field Name], 'Text' as [Data Type], 255 as [Length], '' as Remark "
+        mQry = mQry + "Union All Select  '' as Srl,'Area' as [Field Name], 'Text' as [Data Type], 50 as [Length], '' as Remark "
+        mQry = mQry + "Union All Select  '' as Srl,'Agent' as [Field Name], 'Text' as [Data Type], 255 as [Length], '' as Remark "
+        mQry = mQry + "Union All Select  '' as Srl,'Transporter' as [Field Name], 'Text' as [Data Type], 255 as [Length], '' as Remark "
+        mQry = mQry + "Union All Select  '' as Srl,'Distance' as [Field Name], 'Number' as [Data Type], Null as [Length], '' as Remark "
+
+        DtTemp = AgL.FillData(mQry, AgL.GCn).Tables(0)
+
+        Dim ObjFrmImport As New FrmImportFromExcel
+        ObjFrmImport.Text = "Person Master Import"
+        ObjFrmImport.Dgl1.DataSource = DtTemp
+        ObjFrmImport.StartPosition = FormStartPosition.CenterScreen
+        ObjFrmImport.ShowDialog()
+
+        If Not AgL.StrCmp(ObjFrmImport.UserAction, "OK") Then Exit Sub
+
+        DtTemp = ObjFrmImport.P_DsExcelData.Tables(0)
+
+
+        Dim DtAccountGroup = DtTemp.DefaultView.ToTable(True, "Account Group")
+        For I = 0 To DtAccountGroup.Rows.Count - 1
+            If AgL.XNull(DtAccountGroup.Rows(I)("Account Group")) <> "" Then
+                If AgL.Dman_Execute("SELECT Count(*) From AcGroup where GroupName = '" & AgL.XNull(DtAccountGroup.Rows(I)("Account Group")) & "'", AgL.GCn).ExecuteScalar = 0 Then
+                    If ErrorLog.Contains("These Account Groups Are Not Present In Master") = False Then
+                        ErrorLog += vbCrLf & "These Account Groups Are Not Present In Master" & vbCrLf
+                        ErrorLog += AgL.XNull(DtAccountGroup.Rows(I)("Account Group")) & ", "
+                    Else
+                        ErrorLog += AgL.XNull(DtAccountGroup.Rows(I)("Account Group")) & ", "
+                    End If
+                End If
+            End If
+        Next
+
+        'Dim DtCity = DtTemp.DefaultView.ToTable(True, "City")
+        'For I = 0 To DtCity.Rows.Count - 1
+        '    If AgL.XNull(DtCity.Rows(I)("City")) <> "" Then
+        '        If AgL.Dman_Execute("SELECT Count(*) From City where CityName = '" & AgL.XNull(DtCity.Rows(I)("City")) & "' ", AgL.GCn).ExecuteScalar = 0 Then
+        '            If ErrorLog.Contains("These Cities Are Not Present In Master") = False Then
+        '                ErrorLog += vbCrLf & "These Cities Are Not Present In Master" & vbCrLf
+        '                ErrorLog += AgL.XNull(DtCity.Rows(I)("City")) & ", "
+        '            Else
+        '                ErrorLog += AgL.XNull(DtCity.Rows(I)("City")) & ", "
+        '            End If
+        '        End If
+        '    End If
+        'Next
+
+        Dim DtState = DtTemp.DefaultView.ToTable(True, "State")
+        For I = 0 To DtState.Rows.Count - 1
+            If AgL.XNull(DtState.Rows(I)("State")) <> "" Then
+                If AgL.Dman_Execute("SELECT Count(*) From State where Description = '" & AgL.XNull(DtState.Rows(I)("State")) & "'", AgL.GCn).ExecuteScalar = 0 Then
+                    If ErrorLog.Contains("These States Are Not Present In Master") = False Then
+                        ErrorLog += vbCrLf & "These States Are Not Present In Master" & vbCrLf
+                        ErrorLog += AgL.XNull(DtState.Rows(I)("State")) & ", "
+                    Else
+                        ErrorLog += AgL.XNull(DtState.Rows(I)("State")) & ", "
+                    End If
+                End If
+            End If
+        Next
+
+        Dim DtSalesTaxGroup = DtTemp.DefaultView.ToTable(True, "Sales Tax Group")
+        For I = 0 To DtSalesTaxGroup.Rows.Count - 1
+            If AgL.XNull(DtSalesTaxGroup.Rows(I)("Sales Tax Group")) <> "" Then
+                If AgL.Dman_Execute("SELECT Count(*) From PostingGroupSalesTaxParty where Description = '" & AgL.XNull(DtSalesTaxGroup.Rows(I)("Sales Tax Group")) & "' ", AgL.GCn).ExecuteScalar = 0 Then
+                    If ErrorLog.Contains("These Sales Tax Groups Are Not Present In Master") = False Then
+                        ErrorLog += vbCrLf & "These Sales Tax Groups Are Not Present In Master" & vbCrLf
+                        ErrorLog += AgL.XNull(DtSalesTaxGroup.Rows(I)("Sales Tax Group")) & ", "
+                    Else
+                        ErrorLog += AgL.XNull(DtSalesTaxGroup.Rows(I)("Sales Tax Group")) & ", "
+                    End If
+                End If
+            End If
+        Next
+
+        For I = 0 To DtTemp.Rows.Count - 1
+            If AgL.XNull(DtTemp.Rows(I)("Account Group")) = "" Then
+                ErrorLog += "Account Group is blank at row no." + (I + 2).ToString() & vbCrLf
+            End If
+
+            If AgL.XNull(DtTemp.Rows(I)("City")) = "" Then
+                ErrorLog += "City is blank at row no." + (I + 2).ToString() & vbCrLf
+            End If
+
+            If AgL.XNull(DtTemp.Rows(I)("State")) = "" Then
+                ErrorLog += "State is blank at row no." + (I + 2).ToString() & vbCrLf
+            End If
+
+            If AgL.XNull(DtTemp.Rows(I)("Sales Tax Group")) = "" Then
+                ErrorLog += "Sales Tax Group is blank at row no." + (I + 2).ToString() & vbCrLf
+            End If
+        Next
+
+        If ErrorLog <> "" Then
+            If File.Exists(My.Application.Info.DirectoryPath + " \ " + "ErrorLog.txt") Then
+                My.Computer.FileSystem.WriteAllText(My.Application.Info.DirectoryPath + "\" + "ErrorLog.txt", ErrorLog, False)
+            Else
+                File.Create(My.Application.Info.DirectoryPath + " \ " + "ErrorLog.txt")
+                My.Computer.FileSystem.WriteAllText(My.Application.Info.DirectoryPath + " \ " + "ErrorLog.txt", ErrorLog, False)
+            End If
+            System.Diagnostics.Process.Start("notepad.exe", My.Application.Info.DirectoryPath + "\" + "ErrorLog.txt")
+            Exit Sub
+        End If
+
+        Try
+            AgL.ECmd = AgL.GCn.CreateCommand
+            AgL.ETrans = AgL.GCn.BeginTransaction(IsolationLevel.ReadCommitted)
+            AgL.ECmd.Transaction = AgL.ETrans
+            mTrans = "Begin"
+
+            Dim mCityCode = AgL.GetMaxId("City", "CityCode", AgL.GCn, AgL.PubDivCode, AgL.PubSiteCode, 4, True, True, AgL.ECmd, AgL.Gcn_ConnectionString)
+
+            Dim DtCity = DtTemp.DefaultView.ToTable(True, "City")
+            For I = 0 To DtCity.Rows.Count - 1
+                If AgL.XNull(DtCity.Rows(I)("City")) <> "" Then
+                    If AgL.Dman_Execute("SELECT Count(*) From City where CityName = '" & AgL.XNull(DtCity.Rows(I)("City")) & "'", AgL.GCn).ExecuteScalar = 0 Then
+                        Dim mCityCode_New = AgL.PubDivCode & AgL.PubSiteCode & (Convert.ToInt32(mCityCode.Replace(AgL.PubDivCode + AgL.PubSiteCode, "")) + I).ToString().PadLeft(4, "0")
+                        mQry = " INSERT INTO City(CityCode, CityName, State, EntryBy, EntryDate, EntryType, EntryStatus)
+                                    Select '" & mCityCode_New & "' As CityCode, " & AgL.Chk_Text(AgL.XNull(DtCity.Rows(I)("City"))) & " As City, 
+                                    (SELECT Code From State where Description = '" & AgL.XNull(DtTemp.Rows(I)("State")) & "') As State, 
+                                    '" & AgL.PubUserName & "' As EntryBy, " & AgL.Chk_Date(AgL.PubLoginDate) & " As EntryDate, 
+                                    'Add' As EntryType, 'Open' As EntryStatus "
+                        AgL.Dman_ExecuteNonQry(mQry, AgL.GCn, AgL.ECmd)
+                    End If
+                End If
+            Next
+
+
+            Dim mSubCode As String = AgL.GetMaxId("SubGroup", "SubCode", AgL.GCn, AgL.PubDivCode, AgL.PubSiteCode, 8, True, True, AgL.ECmd, AgL.Gcn_ConnectionString)
+
+            For I = 0 To DtTemp.Rows.Count - 1
+                Dim mRegSr As Integer = 0
+                Dim mSubCode_New = AgL.PubDivCode & AgL.PubSiteCode & (Convert.ToInt32(mSubCode.Replace(AgL.PubDivCode + AgL.PubSiteCode, "")) + I).ToString().PadLeft(8, "0")
+
+
+                Dim mGroupCode As String = ""
+                Dim mGroupNature As String = ""
+                Dim mNature As String = ""
+
+                mQry = "SELECT GroupCode, GroupNature, Nature  From AcGroup WHERE GroupName =  '" & AgL.XNull(DtTemp.Rows(I)("Account Group")) & "'"
+                Dim DtAcGroup As DataTable = AgL.FillData(mQry, AgL.GCn).Tables(0)
+                If (DtAcGroup.Rows.Count > 0) Then
+                    mGroupCode = DtAcGroup.Rows(0)("GroupCode")
+                    mGroupNature = DtAcGroup.Rows(0)("GroupNature")
+                    mNature = DtAcGroup.Rows(0)("Nature")
+                End If
+
+                If AgL.Dman_Execute("SELECT Count(*) From Subgroup where ManualCode = '" & AgL.XNull(DtTemp.Rows(I)("Code")) & "' ", AgL.GCn).ExecuteScalar = 0 Then
+                    mQry = "INSERT INTO SubGroup(SubCode, Site_Code, Name, DispName, " &
+                        " GroupCode, GroupNature, ManualCode,	Nature,	Address, CityCode,  " &
+                        " PIN, Phone,  ContactPerson, SubgroupType, " &
+                        " Mobile, CreditDays, CreditLimit, EMail, Parent, SalesTaxPostingGroup, " &
+                        " EntryBy, EntryDate,  EntryType, EntryStatus, Div_Code, Status) " &
+                        " Select " & AgL.Chk_Text(mSubCode_New) & ", " &
+                        " '" & AgL.PubSiteCode & "', " & AgL.Chk_Text(AgL.XNull(DtTemp.Rows(I)("Name"))) & ",	" &
+                        " " & AgL.Chk_Text(AgL.XNull(DtTemp.Rows(I)("Name"))) & ", " & AgL.Chk_Text(mGroupCode) & ", " &
+                        " " & AgL.Chk_Text(mGroupNature) & ", " & AgL.Chk_Text(AgL.XNull(DtTemp.Rows(I)("Code"))) & ", " &
+                        " " & AgL.Chk_Text(mNature) & ", " & AgL.Chk_Text(AgL.XNull(DtTemp.Rows(I)("Address"))) & ", " &
+                        " (SELECT CityCode  From City WHERE CityName = '" & AgL.XNull(DtTemp.Rows(I)("City")) & "') As CityCode, " &
+                        " " & AgL.Chk_Text(AgL.XNull(DtTemp.Rows(I)("Pin No"))) & ", " & AgL.Chk_Text(AgL.XNull(DtTemp.Rows(I)("Contact No"))) & ", " &
+                        " " & AgL.Chk_Text(AgL.XNull(DtTemp.Rows(I)("Contact Person"))) & ", " &
+                        " " & AgL.Chk_Text(AgL.XNull(DtTemp.Rows(I)("Party Type"))) & ", " &
+                        " " & AgL.Chk_Text(AgL.XNull(DtTemp.Rows(I)("Mobile"))) & ", " &
+                        " " & Val(AgL.XNull(DtTemp.Rows(I)("Credit Days"))) & ", " &
+                        " " & Val(AgL.XNull(DtTemp.Rows(I)("Credit Limit"))) & ", " &
+                        " " & AgL.Chk_Text(AgL.XNull(DtTemp.Rows(I)("EMail"))) & ", " &
+                        " Null, " &
+                        " (SELECT Description from PostingGroupSalesTaxParty WHERE Description = '" & AgL.XNull(DtTemp.Rows(I)("Sales Tax Group")) & "') As SalesTaxPostingGroup, " &
+                        " " & AgL.Chk_Text(AgL.PubUserName) & ", " & AgL.Chk_Text(AgL.GetDateTime(AgL.GcnRead)) & ", " &
+                        " 'Add', " & AgL.Chk_Text(LogStatus.LogOpen) & ", " &
+                        " " & AgL.Chk_Text(AgL.PubDivCode) & ", 'Active' "
+                    AgL.Dman_ExecuteNonQry(mQry, AgL.GCn, AgL.ECmd)
+
+                    If AgL.XNull(DtTemp.Rows(I)("Sales Tax No")) <> "" Then
+                        mRegSr += 1
+                        mQry = "Insert Into SubgroupRegistration(Subcode, Sr, RegistrationType, RegistrationNo)
+                        Values ('" & mSubCode_New & "', " & mRegSr & ", '" & SubgroupRegistrationType.SalesTaxNo & "', " & AgL.Chk_Text(AgL.XNull(DtTemp.Rows(I)("SalesTaxNo"))) & ") "
+                        AgL.Dman_ExecuteNonQry(mQry, AgL.GCn, AgL.ECmd)
+                    End If
+
+
+                    If AgL.XNull(DtTemp.Rows(I)("PAN No")) <> "" Then
+                        mRegSr += 1
+                        mQry = "Insert Into SubgroupRegistration(Subcode, Sr, RegistrationType, RegistrationNo)
+                       Values ('" & mSubCode_New & "', " & mRegSr & ", '" & SubgroupRegistrationType.PanNo & "', " & AgL.Chk_Text(AgL.XNull(DtTemp.Rows(I)("PAN No"))) & ") "
+                        AgL.Dman_ExecuteNonQry(mQry, AgL.GCn, AgL.ECmd)
+                    End If
+
+                    If AgL.XNull(DtTemp.Rows(I)("Aadhar No")) <> "" Then
+                        mRegSr += 1
+                        mQry = "Insert Into SubgroupRegistration(Subcode, Sr, RegistrationType, RegistrationNo)
+                       Values ('" & mSubCode_New & "', " & mRegSr & ", '" & SubgroupRegistrationType.AadharNo.ToUpper & "', " & AgL.Chk_Text(AgL.XNull(DtTemp.Rows(I)("Aadhar No"))) & ") "
+                        AgL.Dman_ExecuteNonQry(mQry, AgL.GCn, AgL.ECmd)
+                    End If
+                End If
+            Next
+
+            AgL.ETrans.Commit()
+            mTrans = "Commit"
+
+        Catch ex As Exception
+            AgL.ETrans.Rollback()
+            MsgBox(ex.Message)
+        End Try
+        If StrErrLog <> "" Then MsgBox(StrErrLog)
+    End Sub
+
+    Public Sub FImportFromExcel(bImportFor As ImportFor)
+        Dim mTrans As String = ""
+        Dim ErrorLog As String = ""
+        Dim DtTemp As DataTable
+        Dim DtDataFields As DataTable
+        Dim DtMain As DataTable = Nothing
+        Dim I As Integer
+        'Dim FW As System.IO.StreamWriter = New System.IO.StreamWriter("C:\ImportLog.Txt", False, System.Text.Encoding.Default)
+        Dim StrErrLog As String = ""
+        mQry = "Select '' as Srl, '" & GetFieldAliasName(bImportFor, "Party Type") & "' as [Field Name], 'Text' as [Data Type], 10 as [Length], 'Customer / Supplier / Transporter / Sales Agent / Purchase Agent. If Party is a simple ledger account like expenses then this field can be blank.' as Remark "
+        mQry = mQry + "Union All Select  '' as Srl,'" & GetFieldAliasName(bImportFor, "Code") & "' as [Field Name], 'Text' as [Data Type], 20 as [Length], 'Mandatory, Should be unique.' as Remark "
+        mQry = mQry + "Union All Select  '' as Srl,'" & GetFieldAliasName(bImportFor, "Display Name") & "' as [Field Name], 'Text' as [Data Type], 255 as [Length], 'Mandatory' as Remark "
+        mQry = mQry + "Union All Select  '' as Srl,'" & GetFieldAliasName(bImportFor, "Name") & "' as [Field Name], 'Text' as [Data Type], 255 as [Length], 'Mandatory, Should be unique.' as Remark "
+        mQry = mQry + "Union All Select  '' as Srl,'" & GetFieldAliasName(bImportFor, "Address") & "' as [Field Name], 'Text' as [Data Type], 255 as [Length], '' as Remark "
+        mQry = mQry + "Union All Select  '' as Srl,'" & GetFieldAliasName(bImportFor, "City") & "' as [Field Name], 'Text' as [Data Type], 50 as [Length], '' as Remark "
+        mQry = mQry + "Union All Select  '' as Srl,'" & GetFieldAliasName(bImportFor, "State") & "' as [Field Name], 'Text' as [Data Type], 50 as [Length], '' as Remark "
+        mQry = mQry + "Union All Select  '' as Srl,'" & GetFieldAliasName(bImportFor, "Pin No") & "' as [Field Name], 'Text' as [Data Type], 6 as [Length], '' as Remark "
+        mQry = mQry + "Union All Select  '' as Srl,'" & GetFieldAliasName(bImportFor, "Contact No") & "' as [Field Name], 'Text' as [Data Type], 35 as [Length], '' as Remark "
+        mQry = mQry + "Union All Select  '' as Srl,'" & GetFieldAliasName(bImportFor, "Mobile") & "' as [Field Name], 'Text' as [Data Type], 10 as [Length], '' as Remark "
+        mQry = mQry + "Union All Select  '' as Srl,'" & GetFieldAliasName(bImportFor, "EMail") & "' as [Field Name], 'Text' as [Data Type], 255 as [Length], '' as Remark "
+        mQry = mQry + "Union All Select  '' as Srl,'" & GetFieldAliasName(bImportFor, "Account Group") & "' as [Field Name], 'Text' as [Data Type], 50 as [Length], 'Mandatory, Sundry Debtors / Sundry Creditors' as Remark "
+        mQry = mQry + "Union All Select  '' as Srl,'" & GetFieldAliasName(bImportFor, "Sales Tax Group") & "' as [Field Name], 'Text' as [Data Type], 20 as [Length], 'Mandatory, Registered / Unregistered / Composition' as Remark "
+        mQry = mQry + "Union All Select  '' as Srl,'" & GetFieldAliasName(bImportFor, "Credit Days") & "' as [Field Name], 'Number' as [Data Type], Null as [Length], '' as Remark "
+        mQry = mQry + "Union All Select  '' as Srl,'" & GetFieldAliasName(bImportFor, "Credit Limit") & "' as [Field Name], 'Number' as [Data Type], Null as [Length], '' as Remark "
+        mQry = mQry + "Union All Select  '' as Srl,'" & GetFieldAliasName(bImportFor, "Contact Person") & "' as [Field Name], 'Text' as [Data Type], 255 as [Length], '' as Remark "
+        mQry = mQry + "Union All Select  '' as Srl,'" & GetFieldAliasName(bImportFor, "GST No") & "' as [Field Name], 'Text' as [Data Type], 50 as [Length], '' as Remark "
+        mQry = mQry + "Union All Select  '' as Srl,'" & GetFieldAliasName(bImportFor, "PAN No") & "' as [Field Name], 'Text' as [Data Type], 50 as [Length], '' as Remark "
+        mQry = mQry + "Union All Select  '' as Srl,'" & GetFieldAliasName(bImportFor, "Aadhar No") & "' as [Field Name], 'Text' as [Data Type], 50 as [Length], '' as Remark "
+        mQry = mQry + "Union All Select  '' as Srl,'" & GetFieldAliasName(bImportFor, "Master Party") & "' as [Field Name], 'Text' as [Data Type], 255 as [Length], '' as Remark "
+        mQry = mQry + "Union All Select  '' as Srl,'" & GetFieldAliasName(bImportFor, "Area") & "' as [Field Name], 'Text' as [Data Type], 50 as [Length], '' as Remark "
+        mQry = mQry + "Union All Select  '' as Srl,'" & GetFieldAliasName(bImportFor, "Agent") & "' as [Field Name], 'Text' as [Data Type], 255 as [Length], '' as Remark "
+        mQry = mQry + "Union All Select  '' as Srl,'" & GetFieldAliasName(bImportFor, "Transporter") & "' as [Field Name], 'Text' as [Data Type], 255 as [Length], '' as Remark "
+        mQry = mQry + "Union All Select  '' as Srl,'" & GetFieldAliasName(bImportFor, "Distance") & "' as [Field Name], 'Number' as [Data Type], Null as [Length], '' as Remark "
+
+        DtDataFields = AgL.FillData(mQry, AgL.GCn).Tables(0)
+
+        Dim ObjFrmImport As New FrmImportFromExcel
+        ObjFrmImport.Text = "Person Master Import"
+        ObjFrmImport.Dgl1.DataSource = DtDataFields
+        ObjFrmImport.StartPosition = FormStartPosition.CenterScreen
+        ObjFrmImport.ShowDialog()
+
+        If Not AgL.StrCmp(ObjFrmImport.UserAction, "OK") Then Exit Sub
+
+        DtTemp = ObjFrmImport.P_DsExcelData.Tables(0)
+
+        For I = 0 To DtDataFields.Rows.Count - 1
+            If AgL.XNull(DtDataFields.Rows(I)("Remark")).ToString().Contains("Mandatory") Then
+                If Not DtTemp.Columns.Contains(GetFieldAliasName(bImportFor, AgL.XNull(DtDataFields.Rows(I)("Field Name"))).ToString()) Then
+                    If ErrorLog.Contains("These fields are not present is excel file") = False Then
+                        ErrorLog += vbCrLf & "These fields are not present is excel file" & vbCrLf
+                        ErrorLog += GetFieldAliasName(bImportFor, AgL.XNull(DtDataFields.Rows(I)("Field Name")).ToString()) & ", "
+                    Else
+                        ErrorLog += GetFieldAliasName(bImportFor, AgL.XNull(DtDataFields.Rows(I)("Field Name")).ToString()) & ", "
+                    End If
+                End If
+            End If
+        Next
+
+        If DtTemp.Columns.Contains(GetFieldAliasName(bImportFor, "State")) Then
+            Dim DtState = DtTemp.DefaultView.ToTable(True, GetFieldAliasName(bImportFor, "State"))
+            For I = 0 To DtState.Rows.Count - 1
+                If AgL.XNull(DtState.Rows(I)(GetFieldAliasName(bImportFor, "State"))).ToString().Trim() <> "" Then
+                    If AgL.Dman_Execute("SELECT Count(*) From State where Upper(RTrim(LTrim(Description))) = '" & AgL.XNull(DtState.Rows(I)(GetFieldAliasName(bImportFor, "State"))).ToString().ToUpper.Trim() & "'", AgL.GCn).ExecuteScalar = 0 Then
+                        If ErrorLog.Contains("These States Are Not Present In Master") = False Then
+                            ErrorLog += vbCrLf & "These States Are Not Present In Master" & vbCrLf
+                            ErrorLog += AgL.XNull(DtState.Rows(I)(GetFieldAliasName(bImportFor, "State"))).ToString.Trim & ", "
+                        Else
+                            ErrorLog += AgL.XNull(DtState.Rows(I)(GetFieldAliasName(bImportFor, "State"))).ToString.Trim & ", "
+                        End If
+                    End If
+                End If
+            Next
+        End If
+
+        If DtTemp.Columns.Contains(GetFieldAliasName(bImportFor, "Sales Tax Group")) Then
+            Dim DtSalesTaxGroup = DtTemp.DefaultView.ToTable(True, GetFieldAliasName(bImportFor, "Sales Tax Group"))
+            For I = 0 To DtSalesTaxGroup.Rows.Count - 1
+                If AgL.XNull(DtSalesTaxGroup.Rows(I)(GetFieldAliasName(bImportFor, "Sales Tax Group"))).ToString().Trim() <> "" Then
+                    If AgL.Dman_Execute("SELECT Count(*) From PostingGroupSalesTaxParty where Upper(RTrim(LTrim(Description)))  = '" & AgL.XNull(DtSalesTaxGroup.Rows(I)(GetFieldAliasName(bImportFor, "Sales Tax Group"))).ToString().Trim() & "' ", AgL.GCn).ExecuteScalar = 0 Then
+                        If ErrorLog.Contains("These Sales Tax Groups Are Not Present In Master") = False Then
+                            ErrorLog += vbCrLf & "These Sales Tax Groups Are Not Present In Master" & vbCrLf
+                            ErrorLog += AgL.XNull(DtSalesTaxGroup.Rows(I)(GetFieldAliasName(bImportFor, "Sales Tax Group"))) & ", "
+                        Else
+                            ErrorLog += AgL.XNull(DtSalesTaxGroup.Rows(I)(GetFieldAliasName(bImportFor, "Sales Tax Group"))) & ", "
+                        End If
+                    End If
+                End If
+            Next
+        End If
+
+        For I = 0 To DtTemp.Rows.Count - 1
+            If AgL.XNull(DtTemp.Rows(I)(GetFieldAliasName(bImportFor, "City"))).ToString.Trim <> "" And AgL.XNull(DtTemp.Rows(I)(GetFieldAliasName(bImportFor, "State"))).ToString.Trim = "" Then
+                ErrorLog += " State is blank at row no." + (I + 2).ToString() & vbCrLf
+            End If
+
+            For J As Integer = 0 To DtDataFields.Rows.Count - 1
+                If DtTemp.Columns.Contains(DtDataFields.Rows(J)("Field Name")) Then
+                    If DtDataFields.Rows(J)("Remark").ToString().Contains("Mandatory") Then
+                        If AgL.XNull(DtTemp.Rows(I)(DtDataFields.Rows(J)("Field Name"))) = "" Then
+                            ErrorLog += DtDataFields.Rows(J)("Field Name") + " is blank at row no." + (I + 2).ToString() & vbCrLf
+                        End If
+                    End If
+                End If
+            Next
+        Next
+
+        If ErrorLog <> "" Then
+            If File.Exists(My.Application.Info.DirectoryPath + " \ " + "ErrorLog.txt") Then
+                My.Computer.FileSystem.WriteAllText(My.Application.Info.DirectoryPath + "\" + "ErrorLog.txt", ErrorLog, False)
+            Else
+                File.Create(My.Application.Info.DirectoryPath + " \ " + "ErrorLog.txt")
+                My.Computer.FileSystem.WriteAllText(My.Application.Info.DirectoryPath + " \ " + "ErrorLog.txt", ErrorLog, False)
+            End If
+            System.Diagnostics.Process.Start("notepad.exe", My.Application.Info.DirectoryPath + "\" + "ErrorLog.txt")
+            Exit Sub
+        End If
+
+        Try
+            AgL.ECmd = AgL.GCn.CreateCommand
+            AgL.ETrans = AgL.GCn.BeginTransaction(IsolationLevel.ReadCommitted)
+            AgL.ECmd.Transaction = AgL.ETrans
+            mTrans = "Begin"
+
+            Dim bLastAcGroupCode As Integer = AgL.XNull(AgL.Dman_Execute("SELECT  IfNull(Max(CAST(GroupCode AS INTEGER)),0) FROM AcGroup WHERE ABS(GroupCode)>0", AgL.GcnRead).ExecuteScalar)
+            Dim DtAccountGroup = DtTemp.DefaultView.ToTable(True, GetFieldAliasName(bImportFor, "Account Group"))
+            For I = 0 To DtAccountGroup.Rows.Count - 1
+                Dim AcGroupTable As New StructAcGroup
+                Dim bAcGroupCode As String = (bLastAcGroupCode + (I + 1)).ToString.PadLeft(4).Replace(" ", "0")
+
+                AcGroupTable.GroupCode = bAcGroupCode
+                AcGroupTable.SNo = ""
+                AcGroupTable.GroupName = AgL.XNull(DtAccountGroup.Rows(I)(GetFieldAliasName(bImportFor, "Account Group"))).ToString.Trim
+                AcGroupTable.ContraGroupName = AgL.XNull(DtAccountGroup.Rows(I)(GetFieldAliasName(bImportFor, "Account Group"))).ToString.Trim
+                AcGroupTable.GroupUnder = ""
+                AcGroupTable.GroupNature = ""
+                AcGroupTable.Nature = ""
+                AcGroupTable.SysGroup = "N"
+                AcGroupTable.U_Name = AgL.PubUserName
+                AcGroupTable.U_EntDt = AgL.GetDateTime(AgL.GcnRead)
+                AcGroupTable.U_AE = "A"
+
+                ImportAcGroupTable(AcGroupTable)
+            Next
+
+
+            Dim bLastSubCode As String = AgL.GetMaxId("SubGroup", "SubCode", AgL.GCn, AgL.PubDivCode, AgL.PubSiteCode, 8, True, True, AgL.ECmd, AgL.Gcn_ConnectionString)
+
+            For I = 0 To DtTemp.Rows.Count - 1
+                Dim SubGroupTable As New StructSubGroupTable
+                Dim bSubCode = AgL.PubDivCode & AgL.PubSiteCode & (Convert.ToInt32(bLastSubCode.Replace(AgL.PubDivCode + AgL.PubSiteCode, "")) + I).ToString().PadLeft(8, "0")
+
+                SubGroupTable.SubCode = bSubCode
+                SubGroupTable.Site_Code = AgL.PubSiteCode
+                SubGroupTable.Name = AgL.XNull(DtTemp.Rows(I)(GetFieldAliasName(bImportFor, "Name"))).ToString.Trim
+                SubGroupTable.DispName = AgL.XNull(DtTemp.Rows(I)(GetFieldAliasName(bImportFor, "Display Name"))).ToString.Trim
+                SubGroupTable.ManualCode = AgL.XNull(DtTemp.Rows(I)(GetFieldAliasName(bImportFor, "Code"))).ToString.Trim
+                SubGroupTable.AccountGroup = AgL.XNull(DtTemp.Rows(I)(GetFieldAliasName(bImportFor, "Account Group"))).ToString.Trim
+                SubGroupTable.StateName = AgL.XNull(DtTemp.Rows(I)(GetFieldAliasName(bImportFor, "State"))).ToString.Trim
+                SubGroupTable.AgentName = AgL.XNull(DtTemp.Rows(I)(GetFieldAliasName(bImportFor, "Agent"))).ToString.Trim
+                SubGroupTable.TransporterName = AgL.XNull(DtTemp.Rows(I)(GetFieldAliasName(bImportFor, "Transporter"))).ToString.Trim
+                SubGroupTable.AreaName = AgL.XNull(DtTemp.Rows(I)(GetFieldAliasName(bImportFor, "Area"))).ToString.Trim
+                SubGroupTable.CityName = AgL.XNull(DtTemp.Rows(I)(GetFieldAliasName(bImportFor, "City"))).ToString.Trim
+                SubGroupTable.GroupCode = ""
+                SubGroupTable.GroupNature = ""
+                SubGroupTable.Nature = ""
+                SubGroupTable.Address = AgL.XNull(DtTemp.Rows(I)(GetFieldAliasName(bImportFor, "Address"))).ToString.Trim
+                SubGroupTable.CityCode = ""
+                SubGroupTable.PIN = AgL.XNull(DtTemp.Rows(I)(GetFieldAliasName(bImportFor, "Pin No"))).ToString.Trim
+                SubGroupTable.Phone = AgL.XNull(DtTemp.Rows(I)(GetFieldAliasName(bImportFor, "Contact No"))).ToString.Trim
+                SubGroupTable.ContactPerson = AgL.XNull(DtTemp.Rows(I)(GetFieldAliasName(bImportFor, "Contact Person"))).ToString.Trim
+                SubGroupTable.SubgroupType = AgL.XNull(DtTemp.Rows(I)(GetFieldAliasName(bImportFor, "Party Type"))).ToString().Trim()
+                SubGroupTable.Mobile = AgL.XNull(DtTemp.Rows(I)(GetFieldAliasName(bImportFor, "Mobile"))).ToString.Trim
+                SubGroupTable.CreditDays = AgL.VNull(DtTemp.Rows(I)(GetFieldAliasName(bImportFor, "Credit Days")))
+                SubGroupTable.CreditLimit = AgL.VNull(DtTemp.Rows(I)(GetFieldAliasName(bImportFor, "Credit Limit")))
+                SubGroupTable.EMail = AgL.XNull(DtTemp.Rows(I)(GetFieldAliasName(bImportFor, "EMail"))).ToString.Trim
+                SubGroupTable.Parent = AgL.XNull(DtTemp.Rows(I)(GetFieldAliasName(bImportFor, "Master Party"))).ToString.Trim
+                SubGroupTable.SalesTaxPostingGroup = AgL.XNull(DtTemp.Rows(I)(GetFieldAliasName(bImportFor, "Sales Tax Group"))).ToString().Trim()
+                SubGroupTable.EntryBy = AgL.PubUserName
+                SubGroupTable.EntryDate = AgL.GetDateTime(AgL.GcnRead)
+                SubGroupTable.EntryType = "Add"
+                SubGroupTable.EntryStatus = LogStatus.LogOpen
+                SubGroupTable.Div_Code = AgL.PubDivCode
+                SubGroupTable.Status = "Active"
+                SubGroupTable.SalesTaxNo = AgL.XNull(DtTemp.Rows(I)(GetFieldAliasName(bImportFor, "Sales Tax No"))).ToString.Trim
+                SubGroupTable.PANNo = AgL.XNull(DtTemp.Rows(I)(GetFieldAliasName(bImportFor, "PAN No"))).ToString.Trim
+                SubGroupTable.AadharNo = AgL.XNull(DtTemp.Rows(I)(GetFieldAliasName(bImportFor, "Aadhar No"))).ToString.Trim
+                SubGroupTable.Cnt = I
+                ImportSubgroupTable(SubGroupTable)
+            Next
+
+            AgL.ETrans.Commit()
+            mTrans = "Commit"
+        Catch ex As Exception
+            AgL.ETrans.Rollback()
+            MsgBox(ex.Message)
+        End Try
+        If StrErrLog <> "" Then MsgBox(StrErrLog)
+    End Sub
+    Private Function GetFieldAliasName(bImportFor As ImportFor, bFieldName As String)
+        Dim bAliasName As String = bFieldName
+        If bImportFor = ImportFor.Dos Then
+
+
+            Select Case bFieldName
+                Case "Party Type"
+                    bAliasName = "PARTY_TYPE"
+                Case "Code"
+                    bAliasName = "Code"
+                Case "Display Name"
+                    bAliasName = "DISPLAY"
+                Case "Name"
+                    bAliasName = "NAME"
+                Case "Address"
+                    bAliasName = "ADDRESS"
+                Case "City"
+                    bAliasName = "CITY"
+                Case "State"
+                    bAliasName = "STATE"
+                Case "Pin No"
+                    bAliasName = "PIN_NO"
+                Case "Contact No"
+                    bAliasName = "CONTACT_NO"
+                Case "Mobile"
+                    bAliasName = "MOBILE"
+                Case "EMail"
+                    bAliasName = "EMAIL"
+                Case "Account Group"
+                    bAliasName = "ACC_GROUP"
+                Case "Sales Tax Group"
+                    bAliasName = "TAX_GROUP"
+                Case "Credit Days"
+                    bAliasName = "CREDITDAYS"
+                Case "Credit Limit"
+                    bAliasName = "LIMIT"
+                Case "Contact Person"
+                    bAliasName = "CONTACT"
+                Case "Sales Tax No"
+                    bAliasName = "GST_NO"
+                Case "PAN No"
+                    bAliasName = "PAN_NO"
+                Case "Aadhar No"
+                    bAliasName = "AADHAR_NO"
+                Case "Master Party"
+                    bAliasName = "MASTER"
+                Case "Area"
+                    bAliasName = "AREA"
+                Case "Agent"
+                    bAliasName = "AGENT"
+                Case "Transporter"
+                    bAliasName = "TRANSPORT"
+                Case "Distance"
+                    bAliasName = "DISTANCE"
+            End Select
+            Return bAliasName
+        Else
+            Return bFieldName
+        End If
+    End Function
+
+    Private Sub MnuImport_Click(sender As Object, e As EventArgs) Handles MnuImportFromExcel.Click, MnuImportFromDos.Click, MnuImportFromTally.Click, MnuBulkEdit.Click
+        Select Case sender.name
+            Case MnuImportFromExcel.Name
+                FImportFromExcel(ImportFor.Excel)
+
+            Case MnuImportFromDos.Name
+                FImportFromExcel(ImportFor.Dos)
+
+            Case MnuImportFromTally.Name
+                FImportFromTally()
+
+            Case MnuBulkEdit.Name
+                Dim FrmObj As New FrmPersonBulk()
+                FrmObj.MdiParent = Me.MdiParent
+                FrmObj.Show()
+        End Select
+    End Sub
+    Public Sub FImportFromTally()
+        Dim mTrans As String = ""
+        Dim ErrorLog As String = ""
+        Dim DtTemp As New DataTable
+        Dim I As Integer = 0, J As Integer = 0
+        Dim FileNameWithPath As String = ""
+        'Dim FileNameWithPath As String = My.Application.Info.DirectoryPath & "\TallyXML\LedgerMaster.xml"
+
+        OFDMain.Filter = "*.xml|*.XML"
+        If OFDMain.ShowDialog() = Windows.Forms.DialogResult.Cancel Then Exit Sub
+        FileNameWithPath = OFDMain.FileName
+
+
+
+        Dim doc As New XmlDocument()
+        doc.Load(FileNameWithPath)
+
+        Try
+            AgL.ECmd = AgL.GCn.CreateCommand
+            AgL.ETrans = AgL.GCn.BeginTransaction(IsolationLevel.ReadCommitted)
+            AgL.ECmd.Transaction = AgL.ETrans
+            mTrans = "Begin"
+
+            Dim bLastAcGroupCode As Integer = AgL.XNull(AgL.Dman_Execute("SELECT  IfNull(Max(CAST(GroupCode AS INTEGER)),0) FROM AcGroup WHERE ABS(GroupCode)>0", AgL.GcnRead).ExecuteScalar)
+
+            Dim LedgerGroupElementList As XmlNodeList = doc.GetElementsByTagName("GROUP")
+            For I = 0 To LedgerGroupElementList.Count - 1
+                Dim AcGroupTable As New StructAcGroup
+                Dim bAcGroupCode As String = (bLastAcGroupCode + I).ToString.PadLeft(4).Replace(" ", "0")
+
+                AcGroupTable.GroupCode = bAcGroupCode
+                AcGroupTable.SNo = ""
+                AcGroupTable.GroupName = LedgerGroupElementList(I).Attributes("NAME").Value
+                AcGroupTable.ContraGroupName = LedgerGroupElementList(I).Attributes("NAME").Value
+
+                If LedgerGroupElementList(I).SelectSingleNode("PARENT") IsNot Nothing Then
+                    If LedgerGroupElementList(I).SelectSingleNode("PARENT").ChildNodes.Count > 0 Then
+                        AcGroupTable.GroupUnder = LedgerGroupElementList(I).SelectSingleNode("PARENT").ChildNodes(0).Value
+                    End If
+                End If
+                AcGroupTable.GroupNature = ""
+                AcGroupTable.Nature = ""
+                AcGroupTable.SysGroup = "N"
+                AcGroupTable.U_Name = AgL.PubUserName
+                AcGroupTable.U_EntDt = AgL.GetDateTime(AgL.GcnRead)
+                AcGroupTable.U_AE = "A"
+
+                ImportAcGroupTable(AcGroupTable)
+            Next
+
+
+            Dim bLastManualCode As String = AgL.XNull(AgL.Dman_Execute("SELECT  IfNull(Max(CAST(ManualCode AS INTEGER)),0) FROM Subgroup  WHERE ABS(ManualCode)>0", AgL.GcnRead).ExecuteScalar)
+            Dim bLastSubCode As String = AgL.GetMaxId("SubGroup", "SubCode", AgL.GCn, AgL.PubDivCode, AgL.PubSiteCode, 8, True, True, AgL.ECmd, AgL.Gcn_ConnectionString)
+
+
+
+
+            Dim LedgerElementList As XmlNodeList = doc.GetElementsByTagName("LEDGER")
+            For I = 0 To LedgerElementList.Count - 1
+                Dim SubGroupTable As New StructSubGroupTable
+                Dim bManualCode = bLastManualCode + I
+                Dim bSubCode = AgL.PubDivCode & AgL.PubSiteCode & (Convert.ToInt32(bLastSubCode.Replace(AgL.PubDivCode + AgL.PubSiteCode, "")) + I).ToString().PadLeft(8, "0")
+
+                SubGroupTable.SubCode = bSubCode
+                SubGroupTable.Site_Code = AgL.PubSiteCode
+                SubGroupTable.Name = LedgerElementList(I).Attributes("NAME").Value
+                SubGroupTable.DispName = LedgerElementList(I).Attributes("NAME").Value
+                SubGroupTable.ManualCode = bManualCode
+
+                If LedgerElementList(I).SelectSingleNode("PARENT") IsNot Nothing Then
+                    If LedgerElementList(I).SelectSingleNode("PARENT").ChildNodes.Count > 0 Then
+                        SubGroupTable.AccountGroup = LedgerElementList(I).SelectSingleNode("PARENT").ChildNodes(0).Value
+                    End If
+                End If
+
+                If LedgerElementList(I).SelectSingleNode("LEDSTATENAME") IsNot Nothing Then
+                    If LedgerElementList(I).SelectSingleNode("LEDSTATENAME").ChildNodes.Count > 0 Then
+                        SubGroupTable.StateName = LedgerElementList(I).SelectSingleNode("LEDSTATENAME").ChildNodes(0).Value
+                    End If
+                End If
+
+                If LedgerElementList(I).SelectSingleNode("UDF_788529287.LIST") IsNot Nothing Then
+                    If LedgerElementList(I).SelectSingleNode("UDF_788529287.LIST").SelectSingleNode("UDF_788529287") IsNot Nothing Then
+                        SubGroupTable.AgentName = LedgerElementList(I).SelectSingleNode("UDF_788529287.LIST").SelectSingleNode("UDF_788529287").ChildNodes(0).Value
+                    End If
+                End If
+
+                If LedgerElementList(I).SelectSingleNode("UDF_788529285.LIST") IsNot Nothing Then
+                    If LedgerElementList(I).SelectSingleNode("UDF_788529285.LIST").SelectSingleNode("UDF_788529285") IsNot Nothing Then
+                        SubGroupTable.TransporterName = LedgerElementList(I).SelectSingleNode("UDF_788529285.LIST").SelectSingleNode("UDF_788529285").ChildNodes(0).Value
+                    End If
+                End If
+
+                If LedgerElementList(I).SelectSingleNode("UDF_788529311.LIST") IsNot Nothing Then
+                    If LedgerElementList(I).SelectSingleNode("UDF_788529311.LIST").SelectSingleNode("UDF_788529311") IsNot Nothing Then
+                        SubGroupTable.AreaName = LedgerElementList(I).SelectSingleNode("UDF_788529311.LIST").SelectSingleNode("UDF_788529311").ChildNodes(0).Value
+                    End If
+                End If
+
+                If LedgerElementList(I).SelectSingleNode("UDF_788529317.LIST") IsNot Nothing Then
+                    If LedgerElementList(I).SelectSingleNode("UDF_788529317.LIST").SelectSingleNode("UDF_788529317") IsNot Nothing Then
+                        SubGroupTable.CityName = LedgerElementList(I).SelectSingleNode("UDF_788529317.LIST").SelectSingleNode("UDF_788529317").ChildNodes(0).Value
+                    End If
+                End If
+
+                SubGroupTable.GroupCode = ""
+                SubGroupTable.GroupNature = ""
+                SubGroupTable.Nature = ""
+
+                If LedgerElementList(I).SelectSingleNode("ADDRESS.LIST") IsNot Nothing Then
+                    For J = 0 To LedgerElementList(I).SelectSingleNode("ADDRESS.LIST").ChildNodes.Count - 1
+                        If LedgerElementList(I).SelectSingleNode("ADDRESS.LIST").ChildNodes(J).ChildNodes.Count > 0 Then
+                            If SubGroupTable.Address = "" Then
+                                SubGroupTable.Address = LedgerElementList(I).SelectSingleNode("ADDRESS.LIST").ChildNodes(J).ChildNodes(0).Value
+                            Else
+                                SubGroupTable.Address += " " + LedgerElementList(I).SelectSingleNode("ADDRESS.LIST").ChildNodes(J).ChildNodes(0).Value
+                            End If
+                        End If
+                    Next J
+                End If
+
+                SubGroupTable.CityCode = ""
+                If LedgerElementList(I).SelectSingleNode("PINCODE") IsNot Nothing Then
+                    If LedgerElementList(I).SelectSingleNode("PINCODE").ChildNodes.Count > 0 Then
+                        SubGroupTable.PIN = LedgerElementList(I).SelectSingleNode("PINCODE").ChildNodes(0).Value
+                    End If
+                End If
+                If LedgerElementList(I).SelectSingleNode("LEDGERPHONE") IsNot Nothing Then
+                    If LedgerElementList(I).SelectSingleNode("LEDGERPHONE").ChildNodes.Count > 0 Then
+                        SubGroupTable.Phone = LedgerElementList(I).SelectSingleNode("LEDGERPHONE").ChildNodes(0).Value
+                    End If
+                End If
+                If LedgerElementList(I).SelectSingleNode("LEDGERCONTACT") IsNot Nothing Then
+                    If LedgerElementList(I).SelectSingleNode("LEDGERCONTACT").ChildNodes.Count > 0 Then
+                        SubGroupTable.ContactPerson = LedgerElementList(I).SelectSingleNode("LEDGERCONTACT").ChildNodes(0).Value
+                    End If
+                End If
+                SubGroupTable.SubgroupType = ""
+                If LedgerElementList(I).SelectSingleNode("LEDGERMOBILE") IsNot Nothing Then
+                    If LedgerElementList(I).SelectSingleNode("LEDGERMOBILE").ChildNodes.Count > 0 Then
+                        SubGroupTable.Mobile = LedgerElementList(I).SelectSingleNode("LEDGERMOBILE").ChildNodes(0).Value
+                    End If
+                End If
+                SubGroupTable.CreditDays = 0
+                SubGroupTable.CreditLimit = 0
+                If LedgerElementList(I).SelectSingleNode("EMAIL") IsNot Nothing Then
+                    If LedgerElementList(I).SelectSingleNode("EMAIL").ChildNodes.Count > 0 Then
+                        SubGroupTable.EMail = LedgerElementList(I).SelectSingleNode("EMAIL").ChildNodes(0).Value
+                    End If
+                End If
+                SubGroupTable.Parent = ""
+                If LedgerElementList(I).SelectSingleNode("GSTREGISTRATIONTYPE") IsNot Nothing Then
+                    If LedgerElementList(I).SelectSingleNode("GSTREGISTRATIONTYPE").ChildNodes.Count > 0 Then
+                        SubGroupTable.SalesTaxPostingGroup = LedgerElementList(I).SelectSingleNode("GSTREGISTRATIONTYPE").ChildNodes(0).Value
+                    End If
+                End If
+
+
+                SubGroupTable.EntryBy = AgL.PubUserName
+                SubGroupTable.EntryDate = AgL.GetDateTime(AgL.GcnRead)
+                SubGroupTable.EntryType = "Add"
+                SubGroupTable.EntryStatus = LogStatus.LogOpen
+                SubGroupTable.Div_Code = AgL.PubDivCode
+                SubGroupTable.Status = "Active"
+
+                If LedgerElementList(I).SelectSingleNode("PARTYGSTIN") IsNot Nothing Then
+                    If LedgerElementList(I).SelectSingleNode("PARTYGSTIN").ChildNodes.Count > 0 Then
+                        SubGroupTable.SalesTaxNo = LedgerElementList(I).SelectSingleNode("PARTYGSTIN").ChildNodes(0).Value
+                    End If
+                End If
+
+                SubGroupTable.PANNo = ""
+                SubGroupTable.AadharNo = ""
+                SubGroupTable.Cnt = I
+
+                ImportSubgroupTable(SubGroupTable)
+            Next I
+            AgL.ETrans.Commit()
+            mTrans = "Commit"
+
+        Catch ex As Exception
+            AgL.ETrans.Rollback()
+            MsgBox(ex.Message)
+        End Try
+    End Sub
+    Private Sub ImportSubgroupTable(SubGroupTable As StructSubGroupTable)
+        Dim mRegSr As Integer = 0
+
+        'If AgL.Dman_Execute("SELECT Count(*) From Subgroup With (NoLock) where ManualCode = '" & SubGroupTable.ManualCode & "' ", AgL.GcnRead).ExecuteScalar = 0 Then
+        If AgL.Dman_Execute("SELECT Count(*) From Subgroup With (NoLock) where Name = " & AgL.Chk_Text(SubGroupTable.Name) & " ", IIf(AgL.PubServerName = "", AgL.GCn, AgL.GcnRead)).ExecuteScalar = 0 Then
+
+            If AgL.Dman_Execute("SELECT Count(*) From City With (NoLock) where CityName = '" & SubGroupTable.CityName & "' ", IIf(AgL.PubServerName = "", AgL.GCn, AgL.GcnRead)).ExecuteScalar = 0 Then
+                Dim mLastCityCode = AgL.GetMaxId("City", "CityCode", AgL.GCn, AgL.PubDivCode, AgL.PubSiteCode, 4, True, True, AgL.ECmd, AgL.GCn.ConnectionString)
+
+                Dim mCityCode = AgL.PubDivCode & AgL.PubSiteCode & (Convert.ToInt32(mLastCityCode.Replace(AgL.PubDivCode + AgL.PubSiteCode, "")) + 1).ToString().PadLeft(4, "0")
+
+
+                mQry = "INSERT INTO City (CityCode, CityName, State, IsDeleted,
+                             Country, EntryBy, EntryDate, EntryType,
+                             EntryStatus, Status, Div_Code, U_Name, U_AE)
+                             Select '" & mCityCode & "' As CityCode, '" & SubGroupTable.CityName & "' CityName, 
+                             (Select Code From State Where Description = '" & SubGroupTable.StateName & "') State, 
+                             0 As IsDeleted,
+                             'India' As Country, '" & SubGroupTable.EntryBy & "' EntryBy, 
+                             " & AgL.Chk_Text(SubGroupTable.EntryDate) & " As EntryDate, 
+                             " & AgL.Chk_Text(SubGroupTable.EntryType) & " As EntryType,
+                             " & AgL.Chk_Text(SubGroupTable.EntryStatus) & " As EntryStatus, 
+                             " & AgL.Chk_Text(SubGroupTable.Status) & " As Status, 
+                             " & AgL.Chk_Text(SubGroupTable.Div_Code) & " As Div_Code, 
+                             '" & SubGroupTable.EntryBy & "'  As U_Name, 'A' As U_AE "
+                AgL.Dman_ExecuteNonQry(mQry, AgL.GCn, AgL.ECmd)
+            End If
+
+            SubGroupTable.CityCode = AgL.Dman_Execute("SELECT CityCode From City With (NoLock) where CityName = '" & SubGroupTable.CityName & "' ", IIf(AgL.PubServerName = "", AgL.GCn, AgL.GcnRead)).ExecuteScalar
+
+            'If AgL.XNull(AgL.Dman_Execute("Select State From City With (NoLock) Where CityCode = '" & SubGroupTable.CityCode & "'", IIf(AgL.PubServerName = "", AgL.GCn, AgL.GcnRead))) = "" Then
+
+            'End If
+
+            If AgL.Dman_Execute("SELECT Count(*) From Area With (NoLock) where Description = '" & SubGroupTable.AreaName & "' ", IIf(AgL.PubServerName = "", AgL.GCn, AgL.GcnRead)).ExecuteScalar = 0 Then
+                Dim mLastAreaCode = AgL.GetMaxId("Area", "Code", AgL.GCn, AgL.PubDivCode, AgL.PubSiteCode, 4, True, True, AgL.ECmd, AgL.GCn.ConnectionString)
+
+                Dim mAreaCode = AgL.PubDivCode & AgL.PubSiteCode & (Convert.ToInt32(mLastAreaCode.Replace(AgL.PubDivCode + AgL.PubSiteCode, "")) + SubGroupTable.Cnt).ToString().PadLeft(4, "0")
+
+                mQry = "INSERT INTO Area (Code, Description, IsDeleted,
+                             EntryBy, EntryDate, EntryType,
+                             EntryStatus, Status, Div_Code)
+                             Select '" & mAreaCode & "' As AreaCode, '" & SubGroupTable.AreaName & "' Description, 
+                             0 As IsDeleted,
+                             '" & SubGroupTable.EntryBy & "' EntryBy, 
+                             " & AgL.Chk_Text(SubGroupTable.EntryDate) & " As EntryDate, 
+                             " & AgL.Chk_Text(SubGroupTable.EntryType) & " As EntryType,
+                             " & AgL.Chk_Text(SubGroupTable.EntryStatus) & " As EntryStatus, 
+                             " & AgL.Chk_Text(SubGroupTable.Status) & " As Status, 
+                             " & AgL.Chk_Text(SubGroupTable.Div_Code) & " As Div_Code "
+                AgL.Dman_ExecuteNonQry(mQry, AgL.GCn, AgL.ECmd)
+
+            End If
+
+            SubGroupTable.AreaCode = AgL.Dman_Execute("SELECT Code From Area With (NoLock) where Description = '" & SubGroupTable.AreaName & "' ", IIf(AgL.PubServerName = "", AgL.GCn, AgL.GcnRead)).ExecuteScalar
+
+            SubGroupTable.TransporterCode = AgL.Dman_Execute("Select SubCode From SubGroup With (NoLock) Where Name = '" & SubGroupTable.TransporterName & "' ", IIf(AgL.PubServerName = "", AgL.GCn, AgL.GcnRead)).ExecuteScalar
+            SubGroupTable.AgentCode = AgL.Dman_Execute("Select SubCode From SubGroup With (NoLock) Where Name = '" & SubGroupTable.AgentName & "' ", IIf(AgL.PubServerName = "", AgL.GCn, AgL.GcnRead)).ExecuteScalar
+            SubGroupTable.Parent = AgL.Dman_Execute("Select SubCode From SubGroup With (NoLock) Where Name = '" & SubGroupTable.Parent & "' ", IIf(AgL.PubServerName = "", AgL.GCn, AgL.GcnRead)).ExecuteScalar
+
+
+            mQry = "SELECT GroupCode, GroupNature, Nature  From AcGroup With (NoLock) WHERE GroupName =  '" & SubGroupTable.AccountGroup & "'"
+            Dim DtAcGroup As DataTable = AgL.FillData(mQry, IIf(AgL.PubServerName = "", AgL.GCn, AgL.GcnRead)).Tables(0)
+            If (DtAcGroup.Rows.Count > 0) Then
+                If SubGroupTable.GroupCode = "" Then SubGroupTable.GroupCode = AgL.XNull(DtAcGroup.Rows(0)("GroupCode"))
+                If SubGroupTable.GroupNature = "" Then SubGroupTable.GroupNature = AgL.XNull(DtAcGroup.Rows(0)("GroupNature"))
+                If SubGroupTable.Nature = "" Then SubGroupTable.Nature = AgL.XNull(DtAcGroup.Rows(0)("Nature"))
+            End If
+
+            If SubgroupType = "" Then
+                If SubGroupTable.Nature = "Customer" Or SubGroupTable.AccountGroup.Contains("Debtor") Then
+                    SubGroupTable.SubgroupType = AgLibrary.ClsMain.agConstants.SubgroupType.Customer
+                ElseIf SubGroupTable.Nature = "Supplier" Or SubGroupTable.AccountGroup.Contains("Creditor") Then
+                    SubGroupTable.SubgroupType = AgLibrary.ClsMain.agConstants.SubgroupType.Supplier
+                End If
+            End If
+
+            If SubGroupTable.SalesTaxPostingGroup = "Regular" Then
+                SubGroupTable.SalesTaxPostingGroup = AgLibrary.ClsMain.agConstants.PostingGroupSalesTaxParty.Registered
+            End If
+
+            'If SubGroupTable.Mobile.Length > 10 Then
+            '    SubGroupTable.Mobile = SubGroupTable.Mobile.Substring(0, 9)
+            'End If
+
+            mQry = "INSERT INTO SubGroup(SubCode, Site_Code, Name, DispName, " &
+                    " GroupCode, GroupNature, ManualCode,	Nature,	Address, CityCode,  " &
+                    " PIN, Phone,  ContactPerson, SubgroupType, " &
+                    " Mobile, CreditDays, CreditLimit, EMail, Parent, SalesTaxPostingGroup, " &
+                    " EntryBy, EntryDate,  EntryType, EntryStatus, Div_Code, Status) " &
+                    " Select " & AgL.Chk_Text(SubGroupTable.SubCode) & ", " &
+                    " '" & SubGroupTable.Site_Code & "', " & AgL.Chk_Text(SubGroupTable.Name) & ",	" &
+                    " " & AgL.Chk_Text(SubGroupTable.Name) & ", " & AgL.Chk_Text(SubGroupTable.GroupCode) & ", " &
+                    " " & AgL.Chk_Text(SubGroupTable.GroupNature) & ", " & AgL.Chk_Text(SubGroupTable.ManualCode) & ", " &
+                    " " & AgL.Chk_Text(SubGroupTable.Nature) & ", " & AgL.Chk_Text(SubGroupTable.Address) & ", " &
+                    " " & AgL.Chk_Text(SubGroupTable.CityCode) & ", " &
+                    " " & AgL.Chk_Text(SubGroupTable.PIN) & ", " & AgL.Chk_Text(SubGroupTable.Phone) & ", " &
+                    " " & AgL.Chk_Text(SubGroupTable.ContactPerson) & ", " &
+                    " " & AgL.Chk_Text(SubGroupTable.SubgroupType) & ", " &
+                    " " & AgL.Chk_Text(SubGroupTable.Mobile) & ", " &
+                    " " & Val(SubGroupTable.CreditDays) & ", " &
+                    " " & Val(SubGroupTable.CreditLimit) & ", " &
+                    " " & AgL.Chk_Text(SubGroupTable.EMail) & ", " &
+                    " " & AgL.Chk_Text(SubGroupTable.Parent) & ", " & AgL.Chk_Text(SubGroupTable.SalesTaxPostingGroup) & ", " &
+                    " " & AgL.Chk_Text(SubGroupTable.EntryBy) & ", " & AgL.Chk_Text(SubGroupTable.EntryDate) & ",   " &
+                    " " & AgL.Chk_Text(SubGroupTable.EntryType) & ", " & AgL.Chk_Text(SubGroupTable.EntryStatus) & ",  " &
+                    " " & AgL.Chk_Text(SubGroupTable.Div_Code) & ", " & AgL.Chk_Text(SubGroupTable.Status) & " "
+            AgL.Dman_ExecuteNonQry(mQry, AgL.GCn, AgL.ECmd)
+
+
+            mQry = "INSERT INTO SubgroupSiteDivisionDetail (SubCode, V_Type, Div_Code, Site_Code,
+                        V_Date, V_No, RateType, Transporter, TermsAndConditions, Agent)
+                        Select '" & SubGroupTable.SubCode & "' As SubCode,  'SI' As V_Type, '" & SubGroupTable.Div_Code & "' As Div_Code, 
+                        '" & SubGroupTable.Site_Code & "' As Site_Code,
+                        Null As V_Date, Null As V_No, Null As RateType, " & AgL.Chk_Text(SubGroupTable.TransporterCode) & " As Transporter, 
+                        Null As TermsAndConditions, " & AgL.Chk_Text(SubGroupTable.AgentCode) & " As Agent "
+            AgL.Dman_ExecuteNonQry(mQry, AgL.GCn, AgL.ECmd)
+
+            If SubGroupTable.SalesTaxNo <> "" Then
+                mRegSr += 1
+                mQry = "Insert Into SubgroupRegistration(Subcode, SR, RegistrationType, RegistrationNo)
+                        Values ('" & SubGroupTable.SubCode & "', " & mRegSr & ", '" & AgLibrary.ClsMain.agConstants.SubgroupRegistrationType.SalesTaxNo & "', " & AgL.Chk_Text(SubGroupTable.SalesTaxNo) & ") "
+                AgL.Dman_ExecuteNonQry(mQry, AgL.GCn, AgL.ECmd)
+            End If
+
+
+            If SubGroupTable.PANNo <> "" Then
+                mRegSr += 1
+                mQry = "Insert Into SubgroupRegistration(Subcode, Sr, RegistrationType, RegistrationNo)
+                       Values ('" & SubGroupTable.SubCode & "', " & mRegSr & ", '" & AgLibrary.ClsMain.agConstants.SubgroupRegistrationType.PanNo & "', " & AgL.Chk_Text(SubGroupTable.PANNo) & ") "
+                AgL.Dman_ExecuteNonQry(mQry, AgL.GCn, AgL.ECmd)
+            End If
+
+            If SubGroupTable.AadharNo <> "" Then
+                mRegSr += 1
+                mQry = "Insert Into SubgroupRegistration(Subcode, Sr, RegistrationType, RegistrationNo)
+                       Values ('" & SubGroupTable.SubCode & "', " & mRegSr & ", '" & SubgroupRegistrationType.AadharNo.ToUpper & "', " & AgL.Chk_Text(SubGroupTable.AadharNo) & ") "
+                AgL.Dman_ExecuteNonQry(mQry, AgL.GCn, AgL.ECmd)
+            End If
+        End If
+        'End If
+    End Sub
+    Private Sub ImportAcGroupTable(AcGroupTable As StructAcGroup)
+        If AgL.Dman_Execute("SELECT Count(*) From AcGroup With (NoLock) Where Upper(Replace(GroupName,' ','')) = Upper(Replace('" & AcGroupTable.GroupName & "',' ',''))", AgL.GcnRead).ExecuteScalar = 0 Then
+            mQry = "SELECT GroupCode, GroupNature, Nature  From AcGroup With (NoLock) WHERE GroupName =  '" & AcGroupTable.GroupUnder & "'"
+            Dim DtAcGroup As DataTable = AgL.FillData(mQry, AgL.GcnRead).Tables(0)
+
+            If (DtAcGroup.Rows.Count > 0) Then
+                AcGroupTable.GroupUnder = DtAcGroup.Rows(0)("GroupCode")
+                If AcGroupTable.GroupNature = "" Then AcGroupTable.GroupNature = DtAcGroup.Rows(0)("GroupNature")
+                If AcGroupTable.Nature = "" Then AcGroupTable.Nature = DtAcGroup.Rows(0)("Nature")
+            End If
+
+            mQry = " INSERT INTO AcGroup(GroupCode, SNo, GroupName, ContraGroupName, GroupUnder, GroupNature, Nature,
+                    SysGroup, U_Name, U_EntDt, U_AE)
+                    Select " & AgL.Chk_Text(AcGroupTable.GroupCode) & ", '" & AcGroupTable.SNo & "' As SNo, 
+                    " & AgL.Chk_Text(AcGroupTable.GroupName) & " As GroupName, 
+                    " & AgL.Chk_Text(AcGroupTable.ContraGroupName) & " As ContraGroupName, 
+                    " & AgL.Chk_Text(AcGroupTable.GroupUnder) & " As GroupUnder, 
+                    " & AgL.Chk_Text(AcGroupTable.GroupNature) & " As GroupNature, 
+                    " & AgL.Chk_Text(AcGroupTable.Nature) & " As Nature,
+                    " & AgL.Chk_Text(AcGroupTable.SysGroup) & " As SysGroup, 
+                    " & AgL.Chk_Text(AcGroupTable.U_Name) & " As U_Name, 
+                    " & AgL.Chk_Text(AcGroupTable.U_EntDt) & " As U_EntDt, 
+                    " & AgL.Chk_Text(AcGroupTable.U_AE) & " As U_AE "
+            AgL.Dman_ExecuteNonQry(mQry, AgL.GCn, AgL.ECmd)
+        End If
+    End Sub
+    Private Sub ImportCityTable(CityTable As StructCity)
+        If AgL.Dman_Execute("SELECT Count(*) From City With (NoLock) Where CityName = '" & CityTable.CityName & "'", AgL.GCn).ExecuteScalar = 0 Then
+            mQry = " INSERT INTO City(CityCode, CityName, State, EntryBy, EntryDate, EntryType, EntryStatus)
+                    Select '" & CityTable.CityCode & "' As CityCode, " & AgL.Chk_Text(CityTable.CityName) & " As City, 
+                    " & AgL.Chk_Text(CityTable.State) & " As State, 
+                    '" & CityTable.EntryBy & "' As EntryBy, " & AgL.Chk_Date(CityTable.EntryDate) & " As EntryDate, 
+                    '" & CityTable.EntryType & "' As EntryType, '" & CityTable.EntryStatus & "' As EntryStatus "
+            AgL.Dman_ExecuteNonQry(mQry, AgL.GCn, AgL.ECmd)
+        End If
+    End Sub
+
+    Private Sub FrmPerson_BaseEvent_Topctrl_tbDel(ByRef Passed As Boolean) Handles Me.BaseEvent_Topctrl_tbDel
+        Passed = Not FGetRelationalData()
+    End Sub
+
+    Private Function FGetRelationalData() As Boolean
+        Try
+            mQry = " Select Count(*) From SaleInvoice Where SaleToParty = '" & mSearchCode & "'"
+            If AgL.VNull(AgL.Dman_Execute(mQry, AgL.GCn).ExecuteScalar) > 0 Then
+                MsgBox(" Data Exists For Person " & TxtName.Text & " In Sale Invoice . Can't Delete Entry", MsgBoxStyle.Information)
+                FGetRelationalData = True
+                Exit Function
+            End If
+
+            mQry = " Select Count(*) From PurchInvoice Where Vendor = '" & mSearchCode & "'"
+            If AgL.VNull(AgL.Dman_Execute(mQry, AgL.GCn).ExecuteScalar) > 0 Then
+                MsgBox(" Data Exists For Person " & TxtName.Text & " In Purchase Invoice . Can't Delete Entry", MsgBoxStyle.Information)
+                FGetRelationalData = True
+                Exit Function
+            End If
+
+            mQry = " Select Count(*) From Stock Where Subcode = '" & mSearchCode & "'"
+            If AgL.VNull(AgL.Dman_Execute(mQry, AgL.GCn).ExecuteScalar) > 0 Then
+                MsgBox(" Data Exists For Person " & TxtName.Text & " In Stock. Can't Delete Entry", MsgBoxStyle.Information)
+                FGetRelationalData = True
+                Exit Function
+            End If
+
+            mQry = " Select Count(*) From Ledger Where Subcode = '" & mSearchCode & "'"
+            If AgL.VNull(AgL.Dman_Execute(mQry, AgL.GCn).ExecuteScalar) > 0 Then
+                MsgBox(" Data Exists For Person " & TxtName.Text & " In Ledger. Can't Delete Entry", MsgBoxStyle.Information)
+                FGetRelationalData = True
+                Exit Function
+            End If
+
+
+            mQry = " Select Count(*) From LedgerHead Where Subcode = '" & mSearchCode & "'"
+            If AgL.VNull(AgL.Dman_Execute(mQry, AgL.GCn).ExecuteScalar) > 0 Then
+                MsgBox(" Data Exists For Person " & TxtName.Text & " In LedgerHead. Can't Delete Entry", MsgBoxStyle.Information)
+                FGetRelationalData = True
+                Exit Function
+            End If
+
+
+            mQry = " Select Count(*) From LedgerHeadDetail Where Subcode = '" & mSearchCode & "'"
+            If AgL.VNull(AgL.Dman_Execute(mQry, AgL.GCn).ExecuteScalar) > 0 Then
+                MsgBox(" Data Exists For Person " & TxtName.Text & " In LedgerHeadDetail. Can't Delete Entry", MsgBoxStyle.Information)
+                FGetRelationalData = True
+                Exit Function
+            End If
+
+            mQry = " Select Count(*) From StockHead Where Subcode = '" & mSearchCode & "'"
+            If AgL.VNull(AgL.Dman_Execute(mQry, AgL.GCn).ExecuteScalar) > 0 Then
+                MsgBox(" Data Exists For Person " & TxtName.Text & " In StockHead. Can't Delete Entry", MsgBoxStyle.Information)
+                FGetRelationalData = True
+                Exit Function
+            End If
+
+
+        Catch ex As Exception
+            MsgBox(ex.Message & " in FGetRelationalData")
+            FGetRelationalData = True
+        End Try
+    End Function
+
+    Private Sub Dgl1_EditingControl_Validating(sender As Object, e As CancelEventArgs) Handles Dgl1.EditingControl_Validating
+        Select Case Dgl1.CurrentCell.RowIndex
+            Case rowSalesTaxNo
+                If ClsFunction.ValidateGstNo(Dgl1.Item(Col1Value, rowSalesTaxNo).Value, TxtSalesTaxGroup.Tag, gStateCode) Then
+                    If Dgl1.Item(Col1Value, rowSalesTaxNo).Value <> "" Then
+                        Dgl1.Item(Col1Value, rowPanNo).Value = Dgl1.Item(Col1Value, rowSalesTaxNo).Value.ToString.Substring(2, 10)
+                    End If
+                End If
+            Case rowPanNo
+                ValidatePanNo(Dgl1.Item(Col1Value, rowPanNo).Value)
+            Case rowAadharNo
+                ValidateAadharNo(Dgl1.Item(Col1Value, rowAadharNo).Value)
+
+        End Select
+    End Sub
+
+    Private Sub FrmPerson_BaseEvent_Topctrl_tbRef() Handles Me.BaseEvent_Topctrl_tbRef
+        Dim I As Integer
+        If TxtCity.AgHelpDataSet IsNot Nothing Then TxtCity.AgHelpDataSet.Dispose() : TxtCity.AgHelpDataSet = Nothing
+        For I = 0 To Dgl1.Rows.Count - 1
+            Dgl1(Col1Head, I).Tag = Nothing
+        Next
+    End Sub
+
+    Private Sub ShowDiscountDetail()
+        Dim FrmObj As FrmPersonWiseDiscount
+
+        If Dgl1.Item(Col1BtnDetail, rowDiscount).Tag IsNot Nothing Then
+            FrmObj = Dgl1.Item(Col1BtnDetail, rowDiscount).Tag
+            FrmObj.EntryMode = Topctrl1.Mode
+            FrmObj.DtSubgroupTypeSettings = DtSubgroupTypeSettings
+            FrmObj.StartPosition = FormStartPosition.CenterParent
+            FrmObj.ShowDialog()
+            Dgl1.Item(Col1BtnDetail, rowDiscount).Tag = FrmObj
+        Else
+            FrmObj = New FrmPersonWiseDiscount
+            FrmObj.EntryMode = Topctrl1.Mode
+            FrmObj.DtSubgroupTypeSettings = DtSubgroupTypeSettings
+            FrmObj.IniGrid(mSearchCode)
+            FrmObj.StartPosition = FormStartPosition.CenterParent
+            FrmObj.ShowDialog()
+            Dgl1.Item(Col1BtnDetail, rowDiscount).Tag = FrmObj
+        End If
+    End Sub
+
+
+    Private Sub ShowRateTypeDetail()
+        Dim FrmObj As FrmPersonSiteRateType
+        If Dgl1.Item(Col1BtnDetail, rowRateType).Tag IsNot Nothing Then
+            FrmObj = Dgl1.Item(Col1BtnDetail, rowRateType).Tag
+            FrmObj.EntryMode = Topctrl1.Mode
+            FrmObj.DataValidation = False
+            FrmObj.DtSubgroupTypeSettings = DtSubgroupTypeSettings
+            FrmObj.StartPosition = FormStartPosition.CenterParent
+            FrmObj.ShowDialog()
+            If FrmObj.DataValidation = True Then
+                Dgl1.Item(Col1BtnDetail, rowRateType).Tag = FrmObj
+                Dgl1.Item(Col1BtnDetail, rowRateType).Value = 2
+                Dgl1.Item(Col1Value, rowRateType).Value = ""
+                Dgl1.Item(Col1Value, rowRateType).Tag = ""
+            Else
+                Dgl1.Item(Col1BtnDetail, rowRateType).Tag = Nothing
+                Dgl1.Item(Col1BtnDetail, rowRateType).Value = ""
+            End If
+        Else
+            FrmObj = New FrmPersonSiteRateType
+            FrmObj.EntryMode = Topctrl1.Mode
+            FrmObj.DataValidation = False
+            FrmObj.DtSubgroupTypeSettings = DtSubgroupTypeSettings
+            FrmObj.IniGrid(mSearchCode)
+            FrmObj.StartPosition = FormStartPosition.CenterParent
+            FrmObj.ShowDialog()
+            If FrmObj.DataValidation = True Then
+                Dgl1.Item(Col1BtnDetail, rowRateType).Tag = FrmObj
+                Dgl1.Item(Col1BtnDetail, rowRateType).Value = 2
+                Dgl1.Item(Col1Value, rowRateType).Value = ""
+                Dgl1.Item(Col1Value, rowRateType).Tag = ""
+            Else
+                Dgl1.Item(Col1BtnDetail, rowRateType).Tag = Nothing
+                Dgl1.Item(Col1BtnDetail, rowRateType).Value = ""
+            End If
+        End If
+    End Sub
+
+
+
+    Private Sub ShowTransporterDetail()
+        Dim FrmObj As FrmPersonSiteTransporter
+        If Dgl1.Item(Col1BtnDetail, rowTransporter).Tag IsNot Nothing Then
+            FrmObj = Dgl1.Item(Col1BtnDetail, rowTransporter).Tag
+            FrmObj.EntryMode = Topctrl1.Mode
+            FrmObj.DataValidation = False
+            FrmObj.DtSubgroupTypeSettings = DtSubgroupTypeSettings
+            FrmObj.StartPosition = FormStartPosition.CenterParent
+            FrmObj.ShowDialog()
+            If FrmObj.DataValidation = True Then
+                Dgl1.Item(Col1BtnDetail, rowTransporter).Tag = FrmObj
+                Dgl1.Item(Col1BtnDetail, rowTransporter).Value = 2
+                Dgl1.Item(Col1Value, rowTransporter).Value = ""
+                Dgl1.Item(Col1Value, rowTransporter).Tag = ""
+            Else
+                Dgl1.Item(Col1BtnDetail, rowTransporter).Tag = Nothing
+                Dgl1.Item(Col1BtnDetail, rowTransporter).Value = ""
+            End If
+        Else
+            FrmObj = New FrmPersonSiteTransporter
+            FrmObj.EntryMode = Topctrl1.Mode
+            FrmObj.DataValidation = False
+            FrmObj.DtSubgroupTypeSettings = DtSubgroupTypeSettings
+            FrmObj.IniGrid(mSearchCode)
+            FrmObj.StartPosition = FormStartPosition.CenterParent
+            FrmObj.ShowDialog()
+            If FrmObj.DataValidation = True Then
+                Dgl1.Item(Col1BtnDetail, rowTransporter).Tag = FrmObj
+                Dgl1.Item(Col1BtnDetail, rowTransporter).Value = 2
+                Dgl1.Item(Col1Value, rowTransporter).Value = ""
+                Dgl1.Item(Col1Value, rowTransporter).Tag = ""
+            Else
+                Dgl1.Item(Col1BtnDetail, rowTransporter).Tag = Nothing
+                Dgl1.Item(Col1BtnDetail, rowTransporter).Value = ""
+            End If
+        End If
+    End Sub
+
+    Private Sub ShowAgentDetail()
+        Dim FrmObj As FrmPersonSiteAgent
+        If Dgl1.Item(Col1BtnDetail, rowAgent).Tag IsNot Nothing Then
+            FrmObj = Dgl1.Item(Col1BtnDetail, rowAgent).Tag
+            FrmObj.EntryMode = Topctrl1.Mode
+            FrmObj.DataValidation = False
+            FrmObj.DtSubgroupTypeSettings = DtSubgroupTypeSettings
+            FrmObj.StartPosition = FormStartPosition.CenterParent
+            FrmObj.ShowDialog()
+            If FrmObj.DataValidation = True Then
+                Dgl1.Item(Col1BtnDetail, rowAgent).Tag = FrmObj
+                Dgl1.Item(Col1BtnDetail, rowAgent).Value = 2
+                Dgl1.Item(Col1Value, rowAgent).Value = ""
+                Dgl1.Item(Col1Value, rowAgent).Tag = ""
+            Else
+                Dgl1.Item(Col1BtnDetail, rowAgent).Tag = Nothing
+                Dgl1.Item(Col1BtnDetail, rowAgent).Value = ""
+            End If
+        Else
+            FrmObj = New FrmPersonSiteAgent
+            FrmObj.EntryMode = Topctrl1.Mode
+            FrmObj.DataValidation = False
+            FrmObj.DtSubgroupTypeSettings = DtSubgroupTypeSettings
+            FrmObj.IniGrid(mSearchCode)
+            FrmObj.StartPosition = FormStartPosition.CenterParent
+            FrmObj.ShowDialog()
+            If FrmObj.DataValidation = True Then
+                Dgl1.Item(Col1BtnDetail, rowAgent).Tag = FrmObj
+                Dgl1.Item(Col1BtnDetail, rowAgent).Value = 2
+                Dgl1.Item(Col1Value, rowAgent).Value = ""
+                Dgl1.Item(Col1Value, rowAgent).Tag = ""
+            Else
+                Dgl1.Item(Col1BtnDetail, rowAgent).Tag = Nothing
+                Dgl1.Item(Col1BtnDetail, rowAgent).Value = ""
+            End If
+        End If
+    End Sub
+
+
+    Private Sub ShowInterestSlabDetail()
+        Dim FrmObj As FrmPersonItemGroupInterest
+
+        If Dgl1.Item(Col1BtnDetail, rowInterestSlab).Tag IsNot Nothing Then
+            FrmObj = Dgl1.Item(Col1BtnDetail, rowInterestSlab).Tag
+            FrmObj.EntryMode = Topctrl1.Mode
+            FrmObj.DtSubgroupTypeSettings = DtSubgroupTypeSettings
+            FrmObj.StartPosition = FormStartPosition.CenterParent
+            FrmObj.ShowDialog()
+            Dgl1.Item(Col1BtnDetail, rowInterestSlab).Tag = FrmObj
+        Else
+            FrmObj = New FrmPersonItemGroupInterest
+            FrmObj.EntryMode = Topctrl1.Mode
+            FrmObj.DtSubgroupTypeSettings = DtSubgroupTypeSettings
+            FrmObj.IniGrid(mSearchCode)
+            FrmObj.StartPosition = FormStartPosition.CenterParent
+            FrmObj.ShowDialog()
+            Dgl1.Item(Col1BtnDetail, rowInterestSlab).Tag = FrmObj
+        End If
+    End Sub
+
+    Private Sub FrmPerson_BaseEvent_ApproveDeletion_InTrans(SearchCode As String, Conn As Object, Cmd As Object) Handles Me.BaseEvent_ApproveDeletion_InTrans
+        mQry = "Delete from ItemGroupPerson Where Person = '" & SearchCode & "'"
+        AgL.Dman_ExecuteNonQry(mQry, Conn, Cmd)
+    End Sub
+
+    Private Sub Dgl1_CellContentClick(sender As Object, e As DataGridViewCellEventArgs) Handles Dgl1.CellContentClick
+        If e.ColumnIndex = Dgl1.Columns(Col1BtnDetail).Index And TypeOf (Dgl1(Col1BtnDetail, e.RowIndex)) Is DataGridViewButtonCell Then
+            Select Case e.RowIndex
+                Case rowInterestSlab
+                    ShowInterestSlabDetail()
+                Case rowDiscount
+                    ShowDiscountDetail()
+                Case rowRateType
+                    ShowRateTypeDetail()
+                Case rowTransporter
+                    ShowTransporterDetail()
+                Case rowAgent
+                    ShowAgentDetail()
+
+            End Select
+        End If
+    End Sub
+
+    Private Sub Dgl1_CellBeginEdit(sender As Object, e As DataGridViewCellCancelEventArgs) Handles Dgl1.CellBeginEdit
+        Dim mRow As Integer
+        mRow = Dgl1.CurrentCell.RowIndex
+        If Dgl1.Columns(Dgl1.CurrentCell.ColumnIndex).Name = Col1Value Then
+            Select Case mRow
+                Case rowAgent, rowTransporter, rowRateType
+                    If Val(Dgl1.Item(Col1BtnDetail, mRow).Value) > 1 Then
+                        e.Cancel = True
+                    End If
+            End Select
+        End If
+    End Sub
+
+    Public Structure StructSubGroupTable
+        Dim SubCode As String
+        Dim Site_Code As String
+        Dim Name As String
+        Dim DispName As String
+        Dim AccountGroup As String
+        Dim GroupCode As String
+        Dim GroupNature As String
+        Dim ManualCode As String
+        Dim Nature As String
+        Dim Address As String
+        Dim CityCode As String
+        Dim CityName As String
+        Dim AreaCode As String
+        Dim AreaName As String
+        Dim StateName As String
+        Dim PIN As String
+        Dim Phone As String
+        Dim ContactPerson As String
+        Dim SubgroupType As String
+        Dim Mobile As String
+        Dim CreditDays As String
+        Dim CreditLimit As String
+        Dim EMail As String
+        Dim Parent As String
+        Dim SalesTaxPostingGroup As String
+        Dim EntryBy As String
+        Dim EntryDate As String
+        Dim EntryType As String
+        Dim EntryStatus As String
+        Dim Div_Code As String
+        Dim Status As String
+        Dim SalesTaxNo As String
+        Dim PANNo As String
+        Dim AadharNo As String
+        Dim TransporterCode As String
+        Dim TransporterName As String
+        Dim AgentCode As String
+        Dim AgentName As String
+        Dim Cnt As Integer
+    End Structure
+
+    Public Structure StructCity
+        Dim CityCode As String
+        Dim CityName As String
+        Dim State As String
+        Dim EntryBy As String
+        Dim EntryDate As String
+        Dim EntryType As String
+        Dim EntryStatus As String
+    End Structure
+
+    Public Structure StructAcGroup
+        Dim GroupCode As String
+        Dim SNo As String
+        Dim GroupName As String
+        Dim ContraGroupName As String
+        Dim GroupUnder As String
+        Dim GroupNature As String
+        Dim Nature As String
+        Dim SysGroup As String
+        Dim U_Name As String
+        Dim U_EntDt As String
+        Dim U_AE As String
+    End Structure
+
+    Private Sub BtnAttachments_Click(sender As Object, e As EventArgs) Handles BtnAttachments.Click
+        Dim FrmObj As New FrmAttachmentViewer()
+        FrmObj.LblDocNo.Text = "Party Name : " + TxtName.Text
+        FrmObj.SearchCode = mSearchCode
+        FrmObj.TableName = "SubGroupAttachments"
+        FrmObj.StartPosition = FormStartPosition.CenterParent
+        FrmObj.ShowDialog()
+        FrmObj.Dispose()
+        FrmObj = Nothing
+        SetAttachmentCaption()
+    End Sub
+
+    Private Sub SetAttachmentCaption()
+        Dim AttachmentPath As String = PubAttachmentPath + mSearchCode + "\"
+        If Directory.Exists(AttachmentPath) Then
+            Dim FileCount As Integer = Directory.GetFiles(AttachmentPath).Count
+            If FileCount > 0 Then BtnAttachments.Text = FileCount.ToString + IIf(FileCount = 1, " Attachment", " Attachments") Else BtnAttachments.Text = "Attachments"
+        Else
+            BtnAttachments.Text = "Attachments"
+        End If
+    End Sub
+End Class

@@ -1,0 +1,966 @@
+D:\SchoolDress\Project\Customised\obj\Release\Customised.exe
+D:\SchoolDress\Project\Customised\obj\Release\Customised.xml
+D:\SchoolDress\Project\Customised\obj\Release\Customised.pdb
+D:\SchoolDress\Release\Customised.exe
+D:\SchoolDress\Project\Customised\obj\Release\ResolveAssemblyReference.cache
+D:\SchoolDress\Project\Customised\obj\Release\Customised.FrmSaleReturnEntry.resources
+D:\SchoolDress\Project\Customised\obj\Release\Customised.FrmMoneyPayment.resources
+D:\SchoolDress\Project\Customised\obj\Release\Customised.FrmCreditNote.resources
+D:\SchoolDress\Project\Customised\obj\Release\Customised.FrmMoneyReceipt.resources
+D:\SchoolDress\Project\Customised\obj\Release\Customised.FrmSaleEntry.resources
+D:\SchoolDress\Project\Customised\obj\Release\Customised.FrmPurchaseReturnEntry.resources
+D:\SchoolDress\Project\Customised\obj\Release\Customised.FrmItem.resources
+D:\SchoolDress\Project\Customised\obj\Release\Customised.FrmPurchaseEntry.resources
+D:\SchoolDress\Project\Customised\obj\Release\Customised.TempItem.resources
+D:\SchoolDress\Project\Customised\obj\Release\Customised.TempPurchInvoiceCommon.resources
+D:\SchoolDress\Project\Customised\obj\Release\Customised.TempPayment.resources
+D:\SchoolDress\Project\Customised\obj\Release\Customised.TempSaleInvoice.resources
+D:\SchoolDress\Project\Customised\obj\Release\Customised.Resources.resources
+D:\SchoolDress\Project\Customised\obj\Release\Customised.MDIMain.resources
+D:\SchoolDress\Project\Customised\obj\Release\Customised.vbproj.GenerateResource.Cache
+D:\SchoolDress\Release\Customised.pdb
+D:\SchoolDress\Release\Customised.xml
+E:\Matrix\SchoolDress\Project\Customised\obj\Release\Customised.exe
+E:\Matrix\SchoolDress\Project\Customised\obj\Release\Customised.xml
+E:\Matrix\SchoolDress\Project\Customised\obj\Release\Customised.pdb
+E:\Matrix\Hotel\Project\Customised\obj\Release\Customised.exe
+E:\Matrix\Hotel\Project\Customised\obj\Release\Customised.xml
+E:\Matrix\Hotel\Project\Customised\obj\Release\Customised.pdb
+E:\Matrix\Hotel\Release\Customised.exe
+E:\Matrix\Hotel\Release\Customised.pdb
+E:\Matrix\Hotel\Release\Customised.xml
+E:\Matrix\Hotel\Project\Customised\obj\Release\ResolveAssemblyReference.cache
+E:\Matrix\Hotel\Project\Customised\obj\Release\Customised.FrmSaleReturnEntry.resources
+E:\Matrix\Hotel\Project\Customised\obj\Release\Customised.FrmMoneyPayment.resources
+E:\Matrix\Hotel\Project\Customised\obj\Release\Customised.FrmCreditNote.resources
+E:\Matrix\Hotel\Project\Customised\obj\Release\Customised.FrmMoneyReceipt.resources
+E:\Matrix\Hotel\Project\Customised\obj\Release\Customised.FrmSaleEntry.resources
+E:\Matrix\Hotel\Project\Customised\obj\Release\Customised.FrmPurchaseReturnEntry.resources
+E:\Matrix\Hotel\Project\Customised\obj\Release\Customised.FrmPurchaseEntry.resources
+E:\Matrix\Hotel\Project\Customised\obj\Release\Customised.FrmItem.resources
+E:\Matrix\Hotel\Project\Customised\obj\Release\Customised.FrmBom.resources
+E:\Matrix\Hotel\Project\Customised\obj\Release\Customised.TempPurchInvoiceCommon.resources
+E:\Matrix\Hotel\Project\Customised\obj\Release\Customised.TempPayment.resources
+E:\Matrix\Hotel\Project\Customised\obj\Release\Customised.TempSaleInvoice.resources
+E:\Matrix\Hotel\Project\Customised\obj\Release\Customised.Resources.resources
+E:\Matrix\Hotel\Project\Customised\obj\Release\Customised.MDIMain.resources
+E:\Matrix\Hotel\Project\Customised\obj\Release\Customised.vbproj.GenerateResource.Cache
+E:\Matrix\Hotel\Project\Customised\obj\Release\Customised.FrmItemGroup.resources
+E:\Matrix\Hotel\Project\Customised\obj\Release\Customised.FrmItemCategory.resources
+F:\Active Projects\HT\Release\Customised.exe
+F:\Active Projects\HT\Release\Customised.pdb
+F:\Active Projects\HT\Release\Customised.xml
+F:\Active Projects\HT\Project\Customised\obj\Release\ResolveAssemblyReference.cache
+F:\Active Projects\HT\Project\Customised\obj\Release\Customised.FrmKOTNature.resources
+F:\Active Projects\HT\Project\Customised\obj\Release\Customised.FrmItemGroup.resources
+F:\Active Projects\HT\Project\Customised\obj\Release\Customised.FrmItem.resources
+F:\Active Projects\HT\Project\Customised\obj\Release\Customised.FrmItemCategory.resources
+F:\Active Projects\HT\Project\Customised\obj\Release\Customised.FrmKOT.resources
+F:\Active Projects\HT\Project\Customised\obj\Release\Customised.FrmSaleReturnEntry.resources
+F:\Active Projects\HT\Project\Customised\obj\Release\Customised.FrmMoneyPayment.resources
+F:\Active Projects\HT\Project\Customised\obj\Release\Customised.FrmCreditNote.resources
+F:\Active Projects\HT\Project\Customised\obj\Release\Customised.FrmMoneyReceipt.resources
+F:\Active Projects\HT\Project\Customised\obj\Release\Customised.FrmSaleEntry.resources
+F:\Active Projects\HT\Project\Customised\obj\Release\Customised.FrmPurchaseReturnEntry.resources
+F:\Active Projects\HT\Project\Customised\obj\Release\Customised.FrmPurchaseEntry.resources
+F:\Active Projects\HT\Project\Customised\obj\Release\Customised.FrmBom.resources
+F:\Active Projects\HT\Project\Customised\obj\Release\Customised.FrmTableMaster.resources
+F:\Active Projects\HT\Project\Customised\obj\Release\Customised.FrmTableStatusDisplay.resources
+F:\Active Projects\HT\Project\Customised\obj\Release\Customised.TempPurchInvoiceCommon.resources
+F:\Active Projects\HT\Project\Customised\obj\Release\Customised.TempPayment.resources
+F:\Active Projects\HT\Project\Customised\obj\Release\Customised.TempSaleInvoice.resources
+F:\Active Projects\HT\Project\Customised\obj\Release\Customised.FrmSteward.resources
+F:\Active Projects\HT\Project\Customised\obj\Release\Customised.Resources.resources
+F:\Active Projects\HT\Project\Customised\obj\Release\Customised.MDIMain.resources
+F:\Active Projects\HT\Project\Customised\obj\Release\Customised.vbproj.GenerateResource.Cache
+F:\Active Projects\HT\Project\Customised\obj\Release\Customised.exe
+F:\Active Projects\HT\Project\Customised\obj\Release\Customised.xml
+F:\Active Projects\HT\Project\Customised\obj\Release\Customised.pdb
+F:\Active Projects\HT\Project\Customised\obj\Release\Customised.FrmBillSetlement.resources
+F:\Active Projects\HT\Project\Customised\obj\Release\Customised.FrmMenuItemCategory.resources
+F:\Active Projects\HT\Project\Customised\obj\Release\Customised.FrmMenuItemGroup.resources
+F:\Active Projects\HT\Project\Customised\obj\Release\Customised.FrmMenuItem.resources
+F:\Active Projects\HT\Project\Customised\obj\Release\Customised.FrmSaleOrder.resources
+F:\Active Projects\HT\Project\Customised\obj\Release\Customised.FrmEnviro.resources
+F:\Active Projects\HT\Project\Customised\obj\Release\Customised.FrmRequistion.resources
+F:\Active Projects\HT\Project\Customised\obj\Release\Customised.FrmSaleInvoice.resources
+F:\Active Projects\HT\Project\Customised\obj\Release\Customised.FrmConsumptionEntry.resources
+E:\Matrix\HT\Project\Customised\obj\Release\Customised.xml
+E:\Matrix\HT\Project\Customised\obj\Release\Customised.pdb
+E:\Matrix\HT\Release\Customised.exe
+E:\Matrix\HT\Release\Customised.pdb
+E:\Matrix\HT\Release\Customised.xml
+E:\Matrix\HT\Project\Customised\obj\Release\ResolveAssemblyReference.cache
+E:\Matrix\HT\Project\Customised\obj\Release\Customised.FrmSaleWithoutKOT.resources
+E:\Matrix\HT\Project\Customised\obj\Release\Customised.FrmOutlet.resources
+E:\Matrix\HT\Project\Customised\obj\Release\Customised.FrmBillSetlement.resources
+E:\Matrix\HT\Project\Customised\obj\Release\Customised.FrmAdjustBills.resources
+E:\Matrix\HT\Project\Customised\obj\Release\Customised.FrmMenuItemCategory.resources
+E:\Matrix\HT\Project\Customised\obj\Release\Customised.FrmMenuItemGroup.resources
+E:\Matrix\HT\Project\Customised\obj\Release\Customised.FrmMenuItem.resources
+E:\Matrix\HT\Project\Customised\obj\Release\Customised.FrmSaleOrder.resources
+E:\Matrix\HT\Project\Customised\obj\Release\Customised.FrmEnviro.resources
+E:\Matrix\HT\Project\Customised\obj\Release\Customised.FrmRequistion.resources
+E:\Matrix\HT\Project\Customised\obj\Release\Customised.TempSaleInvoice.resources
+E:\Matrix\HT\Project\Customised\obj\Release\Customised.FrmSaleInvoice.resources
+E:\Matrix\HT\Project\Customised\obj\Release\Customised.FrmKOTNature.resources
+E:\Matrix\HT\Project\Customised\obj\Release\Customised.FrmItemGroup.resources
+E:\Matrix\HT\Project\Customised\obj\Release\Customised.FrmItem.resources
+E:\Matrix\HT\Project\Customised\obj\Release\Customised.FrmItemCategory.resources
+E:\Matrix\HT\Project\Customised\obj\Release\Customised.FrmKOT.resources
+E:\Matrix\HT\Project\Customised\obj\Release\Customised.FrmSaleReturnEntry.resources
+E:\Matrix\HT\Project\Customised\obj\Release\Customised.FrmMoneyPayment.resources
+E:\Matrix\HT\Project\Customised\obj\Release\Customised.FrmCreditNote.resources
+E:\Matrix\HT\Project\Customised\obj\Release\Customised.FrmMoneyReceipt.resources
+E:\Matrix\HT\Project\Customised\obj\Release\Customised.FrmSaleEntry.resources
+E:\Matrix\HT\Project\Customised\obj\Release\Customised.FrmPurchaseReturnEntry.resources
+E:\Matrix\HT\Project\Customised\obj\Release\Customised.FrmPurchaseEntry.resources
+E:\Matrix\HT\Project\Customised\obj\Release\Customised.FrmBom.resources
+E:\Matrix\HT\Project\Customised\obj\Release\Customised.FrmTableMaster.resources
+E:\Matrix\HT\Project\Customised\obj\Release\Customised.FrmTableStatusDisplay.resources
+E:\Matrix\HT\Project\Customised\obj\Release\Customised.TempPurchInvoiceCommon.resources
+E:\Matrix\HT\Project\Customised\obj\Release\Customised.TempPayment.resources
+E:\Matrix\HT\Project\Customised\obj\Release\Customised.FrmSteward.resources
+E:\Matrix\HT\Project\Customised\obj\Release\Customised.FrmConsumptionEntry.resources
+E:\Matrix\HT\Project\Customised\obj\Release\Customised.Resources.resources
+E:\Matrix\HT\Project\Customised\obj\Release\Customised.MDIMain.resources
+E:\Matrix\HT\Project\Customised\obj\Release\Customised.vbproj.GenerateResource.Cache
+E:\Matrix\HT\Project\Customised\obj\Release\Customised.exe
+E:\Matrix\HT\Project\Customised\obj\Release\Customised.FrmNCat.resources
+E:\Matrix\HT\Project\Customised\obj\Release\Customised.FrmPurchaseInvoice.resources
+F:\Active Project\HT\Project\Customised\obj\Release\Customised.exe
+F:\Active Project\HT\Project\Customised\obj\Release\Customised.xml
+F:\Active Project\HT\Project\Customised\obj\Release\Customised.pdb
+F:\Active Project\HT\Release\Customised.exe
+F:\Active Project\HT\Release\Customised.pdb
+F:\Active Project\HT\Release\Customised.xml
+F:\Active Project\HT\Project\Customised\obj\Release\ResolveAssemblyReference.cache
+F:\Active Project\HT\Project\Customised\obj\Release\Customised.FrmNCat.resources
+F:\Active Project\HT\Project\Customised\obj\Release\Customised.FrmPurchaseInvoice.resources
+F:\Active Project\HT\Project\Customised\obj\Release\Customised.FrmSaleWithoutKOT.resources
+F:\Active Project\HT\Project\Customised\obj\Release\Customised.FrmOutlet.resources
+F:\Active Project\HT\Project\Customised\obj\Release\Customised.FrmBillSetlement.resources
+F:\Active Project\HT\Project\Customised\obj\Release\Customised.FrmAdjustBills.resources
+F:\Active Project\HT\Project\Customised\obj\Release\Customised.FrmMenuItemCategory.resources
+F:\Active Project\HT\Project\Customised\obj\Release\Customised.FrmMenuItemGroup.resources
+F:\Active Project\HT\Project\Customised\obj\Release\Customised.FrmMenuItem.resources
+F:\Active Project\HT\Project\Customised\obj\Release\Customised.FrmSaleOrder.resources
+F:\Active Project\HT\Project\Customised\obj\Release\Customised.FrmEnviro.resources
+F:\Active Project\HT\Project\Customised\obj\Release\Customised.FrmRequistion.resources
+F:\Active Project\HT\Project\Customised\obj\Release\Customised.TempSaleInvoice.resources
+F:\Active Project\HT\Project\Customised\obj\Release\Customised.FrmSaleInvoice.resources
+F:\Active Project\HT\Project\Customised\obj\Release\Customised.FrmKOTNature.resources
+F:\Active Project\HT\Project\Customised\obj\Release\Customised.FrmItemGroup.resources
+F:\Active Project\HT\Project\Customised\obj\Release\Customised.FrmItem.resources
+F:\Active Project\HT\Project\Customised\obj\Release\Customised.FrmItemCategory.resources
+F:\Active Project\HT\Project\Customised\obj\Release\Customised.FrmKOT.resources
+F:\Active Project\HT\Project\Customised\obj\Release\Customised.FrmSaleReturnEntry.resources
+F:\Active Project\HT\Project\Customised\obj\Release\Customised.FrmMoneyPayment.resources
+F:\Active Project\HT\Project\Customised\obj\Release\Customised.FrmCreditNote.resources
+F:\Active Project\HT\Project\Customised\obj\Release\Customised.FrmMoneyReceipt.resources
+F:\Active Project\HT\Project\Customised\obj\Release\Customised.FrmSaleEntry.resources
+F:\Active Project\HT\Project\Customised\obj\Release\Customised.FrmPurchaseReturnEntry.resources
+F:\Active Project\HT\Project\Customised\obj\Release\Customised.FrmPurchaseEntry.resources
+F:\Active Project\HT\Project\Customised\obj\Release\Customised.FrmBom.resources
+F:\Active Project\HT\Project\Customised\obj\Release\Customised.FrmTableMaster.resources
+F:\Active Project\HT\Project\Customised\obj\Release\Customised.FrmTableStatusDisplay.resources
+F:\Active Project\HT\Project\Customised\obj\Release\Customised.TempPurchInvoiceCommon.resources
+F:\Active Project\HT\Project\Customised\obj\Release\Customised.TempPayment.resources
+F:\Active Project\HT\Project\Customised\obj\Release\Customised.FrmSteward.resources
+F:\Active Project\HT\Project\Customised\obj\Release\Customised.FrmConsumptionEntry.resources
+F:\Active Project\HT\Project\Customised\obj\Release\Customised.Resources.resources
+F:\Active Project\HT\Project\Customised\obj\Release\Customised.MDIMain.resources
+F:\Active Project\HT\Project\Customised\obj\Release\Customised.vbproj.GenerateResource.Cache
+F:\Arpit\Active Project\HT\Project\Customised\obj\Release\Customised.exe
+F:\Arpit\Active Project\HT\Project\Customised\obj\Release\Customised.xml
+F:\Arpit\Active Project\HT\Project\Customised\obj\Release\Customised.pdb
+F:\Arpit\Active Project\HT\Release\Customised.exe
+F:\Arpit\Active Project\HT\Release\Customised.pdb
+F:\Arpit\Active Project\HT\Release\Customised.xml
+F:\Arpit\Active Project\HT\Project\Customised\obj\Release\ResolveAssemblyReference.cache
+F:\Arpit\Active Project\HT\Project\Customised\obj\Release\Customised.FrmNCat.resources
+F:\Arpit\Active Project\HT\Project\Customised\obj\Release\Customised.FrmPurchaseInvoice.resources
+F:\Arpit\Active Project\HT\Project\Customised\obj\Release\Customised.FrmSaleWithoutKOT.resources
+F:\Arpit\Active Project\HT\Project\Customised\obj\Release\Customised.FrmOutlet.resources
+F:\Arpit\Active Project\HT\Project\Customised\obj\Release\Customised.FrmBillSetlement.resources
+F:\Arpit\Active Project\HT\Project\Customised\obj\Release\Customised.FrmAdjustBills.resources
+F:\Arpit\Active Project\HT\Project\Customised\obj\Release\Customised.FrmMenuItemCategory.resources
+F:\Arpit\Active Project\HT\Project\Customised\obj\Release\Customised.FrmMenuItemGroup.resources
+F:\Arpit\Active Project\HT\Project\Customised\obj\Release\Customised.FrmMenuItem.resources
+F:\Arpit\Active Project\HT\Project\Customised\obj\Release\Customised.FrmSaleOrder.resources
+F:\Arpit\Active Project\HT\Project\Customised\obj\Release\Customised.FrmEnviro.resources
+F:\Arpit\Active Project\HT\Project\Customised\obj\Release\Customised.FrmRequistion.resources
+F:\Arpit\Active Project\HT\Project\Customised\obj\Release\Customised.TempSaleInvoice.resources
+F:\Arpit\Active Project\HT\Project\Customised\obj\Release\Customised.FrmSaleInvoice.resources
+F:\Arpit\Active Project\HT\Project\Customised\obj\Release\Customised.FrmKOTNature.resources
+F:\Arpit\Active Project\HT\Project\Customised\obj\Release\Customised.FrmItemGroup.resources
+F:\Arpit\Active Project\HT\Project\Customised\obj\Release\Customised.FrmItem.resources
+F:\Arpit\Active Project\HT\Project\Customised\obj\Release\Customised.FrmItemCategory.resources
+F:\Arpit\Active Project\HT\Project\Customised\obj\Release\Customised.FrmKOT.resources
+F:\Arpit\Active Project\HT\Project\Customised\obj\Release\Customised.FrmSaleReturnEntry.resources
+F:\Arpit\Active Project\HT\Project\Customised\obj\Release\Customised.FrmMoneyPayment.resources
+F:\Arpit\Active Project\HT\Project\Customised\obj\Release\Customised.FrmCreditNote.resources
+F:\Arpit\Active Project\HT\Project\Customised\obj\Release\Customised.FrmMoneyReceipt.resources
+F:\Arpit\Active Project\HT\Project\Customised\obj\Release\Customised.FrmSaleEntry.resources
+F:\Arpit\Active Project\HT\Project\Customised\obj\Release\Customised.FrmPurchaseReturnEntry.resources
+F:\Arpit\Active Project\HT\Project\Customised\obj\Release\Customised.FrmPurchaseEntry.resources
+F:\Arpit\Active Project\HT\Project\Customised\obj\Release\Customised.FrmBom.resources
+F:\Arpit\Active Project\HT\Project\Customised\obj\Release\Customised.FrmTableMaster.resources
+F:\Arpit\Active Project\HT\Project\Customised\obj\Release\Customised.FrmTableStatusDisplay.resources
+F:\Arpit\Active Project\HT\Project\Customised\obj\Release\Customised.TempPurchInvoiceCommon.resources
+F:\Arpit\Active Project\HT\Project\Customised\obj\Release\Customised.TempPayment.resources
+F:\Arpit\Active Project\HT\Project\Customised\obj\Release\Customised.FrmSteward.resources
+F:\Arpit\Active Project\HT\Project\Customised\obj\Release\Customised.FrmConsumptionEntry.resources
+F:\Arpit\Active Project\HT\Project\Customised\obj\Release\Customised.Resources.resources
+F:\Arpit\Active Project\HT\Project\Customised\obj\Release\Customised.MDIMain.resources
+F:\Arpit\Active Project\HT\Project\Customised\obj\Release\Customised.vbproj.GenerateResource.Cache
+D:\Active Project\Sample Management\Release\Customised.exe
+D:\Active Project\Sample Management\Release\Customised.pdb
+D:\Active Project\Sample Management\Release\Customised.xml
+D:\Active Project\Sample Management\Project\Customised\obj\Release\ResolveAssemblyReference.cache
+D:\Active Project\Sample Management\Project\Customised\obj\Release\Customised.FrmSaleOrderDeliveryScheduleChange.resources
+D:\Active Project\Sample Management\Project\Customised\obj\Release\Customised.FrmCollectionRateList.resources
+D:\Active Project\Sample Management\Project\Customised\obj\Release\Customised.FrmFinishedItem.resources
+D:\Active Project\Sample Management\Project\Customised\obj\Release\Customised.FrmQuality.resources
+D:\Active Project\Sample Management\Project\Customised\obj\Release\Customised.FrmCollection.resources
+D:\Active Project\Sample Management\Project\Customised\obj\Release\Customised.FrmItem.resources
+D:\Active Project\Sample Management\Project\Customised\obj\Release\Customised.FrmItemCategory.resources
+D:\Active Project\Sample Management\Project\Customised\obj\Release\Customised.FrmItemGroup.resources
+D:\Active Project\Sample Management\Project\Customised\obj\Release\Customised.FrmFollowUpType.resources
+D:\Active Project\Sample Management\Project\Customised\obj\Release\Customised.FrmSaleInvoice.resources
+D:\Active Project\Sample Management\Project\Customised\obj\Release\Customised.FrmSaleQuotation.resources
+D:\Active Project\Sample Management\Project\Customised\obj\Release\Customised.FrmSaleQuotationOld.resources
+D:\Active Project\Sample Management\Project\Customised\obj\Release\Customised.FrmViewerSubForm.resources
+D:\Active Project\Sample Management\Project\Customised\obj\Release\Customised.FrmCarpetSku.resources
+D:\Active Project\Sample Management\Project\Customised\obj\Release\Customised.FrmDesign.resources
+D:\Active Project\Sample Management\Project\Customised\obj\Release\Customised.FrmSaleEnquiry.resources
+D:\Active Project\Sample Management\Project\Customised\obj\Release\Customised.FrmSaleQC.resources
+D:\Active Project\Sample Management\Project\Customised\obj\Release\Customised.FrmSaleQCRequest.resources
+D:\Active Project\Sample Management\Project\Customised\obj\Release\Customised.FrmSaleInvoicePrint.resources
+D:\Active Project\Sample Management\Project\Customised\obj\Release\Customised.FrmRateList.resources
+D:\Active Project\Sample Management\Project\Customised\obj\Release\Customised.FrmRateType.resources
+D:\Active Project\Sample Management\Project\Customised\obj\Release\Customised.FrmItemInvoiceGroup.resources
+D:\Active Project\Sample Management\Project\Customised\obj\Release\Customised.FrmCity.resources
+D:\Active Project\Sample Management\Project\Customised\obj\Release\Customised.FrmImportFromExcel.resources
+D:\Active Project\Sample Management\Project\Customised\obj\Release\Customised.FrmParty.resources
+D:\Active Project\Sample Management\Project\Customised\obj\Release\Customised.FrmQualityOld.resources
+D:\Active Project\Sample Management\Project\Customised\obj\Release\Customised.FrmShade.resources
+D:\Active Project\Sample Management\Project\Customised\obj\Release\Customised.FrmUnitConversion.resources
+D:\Active Project\Sample Management\Project\Customised\obj\Release\Customised.FrmSaleInvoicePartyDetail.resources
+D:\Active Project\Sample Management\Project\Customised\obj\Release\Customised.FrmChangeDeliverySchedule.resources
+D:\Active Project\Sample Management\Project\Customised\obj\Release\Customised.FrmConstruction.resources
+D:\Active Project\Sample Management\Project\Customised\obj\Release\Customised.FrmEnviro.resources
+D:\Active Project\Sample Management\Project\Customised\obj\Release\Customised.FrmSaleOrder.resources
+D:\Active Project\Sample Management\Project\Customised\obj\Release\Customised.FrmSaleOrderCancel.resources
+D:\Active Project\Sample Management\Project\Customised\obj\Release\Customised.FrmSaleOrderDelivery.resources
+D:\Active Project\Sample Management\Project\Customised\obj\Release\Customised.FrmSampleMaster.resources
+D:\Active Project\Sample Management\Project\Customised\obj\Release\Customised.FrmSize.resources
+D:\Active Project\Sample Management\Project\Customised\obj\Release\Customised.MDIMain.resources
+D:\Active Project\Sample Management\Project\Customised\obj\Release\Customised.Resources.resources
+D:\Active Project\Sample Management\Project\Customised\obj\Release\Customised.vbproj.GenerateResource.Cache
+D:\Active Project\Sample Management\Project\Customised\obj\Release\Customised.exe
+D:\Active Project\Sample Management\Project\Customised\obj\Release\Customised.xml
+D:\Active Project\Sample Management\Project\Customised\obj\Release\Customised.pdb
+F:\Arpit\Active Project\Sample Management\Project\Customised\obj\Release\Customised.exe
+F:\Arpit\Active Project\Sample Management\Project\Customised\obj\Release\Customised.xml
+F:\Arpit\Active Project\Sample Management\Project\Customised\obj\Release\Customised.pdb
+F:\Arpit\Active Project\Sample Management\Release\Customised.exe
+F:\Arpit\Active Project\Sample Management\Release\Customised.pdb
+F:\Arpit\Active Project\Sample Management\Release\Customised.xml
+F:\Arpit\Active Project\Sample Management\Project\Customised\obj\Release\ResolveAssemblyReference.cache
+F:\Arpit\Active Project\Sample Management\Project\Customised\obj\Release\Customised.FrmSaleOrderDeliveryScheduleChange.resources
+F:\Arpit\Active Project\Sample Management\Project\Customised\obj\Release\Customised.FrmCollectionRateList.resources
+F:\Arpit\Active Project\Sample Management\Project\Customised\obj\Release\Customised.FrmFinishedItem.resources
+F:\Arpit\Active Project\Sample Management\Project\Customised\obj\Release\Customised.FrmQuality.resources
+F:\Arpit\Active Project\Sample Management\Project\Customised\obj\Release\Customised.FrmCollection.resources
+F:\Arpit\Active Project\Sample Management\Project\Customised\obj\Release\Customised.FrmItem.resources
+F:\Arpit\Active Project\Sample Management\Project\Customised\obj\Release\Customised.FrmItemCategory.resources
+F:\Arpit\Active Project\Sample Management\Project\Customised\obj\Release\Customised.FrmItemGroup.resources
+F:\Arpit\Active Project\Sample Management\Project\Customised\obj\Release\Customised.FrmRateListOld.resources
+F:\Arpit\Active Project\Sample Management\Project\Customised\obj\Release\Customised.FrmFollowUpType.resources
+F:\Arpit\Active Project\Sample Management\Project\Customised\obj\Release\Customised.FrmSaleInvoice.resources
+F:\Arpit\Active Project\Sample Management\Project\Customised\obj\Release\Customised.FrmSaleQuotation.resources
+F:\Arpit\Active Project\Sample Management\Project\Customised\obj\Release\Customised.FrmSaleQuotationOld.resources
+F:\Arpit\Active Project\Sample Management\Project\Customised\obj\Release\Customised.FrmViewerSubForm.resources
+F:\Arpit\Active Project\Sample Management\Project\Customised\obj\Release\Customised.FrmCarpetSku.resources
+F:\Arpit\Active Project\Sample Management\Project\Customised\obj\Release\Customised.FrmDesign.resources
+F:\Arpit\Active Project\Sample Management\Project\Customised\obj\Release\Customised.FrmSaleEnquiry.resources
+F:\Arpit\Active Project\Sample Management\Project\Customised\obj\Release\Customised.FrmSaleQC.resources
+F:\Arpit\Active Project\Sample Management\Project\Customised\obj\Release\Customised.FrmSaleQCRequest.resources
+F:\Arpit\Active Project\Sample Management\Project\Customised\obj\Release\Customised.FrmSaleInvoicePrint.resources
+F:\Arpit\Active Project\Sample Management\Project\Customised\obj\Release\Customised.FrmRateList.resources
+F:\Arpit\Active Project\Sample Management\Project\Customised\obj\Release\Customised.FrmRateType.resources
+F:\Arpit\Active Project\Sample Management\Project\Customised\obj\Release\Customised.FrmItemInvoiceGroup.resources
+F:\Arpit\Active Project\Sample Management\Project\Customised\obj\Release\Customised.FrmCity.resources
+F:\Arpit\Active Project\Sample Management\Project\Customised\obj\Release\Customised.FrmImportFromExcel.resources
+F:\Arpit\Active Project\Sample Management\Project\Customised\obj\Release\Customised.FrmParty.resources
+F:\Arpit\Active Project\Sample Management\Project\Customised\obj\Release\Customised.FrmQualityOld.resources
+F:\Arpit\Active Project\Sample Management\Project\Customised\obj\Release\Customised.FrmShade.resources
+F:\Arpit\Active Project\Sample Management\Project\Customised\obj\Release\Customised.FrmUnitConversion.resources
+F:\Arpit\Active Project\Sample Management\Project\Customised\obj\Release\Customised.FrmSaleInvoicePartyDetail.resources
+F:\Arpit\Active Project\Sample Management\Project\Customised\obj\Release\Customised.FrmChangeDeliverySchedule.resources
+F:\Arpit\Active Project\Sample Management\Project\Customised\obj\Release\Customised.FrmConstruction.resources
+F:\Arpit\Active Project\Sample Management\Project\Customised\obj\Release\Customised.FrmEnviro.resources
+F:\Arpit\Active Project\Sample Management\Project\Customised\obj\Release\Customised.FrmSaleOrder.resources
+F:\Arpit\Active Project\Sample Management\Project\Customised\obj\Release\Customised.FrmSaleOrderCancel.resources
+F:\Arpit\Active Project\Sample Management\Project\Customised\obj\Release\Customised.FrmSaleOrderDelivery.resources
+F:\Arpit\Active Project\Sample Management\Project\Customised\obj\Release\Customised.FrmSampleMaster.resources
+F:\Arpit\Active Project\Sample Management\Project\Customised\obj\Release\Customised.FrmSize.resources
+F:\Arpit\Active Project\Sample Management\Project\Customised\obj\Release\Customised.MDIMain.resources
+F:\Arpit\Active Project\Sample Management\Project\Customised\obj\Release\Customised.Resources.resources
+F:\Arpit\Active Project\Sample Management\Project\Customised\obj\Release\Customised.vbproj.GenerateResource.Cache
+F:\Arpit\Active Project\Sample Management\Project\Customised\obj\Release\Customised.FrmEmployee.resources
+F:\Arpit\Active Project\Sample Management\Project\Customised\obj\Release\Customised.FrmSaleOrderAmendment.resources
+D:\Active Project\Sample Management\Project\Customised\obj\Release\Customised.FrmSaleOrderAmendment.resources
+D:\Active Project\Sample Management\Project\Customised\obj\Release\Customised.FrmEmployee.resources
+E:\Arpit\Active Project\Sample Management\Project\Customised\obj\Release\Customised.exe
+E:\Arpit\Active Project\Sample Management\Project\Customised\obj\Release\Customised.xml
+E:\Arpit\Active Project\Sample Management\Project\Customised\obj\Release\Customised.pdb
+E:\Arpit\Active Project\Sample Management\Release\Customised.exe
+E:\Arpit\Active Project\Sample Management\Release\Customised.pdb
+E:\Arpit\Active Project\Sample Management\Release\Customised.xml
+E:\Arpit\Active Project\Sample Management\Project\Customised\obj\Release\ResolveAssemblyReference.cache
+E:\Arpit\Active Project\Sample Management\Project\Customised\obj\Release\Customised.FrmSaleOrderAmendment.resources
+E:\Arpit\Active Project\Sample Management\Project\Customised\obj\Release\Customised.FrmParty.resources
+E:\Arpit\Active Project\Sample Management\Project\Customised\obj\Release\Customised.FrmSaleOrderDeliveryScheduleChange.resources
+E:\Arpit\Active Project\Sample Management\Project\Customised\obj\Release\Customised.FrmCollectionRateList.resources
+E:\Arpit\Active Project\Sample Management\Project\Customised\obj\Release\Customised.FrmFinishedItem.resources
+E:\Arpit\Active Project\Sample Management\Project\Customised\obj\Release\Customised.FrmQuality.resources
+E:\Arpit\Active Project\Sample Management\Project\Customised\obj\Release\Customised.FrmCollection.resources
+E:\Arpit\Active Project\Sample Management\Project\Customised\obj\Release\Customised.FrmItem.resources
+E:\Arpit\Active Project\Sample Management\Project\Customised\obj\Release\Customised.FrmItemCategory.resources
+E:\Arpit\Active Project\Sample Management\Project\Customised\obj\Release\Customised.FrmItemGroup.resources
+E:\Arpit\Active Project\Sample Management\Project\Customised\obj\Release\Customised.FrmFollowUpType.resources
+E:\Arpit\Active Project\Sample Management\Project\Customised\obj\Release\Customised.FrmSaleInvoice.resources
+E:\Arpit\Active Project\Sample Management\Project\Customised\obj\Release\Customised.FrmSaleQuotation.resources
+E:\Arpit\Active Project\Sample Management\Project\Customised\obj\Release\Customised.FrmSaleQuotationOld.resources
+E:\Arpit\Active Project\Sample Management\Project\Customised\obj\Release\Customised.FrmViewerSubForm.resources
+E:\Arpit\Active Project\Sample Management\Project\Customised\obj\Release\Customised.FrmCarpetSku.resources
+E:\Arpit\Active Project\Sample Management\Project\Customised\obj\Release\Customised.FrmDesign.resources
+E:\Arpit\Active Project\Sample Management\Project\Customised\obj\Release\Customised.FrmSaleEnquiry.resources
+E:\Arpit\Active Project\Sample Management\Project\Customised\obj\Release\Customised.FrmSaleQC.resources
+E:\Arpit\Active Project\Sample Management\Project\Customised\obj\Release\Customised.FrmSaleQCRequest.resources
+E:\Arpit\Active Project\Sample Management\Project\Customised\obj\Release\Customised.FrmSaleInvoicePrint.resources
+E:\Arpit\Active Project\Sample Management\Project\Customised\obj\Release\Customised.FrmRateList.resources
+E:\Arpit\Active Project\Sample Management\Project\Customised\obj\Release\Customised.FrmRateType.resources
+E:\Arpit\Active Project\Sample Management\Project\Customised\obj\Release\Customised.FrmItemInvoiceGroup.resources
+E:\Arpit\Active Project\Sample Management\Project\Customised\obj\Release\Customised.FrmCity.resources
+E:\Arpit\Active Project\Sample Management\Project\Customised\obj\Release\Customised.FrmImportFromExcel.resources
+E:\Arpit\Active Project\Sample Management\Project\Customised\obj\Release\Customised.FrmEmployee.resources
+E:\Arpit\Active Project\Sample Management\Project\Customised\obj\Release\Customised.FrmQualityOld.resources
+E:\Arpit\Active Project\Sample Management\Project\Customised\obj\Release\Customised.FrmShade.resources
+E:\Arpit\Active Project\Sample Management\Project\Customised\obj\Release\Customised.FrmUnitConversion.resources
+E:\Arpit\Active Project\Sample Management\Project\Customised\obj\Release\Customised.FrmSaleInvoicePartyDetail.resources
+E:\Arpit\Active Project\Sample Management\Project\Customised\obj\Release\Customised.FrmChangeDeliverySchedule.resources
+E:\Arpit\Active Project\Sample Management\Project\Customised\obj\Release\Customised.FrmConstruction.resources
+E:\Arpit\Active Project\Sample Management\Project\Customised\obj\Release\Customised.FrmEnviro.resources
+E:\Arpit\Active Project\Sample Management\Project\Customised\obj\Release\Customised.FrmSaleOrder.resources
+E:\Arpit\Active Project\Sample Management\Project\Customised\obj\Release\Customised.FrmSaleOrderCancel.resources
+E:\Arpit\Active Project\Sample Management\Project\Customised\obj\Release\Customised.FrmSaleOrderDelivery.resources
+E:\Arpit\Active Project\Sample Management\Project\Customised\obj\Release\Customised.FrmSampleMaster.resources
+E:\Arpit\Active Project\Sample Management\Project\Customised\obj\Release\Customised.FrmSize.resources
+E:\Arpit\Active Project\Sample Management\Project\Customised\obj\Release\Customised.MDIMain.resources
+E:\Arpit\Active Project\Sample Management\Project\Customised\obj\Release\Customised.Resources.resources
+E:\Arpit\Active Project\Sample Management\Project\Customised\obj\Release\Customised.vbproj.GenerateResource.Cache
+D:\Active Project\Medical\Project\Customised\obj\Release\Customised.exe
+D:\Active Project\Medical\Project\Customised\obj\Release\Customised.xml
+D:\Active Project\Medical\Project\Customised\obj\Release\Customised.pdb
+D:\Active Project\Medical\Release\Customised.exe
+D:\Active Project\Medical\Release\Customised.pdb
+D:\Active Project\Medical\Release\Customised.xml
+D:\Active Project\Medical\Project\Customised\obj\Release\ResolveAssemblyReference.cache
+D:\Active Project\Medical\Project\Customised\obj\Release\Customised.FrmParty.resources
+D:\Active Project\Medical\Project\Customised\obj\Release\Customised.FrmItem.resources
+D:\Active Project\Medical\Project\Customised\obj\Release\Customised.FrmItemCategory.resources
+D:\Active Project\Medical\Project\Customised\obj\Release\Customised.FrmItemGroup.resources
+D:\Active Project\Medical\Project\Customised\obj\Release\Customised.FrmViewerSubForm.resources
+D:\Active Project\Medical\Project\Customised\obj\Release\Customised.FrmSaleInvoicePrint.resources
+D:\Active Project\Medical\Project\Customised\obj\Release\Customised.FrmRateList.resources
+D:\Active Project\Medical\Project\Customised\obj\Release\Customised.FrmRateType.resources
+D:\Active Project\Medical\Project\Customised\obj\Release\Customised.FrmItemInvoiceGroup.resources
+D:\Active Project\Medical\Project\Customised\obj\Release\Customised.FrmImportFromExcel.resources
+D:\Active Project\Medical\Project\Customised\obj\Release\Customised.FrmSaleInvoicePartyDetail.resources
+D:\Active Project\Medical\Project\Customised\obj\Release\Customised.FrmEnviro.resources
+D:\Active Project\Medical\Project\Customised\obj\Release\Customised.MDIMain.resources
+D:\Active Project\Medical\Project\Customised\obj\Release\Customised.Resources.resources
+D:\Active Project\Medical\Project\Customised\obj\Release\Customised.vbproj.GenerateResource.Cache
+D:\Active Project\Medical\Project\Customised\obj\Release\Customised.FrmVatCommodityCode.resources
+D:\Active Project\Medical\Project\Customised\obj\Release\Customised.FrmManufacturer.resources
+D:\Active Project\Medical\Project\Customised\obj\Release\Customised.FrmSaleChallan.resources
+D:\Active Project\Medical\Project\Customised\obj\Release\Customised.FrmSaleReturn.resources
+F:\Med\Medical\Project\Customised\obj\Release\ResolveAssemblyReference.cache
+F:\Med\Medical\Project\Customised\obj\Release\Customised.FrmVatCommodityCode.resources
+F:\Med\Medical\Project\Customised\obj\Release\Customised.FrmManufacturer.resources
+F:\Med\Medical\Project\Customised\obj\Release\Customised.FrmSaleChallan.resources
+F:\Med\Medical\Project\Customised\obj\Release\Customised.FrmSaleReturn.resources
+F:\Med\Medical\Project\Customised\obj\Release\Customised.FrmParty.resources
+F:\Med\Medical\Project\Customised\obj\Release\Customised.FrmItem.resources
+F:\Med\Medical\Project\Customised\obj\Release\Customised.FrmItemCategory.resources
+F:\Med\Medical\Project\Customised\obj\Release\Customised.FrmItemGroup.resources
+F:\Med\Medical\Project\Customised\obj\Release\Customised.FrmSaleInvoice.resources
+F:\Med\Medical\Project\Customised\obj\Release\Customised.FrmViewerSubForm.resources
+F:\Med\Medical\Project\Customised\obj\Release\Customised.FrmSaleInvoicePrint.resources
+F:\Med\Medical\Project\Customised\obj\Release\Customised.FrmRateList.resources
+F:\Med\Medical\Project\Customised\obj\Release\Customised.FrmRateType.resources
+F:\Med\Medical\Project\Customised\obj\Release\Customised.FrmItemInvoiceGroup.resources
+F:\Med\Medical\Project\Customised\obj\Release\Customised.FrmImportFromExcel.resources
+F:\Med\Medical\Project\Customised\obj\Release\Customised.FrmEmployee.resources
+F:\Med\Medical\Project\Customised\obj\Release\Customised.FrmSaleInvoicePartyDetail.resources
+F:\Med\Medical\Project\Customised\obj\Release\Customised.FrmEnviro.resources
+F:\Med\Medical\Project\Customised\obj\Release\Customised.MDIMain.resources
+F:\Med\Medical\Project\Customised\obj\Release\Customised.Resources.resources
+F:\Med\Medical\Project\Customised\obj\Release\Customised.vbproj.GenerateResource.Cache
+F:\Med\Medical\Project\Customised\obj\Release\Customised.exe
+F:\Med\Medical\Project\Customised\obj\Release\Customised.xml
+F:\Med\Medical\Project\Customised\obj\Release\Customised.pdb
+F:\Med\Medical\Release\Customised.exe
+F:\Med\Medical\Release\Customised.pdb
+F:\Med\Medical\Release\Customised.xml
+G:\Med\Medical\Release\Customised.exe
+G:\Med\Medical\Release\Customised.pdb
+G:\Med\Medical\Release\Customised.xml
+G:\Med\Medical\Project\Customised\obj\Release\ResolveAssemblyReference.cache
+G:\Med\Medical\Project\Customised\obj\Release\Customised.FrmVatCommodityCode.resources
+G:\Med\Medical\Project\Customised\obj\Release\Customised.FrmManufacturer.resources
+G:\Med\Medical\Project\Customised\obj\Release\Customised.FrmSaleChallan.resources
+G:\Med\Medical\Project\Customised\obj\Release\Customised.FrmSaleReturn.resources
+G:\Med\Medical\Project\Customised\obj\Release\Customised.FrmParty.resources
+G:\Med\Medical\Project\Customised\obj\Release\Customised.FrmItem.resources
+G:\Med\Medical\Project\Customised\obj\Release\Customised.FrmItemCategory.resources
+G:\Med\Medical\Project\Customised\obj\Release\Customised.FrmItemGroup.resources
+G:\Med\Medical\Project\Customised\obj\Release\Customised.FrmSaleInvoice.resources
+G:\Med\Medical\Project\Customised\obj\Release\Customised.FrmViewerSubForm.resources
+G:\Med\Medical\Project\Customised\obj\Release\Customised.FrmSaleInvoicePrint.resources
+G:\Med\Medical\Project\Customised\obj\Release\Customised.FrmRateList.resources
+G:\Med\Medical\Project\Customised\obj\Release\Customised.FrmRateType.resources
+G:\Med\Medical\Project\Customised\obj\Release\Customised.FrmItemInvoiceGroup.resources
+G:\Med\Medical\Project\Customised\obj\Release\Customised.FrmImportFromExcel.resources
+G:\Med\Medical\Project\Customised\obj\Release\Customised.FrmEmployee.resources
+G:\Med\Medical\Project\Customised\obj\Release\Customised.FrmSaleInvoicePartyDetail.resources
+G:\Med\Medical\Project\Customised\obj\Release\Customised.FrmEnviro.resources
+G:\Med\Medical\Project\Customised\obj\Release\Customised.MDIMain.resources
+G:\Med\Medical\Project\Customised\obj\Release\Customised.Resources.resources
+G:\Med\Medical\Project\Customised\obj\Release\Customised.vbproj.GenerateResource.Cache
+G:\Med\Medical\Project\Customised\obj\Release\Customised.exe
+G:\Med\Medical\Project\Customised\obj\Release\Customised.xml
+G:\Med\Medical\Project\Customised\obj\Release\Customised.pdb
+E:\Arpit\Active Project\Medical\Release\Customised.exe
+E:\Arpit\Active Project\Medical\Release\Customised.pdb
+E:\Arpit\Active Project\Medical\Release\Customised.xml
+E:\Arpit\Active Project\Medical\Project\Customised\obj\Release\ResolveAssemblyReference.cache
+E:\Arpit\Active Project\Medical\Project\Customised\obj\Release\Customised.FrmVatCommodityCode.resources
+E:\Arpit\Active Project\Medical\Project\Customised\obj\Release\Customised.FrmManufacturer.resources
+E:\Arpit\Active Project\Medical\Project\Customised\obj\Release\Customised.FrmSaleChallan.resources
+E:\Arpit\Active Project\Medical\Project\Customised\obj\Release\Customised.FrmSaleReturn.resources
+E:\Arpit\Active Project\Medical\Project\Customised\obj\Release\Customised.FrmParty.resources
+E:\Arpit\Active Project\Medical\Project\Customised\obj\Release\Customised.FrmItem.resources
+E:\Arpit\Active Project\Medical\Project\Customised\obj\Release\Customised.FrmItemCategory.resources
+E:\Arpit\Active Project\Medical\Project\Customised\obj\Release\Customised.FrmItemGroup.resources
+E:\Arpit\Active Project\Medical\Project\Customised\obj\Release\Customised.FrmViewerSubForm.resources
+E:\Arpit\Active Project\Medical\Project\Customised\obj\Release\Customised.FrmSaleInvoicePrint.resources
+E:\Arpit\Active Project\Medical\Project\Customised\obj\Release\Customised.FrmRateList.resources
+E:\Arpit\Active Project\Medical\Project\Customised\obj\Release\Customised.FrmRateType.resources
+E:\Arpit\Active Project\Medical\Project\Customised\obj\Release\Customised.FrmItemInvoiceGroup.resources
+E:\Arpit\Active Project\Medical\Project\Customised\obj\Release\Customised.FrmImportFromExcel.resources
+E:\Arpit\Active Project\Medical\Project\Customised\obj\Release\Customised.FrmEmployee.resources
+E:\Arpit\Active Project\Medical\Project\Customised\obj\Release\Customised.FrmSaleInvoicePartyDetail.resources
+E:\Arpit\Active Project\Medical\Project\Customised\obj\Release\Customised.FrmEnviro.resources
+E:\Arpit\Active Project\Medical\Project\Customised\obj\Release\Customised.MDIMain.resources
+E:\Arpit\Active Project\Medical\Project\Customised\obj\Release\Customised.Resources.resources
+E:\Arpit\Active Project\Medical\Project\Customised\obj\Release\Customised.vbproj.GenerateResource.Cache
+E:\Arpit\Active Project\Medical\Project\Customised\obj\Release\Customised.exe
+E:\Arpit\Active Project\Medical\Project\Customised\obj\Release\Customised.xml
+E:\Arpit\Active Project\Medical\Project\Customised\obj\Release\Customised.pdb
+\\arpit-pc\Active Project\Medical\Project\Customised\obj\Release\Customised.exe
+\\arpit-pc\Active Project\Medical\Project\Customised\obj\Release\Customised.xml
+\\arpit-pc\Active Project\Medical\Project\Customised\obj\Release\Customised.pdb
+\\arpit-pc\Active Project\Medical\Project\Customised\obj\Release\ResolveAssemblyReference.cache
+\\arpit-pc\Active Project\Medical\Project\Customised\obj\Release\Customised.FrmVatCommodityCode.resources
+\\arpit-pc\Active Project\Medical\Project\Customised\obj\Release\Customised.FrmManufacturer.resources
+\\arpit-pc\Active Project\Medical\Project\Customised\obj\Release\Customised.FrmSaleChallan.resources
+\\arpit-pc\Active Project\Medical\Project\Customised\obj\Release\Customised.FrmSaleReturn.resources
+\\arpit-pc\Active Project\Medical\Project\Customised\obj\Release\Customised.FrmParty.resources
+\\arpit-pc\Active Project\Medical\Project\Customised\obj\Release\Customised.FrmItem.resources
+\\arpit-pc\Active Project\Medical\Project\Customised\obj\Release\Customised.FrmItemCategory.resources
+\\arpit-pc\Active Project\Medical\Project\Customised\obj\Release\Customised.FrmItemGroup.resources
+\\arpit-pc\Active Project\Medical\Project\Customised\obj\Release\Customised.FrmSaleInvoice.resources
+\\arpit-pc\Active Project\Medical\Project\Customised\obj\Release\Customised.FrmViewerSubForm.resources
+\\arpit-pc\Active Project\Medical\Project\Customised\obj\Release\Customised.FrmSaleInvoicePrint.resources
+\\arpit-pc\Active Project\Medical\Project\Customised\obj\Release\Customised.FrmRateList.resources
+\\arpit-pc\Active Project\Medical\Project\Customised\obj\Release\Customised.FrmRateType.resources
+\\arpit-pc\Active Project\Medical\Project\Customised\obj\Release\Customised.FrmItemInvoiceGroup.resources
+\\arpit-pc\Active Project\Medical\Project\Customised\obj\Release\Customised.FrmImportFromExcel.resources
+\\arpit-pc\Active Project\Medical\Project\Customised\obj\Release\Customised.FrmEmployee.resources
+\\arpit-pc\Active Project\Medical\Project\Customised\obj\Release\Customised.FrmSaleInvoicePartyDetail.resources
+\\arpit-pc\Active Project\Medical\Project\Customised\obj\Release\Customised.FrmEnviro.resources
+\\arpit-pc\Active Project\Medical\Project\Customised\obj\Release\Customised.MDIMain.resources
+\\arpit-pc\Active Project\Medical\Project\Customised\obj\Release\Customised.Resources.resources
+\\arpit-pc\Active Project\Medical\Project\Customised\obj\Release\Customised.vbproj.GenerateResource.Cache
+D:\Active Project\Medical\Project\Customised\obj\Release\Customised.FrmPurchInvoice.resources
+D:\Active Project\Medical\Project\Customised\obj\Release\Customised.FrmPurchChallanForSingleItem.resources
+E:\Arpit\Active Project\Medical\Project\Customised\obj\Release\Customised.FrmPurchChallanForSingleItem.resources
+E:\Arpit\Active Project\Medical\Project\Customised\obj\Release\Customised.FrmPurchInvoice.resources
+F:\Medical\Release\Customised.exe
+F:\Medical\Release\Customised.pdb
+F:\Medical\Release\Customised.xml
+F:\Medical\Project\Customised\obj\Release\ResolveAssemblyReference.cache
+F:\Medical\Project\Customised\obj\Release\Customised.FrmPurchChallanForSingleItem.resources
+F:\Medical\Project\Customised\obj\Release\Customised.FrmPurchInvoice.resources
+F:\Medical\Project\Customised\obj\Release\Customised.FrmVatCommodityCode.resources
+F:\Medical\Project\Customised\obj\Release\Customised.FrmManufacturer.resources
+F:\Medical\Project\Customised\obj\Release\Customised.FrmSaleChallan.resources
+F:\Medical\Project\Customised\obj\Release\Customised.FrmSaleReturn.resources
+F:\Medical\Project\Customised\obj\Release\Customised.FrmParty.resources
+F:\Medical\Project\Customised\obj\Release\Customised.FrmItem.resources
+F:\Medical\Project\Customised\obj\Release\Customised.FrmItemCategory.resources
+F:\Medical\Project\Customised\obj\Release\Customised.FrmItemGroup.resources
+F:\Medical\Project\Customised\obj\Release\Customised.FrmViewerSubForm.resources
+F:\Medical\Project\Customised\obj\Release\Customised.FrmSaleInvoicePrint.resources
+F:\Medical\Project\Customised\obj\Release\Customised.FrmRateList.resources
+F:\Medical\Project\Customised\obj\Release\Customised.FrmRateType.resources
+F:\Medical\Project\Customised\obj\Release\Customised.FrmItemInvoiceGroup.resources
+F:\Medical\Project\Customised\obj\Release\Customised.FrmImportFromExcel.resources
+F:\Medical\Project\Customised\obj\Release\Customised.FrmEmployee.resources
+F:\Medical\Project\Customised\obj\Release\Customised.FrmSaleInvoicePartyDetail.resources
+F:\Medical\Project\Customised\obj\Release\Customised.FrmEnviro.resources
+F:\Medical\Project\Customised\obj\Release\Customised.MDIMain.resources
+F:\Medical\Project\Customised\obj\Release\Customised.Resources.resources
+F:\Medical\Project\Customised\obj\Release\Customised.vbproj.GenerateResource.Cache
+F:\Medical\Project\Customised\obj\Release\Customised.exe
+F:\Medical\Project\Customised\obj\Release\Customised.xml
+F:\Medical\Project\Customised\obj\Release\Customised.pdb
+D:\Medical\Project\Customised\obj\Release\Customised.exe
+D:\Medical\Project\Customised\obj\Release\Customised.xml
+D:\Medical\Project\Customised\obj\Release\Customised.pdb
+D:\Active Project\Medical\Project\Customised\obj\Release\Customised.FrmPhysicalStockAdjustmentEntry.resources
+D:\Active Project\Medical\Project\Customised\obj\Release\Customised.FrmPhysicalStockEntry.resources
+D:\Active Project\Medical\Project\Customised\obj\Release\Customised.FrmSaleInvoice.resources
+D:\Active Project\Medical\Project\Customised\obj\Release\Customised.WriteInExcel.resources
+E:\Arpit\Active Project\Kanpur Medical\Project\Customised\obj\Release\ResolveAssemblyReference.cache
+E:\Arpit\Active Project\Kanpur Medical\Project\Customised\obj\Release\Customised.FrmPhysicalStockAdjustmentEntry.resources
+E:\Arpit\Active Project\Kanpur Medical\Project\Customised\obj\Release\Customised.FrmPhysicalStockEntry.resources
+E:\Arpit\Active Project\Kanpur Medical\Project\Customised\obj\Release\Customised.FrmPurchChallan.resources
+E:\Arpit\Active Project\Kanpur Medical\Project\Customised\obj\Release\Customised.FrmPurchChallanGateDetail.resources
+E:\Arpit\Active Project\Kanpur Medical\Project\Customised\obj\Release\Customised.FrmSaleInvoice.resources
+E:\Arpit\Active Project\Kanpur Medical\Project\Customised\obj\Release\Customised.FrmPurchChallanForSingleItem.resources
+E:\Arpit\Active Project\Kanpur Medical\Project\Customised\obj\Release\Customised.FrmPurchInvoice.resources
+E:\Arpit\Active Project\Kanpur Medical\Project\Customised\obj\Release\Customised.FrmVatCommodityCode.resources
+E:\Arpit\Active Project\Kanpur Medical\Project\Customised\obj\Release\Customised.FrmManufacturer.resources
+E:\Arpit\Active Project\Kanpur Medical\Project\Customised\obj\Release\Customised.FrmSaleChallan.resources
+E:\Arpit\Active Project\Kanpur Medical\Project\Customised\obj\Release\Customised.FrmSaleReturn.resources
+E:\Arpit\Active Project\Kanpur Medical\Project\Customised\obj\Release\Customised.FrmParty.resources
+E:\Arpit\Active Project\Kanpur Medical\Project\Customised\obj\Release\Customised.FrmItem.resources
+E:\Arpit\Active Project\Kanpur Medical\Project\Customised\obj\Release\Customised.FrmItemCategory.resources
+E:\Arpit\Active Project\Kanpur Medical\Project\Customised\obj\Release\Customised.FrmItemGroup.resources
+E:\Arpit\Active Project\Kanpur Medical\Project\Customised\obj\Release\Customised.FrmViewerSubForm.resources
+E:\Arpit\Active Project\Kanpur Medical\Project\Customised\obj\Release\Customised.FrmSaleInvoicePrint.resources
+E:\Arpit\Active Project\Kanpur Medical\Project\Customised\obj\Release\Customised.FrmRateList.resources
+E:\Arpit\Active Project\Kanpur Medical\Project\Customised\obj\Release\Customised.FrmRateType.resources
+E:\Arpit\Active Project\Kanpur Medical\Project\Customised\obj\Release\Customised.FrmItemInvoiceGroup.resources
+E:\Arpit\Active Project\Kanpur Medical\Project\Customised\obj\Release\Customised.FrmImportFromExcel.resources
+E:\Arpit\Active Project\Kanpur Medical\Project\Customised\obj\Release\Customised.FrmSaleInvoicePartyDetail.resources
+E:\Arpit\Active Project\Kanpur Medical\Project\Customised\obj\Release\Customised.FrmEnviro.resources
+E:\Arpit\Active Project\Kanpur Medical\Project\Customised\obj\Release\Customised.MDIMain.resources
+E:\Arpit\Active Project\Kanpur Medical\Project\Customised\obj\Release\Customised.WriteInExcel.resources
+E:\Arpit\Active Project\Kanpur Medical\Project\Customised\obj\Release\Customised.Resources.resources
+E:\Arpit\Active Project\Kanpur Medical\Project\Customised\obj\Release\Customised.vbproj.GenerateResource.Cache
+E:\Arpit\Active Project\Kanpur Medical\Project\Customised\obj\Release\Customised.exe
+E:\Arpit\Active Project\Kanpur Medical\Project\Customised\obj\Release\Customised.xml
+E:\Arpit\Active Project\Kanpur Medical\Project\Customised\obj\Release\Customised.pdb
+E:\Arpit\Active Project\Kanpur Medical\Release\Customised.exe
+E:\Arpit\Active Project\Kanpur Medical\Release\Customised.pdb
+E:\Arpit\Active Project\Kanpur Medical\Release\Customised.xml
+D:\Active Project\Kanpur Medical\Project\Customised\obj\Release\Customised.exe
+D:\Active Project\Kanpur Medical\Project\Customised\obj\Release\Customised.xml
+D:\Active Project\Kanpur Medical\Project\Customised\obj\Release\Customised.pdb
+D:\Active Project\Kanpur Medical\Release\Customised.exe
+D:\Active Project\Kanpur Medical\Release\Customised.pdb
+D:\Active Project\Kanpur Medical\Release\Customised.xml
+D:\Active Project\Kanpur Medical\Project\Customised\obj\Release\ResolveAssemblyReference.cache
+D:\Active Project\Kanpur Medical\Project\Customised\obj\Release\Customised.FrmPurchaseImportFromExcel.resources
+D:\Active Project\Kanpur Medical\Project\Customised\obj\Release\Customised.FrmPhysicalStockAdjustmentEntry.resources
+D:\Active Project\Kanpur Medical\Project\Customised\obj\Release\Customised.FrmPhysicalStockEntry.resources
+D:\Active Project\Kanpur Medical\Project\Customised\obj\Release\Customised.FrmPurchChallan.resources
+D:\Active Project\Kanpur Medical\Project\Customised\obj\Release\Customised.FrmPurchChallanGateDetail.resources
+D:\Active Project\Kanpur Medical\Project\Customised\obj\Release\Customised.FrmSaleInvoice.resources
+D:\Active Project\Kanpur Medical\Project\Customised\obj\Release\Customised.FrmPurchChallanForSingleItem.resources
+D:\Active Project\Kanpur Medical\Project\Customised\obj\Release\Customised.FrmPurchInvoice.resources
+D:\Active Project\Kanpur Medical\Project\Customised\obj\Release\Customised.FrmVatCommodityCode.resources
+D:\Active Project\Kanpur Medical\Project\Customised\obj\Release\Customised.FrmManufacturer.resources
+D:\Active Project\Kanpur Medical\Project\Customised\obj\Release\Customised.FrmSaleChallan.resources
+D:\Active Project\Kanpur Medical\Project\Customised\obj\Release\Customised.FrmSaleReturn.resources
+D:\Active Project\Kanpur Medical\Project\Customised\obj\Release\Customised.FrmParty.resources
+D:\Active Project\Kanpur Medical\Project\Customised\obj\Release\Customised.FrmItem.resources
+D:\Active Project\Kanpur Medical\Project\Customised\obj\Release\Customised.FrmItemCategory.resources
+D:\Active Project\Kanpur Medical\Project\Customised\obj\Release\Customised.FrmItemGroup.resources
+D:\Active Project\Kanpur Medical\Project\Customised\obj\Release\Customised.FrmViewerSubForm.resources
+D:\Active Project\Kanpur Medical\Project\Customised\obj\Release\Customised.FrmSaleInvoicePrint.resources
+D:\Active Project\Kanpur Medical\Project\Customised\obj\Release\Customised.FrmRateList.resources
+D:\Active Project\Kanpur Medical\Project\Customised\obj\Release\Customised.FrmRateType.resources
+D:\Active Project\Kanpur Medical\Project\Customised\obj\Release\Customised.FrmItemInvoiceGroup.resources
+D:\Active Project\Kanpur Medical\Project\Customised\obj\Release\Customised.FrmImportFromExcel.resources
+D:\Active Project\Kanpur Medical\Project\Customised\obj\Release\Customised.FrmSaleInvoicePartyDetail.resources
+D:\Active Project\Kanpur Medical\Project\Customised\obj\Release\Customised.FrmEnviro.resources
+D:\Active Project\Kanpur Medical\Project\Customised\obj\Release\Customised.MDIMain.resources
+D:\Active Project\Kanpur Medical\Project\Customised\obj\Release\Customised.WriteInExcel.resources
+D:\Active Project\Kanpur Medical\Project\Customised\obj\Release\Customised.Resources.resources
+D:\Active Project\Kanpur Medical\Project\Customised\obj\Release\Customised.vbproj.GenerateResource.Cache
+D:\Active Project\Kanpur Medical\Project\Customised\obj\Release\Customised.FrmPurchReturn.resources
+E:\Arpit\Active Project\KC\Kanpur Medical\Release\Customised.exe
+E:\Arpit\Active Project\KC\Kanpur Medical\Release\Customised.pdb
+E:\Arpit\Active Project\KC\Kanpur Medical\Release\Customised.xml
+E:\Arpit\Active Project\KC\Kanpur Medical\Project\Customised\obj\Release\ResolveAssemblyReference.cache
+E:\Arpit\Active Project\KC\Kanpur Medical\Project\Customised\obj\Release\Customised.FrmSaleInvoiceDetail.resources
+E:\Arpit\Active Project\KC\Kanpur Medical\Project\Customised\obj\Release\Customised.FrmPhysicalStockAdjustmentEntry.resources
+E:\Arpit\Active Project\KC\Kanpur Medical\Project\Customised\obj\Release\Customised.FrmPhysicalStockEntry.resources
+E:\Arpit\Active Project\KC\Kanpur Medical\Project\Customised\obj\Release\Customised.FrmVatCommodityCode.resources
+E:\Arpit\Active Project\KC\Kanpur Medical\Project\Customised\obj\Release\Customised.FrmManufacturer.resources
+E:\Arpit\Active Project\KC\Kanpur Medical\Project\Customised\obj\Release\Customised.FrmParty.resources
+E:\Arpit\Active Project\KC\Kanpur Medical\Project\Customised\obj\Release\Customised.FrmItem.resources
+E:\Arpit\Active Project\KC\Kanpur Medical\Project\Customised\obj\Release\Customised.FrmItemCategory.resources
+E:\Arpit\Active Project\KC\Kanpur Medical\Project\Customised\obj\Release\Customised.FrmItemGroup.resources
+E:\Arpit\Active Project\KC\Kanpur Medical\Project\Customised\obj\Release\Customised.FrmViewerSubForm.resources
+E:\Arpit\Active Project\KC\Kanpur Medical\Project\Customised\obj\Release\Customised.FrmRateList.resources
+E:\Arpit\Active Project\KC\Kanpur Medical\Project\Customised\obj\Release\Customised.FrmRateType.resources
+E:\Arpit\Active Project\KC\Kanpur Medical\Project\Customised\obj\Release\Customised.FrmItemInvoiceGroup.resources
+E:\Arpit\Active Project\KC\Kanpur Medical\Project\Customised\obj\Release\Customised.FrmImportFromExcel.resources
+E:\Arpit\Active Project\KC\Kanpur Medical\Project\Customised\obj\Release\Customised.FrmEnviro.resources
+E:\Arpit\Active Project\KC\Kanpur Medical\Project\Customised\obj\Release\Customised.MDIMain.resources
+E:\Arpit\Active Project\KC\Kanpur Medical\Project\Customised\obj\Release\Customised.WriteInExcel.resources
+E:\Arpit\Active Project\KC\Kanpur Medical\Project\Customised\obj\Release\Customised.Resources.resources
+E:\Arpit\Active Project\KC\Kanpur Medical\Project\Customised\obj\Release\Customised.vbproj.GenerateResource.Cache
+E:\Arpit\Active Project\KC\Kanpur Medical\Project\Customised\obj\Release\Customised.exe
+E:\Arpit\Active Project\KC\Kanpur Medical\Project\Customised\obj\Release\Customised.xml
+E:\Arpit\Active Project\KC\Kanpur Medical\Project\Customised\obj\Release\Customised.pdb
+E:\Arpit\Active Project\KC\Kanpur Medical\Release\Customised.exe.config
+E:\Arpit\Active Project\KC\Medical\Release\Customised.exe.config
+E:\Arpit\Active Project\KC\Medical\Release\Customised.exe
+E:\Arpit\Active Project\KC\Medical\Release\Customised.pdb
+E:\Arpit\Active Project\KC\Medical\Release\Customised.xml
+E:\Arpit\Active Project\KC\Medical\Project\Customised\obj\Release\ResolveAssemblyReference.cache
+E:\Arpit\Active Project\KC\Medical\Project\Customised\obj\Release\Customised.FrmSaleInvoiceDetail.resources
+E:\Arpit\Active Project\KC\Medical\Project\Customised\obj\Release\Customised.FrmPhysicalStockAdjustmentEntry.resources
+E:\Arpit\Active Project\KC\Medical\Project\Customised\obj\Release\Customised.FrmPhysicalStockEntry.resources
+E:\Arpit\Active Project\KC\Medical\Project\Customised\obj\Release\Customised.FrmVatCommodityCode.resources
+E:\Arpit\Active Project\KC\Medical\Project\Customised\obj\Release\Customised.FrmManufacturer.resources
+E:\Arpit\Active Project\KC\Medical\Project\Customised\obj\Release\Customised.FrmParty.resources
+E:\Arpit\Active Project\KC\Medical\Project\Customised\obj\Release\Customised.FrmItem.resources
+E:\Arpit\Active Project\KC\Medical\Project\Customised\obj\Release\Customised.FrmItemCategory.resources
+E:\Arpit\Active Project\KC\Medical\Project\Customised\obj\Release\Customised.FrmItemGroup.resources
+E:\Arpit\Active Project\KC\Medical\Project\Customised\obj\Release\Customised.FrmViewerSubForm.resources
+E:\Arpit\Active Project\KC\Medical\Project\Customised\obj\Release\Customised.FrmRateList.resources
+E:\Arpit\Active Project\KC\Medical\Project\Customised\obj\Release\Customised.FrmRateType.resources
+E:\Arpit\Active Project\KC\Medical\Project\Customised\obj\Release\Customised.FrmItemInvoiceGroup.resources
+E:\Arpit\Active Project\KC\Medical\Project\Customised\obj\Release\Customised.FrmImportFromExcel.resources
+E:\Arpit\Active Project\KC\Medical\Project\Customised\obj\Release\Customised.FrmEnviro.resources
+E:\Arpit\Active Project\KC\Medical\Project\Customised\obj\Release\Customised.MDIMain.resources
+E:\Arpit\Active Project\KC\Medical\Project\Customised\obj\Release\Customised.WriteInExcel.resources
+E:\Arpit\Active Project\KC\Medical\Project\Customised\obj\Release\Customised.Resources.resources
+E:\Arpit\Active Project\KC\Medical\Project\Customised\obj\Release\Customised.vbproj.GenerateResource.Cache
+E:\Arpit\Active Project\KC\Medical\Project\Customised\obj\Release\Customised.exe
+E:\Arpit\Active Project\KC\Medical\Project\Customised\obj\Release\Customised.xml
+E:\Arpit\Active Project\KC\Medical\Project\Customised\obj\Release\Customised.pdb
+E:\Arpit\KC\Medical\Release\Customised.exe.config
+E:\Arpit\KC\Medical\Release\Customised.exe
+E:\Arpit\KC\Medical\Release\Customised.pdb
+E:\Arpit\KC\Medical\Release\Customised.xml
+E:\Arpit\KC\Medical\Project\Customised\obj\Release\ResolveAssemblyReference.cache
+E:\Arpit\KC\Medical\Project\Customised\obj\Release\Customised.FrmSaleInvoiceAdj.resources
+E:\Arpit\KC\Medical\Project\Customised\obj\Release\Customised.FrmSaleInvoiceDetail.resources
+E:\Arpit\KC\Medical\Project\Customised\obj\Release\Customised.FrmPhysicalStockAdjustmentEntry.resources
+E:\Arpit\KC\Medical\Project\Customised\obj\Release\Customised.FrmPhysicalStockEntry.resources
+E:\Arpit\KC\Medical\Project\Customised\obj\Release\Customised.FrmVatCommodityCode.resources
+E:\Arpit\KC\Medical\Project\Customised\obj\Release\Customised.FrmManufacturer.resources
+E:\Arpit\KC\Medical\Project\Customised\obj\Release\Customised.FrmParty.resources
+E:\Arpit\KC\Medical\Project\Customised\obj\Release\Customised.FrmItem.resources
+E:\Arpit\KC\Medical\Project\Customised\obj\Release\Customised.FrmItemCategory.resources
+E:\Arpit\KC\Medical\Project\Customised\obj\Release\Customised.FrmItemGroup.resources
+E:\Arpit\KC\Medical\Project\Customised\obj\Release\Customised.FrmViewerSubForm.resources
+E:\Arpit\KC\Medical\Project\Customised\obj\Release\Customised.FrmRateList.resources
+E:\Arpit\KC\Medical\Project\Customised\obj\Release\Customised.FrmRateType.resources
+E:\Arpit\KC\Medical\Project\Customised\obj\Release\Customised.FrmItemInvoiceGroup.resources
+E:\Arpit\KC\Medical\Project\Customised\obj\Release\Customised.FrmImportFromExcel.resources
+E:\Arpit\KC\Medical\Project\Customised\obj\Release\Customised.FrmEnviro.resources
+E:\Arpit\KC\Medical\Project\Customised\obj\Release\Customised.MDIMain.resources
+E:\Arpit\KC\Medical\Project\Customised\obj\Release\Customised.WriteInExcel.resources
+E:\Arpit\KC\Medical\Project\Customised\obj\Release\Customised.Resources.resources
+E:\Arpit\KC\Medical\Project\Customised\obj\Release\Customised.vbproj.GenerateResource.Cache
+E:\Arpit\KC\Medical\Project\Customised\obj\Release\Customised.exe
+E:\Arpit\KC\Medical\Project\Customised\obj\Release\Customised.xml
+E:\Arpit\KC\Medical\Project\Customised\obj\Release\Customised.pdb
+E:\Arpit\KC\Medical\Project\Customised\obj\Release\Customised.FrmAdjustmentIssue.resources
+E:\Arpit\KC\Medical\Project\Customised\obj\Release\Customised.FrmSaleInvoicePartyDetail.resources
+E:\Active Projects\Trade\Release\Customised.exe.config
+E:\Active Projects\Trade\Release\Customised.exe
+E:\Active Projects\Trade\Release\Customised.pdb
+E:\Active Projects\Trade\Release\Customised.xml
+E:\Active Projects\Trade\Project\Customised\obj\Release\ResolveAssemblyReference.cache
+E:\Active Projects\Trade\Project\Customised\obj\Release\Customised.FrmAdjustmentIssue.resources
+E:\Active Projects\Trade\Project\Customised\obj\Release\Customised.FrmSaleInvoiceAdj.resources
+E:\Active Projects\Trade\Project\Customised\obj\Release\Customised.FrmSaleInvoiceDetail.resources
+E:\Active Projects\Trade\Project\Customised\obj\Release\Customised.FrmPhysicalStockAdjustmentEntry.resources
+E:\Active Projects\Trade\Project\Customised\obj\Release\Customised.FrmPhysicalStockEntry.resources
+E:\Active Projects\Trade\Project\Customised\obj\Release\Customised.FrmSaleInvoicePartyDetail.resources
+E:\Active Projects\Trade\Project\Customised\obj\Release\Customised.FrmVatCommodityCode.resources
+E:\Active Projects\Trade\Project\Customised\obj\Release\Customised.FrmManufacturer.resources
+E:\Active Projects\Trade\Project\Customised\obj\Release\Customised.FrmParty.resources
+E:\Active Projects\Trade\Project\Customised\obj\Release\Customised.FrmItem.resources
+E:\Active Projects\Trade\Project\Customised\obj\Release\Customised.FrmItemCategory.resources
+E:\Active Projects\Trade\Project\Customised\obj\Release\Customised.FrmItemGroup.resources
+E:\Active Projects\Trade\Project\Customised\obj\Release\Customised.FrmViewerSubForm.resources
+E:\Active Projects\Trade\Project\Customised\obj\Release\Customised.FrmRateList.resources
+E:\Active Projects\Trade\Project\Customised\obj\Release\Customised.FrmRateType.resources
+E:\Active Projects\Trade\Project\Customised\obj\Release\Customised.FrmItemInvoiceGroup.resources
+E:\Active Projects\Trade\Project\Customised\obj\Release\Customised.FrmImportFromExcel.resources
+E:\Active Projects\Trade\Project\Customised\obj\Release\Customised.FrmEnviro.resources
+E:\Active Projects\Trade\Project\Customised\obj\Release\Customised.MDIMain.resources
+E:\Active Projects\Trade\Project\Customised\obj\Release\Customised.WriteInExcel.resources
+E:\Active Projects\Trade\Project\Customised\obj\Release\Customised.Resources.resources
+E:\Active Projects\Trade\Project\Customised\obj\Release\Customised.vbproj.GenerateResource.Cache
+E:\Active Projects\Trade\Project\Customised\obj\Release\Customised.exe
+E:\Active Projects\Trade\Project\Customised\obj\Release\Customised.xml
+E:\Active Projects\Trade\Project\Customised\obj\Release\Customised.pdb
+E:\Satyam\Trade\Release\Customised.exe.config
+E:\Satyam\Trade\Project\Customised\obj\Release\Customised.exe
+E:\Satyam\Trade\Project\Customised\obj\Release\Customised.xml
+E:\Satyam\Trade\Project\Customised\obj\Release\Customised.pdb
+E:\Satyam\Trade\Project\Customised\obj\Release\Customised.FrmAdjustmentIssue.resources
+E:\Satyam\Trade\Project\Customised\obj\Release\Customised.FrmSaleInvoiceAdj.resources
+E:\Satyam\Trade\Project\Customised\obj\Release\Customised.FrmSaleInvoiceDetail.resources
+E:\Satyam\Trade\Project\Customised\obj\Release\Customised.FrmPhysicalStockAdjustmentEntry.resources
+E:\Satyam\Trade\Project\Customised\obj\Release\Customised.FrmPhysicalStockEntry.resources
+E:\Satyam\Trade\Project\Customised\obj\Release\Customised.FrmSaleInvoicePartyDetail.resources
+E:\Satyam\Trade\Project\Customised\obj\Release\Customised.FrmVatCommodityCode.resources
+E:\Satyam\Trade\Project\Customised\obj\Release\Customised.FrmManufacturer.resources
+E:\Satyam\Trade\Project\Customised\obj\Release\Customised.FrmParty.resources
+E:\Satyam\Trade\Project\Customised\obj\Release\Customised.FrmItem.resources
+E:\Satyam\Trade\Project\Customised\obj\Release\Customised.FrmItemCategory.resources
+E:\Satyam\Trade\Project\Customised\obj\Release\Customised.FrmItemGroup.resources
+E:\Satyam\Trade\Project\Customised\obj\Release\Customised.FrmViewerSubForm.resources
+E:\Satyam\Trade\Project\Customised\obj\Release\Customised.FrmRateList.resources
+E:\Satyam\Trade\Project\Customised\obj\Release\Customised.FrmRateType.resources
+E:\Satyam\Trade\Project\Customised\obj\Release\Customised.FrmItemInvoiceGroup.resources
+E:\Satyam\Trade\Project\Customised\obj\Release\Customised.FrmImportFromExcel.resources
+E:\Satyam\Trade\Project\Customised\obj\Release\Customised.FrmEnviro.resources
+E:\Satyam\Trade\Project\Customised\obj\Release\Customised.MDIMain.resources
+E:\Satyam\Trade\Project\Customised\obj\Release\Customised.WriteInExcel.resources
+E:\Satyam\Trade\Project\Customised\obj\Release\Customised.Resources.resources
+E:\Satyam\Trade\Project\Customised\obj\Release\Customised.vbproj.GenerateResource.Cache
+E:\Satyam\Trade\Release\Customised.exe
+E:\Satyam\Trade\Release\Customised.pdb
+E:\Satyam\Trade\Release\Customised.xml
+E:\Satyam\Trade\Project\Customised\obj\Release\Customised.FrmSaleInvoice.resources
+E:\Satyam\Trade\Project\Customised\obj\Release\Customised.FrmSaleInvoiceOtherDetail.resources
+E:\Satyam\Trade\Project\Customised\obj\Release\Customised.vbprojResolveAssemblyReference.cache
+\\arpit-pc\E\Satyam\Trade\Release\Customised.exe.config
+\\arpit-pc\E\Satyam\Trade\Project\Customised\obj\Release\Customised.exe
+\\arpit-pc\E\Satyam\Trade\Project\Customised\obj\Release\Customised.xml
+\\arpit-pc\E\Satyam\Trade\Project\Customised\obj\Release\Customised.pdb
+\\arpit-pc\E\Satyam\Trade\Release\Customised.exe
+\\arpit-pc\E\Satyam\Trade\Release\Customised.pdb
+\\arpit-pc\E\Satyam\Trade\Release\Customised.xml
+\\arpit-pc\E\Satyam\Trade\Project\Customised\obj\Release\Customised.vbprojResolveAssemblyReference.cache
+\\arpit-pc\E\Satyam\Trade\Project\Customised\obj\Release\Customised.FrmAdjustmentIssue.resources
+\\arpit-pc\E\Satyam\Trade\Project\Customised\obj\Release\Customised.FrmSaleInvoice.resources
+\\arpit-pc\E\Satyam\Trade\Project\Customised\obj\Release\Customised.FrmSaleInvoiceAdj.resources
+\\arpit-pc\E\Satyam\Trade\Project\Customised\obj\Release\Customised.FrmSaleInvoiceDetail.resources
+\\arpit-pc\E\Satyam\Trade\Project\Customised\obj\Release\Customised.FrmPhysicalStockAdjustmentEntry.resources
+\\arpit-pc\E\Satyam\Trade\Project\Customised\obj\Release\Customised.FrmPhysicalStockEntry.resources
+\\arpit-pc\E\Satyam\Trade\Project\Customised\obj\Release\Customised.FrmSaleInvoiceOtherDetail.resources
+\\arpit-pc\E\Satyam\Trade\Project\Customised\obj\Release\Customised.FrmSaleInvoicePartyDetail.resources
+\\arpit-pc\E\Satyam\Trade\Project\Customised\obj\Release\Customised.FrmVatCommodityCode.resources
+\\arpit-pc\E\Satyam\Trade\Project\Customised\obj\Release\Customised.FrmManufacturer.resources
+\\arpit-pc\E\Satyam\Trade\Project\Customised\obj\Release\Customised.FrmParty.resources
+\\arpit-pc\E\Satyam\Trade\Project\Customised\obj\Release\Customised.FrmItem.resources
+\\arpit-pc\E\Satyam\Trade\Project\Customised\obj\Release\Customised.FrmItemCategory.resources
+\\arpit-pc\E\Satyam\Trade\Project\Customised\obj\Release\Customised.FrmItemGroup.resources
+\\arpit-pc\E\Satyam\Trade\Project\Customised\obj\Release\Customised.FrmViewerSubForm.resources
+\\arpit-pc\E\Satyam\Trade\Project\Customised\obj\Release\Customised.FrmRateList.resources
+\\arpit-pc\E\Satyam\Trade\Project\Customised\obj\Release\Customised.FrmRateType.resources
+\\arpit-pc\E\Satyam\Trade\Project\Customised\obj\Release\Customised.FrmItemInvoiceGroup.resources
+\\arpit-pc\E\Satyam\Trade\Project\Customised\obj\Release\Customised.FrmImportFromExcel.resources
+\\arpit-pc\E\Satyam\Trade\Project\Customised\obj\Release\Customised.FrmEnviro.resources
+\\arpit-pc\E\Satyam\Trade\Project\Customised\obj\Release\Customised.MDIMain.resources
+\\arpit-pc\E\Satyam\Trade\Project\Customised\obj\Release\Customised.WriteInExcel.resources
+\\arpit-pc\E\Satyam\Trade\Project\Customised\obj\Release\Customised.Resources.resources
+\\arpit-pc\E\Satyam\Trade\Project\Customised\obj\Release\Customised.vbproj.GenerateResource.Cache
+H:\Trade\Release\Customised.exe.config
+H:\Trade\Project\Customised\obj\Release\Customised.FrmAdjustmentIssue.resources
+H:\Trade\Project\Customised\obj\Release\Customised.FrmSaleInvoice.resources
+H:\Trade\Project\Customised\obj\Release\Customised.FrmSaleInvoiceAdj.resources
+H:\Trade\Project\Customised\obj\Release\Customised.FrmSaleInvoiceDetail.resources
+H:\Trade\Project\Customised\obj\Release\Customised.FrmPhysicalStockAdjustmentEntry.resources
+H:\Trade\Project\Customised\obj\Release\Customised.FrmPhysicalStockEntry.resources
+H:\Trade\Project\Customised\obj\Release\Customised.FrmSaleInvoiceOtherDetail.resources
+H:\Trade\Project\Customised\obj\Release\Customised.FrmSaleInvoicePartyDetail.resources
+H:\Trade\Project\Customised\obj\Release\Customised.FrmVatCommodityCode.resources
+H:\Trade\Project\Customised\obj\Release\Customised.FrmManufacturer.resources
+H:\Trade\Project\Customised\obj\Release\Customised.FrmParty.resources
+H:\Trade\Project\Customised\obj\Release\Customised.FrmItem.resources
+H:\Trade\Project\Customised\obj\Release\Customised.FrmItemCategory.resources
+H:\Trade\Project\Customised\obj\Release\Customised.FrmItemGroup.resources
+H:\Trade\Project\Customised\obj\Release\Customised.FrmViewerSubForm.resources
+H:\Trade\Project\Customised\obj\Release\Customised.FrmRateList.resources
+H:\Trade\Project\Customised\obj\Release\Customised.FrmRateType.resources
+H:\Trade\Project\Customised\obj\Release\Customised.FrmItemInvoiceGroup.resources
+H:\Trade\Project\Customised\obj\Release\Customised.FrmImportFromExcel.resources
+H:\Trade\Project\Customised\obj\Release\Customised.FrmEnviro.resources
+H:\Trade\Project\Customised\obj\Release\Customised.MDIMain.resources
+H:\Trade\Project\Customised\obj\Release\Customised.WriteInExcel.resources
+H:\Trade\Project\Customised\obj\Release\Customised.Resources.resources
+H:\Trade\Project\Customised\obj\Release\Customised.vbproj.GenerateResource.Cache
+H:\Trade\Project\Customised\obj\Release\Customised.exe
+H:\Trade\Project\Customised\obj\Release\Customised.xml
+H:\Trade\Project\Customised\obj\Release\Customised.pdb
+H:\Trade\Release\Customised.exe
+H:\Trade\Release\Customised.pdb
+H:\Trade\Release\Customised.xml
+H:\Trade\Project\Customised\obj\Release\Customised.vbprojResolveAssemblyReference.cache
+F:\Trade\Release\Customised.exe.config
+F:\Trade\Project\Customised\obj\Release\Customised.exe
+F:\Trade\Project\Customised\obj\Release\Customised.xml
+F:\Trade\Project\Customised\obj\Release\Customised.pdb
+H:\Trade_\Release\Customised.exe.config
+H:\Trade_\Project\Customised\obj\Release\Customised.exe
+H:\Trade_\Project\Customised\obj\Release\Customised.xml
+H:\Trade_\Project\Customised\obj\Release\Customised.pdb
+H:\Trade_\Release\Customised.exe
+H:\Trade_\Release\Customised.pdb
+H:\Trade_\Release\Customised.xml
+H:\Trade_\Project\Customised\obj\Release\Customised.vbprojResolveAssemblyReference.cache
+H:\Trade_\Project\Customised\obj\Release\Customised.FrmAdjustmentIssue.resources
+H:\Trade_\Project\Customised\obj\Release\Customised.FrmSaleInvoice.resources
+H:\Trade_\Project\Customised\obj\Release\Customised.FrmSaleInvoiceAdj.resources
+H:\Trade_\Project\Customised\obj\Release\Customised.FrmSaleInvoiceDetail.resources
+H:\Trade_\Project\Customised\obj\Release\Customised.FrmPhysicalStockAdjustmentEntry.resources
+H:\Trade_\Project\Customised\obj\Release\Customised.FrmPhysicalStockEntry.resources
+H:\Trade_\Project\Customised\obj\Release\Customised.FrmSaleInvoiceOtherDetail.resources
+H:\Trade_\Project\Customised\obj\Release\Customised.FrmSaleInvoicePartyDetail.resources
+H:\Trade_\Project\Customised\obj\Release\Customised.FrmVatCommodityCode.resources
+H:\Trade_\Project\Customised\obj\Release\Customised.FrmManufacturer.resources
+H:\Trade_\Project\Customised\obj\Release\Customised.FrmParty.resources
+H:\Trade_\Project\Customised\obj\Release\Customised.FrmItem.resources
+H:\Trade_\Project\Customised\obj\Release\Customised.FrmItemCategory.resources
+H:\Trade_\Project\Customised\obj\Release\Customised.FrmItemGroup.resources
+H:\Trade_\Project\Customised\obj\Release\Customised.FrmViewerSubForm.resources
+H:\Trade_\Project\Customised\obj\Release\Customised.FrmRateList.resources
+H:\Trade_\Project\Customised\obj\Release\Customised.FrmRateType.resources
+H:\Trade_\Project\Customised\obj\Release\Customised.FrmItemInvoiceGroup.resources
+H:\Trade_\Project\Customised\obj\Release\Customised.FrmImportFromExcel.resources
+H:\Trade_\Project\Customised\obj\Release\Customised.FrmEnviro.resources
+H:\Trade_\Project\Customised\obj\Release\Customised.MDIMain.resources
+H:\Trade_\Project\Customised\obj\Release\Customised.WriteInExcel.resources
+H:\Trade_\Project\Customised\obj\Release\Customised.Resources.resources
+H:\Trade_\Project\Customised\obj\Release\Customised.vbproj.GenerateResource.Cache
+\\tsclient\H\Trade_\Release\Customised.exe.config
+\\tsclient\H\Trade_\Project\Customised\obj\Release\Customised.exe
+\\tsclient\H\Trade_\Project\Customised\obj\Release\Customised.xml
+\\tsclient\H\Trade_\Project\Customised\obj\Release\Customised.pdb
+D:\PerPen\Projects\Trade_\Release\Customised.exe.config
+D:\PerPen\Projects\Trade_\Project\Customised\obj\Release\Customised.exe
+D:\PerPen\Projects\Trade_\Project\Customised\obj\Release\Customised.xml
+D:\PerPen\Projects\Trade_\Project\Customised\obj\Release\Customised.pdb
+D:\PerPen\Projects\Trade_\Release\Customised.exe
+D:\PerPen\Projects\Trade_\Release\Customised.pdb
+D:\PerPen\Projects\Trade_\Release\Customised.xml
+D:\PerPen\Projects\Trade_\Project\Customised\obj\Release\Customised.vbprojResolveAssemblyReference.cache
+D:\PerPen\Projects\Trade_\Project\Customised\obj\Release\Customised.FrmAdjustmentIssue.resources
+D:\PerPen\Projects\Trade_\Project\Customised\obj\Release\Customised.FrmSaleInvoice.resources
+D:\PerPen\Projects\Trade_\Project\Customised\obj\Release\Customised.FrmSaleInvoiceAdj.resources
+D:\PerPen\Projects\Trade_\Project\Customised\obj\Release\Customised.FrmSaleInvoiceDetail.resources
+D:\PerPen\Projects\Trade_\Project\Customised\obj\Release\Customised.FrmPhysicalStockAdjustmentEntry.resources
+D:\PerPen\Projects\Trade_\Project\Customised\obj\Release\Customised.FrmPhysicalStockEntry.resources
+D:\PerPen\Projects\Trade_\Project\Customised\obj\Release\Customised.FrmSaleInvoiceOtherDetail.resources
+D:\PerPen\Projects\Trade_\Project\Customised\obj\Release\Customised.FrmSaleInvoicePartyDetail.resources
+D:\PerPen\Projects\Trade_\Project\Customised\obj\Release\Customised.FrmVatCommodityCode.resources
+D:\PerPen\Projects\Trade_\Project\Customised\obj\Release\Customised.FrmManufacturer.resources
+D:\PerPen\Projects\Trade_\Project\Customised\obj\Release\Customised.FrmParty.resources
+D:\PerPen\Projects\Trade_\Project\Customised\obj\Release\Customised.FrmItem.resources
+D:\PerPen\Projects\Trade_\Project\Customised\obj\Release\Customised.FrmItemCategory.resources
+D:\PerPen\Projects\Trade_\Project\Customised\obj\Release\Customised.FrmItemGroup.resources
+D:\PerPen\Projects\Trade_\Project\Customised\obj\Release\Customised.FrmViewerSubForm.resources
+D:\PerPen\Projects\Trade_\Project\Customised\obj\Release\Customised.FrmRateList.resources
+D:\PerPen\Projects\Trade_\Project\Customised\obj\Release\Customised.FrmRateType.resources
+D:\PerPen\Projects\Trade_\Project\Customised\obj\Release\Customised.FrmItemInvoiceGroup.resources
+D:\PerPen\Projects\Trade_\Project\Customised\obj\Release\Customised.FrmImportFromExcel.resources
+D:\PerPen\Projects\Trade_\Project\Customised\obj\Release\Customised.FrmEnviro.resources
+D:\PerPen\Projects\Trade_\Project\Customised\obj\Release\Customised.MDIMain.resources
+D:\PerPen\Projects\Trade_\Project\Customised\obj\Release\Customised.WriteInExcel.resources
+D:\PerPen\Projects\Trade_\Project\Customised\obj\Release\Customised.Resources.resources
+D:\PerPen\Projects\Trade_\Project\Customised\obj\Release\Customised.vbproj.GenerateResource.Cache
+\\tsclient\D\PerPen\Projects\Trade_\Release\Customised.exe.config
+\\tsclient\D\PerPen\Projects\Trade_\Project\Customised\obj\Release\Customised.exe
+\\tsclient\D\PerPen\Projects\Trade_\Project\Customised\obj\Release\Customised.xml
+\\tsclient\D\PerPen\Projects\Trade_\Project\Customised\obj\Release\Customised.pdb
+E:\PerPen\Projects\Trade_\Release\Customised.exe.config
+E:\PerPen\Projects\Trade_\Project\Customised\obj\Release\Customised.exe
+E:\PerPen\Projects\Trade_\Project\Customised\obj\Release\Customised.xml
+E:\PerPen\Projects\Trade_\Project\Customised\obj\Release\Customised.pdb
+D:\Satyam\Active Projects\Trade_\Release\Customised.exe.config
+D:\Satyam\Active Projects\Trade_\Project\Customised\obj\Release\Customised.exe
+D:\Satyam\Active Projects\Trade_\Project\Customised\obj\Release\Customised.xml
+D:\Satyam\Active Projects\Trade_\Project\Customised\obj\Release\Customised.pdb
+D:\Satyam\Active Projects\Trade_\Release\Customised.exe
+D:\Satyam\Active Projects\Trade_\Release\Customised.pdb
+D:\Satyam\Active Projects\Trade_\Release\Customised.xml
+D:\Satyam\Active Projects\Trade_\Project\Customised\obj\Release\Customised.vbprojResolveAssemblyReference.cache
+D:\Satyam\Active Projects\Trade_\Project\Customised\obj\Release\Customised.FrmAdjustmentIssue.resources
+D:\Satyam\Active Projects\Trade_\Project\Customised\obj\Release\Customised.FrmSaleInvoice.resources
+D:\Satyam\Active Projects\Trade_\Project\Customised\obj\Release\Customised.FrmSaleInvoiceAdj.resources
+D:\Satyam\Active Projects\Trade_\Project\Customised\obj\Release\Customised.FrmSaleInvoiceDetail.resources
+D:\Satyam\Active Projects\Trade_\Project\Customised\obj\Release\Customised.FrmPhysicalStockAdjustmentEntry.resources
+D:\Satyam\Active Projects\Trade_\Project\Customised\obj\Release\Customised.FrmPhysicalStockEntry.resources
+D:\Satyam\Active Projects\Trade_\Project\Customised\obj\Release\Customised.FrmSaleInvoiceOtherDetail.resources
+D:\Satyam\Active Projects\Trade_\Project\Customised\obj\Release\Customised.FrmSaleInvoicePartyDetail.resources
+D:\Satyam\Active Projects\Trade_\Project\Customised\obj\Release\Customised.FrmVatCommodityCode.resources
+D:\Satyam\Active Projects\Trade_\Project\Customised\obj\Release\Customised.FrmManufacturer.resources
+D:\Satyam\Active Projects\Trade_\Project\Customised\obj\Release\Customised.FrmParty.resources
+D:\Satyam\Active Projects\Trade_\Project\Customised\obj\Release\Customised.FrmItem.resources
+D:\Satyam\Active Projects\Trade_\Project\Customised\obj\Release\Customised.FrmItemCategory.resources
+D:\Satyam\Active Projects\Trade_\Project\Customised\obj\Release\Customised.FrmItemGroup.resources
+D:\Satyam\Active Projects\Trade_\Project\Customised\obj\Release\Customised.FrmViewerSubForm.resources
+D:\Satyam\Active Projects\Trade_\Project\Customised\obj\Release\Customised.FrmRateList.resources
+D:\Satyam\Active Projects\Trade_\Project\Customised\obj\Release\Customised.FrmRateType.resources
+D:\Satyam\Active Projects\Trade_\Project\Customised\obj\Release\Customised.FrmItemInvoiceGroup.resources
+D:\Satyam\Active Projects\Trade_\Project\Customised\obj\Release\Customised.FrmImportFromExcel.resources
+D:\Satyam\Active Projects\Trade_\Project\Customised\obj\Release\Customised.FrmEnviro.resources
+D:\Satyam\Active Projects\Trade_\Project\Customised\obj\Release\Customised.MDIMain.resources
+D:\Satyam\Active Projects\Trade_\Project\Customised\obj\Release\Customised.WriteInExcel.resources
+D:\Satyam\Active Projects\Trade_\Project\Customised\obj\Release\Customised.Resources.resources
+D:\Satyam\Active Projects\Trade_\Project\Customised\obj\Release\Customised.vbproj.GenerateResource.Cache
+D:\Satyam\Active Projects\SqLite\Trade_\Release\Customised.exe.config
+D:\Satyam\Active Projects\SqLite\Trade_\Project\Customised\obj\Release\Customised.exe
+D:\Satyam\Active Projects\SqLite\Trade_\Project\Customised\obj\Release\Customised.xml
+D:\Satyam\Active Projects\SqLite\Trade_\Project\Customised\obj\Release\Customised.pdb
+D:\Satyam\Active Projects\SqLite\Trade_\Release\Customised.exe
+D:\Satyam\Active Projects\SqLite\Trade_\Release\Customised.pdb
+D:\Satyam\Active Projects\SqLite\Trade_\Release\Customised.xml
+D:\Satyam\Active Projects\SqLite\Trade_\Project\Customised\obj\Release\Customised.vbprojResolveAssemblyReference.cache
+D:\Satyam\Active Projects\SqLite\Trade_\Project\Customised\obj\Release\Customised.FrmAdjustmentIssue.resources
+D:\Satyam\Active Projects\SqLite\Trade_\Project\Customised\obj\Release\Customised.FrmSaleInvoice.resources
+D:\Satyam\Active Projects\SqLite\Trade_\Project\Customised\obj\Release\Customised.FrmSaleInvoiceAdj.resources
+D:\Satyam\Active Projects\SqLite\Trade_\Project\Customised\obj\Release\Customised.FrmSaleInvoiceDetail.resources
+D:\Satyam\Active Projects\SqLite\Trade_\Project\Customised\obj\Release\Customised.FrmPhysicalStockAdjustmentEntry.resources
+D:\Satyam\Active Projects\SqLite\Trade_\Project\Customised\obj\Release\Customised.FrmPhysicalStockEntry.resources
+D:\Satyam\Active Projects\SqLite\Trade_\Project\Customised\obj\Release\Customised.FrmSaleInvoiceOtherDetail.resources
+D:\Satyam\Active Projects\SqLite\Trade_\Project\Customised\obj\Release\Customised.FrmSaleInvoicePartyDetail.resources
+D:\Satyam\Active Projects\SqLite\Trade_\Project\Customised\obj\Release\Customised.FrmVatCommodityCode.resources
+D:\Satyam\Active Projects\SqLite\Trade_\Project\Customised\obj\Release\Customised.FrmManufacturer.resources
+D:\Satyam\Active Projects\SqLite\Trade_\Project\Customised\obj\Release\Customised.FrmParty.resources
+D:\Satyam\Active Projects\SqLite\Trade_\Project\Customised\obj\Release\Customised.FrmItem.resources
+D:\Satyam\Active Projects\SqLite\Trade_\Project\Customised\obj\Release\Customised.FrmItemCategory.resources
+D:\Satyam\Active Projects\SqLite\Trade_\Project\Customised\obj\Release\Customised.FrmItemGroup.resources
+D:\Satyam\Active Projects\SqLite\Trade_\Project\Customised\obj\Release\Customised.FrmViewerSubForm.resources
+D:\Satyam\Active Projects\SqLite\Trade_\Project\Customised\obj\Release\Customised.FrmRateList.resources
+D:\Satyam\Active Projects\SqLite\Trade_\Project\Customised\obj\Release\Customised.FrmRateType.resources
+D:\Satyam\Active Projects\SqLite\Trade_\Project\Customised\obj\Release\Customised.FrmItemInvoiceGroup.resources
+D:\Satyam\Active Projects\SqLite\Trade_\Project\Customised\obj\Release\Customised.FrmImportFromExcel.resources
+D:\Satyam\Active Projects\SqLite\Trade_\Project\Customised\obj\Release\Customised.FrmEnviro.resources
+D:\Satyam\Active Projects\SqLite\Trade_\Project\Customised\obj\Release\Customised.MDIMain.resources
+D:\Satyam\Active Projects\SqLite\Trade_\Project\Customised\obj\Release\Customised.WriteInExcel.resources
+D:\Satyam\Active Projects\SqLite\Trade_\Project\Customised\obj\Release\Customised.Resources.resources
+D:\Satyam\Active Projects\SqLite\Trade_\Project\Customised\obj\Release\Customised.vbproj.GenerateResource.Cache
+D:\WorkingCopy\trunk\Auditor9\Release\Customised.exe.config
+D:\WorkingCopy\trunk\Auditor9\Project\Customised\obj\Release\Customised.exe
+D:\WorkingCopy\trunk\Auditor9\Project\Customised\obj\Release\Customised.xml
+D:\WorkingCopy\trunk\Auditor9\Project\Customised\obj\Release\Customised.pdb

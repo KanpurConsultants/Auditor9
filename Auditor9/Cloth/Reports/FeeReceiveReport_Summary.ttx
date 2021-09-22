@@ -1,0 +1,6 @@
+; Field definition file for table: ADORecordset
+Student	string	255	PRIYANSHU DUBEY , 87	
+FatherName	string	255	AWADHESH DUBEY 	
+Class	string	255	9TH 	
+CashAmount	long	0	
+NonCashAmount	number	13500	

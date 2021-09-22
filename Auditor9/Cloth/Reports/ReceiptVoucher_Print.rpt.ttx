@@ -1,0 +1,46 @@
+; Field definition file for table: ADORecordset
+Copies	string	255	1	
+CopyPrintingCaption	string	255		
+DocNoCaption	string	255	Doc.No.	
+DocDateCaption	string	255	Doc.Date	
+SiteStateCode	string	255	09	
+SiteStateName	string	255	Uttar Pradesh	
+DocID	string	255	D1   PMT 2020      80	
+Sr	number	1	
+V_Date	datetime	13/Aug/2020 12:00:00 AM	
+Voucher_Type	string	255	Payment	
+NCat	string	255	PMT	
+InvoiceNo	string	255	PMT78	
+PartySubcode	string	255	D100000700	
+PartyName	string	255	KHANNA FAB	
+PartyAddress	string	255	3006 SHREE RAM MARKET RING ROAD SURAT	
+CityName	string	255	SURAT	
+PartyPincode	string	255		
+StateCode	string	255	24	
+StateName	string	255	Gujarat	
+PartyMobile	string	255	9909666576	
+ContactPerson	string	255		
+PartySalesTaxNo	string	255	24AXRPK7685D1Z0	
+PartyAadharNo	string	255		
+PartyPanNo	string	255	AXRPK7685D	
+TermsAndConditions	string	255		
+ReferenceNo	string	255		
+LineAccountName	string	255	STATE BANK OF INDIA, 	
+LineSpecification	string	255		
+EffectiveDate	string	255		
+Amount	number	69661	
+L_Deduction	number	184	
+L_OtherCharge	number	0	
+L_NetAmount	number	69845	
+ChqRefNo	string	255	020103	
+ChqRefDate	string	255	2020-08-13	
+LRemarks	string	255	bn 14/15	
+HRemarks	string	255	hjhjhjhjhjhjhj	
+Default_BankAccountDetail	string	255		
+DocumentPrintHeaderPattern	string	255	Center Aligned	
+PrintedByUser	string	255	SUPER	
+EntryByUser	string	255	sa	
+PrintTitle	string	255	Payment	
+DocumentPrintShowPrintDateTimeYn	string	255	0	
+CompanyLogo	BLOB		
+CompanyAuthorisedSignature	BLOB		

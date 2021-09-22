@@ -1,0 +1,62 @@
+{DB D:\S2k\Fertilizers\Data\Company.001\S2kFP002.mdb DB}
+{Sql SELECT Product.Product,Sum(IIf([TransTypeID]=3 Or [TransTypeID]=5 Or [TransTypeID]=8,[Qty],0)) AS Totalin, Sum(IIf([TransTypeID]=6 Or [TransTypeID]=7,[Qty],0)) AS TotalOut,Sum(IIf([TransTypeID]=3 Or [TransTypeID]=5 Or [TransTypeID]=8,[Qty],0))-Sum(IIf([TransTypeID]=6 Or [TransTypeID]=7,[Qty],0)) AS Closing
+FROM ProductStock LEFT JOIN Product ON ProductStock.ProductID = Product.ProductID
+WHERE (((ProductStock.ProductID) in ({Pm PProductID Pm})) AND ((ProductStock.Dated)<=#{Pm DateAsOn Pm}#))
+GROUP BY Product.Product
+Order By Product
+Sql}
+{Xdr Settings
+Columns=80
+Lines=60
+Page Break=True
+Condense=False
+Character Per Inch=12
+Xdr Settings}
+
+{Formula
+ = 
+Formula}
+
+{GroupSection
+Report Header;
+Page Header;
+Detail;
+Grand;
+Page Footer;
+Report Footer;
+GroupSection}
+
+{Parameter
+{Browser
+SELECT  Account.Account,Product.Product, Product.ProductID FROM Product LEFT JOIN Account ON Product.AccountID = Account.AccountID ORDER BY Account.Account, Product.Product|2000;3500;0|1|2=PProductID
+Browser}
+DateAsOnParameter}
+{Report Header
+Report Header}
+========================================================================================================================
+{Page Header
+
+lbl;OwnerName;45;2;4
+lbl;OwnerAdd1 ;80;2;0
+lbl;OwnerAdd2 ;80;2;0
+
+lbl;Closing Stock As On;20;0;1}{lbl;{Pm DateAsOn Pm};20;0;1
+lbl;--------------------------------------------------------------------------------;80;0;0
+lbl;Product;40;0;1}{lbl;Total In;14;1;1}{lbl;Total Out;14;1;1}{lbl;Closing;12;1;1
+lbl;--------------------------------------------------------------------------------;80;0;0
+Page Header}
+========================================================================================================================
+{Detail
+fld;Product;40;0;0}{fld;TotalIn;14;1;0}{fld;TotalOut;14;1;0}{fld;Closing;12;1;0
+Detail}
+========================================================================================================================
+{Grand
+Grand}
+========================================================================================================================
+{Page Footer
+Page Footer}
+========================================================================================================================
+{Report Footer
+Report Footer}
+========================================================================================================================
+

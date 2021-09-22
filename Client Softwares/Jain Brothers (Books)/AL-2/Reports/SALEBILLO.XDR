@@ -1,0 +1,76 @@
+{DB D:\S2k\Pharma_W\Data\Company.003\S2K2001.mdb DB}
+{Sql SELECT Sale.*, Product.*, Unit.*,Productstock.*,
+iif(CalculationRate>0 ,format(CalculationRate,'0.00'),'* FREE *') as SRate,
+iif(CalculationRate*Qty>0 ,format(CalculationRate*Qty,'0.00'),'** FREE **') as Amount
+FROM (Sale LEFT JOIN (Product RIGHT JOIN ProductStock ON Product.ProductID = ProductStock.ProductID) 
+ON Sale.SaleID = ProductStock.VoucherID) LEFT 
+JOIN Unit ON ProductStock.UnitID = Unit.UnitID
+where Sale.DocNo='{Pm BillNo Pm}' and TransTypeID=7
+order by serial
+ Sql}
+{Xdr Settings
+Columns=100
+Lines=33
+Page Break=False
+Condense=False
+Character Per Inch=12
+Vertical Lines=True
+Xdr Settings}
+
+{Formula
+ = 
+Formula}
+
+{GroupSection
+Report Header;
+Page Header;
+Detail;
+Grand;
+Page Footer;
+Footer Adjustments;
+Report Footer;
+GroupSection}
+
+{Parameter
+Parameter}
+{Report Header
+Report Header}
+========================================================================================================================
+{Page Header
+lbl;;25;0;0}{lbl;OM;50;2;0
+lbl;UPST No. :;11;0;0}{lbl;{Pm UPTT Pm};14;0;0}{lbl;Sai Ram;50;2;0}{lbl;Ph. Shop : ;13;1;0}{lbl;{Pm PH1 Pm};12;0;0
+lbl;CST No.  :;11;0;0}{lbl;{Pm CST Pm};14;0;0}{fml;iif(IsCash="0","CASH MEMO","CREDIT MEMO");50;2;0}{lbl;TIN No.  :;13;1;0}{lbl;{Pm TINNo Pm};12;0;0
+lbl;{Pm Owner Pm};50;2;4
+lbl;{Pm Add Pm};100;2;0
+lbl;CONTINUE FROM:    ;40;1;1}{lbl;CH. NO :;48;1;0}{fld;RefNo;12;1;0
+lbl;--------------------------------------------------------------------------------------------------------------------------;100;0;0
+lbl;To, M/s;8;0;0}{fld;TmpParty_Name;41;0;0}{lbl;;25;0;1}{lbl;INVOICE No. :;14;0;0}{fml;"C" + val(Sale.VoucherNo);12;0;1
+lbl;;8;0;0}{fld;TmpParty_Add;41;0;0}{lbl;;29;0;0}{lbl;Date    :;10;0;0}{fml;Ymd_dmy(Sale.Dated);12;0;1
+lbl;--------------------------------------------------------------------------------------------------------------------------;100;0;0
+lbl;|;2;0;0}{lbl;SNo;3;0;0}{lbl; |;3;0;0}{lbl;Product Name;40;0;0}{lbl; |;3;0;0}{lbl;Qty;10;2;0}{lbl; |;3;0;0}{lbl;Rate;6;1;0}{lbl; |;3;0;0}{lbl;MRP;5;1;0}{lbl; |;2;0;0}{lbl;Dis%;5;1;0}{lbl; |;3;0;0}{lbl;Amount;10;1;0}{lbl; |;2;0;0
+lbl;--------------------------------------------------------------------------------------------------------------------------;100;0;0
+Page Header}
+========================================================================================================================
+{Detail
+lbl;|;2;0;0}{fml;RecordNo()+ ".";3;0;0}{lbl; |;3;0;0}{fld;Product;40;0;0}{lbl; |;3;0;0}{fld;Qty;4;1;0}{fld;Unit;6;1;0}{lbl; |;3;0;0}{fld;SRate;6;1;0}{lbl; |;3;0;0}{fml;CF(StockOut.MRP);5;1;0}{lbl; |;2;0;0}{fld;Discount;5;1;0}{lbl; |;3;0;0}{fld;Amount;10;1;0}{lbl; |;2;0;0
+Detail}
+========================================================================================================================
+{Grand
+Grand}
+========================================================================================================================
+{Page Footer
+lbl;--------------------------------------------------------------------------------------------------------------------------;100;0;0
+lbl;1. E.& O.E.   2. All Subjects to Meerut Juridiction.;55;0;0}{lbl;For {Pm Owner Pm};45;1;0
+lbl;3. Please do not give cash payment without receipt.;68;0;0
+lbl;;68;0;0}{lbl;CONTINUE TO:       ;32;1;1
+Page Footer}
+========================================================================================================================
+{Footer Adjustments
+fld;Comment;54;0;0}{fld;Label;34;1;0}{fld;NetTotal;10;1;0}{lbl;;2;1;0
+Footer Adjustments}
+========================================================================================================================
+{Report Footer
+lbl;Rs. {Pm RupeesInWords Pm};85;0;0
+Report Footer}
+========================================================================================================================
+

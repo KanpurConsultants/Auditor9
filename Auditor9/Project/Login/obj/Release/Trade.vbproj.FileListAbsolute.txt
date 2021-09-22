@@ -1,0 +1,30 @@
+E:\Active Projects\Trade\Release\Trade.exe
+E:\Active Projects\Trade\Release\Trade.pdb
+E:\Active Projects\Trade\Release\Trade.xml
+E:\Active Projects\Trade\Project\Login\obj\Release\ResolveAssemblyReference.cache
+E:\Active Projects\Trade\Project\Login\obj\Release\Trade.FrmCompany.resources
+E:\Active Projects\Trade\Project\Login\obj\Release\Trade.FrmDivisionSelection.resources
+E:\Active Projects\Trade\Project\Login\obj\Release\Trade.FrmLogin.resources
+E:\Active Projects\Trade\Project\Login\obj\Release\Trade.FrmServerNotFound.resources
+E:\Active Projects\Trade\Project\Login\obj\Release\Trade.FrmSiteSelection.resources
+E:\Active Projects\Trade\Project\Login\obj\Release\Trade.MDIMain.resources
+E:\Active Projects\Trade\Project\Login\obj\Release\Trade.Resources.resources
+E:\Active Projects\Trade\Project\Login\obj\Release\Trade.vbproj.GenerateResource.Cache
+E:\Active Projects\Trade\Project\Login\obj\Release\Trade.exe
+E:\Active Projects\Trade\Project\Login\obj\Release\Trade.xml
+E:\Active Projects\Trade\Project\Login\obj\Release\Trade.pdb
+E:\Satyam\Trade\Project\Login\obj\Release\Trade.exe
+E:\Satyam\Trade\Project\Login\obj\Release\Trade.xml
+E:\Satyam\Trade\Project\Login\obj\Release\Trade.pdb
+E:\Satyam\Trade\Project\Login\obj\Release\ResolveAssemblyReference.cache
+E:\Satyam\Trade\Project\Login\obj\Release\Trade.FrmCompany.resources
+E:\Satyam\Trade\Project\Login\obj\Release\Trade.FrmDivisionSelection.resources
+E:\Satyam\Trade\Project\Login\obj\Release\Trade.FrmLogin.resources
+E:\Satyam\Trade\Project\Login\obj\Release\Trade.FrmServerNotFound.resources
+E:\Satyam\Trade\Project\Login\obj\Release\Trade.FrmSiteSelection.resources
+E:\Satyam\Trade\Project\Login\obj\Release\Trade.MDIMain.resources
+E:\Satyam\Trade\Project\Login\obj\Release\Trade.Resources.resources
+E:\Satyam\Trade\Project\Login\obj\Release\Trade.vbproj.GenerateResource.Cache
+E:\Satyam\Trade\Release\Trade.exe
+E:\Satyam\Trade\Release\Trade.pdb
+E:\Satyam\Trade\Release\Trade.xml

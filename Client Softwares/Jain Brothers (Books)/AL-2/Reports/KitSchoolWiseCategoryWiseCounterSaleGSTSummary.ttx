@@ -1,0 +1,11 @@
+SchoolName	String	250
+TNetAmount	Currency
+TaxableAmount	Currency
+GSTPer	Currency
+SGSTAmount	Currency
+CGSTAmount	Currency
+IGSTAmount	Currency
+FromDate	Date
+ToDate	Date
+ClassName	String	250
+

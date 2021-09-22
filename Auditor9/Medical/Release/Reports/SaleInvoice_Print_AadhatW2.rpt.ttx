@@ -1,0 +1,39 @@
+; Field definition file for table: ADORecordset
+Code	string	255	D40008	
+ATYPE	string	255	W	
+SiteName	string	255	DELHI	
+DocID	string	255	D4   WSI 2019     137	
+Sr	long	1	
+InvoiceNo	string	255		
+InvoiceNoW	string	255	16706	
+V_Date	datetime	02/Jan/2020 12:00:00 AM	
+SaleToPartyName	string	255	FASHION GARMENTS-BARHNI, BARHNI	
+PartyName	string	255	FASHION GARMENTS-BARHNI	
+PartyCode	string	255	1197	
+Address	string	255	FASHION GARMENTS
+SABJI MANDI BARHNI BAZAR,
+SHOHRATGARH, BARHNI
+DIST. SIDDHARTHA NAGAR(U.P)-272201
+	
+CityName	string	255	BARHNI	
+Brand	string	255	CLUB MERINO	
+PInvNo	string	255	19	
+Qty	number	54	
+Amount	number	75470.4	
+GoodsValue	number	77859.84	
+DiscountPer	number	4	
+TotalDiscount	number	0	
+Tax	number	2389.44	
+NetAmount	number	77860	
+TransportName	string	255	SHIVA ROAD CARRIERS	
+LRNO	string	255	12586	
+LRDate	string	255	2020-01-03	
+NOOfBales	long	1	
+PrivateMark	string	255		
+BookedFrom	string	255	DELHI	
+Destination	string	255	BARHNI	
+PrintedByUser	string	255	SUPER	
+EntryByUser	string	255	ranjana	
+UserEntryDate	string	255	2020-01-14	
+CompanyLogo	BLOB		
+CompanyAuthorisedSignature	BLOB		

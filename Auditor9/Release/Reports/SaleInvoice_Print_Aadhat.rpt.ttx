@@ -1,0 +1,142 @@
+; Field definition file for table: ADORecordset
+Copies	string	255	1	
+CopyPrintingCaption	string	255		
+DocNoCaption	string	255	Invoice No.	
+DocDateCaption	string	255	Invoice Date	
+SiteStateCode	string	255	09	
+SiteStateName	string	255	Uttar Pradesh	
+DocID	string	255	D1    SI 2021     215	
+Sr	number	1	
+V_Date	datetime	06-Apr-21 12:00:00 AM	
+DeliveryDate	datetime		
+Voucher_Type	string	255	Tax Invoice	
+NCat	string	255	SI	
+InvoiceNo	string	255	SSF-KNP-13	
+RateType	string	255	B	
+AgentName	string	255		
+AgentCaption	string	255	Agent	
+SaleToPartyName	string	255	KAMLA DRESSES-DEORIA	
+SaleToPartyCode	string	255	4035	
+SaleToPartyAddress	string	255	NEAR KAMANI MARKET,
+ARJUN ROAD,
+	
+CityName	string	255	DEORIA	
+SaleToPartyPincode	string	255	274001	
+StateCode	string	255	09	
+StateName	string	255	Uttar Pradesh	
+SaleToPartyMobile	string	255	8601901701	
+ContactPerson	string	255		
+SaleToPartySalesTaxNo	string	255	09ASGPK4281P1Z2	
+SaleToPartyAadharNo	string	255		
+SaleToPartyPanNo	string	255	ASGPK4281P	
+ShipToPartyName	string	255	KAMLA DRESSES-DEORIA	
+ShipToPartyManualCode	string	255	4035	
+ShipToPartyAddress	string	255	NEAR KAMANI MARKET,
+ARJUN ROAD,
+	
+ShipToPartyCity	string	255	DEORIA	
+ShipToPartyPincode	string	255	274001	
+ShipToPartyStateCode	string	255	09	
+ShipToPartyStateName	string	255	Uttar Pradesh	
+ShipToPartyMobile	string	255	8601901701	
+ShipToPartySalesTaxNo	string	255	09ASGPK4281P1Z2	
+ShipToPartyAadharNo	string	255		
+ShipToPartyPanNo	string	255	ASGPK4281P	
+ShipToAddress	string	255		
+TermsAndConditions	string	255	(1) Payment within <CreditDays> days from date of Invoice. <BR>(2) Overdue Interest @ <Default_DebtorsInterestRate> P.A. after due date. <BR>(3) Goods dispatched by transport at the owner risk. <BR>(4) All disputes are subject to <CompanyCity> jurisdiction only.	
+TransporterName	string	255	NARAYAN TRANSPORT SERVICE	
+LrNo	string	255		
+LrDate	datetime		
+NoOfBales	number	1	
+PrivateMark	string	255		
+Weight	number	0	
+Freight	number	0	
+ChargedWeight	number	0	
+FreightType	string	255		
+RoadPermitNo	string	255	481173465634	
+RoadPermitDate	datetime	06-Apr-21 7:30:00 PM	
+VehicleNo	string	255		
+ShipMethod	string	255		
+PreCarriageBy	string	255		
+PreCarriagePlace	string	255		
+BookedFrom	string	255	KANPUR	
+BookedTo	string	255		
+Destination	string	255	DEORIA	
+DescriptionOfGoods	string	255		
+DescriptionOfPacking	string	255		
+ReferenceNo	string	255		
+ContraDocNo	string	255	10979	
+ContraDocNoCsv	string	255	10979	
+ItemName	string	255	GOWN-620419          [HARSHA | GOWN]	
+ItemGroupName	string	255	HARSHA	
+ItemCatName	string	255	GOWN	
+ItemSpecification	string	255	GOWN	
+InvoiceLineSpecification	string	255		
+HSN	string	255	620419	
+MaintainStockYn	boolean	True	
+SalesTaxGroupItem	string	255	GST 5%	
+GrossTaxRate	number	5	
+Pcs	number	0	
+Qty	number	6	
+Rate	number	745	
+Unit	string	255	Pcs	
+UnitDecimalPlaces	number	0	
+DiscountCalculationPattern	string	255		
+DiscountPer	number	0	
+DiscountAmount	number	0	
+AdditionalDiscountPer	number	0	
+AdditionalDiscountAmount	number	0	
+AdditionPer	number	0	
+AdditionAmount	number	0	
+TotalDiscount	number	0	
+AmountBeforeDiscount	number	4470	
+Amount	number	4470	
+Taxable_Amount	number	4470	
+Tax1_Per	number	0	
+Tax1	number	0	
+Tax2_Per	number	2.5	
+Tax2	number	111.75	
+Tax3_Per	number	2.5	
+Tax3	number	111.75	
+Tax4_Per	number	0	
+Tax4	number	0	
+Tax5_Per	number	0	
+Tax5	number	0	
+Net_Amount	number	4693.43	
+LRemarks	string	255		
+HRemarks	string	255		
+H_TotalDiscount	number	0	
+H_AmountBeforeDiscount	number	27810	
+H_Gross_Amount	number	27810	
+H_SpecialDiscount_Per	number	0	
+H_SpecialDiscount	number	0	
+H_Taxable_Amount	number	27810	
+H_Tax1_Per	number	0	
+H_Tax1	number	0	
+H_Tax2_Per	number	0	
+H_Tax2	number	695.25	
+H_Tax3_Per	number	0	
+H_Tax3	number	695.25	
+H_Tax4_Per	number	0	
+H_Tax4	number	0	
+H_Tax5_Per	number	0	
+H_Tax5	number	0	
+H_Deduction_Per	number	0	
+H_Deduction	number	0	
+H_Other_Charge_Per	number	0	
+H_Other_Charge	number	0	
+Round_Off	number	-0.5	
+H_Net_Amount	number	29200	
+EInvoiceIRN	string	255	c4e872cfd962b00083ff677fd2169005774536ac417c1a20e42c4da90fec09be	
+EInvoiceACKNo	string	255	142110328582760	
+EInvoiceACKDate	datetime	06-Apr-21 7:30:00 PM	
+Default_BankAccountDetail	string	255	Bank : ICICI Bank, Branch : THE MALL - Kanpur,<BR>Beneficiary : Shyama Shyam Fabrics Pvt. Ltd.,<BR>A/c No.: 628805023057, IFSC : ICIC0006288	
+DocumentPrintHeaderPattern	string	255	Center Aligned	
+DimDetail	string	255		
+PrintedByUser	string	255	SUPER	
+EntryByUser	string	255	SUMIT	
+PrintTitle	string	255	TAX INVOICE	
+PurchInvoiceNo	string	255	GTI/0029/2021-22	
+CompanyLogo	BLOB		
+CompanyAuthorisedSignature	BLOB		
+EInvoiceQrCode	BLOB		

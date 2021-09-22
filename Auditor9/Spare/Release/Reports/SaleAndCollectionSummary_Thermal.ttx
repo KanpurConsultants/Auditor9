@@ -1,0 +1,8 @@
+; Field definition file for table: ADORecordset
+Srl	string	255	1	
+V_Date	datetime	27/Apr/2020 12:00:00 AM	
+VType	string	255	Sale Invoice Retail	
+PaymentMode	string	255		
+Amount	number	119849	
+MinDocNo	string	255	31                            	
+MaxDocNo	string	255	100                           	

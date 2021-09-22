@@ -1,0 +1,35 @@
+<?xml version="1.0" standalone="yes"?>
+<NewDataSet>
+  <Table>
+    <Code>1</Code>
+    <EffectiveFromDate>1900-01-01T00:00:00-08:00</EffectiveFromDate>
+    <EffectiveUptoDate>2000-01-01T00:00:00-08:00</EffectiveUptoDate>
+    <Div_Code xml:space="preserve"> </Div_Code>
+    <Site_Code xml:space="preserve"> </Site_Code>
+    <DocumentHeaderRowFirstLeft xml:space="preserve"> </DocumentHeaderRowFirstLeft>
+    <DocumentHeaderRowFirstMiddle xml:space="preserve"> </DocumentHeaderRowFirstMiddle>
+    <DocumentHeaderRowFirstRight xml:space="preserve"> </DocumentHeaderRowFirstRight>
+    <DocumentHeaderRow1Left>GALA ENTERPRISES</DocumentHeaderRow1Left>
+    <DocumentHeaderRow2Left>13/152 PARMAT</DocumentHeaderRow2Left>
+    <DocumentHeaderRow3Left>Kanpur,208001</DocumentHeaderRow3Left>
+    <DocumentHeaderRow4Left />
+    <DocumentHeaderRow5Left xml:space="preserve"> </DocumentHeaderRow5Left>
+    <DocumentHeaderRow1Right>GST No : 09AHDPG3382R1ZS</DocumentHeaderRow1Right>
+    <DocumentHeaderRow2Right>Contact No : ,9335671971</DocumentHeaderRow2Right>
+    <DocumentHeaderRow3Right xml:space="preserve"> </DocumentHeaderRow3Right>
+    <DocumentHeaderRow4Right xml:space="preserve"> </DocumentHeaderRow4Right>
+    <DocumentHeaderRow5Right xml:space="preserve"> </DocumentHeaderRow5Right>
+    <DocumentHeaderRowLastLeft xml:space="preserve"> </DocumentHeaderRowLastLeft>
+    <DocumentHeaderRowLastMiddle xml:space="preserve"> </DocumentHeaderRowLastMiddle>
+    <DocumentHeaderRowLastRight xml:space="preserve"> </DocumentHeaderRowLastRight>
+    <IsSalesTaxApplicable>true</IsSalesTaxApplicable>
+    <WeekOffDays>0</WeekOffDays>
+    <EntryBy>System</EntryBy>
+    <EntryDate>2020-01-15T08:43:38-08:00</EntryDate>
+    <ApproveBy xml:space="preserve"> </ApproveBy>
+    <ApproveDate>1900-01-01T00:00:00-08:00</ApproveDate>
+    <MoveToLog xml:space="preserve"> </MoveToLog>
+    <MoveToLogDate>1900-01-01T00:00:00-08:00</MoveToLogDate>
+    <UploadDate>1900-01-01T00:00:00-08:00</UploadDate>
+  </Table>
+</NewDataSet>

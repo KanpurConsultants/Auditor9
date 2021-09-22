@@ -1,0 +1,61 @@
+{DB D:\S2k\Fertilizers\Data\Company.001\S2kFP002.mdb DB}
+{Sql SELECT Account.Account as PartyName, Sum(IIf([SideID]=0,[Amount],0)) AS DebitAmount, Sum(IIf([SideID]=1,[Amount],0)) AS CreditAmount, [DebitAmount]-[CreditAmount] AS Balance
+FROM TransAccItem LEFT JOIN Account ON TransAccItem.AccountID = Account.AccountID
+WHERE Account.AccountID In ({Pm AccountID Pm})
+GROUP BY Account.Account
+ORDER BY Account.Account;
+Sql}
+{Xdr Settings
+Columns=80
+Lines=60
+Page Break=True
+Condense=False
+Character Per Inch=12
+Xdr Settings}
+
+{Formula
+ = 
+Formula}
+
+{GroupSection
+Report Header;
+Page Header;
+Detail;
+Grand;
+Page Footer;
+Report Footer;
+GroupSection}
+
+
+{Browser
+SELECT  Account,AccountID FROM Account Where AccountGroupID=29 ORDER BY Account.Account|3500;0|1|1=AccountID
+Browser}
+{Report Header
+Report Header}
+========================================================================================================================
+{Page Header
+
+lbl;OwnerName;45;2;4
+lbl;OwnerAdd1 ;80;2;0
+lbl;OwnerAdd2 ;80;2;0
+
+lbl;Party Wise OutStanding Report;40;0;1
+lbl;--------------------------------------------------------------------------------;80;0;0
+lbl;Party Name;40;0;1}{lbl;DebitAmount;14;1;1}{lbl;CreditAmount;14;1;1}{lbl;Balance;12;1;1
+lbl;--------------------------------------------------------------------------------;80;0;0
+Page Header}
+========================================================================================================================
+{Detail
+fld;PartyName;40;0;0}{fld;DebitAmount;14;1;0}{fld;CreditAmount;14;1;0}{fld;Balance;12;1;0
+Detail}
+========================================================================================================================
+{Grand
+Grand}
+========================================================================================================================
+{Page Footer
+Page Footer}
+========================================================================================================================
+{Report Footer
+Report Footer}
+========================================================================================================================
+

@@ -1,0 +1,6 @@
+Account	String	150
+Address	String	150
+Debit	Currency
+Credit	Currency
+NetAmount	Currency
+

@@ -1,0 +1,42 @@
+; Field definition file for table: ADORecordset
+DivisionName	string	255	EQUAL2 SAREE CENTRE, Kanpur	
+PartyName	string	255	SAWARIYA SAREE CENTER-SHUKLA GANJ, UNNAO	
+Address	string	255	Durga Chock Gandhi Nagar ShukL A Ganj	
+Mobile	string	255		
+AgentName	string	255	ASHOK BACHANI, 	
+SalesRepresentativeName	string	255		
+AreaName	string	255		
+DrDivision	string	255	D	
+DrSubcode	string	255	D100000525	
+DrSr	number	0	
+DrDate	datetime	23/Jan/2019 12:00:00 AM	
+DrDocNo	string	255	OB-S     8126	
+DrAmount	number	66061	
+DrTaxableAmount	number	0	
+DrTaxAmount	number	0	
+DrDays	number	331	
+DrInterest	number	7188.88	
+DrCumAmount	number	66061	
+DrBalAmount	number	0	
+DrTotal	number	1958376	
+DrNarration	string	255		
+CrDivision	string	255	D	
+CrSubcode	string	255	D100000525	
+CrSr	number	0	
+CrDate	datetime	09/Apr/2019 12:00:00 AM	
+CrDocNo	string	255	RCT-90	
+CrAmount	number	121287	
+CrTaxableAmount	number	0	
+CrTaxAmount	number	0	
+CrDays	number	285	
+CrInterest	number	11364.43	
+CrCumAmount	number	121287	
+CrBalAmount	number	0	
+CrTotal	number	1331817	
+CrNarration	string	255	Chq : 033123	
+GrReturnAmt	number		
+GrSaleAmt	number		
+ReturnPer	number		
+AveragePaymentDays	number	132.715035289094	
+DrMonth	string	255	01/2019	
+CrMonth	string	255	04/2019	

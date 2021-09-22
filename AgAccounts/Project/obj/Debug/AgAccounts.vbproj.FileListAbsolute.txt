@@ -1,0 +1,965 @@
+D:\Dataman\Release\AgAccounts.exe
+D:\Dataman\Release\AgAccounts.pdb
+D:\Dataman\Release\AgAccounts.xml
+D:\AgAccounts\obj\Debug\ResolveAssemblyReference.cache
+D:\AgAccounts\obj\Debug\AgAccounts.MDIMain1.resources
+D:\AgAccounts\obj\Debug\AgAccounts.FrmAccountDetails.resources
+D:\AgAccounts\obj\Debug\AgAccounts.FrmAccountMaster.resources
+D:\AgAccounts\obj\Debug\AgAccounts.FrmAcGroupMaster.resources
+D:\AgAccounts\obj\Debug\AgAccounts.FrmAcGroupPositioning.resources
+D:\AgAccounts\obj\Debug\AgAccounts.FrmAdjustingRates.resources
+D:\AgAccounts\obj\Debug\AgAccounts.FrmAssetGroupMaster.resources
+D:\AgAccounts\obj\Debug\AgAccounts.FrmAssetMaster.resources
+D:\AgAccounts\obj\Debug\AgAccounts.FrmAssetTransaction.resources
+D:\AgAccounts\obj\Debug\AgAccounts.FrmBankReconciliation.resources
+D:\AgAccounts\obj\Debug\AgAccounts.FrmBudget.resources
+D:\AgAccounts\obj\Debug\AgAccounts.FrmBudgetAnalysis.resources
+D:\AgAccounts\obj\Debug\AgAccounts.FrmChequeMast.resources
+D:\AgAccounts\obj\Debug\AgAccounts.FrmChequePrinting.resources
+D:\AgAccounts\obj\Debug\AgAccounts.FrmChequePrintSetup.resources
+D:\AgAccounts\obj\Debug\AgAccounts.FrmCityMast.resources
+D:\AgAccounts\obj\Debug\AgAccounts.frmCountryMast.resources
+D:\AgAccounts\obj\Debug\AgAccounts.frmCurrencyMast.resources
+D:\AgAccounts\obj\Debug\AgAccounts.FrmCurrencyRate.resources
+D:\AgAccounts\obj\Debug\AgAccounts.FrmDisplayHierarchy_Settings.resources
+D:\AgAccounts\obj\Debug\AgAccounts.FrmEnviro.resources
+D:\AgAccounts\obj\Debug\AgAccounts.FrmPrintAC.resources
+D:\AgAccounts\obj\Debug\AgAccounts.FrmProgressBar.resources
+D:\AgAccounts\obj\Debug\AgAccounts.FrmReportLayout.resources
+D:\AgAccounts\obj\Debug\AgAccounts.FrmDisplayHierarchy.resources
+D:\AgAccounts\obj\Debug\AgAccounts.FrmDisplayHierarchy_Stock.resources
+D:\AgAccounts\obj\Debug\AgAccounts.FrmDisplayHierarchy_Settings_Stock.resources
+D:\AgAccounts\obj\Debug\AgAccounts.FrmSingleFieldMaster.resources
+D:\AgAccounts\obj\Debug\AgAccounts.FrmSmartFinder.resources
+D:\AgAccounts\obj\Debug\AgAccounts.frmTdsCatMaster.resources
+D:\AgAccounts\obj\Debug\AgAccounts.FrmVoucherEntry.resources
+D:\AgAccounts\obj\Debug\AgAccounts.FrmVoucherEntry_Chq_Det.resources
+D:\AgAccounts\obj\Debug\AgAccounts.FrmVoucherEntry_LedgerAdj.resources
+D:\AgAccounts\obj\Debug\AgAccounts.FrmVoucherEntry_LedgerItemAdj.resources
+D:\AgAccounts\obj\Debug\AgAccounts.FrmVoucherEntry_TDS.resources
+D:\AgAccounts\obj\Debug\AgAccounts.FrmVoucherPrint.resources
+D:\AgAccounts\obj\Debug\AgAccounts.MDIMain.resources
+D:\AgAccounts\obj\Debug\AgAccounts.RepView.resources
+D:\AgAccounts\obj\Debug\AgAccounts.Resources.resources
+D:\AgAccounts\obj\Debug\AgAccounts.vbproj.GenerateResource.Cache
+D:\AgAccounts\obj\Debug\AgAccounts.exe
+D:\AgAccounts\obj\Debug\AgAccounts.xml
+D:\AgAccounts\obj\Debug\AgAccounts.pdb
+\\server2008\Active Project\Matrix\Common\AgAccounts\Project\obj\Debug\ResolveAssemblyReference.cache
+\\server2008\Active Project\Matrix\Common\AgAccounts\Project\obj\Debug\AgAccounts.MDIMain1.resources
+\\server2008\Active Project\Matrix\Common\AgAccounts\Project\obj\Debug\AgAccounts.FrmAccountDetails.resources
+\\server2008\Active Project\Matrix\Common\AgAccounts\Project\obj\Debug\AgAccounts.FrmAccountMaster.resources
+\\server2008\Active Project\Matrix\Common\AgAccounts\Project\obj\Debug\AgAccounts.FrmAcGroupMaster.resources
+\\server2008\Active Project\Matrix\Common\AgAccounts\Project\obj\Debug\AgAccounts.FrmAcGroupPositioning.resources
+\\server2008\Active Project\Matrix\Common\AgAccounts\Project\obj\Debug\AgAccounts.FrmAdjustingRates.resources
+\\server2008\Active Project\Matrix\Common\AgAccounts\Project\obj\Debug\AgAccounts.FrmAssetGroupMaster.resources
+\\server2008\Active Project\Matrix\Common\AgAccounts\Project\obj\Debug\AgAccounts.FrmAssetMaster.resources
+\\server2008\Active Project\Matrix\Common\AgAccounts\Project\obj\Debug\AgAccounts.FrmAssetTransaction.resources
+\\server2008\Active Project\Matrix\Common\AgAccounts\Project\obj\Debug\AgAccounts.FrmBankReconciliation.resources
+\\server2008\Active Project\Matrix\Common\AgAccounts\Project\obj\Debug\AgAccounts.FrmBudget.resources
+\\server2008\Active Project\Matrix\Common\AgAccounts\Project\obj\Debug\AgAccounts.FrmBudgetAnalysis.resources
+\\server2008\Active Project\Matrix\Common\AgAccounts\Project\obj\Debug\AgAccounts.FrmChequeMast.resources
+\\server2008\Active Project\Matrix\Common\AgAccounts\Project\obj\Debug\AgAccounts.FrmChequePrinting.resources
+\\server2008\Active Project\Matrix\Common\AgAccounts\Project\obj\Debug\AgAccounts.FrmChequePrintSetup.resources
+\\server2008\Active Project\Matrix\Common\AgAccounts\Project\obj\Debug\AgAccounts.FrmCityMast.resources
+\\server2008\Active Project\Matrix\Common\AgAccounts\Project\obj\Debug\AgAccounts.frmCountryMast.resources
+\\server2008\Active Project\Matrix\Common\AgAccounts\Project\obj\Debug\AgAccounts.frmCurrencyMast.resources
+\\server2008\Active Project\Matrix\Common\AgAccounts\Project\obj\Debug\AgAccounts.FrmCurrencyRate.resources
+\\server2008\Active Project\Matrix\Common\AgAccounts\Project\obj\Debug\AgAccounts.FrmDisplayHierarchy_Settings.resources
+\\server2008\Active Project\Matrix\Common\AgAccounts\Project\obj\Debug\AgAccounts.FrmEnviro.resources
+\\server2008\Active Project\Matrix\Common\AgAccounts\Project\obj\Debug\AgAccounts.FrmPrintAC.resources
+\\server2008\Active Project\Matrix\Common\AgAccounts\Project\obj\Debug\AgAccounts.FrmProgressBar.resources
+\\server2008\Active Project\Matrix\Common\AgAccounts\Project\obj\Debug\AgAccounts.FrmReportLayout.resources
+\\server2008\Active Project\Matrix\Common\AgAccounts\Project\obj\Debug\AgAccounts.FrmDisplayHierarchy.resources
+\\server2008\Active Project\Matrix\Common\AgAccounts\Project\obj\Debug\AgAccounts.FrmDisplayHierarchy_Stock.resources
+\\server2008\Active Project\Matrix\Common\AgAccounts\Project\obj\Debug\AgAccounts.FrmDisplayHierarchy_Settings_Stock.resources
+\\server2008\Active Project\Matrix\Common\AgAccounts\Project\obj\Debug\AgAccounts.FrmSingleFieldMaster.resources
+\\server2008\Active Project\Matrix\Common\AgAccounts\Project\obj\Debug\AgAccounts.FrmSmartFinder.resources
+\\server2008\Active Project\Matrix\Common\AgAccounts\Project\obj\Debug\AgAccounts.frmTdsCatMaster.resources
+\\server2008\Active Project\Matrix\Common\AgAccounts\Project\obj\Debug\AgAccounts.FrmVoucherEntry.resources
+\\server2008\Active Project\Matrix\Common\AgAccounts\Project\obj\Debug\AgAccounts.FrmVoucherEntry_Chq_Det.resources
+\\server2008\Active Project\Matrix\Common\AgAccounts\Project\obj\Debug\AgAccounts.FrmVoucherEntry_LedgerAdj.resources
+\\server2008\Active Project\Matrix\Common\AgAccounts\Project\obj\Debug\AgAccounts.FrmVoucherEntry_LedgerItemAdj.resources
+\\server2008\Active Project\Matrix\Common\AgAccounts\Project\obj\Debug\AgAccounts.FrmVoucherEntry_TDS.resources
+\\server2008\Active Project\Matrix\Common\AgAccounts\Project\obj\Debug\AgAccounts.FrmVoucherPrint.resources
+\\server2008\Active Project\Matrix\Common\AgAccounts\Project\obj\Debug\AgAccounts.MDIMain.resources
+\\server2008\Active Project\Matrix\Common\AgAccounts\Project\obj\Debug\AgAccounts.RepView.resources
+\\server2008\Active Project\Matrix\Common\AgAccounts\Project\obj\Debug\AgAccounts.Resources.resources
+\\server2008\Active Project\Matrix\Common\AgAccounts\Project\obj\Debug\AgAccounts.vbproj.GenerateResource.Cache
+\\server2008\Active Project\Matrix\Common\AgAccounts\Project\obj\Debug\AgAccounts.exe
+\\server2008\Active Project\Matrix\Common\AgAccounts\Project\obj\Debug\AgAccounts.xml
+\\server2008\Active Project\Matrix\Common\AgAccounts\Project\obj\Debug\AgAccounts.pdb
+F:\Arpit\Active Project\Matrix\Common\AgAccounts\Project\obj\Debug\AgAccounts.exe
+F:\Arpit\Active Project\Matrix\Common\AgAccounts\Project\obj\Debug\AgAccounts.xml
+F:\Arpit\Active Project\Matrix\Common\AgAccounts\Project\obj\Debug\AgAccounts.pdb
+F:\Arpit\Active Project\Matrix\Common\Release\AgAccounts.exe
+F:\Arpit\Active Project\Matrix\Common\Release\AgAccounts.pdb
+F:\Arpit\Active Project\Matrix\Common\Release\AgAccounts.xml
+F:\Arpit\Active Project\Matrix\Common\AgAccounts\Project\obj\Debug\ResolveAssemblyReference.cache
+F:\Arpit\Active Project\Matrix\Common\AgAccounts\Project\obj\Debug\AgAccounts.MDIMain1.resources
+F:\Arpit\Active Project\Matrix\Common\AgAccounts\Project\obj\Debug\AgAccounts.FrmAccountDetails.resources
+F:\Arpit\Active Project\Matrix\Common\AgAccounts\Project\obj\Debug\AgAccounts.FrmAccountMaster.resources
+F:\Arpit\Active Project\Matrix\Common\AgAccounts\Project\obj\Debug\AgAccounts.FrmAcGroupMaster.resources
+F:\Arpit\Active Project\Matrix\Common\AgAccounts\Project\obj\Debug\AgAccounts.FrmAcGroupPositioning.resources
+F:\Arpit\Active Project\Matrix\Common\AgAccounts\Project\obj\Debug\AgAccounts.FrmAdjustingRates.resources
+F:\Arpit\Active Project\Matrix\Common\AgAccounts\Project\obj\Debug\AgAccounts.FrmAssetGroupMaster.resources
+F:\Arpit\Active Project\Matrix\Common\AgAccounts\Project\obj\Debug\AgAccounts.FrmAssetMaster.resources
+F:\Arpit\Active Project\Matrix\Common\AgAccounts\Project\obj\Debug\AgAccounts.FrmAssetTransaction.resources
+F:\Arpit\Active Project\Matrix\Common\AgAccounts\Project\obj\Debug\AgAccounts.FrmBankReconciliation.resources
+F:\Arpit\Active Project\Matrix\Common\AgAccounts\Project\obj\Debug\AgAccounts.FrmBudget.resources
+F:\Arpit\Active Project\Matrix\Common\AgAccounts\Project\obj\Debug\AgAccounts.FrmBudgetAnalysis.resources
+F:\Arpit\Active Project\Matrix\Common\AgAccounts\Project\obj\Debug\AgAccounts.FrmChequeMast.resources
+F:\Arpit\Active Project\Matrix\Common\AgAccounts\Project\obj\Debug\AgAccounts.FrmChequePrinting.resources
+F:\Arpit\Active Project\Matrix\Common\AgAccounts\Project\obj\Debug\AgAccounts.FrmChequePrintSetup.resources
+F:\Arpit\Active Project\Matrix\Common\AgAccounts\Project\obj\Debug\AgAccounts.FrmCityMast.resources
+F:\Arpit\Active Project\Matrix\Common\AgAccounts\Project\obj\Debug\AgAccounts.frmCountryMast.resources
+F:\Arpit\Active Project\Matrix\Common\AgAccounts\Project\obj\Debug\AgAccounts.frmCurrencyMast.resources
+F:\Arpit\Active Project\Matrix\Common\AgAccounts\Project\obj\Debug\AgAccounts.FrmCurrencyRate.resources
+F:\Arpit\Active Project\Matrix\Common\AgAccounts\Project\obj\Debug\AgAccounts.FrmDisplayHierarchy_Settings.resources
+F:\Arpit\Active Project\Matrix\Common\AgAccounts\Project\obj\Debug\AgAccounts.FrmEnviro.resources
+F:\Arpit\Active Project\Matrix\Common\AgAccounts\Project\obj\Debug\AgAccounts.FrmPrintAC.resources
+F:\Arpit\Active Project\Matrix\Common\AgAccounts\Project\obj\Debug\AgAccounts.FrmProgressBar.resources
+F:\Arpit\Active Project\Matrix\Common\AgAccounts\Project\obj\Debug\AgAccounts.FrmReportLayout.resources
+F:\Arpit\Active Project\Matrix\Common\AgAccounts\Project\obj\Debug\AgAccounts.FrmDisplayHierarchy.resources
+F:\Arpit\Active Project\Matrix\Common\AgAccounts\Project\obj\Debug\AgAccounts.FrmDisplayHierarchy_Stock.resources
+F:\Arpit\Active Project\Matrix\Common\AgAccounts\Project\obj\Debug\AgAccounts.FrmDisplayHierarchy_Settings_Stock.resources
+F:\Arpit\Active Project\Matrix\Common\AgAccounts\Project\obj\Debug\AgAccounts.FrmSingleFieldMaster.resources
+F:\Arpit\Active Project\Matrix\Common\AgAccounts\Project\obj\Debug\AgAccounts.FrmSmartFinder.resources
+F:\Arpit\Active Project\Matrix\Common\AgAccounts\Project\obj\Debug\AgAccounts.frmTdsCatMaster.resources
+F:\Arpit\Active Project\Matrix\Common\AgAccounts\Project\obj\Debug\AgAccounts.FrmVoucherEntry.resources
+F:\Arpit\Active Project\Matrix\Common\AgAccounts\Project\obj\Debug\AgAccounts.FrmVoucherEntry_Chq_Det.resources
+F:\Arpit\Active Project\Matrix\Common\AgAccounts\Project\obj\Debug\AgAccounts.FrmVoucherEntry_LedgerAdj.resources
+F:\Arpit\Active Project\Matrix\Common\AgAccounts\Project\obj\Debug\AgAccounts.FrmVoucherEntry_LedgerItemAdj.resources
+F:\Arpit\Active Project\Matrix\Common\AgAccounts\Project\obj\Debug\AgAccounts.FrmVoucherEntry_TDS.resources
+F:\Arpit\Active Project\Matrix\Common\AgAccounts\Project\obj\Debug\AgAccounts.FrmVoucherPrint.resources
+F:\Arpit\Active Project\Matrix\Common\AgAccounts\Project\obj\Debug\AgAccounts.MDIMain.resources
+F:\Arpit\Active Project\Matrix\Common\AgAccounts\Project\obj\Debug\AgAccounts.RepView.resources
+F:\Arpit\Active Project\Matrix\Common\AgAccounts\Project\obj\Debug\AgAccounts.Resources.resources
+F:\Arpit\Active Project\Matrix\Common\AgAccounts\Project\obj\Debug\AgAccounts.vbproj.GenerateResource.Cache
+\\server2008\Active Project\Matrix\Common\Release\AgAccounts.exe
+\\server2008\Active Project\Matrix\Common\Release\AgAccounts.pdb
+\\server2008\Active Project\Matrix\Common\Release\AgAccounts.xml
+F:\Arpit\Active Project\Common\AgAccounts\Project\obj\Debug\AgAccounts.exe
+F:\Arpit\Active Project\Common\AgAccounts\Project\obj\Debug\AgAccounts.xml
+F:\Arpit\Active Project\Common\AgAccounts\Project\obj\Debug\AgAccounts.pdb
+\\server2008\Active Project\Common\AgAccounts\Project\obj\Debug\AgAccounts.exe
+\\server2008\Active Project\Common\AgAccounts\Project\obj\Debug\AgAccounts.xml
+\\server2008\Active Project\Common\AgAccounts\Project\obj\Debug\AgAccounts.pdb
+\\server2008\Active Project\Common\Release\AgAccounts.exe
+\\server2008\Active Project\Common\Release\AgAccounts.pdb
+\\server2008\Active Project\Common\Release\AgAccounts.xml
+\\server2008\Active Project\Common\AgAccounts\Project\obj\Debug\ResolveAssemblyReference.cache
+\\server2008\Active Project\Common\AgAccounts\Project\obj\Debug\AgAccounts.MDIMain1.resources
+\\server2008\Active Project\Common\AgAccounts\Project\obj\Debug\AgAccounts.FrmAccountDetails.resources
+\\server2008\Active Project\Common\AgAccounts\Project\obj\Debug\AgAccounts.FrmAccountMaster.resources
+\\server2008\Active Project\Common\AgAccounts\Project\obj\Debug\AgAccounts.FrmAcGroupMaster.resources
+\\server2008\Active Project\Common\AgAccounts\Project\obj\Debug\AgAccounts.FrmAcGroupPositioning.resources
+\\server2008\Active Project\Common\AgAccounts\Project\obj\Debug\AgAccounts.FrmAdjustingRates.resources
+\\server2008\Active Project\Common\AgAccounts\Project\obj\Debug\AgAccounts.FrmAssetGroupMaster.resources
+\\server2008\Active Project\Common\AgAccounts\Project\obj\Debug\AgAccounts.FrmAssetMaster.resources
+\\server2008\Active Project\Common\AgAccounts\Project\obj\Debug\AgAccounts.FrmAssetTransaction.resources
+\\server2008\Active Project\Common\AgAccounts\Project\obj\Debug\AgAccounts.FrmBankReconciliation.resources
+\\server2008\Active Project\Common\AgAccounts\Project\obj\Debug\AgAccounts.FrmBudget.resources
+\\server2008\Active Project\Common\AgAccounts\Project\obj\Debug\AgAccounts.FrmBudgetAnalysis.resources
+\\server2008\Active Project\Common\AgAccounts\Project\obj\Debug\AgAccounts.FrmChequeMast.resources
+\\server2008\Active Project\Common\AgAccounts\Project\obj\Debug\AgAccounts.FrmChequePrinting.resources
+\\server2008\Active Project\Common\AgAccounts\Project\obj\Debug\AgAccounts.FrmChequePrintSetup.resources
+\\server2008\Active Project\Common\AgAccounts\Project\obj\Debug\AgAccounts.FrmCityMast.resources
+\\server2008\Active Project\Common\AgAccounts\Project\obj\Debug\AgAccounts.frmCountryMast.resources
+\\server2008\Active Project\Common\AgAccounts\Project\obj\Debug\AgAccounts.frmCurrencyMast.resources
+\\server2008\Active Project\Common\AgAccounts\Project\obj\Debug\AgAccounts.FrmCurrencyRate.resources
+\\server2008\Active Project\Common\AgAccounts\Project\obj\Debug\AgAccounts.FrmDisplayHierarchy_Settings.resources
+\\server2008\Active Project\Common\AgAccounts\Project\obj\Debug\AgAccounts.FrmEnviro.resources
+\\server2008\Active Project\Common\AgAccounts\Project\obj\Debug\AgAccounts.FrmPrintAC.resources
+\\server2008\Active Project\Common\AgAccounts\Project\obj\Debug\AgAccounts.FrmProgressBar.resources
+\\server2008\Active Project\Common\AgAccounts\Project\obj\Debug\AgAccounts.FrmReportLayout.resources
+\\server2008\Active Project\Common\AgAccounts\Project\obj\Debug\AgAccounts.FrmDisplayHierarchy.resources
+\\server2008\Active Project\Common\AgAccounts\Project\obj\Debug\AgAccounts.FrmDisplayHierarchy_Stock.resources
+\\server2008\Active Project\Common\AgAccounts\Project\obj\Debug\AgAccounts.FrmDisplayHierarchy_Settings_Stock.resources
+\\server2008\Active Project\Common\AgAccounts\Project\obj\Debug\AgAccounts.FrmSingleFieldMaster.resources
+\\server2008\Active Project\Common\AgAccounts\Project\obj\Debug\AgAccounts.FrmSmartFinder.resources
+\\server2008\Active Project\Common\AgAccounts\Project\obj\Debug\AgAccounts.frmTdsCatMaster.resources
+\\server2008\Active Project\Common\AgAccounts\Project\obj\Debug\AgAccounts.FrmVoucherEntry.resources
+\\server2008\Active Project\Common\AgAccounts\Project\obj\Debug\AgAccounts.FrmVoucherEntry_Chq_Det.resources
+\\server2008\Active Project\Common\AgAccounts\Project\obj\Debug\AgAccounts.FrmVoucherEntry_LedgerAdj.resources
+\\server2008\Active Project\Common\AgAccounts\Project\obj\Debug\AgAccounts.FrmVoucherEntry_LedgerItemAdj.resources
+\\server2008\Active Project\Common\AgAccounts\Project\obj\Debug\AgAccounts.FrmVoucherEntry_TDS.resources
+\\server2008\Active Project\Common\AgAccounts\Project\obj\Debug\AgAccounts.FrmVoucherPrint.resources
+\\server2008\Active Project\Common\AgAccounts\Project\obj\Debug\AgAccounts.MDIMain.resources
+\\server2008\Active Project\Common\AgAccounts\Project\obj\Debug\AgAccounts.RepView.resources
+\\server2008\Active Project\Common\AgAccounts\Project\obj\Debug\AgAccounts.Resources.resources
+\\server2008\Active Project\Common\AgAccounts\Project\obj\Debug\AgAccounts.vbproj.GenerateResource.Cache
+F:\Arpit\Active Project\Common\Release\AgAccounts.exe
+F:\Arpit\Active Project\Common\Release\AgAccounts.pdb
+F:\Arpit\Active Project\Common\Release\AgAccounts.xml
+F:\Arpit\Active Project\Common\AgAccounts\Project\obj\Debug\ResolveAssemblyReference.cache
+F:\Arpit\Active Project\Common\AgAccounts\Project\obj\Debug\AgAccounts.MDIMain1.resources
+F:\Arpit\Active Project\Common\AgAccounts\Project\obj\Debug\AgAccounts.FrmAccountDetails.resources
+F:\Arpit\Active Project\Common\AgAccounts\Project\obj\Debug\AgAccounts.FrmAccountMaster.resources
+F:\Arpit\Active Project\Common\AgAccounts\Project\obj\Debug\AgAccounts.FrmAcGroupMaster.resources
+F:\Arpit\Active Project\Common\AgAccounts\Project\obj\Debug\AgAccounts.FrmAcGroupPositioning.resources
+F:\Arpit\Active Project\Common\AgAccounts\Project\obj\Debug\AgAccounts.FrmAdjustingRates.resources
+F:\Arpit\Active Project\Common\AgAccounts\Project\obj\Debug\AgAccounts.FrmAssetGroupMaster.resources
+F:\Arpit\Active Project\Common\AgAccounts\Project\obj\Debug\AgAccounts.FrmAssetMaster.resources
+F:\Arpit\Active Project\Common\AgAccounts\Project\obj\Debug\AgAccounts.FrmAssetTransaction.resources
+F:\Arpit\Active Project\Common\AgAccounts\Project\obj\Debug\AgAccounts.FrmBankReconciliation.resources
+F:\Arpit\Active Project\Common\AgAccounts\Project\obj\Debug\AgAccounts.FrmBudget.resources
+F:\Arpit\Active Project\Common\AgAccounts\Project\obj\Debug\AgAccounts.FrmBudgetAnalysis.resources
+F:\Arpit\Active Project\Common\AgAccounts\Project\obj\Debug\AgAccounts.FrmChequeMast.resources
+F:\Arpit\Active Project\Common\AgAccounts\Project\obj\Debug\AgAccounts.FrmChequePrinting.resources
+F:\Arpit\Active Project\Common\AgAccounts\Project\obj\Debug\AgAccounts.FrmChequePrintSetup.resources
+F:\Arpit\Active Project\Common\AgAccounts\Project\obj\Debug\AgAccounts.FrmCityMast.resources
+F:\Arpit\Active Project\Common\AgAccounts\Project\obj\Debug\AgAccounts.frmCountryMast.resources
+F:\Arpit\Active Project\Common\AgAccounts\Project\obj\Debug\AgAccounts.frmCurrencyMast.resources
+F:\Arpit\Active Project\Common\AgAccounts\Project\obj\Debug\AgAccounts.FrmCurrencyRate.resources
+F:\Arpit\Active Project\Common\AgAccounts\Project\obj\Debug\AgAccounts.FrmDisplayHierarchy_Settings.resources
+F:\Arpit\Active Project\Common\AgAccounts\Project\obj\Debug\AgAccounts.FrmEnviro.resources
+F:\Arpit\Active Project\Common\AgAccounts\Project\obj\Debug\AgAccounts.FrmPrintAC.resources
+F:\Arpit\Active Project\Common\AgAccounts\Project\obj\Debug\AgAccounts.FrmProgressBar.resources
+F:\Arpit\Active Project\Common\AgAccounts\Project\obj\Debug\AgAccounts.FrmReportLayout.resources
+F:\Arpit\Active Project\Common\AgAccounts\Project\obj\Debug\AgAccounts.FrmDisplayHierarchy.resources
+F:\Arpit\Active Project\Common\AgAccounts\Project\obj\Debug\AgAccounts.FrmDisplayHierarchy_Stock.resources
+F:\Arpit\Active Project\Common\AgAccounts\Project\obj\Debug\AgAccounts.FrmDisplayHierarchy_Settings_Stock.resources
+F:\Arpit\Active Project\Common\AgAccounts\Project\obj\Debug\AgAccounts.FrmSingleFieldMaster.resources
+F:\Arpit\Active Project\Common\AgAccounts\Project\obj\Debug\AgAccounts.FrmSmartFinder.resources
+F:\Arpit\Active Project\Common\AgAccounts\Project\obj\Debug\AgAccounts.frmTdsCatMaster.resources
+F:\Arpit\Active Project\Common\AgAccounts\Project\obj\Debug\AgAccounts.FrmVoucherEntry.resources
+F:\Arpit\Active Project\Common\AgAccounts\Project\obj\Debug\AgAccounts.FrmVoucherEntry_Chq_Det.resources
+F:\Arpit\Active Project\Common\AgAccounts\Project\obj\Debug\AgAccounts.FrmVoucherEntry_LedgerAdj.resources
+F:\Arpit\Active Project\Common\AgAccounts\Project\obj\Debug\AgAccounts.FrmVoucherEntry_LedgerItemAdj.resources
+F:\Arpit\Active Project\Common\AgAccounts\Project\obj\Debug\AgAccounts.FrmVoucherEntry_TDS.resources
+F:\Arpit\Active Project\Common\AgAccounts\Project\obj\Debug\AgAccounts.FrmVoucherPrint.resources
+F:\Arpit\Active Project\Common\AgAccounts\Project\obj\Debug\AgAccounts.MDIMain.resources
+F:\Arpit\Active Project\Common\AgAccounts\Project\obj\Debug\AgAccounts.RepView.resources
+F:\Arpit\Active Project\Common\AgAccounts\Project\obj\Debug\AgAccounts.Resources.resources
+F:\Arpit\Active Project\Common\AgAccounts\Project\obj\Debug\AgAccounts.vbproj.GenerateResource.Cache
+G:\Common\AgAccounts\Project\obj\Debug\AgAccounts.exe
+G:\Common\AgAccounts\Project\obj\Debug\AgAccounts.xml
+G:\Common\AgAccounts\Project\obj\Debug\AgAccounts.pdb
+G:\Common\Release\AgAccounts.exe
+G:\Common\Release\AgAccounts.pdb
+G:\Common\Release\AgAccounts.xml
+G:\Common\AgAccounts\Project\obj\Debug\ResolveAssemblyReference.cache
+G:\Common\AgAccounts\Project\obj\Debug\AgAccounts.MDIMain1.resources
+G:\Common\AgAccounts\Project\obj\Debug\AgAccounts.FrmAccountDetails.resources
+G:\Common\AgAccounts\Project\obj\Debug\AgAccounts.FrmAccountMaster.resources
+G:\Common\AgAccounts\Project\obj\Debug\AgAccounts.FrmAcGroupMaster.resources
+G:\Common\AgAccounts\Project\obj\Debug\AgAccounts.FrmAcGroupPositioning.resources
+G:\Common\AgAccounts\Project\obj\Debug\AgAccounts.FrmAdjustingRates.resources
+G:\Common\AgAccounts\Project\obj\Debug\AgAccounts.FrmAssetGroupMaster.resources
+G:\Common\AgAccounts\Project\obj\Debug\AgAccounts.FrmAssetMaster.resources
+G:\Common\AgAccounts\Project\obj\Debug\AgAccounts.FrmAssetTransaction.resources
+G:\Common\AgAccounts\Project\obj\Debug\AgAccounts.FrmBankReconciliation.resources
+G:\Common\AgAccounts\Project\obj\Debug\AgAccounts.FrmBudget.resources
+G:\Common\AgAccounts\Project\obj\Debug\AgAccounts.FrmBudgetAnalysis.resources
+G:\Common\AgAccounts\Project\obj\Debug\AgAccounts.FrmChequeMast.resources
+G:\Common\AgAccounts\Project\obj\Debug\AgAccounts.FrmChequePrinting.resources
+G:\Common\AgAccounts\Project\obj\Debug\AgAccounts.FrmChequePrintSetup.resources
+G:\Common\AgAccounts\Project\obj\Debug\AgAccounts.FrmCityMast.resources
+G:\Common\AgAccounts\Project\obj\Debug\AgAccounts.frmCountryMast.resources
+G:\Common\AgAccounts\Project\obj\Debug\AgAccounts.frmCurrencyMast.resources
+G:\Common\AgAccounts\Project\obj\Debug\AgAccounts.FrmCurrencyRate.resources
+G:\Common\AgAccounts\Project\obj\Debug\AgAccounts.FrmDisplayHierarchy_Settings.resources
+G:\Common\AgAccounts\Project\obj\Debug\AgAccounts.FrmEnviro.resources
+G:\Common\AgAccounts\Project\obj\Debug\AgAccounts.FrmPrintAC.resources
+G:\Common\AgAccounts\Project\obj\Debug\AgAccounts.FrmProgressBar.resources
+G:\Common\AgAccounts\Project\obj\Debug\AgAccounts.FrmReportLayout.resources
+G:\Common\AgAccounts\Project\obj\Debug\AgAccounts.FrmDisplayHierarchy.resources
+G:\Common\AgAccounts\Project\obj\Debug\AgAccounts.FrmDisplayHierarchy_Stock.resources
+G:\Common\AgAccounts\Project\obj\Debug\AgAccounts.FrmDisplayHierarchy_Settings_Stock.resources
+G:\Common\AgAccounts\Project\obj\Debug\AgAccounts.FrmSingleFieldMaster.resources
+G:\Common\AgAccounts\Project\obj\Debug\AgAccounts.FrmSmartFinder.resources
+G:\Common\AgAccounts\Project\obj\Debug\AgAccounts.frmTdsCatMaster.resources
+G:\Common\AgAccounts\Project\obj\Debug\AgAccounts.FrmVoucherEntry.resources
+G:\Common\AgAccounts\Project\obj\Debug\AgAccounts.FrmVoucherEntry_Chq_Det.resources
+G:\Common\AgAccounts\Project\obj\Debug\AgAccounts.FrmVoucherEntry_LedgerAdj.resources
+G:\Common\AgAccounts\Project\obj\Debug\AgAccounts.FrmVoucherEntry_LedgerItemAdj.resources
+G:\Common\AgAccounts\Project\obj\Debug\AgAccounts.FrmVoucherEntry_TDS.resources
+G:\Common\AgAccounts\Project\obj\Debug\AgAccounts.FrmVoucherPrint.resources
+G:\Common\AgAccounts\Project\obj\Debug\AgAccounts.MDIMain.resources
+G:\Common\AgAccounts\Project\obj\Debug\AgAccounts.RepView.resources
+G:\Common\AgAccounts\Project\obj\Debug\AgAccounts.Resources.resources
+G:\Common\AgAccounts\Project\obj\Debug\AgAccounts.vbproj.GenerateResource.Cache
+H:\Common\Release\AgAccounts.exe
+H:\Common\Release\AgAccounts.pdb
+H:\Common\Release\AgAccounts.xml
+H:\Common\AgAccounts\Project\obj\Debug\ResolveAssemblyReference.cache
+H:\Common\AgAccounts\Project\obj\Debug\AgAccounts.MDIMain1.resources
+H:\Common\AgAccounts\Project\obj\Debug\AgAccounts.FrmAccountDetails.resources
+H:\Common\AgAccounts\Project\obj\Debug\AgAccounts.FrmAccountMaster.resources
+H:\Common\AgAccounts\Project\obj\Debug\AgAccounts.FrmAcGroupMaster.resources
+H:\Common\AgAccounts\Project\obj\Debug\AgAccounts.FrmAcGroupPositioning.resources
+H:\Common\AgAccounts\Project\obj\Debug\AgAccounts.FrmAdjustingRates.resources
+H:\Common\AgAccounts\Project\obj\Debug\AgAccounts.FrmAssetGroupMaster.resources
+H:\Common\AgAccounts\Project\obj\Debug\AgAccounts.FrmAssetMaster.resources
+H:\Common\AgAccounts\Project\obj\Debug\AgAccounts.FrmAssetTransaction.resources
+H:\Common\AgAccounts\Project\obj\Debug\AgAccounts.FrmBankReconciliation.resources
+H:\Common\AgAccounts\Project\obj\Debug\AgAccounts.FrmBudget.resources
+H:\Common\AgAccounts\Project\obj\Debug\AgAccounts.FrmBudgetAnalysis.resources
+H:\Common\AgAccounts\Project\obj\Debug\AgAccounts.FrmChequeMast.resources
+H:\Common\AgAccounts\Project\obj\Debug\AgAccounts.FrmChequePrinting.resources
+H:\Common\AgAccounts\Project\obj\Debug\AgAccounts.FrmChequePrintSetup.resources
+H:\Common\AgAccounts\Project\obj\Debug\AgAccounts.FrmCityMast.resources
+H:\Common\AgAccounts\Project\obj\Debug\AgAccounts.frmCountryMast.resources
+H:\Common\AgAccounts\Project\obj\Debug\AgAccounts.frmCurrencyMast.resources
+H:\Common\AgAccounts\Project\obj\Debug\AgAccounts.FrmCurrencyRate.resources
+H:\Common\AgAccounts\Project\obj\Debug\AgAccounts.FrmDisplayHierarchy_Settings.resources
+H:\Common\AgAccounts\Project\obj\Debug\AgAccounts.FrmEnviro.resources
+H:\Common\AgAccounts\Project\obj\Debug\AgAccounts.FrmPrintAC.resources
+H:\Common\AgAccounts\Project\obj\Debug\AgAccounts.FrmProgressBar.resources
+H:\Common\AgAccounts\Project\obj\Debug\AgAccounts.FrmReportLayout.resources
+H:\Common\AgAccounts\Project\obj\Debug\AgAccounts.FrmDisplayHierarchy.resources
+H:\Common\AgAccounts\Project\obj\Debug\AgAccounts.FrmDisplayHierarchy_Stock.resources
+H:\Common\AgAccounts\Project\obj\Debug\AgAccounts.FrmDisplayHierarchy_Settings_Stock.resources
+H:\Common\AgAccounts\Project\obj\Debug\AgAccounts.FrmSingleFieldMaster.resources
+H:\Common\AgAccounts\Project\obj\Debug\AgAccounts.FrmSmartFinder.resources
+H:\Common\AgAccounts\Project\obj\Debug\AgAccounts.frmTdsCatMaster.resources
+H:\Common\AgAccounts\Project\obj\Debug\AgAccounts.FrmVoucherEntry.resources
+H:\Common\AgAccounts\Project\obj\Debug\AgAccounts.FrmVoucherEntry_Chq_Det.resources
+H:\Common\AgAccounts\Project\obj\Debug\AgAccounts.FrmVoucherEntry_LedgerAdj.resources
+H:\Common\AgAccounts\Project\obj\Debug\AgAccounts.FrmVoucherEntry_LedgerItemAdj.resources
+H:\Common\AgAccounts\Project\obj\Debug\AgAccounts.FrmVoucherEntry_TDS.resources
+H:\Common\AgAccounts\Project\obj\Debug\AgAccounts.FrmVoucherPrint.resources
+H:\Common\AgAccounts\Project\obj\Debug\AgAccounts.MDIMain.resources
+H:\Common\AgAccounts\Project\obj\Debug\AgAccounts.RepView.resources
+H:\Common\AgAccounts\Project\obj\Debug\AgAccounts.Resources.resources
+H:\Common\AgAccounts\Project\obj\Debug\AgAccounts.vbproj.GenerateResource.Cache
+H:\Common\AgAccounts\Project\obj\Debug\AgAccounts.exe
+H:\Common\AgAccounts\Project\obj\Debug\AgAccounts.xml
+H:\Common\AgAccounts\Project\obj\Debug\AgAccounts.pdb
+I:\Common\Release\AgAccounts.exe
+I:\Common\Release\AgAccounts.pdb
+I:\Common\Release\AgAccounts.xml
+I:\Common\AgAccounts\Project\obj\Debug\ResolveAssemblyReference.cache
+I:\Common\AgAccounts\Project\obj\Debug\AgAccounts.MDIMain1.resources
+I:\Common\AgAccounts\Project\obj\Debug\AgAccounts.FrmAccountDetails.resources
+I:\Common\AgAccounts\Project\obj\Debug\AgAccounts.FrmAccountMaster.resources
+I:\Common\AgAccounts\Project\obj\Debug\AgAccounts.FrmAcGroupMaster.resources
+I:\Common\AgAccounts\Project\obj\Debug\AgAccounts.FrmAcGroupPositioning.resources
+I:\Common\AgAccounts\Project\obj\Debug\AgAccounts.FrmAdjustingRates.resources
+I:\Common\AgAccounts\Project\obj\Debug\AgAccounts.FrmAssetGroupMaster.resources
+I:\Common\AgAccounts\Project\obj\Debug\AgAccounts.FrmAssetMaster.resources
+I:\Common\AgAccounts\Project\obj\Debug\AgAccounts.FrmAssetTransaction.resources
+I:\Common\AgAccounts\Project\obj\Debug\AgAccounts.FrmBankReconciliation.resources
+I:\Common\AgAccounts\Project\obj\Debug\AgAccounts.FrmBudget.resources
+I:\Common\AgAccounts\Project\obj\Debug\AgAccounts.FrmBudgetAnalysis.resources
+I:\Common\AgAccounts\Project\obj\Debug\AgAccounts.FrmChequeMast.resources
+I:\Common\AgAccounts\Project\obj\Debug\AgAccounts.FrmChequePrinting.resources
+I:\Common\AgAccounts\Project\obj\Debug\AgAccounts.FrmChequePrintSetup.resources
+I:\Common\AgAccounts\Project\obj\Debug\AgAccounts.FrmCityMast.resources
+I:\Common\AgAccounts\Project\obj\Debug\AgAccounts.frmCountryMast.resources
+I:\Common\AgAccounts\Project\obj\Debug\AgAccounts.frmCurrencyMast.resources
+I:\Common\AgAccounts\Project\obj\Debug\AgAccounts.FrmCurrencyRate.resources
+I:\Common\AgAccounts\Project\obj\Debug\AgAccounts.FrmDisplayHierarchy_Settings.resources
+I:\Common\AgAccounts\Project\obj\Debug\AgAccounts.FrmEnviro.resources
+I:\Common\AgAccounts\Project\obj\Debug\AgAccounts.FrmPrintAC.resources
+I:\Common\AgAccounts\Project\obj\Debug\AgAccounts.FrmProgressBar.resources
+I:\Common\AgAccounts\Project\obj\Debug\AgAccounts.FrmReportLayout.resources
+I:\Common\AgAccounts\Project\obj\Debug\AgAccounts.FrmDisplayHierarchy.resources
+I:\Common\AgAccounts\Project\obj\Debug\AgAccounts.FrmDisplayHierarchy_Stock.resources
+I:\Common\AgAccounts\Project\obj\Debug\AgAccounts.FrmDisplayHierarchy_Settings_Stock.resources
+I:\Common\AgAccounts\Project\obj\Debug\AgAccounts.FrmSingleFieldMaster.resources
+I:\Common\AgAccounts\Project\obj\Debug\AgAccounts.FrmSmartFinder.resources
+I:\Common\AgAccounts\Project\obj\Debug\AgAccounts.frmTdsCatMaster.resources
+I:\Common\AgAccounts\Project\obj\Debug\AgAccounts.FrmVoucherEntry.resources
+I:\Common\AgAccounts\Project\obj\Debug\AgAccounts.FrmVoucherEntry_Chq_Det.resources
+I:\Common\AgAccounts\Project\obj\Debug\AgAccounts.FrmVoucherEntry_LedgerAdj.resources
+I:\Common\AgAccounts\Project\obj\Debug\AgAccounts.FrmVoucherEntry_LedgerItemAdj.resources
+I:\Common\AgAccounts\Project\obj\Debug\AgAccounts.FrmVoucherEntry_TDS.resources
+I:\Common\AgAccounts\Project\obj\Debug\AgAccounts.FrmVoucherPrint.resources
+I:\Common\AgAccounts\Project\obj\Debug\AgAccounts.MDIMain.resources
+I:\Common\AgAccounts\Project\obj\Debug\AgAccounts.RepView.resources
+I:\Common\AgAccounts\Project\obj\Debug\AgAccounts.Resources.resources
+I:\Common\AgAccounts\Project\obj\Debug\AgAccounts.vbproj.GenerateResource.Cache
+I:\Common\AgAccounts\Project\obj\Debug\AgAccounts.exe
+I:\Common\AgAccounts\Project\obj\Debug\AgAccounts.xml
+I:\Common\AgAccounts\Project\obj\Debug\AgAccounts.pdb
+I:\Common\AgAccounts\Project\obj\Debug\AgAccounts.FrmVoucherEntryBackup.resources
+\\arpit-pc\I\Common\AgAccounts\Project\obj\Debug\AgAccounts.exe
+\\arpit-pc\I\Common\AgAccounts\Project\obj\Debug\AgAccounts.xml
+\\arpit-pc\I\Common\AgAccounts\Project\obj\Debug\AgAccounts.pdb
+\\arpit-pc\I\Common\Release\AgAccounts.exe
+\\arpit-pc\I\Common\Release\AgAccounts.pdb
+\\arpit-pc\I\Common\Release\AgAccounts.xml
+\\arpit-pc\I\Common\AgAccounts\Project\obj\Debug\ResolveAssemblyReference.cache
+\\arpit-pc\I\Common\AgAccounts\Project\obj\Debug\AgAccounts.FrmVoucherEntryBackup.resources
+\\arpit-pc\I\Common\AgAccounts\Project\obj\Debug\AgAccounts.MDIMain1.resources
+\\arpit-pc\I\Common\AgAccounts\Project\obj\Debug\AgAccounts.FrmAccountDetails.resources
+\\arpit-pc\I\Common\AgAccounts\Project\obj\Debug\AgAccounts.FrmAccountMaster.resources
+\\arpit-pc\I\Common\AgAccounts\Project\obj\Debug\AgAccounts.FrmAcGroupMaster.resources
+\\arpit-pc\I\Common\AgAccounts\Project\obj\Debug\AgAccounts.FrmAcGroupPositioning.resources
+\\arpit-pc\I\Common\AgAccounts\Project\obj\Debug\AgAccounts.FrmAdjustingRates.resources
+\\arpit-pc\I\Common\AgAccounts\Project\obj\Debug\AgAccounts.FrmAssetGroupMaster.resources
+\\arpit-pc\I\Common\AgAccounts\Project\obj\Debug\AgAccounts.FrmAssetMaster.resources
+\\arpit-pc\I\Common\AgAccounts\Project\obj\Debug\AgAccounts.FrmAssetTransaction.resources
+\\arpit-pc\I\Common\AgAccounts\Project\obj\Debug\AgAccounts.FrmBankReconciliation.resources
+\\arpit-pc\I\Common\AgAccounts\Project\obj\Debug\AgAccounts.FrmBudget.resources
+\\arpit-pc\I\Common\AgAccounts\Project\obj\Debug\AgAccounts.FrmBudgetAnalysis.resources
+\\arpit-pc\I\Common\AgAccounts\Project\obj\Debug\AgAccounts.FrmChequeMast.resources
+\\arpit-pc\I\Common\AgAccounts\Project\obj\Debug\AgAccounts.FrmChequePrinting.resources
+\\arpit-pc\I\Common\AgAccounts\Project\obj\Debug\AgAccounts.FrmChequePrintSetup.resources
+\\arpit-pc\I\Common\AgAccounts\Project\obj\Debug\AgAccounts.FrmCityMast.resources
+\\arpit-pc\I\Common\AgAccounts\Project\obj\Debug\AgAccounts.frmCountryMast.resources
+\\arpit-pc\I\Common\AgAccounts\Project\obj\Debug\AgAccounts.frmCurrencyMast.resources
+\\arpit-pc\I\Common\AgAccounts\Project\obj\Debug\AgAccounts.FrmCurrencyRate.resources
+\\arpit-pc\I\Common\AgAccounts\Project\obj\Debug\AgAccounts.FrmDisplayHierarchy_Settings.resources
+\\arpit-pc\I\Common\AgAccounts\Project\obj\Debug\AgAccounts.FrmEnviro.resources
+\\arpit-pc\I\Common\AgAccounts\Project\obj\Debug\AgAccounts.FrmPrintAC.resources
+\\arpit-pc\I\Common\AgAccounts\Project\obj\Debug\AgAccounts.FrmProgressBar.resources
+\\arpit-pc\I\Common\AgAccounts\Project\obj\Debug\AgAccounts.FrmReportLayout.resources
+\\arpit-pc\I\Common\AgAccounts\Project\obj\Debug\AgAccounts.FrmDisplayHierarchy.resources
+\\arpit-pc\I\Common\AgAccounts\Project\obj\Debug\AgAccounts.FrmDisplayHierarchy_Stock.resources
+\\arpit-pc\I\Common\AgAccounts\Project\obj\Debug\AgAccounts.FrmDisplayHierarchy_Settings_Stock.resources
+\\arpit-pc\I\Common\AgAccounts\Project\obj\Debug\AgAccounts.FrmSingleFieldMaster.resources
+\\arpit-pc\I\Common\AgAccounts\Project\obj\Debug\AgAccounts.FrmSmartFinder.resources
+\\arpit-pc\I\Common\AgAccounts\Project\obj\Debug\AgAccounts.frmTdsCatMaster.resources
+\\arpit-pc\I\Common\AgAccounts\Project\obj\Debug\AgAccounts.FrmVoucherEntry.resources
+\\arpit-pc\I\Common\AgAccounts\Project\obj\Debug\AgAccounts.FrmVoucherEntry_Chq_Det.resources
+\\arpit-pc\I\Common\AgAccounts\Project\obj\Debug\AgAccounts.FrmVoucherEntry_LedgerAdj.resources
+\\arpit-pc\I\Common\AgAccounts\Project\obj\Debug\AgAccounts.FrmVoucherEntry_LedgerItemAdj.resources
+\\arpit-pc\I\Common\AgAccounts\Project\obj\Debug\AgAccounts.FrmVoucherEntry_TDS.resources
+\\arpit-pc\I\Common\AgAccounts\Project\obj\Debug\AgAccounts.FrmVoucherPrint.resources
+\\arpit-pc\I\Common\AgAccounts\Project\obj\Debug\AgAccounts.MDIMain.resources
+\\arpit-pc\I\Common\AgAccounts\Project\obj\Debug\AgAccounts.RepView.resources
+\\arpit-pc\I\Common\AgAccounts\Project\obj\Debug\AgAccounts.Resources.resources
+\\arpit-pc\I\Common\AgAccounts\Project\obj\Debug\AgAccounts.vbproj.GenerateResource.Cache
+F:\Project\Common\Release\AgAccounts.exe
+F:\Project\Common\Release\AgAccounts.pdb
+F:\Project\Common\Release\AgAccounts.xml
+F:\Project\Common\AgAccounts\Project\obj\Debug\ResolveAssemblyReference.cache
+F:\Project\Common\AgAccounts\Project\obj\Debug\AgAccounts.FrmVoucherEntryBackup.resources
+F:\Project\Common\AgAccounts\Project\obj\Debug\AgAccounts.MDIMain1.resources
+F:\Project\Common\AgAccounts\Project\obj\Debug\AgAccounts.FrmAccountDetails.resources
+F:\Project\Common\AgAccounts\Project\obj\Debug\AgAccounts.FrmAccountMaster.resources
+F:\Project\Common\AgAccounts\Project\obj\Debug\AgAccounts.FrmAcGroupMaster.resources
+F:\Project\Common\AgAccounts\Project\obj\Debug\AgAccounts.FrmAcGroupPositioning.resources
+F:\Project\Common\AgAccounts\Project\obj\Debug\AgAccounts.FrmAdjustingRates.resources
+F:\Project\Common\AgAccounts\Project\obj\Debug\AgAccounts.FrmAssetGroupMaster.resources
+F:\Project\Common\AgAccounts\Project\obj\Debug\AgAccounts.FrmAssetMaster.resources
+F:\Project\Common\AgAccounts\Project\obj\Debug\AgAccounts.FrmAssetTransaction.resources
+F:\Project\Common\AgAccounts\Project\obj\Debug\AgAccounts.FrmBankReconciliation.resources
+F:\Project\Common\AgAccounts\Project\obj\Debug\AgAccounts.FrmBudget.resources
+F:\Project\Common\AgAccounts\Project\obj\Debug\AgAccounts.FrmBudgetAnalysis.resources
+F:\Project\Common\AgAccounts\Project\obj\Debug\AgAccounts.FrmChequeMast.resources
+F:\Project\Common\AgAccounts\Project\obj\Debug\AgAccounts.FrmChequePrinting.resources
+F:\Project\Common\AgAccounts\Project\obj\Debug\AgAccounts.FrmChequePrintSetup.resources
+F:\Project\Common\AgAccounts\Project\obj\Debug\AgAccounts.FrmCityMast.resources
+F:\Project\Common\AgAccounts\Project\obj\Debug\AgAccounts.frmCountryMast.resources
+F:\Project\Common\AgAccounts\Project\obj\Debug\AgAccounts.frmCurrencyMast.resources
+F:\Project\Common\AgAccounts\Project\obj\Debug\AgAccounts.FrmCurrencyRate.resources
+F:\Project\Common\AgAccounts\Project\obj\Debug\AgAccounts.FrmDisplayHierarchy_Settings.resources
+F:\Project\Common\AgAccounts\Project\obj\Debug\AgAccounts.FrmEnviro.resources
+F:\Project\Common\AgAccounts\Project\obj\Debug\AgAccounts.FrmPrintAC.resources
+F:\Project\Common\AgAccounts\Project\obj\Debug\AgAccounts.FrmProgressBar.resources
+F:\Project\Common\AgAccounts\Project\obj\Debug\AgAccounts.FrmReportLayout.resources
+F:\Project\Common\AgAccounts\Project\obj\Debug\AgAccounts.FrmDisplayHierarchy.resources
+F:\Project\Common\AgAccounts\Project\obj\Debug\AgAccounts.FrmDisplayHierarchy_Stock.resources
+F:\Project\Common\AgAccounts\Project\obj\Debug\AgAccounts.FrmDisplayHierarchy_Settings_Stock.resources
+F:\Project\Common\AgAccounts\Project\obj\Debug\AgAccounts.FrmSingleFieldMaster.resources
+F:\Project\Common\AgAccounts\Project\obj\Debug\AgAccounts.FrmSmartFinder.resources
+F:\Project\Common\AgAccounts\Project\obj\Debug\AgAccounts.frmTdsCatMaster.resources
+F:\Project\Common\AgAccounts\Project\obj\Debug\AgAccounts.FrmVoucherEntry.resources
+F:\Project\Common\AgAccounts\Project\obj\Debug\AgAccounts.FrmVoucherEntry_Chq_Det.resources
+F:\Project\Common\AgAccounts\Project\obj\Debug\AgAccounts.FrmVoucherEntry_LedgerAdj.resources
+F:\Project\Common\AgAccounts\Project\obj\Debug\AgAccounts.FrmVoucherEntry_LedgerItemAdj.resources
+F:\Project\Common\AgAccounts\Project\obj\Debug\AgAccounts.FrmVoucherEntry_TDS.resources
+F:\Project\Common\AgAccounts\Project\obj\Debug\AgAccounts.FrmVoucherPrint.resources
+F:\Project\Common\AgAccounts\Project\obj\Debug\AgAccounts.MDIMain.resources
+F:\Project\Common\AgAccounts\Project\obj\Debug\AgAccounts.RepView.resources
+F:\Project\Common\AgAccounts\Project\obj\Debug\AgAccounts.Resources.resources
+F:\Project\Common\AgAccounts\Project\obj\Debug\AgAccounts.vbproj.GenerateResource.Cache
+F:\Project\Common\AgAccounts\Project\obj\Debug\AgAccounts.exe
+F:\Project\Common\AgAccounts\Project\obj\Debug\AgAccounts.xml
+F:\Project\Common\AgAccounts\Project\obj\Debug\AgAccounts.pdb
+F:\Project\Common\AgAccounts\Project\obj\Debug\AgAccounts.FrmFaOpening.resources
+F:\Project\Common\AgAccounts\Project\obj\Debug\AgAccounts.FrmVoucherEntry_LedgerAdjNew.resources
+F:\Project\Common\AgAccounts\Project\obj\Debug\AgAccounts.FrmVoucherEntry_ReferenceFilter.resources
+E:\Satyam\Common\AgAccounts\Project\obj\Debug\AgAccounts.exe
+E:\Satyam\Common\AgAccounts\Project\obj\Debug\AgAccounts.xml
+E:\Satyam\Common\AgAccounts\Project\obj\Debug\AgAccounts.pdb
+E:\Satyam\Common\AgAccounts\Project\obj\Debug\ResolveAssemblyReference.cache
+E:\Satyam\Common\AgAccounts\Project\obj\Debug\AgAccounts.FrmFaOpening.resources
+E:\Satyam\Common\AgAccounts\Project\obj\Debug\AgAccounts.FrmVoucherEntryBackup.resources
+E:\Satyam\Common\AgAccounts\Project\obj\Debug\AgAccounts.FrmVoucherEntry.resources
+E:\Satyam\Common\AgAccounts\Project\obj\Debug\AgAccounts.FrmVoucherEntry_LedgerAdjNew.resources
+E:\Satyam\Common\AgAccounts\Project\obj\Debug\AgAccounts.FrmVoucherEntry_ReferenceFilter.resources
+E:\Satyam\Common\AgAccounts\Project\obj\Debug\AgAccounts.MDIMain1.resources
+E:\Satyam\Common\AgAccounts\Project\obj\Debug\AgAccounts.FrmAccountDetails.resources
+E:\Satyam\Common\AgAccounts\Project\obj\Debug\AgAccounts.FrmAccountMaster.resources
+E:\Satyam\Common\AgAccounts\Project\obj\Debug\AgAccounts.FrmAcGroupMaster.resources
+E:\Satyam\Common\AgAccounts\Project\obj\Debug\AgAccounts.FrmAcGroupPositioning.resources
+E:\Satyam\Common\AgAccounts\Project\obj\Debug\AgAccounts.FrmAdjustingRates.resources
+E:\Satyam\Common\AgAccounts\Project\obj\Debug\AgAccounts.FrmAssetGroupMaster.resources
+E:\Satyam\Common\AgAccounts\Project\obj\Debug\AgAccounts.FrmAssetMaster.resources
+E:\Satyam\Common\AgAccounts\Project\obj\Debug\AgAccounts.FrmAssetTransaction.resources
+E:\Satyam\Common\AgAccounts\Project\obj\Debug\AgAccounts.FrmBankReconciliation.resources
+E:\Satyam\Common\AgAccounts\Project\obj\Debug\AgAccounts.FrmBudget.resources
+E:\Satyam\Common\AgAccounts\Project\obj\Debug\AgAccounts.FrmBudgetAnalysis.resources
+E:\Satyam\Common\AgAccounts\Project\obj\Debug\AgAccounts.FrmChequeMast.resources
+E:\Satyam\Common\AgAccounts\Project\obj\Debug\AgAccounts.FrmChequePrinting.resources
+E:\Satyam\Common\AgAccounts\Project\obj\Debug\AgAccounts.FrmChequePrintSetup.resources
+E:\Satyam\Common\AgAccounts\Project\obj\Debug\AgAccounts.FrmCityMast.resources
+E:\Satyam\Common\AgAccounts\Project\obj\Debug\AgAccounts.frmCountryMast.resources
+E:\Satyam\Common\AgAccounts\Project\obj\Debug\AgAccounts.frmCurrencyMast.resources
+E:\Satyam\Common\AgAccounts\Project\obj\Debug\AgAccounts.FrmCurrencyRate.resources
+E:\Satyam\Common\AgAccounts\Project\obj\Debug\AgAccounts.FrmDisplayHierarchy_Settings.resources
+E:\Satyam\Common\AgAccounts\Project\obj\Debug\AgAccounts.FrmEnviro.resources
+E:\Satyam\Common\AgAccounts\Project\obj\Debug\AgAccounts.FrmPrintAC.resources
+E:\Satyam\Common\AgAccounts\Project\obj\Debug\AgAccounts.FrmProgressBar.resources
+E:\Satyam\Common\AgAccounts\Project\obj\Debug\AgAccounts.FrmReportLayout.resources
+E:\Satyam\Common\AgAccounts\Project\obj\Debug\AgAccounts.FrmDisplayHierarchy.resources
+E:\Satyam\Common\AgAccounts\Project\obj\Debug\AgAccounts.FrmDisplayHierarchy_Stock.resources
+E:\Satyam\Common\AgAccounts\Project\obj\Debug\AgAccounts.FrmDisplayHierarchy_Settings_Stock.resources
+E:\Satyam\Common\AgAccounts\Project\obj\Debug\AgAccounts.FrmSingleFieldMaster.resources
+E:\Satyam\Common\AgAccounts\Project\obj\Debug\AgAccounts.FrmSmartFinder.resources
+E:\Satyam\Common\AgAccounts\Project\obj\Debug\AgAccounts.frmTdsCatMaster.resources
+E:\Satyam\Common\AgAccounts\Project\obj\Debug\AgAccounts.FrmVoucherEntry_Chq_Det.resources
+E:\Satyam\Common\AgAccounts\Project\obj\Debug\AgAccounts.FrmVoucherEntry_LedgerAdj.resources
+E:\Satyam\Common\AgAccounts\Project\obj\Debug\AgAccounts.FrmVoucherEntry_LedgerItemAdj.resources
+E:\Satyam\Common\AgAccounts\Project\obj\Debug\AgAccounts.FrmVoucherEntry_TDS.resources
+E:\Satyam\Common\AgAccounts\Project\obj\Debug\AgAccounts.FrmVoucherPrint.resources
+E:\Satyam\Common\AgAccounts\Project\obj\Debug\AgAccounts.MDIMain.resources
+E:\Satyam\Common\AgAccounts\Project\obj\Debug\AgAccounts.RepView.resources
+E:\Satyam\Common\AgAccounts\Project\obj\Debug\AgAccounts.Resources.resources
+E:\Satyam\Common\AgAccounts\Project\obj\Debug\AgAccounts.vbproj.GenerateResource.Cache
+E:\Satyam\Common\Release\AgAccounts.exe
+E:\Satyam\Common\Release\AgAccounts.pdb
+E:\Satyam\Common\Release\AgAccounts.xml
+D:\Satyam\Active Projects\SqLite\Release\AgAccounts.exe.config
+D:\Satyam\Active Projects\SqLite\Release\AgAccounts.exe
+D:\Satyam\Active Projects\SqLite\Release\AgAccounts.pdb
+D:\Satyam\Active Projects\SqLite\Release\AgAccounts.xml
+D:\Satyam\Active Projects\SqLite\AgAccounts\Release\AgAccounts.exe.config
+D:\Satyam\Active Projects\SqLite\AgAccounts\Release\AgAccounts.exe
+D:\Satyam\Active Projects\SqLite\AgAccounts\Release\AgAccounts.pdb
+D:\Satyam\Active Projects\SqLite\AgAccounts\Release\AgAccounts.xml
+D:\Satyam\Active Projects\SqLite\AgAccounts\Project\obj\Debug\AgAccounts.vbprojResolveAssemblyReference.cache
+D:\Satyam\Active Projects\SqLite\AgAccounts\Project\obj\Debug\AgAccounts.FrmFaOpening.resources
+D:\Satyam\Active Projects\SqLite\AgAccounts\Project\obj\Debug\AgAccounts.FrmVoucherEntryBackup.resources
+D:\Satyam\Active Projects\SqLite\AgAccounts\Project\obj\Debug\AgAccounts.FrmVoucherEntry.resources
+D:\Satyam\Active Projects\SqLite\AgAccounts\Project\obj\Debug\AgAccounts.FrmVoucherEntry_LedgerAdjNew.resources
+D:\Satyam\Active Projects\SqLite\AgAccounts\Project\obj\Debug\AgAccounts.FrmVoucherEntry_ReferenceFilter.resources
+D:\Satyam\Active Projects\SqLite\AgAccounts\Project\obj\Debug\AgAccounts.MDIMain1.resources
+D:\Satyam\Active Projects\SqLite\AgAccounts\Project\obj\Debug\AgAccounts.FrmAccountDetails.resources
+D:\Satyam\Active Projects\SqLite\AgAccounts\Project\obj\Debug\AgAccounts.FrmAccountMaster.resources
+D:\Satyam\Active Projects\SqLite\AgAccounts\Project\obj\Debug\AgAccounts.FrmAcGroupMaster.resources
+D:\Satyam\Active Projects\SqLite\AgAccounts\Project\obj\Debug\AgAccounts.FrmAcGroupPositioning.resources
+D:\Satyam\Active Projects\SqLite\AgAccounts\Project\obj\Debug\AgAccounts.FrmAdjustingRates.resources
+D:\Satyam\Active Projects\SqLite\AgAccounts\Project\obj\Debug\AgAccounts.FrmAssetGroupMaster.resources
+D:\Satyam\Active Projects\SqLite\AgAccounts\Project\obj\Debug\AgAccounts.FrmAssetMaster.resources
+D:\Satyam\Active Projects\SqLite\AgAccounts\Project\obj\Debug\AgAccounts.FrmAssetTransaction.resources
+D:\Satyam\Active Projects\SqLite\AgAccounts\Project\obj\Debug\AgAccounts.FrmBankReconciliation.resources
+D:\Satyam\Active Projects\SqLite\AgAccounts\Project\obj\Debug\AgAccounts.FrmBudget.resources
+D:\Satyam\Active Projects\SqLite\AgAccounts\Project\obj\Debug\AgAccounts.FrmBudgetAnalysis.resources
+D:\Satyam\Active Projects\SqLite\AgAccounts\Project\obj\Debug\AgAccounts.FrmChequeMast.resources
+D:\Satyam\Active Projects\SqLite\AgAccounts\Project\obj\Debug\AgAccounts.FrmChequePrinting.resources
+D:\Satyam\Active Projects\SqLite\AgAccounts\Project\obj\Debug\AgAccounts.FrmChequePrintSetup.resources
+D:\Satyam\Active Projects\SqLite\AgAccounts\Project\obj\Debug\AgAccounts.FrmCityMast.resources
+D:\Satyam\Active Projects\SqLite\AgAccounts\Project\obj\Debug\AgAccounts.frmCountryMast.resources
+D:\Satyam\Active Projects\SqLite\AgAccounts\Project\obj\Debug\AgAccounts.frmCurrencyMast.resources
+D:\Satyam\Active Projects\SqLite\AgAccounts\Project\obj\Debug\AgAccounts.FrmCurrencyRate.resources
+D:\Satyam\Active Projects\SqLite\AgAccounts\Project\obj\Debug\AgAccounts.FrmDisplayHierarchy_Settings.resources
+D:\Satyam\Active Projects\SqLite\AgAccounts\Project\obj\Debug\AgAccounts.FrmEnviro.resources
+D:\Satyam\Active Projects\SqLite\AgAccounts\Project\obj\Debug\AgAccounts.FrmPrintAC.resources
+D:\Satyam\Active Projects\SqLite\AgAccounts\Project\obj\Debug\AgAccounts.FrmProgressBar.resources
+D:\Satyam\Active Projects\SqLite\AgAccounts\Project\obj\Debug\AgAccounts.FrmReportLayout.resources
+D:\Satyam\Active Projects\SqLite\AgAccounts\Project\obj\Debug\AgAccounts.FrmDisplayHierarchy.resources
+D:\Satyam\Active Projects\SqLite\AgAccounts\Project\obj\Debug\AgAccounts.FrmDisplayHierarchy_Stock.resources
+D:\Satyam\Active Projects\SqLite\AgAccounts\Project\obj\Debug\AgAccounts.FrmDisplayHierarchy_Settings_Stock.resources
+D:\Satyam\Active Projects\SqLite\AgAccounts\Project\obj\Debug\AgAccounts.FrmSingleFieldMaster.resources
+D:\Satyam\Active Projects\SqLite\AgAccounts\Project\obj\Debug\AgAccounts.FrmSmartFinder.resources
+D:\Satyam\Active Projects\SqLite\AgAccounts\Project\obj\Debug\AgAccounts.frmTdsCatMaster.resources
+D:\Satyam\Active Projects\SqLite\AgAccounts\Project\obj\Debug\AgAccounts.FrmVoucherEntry_Chq_Det.resources
+D:\Satyam\Active Projects\SqLite\AgAccounts\Project\obj\Debug\AgAccounts.FrmVoucherEntry_LedgerAdj.resources
+D:\Satyam\Active Projects\SqLite\AgAccounts\Project\obj\Debug\AgAccounts.FrmVoucherEntry_LedgerItemAdj.resources
+D:\Satyam\Active Projects\SqLite\AgAccounts\Project\obj\Debug\AgAccounts.FrmVoucherEntry_TDS.resources
+D:\Satyam\Active Projects\SqLite\AgAccounts\Project\obj\Debug\AgAccounts.FrmVoucherPrint.resources
+D:\Satyam\Active Projects\SqLite\AgAccounts\Project\obj\Debug\AgAccounts.MDIMain.resources
+D:\Satyam\Active Projects\SqLite\AgAccounts\Project\obj\Debug\AgAccounts.RepView.resources
+D:\Satyam\Active Projects\SqLite\AgAccounts\Project\obj\Debug\AgAccounts.Resources.resources
+D:\Satyam\Active Projects\SqLite\AgAccounts\Project\obj\Debug\AgAccounts.vbproj.GenerateResource.Cache
+D:\Satyam\Active Projects\SqLite\AgAccounts\Project\obj\Debug\AgAccounts.exe
+D:\Satyam\Active Projects\SqLite\AgAccounts\Project\obj\Debug\AgAccounts.xml
+D:\Satyam\Active Projects\SqLite\AgAccounts\Project\obj\Debug\AgAccounts.pdb
+D:\KC\Source\Sqlite\AgAccounts\Release\AgAccounts.pdb
+D:\KC\Source\Sqlite\AgAccounts\Release\AgAccounts.xml
+D:\KC\Source\Sqlite\AgAccounts\Project\obj\Debug\AgAccounts.vbprojResolveAssemblyReference.cache
+D:\KC\Source\Sqlite\AgAccounts\Project\obj\Debug\AgAccounts.FrmFaOpening.resources
+D:\KC\Source\Sqlite\AgAccounts\Project\obj\Debug\AgAccounts.FrmVoucherEntryBackup.resources
+D:\KC\Source\Sqlite\AgAccounts\Project\obj\Debug\AgAccounts.FrmVoucherEntry.resources
+D:\KC\Source\Sqlite\AgAccounts\Project\obj\Debug\AgAccounts.FrmVoucherEntry_LedgerAdjNew.resources
+D:\KC\Source\Sqlite\AgAccounts\Project\obj\Debug\AgAccounts.FrmVoucherEntry_ReferenceFilter.resources
+D:\KC\Source\Sqlite\AgAccounts\Project\obj\Debug\AgAccounts.MDIMain1.resources
+D:\KC\Source\Sqlite\AgAccounts\Project\obj\Debug\AgAccounts.FrmAccountDetails.resources
+D:\KC\Source\Sqlite\AgAccounts\Project\obj\Debug\AgAccounts.FrmAccountMaster.resources
+D:\KC\Source\Sqlite\AgAccounts\Project\obj\Debug\AgAccounts.FrmAcGroupMaster.resources
+D:\KC\Source\Sqlite\AgAccounts\Project\obj\Debug\AgAccounts.FrmAcGroupPositioning.resources
+D:\KC\Source\Sqlite\AgAccounts\Project\obj\Debug\AgAccounts.FrmAdjustingRates.resources
+D:\KC\Source\Sqlite\AgAccounts\Project\obj\Debug\AgAccounts.FrmAssetGroupMaster.resources
+D:\KC\Source\Sqlite\AgAccounts\Project\obj\Debug\AgAccounts.FrmAssetMaster.resources
+D:\KC\Source\Sqlite\AgAccounts\Project\obj\Debug\AgAccounts.FrmAssetTransaction.resources
+D:\KC\Source\Sqlite\AgAccounts\Project\obj\Debug\AgAccounts.FrmBankReconciliation.resources
+D:\KC\Source\Sqlite\AgAccounts\Project\obj\Debug\AgAccounts.FrmBudget.resources
+D:\KC\Source\Sqlite\AgAccounts\Project\obj\Debug\AgAccounts.FrmBudgetAnalysis.resources
+D:\KC\Source\Sqlite\AgAccounts\Project\obj\Debug\AgAccounts.FrmChequeMast.resources
+D:\KC\Source\Sqlite\AgAccounts\Project\obj\Debug\AgAccounts.FrmChequePrinting.resources
+D:\KC\Source\Sqlite\AgAccounts\Project\obj\Debug\AgAccounts.FrmChequePrintSetup.resources
+D:\KC\Source\Sqlite\AgAccounts\Project\obj\Debug\AgAccounts.FrmCityMast.resources
+D:\KC\Source\Sqlite\AgAccounts\Project\obj\Debug\AgAccounts.frmCountryMast.resources
+D:\KC\Source\Sqlite\AgAccounts\Project\obj\Debug\AgAccounts.frmCurrencyMast.resources
+D:\KC\Source\Sqlite\AgAccounts\Project\obj\Debug\AgAccounts.FrmCurrencyRate.resources
+D:\KC\Source\Sqlite\AgAccounts\Project\obj\Debug\AgAccounts.FrmDisplayHierarchy_Settings.resources
+D:\KC\Source\Sqlite\AgAccounts\Project\obj\Debug\AgAccounts.FrmEnviro.resources
+D:\KC\Source\Sqlite\AgAccounts\Project\obj\Debug\AgAccounts.FrmPrintAC.resources
+D:\KC\Source\Sqlite\AgAccounts\Project\obj\Debug\AgAccounts.FrmProgressBar.resources
+D:\KC\Source\Sqlite\AgAccounts\Project\obj\Debug\AgAccounts.FrmReportLayout.resources
+D:\KC\Source\Sqlite\AgAccounts\Project\obj\Debug\AgAccounts.FrmDisplayHierarchy.resources
+D:\KC\Source\Sqlite\AgAccounts\Project\obj\Debug\AgAccounts.FrmDisplayHierarchy_Stock.resources
+D:\KC\Source\Sqlite\AgAccounts\Project\obj\Debug\AgAccounts.FrmDisplayHierarchy_Settings_Stock.resources
+D:\KC\Source\Sqlite\AgAccounts\Project\obj\Debug\AgAccounts.FrmSingleFieldMaster.resources
+D:\KC\Source\Sqlite\AgAccounts\Project\obj\Debug\AgAccounts.FrmSmartFinder.resources
+D:\KC\Source\Sqlite\AgAccounts\Project\obj\Debug\AgAccounts.frmTdsCatMaster.resources
+D:\KC\Source\Sqlite\AgAccounts\Project\obj\Debug\AgAccounts.FrmVoucherEntry_Chq_Det.resources
+D:\KC\Source\Sqlite\AgAccounts\Project\obj\Debug\AgAccounts.FrmVoucherEntry_LedgerAdj.resources
+D:\KC\Source\Sqlite\AgAccounts\Project\obj\Debug\AgAccounts.FrmVoucherEntry_LedgerItemAdj.resources
+D:\KC\Source\Sqlite\AgAccounts\Project\obj\Debug\AgAccounts.FrmVoucherEntry_TDS.resources
+D:\KC\Source\Sqlite\AgAccounts\Project\obj\Debug\AgAccounts.FrmVoucherPrint.resources
+D:\KC\Source\Sqlite\AgAccounts\Project\obj\Debug\AgAccounts.MDIMain.resources
+D:\KC\Source\Sqlite\AgAccounts\Project\obj\Debug\AgAccounts.RepView.resources
+D:\KC\Source\Sqlite\AgAccounts\Project\obj\Debug\AgAccounts.Resources.resources
+D:\KC\Source\Sqlite\AgAccounts\Project\obj\Debug\AgAccounts.vbproj.GenerateResource.Cache
+D:\KC\Source\Sqlite\AgAccounts\Project\obj\Debug\AgAccounts.xml
+D:\KC\Source\Sqlite\AgAccounts\Project\obj\Debug\AgAccounts.pdb
+D:\KC\Source\Sqlite\AgAccounts\Release\AgAccounts.dll.config
+D:\KC\Source\Sqlite\AgAccounts\Release\AgAccounts.dll
+D:\KC\Source\Sqlite\AgAccounts\Project\obj\Debug\AgAccounts.dll
+D:\Working Copy\trunk\AgAccounts\Project\obj\Debug\AgAccounts.vbprojResolveAssemblyReference.cache
+D:\Working Copy\trunk\AgAccounts\Project\obj\Debug\AgAccounts.FrmFaOpening.resources
+D:\Working Copy\trunk\AgAccounts\Project\obj\Debug\AgAccounts.FrmVoucherEntryBackup.resources
+D:\Working Copy\trunk\AgAccounts\Project\obj\Debug\AgAccounts.FrmVoucherEntry.resources
+D:\Working Copy\trunk\AgAccounts\Project\obj\Debug\AgAccounts.FrmVoucherEntry_LedgerAdjNew.resources
+D:\Working Copy\trunk\AgAccounts\Project\obj\Debug\AgAccounts.FrmVoucherEntry_ReferenceFilter.resources
+D:\Working Copy\trunk\AgAccounts\Project\obj\Debug\AgAccounts.MDIMain1.resources
+D:\Working Copy\trunk\AgAccounts\Project\obj\Debug\AgAccounts.FrmAccountDetails.resources
+D:\Working Copy\trunk\AgAccounts\Project\obj\Debug\AgAccounts.FrmAccountMaster.resources
+D:\Working Copy\trunk\AgAccounts\Project\obj\Debug\AgAccounts.FrmAcGroupMaster.resources
+D:\Working Copy\trunk\AgAccounts\Project\obj\Debug\AgAccounts.FrmAcGroupPositioning.resources
+D:\Working Copy\trunk\AgAccounts\Project\obj\Debug\AgAccounts.FrmAdjustingRates.resources
+D:\Working Copy\trunk\AgAccounts\Project\obj\Debug\AgAccounts.FrmAssetGroupMaster.resources
+D:\Working Copy\trunk\AgAccounts\Project\obj\Debug\AgAccounts.FrmAssetMaster.resources
+D:\Working Copy\trunk\AgAccounts\Project\obj\Debug\AgAccounts.FrmAssetTransaction.resources
+D:\Working Copy\trunk\AgAccounts\Project\obj\Debug\AgAccounts.FrmBankReconciliation.resources
+D:\Working Copy\trunk\AgAccounts\Project\obj\Debug\AgAccounts.FrmBudget.resources
+D:\Working Copy\trunk\AgAccounts\Project\obj\Debug\AgAccounts.FrmBudgetAnalysis.resources
+D:\Working Copy\trunk\AgAccounts\Project\obj\Debug\AgAccounts.FrmChequeMast.resources
+D:\Working Copy\trunk\AgAccounts\Project\obj\Debug\AgAccounts.FrmChequePrinting.resources
+D:\Working Copy\trunk\AgAccounts\Project\obj\Debug\AgAccounts.FrmChequePrintSetup.resources
+D:\Working Copy\trunk\AgAccounts\Project\obj\Debug\AgAccounts.FrmCityMast.resources
+D:\Working Copy\trunk\AgAccounts\Project\obj\Debug\AgAccounts.frmCountryMast.resources
+D:\Working Copy\trunk\AgAccounts\Project\obj\Debug\AgAccounts.frmCurrencyMast.resources
+D:\Working Copy\trunk\AgAccounts\Project\obj\Debug\AgAccounts.FrmCurrencyRate.resources
+D:\Working Copy\trunk\AgAccounts\Project\obj\Debug\AgAccounts.FrmDisplayHierarchy_Settings.resources
+D:\Working Copy\trunk\AgAccounts\Project\obj\Debug\AgAccounts.FrmEnviro.resources
+D:\Working Copy\trunk\AgAccounts\Project\obj\Debug\AgAccounts.FrmPrintAC.resources
+D:\Working Copy\trunk\AgAccounts\Project\obj\Debug\AgAccounts.FrmProgressBar.resources
+D:\Working Copy\trunk\AgAccounts\Project\obj\Debug\AgAccounts.FrmReportLayout.resources
+D:\Working Copy\trunk\AgAccounts\Project\obj\Debug\AgAccounts.FrmDisplayHierarchy.resources
+D:\Working Copy\trunk\AgAccounts\Project\obj\Debug\AgAccounts.FrmDisplayHierarchy_Stock.resources
+D:\Working Copy\trunk\AgAccounts\Project\obj\Debug\AgAccounts.FrmDisplayHierarchy_Settings_Stock.resources
+D:\Working Copy\trunk\AgAccounts\Project\obj\Debug\AgAccounts.FrmSingleFieldMaster.resources
+D:\Working Copy\trunk\AgAccounts\Project\obj\Debug\AgAccounts.FrmSmartFinder.resources
+D:\Working Copy\trunk\AgAccounts\Project\obj\Debug\AgAccounts.frmTdsCatMaster.resources
+D:\Working Copy\trunk\AgAccounts\Project\obj\Debug\AgAccounts.FrmVoucherEntry_Chq_Det.resources
+D:\Working Copy\trunk\AgAccounts\Project\obj\Debug\AgAccounts.FrmVoucherEntry_LedgerAdj.resources
+D:\Working Copy\trunk\AgAccounts\Project\obj\Debug\AgAccounts.FrmVoucherEntry_LedgerItemAdj.resources
+D:\Working Copy\trunk\AgAccounts\Project\obj\Debug\AgAccounts.FrmVoucherEntry_TDS.resources
+D:\Working Copy\trunk\AgAccounts\Project\obj\Debug\AgAccounts.FrmVoucherPrint.resources
+D:\Working Copy\trunk\AgAccounts\Project\obj\Debug\AgAccounts.MDIMain.resources
+D:\Working Copy\trunk\AgAccounts\Project\obj\Debug\AgAccounts.RepView.resources
+D:\Working Copy\trunk\AgAccounts\Project\obj\Debug\AgAccounts.Resources.resources
+D:\Working Copy\trunk\AgAccounts\Project\obj\Debug\AgAccounts.vbproj.GenerateResource.Cache
+D:\Working Copy\trunk\AgAccounts\Project\obj\Debug\AgAccounts.xml
+D:\Working Copy\trunk\AgAccounts\Project\obj\Debug\AgAccounts.pdb
+D:\Working Copy\trunk\AgAccounts\Release\AgAccounts.pdb
+D:\Working Copy\trunk\AgAccounts\Release\AgAccounts.xml
+D:\Working Copy\trunk\AgAccounts\Release\AgAccounts.exe.config
+D:\Working Copy\trunk\AgAccounts\Release\AgAccounts.exe
+D:\Working Copy\trunk\AgAccounts\Project\obj\Debug\AgAccounts.exe
+D:\Working Copy\trunk\AgAccounts\Project\obj\Debug\AgAccounts.FrmImportVoucherFromExcel.resources
+D:\WorkingCopy\DesktopApp\trunk\AgAccounts\Release\AgAccounts.pdb
+D:\WorkingCopy\DesktopApp\trunk\AgAccounts\Release\AgAccounts.xml
+D:\WorkingCopy\DesktopApp\trunk\AgAccounts\Project\obj\Debug\AgAccounts.FrmFaOpening.resources
+D:\WorkingCopy\DesktopApp\trunk\AgAccounts\Project\obj\Debug\AgAccounts.FrmImportVoucherFromExcel.resources
+D:\WorkingCopy\DesktopApp\trunk\AgAccounts\Project\obj\Debug\AgAccounts.FrmVoucherEntryBackup.resources
+D:\WorkingCopy\DesktopApp\trunk\AgAccounts\Project\obj\Debug\AgAccounts.FrmVoucherEntry.resources
+D:\WorkingCopy\DesktopApp\trunk\AgAccounts\Project\obj\Debug\AgAccounts.FrmVoucherEntry_LedgerAdjNew.resources
+D:\WorkingCopy\DesktopApp\trunk\AgAccounts\Project\obj\Debug\AgAccounts.FrmVoucherEntry_ReferenceFilter.resources
+D:\WorkingCopy\DesktopApp\trunk\AgAccounts\Project\obj\Debug\AgAccounts.MDIMain1.resources
+D:\WorkingCopy\DesktopApp\trunk\AgAccounts\Project\obj\Debug\AgAccounts.FrmAccountDetails.resources
+D:\WorkingCopy\DesktopApp\trunk\AgAccounts\Project\obj\Debug\AgAccounts.FrmAccountMaster.resources
+D:\WorkingCopy\DesktopApp\trunk\AgAccounts\Project\obj\Debug\AgAccounts.FrmAcGroupMaster.resources
+D:\WorkingCopy\DesktopApp\trunk\AgAccounts\Project\obj\Debug\AgAccounts.FrmAcGroupPositioning.resources
+D:\WorkingCopy\DesktopApp\trunk\AgAccounts\Project\obj\Debug\AgAccounts.FrmAdjustingRates.resources
+D:\WorkingCopy\DesktopApp\trunk\AgAccounts\Project\obj\Debug\AgAccounts.FrmAssetGroupMaster.resources
+D:\WorkingCopy\DesktopApp\trunk\AgAccounts\Project\obj\Debug\AgAccounts.FrmAssetMaster.resources
+D:\WorkingCopy\DesktopApp\trunk\AgAccounts\Project\obj\Debug\AgAccounts.FrmAssetTransaction.resources
+D:\WorkingCopy\DesktopApp\trunk\AgAccounts\Project\obj\Debug\AgAccounts.FrmBankReconciliation.resources
+D:\WorkingCopy\DesktopApp\trunk\AgAccounts\Project\obj\Debug\AgAccounts.FrmBudget.resources
+D:\WorkingCopy\DesktopApp\trunk\AgAccounts\Project\obj\Debug\AgAccounts.FrmBudgetAnalysis.resources
+D:\WorkingCopy\DesktopApp\trunk\AgAccounts\Project\obj\Debug\AgAccounts.FrmChequeMast.resources
+D:\WorkingCopy\DesktopApp\trunk\AgAccounts\Project\obj\Debug\AgAccounts.FrmChequePrinting.resources
+D:\WorkingCopy\DesktopApp\trunk\AgAccounts\Project\obj\Debug\AgAccounts.FrmChequePrintSetup.resources
+D:\WorkingCopy\DesktopApp\trunk\AgAccounts\Project\obj\Debug\AgAccounts.FrmCityMast.resources
+D:\WorkingCopy\DesktopApp\trunk\AgAccounts\Project\obj\Debug\AgAccounts.frmCountryMast.resources
+D:\WorkingCopy\DesktopApp\trunk\AgAccounts\Project\obj\Debug\AgAccounts.frmCurrencyMast.resources
+D:\WorkingCopy\DesktopApp\trunk\AgAccounts\Project\obj\Debug\AgAccounts.FrmCurrencyRate.resources
+D:\WorkingCopy\DesktopApp\trunk\AgAccounts\Project\obj\Debug\AgAccounts.FrmDisplayHierarchy_Settings.resources
+D:\WorkingCopy\DesktopApp\trunk\AgAccounts\Project\obj\Debug\AgAccounts.FrmEnviro.resources
+D:\WorkingCopy\DesktopApp\trunk\AgAccounts\Project\obj\Debug\AgAccounts.FrmPrintAC.resources
+D:\WorkingCopy\DesktopApp\trunk\AgAccounts\Project\obj\Debug\AgAccounts.FrmProgressBar.resources
+D:\WorkingCopy\DesktopApp\trunk\AgAccounts\Project\obj\Debug\AgAccounts.FrmReportLayout.resources
+D:\WorkingCopy\DesktopApp\trunk\AgAccounts\Project\obj\Debug\AgAccounts.FrmDisplayHierarchy.resources
+D:\WorkingCopy\DesktopApp\trunk\AgAccounts\Project\obj\Debug\AgAccounts.FrmDisplayHierarchy_Stock.resources
+D:\WorkingCopy\DesktopApp\trunk\AgAccounts\Project\obj\Debug\AgAccounts.FrmDisplayHierarchy_Settings_Stock.resources
+D:\WorkingCopy\DesktopApp\trunk\AgAccounts\Project\obj\Debug\AgAccounts.FrmSingleFieldMaster.resources
+D:\WorkingCopy\DesktopApp\trunk\AgAccounts\Project\obj\Debug\AgAccounts.FrmSmartFinder.resources
+D:\WorkingCopy\DesktopApp\trunk\AgAccounts\Project\obj\Debug\AgAccounts.frmTdsCatMaster.resources
+D:\WorkingCopy\DesktopApp\trunk\AgAccounts\Project\obj\Debug\AgAccounts.FrmVoucherEntry_Chq_Det.resources
+D:\WorkingCopy\DesktopApp\trunk\AgAccounts\Project\obj\Debug\AgAccounts.FrmVoucherEntry_LedgerAdj.resources
+D:\WorkingCopy\DesktopApp\trunk\AgAccounts\Project\obj\Debug\AgAccounts.FrmVoucherEntry_LedgerItemAdj.resources
+D:\WorkingCopy\DesktopApp\trunk\AgAccounts\Project\obj\Debug\AgAccounts.FrmVoucherEntry_TDS.resources
+D:\WorkingCopy\DesktopApp\trunk\AgAccounts\Project\obj\Debug\AgAccounts.FrmVoucherPrint.resources
+D:\WorkingCopy\DesktopApp\trunk\AgAccounts\Project\obj\Debug\AgAccounts.MDIMain.resources
+D:\WorkingCopy\DesktopApp\trunk\AgAccounts\Project\obj\Debug\AgAccounts.RepView.resources
+D:\WorkingCopy\DesktopApp\trunk\AgAccounts\Project\obj\Debug\AgAccounts.Resources.resources
+D:\WorkingCopy\DesktopApp\trunk\AgAccounts\Project\obj\Debug\AgAccounts.vbproj.GenerateResource.Cache
+D:\WorkingCopy\DesktopApp\trunk\AgAccounts\Project\obj\Debug\AgAccounts.xml
+D:\WorkingCopy\DesktopApp\trunk\AgAccounts\Project\obj\Debug\AgAccounts.pdb
+D:\DesktopApp\trunk\AgAccounts\Project\obj\Debug\AgAccounts.xml
+D:\DesktopApp\trunk\AgAccounts\Project\obj\Debug\AgAccounts.pdb
+D:\DesktopApp\trunk\AgAccounts\Release\AgAccounts.pdb
+D:\DesktopApp\trunk\AgAccounts\Release\AgAccounts.xml
+D:\DesktopApp\trunk\AgAccounts\Project\obj\Debug\AgAccounts.FrmFaOpening.resources
+D:\DesktopApp\trunk\AgAccounts\Project\obj\Debug\AgAccounts.FrmImportVoucherFromExcel.resources
+D:\DesktopApp\trunk\AgAccounts\Project\obj\Debug\AgAccounts.FrmVoucherEntryBackup.resources
+D:\DesktopApp\trunk\AgAccounts\Project\obj\Debug\AgAccounts.FrmVoucherEntry.resources
+D:\DesktopApp\trunk\AgAccounts\Project\obj\Debug\AgAccounts.FrmVoucherEntry_LedgerAdjNew.resources
+D:\DesktopApp\trunk\AgAccounts\Project\obj\Debug\AgAccounts.FrmVoucherEntry_ReferenceFilter.resources
+D:\DesktopApp\trunk\AgAccounts\Project\obj\Debug\AgAccounts.MDIMain1.resources
+D:\DesktopApp\trunk\AgAccounts\Project\obj\Debug\AgAccounts.FrmAccountDetails.resources
+D:\DesktopApp\trunk\AgAccounts\Project\obj\Debug\AgAccounts.FrmAccountMaster.resources
+D:\DesktopApp\trunk\AgAccounts\Project\obj\Debug\AgAccounts.FrmAcGroupMaster.resources
+D:\DesktopApp\trunk\AgAccounts\Project\obj\Debug\AgAccounts.FrmAcGroupPositioning.resources
+D:\DesktopApp\trunk\AgAccounts\Project\obj\Debug\AgAccounts.FrmAdjustingRates.resources
+D:\DesktopApp\trunk\AgAccounts\Project\obj\Debug\AgAccounts.FrmAssetGroupMaster.resources
+D:\DesktopApp\trunk\AgAccounts\Project\obj\Debug\AgAccounts.FrmAssetMaster.resources
+D:\DesktopApp\trunk\AgAccounts\Project\obj\Debug\AgAccounts.FrmAssetTransaction.resources
+D:\DesktopApp\trunk\AgAccounts\Project\obj\Debug\AgAccounts.FrmBankReconciliation.resources
+D:\DesktopApp\trunk\AgAccounts\Project\obj\Debug\AgAccounts.FrmBudget.resources
+D:\DesktopApp\trunk\AgAccounts\Project\obj\Debug\AgAccounts.FrmBudgetAnalysis.resources
+D:\DesktopApp\trunk\AgAccounts\Project\obj\Debug\AgAccounts.FrmChequeMast.resources
+D:\DesktopApp\trunk\AgAccounts\Project\obj\Debug\AgAccounts.FrmChequePrinting.resources
+D:\DesktopApp\trunk\AgAccounts\Project\obj\Debug\AgAccounts.FrmChequePrintSetup.resources
+D:\DesktopApp\trunk\AgAccounts\Project\obj\Debug\AgAccounts.FrmCityMast.resources
+D:\DesktopApp\trunk\AgAccounts\Project\obj\Debug\AgAccounts.frmCountryMast.resources
+D:\DesktopApp\trunk\AgAccounts\Project\obj\Debug\AgAccounts.frmCurrencyMast.resources
+D:\DesktopApp\trunk\AgAccounts\Project\obj\Debug\AgAccounts.FrmCurrencyRate.resources
+D:\DesktopApp\trunk\AgAccounts\Project\obj\Debug\AgAccounts.FrmDisplayHierarchy_Settings.resources
+D:\DesktopApp\trunk\AgAccounts\Project\obj\Debug\AgAccounts.FrmEnviro.resources
+D:\DesktopApp\trunk\AgAccounts\Project\obj\Debug\AgAccounts.FrmPrintAC.resources
+D:\DesktopApp\trunk\AgAccounts\Project\obj\Debug\AgAccounts.FrmProgressBar.resources
+D:\DesktopApp\trunk\AgAccounts\Project\obj\Debug\AgAccounts.FrmReportLayout.resources
+D:\DesktopApp\trunk\AgAccounts\Project\obj\Debug\AgAccounts.FrmDisplayHierarchy.resources
+D:\DesktopApp\trunk\AgAccounts\Project\obj\Debug\AgAccounts.FrmDisplayHierarchy_Stock.resources
+D:\DesktopApp\trunk\AgAccounts\Project\obj\Debug\AgAccounts.FrmDisplayHierarchy_Settings_Stock.resources
+D:\DesktopApp\trunk\AgAccounts\Project\obj\Debug\AgAccounts.FrmSingleFieldMaster.resources
+D:\DesktopApp\trunk\AgAccounts\Project\obj\Debug\AgAccounts.FrmSmartFinder.resources
+D:\DesktopApp\trunk\AgAccounts\Project\obj\Debug\AgAccounts.frmTdsCatMaster.resources
+D:\DesktopApp\trunk\AgAccounts\Project\obj\Debug\AgAccounts.FrmVoucherEntry_Chq_Det.resources
+D:\DesktopApp\trunk\AgAccounts\Project\obj\Debug\AgAccounts.FrmVoucherEntry_LedgerAdj.resources
+D:\DesktopApp\trunk\AgAccounts\Project\obj\Debug\AgAccounts.FrmVoucherEntry_LedgerItemAdj.resources
+D:\DesktopApp\trunk\AgAccounts\Project\obj\Debug\AgAccounts.FrmVoucherEntry_TDS.resources
+D:\DesktopApp\trunk\AgAccounts\Project\obj\Debug\AgAccounts.FrmVoucherPrint.resources
+D:\DesktopApp\trunk\AgAccounts\Project\obj\Debug\AgAccounts.MDIMain.resources
+D:\DesktopApp\trunk\AgAccounts\Project\obj\Debug\AgAccounts.RepView.resources
+D:\DesktopApp\trunk\AgAccounts\Project\obj\Debug\AgAccounts.Resources.resources
+D:\DesktopApp\trunk\AgAccounts\Project\obj\Debug\AgAccounts.vbproj.GenerateResource.Cache
+D:\DesktopApp\trunk\AgAccounts\Release\AgAccounts.exe.config
+D:\DesktopApp\trunk\AgAccounts\Project\obj\Debug\AgAccounts.exe
+D:\DesktopApp\trunk\AgAccounts\Release\AgAccounts.exe
+D:\DesktopApp\trunk\AgAccounts\Project\obj\Debug\AgAccounts.FrmImportFromExcel.resources
+D:\WorkingCopy\DesktopApp\trunk\AgAccounts\Project\obj\Debug\AgAccounts.FrmImportFromExcel.resources
+D:\WorkingCopy\DesktopApp\trunk\AgAccounts\Release\AgAccounts.exe.config
+D:\WorkingCopy\DesktopApp\trunk\AgAccounts\Release\AgAccounts.exe
+D:\WorkingCopy\DesktopApp\trunk\AgAccounts\Project\obj\Debug\AgAccounts.exe
+D:\WorkingCopy\DesktopApp\trunk\AgAccounts\Project\obj\Debug\AgAccounts.vbprojResolveAssemblyReference.cache
+D:\WorkingCopy\ShyamaShyam\trunk\AgAccounts\Release\AgAccounts.exe.config
+D:\WorkingCopy\ShyamaShyam\trunk\AgAccounts\Project\obj\Debug\AgAccounts.exe
+D:\WorkingCopy\ShyamaShyam\trunk\AgAccounts\Project\obj\Debug\AgAccounts.xml
+D:\WorkingCopy\ShyamaShyam\trunk\AgAccounts\Project\obj\Debug\AgAccounts.pdb
+D:\WorkingCopy\ShyamaShyam\trunk\AgAccounts\Release\AgAccounts.exe
+D:\WorkingCopy\ShyamaShyam\trunk\AgAccounts\Release\AgAccounts.pdb
+D:\WorkingCopy\ShyamaShyam\trunk\AgAccounts\Release\AgAccounts.xml
+D:\WorkingCopy\ShyamaShyam\trunk\AgAccounts\Project\obj\Debug\AgAccounts.FrmFaOpening.resources
+D:\WorkingCopy\ShyamaShyam\trunk\AgAccounts\Project\obj\Debug\AgAccounts.FrmImportFromExcel.resources
+D:\WorkingCopy\ShyamaShyam\trunk\AgAccounts\Project\obj\Debug\AgAccounts.FrmImportVoucherFromExcel.resources
+D:\WorkingCopy\ShyamaShyam\trunk\AgAccounts\Project\obj\Debug\AgAccounts.FrmVoucherEntryBackup.resources
+D:\WorkingCopy\ShyamaShyam\trunk\AgAccounts\Project\obj\Debug\AgAccounts.FrmVoucherEntry.resources
+D:\WorkingCopy\ShyamaShyam\trunk\AgAccounts\Project\obj\Debug\AgAccounts.FrmVoucherEntry_LedgerAdjNew.resources
+D:\WorkingCopy\ShyamaShyam\trunk\AgAccounts\Project\obj\Debug\AgAccounts.FrmVoucherEntry_ReferenceFilter.resources
+D:\WorkingCopy\ShyamaShyam\trunk\AgAccounts\Project\obj\Debug\AgAccounts.MDIMain1.resources
+D:\WorkingCopy\ShyamaShyam\trunk\AgAccounts\Project\obj\Debug\AgAccounts.FrmAccountDetails.resources
+D:\WorkingCopy\ShyamaShyam\trunk\AgAccounts\Project\obj\Debug\AgAccounts.FrmAccountMaster.resources
+D:\WorkingCopy\ShyamaShyam\trunk\AgAccounts\Project\obj\Debug\AgAccounts.FrmAcGroupMaster.resources
+D:\WorkingCopy\ShyamaShyam\trunk\AgAccounts\Project\obj\Debug\AgAccounts.FrmAcGroupPositioning.resources
+D:\WorkingCopy\ShyamaShyam\trunk\AgAccounts\Project\obj\Debug\AgAccounts.FrmAdjustingRates.resources
+D:\WorkingCopy\ShyamaShyam\trunk\AgAccounts\Project\obj\Debug\AgAccounts.FrmAssetGroupMaster.resources
+D:\WorkingCopy\ShyamaShyam\trunk\AgAccounts\Project\obj\Debug\AgAccounts.FrmAssetMaster.resources
+D:\WorkingCopy\ShyamaShyam\trunk\AgAccounts\Project\obj\Debug\AgAccounts.FrmAssetTransaction.resources
+D:\WorkingCopy\ShyamaShyam\trunk\AgAccounts\Project\obj\Debug\AgAccounts.FrmBankReconciliation.resources
+D:\WorkingCopy\ShyamaShyam\trunk\AgAccounts\Project\obj\Debug\AgAccounts.FrmBudget.resources
+D:\WorkingCopy\ShyamaShyam\trunk\AgAccounts\Project\obj\Debug\AgAccounts.FrmBudgetAnalysis.resources
+D:\WorkingCopy\ShyamaShyam\trunk\AgAccounts\Project\obj\Debug\AgAccounts.FrmChequeMast.resources
+D:\WorkingCopy\ShyamaShyam\trunk\AgAccounts\Project\obj\Debug\AgAccounts.FrmChequePrinting.resources
+D:\WorkingCopy\ShyamaShyam\trunk\AgAccounts\Project\obj\Debug\AgAccounts.FrmChequePrintSetup.resources
+D:\WorkingCopy\ShyamaShyam\trunk\AgAccounts\Project\obj\Debug\AgAccounts.FrmCityMast.resources
+D:\WorkingCopy\ShyamaShyam\trunk\AgAccounts\Project\obj\Debug\AgAccounts.frmCountryMast.resources
+D:\WorkingCopy\ShyamaShyam\trunk\AgAccounts\Project\obj\Debug\AgAccounts.frmCurrencyMast.resources
+D:\WorkingCopy\ShyamaShyam\trunk\AgAccounts\Project\obj\Debug\AgAccounts.FrmCurrencyRate.resources
+D:\WorkingCopy\ShyamaShyam\trunk\AgAccounts\Project\obj\Debug\AgAccounts.FrmDisplayHierarchy_Settings.resources
+D:\WorkingCopy\ShyamaShyam\trunk\AgAccounts\Project\obj\Debug\AgAccounts.FrmEnviro.resources
+D:\WorkingCopy\ShyamaShyam\trunk\AgAccounts\Project\obj\Debug\AgAccounts.FrmPrintAC.resources
+D:\WorkingCopy\ShyamaShyam\trunk\AgAccounts\Project\obj\Debug\AgAccounts.FrmProgressBar.resources
+D:\WorkingCopy\ShyamaShyam\trunk\AgAccounts\Project\obj\Debug\AgAccounts.FrmReportLayout.resources
+D:\WorkingCopy\ShyamaShyam\trunk\AgAccounts\Project\obj\Debug\AgAccounts.FrmDisplayHierarchy.resources
+D:\WorkingCopy\ShyamaShyam\trunk\AgAccounts\Project\obj\Debug\AgAccounts.FrmDisplayHierarchy_Stock.resources
+D:\WorkingCopy\ShyamaShyam\trunk\AgAccounts\Project\obj\Debug\AgAccounts.FrmDisplayHierarchy_Settings_Stock.resources
+D:\WorkingCopy\ShyamaShyam\trunk\AgAccounts\Project\obj\Debug\AgAccounts.FrmSingleFieldMaster.resources
+D:\WorkingCopy\ShyamaShyam\trunk\AgAccounts\Project\obj\Debug\AgAccounts.FrmSmartFinder.resources
+D:\WorkingCopy\ShyamaShyam\trunk\AgAccounts\Project\obj\Debug\AgAccounts.frmTdsCatMaster.resources
+D:\WorkingCopy\ShyamaShyam\trunk\AgAccounts\Project\obj\Debug\AgAccounts.FrmVoucherEntry_Chq_Det.resources
+D:\WorkingCopy\ShyamaShyam\trunk\AgAccounts\Project\obj\Debug\AgAccounts.FrmVoucherEntry_LedgerAdj.resources
+D:\WorkingCopy\ShyamaShyam\trunk\AgAccounts\Project\obj\Debug\AgAccounts.FrmVoucherEntry_LedgerItemAdj.resources
+D:\WorkingCopy\ShyamaShyam\trunk\AgAccounts\Project\obj\Debug\AgAccounts.FrmVoucherEntry_TDS.resources
+D:\WorkingCopy\ShyamaShyam\trunk\AgAccounts\Project\obj\Debug\AgAccounts.FrmVoucherPrint.resources
+D:\WorkingCopy\ShyamaShyam\trunk\AgAccounts\Project\obj\Debug\AgAccounts.MDIMain.resources
+D:\WorkingCopy\ShyamaShyam\trunk\AgAccounts\Project\obj\Debug\AgAccounts.RepView.resources
+D:\WorkingCopy\ShyamaShyam\trunk\AgAccounts\Project\obj\Debug\AgAccounts.Resources.resources
+D:\WorkingCopy\ShyamaShyam\trunk\AgAccounts\Project\obj\Debug\AgAccounts.vbproj.GenerateResource.Cache
+D:\WorkingCopy\trunk\AgAccounts\Release\AgAccounts.exe.config
+D:\WorkingCopy\trunk\AgAccounts\Project\obj\Debug\AgAccounts.exe
+D:\WorkingCopy\trunk\AgAccounts\Project\obj\Debug\AgAccounts.xml
+D:\WorkingCopy\trunk\AgAccounts\Project\obj\Debug\AgAccounts.pdb
+D:\DesktopApp\trunk\AgAccounts\Project\obj\Debug\AgAccounts.vbprojResolveAssemblyReference.cache
+D:\WorkingCopy\ShyamaShyam\trunk\AgAccounts\Project\obj\Debug\AgAccounts.vbprojResolveAssemblyReference.cache
+D:\Mahajan\trunk\AgAccounts\Release\AgAccounts.exe.config
+D:\Mahajan\trunk\AgAccounts\Project\obj\Debug\AgAccounts.exe
+D:\Mahajan\trunk\AgAccounts\Project\obj\Debug\AgAccounts.xml
+D:\Mahajan\trunk\AgAccounts\Project\obj\Debug\AgAccounts.pdb
+D:\WindowsApp\trunk\AgAccounts\Release\AgAccounts.exe.config
+D:\WindowsApp\trunk\AgAccounts\Release\AgAccounts.exe
+D:\WindowsApp\trunk\AgAccounts\Release\AgAccounts.pdb
+D:\WindowsApp\trunk\AgAccounts\Release\AgAccounts.xml
+D:\WindowsApp\trunk\AgAccounts\Project\obj\Debug\AgAccounts.FrmFaOpening.resources
+D:\WindowsApp\trunk\AgAccounts\Project\obj\Debug\AgAccounts.FrmImportFromExcel.resources
+D:\WindowsApp\trunk\AgAccounts\Project\obj\Debug\AgAccounts.FrmImportVoucherFromExcel.resources
+D:\WindowsApp\trunk\AgAccounts\Project\obj\Debug\AgAccounts.FrmVoucherEntryBackup.resources
+D:\WindowsApp\trunk\AgAccounts\Project\obj\Debug\AgAccounts.FrmVoucherEntry.resources
+D:\WindowsApp\trunk\AgAccounts\Project\obj\Debug\AgAccounts.FrmVoucherEntry_LedgerAdjNew.resources
+D:\WindowsApp\trunk\AgAccounts\Project\obj\Debug\AgAccounts.FrmVoucherEntry_ReferenceFilter.resources
+D:\WindowsApp\trunk\AgAccounts\Project\obj\Debug\AgAccounts.MDIMain1.resources
+D:\WindowsApp\trunk\AgAccounts\Project\obj\Debug\AgAccounts.FrmAccountDetails.resources
+D:\WindowsApp\trunk\AgAccounts\Project\obj\Debug\AgAccounts.FrmAccountMaster.resources
+D:\WindowsApp\trunk\AgAccounts\Project\obj\Debug\AgAccounts.FrmAcGroupMaster.resources
+D:\WindowsApp\trunk\AgAccounts\Project\obj\Debug\AgAccounts.FrmAcGroupPositioning.resources
+D:\WindowsApp\trunk\AgAccounts\Project\obj\Debug\AgAccounts.FrmAdjustingRates.resources
+D:\WindowsApp\trunk\AgAccounts\Project\obj\Debug\AgAccounts.FrmAssetGroupMaster.resources
+D:\WindowsApp\trunk\AgAccounts\Project\obj\Debug\AgAccounts.FrmAssetMaster.resources
+D:\WindowsApp\trunk\AgAccounts\Project\obj\Debug\AgAccounts.FrmAssetTransaction.resources
+D:\WindowsApp\trunk\AgAccounts\Project\obj\Debug\AgAccounts.FrmBankReconciliation.resources
+D:\WindowsApp\trunk\AgAccounts\Project\obj\Debug\AgAccounts.FrmBudget.resources
+D:\WindowsApp\trunk\AgAccounts\Project\obj\Debug\AgAccounts.FrmBudgetAnalysis.resources
+D:\WindowsApp\trunk\AgAccounts\Project\obj\Debug\AgAccounts.FrmChequeMast.resources
+D:\WindowsApp\trunk\AgAccounts\Project\obj\Debug\AgAccounts.FrmChequePrinting.resources
+D:\WindowsApp\trunk\AgAccounts\Project\obj\Debug\AgAccounts.FrmChequePrintSetup.resources
+D:\WindowsApp\trunk\AgAccounts\Project\obj\Debug\AgAccounts.FrmCityMast.resources
+D:\WindowsApp\trunk\AgAccounts\Project\obj\Debug\AgAccounts.frmCountryMast.resources
+D:\WindowsApp\trunk\AgAccounts\Project\obj\Debug\AgAccounts.frmCurrencyMast.resources
+D:\WindowsApp\trunk\AgAccounts\Project\obj\Debug\AgAccounts.FrmCurrencyRate.resources
+D:\WindowsApp\trunk\AgAccounts\Project\obj\Debug\AgAccounts.FrmDisplayHierarchy_Settings.resources
+D:\WindowsApp\trunk\AgAccounts\Project\obj\Debug\AgAccounts.FrmEnviro.resources
+D:\WindowsApp\trunk\AgAccounts\Project\obj\Debug\AgAccounts.FrmPrintAC.resources
+D:\WindowsApp\trunk\AgAccounts\Project\obj\Debug\AgAccounts.FrmProgressBar.resources
+D:\WindowsApp\trunk\AgAccounts\Project\obj\Debug\AgAccounts.FrmReportLayout.resources
+D:\WindowsApp\trunk\AgAccounts\Project\obj\Debug\AgAccounts.FrmDisplayHierarchy.resources
+D:\WindowsApp\trunk\AgAccounts\Project\obj\Debug\AgAccounts.FrmDisplayHierarchy_Stock.resources
+D:\WindowsApp\trunk\AgAccounts\Project\obj\Debug\AgAccounts.FrmDisplayHierarchy_Settings_Stock.resources
+D:\WindowsApp\trunk\AgAccounts\Project\obj\Debug\AgAccounts.FrmSingleFieldMaster.resources
+D:\WindowsApp\trunk\AgAccounts\Project\obj\Debug\AgAccounts.FrmSmartFinder.resources
+D:\WindowsApp\trunk\AgAccounts\Project\obj\Debug\AgAccounts.frmTdsCatMaster.resources
+D:\WindowsApp\trunk\AgAccounts\Project\obj\Debug\AgAccounts.FrmVoucherEntry_Chq_Det.resources
+D:\WindowsApp\trunk\AgAccounts\Project\obj\Debug\AgAccounts.FrmVoucherEntry_LedgerAdj.resources
+D:\WindowsApp\trunk\AgAccounts\Project\obj\Debug\AgAccounts.FrmVoucherEntry_LedgerItemAdj.resources
+D:\WindowsApp\trunk\AgAccounts\Project\obj\Debug\AgAccounts.FrmVoucherEntry_TDS.resources
+D:\WindowsApp\trunk\AgAccounts\Project\obj\Debug\AgAccounts.FrmVoucherPrint.resources
+D:\WindowsApp\trunk\AgAccounts\Project\obj\Debug\AgAccounts.MDIMain.resources
+D:\WindowsApp\trunk\AgAccounts\Project\obj\Debug\AgAccounts.RepView.resources
+D:\WindowsApp\trunk\AgAccounts\Project\obj\Debug\AgAccounts.Resources.resources
+D:\WindowsApp\trunk\AgAccounts\Project\obj\Debug\AgAccounts.vbproj.GenerateResource.Cache
+D:\WindowsApp\trunk\AgAccounts\Project\obj\Debug\AgAccounts.exe
+D:\WindowsApp\trunk\AgAccounts\Project\obj\Debug\AgAccounts.xml
+D:\WindowsApp\trunk\AgAccounts\Project\obj\Debug\AgAccounts.pdb
+D:\WorkingCopy\WindowsApp\trunk\AgAccounts\Release\AgAccounts.exe.config
+D:\WorkingCopy\WindowsApp\trunk\AgAccounts\Release\AgAccounts.exe
+D:\WorkingCopy\WindowsApp\trunk\AgAccounts\Release\AgAccounts.pdb
+D:\WorkingCopy\WindowsApp\trunk\AgAccounts\Release\AgAccounts.xml
+D:\WorkingCopy\WindowsApp\trunk\AgAccounts\Project\obj\Debug\AgAccounts.FrmFaOpening.resources
+D:\WorkingCopy\WindowsApp\trunk\AgAccounts\Project\obj\Debug\AgAccounts.FrmImportFromExcel.resources
+D:\WorkingCopy\WindowsApp\trunk\AgAccounts\Project\obj\Debug\AgAccounts.FrmImportVoucherFromExcel.resources
+D:\WorkingCopy\WindowsApp\trunk\AgAccounts\Project\obj\Debug\AgAccounts.FrmVoucherEntryBackup.resources
+D:\WorkingCopy\WindowsApp\trunk\AgAccounts\Project\obj\Debug\AgAccounts.FrmVoucherEntry.resources
+D:\WorkingCopy\WindowsApp\trunk\AgAccounts\Project\obj\Debug\AgAccounts.FrmVoucherEntry_LedgerAdjNew.resources
+D:\WorkingCopy\WindowsApp\trunk\AgAccounts\Project\obj\Debug\AgAccounts.FrmVoucherEntry_ReferenceFilter.resources
+D:\WorkingCopy\WindowsApp\trunk\AgAccounts\Project\obj\Debug\AgAccounts.MDIMain1.resources
+D:\WorkingCopy\WindowsApp\trunk\AgAccounts\Project\obj\Debug\AgAccounts.FrmAccountDetails.resources
+D:\WorkingCopy\WindowsApp\trunk\AgAccounts\Project\obj\Debug\AgAccounts.FrmAccountMaster.resources
+D:\WorkingCopy\WindowsApp\trunk\AgAccounts\Project\obj\Debug\AgAccounts.FrmAcGroupMaster.resources
+D:\WorkingCopy\WindowsApp\trunk\AgAccounts\Project\obj\Debug\AgAccounts.FrmAcGroupPositioning.resources
+D:\WorkingCopy\WindowsApp\trunk\AgAccounts\Project\obj\Debug\AgAccounts.FrmAdjustingRates.resources
+D:\WorkingCopy\WindowsApp\trunk\AgAccounts\Project\obj\Debug\AgAccounts.FrmAssetGroupMaster.resources
+D:\WorkingCopy\WindowsApp\trunk\AgAccounts\Project\obj\Debug\AgAccounts.FrmAssetMaster.resources
+D:\WorkingCopy\WindowsApp\trunk\AgAccounts\Project\obj\Debug\AgAccounts.FrmAssetTransaction.resources
+D:\WorkingCopy\WindowsApp\trunk\AgAccounts\Project\obj\Debug\AgAccounts.FrmBankReconciliation.resources
+D:\WorkingCopy\WindowsApp\trunk\AgAccounts\Project\obj\Debug\AgAccounts.FrmBudget.resources
+D:\WorkingCopy\WindowsApp\trunk\AgAccounts\Project\obj\Debug\AgAccounts.FrmBudgetAnalysis.resources
+D:\WorkingCopy\WindowsApp\trunk\AgAccounts\Project\obj\Debug\AgAccounts.FrmChequeMast.resources
+D:\WorkingCopy\WindowsApp\trunk\AgAccounts\Project\obj\Debug\AgAccounts.FrmChequePrinting.resources
+D:\WorkingCopy\WindowsApp\trunk\AgAccounts\Project\obj\Debug\AgAccounts.FrmChequePrintSetup.resources
+D:\WorkingCopy\WindowsApp\trunk\AgAccounts\Project\obj\Debug\AgAccounts.FrmCityMast.resources
+D:\WorkingCopy\WindowsApp\trunk\AgAccounts\Project\obj\Debug\AgAccounts.frmCountryMast.resources
+D:\WorkingCopy\WindowsApp\trunk\AgAccounts\Project\obj\Debug\AgAccounts.frmCurrencyMast.resources
+D:\WorkingCopy\WindowsApp\trunk\AgAccounts\Project\obj\Debug\AgAccounts.FrmCurrencyRate.resources
+D:\WorkingCopy\WindowsApp\trunk\AgAccounts\Project\obj\Debug\AgAccounts.FrmDisplayHierarchy_Settings.resources
+D:\WorkingCopy\WindowsApp\trunk\AgAccounts\Project\obj\Debug\AgAccounts.FrmEnviro.resources
+D:\WorkingCopy\WindowsApp\trunk\AgAccounts\Project\obj\Debug\AgAccounts.FrmPrintAC.resources
+D:\WorkingCopy\WindowsApp\trunk\AgAccounts\Project\obj\Debug\AgAccounts.FrmProgressBar.resources
+D:\WorkingCopy\WindowsApp\trunk\AgAccounts\Project\obj\Debug\AgAccounts.FrmReportLayout.resources
+D:\WorkingCopy\WindowsApp\trunk\AgAccounts\Project\obj\Debug\AgAccounts.FrmDisplayHierarchy.resources
+D:\WorkingCopy\WindowsApp\trunk\AgAccounts\Project\obj\Debug\AgAccounts.FrmDisplayHierarchy_Stock.resources
+D:\WorkingCopy\WindowsApp\trunk\AgAccounts\Project\obj\Debug\AgAccounts.FrmDisplayHierarchy_Settings_Stock.resources
+D:\WorkingCopy\WindowsApp\trunk\AgAccounts\Project\obj\Debug\AgAccounts.FrmSingleFieldMaster.resources
+D:\WorkingCopy\WindowsApp\trunk\AgAccounts\Project\obj\Debug\AgAccounts.FrmSmartFinder.resources
+D:\WorkingCopy\WindowsApp\trunk\AgAccounts\Project\obj\Debug\AgAccounts.frmTdsCatMaster.resources
+D:\WorkingCopy\WindowsApp\trunk\AgAccounts\Project\obj\Debug\AgAccounts.FrmVoucherEntry_Chq_Det.resources
+D:\WorkingCopy\WindowsApp\trunk\AgAccounts\Project\obj\Debug\AgAccounts.FrmVoucherEntry_LedgerAdj.resources
+D:\WorkingCopy\WindowsApp\trunk\AgAccounts\Project\obj\Debug\AgAccounts.FrmVoucherEntry_LedgerItemAdj.resources
+D:\WorkingCopy\WindowsApp\trunk\AgAccounts\Project\obj\Debug\AgAccounts.FrmVoucherEntry_TDS.resources
+D:\WorkingCopy\WindowsApp\trunk\AgAccounts\Project\obj\Debug\AgAccounts.FrmVoucherPrint.resources
+D:\WorkingCopy\WindowsApp\trunk\AgAccounts\Project\obj\Debug\AgAccounts.MDIMain.resources
+D:\WorkingCopy\WindowsApp\trunk\AgAccounts\Project\obj\Debug\AgAccounts.RepView.resources
+D:\WorkingCopy\WindowsApp\trunk\AgAccounts\Project\obj\Debug\AgAccounts.Resources.resources
+D:\WorkingCopy\WindowsApp\trunk\AgAccounts\Project\obj\Debug\AgAccounts.vbproj.GenerateResource.Cache
+D:\WorkingCopy\WindowsApp\trunk\AgAccounts\Project\obj\Debug\AgAccounts.exe
+D:\WorkingCopy\WindowsApp\trunk\AgAccounts\Project\obj\Debug\AgAccounts.xml
+D:\WorkingCopy\WindowsApp\trunk\AgAccounts\Project\obj\Debug\AgAccounts.pdb
+D:\WorkingCopy\WindowsApp\trunk\AgAccounts\Project\obj\Debug\AgAccounts.vbprojResolveAssemblyReference.cache

@@ -1,0 +1,20 @@
+<?xml version="1.0" standalone="yes"?>
+<NewDataSet>
+  <Table>
+    <DocNo>D1-PS-1584</DocNo>
+    <V_Date>2020-03-20T00:00:00+05:30</V_Date>
+    <HSubcodeName>S.P.TEXTILES </HSubcodeName>
+    <Address>SURAT</Address>
+    <CityName>SURAT</CityName>
+    <StateCode>24</StateCode>
+    <StateName>Gujarat</StateName>
+    <PartyGSTNo>24AAGPW7250A1ZV</PartyGSTNo>
+    <AgentName>RAVIRAJ TEX9336742949</AgentName>
+    <UpToDate>2020-03-20T00:00:00+05:30</UpToDate>
+    <LSubcodeName>HDFC BANK O/D A/C</LSubcodeName>
+    <Amount>8289</Amount>
+    <ChqRefNo>990313</ChqRefNo>
+    <PrintedByUser>SUPER</PrintedByUser>
+    <PrintTitle>Payment Settlement</PrintTitle>
+  </Table>
+</NewDataSet>

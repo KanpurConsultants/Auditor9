@@ -1,0 +1,71 @@
+/* CSS Document */
+
+
+A:link { COLOR: #ffffff; TEXT-DECORATION: none } A:visited {COLOR: #ffffff; TEXT-DECORATION: 
+none } A:active {COLOR: #003333; TEXT-DECORATION: none } A:hover {COLOR: #Ffffff; 
+TEXT-DECORATION: underline}
+.subtitle { FONT: bold 11px Verdana; COLOR: 
+#70B600 } 
+
+    .pagestart
+    {
+        page-break-before: always;
+    }
+
+
+.SmallHTMLFont{FONT: Normal 10px Verdana; COLOR: black}
+.SmallFontHTML{FONT: Normal 10px Verdana; COLOR: black}
+.SmallFontAttendance{FONT: Normal 8px Verdana; COLOR: black}
+
+.BarCodeFont { FONT-size:1 IDAutomationHC39M; COLOR: #000000 }
+.smalltitle1 { FONT-size:1 Verdana; COLOR: #000000 }
+.ReportTitle { FONT: bold 14px Verdana; COLOR: black }
+.subtitleblk { FONT: bold 11px Verdana; COLOR: black }
+.GroupHeading { FONT: bold 11px Verdana; bgcolor:#CCCCCC }
+.smalltitle { FONT: Normal 11px Verdana; COLOR: #000000 
+} .just { TEXT-ALIGN: justify }
+.vsmalltitle { FONT: Normal 9px Verdana; COLOR: #003333 
+} .just { TEXT-ALIGN: justify }
+.smalltitlew { FONT: Normal 11px Verdana; COLOR: #ffffff 
+} .just { TEXT-ALIGN: justify }
+.link2 { FONT: bold 11px Verdana; COLOR: 
+#000000 }
+
+.linksd { FONT: bold 11px Verdana; COLOR: 
+#70B600 }
+
+
+.bluehead {
+	font-family: Verdana;
+	font-size: 11px;
+	font-weight: bold;
+	color: #70B600;
+}
+a.bluehead {
+	font-family: Verdana;
+	font-size: 11px;
+	font-weight: bold;
+	color: #70B600;
+}
+h1 { FONT: Normal 14px Verdana; COLOR: #003333;TEXT-ALIGN: justify;font-weight:bold}
+h2 { FONT: Normal 12px Verdana; COLOR: #003333;TEXT-ALIGN: justify;font-weight:bold}
+h3 { FONT: Normal 11px Verdana; COLOR: #003333;TEXT-ALIGN: justify;font-weight:bold}
+h4 { FONT: Normal 10px Verdana; COLOR: #003333;TEXT-ALIGN: justify;font-weight:bold}
+h5 { FONT: Normal 9px Verdana; COLOR: #003333;TEXT-ALIGN: justify;font-weight:bold}
+h6 { FONT: Normal 8px Verdana; COLOR: #003333;TEXT-ALIGN: justify;font-weight:bold}
+
+
+p{FONT: Normal 11px Verdana; COLOR: #003333;TEXT-ALIGN: justify  }
+a.bluehead:hover {
+	font-family: Verdana;
+	font-size: 11px;
+	font-weight: bold;
+	color: #70B600;
+	text-decoration: underline;
+}
+a.bluehead:visited {
+	font-family: Verdana;
+	font-size: 11px;
+	font-weight: bold;
+	color: #70B600;
+}

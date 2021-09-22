@@ -1,0 +1,46 @@
+; Field definition file for table: ADORecordset
+DivisionName	string	255	Shiva Saree Center {SHIVA}, KANPUR	
+PartyName	string	255	AABUL KALAM SAUDAGAR {477}, SIDHARTH NAGAR	
+Address	string	255	ITVA BAASI SIDDHARTH NAGAR BALRAMPUR	
+Mobile	string	255	8052623829	
+AgentName	string	255	DIRECT {1793}, KANPUR	
+SalesRepresentativeName	string	255		
+AreaName	string	255	BAASI	
+DrDocID	string	255	D1    OB 2017       1	
+DrDivision	string	255	D	
+DrSubcode	string	255	D100000478	
+DrSr	long	0	
+DrDate	datetime	31/Mar/2017 17:00:00	
+DrDocNo	string	255	OB-1	
+DrAmount	number	46865	
+DrTaxableAmount	number	0	
+DrTaxAmount	number	0	
+DrDays	long	1593	
+DrInterest	number	36816.63	
+DrCumAmount	number	46865	
+DrBalAmount	number	46865	
+DrTotal	number	52467	
+DrNarration	string	255		
+CrDocID	string	255		
+CrDivision	string	255	D	
+CrSubcode	string	255	D100000478	
+CrSr	long	0	
+CrDate	datetime		
+CrDocNo	string	255		
+CrAmount	number	0	
+CrTaxableAmount	number	0	
+CrTaxAmount	number	0	
+CrDays	long		
+CrInterest	number		
+CrCumAmount	number	0	
+CrBalAmount	number	0	
+CrTotal	number	0	
+CrNarration	string	255		
+AdditionPer	string	255		
+AdditionAmount	string	255		
+GrReturnAmt	string	255		
+GrSaleAmt	string	255		
+ReturnPer	string	255		
+AveragePaymentDays	number	789.333333333333	
+DrMonth	string	255	03-2017	
+CrMonth	string	255		

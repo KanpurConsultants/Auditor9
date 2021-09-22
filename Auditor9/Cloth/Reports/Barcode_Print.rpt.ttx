@@ -1,0 +1,24 @@
+; Field definition file for table: ADORecordset
+Code	string	255	2	
+Barcode	string	255	500001	
+BarCodeImg	BLOB		
+ItemDesc	string	255	1012	
+ItemCategoryDesc	string	255	TIFFIN	
+ItemGroupDesc	string	255	CELLO	
+Dimension1Desc	string	255		
+Dimension2Desc	string	255		
+Dimension3Desc	string	255		
+Dimension4Desc	string	255		
+SizeDesc	string	255	M	
+PurchaseRate	number	200	
+SaleRate	number	0	
+MRP	number	0	
+ReceiveQty	number	100	
+GenSr	number	1	
+ItemMasterPurchaseRate	number		
+ItemMasterSaleRate	number		
+Title1	string	255		
+Title2	string	255		
+Title3	string	255		
+RandomNo1	long	894	
+RandomNo2	long	692	

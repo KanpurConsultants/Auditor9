@@ -1,0 +1,270 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003" ToolsVersion="3.5">
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProductVersion>8.0.50727</ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{322781C0-B789-47D0-9DA8-44C6C3C72E7F}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <StartupObject>
+    </StartupObject>
+    <RootNamespace>AgLibrary</RootNamespace>
+    <AssemblyName>AgLibrary</AssemblyName>
+    <MyType>Windows</MyType>
+    <FileUpgradeFlags>
+    </FileUpgradeFlags>
+    <OldToolsVersion>2.0</OldToolsVersion>
+    <TargetFrameworkVersion>v3.5</TargetFrameworkVersion>
+    <UpgradeBackupLocation>
+    </UpgradeBackupLocation>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <DefineDebug>true</DefineDebug>
+    <DefineTrace>true</DefineTrace>
+    <OutputPath>D:\Dataman\Release\</OutputPath>
+    <DocumentationFile>AgLibrary.xml</DocumentationFile>
+    <NoWarn>42016,41999,42017,42018,42019,42032,42036,42020,42021,42022</NoWarn>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <DefineDebug>false</DefineDebug>
+    <DefineTrace>true</DefineTrace>
+    <Optimize>true</Optimize>
+    <OutputPath>D:\Dataman\Release\</OutputPath>
+    <DocumentationFile>AgLibrary.xml</DocumentationFile>
+    <NoWarn>42016,41999,42017,42018,42019,42032,42036,42020,42021,42022</NoWarn>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="AgControls, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="AgReports, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="CrystalDecisions.CrystalReports.Engine, Version=10.2.3600.0, Culture=neutral, PublicKeyToken=692fbea5521e1304, processorArchitecture=MSIL">
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="CrystalDecisions.Enterprise.Framework, Version=10.2.3600.0, Culture=neutral, PublicKeyToken=692fbea5521e1304" />
+    <Reference Include="CrystalDecisions.Enterprise.InfoStore, Version=10.2.3600.0, Culture=neutral, PublicKeyToken=692fbea5521e1304" />
+    <Reference Include="CrystalDecisions.ReportSource, Version=10.2.3600.0, Culture=neutral, PublicKeyToken=692fbea5521e1304, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>D:\Dataman\Release\CrystalDecisions.ReportSource.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="CrystalDecisions.Shared, Version=10.2.3600.0, Culture=neutral, PublicKeyToken=692fbea5521e1304, processorArchitecture=MSIL">
+      <Private>False</Private>
+      <HintPath>D:\Dataman\Release\CrystalDecisions.Shared.dll</HintPath>
+    </Reference>
+    <Reference Include="CrystalDecisions.Windows.Forms, Version=10.2.3600.0, Culture=neutral, PublicKeyToken=692fbea5521e1304, processorArchitecture=MSIL">
+      <Private>False</Private>
+      <HintPath>D:\Dataman\Release\CrystalDecisions.Windows.Forms.dll</HintPath>
+    </Reference>
+    <Reference Include="Framework.Controls.ProgressBar, Version=1.0.4162.31576, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>Dlls\Framework.Controls.ProgressBar.dll</HintPath>
+    </Reference>
+    <Reference Include="Interop.ADODB, Version=2.8.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="Interop.CRVIEWER9Lib, Version=9.2.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="Ionic.Zip, Version=1.9.1.5, Culture=neutral, PublicKeyToken=edbe51ad942a3f5c, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>Dlls\Ionic.Zip.dll</HintPath>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Web.Services, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>C:\WINDOWS\assembly\GAC_MSIL\System.Web.Services\2.0.0.0__b03f5f7f11d50a3a\System.Web.Services.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Windows.Forms" />
+    <Reference Include="System.Xml" />
+    <Reference Include="Topctrl, Version=1.0.4168.34907, Culture=neutral, processorArchitecture=MSIL" />
+  </ItemGroup>
+  <ItemGroup>
+    <Import Include="Microsoft.VisualBasic" />
+    <Import Include="System" />
+    <Import Include="System.Collections" />
+    <Import Include="System.Collections.Generic" />
+    <Import Include="System.Data" />
+    <Import Include="System.Drawing" />
+    <Import Include="System.Diagnostics" />
+    <Import Include="System.Windows.Forms" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Class\ClsConstant.vb" />
+    <Compile Include="Class\ClsErrHandler.vb" />
+    <Compile Include="Class\ClsIniVariables.vb" />
+    <Compile Include="Class\ClsMain.vb" />
+    <Compile Include="Class\ClsMDIFunctions.vb" />
+    <Compile Include="Class\ClsPrinting.vb" />
+    <Compile Include="Class\PrintHandler.vb" />
+    <Compile Include="Form\FrmAgZip.Designer.vb">
+      <DependentUpon>FrmAgZip.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Form\FrmAgZip.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Form\FrmBackupDatabase.Designer.vb">
+      <DependentUpon>FrmBackupDatabase.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Form\FrmBackupDatabase.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Form\FrmCommonMaster1.designer.vb">
+      <DependentUpon>FrmCommonMaster1.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Form\FrmCommonMaster1.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Form\FrmCommonMaster2.designer.vb">
+      <DependentUpon>FrmCommonMaster2.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Form\FrmCommonMaster2.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Form\FrmEmploeeMaster.designer.vb">
+      <DependentUpon>FrmEmploeeMaster.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Form\FrmEmploeeMaster.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Form\FrmPaymentDetail.designer.vb">
+      <DependentUpon>FrmPaymentDetail.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Form\FrmPaymentDetail.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Form\FrmFind.designer.vb">
+      <DependentUpon>FrmFind.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Form\FrmFind.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Form\FrmPartyMaster.designer.vb">
+      <DependentUpon>FrmPartyMaster.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Form\FrmPartyMaster.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Form\FrmProgressBar.Designer.vb">
+      <DependentUpon>FrmProgressBar.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Form\FrmProgressBar.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Form\MDIMain.designer.vb">
+      <DependentUpon>MDIMain.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Form\MDIMain.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Form\RepFormGlobal.designer.vb">
+      <DependentUpon>RepFormGlobal.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Form\RepFormGlobal.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Form\RepView.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Modules\MdlFunction.vb" />
+    <Compile Include="Modules\MdlVar.vb" />
+    <Compile Include="My Project\AssemblyInfo.vb" />
+    <Compile Include="My Project\Application.Designer.vb">
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Application.myapp</DependentUpon>
+    </Compile>
+    <Compile Include="My Project\Resources.Designer.vb">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Resources.resx</DependentUpon>
+    </Compile>
+    <Compile Include="My Project\Settings.Designer.vb">
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Settings.settings</DependentUpon>
+      <DesignTimeSharedInput>True</DesignTimeSharedInput>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Form\FrmAgZip.resx">
+      <DependentUpon>FrmAgZip.vb</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Form\FrmBackupDatabase.resx">
+      <DependentUpon>FrmBackupDatabase.vb</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Form\FrmCommonMaster1.resx">
+      <DependentUpon>FrmCommonMaster1.vb</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Form\FrmCommonMaster2.resx">
+      <DependentUpon>FrmCommonMaster2.vb</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Form\FrmEmploeeMaster.resx">
+      <DependentUpon>FrmEmploeeMaster.vb</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Form\FrmPaymentDetail.resx">
+      <DependentUpon>FrmPaymentDetail.vb</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Form\FrmFind.resx">
+      <DependentUpon>FrmFind.vb</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Form\FrmPartyMaster.resx">
+      <DependentUpon>FrmPartyMaster.vb</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Form\FrmProgressBar.resx">
+      <DependentUpon>FrmProgressBar.vb</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Form\MDIMain.resx">
+      <DependentUpon>MDIMain.vb</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Form\RepFormGlobal.resx">
+      <DependentUpon>RepFormGlobal.vb</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Form\RepView.resx">
+      <DependentUpon>RepView.vb</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="My Project\Resources.resx">
+      <Generator>VbMyResourcesResXFileCodeGenerator</Generator>
+      <LastGenOutput>Resources.Designer.vb</LastGenOutput>
+      <CustomToolNamespace>My.Resources</CustomToolNamespace>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="My Project\Application.myapp">
+      <Generator>MyApplicationCodeGenerator</Generator>
+      <LastGenOutput>Application.Designer.vb</LastGenOutput>
+    </None>
+    <None Include="My Project\Settings.settings">
+      <Generator>SettingsSingleFileGenerator</Generator>
+      <CustomToolNamespace>My</CustomToolNamespace>
+      <LastGenOutput>Settings.Designer.vb</LastGenOutput>
+    </None>
+  </ItemGroup>
+  <Import Project="$(MSBuildBinPath)\Microsoft.VisualBasic.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

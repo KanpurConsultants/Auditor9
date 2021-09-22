@@ -1,0 +1,15 @@
+; Field definition file for table: ADORecordset
+Comp_Code	string	255	3	
+Comp_Name	string	255	School	
+StudentCode	string	255	D100000029	
+Student	string	255	RAM PRASAD	
+FatherName	string	255	SHYAM PRASAD	
+ClassCode	string	255	D100000002	
+Class	string	255	1ST	
+FeeCode	string	255	D100000043	
+Fee	string	255	ANNUAL FEE	
+SubHeadCode	string	255	D100000045	
+SubHead	string	255		
+FeeAmount	number	3000	
+ReceivedAmount	long	0	
+BalanceAmount	number	3000	

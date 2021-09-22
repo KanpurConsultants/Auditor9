@@ -1,0 +1,10 @@
+D:\Support\Project\AgControls\Release\AgControls.dll
+D:\Support\Project\AgControls\Release\AgControls.pdb
+D:\Support\Project\AgControls\Release\AgControls.xml
+E:\Arpit Gupta\Active Projects\Ashish\AgControls\obj\Debug\ResolveAssemblyReference.cache
+E:\Arpit Gupta\Active Projects\Ashish\AgControls\obj\Debug\AgControls.OutlookStyleControls.AgSideBar.resources
+E:\Arpit Gupta\Active Projects\Ashish\AgControls\obj\Debug\AgControls.Resources.resources
+E:\Arpit Gupta\Active Projects\Ashish\AgControls\obj\Debug\AgControls.vbproj.GenerateResource.Cache
+E:\Arpit Gupta\Active Projects\Ashish\AgControls\obj\Debug\AgControls.dll
+E:\Arpit Gupta\Active Projects\Ashish\AgControls\obj\Debug\AgControls.xml
+E:\Arpit Gupta\Active Projects\Ashish\AgControls\obj\Debug\AgControls.pdb

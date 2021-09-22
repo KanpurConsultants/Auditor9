@@ -1,0 +1,6 @@
+SchoolName	String	150
+SaleQty	Currency
+TAmount	Currency
+FromDate	Date
+ToDate	Date
+

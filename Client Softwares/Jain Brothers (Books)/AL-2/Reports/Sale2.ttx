@@ -1,0 +1,135 @@
+ProductStockID	Number
+VoucherID	Number
+TransTypeID	String	250
+IO	String	250
+VoucherNo	String	250
+Dated	Date
+RefAccountID	Number
+Serial	Number
+BookID	Number
+Qty	Currency
+Rate	Currency
+CalculationRate	Currency
+DiscountPercentage	Currency
+DiscountAmount	Currency
+TaxPer	Currency
+Taxamount	Currency
+VatAccountID	Number
+VatSideID	String	250
+Amount	Currency
+NetAmount	Currency
+CstPer	Currency
+CstAmount	Currency
+ProductCurrency	String	250
+ProductConversion	Currency
+SATPer	Currency
+SATAmount	Currency
+SchoolID	Number
+ClassName	String	250
+IssuePerson	String	250
+CounterDetailAssociateID	Number
+IsCancel	String	250
+IsShort	String	250
+ExtraDiscountPercentage	Currency
+ExtraDiscountAmount	Currency
+IGSTPer	Currency
+IGSTAmount	Currency
+AddDisPer	Currency
+AddDisAmount	Currency
+SpecimenQty	String	250
+IsSet	String	250
+OwnerID	String	250
+OwnerSessionID	String	250
+StrCategory	String	250
+RoundDis	Currency
+TempParty	String	250
+BookName	String	250
+Subject	String	250
+Book.Category	String	250
+BookCode	String	250
+BookGroup	String	250
+TotalAmount	Currency
+Address	String	250
+GrandTotal	Currency
+GrNo	String	250
+GRDate	Date
+Transport	String	250
+Remark	String	250
+AdjustmentNarration	String	250
+AdjustmentAmount	Currency
+Freight	Currency
+RoundOff	Currency
+AmountInword	String	250
+Publisher	String	250
+SaleType	String	250
+LedgerBalance	Number
+Comment	String	250
+Sale.LedgerBalance	Currency
+UserName	String	250
+DiscountPer	Currency
+DiscountAmt	Currency
+AccountID	Number
+AccountGroupID	Number
+Series	String	250
+Account	String	250
+NatureID	Number
+Description1	String	250
+Description2	String	250
+Description3	String	250
+CityID	Number
+OPBAmount	Currency
+OPBSide	String	250
+CLBAmount	Currency
+CLBSide	String	250
+Phone1	String	250
+Phone2	String	250
+Fax	String	250
+Mobile	String	250
+STNo	String	250
+CSTNo	String	250
+Contact	String	250
+Email	String	250
+AssociateID	Number
+MaintainBillByBill	String	250
+Default	String	250
+TinNo	String	250
+TinEffectedFrom	String	250
+DLNo	String	250
+SaleRegistrationNo	String	250
+CreditDays	Number
+Code	String	250
+TransportName	String	250
+City	String	250
+Account.Category	String	250
+StateCode	String	250
+PartyType	String	250
+AadharNo	String	250
+PANNo	String	250
+StateID	String	250
+ChallanOPBAmount	Currency
+ChallanOpbSide	String	250
+BookType	String	250
+CopyName	String	250
+PayMode	String	250
+HSNCode	String	250
+GSTPer	String	250
+StrSGST	String	250
+StrCGST	String	250
+StrIGST	String	250
+PvtMarka	String	250
+Destination	String	250
+NoofBox	String	250
+OwBankName	String	250
+OwBankAdd	String	250
+OwAccountNo	String	250
+OwIFSC	String	250
+OwTC1	String	250
+OwTC2	String	250
+OwTC3	String	250
+OwTC4	String	250
+OwTC5	String	250
+OwTC6	String	250
+PackingAmt	Currency
+Author	String	250
+LastPayment	Number
+

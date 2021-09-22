@@ -1,0 +1,25 @@
+; Field definition file for table: ADORecordset
+Copies	string	255	1	
+DocID	string	255	D1 CSORD 2019      26	
+DocDate	datetime	02/Dec/2019 12:00:00 AM	
+ItemName	string	255		
+Dimension1Name	string	255	MONITOR	
+Dimension2Name	string	255		
+Dimension3Name	string	255		
+Dimension4Name	string	255	58"	
+SizeName	string	255		
+ItemGroupName	string	255		
+ItemCategoryName	string	255	BLAZER CLOTH	
+DimensionDetail	string	255	COFFI BROWN-165.00 X 1	
+Qty	number	165	
+Unit	string	255	Meter	
+UnitDecimalPlaces	number	2	
+ItemTypeCaption	string	255	Item Type	
+ItemCategoryCaption	string	255	Item Category	
+ItemGroupCaption	string	255	Item Group	
+ItemCaption	string	255	Item	
+BarcodeCaption	string	255		
+D1Caption	string	255	Quality	
+D2Caption	string	255	Colour	
+D3Caption	string	255	Design	
+D4Caption	string	255	Width	

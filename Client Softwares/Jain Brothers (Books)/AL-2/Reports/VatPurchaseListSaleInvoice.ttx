@@ -1,0 +1,9 @@
+BillNo	String	150
+BillDate	Date
+Account	String	150
+Address	String	150
+TinNo	String	150
+NAmount	Currency
+FromDate	Date
+ToDate	Date
+

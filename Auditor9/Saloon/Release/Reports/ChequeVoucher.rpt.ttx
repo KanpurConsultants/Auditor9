@@ -1,0 +1,24 @@
+; Field definition file for table: ADORecordset
+DocID	string	255	1	
+Copies	string	255	1	
+CopyPrintingCaption	string	255		
+DocNoCaption	string	255	Voucher No	
+DocDateCaption	string	255	Voucher Date	
+SiteStateCode	string	255		
+SiteStateName	string	255		
+Code	string	255	D10002	
+VoucherNo	string	255	2	
+PayeeName	string	255	XYZ	
+Amount	number	90000.99	
+IssueDate	datetime	01/Mar/2020 12:00:00 AM	
+ChequeDate	datetime	01/Mar/2020 12:00:00 AM	
+ChequeNo	string	255	000002	
+Particulars	string	255	TESTING	
+BankName	string	255	YES BANK	
+DocumentPrintHeaderPattern	string	255	Center Aligned	
+PrintedByUser	string	255	SUPER	
+EntryByUser	string	255	SUPER	
+PrintTitle	string	255	Receipt Voucher	
+DocumentPrintShowPrintDateTimeYn	string	255	1	
+CompanyLogo	BLOB		
+CompanyAuthorisedSignature	BLOB		

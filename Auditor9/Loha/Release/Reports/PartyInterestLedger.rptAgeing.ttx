@@ -1,0 +1,6 @@
+; Field definition file for table: ADORecordset
+SearchCode	string	255	D100000833	
+Sr	long	1	
+Party	string	255	GURU RAM DAS(PB/LDH/W/D0095), LUDHIANA	
+BalanceAmount	number	3675.86	
+BalanceMonth	string	255	2019-11-16	

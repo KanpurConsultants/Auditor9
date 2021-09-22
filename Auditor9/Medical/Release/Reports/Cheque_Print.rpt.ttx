@@ -1,0 +1,27 @@
+; Field definition file for table: ADORecordset
+DocID	string	255	D1   PMT 2019      28	
+Sr	long	1	
+ChequeText	string	255	                                                                                                                                                                  2   8   1   1   2   0   1   9   
+
+
+
+        
+
+    
+
+                    MAJARIA SAREES
+
+
+
+
+                               Fifty  Thousand  Only
+
+
+                                                                                                                                                                         *** 50000.00
+
+
+.
+	
+AccountPayeeYn	string	255	Yes	
+CompanyLogo	BLOB		
+CompanyAuthorisedSignature	BLOB		

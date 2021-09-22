@@ -1,0 +1,9 @@
+SchoolName	String	150
+Address	String	150
+BookName	String	150
+Author	String	150
+Publisher	String	150
+BookCode	String	150
+Rate	Currency
+SaleQty	Currency
+

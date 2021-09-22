@@ -1,0 +1,6 @@
+; Field definition file for table: ADORecordset
+NCAT	string	255	STSAL	
+Sr	number	1	
+Remark	string	255	All disputes subject to Kanpur Jurisdiction.	
+RowId	long	3	
+UpLoadDate	date		

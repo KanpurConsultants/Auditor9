@@ -1,0 +1,62 @@
+{DB D:\S2k\Pharma_W\Data\Company.001\S2K2002.mdb DB}
+{Sql SELECT Sale.TmpParty, Sale.TmpAdd, Sale.TmpTinNo, Sale.DocNo, Sale.Dated, Product.Category, Product.Code, Sum(ProductStock.Qty) AS TotalQty, Sum([ProductStock].[NetAmount]-[ProductStock].[TaxAmount]) AS GrossAmount, Sum(ProductStock.Taxamount) AS Tax, Sum(ProductStock.NetAmount) AS NetAmount
+FROM (ProductStock LEFT JOIN (Account RIGHT JOIN Sale ON Account.AccountID = Sale.AccountID) ON ProductStock.VoucherID = Sale.SaleID) LEFT JOIN Product ON ProductStock.ProductID = Product.ProductID
+WHERE (((Sale.Dated) Between #{Pm DateFrom Pm}# And #{Pm DateTo Pm}#))
+GROUP BY Sale.TmpParty, Sale.TmpAdd, Sale.TmpTinNo, Sale.DocNo, Sale.Dated, Product.Category, Product.Code, Account.Account, Sale.BookType
+HAVING (((Sale.BookType)='Tax Invoice'))
+ORDER BY Sale.Dated, Sale.DocNo, Account.Account Sql}
+{Xdr Settings
+Columns=140
+Lines=60
+Page Break=False
+Condense=True
+Character Per Inch=12
+Xdr Settings}
+
+{Formula
+ = 
+Formula}
+
+{GroupSection
+Report Header;
+Page Header;
+Detail;
+Grand;
+Page Footer;
+Report Footer;
+GroupSection}
+
+{Parameter
+DateFromToParameter}
+{Report Header
+Report Header}
+========================================================================================================================
+{Page Header
+lbl;OwnerName;42;0;1
+lbl;OwnerAdd1  OwnerAdd2;47;0;0
+lbl;TAX INVOICE STATEMENT;100;0;1}{lbl;PAGE NO:;13;1;0
+fml;"FOR PERIOD " + "{Pm DateFrom Pm}" + " to "+ "{Pm DateTo Pm}";47;0;0
+lbl;----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------;122;0;0
+lbl;SNO;4;0;0}{lbl;PARTY NAME;20;0;0}{lbl;ADDRESS;15;0;0}{lbl;TIN;12;0;0}{lbl;INVOICE NO;12;0;0}{lbl;DATE;11;0;0}{lbl;PRODUCT;11;0;0}{lbl;Code;4;0;0}{lbl;QTY;5;1;0}{lbl;SALES;10;1;0}{lbl;VAT;8;1;0}{lbl;TOTAL;9;1;0
+lbl;----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------;122;0;0
+Page Header}
+========================================================================================================================
+{Detail
+fml;RecordNo()+ ".";4;0;0}{fld;TmpParty;20;0;0}{fld;TmpAdd;15;0;0}{fld;TmpTinNo;12;0;0}{fld;DocNo;12;0;0}{fld;Dated;11;0;0}{fld;Category;11;0;0}{fld;Code;4;0;0}{fml;CF(TotalQty);5;1;0}{fml;CF(GROSSAMOUNT);10;1;0}{fml;CF(TAX);8;1;0}{fml;CF(NETAMOUNT);9;1;0
+Detail}
+========================================================================================================================
+{Grand
+lbl;;95;0;0}{lbl;----------;10;1;0}{lbl;--------;8;1;0}{lbl;----------;9;1;0
+lbl;;94;0;0}{fml;SUM(GROSSAMOUNT);10;1;0}{fml;SUM(TAX);8;1;0}{fml;SUM(NETAMOUNT);9;1;0
+Grand}
+========================================================================================================================
+{Page Footer
+lbl;CONTINUE TO:      ;120;1;0
+
+Page Footer}
+========================================================================================================================
+{Report Footer
+
+Report Footer}
+========================================================================================================================
+

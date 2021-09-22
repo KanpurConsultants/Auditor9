@@ -1,0 +1,59 @@
+{
+	"version":  "1.0.0501",
+	"billLists": [
+		{
+			"userGstin":  "091234567890123", 
+			"supplyType":  "O", 
+			"subSupplyType":  1, 
+			"docType":  "INV", 
+			"docNo":  "180263", 
+			"docDate":  "12/06/2018", 
+			"fromGstin":  "091234567890123", 
+			"fromTrdName":  "Shiva Saree Center {SHIVA}", 
+			"fromAddr1":  "13/152 Parmat, Civil Lines", 
+			"fromAddr2":  "", 
+			"fromPlace":  "", 
+			"fromPincode":  208001, 
+			"fromStateCode":  09, 
+			"actualFromStateCode":  09, 
+			"toGstin":  "", 
+			"toTrdName":  "AADHUNIK VASTRA BHANDAAR", 
+			"toAddr1":  "DUMARIYAGANJ BALRAMPUR AD.NO. 8866/0486/1586", 
+			"toAddr2":  "", 
+			"toPlace":  "", 
+			"toPincode":  272189, 
+			"toStateCode":  09, 
+			"actualToStateCode":  09, 
+			"totalValue":  192, 
+			"cgstValue": 4.8, 
+			"sgstValue":  4.8, 
+			"igstValue":  0, 
+			"cessValue": 0, 
+			"transMode":  1, 
+			"transDistance":  300, 
+			"transporterName":  "AADHUNIK VASTRA BHANDAAR", 
+			"transporterId":  "", 
+			"transDocNo":  "", 
+			"transDocDate":  "", 
+			"vehicleNo":  "", 
+			"vehicleType":  "R",
+			"totInvValue":  202, 
+			"mainHsnCode":  , 
+			"itemList": [
+				{
+					"itemNo":  1, 
+					"productName":    "G S T", 
+					"productDesc":  "SAREE (B)", 
+					"hsnCode":  5407, 
+					"quantity":  1, 
+					"qtyUnit":   "PCS", 
+					"taxableAmount":  192, 
+					"sgstRate":   2.5, 
+					"cgstRate":  2.5, 
+					"igstRate":   0, 
+					"cessRate": 0
+				}
+			]
+		}
+	]
+}

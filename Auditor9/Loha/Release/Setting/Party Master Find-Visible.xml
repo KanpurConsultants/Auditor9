@@ -1,0 +1,129 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<GridSave>
+  <Column>
+    <Name>SearchCode</Name>
+    <Index>0</Index>
+    <Width>110</Width>
+    <Visible>False</Visible>
+    <AggregateFunction />
+  </Column>
+  <Column>
+    <Name>Name</Name>
+    <Index>1</Index>
+    <Width>148</Width>
+    <Visible>True</Visible>
+    <AggregateFunction />
+  </Column>
+  <Column>
+    <Name>Code</Name>
+    <Index>2</Index>
+    <Width>92</Width>
+    <Visible>True</Visible>
+    <AggregateFunction />
+  </Column>
+  <Column>
+    <Name>Subgroup Type</Name>
+    <Index>3</Index>
+    <Width>130</Width>
+    <Visible>True</Visible>
+    <AggregateFunction />
+  </Column>
+  <Column>
+    <Name>Address</Name>
+    <Index>4</Index>
+    <Width>443</Width>
+    <Visible>True</Visible>
+    <AggregateFunction />
+  </Column>
+  <Column>
+    <Name>City Name</Name>
+    <Index>5</Index>
+    <Width>99</Width>
+    <Visible>True</Visible>
+    <AggregateFunction />
+  </Column>
+  <Column>
+    <Name>Mobile</Name>
+    <Index>6</Index>
+    <Width>74</Width>
+    <Visible>True</Visible>
+    <AggregateFunction />
+  </Column>
+  <Column>
+    <Name>Phone</Name>
+    <Index>7</Index>
+    <Width>72</Width>
+    <Visible>True</Visible>
+    <AggregateFunction />
+  </Column>
+  <Column>
+    <Name>Email</Name>
+    <Index>8</Index>
+    <Width>67</Width>
+    <Visible>True</Visible>
+    <AggregateFunction />
+  </Column>
+  <Column>
+    <Name>SalesTaxPostingGroup</Name>
+    <Index>9</Index>
+    <Width>180</Width>
+    <Visible>True</Visible>
+    <AggregateFunction />
+  </Column>
+  <Column>
+    <Name>Entry By</Name>
+    <Index>10</Index>
+    <Width>87</Width>
+    <Visible>True</Visible>
+    <AggregateFunction />
+  </Column>
+  <Column>
+    <Name>Entry Date</Name>
+    <Index>11</Index>
+    <Width>101</Width>
+    <Visible>True</Visible>
+    <AggregateFunction />
+  </Column>
+  <Column>
+    <Name>Entry Type</Name>
+    <Index>12</Index>
+    <Width>102</Width>
+    <Visible>True</Visible>
+    <AggregateFunction />
+  </Column>
+  <Column>
+    <Name>Status</Name>
+    <Index>13</Index>
+    <Width>73</Width>
+    <Visible>True</Visible>
+    <AggregateFunction />
+  </Column>
+  <Column>
+    <Name>GROUP Name</Name>
+    <Index>14</Index>
+    <Width>135</Width>
+    <Visible>True</Visible>
+    <AggregateFunction />
+  </Column>
+  <Column>
+    <Name>Division</Name>
+    <Index>15</Index>
+    <Width>84</Width>
+    <Visible>True</Visible>
+    <AggregateFunction />
+  </Column>
+  <Column>
+    <Name>Site Name</Name>
+    <Index>16</Index>
+    <Width>99</Width>
+    <Visible>True</Visible>
+    <AggregateFunction />
+  </Column>
+  <Column>
+    <Name>Gst No</Name>
+    <Index>17</Index>
+    <Width>75</Width>
+    <Visible>True</Visible>
+    <AggregateFunction />
+  </Column>
+</GridSave>

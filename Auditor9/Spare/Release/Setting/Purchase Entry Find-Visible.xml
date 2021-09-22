@@ -1,0 +1,80 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<GridSave>
+  <Column>
+    <Name>SearchCode</Name>
+    <Index>1</Index>
+    <Width>139</Width>
+    <Visible>False</Visible>
+    <AggregateFunction />
+  </Column>
+  <Column>
+    <Name>Invoice_Type</Name>
+    <Index>2</Index>
+    <Width>124</Width>
+    <Visible>True</Visible>
+    <AggregateFunction />
+  </Column>
+  <Column>
+    <Name>Date</Name>
+    <Index>3</Index>
+    <Width>96</Width>
+    <Visible>True</Visible>
+    <AggregateFunction />
+  </Column>
+  <Column>
+    <Name>Manual_No</Name>
+    <Index>0</Index>
+    <Width>86</Width>
+    <Visible>True</Visible>
+    <AggregateFunction />
+  </Column>
+  <Column>
+    <Name>Vendor</Name>
+    <Index>4</Index>
+    <Width>217</Width>
+    <Visible>True</Visible>
+    <AggregateFunction />
+  </Column>
+  <Column>
+    <Name>Sales_Tax_Group_Party</Name>
+    <Index>6</Index>
+    <Width>194</Width>
+    <Visible>True</Visible>
+    <AggregateFunction />
+  </Column>
+  <Column>
+    <Name>Vendor_Doc_No</Name>
+    <Index>5</Index>
+    <Width>139</Width>
+    <Visible>True</Visible>
+    <AggregateFunction />
+  </Column>
+  <Column>
+    <Name>Vendor_Doc_Date</Name>
+    <Index>7</Index>
+    <Width>152</Width>
+    <Visible>True</Visible>
+    <AggregateFunction />
+  </Column>
+  <Column>
+    <Name>Remarks</Name>
+    <Index>8</Index>
+    <Width>89</Width>
+    <Visible>False</Visible>
+    <AggregateFunction />
+  </Column>
+  <Column>
+    <Name>Entry_By</Name>
+    <Index>9</Index>
+    <Width>92</Width>
+    <Visible>True</Visible>
+    <AggregateFunction />
+  </Column>
+  <Column>
+    <Name>Entry_Date</Name>
+    <Index>10</Index>
+    <Width>151</Width>
+    <Visible>True</Visible>
+    <AggregateFunction />
+  </Column>
+</GridSave>

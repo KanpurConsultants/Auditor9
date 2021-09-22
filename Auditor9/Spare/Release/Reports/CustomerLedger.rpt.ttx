@@ -1,0 +1,44 @@
+; Field definition file for table: ADORecordset
+DocId	string	255	D1   WOB 2018      62	
+V_type	string	255	WOB	
+RecId	string	255	16081	
+V_Date	datetime	23-Nov-19 12:00:00 AM	
+Site_Code	string	255	1	
+Div_Code	string	255	D	
+Subcode	string	255	D100000051	
+LinkedSubcode	string	255	D100000052	
+GoodsReturn	number	0	
+Adjustment	number	0	
+Payment	number	0	
+Balance	number	533.48	
+AmtDr	number	533.48	
+AmtCr	number	0	
+Narration	string	255	 NEW JB COLLECTION 24078-1. 	
+AdjDocID	string	255		
+DueDate	datetime		
+AdjDate	datetime		
+AdjAmount	string	255		
+InterestBalance	string	255		
+PartyName	string	255	AGRAWAL HOSIERY CENTER [W], PHAPHAMAU	
+PartyCity	string	255	PHAPHAMAU	
+LinkedPartyName	string	255	AGRAWAL HOSIERY CENTER-PHAPHAMAU	
+LrNo	string	255		
+Brand	string	255		
+AmsInvNo	string	255		
+AmsInvAmt	number	0	
+GoodsValue	number	0	
+DiscountPer	number	0	
+Discount	number	0	
+TaxableAmt	number	0	
+TaxAmt	number	0	
+OtherChgAmt	number	0	
+Deduction	number	0	
+BillAmt	number	533.48	
+Commission	number	0	
+NetPurAmt	number	0	
+Div_Name	string	255	DEMO	
+Site_Name	string	255	KANPUR	
+LeaverageDays	number	60	
+AveragePaymentDays	number		
+SiteShortName	string	255	KNP-	
+Commission_Unsettled	number	0	

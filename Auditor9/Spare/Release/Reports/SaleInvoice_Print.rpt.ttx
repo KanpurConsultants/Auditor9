@@ -1,0 +1,131 @@
+; Field definition file for table: ADORecordset
+Copies	string	255	1	
+CopyPrintingCaption	string	255		
+DocNoCaption	string	255	Invoice No.	
+DocDateCaption	string	255	Invoice Date	
+SiteStateCode	string	255	09	
+SiteStateName	string	255	Uttar Pradesh	
+DocID	string	255	D1    SI 2020    5055	
+Sr	number	1	
+V_Date	datetime	27-Oct-20 12:00:00 AM	
+DeliveryDate	datetime		
+Voucher_Type	string	255	Tax Invoice	
+NCat	string	255	SI	
+InvoiceNo	string	255	SI-4027	
+RateType	string	255	Dhara	
+DocumentPrintShowRateType	string	255	Show If Not Blank	
+AgentName	string	255	SURESH KUMAR PAHLAJANI	
+AgentCaption	string	255	Agent	
+SaleToPartyName	string	255	JAGDISH PRASAD PRAMOD KUMAR	
+SaleToPartyAddress	string	255	55/112 GENRALGANJKANPUR{UP}	
+CityName	string	255	KANPUR	
+SaleToPartyPincode	string	255		
+StateCode	string	255	09	
+StateName	string	255	Uttar Pradesh	
+SaleToPartyMobile	string	255	9236751499,	
+ContactPerson	string	255	SHRI KRISHA	
+SaleToPartySalesTaxNo	string	255	09BGKPA2744J1ZC	
+SaleToPartyAadharNo	string	255		
+SaleToPartyPanNo	string	255	BGKPA2744J	
+ShipToPartyName	string	255	JAGDISH PRASAD PRAMOD KUMAR	
+ShipToPartyAddress	string	255	55/112 GENRALGANJKANPUR{UP}	
+ShipToPartyCity	string	255	KANPUR	
+ShipToPartyPincode	string	255		
+ShipToPartyStateCode	string	255	09	
+ShipToPartyStateName	string	255	Uttar Pradesh	
+ShipToPartyMobile	string	255	9236751499,	
+ShipToPartySalesTaxNo	string	255	09BGKPA2744J1ZC	
+ShipToPartyAadharNo	string	255		
+ShipToPartyPanNo	string	255	BGKPA2744J	
+ShipToAddress	string	255		
+TermsAndConditions	string	255	<b>1.</b> Goods once sold will not be taken back. <b>2.</b> No Guarantee in the Age of Fashion. <b>3.</b> Interest @ 24% per annum will be charge after 30 days from the date of bill. <b>4.</b> All disputes subject to Kanpur Jurisdiction OR disputes will be settle through Cawnpore Kapda Committee Arbitration Board which will be abide by the both parties	
+TransporterName	string	255	LOCAL, KANPUR	
+LrNo	string	255		
+LrDate	datetime		
+PrivateMark	string	255		
+Weight	number	0	
+Freight	number	0	
+ChargedWeight	number	0	
+FreightType	string	255		
+RoadPermitNo	string	255		
+RoadPermitDate	datetime		
+VehicleNo	string	255		
+ShipMethod	string	255		
+PreCarriageBy	string	255		
+PreCarriagePlace	string	255		
+BookedFrom	string	255		
+BookedTo	string	255		
+Destination	string	255		
+DescriptionOfGoods	string	255		
+DescriptionOfPacking	string	255		
+ReferenceNo	string	255		
+ItemName	string	255	GULAM          [KAPIL TEX | SAREE]	
+ItemGroupName	string	255	S-ENT-304 HALKI	
+ItemCatName	string	255	SAREE	
+ItemSpecification	string	255	GULAM	
+InvoiceLineSpecification	string	255		
+HSN	string	255	5407	
+MaintainStockYn	boolean	True	
+SalesTaxGroupItem	string	255	GST 5%	
+GrossTaxRate	number	5	
+Pcs	number	4	
+Qty	number	4	
+Rate	number	545	
+Unit	string	255	Pcs	
+UnitDecimalPlaces	number	0	
+DiscountPer	number	0	
+DiscountAmount	number	0	
+AdditionalDiscountPer	number	0	
+AdditionalDiscountAmount	number	0	
+AdditionPer	number	5	
+AdditionAmount	number	109	
+TotalDiscount	number	-109	
+AmountBeforeDiscount	number	2180	
+Amount	number	2289	
+Taxable_Amount	number	2289	
+Tax1_Per	number	0	
+Tax1	number	0	
+Tax2_Per	number	2.5	
+Tax2	number	57.23	
+Tax3_Per	number	2.5	
+Tax3	number	57.23	
+Tax4_Per	number	0	
+Tax4	number	0	
+Tax5_Per	number	0	
+Tax5	number	0	
+Net_Amount	number	2403.52	
+LRemarks	string	255		
+HRemarks	string	255	ANUJ PACKING	
+H_TotalDiscount	number	-601.3	
+H_AmountBeforeDiscount	number	12026	
+H_Gross_Amount	number	12627.3	
+H_SpecialDiscount_Per	number	0	
+H_SpecialDiscount	number	0	
+H_Taxable_Amount	number	12627.3	
+H_Tax1_Per	number	0	
+H_Tax1	number	0	
+H_Tax2_Per	number	0	
+H_Tax2	number	315.7	
+H_Tax3_Per	number	0	
+H_Tax3	number	315.7	
+H_Tax4_Per	number	0	
+H_Tax4	number	0	
+H_Tax5_Per	number	0	
+H_Tax5	number	0	
+H_Deduction_Per	number	0	
+H_Deduction	number	0	
+H_Other_Charge_Per	number	0	
+H_Other_Charge	number	0	
+Round_Off	number	0.3	
+H_Net_Amount	number	13259	
+Default_BankAccountDetail	string	255	Bank Detail : 	UBI A/c : 396401010295985     IFSC : UBIN0539643, 
+                       HDFC A/c : 50200003154727    IFSC : HDFC0002006,  
+                       SBI A/c : 32481767937              IFSC : SBIN0001151	
+DocumentPrintHeaderPattern	string	255	Center Aligned	
+DimDetail	string	255		
+PrintedByUser	string	255	SUPER	
+EntryByUser	string	255	SAMEER	
+PrintTitle	string	255	TAX INVOICE	
+DocumentPrintShowPrintDateTimeYn	string	255	1	
+CompanyLogo	BLOB		
+CompanyAuthorisedSignature	BLOB		

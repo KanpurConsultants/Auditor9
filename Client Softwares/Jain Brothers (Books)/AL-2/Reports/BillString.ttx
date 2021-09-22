@@ -1,0 +1,4 @@
+DocNo	String	250
+Account	String	250
+Dated	Date
+

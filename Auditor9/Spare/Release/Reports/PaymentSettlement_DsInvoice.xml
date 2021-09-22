@@ -1,0 +1,12 @@
+<?xml version="1.0" standalone="yes"?>
+<NewDataSet>
+  <Table>
+    <InvoiceNo>1/6539</InvoiceNo>
+    <V_Date>2020-02-04T00:00:00+05:30</V_Date>
+    <InvoiceAmount>22848</InvoiceAmount>
+    <SettlementAddition>0</SettlementAddition>
+    <SettlementDeduction>0</SettlementDeduction>
+    <LineDeduction>0</LineDeduction>
+    <SettlementInvoiceAmount>22848</SettlementInvoiceAmount>
+  </Table>
+</NewDataSet>

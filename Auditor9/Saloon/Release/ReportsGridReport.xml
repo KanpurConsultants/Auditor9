@@ -1,0 +1,42 @@
+<?xml version="1.0" standalone="yes"?>
+<xs:schema id="NewDataSet" xmlns="" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
+  <xs:element name="NewDataSet" msdata:IsDataSet="true" msdata:MainDataTable="Table" msdata:UseCurrentLocale="true">
+    <xs:complexType>
+      <xs:choice minOccurs="0" maxOccurs="unbounded">
+        <xs:element name="Table">
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element name="DocID" type="xs:string" minOccurs="0" />
+              <xs:element name="V_Type" type="xs:string" minOccurs="0" />
+              <xs:element name="V_Prefix" type="xs:string" minOccurs="0" />
+              <xs:element name="V_Date" type="xs:dateTime" minOccurs="0" />
+              <xs:element name="V_No" type="xs:long" minOccurs="0" />
+              <xs:element name="Div_Code" type="xs:string" minOccurs="0" />
+              <xs:element name="Site_Code" type="xs:string" minOccurs="0" />
+              <xs:element name="ReferenceNo" type="xs:string" minOccurs="0" />
+              <xs:element name="Subcode" type="xs:string" minOccurs="0" />
+              <xs:element name="DrCr" type="xs:string" minOccurs="0" />
+              <xs:element name="UptoDate" type="xs:dateTime" minOccurs="0" />
+              <xs:element name="Remarks" type="xs:string" minOccurs="0" />
+              <xs:element name="Status" type="xs:string" minOccurs="0" />
+              <xs:element name="SalesTaxGroupParty" type="xs:string" minOccurs="0" />
+              <xs:element name="PlaceOfSupply" type="xs:string" minOccurs="0" />
+              <xs:element name="VendorSalesTaxNo" type="xs:string" minOccurs="0" />
+              <xs:element name="Structure" type="xs:string" minOccurs="0" />
+              <xs:element name="CustomFields" type="xs:string" minOccurs="0" />
+              <xs:element name="PartyDocNo" type="xs:string" minOccurs="0" />
+              <xs:element name="PartyDocDate" type="xs:dateTime" minOccurs="0" />
+              <xs:element name="EntryBy" type="xs:string" minOccurs="0" />
+              <xs:element name="EntryDate" type="xs:dateTime" minOccurs="0" />
+              <xs:element name="ApproveBy" type="xs:string" minOccurs="0" />
+              <xs:element name="ApproveDate" type="xs:dateTime" minOccurs="0" />
+              <xs:element name="MoveToLog" type="xs:string" minOccurs="0" />
+              <xs:element name="MoveToLogDate" type="xs:dateTime" minOccurs="0" />
+              <xs:element name="UploadDate" type="xs:dateTime" minOccurs="0" />
+            </xs:sequence>
+          </xs:complexType>
+        </xs:element>
+      </xs:choice>
+    </xs:complexType>
+  </xs:element>
+</xs:schema>

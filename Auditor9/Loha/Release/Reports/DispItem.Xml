@@ -1,0 +1,28 @@
+<?xml version="1.0" standalone="yes"?>
+<xs:schema id="NewDataSet" xmlns="" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
+  <xs:element name="NewDataSet" msdata:IsDataSet="true" msdata:MainDataTable="T" msdata:UseCurrentLocale="true">
+    <xs:complexType>
+      <xs:choice minOccurs="0" maxOccurs="unbounded">
+        <xs:element name="T">
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element name="SearchCode" type="xs:string" minOccurs="0" />
+              <xs:element name="VDate" type="xs:string" minOccurs="0" />
+              <xs:element name="VNo" type="xs:string" minOccurs="0" />
+              <xs:element name="VType" type="xs:string" minOccurs="0" />
+              <xs:element name="SearchName" type="xs:string" minOccurs="0" />
+              <xs:element name="OpnQty" type="xs:double" minOccurs="0" />
+              <xs:element name="OpnAmt" type="xs:double" minOccurs="0" />
+              <xs:element name="RecQty" type="xs:double" minOccurs="0" />
+              <xs:element name="RecAmt" type="xs:double" minOccurs="0" />
+              <xs:element name="IssQty" type="xs:double" minOccurs="0" />
+              <xs:element name="IssAmt" type="xs:double" minOccurs="0" />
+              <xs:element name="ClsQty" type="xs:double" minOccurs="0" />
+              <xs:element name="ClsAmt" type="xs:double" minOccurs="0" />
+            </xs:sequence>
+          </xs:complexType>
+        </xs:element>
+      </xs:choice>
+    </xs:complexType>
+  </xs:element>
+</xs:schema>

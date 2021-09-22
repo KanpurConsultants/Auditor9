@@ -1,0 +1,23 @@
+<?xml version="1.0" standalone="yes"?>
+<NewDataSet>
+  <Table>
+    <DocNo>D1-WPS-112</DocNo>
+    <V_Date>2020-07-23T00:00:00+05:30</V_Date>
+    <HSubcodeName>K.S. CHOPRA HOSIERY</HSubcodeName>
+    <Address>FACTORY.NO.98,STREET .NO 9,
+NEW MADHAPURI, 
+SHOP THAPARMARKET,WAIT GANJ</Address>
+    <CityName>LUDIHYANA</CityName>
+    <StateCode>03</StateCode>
+    <StateName>Punjab</StateName>
+    <Mobile>9888914001</Mobile>
+    <Phone>9872465001</Phone>
+    <PartyGSTNo>03ABHPP8921D3ZR</PartyGSTNo>
+    <UptoDate>2020-07-23T00:00:00+05:30</UptoDate>
+    <DrCr>Cr</DrCr>
+    <LSubcodeName>B.C. A/C</LSubcodeName>
+    <Amount>21717</Amount>
+    <PrintedByUser>SUPER</PrintedByUser>
+    <PrintTitle>Payment Settlement</PrintTitle>
+  </Table>
+</NewDataSet>

@@ -1,0 +1,16 @@
+<?xml version="1.0" standalone="yes"?>
+<NewDataSet>
+  <Table>
+    <DocNo>D1-RS-1</DocNo>
+    <V_Date>2019-12-11T00:00:00+05:30</V_Date>
+    <HSubcodeName>ANJALI BETIA</HSubcodeName>
+    <CityName>Bihar</CityName>
+    <StateCode>10</StateCode>
+    <StateName>Bihar</StateName>
+    <UptoDate>2020-01-07T00:00:00+05:30</UptoDate>
+    <LSubcodeName>INTREST</LSubcodeName>
+    <Amount>-59.46</Amount>
+    <PrintedByUser>SUPER</PrintedByUser>
+    <PrintTitle>Payment Settlement</PrintTitle>
+  </Table>
+</NewDataSet>

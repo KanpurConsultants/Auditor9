@@ -1,0 +1,10 @@
+BookName	String	250
+Author	String	250
+Publisher	String	250
+BookCode	String	250
+BookGroup	String	250
+Subject	String	250
+ClassName	String	250
+SchoolName	String	250
+TQty	Currency
+

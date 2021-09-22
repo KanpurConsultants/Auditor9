@@ -1,0 +1,10 @@
+BookName	String	250
+BookID	Number
+Publisher	String	250
+Subject	String	250
+BookGroup	String	250
+GSTPer	String	250
+CStock	Currency
+Price	Currency
+StockValue	Currency
+

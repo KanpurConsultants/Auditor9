@@ -1,0 +1,89 @@
+{DB D:\S2k\Fertilizers\Data\Company.001\S2kFP001.mdb DB}
+{Sql Select Accounts.*,
+Raw.*,RawStock.*,
+{Pm StockIn Pm} as StockIn,
+{Pm StockOut Pm} as StockOut,
+{Pm Opening Pm}  as Opening,
+{Pm Balance Pm} as Balance,
+{Pm Balance Pm} * ValuationRate as StockValue
+From RawStock,Raw,
+Accounts Where RawStock.RefAccountID=Accounts.AccountID and 
+RawStock.RawID=Raw.RawID and RawStock.BranchID ='{Pm BranchID Pm}' 
+and Raw.RawID in ({Pm RawID Pm}) and Dated <= '{Pm DateTo Pm}' 
+Order By Raw,Dated,VType Sql}
+{Xdr Settings
+Columns=90
+Lines=60
+Page Break=True
+Condense=False
+Character Per Inch=12
+Xdr Settings}
+
+{Formula
+ = 
+Formula}
+
+{GroupSection
+Report Header;
+Page Header;
+Header (Raw.RawID);
+Detail;Dated>={Pm DateFrom Pm}
+Footer (Raw.RawID);
+Grand;
+Page Footer;
+Report Footer;
+GroupSection}
+
+{Parameter
+{Variable
+StockIn=iif(IO=0,Qty,0)
+StockOut=iif(IO=1,Qty,0)
+Opening=-{Pm StockIn Pm} + {Pm StockOut Pm}
+Balance={Pm StockIn Pm} - {Pm StockOut Pm}
+Variable}
+
+{Browser
+Select Raw as [Product Name],RawID from Raw Order By Raw|3000;0|1|1=RawID
+Browser}
+DateFromToParameter}
+{Report Header
+Report Header}
+========================================================================================================================
+{Page Header
+lbl;OwnerName;44;2;4
+lbl;OwnerAdd1  OwnerAdd2;87;2;0
+
+lbl;RAW STOCK REGISTER;87;0;1
+fml;"FOR PERIOD " + ymd_dmy("{Pm DateFrom Pm}") + " to "+ ymd_dmy("{Pm DateTo Pm}");74;0;0}{lbl;PAGE NO:;13;1;0
+lbl;-------------------------------------------------------------------------------------------------------------------------;87;0;0
+lbl;Dated;12;0;0}{lbl; |;4;0;0}{lbl;Trans;6;0;0}{lbl; |;4;0;0}{lbl;VoucherNo;11;0;0}{lbl; |;4;0;0}{lbl;OPB;8;1;0}{lbl; |;4;0;0}{lbl;Rec.;8;1;0}{lbl; |;4;0;0}{lbl;Con.;8;1;0}{lbl; |;4;0;0}{lbl;Balance;10;1;0
+lbl;-------------------------------------------------------------------------------------------------------------------------;87;0;0
+Page Header}
+========================================================================================================================
+{Header (Raw.RawID)
+
+fld;Raw;50;0;0
+lbl;-------------------------------------------------------------------------------------------------------------------------;87;0;0
+Header (Raw.RawID)}
+========================================================================================================================
+{Detail
+fml;NoDuplicate{YMD_DMY(Dated),Raw & Dated};12;0;0}{lbl; |;4;0;0}{fml;Case(Vtype,7=Pur.:8=Prod:9=S.T.:11=Sale);6;0;0}{lbl; |;4;0;0}{fld;VoucherNo;11;0;0}{lbl; |;4;0;0}{fml;Sum(OPB(Balance));8;1;0}{lbl; |;4;0;0}{fld;StockIn;8;1;0}{lbl; |;4;0;0}{fld;StockOut;8;1;0}{lbl; |;4;0;0}{fml;Sum(Balance);10;1;0
+Detail}
+========================================================================================================================
+{Footer (Raw.RawID)
+lbl;------------------------------------------------------------------------------------------;87;0;0
+lbl;;53;0;0}{fml;sum(StockIn);8;1;0}{lbl; |;4;0;0}{fml;sum(StockOut);8;1;0
+Footer (Raw.RawID)}
+========================================================================================================================
+{Grand
+
+Grand}
+========================================================================================================================
+{Page Footer
+Page Footer}
+========================================================================================================================
+{Report Footer
+
+Report Footer}
+========================================================================================================================
+

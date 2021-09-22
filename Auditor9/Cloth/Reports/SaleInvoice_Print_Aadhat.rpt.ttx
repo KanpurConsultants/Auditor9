@@ -1,0 +1,134 @@
+; Field definition file for table: ADORecordset
+Copies	string	255	1	
+CopyPrintingCaption	string	255		
+DocNoCaption	string	255	Invoice No.	
+DocDateCaption	string	255	Invoice Date	
+SiteStateCode	string	255	09	
+SiteStateName	string	255	Uttar Pradesh	
+DocID	string	255	D1    SI 2020      79	
+Sr	number	1	
+V_Date	datetime	22/Jul/2020 12:00:00 AM	
+DeliveryDate	datetime		
+Voucher_Type	string	255	Tax Invoice	
+NCat	string	255	SI	
+InvoiceNo	string	255	SSF-KNP-75	
+RateType	string	255	A	
+AgentName	string	255		
+AgentCaption	string	255	Agent	
+SaleToPartyName	string	255	RAJ HOSIERY AND READYMADE-KUNDA	
+SaleToPartyCode	string	255	3835	
+SaleToPartyAddress	string	255		
+CityName	string	255	KUNDA	
+SaleToPartyPincode	string	255	230204	
+StateCode	string	255	09	
+StateName	string	255	Uttar Pradesh	
+SaleToPartyMobile	string	255	9918835022	
+ContactPerson	string	255		
+SaleToPartySalesTaxNo	string	255	09AIEPK5260A1ZM	
+SaleToPartyAadharNo	string	255		
+SaleToPartyPanNo	string	255	AIEPK5260A	
+ShipToPartyName	string	255	RAJ HOSIERY AND READYMADE-KUNDA	
+ShipToPartyManualCode	string	255	3835	
+ShipToPartyAddress	string	255		
+ShipToPartyCity	string	255	KUNDA	
+ShipToPartyPincode	string	255	230204	
+ShipToPartyStateCode	string	255	09	
+ShipToPartyStateName	string	255	Uttar Pradesh	
+ShipToPartyMobile	string	255	9918835022	
+ShipToPartySalesTaxNo	string	255	09AIEPK5260A1ZM	
+ShipToPartyAadharNo	string	255		
+ShipToPartyPanNo	string	255	AIEPK5260A	
+ShipToAddress	string	255		
+TermsAndConditions	string	255	(1) Payment within <CreditDays> days from date of Invoice. <BR>(2) Overdue Interest @ <Default_DebtorsInterestRate> P.A. after due date. <BR>(3) Goods dispatched by transport at the owner risk. <BR>(4) All disputes are subject to <CompanyCity> jurisdiction only.	
+TransporterName	string	255	NEW KANPUR BARABANKI TRANSPORT-KANPUR	
+LrNo	string	255		
+LrDate	datetime		
+NoOfBales	number	1	
+PrivateMark	string	255		
+Weight	number	0	
+Freight	number	0	
+ChargedWeight	number	0	
+FreightType	string	255		
+RoadPermitNo	string	255	461127102299	
+RoadPermitDate	datetime		
+VehicleNo	string	255		
+ShipMethod	string	255		
+PreCarriageBy	string	255		
+PreCarriagePlace	string	255		
+BookedFrom	string	255	KANPUR	
+BookedTo	string	255		
+Destination	string	255	KUNDA	
+DescriptionOfGoods	string	255		
+DescriptionOfPacking	string	255		
+ReferenceNo	string	255		
+ContraDocNo	string	255	440	
+ContraDocNoCsv	string	255	440	
+ItemName	string	255	KURTI-6204          [M.S. CREATION-KNP | KURTI]	
+ItemGroupName	string	255	M.S. CREATION-KNP	
+ItemCatName	string	255	KURTI	
+ItemSpecification	string	255	KURTI	
+InvoiceLineSpecification	string	255		
+HSN	string	255	6204	
+MaintainStockYn	boolean	True	
+SalesTaxGroupItem	string	255	GST 5%	
+GrossTaxRate	number	5	
+Pcs	number	0	
+Qty	number	22	
+Rate	number	150	
+Unit	string	255	PCS	
+UnitDecimalPlaces	number	0	
+DiscountCalculationPattern	string	255		
+DiscountPer	number	0	
+DiscountAmount	number	0	
+AdditionalDiscountPer	number	4	
+AdditionalDiscountAmount	number	132	
+AdditionPer	number	0	
+AdditionAmount	number	0	
+TotalDiscount	number	132	
+AmountBeforeDiscount	number	3300	
+Amount	number	3168	
+Taxable_Amount	number	3168	
+Tax1_Per	number	0	
+Tax1	number	0	
+Tax2_Per	number	2.5	
+Tax2	number	79.2	
+Tax3_Per	number	2.5	
+Tax3	number	79.2	
+Tax4_Per	number	0	
+Tax4	number	0	
+Tax5_Per	number	0	
+Tax5	number	0	
+Net_Amount	number	3326.4	
+LRemarks	string	255	MEGHANA	
+HRemarks	string	255		
+H_TotalDiscount	number	2163.6	
+H_AmountBeforeDiscount	number	54090	
+H_Gross_Amount	number	51926.4	
+H_SpecialDiscount_Per	number	0	
+H_SpecialDiscount	number	0	
+H_Taxable_Amount	number	51926.4	
+H_Tax1_Per	number	0	
+H_Tax1	number	0	
+H_Tax2_Per	number	0	
+H_Tax2	number	1298.16	
+H_Tax3_Per	number	0	
+H_Tax3	number	1298.16	
+H_Tax4_Per	number	0	
+H_Tax4	number	0	
+H_Tax5_Per	number	0	
+H_Tax5	number	0	
+H_Deduction_Per	number	0	
+H_Deduction	number	0	
+H_Other_Charge_Per	number	0	
+H_Other_Charge	number	0	
+Round_Off	number	0.28	
+H_Net_Amount	number	54523	
+Default_BankAccountDetail	string	255	Bank : ICICI Bank, Branch : THE MALL - Kanpur,<BR>Beneficiary : Shyama Shyam Fabrics Pvt. Ltd.,<BR>A/c No.: 628805023057, IFSC : ICIC0006288	
+DocumentPrintHeaderPattern	string	255	Center Aligned	
+DimDetail	string	255		
+PrintedByUser	string	255	SUPER	
+EntryByUser	string	255	SUMIT	
+PrintTitle	string	255	TAX INVOICE	
+PurchInvoiceNo	string	255	2020-21/111	
+CompanyLogo	BLOB		
+CompanyAuthorisedSignature	BLOB		

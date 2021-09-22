@@ -1,0 +1,136 @@
+{DB D:\S2k\Fertilizers\Data\Company.001\S2kFP002.mdb DB}
+{Sql Select
+
+Product,
+Pack,
+Product.ProductID,
+Sum(iif(Dated  < '{Pm DateFrom Pm}', {Pm Balance Pm} ,0)) as Opening,
+Sum(iif(Dated  < '{Pm DateFrom Pm}', {Pm BalanceAmount Pm} ,0)) as OpeningAmount,
+
+Sum(iif(Dated >= '{Pm DateFrom Pm}' And Dated <= '{Pm DateTo Pm}', {Pm GoodsReceive Pm} ,0)) as GoodsReceive,
+Sum(iif(Dated >= '{Pm DateFrom Pm}' And Dated <= '{Pm DateTo Pm}', {Pm GoodsReceiveAmount Pm} ,0)) as GoodsReceiveAmount,
+
+Sum(iif(Dated >= '{Pm DateFrom Pm}' And Dated <= '{Pm DateTo Pm}', {Pm SaleReturn Pm} ,0)) as SaleReturn,
+Sum(iif(Dated >= '{Pm DateFrom Pm}' And Dated <= '{Pm DateTo Pm}', {Pm SaleReturnAmount Pm} ,0)) as SaleReturnAmount,
+
+Sum(iif(Dated <= '{Pm DateTo Pm}', {Pm TotalIn Pm} ,0)) as TotalIn,
+Sum(iif(Dated <= '{Pm DateTo Pm}', {Pm TotalInAmount Pm} ,0)) as TotalInAmount,
+
+Sum(iif(Dated >= '{Pm DateFrom Pm}' And Dated <= '{Pm DateTo Pm}', {Pm Sale Pm} ,0)) as Sale,
+Sum(iif(Dated >= '{Pm DateFrom Pm}' And Dated <= '{Pm DateTo Pm}', {Pm SaleAmount Pm} ,0)) as SaleAmount,
+
+Sum(iif(Dated >= '{Pm DateFrom Pm}' And Dated <= '{Pm DateTo Pm}', {Pm SaleHo Pm} ,0)) as SaleHo,
+Sum(iif(Dated >= '{Pm DateFrom Pm}' And Dated <= '{Pm DateTo Pm}', {Pm SaleHoAmount Pm} ,0)) as SaleHoAmount,
+
+Sum(iif(Dated >= '{Pm DateFrom Pm}' And Dated <= '{Pm DateTo Pm}', {Pm TotalOut Pm} ,0)) as TotalOut,
+Sum(iif(Dated >= '{Pm DateFrom Pm}' And Dated <= '{Pm DateTo Pm}', {Pm TotalOutAmount Pm} ,0)) as TotalOutAmount,
+
+Sum(iif(Dated <= '{Pm DateTo Pm}', {Pm Balance Pm} ,0)) as Balance,
+Sum(iif(Dated <= '{Pm DateTo Pm}', {Pm Balance Pm}*Product.Rate ,0)) as BalanceAmount
+
+
+From ProductStock,Product,Accounts 
+
+Where ProductStock.RefAccountID=Accounts.AccountID and 
+ProductStock.ProductID=Product.ProductID and
+ProductStock.BranchID ='{Pm BranchID Pm}' and 
+Product.ProductID in ({Pm ProductID Pm}) and 
+Dated <=  '{Pm DateTo Pm}' 
+
+Group By Product,Pack,Product.ProductID Sql}
+{Xdr Settings
+Columns=180
+Lines=60
+Page Break=True
+Condense=False
+Character Per Inch=10
+Xdr Settings}
+
+{Formula
+ = 
+Formula}
+
+{GroupSection
+Report Header;
+Page Header;
+Detail;
+Grand;
+Page Footer;
+Report Footer;
+GroupSection}
+
+{Parameter
+{Variable
+Opening=iif(VType=13,TotalQty,0)
+OpeningAmount=iif(VType=13,TotalQty*ProductStock.Rate,0)
+
+GoodsReceive=iif(VType=6 Or (VType=8 And IO=0) Or (VType=18 And IO=0) ,TotalQty,0)
+GoodsReceiveAmount=iif(VType=6 Or (VType=8 And IO=0) Or (VType=18 And IO=0) ,TotalQty*ProductStock.Rate,0)
+
+SaleReturn=iif(VType=12,TotalQty,0)
+SaleReturnAmount=iif(VType=12 ,TotalQty*ProductStock.Rate,0)
+
+TotalIn ={Pm Opening Pm} + {Pm GoodsReceive Pm} + {Pm SaleReturn Pm}
+TotalInAmount ={Pm OpeningAmount Pm} + {Pm GoodsReceiveAmount Pm} + {Pm SaleReturnAmount Pm}
+
+Sale=iif(VType=11 AND IO=1,TotalQty,0)
+SaleAmount=iif(VType=11 AND IO=1,TotalQty*ProductStock.Rate,0)
+
+SaleHo=iif(VType=16 AND IO=1,TotalQty,0)
+SaleHoAmount=iif(VType=16 AND IO=1,TotalQty*ProductStock.Rate,0)
+
+TotalOut ={Pm Sale Pm} + {Pm SaleHo Pm}
+TotalOutAmount ={Pm SaleAmount Pm} + {Pm SaleHoAmount Pm}
+
+
+Balance =(({Pm TotalIn Pm}) - ({Pm TotalOut Pm}))
+BalanceAmount =({Pm TotalInAmount Pm}) - ({Pm TotalOutAmount Pm})
+
+
+Variable}
+
+{Browser
+Select Product as [Product Name],ProductID,Pack from product Order By Product,Pack |4000;0;1500|1|1=ProductID
+Browser}
+DateFromToParameter}
+{Report Header
+Report Header}
+========================================================================================================================
+{Page Header
+lbl;;2;0;0
+lbl;OwnerBranch;47;0;4
+
+lbl;CLOSING STOCK (FINISHED GOODS);162;0;0
+fml;"FOR PERIOD " + ymd_dmy("{Pm DateFrom Pm}") + " to "+ ymd_dmy("{Pm DateTo Pm}");205;0;0}{lbl;PAGE NO:;15;1;0
+
+lbl;-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------;220;0;0
+lbl;Product;32;0;0}{lbl; |;3;0;0}{lbl;OPENING BALANCE ;20;1;0}{lbl; |;3;0;0}{lbl;PRODUCTION;20;2;0}{lbl; |;3;0;0}{lbl;RETURN FROM BRANCH;20;2;0}{lbl; |;3;0;0}{lbl;TOTAL IN;20;2;0}{lbl; |;3;0;0}{lbl;SALE;21;2;0}{lbl; |;3;0;0}{lbl;TRANSFER TO BRANCH;20;2;0}{lbl; |;3;0;0}{lbl;TOTAL OUT;20;2;0}{lbl; |;3;0;0}{lbl;BALANCE;23;2;0
+lbl;-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------;220;0;0
+lbl;;32;0;0}{lbl; |;3;0;0}{lbl;QTY;5;1;0}{lbl; |;3;0;0}{lbl;AMOUNT;12;1;0}{lbl; |;3;0;0}{lbl;QTY;5;1;0}{lbl; |;3;0;0}{lbl;AMOUNT;12;1;0}{lbl; |;3;0;0}{lbl;QTY;5;1;0}{lbl; |;3;0;0}{lbl;AMOUNT;12;1;0}{lbl; |;3;0;0}{lbl;QTY;5;1;0}{lbl; |;3;0;0}{lbl;AMOUNT;12;1;0}{lbl; |;3;0;0}{lbl;QTY;5;1;0}{lbl; |;3;0;0}{lbl;AMOUNT;13;1;0}{lbl; |;3;0;0}{lbl;QTY;5;1;0}{lbl; |;3;0;0}{lbl;AMOUNT;12;1;0}{lbl; |;3;0;0}{lbl;QTY;5;1;0}{lbl; |;3;0;0}{lbl;AMOUNT;12;1;0}{lbl; |;3;0;0}{lbl;QTY;8;1;0}{lbl; |;3;0;0}{lbl;AMOUNT;12;1;0
+lbl;-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------;220;0;0
+Page Header}
+========================================================================================================================
+{Detail
+fml;Product + " " + Pack;32;0;0}{lbl; |;3;0;0}{fld;Opening;5;1;0}{lbl; |;3;0;0}{fml;CF(OpeningAmount);12;1;0}{lbl; |;3;0;0}{fld;GoodsReceive;5;1;0}{lbl; |;3;0;0}{fml;CF(GoodsReceiveAmount);12;1;0}{lbl; |;3;0;0}{fld;SaleReturn;5;1;0}{lbl; |;3;0;0}{fml;CF(SaleReturnAmount);12;1;0}{lbl; |;3;0;0}{fld;TotalIn;5;1;0}{lbl; |;3;0;0}{fml;CF(TotalInAmount);12;1;0}{lbl; |;3;0;0}{fld;Sale;5;1;0}{lbl; |;3;0;0}{fml;CF(SaleAmount);13;1;0}{lbl; |;3;0;0}{fld;SaleHo;5;1;0}{lbl; |;3;0;0}{fml;CF(SaleHoAmount);12;1;0}{lbl; |;3;0;0}{fld;TotalOut;5;1;0}{lbl; |;3;0;0}{fml;CF(TotalOutAmount);12;1;0}{lbl; |;3;0;0}{fml;WF(Balance);8;1;0}{lbl; |;3;0;0}{fml;CF(BalanceAmount);12;1;0
+Detail}
+========================================================================================================================
+{Grand
+lbl;-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------;220;0;0
+lbl;;32;0;0}{lbl; |;3;0;0}{fml;Sum(Opening);5;1;0}{lbl; |;3;0;0}{fml;Sum(OpeningAmount);12;1;0}{lbl; |;3;0;0}{fml;SUM(GoodsReceive);5;1;0}{lbl; |;3;0;0}{fml;SUM(GoodsReceiveAmount);12;1;0}{lbl; |;3;0;0}{fml;SUM(SaleReturn);5;1;0}{lbl; |;3;0;0}{fml;SUM(SaleReturnAmount);12;1;0}{lbl; |;3;0;0}{fml;SUM(TotalIn);5;1;0}{lbl; |;3;0;0}{fml;SUM(TotalInAmount);12;1;0}{lbl; |;3;0;0}{fml;SUM(Sale);5;1;0}{lbl; |;3;0;0}{fml;SUM(SaleAmount);13;1;0}{lbl; |;3;0;0}{fml;SUM(SaleHo);5;1;0}{lbl; |;3;0;0}{fml;Sum(SaleHoAmount);12;1;0}{lbl; |;3;0;0}{fml;SUM(TotalOut);5;1;0}{lbl; |;3;0;0}{fml;SUM(TotalOutAmount);12;1;0}{lbl; |;3;0;0}{fml;SUM(Balance);8;1;0}{lbl; |;3;0;0}{fml;SUM(BalanceAmount);12;1;0
+lbl;-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------;220;0;0
+
+
+
+
+lbl;;2;0;0
+Grand}
+========================================================================================================================
+{Page Footer
+
+Page Footer}
+========================================================================================================================
+{Report Footer
+
+Report Footer}
+========================================================================================================================
+

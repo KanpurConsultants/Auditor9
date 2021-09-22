@@ -1,0 +1,45 @@
+; Field definition file for table: ADORecordset
+DocID	string	255		
+V_Type	string	255		
+RecID	string	255	Opening	
+V_Date	string	255		
+Site_Code	string	255		
+Div_Code	string	255		
+Subcode	string	255	D100000833	
+LinkedSubcode	string	255	D100000833	
+GoodsReturn	number	0	
+Adjustment	number	0	
+Payment	number	0	
+Balance	number	0	
+AmtDr	number	79142.95	
+AmtCr	number	0	
+Narration	string	255		
+AdjDocID	string	255		
+DueDate	string	255		
+AdjDate	string	255		
+AdjPayment	number	0	
+ChqNo	string	255		
+AdjAmount	number	0	
+InterestBalance	number	0	
+SalePartyName	string	255		
+PartyName	string	255	GURU RAM DAS(PB/LDH/W/D0095), LUDHIANA	
+PartyCity	string	255		
+LinkedPartyName	string	255		
+LinkedPartyCity	string	255		
+LrNo	string	255		
+Brand	string	255		
+AmsInvNo	string	255		
+AmsInvAmt	number	0	
+TaxableAmt	number	49307.6	
+TaxAmt	number	1180.09	
+OtherChgAmt	number	31.4	
+BillAmt	number	50519.09	
+Div_Name	string	255		
+Site_Name	string	255		
+InterestDays	long	0	
+Narration1	string	255		
+InterestAmount	number	1212.76	
+InterestLeaverageDays	long	0	
+InterestSlabDescription	string	255		
+CreditLimit	number	0	
+PakkaBalance	long	0	

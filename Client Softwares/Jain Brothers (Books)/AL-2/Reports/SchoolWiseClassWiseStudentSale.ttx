@@ -1,0 +1,8 @@
+SchoolName	String	250
+SchoolID	Number
+ClassName	String	250
+StudentName	String	250
+NAmount	Currency
+FromDate	Date
+ToDate	Date
+

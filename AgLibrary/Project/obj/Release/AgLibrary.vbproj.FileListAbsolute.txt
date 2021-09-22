@@ -1,0 +1,288 @@
+\\node2\AgLibrary\obj\Release\ResolveAssemblyReference.cache
+\\node2\AgLibrary\obj\Release\AgLibrary.FrmAgZip.resources
+\\node2\AgLibrary\obj\Release\AgLibrary.FrmBackupDatase.resources
+\\node2\AgLibrary\obj\Release\AgLibrary.FrmCommonMaster1.resources
+\\node2\AgLibrary\obj\Release\AgLibrary.FrmCommonMaster2.resources
+\\node2\AgLibrary\obj\Release\AgLibrary.FrmEmploeeMaster.resources
+\\node2\AgLibrary\obj\Release\AgLibrary.FrmPaymentDetail.resources
+\\node2\AgLibrary\obj\Release\AgLibrary.frmFind.resources
+\\node2\AgLibrary\obj\Release\AgLibrary.FrmPartyMaster.resources
+\\node2\AgLibrary\obj\Release\AgLibrary.FrmProgressBar.resources
+\\node2\AgLibrary\obj\Release\AgLibrary.MDIMain.resources
+\\node2\AgLibrary\obj\Release\AgLibrary.RepFormGlobal.resources
+\\node2\AgLibrary\obj\Release\AgLibrary.RepView.resources
+\\node2\AgLibrary\obj\Release\AgLibrary.Resources.resources
+\\node2\AgLibrary\obj\Release\AgLibrary.vbproj.GenerateResource.Cache
+\\node2\AgLibrary\obj\Release\AgLibrary.dll
+\\node2\AgLibrary\obj\Release\AgLibrary.xml
+\\node2\AgLibrary\obj\Release\AgLibrary.pdb
+\\node2\Common\AgLibrary\obj\Release\ResolveAssemblyReference.cache
+\\node2\Common\AgLibrary\obj\Release\AgLibrary.FrmAgZip.resources
+\\node2\Common\AgLibrary\obj\Release\AgLibrary.FrmBackupDatase.resources
+\\node2\Common\AgLibrary\obj\Release\AgLibrary.FrmCommonMaster1.resources
+\\node2\Common\AgLibrary\obj\Release\AgLibrary.FrmCommonMaster2.resources
+\\node2\Common\AgLibrary\obj\Release\AgLibrary.FrmEmploeeMaster.resources
+\\node2\Common\AgLibrary\obj\Release\AgLibrary.FrmPaymentDetail.resources
+\\node2\Common\AgLibrary\obj\Release\AgLibrary.frmFind.resources
+\\node2\Common\AgLibrary\obj\Release\AgLibrary.FrmPartyMaster.resources
+\\node2\Common\AgLibrary\obj\Release\AgLibrary.FrmProgressBar.resources
+\\node2\Common\AgLibrary\obj\Release\AgLibrary.MDIMain.resources
+\\node2\Common\AgLibrary\obj\Release\AgLibrary.RepFormGlobal.resources
+\\node2\Common\AgLibrary\obj\Release\AgLibrary.RepView.resources
+\\node2\Common\AgLibrary\obj\Release\AgLibrary.Resources.resources
+\\node2\Common\AgLibrary\obj\Release\AgLibrary.vbproj.GenerateResource.Cache
+\\node2\Common\AgLibrary\obj\Release\AgLibrary.dll
+\\node2\Common\AgLibrary\obj\Release\AgLibrary.xml
+\\node2\Common\AgLibrary\obj\Release\AgLibrary.pdb
+D:\Dataman\Release\AgLibrary.dll
+D:\Dataman\Release\AgLibrary.pdb
+D:\Dataman\Release\AgLibrary.xml
+E:\Ashish Gupta\Active Projects\Common\AgLibrary\obj\Release\ResolveAssemblyReference.cache
+E:\Ashish Gupta\Active Projects\Common\AgLibrary\obj\Release\AgLibrary.FrmAgZip.resources
+E:\Ashish Gupta\Active Projects\Common\AgLibrary\obj\Release\AgLibrary.FrmBackupDatase.resources
+E:\Ashish Gupta\Active Projects\Common\AgLibrary\obj\Release\AgLibrary.FrmCommonMaster1.resources
+E:\Ashish Gupta\Active Projects\Common\AgLibrary\obj\Release\AgLibrary.FrmCommonMaster2.resources
+E:\Ashish Gupta\Active Projects\Common\AgLibrary\obj\Release\AgLibrary.FrmEmploeeMaster.resources
+E:\Ashish Gupta\Active Projects\Common\AgLibrary\obj\Release\AgLibrary.FrmPaymentDetail.resources
+E:\Ashish Gupta\Active Projects\Common\AgLibrary\obj\Release\AgLibrary.frmFind.resources
+E:\Ashish Gupta\Active Projects\Common\AgLibrary\obj\Release\AgLibrary.FrmPartyMaster.resources
+E:\Ashish Gupta\Active Projects\Common\AgLibrary\obj\Release\AgLibrary.FrmProgressBar.resources
+E:\Ashish Gupta\Active Projects\Common\AgLibrary\obj\Release\AgLibrary.MDIMain.resources
+E:\Ashish Gupta\Active Projects\Common\AgLibrary\obj\Release\AgLibrary.RepFormGlobal.resources
+E:\Ashish Gupta\Active Projects\Common\AgLibrary\obj\Release\AgLibrary.RepView.resources
+E:\Ashish Gupta\Active Projects\Common\AgLibrary\obj\Release\AgLibrary.Resources.resources
+E:\Ashish Gupta\Active Projects\Common\AgLibrary\obj\Release\AgLibrary.vbproj.GenerateResource.Cache
+E:\Ashish Gupta\Active Projects\Common\AgLibrary\obj\Release\AgLibrary.dll
+E:\Ashish Gupta\Active Projects\Common\AgLibrary\obj\Release\AgLibrary.xml
+E:\Ashish Gupta\Active Projects\Common\AgLibrary\obj\Release\AgLibrary.pdb
+\\server2008\Active Project\Common\AgLibrary\obj\Release\ResolveAssemblyReference.cache
+\\server2008\Active Project\Common\AgLibrary\obj\Release\AgLibrary.FrmAgZip.resources
+\\server2008\Active Project\Common\AgLibrary\obj\Release\AgLibrary.FrmBackupDatase.resources
+\\server2008\Active Project\Common\AgLibrary\obj\Release\AgLibrary.FrmCommonMaster1.resources
+\\server2008\Active Project\Common\AgLibrary\obj\Release\AgLibrary.FrmCommonMaster2.resources
+\\server2008\Active Project\Common\AgLibrary\obj\Release\AgLibrary.FrmEmploeeMaster.resources
+\\server2008\Active Project\Common\AgLibrary\obj\Release\AgLibrary.FrmPaymentDetail.resources
+\\server2008\Active Project\Common\AgLibrary\obj\Release\AgLibrary.frmFind.resources
+\\server2008\Active Project\Common\AgLibrary\obj\Release\AgLibrary.FrmPartyMaster.resources
+\\server2008\Active Project\Common\AgLibrary\obj\Release\AgLibrary.FrmProgressBar.resources
+\\server2008\Active Project\Common\AgLibrary\obj\Release\AgLibrary.MDIMain.resources
+\\server2008\Active Project\Common\AgLibrary\obj\Release\AgLibrary.RepFormGlobal.resources
+\\server2008\Active Project\Common\AgLibrary\obj\Release\AgLibrary.RepView.resources
+\\server2008\Active Project\Common\AgLibrary\obj\Release\AgLibrary.Resources.resources
+\\server2008\Active Project\Common\AgLibrary\obj\Release\AgLibrary.vbproj.GenerateResource.Cache
+\\server2008\Active Project\Common\AgLibrary\obj\Release\AgLibrary.dll
+\\server2008\Active Project\Common\AgLibrary\obj\Release\AgLibrary.xml
+\\server2008\Active Project\Common\AgLibrary\obj\Release\AgLibrary.pdb
+F:\Arpit\Active Project\Common\AgLibrary\obj\Release\AgLibrary.dll
+F:\Arpit\Active Project\Common\AgLibrary\obj\Release\AgLibrary.xml
+F:\Arpit\Active Project\Common\AgLibrary\obj\Release\AgLibrary.pdb
+F:\Arpit\Active Project\Common\AgLibrary\Release\AgLibrary.dll
+F:\Arpit\Active Project\Common\AgLibrary\Release\AgLibrary.pdb
+F:\Arpit\Active Project\Common\AgLibrary\Release\AgLibrary.xml
+F:\Arpit\Active Project\Common\AgLibrary\Project\obj\Release\ResolveAssemblyReference.cache
+F:\Arpit\Active Project\Common\AgLibrary\Project\obj\Release\AgLibrary.FrmAgZip.resources
+F:\Arpit\Active Project\Common\AgLibrary\Project\obj\Release\AgLibrary.FrmBackupDatase.resources
+F:\Arpit\Active Project\Common\AgLibrary\Project\obj\Release\AgLibrary.FrmCommonMaster1.resources
+F:\Arpit\Active Project\Common\AgLibrary\Project\obj\Release\AgLibrary.FrmCommonMaster2.resources
+F:\Arpit\Active Project\Common\AgLibrary\Project\obj\Release\AgLibrary.FrmEmploeeMaster.resources
+F:\Arpit\Active Project\Common\AgLibrary\Project\obj\Release\AgLibrary.FrmPaymentDetail.resources
+F:\Arpit\Active Project\Common\AgLibrary\Project\obj\Release\AgLibrary.frmFind.resources
+F:\Arpit\Active Project\Common\AgLibrary\Project\obj\Release\AgLibrary.FrmPartyMaster.resources
+F:\Arpit\Active Project\Common\AgLibrary\Project\obj\Release\AgLibrary.FrmProgressBar.resources
+F:\Arpit\Active Project\Common\AgLibrary\Project\obj\Release\AgLibrary.MDIMain.resources
+F:\Arpit\Active Project\Common\AgLibrary\Project\obj\Release\AgLibrary.RepFormGlobal.resources
+F:\Arpit\Active Project\Common\AgLibrary\Project\obj\Release\AgLibrary.RepView.resources
+F:\Arpit\Active Project\Common\AgLibrary\Project\obj\Release\AgLibrary.Resources.resources
+F:\Arpit\Active Project\Common\AgLibrary\Project\obj\Release\AgLibrary.vbproj.GenerateResource.Cache
+F:\Arpit\Active Project\Common\AgLibrary\Project\obj\Release\AgLibrary.dll
+F:\Arpit\Active Project\Common\AgLibrary\Project\obj\Release\AgLibrary.xml
+F:\Arpit\Active Project\Common\AgLibrary\Project\obj\Release\AgLibrary.pdb
+\\server2008\Active Project\Common\AgLibrary\Release\AgLibrary.dll
+\\server2008\Active Project\Common\AgLibrary\Release\AgLibrary.pdb
+\\server2008\Active Project\Common\AgLibrary\Release\AgLibrary.xml
+\\server2008\Active Project\Common\AgLibrary\Project\obj\Release\ResolveAssemblyReference.cache
+\\server2008\Active Project\Common\AgLibrary\Project\obj\Release\AgLibrary.FrmAgZip.resources
+\\server2008\Active Project\Common\AgLibrary\Project\obj\Release\AgLibrary.FrmBackupDatase.resources
+\\server2008\Active Project\Common\AgLibrary\Project\obj\Release\AgLibrary.FrmCommonMaster1.resources
+\\server2008\Active Project\Common\AgLibrary\Project\obj\Release\AgLibrary.FrmCommonMaster2.resources
+\\server2008\Active Project\Common\AgLibrary\Project\obj\Release\AgLibrary.FrmEmploeeMaster.resources
+\\server2008\Active Project\Common\AgLibrary\Project\obj\Release\AgLibrary.FrmPaymentDetail.resources
+\\server2008\Active Project\Common\AgLibrary\Project\obj\Release\AgLibrary.frmFind.resources
+\\server2008\Active Project\Common\AgLibrary\Project\obj\Release\AgLibrary.FrmPartyMaster.resources
+\\server2008\Active Project\Common\AgLibrary\Project\obj\Release\AgLibrary.FrmProgressBar.resources
+\\server2008\Active Project\Common\AgLibrary\Project\obj\Release\AgLibrary.MDIMain.resources
+\\server2008\Active Project\Common\AgLibrary\Project\obj\Release\AgLibrary.RepFormGlobal.resources
+\\server2008\Active Project\Common\AgLibrary\Project\obj\Release\AgLibrary.RepView.resources
+\\server2008\Active Project\Common\AgLibrary\Project\obj\Release\AgLibrary.Resources.resources
+\\server2008\Active Project\Common\AgLibrary\Project\obj\Release\AgLibrary.vbproj.GenerateResource.Cache
+\\server2008\Active Project\Common\AgLibrary\Project\obj\Release\AgLibrary.dll
+\\server2008\Active Project\Common\AgLibrary\Project\obj\Release\AgLibrary.xml
+\\server2008\Active Project\Common\AgLibrary\Project\obj\Release\AgLibrary.pdb
+G:\Common\AgLibrary\Release\AgLibrary.dll
+G:\Common\AgLibrary\Release\AgLibrary.pdb
+G:\Common\AgLibrary\Release\AgLibrary.xml
+G:\Common\AgLibrary\Project\obj\Release\ResolveAssemblyReference.cache
+G:\Common\AgLibrary\Project\obj\Release\AgLibrary.FrmAgZip.resources
+G:\Common\AgLibrary\Project\obj\Release\AgLibrary.FrmBackupDatase.resources
+G:\Common\AgLibrary\Project\obj\Release\AgLibrary.FrmCommonMaster1.resources
+G:\Common\AgLibrary\Project\obj\Release\AgLibrary.FrmCommonMaster2.resources
+G:\Common\AgLibrary\Project\obj\Release\AgLibrary.FrmEmploeeMaster.resources
+G:\Common\AgLibrary\Project\obj\Release\AgLibrary.FrmPaymentDetail.resources
+G:\Common\AgLibrary\Project\obj\Release\AgLibrary.frmFind.resources
+G:\Common\AgLibrary\Project\obj\Release\AgLibrary.FrmPartyMaster.resources
+G:\Common\AgLibrary\Project\obj\Release\AgLibrary.FrmProgressBar.resources
+G:\Common\AgLibrary\Project\obj\Release\AgLibrary.MDIMain.resources
+G:\Common\AgLibrary\Project\obj\Release\AgLibrary.RepFormGlobal.resources
+G:\Common\AgLibrary\Project\obj\Release\AgLibrary.RepView.resources
+G:\Common\AgLibrary\Project\obj\Release\AgLibrary.Resources.resources
+G:\Common\AgLibrary\Project\obj\Release\AgLibrary.vbproj.GenerateResource.Cache
+G:\Common\AgLibrary\Project\obj\Release\AgLibrary.dll
+G:\Common\AgLibrary\Project\obj\Release\AgLibrary.xml
+G:\Common\AgLibrary\Project\obj\Release\AgLibrary.pdb
+I:\Common\AgLibrary\Release\AgLibrary.dll
+I:\Common\AgLibrary\Release\AgLibrary.pdb
+I:\Common\AgLibrary\Release\AgLibrary.xml
+I:\Common\AgLibrary\Project\obj\Release\ResolveAssemblyReference.cache
+I:\Common\AgLibrary\Project\obj\Release\AgLibrary.FrmAgZip.resources
+I:\Common\AgLibrary\Project\obj\Release\AgLibrary.FrmBackupDatase.resources
+I:\Common\AgLibrary\Project\obj\Release\AgLibrary.FrmCommonMaster1.resources
+I:\Common\AgLibrary\Project\obj\Release\AgLibrary.FrmCommonMaster2.resources
+I:\Common\AgLibrary\Project\obj\Release\AgLibrary.FrmEmploeeMaster.resources
+I:\Common\AgLibrary\Project\obj\Release\AgLibrary.FrmPaymentDetail.resources
+I:\Common\AgLibrary\Project\obj\Release\AgLibrary.frmFind.resources
+I:\Common\AgLibrary\Project\obj\Release\AgLibrary.FrmPartyMaster.resources
+I:\Common\AgLibrary\Project\obj\Release\AgLibrary.FrmProgressBar.resources
+I:\Common\AgLibrary\Project\obj\Release\AgLibrary.MDIMain.resources
+I:\Common\AgLibrary\Project\obj\Release\AgLibrary.RepFormGlobal.resources
+I:\Common\AgLibrary\Project\obj\Release\AgLibrary.RepView.resources
+I:\Common\AgLibrary\Project\obj\Release\AgLibrary.Resources.resources
+I:\Common\AgLibrary\Project\obj\Release\AgLibrary.vbproj.GenerateResource.Cache
+I:\Common\AgLibrary\Project\obj\Release\AgLibrary.dll
+I:\Common\AgLibrary\Project\obj\Release\AgLibrary.xml
+I:\Common\AgLibrary\Project\obj\Release\AgLibrary.pdb
+F:\Project\Common\AgLibrary\Release\AgLibrary.dll
+F:\Project\Common\AgLibrary\Release\AgLibrary.pdb
+F:\Project\Common\AgLibrary\Release\AgLibrary.xml
+F:\Project\Common\AgLibrary\Project\obj\Release\ResolveAssemblyReference.cache
+F:\Project\Common\AgLibrary\Project\obj\Release\AgLibrary.FrmAgZip.resources
+F:\Project\Common\AgLibrary\Project\obj\Release\AgLibrary.FrmBackupDatase.resources
+F:\Project\Common\AgLibrary\Project\obj\Release\AgLibrary.FrmCommonMaster1.resources
+F:\Project\Common\AgLibrary\Project\obj\Release\AgLibrary.FrmCommonMaster2.resources
+F:\Project\Common\AgLibrary\Project\obj\Release\AgLibrary.FrmEmploeeMaster.resources
+F:\Project\Common\AgLibrary\Project\obj\Release\AgLibrary.FrmPaymentDetail.resources
+F:\Project\Common\AgLibrary\Project\obj\Release\AgLibrary.frmFind.resources
+F:\Project\Common\AgLibrary\Project\obj\Release\AgLibrary.FrmPartyMaster.resources
+F:\Project\Common\AgLibrary\Project\obj\Release\AgLibrary.FrmProgressBar.resources
+F:\Project\Common\AgLibrary\Project\obj\Release\AgLibrary.MDIMain.resources
+F:\Project\Common\AgLibrary\Project\obj\Release\AgLibrary.RepFormGlobal.resources
+F:\Project\Common\AgLibrary\Project\obj\Release\AgLibrary.RepView.resources
+F:\Project\Common\AgLibrary\Project\obj\Release\AgLibrary.Resources.resources
+F:\Project\Common\AgLibrary\Project\obj\Release\AgLibrary.vbproj.GenerateResource.Cache
+F:\Project\Common\AgLibrary\Project\obj\Release\AgLibrary.dll
+F:\Project\Common\AgLibrary\Project\obj\Release\AgLibrary.xml
+F:\Project\Common\AgLibrary\Project\obj\Release\AgLibrary.pdb
+G:\Project\Common\AgLibrary\Release\AgLibrary.dll
+G:\Project\Common\AgLibrary\Release\AgLibrary.pdb
+G:\Project\Common\AgLibrary\Release\AgLibrary.xml
+G:\Project\Common\AgLibrary\Project\obj\Release\ResolveAssemblyReference.cache
+G:\Project\Common\AgLibrary\Project\obj\Release\AgLibrary.FrmAgZip.resources
+G:\Project\Common\AgLibrary\Project\obj\Release\AgLibrary.FrmBackupDatase.resources
+G:\Project\Common\AgLibrary\Project\obj\Release\AgLibrary.FrmCommonMaster1.resources
+G:\Project\Common\AgLibrary\Project\obj\Release\AgLibrary.FrmCommonMaster2.resources
+G:\Project\Common\AgLibrary\Project\obj\Release\AgLibrary.FrmEmploeeMaster.resources
+G:\Project\Common\AgLibrary\Project\obj\Release\AgLibrary.FrmPaymentDetail.resources
+G:\Project\Common\AgLibrary\Project\obj\Release\AgLibrary.frmFind.resources
+G:\Project\Common\AgLibrary\Project\obj\Release\AgLibrary.FrmPartyMaster.resources
+G:\Project\Common\AgLibrary\Project\obj\Release\AgLibrary.FrmProgressBar.resources
+G:\Project\Common\AgLibrary\Project\obj\Release\AgLibrary.MDIMain.resources
+G:\Project\Common\AgLibrary\Project\obj\Release\AgLibrary.RepFormGlobal.resources
+G:\Project\Common\AgLibrary\Project\obj\Release\AgLibrary.RepView.resources
+G:\Project\Common\AgLibrary\Project\obj\Release\AgLibrary.Resources.resources
+G:\Project\Common\AgLibrary\Project\obj\Release\AgLibrary.vbproj.GenerateResource.Cache
+G:\Project\Common\AgLibrary\Project\obj\Release\AgLibrary.dll
+G:\Project\Common\AgLibrary\Project\obj\Release\AgLibrary.xml
+G:\Project\Common\AgLibrary\Project\obj\Release\AgLibrary.pdb
+E:\Satyam\Common\AgLibrary\Release\AgLibrary.dll
+E:\Satyam\Common\AgLibrary\Release\AgLibrary.pdb
+E:\Satyam\Common\AgLibrary\Release\AgLibrary.xml
+E:\Satyam\Common\AgLibrary\Project\obj\Release\ResolveAssemblyReference.cache
+E:\Satyam\Common\AgLibrary\Project\obj\Release\AgLibrary.FrmAgZip.resources
+E:\Satyam\Common\AgLibrary\Project\obj\Release\AgLibrary.FrmBackupDatase.resources
+E:\Satyam\Common\AgLibrary\Project\obj\Release\AgLibrary.FrmCommonMaster1.resources
+E:\Satyam\Common\AgLibrary\Project\obj\Release\AgLibrary.FrmCommonMaster2.resources
+E:\Satyam\Common\AgLibrary\Project\obj\Release\AgLibrary.FrmEmploeeMaster.resources
+E:\Satyam\Common\AgLibrary\Project\obj\Release\AgLibrary.FrmPaymentDetail.resources
+E:\Satyam\Common\AgLibrary\Project\obj\Release\AgLibrary.frmFind.resources
+E:\Satyam\Common\AgLibrary\Project\obj\Release\AgLibrary.FrmPartyMaster.resources
+E:\Satyam\Common\AgLibrary\Project\obj\Release\AgLibrary.FrmProgressBar.resources
+E:\Satyam\Common\AgLibrary\Project\obj\Release\AgLibrary.MDIMain.resources
+E:\Satyam\Common\AgLibrary\Project\obj\Release\AgLibrary.RepFormGlobal.resources
+E:\Satyam\Common\AgLibrary\Project\obj\Release\AgLibrary.RepView.resources
+E:\Satyam\Common\AgLibrary\Project\obj\Release\AgLibrary.Resources.resources
+E:\Satyam\Common\AgLibrary\Project\obj\Release\AgLibrary.vbproj.GenerateResource.Cache
+E:\Satyam\Common\AgLibrary\Project\obj\Release\AgLibrary.dll
+E:\Satyam\Common\AgLibrary\Project\obj\Release\AgLibrary.xml
+E:\Satyam\Common\AgLibrary\Project\obj\Release\AgLibrary.pdb
+H:\Common\AgLibrary\Release\AgLibrary.dll
+H:\Common\AgLibrary\Release\AgLibrary.pdb
+H:\Common\AgLibrary\Release\AgLibrary.xml
+H:\Common\AgLibrary\Project\obj\Release\AgLibrary.vbprojResolveAssemblyReference.cache
+H:\Common\AgLibrary\Project\obj\Release\AgLibrary.FrmAgZip.resources
+H:\Common\AgLibrary\Project\obj\Release\AgLibrary.FrmBackupDatase.resources
+H:\Common\AgLibrary\Project\obj\Release\AgLibrary.FrmCommonMaster1.resources
+H:\Common\AgLibrary\Project\obj\Release\AgLibrary.FrmCommonMaster2.resources
+H:\Common\AgLibrary\Project\obj\Release\AgLibrary.FrmEmploeeMaster.resources
+H:\Common\AgLibrary\Project\obj\Release\AgLibrary.FrmPaymentDetail.resources
+H:\Common\AgLibrary\Project\obj\Release\AgLibrary.frmFind.resources
+H:\Common\AgLibrary\Project\obj\Release\AgLibrary.FrmPartyMaster.resources
+H:\Common\AgLibrary\Project\obj\Release\AgLibrary.FrmProgressBar.resources
+H:\Common\AgLibrary\Project\obj\Release\AgLibrary.MDIMain.resources
+H:\Common\AgLibrary\Project\obj\Release\AgLibrary.RepFormGlobal.resources
+H:\Common\AgLibrary\Project\obj\Release\AgLibrary.RepView.resources
+H:\Common\AgLibrary\Project\obj\Release\AgLibrary.Resources.resources
+H:\Common\AgLibrary\Project\obj\Release\AgLibrary.vbproj.GenerateResource.Cache
+H:\Common\AgLibrary\Project\obj\Release\AgLibrary.dll
+H:\Common\AgLibrary\Project\obj\Release\AgLibrary.xml
+H:\Common\AgLibrary\Project\obj\Release\AgLibrary.pdb
+D:\Satyam\Active Projects\AgLibrary\Release\AgLibrary.dll
+D:\Satyam\Active Projects\AgLibrary\Release\AgLibrary.pdb
+D:\Satyam\Active Projects\AgLibrary\Release\AgLibrary.xml
+D:\Satyam\Active Projects\AgLibrary\Project\obj\Release\AgLibrary.vbprojResolveAssemblyReference.cache
+D:\Satyam\Active Projects\AgLibrary\Project\obj\Release\AgLibrary.FrmAgZip.resources
+D:\Satyam\Active Projects\AgLibrary\Project\obj\Release\AgLibrary.FrmBackupDatase.resources
+D:\Satyam\Active Projects\AgLibrary\Project\obj\Release\AgLibrary.FrmCommonMaster1.resources
+D:\Satyam\Active Projects\AgLibrary\Project\obj\Release\AgLibrary.FrmCommonMaster2.resources
+D:\Satyam\Active Projects\AgLibrary\Project\obj\Release\AgLibrary.FrmEmploeeMaster.resources
+D:\Satyam\Active Projects\AgLibrary\Project\obj\Release\AgLibrary.FrmPaymentDetail.resources
+D:\Satyam\Active Projects\AgLibrary\Project\obj\Release\AgLibrary.frmFind.resources
+D:\Satyam\Active Projects\AgLibrary\Project\obj\Release\AgLibrary.FrmPartyMaster.resources
+D:\Satyam\Active Projects\AgLibrary\Project\obj\Release\AgLibrary.FrmProgressBar.resources
+D:\Satyam\Active Projects\AgLibrary\Project\obj\Release\AgLibrary.MDIMain.resources
+D:\Satyam\Active Projects\AgLibrary\Project\obj\Release\AgLibrary.RepFormGlobal.resources
+D:\Satyam\Active Projects\AgLibrary\Project\obj\Release\AgLibrary.RepView.resources
+D:\Satyam\Active Projects\AgLibrary\Project\obj\Release\AgLibrary.Resources.resources
+D:\Satyam\Active Projects\AgLibrary\Project\obj\Release\AgLibrary.vbproj.GenerateResource.Cache
+D:\Satyam\Active Projects\AgLibrary\Project\obj\Release\AgLibrary.dll
+D:\Satyam\Active Projects\AgLibrary\Project\obj\Release\AgLibrary.xml
+D:\Satyam\Active Projects\AgLibrary\Project\obj\Release\AgLibrary.pdb
+D:\Satyam\Active Projects\SqLite\AgLibrary\Release\AgLibrary.dll
+D:\Satyam\Active Projects\SqLite\AgLibrary\Release\AgLibrary.pdb
+D:\Satyam\Active Projects\SqLite\AgLibrary\Release\AgLibrary.xml
+D:\Satyam\Active Projects\SqLite\AgLibrary\Project\obj\Release\AgLibrary.vbprojResolveAssemblyReference.cache
+D:\Satyam\Active Projects\SqLite\AgLibrary\Project\obj\Release\AgLibrary.FrmAgZip.resources
+D:\Satyam\Active Projects\SqLite\AgLibrary\Project\obj\Release\AgLibrary.FrmBackupDatase.resources
+D:\Satyam\Active Projects\SqLite\AgLibrary\Project\obj\Release\AgLibrary.FrmCommonMaster1.resources
+D:\Satyam\Active Projects\SqLite\AgLibrary\Project\obj\Release\AgLibrary.FrmCommonMaster2.resources
+D:\Satyam\Active Projects\SqLite\AgLibrary\Project\obj\Release\AgLibrary.FrmEmploeeMaster.resources
+D:\Satyam\Active Projects\SqLite\AgLibrary\Project\obj\Release\AgLibrary.FrmPaymentDetail.resources
+D:\Satyam\Active Projects\SqLite\AgLibrary\Project\obj\Release\AgLibrary.frmFind.resources
+D:\Satyam\Active Projects\SqLite\AgLibrary\Project\obj\Release\AgLibrary.FrmPartyMaster.resources
+D:\Satyam\Active Projects\SqLite\AgLibrary\Project\obj\Release\AgLibrary.FrmProgressBar.resources
+D:\Satyam\Active Projects\SqLite\AgLibrary\Project\obj\Release\AgLibrary.MDIMain.resources
+D:\Satyam\Active Projects\SqLite\AgLibrary\Project\obj\Release\AgLibrary.RepFormGlobal.resources
+D:\Satyam\Active Projects\SqLite\AgLibrary\Project\obj\Release\AgLibrary.RepView.resources
+D:\Satyam\Active Projects\SqLite\AgLibrary\Project\obj\Release\AgLibrary.Resources.resources
+D:\Satyam\Active Projects\SqLite\AgLibrary\Project\obj\Release\AgLibrary.vbproj.GenerateResource.Cache
+D:\Satyam\Active Projects\SqLite\AgLibrary\Project\obj\Release\AgLibrary.dll
+D:\Satyam\Active Projects\SqLite\AgLibrary\Project\obj\Release\AgLibrary.xml
+D:\Satyam\Active Projects\SqLite\AgLibrary\Project\obj\Release\AgLibrary.pdb

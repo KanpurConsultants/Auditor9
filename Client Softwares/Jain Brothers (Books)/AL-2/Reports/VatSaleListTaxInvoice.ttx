@@ -1,0 +1,15 @@
+SaleID	Number
+DocNo	String	150
+Dated	Date
+Amount	Currency
+TaxableAmount	Currency
+Tax	Currency
+Sat	Currency
+Account	String	150
+Description1	String	150
+Description2	String	150
+TinNo	String	150
+FromDate	Date
+ToDate	Date
+vTaxPerStr	String	150
+

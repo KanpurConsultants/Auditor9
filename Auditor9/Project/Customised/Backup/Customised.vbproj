@@ -1,0 +1,394 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003" ToolsVersion="3.5">
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProductVersion>9.0.21022</ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{B24A827D-4755-4A74-9EB8-714CE7C7FAB8}</ProjectGuid>
+    <OutputType>WinExe</OutputType>
+    <StartupObject>Customised.My.MyApplication</StartupObject>
+    <RootNamespace>Customised</RootNamespace>
+    <AssemblyName>Customised</AssemblyName>
+    <MyType>WindowsForms</MyType>
+    <TargetZone>LocalIntranet</TargetZone>
+    <GenerateManifests>false</GenerateManifests>
+    <ExcludedPermissions>
+    </ExcludedPermissions>
+    <ApplicationIcon>
+    </ApplicationIcon>
+    <FileUpgradeFlags>
+    </FileUpgradeFlags>
+    <OldToolsVersion>2.0</OldToolsVersion>
+    <UpgradeBackupLocation>
+    </UpgradeBackupLocation>
+    <ApplicationManifest>My Project\app.manifest</ApplicationManifest>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <DefineDebug>true</DefineDebug>
+    <DefineTrace>true</DefineTrace>
+    <OutputPath>..\..\Release\</OutputPath>
+    <DocumentationFile>Customised.xml</DocumentationFile>
+    <NoWarn>42016,41999,42017,42018,42019,42032,42036,42020,42021,42022</NoWarn>
+    <PlatformTarget>AnyCPU</PlatformTarget>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <DefineDebug>false</DefineDebug>
+    <DefineTrace>true</DefineTrace>
+    <Optimize>true</Optimize>
+    <OutputPath>..\..\Release\</OutputPath>
+    <DocumentationFile>Customised.xml</DocumentationFile>
+    <NoWarn>42016,41999,42017,42018,42019,42032,42036,42020,42021,42022</NoWarn>
+    <PlatformTarget>AnyCPU</PlatformTarget>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="AgControls, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="AgCustomFields, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="AgLibrary, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="AgStructure, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <ExecutableExtension>.exe</ExecutableExtension>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="AgTemplate, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="CrystalDecisions.CrystalReports.Engine, Version=10.5.3700.0, Culture=neutral, PublicKeyToken=692fbea5521e1304, processorArchitecture=MSIL">
+      <HintPath>..\..\..\Release\CrystalDecisions.CrystalReports.Engine.dll</HintPath>
+    </Reference>
+    <Reference Include="CrystalDecisions.ReportSource, Version=10.5.3700.0, Culture=neutral, PublicKeyToken=692fbea5521e1304, processorArchitecture=MSIL">
+      <HintPath>..\..\..\Release\CrystalDecisions.ReportSource.dll</HintPath>
+    </Reference>
+    <Reference Include="CrystalDecisions.Shared, Version=10.5.3700.0, Culture=neutral, PublicKeyToken=692fbea5521e1304, processorArchitecture=MSIL">
+      <HintPath>..\..\..\Release\CrystalDecisions.Shared.dll</HintPath>
+    </Reference>
+    <Reference Include="CrystalDecisions.Windows.Forms, Version=10.5.3700.0, Culture=neutral, PublicKeyToken=692fbea5521e1304, processorArchitecture=MSIL">
+      <HintPath>..\..\..\Release\CrystalDecisions.Windows.Forms.dll</HintPath>
+    </Reference>
+    <Reference Include="DMHelpGrid, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="EMail, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <ExecutableExtension>.exe</ExecutableExtension>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="Interop.ADODB, Version=2.8.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="Interop.Excel, Version=1.3.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="Purchase, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <ExecutableExtension>.exe</ExecutableExtension>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="ReportLayout, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="Sales, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <ExecutableExtension>.exe</ExecutableExtension>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="Store, Version=1.0.0.0, Culture=neutral, processorArchitecture=x86">
+      <SpecificVersion>False</SpecificVersion>
+      <ExecutableExtension>.exe</ExecutableExtension>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Deployment" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Web" />
+    <Reference Include="System.Windows.Forms" />
+    <Reference Include="System.Xml" />
+    <Reference Include="Topctrl, Version=1.0.731.654, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <Private>False</Private>
+    </Reference>
+  </ItemGroup>
+  <ItemGroup>
+    <Import Include="Microsoft.VisualBasic" />
+    <Import Include="System" />
+    <Import Include="System.Collections" />
+    <Import Include="System.Collections.Generic" />
+    <Import Include="System.Data" />
+    <Import Include="System.Drawing" />
+    <Import Include="System.Diagnostics" />
+    <Import Include="System.Windows.Forms" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Class\ClsFunction.vb" />
+    <Compile Include="Class\ClsMain.vb" />
+    <Compile Include="Class\ClsReportProcedures.vb" />
+    <Compile Include="Class\ExcelHandler.vb" />
+    <Compile Include="Form\FrmAdjustmentIssue.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Form\FrmSaleInvoice.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Form\FrmSaleInvoiceAdj.Designer.vb">
+      <DependentUpon>FrmSaleInvoiceAdj.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Form\FrmSaleInvoiceAdj.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Form\FrmSaleInvoiceDetail.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Form\FrmPhysicalStockAdjustmentEntry.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Form\FrmPhysicalStockEntry.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Form\FrmSaleInvoiceOtherDetail.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Form\FrmSaleInvoicePartyDetail.Designer.vb">
+      <DependentUpon>FrmSaleInvoicePartyDetail.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Form\FrmSaleInvoicePartyDetail.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Form\FrmVatCommodityCode.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Form\FrmManufacturer.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Form\FrmParty.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Form\FrmItem.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Form\FrmItemCategory.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Form\FrmItemGroup.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Form\FrmViewerSubForm.designer.vb">
+      <DependentUpon>FrmViewerSubForm.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Form\FrmViewerSubForm.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Form\FrmRateList.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Form\FrmRateType.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Form\FrmItemInvoiceGroup.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Form\FrmImportFromExcel.Designer.vb">
+      <DependentUpon>FrmImportFromExcel.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Form\FrmImportFromExcel.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Form\FrmEnviro.designer.vb">
+      <DependentUpon>FrmEnviro.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Form\FrmEnviro.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Form\MDIMain.designer.vb">
+      <DependentUpon>MDIMain.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Form\MDIMain.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Form\WriteInExcel.Designer.vb">
+      <DependentUpon>WriteInExcel.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Form\WriteInExcel.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Modules\MdlFunction.vb" />
+    <Compile Include="Modules\MdlVar.vb" />
+    <Compile Include="My Project\AssemblyInfo.vb" />
+    <Compile Include="My Project\Application.Designer.vb">
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Application.myapp</DependentUpon>
+    </Compile>
+    <Compile Include="My Project\Resources.Designer.vb">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Resources.resx</DependentUpon>
+    </Compile>
+    <Compile Include="My Project\Settings.Designer.vb">
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Settings.settings</DependentUpon>
+      <DesignTimeSharedInput>True</DesignTimeSharedInput>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Form\FrmAdjustmentIssue.resx">
+      <DependentUpon>FrmAdjustmentIssue.vb</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Form\FrmSaleInvoice.resx">
+      <DependentUpon>FrmSaleInvoice.vb</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Form\FrmSaleInvoiceAdj.resx">
+      <DependentUpon>FrmSaleInvoiceAdj.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Form\FrmSaleInvoiceDetail.resx">
+      <DependentUpon>FrmSaleInvoiceDetail.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Form\FrmPhysicalStockAdjustmentEntry.resx">
+      <DependentUpon>FrmPhysicalStockAdjustmentEntry.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Form\FrmPhysicalStockEntry.resx">
+      <DependentUpon>FrmPhysicalStockEntry.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Form\FrmSaleInvoiceOtherDetail.resx">
+      <DependentUpon>FrmSaleInvoiceOtherDetail.vb</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Form\FrmSaleInvoicePartyDetail.resx">
+      <DependentUpon>FrmSaleInvoicePartyDetail.vb</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Form\FrmVatCommodityCode.resx">
+      <DependentUpon>FrmVatCommodityCode.vb</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Form\FrmManufacturer.resx">
+      <DependentUpon>FrmManufacturer.vb</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Form\FrmParty.resx">
+      <DependentUpon>FrmParty.vb</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Form\FrmItem.resx">
+      <DependentUpon>FrmItem.vb</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Form\FrmItemCategory.resx">
+      <DependentUpon>FrmItemCategory.vb</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Form\FrmItemGroup.resx">
+      <DependentUpon>FrmItemGroup.vb</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Form\FrmViewerSubForm.resx">
+      <DependentUpon>FrmViewerSubForm.vb</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Form\FrmRateList.resx">
+      <DependentUpon>FrmRateList.vb</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Form\FrmRateType.resx">
+      <DependentUpon>FrmRateType.vb</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Form\FrmItemInvoiceGroup.resx">
+      <DependentUpon>FrmItemInvoiceGroup.vb</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Form\FrmImportFromExcel.resx">
+      <DependentUpon>FrmImportFromExcel.vb</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Form\FrmEnviro.resx">
+      <DependentUpon>FrmEnviro.vb</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Form\MDIMain.resx">
+      <DependentUpon>MDIMain.vb</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Form\WriteInExcel.resx">
+      <DependentUpon>WriteInExcel.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="My Project\Resources.resx">
+      <Generator>VbMyResourcesResXFileCodeGenerator</Generator>
+      <LastGenOutput>Resources.Designer.vb</LastGenOutput>
+      <CustomToolNamespace>My.Resources</CustomToolNamespace>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+  </ItemGroup>
+  <ItemGroup>
+    <BaseApplicationManifest Include="My Project\app.manifest" />
+    <None Include="My Project\Application.myapp">
+      <Generator>MyApplicationCodeGenerator</Generator>
+      <LastGenOutput>Application.Designer.vb</LastGenOutput>
+    </None>
+    <None Include="My Project\Settings.settings">
+      <Generator>SettingsSingleFileGenerator</Generator>
+      <CustomToolNamespace>My</CustomToolNamespace>
+      <LastGenOutput>Settings.Designer.vb</LastGenOutput>
+    </None>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Tree_Child.bmp" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Dataman.ico" />
+  </ItemGroup>
+  <ItemGroup>
+    <Service Include="{967B4E0D-AD0C-4609-AB67-0FA40C0206D8}" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Copy.bmp" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\copy-icon.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\copy1-icon.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\approved.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\images.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Ok.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\disc.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\stock-vector-vector-ok-and-cancel-button-set-54696784.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\disc1.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Copy of stock-vector-vector-ok-and-cancel-button-set-54696784.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Untitled-11111.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="app.config" />
+    <None Include="Resources\Icon1.ico" />
+  </ItemGroup>
+  <Import Project="$(MSBuildBinPath)\Microsoft.VisualBasic.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

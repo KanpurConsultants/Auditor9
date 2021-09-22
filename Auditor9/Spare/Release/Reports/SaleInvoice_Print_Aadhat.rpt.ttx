@@ -1,0 +1,136 @@
+; Field definition file for table: ADORecordset
+Copies	string	255	1	
+CopyPrintingCaption	string	255		
+DocNoCaption	string	255	Invoice No.	
+DocDateCaption	string	255	Invoice Date	
+SiteStateCode	string	255	07	
+SiteStateName	string	255	Delhi	
+DocID	string	255	D4    SI 2020     165	
+Sr	number	1	
+V_Date	datetime	01-Sep-20 12:00:00 AM	
+DeliveryDate	datetime		
+Voucher_Type	string	255	Tax Invoice	
+NCat	string	255	SI	
+InvoiceNo	string	255	SSF-DLI-162	
+RateType	string	255	A	
+AgentName	string	255		
+AgentCaption	string	255	Agent	
+SaleToPartyName	string	255	MEERA ENTERPRISES-PATNA CITY	
+SaleToPartyCode	string	255	3020	
+SaleToPartyAddress	string	255	SHOP NO.-22, 2ND FLOOR,
+BAJAJ PLAZA, MACHHARHATTA,	
+CityName	string	255	PATNA (CITY)	
+SaleToPartyPincode	string	255	800008	
+StateCode	string	255	10	
+StateName	string	255	Bihar	
+SaleToPartyMobile	string	255	7250938108	
+ContactPerson	string	255		
+SaleToPartySalesTaxNo	string	255	10BNDPD2336M1ZG	
+SaleToPartyAadharNo	string	255		
+SaleToPartyPanNo	string	255	BNDPD2336M	
+ShipToPartyName	string	255	MEERA ENTERPRISES-PATNA CITY	
+ShipToPartyManualCode	string	255	3020	
+ShipToPartyAddress	string	255	SHOP NO.-22, 2ND FLOOR,
+BAJAJ PLAZA, MACHHARHATTA,	
+ShipToPartyCity	string	255	PATNA (CITY)	
+ShipToPartyPincode	string	255	800008	
+ShipToPartyStateCode	string	255	10	
+ShipToPartyStateName	string	255	Bihar	
+ShipToPartyMobile	string	255	7250938108	
+ShipToPartySalesTaxNo	string	255	10BNDPD2336M1ZG	
+ShipToPartyAadharNo	string	255		
+ShipToPartyPanNo	string	255	BNDPD2336M	
+ShipToAddress	string	255		
+TermsAndConditions	string	255	(1) Payment within <CreditDays> days from date of Invoice. <BR>(2) Overdue Interest @ <Default_DebtorsInterestRate> P.A. after due date. <BR>(3) Goods dispatched by transport at the owner risk. <BR>(4) All disputes are subject to <CompanyCity> jurisdiction only.	
+TransporterName	string	255	JAI MATA DI PARIWAHAN	
+LrNo	string	255	343050083803	
+LrDate	datetime	01-Sep-20 12:00:00 AM	
+NoOfBales	number	1	
+PrivateMark	string	255		
+Weight	number	0	
+Freight	number	0	
+ChargedWeight	number	0	
+FreightType	string	255		
+RoadPermitNo	string	255	741143141628	
+RoadPermitDate	datetime		
+VehicleNo	string	255		
+ShipMethod	string	255		
+PreCarriageBy	string	255		
+PreCarriagePlace	string	255		
+BookedFrom	string	255	DELHI	
+BookedTo	string	255		
+Destination	string	255	PATNA (CITY)	
+DescriptionOfGoods	string	255		
+DescriptionOfPacking	string	255		
+ReferenceNo	string	255		
+ContraDocNo	string	255	2284	
+ContraDocNoCsv	string	255	2284	
+ItemName	string	255	SHIRT-6205          [FULL TOSS | SHIRT]	
+ItemGroupName	string	255	FULL TOSS	
+ItemCatName	string	255	SHIRT	
+ItemSpecification	string	255	SHIRT	
+InvoiceLineSpecification	string	255		
+HSN	string	255	6205	
+MaintainStockYn	boolean	True	
+SalesTaxGroupItem	string	255	GST 5%	
+GrossTaxRate	number	5	
+Pcs	number	0	
+Qty	number	3	
+Rate	number	185.71	
+Unit	string	255	PCS	
+UnitDecimalPlaces	number	0	
+DiscountCalculationPattern	string	255		
+DiscountPer	number	0	
+DiscountAmount	number	0	
+AdditionalDiscountPer	number	2	
+AdditionalDiscountAmount	number	11.14	
+AdditionPer	number	0	
+AdditionAmount	number	0	
+TotalDiscount	number	11.14	
+AmountBeforeDiscount	number	557.13	
+Amount	number	545.99	
+Taxable_Amount	number	545.99	
+Tax1_Per	number	5	
+Tax1	number	27.3	
+Tax2_Per	number	0	
+Tax2	number	0	
+Tax3_Per	number	0	
+Tax3	number	0	
+Tax4_Per	number	0	
+Tax4	number	0	
+Tax5_Per	number	0	
+Tax5	number	0	
+Net_Amount	number	573.22	
+LRemarks	string	255	52916826	
+HRemarks	string	255		
+H_TotalDiscount	number	916.01	
+H_AmountBeforeDiscount	number	45957.98	
+H_Gross_Amount	number	45041.97	
+H_SpecialDiscount_Per	number	0	
+H_SpecialDiscount	number	0	
+H_Taxable_Amount	number	45041.97	
+H_Tax1_Per	number	0	
+H_Tax1	number	2252.1	
+H_Tax2_Per	number	0	
+H_Tax2	number	0	
+H_Tax3_Per	number	0	
+H_Tax3	number	0	
+H_Tax4_Per	number	0	
+H_Tax4	number	0	
+H_Tax5_Per	number	0	
+H_Tax5	number	0	
+H_Deduction_Per	number	0	
+H_Deduction	number	0	
+H_Other_Charge_Per	number	0	
+H_Other_Charge	number	0	
+Round_Off	number	-0.07	
+H_Net_Amount	number	47294	
+Default_BankAccountDetail	string	255	Bank : ICICI Bank, Branch : THE MALL - Kanpur,<BR>Beneficiary : Shyama Shyam Fabrics Pvt. Ltd.,<BR>A/c No.: 628805023057, IFSC : ICIC0006288	
+DocumentPrintHeaderPattern	string	255	Center Aligned	
+DimDetail	string	255		
+PrintedByUser	string	255	SUPER	
+EntryByUser	string	255	SAPNA	
+PrintTitle	string	255	TAX INVOICE	
+PurchInvoiceNo	string	255	FT/00584/20-21	
+CompanyLogo	BLOB		
+CompanyAuthorisedSignature	BLOB		

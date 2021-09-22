@@ -1,0 +1,46 @@
+; Field definition file for table: ADORecordset
+DivisionName	string	255	GUR SHEEL, UNNAO	
+PartyName	string	255	GOLD SELCTION, KANPUR	
+Address	string	255	KANPUR	
+Mobile	string	255		
+AgentName	string	255		
+SalesRepresentativeName	string	255		
+AreaName	string	255		
+DrDocID	string	255	D1   PMT 2020     210	
+DrDivision	string	255	D	
+DrSubcode	string	255	D100000393	
+DrSr	number	0	
+DrDate	datetime	01/Jan/2021 12:00:00 AM	
+DrDocNo	string	255	PMT-92	
+DrAmount	number	50000	
+DrTaxableAmount	number	0	
+DrTaxAmount	number	0	
+DrDays	number	22	
+DrInterest	number	361.64	
+DrCumAmount	number	50000	
+DrBalAmount	number	0	
+DrTotal	number	114093	
+DrNarration	string	255	Chq : 000095HDFC CA A/C 50200051526891	
+CrDocID	string	255	D1    PI 2020     221	
+CrDivision	string	255	D	
+CrSubcode	string	255	D100000393	
+CrSr	number	0	
+CrDate	datetime	30/Oct/2020 12:00:00 AM	
+CrDocNo	string	255	PI-145	
+CrAmount	number	114093	
+CrTaxableAmount	number	108660	
+CrTaxAmount	number	5433	
+CrDays	number	55	
+CrInterest	number	2063.05	
+CrCumAmount	number	114093	
+CrBalAmount	number	0	
+CrTotal	number	114093	
+CrNarration	string	255	Inv : 98	
+AdditionPer	number		
+AdditionAmount	number		
+GrReturnAmt	number		
+GrSaleAmt	number		
+ReturnPer	number		
+AveragePaymentDays	number	-74	
+DrMonth	string	255	01/2021	
+CrMonth	string	255	10/2020	

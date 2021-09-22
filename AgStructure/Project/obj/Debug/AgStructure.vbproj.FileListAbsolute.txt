@@ -1,0 +1,126 @@
+D:\KC\Source\Sqlite\AgStructure\Release\AgStructure.dll.config
+D:\KC\Source\Sqlite\AgStructure\Release\AgStructure.dll
+D:\KC\Source\Sqlite\AgStructure\Release\AgStructure.pdb
+D:\KC\Source\Sqlite\AgStructure\Release\AgStructure.xml
+D:\KC\Source\Sqlite\AgStructure\Project\obj\Debug\AgStructure.FrmCharges.resources
+D:\KC\Source\Sqlite\AgStructure\Project\obj\Debug\AgStructure.FrmNCat.resources
+D:\KC\Source\Sqlite\AgStructure\Project\obj\Debug\AgStructure.FrmStructure.resources
+D:\KC\Source\Sqlite\AgStructure\Project\obj\Debug\AgStructure.FrmStructureAcPosting.resources
+D:\KC\Source\Sqlite\AgStructure\Project\obj\Debug\AgStructure.FrmTaxPostingGroupEntry.resources
+D:\KC\Source\Sqlite\AgStructure\Project\obj\Debug\AgStructure.MDIMain.resources
+D:\KC\Source\Sqlite\AgStructure\Project\obj\Debug\AgStructure.Resources.resources
+D:\KC\Source\Sqlite\AgStructure\Project\obj\Debug\AgStructure.vbproj.GenerateResource.Cache
+D:\KC\Source\Sqlite\AgStructure\Project\obj\Debug\AgStructure.dll
+D:\KC\Source\Sqlite\AgStructure\Project\obj\Debug\AgStructure.xml
+D:\KC\Source\Sqlite\AgStructure\Project\obj\Debug\AgStructure.pdb
+D:\KC\Source\Sqlite\AgStructure\Project\obj\Debug\AgStructure.vbprojResolveAssemblyReference.cache
+D:\Working Copy\trunk\AgStructure\Release\AgStructure.dll.config
+D:\Working Copy\trunk\AgStructure\Release\AgStructure.dll
+D:\Working Copy\trunk\AgStructure\Release\AgStructure.pdb
+D:\Working Copy\trunk\AgStructure\Release\AgStructure.xml
+D:\Working Copy\trunk\AgStructure\Project\obj\Debug\AgStructure.vbprojResolveAssemblyReference.cache
+D:\Working Copy\trunk\AgStructure\Project\obj\Debug\AgStructure.FrmCharges.resources
+D:\Working Copy\trunk\AgStructure\Project\obj\Debug\AgStructure.FrmNCat.resources
+D:\Working Copy\trunk\AgStructure\Project\obj\Debug\AgStructure.FrmStructure.resources
+D:\Working Copy\trunk\AgStructure\Project\obj\Debug\AgStructure.FrmStructureAcPosting.resources
+D:\Working Copy\trunk\AgStructure\Project\obj\Debug\AgStructure.FrmTaxPostingGroupEntry.resources
+D:\Working Copy\trunk\AgStructure\Project\obj\Debug\AgStructure.MDIMain.resources
+D:\Working Copy\trunk\AgStructure\Project\obj\Debug\AgStructure.Resources.resources
+D:\Working Copy\trunk\AgStructure\Project\obj\Debug\AgStructure.vbproj.GenerateResource.Cache
+D:\Working Copy\trunk\AgStructure\Project\obj\Debug\AgStructure.dll
+D:\Working Copy\trunk\AgStructure\Project\obj\Debug\AgStructure.xml
+D:\Working Copy\trunk\AgStructure\Project\obj\Debug\AgStructure.pdb
+D:\DesktopApp\trunk\AgStructure\Release\AgStructure.dll.config
+D:\DesktopApp\trunk\AgStructure\Release\AgStructure.dll
+D:\DesktopApp\trunk\AgStructure\Release\AgStructure.pdb
+D:\DesktopApp\trunk\AgStructure\Release\AgStructure.xml
+D:\DesktopApp\trunk\AgStructure\Project\obj\Debug\AgStructure.vbprojResolveAssemblyReference.cache
+D:\DesktopApp\trunk\AgStructure\Project\obj\Debug\AgStructure.FrmCharges.resources
+D:\DesktopApp\trunk\AgStructure\Project\obj\Debug\AgStructure.FrmNCat.resources
+D:\DesktopApp\trunk\AgStructure\Project\obj\Debug\AgStructure.FrmStructure.resources
+D:\DesktopApp\trunk\AgStructure\Project\obj\Debug\AgStructure.FrmStructureAcPosting.resources
+D:\DesktopApp\trunk\AgStructure\Project\obj\Debug\AgStructure.FrmTaxPostingGroupEntry.resources
+D:\DesktopApp\trunk\AgStructure\Project\obj\Debug\AgStructure.MDIMain.resources
+D:\DesktopApp\trunk\AgStructure\Project\obj\Debug\AgStructure.Resources.resources
+D:\DesktopApp\trunk\AgStructure\Project\obj\Debug\AgStructure.vbproj.GenerateResource.Cache
+D:\DesktopApp\trunk\AgStructure\Project\obj\Debug\AgStructure.dll
+D:\DesktopApp\trunk\AgStructure\Project\obj\Debug\AgStructure.xml
+D:\DesktopApp\trunk\AgStructure\Project\obj\Debug\AgStructure.pdb
+D:\WorkingCopy\DesktopApp\trunk\AgStructure\Release\AgStructure.dll.config
+D:\WorkingCopy\DesktopApp\trunk\AgStructure\Release\AgStructure.dll
+D:\WorkingCopy\DesktopApp\trunk\AgStructure\Release\AgStructure.pdb
+D:\WorkingCopy\DesktopApp\trunk\AgStructure\Release\AgStructure.xml
+D:\WorkingCopy\DesktopApp\trunk\AgStructure\Project\obj\Debug\AgStructure.FrmCharges.resources
+D:\WorkingCopy\DesktopApp\trunk\AgStructure\Project\obj\Debug\AgStructure.FrmNCat.resources
+D:\WorkingCopy\DesktopApp\trunk\AgStructure\Project\obj\Debug\AgStructure.FrmStructure.resources
+D:\WorkingCopy\DesktopApp\trunk\AgStructure\Project\obj\Debug\AgStructure.FrmStructureAcPosting.resources
+D:\WorkingCopy\DesktopApp\trunk\AgStructure\Project\obj\Debug\AgStructure.FrmTaxPostingGroupEntry.resources
+D:\WorkingCopy\DesktopApp\trunk\AgStructure\Project\obj\Debug\AgStructure.MDIMain.resources
+D:\WorkingCopy\DesktopApp\trunk\AgStructure\Project\obj\Debug\AgStructure.Resources.resources
+D:\WorkingCopy\DesktopApp\trunk\AgStructure\Project\obj\Debug\AgStructure.vbproj.GenerateResource.Cache
+D:\WorkingCopy\DesktopApp\trunk\AgStructure\Project\obj\Debug\AgStructure.dll
+D:\WorkingCopy\DesktopApp\trunk\AgStructure\Project\obj\Debug\AgStructure.xml
+D:\WorkingCopy\DesktopApp\trunk\AgStructure\Project\obj\Debug\AgStructure.pdb
+D:\WorkingCopy\ShyamaShyam\trunk\AgStructure\Release\AgStructure.dll.config
+D:\WorkingCopy\ShyamaShyam\trunk\AgStructure\Release\AgStructure.dll
+D:\WorkingCopy\ShyamaShyam\trunk\AgStructure\Release\AgStructure.pdb
+D:\WorkingCopy\ShyamaShyam\trunk\AgStructure\Release\AgStructure.xml
+D:\WorkingCopy\ShyamaShyam\trunk\AgStructure\Project\obj\Debug\AgStructure.FrmCharges.resources
+D:\WorkingCopy\ShyamaShyam\trunk\AgStructure\Project\obj\Debug\AgStructure.FrmNCat.resources
+D:\WorkingCopy\ShyamaShyam\trunk\AgStructure\Project\obj\Debug\AgStructure.FrmStructure.resources
+D:\WorkingCopy\ShyamaShyam\trunk\AgStructure\Project\obj\Debug\AgStructure.FrmStructureAcPosting.resources
+D:\WorkingCopy\ShyamaShyam\trunk\AgStructure\Project\obj\Debug\AgStructure.FrmTaxPostingGroupEntry.resources
+D:\WorkingCopy\ShyamaShyam\trunk\AgStructure\Project\obj\Debug\AgStructure.MDIMain.resources
+D:\WorkingCopy\ShyamaShyam\trunk\AgStructure\Project\obj\Debug\AgStructure.Resources.resources
+D:\WorkingCopy\ShyamaShyam\trunk\AgStructure\Project\obj\Debug\AgStructure.vbproj.GenerateResource.Cache
+D:\WorkingCopy\ShyamaShyam\trunk\AgStructure\Project\obj\Debug\AgStructure.dll
+D:\WorkingCopy\ShyamaShyam\trunk\AgStructure\Project\obj\Debug\AgStructure.xml
+D:\WorkingCopy\ShyamaShyam\trunk\AgStructure\Project\obj\Debug\AgStructure.pdb
+D:\WorkingCopy\ShyamaShyam\trunk\AgStructure\Project\obj\Debug\AgStructure.vbprojResolveAssemblyReference.cache
+D:\WorkingCopy\WindowsApp\trunk\AgStructure\Release\AgStructure.dll.config
+D:\WorkingCopy\WindowsApp\trunk\AgStructure\Release\AgStructure.dll
+D:\WorkingCopy\WindowsApp\trunk\AgStructure\Release\AgStructure.pdb
+D:\WorkingCopy\WindowsApp\trunk\AgStructure\Release\AgStructure.xml
+D:\WorkingCopy\WindowsApp\trunk\AgStructure\Project\obj\Debug\AgStructure.FrmCharges.resources
+D:\WorkingCopy\WindowsApp\trunk\AgStructure\Project\obj\Debug\AgStructure.FrmNCat.resources
+D:\WorkingCopy\WindowsApp\trunk\AgStructure\Project\obj\Debug\AgStructure.FrmStructure.resources
+D:\WorkingCopy\WindowsApp\trunk\AgStructure\Project\obj\Debug\AgStructure.FrmStructureAcPosting.resources
+D:\WorkingCopy\WindowsApp\trunk\AgStructure\Project\obj\Debug\AgStructure.FrmTaxPostingGroupEntry.resources
+D:\WorkingCopy\WindowsApp\trunk\AgStructure\Project\obj\Debug\AgStructure.MDIMain.resources
+D:\WorkingCopy\WindowsApp\trunk\AgStructure\Project\obj\Debug\AgStructure.Resources.resources
+D:\WorkingCopy\WindowsApp\trunk\AgStructure\Project\obj\Debug\AgStructure.vbproj.GenerateResource.Cache
+D:\WorkingCopy\WindowsApp\trunk\AgStructure\Project\obj\Debug\AgStructure.dll
+D:\WorkingCopy\WindowsApp\trunk\AgStructure\Project\obj\Debug\AgStructure.xml
+D:\WorkingCopy\WindowsApp\trunk\AgStructure\Project\obj\Debug\AgStructure.pdb
+D:\WindowsApp\trunk\AgStructure\Release\AgStructure.dll.config
+D:\WindowsApp\trunk\AgStructure\Release\AgStructure.dll
+D:\WindowsApp\trunk\AgStructure\Release\AgStructure.pdb
+D:\WindowsApp\trunk\AgStructure\Release\AgStructure.xml
+D:\WindowsApp\trunk\AgStructure\Project\obj\Debug\AgStructure.vbprojResolveAssemblyReference.cache
+D:\WindowsApp\trunk\AgStructure\Project\obj\Debug\AgStructure.FrmCharges.resources
+D:\WindowsApp\trunk\AgStructure\Project\obj\Debug\AgStructure.FrmNCat.resources
+D:\WindowsApp\trunk\AgStructure\Project\obj\Debug\AgStructure.FrmStructure.resources
+D:\WindowsApp\trunk\AgStructure\Project\obj\Debug\AgStructure.FrmStructureAcPosting.resources
+D:\WindowsApp\trunk\AgStructure\Project\obj\Debug\AgStructure.FrmTaxPostingGroupEntry.resources
+D:\WindowsApp\trunk\AgStructure\Project\obj\Debug\AgStructure.MDIMain.resources
+D:\WindowsApp\trunk\AgStructure\Project\obj\Debug\AgStructure.Resources.resources
+D:\WindowsApp\trunk\AgStructure\Project\obj\Debug\AgStructure.vbproj.GenerateResource.Cache
+D:\WindowsApp\trunk\AgStructure\Project\obj\Debug\AgStructure.dll
+D:\WindowsApp\trunk\AgStructure\Project\obj\Debug\AgStructure.xml
+D:\WindowsApp\trunk\AgStructure\Project\obj\Debug\AgStructure.pdb
+D:\WorkingCopy\trunk_18Jul2021\trunk\AgStructure\Release\AgStructure.dll.config
+D:\WorkingCopy\trunk_18Jul2021\trunk\AgStructure\Release\AgStructure.dll
+D:\WorkingCopy\trunk_18Jul2021\trunk\AgStructure\Release\AgStructure.pdb
+D:\WorkingCopy\trunk_18Jul2021\trunk\AgStructure\Release\AgStructure.xml
+D:\WorkingCopy\trunk_18Jul2021\trunk\AgStructure\Project\obj\Debug\AgStructure.vbprojResolveAssemblyReference.cache
+D:\WorkingCopy\trunk_18Jul2021\trunk\AgStructure\Project\obj\Debug\AgStructure.FrmCharges.resources
+D:\WorkingCopy\trunk_18Jul2021\trunk\AgStructure\Project\obj\Debug\AgStructure.FrmNCat.resources
+D:\WorkingCopy\trunk_18Jul2021\trunk\AgStructure\Project\obj\Debug\AgStructure.FrmStructure.resources
+D:\WorkingCopy\trunk_18Jul2021\trunk\AgStructure\Project\obj\Debug\AgStructure.FrmStructureAcPosting.resources
+D:\WorkingCopy\trunk_18Jul2021\trunk\AgStructure\Project\obj\Debug\AgStructure.FrmTaxPostingGroupEntry.resources
+D:\WorkingCopy\trunk_18Jul2021\trunk\AgStructure\Project\obj\Debug\AgStructure.MDIMain.resources
+D:\WorkingCopy\trunk_18Jul2021\trunk\AgStructure\Project\obj\Debug\AgStructure.Resources.resources
+D:\WorkingCopy\trunk_18Jul2021\trunk\AgStructure\Project\obj\Debug\AgStructure.vbproj.GenerateResource.Cache
+D:\WorkingCopy\trunk_18Jul2021\trunk\AgStructure\Project\obj\Debug\AgStructure.dll
+D:\WorkingCopy\trunk_18Jul2021\trunk\AgStructure\Project\obj\Debug\AgStructure.xml
+D:\WorkingCopy\trunk_18Jul2021\trunk\AgStructure\Project\obj\Debug\AgStructure.pdb

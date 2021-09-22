@@ -1,0 +1,33 @@
+<?xml version="1.0" standalone="yes"?>
+<NewDataSet>
+  <Table>
+    <PaymentNo>D1-OB-15</PaymentNo>
+    <V_Date>2019-10-14T00:00:00+05:30</V_Date>
+    <Narration>Opening Balance BY HAND RAHUL TOUR</Narration>
+    <PaidAmount>510</PaidAmount>
+  </Table>
+  <Table>
+    <PaymentNo>D1-OB-15</PaymentNo>
+    <V_Date>2019-11-02T00:00:00+05:30</V_Date>
+    <Narration>Opening Balance BY HAN DRAHUL</Narration>
+    <PaidAmount>1000</PaidAmount>
+  </Table>
+  <Table>
+    <PaymentNo>D1-OB-15</PaymentNo>
+    <V_Date>2019-11-05T00:00:00+05:30</V_Date>
+    <Narration>Opening Balance ICICI BANK CH NO 050124</Narration>
+    <PaidAmount>1270.41</PaidAmount>
+  </Table>
+  <Table>
+    <PaymentNo>D1-OB-15</PaymentNo>
+    <V_Date>2019-11-06T00:00:00+05:30</V_Date>
+    <Narration>Opening Balance ICICI BNK</Narration>
+    <PaidAmount>1066.89</PaidAmount>
+  </Table>
+  <Table>
+    <PaymentNo>D1-OB-15</PaymentNo>
+    <V_Date>2019-12-11T00:00:00+05:30</V_Date>
+    <Narration>Opening Balance DELHI OFFICE TRF BY HAND MOHIT</Narration>
+    <PaidAmount>10000</PaidAmount>
+  </Table>
+</NewDataSet>

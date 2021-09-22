@@ -1,0 +1,75 @@
+D:\Dataman\Release\Carpet_Main.dll
+D:\Dataman\Release\Carpet_Main.pdb
+D:\Dataman\Release\Carpet_Main.xml
+E:\Ashish Gupta\Active Projects\Carpet\Project\Carpet_Main\obj\Debug\ResolveAssemblyReference.cache
+E:\Ashish Gupta\Active Projects\Carpet\Project\Carpet_Main\obj\Debug\Carpet_Main.FrmEnviro.resources
+E:\Ashish Gupta\Active Projects\Carpet\Project\Carpet_Main\obj\Debug\Carpet_Main.Resources.resources
+E:\Ashish Gupta\Active Projects\Carpet\Project\Carpet_Main\obj\Debug\Carpet_Main.MDIMain.resources
+E:\Ashish Gupta\Active Projects\Carpet\Project\Carpet_Main\obj\Debug\Carpet_Main.vbproj.GenerateResource.Cache
+E:\Ashish Gupta\Active Projects\Carpet\Project\Carpet_Main\obj\Debug\Carpet_Main.dll
+E:\Ashish Gupta\Active Projects\Carpet\Project\Carpet_Main\obj\Debug\Carpet_Main.xml
+E:\Ashish Gupta\Active Projects\Carpet\Project\Carpet_Main\obj\Debug\Carpet_Main.pdb
+E:\Ashish Gupta\Active Projects\CarpetSoft\Project\Carpet_Main\obj\Debug\ResolveAssemblyReference.cache
+E:\Ashish Gupta\Active Projects\CarpetSoft\Project\Carpet_Main\obj\Debug\Carpet_Main.FrmEnviro.resources
+E:\Ashish Gupta\Active Projects\CarpetSoft\Project\Carpet_Main\obj\Debug\Carpet_Main.Resources.resources
+E:\Ashish Gupta\Active Projects\CarpetSoft\Project\Carpet_Main\obj\Debug\Carpet_Main.MDIMain.resources
+E:\Ashish Gupta\Active Projects\CarpetSoft\Project\Carpet_Main\obj\Debug\Carpet_Main.vbproj.GenerateResource.Cache
+E:\Ashish Gupta\Active Projects\CarpetSoft\Project\Carpet_Main\obj\Debug\Carpet_Main.dll
+E:\Ashish Gupta\Active Projects\CarpetSoft\Project\Carpet_Main\obj\Debug\Carpet_Main.xml
+E:\Ashish Gupta\Active Projects\CarpetSoft\Project\Carpet_Main\obj\Debug\Carpet_Main.pdb
+E:\Arpit Gupta\Active Projects\Carpet Soft\Project\Carpet_Purchase\obj\Debug\Carpet_Main.exe
+E:\Arpit Gupta\Active Projects\Carpet Soft\Project\Carpet_Purchase\obj\Debug\Carpet_Main.xml
+E:\Arpit Gupta\Active Projects\Carpet Soft\Project\Carpet_Purchase\obj\Debug\Carpet_Main.pdb
+E:\Arpit Gupta\Active Projects\Carpet Soft\Release\Carpet_Main.exe
+E:\Arpit Gupta\Active Projects\Carpet Soft\Release\Carpet_Main.pdb
+E:\Arpit Gupta\Active Projects\Carpet Soft\Release\Carpet_Main.xml
+E:\Arpit Gupta\Active Projects\Carpet Soft\Project\Carpet_Purchase\obj\Debug\ResolveAssemblyReference.cache
+E:\Arpit Gupta\Active Projects\Carpet Soft\Project\Carpet_Purchase\obj\Debug\Carpet_Main.FrmCarpetDesignBOMMoster.resources
+E:\Arpit Gupta\Active Projects\Carpet Soft\Project\Carpet_Purchase\obj\Debug\Carpet_Main.FrmCarpetDesignMaster.resources
+E:\Arpit Gupta\Active Projects\Carpet Soft\Project\Carpet_Purchase\obj\Debug\Carpet_Main.FrmCarpetDispatch.resources
+E:\Arpit Gupta\Active Projects\Carpet Soft\Project\Carpet_Purchase\obj\Debug\Carpet_Main.FrmCarpetFinishedItemMaster.resources
+E:\Arpit Gupta\Active Projects\Carpet Soft\Project\Carpet_Purchase\obj\Debug\Carpet_Main.FrmCarpetId.resources
+E:\Arpit Gupta\Active Projects\Carpet Soft\Project\Carpet_Purchase\obj\Debug\Carpet_Main.FrmCarpetProcessMaster.resources
+E:\Arpit Gupta\Active Projects\Carpet Soft\Project\Carpet_Purchase\obj\Debug\Carpet_Main.FrmCarpetSizeMaster.resources
+E:\Arpit Gupta\Active Projects\Carpet Soft\Project\Carpet_Purchase\obj\Debug\Carpet_Main.FrmCurrencyMaster.resources
+E:\Arpit Gupta\Active Projects\Carpet Soft\Project\Carpet_Purchase\obj\Debug\Carpet_Main.FrmCurrencyRateMaster.resources
+E:\Arpit Gupta\Active Projects\Carpet Soft\Project\Carpet_Purchase\obj\Debug\Carpet_Main.FrmDyeingIndent.resources
+E:\Arpit Gupta\Active Projects\Carpet Soft\Project\Carpet_Purchase\obj\Debug\Carpet_Main.FrmDyeingIssue.resources
+E:\Arpit Gupta\Active Projects\Carpet Soft\Project\Carpet_Purchase\obj\Debug\Carpet_Main.FrmEnviro.resources
+E:\Arpit Gupta\Active Projects\Carpet Soft\Project\Carpet_Purchase\obj\Debug\Carpet_Main.FrmGatePass.resources
+E:\Arpit Gupta\Active Projects\Carpet Soft\Project\Carpet_Purchase\obj\Debug\Carpet_Main.FrmJobWorkerMaster.resources
+E:\Arpit Gupta\Active Projects\Carpet Soft\Project\Carpet_Purchase\obj\Debug\Carpet_Main.FrmMapItemMaster.resources
+E:\Arpit Gupta\Active Projects\Carpet Soft\Project\Carpet_Purchase\obj\Debug\Carpet_Main.FrmPartyMaster.resources
+E:\Arpit Gupta\Active Projects\Carpet Soft\Project\Carpet_Purchase\obj\Debug\Carpet_Main.FrmPortMaster.resources
+E:\Arpit Gupta\Active Projects\Carpet Soft\Project\Carpet_Purchase\obj\Debug\Carpet_Main.FrmProcessManPowerMaster.resources
+E:\Arpit Gupta\Active Projects\Carpet Soft\Project\Carpet_Purchase\obj\Debug\Carpet_Main.FrmProductionPlan.resources
+E:\Arpit Gupta\Active Projects\Carpet Soft\Project\Carpet_Purchase\obj\Debug\Carpet_Main.FrmPurjEntry.resources
+E:\Arpit Gupta\Active Projects\Carpet Soft\Project\Carpet_Purchase\obj\Debug\Carpet_Main.FrmSalesInvoice.resources
+E:\Arpit Gupta\Active Projects\Carpet Soft\Project\Carpet_Purchase\obj\Debug\Carpet_Main.FrmSalesOrder.resources
+E:\Arpit Gupta\Active Projects\Carpet Soft\Project\Carpet_Purchase\obj\Debug\Carpet_Main.FrmSalesOrderCancel.resources
+E:\Arpit Gupta\Active Projects\Carpet Soft\Project\Carpet_Purchase\obj\Debug\Carpet_Main.FrmStoreItemMaster.resources
+E:\Arpit Gupta\Active Projects\Carpet Soft\Project\Carpet_Purchase\obj\Debug\Carpet_Main.FrmTaxGroupItemMaster.resources
+E:\Arpit Gupta\Active Projects\Carpet Soft\Project\Carpet_Purchase\obj\Debug\Carpet_Main.FrmTaxGroupPartyMaster.resources
+E:\Arpit Gupta\Active Projects\Carpet Soft\Project\Carpet_Purchase\obj\Debug\Carpet_Main.FrmTaxPostingParameter.resources
+E:\Arpit Gupta\Active Projects\Carpet Soft\Project\Carpet_Purchase\obj\Debug\Carpet_Main.FrmTemplateCarpetPrcocessIssueReceive.resources
+E:\Arpit Gupta\Active Projects\Carpet Soft\Project\Carpet_Purchase\obj\Debug\Carpet_Main.FrmTemplateDyeingReceive.resources
+E:\Arpit Gupta\Active Projects\Carpet Soft\Project\Carpet_Purchase\obj\Debug\Carpet_Main.FrmTemplateDyeingSpinAdvance.resources
+E:\Arpit Gupta\Active Projects\Carpet Soft\Project\Carpet_Purchase\obj\Debug\Carpet_Main.FrmTemplateMapIssue.resources
+E:\Arpit Gupta\Active Projects\Carpet Soft\Project\Carpet_Purchase\obj\Debug\Carpet_Main.FrmTemplateMapPurchase.resources
+E:\Arpit Gupta\Active Projects\Carpet Soft\Project\Carpet_Purchase\obj\Debug\Carpet_Main.FrmTemplateMapPurchaseOrder.resources
+E:\Arpit Gupta\Active Projects\Carpet Soft\Project\Carpet_Purchase\obj\Debug\Carpet_Main.FrmTemplateWeavingFinishingAdvance.resources
+E:\Arpit Gupta\Active Projects\Carpet Soft\Project\Carpet_Purchase\obj\Debug\Carpet_Main.FrmTemplateWeavingIssueReceive.resources
+E:\Arpit Gupta\Active Projects\Carpet Soft\Project\Carpet_Purchase\obj\Debug\Carpet_Main.FrmWeavingBazar.resources
+E:\Arpit Gupta\Active Projects\Carpet Soft\Project\Carpet_Purchase\obj\Debug\Carpet_Main.FrmWeavingYarnExchange.resources
+E:\Arpit Gupta\Active Projects\Carpet Soft\Project\Carpet_Purchase\obj\Debug\Carpet_Main.FrmWoolIssueForSpinning.resources
+E:\Arpit Gupta\Active Projects\Carpet Soft\Project\Carpet_Purchase\obj\Debug\Carpet_Main.FrmWoolMaster.resources
+E:\Arpit Gupta\Active Projects\Carpet Soft\Project\Carpet_Purchase\obj\Debug\Carpet_Main.FrmYarnMaster.resources
+E:\Arpit Gupta\Active Projects\Carpet Soft\Project\Carpet_Purchase\obj\Debug\Carpet_Main.FrmYarnReceivefromSpinning.resources
+E:\Arpit Gupta\Active Projects\Carpet Soft\Project\Carpet_Purchase\obj\Debug\Carpet_Main.FrmYarnShade.resources
+E:\Arpit Gupta\Active Projects\Carpet Soft\Project\Carpet_Purchase\obj\Debug\Carpet_Main.FrmYarnSKUMaster.resources
+E:\Arpit Gupta\Active Projects\Carpet Soft\Project\Carpet_Purchase\obj\Debug\Carpet_Main.Resources.resources
+E:\Arpit Gupta\Active Projects\Carpet Soft\Project\Carpet_Purchase\obj\Debug\Carpet_Main.MDIMain.resources
+E:\Arpit Gupta\Active Projects\Carpet Soft\Project\Carpet_Purchase\obj\Debug\Carpet_Main.vbproj.GenerateResource.Cache
+E:\Arpit Gupta\Active Projects\RUG CARE\Project\RUG MAIN\obj\Debug\Carpet_Main.exe
+E:\Arpit Gupta\Active Projects\RUG CARE\Project\RUG MAIN\obj\Debug\Carpet_Main.xml
+E:\Arpit Gupta\Active Projects\RUG CARE\Project\RUG MAIN\obj\Debug\Carpet_Main.pdb

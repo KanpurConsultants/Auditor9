@@ -1,0 +1,49 @@
+<?xml version="1.0" standalone="yes"?>
+<NewDataSet>
+  <Table>
+    <CompanySalesTaxNo>09AGGPG9720P1ZT</CompanySalesTaxNo>
+    <CompanyName>BOOK SHOPEE</CompanyName>
+    <Year>2020-2021</Year>
+    <MonthName>July</MonthName>
+    <OutTaxableSuppOtherThanZeroTotalTaxablevalue>96508.6799999996</OutTaxableSuppOtherThanZeroTotalTaxablevalue>
+    <OutTaxableSuppOtherThanZeroIntegratedTax>0</OutTaxableSuppOtherThanZeroIntegratedTax>
+    <OutTaxableSuppOtherThanZeroCentralTax>6574.68000000003</OutTaxableSuppOtherThanZeroCentralTax>
+    <OutTaxableSuppOtherThanZeroCess>0</OutTaxableSuppOtherThanZeroCess>
+    <OutTaxableSuppZeroTotalTaxablevalue>0</OutTaxableSuppZeroTotalTaxablevalue>
+    <OutTaxableSuppZeroIntegratedTax>0</OutTaxableSuppZeroIntegratedTax>
+    <OutTaxableSuppZeroCess>0</OutTaxableSuppZeroCess>
+    <OutTaxableSuppNillTotalTaxablevalue>627543</OutTaxableSuppNillTotalTaxablevalue>
+    <InwardSuppliesReverseChargeTotalTaxablevalue>0</InwardSuppliesReverseChargeTotalTaxablevalue>
+    <InwardSuppliesReverseChargeIntegratedTax>0</InwardSuppliesReverseChargeIntegratedTax>
+    <InwardSuppliesReverseChargeCentralTax>0</InwardSuppliesReverseChargeCentralTax>
+    <InwardSuppliesReverseChargeStateTax>0</InwardSuppliesReverseChargeStateTax>
+    <InwardSuppliesReverseChargeCess>0</InwardSuppliesReverseChargeCess>
+    <NonGstOutwardTotalTaxablevalue>0</NonGstOutwardTotalTaxablevalue>
+    <ImportOfGoodsIntegratedTax>0</ImportOfGoodsIntegratedTax>
+    <ImportOfGoodsCess>0</ImportOfGoodsCess>
+    <ImportOfServiceIntegratedTax>0</ImportOfServiceIntegratedTax>
+    <ImportOfServiceCess>0</ImportOfServiceCess>
+    <InwardSuppliesReverseChargeOtherThan1And2IntegratedTax>0</InwardSuppliesReverseChargeOtherThan1And2IntegratedTax>
+    <InwardSuppliesReverseChargeOtherThan1And2CentralTax>0</InwardSuppliesReverseChargeOtherThan1And2CentralTax>
+    <InwardSuppliesReverseChargeOtherThan1And2StateTax>0</InwardSuppliesReverseChargeOtherThan1And2StateTax>
+    <InwardSuppliesReverseChargeOtherThan1And2Cess>0</InwardSuppliesReverseChargeOtherThan1And2Cess>
+    <ISDIntegratedTax>0</ISDIntegratedTax>
+    <ISDCentralTax>0</ISDCentralTax>
+    <ISDCess>0</ISDCess>
+    <AllOtherItcIntegratedTax>0</AllOtherItcIntegratedTax>
+    <AllOtherItcCentralTax>0</AllOtherItcCentralTax>
+    <AllOtherItcCess>0</AllOtherItcCess>
+    <IneligibleITCIntegratedTax>0</IneligibleITCIntegratedTax>
+    <IneligibleITCCentralTax>0</IneligibleITCCentralTax>
+    <IneligibleITCStateTax>0</IneligibleITCStateTax>
+    <IneligibleITCCess>0</IneligibleITCCess>
+    <ZeroRatedInterStatesupplies>0</ZeroRatedInterStatesupplies>
+    <ZeroRatedIntrastatesupplies>0</ZeroRatedIntrastatesupplies>
+    <NonGstInterStatesupplies>0</NonGstInterStatesupplies>
+    <NonGstIntrastatesupplies>0</NonGstIntrastatesupplies>
+    <LateFeeIntegratedTax>0</LateFeeIntegratedTax>
+    <LateFeeCentralTax>0</LateFeeCentralTax>
+    <LateFeeStateTax>0</LateFeeStateTax>
+    <LateFeeCess>0</LateFeeCess>
+  </Table>
+</NewDataSet>

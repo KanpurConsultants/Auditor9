@@ -1,0 +1,8 @@
+; Field definition file for table: ADORecordset
+Code	string	255	D100000084	
+Student	string	255	AANJANEY DUBEY , 3	
+FatherName	string	255	RETESH DUBEY 	
+Address	string	255	VEDMANPUR PARSIPUR BHADOHI , Bhadohi	
+Class	string	255	U.K.G.	
+ContactNo	string	255	9454054606, 	
+Email	string	255		

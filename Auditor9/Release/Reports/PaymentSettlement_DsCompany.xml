@@ -1,0 +1,16 @@
+<?xml version="1.0" standalone="yes"?>
+<NewDataSet>
+  <Table>
+    <Code>1</Code>
+    <EffectiveUptoDate>2000-01-01T00:00:00+05:30</EffectiveUptoDate>
+    <DocumentHeaderRow1Left>GUR SHEEL SAREES</DocumentHeaderRow1Left>
+    <DocumentHeaderRow2Left>57 STATION ROAD</DocumentHeaderRow2Left>
+    <DocumentHeaderRow3Left>UNNAO,209801</DocumentHeaderRow3Left>
+    <DocumentHeaderRow1Right>PHONE NO : 9455194856, 57</DocumentHeaderRow1Right>
+    <DocumentHeaderRow2Right>GST No : 09AEBPS4007E1ZR, PAN No : AEBPS4007E</DocumentHeaderRow2Right>
+    <IsSalesTaxApplicable>true</IsSalesTaxApplicable>
+    <WeekOffDays>0</WeekOffDays>
+    <EntryBy>System</EntryBy>
+    <EntryDate>2019-09-10T11:01:00+05:30</EntryDate>
+  </Table>
+</NewDataSet>

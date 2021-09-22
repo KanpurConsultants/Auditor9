@@ -1,0 +1,79 @@
+Serial	Number
+ProductStockID	Number
+BookName	String	250
+Publisher	String	250
+BookGroup	String	250
+Book.BookID	Number
+Rate	Currency
+Author	String	250
+BookCode	String	250
+Subject	String	250
+Discount	Currency
+ISBN	String	250
+BarCode	String	250
+DiscountPer	Currency
+BookCurrency	String	250
+Conversion	Currency
+NetStock	Currency
+CategoryC	Currency
+CategoryB	Currency
+CategoryA	Currency
+Category	String	250
+VatPer	Currency
+Book.SatPer	Currency
+TaxExempted	String	250
+HSNCode	String	250
+GSTPer	String	250
+Book.IGSTPer	String	250
+IsSet	String	250
+CD	String	250
+ProductStock.BookID	Number
+Qty	Currency
+CalculationRate	Currency
+Amount	Currency
+ProductStock.NetAmount	Currency
+SchoolName	String	250
+Add1	String	250
+Add2	String	250
+SMobile	String	250
+Account	String	250
+Address	String	250
+AmountInWords	String	250
+DiscountPercentage	Currency
+DiscountAmount	Currency
+CounterSaleID	Number
+SchoolID	Number
+ClassName	String	250
+AccountID	Number
+SaleAccountID	Number
+DocNo	String	250
+Dated	Date
+StudentName	String	250
+Remark	String	250
+TotalAmount	Currency
+Roundoff	Currency
+CounterSale.NetAmount	Currency
+SaleBy	String	250
+SeriesMasterID	String	250
+OldSaleID	Number
+SecName	String	250
+PaidAmount	Currency
+OwnerID	String	250
+OwnerSessionID	String	250
+UserName	String	250
+IsCancel	String	250
+IsShort	String	250
+TaxPer	Currency
+ProductStock.SatPer	Currency
+ProductStock.IGSTPer	Currency
+TaxAmount	Currency
+SatAmount	Currency
+IGSTAmount	Currency
+StrSGST	String	250
+StrCGST	String	250
+StrIGST	String	250
+AddDisPer	Currency
+AddDisAmount	Currency
+StrCategory	String	250
+RoundDis	Currency
+

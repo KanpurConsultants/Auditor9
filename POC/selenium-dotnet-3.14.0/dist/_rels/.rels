@@ -1,0 +1,5 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Relationships xmlns="http://schemas.openxmlformats.org/package/2006/relationships">
+  <Relationship Type="http://schemas.microsoft.com/packaging/2010/07/manifest" Target="/Selenium.Support.nuspec" Id="Rf35f9443160a481b" />
+  <Relationship Type="http://schemas.openxmlformats.org/package/2006/relationships/metadata/core-properties" Target="/package/services/metadata/core-properties/568f107d3c894c4297587b9d9d65063a.psmdcp" Id="Rfd55c7726e7344d3" />
+</Relationships>

@@ -1,0 +1,13 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<Table1>
+<DBFileName>DbCheque</DBFileName>
+<DBLogFileName>DbCheque_Log</DBLogFileName>
+<BackupPath>DbCheque_Log</BackupPath>
+<ConStr>Persist Security Info=False;User ID='sa';pwd=;Initial Catalog=DbCheque;Data Source=.\Express2005;</ConStr>
+<ConType>SQL</ConType>
+<MasterCompanyName>Company</MasterCompanyName>
+<DBServerName>.\Express2005</DBServerName>
+<DBName>DbCheque</DBName>
+<DBUserName>sa</DBUserName>
+<DBPassword></DBPassword>
+</Table1>

@@ -1,0 +1,6 @@
+SchoolName	String	250
+ClassName	String	250
+CountSet	Number
+FromDate	Date
+ToDate	Date
+

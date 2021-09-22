@@ -1,0 +1,158 @@
+<?xml version="1.0" standalone="yes"?>
+<NewDataSet>
+  <Table>
+    <PaymentNo>D1-WOB-886</PaymentNo>
+    <V_Date>2018-10-03T00:00:00+05:30</V_Date>
+    <Narration>RTGS-ICICI-SSF Ref.No. : 886 Dated 03/Oct/2018</Narration>
+    <PaidAmount>200000</PaidAmount>
+  </Table>
+  <Table>
+    <PaymentNo>D1-WOB-1015</PaymentNo>
+    <V_Date>2018-10-27T00:00:00+05:30</V_Date>
+    <Narration>YES BANK-577651-SSF-SMAR Ref.No. : 1015 Dated 27/Oct/2018</Narration>
+    <PaidAmount>652215</PaidAmount>
+  </Table>
+  <Table>
+    <PaymentNo>D1-WOB-1016</PaymentNo>
+    <V_Date>2018-10-27T00:00:00+05:30</V_Date>
+    <Narration>YES BANK-577650-SSF-K.S Ref.No. : 1016 Dated 27/Oct/2018</Narration>
+    <PaidAmount>427111</PaidAmount>
+  </Table>
+  <Table>
+    <PaymentNo>D1-WOB-1365</PaymentNo>
+    <V_Date>2018-12-05T00:00:00+05:30</V_Date>
+    <Narration>YES BNAK-190105-SSF-K.S.C. Ref.No. : 1365 Dated 05/Dec/2018</Narration>
+    <PaidAmount>1042963</PaidAmount>
+  </Table>
+  <Table>
+    <PaymentNo>D1-WOB-1765</PaymentNo>
+    <V_Date>2019-01-29T00:00:00+05:30</V_Date>
+    <Narration>YES BANK-497290-SSF-SM Ref.No. : 1765 Dated 29/Jan/2019</Narration>
+    <PaidAmount>313628</PaidAmount>
+  </Table>
+  <Table>
+    <PaymentNo>D1-WOB-1766</PaymentNo>
+    <V_Date>2019-01-29T00:00:00+05:30</V_Date>
+    <Narration>YES BANK-498289-SSF-KS Ref.No. : 1766 Dated 29/Jan/2019</Narration>
+    <PaidAmount>108541</PaidAmount>
+  </Table>
+  <Table>
+    <PaymentNo>D1-WOB-1366</PaymentNo>
+    <V_Date>2019-01-30T00:00:00+05:30</V_Date>
+    <Narration>YES BANK-497310-SSF-SMART Ref.No. : 1366 Dated 30/Jan/2019</Narration>
+    <PaidAmount>280002</PaidAmount>
+  </Table>
+  <Table>
+    <PaymentNo>D1-WOB-2134</PaymentNo>
+    <V_Date>2019-03-18T00:00:00+05:30</V_Date>
+    <Narration>CASH GIVEN FROM ASTHA Ref.No. : 2134 Dated 18/Mar/2019</Narration>
+    <PaidAmount>52500</PaidAmount>
+  </Table>
+  <Table>
+    <PaymentNo>D1-WOB-2468</PaymentNo>
+    <V_Date>2019-04-11T00:00:00+05:30</V_Date>
+    <Narration>CASH Ref.No. : 2468 Dated 11/Apr/2019</Narration>
+    <PaidAmount>500000</PaidAmount>
+  </Table>
+  <Table>
+    <PaymentNo>D1-WOB-2529</PaymentNo>
+    <V_Date>2019-04-27T00:00:00+05:30</V_Date>
+    <Narration>CASH GIVEN FROM LDH GADDI Ref.No. : 2529 Dated 27/Apr/2019</Narration>
+    <PaidAmount>400000</PaidAmount>
+  </Table>
+  <Table>
+    <PaymentNo>D1-WOB-2917</PaymentNo>
+    <V_Date>2019-05-23T00:00:00+05:30</V_Date>
+    <Narration>CASH LDH Ref.No. : 2917 Dated 23/May/2019</Narration>
+    <PaidAmount>400000</PaidAmount>
+  </Table>
+  <Table>
+    <PaymentNo>D1-WOB-3441</PaymentNo>
+    <V_Date>2019-06-19T00:00:00+05:30</V_Date>
+    <Narration>CASH LDH(5000) SCHME Ref.No. : 3441 Dated 19/Jun/2019</Narration>
+    <PaidAmount>450000</PaidAmount>
+  </Table>
+  <Table>
+    <PaymentNo>D1-WOB-3442</PaymentNo>
+    <V_Date>2019-06-19T00:00:00+05:30</V_Date>
+    <Narration>YES BANK-068027-SMART COL Ref.No. : 3442 Dated 19/Jun/2019</Narration>
+    <PaidAmount>500000</PaidAmount>
+  </Table>
+  <Table>
+    <PaymentNo>D1-WOB-4529</PaymentNo>
+    <V_Date>2019-10-24T00:00:00+05:30</V_Date>
+    <Narration>CASH LDH Ref.No. : 4529 Dated 24/Oct/2019</Narration>
+    <PaidAmount>400000</PaidAmount>
+  </Table>
+  <Table>
+    <PaymentNo>D1-WOB-4505</PaymentNo>
+    <V_Date>2019-12-10T00:00:00+05:30</V_Date>
+    <Narration>YES BANK-782499-SSF-SMART Ref.No. : 4505 Dated 10/Dec/2019</Narration>
+    <PaidAmount>386490</PaidAmount>
+  </Table>
+  <Table>
+    <PaymentNo>D1-WOB-5399</PaymentNo>
+    <V_Date>2019-12-10T00:00:00+05:30</V_Date>
+    <Narration>YES BANK-782487-SSF-K.S.C Ref.No. : 5399 Dated 10/Dec/2019</Narration>
+    <PaidAmount>722146</PaidAmount>
+  </Table>
+  <Table>
+    <PaymentNo>D1-WOB-5491</PaymentNo>
+    <V_Date>2019-12-12T00:00:00+05:30</V_Date>
+    <Narration>CASH Ref.No. : 5491 Dated 12/Dec/2019</Narration>
+    <PaidAmount>500000</PaidAmount>
+  </Table>
+  <Table>
+    <PaymentNo>D1-PS-948</PaymentNo>
+    <V_Date>2020-01-04T00:00:00+05:30</V_Date>
+    <Narration>Payment Settlement for Invoices : D3-PI-B297, D3-PI-B347, D3-PI-B348, D3-PI-B349, D3-PI-B350, D3-PI-B351, D3-PI-B352, D3-PI-B360, D3-PI-B361, D3-PI-B362, D3-PI-B363, D3-PI-B364, D3-PI-B367</Narration>
+    <PaidAmount>400553</PaidAmount>
+  </Table>
+  <Table>
+    <PaymentNo>D1-WPMT-36</PaymentNo>
+    <V_Date>2020-01-06T00:00:00+05:30</V_Date>
+    <Narration>W Payment : LUDHIANA CASH . </Narration>
+    <PaidAmount>500000</PaidAmount>
+    <ContraName xsi:type="xs:string" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">LUDHIANA CASH </ContraName>
+  </Table>
+  <Table>
+    <PaymentNo>D1-PS-1200</PaymentNo>
+    <V_Date>2020-02-08T00:00:00+05:30</V_Date>
+    <Narration>Payment Settlement for Invoices : D3-PI-B454, D3-PI-B470, D3-PI-B482, D3-PI-B485, D3-PI-B488, D3-PI-B489, D3-PI-B490, D3-PI-B491, D3-PI-B492, D3-PI-B493, D3-PI-B505</Narration>
+    <PaidAmount>672177</PaidAmount>
+  </Table>
+  <Table>
+    <PaymentNo>D1-PS-1345</PaymentNo>
+    <V_Date>2020-03-12T00:00:00+05:30</V_Date>
+    <Narration>PS : ICICI. 327744915</Narration>
+    <PaidAmount>1072730</PaidAmount>
+    <ContraName xsi:type="xs:string" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">ICICI, Kanpur</ContraName>
+  </Table>
+  <Table>
+    <PaymentNo>D1-PS-1361</PaymentNo>
+    <V_Date>2020-03-12T00:00:00+05:30</V_Date>
+    <Narration>PS : ICICI. 327838887</Narration>
+    <PaidAmount>1072730</PaidAmount>
+    <ContraName xsi:type="xs:string" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">ICICI, Kanpur</ContraName>
+  </Table>
+  <Table>
+    <PaymentNo>D1-PMT-244</PaymentNo>
+    <V_Date>2020-07-10T00:00:00+05:30</V_Date>
+    <Narration>PMT : . </Narration>
+    <PaidAmount>37583</PaidAmount>
+    <ContraName xsi:type="xs:string" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">YES BANK NEW (NEW A/C), Kanpur</ContraName>
+  </Table>
+  <Table>
+    <PaymentNo>D1-WPMT-255</PaymentNo>
+    <V_Date>2020-07-22T00:00:00+05:30</V_Date>
+    <Narration>LUDHIANA CASH 8601</Narration>
+    <PaidAmount>374000</PaidAmount>
+    <ContraName xsi:type="xs:string" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">LUDHIANA CASH </ContraName>
+  </Table>
+  <Table>
+    <PaymentNo>D1-WJV-36</PaymentNo>
+    <V_Date>2020-07-23T00:00:00+05:30</V_Date>
+    <Narration>SMART COLLECTIONS-LUDHIANA, LUDIHYANA. </Narration>
+    <PaidAmount>1454581</PaidAmount>
+  </Table>
+</NewDataSet>

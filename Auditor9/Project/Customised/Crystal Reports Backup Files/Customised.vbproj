@@ -1,0 +1,703 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003" ToolsVersion="12.0">
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProductVersion>9.0.21022</ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{B24A827D-4755-4A74-9EB8-714CE7C7FAB8}</ProjectGuid>
+    <OutputType>WinExe</OutputType>
+    <StartupObject>Customised.My.MyApplication</StartupObject>
+    <RootNamespace>Customised</RootNamespace>
+    <AssemblyName>Customised</AssemblyName>
+    <MyType>WindowsForms</MyType>
+    <TargetZone>LocalIntranet</TargetZone>
+    <GenerateManifests>false</GenerateManifests>
+    <ExcludedPermissions>
+    </ExcludedPermissions>
+    <ApplicationIcon>
+    </ApplicationIcon>
+    <FileUpgradeFlags>
+    </FileUpgradeFlags>
+    <OldToolsVersion>3.5</OldToolsVersion>
+    <UpgradeBackupLocation>
+    </UpgradeBackupLocation>
+    <ApplicationManifest>My Project\app.manifest</ApplicationManifest>
+    <TargetFrameworkVersion>v2.0</TargetFrameworkVersion>
+    <NuGetPackageImportStamp>
+    </NuGetPackageImportStamp>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <DefineDebug>true</DefineDebug>
+    <DefineTrace>true</DefineTrace>
+    <OutputPath>..\..\Release\</OutputPath>
+    <DocumentationFile>Customised.xml</DocumentationFile>
+    <NoWarn>42016,41999,42017,42018,42019,42032,42036,42020,42021,42022,42353,42354,42355</NoWarn>
+    <PlatformTarget>AnyCPU</PlatformTarget>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <DefineDebug>false</DefineDebug>
+    <DefineTrace>true</DefineTrace>
+    <Optimize>true</Optimize>
+    <OutputPath>..\..\Release\</OutputPath>
+    <DocumentationFile>Customised.xml</DocumentationFile>
+    <NoWarn>42016,41999,42017,42018,42019,42032,42036,42020,42021,42022,42353,42354,42355</NoWarn>
+    <PlatformTarget>AnyCPU</PlatformTarget>
+  </PropertyGroup>
+  <PropertyGroup>
+    <OptionCompare>Binary</OptionCompare>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="AgControls, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="AgCustomFields, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="AgLibrary, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="AgStructure, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\Release\AgStructure.dll</HintPath>
+    </Reference>
+    <Reference Include="AgTemplate, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="BarcodeLib, Version=1.0.0.16, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\Release\BarcodeLib.dll</HintPath>
+    </Reference>
+    <Reference Include="CrystalDecisions.CrystalReports.Engine, Version=10.5.3700.0, Culture=neutral, PublicKeyToken=692fbea5521e1304, processorArchitecture=MSIL">
+      <HintPath>..\..\..\Release\CrystalDecisions.CrystalReports.Engine.dll</HintPath>
+    </Reference>
+    <Reference Include="CrystalDecisions.ReportSource, Version=10.5.3700.0, Culture=neutral, PublicKeyToken=692fbea5521e1304, processorArchitecture=MSIL">
+      <HintPath>..\..\..\Release\CrystalDecisions.ReportSource.dll</HintPath>
+    </Reference>
+    <Reference Include="CrystalDecisions.Shared, Version=10.5.3700.0, Culture=neutral, PublicKeyToken=692fbea5521e1304, processorArchitecture=MSIL">
+      <HintPath>..\..\..\Release\CrystalDecisions.Shared.dll</HintPath>
+    </Reference>
+    <Reference Include="CrystalDecisions.Windows.Forms, Version=10.5.3700.0, Culture=neutral, PublicKeyToken=692fbea5521e1304, processorArchitecture=MSIL">
+      <HintPath>..\..\..\Release\CrystalDecisions.Windows.Forms.dll</HintPath>
+    </Reference>
+    <Reference Include="DMHelpGrid, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="EMail, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <ExecutableExtension>.exe</ExecutableExtension>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="Interop.ADODB, Version=2.8.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="Interop.Excel, Version=1.3.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="Microsoft.ReportViewer.WinForms, Version=10.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\Release\Microsoft.ReportViewer.WinForms.dll</HintPath>
+    </Reference>
+    <Reference Include="ReportLayout, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Data.SQLite, Version=1.0.108.0, Culture=neutral, PublicKeyToken=db937bc2d44ff139, processorArchitecture=MSIL">
+      <HintPath>packages\System.Data.SQLite.Core.1.0.108.0\lib\net20\System.Data.SQLite.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="System.Data.SQLite.Linq, Version=1.0.108.0, Culture=neutral, PublicKeyToken=db937bc2d44ff139, processorArchitecture=MSIL">
+      <HintPath>packages\System.Data.SQLite.Linq.1.0.108.0\lib\net20\System.Data.SQLite.Linq.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="System.Deployment" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Web" />
+    <Reference Include="System.Windows.Forms" />
+    <Reference Include="System.Xml" />
+    <Reference Include="Topctrl, Version=1.0.731.654, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <Private>False</Private>
+    </Reference>
+  </ItemGroup>
+  <ItemGroup>
+    <Import Include="Microsoft.VisualBasic" />
+    <Import Include="System" />
+    <Import Include="System.Collections" />
+    <Import Include="System.Collections.Generic" />
+    <Import Include="System.Data" />
+    <Import Include="System.Drawing" />
+    <Import Include="System.Diagnostics" />
+    <Import Include="System.Windows.Forms" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Class\ClsFunction.vb" />
+    <Compile Include="Class\ClsMain.vb" />
+    <Compile Include="Class\ClsPrint.vb" />
+    <Compile Include="Class\ClsReportProcedures.vb" />
+    <Compile Include="Class\ClsReports.vb" />
+    <Compile Include="Class\ExcelHandler.vb" />
+    <Compile Include="Class\PrintHandler.vb" />
+    <Compile Include="Form\Cloth\FrmClothSupplierSettlementInvoiceLine.designer.vb">
+      <DependentUpon>FrmClothSupplierSettlementInvoiceLine.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Form\Cloth\FrmClothSupplierSettlementInvoiceLine.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Form\FrmAdjustmentIssue.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Form\Cloth\FrmClothSupplierSettlementHead.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Form\FrmGodown.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Form\FrmRepPrint.Designer.vb">
+      <DependentUpon>FrmRepPrint.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Form\FrmRepPrint.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Form\UserPermission\FrmChangePassword.Designer.vb">
+      <DependentUpon>FrmChangePassword.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Form\UserPermission\FrmChangePassword.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Form\FrmPaymentMode.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Form\FrmQuery.Designer.vb">
+      <DependentUpon>FrmQuery.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Form\FrmQuery.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Form\FrmSettings_Add.designer.vb">
+      <DependentUpon>FrmSettings_Add.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Form\FrmSettings_Add.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Form\FrmSettings.Designer.vb">
+      <DependentUpon>FrmSettings.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Form\FrmSettings.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Form\FrmCompanyInput.Designer.vb">
+      <DependentUpon>FrmCompanyInput.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Form\FrmCompanyInput.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Form\FrmDimension1.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Form\FrmArea.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Form\FrmCity.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Form\FrmDepartment.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Form\FrmFind.designer.vb">
+      <DependentUpon>FrmFind.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Form\FrmFind.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Form\FrmBarcodeFill.Designer.vb">
+      <DependentUpon>FrmBarcodeFill.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Form\FrmBarcodeFill.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Form\FrmGSTReport.Designer.vb">
+      <DependentUpon>FrmGSTReport.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Form\FrmGSTReport.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Form\FrmImportFromExcelToDatabase.Designer.vb">
+      <DependentUpon>FrmImportFromExcelToDatabase.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Form\FrmImportFromExcelToDatabase.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Form\FrmBarcodeGenerate.Designer.vb">
+      <DependentUpon>FrmBarcodeGenerate.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Form\FrmBarcodeGenerate.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Form\FrmImportSaleFromExcel.Designer.vb">
+      <DependentUpon>FrmImportSaleFromExcel.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Form\FrmImportSaleFromExcel.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Form\FrmItemMaster_Cloth.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Form\FrmPerson.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Form\Cloth\FrmClothSupplierSettlementInvoiceAdj.designer.vb">
+      <DependentUpon>FrmClothSupplierSettlementInvoiceAdj.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Form\Cloth\FrmClothSupplierSettlementInvoiceAdj.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Form\FrmReportTool.designer.vb">
+      <DependentUpon>FrmReportTool.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Form\FrmReportTool.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Form\UserPermission\FrmUser.Designer.vb">
+      <DependentUpon>FrmUser.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Form\UserPermission\FrmUser.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Form\FrmUserReports.Designer.vb">
+      <DependentUpon>FrmUserReports.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Form\FrmUserReports.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Form\PurchaseInvoice\FrmPurchaseInvoiceParty.designer.vb">
+      <DependentUpon>FrmPurchaseInvoiceParty.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Form\PurchaseInvoice\FrmPurchaseInvoiceParty.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Form\SaleInvoice\FrmHelpGrid_Multi.designer.vb">
+      <DependentUpon>FrmHelpGrid_Multi.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Form\SaleInvoice\FrmHelpGrid_Multi.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Form\SaleInvoice\FrmSaleInvoiceDimension.designer.vb">
+      <DependentUpon>FrmSaleInvoiceDimension.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Form\SaleInvoice\FrmSaleInvoiceDimension.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Form\PurchaseInvoice\FrmPurchaseInvoiceDimension.designer.vb">
+      <DependentUpon>FrmPurchaseInvoiceDimension.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Form\PurchaseInvoice\FrmPurchaseInvoiceDimension.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Form\FrmVoucherEntry.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Form\SaleInvoice\FrmSaleInvoiceHeader.designer.vb">
+      <DependentUpon>FrmSaleInvoiceHeader.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Form\SaleInvoice\FrmSaleInvoiceHeader.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Form\SaleInvoice\FrmSaleInvoiceParty.designer.vb">
+      <DependentUpon>FrmSaleInvoiceParty.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Form\SaleInvoice\FrmSaleInvoiceParty.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Form\PurchaseInvoice\FrmPurchaseInvoiceHeader.designer.vb">
+      <DependentUpon>FrmPurchaseInvoiceHeader.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Form\PurchaseInvoice\FrmPurchaseInvoiceHeader.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Form\PurchaseInvoice\FrmPurchInvoiceDirect.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Form\PurchaseInvoice\FrmPurchPartyDetail.designer.vb">
+      <DependentUpon>FrmPurchPartyDetail.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Form\PurchaseInvoice\FrmPurchPartyDetail.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Form\FrmSaleInvoiceAdj.Designer.vb">
+      <DependentUpon>FrmSaleInvoiceAdj.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Form\FrmSaleInvoiceAdj.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Form\FrmPhysicalStockAdjustmentEntry.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Form\FrmPhysicalStockEntry.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Form\SaleInvoice\FrmSaleInvoiceDirect.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Form\FrmSaleInvoicePartyDetail.Designer.vb">
+      <DependentUpon>FrmSaleInvoicePartyDetail.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Form\FrmSaleInvoicePartyDetail.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Form\FrmState.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Form\FrmItemCategory.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Form\FrmItemGroup.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Form\Cloth\FrmClothSupplierSettlement.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Form\FrmStoreReceive.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Form\FrmViewerSubForm.designer.vb">
+      <DependentUpon>FrmViewerSubForm.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Form\FrmViewerSubForm.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Form\FrmRateList.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Form\FrmRateType.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Form\FrmImportFromExcel.Designer.vb">
+      <DependentUpon>FrmImportFromExcel.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Form\FrmImportFromExcel.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Form\FrmEnviro.designer.vb">
+      <DependentUpon>FrmEnviro.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Form\FrmEnviro.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Form\MDIMain.designer.vb">
+      <DependentUpon>MDIMain.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Form\MDIMain.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Form\UserPermission\FrmUserControlPermission.Designer.vb">
+      <DependentUpon>FrmUserControlPermission.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Form\UserPermission\FrmUserControlPermission.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Form\UserPermission\FrmUserPermission.Designer.vb">
+      <DependentUpon>FrmUserPermission.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Form\UserPermission\FrmUserPermission.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Form\WriteInExcel.Designer.vb">
+      <DependentUpon>WriteInExcel.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Form\WriteInExcel.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Modules\MdlFunction.vb" />
+    <Compile Include="Modules\MdlVar.vb" />
+    <Compile Include="My Project\AssemblyInfo.vb" />
+    <Compile Include="My Project\Application.Designer.vb">
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Application.myapp</DependentUpon>
+    </Compile>
+    <Compile Include="My Project\Resources.Designer.vb">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Resources.resx</DependentUpon>
+    </Compile>
+    <Compile Include="My Project\Settings.Designer.vb">
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Settings.settings</DependentUpon>
+      <DesignTimeSharedInput>True</DesignTimeSharedInput>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Form\Cloth\FrmClothSupplierSettlementInvoiceLine.resx">
+      <DependentUpon>FrmClothSupplierSettlementInvoiceLine.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Form\FrmAdjustmentIssue.resx">
+      <DependentUpon>FrmAdjustmentIssue.vb</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Form\Cloth\FrmClothSupplierSettlementHead.resx">
+      <DependentUpon>FrmClothSupplierSettlementHead.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Form\FrmGodown.resx">
+      <DependentUpon>FrmGodown.vb</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Form\FrmRepPrint.resx">
+      <DependentUpon>FrmRepPrint.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Form\UserPermission\FrmChangePassword.resx">
+      <DependentUpon>FrmChangePassword.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Form\FrmPaymentMode.resx">
+      <DependentUpon>FrmPaymentMode.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Form\FrmQuery.resx">
+      <DependentUpon>FrmQuery.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Form\FrmSettings_Add.resx">
+      <DependentUpon>FrmSettings_Add.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Form\FrmSettings.resx">
+      <DependentUpon>FrmSettings.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Form\FrmCompanyInput.resx">
+      <DependentUpon>FrmCompanyInput.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Form\FrmDimension1.resx">
+      <DependentUpon>FrmDimension1.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Form\FrmArea.resx">
+      <DependentUpon>FrmArea.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Form\FrmCity.resx">
+      <DependentUpon>FrmCity.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Form\FrmDepartment.resx">
+      <DependentUpon>FrmDepartment.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Form\FrmFind.resx">
+      <DependentUpon>FrmFind.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Form\FrmBarcodeFill.resx">
+      <DependentUpon>FrmBarcodeFill.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Form\FrmGSTReport.resx">
+      <DependentUpon>FrmGSTReport.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Form\FrmImportFromExcelToDatabase.resx">
+      <DependentUpon>FrmImportFromExcelToDatabase.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Form\FrmBarcodeGenerate.resx">
+      <DependentUpon>FrmBarcodeGenerate.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Form\FrmImportSaleFromExcel.resx">
+      <DependentUpon>FrmImportSaleFromExcel.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Form\FrmItemMaster_Cloth.resx">
+      <DependentUpon>FrmItemMaster_Cloth.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Form\FrmPerson.resx">
+      <DependentUpon>FrmPerson.vb</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Form\Cloth\FrmClothSupplierSettlementInvoiceAdj.resx">
+      <DependentUpon>FrmClothSupplierSettlementInvoiceAdj.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Form\FrmReportTool.resx">
+      <DependentUpon>FrmReportTool.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Form\UserPermission\FrmUser.resx">
+      <DependentUpon>FrmUser.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Form\FrmUserReports.resx">
+      <DependentUpon>FrmUserReports.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Form\PurchaseInvoice\FrmPurchaseInvoiceParty.resx">
+      <DependentUpon>FrmPurchaseInvoiceParty.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Form\SaleInvoice\FrmHelpGrid_Multi.resx">
+      <DependentUpon>FrmHelpGrid_Multi.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Form\SaleInvoice\FrmSaleInvoiceDimension.resx">
+      <DependentUpon>FrmSaleInvoiceDimension.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Form\PurchaseInvoice\FrmPurchaseInvoiceDimension.resx">
+      <DependentUpon>FrmPurchaseInvoiceDimension.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Form\FrmVoucherEntry.resx">
+      <DependentUpon>FrmVoucherEntry.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Form\SaleInvoice\FrmSaleInvoiceHeader.resx">
+      <DependentUpon>FrmSaleInvoiceHeader.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Form\SaleInvoice\FrmSaleInvoiceParty.resx">
+      <DependentUpon>FrmSaleInvoiceParty.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Form\PurchaseInvoice\FrmPurchaseInvoiceHeader.resx">
+      <DependentUpon>FrmPurchaseInvoiceHeader.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Form\PurchaseInvoice\FrmPurchInvoiceDirect.resx">
+      <DependentUpon>FrmPurchInvoiceDirect.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Form\PurchaseInvoice\FrmPurchPartyDetail.resx">
+      <DependentUpon>FrmPurchPartyDetail.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Form\FrmSaleInvoiceAdj.resx">
+      <DependentUpon>FrmSaleInvoiceAdj.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Form\FrmPhysicalStockAdjustmentEntry.resx">
+      <DependentUpon>FrmPhysicalStockAdjustmentEntry.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Form\FrmPhysicalStockEntry.resx">
+      <DependentUpon>FrmPhysicalStockEntry.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Form\SaleInvoice\FrmSaleInvoiceDirect.resx">
+      <DependentUpon>FrmSaleInvoiceDirect.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Form\FrmSaleInvoicePartyDetail.resx">
+      <DependentUpon>FrmSaleInvoicePartyDetail.vb</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Form\FrmState.resx">
+      <DependentUpon>FrmState.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Form\FrmItemCategory.resx">
+      <DependentUpon>FrmItemCategory.vb</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Form\FrmItemGroup.resx">
+      <DependentUpon>FrmItemGroup.vb</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Form\Cloth\FrmClothSupplierSettlement.resx">
+      <DependentUpon>FrmClothSupplierSettlement.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Form\FrmStoreReceive.resx">
+      <DependentUpon>FrmStoreReceive.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Form\FrmViewerSubForm.resx">
+      <DependentUpon>FrmViewerSubForm.vb</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Form\FrmRateList.resx">
+      <DependentUpon>FrmRateList.vb</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Form\FrmRateType.resx">
+      <DependentUpon>FrmRateType.vb</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Form\FrmImportFromExcel.resx">
+      <DependentUpon>FrmImportFromExcel.vb</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Form\FrmEnviro.resx">
+      <DependentUpon>FrmEnviro.vb</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Form\MDIMain.resx">
+      <DependentUpon>MDIMain.vb</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Form\UserPermission\FrmUserControlPermission.resx">
+      <DependentUpon>FrmUserControlPermission.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Form\UserPermission\FrmUserPermission.resx">
+      <DependentUpon>FrmUserPermission.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Form\WriteInExcel.resx">
+      <DependentUpon>WriteInExcel.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="My Project\Resources.resx">
+      <Generator>VbMyResourcesResXFileCodeGenerator</Generator>
+      <LastGenOutput>Resources.Designer.vb</LastGenOutput>
+      <CustomToolNamespace>My.Resources</CustomToolNamespace>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+  </ItemGroup>
+  <ItemGroup>
+    <BaseApplicationManifest Include="My Project\app.manifest" />
+    <None Include="My Project\Application.myapp">
+      <Generator>MyApplicationCodeGenerator</Generator>
+      <LastGenOutput>Application.Designer.vb</LastGenOutput>
+    </None>
+    <None Include="My Project\Settings.settings">
+      <Generator>SettingsSingleFileGenerator</Generator>
+      <CustomToolNamespace>My</CustomToolNamespace>
+      <LastGenOutput>Settings.Designer.vb</LastGenOutput>
+    </None>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="packages.config" />
+    <None Include="Resources\Tree_Child.bmp" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Dataman.ico" />
+  </ItemGroup>
+  <ItemGroup>
+    <Service Include="{967B4E0D-AD0C-4609-AB67-0FA40C0206D8}" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Copy.bmp" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\copy-icon.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\copy1-icon.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\approved.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\images.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Ok.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\disc.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\stock-vector-vector-ok-and-cancel-button-set-54696784.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\disc1.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Copy of stock-vector-vector-ok-and-cancel-button-set-54696784.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Untitled-11111.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="app.config" />
+    <None Include="Resources\Icon1.ico" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\eye_PNG35677.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\eye_PNG356771.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\41104-200.png" />
+  </ItemGroup>
+  <Import Project="$(MSBuildBinPath)\Microsoft.VisualBasic.targets" />
+  <Import Project="packages\System.Data.SQLite.Core.1.0.108.0\build\net20\System.Data.SQLite.Core.targets" Condition="Exists('packages\System.Data.SQLite.Core.1.0.108.0\build\net20\System.Data.SQLite.Core.targets')" />
+  <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">
+    <PropertyGroup>
+      <ErrorText>This project references NuGet package(s) that are missing on this computer. Use NuGet Package Restore to download them.  For more information, see http://go.microsoft.com/fwlink/?LinkID=322105. The missing file is {0}.</ErrorText>
+    </PropertyGroup>
+    <Error Condition="!Exists('packages\System.Data.SQLite.Core.1.0.108.0\build\net20\System.Data.SQLite.Core.targets')" Text="$([System.String]::Format('$(ErrorText)', 'packages\System.Data.SQLite.Core.1.0.108.0\build\net20\System.Data.SQLite.Core.targets'))" />
+  </Target>
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

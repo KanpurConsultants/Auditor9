@@ -1,0 +1,42 @@
+H:\RUG\Rug Care\Rug Care\Release\RUG_Utility.dll
+H:\RUG\Rug Care\Rug Care\Release\RUG_Utility.pdb
+H:\RUG\Rug Care\Rug Care\Release\RUG_Utility.xml
+H:\RUG\Rug Care\Rug Care\Project\RUG_Utility\obj\Debug\ResolveAssemblyReference.cache
+H:\RUG\Rug Care\Rug Care\Project\RUG_Utility\obj\Debug\RUG_Utility.FrmDivisionList.resources
+H:\RUG\Rug Care\Rug Care\Project\RUG_Utility\obj\Debug\RUG_Utility.FrmUser.resources
+H:\RUG\Rug Care\Rug Care\Project\RUG_Utility\obj\Debug\RUG_Utility.Resources.resources
+H:\RUG\Rug Care\Rug Care\Project\RUG_Utility\obj\Debug\RUG_Utility.MDIMain.resources
+H:\RUG\Rug Care\Rug Care\Project\RUG_Utility\obj\Debug\RUG_Utility.vbproj.GenerateResource.Cache
+H:\RUG\Rug Care\Rug Care\Project\RUG_Utility\obj\Debug\RUG_Utility.dll
+H:\RUG\Rug Care\Rug Care\Project\RUG_Utility\obj\Debug\RUG_Utility.xml
+H:\RUG\Rug Care\Rug Care\Project\RUG_Utility\obj\Debug\RUG_Utility.pdb
+E:\Arpit Gupta\Active Projects\Rug Care\Rug Care\Release\RUG_Utility.exe
+E:\Arpit Gupta\Active Projects\Rug Care\Rug Care\Release\RUG_Utility.pdb
+E:\Arpit Gupta\Active Projects\Rug Care\Rug Care\Release\RUG_Utility.xml
+E:\Arpit Gupta\Active Projects\Rug Care\Rug Care\Project\RUG_Utility\obj\Debug\ResolveAssemblyReference.cache
+E:\Arpit Gupta\Active Projects\Rug Care\Rug Care\Project\RUG_Utility\obj\Debug\RUG_Utility.FrmDivisionList.resources
+E:\Arpit Gupta\Active Projects\Rug Care\Rug Care\Project\RUG_Utility\obj\Debug\RUG_Utility.FrmUser.resources
+E:\Arpit Gupta\Active Projects\Rug Care\Rug Care\Project\RUG_Utility\obj\Debug\RUG_Utility.Resources.resources
+E:\Arpit Gupta\Active Projects\Rug Care\Rug Care\Project\RUG_Utility\obj\Debug\RUG_Utility.MDIMain.resources
+E:\Arpit Gupta\Active Projects\Rug Care\Rug Care\Project\RUG_Utility\obj\Debug\RUG_Utility.vbproj.GenerateResource.Cache
+E:\Arpit Gupta\Active Projects\Rug Care\Rug Care\Project\RUG_Utility\obj\Debug\RUG_Utility.exe
+E:\Arpit Gupta\Active Projects\Rug Care\Rug Care\Project\RUG_Utility\obj\Debug\RUG_Utility.xml
+E:\Arpit Gupta\Active Projects\Rug Care\Rug Care\Project\RUG_Utility\obj\Debug\RUG_Utility.pdb
+E:\Matrix\SchoolDress\Project\Customised\obj\Debug\RUG_Utility.exe
+E:\Matrix\SchoolDress\Project\Customised\obj\Debug\RUG_Utility.xml
+E:\Matrix\SchoolDress\Project\Customised\obj\Debug\RUG_Utility.pdb
+E:\Matrix\SchoolDress\Release\RUG_Utility.exe
+E:\Matrix\SchoolDress\Release\RUG_Utility.pdb
+E:\Matrix\SchoolDress\Release\RUG_Utility.xml
+E:\Matrix\SchoolDress\Project\Customised\obj\Debug\ResolveAssemblyReference.cache
+E:\Matrix\SchoolDress\Project\Customised\obj\Debug\RUG_Utility.FrmPurchaseEntry.resources
+E:\Matrix\SchoolDress\Project\Customised\obj\Debug\RUG_Utility.TempPurchaseReturn.resources
+E:\Matrix\SchoolDress\Project\Customised\obj\Debug\RUG_Utility.TempPurchInvoice.resources
+E:\Matrix\SchoolDress\Project\Customised\obj\Debug\RUG_Utility.TempPurchInvoiceCommon.resources
+E:\Matrix\SchoolDress\Project\Customised\obj\Debug\RUG_Utility.Resources.resources
+E:\Matrix\SchoolDress\Project\Customised\obj\Debug\RUG_Utility.MDIMain.resources
+E:\Matrix\SchoolDress\Project\Customised\obj\Debug\RUG_Utility.vbproj.GenerateResource.Cache
+E:\Matrix\SchoolDress\Project\Customised\obj\Debug\RUG_Utility.FrmItem.resources
+E:\Matrix\SchoolDress\Project\Customised\obj\Debug\RUG_Utility.TempItem.resources
+E:\Matrix\SchoolDress\Project\Customised\obj\Debug\RUG_Utility.FrmSaleEntry.resources
+E:\Matrix\SchoolDress\Project\Customised\obj\Debug\RUG_Utility.TempSaleInvoice.resources

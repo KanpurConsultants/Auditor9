@@ -1,0 +1,26 @@
+; Field definition file for table: ADORecordset
+Code	string	255	405	
+Barcode	string	255	165	
+BarCodeImg	BLOB		
+ItemDesc	string	255		
+ItemCategoryDesc	string	255	DIVIDED SKIRT PLAIN	
+ItemGroupDesc	string	255		
+Dimension1Desc	string	255	SUPER	
+Dimension2Desc	string	255	DERBY-44 ROYAL BLUE	
+Dimension3Desc	string	255		
+Dimension4Desc	string	255		
+SizeDesc	string	255	20	
+PurchaseRate	number	0	
+SaleRate	number	0	
+MRP	number	285	
+ReceiveQty	number	35	
+GenSr	number	1	
+ItemMasterPurchaseRate	number		
+ItemMasterSaleRate	number		
+Title1	string	255	Pratham Apperal P. Ltd.	
+Title2	string	255	www.PrathamApperal.com	
+Title3	number		
+INSIDE	number		
+OUTSIDE	number		
+RandomNo1	number	954	
+RandomNo2	number	748	

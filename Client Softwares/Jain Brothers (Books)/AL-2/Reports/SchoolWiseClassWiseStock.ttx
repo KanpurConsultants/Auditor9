@@ -1,0 +1,10 @@
+SchoolName	String	150
+BookName	String	150
+Category	String	150
+ClassName	String	150
+IssuePerson	String	150
+IssueQty	Currency
+ReturnQty	Currency
+SaleQty	Currency
+Stock	Currency
+

@@ -1,0 +1,239 @@
+E:\Arpit Gupta\Active Projects\Ashish\AgControls\obj\Release\ResolveAssemblyReference.cache
+E:\Arpit Gupta\Active Projects\Ashish\AgControls\obj\Release\AgControls.OutlookStyleControls.AgSideBar.resources
+E:\Arpit Gupta\Active Projects\Ashish\AgControls\obj\Release\AgControls.Resources.resources
+E:\Arpit Gupta\Active Projects\Ashish\AgControls\obj\Release\AgControls.vbproj.GenerateResource.Cache
+E:\Arpit Gupta\Active Projects\Ashish\AgControls\obj\Release\AgControls.dll
+E:\Arpit Gupta\Active Projects\Ashish\AgControls\obj\Release\AgControls.xml
+E:\Arpit Gupta\Active Projects\Ashish\AgControls\obj\Release\AgControls.pdb
+\\node3\Active Projects\AgControls\obj\Release\ResolveAssemblyReference.cache
+\\node3\Active Projects\AgControls\obj\Release\AgControls.OutlookStyleControls.AgSideBar.resources
+\\node3\Active Projects\AgControls\obj\Release\AgControls.Resources.resources
+\\node3\Active Projects\AgControls\obj\Release\AgControls.vbproj.GenerateResource.Cache
+\\node3\Active Projects\AgControls\obj\Release\AgControls.dll
+\\node3\Active Projects\AgControls\obj\Release\AgControls.xml
+\\node3\Active Projects\AgControls\obj\Release\AgControls.pdb
+E:\Arpit Gupta\Active Projects\AgControls\obj\Release\ResolveAssemblyReference.cache
+E:\Arpit Gupta\Active Projects\AgControls\obj\Release\AgControls.OutlookStyleControls.AgSideBar.resources
+E:\Arpit Gupta\Active Projects\AgControls\obj\Release\AgControls.Resources.resources
+E:\Arpit Gupta\Active Projects\AgControls\obj\Release\AgControls.vbproj.GenerateResource.Cache
+E:\Arpit Gupta\Active Projects\AgControls\obj\Release\AgControls.dll
+E:\Arpit Gupta\Active Projects\AgControls\obj\Release\AgControls.xml
+E:\Arpit Gupta\Active Projects\AgControls\obj\Release\AgControls.pdb
+F:\AgControls\obj\Release\ResolveAssemblyReference.cache
+F:\AgControls\obj\Release\AgControls.OutlookStyleControls.AgSideBar.resources
+F:\AgControls\obj\Release\AgControls.Resources.resources
+F:\AgControls\obj\Release\AgControls.vbproj.GenerateResource.Cache
+F:\AgControls\obj\Release\AgControls.dll
+F:\AgControls\obj\Release\AgControls.xml
+F:\AgControls\obj\Release\AgControls.pdb
+K:\Active Project\AgControls\obj\Release\ResolveAssemblyReference.cache
+K:\Active Project\AgControls\obj\Release\AgControls.OutlookStyleControls.AgSideBar.resources
+K:\Active Project\AgControls\obj\Release\AgControls.Resources.resources
+K:\Active Project\AgControls\obj\Release\AgControls.vbproj.GenerateResource.Cache
+K:\Active Project\AgControls\obj\Release\AgControls.dll
+K:\Active Project\AgControls\obj\Release\AgControls.xml
+K:\Active Project\AgControls\obj\Release\AgControls.pdb
+I:\Active Project\AgControls\obj\Release\ResolveAssemblyReference.cache
+I:\Active Project\AgControls\obj\Release\AgControls.OutlookStyleControls.AgSideBar.resources
+I:\Active Project\AgControls\obj\Release\AgControls.Resources.resources
+I:\Active Project\AgControls\obj\Release\AgControls.vbproj.GenerateResource.Cache
+I:\Active Project\AgControls\obj\Release\AgControls.dll
+I:\Active Project\AgControls\obj\Release\AgControls.xml
+I:\Active Project\AgControls\obj\Release\AgControls.pdb
+E:\Dataman\AgControls\obj\Release\ResolveAssemblyReference.cache
+E:\Dataman\AgControls\obj\Release\AgControls.OutlookStyleControls.AgSideBar.resources
+E:\Dataman\AgControls\obj\Release\AgControls.Resources.resources
+E:\Dataman\AgControls\obj\Release\AgControls.vbproj.GenerateResource.Cache
+E:\Dataman\AgControls\obj\Release\AgControls.dll
+E:\Dataman\AgControls\obj\Release\AgControls.xml
+E:\Dataman\AgControls\obj\Release\AgControls.pdb
+F:\New folder\AgControls\obj\Release\AgControls.dll
+F:\New folder\AgControls\obj\Release\AgControls.xml
+F:\New folder\AgControls\obj\Release\AgControls.pdb
+E:\AgControls\AgControls.dll
+E:\AgControls\AgControls.pdb
+E:\AgControls\AgControls.xml
+F:\New folder\AgControls\obj\Release\ResolveAssemblyReference.cache
+F:\New folder\AgControls\obj\Release\AgControls.OutlookStyleControls.AgSideBar.resources
+F:\New folder\AgControls\obj\Release\AgControls.Resources.resources
+F:\New folder\AgControls\obj\Release\AgControls.vbproj.GenerateResource.Cache
+D:\Active Projects\Common\AgControls\obj\Release\ResolveAssemblyReference.cache
+D:\Active Projects\Common\AgControls\obj\Release\AgControls.OutlookStyleControls.AgSideBar.resources
+D:\Active Projects\Common\AgControls\obj\Release\AgControls.Resources.resources
+D:\Active Projects\Common\AgControls\obj\Release\AgControls.vbproj.GenerateResource.Cache
+D:\Active Projects\Common\AgControls\obj\Release\AgControls.dll
+D:\Active Projects\Common\AgControls\obj\Release\AgControls.xml
+D:\Active Projects\Common\AgControls\obj\Release\AgControls.pdb
+\\ashish\Common\AgControls\obj\Release\ResolveAssemblyReference.cache
+\\ashish\Common\AgControls\obj\Release\AgControls.OutlookStyleControls.AgSideBar.resources
+\\ashish\Common\AgControls\obj\Release\AgControls.Resources.resources
+\\ashish\Common\AgControls\obj\Release\AgControls.vbproj.GenerateResource.Cache
+\\ashish\Common\AgControls\obj\Release\AgControls.dll
+\\ashish\Common\AgControls\obj\Release\AgControls.xml
+\\ashish\Common\AgControls\obj\Release\AgControls.pdb
+D:\Dataman\Release\AgControls.dll
+D:\Dataman\Release\AgControls.pdb
+D:\Dataman\Release\AgControls.xml
+E:\Ashish Gupta\Active Projects\Common\AgControls\obj\Release\ResolveAssemblyReference.cache
+E:\Ashish Gupta\Active Projects\Common\AgControls\obj\Release\AgControls.OutlookStyleControls.AgSideBar.resources
+E:\Ashish Gupta\Active Projects\Common\AgControls\obj\Release\AgControls.Resources.resources
+E:\Ashish Gupta\Active Projects\Common\AgControls\obj\Release\AgControls.vbproj.GenerateResource.Cache
+E:\Ashish Gupta\Active Projects\Common\AgControls\obj\Release\AgControls.dll
+E:\Ashish Gupta\Active Projects\Common\AgControls\obj\Release\AgControls.xml
+E:\Ashish Gupta\Active Projects\Common\AgControls\obj\Release\AgControls.pdb
+D:\Active Projects\AgControls\obj\Release\ResolveAssemblyReference.cache
+D:\Active Projects\AgControls\obj\Release\AgControls.OutlookStyleControls.AgSideBar.resources
+D:\Active Projects\AgControls\obj\Release\AgControls.Resources.resources
+D:\Active Projects\AgControls\obj\Release\AgControls.vbproj.GenerateResource.Cache
+D:\Active Projects\AgControls\obj\Release\AgControls.dll
+D:\Active Projects\AgControls\obj\Release\AgControls.xml
+D:\Active Projects\AgControls\obj\Release\AgControls.pdb
+F:\Arpit\Active Project\Matrix\Common\AgControls\obj\Release\AgControls.dll
+F:\Arpit\Active Project\Matrix\Common\AgControls\obj\Release\AgControls.xml
+F:\Arpit\Active Project\Matrix\Common\AgControls\obj\Release\AgControls.pdb
+F:\Arpit\Active Project\Matrix\Common\AgControls\Project\obj\Release\ResolveAssemblyReference.cache
+F:\Arpit\Active Project\Matrix\Common\AgControls\Project\obj\Release\AgControls.OutlookStyleControls.AgSideBar.resources
+F:\Arpit\Active Project\Matrix\Common\AgControls\Project\obj\Release\AgControls.Resources.resources
+F:\Arpit\Active Project\Matrix\Common\AgControls\Project\obj\Release\AgControls.vbproj.GenerateResource.Cache
+F:\Arpit\Active Project\Matrix\Common\AgControls\Project\obj\Release\AgControls.dll
+F:\Arpit\Active Project\Matrix\Common\AgControls\Project\obj\Release\AgControls.xml
+F:\Arpit\Active Project\Matrix\Common\AgControls\Project\obj\Release\AgControls.pdb
+F:\Arpit\Active Project\Matrix\Common\AgControls\Release\AgControls.dll
+F:\Arpit\Active Project\Matrix\Common\AgControls\Release\AgControls.pdb
+F:\Arpit\Active Project\Matrix\Common\AgControls\Release\AgControls.xml
+F:\Arpit\Active Project\Common\AgControls\Release\AgControls.dll
+F:\Arpit\Active Project\Common\AgControls\Release\AgControls.pdb
+F:\Arpit\Active Project\Common\AgControls\Release\AgControls.xml
+F:\Arpit\Active Project\Common\AgControls\Project\obj\Release\ResolveAssemblyReference.cache
+F:\Arpit\Active Project\Common\AgControls\Project\obj\Release\AgControls.OutlookStyleControls.AgSideBar.resources
+F:\Arpit\Active Project\Common\AgControls\Project\obj\Release\AgControls.Resources.resources
+F:\Arpit\Active Project\Common\AgControls\Project\obj\Release\AgControls.vbproj.GenerateResource.Cache
+F:\Arpit\Active Project\Common\AgControls\Project\obj\Release\AgControls.dll
+F:\Arpit\Active Project\Common\AgControls\Project\obj\Release\AgControls.xml
+F:\Arpit\Active Project\Common\AgControls\Project\obj\Release\AgControls.pdb
+\\server2008\Active Project\Common\AgControls\Release\AgControls.dll
+\\server2008\Active Project\Common\AgControls\Release\AgControls.pdb
+\\server2008\Active Project\Common\AgControls\Release\AgControls.xml
+\\server2008\Active Project\Common\AgControls\Project\obj\Release\ResolveAssemblyReference.cache
+\\server2008\Active Project\Common\AgControls\Project\obj\Release\AgControls.OutlookStyleControls.AgSideBar.resources
+\\server2008\Active Project\Common\AgControls\Project\obj\Release\AgControls.Resources.resources
+\\server2008\Active Project\Common\AgControls\Project\obj\Release\AgControls.vbproj.GenerateResource.Cache
+\\server2008\Active Project\Common\AgControls\Project\obj\Release\AgControls.dll
+\\server2008\Active Project\Common\AgControls\Project\obj\Release\AgControls.xml
+\\server2008\Active Project\Common\AgControls\Project\obj\Release\AgControls.pdb
+I:\Common\AgControls\Release\AgControls.dll
+I:\Common\AgControls\Release\AgControls.pdb
+I:\Common\AgControls\Release\AgControls.xml
+I:\Common\AgControls\Project\obj\Release\ResolveAssemblyReference.cache
+I:\Common\AgControls\Project\obj\Release\AgControls.OutlookStyleControls.AgSideBar.resources
+I:\Common\AgControls\Project\obj\Release\AgControls.Resources.resources
+I:\Common\AgControls\Project\obj\Release\AgControls.vbproj.GenerateResource.Cache
+I:\Common\AgControls\Project\obj\Release\AgControls.dll
+I:\Common\AgControls\Project\obj\Release\AgControls.xml
+I:\Common\AgControls\Project\obj\Release\AgControls.pdb
+G:\Common\AgControls\Release\AgControls.dll
+G:\Common\AgControls\Release\AgControls.pdb
+G:\Common\AgControls\Release\AgControls.xml
+G:\Common\AgControls\Project\obj\Release\ResolveAssemblyReference.cache
+G:\Common\AgControls\Project\obj\Release\AgControls.OutlookStyleControls.AgSideBar.resources
+G:\Common\AgControls\Project\obj\Release\AgControls.Resources.resources
+G:\Common\AgControls\Project\obj\Release\AgControls.vbproj.GenerateResource.Cache
+G:\Common\AgControls\Project\obj\Release\AgControls.dll
+G:\Common\AgControls\Project\obj\Release\AgControls.xml
+G:\Common\AgControls\Project\obj\Release\AgControls.pdb
+F:\Project\Common\AgControls\Release\AgControls.dll
+F:\Project\Common\AgControls\Release\AgControls.pdb
+F:\Project\Common\AgControls\Release\AgControls.xml
+F:\Project\Common\AgControls\Project\obj\Release\ResolveAssemblyReference.cache
+F:\Project\Common\AgControls\Project\obj\Release\AgControls.OutlookStyleControls.AgSideBar.resources
+F:\Project\Common\AgControls\Project\obj\Release\AgControls.Resources.resources
+F:\Project\Common\AgControls\Project\obj\Release\AgControls.vbproj.GenerateResource.Cache
+F:\Project\Common\AgControls\Project\obj\Release\AgControls.dll
+F:\Project\Common\AgControls\Project\obj\Release\AgControls.xml
+F:\Project\Common\AgControls\Project\obj\Release\AgControls.pdb
+G:\Project\Common\AgControls\Release\AgControls.dll
+G:\Project\Common\AgControls\Release\AgControls.pdb
+G:\Project\Common\AgControls\Release\AgControls.xml
+G:\Project\Common\AgControls\Project\obj\Release\ResolveAssemblyReference.cache
+G:\Project\Common\AgControls\Project\obj\Release\AgControls.OutlookStyleControls.AgSideBar.resources
+G:\Project\Common\AgControls\Project\obj\Release\AgControls.Resources.resources
+G:\Project\Common\AgControls\Project\obj\Release\AgControls.vbproj.GenerateResource.Cache
+G:\Project\Common\AgControls\Project\obj\Release\AgControls.dll
+G:\Project\Common\AgControls\Project\obj\Release\AgControls.xml
+G:\Project\Common\AgControls\Project\obj\Release\AgControls.pdb
+D:\Satyam\Active Projects\SqLite\AgControls\Release\AgControls.dll.config
+D:\Satyam\Active Projects\SqLite\AgControls\Release\AgControls.dll
+D:\Satyam\Active Projects\SqLite\AgControls\Release\AgControls.pdb
+D:\Satyam\Active Projects\SqLite\AgControls\Release\AgControls.xml
+D:\Satyam\Active Projects\SqLite\AgControls\Project\obj\Release\AgControls.vbprojResolveAssemblyReference.cache
+D:\Satyam\Active Projects\SqLite\AgControls\Project\obj\Release\AgControls.OutlookStyleControls.AgSideBar.resources
+D:\Satyam\Active Projects\SqLite\AgControls\Project\obj\Release\AgControls.Resources.resources
+D:\Satyam\Active Projects\SqLite\AgControls\Project\obj\Release\AgControls.vbproj.GenerateResource.Cache
+D:\Satyam\Active Projects\SqLite\AgControls\Project\obj\Release\AgControls.dll
+D:\Satyam\Active Projects\SqLite\AgControls\Project\obj\Release\AgControls.xml
+D:\Satyam\Active Projects\SqLite\AgControls\Project\obj\Release\AgControls.pdb
+D:\KC\Source\Sqlite\AgControls\Release\AgControls.dll.config
+D:\KC\Source\Sqlite\AgControls\Release\AgControls.dll
+D:\KC\Source\Sqlite\AgControls\Release\AgControls.pdb
+D:\KC\Source\Sqlite\AgControls\Release\AgControls.xml
+D:\KC\Source\Sqlite\AgControls\Project\obj\Release\AgControls.vbprojResolveAssemblyReference.cache
+D:\KC\Source\Sqlite\AgControls\Project\obj\Release\AgControls.OutlookStyleControls.AgSideBar.resources
+D:\KC\Source\Sqlite\AgControls\Project\obj\Release\AgControls.Resources.resources
+D:\KC\Source\Sqlite\AgControls\Project\obj\Release\AgControls.vbproj.GenerateResource.Cache
+D:\KC\Source\Sqlite\AgControls\Project\obj\Release\AgControls.dll
+D:\KC\Source\Sqlite\AgControls\Project\obj\Release\AgControls.xml
+D:\KC\Source\Sqlite\AgControls\Project\obj\Release\AgControls.pdb
+D:\WorkingCopy\DesktopApp\trunk\AgControls\Release\AgControls.dll.config
+D:\WorkingCopy\DesktopApp\trunk\AgControls\Release\AgControls.dll
+D:\WorkingCopy\DesktopApp\trunk\AgControls\Release\AgControls.pdb
+D:\WorkingCopy\DesktopApp\trunk\AgControls\Release\AgControls.xml
+D:\WorkingCopy\DesktopApp\trunk\AgControls\Project\obj\Release\AgControls.OutlookStyleControls.AgSideBar.resources
+D:\WorkingCopy\DesktopApp\trunk\AgControls\Project\obj\Release\AgControls.Resources.resources
+D:\WorkingCopy\DesktopApp\trunk\AgControls\Project\obj\Release\AgControls.vbproj.GenerateResource.Cache
+D:\WorkingCopy\DesktopApp\trunk\AgControls\Project\obj\Release\AgControls.dll
+D:\WorkingCopy\DesktopApp\trunk\AgControls\Project\obj\Release\AgControls.xml
+D:\WorkingCopy\DesktopApp\trunk\AgControls\Project\obj\Release\AgControls.pdb
+D:\Working Copy\trunk\AgControls\Release\AgControls.dll.config
+D:\Working Copy\trunk\AgControls\Release\AgControls.dll
+D:\Working Copy\trunk\AgControls\Release\AgControls.pdb
+D:\Working Copy\trunk\AgControls\Release\AgControls.xml
+D:\Working Copy\trunk\AgControls\Project\obj\Release\AgControls.OutlookStyleControls.AgSideBar.resources
+D:\Working Copy\trunk\AgControls\Project\obj\Release\AgControls.Resources.resources
+D:\Working Copy\trunk\AgControls\Project\obj\Release\AgControls.vbproj.GenerateResource.Cache
+D:\Working Copy\trunk\AgControls\Project\obj\Release\AgControls.dll
+D:\Working Copy\trunk\AgControls\Project\obj\Release\AgControls.xml
+D:\Working Copy\trunk\AgControls\Project\obj\Release\AgControls.pdb
+D:\WorkingCopy\DesktopApp\trunk\AgControls\Project\obj\Release\AgControls.vbprojResolveAssemblyReference.cache
+D:\DesktopApp\trunk\AgControls\Release\AgControls.dll.config
+D:\DesktopApp\trunk\AgControls\Release\AgControls.dll
+D:\DesktopApp\trunk\AgControls\Release\AgControls.pdb
+D:\DesktopApp\trunk\AgControls\Release\AgControls.xml
+D:\DesktopApp\trunk\AgControls\Project\obj\Release\AgControls.vbprojResolveAssemblyReference.cache
+D:\DesktopApp\trunk\AgControls\Project\obj\Release\AgControls.OutlookStyleControls.AgSideBar.resources
+D:\DesktopApp\trunk\AgControls\Project\obj\Release\AgControls.Resources.resources
+D:\DesktopApp\trunk\AgControls\Project\obj\Release\AgControls.vbproj.GenerateResource.Cache
+D:\DesktopApp\trunk\AgControls\Project\obj\Release\AgControls.dll
+D:\DesktopApp\trunk\AgControls\Project\obj\Release\AgControls.xml
+D:\DesktopApp\trunk\AgControls\Project\obj\Release\AgControls.pdb
+D:\WorkingCopy\ShyamaShyam\trunk\AgControls\Release\AgControls.dll.config
+D:\WorkingCopy\ShyamaShyam\trunk\AgControls\Release\AgControls.dll
+D:\WorkingCopy\ShyamaShyam\trunk\AgControls\Release\AgControls.pdb
+D:\WorkingCopy\ShyamaShyam\trunk\AgControls\Release\AgControls.xml
+D:\WorkingCopy\ShyamaShyam\trunk\AgControls\Project\obj\Release\AgControls.OutlookStyleControls.AgSideBar.resources
+D:\WorkingCopy\ShyamaShyam\trunk\AgControls\Project\obj\Release\AgControls.Resources.resources
+D:\WorkingCopy\ShyamaShyam\trunk\AgControls\Project\obj\Release\AgControls.vbproj.GenerateResource.Cache
+D:\WorkingCopy\ShyamaShyam\trunk\AgControls\Project\obj\Release\AgControls.dll
+D:\WorkingCopy\ShyamaShyam\trunk\AgControls\Project\obj\Release\AgControls.xml
+D:\WorkingCopy\ShyamaShyam\trunk\AgControls\Project\obj\Release\AgControls.pdb
+D:\WorkingCopy\ShyamaShyam\trunk\AgControls\Project\obj\Release\AgControls.vbprojResolveAssemblyReference.cache
+D:\WorkingCopy\WindowsApp\trunk\AgControls\Release\AgControls.dll.config
+D:\WorkingCopy\WindowsApp\trunk\AgControls\Release\AgControls.dll
+D:\WorkingCopy\WindowsApp\trunk\AgControls\Release\AgControls.pdb
+D:\WorkingCopy\WindowsApp\trunk\AgControls\Release\AgControls.xml
+D:\WorkingCopy\WindowsApp\trunk\AgControls\Project\obj\Release\AgControls.OutlookStyleControls.AgSideBar.resources
+D:\WorkingCopy\WindowsApp\trunk\AgControls\Project\obj\Release\AgControls.Resources.resources
+D:\WorkingCopy\WindowsApp\trunk\AgControls\Project\obj\Release\AgControls.vbproj.GenerateResource.Cache
+D:\WorkingCopy\WindowsApp\trunk\AgControls\Project\obj\Release\AgControls.dll
+D:\WorkingCopy\WindowsApp\trunk\AgControls\Project\obj\Release\AgControls.xml
+D:\WorkingCopy\WindowsApp\trunk\AgControls\Project\obj\Release\AgControls.pdb
+D:\WorkingCopy\WindowsApp\trunk\AgControls\Project\obj\Release\AgControls.vbprojResolveAssemblyReference.cache

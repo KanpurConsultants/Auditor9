@@ -1,0 +1,6 @@
+; Field definition file for table: ADORecordset
+V_Date	datetime	04/01/20 12:00:00 AM	
+Student	string	255	PRIYANSHU DUBEY 	
+Narration	string	255	Fee Due : RAGISTRATION FEE	
+AmtDr	number	4500	
+AmtCr	number	0	

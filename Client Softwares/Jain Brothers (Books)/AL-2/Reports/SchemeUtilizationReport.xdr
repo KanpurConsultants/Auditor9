@@ -1,0 +1,80 @@
+{DB D:\S2k\Pharma_W\Data\Company.001\S2K2002.mdb DB}
+{Sql SELECT QryProductSaleDetail.AccountID, QryProductSaleDetail.ProductID, QryProductSaleDetail.Account, QryProductSaleDetail.ProductID, QryProductSaleDetail.Product, QryProductSaleDetail.City, QryProductSaleDetail.RefNo, QryProductSaleDetail.VoucherNo, QryProductSaleDetail.Dated, QryProductSaleDetail.CompanyID, QryProductSaleDetail.Company, Sum(QryProductSaleDetail.Qty) AS Qty, Sum(QryProductSaleDetail.fREE) AS fREE
+FROM QryProductSaleDetail
+WHERE (((QryProductSaleDetail.Dated) Between #{Pm DateFrom Pm}# And #{Pm DateTo Pm}#))
+GROUP BY QryProductSaleDetail.AccountID, QryProductSaleDetail.ProductID, QryProductSaleDetail.Account, QryProductSaleDetail.ProductID, QryProductSaleDetail.Product, QryProductSaleDetail.City, QryProductSaleDetail.RefNo, QryProductSaleDetail.VoucherNo, QryProductSaleDetail.Dated, CompanyID,company
+HAVING QryProductSaleDetail.ProductID In ({Pm PProductID Pm}) AND Sum(QryProductSaleDetail.fREE)<>0
+ORDER BY  QryProductSaleDetail.Company,QryProductSaleDetail.Product, QryProductSaleDetail.Dated;
+Sql}
+{Xdr Settings
+Columns :=93
+Lines :=60
+Page Break :=True
+Condense :=False
+Character Per Inch :=12
+Xdr Settings}
+
+{Formula
+ = 
+Formula}
+
+{GroupSection
+Report Header;
+Page Header;
+Header (ProductID);
+Detail;
+Footer (ProductID);
+Grand;
+Page Footer;
+Report Footer;
+GroupSection}
+
+{Parameter
+{Browser
+SELECT Product.Product, Product.ProductID, Account.Account FROM Product LEFT JOIN Account ON Product.CompanyID = Account.AccountID Order By Account,Product;|3000;0;2000|1|1=PProductID
+Browser}
+DateFromToParameter}
+{Report Header
+Report Header}
+========================================================================================================================
+{Page Header
+
+lbl;OwnerName;67;2;1
+lbl;OwnerAdd1  OwnerAdd2;67;2;0
+fld;Company;67;2;0
+lbl;Scheme / Offer Claim Utilisation Report;67;2;1
+fml;"FOR PERIOD " + ymd_dmy("{Pm DateFrom Pm}") + " to "+ ymd_dmy("{Pm DateTo Pm}");43;0;0}{lbl;PAGE NO:;14;1;0
+
+lbl;;4;0;1}{lbl;Retailer Name;50;0;0}{lbl;Bill No;12;0;1}{lbl;Dated;12;0;1}{lbl;Q.Pur;8;1;1}{lbl;Free;7;1;1
+lbl;--------------------------------------------------------------------------------------------------------------------;93;0;0
+Page Header}
+========================================================================================================================
+{Header (ProductID)
+fld;Product;40;0;0
+Header (ProductID)}
+========================================================================================================================
+{Detail
+fml;RecordNoMinusOne();4;0;1}{fld;Account;50;0;0}{fld;VoucherNo;12;1;0}{fld;Dated;12;1;0}{fld;Qty;8;1;0}{fld;Free;7;1;0
+Detail}
+========================================================================================================================
+{Footer (ProductID)
+lbl;--------------------------------------------------------------------------------------------------------------------;93;0;0
+lbl;;78;0;0}{fml;Sum(Qty);8;1;0}{fml;Sum(Free);7;1;0
+lbl;--------------------------------------------------------------------------------------------------------------------;93;0;0
+Footer (ProductID)}
+========================================================================================================================
+{Grand
+lbl;--------------------------------------------------------------------------------------------------------------------;93;0;0
+lbl;GRAND TOTAL :;78;0;0}{fml;Sum(Qty);8;1;0}{fml;Sum(Free);7;1;0
+lbl;--------------------------------------------------------------------------------------------------------------------;93;0;0
+Grand}
+========================================================================================================================
+{Page Footer
+
+Page Footer}
+========================================================================================================================
+{Report Footer
+
+Report Footer}
+========================================================================================================================
+

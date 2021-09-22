@@ -1,0 +1,7 @@
+Account	String	150
+Address	String	150
+BookName	String	150
+SaleQty	Currency
+ReturnQty	Currency
+NetQty	Currency
+

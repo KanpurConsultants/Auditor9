@@ -1,0 +1,15 @@
+Serial	Number
+SetItemID	Number
+BookName	String	150
+ISBN	String	150
+Bookcode	String	150
+Author	String	150
+BookGroup	String	150
+Publisher	String	150
+BookID	Number
+Qty	Currency
+SchoolName	String	150
+Code	String	150
+Add1	String	150
+ClassName	String	150
+

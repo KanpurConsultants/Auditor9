@@ -1,0 +1,37 @@
+; Field definition file for table: ADORecordset
+DocId	string	255	D1    OB 2018       6	
+V_type	string	255	OB	
+RecId	string	255	KNP-1924	
+V_Date	datetime	15/Sep/2019 12:00:00 AM	
+Site_Code	string	255	1	
+Div_Code	string	255	D	
+Subcode	string	255	D100000019	
+LinkedSubcode	string	255		
+GoodsReturn	number	0	
+Adjustment	number	0	
+Payment	number	0	
+Balance	number	845.35	
+AmtDr	number	845.35	
+AmtCr	number	0	
+Narration	string	255	JANAK  Ref.No. : KNP-1924 Dated 15/Sep/2019 AMS No. : ATC-191. 	
+AdjDocID	string	255	OB-15	
+DueDate	datetime	15/Sep/2019 12:00:00 AM	
+AdjDate	datetime	14/Oct/2019 12:00:00 AM	
+AdjPayment	number	510	
+AdjAmount	number	510	
+InterestBalance	number	0	
+SalePartyName	string	255		
+PartyName	string	255	ANJALI BETIA, Bihar	
+PartyCity	string	255	Bihar	
+LrNo	string	255		
+Brand	string	255		
+AmsInvNo	string	255		
+AmsInvAmt	number	0	
+TaxableAmt	string	255		
+TaxAmt	string	255		
+BillAmt	string	255		
+Div_Name	string	255	Main	
+Site_Name	string	255	HO	
+InterestDays	number	-31	
+Narration1	string	255	JANAK  Ref.No. : KNP-1924 Dated 15/Sep/2019 AMS No. : ATC-191. 	
+InterestAmount	number	0	

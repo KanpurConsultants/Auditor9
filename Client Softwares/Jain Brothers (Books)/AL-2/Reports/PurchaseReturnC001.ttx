@@ -1,0 +1,74 @@
+ProductStockID	Number
+VoucherID	Number
+TransTypeID	String	250
+IO	String	250
+VoucherNo	String	250
+Dated	Date
+RefAccountID	Number
+Serial	Number
+BookID	Number
+Qty	Currency
+Rate	Currency
+CalculationRate	Currency
+DiscountPercentage	Currency
+DiscountAmount	Currency
+TaxPer	Currency
+Taxamount	Currency
+VatAccountID	Number
+VatSideID	String	250
+Amount	Currency
+NetAmount	Currency
+CstPer	Currency
+CstAmount	Currency
+ProductCurrency	String	250
+ProductConversion	Currency
+SATPer	Currency
+SATAmount	Currency
+SchoolID	Number
+ClassName	String	250
+IssuePerson	String	250
+CounterDetailAssociateID	Number
+IsCancel	String	250
+IsShort	String	250
+ExtraDiscountPercentage	Currency
+ExtraDiscountAmount	Currency
+IGSTPer	Currency
+IGSTAmount	Currency
+AddDisPer	Currency
+AddDisAmount	Currency
+SpecimenQty	String	250
+IsSet	String	250
+StrCategory	String	250
+RoundDis	Currency
+Account	String	250
+BookName	String	250
+Subject	String	250
+ISBN	String	250
+Author	String	250
+TotalAmount	Currency
+Address	String	250
+GrandTotal	Currency
+GrNo	String	250
+Transport	String	250
+Remark	Memo
+AdjustmentNarration	String	250
+AdjustmentAmount	Currency
+Freight	Currency
+RoundOff	Currency
+AmountInword	String	250
+Publisher	String	250
+Phone	String	250
+PANNo	String	250
+StateCode	String	250
+HSNCode	String	250
+GSTPer	String	250
+BookCode	String	250
+TinNo	String	250
+PvtMarka	String	250
+GRDate	Date
+NoofBundle	String	250
+FreightType	String	250
+PostageAmt	Currency
+CartageAmt	Currency
+Mobile	String	250
+

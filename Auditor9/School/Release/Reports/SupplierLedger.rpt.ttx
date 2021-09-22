@@ -1,0 +1,40 @@
+; Field definition file for table: ADORecordset
+DocId	string	255	D3    PI 2018      98	
+V_type	string	255	PI	
+RecId	string	255	18-0098	
+V_Date	datetime	18/Sep/2018 12:00:00 AM	
+Site_Code	string	255	3	
+Div_Code	string	255	D	
+Subcode	string	255	D300000006	
+LinkedSubcode	string	255	D100000177	
+GoodsReturn	number	0	
+Adjustment	number	0	
+Payment	number	0	
+Balance	number	-36383	
+AmtDr	number	0	
+AmtCr	number	36383	
+Narration	string	255	CITY FASHION. 	
+AdjDocID	string	255		
+DueDate	datetime		
+AdjDate	datetime		
+AdjAmount	string	255		
+InterestBalance	string	255		
+PartyName	string	255	ATAM WOOLLEN MILLS PVT.LTD-LUDHIANA, LUDIHYANA	
+PartyCity	string	255	LUDIHYANA	
+LrNo	string	255		
+Brand	string	255	ATAM WOLLEN LESS,	
+AmsInvNo	string	255		
+AmsInvAmt	string	255		
+GoodsValue	number	36505	
+Discount	number	1854.55	
+TaxableAmt	number	34650.45	
+TaxAmt	number	1732.52	
+OtherChgAmt	number	0	
+Deduction	number	0	
+BillAmt	number	36383	
+Commission	number	0	
+NetPurAmt	number	36383	
+Div_Name	string	255	Main	
+Site_Name	string	255	LUDIYANA	
+LeaverageDays	number		
+AveragePaymentDays	number		

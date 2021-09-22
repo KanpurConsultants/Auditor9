@@ -1,0 +1,25 @@
+; Field definition file for table: ADORecordset
+Code	string	255	4	
+Barcode	string	255	1004	
+BarCodeImg	BLOB		
+ItemDesc	string	255	665	
+ItemCategoryDesc	string	255	KURTI	
+ItemGroupDesc	string	255	SPARKY	
+Dimension1Desc	string	255		
+Dimension2Desc	string	255		
+Dimension3Desc	string	255		
+Dimension4Desc	string	255		
+SizeDesc	string	255		
+PurchaseRate	number	1000	
+SaleRate	number	1500	
+MRP	number	2000	
+ReceiveQty	number	10	
+GenSr	number	1	
+ItemMasterPurchaseRate	number	1000	
+ItemMasterSaleRate	number	1500	
+Title1	string	255	LIBAS	
+Title2	string	255	Arya Samaj, Sahebganj, Chapra	
+Title3	string	255		
+SaleRate_RateType	string	255		
+RandomNo1	long	105	
+RandomNo2	long	399	

@@ -1,0 +1,36 @@
+; Field definition file for table: ADORecordset
+DocId	string	255	D1    SI 2019      39	
+V_type	string	255	SI	
+RecId	string	255	22	
+V_Date	datetime	04/Dec/2019 12:00:00 AM	
+Site_Code	string	255	1	
+Div_Code	string	255	D	
+Subcode	string	255	D100000009	
+LinkedSubcode	string	255	D100000009	
+GoodsReturn	number	0	
+Adjustment	number	0	
+Payment	number	0	
+Balance	number	2183.33	
+AmtDr	number	2183.33	
+AmtCr	number	0	
+Narration	string	255		
+AdjDocID	string	255		
+DueDate	datetime		
+AdjDate	datetime		
+AdjAmount	string	255		
+InterestBalance	string	255		
+PartyName	string	255	AADI COLLECTION, Uttar Pradesh	
+PartyCity	string	255	Uttar Pradesh	
+LrNo	string	255	26057 * 3	
+Brand	string	255	JOLLY FASHION,	
+AmsInvNo	string	255	ATC-912	
+AmsInvAmt	number	215333	
+GoodsValue	number	2102.99	
+Discount	number	52.2	
+TaxableAmt	number	2050.79	
+TaxAmt	number	132.54	
+BillAmt	number	2183.33	
+Commission	number	0	
+NetPurAmt	number	0	
+Div_Name	string	255	Main	
+Site_Name	string	255	HO	

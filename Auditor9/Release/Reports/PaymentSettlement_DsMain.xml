@@ -1,0 +1,41 @@
+<?xml version="1.0" standalone="yes"?>
+<NewDataSet>
+  <Table>
+    <DocNo>D1-PS-1</DocNo>
+    <V_Date>2021-01-20T00:00:00+05:30</V_Date>
+    <HSubcodeName>AGARWAL SHIRTING PVT.LTD.</HSubcodeName>
+    <Address>KANPUR</Address>
+    <CityName>KANPUR</CityName>
+    <StateCode>09</StateCode>
+    <StateName>Uttar Pradesh</StateName>
+    <Mobile>9918646986</Mobile>
+    <Phone>0512-2388964</Phone>
+    <PartyGSTNo>09AAICA3969K1Z3</PartyGSTNo>
+    <UpToDate>2021-01-20T00:00:00+05:30</UpToDate>
+    <DrCr>Cr</DrCr>
+    <LSubcodeName>CASH A/C</LSubcodeName>
+    <Amount>13000</Amount>
+    <LineTotalAmount>42000</LineTotalAmount>
+    <PrintedByUser>SUPER</PrintedByUser>
+    <PrintTitle>Payment Settlement</PrintTitle>
+  </Table>
+  <Table>
+    <DocNo>D1-PS-1</DocNo>
+    <V_Date>2021-01-20T00:00:00+05:30</V_Date>
+    <HSubcodeName>AGARWAL SHIRTING PVT.LTD.</HSubcodeName>
+    <Address>KANPUR</Address>
+    <CityName>KANPUR</CityName>
+    <StateCode>09</StateCode>
+    <StateName>Uttar Pradesh</StateName>
+    <Mobile>9918646986</Mobile>
+    <Phone>0512-2388964</Phone>
+    <PartyGSTNo>09AAICA3969K1Z3</PartyGSTNo>
+    <UpToDate>2021-01-20T00:00:00+05:30</UpToDate>
+    <DrCr>Cr</DrCr>
+    <LSubcodeName>HDFC BANK C/A 19182560000055</LSubcodeName>
+    <Amount>29000</Amount>
+    <LineTotalAmount>42000</LineTotalAmount>
+    <PrintedByUser>SUPER</PrintedByUser>
+    <PrintTitle>Payment Settlement</PrintTitle>
+  </Table>
+</NewDataSet>

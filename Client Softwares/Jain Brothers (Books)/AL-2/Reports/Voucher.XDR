@@ -1,0 +1,73 @@
+{DB E:\System2k\Data\Company.001\S2K2002.mdb DB}
+{Sql SELECT TransAcc.DocNo, TransAcc.Dated, TransAccItem.Serial, Account.Account, IIf([TransAccItem.SideID]=0,[TransAccItem.Amount],0) AS Debit, 
+ IIf([TransAccItem.SideID]=1,[TransAccItem.Amount],0) AS Credit, Side.SideKey,TransAcc.Narration FROM ((TransAccItem LEFT JOIN Account ON TransAccItem.AccountID = Account.AccountID) 
+ LEFT JOIN Side ON TransAccItem.SideID = Side.SideID) LEFT JOIN TransAcc ON TransAccItem.TransAccID = TransAcc.TransAccID 
+ Where (((TransAccItem.TransTypeID) = {Pm TransTypeID Pm}) And ((TransAccItem.TransAccID) = {Pm TransAccID Pm}))  
+ ORDER BY TransAccItem.Serial Sql}
+{Xdr Settings
+Columns=120
+Lines=33
+Page Break=False
+Condense=False
+Character Per Inch=12
+Orientation=Landscape
+Xdr Settings}
+
+{Formula
+ = 
+Formula}
+
+{GroupSection
+Report Header;
+Page Header;
+Detail;
+Grand;
+Page Footer;
+Footer Adjustments;
+Report Footer;
+GroupSection}
+
+{Parameter
+Parameter}
+{Report Header
+Report Header}
+========================================================================================================================
+{Page Header
+
+
+
+lbl;;8;0;0}{lbl;TIN No.: ;10;0;0}{lbl;{Pm TinNo Pm};25;0;0}{lbl;;20;2;0}{lbl;Ph. Shop: ;10;0;0}{lbl;{Pm PH1 Pm};15;0;0
+lbl;;8;0;0}{lbl;{Pm Owner Pm};40;2;4
+lbl;;8;0;0}{lbl;{Pm Add Pm};80;2;0
+lbl;;8;0;0}{lbl;---------------------------------------------------------------------------------------------------------------;80;0;0
+lbl;;8;0;0}{lbl;{Pm VoucherType Pm};80;2;1
+lbl;;8;0;0}{lbl;---------------------------------------------------------------------------------------------------------------;80;0;0
+lbl;;8;0;0}{lbl;VOUCHER No.:;13;0;0}{fld;DocNo;17;0;1}{lbl;;30;0;1}{lbl;DATE:;6;0;0}{fld;Dated;14;0;0
+lbl;;8;0;0}{lbl;;10;0;0
+lbl;;8;0;0}{lbl;---------------------------------------------------------------------------------------------------------------;80;0;0
+lbl;;8;0;0}{lbl;S.No.;6;0;0}{lbl;Particular;50;0;0}{lbl;Debit;12;1;0}{lbl;Credit;12;1;0
+lbl;;8;0;0}{lbl;---------------------------------------------------------------------------------------------------------------;80;0;0
+Page Header}
+========================================================================================================================
+{Detail
+lbl;;8;0;0}{fml;RecordNo()+ ".";6;0;0}{fld;Account;50;0;0}{fml;CF(Debit);12;1;0}{fml;CF(Credit);12;1;0
+Detail}
+========================================================================================================================
+{Grand
+Grand}
+========================================================================================================================
+{Page Footer
+lbl;;8;0;0}{lbl;Narration : ;12;0;0}{fld;Narration;60;0;0
+lbl;;8;0;0}{lbl;---------------------------------------------------------------------------------------------------------------;80;0;0
+lbl;;8;0;0}{lbl;Receiver Signature;20;0;0}{lbl;For {Pm Owner Pm};60;1;0
+lbl;;8;0;0}{lbl;;1;0;0
+lbl;;8;0;0}{lbl;;20;0;0}{lbl;Authorised Signatory;60;1;0
+Page Footer}
+========================================================================================================================
+{Footer Adjustments
+Footer Adjustments}
+========================================================================================================================
+{Report Footer
+Report Footer}
+========================================================================================================================
+

@@ -1,0 +1,24 @@
+D:\Support\Project\AgControls\Release\AgControls.dll
+D:\Support\Project\AgControls\Release\AgControls.pdb
+D:\Support\Project\AgControls\Release\AgControls.xml
+E:\Arpit Gupta\Active Projects\AgControls\obj\Debug\ResolveAssemblyReference.cache
+E:\Arpit Gupta\Active Projects\AgControls\obj\Debug\AgControls.OutlookStyleControls.AgSideBar.resources
+E:\Arpit Gupta\Active Projects\AgControls\obj\Debug\AgControls.Resources.resources
+E:\Arpit Gupta\Active Projects\AgControls\obj\Debug\AgControls.vbproj.GenerateResource.Cache
+E:\Arpit Gupta\Active Projects\AgControls\obj\Debug\AgControls.dll
+E:\Arpit Gupta\Active Projects\AgControls\obj\Debug\AgControls.xml
+E:\Arpit Gupta\Active Projects\AgControls\obj\Debug\AgControls.pdb
+I:\Common\AgControls\Project\obj\Debug\ResolveAssemblyReference.cache
+I:\Common\AgControls\Project\obj\Debug\AgControls.OutlookStyleControls.AgSideBar.resources
+I:\Common\AgControls\Project\obj\Debug\AgControls.Resources.resources
+I:\Common\AgControls\Project\obj\Debug\AgControls.vbproj.GenerateResource.Cache
+I:\Common\AgControls\Project\obj\Debug\AgControls.dll
+I:\Common\AgControls\Project\obj\Debug\AgControls.xml
+I:\Common\AgControls\Project\obj\Debug\AgControls.pdb
+F:\Project\Common\AgControls\Project\obj\Debug\ResolveAssemblyReference.cache
+F:\Project\Common\AgControls\Project\obj\Debug\AgControls.OutlookStyleControls.AgSideBar.resources
+F:\Project\Common\AgControls\Project\obj\Debug\AgControls.Resources.resources
+F:\Project\Common\AgControls\Project\obj\Debug\AgControls.vbproj.GenerateResource.Cache
+F:\Project\Common\AgControls\Project\obj\Debug\AgControls.dll
+F:\Project\Common\AgControls\Project\obj\Debug\AgControls.xml
+F:\Project\Common\AgControls\Project\obj\Debug\AgControls.pdb

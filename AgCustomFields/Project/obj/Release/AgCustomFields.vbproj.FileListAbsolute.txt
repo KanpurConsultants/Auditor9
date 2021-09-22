@@ -1,0 +1,96 @@
+D:\Dataman\Release\AgCustomFields.pdb
+D:\Dataman\Release\AgCustomFields.xml
+D:\Active Projects\AgStructure\AgStructure\obj\Release\ResolveAssemblyReference.cache
+D:\Active Projects\AgStructure\AgStructure\obj\Release\AgCustomFields.FrmHead.resources
+D:\Active Projects\AgStructure\AgStructure\obj\Release\AgCustomFields.FrmCustomFields.resources
+D:\Active Projects\AgStructure\AgStructure\obj\Release\AgCustomFields.MDIMain.resources
+D:\Active Projects\AgStructure\AgStructure\obj\Release\AgCustomFields.Resources.resources
+D:\Active Projects\AgStructure\AgStructure\obj\Release\AgCustomFields.vbproj.GenerateResource.Cache
+D:\Active Projects\AgStructure\AgStructure\obj\Release\AgCustomFields.xml
+D:\Active Projects\AgStructure\AgStructure\obj\Release\AgCustomFields.pdb
+D:\Active Projects\AgStructure\AgStructure\obj\Release\AgCustomFields.dll
+\\node4\RUG CARE\AgCustomFields\obj\Release\ResolveAssemblyReference.cache
+\\node4\RUG CARE\AgCustomFields\obj\Release\AgCustomFields.FrmHead.resources
+\\node4\RUG CARE\AgCustomFields\obj\Release\AgCustomFields.FrmCustomFields.resources
+\\node4\RUG CARE\AgCustomFields\obj\Release\AgCustomFields.MDIMain.resources
+\\node4\RUG CARE\AgCustomFields\obj\Release\AgCustomFields.Resources.resources
+\\node4\RUG CARE\AgCustomFields\obj\Release\AgCustomFields.vbproj.GenerateResource.Cache
+\\node4\RUG CARE\AgCustomFields\obj\Release\AgCustomFields.xml
+\\node4\RUG CARE\AgCustomFields\obj\Release\AgCustomFields.pdb
+\\node4\RUG CARE\AgCustomFields\obj\Release\AgCustomFields.exe
+D:\Active Projects\AgCustomFields\obj\Release\ResolveAssemblyReference.cache
+D:\Active Projects\AgCustomFields\obj\Release\AgCustomFields.FrmHead.resources
+D:\Active Projects\AgCustomFields\obj\Release\AgCustomFields.FrmCustomFields.resources
+D:\Active Projects\AgCustomFields\obj\Release\AgCustomFields.MDIMain.resources
+D:\Active Projects\AgCustomFields\obj\Release\AgCustomFields.Resources.resources
+D:\Active Projects\AgCustomFields\obj\Release\AgCustomFields.vbproj.GenerateResource.Cache
+D:\Active Projects\AgCustomFields\obj\Release\AgCustomFields.xml
+D:\Active Projects\AgCustomFields\obj\Release\AgCustomFields.pdb
+D:\Dataman\Release\AgCustomFields.dll
+D:\Active Projects\AgCustomFields\obj\Release\AgCustomFields.dll
+D:\Active Projects\Rug Care\Release\AgCustomFields.dll
+D:\Active Projects\Rug Care\Release\AgCustomFields.pdb
+D:\Active Projects\Rug Care\Release\AgCustomFields.xml
+D:\Active Project\AgCustomFields\Release\AgCustomFields.pdb
+D:\Active Project\AgCustomFields\Release\AgCustomFields.xml
+D:\Active Project\AgCustomFields\Project\obj\Release\ResolveAssemblyReference.cache
+D:\Active Project\AgCustomFields\Project\obj\Release\AgCustomFields.FrmHead.resources
+D:\Active Project\AgCustomFields\Project\obj\Release\AgCustomFields.FrmCustomFields.resources
+D:\Active Project\AgCustomFields\Project\obj\Release\AgCustomFields.MDIMain.resources
+D:\Active Project\AgCustomFields\Project\obj\Release\AgCustomFields.Resources.resources
+D:\Active Project\AgCustomFields\Project\obj\Release\AgCustomFields.vbproj.GenerateResource.Cache
+D:\Active Project\AgCustomFields\Project\obj\Release\AgCustomFields.xml
+D:\Active Project\AgCustomFields\Project\obj\Release\AgCustomFields.pdb
+D:\Active Project\AgCustomFields\Release\AgCustomFields.dll
+D:\Active Project\AgCustomFields\Project\obj\Release\AgCustomFields.dll
+F:\Project\Common\AgCustomFields\Release\AgCustomFields.dll
+F:\Project\Common\AgCustomFields\Release\AgCustomFields.pdb
+F:\Project\Common\AgCustomFields\Release\AgCustomFields.xml
+F:\Project\Common\AgCustomFields\Project\obj\Release\ResolveAssemblyReference.cache
+F:\Project\Common\AgCustomFields\Project\obj\Release\AgCustomFields.FrmHead.resources
+F:\Project\Common\AgCustomFields\Project\obj\Release\AgCustomFields.FrmCustomFields.resources
+F:\Project\Common\AgCustomFields\Project\obj\Release\AgCustomFields.MDIMain.resources
+F:\Project\Common\AgCustomFields\Project\obj\Release\AgCustomFields.Resources.resources
+F:\Project\Common\AgCustomFields\Project\obj\Release\AgCustomFields.vbproj.GenerateResource.Cache
+F:\Project\Common\AgCustomFields\Project\obj\Release\AgCustomFields.dll
+F:\Project\Common\AgCustomFields\Project\obj\Release\AgCustomFields.xml
+F:\Project\Common\AgCustomFields\Project\obj\Release\AgCustomFields.pdb
+D:\Satyam\Active Projects\SqLite\AgCustomFields\Project\obj\Release\AgCustomFields.vbprojResolveAssemblyReference.cache
+D:\Satyam\Active Projects\SqLite\AgCustomFields\Project\obj\Release\AgCustomFields.FrmHead.resources
+D:\Satyam\Active Projects\SqLite\AgCustomFields\Project\obj\Release\AgCustomFields.FrmCustomFields.resources
+D:\Satyam\Active Projects\SqLite\AgCustomFields\Project\obj\Release\AgCustomFields.MDIMain.resources
+D:\Satyam\Active Projects\SqLite\AgCustomFields\Project\obj\Release\AgCustomFields.Resources.resources
+D:\Satyam\Active Projects\SqLite\AgCustomFields\Project\obj\Release\AgCustomFields.vbproj.GenerateResource.Cache
+D:\Satyam\Active Projects\SqLite\AgCustomFields\Project\obj\Release\AgCustomFields.dll
+D:\Satyam\Active Projects\SqLite\AgCustomFields\Project\obj\Release\AgCustomFields.xml
+D:\Satyam\Active Projects\SqLite\AgCustomFields\Project\obj\Release\AgCustomFields.pdb
+D:\Satyam\Active Projects\SqLite\AgCustomFields\Release\AgCustomFields.dll.config
+D:\Satyam\Active Projects\SqLite\AgCustomFields\Release\AgCustomFields.dll
+D:\Satyam\Active Projects\SqLite\AgCustomFields\Release\AgCustomFields.pdb
+D:\Satyam\Active Projects\SqLite\AgCustomFields\Release\AgCustomFields.xml
+D:\KC\Source\Sqlite\AgCustomFields\Release\AgCustomFields.dll.config
+D:\KC\Source\Sqlite\AgCustomFields\Release\AgCustomFields.dll
+D:\KC\Source\Sqlite\AgCustomFields\Release\AgCustomFields.pdb
+D:\KC\Source\Sqlite\AgCustomFields\Release\AgCustomFields.xml
+D:\KC\Source\Sqlite\AgCustomFields\Project\obj\Release\AgCustomFields.vbprojResolveAssemblyReference.cache
+D:\KC\Source\Sqlite\AgCustomFields\Project\obj\Release\AgCustomFields.FrmHead.resources
+D:\KC\Source\Sqlite\AgCustomFields\Project\obj\Release\AgCustomFields.FrmCustomFields.resources
+D:\KC\Source\Sqlite\AgCustomFields\Project\obj\Release\AgCustomFields.MDIMain.resources
+D:\KC\Source\Sqlite\AgCustomFields\Project\obj\Release\AgCustomFields.Resources.resources
+D:\KC\Source\Sqlite\AgCustomFields\Project\obj\Release\AgCustomFields.vbproj.GenerateResource.Cache
+D:\KC\Source\Sqlite\AgCustomFields\Project\obj\Release\AgCustomFields.dll
+D:\KC\Source\Sqlite\AgCustomFields\Project\obj\Release\AgCustomFields.xml
+D:\KC\Source\Sqlite\AgCustomFields\Project\obj\Release\AgCustomFields.pdb
+D:\WorkingCopy\DesktopApp\trunk\AgCustomFields\Release\AgCustomFields.dll.config
+D:\WorkingCopy\DesktopApp\trunk\AgCustomFields\Release\AgCustomFields.dll
+D:\WorkingCopy\DesktopApp\trunk\AgCustomFields\Release\AgCustomFields.pdb
+D:\WorkingCopy\DesktopApp\trunk\AgCustomFields\Release\AgCustomFields.xml
+D:\WorkingCopy\DesktopApp\trunk\AgCustomFields\Project\obj\Release\AgCustomFields.vbprojResolveAssemblyReference.cache
+D:\WorkingCopy\DesktopApp\trunk\AgCustomFields\Project\obj\Release\AgCustomFields.FrmHead.resources
+D:\WorkingCopy\DesktopApp\trunk\AgCustomFields\Project\obj\Release\AgCustomFields.FrmCustomFields.resources
+D:\WorkingCopy\DesktopApp\trunk\AgCustomFields\Project\obj\Release\AgCustomFields.MDIMain.resources
+D:\WorkingCopy\DesktopApp\trunk\AgCustomFields\Project\obj\Release\AgCustomFields.Resources.resources
+D:\WorkingCopy\DesktopApp\trunk\AgCustomFields\Project\obj\Release\AgCustomFields.vbproj.GenerateResource.Cache
+D:\WorkingCopy\DesktopApp\trunk\AgCustomFields\Project\obj\Release\AgCustomFields.dll
+D:\WorkingCopy\DesktopApp\trunk\AgCustomFields\Project\obj\Release\AgCustomFields.xml
+D:\WorkingCopy\DesktopApp\trunk\AgCustomFields\Project\obj\Release\AgCustomFields.pdb

@@ -1,0 +1,6 @@
+; Field definition file for table: ADORecordset
+SearchCode	string	255	D100000166	
+Sr	long	1	
+Party	string	255	GOVIND SALES, AGRA 	
+BalanceAmount	number	8650	
+BalanceMonth	string	255	2021-04-17	

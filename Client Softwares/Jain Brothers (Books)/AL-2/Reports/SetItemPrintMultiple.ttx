@@ -1,0 +1,57 @@
+SetMaster.SetMasterID	Number
+SetMaster.SchoolID	Number
+SetMaster.ClassName	String	250
+IsLock	String	250
+SetHeaderID	String	250
+SetMaster.OwnerID	String	250
+SetItemID	Number
+SetItem.SetMasterID	Number
+SetItem.BookID	Number
+Serial	Number
+Qty	Currency
+SetItem.DiscountPer	Currency
+IsShort	String	250
+AddDisPer	Currency
+SetItem.ClassName	String	250
+SetItem.SchoolID	String	250
+ItemRate	Currency
+SetItem.OwnerID	String	250
+School.SchoolID	Number
+SchoolName	String	250
+Add1	String	250
+Add2	String	250
+Code	String	250
+Mobile	String	250
+Contact	String	250
+CounterPerson	String	250
+School.OwnerID	String	250
+BookName	String	250
+Publisher	String	250
+BookGroup	String	250
+Book.BookID	Number
+Rate	Currency
+Author	String	250
+BookCode	String	250
+Subject	String	250
+Discount	Currency
+ISBN	String	250
+BarCode	String	250
+Book.DiscountPer	Currency
+BookCurrency	String	250
+Conversion	Currency
+NetStock	Currency
+CategoryC	Currency
+CategoryB	Currency
+CategoryA	Currency
+Category	String	250
+VatPer	Currency
+SatPer	Currency
+TaxExempted	String	250
+HSNCode	String	250
+GSTPer	String	250
+IGSTPer	String	250
+IsSet	String	250
+CD	String	250
+RoundCategory	String	250
+RoundDis	Currency
+

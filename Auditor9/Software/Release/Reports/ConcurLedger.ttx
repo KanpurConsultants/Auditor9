@@ -1,0 +1,46 @@
+; Field definition file for table: ADORecordset
+DivisionName	string	255	JEET TEXTILES, Kanpur	
+PartyName	string	255	AGARWAL VASTRALYA, ATARA	
+Address	string	255	ATARA	
+Mobile	string	255		
+AgentName	string	255	SANDEEP JI AURAIYA, Kanpur	
+SalesRepresentativeName	string	255		
+AreaName	string	255		
+DrDocID	string	255	D1    OB 2018      37	
+DrDivision	string	255	D	
+DrSubcode	string	255	D100000930	
+DrSr	long	0	
+DrDate	datetime	08/Dec/2018 12:00:00 AM	
+DrDocNo	string	255	OB-G1    1736	
+DrAmount	number	7714	
+DrTaxableAmount	number	0	
+DrTaxAmount	number	0	
+DrDays	long	516	
+DrInterest	number	0	
+DrCumAmount	number	7714	
+DrBalAmount	number	0	
+DrTotal	number	727811	
+DrNarration	string	255	OB : Opening Imported On Software Start.	
+CrDocID	string	255	D1    OB 2018      37	
+CrDivision	string	255	D	
+CrSubcode	string	255	D100000930	
+CrSr	long	0	
+CrDate	datetime	02/Feb/2019 12:00:00 AM	
+CrDocNo	string	255	OB-R1     114	
+CrAmount	number	11340	
+CrTaxableAmount	number	0	
+CrTaxAmount	number	0	
+CrDays	long	490	
+CrInterest	number	0	
+CrCumAmount	number	11340	
+CrBalAmount	number	0	
+CrTotal	number	621565	
+CrNarration	string	255	OB : Opening Imported On Softw	
+AdditionPer	string	255		
+AdditionAmount	string	255		
+GrReturnAmt	number	31200	
+GrSaleAmt	number	727811	
+ReturnPer	number	4.29	
+AveragePaymentDays	number	95.8519595812942	
+DrMonth	string	255	12-2018	
+CrMonth	string	255	02-2019	

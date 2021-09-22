@@ -1,0 +1,46 @@
+; Field definition file for table: ADORecordset
+Copies	string	255	1	
+CopyPrintingCaption	string	255		
+DocNoCaption	string	255	Doc.No.	
+DocDateCaption	string	255	Doc.Date	
+SiteStateCode	string	255	09	
+SiteStateName	string	255	Uttar Pradesh	
+DocID	string	255	D1   RCT 2019     354	
+Sr	number	1	
+V_Date	datetime	22/Feb/2020 12:00:00 AM	
+Voucher_Type	string	255	Receipt	
+NCat	string	255	RCT	
+InvoiceNo	string	255	RCT352	
+PartySubcode	string	255	D100000069	
+PartyName	string	255	KISHORE STORE	
+PartyAddress	string	255	MAIN ROAD LALBANGLA	
+CityName	string	255	KANPUR	
+PartyPincode	string	255	208007	
+StateCode	string	255	09	
+StateName	string	255	Uttar Pradesh	
+PartyMobile	string	255	9335052174	
+ContactPerson	string	255		
+PartySalesTaxNo	string	255	09ASLPG5097Q1ZR	
+PartyAadharNo	string	255		
+PartyPanNo	string	255	ASLPG5097Q	
+TermsAndConditions	string	255		
+ReferenceNo	string	255		
+LineAccountName	string	255	CASH A/C	
+LineSpecification	string	255		
+EffectiveDate	datetime	01/Jan/1900 12:00:00 AM	
+Amount	number	20000	
+L_Deduction	number	0	
+L_OtherCharge	number	0	
+L_NetAmount	number	20000	
+ChqRefNo	string	255		
+ChqRefDate	datetime	01/Jan/1900 12:00:00 AM	
+LRemarks	string	255	CASH RECD AT SHOP PAIED BY RICHA	
+HRemarks	string	255		
+Default_BankAccountDetail	string	255	<B> BANK DETAIL -: BANK OF INDIA A/C NO 696030110000045 IFSC CODE : BKID0006960 </B>	
+DocumentPrintHeaderPattern	string	255	Center Aligned	
+PrintedByUser	string	255	SUPER	
+EntryByUser	string	255	SA	
+PrintTitle	string	255	Receipt	
+DocumentPrintShowPrintDateTimeYn	string	255	1	
+CompanyLogo	BLOB		
+CompanyAuthorisedSignature	BLOB		

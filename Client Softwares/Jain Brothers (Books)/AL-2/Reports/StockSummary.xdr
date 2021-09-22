@@ -1,0 +1,63 @@
+{DB D:\S2k\Fertilizers\Data\Company.001\S2kFP002.mdb DB}
+{Sql SELECT Product.Product,ProductGroup,Product.Prate,Sum(IIf([TransTypeID]=3 Or [TransTypeID]=5 Or [TransTypeID]=8,[Qty],0)) AS Totalin, Sum(IIf([TransTypeID]=6 Or [TransTypeID]=7,[Qty],0)) AS TotalOut,Sum(IIf([TransTypeID]=3 Or [TransTypeID]=5 Or [TransTypeID]=8,[Qty],0))-Sum(IIf([TransTypeID]=6 Or [TransTypeID]=7,[Qty],0)) AS Closing,Product.PerUnitQty, [PerUnitQty]*[Closing] AS QtyInPCS
+FROM ProductStock LEFT JOIN Product ON ProductStock.ProductID = Product.ProductID
+WHERE ProductStock.Dated<=#{Pm DateAsOn Pm}#
+GROUP BY Product.ProductGroup,Product.Product,Product.PRate,Product.PerUnitQty
+Order By ProductGroup,Product
+Sql}
+{Xdr Settings
+Columns=80
+Lines=60
+Page Break=True
+Condense=False
+Character Per Inch=12
+Xdr Settings}
+
+{Formula
+ = 
+Formula}
+
+{GroupSection
+Report Header;
+Page Header;
+Header (ProductGroup);
+Detail;
+Grand;
+Page Footer;
+Report Footer;
+GroupSection}
+
+{Parameter
+DateAsOnParameter}
+{Report Header
+Report Header}
+========================================================================================================================
+{Page Header
+lbl;OwnerName;45;2;4
+lbl;OwnerAdd1 ;80;2;0
+lbl;OwnerAdd2 ;80;2;0
+lbl;Stock Summary As On;20;0;1}{lbl;{Pm DateAsOn Pm};20;0;1
+lbl;--------------------------------------------------------------------------------;80;0;0
+lbl;S.No;5;0;1}{lbl;Name of Product;40;0;1}{lbl;Rates/100;16;1;1}{lbl;Qty(In PCS.);16;1;1
+Page Header}
+========================================================================================================================
+{Header (ProductGroup)
+lbl;--------------------------------------------------------------------------------;80;0;0
+fld;ProductGroup;52;0;0
+lbl;--------------------------------------------------------------------------------;80;0;0
+Header (ProductGroup)}
+========================================================================================================================
+{Detail
+fml;RecordNo()+ ".";5;0;0}{fld;Product;40;0;0}{fld;PRate;16;1;0}{fld;QtyInPCS;16;1;0
+Detail}
+========================================================================================================================
+{Grand
+Grand}
+========================================================================================================================
+{Page Footer
+Page Footer}
+========================================================================================================================
+{Report Footer
+Report Footer}
+========================================================================================================================
+

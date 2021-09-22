@@ -1,0 +1,3 @@
+; Field definition file for table: ADORecordset
+Manual Code	string	255	CDP_MIT	
+Fee Description	string	255	Continuing Devlopment Programme	

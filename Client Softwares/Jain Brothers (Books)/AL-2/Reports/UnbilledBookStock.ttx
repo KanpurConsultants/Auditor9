@@ -1,0 +1,6 @@
+BookName	String	150
+Publisher	String	150
+Author	String	150
+Subject	String	150
+UnbilledQty	Currency
+

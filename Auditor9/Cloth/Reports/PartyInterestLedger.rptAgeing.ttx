@@ -1,0 +1,6 @@
+; Field definition file for table: ADORecordset
+SearchCode	string	255	D100001313	
+Sr	long	1	
+Party	string	255	JANTA DRESS-ALLAHABAD [W], ALLAHABAD	
+BalanceAmount	number	580.47	
+BalanceMonth	string	255	2019-11-29	

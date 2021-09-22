@@ -1,0 +1,11 @@
+ClassName	String	250
+DocNo	String	250
+SchoolName	String	250
+StudentName	String	250
+SecName	String	250
+SchoolID	Number
+TotalAmount	Currency
+PaidAmount	Currency
+FromDate	Date
+ToDate	Date
+

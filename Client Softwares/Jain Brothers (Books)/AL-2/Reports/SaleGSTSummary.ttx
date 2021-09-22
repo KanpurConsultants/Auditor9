@@ -1,0 +1,13 @@
+DocNo	String	250
+Dated	Date
+Account	String	250
+BookName	String	250
+Publisher	String	250
+Hsncode	String	250
+TQty	Currency
+TNetAmount	Currency
+TaxableAmount	Currency
+SGSTAmount	Currency
+CGSTAmount	Currency
+IGSTAmount	Currency
+

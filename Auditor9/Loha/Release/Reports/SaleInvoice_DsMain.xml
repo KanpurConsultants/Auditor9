@@ -1,0 +1,97 @@
+<?xml version="1.0" standalone="yes"?>
+<NewDataSet>
+  <Table>
+    <Copies>1</Copies>
+    <CopyPrintingCaption />
+    <DocID>D1    SI 2018      31</DocID>
+    <Sr>1</Sr>
+    <V_Date>2018-12-22T00:00:00+05:30</V_Date>
+    <Voucher_Type>Tax Invoice</Voucher_Type>
+    <NCat>SI</NCat>
+    <InvoiceNo>D1-SI-609</InvoiceNo>
+    <RateType>Super Net</RateType>
+    <AgentName xml:space="preserve"> </AgentName>
+    <AgentCaption>Agent</AgentCaption>
+    <SaleToPartyName>YASHRAJ ENTERPRISES</SaleToPartyName>
+    <SaleToPartyAddress>RETI CHOWK THAKUR MAHATAM RAO KA HATA, SHOP.NO. IV, GROUND FLOOR</SaleToPartyAddress>
+    <CityName>GORAKHPUR</CityName>
+    <StateCode>09</StateCode>
+    <StateName>UTTAR PRADESH</StateName>
+    <SaleToPartyMobile xml:space="preserve"> </SaleToPartyMobile>
+    <ContactPerson xml:space="preserve"> </ContactPerson>
+    <SaleToPartySalesTaxNo>09AWUPT7751P1Z2</SaleToPartySalesTaxNo>
+    <SaleToPartyAadharNo xml:space="preserve"> </SaleToPartyAadharNo>
+    <PanNo>AWUPT7751P</PanNo>
+    <ShipToAddress xml:space="preserve"> </ShipToAddress>
+    <TermsAndConditions xml:space="preserve"> </TermsAndConditions>
+    <TransporterName xsi:type="xs:string" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"> </TransporterName>
+    <LrNo xml:space="preserve"> </LrNo>
+    <LrDate>1900-01-01T00:00:00+05:30</LrDate>
+    <PrivateMark xml:space="preserve"> </PrivateMark>
+    <Weight>0</Weight>
+    <Freight>0</Freight>
+    <FreightType xml:space="preserve"> </FreightType>
+    <RoadPermitNo xml:space="preserve"> </RoadPermitNo>
+    <RoadPermitDate>1900-01-01T00:00:00+05:30</RoadPermitDate>
+    <ReferenceNo />
+    <ItemName>GIRLS WEAR-5404          [ASHARFEE | GIRLS WEAR]</ItemName>
+    <ItemGroupName>ASHARFEE</ItemGroupName>
+    <ItemCatName>GIRLS WEAR</ItemCatName>
+    <ItemSpecification>GIRLS WEAR</ItemSpecification>
+    <InvoiceLineSpecification xml:space="preserve"> </InvoiceLineSpecification>
+    <HSN>5404</HSN>
+    <MaintainStockYn>true</MaintainStockYn>
+    <SalesTaxGroupItem>GST 5%</SalesTaxGroupItem>
+    <GrossTaxRate>5</GrossTaxRate>
+    <Pcs>0</Pcs>
+    <Qty>10</Qty>
+    <Rate>10</Rate>
+    <Unit>PCS</Unit>
+    <UnitDecimalPlaces>0</UnitDecimalPlaces>
+    <DiscountCalculationPattern>Percentage</DiscountCalculationPattern>
+    <DiscountPer>0</DiscountPer>
+    <DiscountAmount>0</DiscountAmount>
+    <AdditionalDiscountPer>0</AdditionalDiscountPer>
+    <AdditionalDiscountAmount>0</AdditionalDiscountAmount>
+    <Amount>100</Amount>
+    <Taxable_Amount>100</Taxable_Amount>
+    <Tax1_Per>0</Tax1_Per>
+    <Tax1>0</Tax1>
+    <Tax2_Per>2.5</Tax2_Per>
+    <Tax2>2.5</Tax2>
+    <Tax3_Per>2.5</Tax3_Per>
+    <Tax3>2.5</Tax3>
+    <Tax4_Per>0</Tax4_Per>
+    <Tax4>0</Tax4>
+    <Tax5_Per>0</Tax5_Per>
+    <Tax5>0</Tax5>
+    <Net_Amount>105</Net_Amount>
+    <LRemarks xml:space="preserve"> </LRemarks>
+    <HRemarks xml:space="preserve"> </HRemarks>
+    <H_Gross_Amount>100</H_Gross_Amount>
+    <H_SpecialDiscount_Per>0</H_SpecialDiscount_Per>
+    <H_SpecialDiscount>0</H_SpecialDiscount>
+    <H_Taxable_Amount>100</H_Taxable_Amount>
+    <H_Tax1_Per>0</H_Tax1_Per>
+    <H_Tax1>0</H_Tax1>
+    <H_Tax2_Per>0</H_Tax2_Per>
+    <H_Tax2>2.5</H_Tax2>
+    <H_Tax3_Per>0</H_Tax3_Per>
+    <H_Tax3>2.5</H_Tax3>
+    <H_Tax4_Per>0</H_Tax4_Per>
+    <H_Tax4>0</H_Tax4>
+    <H_Tax5_Per>0</H_Tax5_Per>
+    <H_Tax5>0</H_Tax5>
+    <H_Deduction_Per>0</H_Deduction_Per>
+    <H_Deduction>0</H_Deduction>
+    <H_Other_Charge_Per>0</H_Other_Charge_Per>
+    <H_Other_Charge>0</H_Other_Charge>
+    <Round_Off>0</Round_Off>
+    <H_Net_Amount>105</H_Net_Amount>
+    <Default_BankAccountDetail />
+    <IsCenterAlignedCompanyInfoOnDocuments>0</IsCenterAlignedCompanyInfoOnDocuments>
+    <DimDetail />
+    <PrintedByUser>SUPER</PrintedByUser>
+    <PrintTitle>Tax Invoice</PrintTitle>
+  </Table>
+</NewDataSet>

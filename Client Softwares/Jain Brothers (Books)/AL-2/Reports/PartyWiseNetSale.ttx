@@ -1,0 +1,9 @@
+Account	String	150
+Address	String	150
+SaleQty	Currency
+ReturnQty	Currency
+NetQty	Currency
+SaleAmount	Currency
+ReturnAmount	Currency
+NetAmount	Currency
+

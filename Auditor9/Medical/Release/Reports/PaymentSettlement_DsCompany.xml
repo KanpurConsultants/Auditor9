@@ -1,0 +1,16 @@
+<?xml version="1.0" standalone="yes"?>
+<NewDataSet>
+  <Table>
+    <Code>1</Code>
+    <EffectiveUptoDate>2000-01-01T00:00:00+05:30</EffectiveUptoDate>
+    <DocumentHeaderRow1Left>MAA KI KRIPA</DocumentHeaderRow1Left>
+    <DocumentHeaderRow2Left />
+    <DocumentHeaderRow3Left>Kanpur</DocumentHeaderRow3Left>
+    <DocumentHeaderRow1Right />
+    <DocumentHeaderRow2Right />
+    <IsSalesTaxApplicable>true</IsSalesTaxApplicable>
+    <WeekOffDays>0</WeekOffDays>
+    <EntryBy>System</EntryBy>
+    <EntryDate>2019-11-05T08:00:48+05:30</EntryDate>
+  </Table>
+</NewDataSet>

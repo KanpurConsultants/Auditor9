@@ -1,0 +1,12 @@
+DocNo	String	250
+BillDate	Date
+Account	String	250
+Category	String	250
+TQty	Currency
+TNetAmount	Currency
+TaxableAmount	Currency
+GSTPer	Currency
+SGSTAmount	Currency
+CGSTAmount	Currency
+IGSTAmount	Currency
+

@@ -1,0 +1,13 @@
+DocNo	String	250
+Dated	Date
+Category	String	250
+TQty	Currency
+TNetAmount	Currency
+TaxableAmount	Currency
+GSTPer	Currency
+SGSTAmount	Currency
+CGSTAmount	Currency
+IGSTAmount	Currency
+Account	String	250
+BookType	String	250
+

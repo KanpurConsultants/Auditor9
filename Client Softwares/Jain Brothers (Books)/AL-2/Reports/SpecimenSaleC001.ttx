@@ -1,0 +1,46 @@
+ProductStockID	Number
+VoucherID	Number
+TransTypeID	String	150
+IO	String	150
+VoucherNo	String	150
+Dated	Date
+RefAccountID	Number
+Serial	String	150
+BookID	Number
+Qty	Currency
+Rate	Currency
+CalculationRate	Currency
+DiscountPercentage	Currency
+DiscountAmount	Currency
+TaxPer	Currency
+Taxamount	String	150
+VatAccountID	Number
+VatSideID	String	150
+Amount	Currency
+NetAmount	Currency
+CstPer	Currency
+CstAmount	Currency
+ProductCurrency	String	150
+ProductConversion	Currency
+Account	String	150
+BookName	String	150
+Subject	String	150
+ISBN	String	150
+Author	String	150
+TotalAmount	Currency
+Address	Memo
+GrandTotal	Currency
+GrNo	String	150
+Transport	String	150
+Remark	Memo
+AdjustmentNarration	String	150
+AdjustmentAmount	Currency
+Freight	Currency
+RoundOff	Currency
+AmountInword	String	150
+Publisher	String	150
+SaleType	String	150
+LedgerBalance	String	150
+Comment	String	150
+SpecimenSale.LedgerBalance	Currency
+

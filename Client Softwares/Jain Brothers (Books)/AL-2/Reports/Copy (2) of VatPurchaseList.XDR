@@ -1,0 +1,73 @@
+{DB D:\S2k\Pharma_W\Data\Company.001\S2K2002.mdb DB}
+{Sql SELECT Purchase.*, Adjustment-CreditAmount+DebitAmount As Others, Account.Account, Account.TinNo, [Description1]+' '+[Description2] AS Address
+ FROM Purchase LEFT JOIN Account ON Purchase.AccountID = Account.AccountID 
+ where CST=0 And RefDate Between #{Pm DateFrom Pm}# and #{Pm DateTo Pm}# 
+ order by RefDate,RefNo,Account Sql}
+{Xdr Settings
+Columns=155
+Lines=70
+Page Break=False
+Condense=True
+Character Per Inch=12
+Xdr Settings}
+
+{Formula
+ = 
+Formula}
+
+{GroupSection
+Report Header;
+Page Header;
+Detail;
+Grand;
+Page Footer;
+Report Footer;
+GroupSection}
+
+{Parameter
+DateFromToParameter}
+{Report Header
+Report Header}
+========================================================================================================================
+{Page Header
+lbl;;1;0;0
+lbl;ANNEXURE - A ;126;2;0
+lbl;;42;0;0}{lbl;[See rule-45(3) of the UPVAT Rules,;36;0;0}{lbl;{Pm TaxYear Pm};4;0;0}{lbl;];1;0;0
+lbl;List of purchases made against tax invoice;126;2;0
+lbl;OwnerName;42;0;1
+lbl;OwnerAdd1  OwnerAdd2;47;0;0
+lbl;TIN NUMBER     :;16;0;0}{lbl;OwnerTinNo;60;0;0}{lbl;PAGE NO:;13;1;0
+lbl;Assessment year:;16;0;0}{lbl;{Pm TaxYear Pm};60;0;0}{lbl;END DATE OF TAX PERIOD:;24;0;0}{lbl;{Pm DateTo Pm};12;0;0
+lbl;-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------;131;0;0
+lbl;SNO;4;0;0}{lbl;PARTY NAME & ADDRESS;37;0;0}{lbl;TIN;12;0;0}{lbl;INV NO;12;0;0}{lbl;DATE;12;0;0}{lbl;PROD;5;0;0}{lbl;QTY;6;1;0}{lbl;Pur.;8;1;0}{lbl;Pur.;9;1;0}{lbl;VAT;8;1;0}{lbl;Others;7;1;0}{lbl;TOTAL;10;1;0
+lbl;   ;4;0;0}{lbl;;37;0;0}{lbl;;12;0;0}{lbl;;12;0;0}{lbl;;12;0;0}{lbl;;5;1;0}{lbl;;6;1;0}{lbl; 0%;8;1;0}{lbl; 4%;9;1;0}{lbl; 4%;8;1;0}{lbl;;9;1;0
+lbl;-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------;131;0;0
+Page Header}
+========================================================================================================================
+{Detail
+fml;RecordNo();4;0;0}{fld;Account;36;0;0}{lbl;;1;0;0}{fld;TinNo;12;0;0}{fml;RefNo;12;2;0}{fld;refDate;12;0;0}{lbl;;5;0;0}{fml;CF(TotalQty);6;1;0}{fml;CF(Pur0);8;1;0}{fml;CF(Pur4);9;1;0}{fml;CF(Vat4);8;1;0}{fml;CF(Others);7;1;0}{fml;CF(NETAmount);10;1;0
+lbl;;4;0;0}{fld;Address;35;0;0
+Detail}
+========================================================================================================================
+{Grand
+lbl;-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------;131;0;0
+lbl;;30;0;0}{lbl;PURCHASE 0%     : ;18;1;0}{fml;SUM(Pur0);12;1;0
+lbl;;30;0;0}{lbl;PURCHASE 4%     : ;18;1;0}{fml;SUM(Pur4);12;1;0
+lbl;;30;0;0}{lbl;VAT 4%          : ;18;1;0}{fml;SUM(vAT4);12;1;0
+lbl;;30;0;0}{lbl;OTHER           : ;18;1;0}{fml;SUM(Others);12;1;0
+lbl;;30;0;0}{lbl;                  ;18;1;0}{lbl;------------;12;1;0
+lbl;;30;0;0}{lbl;NET AMOUNT      : ;18;1;0}{fml;SUM(NetAmount);12;1;0
+
+
+
+lbl;;80;0;0}{lbl;Authorised Person Name & Signature;35;0;0
+lbl;;80;0;0}{lbl;Date :;20;0;0
+Grand}
+========================================================================================================================
+{Page Footer
+lbl;CONTINUE TO:      ;109;1;0
+Page Footer}
+========================================================================================================================
+{Report Footer
+Report Footer}
+========================================================================================================================

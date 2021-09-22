@@ -1,0 +1,23 @@
+; Field definition file for table: ADORecordset
+Copies	string	255	1	
+DocID	string	255	D1    PK 2019       7	
+ItemName	string	255		
+Dimension1Name	string	255		
+Dimension2Name	string	255		
+Dimension3Name	string	255		
+Dimension4Name	string	255		
+SizeName	string	255		
+ItemGroupName	string	255		
+ItemCategoryName	string	255		
+Qty	number		
+Unit	string	255		
+UnitDecimalPlaces	number		
+ItemTypeCaption	string	255	Item Type	
+ItemCategoryCaption	string	255	Item Category	
+ItemGroupCaption	string	255	Item Group	
+ItemCaption	string	255	Item	
+BarcodeCaption	string	255		
+D1Caption	string	255	Quality	
+D2Caption	string	255	Colour	
+D3Caption	string	255	Design	
+D4Caption	string	255	Width	

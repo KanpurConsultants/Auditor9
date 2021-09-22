@@ -1,0 +1,4 @@
+NoofBill	Number
+Account	String	250
+Dated	Date
+

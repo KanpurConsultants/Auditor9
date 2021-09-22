@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?><?xml-stylesheet type='text/xsl' href='_UpgradeReport_Files/UpgradeReport.xslt'?><UpgradeLog>
+<Properties><Property Name="Solution" Value="AgControls">
+</Property><Property Name="Solution File" Value="E:\Arpit Gupta\Active Projects\Ashish\AgControls\AgControls.sln">
+</Property><Property Name="Date" Value="08/Aug/2011">
+</Property><Property Name="Time" Value="12:26 PM">
+</Property></Properties><Event ErrorLevel="0" Project="AgControls" Source="AgControls.vbproj" Description="Project converted successfully">
+</Event><Event ErrorLevel="3" Project="AgControls" Source="AgControls.vbproj" Description="Converted">
+</Event><Event ErrorLevel="0" Project="" Source="AgControls.sln" Description="Solution converted successfully">
+</Event><Event ErrorLevel="3" Project="" Source="AgControls.sln" Description="Converted">
+</Event><Event ErrorLevel="0" Project="AgControls" Source="AgControls.vbproj" Description="Scan complete: Upgrade not required for project files.">
+</Event></UpgradeLog>
