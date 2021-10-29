@@ -1151,9 +1151,16 @@ Public Class ClsFunction
                     CRep.Ini_Grid()
                     FrmObj = GridReportFrm
                 Case MDI.MnuStockIssueReport.Name
-                    Dim CRep As ClsPurchaseReport = New ClsPurchaseReport(GridReportFrm, Ncat.StockIssue, mSubRecordType_StockIssue)
-                    CRep.GRepFormName = Replace(Replace(Replace(Replace(StrSenderText, "&", ""), " ", ""), "(", ""), ")", "")
-                    CRep.Ini_Grid()
+                    If ClsMain.FDivisionNameForCustomization(6) = "SADHVI" And AgL.StrCmp(AgL.PubDBName, "Sadhvi") Then
+                        Dim CRep As ClsStockHeadReport = New ClsStockHeadReport(GridReportFrm, Ncat.StockIssue)
+                        CRep.GRepFormName = Replace(Replace(Replace(Replace(StrSenderText, "&", ""), " ", ""), "(", ""), ")", "")
+                        CRep.Ini_Grid()
+                    Else
+                        Dim CRep As ClsPurchaseReport = New ClsPurchaseReport(GridReportFrm, Ncat.StockIssue, mSubRecordType_StockIssue)
+                        CRep.GRepFormName = Replace(Replace(Replace(Replace(StrSenderText, "&", ""), " ", ""), "(", ""), ")", "")
+                        CRep.Ini_Grid()
+                    End If
+
                     FrmObj = GridReportFrm
                 Case MDI.MnuStockReceiveReport.Name
                     Dim CRep As ClsPurchaseReport = New ClsPurchaseReport(GridReportFrm, Ncat.StockReceive, "")

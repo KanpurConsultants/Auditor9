@@ -21,14 +21,16 @@ Public Class FrmPersonTemporaryCreditLimit
     Dim rowToDate As Integer = 2
     Dim rowAmount As Integer = 3
     Dim rowCreditLimit As Integer = 4
-    Dim rowResponsiblePerson As Integer = 5
-    Dim rowRemark As Integer = 6
+    Dim rowCurrentBalance As Integer = 5
+    Dim rowResponsiblePerson As Integer = 6
+    Dim rowRemark As Integer = 7
 
 
     Public Const HcParty As String = "Party Name"
     Public Const HcFromDate As String = "From Date"
     Public Const HcToDate As String = "To Date"
     Public Const HcAmount As String = "Amount"
+    Public Const HcCurrentBalance As String = "Current Balance"
     Public Const HcCreditLimit As String = "Credit Limit"
     Public Const HcResponsiblePerson As String = "Responsible Person"
     Public Const HcRemark As String = "Remark"
@@ -170,6 +172,7 @@ Public Class FrmPersonTemporaryCreditLimit
                     MsgBox(Dgl1(Col1Head, I).Value & " can not be blank.")
                     Dgl1.CurrentCell = Dgl1(Col1Value, I)
                     Dgl1.Focus()
+                    passed = False
                     Exit Sub
                 End If
             End If
@@ -216,6 +219,7 @@ Public Class FrmPersonTemporaryCreditLimit
                 ToDate = " & AgL.Chk_Date(Dgl1(Col1Value, rowFromDate).Value) & ",                 
                 Amount = " & Val(Dgl1(Col1Value, rowAmount).Value) & ",                
                 CreditLimit = " & Val(Dgl1(Col1Value, rowCreditLimit).Value) & ",                
+                CurrentBalance = " & Val(Dgl1(Col1Value, rowCurrentBalance).Value) & ",                
                 ResponsiblePerson = " & AgL.Chk_Text(Dgl1(Col1Value, rowResponsiblePerson).Tag) & ",                                                                
                 Remark = " & AgL.Chk_Text(Dgl1(Col1Value, rowRemark).Value) & "
                 Where Code = '" & SearchCode & "' "
@@ -249,6 +253,7 @@ Public Class FrmPersonTemporaryCreditLimit
                 Dgl1(Col1Value, rowToDate).Value = ClsMain.FormatDate(AgL.XNull(.Rows(0)("ToDate")))
                 Dgl1(Col1Value, rowAmount).Value = AgL.VNull(.Rows(0)("Amount"))
                 Dgl1(Col1Value, rowCreditLimit).Value = AgL.VNull(.Rows(0)("CreditLimit"))
+                Dgl1(Col1Value, rowCurrentBalance).Value = AgL.VNull(.Rows(0)("CurrentBalance"))
                 Dgl1(Col1Value, rowResponsiblePerson).Tag = AgL.XNull(.Rows(0)("ResponsiblePerson"))
                 Dgl1(Col1Value, rowResponsiblePerson).Value = AgL.XNull(.Rows(0)("EmployeeName"))
                 Dgl1(Col1Value, rowRemark).Value = AgL.XNull(.Rows(0)("Remark"))
@@ -383,7 +388,7 @@ Public Class FrmPersonTemporaryCreditLimit
         AgL.GridDesign(Dgl1)
 
 
-        Dgl1.Rows.Add(7)
+        Dgl1.Rows.Add(8)
 
 
 
@@ -391,6 +396,7 @@ Public Class FrmPersonTemporaryCreditLimit
         Dgl1(Col1Head, rowToDate).Value = HcToDate
         Dgl1(Col1Head, rowFromDate).Value = HcFromDate
         Dgl1(Col1Head, rowAmount).Value = HcAmount
+        Dgl1(Col1Head, rowCurrentBalance).Value = HcCurrentBalance
         Dgl1(Col1Head, rowCreditLimit).Value = HcCreditLimit
         Dgl1(Col1Head, rowParty).Value = HcParty
         Dgl1(Col1Head, rowRemark).Value = HcRemark
@@ -471,6 +477,9 @@ Public Class FrmPersonTemporaryCreditLimit
                     CType(Dgl1.Columns(Col1Value), AgControls.AgTextColumn).AgValueType = AgControls.AgTextColumn.TxtValueType.Date_Value
                 Case rowCreditLimit
                     Dgl1.Item(Col1Value, rowCreditLimit).ReadOnly = True
+                Case rowCurrentBalance
+                    Dgl1.Item(Col1Value, rowCurrentBalance).ReadOnly = True
+
             End Select
         Catch ex As Exception
             MsgBox(ex.Message)
@@ -545,6 +554,8 @@ Public Class FrmPersonTemporaryCreditLimit
                 If AgL.XNull(Dgl1.Item(Col1Value, rowParty).Tag) <> "" Then
                     Dgl1.Item(Col1Value, rowCreditLimit).Value = AgL.VNull(AgL.Dman_Execute(" Select CreditLimit From SubGroup 
                         Where SubCode = '" & Dgl1.Item(Col1Value, rowParty).Tag & "'", AgL.GCn).ExecuteScalar())
+                    mQry = " Select IfNull(Sum(AmtDr),0) - IfNull(Sum(AmtCr),0) As CurrBal From Ledger  With (NoLock) Where SubCode = '" & Dgl1.Item(Col1Value, rowParty).Tag & "'"
+                    Dgl1.Item(Col1Value, rowCurrentBalance).Value = Format(AgL.VNull(AgL.Dman_Execute(mQry, AgL.GCn).ExecuteScalar), "0.00")
                 Else
                     Dgl1.Item(Col1Value, rowCreditLimit).Value = 0
                 End If

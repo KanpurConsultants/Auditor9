@@ -304,7 +304,6 @@ Public Class ClsMain
     End Sub
 
 
-
     Public Shared Sub FPrepareContraText(ByVal BlnOverWrite As Boolean, ByRef StrContraTextVar As String,
                                      ByVal StrContraName As String, ByVal DblAmount As Double, ByVal StrDrCr As String)
         Dim IntNameMaxLen As Integer = 35, IntAmtMaxLen As Integer = 18, IntSpaceNeeded As Integer = 2
@@ -529,18 +528,18 @@ Public Class ClsMain
     End Sub
     Public Sub UpdateTableStructure(Optional OverWriteOldValues As Boolean = False)
         Try
-            'If AgL.StrCmp(AgL.PubUserName, "Super") Then
-            '    '    '    'FCorrectionQueries()
-            '    '    '    FIndustryWiseSeeding()
-            '    '    '    'FSeedTable_Setting()
-            '    'FSeedTable_Menus()
-            '    FSeedTable_Settings_Free()
-            '    'FIndustryWiseSeeding()
-            '    FCreateTable_SaleInvoice()
-            '    FCreateTable_Voucher_Type()
-            '    FSeedTable_EntryHeaderUISetting()
-            '    Exit Sub
-            'End If
+            If AgL.StrCmp(AgL.PubUserName, "Super") Then
+                FCorrectionQueries()
+                FIndustryWiseSeeding()
+                FSeedTable_Setting()
+                FSeedTable_Menus()
+                FSeedTable_Settings_Free()
+                FIndustryWiseSeeding()
+                FCreateTable_SaleInvoice()
+                FCreateTable_Voucher_Type()
+                FSeedTable_EntryHeaderUISetting()
+                Exit Sub
+            End If
 
 
             FCreateTable_Mast()
@@ -1481,6 +1480,10 @@ Public Class ClsMain
             End If
 
             If FDivisionNameForCustomization(20) = "SHYAMA SHYAM FABRICS" Then
+
+                FSeedSingleIfNotExists_Voucher_Type("JVD", "JOURNAL TDS", Ncat.JournalVoucher, VoucherCategory.Journal)
+                FSeedSingleIfNotExists_Voucher_Type("JVT", "JOURNAL TCS", Ncat.JournalVoucher, VoucherCategory.Journal)
+
                 mQry = "Update saleInvoiceDetail Set SaleInvoiceSr=1
                         where SaleInvoice In  ( select SaleInvoice from saleInvoiceDetail where SaleInvoice is Not Null And SaleInvoiceSr is Null and SaleInvoice Like '%SO%' and Item Not In ('Freight','Packing')) 
                         And IfNull(SaleInvoiceSr,0) = 0  and Docid like '%SI%'
@@ -1596,6 +1599,9 @@ Public Class ClsMain
 
 
             If FDivisionNameForCustomization(22) = "W SHYAMA SHYAM FABRICS" Then
+                FSeedSingleIfNotExists_Voucher_Type("JVD", "JOURNAL TDS", Ncat.JournalVoucher, VoucherCategory.Journal)
+                FSeedSingleIfNotExists_Voucher_Type("JVT", "JOURNAL TCS", Ncat.JournalVoucher, VoucherCategory.Journal)
+
                 AgL.AddFieldSqlite(AgL.GcnMain, "WPurchInvoiceDetail", "GeneratedDocId", "nVarchar(21)", "", True)
                 AgL.AddFieldSqlite(AgL.GcnMain, "WSaleInvoiceDetail", "GeneratedDocId", "nVarchar(21)", "", True)
 
@@ -6300,6 +6306,7 @@ Sincerely
         mQry += " Union All "
         mQry += " Select 'Login Division' as Code, 'Login Division' as Name "
         FSeedSingleIfNotExist_Setting(SettingType.General, "", "", SettingFields.DefaultDivisionNameInReportFilters, "Login Division", AgDataType.Text, "255", mQry, AgHelpQueryType.SqlQuery, AgHelpSelectionType.SingleSelect,,,,,, "+SUPPORT")
+        FSeedSingleIfNotExist_Setting(SettingType.General, "", "", SettingFields.ActionIfCreditDaysExceed, ActionIfCreditLimitExceeds.DoNothing, AgDataType.Text, "50", "ActionIfCreditLimitExceeds", AgHelpQueryType.ClassName, AgHelpSelectionType.SingleSelect)
         FSeedSingleIfNotExist_Setting(SettingType.General, "", "", SettingFields.ActionIfDifferenceInPaymentSettlement, ActionIfDifferenceInPaymentSettlement.AlertAndStopTransaction, AgDataType.Text, "50", "ActionIfDifferenceInPaymentSettlement", AgHelpQueryType.ClassName, AgHelpSelectionType.SingleSelect,,,, ,, IndustryType.CommonModules.PaymentSettlementModule, "+SUPPORT")
         FSeedSingleIfNotExist_Setting(SettingType.General, "", "", SettingFields.ActionIfDifferenceInReceiptSettlement, ActionIfDifferenceInReceiptSettlement.AlertAndStopTransaction, AgDataType.Text, "50", "ActionIfDifferenceInReceiptSettlement", AgHelpQueryType.ClassName, AgHelpSelectionType.SingleSelect,,,, ,, IndustryType.CommonModules.ReceiptSettlementModule, "+SUPPORT")
         FSeedSingleIfNotExist_Setting(SettingType.General, "", "", SettingFields.ItemTypeCaption, "", AgDataType.Text, "50",,,,,,,,, "+SUPPORT")
@@ -6548,6 +6555,7 @@ Thanks
         Public Shared DefaultSiteNameInReportFilters As String = "Default Site Name In Report Filters"
         Public Shared DefaultDivisionNameInReportFilters As String = "Default Division Name In Report Filters"
 
+        Public Shared ActionIfCreditDaysExceed As String = "Action If Credit Days Exceed"
         Public Shared ActionIfDifferenceInPaymentSettlement As String = "Action If Difference In Payment Settlement"
         Public Shared ActionIfDifferenceInReceiptSettlement As String = "Action If Difference In Receipt Settlement"
         Public Shared ActionOnDuplicateItem As String = "Action On Duplicate Item"
@@ -10690,6 +10698,16 @@ Thanks
                     "
             AgL.Dman_ExecuteNonQry(mQry, AgL.GcnMain)
         End If
+
+        If AgL.FillData("Select * from Voucher_Prefix Where V_Type='" & V_Type & "' And Prefix = '2021' ", AgL.GcnMain).tables(0).Rows.Count = 0 Then
+            mQry = " 
+                    INSERT INTO Voucher_Prefix
+                    (V_Type, Date_From, Prefix, Start_Srl_No, Date_To, Comp_Code, Site_Code, Div_Code, UpLoadDate, Status_Add, Status_Edit, Status_Delete, Status_Print, Ref_Prefix, Ref_PadLength)
+                    VALUES('" & V_Type & "', '2021-04-01', '2021', 0, '2022-03-31 23:59:59', '1', '1', 'D', NULL, NULL, NULL, NULL, NULL,  Null, Null);
+                    "
+            AgL.Dman_ExecuteNonQry(mQry, AgL.GcnMain)
+        End If
+
     End Sub
     Private Sub FSeedTable_Voucher_Type()
         Dim mQry As String
@@ -11607,6 +11625,24 @@ Thanks
         End Try
 
     End Sub
+    Private Sub FCreateTable_SaleInvoiceOtherCharges()
+        Dim mQry As String
+        Try
+            If Not AgL.IsTableExist("SaleInvoiceOtherCharges", AgL.GcnMain) Then
+                mQry = " CREATE TABLE [SaleInvoiceOtherCharges] ([DocID] nVarchar(21) NOT NULL References SaleInvoice(DocID),                    
+                   [Sr] int NOT NULL,
+                   PRIMARY KEY ([DocID],[Sr]) ); "
+                AgL.Dman_ExecuteNonQry(mQry, AgL.GcnMain)
+            End If
+            AgL.AddFieldSqlite(AgL.GcnMain, "SaleInvoiceOtherCharges", "ChargeSubcode", "nVarchar(10)", "", True)
+            AgL.AddFieldSqlite(AgL.GcnMain, "SaleInvoiceOtherCharges", "Amount", "Float", "0", False)
+            AgL.AddFieldSqlite(AgL.GcnMain, "SaleInvoiceOtherCharges", "ChargeType", "nVarchar(30)", "", True)
+            AgL.AddFieldSqlite(AgL.GcnMain, "SaleInvoiceOtherCharges", "UploadDate", "DateTime", "", True)
+        Catch ex As Exception
+            MsgBox(ex.Message & "  [FCreateTable_SaleInvoiceOtherCharges]")
+        End Try
+
+    End Sub
 
 
     Private Sub FCreateTable_SaleInvoiceBarcodeLastTransactionValues()
@@ -11794,6 +11830,11 @@ Thanks
             AgL.AddFieldSqlite(AgL.GcnMain, "PurchInvoice", "Site_Code", "nVarchar(2)", "", True)
             AgL.AddFieldSqlite(AgL.GcnMain, "PurchInvoice", "Status", "nVarchar(20)", "", True)
             AgL.AddFieldSqlite(AgL.GcnMain, "PurchInvoice", "LockText", "nVarchar(255)", "", True)
+            AgL.AddFieldSqlite(AgL.GcnMain, "PurchInvoice", "GstFilingDate", "DateTime", "", True)
+            AgL.AddFieldSqlite(AgL.GcnMain, "PurchInvoice", "GstInputCreditDate", "DateTime", "", True)
+            AgL.AddFieldSqlite(AgL.GcnMain, "PurchInvoice", "GstInputHoldRemark", "nVarchar(100)", "", True)
+
+
 
             AgL.AddFieldSqlite(AgL.GcnMain, "PurchInvoice", "InUseBy", "nVarchar(10)", "", True)
             AgL.AddFieldSqlite(AgL.GcnMain, "PurchInvoice", "InUseToken", "nVarchar(50)", "", True)
@@ -15598,6 +15639,50 @@ Thanks
 
 
 
+            If AgL.FillData("Select Count(*) from PostingGroupSalesTax Where PostingGroupSalesTaxItem = 'GST 2%' ", AgL.GcnMain).tables(0).Rows(0)(0) = 0 Then
+
+                mQry = "
+                    insert into PostingGroupSalesTax(WEF,Site_Code,Div_Code,PostingGroupSalesTaxItem, PostingGroupSalesTaxParty,ChargeType, Process, PlaceOfSupply, Percentage,LedgerAc)
+                    VALUES('2017-04-01',Null,Null,'GST 2%','Unregistered','TAXABLE AMOUNT','PURCH','Within State',Null,'PURWU2');
+                    insert into PostingGroupSalesTax(WEF,Site_Code,Div_Code,PostingGroupSalesTaxItem, PostingGroupSalesTaxParty,ChargeType, Process, PlaceOfSupply, Percentage,LedgerAc)
+                    VALUES('2017-04-01',Null,Null,'GST 2%','Unregistered','TAXABLE AMOUNT','PURCH','Outside State',Null,'PUROU2');
+                    insert into PostingGroupSalesTax(WEF,Site_Code,Div_Code,PostingGroupSalesTaxItem, PostingGroupSalesTaxParty,ChargeType, Process, PlaceOfSupply, Percentage,LedgerAc)
+                    VALUES('2017-04-01',Null,Null,'GST 2%','Registered','TAXABLE AMOUNT','PURCH','Outside State',Null,'PUROR2');
+                    insert into PostingGroupSalesTax(WEF,Site_Code,Div_Code,PostingGroupSalesTaxItem, PostingGroupSalesTaxParty,ChargeType, Process, PlaceOfSupply, Percentage,LedgerAc)
+                    VALUES('2017-04-01',Null,Null,'GST 2%','Registered','TAXABLE AMOUNT','PURCH','Within State',Null,'PURWR2');
+                    insert into PostingGroupSalesTax(WEF,Site_Code,Div_Code,PostingGroupSalesTaxItem, PostingGroupSalesTaxParty,ChargeType, Process, PlaceOfSupply, Percentage,LedgerAc)
+                    VALUES('2017-04-01',Null,Null,'GST 2%','Registered','TAX1','PURCH','Outside State',2,'IIGST2');
+                    insert into PostingGroupSalesTax(WEF,Site_Code,Div_Code,PostingGroupSalesTaxItem, PostingGroupSalesTaxParty,ChargeType, Process, PlaceOfSupply, Percentage,LedgerAc)
+                    VALUES('2017-04-01',Null,Null,'GST 2%','Registered','TAX2','PURCH','Within State',1,'ICGST2');
+                    insert into PostingGroupSalesTax(WEF,Site_Code,Div_Code,PostingGroupSalesTaxItem, PostingGroupSalesTaxParty,ChargeType, Process, PlaceOfSupply, Percentage,LedgerAc)
+                    VALUES('2017-04-01',Null,Null,'GST 2%','Registered','TAX3','PURCH','Within State',1,'ISGST2');
+
+
+
+                    insert into PostingGroupSalesTax(WEF,Site_Code,Div_Code,PostingGroupSalesTaxItem, PostingGroupSalesTaxParty,ChargeType, Process, PlaceOfSupply, Percentage,LedgerAc)
+                    VALUES('2017-04-01',Null,Null,'GST 2%','Unregistered','TAXABLE AMOUNT','SALES','Within State',Null,'SALEWU2');
+                    insert into PostingGroupSalesTax(WEF,Site_Code,Div_Code,PostingGroupSalesTaxItem, PostingGroupSalesTaxParty,ChargeType, Process, PlaceOfSupply, Percentage,LedgerAc)
+                    VALUES('2017-04-01',Null,Null,'GST 2%','Unregistered','TAXABLE AMOUNT','SALES','Outside State',Null,'SALEOU2');
+                    insert into PostingGroupSalesTax(WEF,Site_Code,Div_Code,PostingGroupSalesTaxItem, PostingGroupSalesTaxParty,ChargeType, Process, PlaceOfSupply, Percentage,LedgerAc)
+                    VALUES('2017-04-01',Null,Null,'GST 2%','Registered','TAXABLE AMOUNT','SALES','Outside State',Null,'SALEOR2');
+                    insert into PostingGroupSalesTax(WEF,Site_Code,Div_Code,PostingGroupSalesTaxItem, PostingGroupSalesTaxParty,ChargeType, Process, PlaceOfSupply, Percentage,LedgerAc)
+                    VALUES('2017-04-01',Null,Null,'GST 2%','Registered','TAXABLE AMOUNT','SALES','Within State',Null,'SALEWR2');
+                    insert into PostingGroupSalesTax(WEF,Site_Code,Div_Code,PostingGroupSalesTaxItem, PostingGroupSalesTaxParty,ChargeType, Process, PlaceOfSupply, Percentage,LedgerAc)
+                    VALUES('2017-04-01',Null,Null,'GST 2%','Registered','TAX1','SALES','Outside State',2,'ROIGST2');
+                    insert into PostingGroupSalesTax(WEF,Site_Code,Div_Code,PostingGroupSalesTaxItem, PostingGroupSalesTaxParty,ChargeType, Process, PlaceOfSupply, Percentage,LedgerAc)
+                    VALUES('2017-04-01',Null,Null,'GST 2%','Registered','TAX2','SALES','Within State',1,'ROCGST2');
+                    insert into PostingGroupSalesTax(WEF,Site_Code,Div_Code,PostingGroupSalesTaxItem, PostingGroupSalesTaxParty,ChargeType, Process, PlaceOfSupply, Percentage,LedgerAc)
+                    VALUES('2017-04-01',Null,Null,'GST 2%','Registered','TAX3','SALES','Within State',1,'ROSGST2');
+                    insert into PostingGroupSalesTax(WEF,Site_Code,Div_Code,PostingGroupSalesTaxItem, PostingGroupSalesTaxParty,ChargeType, Process, PlaceOfSupply, Percentage,LedgerAc)
+                    VALUES('2017-04-01',Null,Null,'GST 2%','Unregistered','TAX1','SALES','Outside State',2,'UOIGST2');
+                    insert into PostingGroupSalesTax(WEF,Site_Code,Div_Code,PostingGroupSalesTaxItem, PostingGroupSalesTaxParty,ChargeType, Process, PlaceOfSupply, Percentage,LedgerAc)
+                    VALUES('2017-04-01',Null,Null,'GST 2%','Unregistered','TAX2','SALES','Within State',1,'UOCGST2');
+                    insert into PostingGroupSalesTax(WEF,Site_Code,Div_Code,PostingGroupSalesTaxItem, PostingGroupSalesTaxParty,ChargeType, Process, PlaceOfSupply, Percentage,LedgerAc)
+                    VALUES('2017-04-01',Null,Null,'GST 2%','Unregistered','TAX3','SALES','Within State',1,'UOSGST2');
+
+                "
+                AgL.Dman_ExecuteNonQry(mQry, AgL.GcnMain)
+            End If
 
 
 
@@ -15647,6 +15732,8 @@ Thanks
                 "
                 AgL.Dman_ExecuteNonQry(mQry, AgL.GcnMain)
             End If
+
+
 
 
 
@@ -16776,6 +16863,16 @@ Thanks
         Dim mQry As String
         Try
 
+            If AgL.FillData("Select Subcode from SubGroup Where SubCode='IIGST2'", AgL.GcnMain).tables(0).Rows.Count = 0 Then
+                mQry = " 
+                        INSERT INTO SubGroup
+                        (SubCode, Site_Code, Div_Code, NamePrefix, Name, DispName, GroupCode, GroupNature, ManualCode, Nature, CityCode, PIN, Phone, Mobile, EMail, Status, SalesTaxPostingGroup, Parent, SubgroupType, Address)
+                        VALUES('IIGST2', '1', 'D', NULL, 'Input IGST 2%', 'Input IGST 2%', '0014', 'L', 'IIGST2', 'TAX', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL);
+                    "
+                AgL.Dman_ExecuteNonQry(mQry, AgL.GcnMain)
+            End If
+
+
             If AgL.FillData("Select Subcode from SubGroup Where SubCode='IIGST3'", AgL.GcnMain).tables(0).Rows.Count = 0 Then
                 mQry = " 
                         INSERT INTO SubGroup
@@ -16823,6 +16920,16 @@ Thanks
                 AgL.Dman_ExecuteNonQry(mQry, AgL.GcnMain)
             End If
 
+            If AgL.FillData("Select Subcode from SubGroup Where SubCode='ICGST2'", AgL.GcnMain).tables(0).Rows.Count = 0 Then
+                mQry = " 
+                        INSERT INTO SubGroup
+                        (SubCode, Site_Code, Div_Code, NamePrefix, Name, DispName, GroupCode, GroupNature, ManualCode, Nature, CityCode, PIN, Phone, Mobile, EMail, Status, SalesTaxPostingGroup, Parent, SubgroupType, Address)
+                        VALUES('ICGST2', '1', 'D', NULL, 'Input CGST 2%', 'Input CGST 2%', '0014', 'L', 'ICGST2', 'TAX', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL);
+                    "
+                AgL.Dman_ExecuteNonQry(mQry, AgL.GcnMain)
+            End If
+
+
             If AgL.FillData("Select Subcode from SubGroup Where SubCode='ICGST3'", AgL.GcnMain).tables(0).Rows.Count = 0 Then
                 mQry = " 
                         INSERT INTO SubGroup
@@ -16865,6 +16972,16 @@ Thanks
                         INSERT INTO SubGroup
                         (SubCode, Site_Code, Div_Code, NamePrefix, Name, DispName, GroupCode, GroupNature, ManualCode, Nature, CityCode, PIN, Phone, Mobile, EMail, Status, SalesTaxPostingGroup, Parent, SubgroupType, Address)
                         VALUES('ICGST28', '1', 'D', NULL, 'Input CGST 28%', 'Input CGST 28%', '0014', 'L', 'ICGST28', 'TAX', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL);
+                    "
+                AgL.Dman_ExecuteNonQry(mQry, AgL.GcnMain)
+            End If
+
+
+            If AgL.FillData("Select Subcode from SubGroup Where SubCode='ISGST2'", AgL.GcnMain).tables(0).Rows.Count = 0 Then
+                mQry = " 
+                    INSERT INTO SubGroup
+                    (SubCode, Site_Code, Div_Code, NamePrefix, Name, DispName, GroupCode, GroupNature, ManualCode, Nature, CityCode, PIN, Phone, Mobile, EMail, Status, SalesTaxPostingGroup, Parent, SubgroupType, Address)
+                    VALUES('ISGST2', '1', 'D', NULL, 'Input SGST 2%', 'Input SGST 2%', '0014', 'L', 'ISGST2', 'TAX', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL);
                     "
                 AgL.Dman_ExecuteNonQry(mQry, AgL.GcnMain)
             End If
@@ -16915,6 +17032,16 @@ Thanks
                 AgL.Dman_ExecuteNonQry(mQry, AgL.GcnMain)
             End If
 
+            If AgL.FillData("Select Subcode from SubGroup Where SubCode='ROIGST2'", AgL.GcnMain).tables(0).Rows.Count = 0 Then
+                mQry = " 
+                        INSERT INTO SubGroup
+                        (SubCode, Site_Code, Div_Code, NamePrefix, Name, DispName, GroupCode, GroupNature, ManualCode, Nature, CityCode, PIN, Phone, Mobile, EMail, Status, SalesTaxPostingGroup, Parent, SubgroupType, Address)
+                        VALUES('ROIGST2', '1', 'D', NULL, 'Output IGST 2% Registered', 'Output IGST 2% Registered', '0014', 'L', 'ROIGST2', 'TAX', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL);
+                    "
+                AgL.Dman_ExecuteNonQry(mQry, AgL.GcnMain)
+            End If
+
+
             If AgL.FillData("Select Subcode from SubGroup Where SubCode='ROIGST3'", AgL.GcnMain).tables(0).Rows.Count = 0 Then
                 mQry = " 
                         INSERT INTO SubGroup
@@ -16961,6 +17088,16 @@ Thanks
                 AgL.Dman_ExecuteNonQry(mQry, AgL.GcnMain)
             End If
 
+            If AgL.FillData("Select Subcode from SubGroup Where SubCode='ROCGST2'", AgL.GcnMain).tables(0).Rows.Count = 0 Then
+                mQry = " 
+                        INSERT INTO SubGroup
+                        (SubCode, Site_Code, Div_Code, NamePrefix, Name, DispName, GroupCode, GroupNature, ManualCode, Nature, CityCode, PIN, Phone, Mobile, EMail, Status, SalesTaxPostingGroup, Parent, SubgroupType, Address)
+                        VALUES('ROCGST2', '1', 'D', NULL, 'Output CGST 2% Registered', 'Output CGST 2% Registered', '0014', 'L', 'ROCGST2', 'TAX', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL);
+                      "
+                AgL.Dman_ExecuteNonQry(mQry, AgL.GcnMain)
+            End If
+
+
             If AgL.FillData("Select Subcode from SubGroup Where SubCode='ROCGST3'", AgL.GcnMain).tables(0).Rows.Count = 0 Then
                 mQry = " 
                         INSERT INTO SubGroup
@@ -17006,6 +17143,15 @@ Thanks
                         (SubCode, Site_Code, Div_Code, NamePrefix, Name, DispName, GroupCode, GroupNature, ManualCode, Nature, CityCode, PIN, Phone, Mobile, EMail, Status, SalesTaxPostingGroup, Parent, SubgroupType, Address)
                         VALUES('ROCGST28', '1', 'D', NULL, 'Output CGST 28% Registered', 'Output CGST 28% Registered', '0014', 'L', 'ROCGST28', 'TAX', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL);
                        "
+                AgL.Dman_ExecuteNonQry(mQry, AgL.GcnMain)
+            End If
+
+            If AgL.FillData("Select Subcode from SubGroup Where SubCode='ROSGST2'", AgL.GcnMain).tables(0).Rows.Count = 0 Then
+                mQry = " 
+                        INSERT INTO SubGroup
+                        (SubCode, Site_Code, Div_Code, NamePrefix, Name, DispName, GroupCode, GroupNature, ManualCode, Nature, CityCode, PIN, Phone, Mobile, EMail, Status, SalesTaxPostingGroup, Parent, SubgroupType, Address)
+                        VALUES('ROSGST2', '1', 'D', NULL, 'Output SGST 2% Registered', 'Output SGST 2% Registered', '0014', 'L', 'ROSGST2', 'TAX', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL);
+                    "
                 AgL.Dman_ExecuteNonQry(mQry, AgL.GcnMain)
             End If
 
@@ -17056,6 +17202,15 @@ Thanks
             End If
 
 
+            If AgL.FillData("Select Subcode from SubGroup Where SubCode='UOIGST2'", AgL.GcnMain).tables(0).Rows.Count = 0 Then
+                mQry = " 
+                        INSERT INTO SubGroup
+                        (SubCode, Site_Code, Div_Code, NamePrefix, Name, DispName, GroupCode, GroupNature, ManualCode, Nature, CityCode, PIN, Phone, Mobile, EMail, Status, SalesTaxPostingGroup, Parent, SubgroupType, Address)
+                        VALUES('UOIGST2', '1', 'D', NULL, 'Output IGST 2% Unregistered', 'Output IGST 2% Unregistered', '0014', 'L', 'UOIGST2', 'TAX', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL);
+                    "
+                AgL.Dman_ExecuteNonQry(mQry, AgL.GcnMain)
+            End If
+
 
             If AgL.FillData("Select Subcode from SubGroup Where SubCode='UOIGST3'", AgL.GcnMain).tables(0).Rows.Count = 0 Then
                 mQry = " 
@@ -17103,6 +17258,17 @@ Thanks
                 AgL.Dman_ExecuteNonQry(mQry, AgL.GcnMain)
             End If
 
+
+            If AgL.FillData("Select Subcode from SubGroup Where SubCode='UOCGST2'", AgL.GcnMain).tables(0).Rows.Count = 0 Then
+                mQry = " 
+                        INSERT INTO SubGroup
+                        (SubCode, Site_Code, Div_Code, NamePrefix, Name, DispName, GroupCode, GroupNature, ManualCode, Nature, CityCode, PIN, Phone, Mobile, EMail, Status, SalesTaxPostingGroup, Parent, SubgroupType, Address)
+                        VALUES('UOCGST2', '1', 'D', NULL, 'Output CGST 2% Unregistered', 'Output CGST 2% Unregistered', '0014', 'L', 'UOCGST2', 'TAX', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL);
+                       "
+                AgL.Dman_ExecuteNonQry(mQry, AgL.GcnMain)
+            End If
+
+
             If AgL.FillData("Select Subcode from SubGroup Where SubCode='UOCGST3'", AgL.GcnMain).tables(0).Rows.Count = 0 Then
                 mQry = " 
                         INSERT INTO SubGroup
@@ -17147,6 +17313,16 @@ Thanks
                     INSERT INTO SubGroup
                     (SubCode, Site_Code, Div_Code, NamePrefix, Name, DispName, GroupCode, GroupNature, ManualCode, Nature, CityCode, PIN, Phone, Mobile, EMail, Status, SalesTaxPostingGroup, Parent, SubgroupType, Address)
                     VALUES('UOCGST28', '1', 'D', NULL, 'Output CGST 28% Unregistered', 'Output CGST 28% Unregistered', '0014', 'L', 'UOCGST28', 'TAX', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL);
+                    "
+                AgL.Dman_ExecuteNonQry(mQry, AgL.GcnMain)
+            End If
+
+
+            If AgL.FillData("Select Subcode from SubGroup Where SubCode='UOSGST2'", AgL.GcnMain).tables(0).Rows.Count = 0 Then
+                mQry = " 
+                        INSERT INTO SubGroup
+                        (SubCode, Site_Code, Div_Code, NamePrefix, Name, DispName, GroupCode, GroupNature, ManualCode, Nature, CityCode, PIN, Phone, Mobile, EMail, Status, SalesTaxPostingGroup, Parent, SubgroupType, Address)
+                        VALUES('UOSGST2', '1', 'D', NULL, 'Output SGST 2% Unregistered', 'Output SGST 2% Unregistered', '0014', 'L', 'UOSGST2', 'TAX', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL);
                     "
                 AgL.Dman_ExecuteNonQry(mQry, AgL.GcnMain)
             End If
@@ -17215,6 +17391,16 @@ Thanks
                 AgL.Dman_ExecuteNonQry(mQry, AgL.GcnMain)
             End If
 
+            If AgL.FillData("Select Subcode from SubGroup Where SubCode='PURWR2'", AgL.GcnMain).tables(0).Rows.Count = 0 Then
+                mQry = " 
+                        INSERT INTO SubGroup
+                        (SubCode, Site_Code, Div_Code, NamePrefix, Name, DispName, GroupCode, GroupNature, ManualCode, Nature, CityCode, PIN, Phone, Mobile, EMail, Status, SalesTaxPostingGroup, Parent, SubgroupType, Address)
+                        VALUES('PURWR2', '1', 'D', NULL, 'Purchase A/c Within State 2% Registered', 'Purchase A/c Within State 2% Registered', '0024', NULL, 'PURWR2', 'Purchase', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL);
+                    "
+                AgL.Dman_ExecuteNonQry(mQry, AgL.GcnMain)
+            End If
+
+
             If AgL.FillData("Select Subcode from SubGroup Where SubCode='PURWR3'", AgL.GcnMain).tables(0).Rows.Count = 0 Then
                 mQry = " 
                         INSERT INTO SubGroup
@@ -17272,6 +17458,16 @@ Thanks
                 AgL.Dman_ExecuteNonQry(mQry, AgL.GcnMain)
             End If
 
+            If AgL.FillData("Select Subcode from SubGroup Where SubCode='PUROR2'", AgL.GcnMain).tables(0).Rows.Count = 0 Then
+                mQry = " 
+                    INSERT INTO SubGroup
+                    (SubCode, Site_Code, Div_Code, NamePrefix, Name, DispName, GroupCode, GroupNature, ManualCode, Nature, CityCode, PIN, Phone, Mobile, EMail, Status, SalesTaxPostingGroup, Parent, SubgroupType, Address)
+                    VALUES('PUROR2', '1', 'D', NULL, 'Purchase A/c Outside State 2% Registered', 'Purchase A/c Outside State 2% Registered', '0024', NULL, 'PUROR2', 'Purchase', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL);
+                    "
+                AgL.Dman_ExecuteNonQry(mQry, AgL.GcnMain)
+            End If
+
+
             If AgL.FillData("Select Subcode from SubGroup Where SubCode='PUROR3'", AgL.GcnMain).tables(0).Rows.Count = 0 Then
                 mQry = " 
                     INSERT INTO SubGroup
@@ -17326,6 +17522,16 @@ Thanks
                     "
                 AgL.Dman_ExecuteNonQry(mQry, AgL.GcnMain)
             End If
+
+            If AgL.FillData("Select Subcode from SubGroup Where SubCode='PURWU2'", AgL.GcnMain).tables(0).Rows.Count = 0 Then
+                mQry = " 
+                    INSERT INTO SubGroup
+                    (SubCode, Site_Code, Div_Code, NamePrefix, Name, DispName, GroupCode, GroupNature, ManualCode, Nature, CityCode, PIN, Phone, Mobile, EMail, Status, SalesTaxPostingGroup, Parent, SubgroupType, Address)
+                    VALUES('PURWU2', '1', 'D', NULL, 'Purchase A/c Within State 2% Unregistered', 'Purchase A/c Within State 2% Unregistered', '0024', NULL, 'PURWU2', 'Purchase', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL);
+                    "
+                AgL.Dman_ExecuteNonQry(mQry, AgL.GcnMain)
+            End If
+
 
 
             If AgL.FillData("Select Subcode from SubGroup Where SubCode='PURWU3'", AgL.GcnMain).tables(0).Rows.Count = 0 Then
@@ -17382,6 +17588,17 @@ Thanks
                     "
                 AgL.Dman_ExecuteNonQry(mQry, AgL.GcnMain)
             End If
+
+            If AgL.FillData("Select Subcode from SubGroup Where SubCode='PUROU2'", AgL.GcnMain).tables(0).Rows.Count = 0 Then
+                mQry = " 
+                    INSERT INTO SubGroup
+                    (SubCode, Site_Code, Div_Code, NamePrefix, Name, DispName, GroupCode, GroupNature, ManualCode, Nature, CityCode, PIN, Phone, Mobile, EMail, Status, SalesTaxPostingGroup, Parent, SubgroupType, Address)
+                    VALUES('PUROU2', '1', 'D', NULL, 'Purchase A/c Outside State 2% Unregistered', 'Purchase A/c Outside State 2% Unregistered', '0024', NULL, 'PUROU2', 'Purchase', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL);
+                    "
+                AgL.Dman_ExecuteNonQry(mQry, AgL.GcnMain)
+            End If
+
+
 
             If AgL.FillData("Select Subcode from SubGroup Where SubCode='PUROU3'", AgL.GcnMain).tables(0).Rows.Count = 0 Then
                 mQry = " 
@@ -17440,6 +17657,16 @@ Thanks
                 AgL.Dman_ExecuteNonQry(mQry, AgL.GcnMain)
             End If
 
+            If AgL.FillData("Select Subcode from SubGroup Where SubCode='SALEWR2'", AgL.GcnMain).tables(0).Rows.Count = 0 Then
+                mQry = " 
+                    INSERT INTO SubGroup
+                    (SubCode, Site_Code, Div_Code, NamePrefix, Name, DispName, GroupCode, GroupNature, ManualCode, Nature, CityCode, PIN, Phone, Mobile, EMail, Status, SalesTaxPostingGroup, Parent, SubgroupType, Address)
+                    VALUES('SALEWR2', '1', 'D', NULL, 'Sales A/c Within State 2% Registered', 'Sales A/c Within State 2% Registered', '0023', NULL, 'SALEWR2', 'Sales', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL);
+                    "
+                AgL.Dman_ExecuteNonQry(mQry, AgL.GcnMain)
+            End If
+
+
             If AgL.FillData("Select Subcode from SubGroup Where SubCode='SALEWR3'", AgL.GcnMain).tables(0).Rows.Count = 0 Then
                 mQry = " 
                     INSERT INTO SubGroup
@@ -17496,6 +17723,16 @@ Thanks
                 AgL.Dman_ExecuteNonQry(mQry, AgL.GcnMain)
             End If
 
+            If AgL.FillData("Select Subcode from SubGroup Where SubCode='SALEOR2'", AgL.GcnMain).tables(0).Rows.Count = 0 Then
+                mQry = " 
+                    INSERT INTO SubGroup
+                    (SubCode, Site_Code, Div_Code, NamePrefix, Name, DispName, GroupCode, GroupNature, ManualCode, Nature, CityCode, PIN, Phone, Mobile, EMail, Status, SalesTaxPostingGroup, Parent, SubgroupType, Address)
+                    VALUES('SALEOR2', '1', 'D', NULL, 'Sales A/c Outside State 2% Registered', 'Sales A/c Outside State 2% Registered', '0023', NULL, 'SALEOR2', 'Sales', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL);
+                    "
+                AgL.Dman_ExecuteNonQry(mQry, AgL.GcnMain)
+            End If
+
+
             If AgL.FillData("Select Subcode from SubGroup Where SubCode='SALEOR3'", AgL.GcnMain).tables(0).Rows.Count = 0 Then
                 mQry = " 
                     INSERT INTO SubGroup
@@ -17550,6 +17787,16 @@ Thanks
                     "
                 AgL.Dman_ExecuteNonQry(mQry, AgL.GcnMain)
             End If
+
+            If AgL.FillData("Select Subcode from SubGroup Where SubCode='SALEWU2'", AgL.GcnMain).tables(0).Rows.Count = 0 Then
+                mQry = " 
+                    INSERT INTO SubGroup
+                    (SubCode, Site_Code, Div_Code, NamePrefix, Name, DispName, GroupCode, GroupNature, ManualCode, Nature, CityCode, PIN, Phone, Mobile, EMail, Status, SalesTaxPostingGroup, Parent, SubgroupType, Address)
+                    VALUES('SALEWU2', '1', 'D', NULL, 'Sales A/c Within State 2% Unregistered', 'Sales A/c Within State 2% Unregistered', '0023', NULL, 'SALEWU2', 'Sales', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL);
+                    "
+                AgL.Dman_ExecuteNonQry(mQry, AgL.GcnMain)
+            End If
+
 
             If AgL.FillData("Select Subcode from SubGroup Where SubCode='SALEWU3'", AgL.GcnMain).tables(0).Rows.Count = 0 Then
                 mQry = " 
@@ -17606,6 +17853,16 @@ Thanks
                 AgL.Dman_ExecuteNonQry(mQry, AgL.GcnMain)
             End If
 
+            If AgL.FillData("Select Subcode from SubGroup Where SubCode='SALEOU2'", AgL.GcnMain).tables(0).Rows.Count = 0 Then
+                mQry = " 
+                        INSERT INTO SubGroup
+                        (SubCode, Site_Code, Div_Code, NamePrefix, Name, DispName, GroupCode, GroupNature, ManualCode, Nature, CityCode, PIN, Phone, Mobile, EMail, Status, SalesTaxPostingGroup, Parent, SubgroupType, Address)
+                        VALUES('SALEOU2', '1', 'D', NULL, 'Sales A/c Outside State 2% Unregistered', 'Sales A/c Outside State 2% Unregistered', '0023', NULL, 'SALEOU2', 'Sales', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL);
+                    "
+                AgL.Dman_ExecuteNonQry(mQry, AgL.GcnMain)
+            End If
+
+
             If AgL.FillData("Select Subcode from SubGroup Where SubCode='SALEOU3'", AgL.GcnMain).tables(0).Rows.Count = 0 Then
                 mQry = " 
                         INSERT INTO SubGroup
@@ -17652,18 +17909,21 @@ Thanks
                 AgL.Dman_ExecuteNonQry(mQry, AgL.GcnMain)
             End If
 
+            FSeedSingleIfNotExist_Subgroup("RIIGST3", "Input IGST 2% Reverse Charge", SubgroupType.LedgerAccount, "0014", "L", "TAX", "", "", AgL.PubDivCode, AgL.PubSiteCode, "", "System Defined")
             FSeedSingleIfNotExist_Subgroup("RIIGST3", "Input IGST 3% Reverse Charge", SubgroupType.LedgerAccount, "0014", "L", "TAX", "", "", AgL.PubDivCode, AgL.PubSiteCode, "", "System Defined")
             FSeedSingleIfNotExist_Subgroup("RIIGST5", "Input IGST 5% Reverse Charge", SubgroupType.LedgerAccount, "0014", "L", "TAX", "", "", AgL.PubDivCode, AgL.PubSiteCode, "", "System Defined")
             FSeedSingleIfNotExist_Subgroup("RIIGST12", "Input IGST 12% Reverse Charge", SubgroupType.LedgerAccount, "0014", "L", "TAX", "", "", AgL.PubDivCode, AgL.PubSiteCode, "", "System Defined")
             FSeedSingleIfNotExist_Subgroup("RIIGST18", "Input IGST 18% Reverse Charge", SubgroupType.LedgerAccount, "0014", "L", "TAX", "", "", AgL.PubDivCode, AgL.PubSiteCode, "", "System Defined")
             FSeedSingleIfNotExist_Subgroup("RIIGST28", "Input IGST 28% Reverse Charge", SubgroupType.LedgerAccount, "0014", "L", "TAX", "", "", AgL.PubDivCode, AgL.PubSiteCode, "", "System Defined")
 
+            FSeedSingleIfNotExist_Subgroup("RICGST3", "Input CGST 2% Reverse Charge", SubgroupType.LedgerAccount, "0014", "L", "TAX", "", "", AgL.PubDivCode, AgL.PubSiteCode, "", "System Defined")
             FSeedSingleIfNotExist_Subgroup("RICGST3", "Input CGST 3% Reverse Charge", SubgroupType.LedgerAccount, "0014", "L", "TAX", "", "", AgL.PubDivCode, AgL.PubSiteCode, "", "System Defined")
             FSeedSingleIfNotExist_Subgroup("RICGST5", "Input CGST 5% Reverse Charge", SubgroupType.LedgerAccount, "0014", "L", "TAX", "", "", AgL.PubDivCode, AgL.PubSiteCode, "", "System Defined")
             FSeedSingleIfNotExist_Subgroup("RICGST12", "Input CGST 12% Reverse Charge", SubgroupType.LedgerAccount, "0014", "L", "TAX", "", "", AgL.PubDivCode, AgL.PubSiteCode, "", "System Defined")
             FSeedSingleIfNotExist_Subgroup("RICGST18", "Input CGST 18% Reverse Charge", SubgroupType.LedgerAccount, "0014", "L", "TAX", "", "", AgL.PubDivCode, AgL.PubSiteCode, "", "System Defined")
             FSeedSingleIfNotExist_Subgroup("RICGST28", "Input CGST 28% Reverse Charge", SubgroupType.LedgerAccount, "0014", "L", "TAX", "", "", AgL.PubDivCode, AgL.PubSiteCode, "", "System Defined")
 
+            FSeedSingleIfNotExist_Subgroup("RISGST3", "Input SGST 2% Reverse Charge", SubgroupType.LedgerAccount, "0014", "L", "TAX", "", "", AgL.PubDivCode, AgL.PubSiteCode, "", "System Defined")
             FSeedSingleIfNotExist_Subgroup("RISGST3", "Input SGST 3% Reverse Charge", SubgroupType.LedgerAccount, "0014", "L", "TAX", "", "", AgL.PubDivCode, AgL.PubSiteCode, "", "System Defined")
             FSeedSingleIfNotExist_Subgroup("RISGST5", "Input SGST 5% Reverse Charge", SubgroupType.LedgerAccount, "0014", "L", "TAX", "", "", AgL.PubDivCode, AgL.PubSiteCode, "", "System Defined")
             FSeedSingleIfNotExist_Subgroup("RISGST12", "Input SGST 12% Reverse Charge", SubgroupType.LedgerAccount, "0014", "L", "TAX", "", "", AgL.PubDivCode, AgL.PubSiteCode, "", "System Defined")
@@ -18512,6 +18772,16 @@ Thanks
                     (Description,GrossTaxRate, Active)
                     VALUES('GST 28%',28, 1);
                 "
+                AgL.Dman_ExecuteNonQry(mQry, AgL.GcnMain)
+            End If
+
+
+            If AgL.FillData("Select Count(*) from PostingGroupSalesTaxItem Where Description='GST 2%' ", AgL.GcnMain).tables(0).Rows(0)(0) = 0 Then
+                mQry = " 
+                        INSERT INTO PostingGroupSalesTaxItem
+                        (Description,GrossTaxRate, Active)
+                        VALUES('GST 2%',2, 1);
+                        "
                 AgL.Dman_ExecuteNonQry(mQry, AgL.GcnMain)
             End If
 
@@ -19553,6 +19823,9 @@ Thanks
             AgL.AddFieldSqlite(AgL.GcnMain, "LedgerHead", "LockText", "nVarchar(255)", "", True)
             AgL.AddFieldSqlite(AgL.GcnMain, "LedgerHead", "GenDocId", "nVarchar(21)", "", True)
             AgL.AddFieldSqlite(AgL.GcnMain, "LedgerHead", "GenDocIdSr", "Int", "", True)
+            AgL.AddFieldSqlite(AgL.GcnMain, "LedgerHead", "GstFilingDate", "DateTime", "", True)
+            AgL.AddFieldSqlite(AgL.GcnMain, "LedgerHead", "GstInputCreditDate", "DateTime", "", True)
+            AgL.AddFieldSqlite(AgL.GcnMain, "LedgerHead", "GstInputHoldRemark", "nVarchar(100)", "", True)
             AgL.AddFieldSqlite(AgL.GcnMain, "LedgerHead", "Field1", "nVarchar(100)", "", True)
             AgL.AddFieldSqlite(AgL.GcnMain, "LedgerHead", "Field2", "nVarchar(100)", "", True)
 
@@ -24375,7 +24648,7 @@ Thanks
         Dim I As Integer, J As Integer
         Dim mQry$ = "", bSelectionQry$ = ""
         Dim DtTemp As DataTable = Nothing
-
+        Dim mTempQry As String = ""
 
         Dim bTableName As String = "[" + Guid.NewGuid().ToString() + "]"
 
@@ -24399,6 +24672,10 @@ Thanks
                     bSelectionQry += " Select 1 as TmpCol, '" & FGetAgChargesValue(DtCalcHeaderData, DtCalcLineData, DtCalcHeaderData.Rows(I)("Charges"), J, AgStructure.AgCalcGrid.LineColumnType.PostAc) & "' As PostAc, " &
             " Case When " & AgL.Chk_Text(DtCalcHeaderData.Rows(I)("DrCr")) & " = 'Dr' Then " & Val(FGetAgChargesValue(DtCalcHeaderData, DtCalcLineData, DtCalcHeaderData.Rows(I)("Charges"), J, AgStructure.AgCalcGrid.LineColumnType.Amount)) * 1.0 & "  " &
             "      When " & AgL.Chk_Text(DtCalcHeaderData.Rows(I)("DrCr")) & " = 'Cr' Then " & -Val(FGetAgChargesValue(DtCalcHeaderData, DtCalcLineData, DtCalcHeaderData.Rows(I)("Charges"), J, AgStructure.AgCalcGrid.LineColumnType.Amount)) * 1.0 & " End As Amount "
+
+                    mTempQry += " Union All Select 1 as TmpCol, '" & FGetAgChargesValue(DtCalcHeaderData, DtCalcLineData, DtCalcHeaderData.Rows(I)("Charges"), J, AgStructure.AgCalcGrid.LineColumnType.PostAc) & "' As PostAc, " &
+            " Case When " & AgL.Chk_Text(DtCalcHeaderData.Rows(I)("DrCr")) & " = 'Dr' Then " & Val(FGetAgChargesValue(DtCalcHeaderData, DtCalcLineData, DtCalcHeaderData.Rows(I)("Charges"), J, AgStructure.AgCalcGrid.LineColumnType.Amount)) * 1.0 & "  " &
+            "      When " & AgL.Chk_Text(DtCalcHeaderData.Rows(I)("DrCr")) & " = 'Cr' Then " & -Val(FGetAgChargesValue(DtCalcHeaderData, DtCalcLineData, DtCalcHeaderData.Rows(I)("Charges"), J, AgStructure.AgCalcGrid.LineColumnType.Amount)) * 1.0 & " End As Amount "
                     AgL.Dman_ExecuteNonQry(bSelectionQry, IIf(AgL.PubServerName = "", Conn, AgL.GcnRead))
                 ElseIf Trim(AgL.XNull(DtCalcHeaderData.Rows(I)("PostAc"))) <> "" Then
                     'If bSelectionQry <> "" Then bSelectionQry += " UNION ALL "
@@ -24407,6 +24684,11 @@ Thanks
                     bSelectionQry += " Select 1 as TmpCol,'" & DtCalcHeaderData.Rows(I)("PostAc") & "' As PostAc, " &
             " Case When " & AgL.Chk_Text(DtCalcHeaderData.Rows(I)("DrCr")) & " = 'Dr' Then " & Val(FGetAgChargesValue(DtCalcHeaderData, DtCalcLineData, DtCalcHeaderData.Rows(I)("Charges"), J, AgStructure.AgCalcGrid.LineColumnType.Amount)) * 1.0 & "  " &
             "      When " & AgL.Chk_Text(DtCalcHeaderData.Rows(I)("DrCr")) & " = 'Cr' Then " & -Val(FGetAgChargesValue(DtCalcHeaderData, DtCalcLineData, DtCalcHeaderData.Rows(I)("Charges"), J, AgStructure.AgCalcGrid.LineColumnType.Amount)) * 1.0 & " End As Amount "
+
+                    mTempQry += "  Union All  Select 1 as TmpCol,'" & DtCalcHeaderData.Rows(I)("PostAc") & "' As PostAc, " &
+            " Case When " & AgL.Chk_Text(DtCalcHeaderData.Rows(I)("DrCr")) & " = 'Dr' Then " & Val(FGetAgChargesValue(DtCalcHeaderData, DtCalcLineData, DtCalcHeaderData.Rows(I)("Charges"), J, AgStructure.AgCalcGrid.LineColumnType.Amount)) * 1.0 & "  " &
+            "      When " & AgL.Chk_Text(DtCalcHeaderData.Rows(I)("DrCr")) & " = 'Cr' Then " & -Val(FGetAgChargesValue(DtCalcHeaderData, DtCalcLineData, DtCalcHeaderData.Rows(I)("Charges"), J, AgStructure.AgCalcGrid.LineColumnType.Amount)) * 1.0 & " End As Amount "
+
                     AgL.Dman_ExecuteNonQry(bSelectionQry, IIf(AgL.PubServerName = "", Conn, AgL.GcnRead))
                 End If
             Next

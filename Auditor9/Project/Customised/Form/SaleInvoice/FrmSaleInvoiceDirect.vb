@@ -3186,7 +3186,16 @@ Public Class FrmSaleInvoiceDirect
                 End If
 
 
-
+                Dim TemporaryLimit As Double = AgL.VNull(AgL.Dman_Execute("SELECT L.Amount As TemporaryCreditLimit  
+                    FROM SubgroupTemporaryCreditLimit L With (NoLock)
+                    WHERE L.Subcode = '" & Subcode & "' 
+                    AND Date(L.FromDate) <= " & AgL.Chk_Date(CDate(TxtV_Date.Text).ToString("s")) & "
+                    AND Date(L.ToDate) >= " & AgL.Chk_Date(CDate(TxtV_Date.Text).ToString("s")) & "
+                    ", AgL.GCn).ExecuteScalar())
+                If TemporaryLimit > 0 Then
+                    TxtCreditLimit.Text = TemporaryLimit
+                    LblCreditLimit.Tag = TemporaryLimit
+                End If
 
                 mQry = "Select H.*, RT.Description as RateTypeName, Agent.Name as AgentName, Transporter.Name as TransporterName 
                                     From SubgroupSiteDivisionDetail H  With (NoLock)
@@ -4649,6 +4658,22 @@ Public Class FrmSaleInvoiceDirect
                 Dgl3(Col1Value, rowCreditDays).Value = AgL.VNull(DtTemp.Rows(0)("CreditDays"))
                 TxtCreditLimit.Text = Format(AgL.VNull(DtTemp.Rows(0)("CreditLimit")), "0.00")
             End If
+        End If
+
+
+        Dim TemporaryCreditLimit As Double = AgL.VNull(AgL.Dman_Execute("SELECT IfNull(L.Amount,0) As TotalCreditLimit
+                    FROM SubgroupTemporaryCreditLimit L With (NoLock)
+                    WHERE L.Subcode = '" & TxtSaleToParty.Tag & "' 
+                    AND Date(L.FromDate) <= " & AgL.Chk_Date(CDate(TxtV_Date.Text).ToString("s")) & "
+                    AND Date(L.ToDate) >= " & AgL.Chk_Date(CDate(TxtV_Date.Text).ToString("s")) & "
+                    ", AgL.GCn).ExecuteScalar())
+        If TemporaryCreditLimit > 0 Then
+            'Dim CreditLimit As Double = AgL.VNull(AgL.Dman_Execute("SELECT IfNull(Sg.CreditLimit,0) As CreditLimit
+            '        FROM SubGroup Sg 
+            '        WHERE Sg.Subcode = '" & DglMain.Item(Col1Value, rowSaleToParty).Tag & "'", AgL.GCn).ExecuteScalar())
+            'TxtCreditLimit.Text = CreditLimit + TemporaryCreditLimit
+            TxtCreditLimit.Text = TemporaryCreditLimit
+            LblCreditLimit.Tag = TemporaryCreditLimit
         End If
     End Sub
 

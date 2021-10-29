@@ -231,7 +231,7 @@ Public Class ClsStockHeadReport
                     LEFT JOIN ItemType It On Sku.ItemType = It.Code
                     Left Join Item IC On Sku.ItemCategory = IC.Code
                     Left Join Item IG On Sku.ItemGroup = IG.Code
-                    LEFT JOIN Item I ON Sku.BaseItem = I.Code
+                    LEFT JOIN Item I ON IfNull(Sku.BaseItem,Sku.Code) = I.Code
                     LEFT JOIN Item D1 ON Sku.Dimension1 = D1.Code
                     LEFT JOIN Item D2 ON Sku.Dimension2 = D2.Code
                     LEFT JOIN Item D3 ON Sku.Dimension3 = D3.Code

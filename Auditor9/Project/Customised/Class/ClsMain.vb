@@ -1011,6 +1011,19 @@ Public Class ClsMain
                 End If
             Next
 
+
+            If AgL.PubServerName <> "" Then
+                Try
+                    AgL.Dman_ExecuteNonQry("ALTER Table PersonExtraDiscount ADD IDCol INT IDENTITY(1, 1) PRIMARY KEY", AgL.GCn)
+                    AgL.Dman_ExecuteNonQry("ALTER Table PurchCatalog ADD IDCol INT IDENTITY(1, 1) PRIMARY KEY ", AgL.GCn)
+                    AgL.Dman_ExecuteNonQry("ALTER Table ItemGroupPerson ADD IDCol INT IDENTITY(1, 1) PRIMARY KEY ", AgL.GCn)
+                    AgL.Dman_ExecuteNonQry("ALTER Table PersonDiscount ADD IDCol INT IDENTITY(1, 1) PRIMARY KEY ", AgL.GCn)
+                    AgL.Dman_ExecuteNonQry("ALTER Table PersonAdditionalDiscount ADD IDCol INT IDENTITY(1, 1) PRIMARY KEY", AgL.GCn)
+                    AgL.Dman_ExecuteNonQry("ALTER Table PersonAddition ADD IDCol INT IDENTITY(1, 1) PRIMARY KEY ", AgL.GCn)
+                Catch ex As Exception
+                End Try
+            End If
+
             If AgL.Dman_Execute("Select Count(*) from StructureDetail With (NoLock) where Code = 'GstPur' And Charges='TCS'", AgL.GCn).ExecuteScalar() = 0 Then
                 'mQry = "INSERT INTO StructureDetail (Code, Sr, WEF, Charges, PrintingDescription, Charge_Type, Value_Type, Value, Calculation, BaseColumn, PostAc, PostAcFromColumn, ContraAc, ContraAcFromColumn, DrCr, LineItem, AffectCost, InactiveDate, Percentage, Amount, VisibleInMaster, VisibleInMasterLine, VisibleInTransactionLine, VisibleInTransactionFooter, HeaderPerField, HeaderAmtField, LinePerField, LineAmtField, GridDisplayIndex, UploadDate, Active)
                 '    VALUES ('GstPur', 37, '2017-07-01', 'TCS', NULL, 'Charges', 'Percentage Or Amount', NULL, '({STTA}+{IGST}+{CGST}+{SGST})*{TCS}/100', 'AMOUNT', 'TCS', NULL, NULL, NULL, 'Dr', 0, 1, NULL, 0, 0, 0, 0, 0, 1, 'Tax5_Per', 'Tax5', 'Tax5_Per', 'Tax5', 0, NULL, NULL)
@@ -8212,15 +8225,16 @@ Thanks
             End If
 
 
-            If ClsMain.IsScopeOfWorkContains(IndustryType.CommonModules.TemporaryCreditLimitModule) Then
-                FSeedSingleIfNotExist_EntryHeaderUISetting("FrmPersonTemporaryCreditLimit", "", "Dgl1", FrmPersonTemporaryCreditLimit.HcParty, 1, 1, 1)
+            'If ClsMain.IsScopeOfWorkContains(IndustryType.CommonModules.TemporaryCreditLimitModule) Then
+            FSeedSingleIfNotExist_EntryHeaderUISetting("FrmPersonTemporaryCreditLimit", "", "Dgl1", FrmPersonTemporaryCreditLimit.HcParty, 1, 1, 1)
                 FSeedSingleIfNotExist_EntryHeaderUISetting("FrmPersonTemporaryCreditLimit", "", "Dgl1", FrmPersonTemporaryCreditLimit.HcFromDate, 1, 1, 1)
                 FSeedSingleIfNotExist_EntryHeaderUISetting("FrmPersonTemporaryCreditLimit", "", "Dgl1", FrmPersonTemporaryCreditLimit.HcToDate, 1, 1)
                 FSeedSingleIfNotExist_EntryHeaderUISetting("FrmPersonTemporaryCreditLimit", "", "Dgl1", FrmPersonTemporaryCreditLimit.HcAmount, 1, 1, 1)
-                FSeedSingleIfNotExist_EntryHeaderUISetting("FrmPersonTemporaryCreditLimit", "", "Dgl1", FrmPersonTemporaryCreditLimit.HcCreditLimit, 1)
-                FSeedSingleIfNotExist_EntryHeaderUISetting("FrmPersonTemporaryCreditLimit", "", "Dgl1", FrmPersonTemporaryCreditLimit.HcResponsiblePerson, 0, 0)
+            FSeedSingleIfNotExist_EntryHeaderUISetting("FrmPersonTemporaryCreditLimit", "", "Dgl1", FrmPersonTemporaryCreditLimit.HcCreditLimit, 1)
+            FSeedSingleIfNotExist_EntryHeaderUISetting("FrmPersonTemporaryCreditLimit", "", "Dgl1", FrmPersonTemporaryCreditLimit.HcCurrentBalance, 1)
+            FSeedSingleIfNotExist_EntryHeaderUISetting("FrmPersonTemporaryCreditLimit", "", "Dgl1", FrmPersonTemporaryCreditLimit.HcResponsiblePerson, 0, 0)
                 FSeedSingleIfNotExist_EntryHeaderUISetting("FrmPersonTemporaryCreditLimit", "", "Dgl1", FrmPersonTemporaryCreditLimit.HcRemark, 0, 0)
-            End If
+            'End If
 
             If ClsMain.IsScopeOfWorkContains(IndustryType.CommonModules.SalesEnquiry) Then
                 FSeedSingleIfNotExist_EntryHeaderUISetting("FrmSaleEnquiry", Ncat.SaleEnquiry, "DglMain", AgTemplate.TempTransaction1.hcSite_Code, 1, 1, 1)
@@ -16048,6 +16062,7 @@ Thanks
             AgL.AddFieldSqlite(AgL.GcnMain, "SubgroupTemporaryCreditLimit", "ToDate", "DateTime", "", True)
             AgL.AddFieldSqlite(AgL.GcnMain, "SubgroupTemporaryCreditLimit", "Amount", "Float", "", True)
             AgL.AddFieldSqlite(AgL.GcnMain, "SubgroupTemporaryCreditLimit", "CreditLimit", "Float", "", True)
+            AgL.AddFieldSqlite(AgL.GcnMain, "SubgroupTemporaryCreditLimit", "CurrentBalance", "Float", "", True)
             AgL.AddFieldSqlite(AgL.GcnMain, "SubgroupTemporaryCreditLimit", "ResponsiblePerson", "nVarchar(10)", "", True, " References Subgroup(Subcode) ")
             AgL.AddFieldSqlite(AgL.GcnMain, "SubgroupTemporaryCreditLimit", "Remark", "nVarchar(255)", "", True)
             AgL.AddFieldSqlite(AgL.GcnMain, "SubgroupTemporaryCreditLimit", "EntryBy", "nVarchar(10)", "", True)

@@ -157,3 +157,7 @@ D:\WindowsApp\trunk\Auditor9\Project\Login\obj\Debug\Login.vbproj.GenerateResour
 D:\WindowsApp\trunk\Auditor9\Project\Login\obj\Debug\Login.exe
 D:\WindowsApp\trunk\Auditor9\Project\Login\obj\Debug\Login.xml
 D:\WindowsApp\trunk\Auditor9\Project\Login\obj\Debug\Login.pdb
+D:\WorkingCopy\Auditor9\Auditor9\Release\Login.exe.config
+D:\WorkingCopy\Auditor9\Auditor9\Project\Login\obj\Debug\Login.exe
+D:\WorkingCopy\Auditor9\Auditor9\Project\Login\obj\Debug\Login.xml
+D:\WorkingCopy\Auditor9\Auditor9\Project\Login\obj\Debug\Login.pdb

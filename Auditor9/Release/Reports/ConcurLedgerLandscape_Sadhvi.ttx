@@ -1,46 +1,46 @@
 ; Field definition file for table: ADORecordset
-DivisionName	string	255	SADHVI ENTERPRISES {ENTERPRISES}, KANPUR	
-PartyName	string	255	L.K.SONS, SURAT	
-Address	string	255	M-1001,NEW T.T.MARKET,B/HTEXTILE TOWER,RING ROADSURAT-3	
-Mobile	string	255	2323444,2338367	
-AgentName	string	255	RAVIRAJ TEXTILE AGENCY.., .	
+DivisionName	string	255	SADHVI EMBROIDERY {EMBROIDERY}, KANPUR	
+PartyName	string	255	GOVIND SAREE CENTER, MADHOGANJ	
+Address	string	255	SADAR BAZAR MADHUGANJ DIST-HARDOI	
+Mobile	string	255	9415438642	
+AgentName	string	255	VINOD KUMAR MANDHANI, KANPUR	
 SalesRepresentativeName	string	255		
 AreaName	string	255		
-DrDocID	string	255		
-DrDivision	string	255	D	
-DrSubcode	string	255	D100002470	
-DrSr	number	425	
-DrDate	datetime		
-DrDocNo	string	255		
-DrAmount	number	0	
-DrTaxableAmount	number	0	
-DrTaxAmount	number	0	
-DrDays	number		
-DrInterest	number		
-DrCumAmount	number	25740976	
-DrBalAmount	number	0	
-DrTotal	number	25740976	
-DrNarration	string	255		
-CrDocID	string	255	D1    PI 2019   12235	
-CrDivision	string	255	D	
-CrSubcode	string	255	D100002470	
-CrSr	number	425	
-CrDate	datetime	04/Feb/2020 12:00:00 AM	
-CrDocNo	string	255	PI-9850	
-CrAmount	number	65209	
-CrTaxableAmount	number	62104.25	
-CrTaxAmount	number	3105.21	
-CrDays	number	175	
-CrInterest	number	0	
-CrCumAmount	number	25806185	
-CrBalAmount	number	65209	
-CrTotal	number	26884844	
-CrNarration	string	255	Inv : 1523	
-AdditionPer	number		
-AdditionAmount	number		
-GrReturnAmt	number		
-GrSaleAmt	number		
-ReturnPer	number		
-AveragePaymentDays	number	-79.4057652735652	
-DrMonth	string	255		
-CrMonth	string	255	02/2020	
+DrDocID	string	255	E1    SI 2021    3140	
+DrDivision	string	255	E	
+DrSubcode	string	255	D100002786	
+DrSr	number	120	
+DrDate	datetime	29/May/2021 00:00:00	
+DrDocNo	string	255	SI-865	
+DrAmount	number	59913	
+DrTaxableAmount	number	57060	
+DrTaxAmount	number	2853.08	
+DrDays	number	113	
+DrInterest	number	0	
+DrCumAmount	number	1473412	
+DrBalAmount	number	59913	
+DrTotal	number	1525615	
+DrNarration	string	255	Tax Invoice	
+CrDocID	string	255		
+CrDivision	string	255	E	
+CrSubcode	string	255	D100002786	
+CrSr	number	120	
+CrDate	datetime		
+CrDocNo	string	255		
+CrAmount	number	0	
+CrTaxableAmount	number	0	
+CrTaxAmount	number	0	
+CrDays	number		
+CrInterest	number		
+CrCumAmount	number	1413499	
+CrBalAmount	number	0	
+CrTotal	number	1413499	
+CrNarration	string	255		
+AdditionPer	number	0	
+AdditionAmount	number	0	
+GrReturnAmt	number	121464	
+GrSaleAmt	number	1475827	
+ReturnPer	number	8.23	
+AveragePaymentDays	number	52.5167209636569	
+DrMonth	string	255	05/2021	
+CrMonth	string	255		

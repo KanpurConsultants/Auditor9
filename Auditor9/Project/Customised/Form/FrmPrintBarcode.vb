@@ -626,7 +626,7 @@ Public Class FrmPrintBarcode
 
                     AgPL.Formula_Set(mCrd, RepTitle)
                     If PrintAction = PrintAction_Preview Then
-                        ReportView.CrvReport.ShowPrintButton = False
+                        'ReportView.CrvReport.ShowPrintButton = False
                         AgPL.Show_Report(ReportView, "* " & RepTitle & " *", Me.MdiParent)
                     Else
                         mCrd.PrintToPrinter(1, True, 0, 0)

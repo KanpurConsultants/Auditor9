@@ -46,6 +46,7 @@ Public Class MDIMain
         Dim mQry As String
 
         Try
+            MsgBox("MdI load")
             If AgL Is Nothing Then
                 If FOpenIni(StrPath + IniName, AgLibrary.ClsConstant.PubSuperUserName, AgLibrary.ClsConstant.PubSuperUserPassword) Then
                     'If FOpenIni(StrPath + IniName, "Sa", "") Then
@@ -185,6 +186,14 @@ Public Class MDIMain
                 '    MnuFinishing.Visible = False
                 'End If
             End If
+
+            Dim attachmentPath As String = ""
+            attachmentPath = AgL.INIRead(StrPath + IniName, "CompanyInfo", "AttachmentPath", "")
+            If attachmentPath <> "" Then
+                PubAttachmentPath = attachmentPath
+            End If
+            MsgBox(PubAttachmentPath)
+
         Catch ex As Exception
             MsgBox(ex.Message & " at Mdi Load")
         End Try

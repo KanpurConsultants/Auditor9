@@ -102,6 +102,7 @@ Public Class ClsReports
     Public Shared mHelpPartyTaxGroup$ = "SELECT 'o' As Tick, H.Description AS Code, H.Description FROM PostingGroupSalesTaxParty H  "
     Public Shared mHelpItemTaxGroup$ = "SELECT 'o' As Tick, H.Description AS Code, H.Description FROM PostingGroupSalesTaxItem H  "
     Public Shared mHelpCatalog$ = "SELECT 'o' As Tick, H.Code, H.Description FROM Catalog H Order By Description "
+    Public Shared mHelpDepartment$ = "SELECT 'o' As Tick, H.Code, H.Description FROM Department H Order By Description "
     Public Shared mHelpAccountType$ = "SELECT 'o' As Tick, subgroupType As Code, SubgroupType As Name from subgroup where SubgroupType Is Not Null group by SubgroupType "
     Public Shared mHelpAccountNature$ = "SELECT 'o' As Tick, Nature As Code, Nature As Name from subgroup where Nature Is Not Null group by Nature "
 
@@ -144,6 +145,7 @@ Public Class ClsReports
                             Union All Select 'Site Wise Summary' as Code, 'Site Wise Summary' as Name
                             Union All Select 'Account Type Wise Summary' as Code, 'Account Type Wise Summary' as Name
                             Union All Select 'Account Nature Wise Summary' as Code, 'Account Nature Wise Summary' as Name
+                            Union All Select 'Department Wise Summary' as Code, 'Department Wise Summary' as Name
                             "
                     If ClsMain.FDivisionNameForCustomization(13) = "JAIN BROTHERS" Or ClsMain.FDivisionNameForCustomization(11) = "BOOK SHOPEE" Then
                         mQry = mQry & " Union All Select 'Catalog Wise Summary' as Code, 'Catalog Wise Summary' as Name "
@@ -179,6 +181,7 @@ Public Class ClsReports
                     ReportFrm.CreateHelpGrid("Item State", "Item State", FrmRepDisplay.FieldFilterDataType.StringType, FrmRepDisplay.FieldDataType.MultiSelection, mHelpItemStateQry)
                     ReportFrm.CreateHelpGrid("Account Type", "Account Type", FrmRepDisplay.FieldFilterDataType.StringType, FrmRepDisplay.FieldDataType.MultiSelection, mHelpAccountType)
                     ReportFrm.CreateHelpGrid("Account Nature", "Account Nature", FrmRepDisplay.FieldFilterDataType.StringType, FrmRepDisplay.FieldDataType.MultiSelection, mHelpAccountNature)
+                    ReportFrm.CreateHelpGrid("Department", "Department", FrmRepDisplay.FieldFilterDataType.StringType, FrmRepDisplay.FieldDataType.MultiSelection, mHelpDepartment)
                     ReportFrm.FilterGrid.Rows(18).Visible = False 'Hide HSN Row
 
 
@@ -795,6 +798,10 @@ Public Class ClsReports
                         mFilterGrid.Item(GFilter, 0).Value = "Item Wise Detail"
                         mFilterGrid.Item(GFilter, 9).Value = mGridRow.Cells("Item Group").Value
                         mFilterGrid.Item(GFilterCode, 9).Value = "'" + mGridRow.Cells("Search Code").Value + "'"
+                    ElseIf mFilterGrid.Item(GFilter, 0).Value = "Department Wise Summary" Then
+                        mFilterGrid.Item(GFilter, 0).Value = "Item Wise Detail"
+                        mFilterGrid.Item(GFilter, 26).Value = mGridRow.Cells("Department").Value
+                        mFilterGrid.Item(GFilterCode, 26).Value = "'" + mGridRow.Cells("Search Code").Value + "'"
                     ElseIf mFilterGrid.Item(GFilter, 0).Value = "Item Category Wise Summary" Then
                         mFilterGrid.Item(GFilter, 0).Value = "Item Wise Detail"
                         mFilterGrid.Item(GFilter, 10).Value = mGridRow.Cells("Item Category").Value
@@ -886,6 +893,7 @@ Public Class ClsReports
             mCondStr = mCondStr & ReportFrm.GetWhereCondition("L.ItemState", 23)
             mCondStr = mCondStr & ReportFrm.GetWhereCondition("Party.SubgroupType", 24)
             mCondStr = mCondStr & ReportFrm.GetWhereCondition("Party.Nature", 25)
+            mCondStr = mCondStr & ReportFrm.GetWhereCondition("IG.Department", 26)
 
             'If ReportFrm.FGetText(8) <> "All" Then
             '    mCondStr += " And H.Agent = '" & ReportFrm.FGetCode(8) & "' "
@@ -918,7 +926,7 @@ Public Class ClsReports
                     City.CityCode, City.CityName, State.Code As StateCode, State.Description As StateName,
                     Cast(Replace(H.ManualRefNo,'-','') as Integer) as InvoiceNo, H.ManualRefNo, L.Item,
                     I.Specification as ItemSpecification, I.Description As ItemDesc, IfNull(IfNull(I.HSN,IC.HSN),Bi.HSN) as HSN,IG.Description as ItemGroupDescription, IC.Description as ItemCategoryDescription,  
-                    L.Catalog, Catalog.Description as CatalogDesc,
+                    L.Catalog, Catalog.Description as CatalogDesc, IG.Department, Department.Description as DepartmentDesc,
                     (Case When L.DiscountPer = 0 Then '' else Cast(L.DiscountPer as nVarchar) End)  || (Case When L.AdditionalDiscountPer>0 Then '+' else '' End) || (Case When L.AdditionalDiscountPer=0 Then '' else Cast(L.AdditionalDiscountPer as nVarchar) End)  as DiscountPer, 
                     L.DiscountAmount as Discount, L.AdditionalDiscountAmount as AdditionalDiscount, L.AdditionAmount as Addition, 
                     L.SpecialDiscount_Per, L.SpecialDiscount, L.SpecialAddition_Per, L.SpecialAddition, 
@@ -946,7 +954,8 @@ Public Class ClsReports
                     Left Join SiteMast Site On H.Site_Code = Site.Code
                     Left Join Division Div On H.Div_Code = Div.Div_Code
                     Left Join Catalog On L.Catalog = Catalog.Code
-                    Left Join Subgroup DS On IG.DefaultSupplier = Ds.Subcode                    
+                    Left Join Subgroup DS On IG.DefaultSupplier = Ds.Subcode 
+                    Left join Department On IG.Department = Department.Code                   
                     " & mCondStr
 
 
@@ -1074,6 +1083,14 @@ Public Class ClsReports
                     From (" & mQry & ") As VMain
                     GROUP By VMain.Catalog
                     Order By Max(VMain.CatalogDesc)"
+            ElseIf ReportFrm.FGetText(0) = "Department Wise Summary" Then
+                mQry = " Select VMain.Department as SearchCode, Max(VMain.DepartmentDesc) As Department, 
+                    Count(Distinct Vmain.DocID) as [Doc.Count],  Sum(VMain.Qty) as Qty,
+                    Sum(VMain.AmountExDiscount) as GoodsValue, Sum(VMain.Discount) as Discount, Sum(VMain.Addition) as Addition, Sum(VMain.SpecialDiscount) as SpecialDiscount, Sum(VMain.SpecialAddition) as SpecialAddition,
+                    Sum(VMain.Amount) As Amount, Sum(VMain.Taxable_Amount) As [Taxable Amount], IfNull(Sum(VMain.TotalTax),0) As TaxAmount, Sum(VMain.Net_Amount) As [Net Amount]
+                    From (" & mQry & ") As VMain
+                    GROUP By VMain.Department
+                    Order By Max(VMain.DepartmentDesc)"
 
             ElseIf ReportFrm.FGetText(0) = "Item Wise Summary" Then
                 mQry = " Select VMain.Item As SearchCode, Max(VMain.ItemDesc) As [Item],  
@@ -2101,7 +2118,7 @@ Public Class ClsReports
             Dim DtRateTypes As DataTable = AgL.FillData(mQry, AgL.GCn).Tables(0)
 
 
-            mQry = "Select Ic.Description As ItemCategory, Ig.Description As ItemGroup, I.Specification As Item,"
+            mQry = "Select Ic.Description As ItemCategory, Ig.Description As ItemGroup, I.Specification As Item, Max(I.ProfitMarginPer) as ProfitMarginPer, "
 
             For I As Integer = 0 To DtRateTypes.Rows.Count - 1
                 mQry += " IfNull(Max(Case When IfNull(Rt.Description,'Sale Rate') = '" & DtRateTypes.Rows(I)("RateTypeDesc") & "' Then L.Rate * 1.0 Else 0.00 End),0.00) As [" & DtRateTypes.Rows(I)("RateTypeDesc") & "]  "

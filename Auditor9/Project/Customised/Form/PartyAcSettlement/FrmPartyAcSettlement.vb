@@ -2754,7 +2754,7 @@ Public Class FrmPartyAcSettlement
 
                         If ClsMain.IsScopeOfWorkContains(IndustryType.SubIndustryType.AadhatModule) Or FDivisionNameForCustomization(22) = "W SHYAMA SHYAM FABRICS" Then
                             Dim DtCommission As DataTable
-                            mQry = "select  Round(Commission+AdditionalCommission,2) as Commission, (Case When Commission>0 Then cast(Commission_Per as NVarchar) || ' Per Pcs' || (Case When AdditionalCommission>0 Then ', ' Else '' End)  Else '' End) || (Case When AdditionalCommission>0 Then cast(AdditionalCommission_Per as NVarchar) || ' %' Else '' End) as Remark  from purchInvoiceDetail Where DocID = '" & Dgl2.Item(Col2InvoiceNo, I).Tag & "'"
+                            mQry = "select  Round(Sum(Commission+AdditionalCommission),2) as Commission, (Case When Commission>0 Then cast(Commission_Per as NVarchar) || ' Per Pcs' || (Case When AdditionalCommission>0 Then ', ' Else '' End)  Else '' End) || (Case When AdditionalCommission>0 Then cast(AdditionalCommission_Per as NVarchar) || ' %' Else '' End) as Remark  from purchInvoiceDetail Where DocID = '" & Dgl2.Item(Col2InvoiceNo, I).Tag & "'"
                             DtCommission = AgL.FillData(mQry, AgL.GCn).Tables(0)
                             If DtCommission.Rows.Count > 0 Then
                                 Dgl2.Item(Col2CommissionAmount, I).Value = AgL.VNull(DtCommission.Rows(0)("Commission"))
@@ -2859,7 +2859,7 @@ Public Class FrmPartyAcSettlement
 
                         If ClsMain.IsScopeOfWorkContains(IndustryType.SubIndustryType.AadhatModule) Or FDivisionNameForCustomization(22) = "W SHYAMA SHYAM FABRICS" Then
                             Dim DtCommission As DataTable
-                            mQry = "select  Abs(Round(Commission+AdditionalCommission,2)) as Commission, (Case When Commission>0 Then cast(Commission_Per as NVarchar) || ' Per Pcs' || (Case When AdditionalCommission>0 Then ', ' Else '' End)  Else '' End) || (Case When AdditionalCommission>0 Then cast(AdditionalCommission_Per as NVarchar) || ' %' Else '' End) as Remark  from purchInvoiceDetail Where DocID = '" & Dgl3.Item(Col3PaymentNo, I).Tag & "'"
+                            mQry = "select  Sum(Abs(Round(Commission+AdditionalCommission,2))) as Commission, (Case When Commission>0 Then cast(Commission_Per as NVarchar) || ' Per Pcs' || (Case When AdditionalCommission>0 Then ', ' Else '' End)  Else '' End) || (Case When AdditionalCommission>0 Then cast(AdditionalCommission_Per as NVarchar) || ' %' Else '' End) as Remark  from purchInvoiceDetail Where DocID = '" & Dgl3.Item(Col3PaymentNo, I).Tag & "'"
                             DtCommission = AgL.FillData(mQry, AgL.GCn).Tables(0)
                             If DtCommission.Rows.Count > 0 Then
                                 Dgl3.Item(Col3Discount, I).Value = AgL.VNull(DtCommission.Rows(0)("Commission"))
