@@ -25,7 +25,7 @@
     <Name>Barcode</Name>
     <Index>3</Index>
     <Width>100</Width>
-    <Visible>False</Visible>
+    <Visible>True</Visible>
     <AggregateFunction />
   </Column>
   <Column>
@@ -46,14 +46,14 @@
     <Name>Item Category</Name>
     <Index>6</Index>
     <Width>100</Width>
-    <Visible>True</Visible>
+    <Visible>False</Visible>
     <AggregateFunction />
   </Column>
   <Column>
     <Name>Item Group</Name>
     <Index>7</Index>
     <Width>100</Width>
-    <Visible>True</Visible>
+    <Visible>False</Visible>
     <AggregateFunction />
   </Column>
   <Column>
@@ -375,7 +375,7 @@
     <Name>Sales Rep.</Name>
     <Index>53</Index>
     <Width>100</Width>
-    <Visible>False</Visible>
+    <Visible>True</Visible>
     <AggregateFunction />
   </Column>
   <Column>
@@ -708,6 +708,34 @@
     <AggregateFunction />
   </Column>
   <Column>
+    <Name>Special Discount @</Name>
+    <Index>127</Index>
+    <Width>100</Width>
+    <Visible>False</Visible>
+    <AggregateFunction />
+  </Column>
+  <Column>
+    <Name>Special Discount</Name>
+    <Index>131</Index>
+    <Width>100</Width>
+    <Visible>False</Visible>
+    <AggregateFunction />
+  </Column>
+  <Column>
+    <Name>Special Discount PostAc</Name>
+    <Index>134</Index>
+    <Width>100</Width>
+    <Visible>False</Visible>
+    <AggregateFunction />
+  </Column>
+  <Column>
+    <Name>Special Discount ContraAc</Name>
+    <Index>136</Index>
+    <Width>100</Width>
+    <Visible>False</Visible>
+    <AggregateFunction />
+  </Column>
+  <Column>
     <Name>Taxable Amount</Name>
     <Index>101</Index>
     <Width>100</Width>
@@ -884,28 +912,28 @@
   </Column>
   <Column>
     <Name>Deduction ContraAc</Name>
-    <Index>127</Index>
-    <Width>100</Width>
-    <Visible>False</Visible>
-    <AggregateFunction />
-  </Column>
-  <Column>
-    <Name>Round Off</Name>
     <Index>129</Index>
     <Width>100</Width>
     <Visible>False</Visible>
     <AggregateFunction />
   </Column>
   <Column>
+    <Name>Round Off</Name>
+    <Index>133</Index>
+    <Width>100</Width>
+    <Visible>False</Visible>
+    <AggregateFunction />
+  </Column>
+  <Column>
     <Name>Round Off PostAc</Name>
-    <Index>131</Index>
+    <Index>135</Index>
     <Width>100</Width>
     <Visible>False</Visible>
     <AggregateFunction />
   </Column>
   <Column>
     <Name>Round Off ContraAc</Name>
-    <Index>133</Index>
+    <Index>137</Index>
     <Width>100</Width>
     <Visible>False</Visible>
     <AggregateFunction />
