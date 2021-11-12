@@ -3682,8 +3682,8 @@ Public Class ClsReports
                     Max(VMain.TransporterName) As Transporter, Max(VMain.PartyName) As Party, 
                     Max(VMain.GodownName) as Location, Max(VMain.LocationType) as LocationType
                     From (" & mQry & ") As VMain
-                    GROUP By VMain.Barcode 
-                    Order By LrDate, LrBaleNo  "
+                    GROUP By VMain.Barcode, VMain.LrDate, VMain.LrBaleNo 
+                    Order By VMain.LrDate, VMain.LrBaleNo  "
             ElseIf ReportFrm.FGetText(0) = "Agent Wise Summary" Then
                 mQry = " Select VMain.Agent As SearchCode, Max(VMain.AgentName) As [Agent],
                     Sum(Case When VMain.LocationType = '" & SubgroupType.Transporter & "' Then  Vmain.Qty_Rec Else 0 End) As [Transporter],
@@ -3735,6 +3735,7 @@ Public Class ClsReports
             DsHeader = Nothing
         End Try
     End Sub
+
 
     Public Sub ProcFsnAnalysis(Optional mFilterGrid As AgControls.AgDataGrid = Nothing,
                                 Optional mGridRow As DataGridViewRow = Nothing)
