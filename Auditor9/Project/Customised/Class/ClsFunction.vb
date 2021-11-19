@@ -503,6 +503,9 @@ Public Class ClsFunction
 
                 Case MDI.MnuExportSqlServerData.Name
                     FrmObj = New FrmExportDataFromSqlServer(AgL)
+
+                Case MDI.MnuExportSqliteDataToSqlServer.Name
+                    FrmObj = New FrmExportDataToSqlServer(AgL)
                 Case MDI.MnuImportData.Name
                     FrmObj = New FrmImportDataSingleUI()
 
@@ -1080,6 +1083,11 @@ Public Class ClsFunction
                     CRep.Ini_Grid()
                     FrmObj = GridReportFrm
 
+                Case MDI.MnuLRUpdation.Name
+                    Dim CRep As ClsLRUpdation = New ClsLRUpdation(GridReportFrm)
+                    CRep.GRepFormName = Replace(Replace(Replace(Replace(StrSenderText, "&", ""), " ", ""), "(", ""), ")", "")
+                    CRep.Ini_Grid()
+                    FrmObj = GridReportFrm
 
 '#Region "Carpet Reports"
 '                Case MDI.MnuDyeingOrderReport.Name

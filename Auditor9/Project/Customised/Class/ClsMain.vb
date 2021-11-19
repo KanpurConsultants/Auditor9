@@ -529,15 +529,17 @@ Public Class ClsMain
     Public Sub UpdateTableStructure(Optional OverWriteOldValues As Boolean = False)
         Try
             If AgL.StrCmp(AgL.PubUserName, "Super") Then
-                FCorrectionQueries()
+                'FSeedTable_EntryHeaderUISetting()
+                'FCorrectionQueries()
                 FIndustryWiseSeeding()
-                FSeedTable_Setting()
-                FSeedTable_Menus()
-                FSeedTable_Settings_Free()
-                FIndustryWiseSeeding()
-                FCreateTable_SaleInvoice()
-                FCreateTable_Voucher_Type()
-                FSeedTable_EntryHeaderUISetting()
+                '    '    '    FIndustryWiseSeeding()
+                '    '    '    'FSeedTable_Setting()
+                '    'FSeedTable_Menus()
+                '    FSeedTable_Settings_Free()
+                '    FIndustryWiseSeeding()
+                '    FCreateTable_SaleInvoice()
+                '    FCreateTable_Voucher_Type()
+                '    FSeedTable_EntryHeaderUISetting()
                 Exit Sub
             End If
 
@@ -1391,6 +1393,11 @@ Public Class ClsMain
                 End If
             End If
 
+            If ClsMain.FDivisionNameForCustomization().Contains("ANJANI") Then
+                mQry = "INSERT INTO RateType (Code, Description, EntryBy, EntryDate, Status, Div_Code, Margin, Sr, Discount)
+                        VALUES ('PURCH', 'PURCHASE', 'sa', '2021-08-06 14:48:00', 'Active', 'D', 0, 0, 0) "
+                AgL.Dman_ExecuteNonQry(mQry, AgL.GcnMain)
+            End If
             If FDivisionNameForCustomization(4) = "Gur " Then
 
                 If ClsMain.IsScopeOfWorkContains(IndustryType.SubIndustryType.FallPico) Then
@@ -6477,6 +6484,7 @@ Thanks
         FSeedSingleIfNotExist_Setting("E Invoice", "", "", SettingFields.SelectEWayBillURL, "https://einvapi.charteredinfo.com/v1.03/dec/ewayapi?action=GetEwayBill&aspid=<AspUserId>&password=<AspPassword>&gstin=<Gstin>&username=<EInvioceUserName>&authtoken=<AuthToken>&ewbNo=<EWBNumber>", AgDataType.Text, "500",,,,,,,, ,, "+SUPPORT")
         FSeedSingleIfNotExist_Setting("E Invoice", "", "", SettingFields.SaveEWayBillFileURL, "https://einvapi.charteredinfo.com/aspapi/v1.0/printdetailewb?&aspid=<AspUserId>&password=<AspPassword>&gstin=<Gstin>", AgDataType.Text, "500",,,,,,,, ,, "+SUPPORT")
         FSeedSingleIfNotExist_Setting("E Invoice", "", "", SettingFields.IRNCancelURL, "https://einvapi.charteredinfo.com/eicore/dec/v1.03/Invoice/Cancel?&aspid=<AspUserId>&password=<AspPassword>&Gstin=<Gstin>&User_Name=<EInvioceUserName>&eInvPwd=<EInviocePassword>&AuthToken=<AuthToken>", AgDataType.Text, "500",,,,,,,, ,, "+SUPPORT")
+		FSeedSingleIfNotExist_Setting(SettingType.General, "", "", SettingFields.GSTR1JsonVersion, "GST3.0.4", AgDataType.Text, "500",,,,,,,, ,, "+SUPPORT")
     End Sub
 
 
@@ -6729,6 +6737,7 @@ Thanks
         Public Shared SaveEWayBillFileURL As String = "Save EWay Bill File URL"
 
         Public Shared IRNCancelURL As String = "IRN Cancel URL"
+        Public Shared GSTR1JsonVersion As String = "Gstr1 Json Version"
     End Class
     Public Sub FSeedSingleIfNotExist_EntryHeaderUISetting(EntryName As String, NCat As String, GridName As String, FieldName As String, Optional IsVisible As Boolean = False, Optional IsMandatory As Boolean = False, Optional IsSystemDefined As Boolean = False, Optional Caption As String = "", Optional V_Type As String = "", Optional Process As String = "", Optional SettingGroup As String = "")
         Dim mQry As String
@@ -7924,6 +7933,7 @@ Thanks
             End If
             FSeedSingleIfNotExist_EntryHeaderUISetting("FrmPerson", SubgroupType.Customer, "Dgl1", FrmPerson.hcReligion)
             FSeedSingleIfNotExist_EntryHeaderUISetting("FrmPerson", SubgroupType.Customer, "Dgl1", FrmPerson.hcCaste)
+            FSeedSingleIfNotExist_EntryHeaderUISetting("FrmPerson", SubgroupType.Customer, "Dgl1", ConfigurableFields.FrmPersonHeaderDgl1.Distance)
             FSeedSingleIfNotExist_EntryHeaderUISetting("FrmPerson", SubgroupType.Customer, "Dgl1", ConfigurableFields.FrmPersonHeaderDgl1.Remarks, 1, 0)
             FSeedSingleIfNotExist_EntryHeaderUISetting("FrmPerson", SubgroupType.Customer, "Dgl1", FrmPerson.hcBlockedTransactions, 0, 0)
             FSeedSingleIfNotExist_EntryHeaderUISetting("FrmPerson", SubgroupType.Customer, "Dgl1", FrmPerson.hcGrade, 0, 0)
@@ -7989,6 +7999,7 @@ Thanks
             FSeedSingleIfNotExist_EntryHeaderUISetting("FrmPerson", SubgroupType.Supplier, "Dgl1", ConfigurableFields.FrmPersonHeaderDgl1.Remarks, 1, 0)
             FSeedSingleIfNotExist_EntryHeaderUISetting("FrmPerson", SubgroupType.Supplier, "Dgl1", FrmPerson.hcBlockedTransactions, 0, 0)
             FSeedSingleIfNotExist_EntryHeaderUISetting("FrmPerson", SubgroupType.Supplier, "Dgl1", FrmPerson.hcGrade, 0, 0)
+            FSeedSingleIfNotExist_EntryHeaderUISetting("FrmPerson", SubgroupType.Supplier, "Dgl1", FrmPerson.hcTags, 0, 0)
             FSeedSingleIfNotExist_EntryHeaderUISetting("FrmPerson", SubgroupType.Supplier, "Dgl1", FrmPerson.hcReconciliationUpToDate, 0, 0)
 
 
@@ -15822,6 +15833,7 @@ Thanks
             AgL.AddFieldSqlite(AgL.GcnMain, "Subgroup", "ReconciliationUpToDate", "DateTime", "", True)
             AgL.AddFieldSqlite(AgL.GcnMain, "Subgroup", "LockText", "nVarchar(255)", "", True)
             AgL.AddFieldSqlite(AgL.GcnMain, "Subgroup", "FairDiscountPer", "Float", "", True)
+            AgL.AddFieldSqlite(AgL.GcnMain, "Subgroup", "Tags", "nVarchar(255)", "", True)
             AgL.AddFieldSqlite(AgL.GcnMain, "Subgroup", "OmsId", "nVarchar(50)", "", True)
             AgL.AddFieldSqlite(AgL.GcnMain, "Subgroup", "UploadDate", "DateTime", "", True)
 
@@ -15992,6 +16004,7 @@ Thanks
             AgL.AddFieldSqlite(AgL.GcnMain, "SubgroupAdmission", "Class", "nVarchar(10)", "", True, "References SubGroup(SubCode)")
             AgL.AddFieldSqlite(AgL.GcnMain, "SubgroupAdmission", "Section", "nVarchar(10)", "", True, "References SubGroup(SubCode)")
             AgL.AddFieldSqlite(AgL.GcnMain, "SubgroupAdmission", "RollNo", "nVarchar(20)", "", True)
+            AgL.AddFieldSqlite(AgL.GcnMain, "SubgroupAdmission", "LeftDate", "DateTime", "", True)
         Catch ex As Exception
             MsgBox(ex.Message & "  [FCreateTable_SubgroupAdmission]")
         End Try
@@ -21834,7 +21847,7 @@ Thanks
             Else
                 mQry += " Sg.Name || (Case When Sg.CityCode Is Null Then '' Else ', ' || City.CityName End) as Name, "
             End If
-            mQry += " Sg.Mobile, Sg.Address,Sg.CityCode, Sg.GroupCode, Sg.Nature, Sg.SubgroupType, Sg.Status, Sg.Site_Code, Sg.Parent, Sg.Area, Sg.FatherName
+            mQry += " Sg.Mobile, Sg.Address,Sg.CityCode, Sg.GroupCode, Sg.Nature, Sg.SubgroupType, Sg.Status, Sg.Site_Code, Sg.Parent, Sg.Area, Sg.FatherName, Sg.Tags
                 From SubGroup Sg                                             
                 Left Join City On Sg.CityCode = City.CityCode                
                "

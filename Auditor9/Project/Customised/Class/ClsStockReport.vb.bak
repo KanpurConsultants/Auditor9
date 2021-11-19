@@ -593,8 +593,7 @@ Public Class ClsStockReport
             If ReportFrm.FGetText(rowIncludeOpening) = "Yes" Then
                 mMainQry = " SELECT ' Opening' as DocID, ' Opening' V_Type, ' 0' as RecId, strftime('%d/%m/%Y', " & AgL.Chk_Date(ReportFrm.FGetText(rowFromDate)) & ")  V_Date, " & AgL.Chk_Date(ReportFrm.FGetText(rowFromDate)) & "  V_Date_ActualFormat
                     , Null as PartyName, Max(Location.Name) as LocationName
-                    , Sku.Code AS SkuCode, Max(Sku.Description) AS SkuName 
-                    , Max(Sku.Specification) as SkuSpecification
+                    , Sku.Code AS SkuCode, Max(Sku.Description) AS SkuName                     , Max(Sku.Specification) as SkuSpecification
                     , Max(IG.Code) as ItemGroupCode, Max(IG.Description) as ItemGroupName
                     , Max(IC.Code) as ItemCategoryCode, Max(IC.Description) as ItemCategoryName 
                     , Max(Case When Sku.V_Type = '" & ItemV_Type.SKU & "' Then I.Code Else Sku.Code End) as ItemCode

@@ -275,7 +275,7 @@ Public Class ClsInputTaxRegister
                     FSingleSelectForm(Col1Tags, bRowIndex, dsTemp)
 
 
-                    If ReportFrm.DGL1.Item(Col1NCat, bRowIndex).Value = Ncat.PurchaseInvoice Or ReportFrm.DGL1.Item(Col1NCat, bRowIndex).Value = Ncat.JobInvoice Then
+                    If ReportFrm.DGL1.Item(Col1NCat, bRowIndex).Value = Ncat.PurchaseInvoice Then
                         mQry = "Update PurchInvoiceDetail 
                             Set Tags = " & AgL.Chk_Text(ReportFrm.DGL1.Item(bColumnIndex, bRowIndex).Value) & " 
                             Where DocID = '" & ReportFrm.DGL1.Item(Col1SearchCode, bRowIndex).Value & "'

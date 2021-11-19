@@ -71,6 +71,8 @@ Public Class ClsSchool
                 FConfigure_FeeDue(ClsObj)
                 FConfigure_FeeReceipt(ClsObj)
                 FConfigure_Settings(ClsObj)
+
+                FYearEnd()
             End If
         Catch ex As Exception
             MsgBox(ex.Message & " In FSeedData_SchoolIndustry")
@@ -142,6 +144,7 @@ Public Class ClsSchool
         ClsObj.FSeedSingleIfNotExist_EntryHeaderUISetting("FrmStudent", SubGroupType_Student, "DglMain", FrmStudent.hcCaste, 1)
         ClsObj.FSeedSingleIfNotExist_EntryHeaderUISetting("FrmStudent", SubGroupType_Student, "DglMain", FrmStudent.hcGender, 1)
         ClsObj.FSeedSingleIfNotExist_EntryHeaderUISetting("FrmStudent", SubGroupType_Student, "DglMain", FrmStudent.hcAdmissionDate, 1)
+        ClsObj.FSeedSingleIfNotExist_EntryHeaderUISetting("FrmStudent", SubGroupType_Student, "DglMain", FrmStudent.hcLeftDate, 1)
         ClsObj.FSeedSingleIfNotExist_EntryHeaderUISetting("FrmStudent", SubGroupType_Student, "DglMain", FrmStudent.hcDOB, 1)
         ClsObj.FSeedSingleIfNotExist_EntryHeaderUISetting("FrmStudent", SubGroupType_Student, "DglMain", FrmStudent.hcFeeHead, 1)
         ClsObj.FSeedSingleIfNotExist_EntryHeaderUISetting("FrmStudent", SubGroupType_Student, "DglMain", FrmStudent.hcClass, 1)
@@ -271,6 +274,7 @@ Public Class ClsSchool
     Private Sub FAlterTable_SubGroup()
         Try
             AgL.AddFieldSqlite(AgL.GcnMain, "SubGroup", "Discount", "Float", "0", False)
+            AgL.AddFieldSqlite(AgL.GcnMain, "SubGroup", "LeftDate", "DateTime", "", True)
         Catch ex As Exception
             MsgBox(ex.Message & "  [FCreateTable_LedgerHead]")
         End Try
@@ -406,44 +410,51 @@ Public Class ClsSchool
             mClassFeeDueIfOnceInALifeTime_False = "Select H.Subcode, Fs.Site_Code, Fs.Div_Code, Fs.Comp_Code, Fs.Class, Fs.Fee, Fs.SubHead, Fs.DueDate, Fs.Amount As FeeAmount, IfNull(VAdjust.Amount,0) As ReceivedAmount,
                         Fs.Amount - IfNull(VAdjust.Amount,0) As BalanceAmount, 0 As IsFeeDueExplicitly  
                         From SubgroupAdmission H
-                        LEFT JOIN FeeStructure Fs ON H.Class = Fs.Class
+                        LEFT JOIN FeeStructure Fs ON H.Class = Fs.Class And H.Comp_Code = Fs.Comp_Code
+                        LEFT JOIN SubGroup Sg On H.SubCode = Sg.SubCode
                         LEFT JOIN (
                             Select H.SubCode, H.Site_Code, H.Div_Code, L.Comp_Code, L.Class, L.Fee, L.SubHead, L.DueDate, Sum(L.AdjustedAmount) As Amount
                             From FeeAdjustmentDetail L 
                             LEFT JOIN LedgerHead H On L.DocId = H.DocId
-                            Group By H.SubCode, H.Site_Code, H.Div_Code, L.Comp_Code, L.Class, L.Fee, L.SubHead, L.DueDate
+                            Group By H.SubCode, H.Site_Code, H.Div_Code, L.Comp_Code, 
+                            L.Class, L.Fee, L.SubHead, L.DueDate
                         ) As VAdjust On H.SubCode = VAdjust.SubCode
                             And Fs.Site_Code = VAdjust.Site_Code And Fs.Div_Code = VAdjust.Div_Code 
-                            --And Fs.Comp_Code = VAdjust.Comp_Code 
+                            And Fs.Comp_Code = VAdjust.Comp_Code 
                             And Fs.Class = VAdjust.Class
                             And Fs.Fee = VAdjust.Fee 
                             And IfNull(Fs.SubHead,'') = IfNull(VAdjust.SubHead,'') 
                             And Fs.DueDate = VAdjust.DueDate
-                        Where Fs.Recurrence <> '" & ClsSchool.Recurrence_OnceInALifeTime & "'"
+                        Where Fs.Recurrence <> '" & ClsSchool.Recurrence_OnceInALifeTime & "'
+                        And Sg.LeftDate Is Null "
 
             mClassFeeDueIfOnceInALifeTime_True = " Select H.Subcode, Fs.Site_Code, Fs.Div_Code, Fs.Comp_Code, Fs.Class, Fs.Fee, Fs.SubHead, Fs.DueDate, Fs.Amount As FeeAmount, IfNull(VAdjust.Amount,0) As ReceivedAmount, 
                         Fs.Amount - IfNull(VAdjust.Amount,0) As BalanceAmount, 0 As IsFeeDueExplicitly    
                         From SubgroupAdmission H
-                        LEFT JOIN FeeStructure Fs ON H.Class = Fs.Class
+                        LEFT JOIN FeeStructure Fs ON H.Class = Fs.Class And H.Comp_Code = Fs.Comp_Code
+                        LEFT JOIN SubGroup Sg On H.SubCode = Sg.SubCode
                         LEFT JOIN (
                             Select H.SubCode, H.Site_Code, H.Div_Code, L.Comp_Code, L.Class, L.Fee, L.SubHead, L.DueDate, Sum(L.AdjustedAmount) As Amount
                             From FeeAdjustmentDetail L 
                             LEFT JOIN LedgerHead H On L.DocId = H.DocId
-                            Group By H.SubCode, H.Site_Code, H.Div_Code, L.Comp_Code, L.Class, L.Fee, L.SubHead, L.DueDate
+                            Group By H.SubCode, H.Site_Code, H.Div_Code, L.Comp_Code, 
+                            L.Class, L.Fee, L.SubHead, L.DueDate
                         ) As VAdjust On H.SubCode = VAdjust.SubCode
                             And Fs.Site_Code = VAdjust.Site_Code And Fs.Div_Code = VAdjust.Div_Code 
-                            --And Fs.Comp_Code = VAdjust.Comp_Code 
+                            And Fs.Comp_Code = VAdjust.Comp_Code 
                             And Fs.Class = VAdjust.Class
                             And Fs.Fee = VAdjust.Fee 
                             And IfNull(Fs.SubHead,'') = IfNull(VAdjust.SubHead,'') 
                             And Fs.DueDate = VAdjust.DueDate
                         Where Fs.Recurrence = '" & ClsSchool.Recurrence_OnceInALifeTime & "'
-                        And H.AdmissionDate >= Fs.DueDate  "
+                        And H.AdmissionDate >= Fs.DueDate
+                        And Sg.LeftDate Is Null "
 
             mFaciltyFeeDueIfOnceInALifeTime_False = " Select H.Subcode, Fs.Site_Code, Fs.Div_Code, Fs.Comp_Code, Sgad.Class As Class, Fs.Fee, Fs.SubHead, Fs.DueDate, Fs.Amount,
                         IfNull(VAdjust.Amount,0) As ReceivedAmount, Fs.Amount - IfNull(VAdjust.Amount,0) As BalanceAmount, 0 As IsFeeDueExplicitly      
                         From SubgroupFacility H
                         LEFT JOIN (Select * From SubGroupAdmission Where PromotionDate Is Null) As Sgad ON H.SubCode = Sgad.SubCode 
+                        LEFT JOIN SubGroup Sg On H.SubCode = Sg.SubCode
                         LEFT JOIN FeeStructure Fs On H.Facility = Fs.Fee 
                                 And IfNull(H.FacilitySubHead,'') = IfNull(Fs.SubHead,'') 
                                 And H.Div_Code = Fs.Div_Code And H.Site_Code = Fs.Site_Code
@@ -451,21 +462,24 @@ Public Class ClsSchool
                             Select H.SubCode, H.Site_Code, H.Div_Code, L.Comp_Code, L.Class, L.Fee, L.SubHead, L.DueDate, Sum(L.AdjustedAmount) As Amount
                             From FeeAdjustmentDetail L 
                             LEFT JOIN LedgerHead H On L.DocId = H.DocId
-                            Group By H.SubCode, H.Site_Code, H.Div_Code, L.Comp_Code, L.Class, L.Fee, L.SubHead, L.DueDate
+                            Group By H.SubCode, H.Site_Code, H.Div_Code, L.Comp_Code, 
+                            L.Class, L.Fee, L.SubHead, L.DueDate
                         ) As VAdjust On H.SubCode = VAdjust.SubCode
                             And Fs.Site_Code = VAdjust.Site_Code And Fs.Div_Code = VAdjust.Div_Code 
-                            --And Fs.Comp_Code = VAdjust.Comp_Code 
+                            And Fs.Comp_Code = VAdjust.Comp_Code 
                             And Fs.Fee = VAdjust.Fee 
                             And IfNull(Fs.SubHead,'') = IfNull(VAdjust.SubHead,'')
                             And Fs.DueDate = VAdjust.DueDate
                         where  Fs.Class Is Null
                         And Fs.DueDate Between H.ChargeableFrom And ChargeableUpto 
-                        And Fs.Recurrence <> '" & ClsSchool.Recurrence_OnceInALifeTime & "'"
+                        And Fs.Recurrence <> '" & ClsSchool.Recurrence_OnceInALifeTime & "'
+                        And Sg.LeftDate Is Null "
 
             mFaciltyFeeDueIfOnceInALifeTime_True = " Select H.Subcode, Fs.Site_Code, Fs.Div_Code, Fs.Comp_Code, Sgad.Class As Class, Fs.Fee, Fs.SubHead, Fs.DueDate, Fs.Amount,
                         IfNull(VAdjust.Amount,0) As ReceivedAmount, Fs.Amount - IfNull(VAdjust.Amount,0) As BalanceAmount, 0 As IsFeeDueExplicitly      
                         From SubgroupFacility H
                         LEFT JOIN (Select * From SubGroupAdmission Where PromotionDate Is Null) As Sgad ON H.SubCode = Sgad.SubCode 
+                        LEFT JOIN SubGroup Sg On H.SubCode = Sg.SubCode
                         LEFT JOIN FeeStructure Fs On H.Facility = Fs.Fee 
                                 And IfNull(H.FacilitySubHead,'') = IfNull(Fs.SubHead,'') 
                                 And H.Div_Code = Fs.Div_Code And H.Site_Code = Fs.Site_Code
@@ -473,35 +487,41 @@ Public Class ClsSchool
                             Select H.SubCode, H.Site_Code, H.Div_Code, L.Comp_Code, L.Class, L.Fee, L.SubHead, L.DueDate, Sum(L.AdjustedAmount) As Amount
                             From FeeAdjustmentDetail L 
                             LEFT JOIN LedgerHead H On L.DocId = H.DocId
-                            Group By H.SubCode, H.Site_Code, H.Div_Code, L.Comp_Code, L.Class, L.Fee, L.SubHead, L.DueDate
+                            Group By H.SubCode, H.Site_Code, H.Div_Code, L.Comp_Code, 
+                            L.Class, L.Fee, L.SubHead, L.DueDate
                         ) As VAdjust On H.SubCode = VAdjust.SubCode
                             And Fs.Site_Code = VAdjust.Site_Code And Fs.Div_Code = VAdjust.Div_Code 
-                            --And Fs.Comp_Code = VAdjust.Comp_Code 
+                            And Fs.Comp_Code = VAdjust.Comp_Code 
                             And Fs.Fee = VAdjust.Fee 
                             And IfNull(Fs.SubHead,'') = IfNull(VAdjust.SubHead,'')
                             And Fs.DueDate = VAdjust.DueDate
                         Where Fs.Class Is Null
                         And Fs.DueDate Between H.ChargeableFrom And ChargeableUpto 
                         And Fs.Recurrence = '" & ClsSchool.Recurrence_OnceInALifeTime & "'
-                        And Sgad.AdmissionDate >= Fs.DueDate "
+                        And Sgad.AdmissionDate >= Fs.DueDate
+                        And Sg.LeftDate Is Null "
 
-            mFeeDueExplicitily = " Select L.Subcode, H.Site_Code, H.Div_Code, Sgad.Comp_Code, Sgad.Class As Class, H.Subcode As Fee, NUll As SubHead, H.V_Date As DueDate, L.Amount,
+            mFeeDueExplicitily = " Select  L.Subcode, H.Site_Code, H.Div_Code, Sgad.Comp_Code, Sgad.Class As Class, H.Subcode As Fee, NUll As SubHead, H.V_Date As DueDate, L.Amount,
                     IfNull(VAdjust.Amount,0) As ReceivedAmount, L.Amount - IfNull(VAdjust.Amount,0) As BalanceAmount, 1 As IsFeeDueExplicitly      
                     From LedgerHead H 
                     LEFT JOIN LedgerHeadDetail L On H.DocId = L.DocId
                     LEFT JOIN Voucher_Type Vt ON H.V_Type = Vt.V_Type
-                    LEFT JOIN(Select * From SubGroupAdmission Where PromotionDate Is Null) As Sgad On L.SubCode = Sgad.SubCode 
+                    LEFT JOIN Company C On H.V_Date Between C.Start_Dt And End_Dt
+                    LEFT JOIN SubGroupAdmission Sgad On L.SubCode = Sgad.SubCode And Sgad.Comp_Code = C.Comp_Code
+                    LEFT JOIN SubGroup Sg On H.SubCode = Sg.SubCode
                     LEFT JOIN(
                         Select H.SubCode, H.Site_Code, H.Div_Code, L.Comp_Code, L.Class, L.Fee, L.SubHead, L.DueDate, Sum(L.AdjustedAmount) As Amount
                         From FeeAdjustmentDetail L 
                         LEFT JOIN LedgerHead H On L.DocId = H.DocId
-                        Group By H.SubCode, H.Site_Code, H.Div_Code, L.Comp_Code, L.Class, L.Fee, L.SubHead, L.DueDate
+                        Group By H.SubCode, H.Site_Code, H.Div_Code, L.Comp_Code, 
+                        L.Class, L.Fee, L.SubHead, L.DueDate
                     ) As VAdjust On L.SubCode = VAdjust.SubCode
                         And H.Site_Code = VAdjust.Site_Code And H.Div_Code = VAdjust.Div_Code 
-                        --And Sgad.Comp_Code = VAdjust.Comp_Code 
+                        And C.Comp_Code = VAdjust.Comp_Code 
                         And H.SubCode = VAdjust.Fee 
-                        And Cast(H.V_Date As Date) = Cast(VAdjust.DueDate As Date)
-                Where Vt.NCat = '" & ClsSchool.NCat_FeeDue & "'"
+                        And Date(H.V_Date) = Date(VAdjust.DueDate)
+                Where Vt.NCat = '" & ClsSchool.NCat_FeeDue & "'
+                And Sg.LeftDate Is Null "
 
 
             mQry = " CREATE VIEW FeeDueDetail AS " &
@@ -606,5 +626,118 @@ Public Class ClsSchool
         Catch ex As Exception
             MsgBox(ex.Message & "  [FCreateView_FeeDueDetail]")
         End Try
+    End Sub
+    Private Sub FYearEnd()
+        Dim mCode As String = ""
+        Dim mSr As Integer = 0
+
+        mQry = " Select Comp_Code, Comp_Name From Company Where Comp_Code = '" & AgL.PubCompCode & "'"
+        Dim DtCompDetail As DataTable = AgL.FillData(mQry, AgL.GCn).Tables(0)
+
+        Dim bComp_Code As String = AgL.XNull(DtCompDetail.Rows(0)("Comp_Code"))
+        Dim bComp_Name As String = AgL.XNull(DtCompDetail.Rows(0)("Comp_Name"))
+
+        Dim bPrev_Comp_Code As String = (Convert.ToInt32(bComp_Code) - 1).ToString
+        mQry = " Select Comp_Code, Comp_Name From Company Where Comp_Code = '" & bPrev_Comp_Code & "'  "
+        Dim DtPrevCompDetail As DataTable = AgL.FillData(mQry, AgL.GCn).Tables(0)
+        Dim bPrev_Comp_Name As String = AgL.XNull(DtPrevCompDetail.Rows(0)("Comp_Name"))
+
+        mQry = " Select Distinct Fs.Code, I.Description
+                From FeeStructure Fs 
+                LEFT JOIN Item I ON Fs.Code = I.Code
+                Where Fs.Comp_Code = '" & bPrev_Comp_Code & "'"
+        Dim DtFeeStructureCodes As DataTable = AgL.FillData(mQry, AgL.GCn).Tables(0)
+
+        For I As Integer = 0 To DtFeeStructureCodes.Rows.Count - 1
+            mQry = " Select I.Description, I.Specification, I.V_Type, I.ItemType, 
+                I.Status, I.Div_Code As Item_Div_Code,
+                PFs.Class, PFs.Fee, PFs.SubHead, PFs.Recurrence, PFs.Narration, PFs.Amount, PFs.DueDate, 
+                PFs.Comp_Code, PFs.Div_Code, PFs.Site_Code
+                From (Select * From FeeStructure Where Comp_Code = '" & bPrev_Comp_Code & "' And Code = '" & AgL.XNull(DtFeeStructureCodes.Rows(I)("Code")) & "' ) As PFs
+                LEFT JOIN (Select * From FeeStructure Where Comp_Code = '" & bComp_Code & "') As Fs
+                        On IfNull(Fs.Class,'') = IfNull(PFs.Class,'') And IfNull(Fs.Fee,'') = IfNull(PFs.Fee,'')
+                        And IfNull(Fs.SubHead,'') = IfNull(PFs.SubHead,'') And IfNull(Fs.Div_Code,'') = IfNull(PFs.Div_Code,'') 
+                        And IfNull(Fs.Site_Code,'') = IfNull(PFs.Site_Code,'') 
+                LEFT JOIN Item I ON PFs.Code = I.Code
+                Where PFs.Code Is Not Null And Fs.Code Is Null "
+            Dim DtFeeStructure As DataTable = AgL.FillData(mQry, AgL.GCn).Tables(0)
+
+
+            If DtFeeStructure.Rows.Count > 0 Then
+                Dim bItemDesc_New As String = AgL.XNull(DtFeeStructure.Rows(0)("Description")).ToString.Replace(bPrev_Comp_Name, bComp_Name)
+                If AgL.VNull(AgL.Dman_Execute(" Select Count(*) From Item Where Description = '" & bItemDesc_New & "'", AgL.GCn).ExecuteScalar) = 0 Then
+                    mCode = AgL.GetMaxId("Item", "Code", AgL.GCn, AgL.PubDivCode, AgL.PubSiteCode, 4, True, True, AgL.ECmd, AgL.Gcn_ConnectionString)
+                    mQry = " Insert Into Item (Code, ItemType, V_Type, Specification, Description, 
+                        EntryBy, EntryDate, Status, Div_Code)"
+                    mQry += " Values(" & AgL.Chk_Text(mCode) & ", 
+                        " & AgL.Chk_Text(AgL.XNull(DtFeeStructure.Rows(0)("ItemType"))) & ", 
+                        " & AgL.Chk_Text(AgL.XNull(DtFeeStructure.Rows(0)("V_Type"))) & ",
+                        " & AgL.Chk_Text(AgL.XNull(DtFeeStructure.Rows(0)("Specification"))) & ", 
+                        " & AgL.Chk_Text(bItemDesc_New) & ",
+                        'Automatic', " & AgL.Chk_Date(AgL.PubLoginDate) & ",
+                        " & AgL.Chk_Text(AgL.XNull(DtFeeStructure.Rows(0)("Status"))) & ", 
+                        " & AgL.Chk_Text(AgL.XNull(DtFeeStructure.Rows(0)("Item_Div_Code"))) & "
+                        )"
+                    AgL.Dman_ExecuteNonQry(mQry, AgL.GcnMain)
+                Else
+                    mCode = AgL.XNull(AgL.Dman_Execute(" Select Code From Item Where Description = '" & bItemDesc_New & "'", AgL.GCn).ExecuteScalar)
+                End If
+
+
+                For J As Integer = 0 To DtFeeStructure.Rows.Count - 1
+                    mSr += 1
+                    mQry = " Insert Into FeeStructure(Code, Sr, Class, Fee, SubHead, Recurrence, Narration, Amount, DueDate, 
+                        Comp_Code, Div_Code, Site_Code) "
+                    mQry += " Values (" & AgL.Chk_Text(mCode) & ", " & Val(mSr) & ",
+                    " & AgL.Chk_Text(AgL.XNull(DtFeeStructure.Rows(J)("Class"))) & ",
+                    " & AgL.Chk_Text(AgL.XNull(DtFeeStructure.Rows(J)("Fee"))) & ",
+                    " & AgL.Chk_Text(AgL.XNull(DtFeeStructure.Rows(J)("SubHead"))) & ",
+                    " & AgL.Chk_Text(AgL.XNull(DtFeeStructure.Rows(J)("Recurrence"))) & ",
+                    " & AgL.Chk_Text(AgL.XNull(DtFeeStructure.Rows(J)("Narration"))) & ",
+                    " & Val(AgL.VNull(DtFeeStructure.Rows(J)("Amount"))) & ",
+                    " & AgL.Chk_Date(DateAdd(DateInterval.Year, 1, CDate(AgL.XNull(DtFeeStructure.Rows(J)("DueDate"))))) & ",
+                    " & AgL.Chk_Text(bComp_Code) & ",
+                    " & AgL.Chk_Text(AgL.XNull(DtFeeStructure.Rows(J)("Div_Code"))) & ",
+                    " & AgL.Chk_Text(AgL.XNull(DtFeeStructure.Rows(J)("Site_Code"))) & "
+                    )"
+                    AgL.Dman_ExecuteNonQry(mQry, AgL.GcnMain)
+                Next
+            End If
+
+            mQry = " Select I.Description, I.Specification, I.V_Type, I.ItemType, 
+                I.Status, I.Div_Code As Item_Div_Code,
+                PFs.Class, PFs.Fee, PFs.SubHead, PFs.Recurrence, PFs.Narration, PFs.Amount, PFs.DueDate, 
+                PFs.Comp_Code, PFs.Div_Code, PFs.Site_Code
+                From (Select * From FeeStructureRecurrence Where Comp_Code = '" & bPrev_Comp_Code & "' And Code = '" & AgL.XNull(DtFeeStructureCodes.Rows(I)("Code")) & "' ) As PFs
+                LEFT JOIN (Select * From FeeStructureRecurrence Where Comp_Code = '" & bComp_Code & "') As Fs
+                        On IfNull(Fs.Class,'') = IfNull(PFs.Class,'') And IfNull(Fs.Fee,'') = IfNull(PFs.Fee,'')
+                        And IfNull(Fs.SubHead,'') = IfNull(PFs.SubHead,'') And IfNull(Fs.Div_Code,'') = IfNull(PFs.Div_Code,'') 
+                        And IfNull(Fs.Site_Code,'') = IfNull(PFs.Site_Code,'') 
+                LEFT JOIN Item I ON PFs.Code = I.Code
+                Where PFs.Code Is Not Null And Fs.Code Is Null "
+            Dim DtFeeStructureRecurrence As DataTable = AgL.FillData(mQry, AgL.GCn).Tables(0)
+
+            If DtFeeStructureRecurrence.Rows.Count > 0 Then
+                mSr = 0
+                For J As Integer = 0 To DtFeeStructureRecurrence.Rows.Count - 1
+                    mSr += 1
+                    mQry = " Insert Into FeeStructureRecurrence(Code, Sr, Class, Fee, SubHead, Recurrence, Narration, Amount, DueDate, 
+                        Comp_Code, Div_Code, Site_Code) "
+                    mQry += " Values (" & AgL.Chk_Text(mCode) & ", " & Val(mSr) & ",
+                    " & AgL.Chk_Text(AgL.XNull(DtFeeStructureRecurrence.Rows(J)("Class"))) & ",
+                    " & AgL.Chk_Text(AgL.XNull(DtFeeStructureRecurrence.Rows(J)("Fee"))) & ",
+                    " & AgL.Chk_Text(AgL.XNull(DtFeeStructureRecurrence.Rows(J)("SubHead"))) & ",
+                    " & AgL.Chk_Text(AgL.XNull(DtFeeStructureRecurrence.Rows(J)("Recurrence"))) & ",
+                    " & AgL.Chk_Text(AgL.XNull(DtFeeStructureRecurrence.Rows(J)("Narration"))) & ",
+                    " & Val(AgL.VNull(DtFeeStructureRecurrence.Rows(J)("Amount"))) & ",
+                    " & AgL.Chk_Date(DateAdd(DateInterval.Year, 1, CDate(AgL.XNull(DtFeeStructureRecurrence.Rows(J)("DueDate"))))) & ",
+                    " & AgL.Chk_Text(bComp_Code) & ",
+                    " & AgL.Chk_Text(AgL.XNull(DtFeeStructureRecurrence.Rows(J)("Div_Code"))) & ",
+                    " & AgL.Chk_Text(AgL.XNull(DtFeeStructureRecurrence.Rows(J)("Site_Code"))) & "
+                    )"
+                    AgL.Dman_ExecuteNonQry(mQry, AgL.GcnMain)
+                Next
+            End If
+        Next
     End Sub
 End Class

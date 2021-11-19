@@ -201,7 +201,7 @@ Public Class ClsGstInputTaxReport
             mLedgerHeadCondStr = mLedgerHeadCondStr & Replace(ReportFrm.GetWhereCondition("Vt.Description", rowV_Type), "''", "'")
             mLedgerHeadCondStr = mLedgerHeadCondStr & Replace(ReportFrm.GetWhereCondition("H.SalesTaxGroupParty", rowPartyTaxGroup), "''", "'")
             mLedgerHeadCondStr = mLedgerHeadCondStr & Replace(ReportFrm.GetWhereCondition("L.SalesTaxGroupItem", rowItemTaxGroup), "''", "'")
-            mLedgerHeadCondStr = mLedgerHeadCondStr & " And CharIndex('" & ClsMain.VoucherTypeTags.ExcludeInSalesTaxReturns & "','+' || IfNull(Vt.VoucherTypeTags,'')) = 0 "
+
 
             mMainQry = " SELECT H.DocID, H.V_Type, Vt.Description as VoucherType, 
                     H.Site_Code, H.Div_Code, 

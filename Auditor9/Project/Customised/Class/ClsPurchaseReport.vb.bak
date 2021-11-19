@@ -297,13 +297,6 @@ Public Class ClsPurchaseReport
                 Next
             End If
 
-            If ReportFrm.FGetText(rowPartyTags) <> "All" Then
-                mPartyTags = ReportFrm.FGetText(rowPartyTags).ToString.Split(",")
-                For J = 0 To mPartyTags.Length - 1
-                    mCondStr += " And CharIndex('" & mPartyTags(J) & "',Party.Tags) > 0 "
-                Next
-            End If
-
             If ReportFrm.FGetText(rowSettlementStatus) = "Settled" Then
                 mCondStr = mCondStr & " And H.DocID In (SELECT H.PurchaseInvoiceDocId FROM Cloth_SupplierSettlementInvoices H
                                                                        UNION ALL 
