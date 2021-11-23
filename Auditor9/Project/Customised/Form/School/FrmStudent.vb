@@ -62,14 +62,15 @@ Public Class FrmStudent
     Public Const rowCaste As Integer = 27
     Public Const rowGender As Integer = 28
     Public Const rowAdmissionDate As Integer = 29
-    Public Const rowDOB As Integer = 30
-    Public Const rowFeeHead As Integer = 31
-    Public Const rowClass As Integer = 32
-    Public Const rowSection As Integer = 33
-    Public Const rowRollNo As Integer = 34
-    Public Const rowHouse As Integer = 35
-    Public Const rowDiscount As Integer = 36
-    Public Const rowRemarks As Integer = 37
+    Public Const rowLeftDate As Integer = 30
+    Public Const rowDOB As Integer = 31
+    Public Const rowFeeHead As Integer = 32
+    Public Const rowClass As Integer = 33
+    Public Const rowSection As Integer = 34
+    Public Const rowRollNo As Integer = 35
+    Public Const rowHouse As Integer = 36
+    Public Const rowDiscount As Integer = 37
+    Public Const rowRemarks As Integer = 38
 
 
     Public Const hcSubgroupType As String = "A/c Type"
@@ -103,6 +104,7 @@ Public Class FrmStudent
     Public Const hcGender As String = "Gender"
     Public Const hcAdmissionDate As String = "Admission Date"
     Public Const hcDOB As String = "DOB"
+    Public Const hcLeftDate As String = "Left Date"
     Public Const hcFeeHead As String = "Fee Head"
     Public Const hcClass As String = "Class"
     Public Const hcSection As String = "Section"
@@ -528,6 +530,7 @@ Public Class FrmStudent
                 DglMain(Col1Value, rowCaste).Tag = AgL.XNull(.Rows(0)("Caste"))
                 DglMain(Col1Value, rowCaste).Value = AgL.XNull(.Rows(0)("CasteName"))
                 DglMain(Col1Value, rowGender).Value = AgL.XNull(.Rows(0)("Gender"))
+                DglMain(Col1Value, rowLeftDate).Value = ClsMain.FormatDate(AgL.XNull(DsTemp.Tables(0).Rows(0)("LeftDate")))
                 DglMain(Col1Value, rowDOB).Value = ClsMain.FormatDate(AgL.XNull(DsTemp.Tables(0).Rows(0)("DOB")))
                 mNature = AgL.XNull(.Rows(0)("Nature"))
                 mGroupNature = AgL.XNull(.Rows(0)("GroupNature"))
@@ -853,7 +856,7 @@ Public Class FrmStudent
                         " GroupCode, GroupNature, ManualCode, Nature,	Address, CityCode,  " &
                         " PIN, Phone,  ContactPerson, SubgroupType, ShowAccountInOtherDivisions, ShowAccountInOtherSites, " &
                         " Religion, Caste, Gender, Discount, Remarks, " &
-                        " Mobile, EMail, Parent, Area, DOB, " &
+                        " Mobile, EMail, Parent, Area, DOB, LeftDate, " &
                         " EntryBy, EntryDate,  EntryType, EntryStatus, Div_Code, Status) " &
                         " VALUES(" & AgL.Chk_Text(mSearchCode) & ", " &
                         " " & AgL.Chk_Text(DglMain(Col1Value, rowSite).Tag) & ", " & AgL.Chk_Text(DglMain(Col1Value, rowName).Value) & ",	" &
@@ -879,6 +882,7 @@ Public Class FrmStudent
                         " " & AgL.Chk_Text(DglMain.Item(Col1Value, rowParent).Tag) & ", " &
                         " " & AgL.Chk_Text(DglMain.Item(Col1Value, rowArea).Tag) & ", " &
                         " " & AgL.Chk_Date(DglMain.Item(Col1Value, rowDOB).Value) & ", " &
+                        " " & AgL.Chk_Date(DglMain.Item(Col1Value, rowLeftDate).Value) & ", " &
                         " " & AgL.Chk_Text(AgL.PubUserName) & ", " &
                         " " & AgL.Chk_Date(CDate(AgL.GetDateTime(AgL.GcnRead)).ToString("u")) & ", " &
                         " " & AgL.Chk_Text(Topctrl1.Mode) & ", " & AgL.Chk_Text(LogStatus.LogOpen) & ", " &
@@ -911,6 +915,7 @@ Public Class FrmStudent
                         " Caste = " & AgL.Chk_Text(DglMain(Col1Value, rowCaste).Tag) & ", " &
                         " Gender = " & AgL.Chk_Text(DglMain(Col1Value, rowGender).Value) & ", " &
                         " DOB = " & AgL.Chk_Date(DglMain(Col1Value, rowDOB).Value) & ", " &
+                        " LeftDate = " & AgL.Chk_Date(DglMain(Col1Value, rowLeftDate).Value) & ", " &
                         " Discount = " & Val(DglMain(Col1Value, rowDiscount).Value) & ", " &
                         " Remarks = " & AgL.Chk_Text(DglMain(Col1Value, rowRemarks).Value) & ", " &
                         " EntryType = " & AgL.Chk_Text(Topctrl1.Mode) & ", " &
@@ -1289,7 +1294,7 @@ Public Class FrmStudent
 
 
 
-        DglMain.Rows.Add(38)
+        DglMain.Rows.Add(39)
 
         DglMain.Item(Col1Head, rowSubgroupType).Value = hcSubgroupType
         DglMain.Item(Col1Head, rowCode).Value = hcCode
@@ -1321,6 +1326,7 @@ Public Class FrmStudent
         DglMain.Item(Col1Head, rowCaste).Value = hcCaste
         DglMain.Item(Col1Head, rowGender).Value = hcGender
         DglMain.Item(Col1Head, rowAdmissionDate).Value = hcAdmissionDate
+        DglMain.Item(Col1Head, rowLeftDate).Value = hcLeftDate
         DglMain.Item(Col1Head, rowDOB).Value = hcDOB
         DglMain.Item(Col1Head, rowFeeHead).Value = hcFeeHead
         DglMain.Item(Col1Head, rowClass).Value = hcClass
@@ -1405,7 +1411,7 @@ Public Class FrmStudent
                     CType(DglMain.Columns(Col1Value), AgControls.AgTextColumn).AgNumberNegetiveAllow = False
                 Case rowBankName, rowBankAccount, rowBankIFSC
                     CType(DglMain.Columns(Col1Value), AgControls.AgTextColumn).MaxInputLength = 50
-                Case rowAdmissionDate, rowDOB
+                Case rowAdmissionDate, rowDOB, rowLeftDate
                     CType(DglMain.Columns(Col1Value), AgControls.AgTextColumn).AgValueType = AgControls.AgTextColumn.TxtValueType.Date_Value
             End Select
         Catch ex As Exception

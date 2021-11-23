@@ -87,7 +87,7 @@ Public Class FrmPerson
     Public Const rowLastProcessOfCombination As Integer = 58
     Public Const rowTags As Integer = 59
     Public Const rowRemarks As Integer = 60
-
+    
     'Public Const rowContactPerson As Integer = 15
     'Public Const rowSalesTaxNo As Integer = 16
     'Public Const rowHSN As Integer = 17

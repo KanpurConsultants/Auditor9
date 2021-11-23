@@ -79,7 +79,8 @@ Public Class ClsFeeDueReport
         Try
             mCondStr = " Where IfNull(L.BalanceAmount,0) <> 0 "
             mCondStr = mCondStr & " AND Date(L.DueDate) <= " & AgL.Chk_Date(CDate(ReportFrm.FGetText(rowAsOnDate)).ToString("s")) & ""
-            mCondStr = mCondStr & ReportFrm.GetWhereCondition("L.Class", rowClass)
+            mCondStr = mCondStr & " And Sg1.LeftDate Is Null "
+            mCondStr = mCondStr & ReportFrm.GetWhereCondition("Sga.Class", rowClass)
             mCondStr = mCondStr & ReportFrm.GetWhereCondition("L.SubCode", rowStudent)
             mCondStr = mCondStr & ReportFrm.GetWhereCondition("L.Div_Code", rowDivision).Replace("''", "'")
             mCondStr = mCondStr & ReportFrm.GetWhereCondition("L.Site_Code", rowSite).Replace("''", "'")
@@ -90,8 +91,10 @@ Public Class ClsFeeDueReport
                     L.FeeAmount, L.ReceivedAmount, L.BalanceAmount
                     From FeeDueDetail L 
                     LEFT JOIN ViewHelpSubgroup Sg On L.SubCode = Sg.Code
+                    LEFT JOIN SubGroup Sg1 On L.SubCode = Sg1.SubCode
+                    LEFT JOIN (Select * From SubGroupAdmission Where PromotionDate Is Null) As Sga On L.SubCode = Sga.SubCode
                     LEFT JOIN Company C On L.Comp_Code = C.Comp_Code
-                    LEFT JOIN SubGroup Class ON L.Class = Class.SubCode
+                    LEFT JOIN SubGroup Class ON Sga.Class = Class.SubCode
                     LEFT JOIN SubGroup Fee On L.Fee = Fee.SubCode
                     LEFT JOIN SubGroup SubHead On L.SubHead = SubHead.SubCode " & mCondStr
 
@@ -102,7 +105,7 @@ Public Class ClsFeeDueReport
                     Sum(VMain.BalanceAmount) As BalanceAmount
                     From (" & mMainQry & ") As VMain
                     Group By VMain.Student "
-            ElseIf ReportFrm.FGetText(rowReportType) = "Summary" Then
+            ElseIf ReportFrm.FGetText(rowReportType) = "Detail" Then
                 RepTitle = "Fee Due Detail" : RepName = "FeeDueReport_Detail"
                 mQry = " Select VMain.* From (" & mMainQry & ") As VMain "
             End If

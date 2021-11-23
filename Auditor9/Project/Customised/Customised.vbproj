@@ -179,6 +179,7 @@
     <Compile Include="Class\ClsCashCustomerOutstandingReport.vb" />
     <Compile Include="Class\ClsCustomerPaymentFollowupHistory.vb" />
     <Compile Include="Class\ClsGenerateEInvoice _URL.vb" />
+    <Compile Include="Class\ClsLRUpdation.vb" />
     <Compile Include="Class\FrmUploadFileOnline.Designer.vb">
       <DependentUpon>FrmUploadFileOnline.vb</DependentUpon>
     </Compile>

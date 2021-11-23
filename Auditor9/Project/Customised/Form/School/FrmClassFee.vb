@@ -808,4 +808,5 @@ Public Class FrmClassFee
             End If
         End If
     End Sub
+
 End Class

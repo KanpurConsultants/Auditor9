@@ -72,6 +72,7 @@ Public Class ClsStudentList
             RepName = "StudentList" : RepTitle = "Student List"
 
             mCondStr = " Where Sg.SubGroupType = '" & ClsSchool.SubGroupType_Student & "'"
+            mCondStr = mCondStr & " And Sg.LeftDate Is Null "
             mCondStr = mCondStr & ReportFrm.GetWhereCondition("Sgad.Class", rowClass)
             mCondStr = mCondStr & ReportFrm.GetWhereCondition("Sg.SubCode", rowStudent)
             mCondStr = mCondStr & ReportFrm.GetWhereCondition("Sg.Div_Code", rowDivision).Replace("''", "'")

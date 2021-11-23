@@ -2736,6 +2736,4 @@ Partial Class MDIMain
     Friend WithEvents MnuEBillGeneration As ToolStripMenuItem
     Friend WithEvents MnuSalesRepresentativeCommissionOnPayment As ToolStripMenuItem
     Friend WithEvents MnuSerializeEntryNo As ToolStripMenuItem
-    Friend WithEvents MnuLRUpdation As ToolStripMenuItem
-    Friend WithEvents MnuExportSqliteDataToSqlServer As ToolStripMenuItem
 End Class
