@@ -2965,7 +2965,6 @@ D:\Reposotory 2021\Project\Auditor9\Release\Customised.exe.config
 D:\Reposotory 2021\Project\Auditor9\Project\Customised\obj\Debug\Customised.exe
 D:\Reposotory 2021\Project\Auditor9\Project\Customised\obj\Debug\Customised.xml
 D:\Reposotory 2021\Project\Auditor9\Project\Customised\obj\Debug\Customised.pdb
-D:\Reposotory 2021\Project\Auditor9\Project\Customised\obj\Debug\Customised.vbprojResolveAssemblyReference.cache
 D:\Reposotory 2021\Project\Auditor9\Project\Customised\obj\Debug\Customised.FrmLeadFollowup.resources
 D:\Reposotory 2021\Project\Auditor9\Project\Customised\obj\Debug\Customised.FrmCustomerPaymentFollowup.resources
 D:\Reposotory 2021\Project\Auditor9\Project\Customised\obj\Debug\Customised.FrmUploadFileOnline.resources
