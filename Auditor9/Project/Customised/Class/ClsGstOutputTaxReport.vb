@@ -291,7 +291,7 @@ Public Class ClsGstOutputTaxReport
                 If ReportFrm.FGetCode(rowSummerise).ToString.Contains("Month") Then
                     mGroupColumns += IIf(mGroupColumns = "", "", ",") + "VMain.Month"
                     mSelectColumns += IIf(mSelectColumns = "", "", ",") + "VMain.Month as Month"
-                    mOrderColumns += IIf(mOrderColumns = "", "", ",") + "VMain.V_Date"
+                    mOrderColumns += IIf(mOrderColumns = "", "", ",") + "Max(VMain.V_Date)"
                 End If
 
                 If ReportFrm.FGetCode(rowSummerise).ToString.Contains("Party Tax Group") Then

@@ -1,47 +1,56 @@
 ; Field definition file for table: ADORecordset
 Copies	string	255	1	
-CopyPrintingCaption	string	255	.	
+CopyPrintingCaption	string	255		
 DocNoCaption	string	255	Invoice No.	
 DocDateCaption	string	255	Invoice Date	
 SiteStateCode	string	255	09	
 SiteStateName	string	255	Uttar Pradesh	
-DocID	string	255	D1    SI 2020      27	
+DocID	string	255	D1    SI 2021    2296	
 Sr	number	1	
-V_Date	datetime	05/Aug/2020 12:00:00 AM	
+V_Date	datetime	13/Nov/2021 12:00:00 AM	
 DeliveryDate	datetime		
 Voucher_Type	string	255	Tax Invoice	
 NCat	string	255	SI	
-InvoiceNo	string	255	-27	
-RateType	string	255		
+InvoiceNo	string	255	BS/1210	
+GenDocNo	string	255		
+AmsDocNo	string	255		
+AmsDocDate	datetime		
+AmsDocNetAmount	number	0	
+RateType	string	255	Super Net	
 DocumentPrintShowRateType	string	255	Show If Not Blank	
 AgentName	string	255		
+SalesRepName	string	255		
+SalesRepCode	string	255		
 AgentCaption	string	255	Agent	
-SaleToPartyName	string	255	HIMANI FASHION	
-SaleToPartyAddress	string	255	NANDANAGAR	
-CityName	string	255	GORAKHPUR	
+SaleToPartyName	string	255	HUMERA CUTPICE HOUSE	
+SaleToPartyAddress	string	255	90/233 iftikharabad	
+CityName	string	255	KANPUR	
 SaleToPartyPincode	string	255		
 StateCode	string	255	09	
 StateName	string	255	Uttar Pradesh	
-SaleToPartyMobile	string	255	6378207004	
+SaleToPartyMobile	string	255		
 ContactPerson	string	255		
-SaleToPartySalesTaxNo	string	255		
+SaleToPartySalesTaxNo	string	255	09BYHPA3062Q1Z3	
 SaleToPartyAadharNo	string	255		
 SaleToPartyPanNo	string	255		
-ShipToPartyName	string	255	HIMANI FASHION	
-ShipToPartyAddress	string	255	NANDANAGAR	
-ShipToPartyCity	string	255	GORAKHPUR	
+SaleToPartyLicenseNo	string	255		
+ShipToPartyName	string	255	HUMERA CUTPICE HOUSE	
+ShipToPartyAddress	string	255	90/233 iftikharabad	
+ShipToPartyCity	string	255	KANPUR	
 ShipToPartyPincode	string	255		
 ShipToPartyStateCode	string	255	09	
 ShipToPartyStateName	string	255	Uttar Pradesh	
-ShipToPartyMobile	string	255	6378207004	
-ShipToPartySalesTaxNo	string	255		
+ShipToPartyMobile	string	255		
+ShipToPartySalesTaxNo	string	255	09BYHPA3062Q1Z3	
 ShipToPartyAadharNo	string	255		
 ShipToPartyPanNo	string	255		
+ShipToPartyLicenseNo	string	255		
 ShipToAddress	string	255		
-TermsAndConditions	string	255	1- Goods once sold will neither be taken back nor be exchanged in any Condition. <BR>2- All Disputes are Subject to Gorakhpur Jurisdiction Only. <BR>3- We are not responsible for any loss or damage during Transit.	
+TermsAndConditions	string	255	(1) Payment within <CreditDays> days from date of Invoice. <BR>(2) Overdue Interest @ <Default_DebtorsInterestRate> P.A. after due date. <BR>(3) Goods dispatched by transport at the owner risk. <BR>(4) All disputes are subject to <CompanyCity> jurisdiction only.	
 TransporterName	string	255		
 LrNo	string	255		
 LrDate	datetime		
+NoOfBales	number		
 PrivateMark	string	255		
 Weight	number		
 Freight	number		
@@ -59,55 +68,85 @@ Destination	string	255
 DescriptionOfGoods	string	255		
 DescriptionOfPacking	string	255		
 ReferenceNo	string	255		
-ItemName	string	255	JALWA - LOSAL - SAREE	
-ItemGroupName	string	255	LOSAL	
-ItemCatName	string	255	SAREE	
-ItemSpecification	string	255	JALWA	
+BarcodeName	string	255		
+ItemName	string	255	RAJA SAHAB          [.... | SUITING]	
+ItemGroupName	string	255	....	
+ItemCatName	string	255	SUITING	
+ItemManualCode	string	255	SUITR001	
+ItemSpecification	string	255	RAJA SAHAB	
 InvoiceLineSpecification	string	255		
-HSN	string	255	5407	
-MaintainStockYn	long	1	
+HSN	string	255	551511	
+MaintainStockYn	boolean	True	
+D1Spec	string	255		
+D2Spec	string	255		
+D3Spec	string	255		
+D4Spec	string	255		
+SizeSpec	string	255		
+ItemInvoiceGroupCode	string	255		
+ItemInvoiceGroupDesc	string	255		
+ItemTypeCaption	string	255	Item Type	
+ItemCategoryCaption	string	255	Item Category	
+ItemGroupCaption	string	255	Item Group	
+ItemCaption	string	255	Item	
+BarcodeCaption	string	255		
+D1Caption	string	255		
+D2Caption	string	255		
+D3Caption	string	255		
+D4Caption	string	255		
 SalesTaxGroupItem	string	255	GST 5%	
 GrossTaxRate	number	5	
-Pcs	number	18	
-Qty	number	18	
-Rate	number	254	
-Unit	string	255	Pcs	
-UnitDecimalPlaces	number	0	
-DiscountPer	number	1	
-DiscountAmount	number	45.72	
+MRP	number	0	
+LotNo	string	255		
+ExpiryDate	datetime		
+ItemRemark1	string	255		
+Pcs	number	2	
+Qty	number	25	
+Rate	number	155	
+ItemState	string	255		
+CatalogSpecification	string	255		
+CatalogSiteName	string	255		
+Unit	string	255	Meter	
+UnitDecimalPlaces	number	2	
+DiscountPer	number	0	
+DiscountAmount	number	0	
 AdditionalDiscountPer	number	0	
 AdditionalDiscountAmount	number	0	
 AdditionPer	number	0	
 AdditionAmount	number	0	
-TotalDiscount	number	45.72	
-AmountBeforeDiscount	number	4572	
-Amount	number	4526.28	
-Taxable_Amount	number	4526.28	
+TotalDiscount	number	0	
+Deal	string	255		
+AmountBeforeDiscount	number	3875	
+Amount	number	3875	
+Taxable_Amount	number	3875	
 Tax1_Per	number	0	
 Tax1	number	0	
 Tax2_Per	number	2.5	
-Tax2	number	113.16	
+Tax2	number	96.88	
 Tax3_Per	number	2.5	
-Tax3	number	113.16	
+Tax3	number	96.88	
 Tax4_Per	number	0	
 Tax4	number	0	
 Tax5_Per	number	0	
 Tax5	number	0	
-Net_Amount	number	4752.56	
+Net_Amount	number	4068.67	
 LRemarks	string	255		
 HRemarks	string	255		
-H_TotalDiscount	number	388.04	
-H_AmountBeforeDiscount	number	15552	
-H_Gross_Amount	number	15163.96	
+SalesTaxSummaryStr	string	255		
+H_Discount	number	0	
+H_AdditionalDiscount	number	0	
+H_Additional	number	0	
+H_TotalDiscount	number	0	
+H_AmountBeforeDiscount	number	11605	
+H_Gross_Amount	number	11605	
 H_SpecialDiscount_Per	number	0	
 H_SpecialDiscount	number	0	
-H_Taxable_Amount	number	15163.96	
+H_Taxable_Amount	number	11605	
 H_Tax1_Per	number	0	
 H_Tax1	number	0	
 H_Tax2_Per	number	0	
-H_Tax2	number	379.1	
+H_Tax2	number	290.13	
 H_Tax3_Per	number	0	
-H_Tax3	number	379.1	
+H_Tax3	number	290.13	
 H_Tax4_Per	number	0	
 H_Tax4	number	0	
 H_Tax5_Per	number	0	
@@ -116,18 +155,28 @@ H_Deduction_Per	number	0
 H_Deduction	number	0	
 H_Other_Charge_Per	number	0	
 H_Other_Charge	number	0	
-Round_Off	number	-0.16	
-H_Net_Amount	number	15922	
+H_Other_Charge1_Per	number	0	
+H_Other_Charge1	number	0	
+H_Other_Charge2_Per	number	0	
+H_Other_Charge2	number	0	
+Round_Off	number	-0.26	
+H_Net_Amount	number	12185	
 EInvoiceIRN	string	255		
-EInvoiceACKNo	string	255		
-EInvoiceACKDate	datetime		
-Default_BankAccountDetail	string	255	<BR>UNION BANK OF INDIA A/C 305201010035623   </BR>   IFSC : UBIN0530522 </BR>	
+EInvoiceAckNo	string	255		
+EInvoiceAckDate	datetime		
+Default_BankAccountDetail	string	255	 CBI A/C NO 3142400392  IFSC CODE : CBIN0282150 <BR>
+ CBI A/C NO 3789700707  IFSC CODE : CBINO282150 <BR>  PNB A/C NO 0254002130000382  IFSC CODE : 25400
+	
 DocumentPrintHeaderPattern	string	255	Center Aligned	
-DimDetail	string	255		
+DimDetail	string	255	12.5 X 2	
 PrintedByUser	string	255	SUPER	
-EntryByUser	string	255	sa	
+EntryByUser	string	255	KAMAL	
 PrintTitle	string	255	TAX INVOICE	
 DocumentPrintShowPrintDateTimeYn	string	255	1	
+DocumentPrintShowPartyBalance	string	255	Hide	
+TodaysOpeningBalance	number	0	
+TodaysDr	number	0	
+TodaysCr	number	0	
+TodaysClosingBalance	number	0	
 CompanyLogo	BLOB		
 CompanyAuthorisedSignature	BLOB		
-EInvoiceQrCode	BLOB		

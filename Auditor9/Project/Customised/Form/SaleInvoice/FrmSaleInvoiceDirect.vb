@@ -5903,6 +5903,7 @@ Public Class FrmSaleInvoiceDirect
         Dim mDocNoCaption As String = FGetSettings(SettingFields.DocumentPrintEntryNoCaption, SettingType.General)
         Dim mDocDateCaption As String = FGetSettings(SettingFields.DocumentPrintEntryDateCaption, SettingType.General)
         Dim mDocReportFileName As String = FGetSettings(SettingFields.DocumentPrintReportFileName, SettingType.General)
+        Dim SettingPrintRateType As String = FGetSettings(SettingFields.PrintRateType, SettingType.General)
 
         If LblV_Type.Tag = Ncat.SaleInvoice Then
             If Not AgL.PubDtDivisionSiteSetting.Rows(0)("IsSalesTaxApplicable") Then
@@ -5960,8 +5961,8 @@ Public Class FrmSaleInvoiceDirect
                 IC.Description as ItemCatName, I.Specification as ItemSpecification, L.Specification as InvoiceLineSpecification, IfNull(I.HSN, IC.HSN) as HSN, IfNull(I.MaintainStockYn, IC.MaintainStockYn) as MaintainStockYn,
                 L.SalesTaxGroupItem, STGI.GrossTaxRate, 
                 (Case when abs(IfNull(I.MaintainStockYn,1)) =1 AND I.ItemType <> '" & ItemTypeCode.ServiceProduct & "' Then L.Pcs Else 0 End) as Pcs, 
-                (Case when abs(IfNull(I.MaintainStockYn,1)) =1 AND I.ItemType <> '" & ItemTypeCode.ServiceProduct & "' Then abs(L.Qty) Else 0 End) as Qty, 
-                (Case when abs(IfNull(I.MaintainStockYn,1)) =1 AND I.ItemType <> '" & ItemTypeCode.ServiceProduct & "' Then (Case When L.Taxable_Amount >0 And (L.Taxable_Amount <> L.Amount Or L.AdditionAmount > 0 ) Then (L.Taxable_Amount - (L.DiscountAmount + L.AdditionalDiscountAmount))/L.DocQty Else L.Rate End ) Else 0 End) as Rate, 
+                (Case when abs(IfNull(I.MaintainStockYn,1)) =1 AND I.ItemType <> '" & ItemTypeCode.ServiceProduct & "' Then abs(L.Qty) Else 0 End) as Qty,           
+                " & IIf(SettingPrintRateType = PrintRateType.Rate, " L.Rate ", "(Case when abs(IfNull(I.MaintainStockYn,1)) =1 AND I.ItemType <> '" & ItemTypeCode.ServiceProduct & "' Then (Case When L.Taxable_Amount >0 And (L.Taxable_Amount <> L.Amount Or L.AdditionAmount > 0 ) Then (L.Taxable_Amount - (L.DiscountAmount + L.AdditionalDiscountAmount))/L.DocQty Else L.Rate End ) Else 0 End)") & " as Rate, 
                 L.Unit, U.DecimalPlaces as UnitDecimalPlaces, 
                 L.DiscountPer, L.DiscountAmount, L.AdditionalDiscountPer, L.AdditionalDiscountAmount, L.AdditionPer, L.AdditionAmount, 
                 L.DiscountAmount+L.AdditionalDiscountAmount-L.AdditionAmount as TotalDiscount, 

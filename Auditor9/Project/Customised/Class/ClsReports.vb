@@ -2966,7 +2966,7 @@ Public Class ClsReports
             mCondStr = mCondStr & ReportFrm.GetWhereCondition("LTV.Agent", 6)
             mCondStr = mCondStr & ReportFrm.GetWhereCondition("CT.CityCode", 7)
             mCondStr = mCondStr & ReportFrm.GetWhereCondition("Ct.State", 8)
-            mCondStr = mCondStr & ReportFrm.GetWhereCondition("Party.Area", 9)
+            mCondStr = mCondStr & ReportFrm.GetWhereCondition("SG.Area", 9)
             mCondStr = mCondStr & Replace(ReportFrm.GetWhereCondition("LG.Site_Code", 10), "''", "'")
             mCondStr = mCondStr & Replace(ReportFrm.GetWhereCondition("LG.DivCode", 11), "''", "'")
 

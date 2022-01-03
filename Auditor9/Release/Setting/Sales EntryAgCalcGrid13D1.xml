@@ -108,7 +108,7 @@
   <Column>
     <Name>AgFGPercentage</Name>
     <Index>15</Index>
-    <Width>40</Width>
+    <Width>58</Width>
     <Visible>True</Visible>
     <AggregateFunction />
   </Column>

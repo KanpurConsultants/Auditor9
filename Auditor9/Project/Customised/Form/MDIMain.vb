@@ -46,12 +46,11 @@ Public Class MDIMain
         Dim mQry As String
 
         Try
-            MsgBox("MdI load")
             If AgL Is Nothing Then
                 If FOpenIni(StrPath + IniName, AgLibrary.ClsConstant.PubSuperUserName, AgLibrary.ClsConstant.PubSuperUserPassword) Then
                     'If FOpenIni(StrPath + IniName, "Sa", "") Then
                     AgL.PubSiteCode = "1"
-                    AgL.PubDivCode = "E"
+                    AgL.PubDivCode = "D"
                     AgL.PubLoginDate = DateTime.Now()
                     AgL.PubLastTransactionDate = Now()
                     'Dim clsf As New ClsMain(AgL)
@@ -63,7 +62,7 @@ Public Class MDIMain
                 End If
                 AgL.PubStopWatch.Start()
 
-                AgL.PubDivCode = "E"
+                AgL.PubDivCode = "D"
 
                 Try
                     mCrd.Load(AgL.PubReportPath & "\" & "SaleInvoice_Print.rpt")
@@ -192,7 +191,7 @@ Public Class MDIMain
             If attachmentPath <> "" Then
                 PubAttachmentPath = attachmentPath
             End If
-            MsgBox(PubAttachmentPath)
+            'MsgBox(PubAttachmentPath)
 
         Catch ex As Exception
             MsgBox(ex.Message & " at Mdi Load")

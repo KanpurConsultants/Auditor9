@@ -12215,8 +12215,8 @@ Public Class FrmPurchInvoiceDirect_WithDimension
                     From PurchInvoice H With (NoLock)
                     LEFT JOIN PurchInvoiceDetail L With (NoLock) ON H.DocId = L.DocId
                     LEFT JOIN PurchInvoiceTransport Pit With (NoLock) On H.DocId = Pit.DocId
-                    LEFT JOIN SubGroup Sg On Pit.Transporter = Sg.SubCode
-                    LEFT JOIN Item I On L.Item = I.Code
+                    LEFT JOIN SubGroup Sg With (NoLock) On Pit.Transporter = Sg.SubCode
+                    LEFT JOIN Item I With (NoLock) On L.Item = I.Code
                     Where L.DocId = '" & DocID & "'
                     And IsNull(L.LRNo, Pit.LRNo) Is Not Null
                     Group By IsNull(L.LRNo, Pit.LRNo) "

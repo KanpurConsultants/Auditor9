@@ -5856,6 +5856,12 @@ Sincerely
         mQry += " Union All "
         mQry += " Select 'Qty' as Code, 'Qty' as Name "
         FSeedSingleIfNotExist_Setting(SettingType.General, "", Ncat.SaleInvoice, SettingFields.CalculateAmountOn, "", AgDataType.Text, "255", mQry, AgHelpQueryType.SqlQuery, AgHelpSelectionType.SingleSelect,,,,,, "+SUPPORT")
+
+
+        mQry = "  Select '" & PrintRateType.Rate & "' as Code, '" & PrintRateType.Rate & "' as Name "
+        mQry += " Union All "
+        mQry += " Select '" & PrintRateType.AmountDividedByQty & "' as Code, '" & PrintRateType.AmountDividedByQty & "' as Name "
+        FSeedSingleIfNotExist_Setting(SettingType.General, "", Ncat.SaleInvoice, SettingFields.PrintRateType, "", AgDataType.Text, "255", mQry, AgHelpQueryType.SqlQuery, AgHelpSelectionType.SingleSelect,,,,,, "+SUPPORT")
     End Sub
 
     Private Sub FSeedTable_Settings_NCatWise_SalesReturn()
@@ -6586,6 +6592,7 @@ Thanks
         Public Shared SmsMessage As String = "Sms Message"
 
         Public Shared PickRateFrom As String = "Pick Rate From"
+        Public Shared RatePrintingPattern As String = "RatePrintingPattern"
         Public Shared ActionToPrintOnAdd As String = "Action To Print On Add"
         Public Shared ActionToSmsOnAdd As String = "Action To SMS On Add"
 
@@ -6673,6 +6680,7 @@ Thanks
         Public Shared PostConsumptionInStockProcessYn As String = "Post Consumption In Stock Process Y/N"
 
         Public Shared ItemHelpAdditionalColumns As String = "Item Help Additional Columns"
+        Public Shared PrintRateType As String = "Print Rate Type"
 
         Public Shared AskToCopyRateYn As String = "Ask To Copy Rate Y/N"
         Public Shared BarcodeGunInputYn As String = "Barcode Gun Input Y/N"

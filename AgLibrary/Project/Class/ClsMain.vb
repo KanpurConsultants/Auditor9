@@ -5899,6 +5899,10 @@ err1:
             Public Const LotWise As String = "Lot Wise"
             Public Const Fixed As String = "Fixed"
         End Class
+        Public Class PrintRateType
+            Public Const Rate As String = "Rate"
+            Public Const AmountDividedByQty As String = "AmountDividedByQty"
+        End Class
         Public Class BarcodePattern
             Public Const Auto As String = "Auto"
             Public Const Manual As String = "Manual"
