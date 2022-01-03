@@ -2,7 +2,7 @@
 Partial Class MDIMain
     Inherits System.Windows.Forms.Form
 
-    'Form overrides dispose to clean up the component list.
+    'Form ovinvoicerrides dispose to clean up the component list.
     <System.Diagnostics.DebuggerNonUserCode()>
     Protected Overrides Sub Dispose(ByVal disposing As Boolean)
         If disposing AndAlso components IsNot Nothing Then
@@ -171,6 +171,7 @@ Partial Class MDIMain
         Me.MnuQuotation = New System.Windows.Forms.ToolStripMenuItem()
         Me.MnuSalesEntryAadhat = New System.Windows.Forms.ToolStripMenuItem()
         Me.MnuPacking = New System.Windows.Forms.ToolStripMenuItem()
+        Me.MnuLRUpdation = New System.Windows.Forms.ToolStripMenuItem()
         Me.MnuSaleReports = New System.Windows.Forms.ToolStripMenuItem()
         Me.MnuSaleInvoiceReport = New System.Windows.Forms.ToolStripMenuItem()
         Me.MnuSalesAgentCommissionOnPayment = New System.Windows.Forms.ToolStripMenuItem()
@@ -308,6 +309,8 @@ Partial Class MDIMain
         Me.MnuReportSettings = New System.Windows.Forms.ToolStripMenuItem()
         Me.MnuLedgerPostingDifference = New System.Windows.Forms.ToolStripMenuItem()
         Me.MnuMakeDataBlank = New System.Windows.Forms.ToolStripMenuItem()
+        Me.MnuSerializeEntryNo = New System.Windows.Forms.ToolStripMenuItem()
+        Me.MnuExportSqliteDataToSqlServer = New System.Windows.Forms.ToolStripMenuItem()
         Me.MnuChequeManagement = New System.Windows.Forms.ToolStripMenuItem()
         Me.MnuBankInfo = New System.Windows.Forms.ToolStripMenuItem()
         Me.MnuPrintCheque = New System.Windows.Forms.ToolStripMenuItem()
@@ -1290,7 +1293,7 @@ Partial Class MDIMain
         '
         'MnuSale
         '
-        Me.MnuSale.DropDownItems.AddRange(New System.Windows.Forms.ToolStripItem() {Me.MnuSalesEnquiry, Me.MnuSalesOrder, Me.MnuSalesEntry, Me.MnuSalesEntryRetail, Me.MnuSaleEntryOverlay, Me.MnuSaleEntryOverlayRetail, Me.MnuSalesReturnEntry, Me.MnuSalesReturnEntryRetail, Me.MnuSalesDelivery, Me.MnuSaleInvoiceW, Me.MnuSaleReturnW, Me.MnuQuotation, Me.MnuSalesEntryAadhat, Me.MnuPacking, Me.MnuSaleReports, Me.MnuSaleTools, Me.MnuLeadManagement, Me.MnuFallPico})
+        Me.MnuSale.DropDownItems.AddRange(New System.Windows.Forms.ToolStripItem() {Me.MnuSalesEnquiry, Me.MnuSalesOrder, Me.MnuSalesEntry, Me.MnuSalesEntryRetail, Me.MnuSaleEntryOverlay, Me.MnuSaleEntryOverlayRetail, Me.MnuSalesReturnEntry, Me.MnuSalesReturnEntryRetail, Me.MnuSalesDelivery, Me.MnuSaleInvoiceW, Me.MnuSaleReturnW, Me.MnuQuotation, Me.MnuSalesEntryAadhat, Me.MnuPacking, Me.MnuLRUpdation, Me.MnuSaleReports, Me.MnuSaleTools, Me.MnuLeadManagement, Me.MnuFallPico})
         Me.MnuSale.Name = "MnuSale"
         Me.MnuSale.Size = New System.Drawing.Size(40, 20)
         Me.MnuSale.Text = "Sale"
@@ -1390,6 +1393,13 @@ Partial Class MDIMain
         Me.MnuPacking.Name = "MnuPacking"
         Me.MnuPacking.Size = New System.Drawing.Size(208, 22)
         Me.MnuPacking.Text = "Packing"
+        '
+        'MnuLRUpdation
+        '
+        Me.MnuLRUpdation.Name = "MnuLRUpdation"
+        Me.MnuLRUpdation.Size = New System.Drawing.Size(208, 22)
+        Me.MnuLRUpdation.Tag = "GRID REPORT"
+        Me.MnuLRUpdation.Text = "LR Updation"
         '
         'MnuSaleReports
         '
@@ -1533,13 +1543,13 @@ Partial Class MDIMain
         '
         Me.MnuLeadMaster.AccessibleDescription = "+LEAD"
         Me.MnuLeadMaster.Name = "MnuLeadMaster"
-        Me.MnuLeadMaster.Size = New System.Drawing.Size(151, 22)
+        Me.MnuLeadMaster.Size = New System.Drawing.Size(152, 22)
         Me.MnuLeadMaster.Text = "Lead Master"
         '
         'MnuLeadFollowup
         '
         Me.MnuLeadFollowup.Name = "MnuLeadFollowup"
-        Me.MnuLeadFollowup.Size = New System.Drawing.Size(151, 22)
+        Me.MnuLeadFollowup.Size = New System.Drawing.Size(152, 22)
         Me.MnuLeadFollowup.Tag = "GRID REPORT"
         Me.MnuLeadFollowup.Text = "Lead Followup"
         '
@@ -2326,7 +2336,7 @@ Partial Class MDIMain
         'MnuDeveloperTools
         '
         Me.MnuDeveloperTools.AccessibleDescription = "+Developer Tools"
-        Me.MnuDeveloperTools.DropDownItems.AddRange(New System.Windows.Forms.ToolStripItem() {Me.MnuExportSqlServerData, Me.MnuImportData, Me.MnuReportSettings, Me.MnuLedgerPostingDifference, Me.MnuMakeDataBlank, Me.MnuSerializeEntryNo})
+        Me.MnuDeveloperTools.DropDownItems.AddRange(New System.Windows.Forms.ToolStripItem() {Me.MnuExportSqlServerData, Me.MnuImportData, Me.MnuReportSettings, Me.MnuLedgerPostingDifference, Me.MnuMakeDataBlank, Me.MnuSerializeEntryNo, Me.MnuExportSqliteDataToSqlServer})
         Me.MnuDeveloperTools.Name = "MnuDeveloperTools"
         Me.MnuDeveloperTools.Size = New System.Drawing.Size(102, 20)
         Me.MnuDeveloperTools.Text = "Developer Tools"
@@ -2335,7 +2345,7 @@ Partial Class MDIMain
         '
         Me.MnuExportSqlServerData.AccessibleDescription = "+DATA IMPORT EXPORT MODULE"
         Me.MnuExportSqlServerData.Name = "MnuExportSqlServerData"
-        Me.MnuExportSqlServerData.Size = New System.Drawing.Size(210, 22)
+        Me.MnuExportSqlServerData.Size = New System.Drawing.Size(236, 22)
         Me.MnuExportSqlServerData.Text = "Export Sql Server Data"
         '
         'MnuImportData
@@ -2363,6 +2373,13 @@ Partial Class MDIMain
         Me.MnuMakeDataBlank.Name = "MnuMakeDataBlank"
         Me.MnuMakeDataBlank.Size = New System.Drawing.Size(210, 22)
         Me.MnuMakeDataBlank.Text = "Make Data Blank"
+        '
+        '
+        'MnuExportSqliteDataToSqlServer
+        '
+        Me.MnuExportSqliteDataToSqlServer.Name = "MnuExportSqliteDataToSqlServer"
+        Me.MnuExportSqliteDataToSqlServer.Size = New System.Drawing.Size(236, 22)
+        Me.MnuExportSqliteDataToSqlServer.Text = "Export Sqlite Data To Sql Server"
         '
         'MnuChequeManagement
         '
@@ -2719,4 +2736,6 @@ Partial Class MDIMain
     Friend WithEvents MnuEBillGeneration As ToolStripMenuItem
     Friend WithEvents MnuSalesRepresentativeCommissionOnPayment As ToolStripMenuItem
     Friend WithEvents MnuSerializeEntryNo As ToolStripMenuItem
+    Friend WithEvents MnuLRUpdation As ToolStripMenuItem
+    Friend WithEvents MnuExportSqliteDataToSqlServer As ToolStripMenuItem
 End Class

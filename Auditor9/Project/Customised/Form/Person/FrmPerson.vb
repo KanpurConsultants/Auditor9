@@ -85,7 +85,8 @@ Public Class FrmPerson
     Public Const rowCombinationOfProcesses As Integer = 56
     Public Const rowFirstProcessOfCombination As Integer = 57
     Public Const rowLastProcessOfCombination As Integer = 58
-    Public Const rowRemarks As Integer = 59
+    Public Const rowTags As Integer = 59
+    Public Const rowRemarks As Integer = 60
 
     'Public Const rowContactPerson As Integer = 15
     'Public Const rowSalesTaxNo As Integer = 16
@@ -149,7 +150,7 @@ Public Class FrmPerson
     Public Const hcCombinationOfProcesses As String = "Combination Of Processes"
     Public Const hcFirstProcessOfCombination As String = "First Process Of Combination"
     Public Const hcLastProcessOfCombination As String = "Last Process Of Combination"
-
+    Public Const hcTags As String = "Tags"
 
 
 
@@ -715,6 +716,7 @@ Public Class FrmPerson
                 Dgl1.Item(Col1Value, rowChequeFormat).Tag = AgL.XNull(.Rows(0)("ChequeFormat"))
                 Dgl1.Item(Col1Value, rowChequeFormat).Value = AgL.XNull(.Rows(0)("ChequeFormatName"))
 
+                Dgl1(Col1Value, rowTags).Value = AgL.XNull(.Rows(0)("Tags"))
                 Dgl1.Item(Col1Value, rowContactPerson).Value = AgL.XNull(.Rows(0)("ContactPerson"))
                 Dgl1.Item(Col1Value, rowParent).Tag = AgL.XNull(.Rows(0)("Parent"))
                 Dgl1.Item(Col1Value, rowParent).Value = AgL.XNull(.Rows(0)("ParentName"))
@@ -1200,7 +1202,7 @@ Public Class FrmPerson
                 mQry = "INSERT INTO SubGroup(SubCode, Site_Code, Name, DispName, " &
                         " GroupCode, GroupNature, ManualCode, 	Nature,	Address, CityCode,  " &
                         " PIN, Phone,  ContactPerson, SubgroupType, ShowAccountInOtherDivisions, ShowAccountInOtherSites, WeekOffDays, Grade, TdsGroup, TdsCategory, " &
-                        " Religion, Caste, ReconciliationUpToDate, Remarks, " &
+                        " Religion, Caste, ReconciliationUpToDate, Tags, Remarks, " &
                         " Mobile, CreditDays, CreditLimit, FairDiscountPer, EMail, Parent, ChequeFormat, Area, InterestSlab, SalesTaxPostingGroup, SalesTaxGroupRegType, HSN, " &
                         " EntryBy, EntryDate,  EntryType, EntryStatus, Div_Code, Status) " &
                         " VALUES(" & AgL.Chk_Text(mSearchCode) & ", " &
@@ -1221,6 +1223,7 @@ Public Class FrmPerson
                         " " & AgL.Chk_Text(Dgl1(Col1Value, rowReligion).Tag) & ", " &
                         " " & AgL.Chk_Text(Dgl1(Col1Value, rowCaste).Tag) & ", " &
                         " " & AgL.Chk_Date(Dgl1(Col1Value, rowReconciliationUpToDate).Value) & ", " &
+                        " " & AgL.Chk_Text(Dgl1(Col1Value, rowTags).Value) & ", " &
                         " " & AgL.Chk_Text(Dgl1(Col1Value, rowRemarks).Value) & ", " &
                         " " & AgL.Chk_Text(Dgl1(Col1Value, rowMobile).Value) & ", " &
                         " " & Val(Dgl1(Col1Value, rowCreditDays).Value) & ", " &
@@ -1274,6 +1277,7 @@ Public Class FrmPerson
                         " Caste = " & AgL.Chk_Text(Dgl1(Col1Value, rowCaste).Tag) & ", " &
                         " ReconciliationUpToDate = " & AgL.Chk_Date(Dgl1(Col1Value, rowReconciliationUpToDate).Value) & ", " &
                         " FairDiscountPer = " & Val(Dgl1(Col1Value, rowFairDiscountPer).Value) & ", " &
+                        " Tags = " & AgL.Chk_Text(Dgl1(Col1Value, rowTags).Value) & ", " &
                         " Remarks = " & AgL.Chk_Text(Dgl1(Col1Value, rowRemarks).Value) & ", " &
                         " EntryType = " & AgL.Chk_Text(Topctrl1.Mode) & ", " &
                         " EntryStatus = " & AgL.Chk_Text(LogStatus.LogOpen) & ", " &
@@ -1544,8 +1548,21 @@ Public Class FrmPerson
             mQry = " Select Code From SiteMast With (NoLock) "
             DtTemp = AgL.FillData(mQry, AgL.GcnRead).Tables(0)
             For I = 0 To DtTemp.Rows.Count - 1
-                mQry = "Update SubGroupSiteDivisionDetail Set Distance=(Select Distance From CitySiteDivisionDetail Where CityCode = '" & Dgl1(Col1Value, rowCity).Tag & "' And Site_Code = '" & DtTemp.Rows(I)("Code") & "') 
-                        Where subcode = '" & mSearchCode & "'  And Site_Code = '" & DtTemp.Rows(I)("Code") & "' "
+                If ClsMain.FDivisionNameForCustomization(6) = "SADHVI" Then
+                    If Val(Dgl1.Item(Col1Value, rowDistance).Value) <> 0 Then
+                        mQry = "Update SubGroupSiteDivisionDetail Set Distance= " & Val(Dgl1.Item(Col1Value, rowDistance).Value) & " 
+                        Where subcode = '" & mSearchCode & "'  
+                        And Site_Code = '" & DtTemp.Rows(I)("Code") & "'"
+                    Else
+                        mQry = "Update SubGroupSiteDivisionDetail Set Distance=(Select Distance From CitySiteDivisionDetail Where CityCode = '" & Dgl1(Col1Value, rowCity).Tag & "' And Site_Code = '" & DtTemp.Rows(I)("Code") & "') 
+                        Where subcode = '" & mSearchCode & "'  
+                        And Site_Code = '" & DtTemp.Rows(I)("Code") & "'"
+                    End If
+                Else
+                    mQry = "Update SubGroupSiteDivisionDetail Set Distance=(Select Distance From CitySiteDivisionDetail Where CityCode = '" & Dgl1(Col1Value, rowCity).Tag & "' And Site_Code = '" & DtTemp.Rows(I)("Code") & "') 
+                        Where subcode = '" & mSearchCode & "'  
+                        And Site_Code = '" & DtTemp.Rows(I)("Code") & "' "
+                End If
                 AgL.Dman_ExecuteNonQry(mQry, AgL.GCn, AgL.ECmd)
             Next
 
@@ -1886,7 +1903,7 @@ Public Class FrmPerson
 
 
 
-        Dgl1.Rows.Add(60)
+        Dgl1.Rows.Add(61)
 
         Dgl1.Item(Col1Head, rowSubgroupType).Value = ConfigurableFields.FrmPersonHeaderDgl1.SubgroupType
         Dgl1.Item(Col1Head, rowCode).Value = ConfigurableFields.FrmPersonHeaderDgl1.Code
@@ -1947,6 +1964,7 @@ Public Class FrmPerson
         Dgl1.Item(Col1Head, rowCombinationOfProcesses).Value = hcCombinationOfProcesses
         Dgl1.Item(Col1Head, rowFirstProcessOfCombination).Value = hcFirstProcessOfCombination
         Dgl1.Item(Col1Head, rowLastProcessOfCombination).Value = hcLastProcessOfCombination
+        Dgl1.Item(Col1Head, rowTags).Value = hcTags
 
         Dgl1.Item(Col1Head, rowRemarks).Value = ConfigurableFields.FrmPersonHeaderDgl1.Remarks
         Dgl1.Rows(rowAddress).Height = 50
@@ -2045,6 +2063,9 @@ Public Class FrmPerson
                     CType(Dgl1.Columns(Col1Value), AgControls.AgTextColumn).AgNumberLeftPlaces = 2
                     CType(Dgl1.Columns(Col1Value), AgControls.AgTextColumn).AgNumberRightPlaces = 2
                     CType(Dgl1.Columns(Col1Value), AgControls.AgTextColumn).AgNumberNegetiveAllow = False
+
+                Case rowTags
+                    Dgl1.Item(Col1Value, rowTags).ReadOnly = True
             End Select
         Catch ex As Exception
             MsgBox(ex.Message)
@@ -4126,6 +4147,10 @@ Public Class FrmPerson
                         If e.KeyCode <> Keys.Enter And e.Control = False And e.Alt = False Then
                             Dgl1.Item(Col1Value, Dgl1.CurrentCell.RowIndex).Value = FHPGD_WeekOffDays()
                         End If
+                    Case rowTags
+                        If e.KeyCode <> Keys.Enter Then
+                            FHPGD_Tags()
+                        End If
                     Case rowProcesses
                         FHPGD_Process(Dgl1(Col1Value, Dgl1.CurrentCell.RowIndex).Tag, Dgl1(Col1Value, Dgl1.CurrentCell.RowIndex).Value)
                     Case rowProcessScopeOfWork
@@ -4324,6 +4349,28 @@ Public Class FrmPerson
                     And IfNull(Person,'') = '" & PersonExtraDiscountTable.Person & "' "
             AgL.Dman_ExecuteNonQry(mQry, AgL.GCn, AgL.ECmd)
         End If
+    End Sub
+    Private Sub FHPGD_Tags()
+        Dim FRH_Multiple As DMHelpGrid.FrmHelpGrid_Multi
+        Dim StrRtn As String = ""
+        Dim mLineCond As String = ""
+        Dim DtTemp As DataTable
+
+        mQry = " Select 'o' As Tick, T.Description, T.Description As Tag From Tag T "
+        DtTemp = AgL.FillData(mQry, AgL.GCn).Tables(0)
+
+        FRH_Multiple = New DMHelpGrid.FrmHelpGrid_Multi(New DataView(DtTemp), "", 300, 230, , , False)
+        FRH_Multiple.FFormatColumn(0, "Tick", 40, DataGridViewContentAlignment.MiddleCenter, True)
+        FRH_Multiple.FFormatColumn(1, , 0, , False)
+        FRH_Multiple.FFormatColumn(2, "Tag", 100, DataGridViewContentAlignment.MiddleLeft)
+        FRH_Multiple.StartPosition = FormStartPosition.CenterScreen
+        FRH_Multiple.ShowDialog()
+
+        If FRH_Multiple.BytBtnValue = 0 Then
+            Dgl1.Item(Col1Value, rowTags).Value = "+" + FRH_Multiple.FFetchData(2, "", "", "+")
+        End If
+
+        FRH_Multiple = Nothing
     End Sub
 
 

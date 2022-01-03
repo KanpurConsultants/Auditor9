@@ -121,6 +121,7 @@ Public Class ClsInputTaxRegister
             mPurchCondStr = mPurchCondStr & Replace(ReportFrm.GetWhereCondition("H.Site_Code", rowSite), "''", "'")
             mPurchCondStr = mPurchCondStr & Replace(ReportFrm.GetWhereCondition("H.Div_Code", rowDivision), "''", "'")
             mPurchCondStr = mPurchCondStr & ReportFrm.GetWhereCondition("H.Vendor", rowParty)
+            mPurchCondStr = mPurchCondStr & " And CharIndex('" & ClsMain.VoucherTypeTags.ExcludeInSalesTaxReturns & "','+' || IfNull(Vt.VoucherTypeTags,'')) = 0 "
 
             If ReportFrm.FGetText(rowGSTR2) = "Reconciled" Then
                 mPurchCondStr += " And CharIndex('+GSTR2', IsNull(L.Tags,'')) > 0 "
@@ -133,6 +134,7 @@ Public Class ClsInputTaxRegister
             mLedgerHeadCondStr = mLedgerHeadCondStr & Replace(ReportFrm.GetWhereCondition("H.Site_Code", rowSite), "''", "'")
             mLedgerHeadCondStr = mLedgerHeadCondStr & Replace(ReportFrm.GetWhereCondition("H.Div_Code", rowDivision), "''", "'")
             mLedgerHeadCondStr = mLedgerHeadCondStr & ReportFrm.GetWhereCondition("H.SubCode", rowParty)
+            mLedgerHeadCondStr = mLedgerHeadCondStr & " And CharIndex('" & ClsMain.VoucherTypeTags.ExcludeInSalesTaxReturns & "','+' || IfNull(Vt.VoucherTypeTags,'')) = 0 "
 
             If ReportFrm.FGetText(rowGSTR2) = "Reconciled" Then
                 mLedgerHeadCondStr += " And CharIndex('+GSTR2', IsNull(L.Tags,'')) > 0 "
@@ -164,7 +166,7 @@ Public Class ClsInputTaxRegister
                     left join SubGroup Sg On H.Vendor = Sg.SubCode
                     LEFT JOIN City C On H.VendorCity = C.CityCode
                     LEFT JOIN State S on C.State = S.Code " & mPurchCondStr &
-                    " And Vt.NCat = '" & Ncat.PurchaseInvoice & "'
+                    " And Vt.NCat In ('" & Ncat.PurchaseInvoice & "', '" & Ncat.JobInvoice & "')
                     And H.SalesTaxGroupParty In ('" & PostingGroupSalesTaxParty.Registered & "','" & PostingGroupSalesTaxParty.Composition & "') "
 
             mStrQry += " UNION ALL "
@@ -273,7 +275,7 @@ Public Class ClsInputTaxRegister
                     FSingleSelectForm(Col1Tags, bRowIndex, dsTemp)
 
 
-                    If ReportFrm.DGL1.Item(Col1NCat, bRowIndex).Value = Ncat.PurchaseInvoice Then
+                    If ReportFrm.DGL1.Item(Col1NCat, bRowIndex).Value = Ncat.PurchaseInvoice Or ReportFrm.DGL1.Item(Col1NCat, bRowIndex).Value = Ncat.JobInvoice Then
                         mQry = "Update PurchInvoiceDetail 
                             Set Tags = " & AgL.Chk_Text(ReportFrm.DGL1.Item(bColumnIndex, bRowIndex).Value) & " 
                             Where DocID = '" & ReportFrm.DGL1.Item(Col1SearchCode, bRowIndex).Value & "'

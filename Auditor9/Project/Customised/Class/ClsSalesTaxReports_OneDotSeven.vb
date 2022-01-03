@@ -75,6 +75,8 @@ Public Class ClsSalesTaxReports_OneDotSeven
     Private Const InterStateSuppliesToCompositionPerson As String = "Supplies made to Composition Person"
     Private Const InterStateSuppliesToUINholders As String = "Supplies made to UIN holders"
 
+    Private Const IntraStateExcemptAndNillRatedSupply As String = "Intra State Excempt And Nill Rated Supply"
+    Private Const IntraStateNonGSTSupplies As String = "Supplies made to UIN holders"
     Private Const InwardSuppliesLiableToReverseChargeOtherThan1And2 As String = "Inward supplies liable To reverse charge(other than 1 & 2 above)"
     Private Const AllOtherITC As String = "All other ITC"
     Private Const AllOtherITCVTypeWiseSummary As String = "All other ITC  [Summary]"
@@ -654,7 +656,7 @@ Public Class ClsSalesTaxReports_OneDotSeven
                     LEFT JOIN City C On H.SaleToPartyCity = C.CityCode
                     LEFT JOIN State S on C.State = S.Code " & mCondStr &
                     " And Vt.NCat = '" & Ncat.SaleInvoice & "' And IfNull(S.ManualCode,'') <> '00'
-                    And H.SalesTaxGroupParty In ('" & PostingGroupSalesTaxParty.Registered & "','" & PostingGroupSalesTaxParty.Composition & "') "
+                    And H.SalesTaxGroupParty In ('" & PostingGroupSalesTaxParty.Registered & "')"
 
         Return mStrQry
     End Function
@@ -1309,8 +1311,9 @@ Public Class ClsSalesTaxReports_OneDotSeven
 
 
 
-
-
+            Dim mGSTR1JsonVersion As String = ""
+            mGSTR1JsonVersion = ClsMain.FGetSettings(ClsMain.SettingFields.GSTR1JsonVersion, SettingType.General, "", "", "", "", "", "", "")
+            If mGSTR1JsonVersion = "" Then mGSTR1JsonVersion = "GST3.0.4"
 
             Dim fileExists As Boolean = File.Exists(sFilePath)
             If fileExists Then File.Delete(sFilePath)
@@ -1321,7 +1324,8 @@ Public Class ClsSalesTaxReports_OneDotSeven
                 sw.WriteLine(TabStr_1 + """fp"": """ & bMonthYear & """,")
                 'sw.WriteLine(TabStr_1 + """gt"": 2000000,")
                 'sw.WriteLine(TabStr_1 + """cur_gt"": 200000,")
-                sw.WriteLine(TabStr_1 + """version"": ""GST2.4"",")
+                'sw.WriteLine(TabStr_1 + """version"": ""GST2.4"",")
+                sw.WriteLine(TabStr_1 + """version"": """ & mGSTR1JsonVersion & """,")
                 sw.WriteLine(TabStr_1 + """hash"": ""hash"",")
 
                 'B2B
@@ -1586,7 +1590,7 @@ Public Class ClsSalesTaxReports_OneDotSeven
                     sw.WriteLine(TabStr_3 + "{")
                     sw.WriteLine(TabStr_4 + """num"": " & I + 1 & ",")
                     sw.WriteLine(TabStr_4 + """hsn_sc"": """ & DtTableHSN.Rows(I)("HSN") & """,")
-                    sw.WriteLine(TabStr_4 + """desc"": """ & FRemoveSpecialCharactersForGSTReturns(AgL.XNull(DtTableHSN.Rows(I)("ItemCategory"))) & """,")
+                    sw.WriteLine(TabStr_4 + """desc"": """ & FRemoveSpecialCharactersForGSTReturns(RTrim(AgL.XNull(DtTableHSN.Rows(I)("ItemCategory")))) & """,")
 
                     Dim UQC As String = AgL.XNull(DtTableHSN.Rows(I)("UQC")).ToString()
                     Dim UnitName As String
@@ -1596,6 +1600,9 @@ Public Class ClsSalesTaxReports_OneDotSeven
                         UnitName = ""
                     End If
 
+                    If Math.Round(AgL.VNull(DtTableHSN.Rows(I)("TotalQty")), 2) = 0 Then
+                        UnitName = "NA"
+                    End If
                     sw.WriteLine(TabStr_4 + """uqc"": """ & UnitName & """,")
                     sw.WriteLine(TabStr_4 + """qty"": " & Math.Round(AgL.VNull(DtTableHSN.Rows(I)("TotalQty")), 2) & ",")
                     'sw.WriteLine(TabStr_4 + """val"": " & Math.Round(AgL.VNull(DtTableHSN.Rows(I)("InvoiceValue")), 2) & ",")
@@ -1794,6 +1801,8 @@ Public Class ClsSalesTaxReports_OneDotSeven
                             mGridRow.Cells("Search Code").Value = InterStateSuppliesToCompositionPerson Or
                             mGridRow.Cells("Search Code").Value = InterStateSuppliesToUINholders Or
                             mGridRow.Cells("Search Code").Value = InwardSuppliesLiableToReverseChargeOtherThan1And2 Or
+                            mGridRow.Cells("Search Code").Value = IntraStateExcemptAndNillRatedSupply Or
+                            mGridRow.Cells("Search Code").Value = IntraStateNonGSTSupplies Or
                             mGridRow.Cells("Search Code").Value = AllOtherITC Or
                             mGridRow.Cells("Search Code").Value = OutwardTaxableSuppliesOtherThanZeroVTypeWiseSummary Or
                             mGridRow.Cells("Search Code").Value = AllOtherITCVTypeWiseSummary Then
@@ -1929,6 +1938,24 @@ Public Class ClsSalesTaxReports_OneDotSeven
                                 Sum(H.CentralTax) As CentralTax, Sum(H.StateTax) As StateTax, Sum(H.Cess) As Cess,
                                 Sum(H.TaxAmount) As TotalTaxAmount
                                 From (" + FGetAllOtherITC(mCondStrITC) + ") As H 
+                                Group By H.VoucherType "
+                    Case IntraStateExcemptAndNillRatedSupply
+                        mQry = "Select H.DocId As SearchCode, strftime('%d/%m/%Y', Max(H.VoucherDate)) As VoucherDate, Max(H.VoucherType) As VoucherType, 
+                                Max(H.VoucherNo) As VoucherNo, 
+                                Max(H.PartyDocNo) As PartyDocNo, strftime('%d/%m/%Y', Max(H.PartyDocDate)) As PartyDocDate, 
+                                Max(H.PartyName) As PartyName, Max(H.PartySalesTaxNo) As PartyGstNo, 
+                                Sum(H.TaxableValue) As TaxableValue, Sum(H.IntegratedTax) As IntegratedTax, 
+                                Sum(H.CentralTax) As CentralTax, Sum(H.StateTax) As StateTax, Sum(H.Cess) As Cess,
+                                Sum(H.TaxAmount) As TotalTaxAmount
+                                From (" + FGetCompositionExcemptedAndNillRated(mCondStr) + ") As H 
+                                Group By H.DocID "
+                    Case IntraStateNonGSTSupplies
+                        mQry = "Select '" & IntraStateNonGSTSupplies & "' As SearchCode, H.VoucherType, 
+                                Count(Distinct H.DocId) As VoucherCount,
+                                Sum(H.TaxableValue) As TaxableValue, Sum(H.IntegratedTax) As IntegratedTax, 
+                                Sum(H.CentralTax) As CentralTax, Sum(H.StateTax) As StateTax, Sum(H.Cess) As Cess,
+                                Sum(H.TaxAmount) As TotalTaxAmount
+                                From (" + FGetNonGSTSupplies(mCondStr) + ") As H 
                                 Group By H.VoucherType "
                 End Select
                 ReportFrm.Text = "GST Report" + " (" + ReportFrm.FGetText(rowReportType) + "-" + ReportFrm.FGetText(rowNextFormat).ToString.Replace("/", "-") + ")"
@@ -2129,14 +2156,14 @@ Public Class ClsSalesTaxReports_OneDotSeven
 
                 mQry5 = mQry5 + "UNION ALL "
 
-                mQry5 = mQry5 + " Select '' As SearchCode, '' As TableNo, 
+                mQry5 = mQry5 + " Select '" & IntraStateExcemptAndNillRatedSupply & "' As SearchCode, '' As TableNo, 
                         '   From a supplier under composition scheme, Exempt  and Nil rated supply',
                         Sum(H.Taxablevalue_IntraState) As TaxableValue, Sum(IfNull(H.TaxAmount_IntraState,0)) As TaxAmount 
                         From (" & FGetCompositionExcemptedAndNillRated(mCondStr) & ") As H "
 
                 mQry5 = mQry5 + "UNION ALL "
 
-                mQry5 = mQry5 + " Select '' As SearchCode, '' As TableNo, 
+                mQry5 = mQry5 + " Select '" & IntraStateNonGSTSupplies & "' As SearchCode, '' As TableNo, 
                         '   Non GST supply',
                         Sum(H.Taxablevalue_IntraState) As TaxableValue, Sum(IfNull(H.TaxAmount_IntraState,0)) As TaxAmount 
                         From (" & FGetNonGSTSupplies(mCondStr) & ") As H "
@@ -2300,7 +2327,7 @@ Public Class ClsSalesTaxReports_OneDotSeven
                                         '" & Ncat.PurchaseInvoice & "','" & Ncat.PurchaseReturn & "', '" & Ncat.ExpenseVoucher & "', '" & Ncat.IncomeVoucher & "', '" & Ncat.ReverseCharge & "', '" & Ncat.JobInvoice & "')"
             mCondStr = mCondStr & " AND Date(H.V_Date) Between " & AgL.Chk_Date(CDate(ReportFrm.FGetText(rowFromDate)).ToString("s")) & " And " & AgL.Chk_Date(CDate(ReportFrm.FGetText(rowToDate)).ToString("s")) & " "
             mCondStr = mCondStr & " And CharIndex('" & ClsMain.VoucherTypeTags.ExcludeInSalesTaxReturns & "','+' || IfNull(Vt.VoucherTypeTags,'')) = 0 "
-
+            mCondStr = mCondStr & " And Vt.Nature In ('Invoice','Return') "
 
 
             mCondStrITC = " Where 1=1"
@@ -2689,8 +2716,8 @@ Public Class ClsSalesTaxReports_OneDotSeven
                     S.Description As PlaceOfSupply,
                     CASE when H.SalesTaxGroupParty = '" & PostingGroupSalesTaxParty.Unregistered & "' THEN L.Taxable_Amount Else 0 END As Taxablevalue_Unregistered,
                     CASE when H.SalesTaxGroupParty = '" & PostingGroupSalesTaxParty.Unregistered & "' THEN IfNull(L.Tax1,0) + IfNull(L.Tax2,0) + IfNull(L.Tax3,0) Else 0 END As IntegratedTax_Unregistered,
-                    CASE when H.SalesTaxGroupParty = '" & PostingGroupSalesTaxParty.Composition & "' THEN L.Taxable_Amount Else 0 END As Taxablevalue_Composition,
-                    CASE when H.SalesTaxGroupParty = '" & PostingGroupSalesTaxParty.Composition & "' THEN IfNull(L.Tax1,0) + IfNull(L.Tax2,0) + IfNull(L.Tax3,0) Else 0 END As IntegratedTax_Composition,
+                    CASE when H.SalesTaxGroupParty = '" & PostingGroupSalesTaxParty.Registered & "' And IfNull(H.SalesTaxGroupRegType,'') = 'COMPOSITION' THEN L.Taxable_Amount Else 0 END As Taxablevalue_Composition,
+                    CASE when H.SalesTaxGroupParty = '" & PostingGroupSalesTaxParty.Registered & "' And IfNull(H.SalesTaxGroupRegType,'') = 'COMPOSITION' THEN IfNull(L.Tax1,0) + IfNull(L.Tax2,0) + IfNull(L.Tax3,0) Else 0 END As IntegratedTax_Composition,
                     0 As Taxablevalue_UINholders,
                     0 As IntegratedTax_UINholders
                     From SaleInvoice H 
@@ -2736,7 +2763,7 @@ Public Class ClsSalesTaxReports_OneDotSeven
                     LEFT JOIN LedgerHeadDetailCharges Lc ON L.DocID = Lc.DocID AND L.Sr = Lc.Sr
                     LEFT JOIN Voucher_Type Vt On H.V_Type = Vt.V_Type 
                     LEFT JOIN Subgroup Sg ON L.Subcode = Sg.Subcode " & mCondStr &
-                    " AND ifNull(Date(H.GstInputCreditDate),IfNull(Date(H.GstFilingDate),Date(H.V_date))) Between " & AgL.Chk_Date(CDate(ReportFrm.FGetText(rowFromDate)).ToString("s")) & " And " & AgL.Chk_Date(CDate(ReportFrm.FGetText(rowToDate)).ToString("s")) & "                                    
+                    " AND ifNull(Date(H.GstInputCreditDate),IfNull(Date(H.GstFilingDate), Date(H.V_date))) Between " & AgL.Chk_Date(CDate(ReportFrm.FGetText(rowFromDate)).ToString("s")) & " And " & AgL.Chk_Date(CDate(ReportFrm.FGetText(rowToDate)).ToString("s")) & "                                    
                     And Vt.NCat = '" & Ncat.ReverseCharge & "'"
         Return mStrQry
     End Function
@@ -2770,8 +2797,7 @@ Public Class ClsSalesTaxReports_OneDotSeven
                         From LedgerHead H 
                         Left Join LedgerHeadDetailCharges L On H.DocId = L.DocId 
                         Left Join Voucher_Type Vt On H.V_Type = Vt.V_Type " & mCondStr &
-                        "              
-                        AND ifNull(Date(H.GstInputCreditDate),IfNull(Date(H.GstFilingDate),Date(H.V_date))) Between " & AgL.Chk_Date(CDate(ReportFrm.FGetText(rowFromDate)).ToString("s")) & " And " & AgL.Chk_Date(CDate(ReportFrm.FGetText(rowToDate)).ToString("s")) & "                                    
+                        " AND ifNull(Date(H.GstInputCreditDate),IfNull(Date(H.GstFilingDate),Date(H.V_date))) Between " & AgL.Chk_Date(CDate(ReportFrm.FGetText(rowFromDate)).ToString("s")) & " And " & AgL.Chk_Date(CDate(ReportFrm.FGetText(rowToDate)).ToString("s")) & "                                    
                         And H.V_Type In ('" & Ncat.DebitNoteSupplier & "', 
                                 '" & Ncat.CreditNoteSupplier & "', 
                                 '" & Ncat.ExpenseVoucher & "')"
@@ -2821,7 +2847,11 @@ Public Class ClsSalesTaxReports_OneDotSeven
                         CASE when H.PlaceOfSupply = '" & PlaceOfSupplay.OutsideState & "' THEN L.Taxable_Amount Else 0 END As Taxablevalue_InterState,
                         CASE when H.PlaceOfSupply = '" & PlaceOfSupplay.OutsideState & "' THEN IfNull(L.Tax1,0) + IfNull(L.Tax2,0) + IfNull(L.Tax3,0) Else 0 END As TaxAmount_InterState,
                         CASE when H.PlaceOfSupply = '" & PlaceOfSupplay.WithinState & "' THEN L.Taxable_Amount Else 0 END As Taxablevalue_IntraState,
-                        CASE when H.PlaceOfSupply = '" & PlaceOfSupplay.WithinState & "' THEN IfNull(L.Tax1,0) + IfNull(L.Tax2,0) + IfNull(L.Tax3,0) Else 0 END As TaxAmount_IntraState
+                        CASE when H.PlaceOfSupply = '" & PlaceOfSupplay.WithinState & "' THEN IfNull(L.Tax1,0) + IfNull(L.Tax2,0) + IfNull(L.Tax3,0) Else 0 END As TaxAmount_IntraState,
+                        H.V_Date As VoucherDate, Vt.Description As VoucherType, H.VendorName As PartyName, H.VendorSalesTaxNo As PartySalesTaxNo, H.ManualRefNo As VoucherNo, 
+                        H.VendorDocNo As PartyDocNo, H.VendorDocDate As PartyDocDate,
+                        L.Taxable_Amount as TaxableValue, L.Tax1 As IntegratedTax, L.Tax2 As CentralTax, L.Tax3 As StateTax, 0 As Cess,
+                        IfNull(L.Tax1,0) + IfNull(L.Tax2,0) + IfNull(L.Tax3,0) + IfNull(L.Tax4,0) As TaxAmount
                         From PurchInvoice H 
                         LEFT JOIN Voucher_Type Vt On H.V_Type = Vt.V_Type
                         left join PurchInvoiceDetail L On H.DocID = L.DocID " & mCondStr &
@@ -2833,7 +2863,11 @@ Public Class ClsSalesTaxReports_OneDotSeven
                         CASE when H.PlaceOfSupply = '" & PlaceOfSupplay.OutsideState & "' THEN L.Taxable_Amount Else 0 END As Taxablevalue_InterState,
                         CASE when H.PlaceOfSupply = '" & PlaceOfSupplay.OutsideState & "' THEN IfNull(L.Tax1,0) + IfNull(L.Tax2,0) + IfNull(L.Tax3,0) Else 0 END As TaxAmount_InterState,
                         CASE when H.PlaceOfSupply = '" & PlaceOfSupplay.WithinState & "' THEN L.Taxable_Amount Else 0 END As Taxablevalue_IntraState,
-                        CASE when H.PlaceOfSupply = '" & PlaceOfSupplay.WithinState & "' THEN IfNull(L.Tax1,0) + IfNull(L.Tax2,0) + IfNull(L.Tax3,0) Else 0 END As TaxAmount_IntraState
+                        CASE when H.PlaceOfSupply = '" & PlaceOfSupplay.WithinState & "' THEN IfNull(L.Tax1,0) + IfNull(L.Tax2,0) + IfNull(L.Tax3,0) Else 0 END As TaxAmount_IntraState,
+                        H.V_Date As VoucherDate, Vt.Description As VoucherType, H.VendorName As PartyName, H.VendorSalesTaxNo As PartySalesTaxNo, H.ManualRefNo As VoucherNo, 
+                        H.VendorDocNo As PartyDocNo, H.VendorDocDate As PartyDocDate,
+                        L.Taxable_Amount as TaxableValue, L.Tax1 As IntegratedTax, L.Tax2 As CentralTax, L.Tax3 As StateTax, 0 As Cess,
+                        IfNull(L.Tax1,0) + IfNull(L.Tax2,0) + IfNull(L.Tax3,0) + IfNull(L.Tax4,0) As TaxAmount
                         From PurchInvoice H 
                         LEFT JOIN Voucher_Type Vt On H.V_Type = Vt.V_Type
                         left join PurchInvoiceDetail L On H.DocID = L.DocID " & mCondStr &
@@ -2918,6 +2952,7 @@ Public Class ClsSalesTaxReports_OneDotSeven
                                         '" & Ncat.PurchaseInvoice & "','" & Ncat.PurchaseReturn & "', '" & Ncat.ExpenseVoucher & "', '" & Ncat.IncomeVoucher & "', '" & Ncat.ReverseCharge & "')"
             mCondStr = mCondStr & " AND Date(H.V_Date) Between " & AgL.Chk_Date(CDate(ReportFrm.FGetText(rowFromDate)).ToString("s")) & " And " & AgL.Chk_Date(CDate(ReportFrm.FGetText(rowToDate)).ToString("s")) & " "
             mCondStr = mCondStr & " And CharIndex('" & ClsMain.VoucherTypeTags.ExcludeInSalesTaxReturns & "','+' || IfNull(Vt.VoucherTypeTags,'')) = 0 "
+            mCondStr = mCondStr & " And Vt.Nature In ('Invoice','Return') "
 
 
             mCondStrITC = " Where 1=1"

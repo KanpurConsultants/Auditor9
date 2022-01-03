@@ -170,7 +170,7 @@ Public Class ClsGstInputTaxReport
                 End If
             End If
 
-            mCondStr = " Where VT.NCat In ('" & Ncat.PurchaseInvoice & "', '" & Ncat.PurchaseReturn & "') "
+            mCondStr = " Where VT.NCat In ('" & Ncat.PurchaseInvoice & "', '" & Ncat.PurchaseReturn & "', '" & Ncat.JobInvoice & "') "
 
             If ReportFrm.FGetText(rowFilterOnDate) = "Vendor Doc Date" Then
                 mCondStr = mCondStr & " AND Date(H.VendorDocDate) Between " & AgL.Chk_Date(CDate(ReportFrm.FGetText(rowFromDate)).ToString("s")) & " And " & AgL.Chk_Date(CDate(ReportFrm.FGetText(rowToDate)).ToString("s")) & " "
@@ -184,7 +184,7 @@ Public Class ClsGstInputTaxReport
             mCondStr = mCondStr & Replace(ReportFrm.GetWhereCondition("Vt.Description", rowV_Type), "''", "'")
             mCondStr = mCondStr & Replace(ReportFrm.GetWhereCondition("H.SalesTaxGroupParty", rowPartyTaxGroup), "''", "'")
             mCondStr = mCondStr & Replace(ReportFrm.GetWhereCondition("L.SalesTaxGroupItem", rowItemTaxGroup), "''", "'")
-
+            mCondStr = mCondStr & " And CharIndex('" & ClsMain.VoucherTypeTags.ExcludeInSalesTaxReturns & "','+' || IfNull(Vt.VoucherTypeTags,'')) = 0 "
 
 
 
@@ -201,7 +201,7 @@ Public Class ClsGstInputTaxReport
             mLedgerHeadCondStr = mLedgerHeadCondStr & Replace(ReportFrm.GetWhereCondition("Vt.Description", rowV_Type), "''", "'")
             mLedgerHeadCondStr = mLedgerHeadCondStr & Replace(ReportFrm.GetWhereCondition("H.SalesTaxGroupParty", rowPartyTaxGroup), "''", "'")
             mLedgerHeadCondStr = mLedgerHeadCondStr & Replace(ReportFrm.GetWhereCondition("L.SalesTaxGroupItem", rowItemTaxGroup), "''", "'")
-
+            mLedgerHeadCondStr = mLedgerHeadCondStr & " And CharIndex('" & ClsMain.VoucherTypeTags.ExcludeInSalesTaxReturns & "','+' || IfNull(Vt.VoucherTypeTags,'')) = 0 "
 
             mMainQry = " SELECT H.DocID, H.V_Type, Vt.Description as VoucherType, 
                     H.Site_Code, H.Div_Code, 

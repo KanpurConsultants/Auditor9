@@ -61,6 +61,7 @@ Public Class ClsPurchaseReport
     Dim rowOrderBy As Integer = 24
     Dim rowPartyTaxGroup As Integer = 25
     Dim rowItemTaxGroup As Integer = 26
+    Dim rowPartyTags As Integer = 27
 
     'Dim rowTransporter As Integer = 22
     'Dim rowLRNo As Integer = 23
@@ -104,6 +105,7 @@ Public Class ClsPurchaseReport
     Public Shared mHelpCustomerQry$ = " Select 'o' As Tick,  Sg.SubCode As Code, Sg.DispName || ',' ||  City.CityName AS Party, Sg.Address FROM SubGroup Sg Left Join City On Sg.CityCode = City.CityCode Where Sg.Nature In ('Customer','Cash') "
     Public Shared mHelpPartyTaxGroup$ = "SELECT 'o' As Tick, H.Description AS Code, H.Description FROM PostingGroupSalesTaxParty H  "
     Public Shared mHelpItemTaxGroup$ = "SELECT 'o' As Tick, H.Description AS Code, H.Description FROM PostingGroupSalesTaxItem H  "
+    Public Shared mHelpPartyTagQry$ = "Select Distinct 'o' As Tick, H.Tags as Code, H.Tags as Description  FROM SubGroup H "
 
     Public Sub Ini_Grid()
         Try
@@ -163,6 +165,7 @@ Public Class ClsPurchaseReport
 
             ReportFrm.CreateHelpGrid("Party Tax Group", "Party Tax Group", FrmRepDisplay.FieldFilterDataType.StringType, FrmRepDisplay.FieldDataType.MultiSelection, mHelpPartyTaxGroup)
             ReportFrm.CreateHelpGrid("Item Tax Group", "Item Tax Group", FrmRepDisplay.FieldFilterDataType.StringType, FrmRepDisplay.FieldDataType.MultiSelection, mHelpItemTaxGroup)
+            ReportFrm.CreateHelpGrid("PartyTags", "Party Tags", FrmRepDisplay.FieldFilterDataType.StringType, FrmRepDisplay.FieldDataType.MultiSelection, mHelpPartyTagQry)
         Catch ex As Exception
             MsgBox(ex.Message)
         End Try
@@ -181,6 +184,7 @@ Public Class ClsPurchaseReport
             Dim mCondStr$ = ""
             Dim strGrpFld As String = "''", strGrpFldHead As String = "''", strGrpFldDesc As String = "''"
             Dim mTags As String() = Nothing
+            Dim mPartyTags As String() = Nothing
             Dim J As Integer
 
 
@@ -290,6 +294,13 @@ Public Class ClsPurchaseReport
                 mTags = ReportFrm.FGetText(rowTags).ToString.Split(",")
                 For J = 0 To mTags.Length - 1
                     mCondStr += " And CharIndex('+' || '" & mTags(J) & "',H.Tags) > 0 "
+                Next
+            End If
+
+            If ReportFrm.FGetText(rowPartyTags) <> "All" Then
+                mPartyTags = ReportFrm.FGetText(rowPartyTags).ToString.Split(",")
+                For J = 0 To mPartyTags.Length - 1
+                    mCondStr += " And CharIndex('" & mPartyTags(J) & "',Party.Tags) > 0 "
                 Next
             End If
 

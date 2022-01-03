@@ -49,6 +49,7 @@ Public Class ClsStockReport
     Public rowValuationPercentage As Integer = 20
     Public rowSite As Integer = 21
     Public rowDivision As Integer = 22
+    Public rowIncludeOpening As Integer = 23
 
     Dim IsLastPurchaseRateUpdated As Boolean = False
     Dim IsMultiItemStockLedgerAllowedProgramatically As Boolean = False
@@ -166,6 +167,7 @@ Public Class ClsStockReport
             ReportFrm.CreateHelpGrid("ValuationPercentage", "Valuation Percentage", AgLibrary.FrmReportLayout.FieldFilterDataType.NumericType, AgLibrary.FrmReportLayout.FieldDataType.NumericType, "", "")
             ReportFrm.CreateHelpGrid("Site", "Site", FrmRepDisplay.FieldFilterDataType.StringType, FrmRepDisplay.FieldDataType.MultiSelection, mHelpSiteQry, "[SITECODE]")
             ReportFrm.CreateHelpGrid("Division", "Division", FrmRepDisplay.FieldFilterDataType.StringType, FrmRepDisplay.FieldDataType.MultiSelection, mHelpDivisionQry, "[DIVISIONCODE]")
+            ReportFrm.CreateHelpGrid("IncludeOpening", "Include Opening", FrmRepDisplay.FieldFilterDataType.StringType, FrmRepDisplay.FieldDataType.SingleSelection, mHelpYesNoQry, "Yes")
         Catch ex As Exception
             MsgBox(ex.Message)
         End Try
@@ -588,7 +590,8 @@ Public Class ClsStockReport
             End If
 
             Dim mMainQry As String = ""
-            mMainQry = " SELECT ' Opening' as DocID, ' Opening' V_Type, ' 0' as RecId, strftime('%d/%m/%Y', " & AgL.Chk_Date(ReportFrm.FGetText(rowFromDate)) & ")  V_Date, " & AgL.Chk_Date(ReportFrm.FGetText(rowFromDate)) & "  V_Date_ActualFormat
+            If ReportFrm.FGetText(rowIncludeOpening) = "Yes" Then
+                mMainQry = " SELECT ' Opening' as DocID, ' Opening' V_Type, ' 0' as RecId, strftime('%d/%m/%Y', " & AgL.Chk_Date(ReportFrm.FGetText(rowFromDate)) & ")  V_Date, " & AgL.Chk_Date(ReportFrm.FGetText(rowFromDate)) & "  V_Date_ActualFormat
                     , Null as PartyName, Max(Location.Name) as LocationName
                     , Sku.Code AS SkuCode, Max(Sku.Description) AS SkuName 
                     , Max(Sku.Specification) as SkuSpecification
@@ -653,9 +656,10 @@ Public Class ClsStockReport
                                      Group By RLD.ItemCategory, RLD.Dimension1, RLD.Size
                                      ) as RList On IC.Code = RList.ItemCategory and D1.Code = RList.Dimension1 and size.Code = RList.Size "
             mMainQry += " WHERE L.V_Date < " & AgL.Chk_Date(ReportFrm.FGetText(rowFromDate)) & " " & mCondStr & "
-                    GROUP BY Sku.Code , L.Godown
-                    Union All
-                    SELECT L.DocID, L.V_Type, L.RecId, 
+                    GROUP BY Sku.Code , L.Godown 
+                    Union All "
+            End If
+            mMainQry += " Select L.DocID, L.V_Type, L.RecId, 
                     strftime('%d/%m/%Y', L.V_Date) As V_Date, L.V_Date As V_Date_ActualFormat
                     , Sg.Name as PartyName, Location.Name as LocationName
                     , Sku.Code AS SkuCode, Sku.Description AS SkuName

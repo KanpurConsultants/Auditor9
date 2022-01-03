@@ -126,7 +126,7 @@ Public Class FrmPurchInvoiceDirect
     Public WithEvents LblShipToParty As Label
     Friend WithEvents MnuShowLedgerPosting As ToolStripMenuItem
     Dim mFirstInvoiceForSelectedParty As Boolean = False
-
+    Friend WithEvents MnuPrintBulk As ToolStripMenuItem
     Dim mFullItemListInHelp As Boolean = False
 
     Public Sub New(ByVal StrUPVar As String, ByVal DTUP As DataTable, ByVal strNCat As String)
@@ -199,6 +199,7 @@ Public Class FrmPurchInvoiceDirect
         Me.BtnAttachments = New System.Windows.Forms.Button()
         Me.TxtShipToParty = New AgControls.AgTextBox()
         Me.LblShipToParty = New System.Windows.Forms.Label()
+        Me.MnuPrintBulk = New System.Windows.Forms.ToolStripMenuItem()
         Me.GroupBox2.SuspendLayout()
         Me.GBoxMoveToLog.SuspendLayout()
         Me.GBoxApprove.SuspendLayout()
@@ -1065,9 +1066,9 @@ Public Class FrmPurchInvoiceDirect
         '
         'MnuOptions
         '
-        Me.MnuOptions.Items.AddRange(New System.Windows.Forms.ToolStripItem() {Me.MnuImportFromExcel, Me.MnuImportFromDos, Me.MnuImportFromTally, Me.MnuEditSave, Me.MnuGenerateEWayBill, Me.MnuRequestForPermission, Me.MnuReferenceEntries, Me.MnuShowLedgerPosting, Me.MnuHistory})
+        Me.MnuOptions.Items.AddRange(New System.Windows.Forms.ToolStripItem() {Me.MnuImportFromExcel, Me.MnuImportFromDos, Me.MnuImportFromTally, Me.MnuEditSave, Me.MnuGenerateEWayBill, Me.MnuRequestForPermission, Me.MnuReferenceEntries, Me.MnuShowLedgerPosting, Me.MnuHistory, Me.MnuPrintBulk})
         Me.MnuOptions.Name = "MnuOptions"
-        Me.MnuOptions.Size = New System.Drawing.Size(198, 202)
+        Me.MnuOptions.Size = New System.Drawing.Size(198, 246)
         '
         'MnuImportFromExcel
         '
@@ -1233,6 +1234,12 @@ Public Class FrmPurchInvoiceDirect
         Me.LblShipToParty.TabIndex = 3009
         Me.LblShipToParty.Text = "Ship To Party"
         Me.LblShipToParty.Visible = False
+        '
+        'MnuPrintBulk
+        '
+        Me.MnuPrintBulk.Name = "MnuPrintBulk"
+        Me.MnuPrintBulk.Size = New System.Drawing.Size(197, 22)
+        Me.MnuPrintBulk.Text = "Print Bulk"
         '
         'FrmPurchInvoiceDirect
         '
@@ -2101,24 +2108,24 @@ Public Class FrmPurchInvoiceDirect
         'If Val(Dgl1.Item(Col1DiscountPer, LineGridRowIndex).Value) > 0 Then
         If Val(Dgl1.Item(Col1PersonalDiscountPer, LineGridRowIndex).Value) = 0 And Val(Dgl1.Item(Col1DiscountPer, LineGridRowIndex).Value) <> Val(Dgl1.Item(Col1DefaultDiscountPer, LineGridRowIndex).Value) Then
 
-                If AgL.Dman_Execute("Select Count(*) From ItemGroupPerson With (NoLock) Where ItemCategory = " & AgL.Chk_Text(Dgl1.Item(Col1ItemCategory, LineGridRowIndex).Tag) & "
+            If AgL.Dman_Execute("Select Count(*) From ItemGroupPerson With (NoLock) Where ItemCategory = " & AgL.Chk_Text(Dgl1.Item(Col1ItemCategory, LineGridRowIndex).Tag) & "
                     And ItemGroup = " & AgL.Chk_Text(Dgl1.Item(Col1ItemGroup, LineGridRowIndex).Tag) & "
                     And Person = " & AgL.Chk_Text(TxtVendor.Tag) & "", IIf(AgL.PubServerName = "", Conn, AgL.GcnRead)).ExecuteScalar = 0 Then
 
 
-                    mQry = " Insert Into ItemGroupPerson
+                mQry = " Insert Into ItemGroupPerson
                             (ItemCategory, ItemGroup, Person, DiscountCalculationPattern, DiscountPer, AdditionalDiscountCalculationPattern, AdditionalDiscountPer, AdditionCalculationPattern, AdditionPer)
                             Values
                             (" & AgL.Chk_Text(Dgl1.Item(Col1ItemCategory, LineGridRowIndex).Tag) & "," & AgL.Chk_Text(Dgl1.Item(Col1ItemGroup, LineGridRowIndex).Tag) & ", " & AgL.Chk_Text(TxtVendor.Tag) & ",
                              " & AgL.Chk_Text(Dgl1(Col1DiscountCalculationPattern, LineGridRowIndex).Value) & "," & Val(Dgl1.Item(Col1DiscountPer, LineGridRowIndex).Value) & ", " & AgL.Chk_Text(Dgl1(Col1AdditionalDiscountCalculationPattern, LineGridRowIndex).Value) & ", " & Val(Dgl1.Item(Col1AdditionalDiscountPer, LineGridRowIndex).Value) & ", " & AgL.Chk_Text(Dgl1(Col1AdditionCalculationPattern, LineGridRowIndex).Value) & ", " & Val(Dgl1.Item(Col1AdditionPer, LineGridRowIndex).Value) & "
                             )
                            "
-                    AgL.Dman_ExecuteNonQry(mQry, Conn, Cmd)
-                End If
-                'ElseIf Val(Dgl1.Item(Col1PersonalDiscountPer, LineGridRowIndex).Value) > 0 And Val(Dgl1.Item(Col1PersonalDiscountPer, LineGridRowIndex).Value) <> Val(Dgl1.Item(Col1DiscountPer, LineGridRowIndex).Value) Then
-            ElseIf Val(Dgl1.Item(Col1PersonalDiscountPer, LineGridRowIndex).Value) <> Val(Dgl1.Item(Col1DiscountPer, LineGridRowIndex).Value) Or
+                AgL.Dman_ExecuteNonQry(mQry, Conn, Cmd)
+            End If
+            'ElseIf Val(Dgl1.Item(Col1PersonalDiscountPer, LineGridRowIndex).Value) > 0 And Val(Dgl1.Item(Col1PersonalDiscountPer, LineGridRowIndex).Value) <> Val(Dgl1.Item(Col1DiscountPer, LineGridRowIndex).Value) Then
+        ElseIf Val(Dgl1.Item(Col1PersonalDiscountPer, LineGridRowIndex).Value) <> Val(Dgl1.Item(Col1DiscountPer, LineGridRowIndex).Value) Or
                 Val(Dgl1.Item(Col1PersonalAdditionalDiscountPer, LineGridRowIndex).Value) <> Val(Dgl1.Item(Col1AdditionalDiscountPer, LineGridRowIndex).Value) Then
-                mQry = "
+            mQry = "
                                 Update ItemGroupPerson 
                                 Set 
                                 DiscountCalculationPattern = " & AgL.Chk_Text(Dgl1(Col1DiscountCalculationPattern, LineGridRowIndex).Value) & ",
@@ -2131,8 +2138,8 @@ Public Class FrmPurchInvoiceDirect
                                 And ItemGroup=" & AgL.Chk_Text(Dgl1.Item(Col1ItemGroup, LineGridRowIndex).Tag) & "
                                 And Person=" & AgL.Chk_Text(TxtVendor.Tag) & "
                                "
-                AgL.Dman_ExecuteNonQry(mQry, Conn, Cmd)
-            End If
+            AgL.Dman_ExecuteNonQry(mQry, Conn, Cmd)
+        End If
         'End If
     End Sub
 
@@ -2546,29 +2553,29 @@ Public Class FrmPurchInvoiceDirect
 
 
                         BtnFillPartyDetail.Tag = Nothing
-                            ShowPurchaseInvoiceParty("", TxtVendor.Tag, TxtNature.Text, True)
+                        ShowPurchaseInvoiceParty("", TxtVendor.Tag, TxtNature.Text, True)
 
 
-                            mQry = "Select H.Agent,Agent.Name as AgentName
+                        mQry = "Select H.Agent,Agent.Name as AgentName
                                     From SubgroupSiteDivisionDetail H  With (NoLock)                                   
                                     Left Join viewHelpSubgroup agent  With (NoLock) On H.Agent = Agent.Code                                    
                                     Where Subcode = '" & TxtVendor.Tag & "'"
-                            DtTemp = AgL.FillData(mQry, AgL.GCn).Tables(0)
-                            If DtTemp.Rows.Count > 0 Then
+                        DtTemp = AgL.FillData(mQry, AgL.GCn).Tables(0)
+                        If DtTemp.Rows.Count > 0 Then
 
-                                TxtAgent.Tag = AgL.XNull(DtTemp.Rows(0)("Agent"))
-                                TxtAgent.Text = AgL.XNull(DtTemp.Rows(0)("AgentName"))
-                            End If
-
-                            Dgl1.AgHelpDataSet(Col1ReferenceNo) = Nothing
-                            If Val(LblTotalAmount.Text) > 0 Then Calculation()
-
-
-                            FGetCurrBal(TxtVendor.Tag)
-
+                            TxtAgent.Tag = AgL.XNull(DtTemp.Rows(0)("Agent"))
+                            TxtAgent.Text = AgL.XNull(DtTemp.Rows(0)("AgentName"))
                         End If
 
-                        Case TxtReferenceNo.Name
+                        Dgl1.AgHelpDataSet(Col1ReferenceNo) = Nothing
+                        If Val(LblTotalAmount.Text) > 0 Then Calculation()
+
+
+                        FGetCurrBal(TxtVendor.Tag)
+
+                    End If
+
+                Case TxtReferenceNo.Name
                     e.Cancel = Not AgTemplate.ClsMain.FCheckDuplicateRefNo("ManualRefNo", "PurchInvoice",
                                     TxtV_Type.AgSelectedValue, TxtV_Date.Text, TxtDivision.AgSelectedValue,
                                     TxtSite_Code.AgSelectedValue, Topctrl1.Mode,
@@ -2715,7 +2722,7 @@ Public Class FrmPurchInvoiceDirect
 
                     'If CType(AgL.VNull(DtV_TypeSettings.Rows(0)("IsVisible_TransactionHistory")), Boolean) = True Then
                     FShowTransactionHistory(Dgl1.Item(Col1Item, mRowIndex).Tag)
-                    'End If
+                'End If
 
                 Case Col1ItemCode
                     Validating_ItemCode(mColumnIndex, mRowIndex, DrTemp)
@@ -2723,7 +2730,7 @@ Public Class FrmPurchInvoiceDirect
 
                     'If CType(AgL.VNull(DtV_TypeSettings.Rows(0)("IsVisible_TransactionHistory")), Boolean) = True Then
                     FShowTransactionHistory(Dgl1.Item(Col1Item, mRowIndex).Tag)
-                    'End If
+                'End If
 
                 Case Col1LRNo
                     If Dgl1.Item(Col1LRNo, mRowIndex).Value <> "" Then
@@ -2839,7 +2846,7 @@ Public Class FrmPurchInvoiceDirect
                 If Val(Dgl1.Item(Col1AdditionalDiscountPer, I).Value) > 0 Then
                     If AgL.XNull(Dgl1(Col1AdditionalDiscountCalculationPattern, I).Value).ToUpper = DiscountCalculationPattern.RatePerQty.ToUpper Then
                         Dgl1.Item(Col1AdditionalDiscountAmount, I).Value = Format(Val(Dgl1.Item(Col1DocQty, I).Value) * Val(Dgl1.Item(Col1AdditionalDiscountPer, I).Value), "0.00")
-                    ElseIf agl.XNull(Dgl1(Col1AdditionalDiscountCalculationPattern, I).Value).ToUpper = DiscountCalculationPattern.Percentage.ToUpper Then
+                    ElseIf AgL.XNull(Dgl1(Col1AdditionalDiscountCalculationPattern, I).Value).ToUpper = DiscountCalculationPattern.Percentage.ToUpper Then
                         Dgl1.Item(Col1AdditionalDiscountAmount, I).Value = Format(Val(Dgl1.Item(Col1Amount, I).Value) * Val(Dgl1.Item(Col1AdditionalDiscountPer, I).Value) / 100, "0.00")
                     Else
                         Dgl1.Item(Col1AdditionalDiscountAmount, I).Value = Format((Val(Dgl1.Item(Col1Amount, I).Value) - Val(Dgl1.Item(Col1DiscountAmount, I).Value)) * Val(Dgl1.Item(Col1AdditionalDiscountPer, I).Value) / 100, "0.00")
@@ -2850,7 +2857,7 @@ Public Class FrmPurchInvoiceDirect
                 If Val(Dgl1.Item(Col1AdditionPer, I).Value) > 0 Then
                     If AgL.XNull(Dgl1(Col1AdditionCalculationPattern, I).Value).ToUpper = DiscountCalculationPattern.RatePerQty.ToUpper Then
                         Dgl1.Item(Col1AdditionAmount, I).Value = Format(Val(Dgl1.Item(Col1DocQty, I).Value) * Val(Dgl1.Item(Col1AdditionPer, I).Value), "0.00")
-                    ElseIf agl.XNull(Dgl1(Col1AdditionCalculationPattern, I).Value).ToUpper = DiscountCalculationPattern.Percentage.ToUpper Then
+                    ElseIf AgL.XNull(Dgl1(Col1AdditionCalculationPattern, I).Value).ToUpper = DiscountCalculationPattern.Percentage.ToUpper Then
                         Dgl1.Item(Col1AdditionAmount, I).Value = Format(Val(Dgl1.Item(Col1Amount, I).Value) * Val(Dgl1.Item(Col1AdditionPer, I).Value) / 100, "0.00")
                     Else
                         Dgl1.Item(Col1AdditionAmount, I).Value = Format((Val(Dgl1.Item(Col1Amount, I).Value) - Val(Dgl1.Item(Col1DiscountAmount, I).Value) - Val(Dgl1.Item(Col1AdditionalDiscountAmount, I).Value)) * Val(Dgl1.Item(Col1AdditionPer, I).Value) / 100, "0.00")
@@ -2973,9 +2980,9 @@ Public Class FrmPurchInvoiceDirect
                                 TxtVendorDocDate.Focus()
                             End If
                             passed = False : Exit Sub
-                            End If
-
                         End If
+
+                    End If
                 End If
 
                 If BtnHeaderDetail.Tag IsNot Nothing Then
@@ -3414,7 +3421,7 @@ Public Class FrmPurchInvoiceDirect
     '    End Try
     'End Sub
     Public Sub FGetPrint(ByVal SearchCode As String, mPrintFor As ClsMain.PrintFor,
-                         Optional ByVal IsPrintToPrinter As Boolean = False)
+                         Optional ByVal IsPrintToPrinter As Boolean = False, Optional BulkCondStr As String = "")
         'For SSRS Print Out
         Dim DtTemp As DataTable
 
@@ -3443,14 +3450,14 @@ Public Class FrmPurchInvoiceDirect
         End If
 
         'FGetPrintSSRS(mPrintFor)
-        FGetPrintCrystal(SearchCode, mPrintFor, IsPrintToPrinter)
+        FGetPrintCrystal(SearchCode, mPrintFor, IsPrintToPrinter, BulkCondStr)
         'If ClsMain.IsScopeOfWorkContains("+Cloth Aadhat Module") Then
         '    FGetPrintCrystal_Aadhat(SearchCode, mPrintFor)
         'Else
         '    FGetPrintCrystal(SearchCode, mPrintFor)
         'End If
     End Sub
-    Sub FGetPrintCrystal(ByVal SearchCode As String, mPrintFor As ClsMain.PrintFor, Optional ByVal IsPrintToPrinter As Boolean = False)
+    Sub FGetPrintCrystal(ByVal SearchCode As String, mPrintFor As ClsMain.PrintFor, Optional ByVal IsPrintToPrinter As Boolean = False, Optional BulkCondStr As String = "")
         Dim mPrintTitle As String
         Dim PrintingCopies() As String
         Dim I As Integer, J As Integer
@@ -3460,6 +3467,15 @@ Public Class FrmPurchInvoiceDirect
         Dim mDocNoCaption As String = FGetSettings(SettingFields.DocumentPrintEntryNoCaption, SettingType.General)
         Dim mDocDateCaption As String = FGetSettings(SettingFields.DocumentPrintEntryDateCaption, SettingType.General)
         Dim mDocReportFileName As String = FGetSettings(SettingFields.DocumentPrintReportFileName, SettingType.General)
+
+        Dim bPrimaryQry As String = ""
+        If BulkCondStr <> "" Then
+            bPrimaryQry = " Select * From PurchInvoice With (NoLock) Where DocID In (" & BulkCondStr & ")"
+            PrintingCopies = FGetSettings(SettingFields.PrintingBulkCopyCaptions, SettingType.General).ToString.Split(",")
+        Else
+            bPrimaryQry = " Select * From PurchInvoice With (NoLock) Where DocID = '" & SearchCode & "'"
+            PrintingCopies = FGetSettings(SettingFields.PrintingCopyCaptions, SettingType.General).ToString.Split(",")
+        End If
 
 
         If LblV_Type.Tag = Ncat.PurchaseReturn Then
@@ -3511,7 +3527,7 @@ Public Class FrmPurchInvoiceDirect
                 '" & AgL.XNull(AgL.PubDtEnviro.Rows(0)("Default_BankAccountDetail")) & "' as Default_BankAccountDetail,
                 '" & FGetSettings(SettingFields.DocumentPrintHeaderPattern, SettingType.General) & "' as DocumentPrintHeaderPattern, 
                 L.DimensionDetail as DimDetail, '' as HsnDescription, '" & AgL.PubUserName & "' as PrintedByUser, '" & mPrintTitle & "' as PrintTitle
-                from PurchInvoice H   With (NoLock)              
+                from (" & bPrimaryQry & ") as H                
                 Left Join PurchInvoiceDetail L  With (NoLock) On H.DocID = L.DocID
                 Left Join Item I  With (NoLock) On L.Item = I.Code
                 Left Join Unit U  With (NoLock) On I.Unit = U.Code
@@ -3534,9 +3550,9 @@ Public Class FrmPurchInvoiceDirect
                 Left Join State SiteState On SiteCity.State = SiteState.Code
                 Left Join SubgroupSiteDivisionDetail SSD On H.Vendor = SSD.Subcode And H.Div_Code = SSD.Div_Code And H.Site_Code = SSD.Site_Code
                 Left Join ViewHelpSubgroup MTransporter  With (NoLock) On SSD.Transporter= MTransporter.Code
-                Where H.DocID = '" & mSearchCode & "'
                 "
 
+            'Where H.DocID = '" & mSearchCode & "'
 
 
 
@@ -4305,13 +4321,13 @@ Public Class FrmPurchInvoiceDirect
             If LblV_Type.Tag = AgLibrary.ClsMain.agConstants.Ncat.PurchaseReturn Then
                 'If TxtVendorDocNo.Text = "" Then
                 strReturnTicked = FHPGD_PendingSaleChallan(Dgl1.Item(Col1Item, mRow).Tag)
-                    If strReturnTicked <> "" Then
-                        FillGridForSaleReturn(strReturnTicked, True)
-                    Else
-                        If MsgBox("No Invoice found to return for selected customer. Do you want to continue without invoice references?", vbYesNo) = MsgBoxResult.No Then
-                            Dgl1.Rows(Dgl1.CurrentCell.RowIndex).Visible = False
-                            strReturnTicked = "."
-                            Dgl1.Rows.Add()
+                If strReturnTicked <> "" Then
+                    FillGridForSaleReturn(strReturnTicked, True)
+                Else
+                    If MsgBox("No Invoice found to return for selected customer. Do you want to continue without invoice references?", vbYesNo) = MsgBoxResult.No Then
+                        Dgl1.Rows(Dgl1.CurrentCell.RowIndex).Visible = False
+                        strReturnTicked = "."
+                        Dgl1.Rows.Add()
                         'Else
                         '    If Dgl1.CurrentCell.RowIndex = 0 Then
 
@@ -4337,7 +4353,7 @@ Public Class FrmPurchInvoiceDirect
                         '    Dgl1.Item(Col1DocQty, mRow).Value = 1
                         '    Dgl1.Item(Col1Qty, mRow).Value = 1
                     End If
-                    End If
+                End If
                 'End If
             End If
 
@@ -4796,7 +4812,7 @@ Public Class FrmPurchInvoiceDirect
                     strCond += " And CharIndex('-' || H.Nature,'" & AgL.XNull(DtV_TypeSettings.Rows(0)("FilterInclude_Nature")) & "') <= 0 "
                 End If
             End If
-            End If
+        End If
 
         If FGetSettings(SettingFields.FilterInclude_Process, SettingType.General) <> "" Then
             If FGetSettings(SettingFields.FilterInclude_Process, SettingType.General).ToString.Substring(0, 1) = "+" Then
@@ -5362,7 +5378,7 @@ Public Class FrmPurchInvoiceDirect
         FrmObj.MdiParent = Me.MdiParent
         FrmObj.Show()
     End Sub
-    Private Sub MnuImport_Click(sender As Object, e As EventArgs) Handles MnuImportFromExcel.Click, MnuImportFromDos.Click, MnuImportFromTally.Click, MnuEditSave.Click, MnuGenerateEWayBill.Click, MnuRequestForPermission.Click, MnuReferenceEntries.Click, MnuHistory.Click, MnuShowLedgerPosting.Click
+    Private Sub MnuImport_Click(sender As Object, e As EventArgs) Handles MnuImportFromExcel.Click, MnuImportFromDos.Click, MnuImportFromTally.Click, MnuEditSave.Click, MnuGenerateEWayBill.Click, MnuRequestForPermission.Click, MnuReferenceEntries.Click, MnuHistory.Click, MnuShowLedgerPosting.Click, MnuPrintBulk.Click
         Select Case sender.name
             Case MnuImportFromExcel.Name
                 FImportFromExcel(ImportFor.Excel)
@@ -5400,6 +5416,9 @@ Public Class FrmPurchInvoiceDirect
 
             Case MnuShowLedgerPosting.Name
                 FShowLedgerPosting()
+
+            Case MnuPrintBulk.Name
+                FPrintBulk(mSearchCode)
         End Select
     End Sub
     Public Sub FImportFromTally()
@@ -8531,5 +8550,49 @@ Public Class FrmPurchInvoiceDirect
         Catch ex As Exception
             MsgBox(ex.Message)
         End Try
+    End Sub
+    Private Sub FPrintBulk(SearchCode As String)
+        Dim dtTemp As DataTable
+        Dim I As Integer
+        Dim FrmObj As New FrmPrintDialog
+        FrmObj.IniGrid()
+        FrmObj.Dgl1.Item(FrmPrintDialog.Col1Value, FrmPrintDialog.rowFromNo).Value = TxtReferenceNo.Text
+        FrmObj.Dgl1.Item(FrmPrintDialog.Col1Value, FrmPrintDialog.rowToNo).Value = TxtReferenceNo.Text
+        FrmObj.StartPosition = FormStartPosition.CenterParent
+        FrmObj.ShowDialog()
+
+        If FrmObj.mOkButtonPressed Then
+            mQry = "SELECT H.DocID FROM PurchInvoice H WHERE H.V_Type = '" & TxtV_Type.Tag & "' 
+                    And H.Div_Code = '" & TxtDivision.Tag & "' And H.Site_Code = '" & TxtSite_Code.Tag & "'"
+            If FrmObj.Dgl1.Item(FrmPrintDialog.Col1Value, FrmPrintDialog.rowFromNo).Value <> "" Then
+                mQry += " AND Cast(H.ManualRefNo AS BIGINT) >= " & Val(FrmObj.Dgl1.Item(FrmPrintDialog.Col1Value, FrmPrintDialog.rowFromNo).Value) & " "
+            End If
+            If FrmObj.Dgl1.Item(FrmPrintDialog.Col1Value, FrmPrintDialog.rowToNo).Value <> "" Then
+                mQry += " AND Cast(H.ManualRefNo AS BIGINT) <= " & Val(FrmObj.Dgl1.Item(FrmPrintDialog.Col1Value, FrmPrintDialog.rowToNo).Value) & ""
+            End If
+            If FrmObj.Dgl1.Item(FrmPrintDialog.Col1Value, FrmPrintDialog.rowFromDate).Value <> "" Then
+                mQry += " AND H.V_Date >= " & AgL.Chk_Date(CDate(FrmObj.Dgl1.Item(FrmPrintDialog.Col1Value, FrmPrintDialog.rowFromDate).Value).ToString("s")) & ""
+            End If
+            If FrmObj.Dgl1.Item(FrmPrintDialog.Col1Value, FrmPrintDialog.rowToDate).Value <> "" Then
+                mQry += " AND H.V_Date <= " & AgL.Chk_Date(CDate(FrmObj.Dgl1.Item(FrmPrintDialog.Col1Value, FrmPrintDialog.rowToDate).Value).ToString("s")) & ""
+            End If
+
+            If FrmObj.Dgl1.Item(FrmPrintDialog.Col1Value, FrmPrintDialog.rowFromDate).Value = "" Or
+                FrmObj.Dgl1.Item(FrmPrintDialog.Col1Value, FrmPrintDialog.rowToDate).Value = "" Then
+                mQry += " AND Date(H.V_Date) >= " & AgL.Chk_Date(CDate(AgL.PubStartDate).ToString("s")) & ""
+                mQry += " AND Date(H.V_Date) <= " & AgL.Chk_Date(CDate(AgL.PubEndDate).ToString("s")) & ""
+            End If
+
+            'FGetPrint(SearchCode, ClsMain.PrintFor.DocumentPrint,, mQry)
+
+
+
+            dtTemp = AgL.FillData(mQry, AgL.GCn).Tables(0)
+            If dtTemp.Rows.Count > 0 Then
+                For I = 0 To dtTemp.Rows.Count - 1
+                    FGetPrint(AgL.XNull(dtTemp.Rows(I)("DocID")), ClsMain.PrintFor.DocumentPrint, True, "")
+                Next
+            End If
+        End If
     End Sub
 End Class

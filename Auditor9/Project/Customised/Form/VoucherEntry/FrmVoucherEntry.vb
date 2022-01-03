@@ -6311,10 +6311,10 @@ Public Class FrmVoucherEntry
                 Dim bSadhviHO As String = ""
                 If AgL.PubDivCode = "E" Then
                     bSadhviHO = AgL.XNull(AgL.Dman_Execute("Select SubCode From SubGroup With (NoLock)
-                            Where Name = 'SADHVI EMBROIDERY (Branch)'", IIf(AgL.PubServerName = "", Conn, AgL.GcnRead)).ExecuteScalar())
+                            Where Name = 'SADHVI EMBROIDERY'", IIf(AgL.PubServerName = "", Conn, AgL.GcnRead)).ExecuteScalar())
                 Else
                     bSadhviHO = AgL.XNull(AgL.Dman_Execute("Select SubCode From SubGroup With (NoLock)
-                            Where Name = 'SADHVI ENTERPRISES (Branch)'", IIf(AgL.PubServerName = "", Conn, AgL.GcnRead)).ExecuteScalar())
+                            Where Name = 'SADHVI ENTERPRISES'", IIf(AgL.PubServerName = "", Conn, AgL.GcnRead)).ExecuteScalar())
                 End If
 
                 mQry = "Select Sr From LedgerHeadDetail with (NoLock) Where DocId = '" & SearchCode & "'"

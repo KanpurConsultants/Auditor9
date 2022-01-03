@@ -121,12 +121,27 @@ Public Class ClsStudentLedger
                     " And IfNull(H.Discount,0) <> 0 "
 
             RepTitle = "Student Ledger" : RepName = "StudentLedger"
-            mQry = " Select VMain.V_Date, VMain.Student As Student, VMain.Narration As Narration, 
+
+            mQry = " Select NUll As V_Date, VMain.Student As Student, 'Opening' As Narration, 
+                    Case When IfNull(Sum(VMain.AmtDr),0) - IfNull(Sum(VMain.AmtCr),0) > 0 Then IfNull(Sum(VMain.AmtDr),0) - IfNull(Sum(VMain.AmtCr),0) Else 0 End As AmtDr,
+                    Case When IfNull(Sum(VMain.AmtDr),0) - IfNull(Sum(VMain.AmtCr),0) < 0 Then Abs(IfNull(Sum(VMain.AmtDr),0) - IfNull(Sum(VMain.AmtCr),0)) Else 0 End As AmtCr
+                    From (" & mFeeDueQry & " UNION ALL 
+                          " & mLateFeeDueQry & " UNION ALL 
+                          " & mFeeRecQry & " UNION ALL 
+                          " & mFeeDiscQry & ") As VMain 
+                    Where Date(VMain.V_Date) < " & AgL.Chk_Date(CDate(ReportFrm.FGetText(rowFromDate)).ToString("s")) & " 
+                    Group By VMain.Student
+                    Having IfNull(Sum(VMain.AmtDr),0) - IfNull(Sum(VMain.AmtCr),0) <> 0 "
+
+            mQry += " UNION ALL "
+
+            mQry += " Select VMain.V_Date, VMain.Student As Student, VMain.Narration As Narration, 
                     VMain.AmtDr, VMain.AmtCr
                     From (" & mFeeDueQry & " UNION ALL 
                           " & mLateFeeDueQry & " UNION ALL 
                           " & mFeeRecQry & " UNION ALL 
                           " & mFeeDiscQry & ") As VMain
+                    Where Date(VMain.V_Date) >= " & AgL.Chk_Date(CDate(ReportFrm.FGetText(rowFromDate)).ToString("s")) & " 
                     Order By VMain.V_Date "
             DsRep = AgL.FillData(mQry, AgL.GCn)
 
