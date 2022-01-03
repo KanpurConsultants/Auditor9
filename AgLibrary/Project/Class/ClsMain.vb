@@ -2449,6 +2449,8 @@ err1:
         mQRY = Replace(mQRY, "Length(", "Len(",,, CompareMethod.Text)
         mQRY = Replace(mQRY, "printf('%*s',", "Space(",,, CompareMethod.Text)
         mQRY = Replace(mQRY, " date(", " (",,, CompareMethod.Text)
+        mQRY = Replace(mQRY, "(date(", "((",,, CompareMethod.Text)
+        mQRY = Replace(mQRY, ",date(", ",(",,, CompareMethod.Text)
 
 
 

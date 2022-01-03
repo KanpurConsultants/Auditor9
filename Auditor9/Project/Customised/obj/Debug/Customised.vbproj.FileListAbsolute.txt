@@ -3177,3 +3177,4 @@ D:\Reposotory 2021\Project\Auditor9\Project\Customised\obj\Debug\Customised.vbpr
 D:\Reposotory 2021\Project\Auditor9\Release\Customised.exe
 D:\Reposotory 2021\Project\Auditor9\Release\Customised.pdb
 D:\Reposotory 2021\Project\Auditor9\Release\Customised.xml
+D:\Reposotory 2021\Project\Auditor9\Project\Customised\obj\Debug\Customised.vbprojResolveAssemblyReference.cache
