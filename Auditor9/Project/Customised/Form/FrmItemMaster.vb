@@ -796,6 +796,9 @@ Public Class FrmItemMaster
             mQry = "Select count(*) From Item Where Replace(Replace(Description,' ',''),'-','') ='" & Dgl1(Col1Value, rowItemName).Value.ToString.Replace(" ", "").Replace("-", "") & "' "
             If AgL.Dman_Execute(mQry, AgL.GCn).ExecuteScalar > 0 Then Err.Raise(1, , "Description Already Exist!")
 
+            mQry = "Select count(*) From Item WHERE ItemGroup = " & AgL.Chk_Text(Dgl1(Col1Value, rowItemGroup).Tag) & " AND ItemCategory = " & AgL.Chk_Text(Dgl1(Col1Value, rowItemCategory).Tag) & "  AND Specification  ='" & Dgl1(Col1Value, rowSpecification).Value & "' "
+            If AgL.Dman_Execute(mQry, AgL.GCn).ExecuteScalar > 0 Then Err.Raise(1, , "Item Already Exist!")
+
             If Dgl1.Item(Col1Value, rowBarcode).Value.ToString <> "" Then
                 mQry = "Select count(*) From Barcode Where Description ='" & Dgl1(Col1Value, rowBarcode).Value & "' "
                 If AgL.Dman_Execute(mQry, AgL.GCn).ExecuteScalar > 0 Then Err.Raise(1, , "Barcode Already Exist!")
@@ -806,6 +809,9 @@ Public Class FrmItemMaster
 
             mQry = "Select count(*) From Item Where Replace(Replace(Description,' ',''),'-','') ='" & Dgl1(Col1Value, rowItemName).Value.ToString.Replace(" ", "").Replace("-", "") & "' And Code <> '" & mInternalCode & "' "
             If AgL.Dman_Execute(mQry, AgL.GCn).ExecuteScalar > 0 Then Err.Raise(1, , "Description Already Exist!")
+
+            mQry = "Select count(*) From Item WHERE ItemGroup = " & AgL.Chk_Text(Dgl1(Col1Value, rowItemGroup).Tag) & " AND ItemCategory = " & AgL.Chk_Text(Dgl1(Col1Value, rowItemCategory).Tag) & "  AND Specification  ='" & Dgl1(Col1Value, rowSpecification).Value & "' And Code <> '" & mInternalCode & "' "
+            If AgL.Dman_Execute(mQry, AgL.GCn).ExecuteScalar > 0 Then Err.Raise(1, , "Item Already Exist!")
 
             If Dgl1.Item(Col1Value, rowBarcode).Value <> "" Then
                 mQry = "Select count(*) From Barcode Where Description='" & Dgl1(Col1Value, rowBarcode).Value & "' And  Item <> '" & mInternalCode & "' And Item=GenDocID "
@@ -4251,59 +4257,119 @@ Public Class FrmItemMaster
         End If
 
         If Val(Dgl1(Col1Value, rowSaleRate).Tag) = 0 Then
-            For I = 0 To DGLRateType.RowCount - 1
-                If DGLRateType.Item(Col1RateType, I).Value <> "" Then
-                    If DGLRateType.Item(Col1CalculateOnRateType, I).Value <> "" Then
-                        For J = 0 To DGLRateType.Rows.Count - 1
-                            If DGLRateType.Item(Col1CalculateOnRateType, I).Value = DGLRateType.Item(Col1RateType, J).Value Then
-                                mBaseRate = Val(DGLRateType.Item(Col1Rate, J).Value)
-                            End If
-                        Next
-                    Else
-                        mBaseRate = Val(Dgl1(Col1Value, rowSaleRate).Value)
-                    End If
+            If AgL.StrCmp(AgL.PubDBName, "SITARAMHC") Then
+                For I = 0 To DGLRateType.RowCount - 1
+                    If DGLRateType.Item(Col1RateType, I).Value <> "" Then
+                        If DGLRateType.Item(Col1CalculateOnRateType, I).Value <> "" Then
+                            For J = 0 To DGLRateType.Rows.Count - 1
+                                If DGLRateType.Item(Col1CalculateOnRateType, I).Value = DGLRateType.Item(Col1RateType, J).Value Then
+                                    mBaseRate = Val(DGLRateType.Item(Col1Rate, J).Value)
+                                End If
+                            Next
+                        Else
+                            mBaseRate = Val(Dgl1(Col1Value, rowPurchaseRate).Value)
+                        End If
 
-                    'DGLRateType.Item(Col1Rate, I).Value = Format(Math.Round(Val(Dgl1(Col1Value, rowSaleRate).Value) + (Val(Dgl1(Col1Value, rowSaleRate).Value) * Val(DGLRateType.Item(Col1Margin, I).Value) / 100), 0), "0.00")
-                    If Val(DGLRateType.Item(Col1Margin, I).Value) <> 0 Then
-                        DGLRateType.Item(Col1Rate, I).Value = Format(Math.Round(mBaseRate + (mBaseRate * Val(DGLRateType.Item(Col1Margin, I).Value) / 100), 0), "0.00")
-                    Else
-                        If ClsMain.FDivisionNameForCustomization(6) = "SADHVI" Then
-                            DGLRateType.Item(Col1Rate, I).Value = Math.Round(mBaseRate, 0)
+                        'DGLRateType.Item(Col1Rate, I).Value = Format(Math.Round(Val(Dgl1(Col1Value, rowPurchaseRate).Value) + (Val(Dgl1(Col1Value, rowPurchaseRate).Value) * Val(DGLRateType.Item(Col1Margin, I).Value) / 100), 0), "0.00")
+                        If Val(DGLRateType.Item(Col1Margin, I).Value) <> 0 Then
+                            DGLRateType.Item(Col1Rate, I).Value = Format(Math.Round(mBaseRate + (mBaseRate * Val(DGLRateType.Item(Col1Margin, I).Value) / 100), 0), "0.00")
+                        Else
+                            If ClsMain.FDivisionNameForCustomization(6) = "SADHVI" Then
+                                DGLRateType.Item(Col1Rate, I).Value = Math.Round(mBaseRate, 0)
+                            End If
+                        End If
+                    End If
+                Next
+            Else
+                For I = 0 To DGLRateType.RowCount - 1
+                    If DGLRateType.Item(Col1RateType, I).Value <> "" Then
+                        If DGLRateType.Item(Col1CalculateOnRateType, I).Value <> "" Then
+                            For J = 0 To DGLRateType.Rows.Count - 1
+                                If DGLRateType.Item(Col1CalculateOnRateType, I).Value = DGLRateType.Item(Col1RateType, J).Value Then
+                                    mBaseRate = Val(DGLRateType.Item(Col1Rate, J).Value)
+                                End If
+                            Next
+                        Else
+                            mBaseRate = Val(Dgl1(Col1Value, rowSaleRate).Value)
+                        End If
+
+                        'DGLRateType.Item(Col1Rate, I).Value = Format(Math.Round(Val(Dgl1(Col1Value, rowSaleRate).Value) + (Val(Dgl1(Col1Value, rowSaleRate).Value) * Val(DGLRateType.Item(Col1Margin, I).Value) / 100), 0), "0.00")
+                        If Val(DGLRateType.Item(Col1Margin, I).Value) <> 0 Then
+                            DGLRateType.Item(Col1Rate, I).Value = Format(Math.Round(mBaseRate + (mBaseRate * Val(DGLRateType.Item(Col1Margin, I).Value) / 100), 0), "0.00")
+                        Else
+                            If ClsMain.FDivisionNameForCustomization(6) = "SADHVI" Then
+                                DGLRateType.Item(Col1Rate, I).Value = Math.Round(mBaseRate, 0)
+                            End If
+                        End If
+                    End If
+                Next
+            End If
+        Else
+                If AgL.StrCmp(AgL.PubDBName, "SITARAMHC") Then
+                If Val(Dgl1(Col1Value, rowPurchaseRate).Tag) <> Val(Dgl1(Col1Value, rowPurchaseRate).Value) Then
+                    If DGLRateType.Visible = True Then
+                        If DGLRateType.Rows.Count >= 1 Then
+                            If DGLRateType.Item(Col1RateType, 0).Value <> "" Then
+                                'If MsgBox("Do you want to update all rate types", vbYesNo) = vbYes Then
+                                For I = 0 To DGLRateType.RowCount - 1
+                                    If DGLRateType.Item(Col1RateType, I).Value <> "" Then
+                                        If DGLRateType.Item(Col1CalculateOnRateType, I).Value <> "" Then
+                                            For J = 0 To DGLRateType.Rows.Count - 1
+                                                If DGLRateType.Item(Col1CalculateOnRateType, I).Value = DGLRateType.Item(Col1RateType, J).Value Then
+                                                    mBaseRate = Val(DGLRateType.Item(Col1Rate, J).Value)
+                                                End If
+                                            Next
+                                        Else
+                                            mBaseRate = Val(Dgl1(Col1Value, rowPurchaseRate).Value)
+                                        End If
+
+                                        'DGLRateType.Item(Col1Rate, I).Value = Format(Math.Round(Val(Dgl1(Col1Value, rowPurchaseRate).Value) + (Val(Dgl1(Col1Value, rowPurchaseRate).Value) * Val(DGLRateType.Item(Col1Margin, I).Value) / 100), 0), "0.00")
+                                        If Val(DGLRateType.Item(Col1Margin, I).Value) <> 0 Then
+                                            DGLRateType.Item(Col1Rate, I).Value = Format(Math.Round(mBaseRate + (mBaseRate * Val(DGLRateType.Item(Col1Margin, I).Value) / 100), 0), "0.00")
+                                        Else
+                                            DGLRateType.Item(Col1Rate, I).Value = Format(Math.Round(mBaseRate, 0), "0.00")
+                                        End If
+                                    End If
+                                Next
+                                'End If
+                            End If
                         End If
                     End If
                 End If
-            Next
-        Else
-            If Val(Dgl1(Col1Value, rowSaleRate).Tag) <> Val(Dgl1(Col1Value, rowSaleRate).Value) Then
-                If DGLRateType.Visible = True Then
-                    If DGLRateType.Rows.Count >= 1 Then
-                        If DGLRateType.Item(Col1RateType, 0).Value <> "" Then
-                            'If MsgBox("Do you want to update all rate types", vbYesNo) = vbYes Then
-                            For I = 0 To DGLRateType.RowCount - 1
-                                If DGLRateType.Item(Col1RateType, I).Value <> "" Then
-                                    If DGLRateType.Item(Col1CalculateOnRateType, I).Value <> "" Then
-                                        For J = 0 To DGLRateType.Rows.Count - 1
-                                            If DGLRateType.Item(Col1CalculateOnRateType, I).Value = DGLRateType.Item(Col1RateType, J).Value Then
-                                                mBaseRate = Val(DGLRateType.Item(Col1Rate, J).Value)
-                                            End If
-                                        Next
-                                    Else
-                                        mBaseRate = Val(Dgl1(Col1Value, rowSaleRate).Value)
-                                    End If
+            Else
+                If Val(Dgl1(Col1Value, rowSaleRate).Tag) <> Val(Dgl1(Col1Value, rowSaleRate).Value) Then
+                    If DGLRateType.Visible = True Then
+                        If DGLRateType.Rows.Count >= 1 Then
+                            If DGLRateType.Item(Col1RateType, 0).Value <> "" Then
+                                'If MsgBox("Do you want to update all rate types", vbYesNo) = vbYes Then
+                                For I = 0 To DGLRateType.RowCount - 1
+                                    If DGLRateType.Item(Col1RateType, I).Value <> "" Then
+                                        If DGLRateType.Item(Col1CalculateOnRateType, I).Value <> "" Then
+                                            For J = 0 To DGLRateType.Rows.Count - 1
+                                                If DGLRateType.Item(Col1CalculateOnRateType, I).Value = DGLRateType.Item(Col1RateType, J).Value Then
+                                                    mBaseRate = Val(DGLRateType.Item(Col1Rate, J).Value)
+                                                End If
+                                            Next
+                                        Else
+                                            mBaseRate = Val(Dgl1(Col1Value, rowSaleRate).Value)
+                                        End If
 
-                                    'DGLRateType.Item(Col1Rate, I).Value = Format(Math.Round(Val(Dgl1(Col1Value, rowSaleRate).Value) + (Val(Dgl1(Col1Value, rowSaleRate).Value) * Val(DGLRateType.Item(Col1Margin, I).Value) / 100), 0), "0.00")
-                                    If Val(DGLRateType.Item(Col1Margin, I).Value) <> 0 Then
-                                        DGLRateType.Item(Col1Rate, I).Value = Format(Math.Round(mBaseRate + (mBaseRate * Val(DGLRateType.Item(Col1Margin, I).Value) / 100), 0), "0.00")
-                                    Else
-                                        DGLRateType.Item(Col1Rate, I).Value = Format(Math.Round(mBaseRate, 0), "0.00")
+                                        'DGLRateType.Item(Col1Rate, I).Value = Format(Math.Round(Val(Dgl1(Col1Value, rowSaleRate).Value) + (Val(Dgl1(Col1Value, rowSaleRate).Value) * Val(DGLRateType.Item(Col1Margin, I).Value) / 100), 0), "0.00")
+                                        If Val(DGLRateType.Item(Col1Margin, I).Value) <> 0 Then
+                                            DGLRateType.Item(Col1Rate, I).Value = Format(Math.Round(mBaseRate + (mBaseRate * Val(DGLRateType.Item(Col1Margin, I).Value) / 100), 0), "0.00")
+                                        Else
+                                            DGLRateType.Item(Col1Rate, I).Value = Format(Math.Round(mBaseRate, 0), "0.00")
+                                        End If
                                     End If
-                                End If
-                            Next
-                            'End If
+                                Next
+                                'End If
+                            End If
                         End If
                     End If
                 End If
             End If
+
+
         End If
 
         If Dgl1.Rows(rowArea).Visible Then

@@ -1,7 +1,7 @@
 ; Field definition file for table: ADORecordset
-SearchCode	string	255	D100005052	
-ItemType	string	255	Manufacturing	
-Opening	number	734310	
-Receive	number	1840927.68	
-Issue	number	598518.54	
-Closing	number	1976719.14	
+SearchCode	string	255	LrBale	
+ItemType	string	255	Other Products	
+Opening	number	0	
+Receive	number	0	
+Issue	number	0	
+Closing	number	0	

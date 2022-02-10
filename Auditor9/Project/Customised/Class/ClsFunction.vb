@@ -956,6 +956,11 @@ Public Class ClsFunction
                     CRep.GRepFormName = Replace(Replace(Replace(Replace(StrSenderText, "&", ""), " ", ""), "(", ""), ")", "")
                     CRep.Ini_Grid()
                     FrmObj = GridReportFrm
+                Case MDI.MnuTCSInputReport.Name
+                    Dim CRep As ClsTCSReport = New ClsTCSReport(GridReportFrm)
+                    CRep.GRepFormName = Replace(Replace(Replace(Replace(StrSenderText, "&", ""), " ", ""), "(", ""), ")", "")
+                    CRep.Ini_Grid()
+                    FrmObj = GridReportFrm
                 Case MDI.MnuGSTInputTaxReport.Name
                     Dim CRep As ClsGstInputTaxReport = New ClsGstInputTaxReport(GridReportFrm)
                     CRep.GRepFormName = Replace(Replace(Replace(Replace(StrSenderText, "&", ""), " ", ""), "(", ""), ")", "")
@@ -1523,6 +1528,8 @@ Public Class ClsFunction
                ClsMain.FDivisionNameForCustomization().Contains("SUMAN") Or
                ClsMain.FDivisionNameForCustomization().Contains("AARNAV") Or
                ClsMain.FDivisionNameForCustomization().Contains("RADHA") Or
+               ClsMain.FDivisionNameForCustomization().Contains("RADHA") Or
+               ClsMain.FDivisionNameForCustomization().Contains("SITARAM HARISH") Or
                ClsMain.FDivisionNameForCustomization().Contains("SHREE RAM") Then
             FGetNewVersionFlag = False
         Else

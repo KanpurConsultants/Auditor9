@@ -454,12 +454,21 @@ Public Class FrmRateType
 
 
 
-        mQry = "SELECT I.Code, IfNull(SR.Rate,0) as Rate
+
+        If AgL.StrCmp(AgL.PubDBName, "SITARAMHC") Then
+            mQry = "SELECT I.Code, IfNull(I.PurchaseRate,0) as Rate
+                FROM Item I With (NoLock)
+                Left Join RateListDetail RLD With (NoLock) on I.Code = RLD.Item And RLD.RateType = '" & SearchCode & "'                
+                WHERE I.V_Type ='" & ItemV_Type.Item & "' And RLD.Code Is Null "
+        Else
+            mQry = "SELECT I.Code, IfNull(SR.Rate,0) as Rate
                 FROM Item I With (NoLock)
                 Left Join RateListDetail SR On I.Code = SR.Item And SR.RateType Is Null
                 Left Join RateListDetail RLD With (NoLock) on I.Code = RLD.Item And RLD.RateType = '" & SearchCode & "'                
-                WHERE I.V_Type ='" & ItemV_Type.Item & "' And RLD.Code Is Null
-                "
+                WHERE I.V_Type ='" & ItemV_Type.Item & "' And RLD.Code Is Null "
+        End If
+
+
         Dim dtItems As DataTable
         Dim I As Integer
         Dim bRateListCode As String = ""

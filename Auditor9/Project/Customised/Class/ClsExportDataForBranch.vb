@@ -89,12 +89,12 @@ Public Class ClsExportDataForBranch
     End Sub
     Private Sub ObjRepFormGlobal_ProcessReport() Handles ReportFrm.ProcessReport
         If ClsMain.FDivisionNameForCustomization(6) = "SADHVI" Then
-            If AgL.XNull(ReportFrm.FGetCode(rowParty)) = "'D100004259'" Or AgL.XNull(ReportFrm.FGetCode(rowParty)) = "'E100005835'" Or AgL.XNull(ReportFrm.FGetCode(rowParty)) = "'D100016337'" Or AgL.XNull(ReportFrm.FGetCode(rowParty)) = "'D100016336'" Then ' for Sadhvi Kanpur Branch
+            If AgL.XNull(ReportFrm.FGetCode(rowParty)) = "'D100004259'" Or AgL.XNull(ReportFrm.FGetCode(rowParty)) = "'E100005835'" Or AgL.XNull(ReportFrm.FGetCode(rowParty)) = "'D100016337'" Or AgL.XNull(ReportFrm.FGetCode(rowParty)) = "'D100016336'" Or AgL.XNull(ReportFrm.FGetCode(rowParty)) = "'D100025715'" Or AgL.XNull(ReportFrm.FGetCode(rowParty)) = "'D100025716'" Then ' for Sadhvi Kanpur Branch
                 ProcExportStockIssueDataToSqlite()
             ElseIf AgL.XNull(ReportFrm.FGetCode(rowParty)) = "'SADHVIBEN'" Or AgL.XNull(ReportFrm.FGetCode(rowParty)) = "'SADHVIBEM'" Then ' for Sadhvi Bhopal Branch
                 ProcExportSaleInvoiceDataToSqlite_Sadhvi()
             End If
-            ProcExportSaleInvoiceDataToSqlite_Sadhvi()
+            'ProcExportSaleInvoiceDataToSqlite_Sadhvi()
         ElseIf ClsMain.FDivisionNameForCustomization(18) = "SHRI PARWATI SAREE" Then
             ProcExportSaleInvoiceDataToSqlite()
         ElseIf ClsMain.FDivisionNameForCustomization(13) = "JAIN BROTHERS" Or

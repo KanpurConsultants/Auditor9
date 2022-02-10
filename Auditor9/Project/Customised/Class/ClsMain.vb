@@ -20661,6 +20661,7 @@ Thanks
             AgL.AddFieldSqlite(AgL.GcnMain, "Division", "ScopeOfWork", "nVarchar(1000)", "", True)
             AgL.AddFieldSqlite(AgL.GcnMain, "Division", "ShortName", "nVarchar(5)", "", True)
             AgL.AddFieldSqlite(AgL.GcnMain, "Division", "Export_Div_Code", "nVarchar(1)", "", True)
+            AgL.AddFieldSqlite(AgL.GcnMain, "Division", "HO_Subcode", "nVarchar(10)", "", True)
 
             'CREATE UNIQUE INDEX [IX_Division]                On [Division]                ([Div_Name]);
         Catch ex As Exception

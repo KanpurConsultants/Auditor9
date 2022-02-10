@@ -111,7 +111,7 @@ Public Class ClsTCSReport
             Dim mMainQry As String
 
 
-            RepTitle = "Sale Invoice Report"
+            RepTitle = ReportFrm.Text
 
             If ReportFrm.FGetText(rowSummerise) = "" Then
                 MsgBox("Select Any column to summarise.")
@@ -136,7 +136,7 @@ Public Class ClsTCSReport
                 End If
             End If
 
-            mCondStr = " Where H.Tax5>0 And VT.NCat In ('" & Ncat.SaleInvoice & "', '" & Ncat.SaleReturn & "') "
+            mCondStr = " Where H.Tax5>0 "
             mCondStr = mCondStr & " AND Date(H.V_Date) Between " & AgL.Chk_Date(CDate(ReportFrm.FGetText(rowFromDate)).ToString("s")) & " And " & AgL.Chk_Date(CDate(ReportFrm.FGetText(rowToDate)).ToString("s")) & " "
             mCondStr = mCondStr & Replace(ReportFrm.GetWhereCondition("H.Site_Code", rowSite), "''", "'")
             mCondStr = mCondStr & Replace(ReportFrm.GetWhereCondition("H.Div_Code", rowDivision), "''", "'")
@@ -144,9 +144,38 @@ Public Class ClsTCSReport
 
 
 
+            If ReportFrm.Text = "TCS Input Report" Then
+                mCondStr = mCondStr & " And VT.NCat In ('" & Ncat.PurchaseInvoice & "', '" & Ncat.PurchaseReturn & "') "
 
+                mMainQry = " SELECT H.DocID, H.V_Type, Vt.Description as VoucherType, 
+                    H.Site_Code, H.Div_Code, 
+                    Site.Name as Site, Div.Div_Name as Division,                    
+                    H.V_Date As V_Date,
+                    " & IIf(AgL.PubServerName = "", "strftime('%m-%Y',V_Date)  ", "Substring(Convert(NVARCHAR, H.V_Date,103),4,7)") & " As Month,
+                    H.Vendor AS SaleToParty, 
+                    (Case When Party.Nature='Cash' Or Party.SubgroupType='" & SubgroupType.RevenuePoint & "' Then Party.Name || ' - ' || IfNull(H.VendorName,'') Else Party.Name End) As SaleToPartyName ,                     
+                    H.SalesTaxGroupParty, L.SalesTaxGroupItem,
+                    State.Code As StateCode, State.Description As StateName,
+                    Cast(Replace(H.ManualRefNo,'-','') as Integer) as InvoiceNo, 
+                    IfNull(I.HSN,IC.HSN) as HSN,
+                    IC.Code as ItemCategoryCode,IC.Description as ItemCategory,
+                    L.Qty, L.Taxable_Amount, L.Net_Amount,                      
+                    L.Tax1 as Igst, L.Tax2 as Cgst, L.Tax3 as Sgst, L.Tax4 as Cess, L.Tax5 as TCS, L.Tax1+L.Tax2+L.Tax3+L.Tax4+L.Tax5 as TotalTax
+                    FROM PurchInvoice H 
+                    Left Join PurchInvoiceDetail L On H.DocID = L.DocID 
+                    Left Join Item I On L.Item = I.Code                     
+                    Left Join Item IC On IfNull(I.ItemCategory,I.Code) = IC.Code
+                    Left Join viewHelpSubgroup Party On H.Vendor = Party.Code                     
+                    Left Join City On H.VendorCity = City.CityCode 
+                    Left Join State On City.State = State.Code                    
+                    LEFT JOIN Voucher_Type Vt On H.V_Type = Vt.V_Type     
+                    Left Join SiteMast Site On H.Site_Code = Site.Code
+                    Left Join Division Div On H.Div_Code = Div.Div_Code
+                    " & mCondStr
+            Else
+                mCondStr = mCondStr & " And VT.NCat In ('" & Ncat.SaleInvoice & "', '" & Ncat.SaleReturn & "') "
 
-            mMainQry = " SELECT H.DocID, H.V_Type, Vt.Description as VoucherType, 
+                mMainQry = " SELECT H.DocID, H.V_Type, Vt.Description as VoucherType, 
                     H.Site_Code, H.Div_Code, 
                     Site.Name as Site, Div.Div_Name as Division,                    
                     H.V_Date As V_Date,
@@ -171,6 +200,9 @@ Public Class ClsTCSReport
                     Left Join SiteMast Site On H.Site_Code = Site.Code
                     Left Join Division Div On H.Div_Code = Div.Div_Code
                     " & mCondStr
+            End If
+
+
 
 
 
@@ -277,7 +309,7 @@ Public Class ClsTCSReport
 
             If DsHeader.Tables(0).Rows.Count = 0 Then Err.Raise(1, , "No Records To Print!")
 
-            ReportFrm.Text = "GST Output Tax Report"
+            ReportFrm.Text = ReportFrm.Text
             ReportFrm.ClsRep = Me
             ReportFrm.ReportProcName = "ProcMain"
 
@@ -288,6 +320,7 @@ Public Class ClsTCSReport
             DsHeader = Nothing
         End Try
     End Sub
+
 
     Private Sub ReportFrm_FilterSelectionValidated(rowIndex As Integer) Handles ReportFrm.FilterSelectionValidated
         Select Case rowIndex

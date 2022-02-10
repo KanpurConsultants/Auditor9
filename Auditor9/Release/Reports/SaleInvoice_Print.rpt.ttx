@@ -5,66 +5,47 @@ DocNoCaption	string	255	Invoice No.
 DocDateCaption	string	255	Invoice Date	
 SiteStateCode	string	255	09	
 SiteStateName	string	255	Uttar Pradesh	
-DocID	string	255	E1   SIE 2020       6	
+DocID	string	255	D1    SI 2020   13456	
 Sr	number	1	
-V_Date	datetime	20/Nov/2020 00:00:00	
+V_Date	datetime	27/Mar/2021 12:00:00 AM	
 DeliveryDate	datetime		
-Voucher_Type	string	255	Tax Invoice Export	
+Voucher_Type	string	255	Tax Invoice	
 NCat	string	255	SI	
-InvoiceNo	string	255	-001	
-GenDocNo	string	255		
-AmsDocNo	string	255		
-AmsDocDate	datetime		
-AmsDocNetAmount	number	0	
-RateType	string	255		
+InvoiceNo	string	255	SI-10201	
+RateType	string	255	Super Net	
 DocumentPrintShowRateType	string	255	Show If Not Blank	
-AgentName	string	255		
-SalesRepName	string	255		
-SalesRepCode	string	255		
+AgentName	string	255	DIRECT CUSTOMER	
 AgentCaption	string	255	Agent	
-SaleToPartyName	string	255	BUYER LEAH	
-SaleToPartyAddress	string	255	LEAH STOCKFORD LTD.
-3 THE MARTINGALES
-NEWBOLD ON STOUR
-CV37 8GJ
-ENGLAND, UK
-	
-CityName	string	255	NEWBOLD ON STOUR, ENGLAND, UK	
-SaleToPartyPincode	string	255		
-StateCode	string	255	00	
-StateName	string	255	OUT OF INDIA	
+SaleToPartyName	string	255	APSARA CLOTH HOUSE	
+SaleToPartyAddress	string	255	PRATAPGARH	
+CityName	string	255	PRATAPGARH	
+SaleToPartyPincode	string	255	230001	
+StateCode	string	255	09	
+StateName	string	255	Uttar Pradesh	
 SaleToPartyMobile	string	255		
 ContactPerson	string	255		
-SaleToPartySalesTaxNo	string	255		
+SaleToPartySalesTaxNo	string	255	09AHBPS8921N1ZN	
 SaleToPartyAadharNo	string	255		
-SaleToPartyPanNo	string	255		
-SaleToPartyLicenseNo	string	255		
-ShipToPartyName	string	255	CONSIGNEE LEAH RIALTO	
-ShipToPartyAddress	string	255	FBA : LEAH STOCKFORD LTD.
-LGB8
-1568 N LINDEN AVE
-RIALTO, CA 92376-8624
-UNITED STATES
-	
-ShipToPartyCity	string	255	RIALTO, CA, UNITED STATES	
-ShipToPartyPincode	string	255		
-ShipToPartyStateCode	string	255	00	
-ShipToPartyStateName	string	255	OUT OF INDIA	
+SaleToPartyPanNo	string	255	AHBPS8921N	
+ShipToPartyName	string	255	APSARA CLOTH HOUSE	
+ShipToPartyAddress	string	255	PRATAPGARH	
+ShipToPartyCity	string	255	PRATAPGARH	
+ShipToPartyPincode	string	255	230001	
+ShipToPartyStateCode	string	255	09	
+ShipToPartyStateName	string	255	Uttar Pradesh	
 ShipToPartyMobile	string	255		
-ShipToPartySalesTaxNo	string	255		
+ShipToPartySalesTaxNo	string	255	09AHBPS8921N1ZN	
 ShipToPartyAadharNo	string	255		
-ShipToPartyPanNo	string	255		
-ShipToPartyLicenseNo	string	255		
+ShipToPartyPanNo	string	255	AHBPS8921N	
 ShipToAddress	string	255		
-TermsAndConditions	string	255	(1) Payment should be cleared on proforma Invoice. <BR>(2) Overdue Interest @ 18 P.A. after due date. <BR>(3) Goods dispatched by transport at the owner risk. <BR>(4) All disputes are subject to Kanpur jurisdiction only.	
-TransporterName	string	255		
+TermsAndConditions	string	255	<b>1.</b> Goods once sold will not be taken back. <b>2.</b> No Guarantee in the Age of Fashion. <b>3.</b> Interest @ 24% per annum will be charge after 30 days from the date of bill. <b>4.</b> All disputes subject to Kanpur Jurisdiction OR disputes will be settle through Cawnpore Kapda Committee Arbitration Board which will be abide by the both parties	
+TransporterName	string	255	PRATAPGARH EXPRESS TRANSPORT CO., KANPUR	
 LrNo	string	255		
 LrDate	datetime		
-NoOfBales	number		
 PrivateMark	string	255		
-Weight	number		
-Freight	number		
-ChargedWeight	number		
+Weight	number	0	
+Freight	number	0	
+ChargedWeight	number	0	
 FreightType	string	255		
 RoadPermitNo	string	255		
 RoadPermitDate	datetime		
@@ -78,43 +59,18 @@ Destination	string	255
 DescriptionOfGoods	string	255		
 DescriptionOfPacking	string	255		
 ReferenceNo	string	255		
-BarcodeName	string	255		
-ItemName	string	255	Buffalo Leather Dog Collar	
-ItemGroupName	string	255		
-ItemCatName	string	255	Buffalo Leather Dog Collar	
-ItemManualCode	string	255		
-ItemSpecification	string	255		
-InvoiceLineSpecification	string	255	LEATHER DOG COLLAR SIZE XS	
-HSN	string	255	42010000	
+ItemName	string	255	2163          [MILI FASHION | SAREE]	
+ItemGroupName	string	255	S-ENT-803 DYD	
+ItemCatName	string	255	SAREE	
+ItemSpecification	string	255	2163	
+InvoiceLineSpecification	string	255		
+HSN	string	255	540752	
 MaintainStockYn	boolean	True	
-D1Spec	string	255		
-D2Spec	string	255		
-D3Spec	string	255		
-D4Spec	string	255		
-SizeSpec	string	255		
-ItemInvoiceGroupCode	string	255		
-ItemInvoiceGroupDesc	string	255		
-ItemTypeCaption	string	255	Item Type	
-ItemCategoryCaption	string	255	Item Category	
-ItemGroupCaption	string	255	Item Group	
-ItemCaption	string	255	Item	
-BarcodeCaption	string	255		
-D1Caption	string	255	Design	
-D2Caption	string	255	Colour	
-D3Caption	string	255		
-D4Caption	string	255		
-SalesTaxGroupItem	string	255	GST 18%	
-GrossTaxRate	number	18	
-MRP	number	0	
-LotNo	string	255		
-ExpiryDate	datetime		
-ItemRemark1	string	255		
-Pcs	number	50	
-Qty	number	50	
-Rate	number	10.25	
-ItemState	string	255		
-CatalogSpecification	string	255		
-CatalogSiteName	string	255		
+SalesTaxGroupItem	string	255	GST 5%	
+GrossTaxRate	number	5	
+Pcs	number	5	
+Qty	number	5	
+Rate	number	1495	
 Unit	string	255	Pcs	
 UnitDecimalPlaces	number	0	
 DiscountPer	number	0	
@@ -124,39 +80,34 @@ AdditionalDiscountAmount	number	0
 AdditionPer	number	0	
 AdditionAmount	number	0	
 TotalDiscount	number	0	
-Deal	string	255		
-AmountBeforeDiscount	number	37668.75	
-Amount	number	37668.75	
-Taxable_Amount	number	37668.75	
-Tax1_Per	number	18	
-Tax1	number	6780.38	
-Tax2_Per	number	0	
-Tax2	number	0	
-Tax3_Per	number	0	
-Tax3	number	0	
+AmountBeforeDiscount	number	7475	
+Amount	number	7475	
+Taxable_Amount	number	7475	
+Tax1_Per	number	0	
+Tax1	number	0	
+Tax2_Per	number	2.5	
+Tax2	number	186.88	
+Tax3_Per	number	2.5	
+Tax3	number	186.88	
 Tax4_Per	number	0	
 Tax4	number	0	
 Tax5_Per	number	0	
 Tax5	number	0	
-Net_Amount	number	63484.4	
+Net_Amount	number	7848.77	
 LRemarks	string	255		
 HRemarks	string	255		
-SalesTaxSummaryStr	string	255		
-H_Discount	number	0	
-H_AdditionalDiscount	number	0	
-H_Additional	number	0	
 H_TotalDiscount	number	0	
-H_AmountBeforeDiscount	number	192720.68	
-H_Gross_Amount	number	192720.68	
+H_AmountBeforeDiscount	number	68913	
+H_Gross_Amount	number	68913	
 H_SpecialDiscount_Per	number	0	
 H_SpecialDiscount	number	0	
-H_Taxable_Amount	number	192720.68	
+H_Taxable_Amount	number	68913	
 H_Tax1_Per	number	0	
-H_Tax1	number	34689.74	
+H_Tax1	number	0	
 H_Tax2_Per	number	0	
-H_Tax2	number	0	
+H_Tax2	number	1722.87	
 H_Tax3_Per	number	0	
-H_Tax3	number	0	
+H_Tax3	number	1722.87	
 H_Tax4_Per	number	0	
 H_Tax4	number	0	
 H_Tax5_Per	number	0	
@@ -164,27 +115,19 @@ H_Tax5	number	0
 H_Deduction_Per	number	0	
 H_Deduction	number	0	
 H_Other_Charge_Per	number	0	
-H_Other_Charge	number	97387.5	
-H_Other_Charge1_Per	number	0	
-H_Other_Charge1	number	0	
-H_Other_Charge2_Per	number	0	
-H_Other_Charge2	number	0	
-Round_Off	number	0	
-H_Net_Amount	number	324797.92	
+H_Other_Charge	number	0	
+Round_Off	number	0.26	
+H_Net_Amount	number	72359	
 EInvoiceIRN	string	255		
-EInvoiceACKNo	string	255		
-EInvoiceACKDate	datetime		
-Default_BankAccountDetail	string	255	<B>BANK DETAIL : ICICI BANK </BR>ACCOUNT NO : 628805024871</BR>IFSC : ICIC0006288</B>	
+EInvoiceAckNo	string	255		
+EInvoiceAckDate	datetime		
+Default_BankAccountDetail	string	255	Bank Detail : 	HDFC A/c : 50200003154727    IFSC : HDFC0002006	
 DocumentPrintHeaderPattern	string	255	Center Aligned	
 DimDetail	string	255		
 PrintedByUser	string	255	SUPER	
-EntryByUser	string	255	SUPER	
-PrintTitle	string	255	Tax Invoice Export	
+EntryByUser	string	255	SAMEER	
+PrintTitle	string	255	TAX INVOICE	
 DocumentPrintShowPrintDateTimeYn	string	255	1	
-DocumentPrintShowPartyBalance	string	255	Hide	
-TodaysOpeningBalance	long	0	
-TodaysDr	long	0	
-TodaysCr	long	0	
-TodaysClosingBalance	long	0	
 CompanyLogo	BLOB		
 CompanyAuthorisedSignature	BLOB		
+EInvoiceQrCode	BLOB		

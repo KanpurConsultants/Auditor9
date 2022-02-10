@@ -5457,7 +5457,6 @@ Public Class FrmSaleInvoiceDirect_WithDimension
         End If
 
 
-
         If mRow >= 0 Then
             Dgl1.Item(Col1xAmount, mRow).Value = Val(Dgl1.Item(Col1Amount, mRow).Value)
         End If

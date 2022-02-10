@@ -3,26 +3,26 @@ Copies	string	255	1
 CopyPrintingCaption	string	255		
 DocNoCaption	string	255	Doc.No.	
 DocDateCaption	string	255	Doc.Date	
-DocID	string	255	D1   ISS 2021     222	
+DocID	string	255	D1   ISS 2021     716	
 SiteStateCode	string	255	09	
 SiteStateName	string	255	Uttar Pradesh	
 Sr	number	1	
-V_Date	datetime	21/Sep/2021 00:00:00	
-Voucher_Type	string	255	Stock Issue	
+V_Date	datetime	25/Jan/2022 12:00:00 AM	
+Voucher_Type	string	255	DELIVERY CHALLAN	
 NCat	string	255	ISS	
-DocNo	string	255	D1-ISS-149	
-PartyName	string	255	A S MART 	
-PartyAddress	string	255	CHATWARA  MOD AZAMGARH DIST:-AZAMGARH	
-PartyPinCode	string	255	276201	
-PartyCityName	string	255	AZAMGARH	
+DocNo	string	255	D1-ISS-608	
+PartyName	string	255	SADHVI EMBROIDERY BRANCH 2	
+PartyAddress	string	255	55/56 KAHOO KOTHI KANPUR	
+PartyPinCode	string	255		
+PartyCityName	string	255	KANPUR	
 PartyStateCode	string	255	09	
 PartyStateName	string	255	Uttar Pradesh	
-PartyMobile	string	255	6307183213,7755809538	
-ContactPerson	string	255	UTTAM  BARNWAL	
+PartyMobile	string	255		
+ContactPerson	string	255		
 PartySalesTaxNo	string	255		
 PartyAadharNo	string	255		
 PartyPanNo	string	255		
-TransporterName	string	255	NEW INDIA EXPRESS, KANPUR	
+TransporterName	string	255		
 LrNo	string	255		
 LrDate	datetime		
 PrivateMark	string	255		
@@ -32,10 +32,10 @@ FreightType	string	255
 RoadPermitNo	string	255		
 RoadPermitDate	datetime		
 ReferenceNo	string	255		
-ItemName	string	255	S BUTTI          [SHYAM FABRICS | SAREE]	
-ItemGroupName	string	255	S-ENT-807 DYD	
+ItemName	string	255	S BELA           [VEER DARSHAN | SAREE]	
+ItemGroupName	string	255	S-ENT-62-PRINT	
 ItemCatName	string	255	SAREE	
-ItemSpecification	string	255	S BUTTI	
+ItemSpecification	string	255	S BELA	
 InvoiceLineSpecification	string	255		
 HSN	string	255	540752	
 D1Spec	string	255		
@@ -50,11 +50,11 @@ D4Caption	string	255
 SalesTaxGroupItem	string	255		
 GrossTaxRate	number		
 Pcs	number	0	
-Qty	number	5	
-Rate	number	995	
+Qty	number	10	
+Rate	number	755	
 Unit	string	255	Pcs	
 UnitDecimalPlaces	number	0	
-Amount	number	4975	
+Amount	number	7550	
 Taxable_Amount	number	0	
 Tax1_Per	number	0	
 Tax1	number	0	
@@ -94,7 +94,7 @@ DocumentPrintHeaderPattern	string	255	Center Aligned
 DimDetail	string	255		
 HsnDescription	string	255		
 PrintedByUser	string	255	SUPER	
-PrintTitle	string	255	Stock Issue	
+PrintTitle	string	255	DELIVERY CHALLAN	
 CompanyLogo	BLOB		
 CompanyAuthorisedSignature	BLOB		
 EInvoiceQrCode	BLOB		

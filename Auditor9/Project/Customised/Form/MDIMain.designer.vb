@@ -316,7 +316,7 @@ Partial Class MDIMain
         Me.MnuPrintCheque = New System.Windows.Forms.ToolStripMenuItem()
         Me.MnuBank = New System.Windows.Forms.ToolStripMenuItem()
         Me.MnuChequePrinting = New System.Windows.Forms.ToolStripMenuItem()
-        Me.MnuSerializeEntryNo = New System.Windows.Forms.ToolStripMenuItem()
+        Me.MnuTCSInputReport = New System.Windows.Forms.ToolStripMenuItem()
         Me.MnuMain.SuspendLayout()
         Me.SuspendLayout()
         '
@@ -1543,13 +1543,13 @@ Partial Class MDIMain
         '
         Me.MnuLeadMaster.AccessibleDescription = "+LEAD"
         Me.MnuLeadMaster.Name = "MnuLeadMaster"
-        Me.MnuLeadMaster.Size = New System.Drawing.Size(152, 22)
+        Me.MnuLeadMaster.Size = New System.Drawing.Size(151, 22)
         Me.MnuLeadMaster.Text = "Lead Master"
         '
         'MnuLeadFollowup
         '
         Me.MnuLeadFollowup.Name = "MnuLeadFollowup"
-        Me.MnuLeadFollowup.Size = New System.Drawing.Size(152, 22)
+        Me.MnuLeadFollowup.Size = New System.Drawing.Size(151, 22)
         Me.MnuLeadFollowup.Tag = "GRID REPORT"
         Me.MnuLeadFollowup.Text = "Lead Followup"
         '
@@ -1743,7 +1743,7 @@ Partial Class MDIMain
         '
         'MnuStatutory
         '
-        Me.MnuStatutory.DropDownItems.AddRange(New System.Windows.Forms.ToolStripItem() {Me.MnuGSTReports, Me.MnuEWayBillGeneration, Me.MnuInputTaxRegister, Me.MnuGSTOutputTaxReport, Me.MnuGSTInputTaxReport, Me.MnuTCSOutputReport, Me.MnuEBillGeneration})
+        Me.MnuStatutory.DropDownItems.AddRange(New System.Windows.Forms.ToolStripItem() {Me.MnuGSTReports, Me.MnuEWayBillGeneration, Me.MnuInputTaxRegister, Me.MnuGSTOutputTaxReport, Me.MnuGSTInputTaxReport, Me.MnuTCSOutputReport, Me.MnuTCSInputReport, Me.MnuEBillGeneration})
         Me.MnuStatutory.Name = "MnuStatutory"
         Me.MnuStatutory.Size = New System.Drawing.Size(67, 20)
         Me.MnuStatutory.Text = "Statutory"
@@ -2352,28 +2352,33 @@ Partial Class MDIMain
         '
         Me.MnuImportData.AccessibleDescription = "+Admin"
         Me.MnuImportData.Name = "MnuImportData"
-        Me.MnuImportData.Size = New System.Drawing.Size(210, 22)
+        Me.MnuImportData.Size = New System.Drawing.Size(236, 22)
         Me.MnuImportData.Text = "Import Data"
         '
         'MnuReportSettings
         '
         Me.MnuReportSettings.Name = "MnuReportSettings"
-        Me.MnuReportSettings.Size = New System.Drawing.Size(210, 22)
+        Me.MnuReportSettings.Size = New System.Drawing.Size(236, 22)
         Me.MnuReportSettings.Text = "Report Settings"
         '
         'MnuLedgerPostingDifference
         '
         Me.MnuLedgerPostingDifference.Name = "MnuLedgerPostingDifference"
-        Me.MnuLedgerPostingDifference.Size = New System.Drawing.Size(210, 22)
+        Me.MnuLedgerPostingDifference.Size = New System.Drawing.Size(236, 22)
         Me.MnuLedgerPostingDifference.Tag = "GRID REPORT"
         Me.MnuLedgerPostingDifference.Text = "Ledger Posting Difference"
         '
         'MnuMakeDataBlank
         '
         Me.MnuMakeDataBlank.Name = "MnuMakeDataBlank"
-        Me.MnuMakeDataBlank.Size = New System.Drawing.Size(210, 22)
+        Me.MnuMakeDataBlank.Size = New System.Drawing.Size(236, 22)
         Me.MnuMakeDataBlank.Text = "Make Data Blank"
         '
+        'MnuSerializeEntryNo
+        '
+        Me.MnuSerializeEntryNo.Name = "MnuSerializeEntryNo"
+        Me.MnuSerializeEntryNo.Size = New System.Drawing.Size(236, 22)
+        Me.MnuSerializeEntryNo.Text = "Serialize Entry No"
         '
         'MnuExportSqliteDataToSqlServer
         '
@@ -2413,11 +2418,12 @@ Partial Class MDIMain
         Me.MnuChequePrinting.Size = New System.Drawing.Size(160, 22)
         Me.MnuChequePrinting.Text = "Cheque Printing"
         '
-        'MnuSerializeEntryNo
+        'MnuTCSInputReport
         '
-        Me.MnuSerializeEntryNo.Name = "MnuSerializeEntryNo"
-        Me.MnuSerializeEntryNo.Size = New System.Drawing.Size(210, 22)
-        Me.MnuSerializeEntryNo.Text = "Serialize Entry No"
+        Me.MnuTCSInputReport.Name = "MnuTCSInputReport"
+        Me.MnuTCSInputReport.Size = New System.Drawing.Size(193, 22)
+        Me.MnuTCSInputReport.Tag = "GRID REPORT"
+        Me.MnuTCSInputReport.Text = "TCS Input Report"
         '
         'MDIMain
         '
@@ -2738,4 +2744,5 @@ Partial Class MDIMain
     Friend WithEvents MnuSerializeEntryNo As ToolStripMenuItem
     Friend WithEvents MnuLRUpdation As ToolStripMenuItem
     Friend WithEvents MnuExportSqliteDataToSqlServer As ToolStripMenuItem
+    Friend WithEvents MnuTCSInputReport As ToolStripMenuItem
 End Class

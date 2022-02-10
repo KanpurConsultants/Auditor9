@@ -107,7 +107,7 @@
   </Column>
   <Column>
     <Name>Sales Tax Group Item</Name>
-    <Index>37</Index>
+    <Index>35</Index>
     <Width>100</Width>
     <Visible>True</Visible>
     <AggregateFunction />
@@ -226,14 +226,14 @@
   </Column>
   <Column>
     <Name>Amount</Name>
-    <Index>32</Index>
+    <Index>31</Index>
     <Width>100</Width>
     <Visible>True</Visible>
     <AggregateFunction />
   </Column>
   <Column>
     <Name>Pcs</Name>
-    <Index>33</Index>
+    <Index>32</Index>
     <Width>80</Width>
     <Visible>False</Visible>
     <AggregateFunction />
@@ -247,21 +247,21 @@
   </Column>
   <Column>
     <Name>Deal Qty</Name>
-    <Index>35</Index>
+    <Index>36</Index>
     <Width>70</Width>
     <Visible>False</Visible>
     <AggregateFunction />
   </Column>
   <Column>
     <Name>Deal Unit</Name>
-    <Index>36</Index>
+    <Index>37</Index>
     <Width>60</Width>
     <Visible>False</Visible>
     <AggregateFunction />
   </Column>
   <Column>
     <Name>Deal Decimal Places</Name>
-    <Index>31</Index>
+    <Index>33</Index>
     <Width>50</Width>
     <Visible>False</Visible>
     <AggregateFunction />
@@ -513,7 +513,7 @@
   </Column>
   <Column>
     <Name>Special Discount</Name>
-    <Index>102</Index>
+    <Index>99</Index>
     <Width>100</Width>
     <Visible>False</Visible>
     <AggregateFunction />
@@ -534,14 +534,14 @@
   </Column>
   <Column>
     <Name>Taxable Amount</Name>
-    <Index>99</Index>
+    <Index>101</Index>
     <Width>100</Width>
     <Visible>True</Visible>
     <AggregateFunction />
   </Column>
   <Column>
     <Name>Taxable Amount PostAc</Name>
-    <Index>101</Index>
+    <Index>102</Index>
     <Width>100</Width>
     <Visible>False</Visible>
     <AggregateFunction />

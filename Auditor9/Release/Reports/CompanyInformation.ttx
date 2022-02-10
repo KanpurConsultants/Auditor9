@@ -1,9 +1,9 @@
 ; Field definition file for table: ADORecordset
-CompanyName	string	255	2020-2021	
+CompanyName	string	255	HARSHEEN	
 Add1	string	255		
 Add2	string	255		
 Add3	string	255		
-City	string	255		
+City	string	255	Kanpur	
 Phone	string	255		
 Fax	string	255		
 Pin	string	255		

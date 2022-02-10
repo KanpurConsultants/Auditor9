@@ -135,6 +135,7 @@ Public Class ClsReports
                             Union All Select 'Item Group Wise Summary' as Code, 'Item Group Wise Summary' as Name 
                             Union All Select 'Item Category Wise Summary' as Code, 'Item Category Wise Summary' as Name 
                             Union All Select 'City Wise Summary' as Code, 'City Wise Summary' as Name 
+                            Union All Select 'Area Wise Summary' as Code, 'Area Wise Summary' as Name 
                             Union All Select 'State Wise Summary' as Code, 'State Wise Summary' as Name
                             Union All Select 'Sales Representative Wise Summary' as Code, 'Sales Representative Wise Summary' as Name
                             Union All Select 'Responsible Person Wise Summary' as Code, 'Responsible Person Wise Summary' as Name
@@ -358,6 +359,7 @@ Public Class ClsReports
                     ReportFrm.CreateHelpGrid("VoucherType", "Voucher Type", FrmRepDisplay.FieldFilterDataType.StringType, FrmRepDisplay.FieldDataType.MultiSelection, mQry)
                     ReportFrm.CreateHelpGrid("Agent", "Agent", FrmRepDisplay.FieldFilterDataType.StringType, FrmRepDisplay.FieldDataType.MultiSelection, mHelpSalesAgentQry)
                     ReportFrm.CreateHelpGrid("City", "City", FrmRepDisplay.FieldFilterDataType.StringType, FrmRepDisplay.FieldDataType.MultiSelection, mHelpCityQry)
+                    ReportFrm.CreateHelpGrid("Area", "Area", FrmRepDisplay.FieldFilterDataType.StringType, FrmRepDisplay.FieldDataType.MultiSelection, mHelpAreaQry)
                     ReportFrm.CreateHelpGrid("State", "State", FrmRepDisplay.FieldFilterDataType.StringType, FrmRepDisplay.FieldDataType.MultiSelection, mHelpStateQry)
                     ReportFrm.CreateHelpGrid("Site", "Site", FrmRepDisplay.FieldFilterDataType.StringType, FrmRepDisplay.FieldDataType.MultiSelection, mHelpSiteQry, "[SITECODE]")
                     ReportFrm.CreateHelpGrid("Division", "Division", FrmRepDisplay.FieldFilterDataType.StringType, FrmRepDisplay.FieldDataType.MultiSelection, mHelpDivisionQry, "[DIVISIONCODE]")
@@ -366,7 +368,7 @@ Public Class ClsReports
                     Else
                         ReportFrm.CreateHelpGrid("Report On", "Report On", FrmRepDisplay.FieldFilterDataType.StringType, FrmRepDisplay.FieldDataType.StringType, "", "Agent")
                     End If
-                    ReportFrm.FilterGrid.Rows(11).Visible = False 'Hide HSN Row
+                    ReportFrm.FilterGrid.Rows(12).Visible = False 'Hide HSN Row
 
 
                 'Case StockReport
@@ -810,6 +812,10 @@ Public Class ClsReports
                         mFilterGrid.Item(GFilter, 0).Value = "Doc.Header Wise Detail"
                         mFilterGrid.Item(GFilter, 11).Value = mGridRow.Cells("City").Value
                         mFilterGrid.Item(GFilterCode, 11).Value = "'" + mGridRow.Cells("Search Code").Value + "'"
+                    ElseIf mFilterGrid.Item(GFilter, 0).Value = "Area Wise Summary" Then
+                        mFilterGrid.Item(GFilter, 0).Value = "Doc.Header Wise Detail"
+                        mFilterGrid.Item(GFilter, 11).Value = mGridRow.Cells("Area").Value
+                        mFilterGrid.Item(GFilterCode, 11).Value = "'" + mGridRow.Cells("Search Code").Value + "'"
                     ElseIf mFilterGrid.Item(GFilter, 0).Value = "State Wise Summary" Then
                         mFilterGrid.Item(GFilter, 0).Value = "Doc.Header Wise Detail"
                         mFilterGrid.Item(GFilter, 12).Value = mGridRow.Cells("State").Value
@@ -923,7 +929,7 @@ Public Class ClsReports
                     Party.Mobile,
                     LTV.Agent As AgentCode, Agent.Name As AgentName, H.ResponsiblePerson, ResponsiblePerson.Name as ResponsiblePersonName,
                     L.SalesRepresentative, SalesRep.Name as SalesRepresentativeName, H.SalesTaxGroupParty, L.SalesTaxGroupItem,
-                    City.CityCode, City.CityName, State.Code As StateCode, State.Description As StateName,
+                    City.CityCode, City.CityName, Area.Code As AreaCode, Area.Description As AreaName, State.Code As StateCode, State.Description As StateName,
                     Cast(Replace(H.ManualRefNo,'-','') as Integer) as InvoiceNo, H.ManualRefNo, L.Item,
                     I.Specification as ItemSpecification, I.Description As ItemDesc, IfNull(IfNull(I.HSN,IC.HSN),Bi.HSN) as HSN,IG.Description as ItemGroupDescription, IC.Description as ItemCategoryDescription,  
                     L.Catalog, Catalog.Description as CatalogDesc, IG.Department, Department.Description as DepartmentDesc,
@@ -949,6 +955,7 @@ Public Class ClsReports
                     Left Join viewHelpSubGroup SalesRep On L.SalesRepresentative = SalesRep.Code 
                     Left Join viewHelpSubGroup ResponsiblePerson On H.ResponsiblePerson = ResponsiblePerson.Code 
                     Left Join City On H.SaleToPartyCity = City.CityCode 
+                    Left Join Area On Party.Area = Area.Code 
                     Left Join State On City.State = State.Code                    
                     LEFT JOIN Voucher_Type Vt On H.V_Type = Vt.V_Type     
                     Left Join SiteMast Site On H.Site_Code = Site.Code
@@ -1133,6 +1140,14 @@ Public Class ClsReports
                     From (" & mQry & ") As VMain
                     GROUP By VMain.CityCode 
                     Order By Max(VMain.CityName)"
+            ElseIf ReportFrm.FGetText(0) = "Area Wise Summary" Then
+                mQry = " Select VMain.AreaCode as SearchCode, Max(VMain.AreaName) As [Area], 
+                    Count(Distinct Vmain.DocID) as [Doc.Count],  Round(Sum(VMain.Qty),3) as Qty,
+                    Sum(VMain.AmountExDiscount) as GoodsValue, Sum(VMain.Discount) as Discount, Sum(VMain.Addition) as Addition, Sum(VMain.SpecialDiscount) as SpecialDiscount, Sum(VMain.SpecialAddition) as SpecialAddition,
+                    Sum(VMain.Amount) As Amount, IfNull(Sum(VMain.Taxable_Amount),0) As [Taxable Amount], IfNull(Sum(VMain.TotalTax),0) As TaxAmount, IfNull(Sum(VMain.Net_Amount),0) As [Net Amount]
+                    From (" & mQry & ") As VMain
+                    GROUP By VMain.AreaCode 
+                    Order By Max(VMain.AreaName)"
             ElseIf ReportFrm.FGetText(0) = "State Wise Summary" Then
                 mQry = " Select VMain.StateCode as SearchCode, Max(VMain.StateName) As [State], 
                     Count(Distinct Vmain.DocID) as [Doc.Count],  Round(Sum(VMain.Qty),3) as Qty,
@@ -2204,9 +2219,10 @@ Public Class ClsReports
             'mCondStr = mCondStr & ReportFrm.GetWhereCondition("L.V_Type", 5)
             mCondStr = mCondStr & ReportFrm.GetWhereCondition("LTV." & mFieldName, 6)
             mCondStr = mCondStr & ReportFrm.GetWhereCondition("City.CityCode", 7)
-            mCondStr = mCondStr & ReportFrm.GetWhereCondition("City.State", 8)
-            mCondStr = mCondStr & Replace(ReportFrm.GetWhereCondition("L.Site_Code", 9), "''", "'")
-            mCondStr = mCondStr & Replace(ReportFrm.GetWhereCondition("L.DivCode", 10), "''", "'")
+            mCondStr = mCondStr & ReportFrm.GetWhereCondition("Party.Area", 8)
+            mCondStr = mCondStr & ReportFrm.GetWhereCondition("City.State", 9)
+            mCondStr = mCondStr & Replace(ReportFrm.GetWhereCondition("L.Site_Code", 10), "''", "'")
+            mCondStr = mCondStr & Replace(ReportFrm.GetWhereCondition("L.DivCode", 11), "''", "'")
 
             mCommissionPer = Val(ReportFrm.FGetText(3))
 
