@@ -89,7 +89,7 @@ Public Class ClsExportDataForBranch
     End Sub
     Private Sub ObjRepFormGlobal_ProcessReport() Handles ReportFrm.ProcessReport
         If ClsMain.FDivisionNameForCustomization(6) = "SADHVI" Then
-            If AgL.XNull(ReportFrm.FGetCode(rowParty)) = "'D100004259'" Or AgL.XNull(ReportFrm.FGetCode(rowParty)) = "'E100005835'" Or AgL.XNull(ReportFrm.FGetCode(rowParty)) = "'D100016337'" Or AgL.XNull(ReportFrm.FGetCode(rowParty)) = "'D100016336'" Or AgL.XNull(ReportFrm.FGetCode(rowParty)) = "'D100025715'" Or AgL.XNull(ReportFrm.FGetCode(rowParty)) = "'D100025716'" Then ' for Sadhvi Kanpur Branch
+            If AgL.XNull(ReportFrm.FGetCode(rowParty)) = "'D100004259'" Or AgL.XNull(ReportFrm.FGetCode(rowParty)) = "'E100005835'" Or AgL.XNull(ReportFrm.FGetCode(rowParty)) = "'D100016337'" Or AgL.XNull(ReportFrm.FGetCode(rowParty)) = "'D100016336'" Or AgL.XNull(ReportFrm.FGetCode(rowParty)) = "'D100025715'" Or AgL.XNull(ReportFrm.FGetCode(rowParty)) = "'D100025716'" Or AgL.XNull(ReportFrm.FGetCode(rowParty)) = "'D100027005'" Then ' for Sadhvi Kanpur Branch & Jaunpur
                 ProcExportStockIssueDataToSqlite()
             ElseIf AgL.XNull(ReportFrm.FGetCode(rowParty)) = "'SADHVIBEN'" Or AgL.XNull(ReportFrm.FGetCode(rowParty)) = "'SADHVIBEM'" Then ' for Sadhvi Bhopal Branch
                 ProcExportSaleInvoiceDataToSqlite_Sadhvi()
@@ -123,6 +123,7 @@ Public Class ClsExportDataForBranch
         Dim DtItem As DataTable
         Dim mStrMainQry As String = ""
         Dim mSaleToParty As String = ""
+        Dim mPartyCode As String = ""
         mSaleToParty = AgL.XNull(ReportFrm.FGetCode(rowParty))
 
 
@@ -131,6 +132,8 @@ Public Class ClsExportDataForBranch
             Exit Sub
         End If
 
+        mQry = "SELECT SG.ManualCode  FROM Subgroup SG WHERE SG.Subcode = " & mSaleToParty & ""
+        mPartyCode = AgL.Dman_Execute(mQry, AgL.GcnRead).ExecuteScalar()
 
         mStrMainQry = "Select H.DocId From StockHead H
                     Where Date(H.V_Date) Between " & AgL.Chk_Date(CDate(ReportFrm.FGetText(rowFromDate)).ToString("s")) & " 
@@ -193,9 +196,9 @@ Public Class ClsExportDataForBranch
         SaveFileDialogBox.Title = "File Name"
         SaveFileDialogBox.InitialDirectory = FilePath
         If ReportFrm.FGetText(rowFromDate) <> ReportFrm.FGetText(rowToDate) Then
-            SaveFileDialogBox.FileName = AgL.PubDBName + "_" + ReportFrm.FGetText(rowFromDate).ToString.Replace("/", "") + "_To_" + ReportFrm.FGetText(rowToDate).ToString.Replace("/", "")
+            SaveFileDialogBox.FileName = AgL.PubDBName + "_" + mPartyCode + "_" + ReportFrm.FGetText(rowFromDate).ToString.Replace("/", "") + "_To_" + ReportFrm.FGetText(rowToDate).ToString.Replace("/", "")
         Else
-            SaveFileDialogBox.FileName = AgL.PubDBName + "_" + ReportFrm.FGetText(rowFromDate).ToString.Replace("/", "")
+            SaveFileDialogBox.FileName = AgL.PubDBName + "_" + mPartyCode + "_" + ReportFrm.FGetText(rowFromDate).ToString.Replace("/", "")
         End If
         If SaveFileDialogBox.ShowDialog = Windows.Forms.DialogResult.Cancel Then Exit Sub
         Dim mDbPath As String = SaveFileDialogBox.FileName
@@ -1141,11 +1144,15 @@ Public Class ClsExportDataForBranch
         Dim DtItem As DataTable
         Dim mStrMainQry As String = ""
         Dim mSaleToParty As String = ""
+        Dim mPartyCode As String = ""
 
         If AgL.XNull(ReportFrm.FGetText(rowParty)) = "" Then
             MsgBox("Party Name is Required...!", MsgBoxStyle.Information)
             Exit Sub
         End If
+
+        mQry = "SELECT SG.ManualCode  FROM Subgroup SG WHERE SG.Subcode = " & mSaleToParty & ""
+        mPartyCode = AgL.Dman_Execute(mQry, AgL.GcnRead).ExecuteScalar()
 
         mSaleToParty = AgL.XNull(ReportFrm.FGetCode(rowParty))
 
@@ -1221,9 +1228,9 @@ Public Class ClsExportDataForBranch
         SaveFileDialogBox.Title = "File Name"
         SaveFileDialogBox.InitialDirectory = FilePath
         If ReportFrm.FGetText(rowFromDate) <> ReportFrm.FGetText(rowToDate) Then
-            SaveFileDialogBox.FileName = AgL.PubDBName + "_" + ReportFrm.FGetText(rowFromDate).ToString.Replace("/", "") + "_To_" + ReportFrm.FGetText(rowToDate).ToString.Replace("/", "")
+            SaveFileDialogBox.FileName = AgL.PubDBName + "_" + mPartyCode + "_" + ReportFrm.FGetText(rowFromDate).ToString.Replace("/", "") + "_To_" + ReportFrm.FGetText(rowToDate).ToString.Replace("/", "")
         Else
-            SaveFileDialogBox.FileName = AgL.PubDBName + "_" + ReportFrm.FGetText(rowFromDate).ToString.Replace("/", "")
+            SaveFileDialogBox.FileName = AgL.PubDBName + "_" + mPartyCode + "_" + ReportFrm.FGetText(rowFromDate).ToString.Replace("/", "")
         End If
         If SaveFileDialogBox.ShowDialog = Windows.Forms.DialogResult.Cancel Then Exit Sub
         Dim mDbPath As String = SaveFileDialogBox.FileName

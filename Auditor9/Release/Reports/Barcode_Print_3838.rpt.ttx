@@ -1,25 +1,27 @@
 ; Field definition file for table: ADORecordset
-Code	string	255	8299	
-Barcode	string	255	2008298	
+Code	string	255	8	
+Barcode	string	255	1008	
 BarCodeImg	BLOB		
-ItemDesc	string	255	FANCY	
-ItemCategoryDesc	string	255	SUIT	
-ItemGroupDesc	string	255		
+ItemDesc	string	255	RADHA	
+ItemCategoryDesc	string	255	SAREE	
+ItemGroupDesc	string	255	ANUBHAV FASHION	
 Dimension1Desc	string	255		
 Dimension2Desc	string	255		
 Dimension3Desc	string	255		
 Dimension4Desc	string	255		
 SizeDesc	string	255		
-PurchaseRate	number	1295	
-SaleRate	number	1295	
-MRP	number	0	
-ReceiveQty	number	1	
+PurchaseRate	number	500	
+SaleRate	number	500	
+MRP	number	500	
+ReceiveQty	number	10	
 GenSr	number	1	
-ItemMasterPurchaseRate	number	1295	
-ItemMasterSaleRate	number	1295	
-Title1	string	255	GUR SHEEL	
-Title2	string	255	MAMA KAPDE WALE	
-Title3	number		
-SaleRate_RateType	number		
-RandomNo1	number	342	
-RandomNo2	number	472	
+ItemMasterPurchaseRate	number	399	
+ItemMasterSaleRate	number	500	
+BarcodeRatePrefix	string	255		
+Title1	string	255	AUITOR9	
+Title2	string	255		
+Title3	string	255		
+SaleRate_RateType	string	255		
+SaleRate_RateTypeEncoded	long	0	
+RandomNo1	long	214	
+RandomNo2	long	994	

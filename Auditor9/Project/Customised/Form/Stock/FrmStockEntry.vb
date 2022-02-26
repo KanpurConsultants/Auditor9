@@ -48,6 +48,7 @@ Public Class FrmStockEntry
     Public Const Col1DealUnitDecimalPlaces As String = "Deal Decimal Places"
     Public Const Col1Rate As String = "Rate"
     Public Const Col1Amount As String = "Amount"
+    Public Const Col1MRP As String = "MRP"
     Public Const Col1FromProcess As String = "From Process"
     Public Const Col1Remark As String = "Remark"
     Public Const Col1ReferenceDocId As String = "Reference DocID"
@@ -1034,6 +1035,7 @@ Public Class FrmStockEntry
             .AddAgTextColumn(Dgl1, Col1Unit, 50, 0, Col1Unit, True, True)
             .AddAgNumberColumn(Dgl1, Col1Rate, 80, 8, 2, False, Col1Rate, True, False, True)
             .AddAgNumberColumn(Dgl1, Col1Amount, 100, 8, 2, False, Col1Amount, True, True, True)
+            .AddAgNumberColumn(Dgl1, Col1MRP, 80, 8, 2, False, Col1MRP, True, False, True)
             .AddAgNumberColumn(Dgl1, Col1Pcs, 80, 8, 4, False, Col1Pcs, False, False, True)
             .AddAgNumberColumn(Dgl1, Col1UnitMultiplier, 70, 8, 4, False, Col1UnitMultiplier, False, True, True)
             .AddAgNumberColumn(Dgl1, Col1DealQty, 70, 8, 3, False, Col1DealQty, False, True, True)
@@ -1635,7 +1637,7 @@ Public Class FrmStockEntry
         mQry = "Insert Into StockHeadDetail(DocId, Sr, Barcode, Item, 
                            Specification, ItemState, BaleNo, LotNo, RawMaterial, RawMaterialConsumptionQty, Godown,
                            DocQty, LossQty, Qty, Unit, Pcs, UnitMultiplier, DealUnit, DealQty,
-                           Rate, Amount, ReferenceNo, ReferenceDocID, ReferenceTSr, ReferenceSr, ReferenceDocIdBalanceQty, Remark) "
+                           Rate, Amount, MRP, ReferenceNo, ReferenceDocID, ReferenceTSr, ReferenceSr, ReferenceDocIdBalanceQty, Remark) "
         mQry += " Values( " & AgL.Chk_Text(DocID) & ", " & Sr & ", " &
                         " " & AgL.Chk_Text(Dgl1.Item(Col1Barcode, LineGridRowIndex).Tag) & ", " &
                         " " & AgL.Chk_Text(Dgl1.Item(Col1SKU, LineGridRowIndex).Tag) & ", " &
@@ -1656,6 +1658,7 @@ Public Class FrmStockEntry
                         " " & Val(Dgl1.Item(Col1DealQty, LineGridRowIndex).Value) & ", " &
                         " " & Val(Dgl1.Item(Col1Rate, LineGridRowIndex).Value) & ", " &
                         " " & Val(Dgl1.Item(Col1Amount, LineGridRowIndex).Value) & ", " &
+                        " " & Val(Dgl1.Item(Col1MRP, LineGridRowIndex).Value) & ", " &
                         " " & AgL.Chk_Text(Dgl1.Item(Col1ReferenceDocId, LineGridRowIndex).Value) & ",  " &
                         " " & AgL.Chk_Text(Dgl1.Item(Col1ReferenceDocId, LineGridRowIndex).Tag) & ",  " &
                         " " & Val(Dgl1.Item(Col1ReferenceDocIdTSr, LineGridRowIndex).Value) & ",  " &
@@ -1702,6 +1705,7 @@ Public Class FrmStockEntry
                     " DealQty = " & Val(Dgl1.Item(Col1DealQty, LineGridRowIndex).Value) & ", " &
                     " Rate = " & Val(Dgl1.Item(Col1Rate, LineGridRowIndex).Value) & ", " &
                     " Amount = " & Val(Dgl1.Item(Col1Amount, LineGridRowIndex).Value) & ", " &
+                    " MRP = " & Val(Dgl1.Item(Col1MRP, LineGridRowIndex).Value) & ", " &
                     " ReferenceNo = " & AgL.Chk_Text(Dgl1.Item(Col1ReferenceDocId, LineGridRowIndex).Value) & ", " &
                     " ReferenceDocId = " & AgL.Chk_Text(Dgl1.Item(Col1ReferenceDocId, LineGridRowIndex).Tag) & ", " &
                     " ReferenceTSr = " & AgL.Chk_Text(Dgl1.Item(Col1ReferenceDocIdTSr, LineGridRowIndex).Value) & ",  " &
@@ -2383,6 +2387,7 @@ Public Class FrmStockEntry
                             Dgl1.Item(Col1DealQty, I).Value = Format(AgL.VNull(.Rows(I)("DealQty")), "0.".PadRight(AgL.VNull(.Rows(I)("DealUnitDecimalPlaces")) + 2, "0"))
                             Dgl1.Item(Col1Rate, I).Value = AgL.VNull(.Rows(I)("Rate"))
                             Dgl1.Item(Col1Amount, I).Value = Format(Math.Abs(AgL.VNull(.Rows(I)("Amount"))), "0.00")
+                            Dgl1.Item(Col1MRP, I).Value = AgL.VNull(.Rows(I)("MRP"))
                             Dgl1.Item(Col1Remark, I).Value = AgL.XNull(.Rows(I)("Remark"))
                             Dgl1.Item(Col1BaleNo, I).Value = AgL.XNull(.Rows(I)("BaleNo"))
 
@@ -3451,6 +3456,14 @@ Public Class FrmStockEntry
 
         PrintingCopies = FGetSettings(SettingFields.PrintingCopyCaptions, SettingType.General).ToString.Split(",")
         mQry = ""
+        Dim SQryRate As String = ""
+
+        If DglMain.Item(Col1Value, rowParty).Tag = "D100027005" Then
+            SQryRate = "Case When IfNull(L.MRP,0)=0 then L.Rate else L.MRP End "
+        Else
+            SQryRate = "L.Rate "
+
+        End If
         For I = 1 To PrintingCopies.Length
             If mQry <> "" Then mQry = mQry + " Union All "
 
@@ -3463,7 +3476,7 @@ Public Class FrmStockEntry
                 I.Specification as ItemSpecification, L.Specification as InvoiceLineSpecification, IfNull(I.HSN,IC.HSN) as HSN,
                 IfNull(D1.Specification,'') as D1Spec, IfNull(D2.Specification,'') as D2Spec, IfNull(D3.Specification,'') as D3Spec, IfNull(D4.Specification,'') as D4Spec, IfNull(Size.Specification,'') as SizeSpec,
                 '" & AgL.PubCaptionDimension1 & "' as D1Caption, '" & AgL.PubCaptionDimension2 & "' as D2Caption, '" & AgL.PubCaptionDimension3 & "' as D3Caption, '" & AgL.PubCaptionDimension4 & "' as D4Caption, 
-                L.SalesTaxGroupItem, STGI.GrossTaxRate, L.Pcs, Abs(L.Qty) as Qty, L.Rate, L.Unit, U.DecimalPlaces as UnitDecimalPlaces,  
+                L.SalesTaxGroupItem, STGI.GrossTaxRate, L.Pcs, Abs(L.Qty) as Qty, " & SQryRate & " AS Rate, L.Unit, U.DecimalPlaces as UnitDecimalPlaces,  
                 Abs(L.Amount) as Amount,Abs(L.Taxable_Amount) as Taxable_Amount,Abs(L.Tax1_Per) Tax1_Per, Abs(L.Tax1) as Tax1, Abs(L.Tax2_Per) as Tax2_Per, Abs(L.Tax2) as Tax2, Abs(L.Tax3_Per) as Tax3_Per, Abs(L.Tax3) as Tax3, Abs(L.Tax4_Per) as Tax4_Per, Abs(L.Tax4) as Tax4, Abs(L.Tax5_Per) as Tax5_Per, Abs(L.Tax5) as Tax5, Abs(L.Net_Amount) as Net_Amount,
                 IfNull(H.Remarks,'') as HRemarks, IfNull(L.Remark,'') as LRemarks,
                 abs(H.Gross_Amount) as H_Gross_Amount, H.SpecialDiscount_Per as H_SpecialDiscount_Per, H.SpecialDiscount as H_SpecialDiscount,abs(H.Taxable_Amount) as H_Taxable_Amount,abs(H.Tax1_Per) as H_Tax1_Per, abs(H.Tax1) as H_Tax1, 
@@ -3745,9 +3758,14 @@ Public Class FrmStockEntry
 
                 'If Val(Dgl1.Item(Col1Amount, I).Value) <> 0 And Dgl1.Columns(Col1Amount).ReadOnly = False Then
                 'Else
-                Dgl1.Item(Col1Amount, I).Value = Format(Val(Dgl1.Item(Col1DocQty, I).Value) * Val(Dgl1.Item(Col1Rate, I).Value), "0.".PadRight(CType(Dgl1.Columns(Col1Amount), AgControls.AgTextColumn).AgNumberRightPlaces + 2, "0"))
+                'Dgl1.Item(Col1Amount, I).Value = Format(Val(Dgl1.Item(Col1DocQty, I).Value) * Val(Dgl1.Item(Col1Rate, I).Value), "0.".PadRight(CType(Dgl1.Columns(Col1Amount), AgControls.AgTextColumn).AgNumberRightPlaces + 2, "0"))
                 'End If
 
+                If DglMain.Item(Col1Value, rowParty).Tag = "D100027005" Then
+                    Dgl1.Item(Col1Amount, I).Value = Format(Val(Dgl1.Item(Col1DocQty, I).Value) * Val(Dgl1.Item(Col1MRP, I).Value), "0.".PadRight(CType(Dgl1.Columns(Col1Amount), AgControls.AgTextColumn).AgNumberRightPlaces + 2, "0"))
+                Else
+                    Dgl1.Item(Col1Amount, I).Value = Format(Val(Dgl1.Item(Col1DocQty, I).Value) * Val(Dgl1.Item(Col1Rate, I).Value), "0.".PadRight(CType(Dgl1.Columns(Col1Amount), AgControls.AgTextColumn).AgNumberRightPlaces + 2, "0"))
+                End If
 
 
                 If LblV_Type.Tag = Ncat.LrEntry Then

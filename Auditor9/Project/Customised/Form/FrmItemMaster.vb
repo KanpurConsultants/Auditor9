@@ -810,7 +810,7 @@ Public Class FrmItemMaster
             mQry = "Select count(*) From Item Where Replace(Replace(Description,' ',''),'-','') ='" & Dgl1(Col1Value, rowItemName).Value.ToString.Replace(" ", "").Replace("-", "") & "' And Code <> '" & mInternalCode & "' "
             If AgL.Dman_Execute(mQry, AgL.GCn).ExecuteScalar > 0 Then Err.Raise(1, , "Description Already Exist!")
 
-            mQry = "Select count(*) From Item WHERE ItemGroup = " & AgL.Chk_Text(Dgl1(Col1Value, rowItemGroup).Tag) & " AND ItemCategory = " & AgL.Chk_Text(Dgl1(Col1Value, rowItemCategory).Tag) & "  AND Specification  ='" & Dgl1(Col1Value, rowSpecification).Value & "' And Code <> '" & mInternalCode & "' "
+            mQry = "Select count(*) From Item WHERE ItemGroup = " & AgL.Chk_Text(Dgl1(Col1Value, rowItemGroup).Tag) & " AND ItemCategory = " & AgL.Chk_Text(Dgl1(Col1Value, rowItemCategory).Tag) & "  AND Specification  ='" & Dgl1(Col1Value, rowSpecification).Value & "' AND Status ='Active' AND V_Type ='Item' And Code <> '" & mInternalCode & "' "
             If AgL.Dman_Execute(mQry, AgL.GCn).ExecuteScalar > 0 Then Err.Raise(1, , "Item Already Exist!")
 
             If Dgl1.Item(Col1Value, rowBarcode).Value <> "" Then

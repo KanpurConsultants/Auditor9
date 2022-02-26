@@ -4030,7 +4030,7 @@ Public Class ClsReports
                 LEFT JOIN SubGroup ShipTo On H.ShipToParty = ShipTo.SubCode
                 LEFT JOIN City ShipToCity On ShipTo.SubCode = ShipToCity.CityCode
                 LEFT JOIN State ShipToState On ShipToCity.CityCode = ShipToState.Code
-                LEFT JOIN SaleInvoiceTransport Sit On H.DocId = Sit.DocId
+                LEFT JOIN PurchInvoiceTransport Sit On H.DocId = Sit.DocId
                 LEFT JOIN (Select SubCode, Max(Transporter) Transporter 
                             From SubgroupSiteDivisionDetail
                             Group By SubCode) As Hlt On H.Vendor = Hlt.SubCode

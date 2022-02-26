@@ -6144,7 +6144,7 @@ Public Class FrmPurchInvoiceDirect
 
                     mQry = "Insert Into PurchInvoiceDetail(DocId, Sr, Item, Specification, SalesTaxGroupItem, 
                            DocQty, FreeQty, Qty, Unit, Pcs, UnitMultiplier, DealUnit, 
-                           DocDealQty, Rate, DiscountPer, DiscountAmount, AdditionalDiscountPer, AdditionalDiscountAmount,  
+                           DocDealQty, Rate, Sale_Rate, MRP, DiscountPer, DiscountAmount, AdditionalDiscountPer, AdditionalDiscountAmount,  
                            Amount, Remark, BaleNo, LotNo,  
                            ReferenceDocId, ReferenceTSr, ReferenceSr, 
                            PurchInvoice, PurchInvoiceSr, GrossWeight, NetWeight, OmsId, Gross_Amount, Taxable_Amount,
@@ -6164,6 +6164,8 @@ Public Class FrmPurchInvoiceDirect
                             " & AgL.Chk_Text(PurchInvoiceTableList(I).Line_DealUnit) & ", 
                             " & Val(PurchInvoiceTableList(I).Line_DocDealQty) & ", 
                             " & Val(PurchInvoiceTableList(I).Line_Rate) & ", 
+                            " & Val(PurchInvoiceTableList(I).Line_Sale_Rate) & ", 
+                            " & Val(PurchInvoiceTableList(I).Line_MRP) & ", 
                             " & Val(PurchInvoiceTableList(I).Line_DiscountPer) & ", 
                             " & Val(PurchInvoiceTableList(I).Line_DiscountAmount) & ", 
                             " & AgL.Chk_Text(PurchInvoiceTableList(I).Line_AdditionalDiscountPer) & ", 
@@ -6201,6 +6203,15 @@ Public Class FrmPurchInvoiceDirect
                             " & Val(PurchInvoiceTableList(I).Line_Net_Amount) & ""
                     AgL.Dman_ExecuteNonQry(mQry, AgL.GCn, AgL.ECmd)
 
+                    If ClsMain.FDivisionNameForCustomization(12) = "NANDI SAREES" Then
+                        mQry = "Insert Into PurchInvoiceDetailSku
+                            (DocId, Sr, ItemCategory, ItemGroup, Item ) "
+                        mQry += " Select " & AgL.Chk_Text(PurchInvoiceTableList(0).DocID) & ", " & Val(PurchInvoiceTableList(I).Line_Sr) & ", " &
+                                                " " & AgL.Chk_Text(PurchInvoiceTableList(I).Line_ItemCategoryCode) & ", " &
+                                                " " & AgL.Chk_Text(PurchInvoiceTableList(I).Line_ItemGroupCode) & ", " &
+                                                " " & AgL.Chk_Text(PurchInvoiceTableList(I).Line_ItemCode) & ""
+                        AgL.Dman_ExecuteNonQry(mQry, AgL.GCn, AgL.ECmd)
+                    End If
                 End If
             Next
 
@@ -6340,6 +6351,8 @@ Public Class FrmPurchInvoiceDirect
         Dim Line_ReferenceNo As String
         Dim Line_ItemName As String
         Dim Line_ItemCode As String
+        Dim Line_ItemGroupCode As String
+        Dim Line_ItemCategoryCode As String
         Dim Line_Specification As String
         Dim Line_Dimension1 As String
         Dim Line_Dimension2 As String

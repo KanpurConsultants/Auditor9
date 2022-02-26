@@ -12387,10 +12387,6 @@ Public Class FrmPurchInvoiceDirect_WithDimension
                         SET Description = " & AgL.Chk_Text(BarCodeDesc) & ",
 	                        Div_Code = " & AgL.Chk_Text(TxtDivision.Tag) & ",
 	                        Item = " & AgL.Chk_Text(bItemCode) & ",
-	                        Dimension1 = Null,
-	                        Dimension2 = Null,
-	                        Dimension3 = Null,
-	                        Dimension4 = Null,
 	                        Qty = 1,
 	                        ExpiryDate = Null,
 	                        GenSubcode = " & AgL.Chk_Text(bTransporterCode) & ",
@@ -12414,10 +12410,6 @@ Public Class FrmPurchInvoiceDirect_WithDimension
                         Godown = " & AgL.Chk_Text(bTransporterCode) & ", 
                         SalesTaxGroupParty = Null,
                         Item = " & AgL.Chk_Text(bItemCode) & ", 
-                        Dimension1 = Null, 
-                        Dimension2 = Null, 
-                        Dimension3 = Null, 
-                        Dimension4 = Null, 
                         SalesTaxGroupItem = Null, 
                         LotNo = Null,
                         BaleNo = Null,
@@ -12555,7 +12547,7 @@ Public Class FrmPurchInvoiceDirect_WithDimension
         Dim bMfgDate As String = ""
         Dim bSpecification3 As Decimal = 0
         Dim bSpecification4 As String = ""
-        Dim bSpecification5 As Decimal = 0
+        Dim bSpecification5 As String = ""
 
         For I As Integer = 0 To Dgl1.Rows.Count - 1
             If Dgl1.Item(Col1Item, I).Value <> "" Then

@@ -190,197 +190,204 @@
     <AggregateFunction />
   </Column>
   <Column>
-    <Name>Pcs</Name>
+    <Name>MRP</Name>
     <Index>27</Index>
+    <Width>80</Width>
+    <Visible>True</Visible>
+    <AggregateFunction />
+  </Column>
+  <Column>
+    <Name>Pcs</Name>
+    <Index>28</Index>
     <Width>80</Width>
     <Visible>False</Visible>
     <AggregateFunction />
   </Column>
   <Column>
     <Name>Unit Multiplier</Name>
-    <Index>28</Index>
-    <Width>70</Width>
-    <Visible>False</Visible>
-    <AggregateFunction />
-  </Column>
-  <Column>
-    <Name>Deal Qty</Name>
     <Index>29</Index>
     <Width>70</Width>
     <Visible>False</Visible>
     <AggregateFunction />
   </Column>
   <Column>
-    <Name>Deal Unit</Name>
+    <Name>Deal Qty</Name>
     <Index>30</Index>
+    <Width>70</Width>
+    <Visible>False</Visible>
+    <AggregateFunction />
+  </Column>
+  <Column>
+    <Name>Deal Unit</Name>
+    <Index>31</Index>
     <Width>60</Width>
     <Visible>False</Visible>
     <AggregateFunction />
   </Column>
   <Column>
     <Name>Deal Decimal Places</Name>
-    <Index>31</Index>
+    <Index>32</Index>
     <Width>50</Width>
     <Visible>False</Visible>
     <AggregateFunction />
   </Column>
   <Column>
     <Name>From Process</Name>
-    <Index>32</Index>
+    <Index>33</Index>
     <Width>100</Width>
     <Visible>False</Visible>
     <AggregateFunction />
   </Column>
   <Column>
     <Name>Remark</Name>
-    <Index>33</Index>
+    <Index>34</Index>
     <Width>150</Width>
     <Visible>True</Visible>
     <AggregateFunction />
   </Column>
   <Column>
     <Name>Reference DocID</Name>
-    <Index>34</Index>
+    <Index>35</Index>
     <Width>100</Width>
     <Visible>False</Visible>
     <AggregateFunction />
   </Column>
   <Column>
     <Name>Reference TSr</Name>
-    <Index>35</Index>
-    <Width>40</Width>
-    <Visible>False</Visible>
-    <AggregateFunction />
-  </Column>
-  <Column>
-    <Name>Reference Sr</Name>
     <Index>36</Index>
     <Width>40</Width>
     <Visible>False</Visible>
     <AggregateFunction />
   </Column>
   <Column>
-    <Name>Reference DocID Date</Name>
+    <Name>Reference Sr</Name>
     <Index>37</Index>
+    <Width>40</Width>
+    <Visible>False</Visible>
+    <AggregateFunction />
+  </Column>
+  <Column>
+    <Name>Reference DocID Date</Name>
+    <Index>38</Index>
     <Width>80</Width>
     <Visible>False</Visible>
     <AggregateFunction />
   </Column>
   <Column>
     <Name>Reference DocID Balance Qty</Name>
-    <Index>38</Index>
+    <Index>39</Index>
     <Width>70</Width>
     <Visible>False</Visible>
     <AggregateFunction />
   </Column>
   <Column>
     <Name>Base Detail</Name>
-    <Index>39</Index>
+    <Index>40</Index>
     <Width>45</Width>
     <Visible>False</Visible>
     <AggregateFunction />
   </Column>
   <Column>
     <Name>Stock Qty</Name>
-    <Index>40</Index>
-    <Width>80</Width>
-    <Visible>False</Visible>
-    <AggregateFunction />
-  </Column>
-  <Column>
-    <Name>Stock Process Qty</Name>
     <Index>41</Index>
     <Width>80</Width>
     <Visible>False</Visible>
     <AggregateFunction />
   </Column>
   <Column>
-    <Name>Stock Sr</Name>
+    <Name>Stock Process Qty</Name>
     <Index>42</Index>
-    <Width>150</Width>
+    <Width>80</Width>
     <Visible>False</Visible>
     <AggregateFunction />
   </Column>
   <Column>
-    <Name>Is Record Locked</Name>
+    <Name>Stock Sr</Name>
     <Index>43</Index>
     <Width>150</Width>
     <Visible>False</Visible>
     <AggregateFunction />
   </Column>
   <Column>
-    <Name>Stock Process</Name>
+    <Name>Is Record Locked</Name>
     <Index>44</Index>
     <Width>150</Width>
     <Visible>False</Visible>
     <AggregateFunction />
   </Column>
   <Column>
-    <Name>Stock Process TSr</Name>
+    <Name>Stock Process</Name>
     <Index>45</Index>
     <Width>150</Width>
     <Visible>False</Visible>
     <AggregateFunction />
   </Column>
   <Column>
-    <Name>Stock Process Sr</Name>
+    <Name>Stock Process TSr</Name>
     <Index>46</Index>
     <Width>150</Width>
     <Visible>False</Visible>
     <AggregateFunction />
   </Column>
   <Column>
-    <Name>M Item Category</Name>
+    <Name>Stock Process Sr</Name>
     <Index>47</Index>
-    <Width>100</Width>
+    <Width>150</Width>
     <Visible>False</Visible>
     <AggregateFunction />
   </Column>
   <Column>
-    <Name>M Item Group</Name>
+    <Name>M Item Category</Name>
     <Index>48</Index>
     <Width>100</Width>
     <Visible>False</Visible>
     <AggregateFunction />
   </Column>
   <Column>
-    <Name>M Item Specification</Name>
+    <Name>M Item Group</Name>
     <Index>49</Index>
     <Width>100</Width>
     <Visible>False</Visible>
     <AggregateFunction />
   </Column>
   <Column>
-    <Name>M Dimension 1</Name>
+    <Name>M Item Specification</Name>
     <Index>50</Index>
     <Width>100</Width>
     <Visible>False</Visible>
     <AggregateFunction />
   </Column>
   <Column>
-    <Name>M Dimension 2</Name>
+    <Name>M Dimension 1</Name>
     <Index>51</Index>
     <Width>100</Width>
     <Visible>False</Visible>
     <AggregateFunction />
   </Column>
   <Column>
-    <Name>M Dimension 3</Name>
+    <Name>M Dimension 2</Name>
     <Index>52</Index>
     <Width>100</Width>
     <Visible>False</Visible>
     <AggregateFunction />
   </Column>
   <Column>
-    <Name>M Dimension 4</Name>
+    <Name>M Dimension 3</Name>
     <Index>53</Index>
     <Width>100</Width>
     <Visible>False</Visible>
     <AggregateFunction />
   </Column>
   <Column>
-    <Name>M Size</Name>
+    <Name>M Dimension 4</Name>
     <Index>54</Index>
+    <Width>100</Width>
+    <Visible>False</Visible>
+    <AggregateFunction />
+  </Column>
+  <Column>
+    <Name>M Size</Name>
+    <Index>55</Index>
     <Width>100</Width>
     <Visible>False</Visible>
     <AggregateFunction />

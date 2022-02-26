@@ -4903,7 +4903,7 @@ Sincerely
             AgL.AddFieldSqlite(AgL.GcnMain, "StockHeadDetail", "SubTotal1", "Float", "0", False)
             AgL.AddFieldSqlite(AgL.GcnMain, "StockHeadDetail", "Round_Off", "Float", "0", False)
             AgL.AddFieldSqlite(AgL.GcnMain, "StockHeadDetail", "Net_Amount", "Float", "0", False)
-
+            AgL.AddFieldSqlite(AgL.GcnMain, "StockHeadDetail", "MRP", "Float", "0", False)
 
 
         Catch ex As Exception
@@ -8838,6 +8838,9 @@ Thanks
             FSeedSingleIfNotExist_EntryLineUISetting("FrmPurchaseInvoiceDimension", Ncat.StockIssue, "Dgl1", FrmPurchaseInvoiceDimension_WithDimension.Col1DealQty, False)
             FSeedSingleIfNotExist_EntryLineUISetting("FrmPurchaseInvoiceDimension", Ncat.StockIssue, "Dgl1", FrmPurchaseInvoiceDimension_WithDimension.Col1TotalDealQty, False)
 
+            If FDivisionNameForCustomization(6) = "SADHVI" And AgL.StrCmp(AgL.PubDBName, "Sadhvi") Then
+                FSeedSingleIfNotExist_EntryLineUISetting("FrmStockEntry", Ncat.StockIssue, "Dgl1", FrmStockEntry.Col1MRP, True)
+            End If
 
 
             FSeedSingleIfNotExist_EntryLineUISetting("FrmStockHeadDetailBase", Ncat.StockIssue, "Dgl1", FrmStockHeadDetailBase.Col1BaseReferenceNo, True,, "Order No.")
