@@ -11,7 +11,7 @@
     <Name>Barcode</Name>
     <Index>1</Index>
     <Width>100</Width>
-    <Visible>False</Visible>
+    <Visible>True</Visible>
     <AggregateFunction />
   </Column>
   <Column>
@@ -32,14 +32,14 @@
     <Name>Item Category</Name>
     <Index>4</Index>
     <Width>100</Width>
-    <Visible>False</Visible>
+    <Visible>True</Visible>
     <AggregateFunction />
   </Column>
   <Column>
     <Name>Item Group</Name>
     <Index>5</Index>
     <Width>100</Width>
-    <Visible>False</Visible>
+    <Visible>True</Visible>
     <AggregateFunction />
   </Column>
   <Column>
@@ -382,7 +382,7 @@
     <Name>Sale Rate</Name>
     <Index>54</Index>
     <Width>80</Width>
-    <Visible>False</Visible>
+    <Visible>True</Visible>
     <AggregateFunction />
   </Column>
   <Column>
@@ -480,7 +480,7 @@
     <Name>Profit Margin %</Name>
     <Index>68</Index>
     <Width>100</Width>
-    <Visible>False</Visible>
+    <Visible>True</Visible>
     <AggregateFunction />
   </Column>
   <Column>
@@ -785,6 +785,34 @@
     <AggregateFunction />
   </Column>
   <Column>
+    <Name>Special Discount @</Name>
+    <Index>123</Index>
+    <Width>100</Width>
+    <Visible>False</Visible>
+    <AggregateFunction />
+  </Column>
+  <Column>
+    <Name>Special Discount</Name>
+    <Index>125</Index>
+    <Width>100</Width>
+    <Visible>False</Visible>
+    <AggregateFunction />
+  </Column>
+  <Column>
+    <Name>Special Discount PostAc</Name>
+    <Index>127</Index>
+    <Width>100</Width>
+    <Visible>False</Visible>
+    <AggregateFunction />
+  </Column>
+  <Column>
+    <Name>Special Discount ContraAc</Name>
+    <Index>129</Index>
+    <Width>100</Width>
+    <Visible>False</Visible>
+    <AggregateFunction />
+  </Column>
+  <Column>
     <Name>Taxable Amount</Name>
     <Index>112</Index>
     <Width>100</Width>
@@ -885,34 +913,6 @@
   <Column>
     <Name>SGST ContraAc</Name>
     <Index>130</Index>
-    <Width>100</Width>
-    <Visible>False</Visible>
-    <AggregateFunction />
-  </Column>
-  <Column>
-    <Name>TCS @</Name>
-    <Index>123</Index>
-    <Width>100</Width>
-    <Visible>False</Visible>
-    <AggregateFunction />
-  </Column>
-  <Column>
-    <Name>TCS</Name>
-    <Index>125</Index>
-    <Width>100</Width>
-    <Visible>False</Visible>
-    <AggregateFunction />
-  </Column>
-  <Column>
-    <Name>TCS PostAc</Name>
-    <Index>127</Index>
-    <Width>100</Width>
-    <Visible>False</Visible>
-    <AggregateFunction />
-  </Column>
-  <Column>
-    <Name>TCS ContraAc</Name>
-    <Index>129</Index>
     <Width>100</Width>
     <Visible>False</Visible>
     <AggregateFunction />

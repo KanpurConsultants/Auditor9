@@ -5742,7 +5742,7 @@ Public Class FrmVoucherEntry
         Dim DtCalcHeaderData As DataTable = AgL.FillData(mQry, IIf(AgL.PubServerName = "", AgL.GCn, AgL.GcnRead)).Tables(0)
 
         If AgL.XNull(DtCalcHeaderData.Rows(0)("Structure")) <> "" Then
-            mQry = "Select H.*, (Select Max(Remarks) From LedgerHeadDetail Where DocId = H.DocId) as LineRemarks From LedgerHead H With (NoLock) Where H.DocId = '" & mSearchCode & "'"
+            mQry = "Select H.*, (Select Max(Remarks) From LedgerHeadDetail With (NoLock) Where DocId = H.DocId) as LineRemarks From LedgerHead H With (NoLock) Where H.DocId = '" & mSearchCode & "'"
             Dim DtTransactionDetail As DataTable = AgL.FillData(mQry, IIf(AgL.PubServerName = "", AgL.GCn, AgL.GcnRead)).Tables(0)
 
             For I As Integer = 0 To DtCalcHeaderData.Rows.Count - 1
@@ -5769,7 +5769,7 @@ Public Class FrmVoucherEntry
 	                AND H.PlaceOfSupply = Pst.PlaceOfSupply
 	                AND L.SalesTaxGroupItem = Pst.PostingGroupSalesTaxItem
 	                AND Pst.Process = '" & bProcess & "'
-                LEFT JOIN StructureDetail Sd ON H.Structure = Sd.Code
+                LEFT JOIN StructureDetail Sd With (NoLock) ON H.Structure = Sd.Code
 	                AND Pst.ChargeType = Sd.Charge_Type
                 WHERE H.DocID = '" & mSearchCode & "'"
             Dim DtPostingGroupSalesTax As DataTable = AgL.FillData(mQry, IIf(AgL.PubServerName = "", AgL.GCn, AgL.GcnRead)).Tables(0)
@@ -5835,7 +5835,7 @@ Public Class FrmVoucherEntry
 
             mQry = "Select Sg.Name As PartyName, L.* 
                     From LedgerHeadDetail L With (NoLock) 
-                    LEFT JOIN SubGroup Sg On L.SubCode = Sg.SubCode
+                    LEFT JOIN SubGroup Sg With (NoLock) On L.SubCode = Sg.SubCode
                     Where L.DocId = '" & mSearchCode & "'"
             Dim DtTransactionHeadDetail As DataTable = AgL.FillData(mQry, IIf(AgL.PubServerName = "", AgL.GCn, AgL.GcnRead)).Tables(0)
 
@@ -6305,7 +6305,7 @@ Public Class FrmVoucherEntry
     End Sub
     Private Sub FPostEntryForBranch(SearchCode As String, Conn As Object, Cmd As Object)
         Dim dtLine As DataTable
-        If FDivisionNameForCustomization(6) = "SADHVI" And AgL.StrCmp(AgL.PubDBName, "SHADHVINEW") Then
+        If FDivisionNameForCustomization(6) = "SADHVI" And (AgL.StrCmp(AgL.PubDBName, "SHADHVINEW") Or AgL.StrCmp(AgL.PubDBName, "SHADHVIJaunpur")) Then
             If (LblV_Type.Tag = Ncat.Receipt Or LblV_Type.Tag = Ncat.VisitReceipt Or
                 LblV_Type.Tag = Ncat.Payment) And TxtNature.Text.ToUpper = "BANK" Then
                 Dim bSadhviHO As String = ""

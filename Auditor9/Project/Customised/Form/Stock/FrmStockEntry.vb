@@ -3458,7 +3458,7 @@ Public Class FrmStockEntry
         mQry = ""
         Dim SQryRate As String = ""
 
-        If DglMain.Item(Col1Value, rowParty).Tag = "D100027005" Then
+        If DglMain.Item(Col1Value, rowParty).Tag = "D100027005" Or DglMain.Item(Col1Value, rowParty).Tag = "D100027015" Then
             SQryRate = "Case When IfNull(L.MRP,0)=0 then L.Rate else L.MRP End "
         Else
             SQryRate = "L.Rate "
@@ -3761,7 +3761,7 @@ Public Class FrmStockEntry
                 'Dgl1.Item(Col1Amount, I).Value = Format(Val(Dgl1.Item(Col1DocQty, I).Value) * Val(Dgl1.Item(Col1Rate, I).Value), "0.".PadRight(CType(Dgl1.Columns(Col1Amount), AgControls.AgTextColumn).AgNumberRightPlaces + 2, "0"))
                 'End If
 
-                If DglMain.Item(Col1Value, rowParty).Tag = "D100027005" Then
+                If DglMain.Item(Col1Value, rowParty).Tag = "D100027005" Or DglMain.Item(Col1Value, rowParty).Tag = "D100027015" Then
                     Dgl1.Item(Col1Amount, I).Value = Format(Val(Dgl1.Item(Col1DocQty, I).Value) * Val(Dgl1.Item(Col1MRP, I).Value), "0.".PadRight(CType(Dgl1.Columns(Col1Amount), AgControls.AgTextColumn).AgNumberRightPlaces + 2, "0"))
                 Else
                     Dgl1.Item(Col1Amount, I).Value = Format(Val(Dgl1.Item(Col1DocQty, I).Value) * Val(Dgl1.Item(Col1Rate, I).Value), "0.".PadRight(CType(Dgl1.Columns(Col1Amount), AgControls.AgTextColumn).AgNumberRightPlaces + 2, "0"))
@@ -3936,6 +3936,20 @@ Public Class FrmStockEntry
                 Dgl1.Item(Col1ItemCode, mRow).Value = AgL.XNull(DtItem.Rows(0)("ManualCode"))
                 Dgl1.Item(Col1Unit, mRow).Value = AgL.XNull(DtItem.Rows(0)("Unit"))
                 Dgl1.Item(Col1QtyDecimalPlaces, mRow).Value = AgL.VNull(DtItem.Rows(0)("QtyDecimalPlaces"))
+
+                If AgL.StrCmp(AgL.PubDBName, "Sadhvi") Then
+                    mQry = "SELECT isnull(V.MRP,0) AS LastMRP FROM 
+                            (SELECT row_number() OVER (ORDER BY  H.V_Date DESC,H.DocID DESC,L.Sr DESC) AS Sr, L.MRP 
+                            FROM StockHead H
+                            LEFT JOIN StockHeadDetail L ON L.DocID = H.DocID
+                            WHERE H.V_Type =" & AgL.Chk_Text(DglMain.Item(Col1Value, rowV_Type).Tag) & " AND H.SubCode=" & AgL.Chk_Text(DglMain.Item(Col1Value, rowParty).Tag) & " AND L.Item = " & AgL.Chk_Text(Dgl1.Item(Col1Item, mRow).Tag) & "
+                            ) V WHERE V.Sr =1 "
+                    Dim LastMRP As Decimal = 0
+                    LastMRP = AgL.VNull(AgL.Dman_Execute(mQry, AgL.GcnRead).ExecuteScalar)
+                    If LastMRP > 0 Then Dgl1.Item(Col1MRP, mRow).Value = LastMRP
+
+                End If
+
             End If
         Catch ex As Exception
             MsgBox(ex.Message & " On Validating_Item Function ")

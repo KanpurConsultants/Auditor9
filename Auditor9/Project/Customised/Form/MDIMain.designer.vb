@@ -226,6 +226,7 @@ Partial Class MDIMain
         Me.MnuGSTOutputTaxReport = New System.Windows.Forms.ToolStripMenuItem()
         Me.MnuGSTInputTaxReport = New System.Windows.Forms.ToolStripMenuItem()
         Me.MnuTCSOutputReport = New System.Windows.Forms.ToolStripMenuItem()
+        Me.MnuTCSInputReport = New System.Windows.Forms.ToolStripMenuItem()
         Me.MnuEBillGeneration = New System.Windows.Forms.ToolStripMenuItem()
         Me.MnuTimeOffice = New System.Windows.Forms.ToolStripMenuItem()
         Me.MnuHolidayMaster = New System.Windows.Forms.ToolStripMenuItem()
@@ -316,7 +317,6 @@ Partial Class MDIMain
         Me.MnuPrintCheque = New System.Windows.Forms.ToolStripMenuItem()
         Me.MnuBank = New System.Windows.Forms.ToolStripMenuItem()
         Me.MnuChequePrinting = New System.Windows.Forms.ToolStripMenuItem()
-        Me.MnuTCSInputReport = New System.Windows.Forms.ToolStripMenuItem()
         Me.MnuMain.SuspendLayout()
         Me.SuspendLayout()
         '
@@ -1791,6 +1791,13 @@ Partial Class MDIMain
         Me.MnuTCSOutputReport.Tag = "GRID REPORT"
         Me.MnuTCSOutputReport.Text = "TCS Output Report"
         '
+        'MnuTCSInputReport
+        '
+        Me.MnuTCSInputReport.Name = "MnuTCSInputReport"
+        Me.MnuTCSInputReport.Size = New System.Drawing.Size(193, 22)
+        Me.MnuTCSInputReport.Tag = "GRID REPORT"
+        Me.MnuTCSInputReport.Text = "TCS Input Report"
+        '
         'MnuEBillGeneration
         '
         Me.MnuEBillGeneration.Name = "MnuEBillGeneration"
@@ -2053,7 +2060,7 @@ Partial Class MDIMain
         '
         'MnuBillWiseProfitability
         '
-        Me.MnuBillWiseProfitability.AccessibleDescription = "+Medical"
+        Me.MnuBillWiseProfitability.AccessibleDescription = ""
         Me.MnuBillWiseProfitability.Name = "MnuBillWiseProfitability"
         Me.MnuBillWiseProfitability.Size = New System.Drawing.Size(307, 22)
         Me.MnuBillWiseProfitability.Tag = "GRID REPORT"
@@ -2417,13 +2424,6 @@ Partial Class MDIMain
         Me.MnuChequePrinting.Name = "MnuChequePrinting"
         Me.MnuChequePrinting.Size = New System.Drawing.Size(160, 22)
         Me.MnuChequePrinting.Text = "Cheque Printing"
-        '
-        'MnuTCSInputReport
-        '
-        Me.MnuTCSInputReport.Name = "MnuTCSInputReport"
-        Me.MnuTCSInputReport.Size = New System.Drawing.Size(193, 22)
-        Me.MnuTCSInputReport.Tag = "GRID REPORT"
-        Me.MnuTCSInputReport.Text = "TCS Input Report"
         '
         'MDIMain
         '

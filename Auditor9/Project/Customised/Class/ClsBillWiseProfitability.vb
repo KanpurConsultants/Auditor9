@@ -118,7 +118,8 @@ Public Class ClsBillWiseProfitability
             mCondStr = mCondStr & Replace(ReportFrm.GetWhereCondition("H.Div_Code", rowDivision), "''", "'")
             mCondStr = mCondStr & ReportFrm.GetWhereCondition("L.Item", rowItem)
 
-            mQry = "SELECT H.DocId, strftime('%d/%m/%Y', H.V_Date) As V_Date, H.V_Date As V_Date_ActualFormat, 
+            If ClsMain.IsScopeOfWorkContains(IndustryType.MedicalIndustry) Then
+                mQry = "SELECT H.DocId, strftime('%d/%m/%Y', H.V_Date) As V_Date, H.V_Date As V_Date_ActualFormat, 
                     H.ManualRefNo, 
                     I.Description As Item, I.Code as ItemCode,
                     Round((L.Net_Amount/L.Qty)*SA.AdjQty,2) as SaleAmount,
@@ -134,8 +135,24 @@ Public Class ClsBillWiseProfitability
                     LEFT JOIN Item IG ON I.ItemGroup = IG.Code
                     LEFT JOIN Item Ic ON I.ItemCategory = Ic.Code
                     WHERE 1=1 And H.GenDocID Is Null " & mCondStr
+            Else
+                mQry = "SELECT H.DocId, strftime('%d/%m/%Y', H.V_Date) As V_Date, H.V_Date As V_Date_ActualFormat, 
+                    H.ManualRefNo, 
+                    I.Description As Item, I.Code as ItemCode,
+                    Round((L.Net_Amount/L.Qty),2) as SaleAmount,
+                    (L.Net_Amount/L.Qty) as SaleNetRate, 
+                    Round((I.PurchaseRate),2) as PurchaseAmount,
+                    (I.PurchaseRate) as PurchNetRate, 0 as AdjQty, 
+                    Round(((L.Net_Amount/L.Qty) - (I.PurchaseRate)),2) as Profit
+                    FROM SaleInvoice H 
+                    LEFT JOIN SaleInvoiceDetail L ON H.DocID = L.DocID
+                    LEFT JOIN Item I ON L.Item = I.Code
+                    LEFT JOIN Item IG ON I.ItemGroup = IG.Code
+                    LEFT JOIN Item Ic ON I.ItemCategory = Ic.Code
+                    WHERE 1=1 And H.GenDocID Is Null " & mCondStr
+            End If
 
-            'WHERE L.SalesRepresentative IS NOT NULL " & mCondStr
+
 
             If ReportFrm.FGetText(rowReportType) = "Detail" Then
                 mQry = " Select VMain.DocId As SearchCode, VMain.ManualRefNo As InvoiceNo, 

@@ -3,38 +3,38 @@ Copies	string	255	1
 CopyPrintingCaption	string	255		
 DocNoCaption	string	255	Doc.No.	
 DocDateCaption	string	255	Doc.Date	
-DocID	string	255	D1    PR 2021       1	
+DocID	string	255	D1    PR 2021    1406	
 SiteStateCode	string	255	09	
 SiteStateName	string	255	Uttar Pradesh	
 Sr	number	1	
-V_Date	datetime	26/Feb/2022 12:00:00 AM	
+V_Date	datetime	28/Mar/2022 12:00:00 AM	
 Voucher_Type	string	255	Purchase Return	
 NCat	string	255	PR	
-DocNo	string	255	D1-PR-1	
-AgentName	string	255		
+DocNo	string	255	D1-PR-1316	
+AgentName	string	255	ARIHANT TEXTILE AGENCY	
 AgentCaption	string	255	Agent	
-PartyName	string	255	SADHVI ENTERPRISES	
-PartyAddress	string	255		
-PartyPinCode	string	255		
-PartyCityName	string	255	Kanpur	
-PartyStateCode	string	255	09	
-PartyStateName	string	255	Uttar Pradesh	
-PartyMobile	string	255		
+PartyName	string	255	SALASAR CREATION	
+PartyAddress	string	255	C-3137-3140,MILLENIUM MARKETRING ROAD,SURAT-395002	
+PartyPinCode	string	255	395002	
+PartyCityName	string	255	SURAT	
+PartyStateCode	string	255	24	
+PartyStateName	string	255	Gujarat	
+PartyMobile	string	255	9825154874	
 ContactPerson	string	255		
-PartySalesTaxNo	string	255		
+PartySalesTaxNo	string	255	24AIIPA4998D1ZB	
 PartyAadharNo	string	255		
-PartyPanNo	string	255		
-ShipToPartyName	string	255	SADHVI ENTERPRISES	
-ShipToPartyAddress	string	255		
-ShipToPartyCity	string	255	Kanpur	
-ShipToPartyPincode	string	255		
-ShipToPartyStateCode	string	255	09	
-ShipToPartyStateName	string	255	Uttar Pradesh	
-ShipToPartyMobile	string	255		
-ShipToPartySalesTaxNo	string	255		
+PartyPanNo	string	255	AIIPA4998D	
+ShipToPartyName	string	255	SALASAR CREATION	
+ShipToPartyAddress	string	255	C-3137-3140,MILLENIUM MARKETRING ROAD,SURAT-395002	
+ShipToPartyCity	string	255	SURAT	
+ShipToPartyPincode	string	255	395002	
+ShipToPartyStateCode	string	255	24	
+ShipToPartyStateName	string	255	Gujarat	
+ShipToPartyMobile	string	255	9825154874	
+ShipToPartySalesTaxNo	string	255	24AIIPA4998D1ZB	
 ShipToPartyAadharNo	string	255		
 ShipToPartyPanNo	string	255		
-TransporterName	string	255		
+TransporterName	string	255	GREEN ROADWAYS TRANSPORT DELHI PVT.LTD., KANPUR	
 LrNo	string	255		
 LrDate	datetime		
 PrivateMark	string	255		
@@ -43,36 +43,18 @@ Freight	number
 FreightType	string	255		
 RoadPermitNo	string	255		
 RoadPermitDate	datetime		
-ReferenceNo	string	255	688	
-ItemName	string	255	CCKG-SE-NA-HALKI-SAREE-D1   ISS 2021     796 - SE-NA-HALKI - SAREE-D1    PR 2021       1	
-ItemGroupName	string	255	SE-NA-HALKI	
+ReferenceNo	string	255	1832/F	
+ItemName	string	255	NARAYAN          [SALASAR(HASTI-811) | SAREE]	
+ItemGroupName	string	255	SALASAR(HASTI-811)	
 ItemCatName	string	255	SAREE	
-ItemSpecification	string	255	CCKG-SE-NA-HALKI-SAREE-D1   ISS 2021     796	
-InvoiceLineSpecification	string	255	CCKG	
+ItemSpecification	string	255	NARAYAN	
+InvoiceLineSpecification	string	255	NARAYAN	
 HSN	string	255	540752	
-D1Spec	string	255		
-D2Spec	string	255		
-D3Spec	string	255		
-D4Spec	string	255		
-SizeSpec	string	255		
-ItemTypeCaption	string	255	Item Type	
-ItemCategoryCaption	string	255	Item Category	
-ItemGroupCaption	string	255	Item Group	
-ItemCaption	string	255	Item	
-BarcodeCaption	string	255		
-D1Caption	string	255	Quality	
-D2Caption	string	255	Colour	
-D3Caption	string	255	Design	
-D4Caption	string	255	Width	
 SalesTaxGroupItem	string	255	GST 5%	
 GrossTaxRate	number	5	
 Pcs	number	0	
-Qty	number	1	
-DocQty	number	1	
-FreeQty	number	0	
-LossQty	number	0	
-RejQty	number	0	
-Rate	number	1595	
+Qty	number	17	
+Rate	number	795	
 Unit	string	255	Pcs	
 UnitDecimalPlaces	number	0	
 DiscountPer	number	0	
@@ -80,11 +62,11 @@ DiscountAmount	number	0
 AdditionalDiscountPer	number	0	
 AdditionalDiscountAmount	number	0	
 TotalDiscount	number	0	
-AmountBeforeDiscount	number	1595	
-Amount	number	1595	
-Taxable_Amount	number	1595	
-Tax1_Per	number	0	
-Tax1	number	0	
+AmountBeforeDiscount	number	13515	
+Amount	number	13515	
+Taxable_Amount	number	13515	
+Tax1_Per	number	5	
+Tax1	number	675.75	
 Tax2_Per	number	0	
 Tax2	number	0	
 Tax3_Per	number	0	
@@ -93,15 +75,15 @@ Tax4_Per	number	0
 Tax4	number	0	
 Tax5_Per	number	0	
 Tax5	number	0	
-Net_Amount	number	1595	
+Net_Amount	number	14190.68	
 HRemarks	string	255		
 LRemarks	string	255		
-H_Gross_Amount	number	1595	
+H_Gross_Amount	number	90690	
 H_SpecialDiscount_Per	number	0	
 H_SpecialDiscount	number	0	
-H_Taxable_Amount	number	1595	
+H_Taxable_Amount	number	90690	
 H_Tax1_Per	number	0	
-H_Tax1	number	0	
+H_Tax1	number	4534.5	
 H_Tax2_Per	number	0	
 H_Tax2	number	0	
 H_Tax3_Per	number	0	
@@ -114,17 +96,16 @@ H_Deduction_Per	number	0
 H_Deduction	number	0	
 H_Other_Charge_Per	number	0	
 H_Other_Charge	number	0	
-Round_Off	number	0	
-H_Net_Amount	number	1595	
+Round_Off	number	0.5	
+H_Net_Amount	number	95224	
 H_TotalDiscount	number	0	
-H_AmountBeforeDiscount	number	1595	
-Default_BankAccountDetail	string	255		
+H_AmountBeforeDiscount	number	90690	
+Default_BankAccountDetail	string	255	Bank Detail : 	HDFC A/c : 50200003154727    IFSC : HDFC0002006	
 DocumentPrintHeaderPattern	string	255	Center Aligned	
 DimDetail	string	255		
 HsnDescription	string	255		
 PrintedByUser	string	255	SUPER	
 PrintTitle	string	255	Purchase Return (Debit Note)	
-TermsAndConditions	string	255		
 CompanyLogo	BLOB		
 CompanyAuthorisedSignature	BLOB		
 EInvoiceQrCode	BLOB		

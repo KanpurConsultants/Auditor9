@@ -2552,6 +2552,9 @@ Public Class FrmSaleInvoiceDirect
                 Dgl1.Columns(Col1ReferenceDate).Visible = True
             End If
 
+            If AgL.StrCmp(AgL.PubDBName, "SHADHVINEW") Or AgL.StrCmp(AgL.PubDBName, "SHADHVIKANPURB2") Or AgL.StrCmp(AgL.PubDBName, "SHADHVIjaunpur") Or AgL.StrCmp(AgL.PubDBName, "SHADHVINANDI") Then
+                Dgl1.Columns(Col1Rate).ReadOnly = True
+            End If
 
             'mQry = "Select H.*
             '        from EntryLineUISetting H                    

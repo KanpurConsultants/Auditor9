@@ -38,6 +38,7 @@ Public Class FrmYearClosing
                         FProcess1920(AgL.GCn, AgL.ECmd, AgL)
                         FProcess2021(AgL.GCn, AgL.ECmd, AgL)
                         FProcess2022(AgL.GCn, AgL.ECmd, AgL)
+                        FProcess2023(AgL.GCn, AgL.ECmd, AgL)
                         AgL.ETrans.Commit()
                         mTrans = "Commit"
                         MsgBox("Process Completed...!", MsgBoxStyle.Information)
@@ -161,7 +162,6 @@ Public Class FrmYearClosing
                 AND V1.V_Type IS NULL "
         Agl.Dman_ExecuteNonQry(mQry, Conn, Cmd)
     End Sub
-
     Public Shared Sub FProcess2022(Conn As Object, Cmd As Object, Agl As AgLibrary.ClsMain)
         Dim mQry As String = ""
         If Agl.VNull(Agl.Dman_Execute("SELECT Count(*) AS CompanyCnt 
@@ -228,6 +228,75 @@ Public Class FrmYearClosing
 	                LEFT JOIN Company Cp ON Us.CompCode = Cp.Comp_Code
 	                WHERE Cp.cyear =  '2021-2022') AS V1 ON U.User_Name = V1.User_Name 
                 WHERE C.cyear = '2020-2021'
+                AND V1.User_Name IS NULL "
+        Agl.Dman_ExecuteNonQry(mQry, Conn, Cmd)
+    End Sub
+    Public Shared Sub FProcess2023(Conn As Object, Cmd As Object, Agl As AgLibrary.ClsMain)
+        Dim mQry As String = ""
+        If Agl.VNull(Agl.Dman_Execute("SELECT Count(*) AS CompanyCnt 
+                                FROM Company WHERE CYear = '2022-2023'", IIf(Agl.PubServerName = "", Agl.GCn, Agl.GcnRead)).ExecuteScalar()) = 0 Then
+            Dim bNewCompCode As String = Agl.Dman_Execute("SELECT IsNull(Max(CAST(C.Comp_Code AS INT)),0) + 1 AS CompCode  
+                                            FROM Company C", IIf(Agl.PubServerName = "", Agl.GCn, Agl.GcnRead)).ExecuteScalar().ToString()
+
+            mQry = " INSERT INTO Company (Comp_Code,Div_Code,Comp_Name,CentralData_Path,PrevDBName,DbPrefix,Repo_Path,Start_Dt,End_Dt,address1,address2,city,
+                    pin,phone,Email,fax,lstno,lstdate,cstno,cstdate,cyear,pyear,State,U_Name,U_EntDt,U_AE,DeletedYN,Country,V_Prefix,SerialKeyNo)
+                    Select '" & bNewCompCode & "' As Comp_Code,Div_Code,Comp_Name,CentralData_Path,PrevDBName,DbPrefix,Repo_Path,
+                    " & Agl.Chk_Date("01/Apr/2022") & " As Start_Dt,
+                    " & Agl.Chk_Date("31/Mar/2023") & " As End_Dt,address1,address2,city,
+                    pin,phone,Email,fax,lstno,lstdate,cstno,cstdate,
+                    '2022-2023' As cyear,
+                    '2021-2022' As pyear,State,U_Name,U_EntDt,U_AE,DeletedYN,Country,
+                    '2022' As V_Prefix,SerialKeyNo
+                    From Company Where Comp_Code = '1'"
+            Agl.Dman_ExecuteNonQry(mQry, Conn, Cmd)
+        End If
+
+        mQry = "INSERT INTO Voucher_Prefix(V_Type,
+                   Date_From,
+                   Prefix,
+                   Start_Srl_No,
+                   Date_To,
+                   Comp_Code,
+                   Site_Code,
+                   Div_Code,
+                   UpLoadDate,
+                   Status_Add,
+                   Status_Edit,
+                   Status_Delete,
+                   Status_Print)
+            SELECT Vp.V_Type,
+                   " & Agl.Chk_Date("01/Apr/2022") & " As Date_From,
+                   '2022' As Prefix,
+                   0 As Start_Srl_No,
+                   " & Agl.Chk_Date("31/Mar/2023") & " As Date_To,
+                   Vp.Comp_Code,
+                   Vp.Site_Code,
+                   Vp.Div_Code,
+                   Vp.UpLoadDate,
+                   Vp.Status_Add,
+                   Vp.Status_Edit,
+                   Vp.Status_Delete,
+                   Vp.Status_Print
+                FROM Voucher_Prefix Vp
+                LEFT JOIN (
+	                SELECT L.V_Type, L.Prefix FROM Voucher_Prefix L
+                ) AS V1 ON Vp.V_Type = V1.V_Type AND V1.Prefix = '2022'
+               Where Vp.Prefix = '2021'
+                AND V1.V_Type IS NULL "
+        Agl.Dman_ExecuteNonQry(mQry, Conn, Cmd)
+
+
+        mQry = "INSERT INTO UserSite (User_Name, CompCode, Sitelist, UpLoadDate, DivisionList)
+                SELECT U.User_Name, (SELECT Cn.Comp_Code FROM Company Cn WHERE cyear = '2022-2023') AS CompCode, U.Sitelist, 
+                U.UpLoadDate, U.DivisionList
+                FROM UserSite U
+                LEFT JOIN Company C ON U.CompCode = C.Comp_Code
+                LEFT JOIN (
+	                SELECT Us.User_Name, Us.CompCode 
+	                FROM UserSite Us
+	                LEFT JOIN Company Cp ON Us.CompCode = Cp.Comp_Code
+	                WHERE Cp.cyear =  '2022-2023') AS V1 ON U.User_Name = V1.User_Name 
+                WHERE C.cyear = '2021-2022'
                 AND V1.User_Name IS NULL "
         Agl.Dman_ExecuteNonQry(mQry, Conn, Cmd)
     End Sub

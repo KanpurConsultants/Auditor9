@@ -89,7 +89,7 @@ Public Class ClsExportDataForBranch
     End Sub
     Private Sub ObjRepFormGlobal_ProcessReport() Handles ReportFrm.ProcessReport
         If ClsMain.FDivisionNameForCustomization(6) = "SADHVI" Then
-            If AgL.XNull(ReportFrm.FGetCode(rowParty)) = "'D100004259'" Or AgL.XNull(ReportFrm.FGetCode(rowParty)) = "'E100005835'" Or AgL.XNull(ReportFrm.FGetCode(rowParty)) = "'D100016337'" Or AgL.XNull(ReportFrm.FGetCode(rowParty)) = "'D100016336'" Or AgL.XNull(ReportFrm.FGetCode(rowParty)) = "'D100025715'" Or AgL.XNull(ReportFrm.FGetCode(rowParty)) = "'D100025716'" Or AgL.XNull(ReportFrm.FGetCode(rowParty)) = "'D100027005'" Then ' for Sadhvi Kanpur Branch & Jaunpur
+            If AgL.XNull(ReportFrm.FGetCode(rowParty)) = "'D100004259'" Or AgL.XNull(ReportFrm.FGetCode(rowParty)) = "'E100005835'" Or AgL.XNull(ReportFrm.FGetCode(rowParty)) = "'D100016337'" Or AgL.XNull(ReportFrm.FGetCode(rowParty)) = "'D100016336'" Or AgL.XNull(ReportFrm.FGetCode(rowParty)) = "'D100025715'" Or AgL.XNull(ReportFrm.FGetCode(rowParty)) = "'D100025716'" Or AgL.XNull(ReportFrm.FGetCode(rowParty)) = "'D100027005'" Or AgL.XNull(ReportFrm.FGetCode(rowParty)) = "'D100027015'" Then ' for Sadhvi Kanpur Branch & Jaunpur
                 ProcExportStockIssueDataToSqlite()
             ElseIf AgL.XNull(ReportFrm.FGetCode(rowParty)) = "'SADHVIBEN'" Or AgL.XNull(ReportFrm.FGetCode(rowParty)) = "'SADHVIBEM'" Then ' for Sadhvi Bhopal Branch
                 ProcExportSaleInvoiceDataToSqlite_Sadhvi()
@@ -1151,10 +1151,11 @@ Public Class ClsExportDataForBranch
             Exit Sub
         End If
 
+        mSaleToParty = AgL.XNull(ReportFrm.FGetCode(rowParty))
+
         mQry = "SELECT SG.ManualCode  FROM Subgroup SG WHERE SG.Subcode = " & mSaleToParty & ""
         mPartyCode = AgL.Dman_Execute(mQry, AgL.GcnRead).ExecuteScalar()
 
-        mSaleToParty = AgL.XNull(ReportFrm.FGetCode(rowParty))
 
         mStrMainQry = "Select H.DocId From SaleInvoice H
                     LEFT JOIN Voucher_Type Vt On H.V_Type = Vt.V_Type

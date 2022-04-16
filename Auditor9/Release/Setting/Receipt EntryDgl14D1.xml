@@ -95,14 +95,14 @@
     <Name>Chq/Ref No</Name>
     <Index>13</Index>
     <Width>100</Width>
-    <Visible>True</Visible>
+    <Visible>False</Visible>
     <AggregateFunction />
   </Column>
   <Column>
     <Name>Chq/Ref Date</Name>
     <Index>14</Index>
     <Width>100</Width>
-    <Visible>True</Visible>
+    <Visible>False</Visible>
     <AggregateFunction />
   </Column>
   <Column>

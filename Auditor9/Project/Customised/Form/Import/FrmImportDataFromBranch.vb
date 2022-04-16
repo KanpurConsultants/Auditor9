@@ -527,7 +527,7 @@ Public Class FrmImportDataFromBranch
 
                         For J = 0 To DtPurchInvoiceDetail_ForHeader.Rows.Count - 1
 
-                            Dim Itemcode As String = AgL.XNull(AgL.Dman_Execute("Select code from Item  Where GenDocId = '" & DtPurchInvoiceDetail_ForHeader.Rows(J)("DocId") & "' AND OmsId = '" & DtPurchInvoiceDetail_ForHeader.Rows(J)("Item") & "' ", IIf(AgL.PubServerName = "", AgL.GCn, AgL.GcnRead)).ExecuteScalar)
+                            Dim Itemcode As String = AgL.XNull(AgL.Dman_Execute("Select code from Item  Where GenDocId = '" & DtPurchInvoiceDetail_ForHeader.Rows(J)("DocId") + DtPurchInvoiceDetail_ForHeader.Rows(J)("Sr") & "' AND OmsId = '" & DtPurchInvoiceDetail_ForHeader.Rows(J)("Item") & "' ", IIf(AgL.PubServerName = "", AgL.GCn, AgL.GcnRead)).ExecuteScalar)
                             PurchInvoiceTable.Line_Sr = AgL.XNull(DtPurchInvoiceDetail_ForHeader.Rows(J)("Sr"))
                             PurchInvoiceTable.Line_ItemCode = AgL.XNull(Itemcode)
                             PurchInvoiceTable.Line_ItemGroupCode = AgL.XNull(DtPurchInvoiceDetail_ForHeader.Rows(J)("ItemGroupCode"))
@@ -958,7 +958,7 @@ Public Class FrmImportDataFromBranch
 
         Dim DtItemList As DataTable
         mQry = "select H.DocId,  I.Description, I.Specification, I.ItemGroup, I.ItemCategory, I.ItemType, 
-                I.Unit, I.V_Type, I.HSN, I.SalesTaxPostingGroup, I.ProfitMarginPer, L.Item, L.MRP, L.Rate
+                I.Unit, I.V_Type, I.HSN, I.SalesTaxPostingGroup, I.ProfitMarginPer, I.Div_Code, L.Item, L.MRP, L.Sr, L.Rate
                 From Source.StockHead H
                 left join Source.StockHeadDetail L on L.DocId = H.docid 
                 left join Source.item I on I.code = L.Item 
@@ -971,7 +971,7 @@ Public Class FrmImportDataFromBranch
         For R As Integer = 0 To DtItemList.Rows.Count - 1
 
             Dim mItemCode_New = AgL.PubDivCode & AgL.PubSiteCode & (Convert.ToInt32(mItemCode.Replace(AgL.PubDivCode + AgL.PubSiteCode, "")) + R).ToString().PadLeft(8, "0")
-            mItemDescription = AgL.XNull(DtItemList.Rows(R)("Description")) + "-" + AgL.XNull(DtItemList.Rows(R)("DocId"))
+            mItemDescription = AgL.XNull(DtItemList.Rows(R)("Description")) + "-" + AgL.XNull(DtItemList.Rows(R)("DocId")) + AgL.XNull(DtItemList.Rows(R)("Sr"))
 
             mQry = "Select Count(*) From Item Where Description = '" & mItemDescription & "'"
             If AgL.VNull(AgL.Dman_Execute(mQry, IIf(AgL.PubServerName = "", AgL.GCn, AgL.GcnRead)).ExecuteScalar()) = 0 Then
@@ -993,9 +993,9 @@ Public Class FrmImportDataFromBranch
                 " & AgL.Chk_Text(AgL.XNull(DtItemList.Rows(R)("HSN"))) & " As HSN, 
                 '" & AgL.PubUserName & "' As EntryBy, 
                 " & AgL.Chk_Date(AgL.PubLoginDate) & " As EntryDate, 
-                '" & AgL.PubDivCode & "' As Div_Code, 
+                " & AgL.Chk_Text(AgL.XNull(DtItemList.Rows(R)("Div_Code"))) & " As Div_Code, 
                 " & AgL.Chk_Text(AgL.XNull(DtItemList.Rows(R)("SalesTaxPostingGroup"))) & " As SalesTaxPostingGroup,
-                " & AgL.Chk_Text(AgL.XNull(DtItemList.Rows(R)("DocId"))) & " As GenDocId "
+                " & AgL.Chk_Text(AgL.XNull(DtItemList.Rows(R)("DocId")) + AgL.XNull(DtItemList.Rows(R)("Sr"))) & " As GenDocId "
                 AgL.Dman_ExecuteNonQry(mQry, mSqlConn, mSqlCmd)
             End If
         Next

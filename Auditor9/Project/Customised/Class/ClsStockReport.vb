@@ -592,6 +592,8 @@ Public Class ClsStockReport
             End If
 
             Dim mMainQry As String = ""
+            Dim RateCond As String = ""
+
             If ReportFrm.FGetText(rowIncludeOpening) = "Yes" Then
                 mMainQry = " SELECT ' Opening' as DocID, ' Opening' V_Type, ' 0' as RecId, strftime('%d/%m/%Y', " & AgL.Chk_Date(ReportFrm.FGetText(rowFromDate)) & ")  V_Date, " & AgL.Chk_Date(ReportFrm.FGetText(rowFromDate)) & "  V_Date_ActualFormat
                     , Null as PartyName, Max(Location.Name) as LocationName
@@ -618,19 +620,25 @@ Public Class ClsStockReport
                     0 as TransactionRate, "
 
 
-            If ReportFrm.FGetText(rowValuation) = "Master Purchase Rate" Then
-                mMainQry = mMainQry & " Max(Sku.PurchaseRate) " & IIf(AgL.VNull(ReportFrm.FGetText(rowValuationPercentage)) <> 0, " * " & AgL.VNull(ReportFrm.FGetText(rowValuationPercentage)) & "/100", "") & " as ValuationRate, 
+                If ReportFrm.FGetText(rowValuation) = "Master Purchase Rate" Then
+                    If AgL.StrCmp(AgL.PubDBName, "JeetTextile") And ReportFrm.FGetCode(rowGroupOn).ToString.Contains("Dimension1") Then
+                        RateCond = "(case when ifnull(D1.PurchaseRate,0) <> 0 then ifnull(D1.PurchaseRate,0) when ifnull(I.PurchaseRate,0) <> 0 then ifnull(I.PurchaseRate,0) else Sku.PurchaseRate end)"
+                    Else
+                        RateCond = "Sku.PurchaseRate"
+                    End If
+
+                    mMainQry = mMainQry & " Max(" & RateCond & ") " & IIf(AgL.VNull(ReportFrm.FGetText(rowValuationPercentage)) <> 0, " * " & AgL.VNull(ReportFrm.FGetText(rowValuationPercentage)) & "/100", "") & " as ValuationRate, 
                     IfNull(Sum((Case When Sku.StockUnit Is Not Null And Sku.StockUnit <> L.Unit Then L.Qty_Rec * Uc.Multiplier Else L.Qty_Rec End - 
-                    Case When Sku.StockUnit Is Not Null And Sku.StockUnit <> L.Unit Then L.Qty_Iss * Uc.Multiplier Else L.Qty_Iss End)*(Sku.PurchaseRate)),0) 
+                    Case When Sku.StockUnit Is Not Null And Sku.StockUnit <> L.Unit Then L.Qty_Iss * Uc.Multiplier Else L.Qty_Iss End)*(" & RateCond & ")),0) 
                     " & IIf(AgL.VNull(ReportFrm.FGetText(rowValuationPercentage)) <> 0, " * " & AgL.VNull(ReportFrm.FGetText(rowValuationPercentage)) & "/100", "") & " as Amount "
-            ElseIf ReportFrm.FGetText(rowValuation) = "Last Purchase Rate" Then
-                mMainQry = mMainQry & " (Case When Max(RList.Code) Is Not Null Then Max(RList.Cost) Else 
+                ElseIf ReportFrm.FGetText(rowValuation) = "Last Purchase Rate" Then
+                    mMainQry = mMainQry & " (Case When Max(RList.Code) Is Not Null Then Max(RList.Cost) Else 
                     Max(Sku.LastPurchaseRate) End) " & IIf(AgL.VNull(ReportFrm.FGetText(rowValuationPercentage)) <> 0, " * " & AgL.VNull(ReportFrm.FGetText(rowValuationPercentage)) & "/100", "") & " as ValuationRate, 
                     IfNull(Sum((Case When Sku.StockUnit Is Not Null And Sku.StockUnit <> L.Unit Then L.Qty_Rec * Uc.Multiplier Else L.Qty_Rec End - 
                     Case When Sku.StockUnit Is Not Null And Sku.StockUnit <> L.Unit Then L.Qty_Iss * Uc.Multiplier Else L.Qty_Iss End)*(Case When RList.Code Is Not Null Then RList.Cost Else Sku.LastPurchaseRate End)),0) 
                     " & IIf(AgL.VNull(ReportFrm.FGetText(rowValuationPercentage)) <> 0, " * " & AgL.VNull(ReportFrm.FGetText(rowValuationPercentage)) & "/100", "") & " as Amount "
-            Else
-                mMainQry = mMainQry & " 0 as ValuationRate, 0 as Amount "
+                Else
+                    mMainQry = mMainQry & " 0 as ValuationRate, 0 as Amount "
             End If
             mMainQry = mMainQry & " FROM " & bTableName & " L
                     LEFT JOIN Item Sku ON L.Item = Sku.Code
@@ -686,9 +694,15 @@ Public Class ClsStockReport
                     L.Rate as TransactionRate, "
 
             If ReportFrm.FGetText(rowValuation) = "Master Purchase Rate" Then
-                mMainQry = mMainQry & " Sku.PurchaseRate " & IIf(AgL.VNull(ReportFrm.FGetText(rowValuationPercentage)) <> 0, " * " & AgL.VNull(ReportFrm.FGetText(rowValuationPercentage)) & "/100", "") & " as ValuationRate, 
+                If AgL.StrCmp(AgL.PubDBName, "JeetTextile") And ReportFrm.FGetCode(rowGroupOn).ToString.Contains("Dimension1") Then
+                    RateCond = "(case when ifnull(D1.PurchaseRate,0) <> 0 then ifnull(D1.PurchaseRate,0) when ifnull(I.PurchaseRate,0) <> 0 then ifnull(I.PurchaseRate,0) else Sku.PurchaseRate end)"
+                Else
+                    RateCond = "Sku.PurchaseRate"
+                End If
+
+                mMainQry = mMainQry & " " & RateCond & " " & IIf(AgL.VNull(ReportFrm.FGetText(rowValuationPercentage)) <> 0, " * " & AgL.VNull(ReportFrm.FGetText(rowValuationPercentage)) & "/100", "") & " as ValuationRate, 
                     IfNull((Case When Sku.StockUnit Is Not Null And Sku.StockUnit <> L.Unit Then L.Qty_Rec * Uc.Multiplier Else L.Qty_Rec End - 
-                    Case When Sku.StockUnit Is Not Null And Sku.StockUnit <> L.Unit Then L.Qty_Iss * Uc.Multiplier Else L.Qty_Iss End)*(Sku.PurchaseRate),0) " & IIf(AgL.VNull(ReportFrm.FGetText(rowValuationPercentage)) <> 0, " * " & AgL.VNull(ReportFrm.FGetText(rowValuationPercentage)) & "/100", "") & " as Amount "
+                    Case When Sku.StockUnit Is Not Null And Sku.StockUnit <> L.Unit Then L.Qty_Iss * Uc.Multiplier Else L.Qty_Iss End)*(" & RateCond & "),0) " & IIf(AgL.VNull(ReportFrm.FGetText(rowValuationPercentage)) <> 0, " * " & AgL.VNull(ReportFrm.FGetText(rowValuationPercentage)) & "/100", "") & " as Amount "
             ElseIf ReportFrm.FGetText(rowValuation) = "Last Purchase Rate" Then
                 mMainQry = mMainQry & " (Case When RList.Code Is Not Null Then RList.Cost Else 
                     Sku.LastPurchaseRate End) " & IIf(AgL.VNull(ReportFrm.FGetText(rowValuationPercentage)) <> 0, " * " & AgL.VNull(ReportFrm.FGetText(rowValuationPercentage)) & "/100", "") & " as ValuationRate, 

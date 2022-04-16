@@ -1072,6 +1072,9 @@ Public Class FrmPurchInvoiceDirect_WithDimension
         mQry = " Delete From Ledger Where DocId = '" & mSearchCode & "'"
         AgL.Dman_ExecuteNonQry(mQry, Conn, Cmd)
 
+        mQry = " Delete From ledgerHead Where DocId = '" & mSearchCode & "'"
+        AgL.Dman_ExecuteNonQry(mQry, Conn, Cmd)
+
         mQry = " Delete From PurchInvoicePayment Where DocId = '" & mSearchCode & "'"
         AgL.Dman_ExecuteNonQry(mQry, Conn, Cmd)
 

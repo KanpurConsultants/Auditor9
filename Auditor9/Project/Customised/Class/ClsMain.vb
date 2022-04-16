@@ -8840,6 +8840,7 @@ Thanks
 
             If FDivisionNameForCustomization(6) = "SADHVI" And AgL.StrCmp(AgL.PubDBName, "Sadhvi") Then
                 FSeedSingleIfNotExist_EntryLineUISetting("FrmStockEntry", Ncat.StockIssue, "Dgl1", FrmStockEntry.Col1MRP, True)
+                FSeedSingleIfNotExist_EntryLineUISetting("FrmStockEntry", Ncat.StockReceive, "Dgl1", FrmStockEntry.Col1MRP, True)
             End If
 
 
@@ -25483,6 +25484,8 @@ Thanks
             mCondStr = " Where L.Item = '" & bItem & "'"
             If bGodown <> "" Then mCondStr += " And L.Godown = '" & bGodown & "'"
             If bAsOnDate <> "" Then mCondStr += " And Date(L.V_Date) <= " & AgL.Chk_Date(bAsOnDate) & ""
+
+            mCondStr += " And L.Site_Code In (SELECT Code FROM SiteMast) And L.Div_Code In (SELECT Div_Code FROM Division ) "
 
             mQry = " SELECT IsNull(Sum(L.Qty_Rec),0) - IsNull(Sum(L.Qty_Iss),0) AS Qty
                 FROM Stock L " & mCondStr & " GROUP BY L.Item "

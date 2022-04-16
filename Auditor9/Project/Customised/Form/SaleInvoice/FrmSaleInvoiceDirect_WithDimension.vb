@@ -2919,6 +2919,10 @@ Public Class FrmSaleInvoiceDirect_WithDimension
             Dgl2.Columns(Col1BtnDetail).Visible = True
         End If
 
+        If AgL.StrCmp(AgL.PubDBName, "SHADHVINEW") Or AgL.StrCmp(AgL.PubDBName, "SHADHVIKANPURB2") Or AgL.StrCmp(AgL.PubDBName, "SHADHVIjaunpur") Or AgL.StrCmp(AgL.PubDBName, "SHADHVINANDI") Then
+            Dgl1.Columns(Col1Rate).ReadOnly = True
+        End If
+
         'If DglMain.Rows(rowSaleToPartyName).Visible = True And
         '    Not AgL.StrCmp(Topctrl1.Mode, "Browse") Then
         '    DglMain.Rows(rowSaleToPartyName).Visible = False
@@ -5530,8 +5534,51 @@ Public Class FrmSaleInvoiceDirect_WithDimension
             passed = False : Exit Sub
         End If
 
+        If ClsMain.FDivisionNameForCustomization(12) = "NANDI SAREES" Then
+            Dim DiscountedItem As Integer = 0
+            For I = 0 To Dgl1.Rows.Count - 1
+                If AgL.XNull(Dgl1(Col1Item, I).Value) <> "" Then
+                    If Val(Dgl1(Col1Rate, I).Value) < 100 Then
+                        DiscountedItem = DiscountedItem + Val(Dgl1(Col1Qty, I).Value)
+                    End If
+                End If
+            Next
 
-        Dim bCntItemCount As Integer = 0
+            If DiscountedItem > 1 Then
+                MsgBox("Only 1 Item should have Rate less than 100.")
+                passed = False : Exit Sub
+            End If
+
+            If DiscountedItem > 0 Then
+                If (CType(DglMain.Item(Col1BtnDetail, rowSaleToParty).Tag, FrmSaleInvoiceParty_WithDimension).Dgl1.Item(FrmSaleInvoiceParty_WithDimension.Col1Value, FrmSaleInvoiceParty_WithDimension.rowAadharNo).Value) Is Nothing Then
+                    MsgBox("Party Aadhar No. Mandatory")
+                    passed = False : Exit Sub
+                    End
+                ElseIf (CType(DglMain.Item(Col1BtnDetail, rowSaleToParty).Tag, FrmSaleInvoiceParty_WithDimension).Dgl1.Item(FrmSaleInvoiceParty_WithDimension.Col1Value, FrmSaleInvoiceParty_WithDimension.rowAadharNo).Value) IsNot Nothing Then
+                If (CType(DglMain.Item(Col1BtnDetail, rowSaleToParty).Tag, FrmSaleInvoiceParty_WithDimension).Dgl1.Item(FrmSaleInvoiceParty_WithDimension.Col1Value, FrmSaleInvoiceParty_WithDimension.rowAadharNo).Value).ToString.Trim = "" Then
+                        MsgBox("Party Aadhar No. Mandatory")
+                        passed = False : Exit Sub
+                    End If
+                End If
+            End If
+
+            If DiscountedItem > 0 Then
+                If (CType(DglMain.Item(Col1BtnDetail, rowSaleToParty).Tag, FrmSaleInvoiceParty_WithDimension).Dgl1.Item(FrmSaleInvoiceParty_WithDimension.Col1Value, FrmSaleInvoiceParty_WithDimension.rowAadharNo).Value) IsNot Nothing Then
+                    If (CType(DglMain.Item(Col1BtnDetail, rowSaleToParty).Tag, FrmSaleInvoiceParty_WithDimension).Dgl1.Item(FrmSaleInvoiceParty_WithDimension.Col1Value, FrmSaleInvoiceParty_WithDimension.rowAadharNo).Value).ToString.Trim <> "" Then
+
+                        mQry = "Select Count(*) From SaleInvoice With (NoLock)  Where DocId <> '" & mSearchCode & "' AND SaleToPartyAadharNo = '" & CType(DglMain.Item(Col1BtnDetail, rowSaleToParty).Tag, FrmSaleInvoiceParty_WithDimension).Dgl1.Item(FrmSaleInvoiceParty_WithDimension.Col1Value, FrmSaleInvoiceParty_WithDimension.rowAadharNo).Value & "' "
+
+                        If AgL.VNull(AgL.Dman_Execute(mQry, AgL.GcnRead).ExecuteScalar()) > 0 Then
+                            MsgBox("Party Aadhar No. Is Already Used")
+                            passed = False : Exit Sub
+                        End If
+                    End If
+                    End If
+            End If
+
+        End If
+
+            Dim bCntItemCount As Integer = 0
         If SettingFields_MaximumItemLimit > 0 Then
             For I = 0 To Dgl1.Rows.Count - 1
                 If Dgl1.Rows(I).Visible = True And
@@ -13563,7 +13610,7 @@ Public Class FrmSaleInvoiceDirect_WithDimension
             Next
         Next
 
-        mQry = " SELECT H.SalesTaxGroupParty, H.PlaceOfSupply, L.SalesTaxGroupItem,
+        mQry = " SELECT H.SalesTaxGroupParty, H.PlaceOfSupply, L.SalesTaxGroupItem, L.Sr,
                 Sd.Charges, Pst.*
                 FROM SaleInvoice H With (NoLock)
                 LEFT JOIN SaleInvoiceDetail L With (NoLock) ON H.DocID = L.DocID
@@ -13578,7 +13625,7 @@ Public Class FrmSaleInvoiceDirect_WithDimension
 
 
 
-        mQry = "Select "
+        mQry = "Select Sr,"
         For I As Integer = 0 To DtCalcHeaderData.Rows.Count - 1
             mQry += AgL.XNull(DtCalcHeaderData.Rows(I)("LineAmtField")) + " As [" + GetColName(DtCalcHeaderData.Rows(I)("Charges")) + "],"
             mQry += " 0.00  As [" + GetColNamePer(DtCalcHeaderData.Rows(I)("Charges")) + "],"
@@ -13591,14 +13638,22 @@ Public Class FrmSaleInvoiceDirect_WithDimension
         For I As Integer = 0 To DtCalcLineData.Rows.Count - 1
             For J As Integer = 0 To DtCalcLineData.Columns.Count - 1
                 For K As Integer = 0 To DtPostingGroupSalesTax.Rows.Count - 1
-                    If DtCalcLineData.Columns(J).ColumnName = GetColNamePostAc(DtPostingGroupSalesTax.Rows(K)("Charges")) Then
+                    If DtCalcLineData.Columns(J).ColumnName = GetColNamePostAc(DtPostingGroupSalesTax.Rows(K)("Charges")) And AgL.VNull(DtCalcLineData.Rows(I)("Sr")) = AgL.VNull(DtPostingGroupSalesTax.Rows(K)("Sr")) Then
                         DtCalcLineData.Rows(I)(J) = AgL.XNull(DtPostingGroupSalesTax.Rows(K)("LedgerAc"))
-                    ElseIf DtCalcLineData.Columns(J).ColumnName = GetColNamePer(DtPostingGroupSalesTax.Rows(K)("Charges")) Then
+                    ElseIf DtCalcLineData.Columns(J).ColumnName = GetColNamePer(DtPostingGroupSalesTax.Rows(K)("Charges")) And AgL.VNull(DtCalcLineData.Rows(I)("Sr")) = AgL.VNull(DtPostingGroupSalesTax.Rows(K)("Sr")) Then
                         DtCalcLineData.Rows(I)(J) = AgL.VNull(DtPostingGroupSalesTax.Rows(K)("Percentage"))
                     End If
                 Next
             Next
         Next
+
+
+        'mQry = " Select '" & DtCalcLineData.Rows(0)("CGSTPostAc") & "' As Val UNION ALL "
+        'mQry += " Select '" & DtCalcLineData.Rows(1)("CGSTPostAc") & "' As Val UNION ALL  "
+        'mQry += " Select '" & DtCalcLineData.Rows(2)("CGSTPostAc") & "' As Val UNION ALL  "
+        'mQry += " Select '" & DtCalcLineData.Rows(3)("CGSTPostAc") & "' As Val UNION ALL  "
+        'mQry += " Select '" & DtCalcLineData.Rows(4)("CGSTPostAc") & "' As Val UNION ALL  "
+        'mQry += " Select '" & DtCalcLineData.Rows(5)("CGSTPostAc") & "' As Val  "
 
 
         Dim mMultiplyWithMinus As Boolean = False

@@ -5,47 +5,47 @@ DocNoCaption	string	255	Invoice No.
 DocDateCaption	string	255	Invoice Date	
 SiteStateCode	string	255	09	
 SiteStateName	string	255	Uttar Pradesh	
-DocID	string	255	D1    SI 2020   13456	
+DocID	string	255	E2    SI 2021    3687	
 Sr	number	1	
-V_Date	datetime	27/Mar/2021 12:00:00 AM	
+V_Date	datetime	29/Mar/2022 12:00:00 AM	
 DeliveryDate	datetime		
 Voucher_Type	string	255	Tax Invoice	
 NCat	string	255	SI	
-InvoiceNo	string	255	SI-10201	
+InvoiceNo	string	255	SIB-361	
 RateType	string	255	Super Net	
 DocumentPrintShowRateType	string	255	Show If Not Blank	
-AgentName	string	255	DIRECT CUSTOMER	
+AgentName	string	255		
 AgentCaption	string	255	Agent	
-SaleToPartyName	string	255	APSARA CLOTH HOUSE	
-SaleToPartyAddress	string	255	PRATAPGARH	
-CityName	string	255	PRATAPGARH	
-SaleToPartyPincode	string	255	230001	
+SaleToPartyName	string	255	HAZI SHAUKAT CLOTH HOUSE 	
+SaleToPartyAddress	string	255	RUDAULI	
+CityName	string	255	RUDAULI	
+SaleToPartyPincode	string	255	224120	
 StateCode	string	255	09	
 StateName	string	255	Uttar Pradesh	
-SaleToPartyMobile	string	255		
+SaleToPartyMobile	string	255	9415596769	
 ContactPerson	string	255		
-SaleToPartySalesTaxNo	string	255	09AHBPS8921N1ZN	
+SaleToPartySalesTaxNo	string	255	09ARHPA0569Q1ZC	
 SaleToPartyAadharNo	string	255		
-SaleToPartyPanNo	string	255	AHBPS8921N	
-ShipToPartyName	string	255	APSARA CLOTH HOUSE	
-ShipToPartyAddress	string	255	PRATAPGARH	
-ShipToPartyCity	string	255	PRATAPGARH	
-ShipToPartyPincode	string	255	230001	
+SaleToPartyPanNo	string	255		
+ShipToPartyName	string	255	HAZI SHAUKAT CLOTH HOUSE 	
+ShipToPartyAddress	string	255	RUDAULI	
+ShipToPartyCity	string	255	RUDAULI	
+ShipToPartyPincode	string	255	224120	
 ShipToPartyStateCode	string	255	09	
 ShipToPartyStateName	string	255	Uttar Pradesh	
-ShipToPartyMobile	string	255		
-ShipToPartySalesTaxNo	string	255	09AHBPS8921N1ZN	
+ShipToPartyMobile	string	255	9415596769	
+ShipToPartySalesTaxNo	string	255	09ARHPA0569Q1ZC	
 ShipToPartyAadharNo	string	255		
-ShipToPartyPanNo	string	255	AHBPS8921N	
+ShipToPartyPanNo	string	255		
 ShipToAddress	string	255		
-TermsAndConditions	string	255	<b>1.</b> Goods once sold will not be taken back. <b>2.</b> No Guarantee in the Age of Fashion. <b>3.</b> Interest @ 24% per annum will be charge after 30 days from the date of bill. <b>4.</b> All disputes subject to Kanpur Jurisdiction OR disputes will be settle through Cawnpore Kapda Committee Arbitration Board which will be abide by the both parties	
-TransporterName	string	255	PRATAPGARH EXPRESS TRANSPORT CO., KANPUR	
+TermsAndConditions	string	255	(1) Payment within 15 days from date of Invoice. (2) Overdue Interest @ 18% P.A. after due date. (3) Goods dispatched by transport at the owner risk. (4) All disputes are subject to Kanpur jurisdiction only.	
+TransporterName	string	255		
 LrNo	string	255		
 LrDate	datetime		
 PrivateMark	string	255		
-Weight	number	0	
-Freight	number	0	
-ChargedWeight	number	0	
+Weight	number		
+Freight	number		
+ChargedWeight	number		
 FreightType	string	255		
 RoadPermitNo	string	255		
 RoadPermitDate	datetime		
@@ -59,18 +59,18 @@ Destination	string	255
 DescriptionOfGoods	string	255		
 DescriptionOfPacking	string	255		
 ReferenceNo	string	255		
-ItemName	string	255	2163          [MILI FASHION | SAREE]	
-ItemGroupName	string	255	S-ENT-803 DYD	
-ItemCatName	string	255	SAREE	
-ItemSpecification	string	255	2163	
+ItemName	string	255	BIRTHDAY SILK LANCHA          [K KANHAIYA LANCHA(503) | LEHNGA]	
+ItemGroupName	string	255	S-EMB-503 LEH.	
+ItemCatName	string	255	LEHNGA	
+ItemSpecification	string	255	BIRTHDAY SILK LANCHA	
 InvoiceLineSpecification	string	255		
-HSN	string	255	540752	
+HSN	string	255	630790	
 MaintainStockYn	boolean	True	
 SalesTaxGroupItem	string	255	GST 5%	
 GrossTaxRate	number	5	
-Pcs	number	5	
-Qty	number	5	
-Rate	number	1495	
+Pcs	number	3	
+Qty	number	3	
+Rate	number	750	
 Unit	string	255	Pcs	
 UnitDecimalPlaces	number	0	
 DiscountPer	number	0	
@@ -80,34 +80,34 @@ AdditionalDiscountAmount	number	0
 AdditionPer	number	0	
 AdditionAmount	number	0	
 TotalDiscount	number	0	
-AmountBeforeDiscount	number	7475	
-Amount	number	7475	
-Taxable_Amount	number	7475	
+AmountBeforeDiscount	number	2250	
+Amount	number	2250	
+Taxable_Amount	number	2250	
 Tax1_Per	number	0	
 Tax1	number	0	
 Tax2_Per	number	2.5	
-Tax2	number	186.88	
+Tax2	number	56.25	
 Tax3_Per	number	2.5	
-Tax3	number	186.88	
+Tax3	number	56.25	
 Tax4_Per	number	0	
 Tax4	number	0	
 Tax5_Per	number	0	
 Tax5	number	0	
-Net_Amount	number	7848.77	
+Net_Amount	number	2362.53	
 LRemarks	string	255		
 HRemarks	string	255		
 H_TotalDiscount	number	0	
-H_AmountBeforeDiscount	number	68913	
-H_Gross_Amount	number	68913	
+H_AmountBeforeDiscount	number	24669	
+H_Gross_Amount	number	24669	
 H_SpecialDiscount_Per	number	0	
 H_SpecialDiscount	number	0	
-H_Taxable_Amount	number	68913	
+H_Taxable_Amount	number	24669	
 H_Tax1_Per	number	0	
 H_Tax1	number	0	
 H_Tax2_Per	number	0	
-H_Tax2	number	1722.87	
+H_Tax2	number	1345.39	
 H_Tax3_Per	number	0	
-H_Tax3	number	1722.87	
+H_Tax3	number	1345.39	
 H_Tax4_Per	number	0	
 H_Tax4	number	0	
 H_Tax5_Per	number	0	
@@ -116,16 +116,16 @@ H_Deduction_Per	number	0
 H_Deduction	number	0	
 H_Other_Charge_Per	number	0	
 H_Other_Charge	number	0	
-Round_Off	number	0.26	
-H_Net_Amount	number	72359	
+Round_Off	number	0.22	
+H_Net_Amount	number	27360	
 EInvoiceIRN	string	255		
 EInvoiceAckNo	string	255		
 EInvoiceAckDate	datetime		
-Default_BankAccountDetail	string	255	Bank Detail : 	HDFC A/c : 50200003154727    IFSC : HDFC0002006	
+Default_BankAccountDetail	string	255	Bank Detail : 	HDFC A/c : 50200017346518    IFSC : HDFC0002006	
 DocumentPrintHeaderPattern	string	255	Center Aligned	
 DimDetail	string	255		
 PrintedByUser	string	255	SUPER	
-EntryByUser	string	255	SAMEER	
+EntryByUser	string	255	USER	
 PrintTitle	string	255	TAX INVOICE	
 DocumentPrintShowPrintDateTimeYn	string	255	1	
 CompanyLogo	BLOB		

@@ -157,7 +157,7 @@ Public Class ClsTCSReport
                     H.SalesTaxGroupParty, L.SalesTaxGroupItem,
                     State.Code As StateCode, State.Description As StateName,
                     Cast(Replace(H.ManualRefNo,'-','') as Integer) as InvoiceNo, 
-                    IfNull(I.HSN,IC.HSN) as HSN,
+                    IfNull(I.HSN,IC.HSN) as HSN, H.VendorDocNo, H.VendorDocDate,
                     IC.Code as ItemCategoryCode,IC.Description as ItemCategory,
                     L.Qty, L.Taxable_Amount, L.Net_Amount,                      
                     L.Tax1 as Igst, L.Tax2 as Cgst, L.Tax3 as Sgst, L.Tax4 as Cess, L.Tax5 as TCS, L.Tax1+L.Tax2+L.Tax3+L.Tax4+L.Tax5 as TotalTax
@@ -234,21 +234,27 @@ Public Class ClsTCSReport
                 mQry += ", Max(VMain.V_Type) As DocType "
                 mQry += ", Max(VMain.InvoiceNo) As InvoiceNo "
                 mQry += ", Max(VMain.SaleToPartyName) As Party "
-                mQry += ", VMain.ItemCategory "
-                mQry += ", Sum(VMain.Qty) As Qty "
-                mQry += ", Sum(VMain.Taxable_Amount) As TaxableAmount "
-                mQry += ", Sum(VMain.Igst) As Igst "
-                mQry += ", Sum(VMain.Cgst) As Cgst "
-                mQry += ", Sum(VMain.Sgst) As Sgst "
-                mQry += ", Sum(VMain.Cess) As Cess "
-                mQry += ", Sum(VMain.Tcs) As TCS "
-                mQry += ", Sum(VMain.Net_Amount) As NetAmount "
-                mQry += " From (" & mMainQry & ") As VMain "
-                mQry += " GROUP By VMain.DocId "
-                mQry += " Order By Max(VMain.V_Date), Max(VMain.InvoiceNo) "
 
-            Else
-                Dim mGroupColumns As String = ""
+                If ReportFrm.Text = "TCS Input Report" Then
+                    mQry += ", Max(VMain.VendorDocNo) As PartyDocNo "
+                    mQry += ", Max(VMain.VendorDocDate) As PartyDocDate "
+                End If
+
+                mQry += ", VMain.ItemCategory "
+                    mQry += ", Sum(VMain.Qty) As Qty "
+                    mQry += ", Sum(VMain.Taxable_Amount) As TaxableAmount "
+                    mQry += ", Sum(VMain.Igst) As Igst "
+                    mQry += ", Sum(VMain.Cgst) As Cgst "
+                    mQry += ", Sum(VMain.Sgst) As Sgst "
+                    mQry += ", Sum(VMain.Cess) As Cess "
+                    mQry += ", Sum(VMain.Tcs) As TCS "
+                    mQry += ", Sum(VMain.Net_Amount) As NetAmount "
+                    mQry += " From (" & mMainQry & ") As VMain "
+                    mQry += " GROUP By VMain.DocId "
+                    mQry += " Order By Max(VMain.V_Date), Max(VMain.InvoiceNo) "
+
+                Else
+                    Dim mGroupColumns As String = ""
                 Dim mSelectColumns As String = ""
                 Dim mOrderColumns As String = ""
 
