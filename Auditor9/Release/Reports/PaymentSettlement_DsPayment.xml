@@ -1,2 +1,17 @@
 <?xml version="1.0" standalone="yes"?>
-<NewDataSet />
+<NewDataSet>
+  <Table>
+    <PaymentNo>D1-PMT-789</PaymentNo>
+    <V_Date>2022-02-03T00:00:00+05:30</V_Date>
+    <Narration>Ch.-203419773765,Dt.-2022-02-03</Narration>
+    <PaidAmount>51694</PaidAmount>
+    <ContraName>KOTAK MAHINDRA BANK 2913816082</ContraName>
+  </Table>
+  <Table>
+    <PaymentNo>D1-PMT-789</PaymentNo>
+    <V_Date>2022-02-03T00:00:00+05:30</V_Date>
+    <Narration>Ch.-203419769634,Dt.-2022-02-03</Narration>
+    <PaidAmount>37828</PaidAmount>
+    <ContraName>KOTAK MAHINDRA BANK 2913816082</ContraName>
+  </Table>
+</NewDataSet>

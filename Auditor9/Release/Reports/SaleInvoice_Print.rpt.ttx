@@ -5,47 +5,49 @@ DocNoCaption	string	255	Invoice No.
 DocDateCaption	string	255	Invoice Date	
 SiteStateCode	string	255	09	
 SiteStateName	string	255	Uttar Pradesh	
-DocID	string	255	E2    SI 2021    3687	
+DocID	string	255	D1    SI 2022     920	
 Sr	number	1	
-V_Date	datetime	29/Mar/2022 12:00:00 AM	
+V_Date	datetime	11/Apr/2022 12:00:00 AM	
 DeliveryDate	datetime		
 Voucher_Type	string	255	Tax Invoice	
 NCat	string	255	SI	
-InvoiceNo	string	255	SIB-361	
+InvoiceNo	string	255	SI-920	
 RateType	string	255	Super Net	
 DocumentPrintShowRateType	string	255	Show If Not Blank	
-AgentName	string	255		
+AgentName	string	255	SANJAY SHARMA	
 AgentCaption	string	255	Agent	
-SaleToPartyName	string	255	HAZI SHAUKAT CLOTH HOUSE 	
-SaleToPartyAddress	string	255	RUDAULI	
-CityName	string	255	RUDAULI	
-SaleToPartyPincode	string	255	224120	
+SaleToPartyName	string	255	SATYAM JEWELARS  & CLOTH HOUSE	
+SaleToPartyAddress	string	255	HARAURA BAZAR DIST: SULTANPUR
+	
+CityName	string	255	SULTANPUR	
+SaleToPartyPincode	string	255	228121	
 StateCode	string	255	09	
 StateName	string	255	Uttar Pradesh	
-SaleToPartyMobile	string	255	9415596769	
+SaleToPartyMobile	string	255	9918044010	
 ContactPerson	string	255		
-SaleToPartySalesTaxNo	string	255	09ARHPA0569Q1ZC	
-SaleToPartyAadharNo	string	255		
-SaleToPartyPanNo	string	255		
-ShipToPartyName	string	255	HAZI SHAUKAT CLOTH HOUSE 	
-ShipToPartyAddress	string	255	RUDAULI	
-ShipToPartyCity	string	255	RUDAULI	
-ShipToPartyPincode	string	255	224120	
+SaleToPartySalesTaxNo	string	255		
+SaleToPartyAadharNo	string	255	482522358596	
+SaleToPartyPanNo	string	255	AKSPG2500R	
+ShipToPartyName	string	255	SATYAM JEWELARS  & CLOTH HOUSE	
+ShipToPartyAddress	string	255	HARAURA BAZAR DIST: SULTANPUR
+	
+ShipToPartyCity	string	255	SULTANPUR	
+ShipToPartyPincode	string	255	228121	
 ShipToPartyStateCode	string	255	09	
 ShipToPartyStateName	string	255	Uttar Pradesh	
-ShipToPartyMobile	string	255	9415596769	
-ShipToPartySalesTaxNo	string	255	09ARHPA0569Q1ZC	
-ShipToPartyAadharNo	string	255		
-ShipToPartyPanNo	string	255		
+ShipToPartyMobile	string	255	9918044010	
+ShipToPartySalesTaxNo	string	255		
+ShipToPartyAadharNo	string	255	482522358596	
+ShipToPartyPanNo	string	255	AKSPG2500R	
 ShipToAddress	string	255		
-TermsAndConditions	string	255	(1) Payment within 15 days from date of Invoice. (2) Overdue Interest @ 18% P.A. after due date. (3) Goods dispatched by transport at the owner risk. (4) All disputes are subject to Kanpur jurisdiction only.	
-TransporterName	string	255		
+TermsAndConditions	string	255	<b>1.</b> Goods once sold will not be taken back. <b>2.</b> No Guarantee in the Age of Fashion. <b>3.</b> Interest @ 24% per annum will be charge after 30 days from the date of bill. <b>4.</b> All disputes subject to Kanpur Jurisdiction OR disputes will be settle through Cawnpore Kapda Committee Arbitration Board which will be abide by the both parties	
+TransporterName	string	255	HINDUSTAN TRANSPORT SERVICES., KANPUR	
 LrNo	string	255		
 LrDate	datetime		
 PrivateMark	string	255		
-Weight	number		
-Freight	number		
-ChargedWeight	number		
+Weight	number	0	
+Freight	number	0	
+ChargedWeight	number	0	
 FreightType	string	255		
 RoadPermitNo	string	255		
 RoadPermitDate	datetime		
@@ -59,18 +61,18 @@ Destination	string	255
 DescriptionOfGoods	string	255		
 DescriptionOfPacking	string	255		
 ReferenceNo	string	255		
-ItemName	string	255	BIRTHDAY SILK LANCHA          [K KANHAIYA LANCHA(503) | LEHNGA]	
-ItemGroupName	string	255	S-EMB-503 LEH.	
-ItemCatName	string	255	LEHNGA	
-ItemSpecification	string	255	BIRTHDAY SILK LANCHA	
+ItemName	string	255	RED GOLD          [KESHAVAM FASHION 58 | SAREE PRINT]	
+ItemGroupName	string	255	S-ENT-58-PRINT	
+ItemCatName	string	255	SAREE PRINT	
+ItemSpecification	string	255	RED GOLD	
 InvoiceLineSpecification	string	255		
-HSN	string	255	630790	
+HSN	string	255	540754	
 MaintainStockYn	boolean	True	
 SalesTaxGroupItem	string	255	GST 5%	
 GrossTaxRate	number	5	
-Pcs	number	3	
-Qty	number	3	
-Rate	number	750	
+Pcs	number	8	
+Qty	number	8	
+Rate	number	365	
 Unit	string	255	Pcs	
 UnitDecimalPlaces	number	0	
 DiscountPer	number	0	
@@ -80,34 +82,34 @@ AdditionalDiscountAmount	number	0
 AdditionPer	number	0	
 AdditionAmount	number	0	
 TotalDiscount	number	0	
-AmountBeforeDiscount	number	2250	
-Amount	number	2250	
-Taxable_Amount	number	2250	
+AmountBeforeDiscount	number	2920	
+Amount	number	2920	
+Taxable_Amount	number	2920	
 Tax1_Per	number	0	
 Tax1	number	0	
 Tax2_Per	number	2.5	
-Tax2	number	56.25	
+Tax2	number	73	
 Tax3_Per	number	2.5	
-Tax3	number	56.25	
+Tax3	number	73	
 Tax4_Per	number	0	
 Tax4	number	0	
 Tax5_Per	number	0	
 Tax5	number	0	
-Net_Amount	number	2362.53	
+Net_Amount	number	3066	
 LRemarks	string	255		
 HRemarks	string	255		
 H_TotalDiscount	number	0	
-H_AmountBeforeDiscount	number	24669	
-H_Gross_Amount	number	24669	
+H_AmountBeforeDiscount	number	2920	
+H_Gross_Amount	number	2920	
 H_SpecialDiscount_Per	number	0	
 H_SpecialDiscount	number	0	
-H_Taxable_Amount	number	24669	
+H_Taxable_Amount	number	2920	
 H_Tax1_Per	number	0	
 H_Tax1	number	0	
 H_Tax2_Per	number	0	
-H_Tax2	number	1345.39	
+H_Tax2	number	73	
 H_Tax3_Per	number	0	
-H_Tax3	number	1345.39	
+H_Tax3	number	73	
 H_Tax4_Per	number	0	
 H_Tax4	number	0	
 H_Tax5_Per	number	0	
@@ -116,16 +118,16 @@ H_Deduction_Per	number	0
 H_Deduction	number	0	
 H_Other_Charge_Per	number	0	
 H_Other_Charge	number	0	
-Round_Off	number	0.22	
-H_Net_Amount	number	27360	
+Round_Off	number	0	
+H_Net_Amount	number	3066	
 EInvoiceIRN	string	255		
 EInvoiceAckNo	string	255		
 EInvoiceAckDate	datetime		
-Default_BankAccountDetail	string	255	Bank Detail : 	HDFC A/c : 50200017346518    IFSC : HDFC0002006	
+Default_BankAccountDetail	string	255	Bank Detail : 	HDFC A/c : 50200003154727    IFSC : HDFC0002006	
 DocumentPrintHeaderPattern	string	255	Center Aligned	
 DimDetail	string	255		
 PrintedByUser	string	255	SUPER	
-EntryByUser	string	255	USER	
+EntryByUser	string	255	sameer	
 PrintTitle	string	255	TAX INVOICE	
 DocumentPrintShowPrintDateTimeYn	string	255	1	
 CompanyLogo	BLOB		

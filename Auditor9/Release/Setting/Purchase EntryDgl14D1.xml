@@ -32,14 +32,14 @@
     <Name>Item Category</Name>
     <Index>2</Index>
     <Width>160</Width>
-    <Visible>True</Visible>
+    <Visible>False</Visible>
     <AggregateFunction />
   </Column>
   <Column>
     <Name>Item Group</Name>
     <Index>3</Index>
     <Width>144</Width>
-    <Visible>True</Visible>
+    <Visible>False</Visible>
     <AggregateFunction />
   </Column>
   <Column>
@@ -60,7 +60,7 @@
     <Name>Dimension1</Name>
     <Index>6</Index>
     <Width>100</Width>
-    <Visible>False</Visible>
+    <Visible>True</Visible>
     <AggregateFunction />
   </Column>
   <Column>
@@ -681,28 +681,28 @@
   </Column>
   <Column>
     <Name>Barcode Type</Name>
-    <Index>135</Index>
-    <Width>100</Width>
-    <Visible>False</Visible>
-    <AggregateFunction />
-  </Column>
-  <Column>
-    <Name>Barcode Gen DocId</Name>
-    <Index>138</Index>
-    <Width>100</Width>
-    <Visible>False</Visible>
-    <AggregateFunction />
-  </Column>
-  <Column>
-    <Name>Barcode Gen Sr</Name>
     <Index>145</Index>
     <Width>100</Width>
     <Visible>False</Visible>
     <AggregateFunction />
   </Column>
   <Column>
+    <Name>Barcode Gen DocId</Name>
+    <Index>149</Index>
+    <Width>100</Width>
+    <Visible>False</Visible>
+    <AggregateFunction />
+  </Column>
+  <Column>
+    <Name>Barcode Gen Sr</Name>
+    <Index>150</Index>
+    <Width>100</Width>
+    <Visible>False</Visible>
+    <AggregateFunction />
+  </Column>
+  <Column>
     <Name>Is Record Locked</Name>
-    <Index>148</Index>
+    <Index>152</Index>
     <Width>100</Width>
     <Visible>False</Visible>
     <AggregateFunction />
@@ -913,6 +913,34 @@
   <Column>
     <Name>SGST ContraAc</Name>
     <Index>124</Index>
+    <Width>100</Width>
+    <Visible>False</Visible>
+    <AggregateFunction />
+  </Column>
+  <Column>
+    <Name>TCS @</Name>
+    <Index>135</Index>
+    <Width>100</Width>
+    <Visible>False</Visible>
+    <AggregateFunction />
+  </Column>
+  <Column>
+    <Name>TCS</Name>
+    <Index>138</Index>
+    <Width>100</Width>
+    <Visible>False</Visible>
+    <AggregateFunction />
+  </Column>
+  <Column>
+    <Name>TCS PostAc</Name>
+    <Index>148</Index>
+    <Width>100</Width>
+    <Visible>False</Visible>
+    <AggregateFunction />
+  </Column>
+  <Column>
+    <Name>TCS ContraAc</Name>
+    <Index>151</Index>
     <Width>100</Width>
     <Visible>False</Visible>
     <AggregateFunction />

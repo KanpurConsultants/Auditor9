@@ -427,7 +427,7 @@ Public Class ClsReports
                     ReportFrm.CreateHelpGrid("AsOnDate", "As On Date", FrmRepDisplay.FieldFilterDataType.StringType, FrmRepDisplay.FieldDataType.DateType, "", AgL.PubLoginDate)
                     ReportFrm.CreateHelpGrid("LeaverageDays", "Leaverage Days", FrmRepDisplay.FieldFilterDataType.NumericType, FrmRepDisplay.FieldDataType.FloatType, "", "90")
                     ReportFrm.CreateHelpGrid("Party", "Party", FrmRepDisplay.FieldFilterDataType.StringType, FrmRepDisplay.FieldDataType.MultiSelection, mHelpPartyQry)
-                    ReportFrm.CreateHelpGrid("AccountGroup", "Account Group", FrmRepDisplay.FieldFilterDataType.StringType, FrmRepDisplay.FieldDataType.MultiSelection, mHelpAcGroupCustomerQry)
+                    ReportFrm.CreateHelpGrid("AccountGroup", "Account Group", FrmRepDisplay.FieldFilterDataType.StringType, FrmRepDisplay.FieldDataType.MultiSelection, mHelpAcGroupSupplierQry)
                     ReportFrm.CreateHelpGrid("Agent", "Agent", FrmRepDisplay.FieldFilterDataType.StringType, FrmRepDisplay.FieldDataType.MultiSelection, mHelpPurchaseAgentQry)
                     ReportFrm.CreateHelpGrid("City", "City", FrmRepDisplay.FieldFilterDataType.StringType, FrmRepDisplay.FieldDataType.MultiSelection, mHelpCityQry)
                     ReportFrm.CreateHelpGrid("State", "State", FrmRepDisplay.FieldFilterDataType.StringType, FrmRepDisplay.FieldDataType.MultiSelection, mHelpStateQry)
@@ -2175,10 +2175,9 @@ Public Class ClsReports
 
 
             RepTitle = "Sales Agent Commission Report"
-
             Dim mFieldName As String = "Agent"
 
-            If ReportFrm.FGetText(11) = "Sales Representative" Then
+            If ReportFrm.FGetText(12) = "Sales Representative" Then
                 RepTitle = "Sales Representative Commission Report"
                 mFieldName = "Salesrepresentative"
             Else
@@ -2637,7 +2636,8 @@ Public Class ClsReports
                     LEFT JOIN SubGroup SG On SG.SubCode =LG.SubCode  
                     Left Join (Select SILTV.Subcode, Max(SILTV.Agent) as Agent From SubgroupSiteDivisionDetail SILTV  Group By SILTV.Subcode) as LTV On Sg.SubCode = LTV.Subcode
                     LEFT JOIN City CT On SG.CityCode  =CT.CityCode Where 1=1 " + mCondStr + " And SG.Nature ='Supplier'
-                    GROUP BY LG.SubCode, LG.DivCode "
+                    GROUP BY LG.SubCode, LG.DivCode 
+                    Having IfNull(sum(AmtDr),0) - IfNull(sum(AmtCr),0) < 0 "
                 CurrTempPayment = AgL.FillData(mQry, AgL.GCn).Tables(0)
 
                 For I As Integer = 0 To CurrTempPayment.Rows.Count - 1
@@ -2811,6 +2811,11 @@ Public Class ClsReports
                         mRunningBal += Val(ReportFrm.DGL1.Item("Amount", I).Value)
                         ReportFrm.DGL1.Item("Balance", I).Value = mRunningBal
                         ReportFrm.DGL1.Item("Dr Cr", I).Value = IIf(mRunningBal < 0, "Cr", "Dr")
+                        If AgL.XNull(ReportFrm.DGL1.Item("Voucher No", I).Value) = "Total" Then
+                            ReportFrm.DGL1.Item("Age", I).Value = "0"
+                            ReportFrm.DGL1.Item("Voucher Date", I).Value = ""
+                        End If
+
                     Next
                     If mSubcodeCount = 1 Then
                         ReportFrm.DGL2.Item("Balance", 0).Value = ReportFrm.DGL1.Item("Balance", I - 1).Value
@@ -2824,7 +2829,7 @@ Public Class ClsReports
 
             ElseIf ReportFrm.FGetText(1) = "Adjustment" Then
                 mQry = "
-                        Select LG.DocID, Lg.Site_Code, LG.DivCode as Div_Code, D.ManualCode as Division, LG.Subcode, LG.V_Date, LG.RecID, 
+                        Select LG.DocID, Lg.Site_Code, LG.DivCode as Div_Code, D.ManualCode as Division, LG.Subcode, LG.V_Date, LG.RecID, PI.VendorDocDate, PI.VendorDocNo, 
                         Sg.Name as PartyName, Ct.CityName, Sg.Mobile, Sg.Phone, Agent.Name as Agent, LG.AmtDr+LG.AmtCr as TransAmt, IfNull(Adj.AdjAmt,0) as AdjAmt, 
                         (Case When Lg.AmtDr > 0 Then LG.AmtDr-IfNull(Adj.AdjAmt,0) Else 0 End) AmtDr, 
                         (Case When Lg.AmtCr>0 Then LG.AmtCr-IfNull(Adj.AdjAmt,0) Else 0 End) as AmtCr "
@@ -2834,6 +2839,7 @@ Public Class ClsReports
                     mQry += ", DateDiff(Day,LG.V_Date, " & strDate & ") As DaysDiff "
                 End If
                 mQry = mQry + "From ledger LG 
+                        LEFT JOIN purchinvoice PI ON PI.DocID = LG.DocId
                         Left Join (Select Adj_DocID as DocID, Adj_V_Sno as V_SNo, 
                                     abs(Sum(Amount)) as AdjAmt 
                                     From LedgerAdj LA  
@@ -2860,7 +2866,7 @@ Public Class ClsReports
 
                 If ReportFrm.FGetText(0) = "Invoice Wise Detail" Then
 
-                    mQry = " Select VMain.DocId As SearchCode, Vmain.Subcode, Vmain.Division, strftime('%d/%m/%Y',VMain.V_Date) As VoucherDate, VMain.RecID as VoucherNo,
+                    mQry = " Select VMain.DocId As SearchCode, Vmain.Subcode, Vmain.Division, strftime('%d/%m/%Y',VMain.V_Date) As VoucherDate, VMain.RecID as VoucherNo, strftime('%d/%m/%Y',VMain.VendorDocDate) As VendorDocDate, VMain.VendorDocNo as VendorDocNo,
                         VMain.PartyName As Party, VMain.CityName as City, VMain.DaysDiff as [Age], Vmain.TransAmt, Vmain.AdjAmt, Vmain.AmtDr, Vmain.AmtCr, 1 as Balance, '.' as DrCr
                         From (" & mQry & ") As VMain       
                         Where (Vmain.DaysDiff > " & mLeavergeDays & " Or Vmain.AmtDr>0)            
@@ -2895,7 +2901,7 @@ Public Class ClsReports
                 ReportFrm.Text = "Creditors Outstanding Report - " + ReportFrm.FGetText(0)
                 ReportFrm.ClsRep = Me
                 ReportFrm.ReportProcName = "ProcCreditorsOutstaningReport"
-
+                ReportFrm.AllowAutoResizeRows = False
                 ReportFrm.ProcFillGrid(DsHeader)
 
 
@@ -2917,6 +2923,10 @@ Public Class ClsReports
                         mRunningBal += Val(ReportFrm.DGL1.Item("Amt Dr", I).Value) - Val(ReportFrm.DGL1.Item("Amt Cr", I).Value)
                         ReportFrm.DGL1.Item("Balance", I).Value = Math.Abs(mRunningBal)
                         ReportFrm.DGL1.Item("Dr Cr", I).Value = IIf(mRunningBal < 0, "Cr", "Dr")
+                        If AgL.XNull(ReportFrm.DGL1.Item("Voucher No", I).Value) = "Total" Then
+                            'ReportFrm.DGL1.Item("Age", I).Value = ""
+                            ReportFrm.DGL1.Item("Voucher Date", I).Value = ""
+                        End If
                     Next
                     If mSubcodeCount = 1 Then
                         ReportFrm.DGL2.Item("Balance", 0).Value = ReportFrm.DGL1.Item("Balance", I - 1).Value
@@ -3310,7 +3320,7 @@ Public Class ClsReports
                 ReportFrm.Text = "Debtors Outstanding Report - " + ReportFrm.FGetText(0)
                 ReportFrm.ClsRep = Me
                 ReportFrm.ReportProcName = "ProcDebtorsOutstaningReport"
-
+                ReportFrm.AllowAutoResizeRows = False
                 ReportFrm.ProcFillGrid(DsHeader)
 
 

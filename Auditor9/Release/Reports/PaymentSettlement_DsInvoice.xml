@@ -1,12 +1,21 @@
 <?xml version="1.0" standalone="yes"?>
 <NewDataSet>
   <Table>
-    <InvoiceNo>D1-PI-1</InvoiceNo>
-    <V_Date>2021-01-20T00:00:00+05:30</V_Date>
-    <InvoiceAmount>42000</InvoiceAmount>
+    <InvoiceNo>9071828303</InvoiceNo>
+    <V_Date>2021-12-17T00:00:00+05:30</V_Date>
+    <InvoiceAmount>51694</InvoiceAmount>
     <SettlementAddition>0</SettlementAddition>
     <SettlementDeduction>0</SettlementDeduction>
     <LineDeduction>0</LineDeduction>
-    <SettlementInvoiceAmount>42000</SettlementInvoiceAmount>
+    <SettlementInvoiceAmount>51694</SettlementInvoiceAmount>
+  </Table>
+  <Table>
+    <InvoiceNo>9071828304</InvoiceNo>
+    <V_Date>2021-12-17T00:00:00+05:30</V_Date>
+    <InvoiceAmount>37828</InvoiceAmount>
+    <SettlementAddition>0</SettlementAddition>
+    <SettlementDeduction>0</SettlementDeduction>
+    <LineDeduction>0</LineDeduction>
+    <SettlementInvoiceAmount>37828</SettlementInvoiceAmount>
   </Table>
 </NewDataSet>

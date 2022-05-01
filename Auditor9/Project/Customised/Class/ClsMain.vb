@@ -7346,6 +7346,9 @@ Thanks
             FSeedSingleIfNotExist_EntryHeaderUISetting("FrmSaleInvoiceDirect", Ncat.SaleInvoice, "Dgl3", FrmSaleInvoiceDirect_WithDimension.hcEInvoiceACKNo)
             FSeedSingleIfNotExist_EntryHeaderUISetting("FrmSaleInvoiceDirect", Ncat.SaleInvoice, "Dgl3", FrmSaleInvoiceDirect_WithDimension.hcEInvoiceACKDate)
 
+            FSeedSingleIfNotExist_EntryHeaderUISetting("FrmSaleInvoiceDirect", Ncat.SaleReturn, "Dgl3", FrmSaleInvoiceDirect_WithDimension.hcEInvoiceIRN)
+            FSeedSingleIfNotExist_EntryHeaderUISetting("FrmSaleInvoiceDirect", Ncat.SaleReturn, "Dgl3", FrmSaleInvoiceDirect_WithDimension.hcEInvoiceACKNo)
+            FSeedSingleIfNotExist_EntryHeaderUISetting("FrmSaleInvoiceDirect", Ncat.SaleReturn, "Dgl3", FrmSaleInvoiceDirect_WithDimension.hcEInvoiceACKDate)
 
 
 
@@ -8246,13 +8249,13 @@ Thanks
 
             'If ClsMain.IsScopeOfWorkContains(IndustryType.CommonModules.TemporaryCreditLimitModule) Then
             FSeedSingleIfNotExist_EntryHeaderUISetting("FrmPersonTemporaryCreditLimit", "", "Dgl1", FrmPersonTemporaryCreditLimit.HcParty, 1, 1, 1)
-                FSeedSingleIfNotExist_EntryHeaderUISetting("FrmPersonTemporaryCreditLimit", "", "Dgl1", FrmPersonTemporaryCreditLimit.HcFromDate, 1, 1, 1)
-                FSeedSingleIfNotExist_EntryHeaderUISetting("FrmPersonTemporaryCreditLimit", "", "Dgl1", FrmPersonTemporaryCreditLimit.HcToDate, 1, 1)
-                FSeedSingleIfNotExist_EntryHeaderUISetting("FrmPersonTemporaryCreditLimit", "", "Dgl1", FrmPersonTemporaryCreditLimit.HcAmount, 1, 1, 1)
+            FSeedSingleIfNotExist_EntryHeaderUISetting("FrmPersonTemporaryCreditLimit", "", "Dgl1", FrmPersonTemporaryCreditLimit.HcFromDate, 1, 1, 1)
+            FSeedSingleIfNotExist_EntryHeaderUISetting("FrmPersonTemporaryCreditLimit", "", "Dgl1", FrmPersonTemporaryCreditLimit.HcToDate, 1, 1)
+            FSeedSingleIfNotExist_EntryHeaderUISetting("FrmPersonTemporaryCreditLimit", "", "Dgl1", FrmPersonTemporaryCreditLimit.HcAmount, 1, 1, 1)
             FSeedSingleIfNotExist_EntryHeaderUISetting("FrmPersonTemporaryCreditLimit", "", "Dgl1", FrmPersonTemporaryCreditLimit.HcCreditLimit, 1)
             FSeedSingleIfNotExist_EntryHeaderUISetting("FrmPersonTemporaryCreditLimit", "", "Dgl1", FrmPersonTemporaryCreditLimit.HcCurrentBalance, 1)
             FSeedSingleIfNotExist_EntryHeaderUISetting("FrmPersonTemporaryCreditLimit", "", "Dgl1", FrmPersonTemporaryCreditLimit.HcResponsiblePerson, 0, 0)
-                FSeedSingleIfNotExist_EntryHeaderUISetting("FrmPersonTemporaryCreditLimit", "", "Dgl1", FrmPersonTemporaryCreditLimit.HcRemark, 0, 0)
+            FSeedSingleIfNotExist_EntryHeaderUISetting("FrmPersonTemporaryCreditLimit", "", "Dgl1", FrmPersonTemporaryCreditLimit.HcRemark, 0, 0)
             'End If
 
             If ClsMain.IsScopeOfWorkContains(IndustryType.CommonModules.SalesEnquiry) Then
@@ -19868,6 +19871,10 @@ Thanks
             AgL.AddFieldSqlite(AgL.GcnMain, "LedgerHead", "GstInputHoldRemark", "nVarchar(100)", "", True)
             AgL.AddFieldSqlite(AgL.GcnMain, "LedgerHead", "Field1", "nVarchar(100)", "", True)
             AgL.AddFieldSqlite(AgL.GcnMain, "LedgerHead", "Field2", "nVarchar(100)", "", True)
+            AgL.AddFieldSqlite(AgL.GcnMain, "LedgerHead", "EInvoiceIRN", "nVarchar(255)", "", True)
+            AgL.AddFieldSqlite(AgL.GcnMain, "LedgerHead", "EInvoiceACKNo", "nVarchar(255)", "", True)
+            AgL.AddFieldSqlite(AgL.GcnMain, "LedgerHead", "EInvoiceACKDate", "DateTime", "", True)
+
 
 
             AgL.AddFieldSqlite(AgL.GcnMain, "LedgerHead", "InUseBy", "nVarchar(10)", "", True)

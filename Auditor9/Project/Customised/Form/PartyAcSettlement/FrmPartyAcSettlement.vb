@@ -3196,7 +3196,7 @@ Public Class FrmPartyAcSettlement
         dsInvoice = AgL.FillData(mQry, AgL.GCn).Tables(0)
 
         mQry = "select (Case When IH.PartyDocNo Is Null Then L.DivCode || L.Site_Code || '-' || L.V_Type || '-' || L.RecId Else IH.PartyDocNo End) As PaymentNo,
-                L.V_Date, L.Narration, H.PaidAmount, cSg.Name as ContraName
+                L.V_Date, 'Ch.-' || L. Chq_No || ',Dt.-' || L.Chq_Date as Narration, H.PaidAmount, cSg.Name as ContraName
                 from Cloth_SupplierSettlementPayments H
                 Left Join LedgerHead LH On H.DocID = LH.DocId
                 Left Join Ledger L On H.PaymentDocId =  L.DocID And IfNull(H.PaymentDocIDSr, L.V_SNo) = L.V_SNo And LH.Subcode = L.Subcode

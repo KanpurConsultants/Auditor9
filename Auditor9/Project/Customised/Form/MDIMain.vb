@@ -62,7 +62,7 @@ Public Class MDIMain
                 End If
                 AgL.PubStopWatch.Start()
 
-                AgL.PubDivCode = "E"
+                AgL.PubDivCode = "D"
 
                 Try
                     mCrd.Load(AgL.PubReportPath & "\" & "SaleInvoice_Print.rpt")

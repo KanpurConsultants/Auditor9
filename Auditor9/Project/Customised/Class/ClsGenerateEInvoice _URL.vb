@@ -33,6 +33,7 @@ Public Class ClsGenerateEInvoice_URL
     Const mReportType_All As String = "All"
 
 
+
     Dim mShowReportType As String = ""
     Dim mReportDefaultText$ = ""
 
@@ -125,6 +126,7 @@ Public Class ClsGenerateEInvoice_URL
                     Union All 
                     Select '" & mReportType_All & "' as Code, '" & mReportType_All & "' as Name"
             ReportFrm.CreateHelpGrid("Report Type", "Report Type", FrmRepDisplay.FieldFilterDataType.StringType, FrmRepDisplay.FieldDataType.SingleSelection, mQry, mReportType_PendingForEInvoice,,, 300)
+
             ReportFrm.CreateHelpGrid("FromDate", "From Date", AgLibrary.FrmReportLayout.FieldFilterDataType.StringType, AgLibrary.FrmReportLayout.FieldDataType.DateType, "", AgL.PubLoginDate)
             ReportFrm.CreateHelpGrid("ToDate", "To Date", AgLibrary.FrmReportLayout.FieldFilterDataType.StringType, AgLibrary.FrmReportLayout.FieldDataType.DateType, "", AgL.PubLoginDate)
             'ReportFrm.CreateHelpGrid("Site", "Site", FrmRepDisplay.FieldFilterDataType.StringType, FrmRepDisplay.FieldDataType.MultiSelection, mHelpSiteQry, "[SITECODE]")
@@ -153,6 +155,7 @@ Public Class ClsGenerateEInvoice_URL
                                 Optional mGridRow As DataGridViewRow = Nothing)
         Try
             Dim mSaleCondStr$ = ""
+            Dim mLedgerHeadCondStr$ = ""
             Dim mPurchaseReturnCondStr$ = ""
             Dim strGrpFld As String = "''", strGrpFldHead As String = "''", strGrpFldDesc As String = "''"
 
@@ -191,8 +194,32 @@ Public Class ClsGenerateEInvoice_URL
             End If
             mSaleCondStr += " And H.Div_Code = '" & AgL.PubDivCode & "' "
             mSaleCondStr += " And H.Site_Code = '" & AgL.PubSiteCode & "' "
-            mSaleCondStr += " And Vt.NCat = '" & Ncat.SaleInvoice & "' "
+            mSaleCondStr += " And Vt.NCat In ('" & Ncat.SaleInvoice & "','" & Ncat.SaleReturn & "') "
             mSaleCondStr += " And H.SaleToPartySalesTaxNo Is Not Null "
+
+
+
+
+            'For LedgerHead Condition
+            If mDocId <> "" Then
+                mQry = " Select H.V_Date, H.V_Type || '-' || H.ManualRefNo As InvoiceNo From LedgerHead H Where H.DocId = '" & mDocId & "'"
+                Dim DtInvoiceDetail As DataTable = AgL.FillData(mQry, AgL.GCn).Tables(0)
+                If DtInvoiceDetail.Rows.Count > 0 Then
+                    ReportFrm.FilterGrid.Item(GFilter, rowFromDate).Value = ClsMain.FormatDate(AgL.XNull(DtInvoiceDetail.Rows(0)("V_Date")))
+                    ReportFrm.FilterGrid.Item(GFilter, rowToDate).Value = ClsMain.FormatDate(AgL.XNull(DtInvoiceDetail.Rows(0)("V_Date")))
+                End If
+                mLedgerHeadCondStr = " Where H.DocId = '" & mDocId & "' "
+            Else
+                mLedgerHeadCondStr = " Where Date(H.V_Date) Between " & AgL.Chk_Date(CDate(ReportFrm.FGetText(rowFromDate)).ToString("s")) & " And " & AgL.Chk_Date(CDate(ReportFrm.FGetText(rowToDate)).ToString("s")) & " "
+                If AgL.XNull(ReportFrm.FilterGrid.Item(GFilter, rowReportType).Value) = mReportType_PendingForEInvoice Then
+                    mLedgerHeadCondStr += " And H.EInvoiceIRN Is Null "
+                End If
+            End If
+            mLedgerHeadCondStr += " And H.Div_Code = '" & AgL.PubDivCode & "' "
+            mLedgerHeadCondStr += " And H.Site_Code = '" & AgL.PubSiteCode & "' "
+            mLedgerHeadCondStr += " And Vt.NCat In ('" & Ncat.DebitNoteCustomer & "','" & Ncat.CreditNoteCustomer & "') "
+            mLedgerHeadCondStr += " And H.PartySalesTaxNo Is Not Null "
+
 
             'Sale Invoice Qry
             mQry = "Select " & IIf(mDocId <> "", "'þ'", "'o'") & " As Tick, '' As Exception, H.DocId  As SearchCode, Vt.Description As VoucherType, 
@@ -228,7 +255,40 @@ Public Class ClsGenerateEInvoice_URL
                             Where Site_Code = '" & AgL.PubSiteCode & "' 
                             And Div_Code = '" & AgL.PubDivCode & "') As VDist On IfNull(H.ShipToParty,H.SaleToParty) = VDist.SubCode " & mSaleCondStr
 
-
+            mQry = mQry + " UNION ALL "
+            mQry = mQry + " Select " & IIf(mDocId <> "", "'þ'", "'o'") & " As Tick, '' As Exception, H.DocId  As SearchCode, Vt.Description As VoucherType, 
+                '" & IIf(AgL.PubPrintDivisionShortNameOnDocumentsYn, AgL.PubDivShortName, "") & IIf(AgL.PubPrintSiteShortNameOnDocumentsYn, AgL.PubSiteShortName, "") & "' || (Case When VT.Short_Name Is Not Null Then VT.Short_Name Else '' End) || H.ManualRefNo as InvoiceNo, 
+                strftime('%d/%m/%Y', H.V_Date) As InvoiceDate, IfNull(Hc.Net_Amount,0) As InvoiceValue,
+                Sg.DispName As Party, 
+                H.PartyPinCode As PinCode, 
+                S.Description As State, 
+                TSg.DispName As Transporter,
+                VDist.Distance As Distance, H.EInvoiceIRN As Irn, 
+                Sit.RoadPermitNo As EwayBillNo, Sit.RoadPermitDate As EwayBillDate
+                From LedgerHead H 
+                LEFT JOIN LedgerHeadCharges Hc On H.DocId = Hc.DocId
+                LEFT JOIN Voucher_Type Vt On H.V_Type = Vt.V_Type
+                LEFT JOIN City C On H.PartyCity = C.CityCode
+                LEFT JOIN State S On C.State = S.Code
+                LEFT JOIN SubGroup Sg On H.SubCode = Sg.SubCode
+                LEFT JOIN SubGroup ShipTo On '' = ShipTo.SubCode
+                LEFT JOIN City ShipToCity On ShipTo.CityCode = ShipToCity.CityCode
+                LEFT JOIN State ShipToState On ShipToCity.State = ShipToState.Code
+                LEFT JOIN SaleInvoiceTransport Sit On H.DocId = Sit.DocId
+                LEFT JOIN (Select SubCode, Max(Transporter) Transporter 
+                            From SubgroupSiteDivisionDetail
+                            Group By SubCode) As Hlt On H.SubCode = Hlt.SubCode
+                LEFT JOIN SubGroup TSg ON IsNull(Sit.Transporter,Hlt.Transporter) = TSg.SubCode
+                LEFT JOIN (Select Subcode, RegistrationNo As SalesTaxNo
+                            From SubgroupRegistration 
+                            Where RegistrationType = 'Sales Tax No') As VReg On H.SubCode = VReg.SubCode
+                LEFT JOIN (Select Subcode, RegistrationNo As SalesTaxNo
+                            From SubgroupRegistration 
+                            Where RegistrationType = 'Sales Tax No') As VTranReg On TSg.SubCode = VTranReg.SubCode
+                LEFT JOIN (Select SubCode, Distance
+                            From SubgroupSiteDivisionDetail 
+                            Where Site_Code = '" & AgL.PubSiteCode & "' 
+                            And Div_Code = '" & AgL.PubDivCode & "') As VDist On IsNull('',H.SubCode) = VDist.SubCode " & mLedgerHeadCondStr
 
 
             DsHeader = AgL.FillData(mQry, AgL.GCn)
@@ -285,7 +345,7 @@ Public Class ClsGenerateEInvoice_URL
             mQry += "UNION ALL "
             mQry += "Select 'Cancel E-Invoice' As MenuText, 'CancelEInvoice' As FunctionName "
             mQry += "UNION ALL "
-            mQry += "Select 'Cancel Json File For E-Invoice' As MenuText, 'CreateJsonFileForEInvoice' As FunctionName "
+            mQry += "Select 'Create Json File For E-Invoice' As MenuText, 'CreateJsonFileForEInvoice' As FunctionName "
             Dim DtMenuList As DataTable = AgL.FillData(mQry, AgL.GCn).Tables(0)
 
 
@@ -336,7 +396,8 @@ Public Class ClsGenerateEInvoice_URL
             mGspName = "TaxPro_Sandbox"
             mAspUserId = "1655233121"
             mAspPassword = "P@ssw0rd!"
-            mAuthGenerationURL = "http://gstsandbox.charteredinfo.com/eivital/dec/v1.03/auth?&aspid=<AspUserId>&password=<AspPassword>&Gstin=<Gstin>&user_name=<EInvioceUserName>&eInvPwd=<EInviocePassword>"
+
+            mAuthGenerationURL = "http://gstsandbox.charteredinfo.com/eivital/dec/v1.04/auth?&aspid=<AspUserId>&password=<AspPassword>&Gstin=<Gstin>&user_name=<EInvioceUserName>&eInvPwd=<EInviocePassword>"
             mIRNGenerationURL = "http://gstsandbox.charteredinfo.com/eicore/dec/v1.03/Invoice?&aspid=<AspUserId>&password=<AspPassword>&Gstin=<Gstin>&user_name=<EInvioceUserName>&&AuthToken=<AuthToken>&QrCodeSize=250"
             mEWayBillGenerationURL = "http://gstsandbox.charteredinfo.com/eiewb/dec/v1.03/ewaybill?&aspid=<AspUserId>&password=<AspPassword>&Gstin=<Gstin>&user_name=<EInvioceUserName>&AuthToken=<AuthToken>"
             mSelectEWayBillURL = "http://gstsandbox.charteredinfo.com/ewaybillapi/dec/v1.03/ewayapi?SelEInvSb&action=GetEwayBill&aspid=<AspUserId>&password=<AspPassword>&gstin=<Gstin>&ewbNo=<EWBNumber>&authtoken=<AuthToken>"
@@ -497,6 +558,12 @@ Public Class ClsGenerateEInvoice_URL
                         Exit Sub
                     Else
                         mQry = " UPDATE SaleInvoice Set EInvoiceIRN = " & AgL.Chk_Text(strIrn) & ",
+                            EInvoiceACKNo = " & AgL.Chk_Text(strAckNo) & ",
+                            EInvoiceACKDate = " & AgL.Chk_Date(strAckDate) & "
+                            Where DocId = '" & mSearchCode & "'"
+                        AgL.Dman_ExecuteNonQry(mQry, AgL.GCn, AgL.ECmd)
+
+                        mQry = " UPDATE LedgerHead Set EInvoiceIRN = " & AgL.Chk_Text(strIrn) & ",
                             EInvoiceACKNo = " & AgL.Chk_Text(strAckNo) & ",
                             EInvoiceACKDate = " & AgL.Chk_Date(strAckDate) & "
                             Where DocId = '" & mSearchCode & "'"
@@ -829,7 +896,7 @@ Public Class ClsGenerateEInvoice_URL
 
         mQry = "SELECT H.Div_Code, H.Site_Code, H.V_Type AS InvoiceType, 
                         '" & IIf(AgL.PubPrintDivisionShortNameOnDocumentsYn, AgL.PubDivShortName, "") & IIf(AgL.PubPrintSiteShortNameOnDocumentsYn, AgL.PubSiteShortName, "") & "' || (Case When VT.Short_Name Is Not Null Then VT.Short_Name Else '' End) || H.ManualRefNo As  InvoiceNo, 
-                        H.V_Date AS InvoiceDate, 
+                        H.V_Date AS InvoiceDate, Vt.NCat,
                         H.SaleToPartySalesTaxNo, H.SaleToPartyName, H.SaleToPartyAddress,
                         C.CityName AS SaleToPartyCityName, H.SaleToPartyPinCode, S.ManualCode AS SaleToPartyStateCode,
                         VShipToPartyReg.SalesTaxNo As ShipToPartySalesTaxNo, ShipParty.Name AS ShipToPartyName, ShipParty.Address AS ShipToPartyAddress, ShipCity.CityName AS ShipToPartyCity, 
@@ -863,6 +930,46 @@ Public Class ClsGenerateEInvoice_URL
                         LEFT JOIN Item Ic ON I.ItemCategory = Ic.Code
                         LEFT JOIN PostingGroupSalesTaxItem Sti ON L.SalesTaxGroupItem = Sti.Description
                         WHERE H.DocID = '" & mSearchCode & "'"
+
+        mQry = mQry + " UNION ALL "
+        mQry = mQry + " SELECT H.Div_Code, H.Site_Code, H.V_Type AS InvoiceType, 
+                        '" & IIf(AgL.PubPrintDivisionShortNameOnDocumentsYn, AgL.PubDivShortName, "") & IIf(AgL.PubPrintSiteShortNameOnDocumentsYn, AgL.PubSiteShortName, "") & "' || (Case When VT.Short_Name Is Not Null Then VT.Short_Name Else '' End) || H.ManualRefNo As  InvoiceNo, 
+                        H.V_Date AS InvoiceDate, Vt.NCat,
+                        H.PartySalesTaxNo, H.PartyName AS SaleToPartyName, H.PartyAddress AS SaleToPartyAddress,
+                        C.CityName AS SaleToPartyCityName, H.PartyPinCode, S.ManualCode AS SaleToPartyStateCode,
+                        VShipToPartyReg.SalesTaxNo As ShipToPartySalesTaxNo, ShipParty.Name AS ShipToPartyName, ShipParty.Address AS ShipToPartyAddress, ShipCity.CityName AS ShipToPartyCity, 
+                        ShipParty.Pin AS ShipToPartyPinCode, ShipState.ManualCode AS ShipToPartyStateCode,
+                        CASE WHEN I.ItemType = 'SP' THEN 'Y' ELSE 'N' END AS IsService, IfNull(L.Remarks,I.Description) AS ItemDesc,
+                        L.HSN AS HSN, 
+                        1 AS Qty, IfNull(L.Unit,'Nos') As Unit, 
+                        Lc.Taxable_Amount AS Rate, 
+                        Lc.Taxable_Amount AS Amount, 
+                        0 As DiscountAmount, 
+                        Lc.Taxable_Amount, Sti.GrossTaxRate,
+                        Lc.Tax1, Lc.Tax2, Lc.Tax3, Lc.Tax4, Lc.Tax5, Lc.Net_Amount,
+                        Hc.Taxable_Amount AS Header_Taxable_Amount, Hc.Tax1 AS Header_Tax1, Hc.Tax2 AS Header_Tax2, 
+                        Hc.Tax3 AS Header_Tax3, Hc.Tax4 AS Header_Tax4, Hc.Tax5 AS Header_Tax5,
+                        Hc.Round_Off AS Header_Round_Off, Hc.Net_Amount AS Header_Net_Amount
+                        FROM LedgerHead H 
+                        LEFT JOIN LedgerHeadCharges Hc ON H.DocID = Hc.DocID
+                        Left Join Voucher_Type Vt  With (NoLock) On H.V_Type = Vt.V_Type
+                        LEFT JOIN (Select Subcode, RegistrationNo As SalesTaxNo
+                                    From SubgroupRegistration 
+                                    Where RegistrationType = 'Sales Tax No') As VReg On H.SubCode = VReg.SubCode
+                        LEFT JOIN (Select Subcode, RegistrationNo As SalesTaxNo
+                                    From SubgroupRegistration 
+                                    Where RegistrationType = 'Sales Tax No') As VShipToPartyReg On '' = VShipToPartyReg.SubCode
+                        LEFT JOIN City C ON H.PartyCity = C.CityCode
+                        LEFT JOIN State S ON C.State = S.Code
+                        LEFT JOIN Subgroup ShipParty ON '' = ShipParty.SubCode
+                        LEFT JOIN City ShipCity ON ShipParty.CityCode = ShipCity.CityCode
+                        LEFT JOIN State ShipState ON ShipCity.State = ShipState.Code
+                        LEFT JOIN LedgerHeadDetail L ON H.DocID = L.DocId
+                        LEFT JOIN LedgerHeadDetailCharges Lc ON L.DocId = Lc.DocId AND L.Sr = Lc.Sr
+                        LEFT JOIN Item I ON '' = I.Code
+                        LEFT JOIN Item Ic ON I.ItemCategory = Ic.Code
+                        LEFT JOIN PostingGroupSalesTaxItem Sti ON L.SalesTaxGroupItem = Sti.Description
+                        WHERE H.DocID = '" & mSearchCode & "'"
         Dim DtSaleInvoice As DataTable = AgL.FillData(mQry, AgL.GCn).Tables(0)
 
         strdata = ""
@@ -877,7 +984,13 @@ Public Class ClsGenerateEInvoice_URL
         strdata += ControlChars.Tab + ControlChars.Tab + ControlChars.Tab + "}," & vbCrLf
 
         strdata += ControlChars.Tab + ControlChars.Tab + ControlChars.Tab + """DocDtls"": {" & vbCrLf
-        strdata += ControlChars.Tab + ControlChars.Tab + ControlChars.Tab + """Typ"":   ""INV""," & vbCrLf
+        If AgL.XNull(DtSaleInvoice.Rows(0)("NCat")) = Ncat.DebitNoteCustomer Then
+            strdata += ControlChars.Tab + ControlChars.Tab + ControlChars.Tab + """Typ"":   ""DBN""," & vbCrLf
+        ElseIf AgL.XNull(DtSaleInvoice.Rows(0)("NCat")) = Ncat.SaleReturn Or AgL.XNull(DtSaleInvoice.Rows(0)("NCat")) = Ncat.CreditNoteCustomer Then
+            strdata += ControlChars.Tab + ControlChars.Tab + ControlChars.Tab + """Typ"":   ""CRN""," & vbCrLf
+        Else
+            strdata += ControlChars.Tab + ControlChars.Tab + ControlChars.Tab + """Typ"":   ""INV""," & vbCrLf
+        End If
         strdata += ControlChars.Tab + ControlChars.Tab + ControlChars.Tab + """No"":  """ & AgL.XNull(DtSaleInvoice.Rows(0)("InvoiceNo")) & """," & vbCrLf
         strdata += ControlChars.Tab + ControlChars.Tab + ControlChars.Tab + """Dt"": """ & CDate(AgL.XNull(DtSaleInvoice.Rows(0)("InvoiceDate"))).ToString("dd/MM/yyyy") & """" & vbCrLf
         strdata += ControlChars.Tab + ControlChars.Tab + ControlChars.Tab + "}," & vbCrLf
@@ -947,18 +1060,18 @@ Public Class ClsGenerateEInvoice_URL
             strdata += ControlChars.Tab + ControlChars.Tab + ControlChars.Tab + """IsServc""  : """ & AgL.XNull(DtSaleInvoice.Rows(J)("IsService")) & """," & vbCrLf
             strdata += ControlChars.Tab + ControlChars.Tab + ControlChars.Tab + """HsnCd"" :  """ & AgL.XNull(DtSaleInvoice.Rows(J)("HSN")) & """," & vbCrLf
             'strdata += ControlChars.Tab + ControlChars.Tab + ControlChars.Tab + """Barcde""  : """"," & vbCrLf
-            strdata += ControlChars.Tab + ControlChars.Tab + ControlChars.Tab + """Qty"" :  " & AgL.VNull(DtSaleInvoice.Rows(J)("Qty")) & "," & vbCrLf
+            strdata += ControlChars.Tab + ControlChars.Tab + ControlChars.Tab + """Qty"" :  " & Math.Abs(AgL.VNull(DtSaleInvoice.Rows(J)("Qty"))) & "," & vbCrLf
             strdata += ControlChars.Tab + ControlChars.Tab + ControlChars.Tab + """FreeQty"":   0," & vbCrLf
             strdata += ControlChars.Tab + ControlChars.Tab + ControlChars.Tab + """Unit"" :  """ & AgL.XNull(DtSaleInvoice.Rows(J)("Unit")) & """," & vbCrLf
-            strdata += ControlChars.Tab + ControlChars.Tab + ControlChars.Tab + """UnitPrice"" :  " & AgL.VNull(DtSaleInvoice.Rows(J)("Rate")) & "," & vbCrLf
-            strdata += ControlChars.Tab + ControlChars.Tab + ControlChars.Tab + """TotAmt"" :  " & AgL.VNull(DtSaleInvoice.Rows(J)("Amount")) & "," & vbCrLf
+            strdata += ControlChars.Tab + ControlChars.Tab + ControlChars.Tab + """UnitPrice"" :  " & Math.Abs(AgL.VNull(DtSaleInvoice.Rows(J)("Rate"))) & "," & vbCrLf
+            strdata += ControlChars.Tab + ControlChars.Tab + ControlChars.Tab + """TotAmt"" :  " & Math.Abs(AgL.VNull(DtSaleInvoice.Rows(J)("Amount"))) & "," & vbCrLf
             strdata += ControlChars.Tab + ControlChars.Tab + ControlChars.Tab + """Discount"" :  " & AgL.VNull(DtSaleInvoice.Rows(J)("DiscountAmount")) & "," & vbCrLf
             strdata += ControlChars.Tab + ControlChars.Tab + ControlChars.Tab + """PreTaxVal"":   0," & vbCrLf
-            strdata += ControlChars.Tab + ControlChars.Tab + ControlChars.Tab + """AssAmt"" :  " & AgL.VNull(DtSaleInvoice.Rows(J)("Taxable_Amount")) & "," & vbCrLf
-            strdata += ControlChars.Tab + ControlChars.Tab + ControlChars.Tab + """GstRt"" :  " & AgL.VNull(DtSaleInvoice.Rows(J)("GrossTaxRate")) & "," & vbCrLf
-            strdata += ControlChars.Tab + ControlChars.Tab + ControlChars.Tab + """IgstAmt"" :  " & AgL.VNull(DtSaleInvoice.Rows(J)("Tax1")) & "," & vbCrLf
-            strdata += ControlChars.Tab + ControlChars.Tab + ControlChars.Tab + """CgstAmt"" :  " & AgL.VNull(DtSaleInvoice.Rows(J)("Tax2")) & "," & vbCrLf
-            strdata += ControlChars.Tab + ControlChars.Tab + ControlChars.Tab + """SgstAmt"" :  " & AgL.VNull(DtSaleInvoice.Rows(J)("Tax3")) & "," & vbCrLf
+            strdata += ControlChars.Tab + ControlChars.Tab + ControlChars.Tab + """AssAmt"" :  " & Math.Abs(AgL.VNull(DtSaleInvoice.Rows(J)("Taxable_Amount"))) & "," & vbCrLf
+            strdata += ControlChars.Tab + ControlChars.Tab + ControlChars.Tab + """GstRt"" :  " & Math.Abs(AgL.VNull(DtSaleInvoice.Rows(J)("GrossTaxRate"))) & "," & vbCrLf
+            strdata += ControlChars.Tab + ControlChars.Tab + ControlChars.Tab + """IgstAmt"" :  " & Math.Abs(AgL.VNull(DtSaleInvoice.Rows(J)("Tax1"))) & "," & vbCrLf
+            strdata += ControlChars.Tab + ControlChars.Tab + ControlChars.Tab + """CgstAmt"" :  " & Math.Abs(AgL.VNull(DtSaleInvoice.Rows(J)("Tax2"))) & "," & vbCrLf
+            strdata += ControlChars.Tab + ControlChars.Tab + ControlChars.Tab + """SgstAmt"" :  " & Math.Abs(AgL.VNull(DtSaleInvoice.Rows(J)("Tax3"))) & "," & vbCrLf
             strdata += ControlChars.Tab + ControlChars.Tab + ControlChars.Tab + """CesRt"" :  0," & vbCrLf
             strdata += ControlChars.Tab + ControlChars.Tab + ControlChars.Tab + """CesAmt"" :  0," & vbCrLf
             strdata += ControlChars.Tab + ControlChars.Tab + ControlChars.Tab + """CesNonAdvlAmt"" :  0," & vbCrLf
@@ -966,7 +1079,7 @@ Public Class ClsGenerateEInvoice_URL
             strdata += ControlChars.Tab + ControlChars.Tab + ControlChars.Tab + """StateCesAmt"" :  0," & vbCrLf
             strdata += ControlChars.Tab + ControlChars.Tab + ControlChars.Tab + """StateCesNonAdvlAmt"" :  0," & vbCrLf
             strdata += ControlChars.Tab + ControlChars.Tab + ControlChars.Tab + """OthChrg"" :  0," & vbCrLf
-            strdata += ControlChars.Tab + ControlChars.Tab + ControlChars.Tab + """TotItemVal"" :  " & AgL.VNull(DtSaleInvoice.Rows(J)("Net_Amount")) & "" & vbCrLf
+            strdata += ControlChars.Tab + ControlChars.Tab + ControlChars.Tab + """TotItemVal"" :  " & Math.Abs(AgL.VNull(DtSaleInvoice.Rows(J)("Net_Amount"))) & "" & vbCrLf
             'strdata += ControlChars.Tab + ControlChars.Tab + ControlChars.Tab + """OrdLineRef"" :  ""3256""," & vbCrLf
             'strdata += ControlChars.Tab + ControlChars.Tab + ControlChars.Tab + """OrgCntry"" :  ""AG""," & vbCrLf
             'strdata += ControlChars.Tab + ControlChars.Tab + ControlChars.Tab + """PrdSlNo"" :  ""12345""," & vbCrLf
@@ -990,16 +1103,16 @@ Public Class ClsGenerateEInvoice_URL
 
 
         strdata += ControlChars.Tab + ControlChars.Tab + ControlChars.Tab + """ValDtls"" :  {" & vbCrLf
-        strdata += ControlChars.Tab + ControlChars.Tab + ControlChars.Tab + """AssVal""  : " & AgL.VNull(DtSaleInvoice.Rows(0)("Header_Taxable_Amount")) & "," & vbCrLf
-        strdata += ControlChars.Tab + ControlChars.Tab + ControlChars.Tab + """CgstVal"" :  " & AgL.VNull(DtSaleInvoice.Rows(0)("Header_Tax2")) & "," & vbCrLf
-        strdata += ControlChars.Tab + ControlChars.Tab + ControlChars.Tab + """SgstVal""  : " & AgL.VNull(DtSaleInvoice.Rows(0)("Header_Tax3")) & "," & vbCrLf
-        strdata += ControlChars.Tab + ControlChars.Tab + ControlChars.Tab + """IgstVal"" :  " & AgL.VNull(DtSaleInvoice.Rows(0)("Header_Tax1")) & "," & vbCrLf
+        strdata += ControlChars.Tab + ControlChars.Tab + ControlChars.Tab + """AssVal""  : " & Math.Abs(AgL.VNull(DtSaleInvoice.Rows(0)("Header_Taxable_Amount"))) & "," & vbCrLf
+        strdata += ControlChars.Tab + ControlChars.Tab + ControlChars.Tab + """CgstVal"" :  " & Math.Abs(AgL.VNull(DtSaleInvoice.Rows(0)("Header_Tax2"))) & "," & vbCrLf
+        strdata += ControlChars.Tab + ControlChars.Tab + ControlChars.Tab + """SgstVal""  : " & Math.Abs(AgL.VNull(DtSaleInvoice.Rows(0)("Header_Tax3"))) & "," & vbCrLf
+        strdata += ControlChars.Tab + ControlChars.Tab + ControlChars.Tab + """IgstVal"" :  " & Math.Abs(AgL.VNull(DtSaleInvoice.Rows(0)("Header_Tax1"))) & "," & vbCrLf
         strdata += ControlChars.Tab + ControlChars.Tab + ControlChars.Tab + """CesVal""  : 0," & vbCrLf
         strdata += ControlChars.Tab + ControlChars.Tab + ControlChars.Tab + """StCesVal""  : 0," & vbCrLf
         strdata += ControlChars.Tab + ControlChars.Tab + ControlChars.Tab + """Discount"" :  0," & vbCrLf
         strdata += ControlChars.Tab + ControlChars.Tab + ControlChars.Tab + """OthChrg""  : 0," & vbCrLf
         strdata += ControlChars.Tab + ControlChars.Tab + ControlChars.Tab + """RndOffAmt""  : " & AgL.VNull(DtSaleInvoice.Rows(0)("Header_Round_Off")) & "," & vbCrLf
-        strdata += ControlChars.Tab + ControlChars.Tab + ControlChars.Tab + """TotInvVal""  : " & AgL.VNull(DtSaleInvoice.Rows(0)("Header_Net_Amount")) & "," & vbCrLf
+        strdata += ControlChars.Tab + ControlChars.Tab + ControlChars.Tab + """TotInvVal""  : " & Math.Abs(AgL.VNull(DtSaleInvoice.Rows(0)("Header_Net_Amount"))) & "," & vbCrLf
         strdata += ControlChars.Tab + ControlChars.Tab + ControlChars.Tab + """TotInvValFc"": 0" & vbCrLf
         strdata += ControlChars.Tab + ControlChars.Tab + ControlChars.Tab + "}" & vbCrLf
 
@@ -1109,4 +1222,16 @@ Public Class ClsGenerateEInvoice_URL
             sw.Write(strdata)
         End Using
     End Sub
+
+
+
+
+
+
+
+
+
+
+
+
 End Class

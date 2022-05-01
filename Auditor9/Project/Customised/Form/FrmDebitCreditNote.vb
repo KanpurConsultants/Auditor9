@@ -1236,11 +1236,11 @@ Public Class FrmDebitCreditNote
                 LblPartyName.Text = "Party Name"
             End If
 
-            If TxtV_Type.Tag = Ncat.ExpenseVoucher Then
-                Dgl1.Columns(Col1HSN).Visible = True
-            Else
-                Dgl1.Columns(Col1HSN).Visible = False
-            End If
+            'If TxtV_Type.Tag = Ncat.ExpenseVoucher Then
+            Dgl1.Columns(Col1HSN).Visible = True
+            'Else
+            '    Dgl1.Columns(Col1HSN).Visible = False
+            'End If
 
         Catch ex As Exception
             MsgBox(ex.Message & " [ApplySubgroupTypeSetting]")

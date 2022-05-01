@@ -375,6 +375,14 @@ Public Class FrmPurchaseInvoiceHeader
 
     Public Sub FSave(ByVal SearchCode As String, ByVal Conn As Object, ByVal Cmd As Object)
         Dim dtTemp As DataTable
+        Dim IsDuplicateLrNo As Integer = 0
+
+        mQry = "Select count(*) From PurchInvoiceTransport Where Transporter ='" & Dgl1.Item(Col1Value, rowTransporter).Tag & "' AND LrNo = '" & Dgl1.Item(Col1Value, rowLrNo).Value & "' And DocID <>'" & SearchCode & "'"
+        IsDuplicateLrNo = AgL.Dman_Execute(mQry, AgL.GCn).ExecuteScalar
+
+        If IsDuplicateLrNo > 0 Then
+            Exit Sub
+        End If
 
         mQry = "Delete From PurchInvoiceTransport Where DocId = '" & SearchCode & "'"
         AgL.Dman_ExecuteNonQry(mQry, Conn, Cmd)
