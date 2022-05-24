@@ -110,7 +110,18 @@ Public Class ClsSadhviBranchPaymentStatus
                 End If
             End If
 
-            Dim mHoParties As String = "'D100004830','D100006102'"
+            Dim mHoParties As String = ""
+            Dim Site As String = ReportFrm.FGetCode(rowSite)
+
+            If Site = "''2''" Then
+                mHoParties = "'D100004830','D100006102'"
+            ElseIf Site = "''4''" Then
+                mHoParties = "'D100028540','D100028541'"
+            ElseIf Site = "''5''" Then
+                mHoParties = "'D100025715','D100025716'"
+            End If
+
+
 
             mCondStr = " And Date(H.V_Date) >= " & AgL.Chk_Date(ReportFrm.FGetText(rowFromDate)) & " 
                          And Date(H.V_Date) <= " & AgL.Chk_Date(ReportFrm.FGetText(rowToDate)) & " "
@@ -155,16 +166,28 @@ Public Class ClsSadhviBranchPaymentStatus
                     Replace(ReportFrm.GetWhereCondition("L.DivCode", rowDivision), "''", "'") &
                     " And Sg.Nature = 'Bank' "
 
+            'Dim bBankPayment As String = " Select 'Bank Payment' AS Type, 
+            '        Sum(CASE WHEN L.V_Date < " & AgL.Chk_Date(ReportFrm.FGetText(rowFromDate)) & " THEN IsNull(L.AmtCr,0) ELSE 0 END) AS Opening,
+            '        Sum(CASE WHEN L.V_Date >= " & AgL.Chk_Date(ReportFrm.FGetText(rowFromDate)) & " AND L.V_Date <= " & AgL.Chk_Date(ReportFrm.FGetText(rowToDate)) & " THEN IsNull(L.AmtCr,0) ELSE 0 END) AS PeriodAmount,
+            '        Sum(CASE WHEN L.V_Date <= " & AgL.Chk_Date(ReportFrm.FGetText(rowToDate)) & " THEN IsNull(L.AmtCr,0) ELSE 0 END) AS Closing
+            '        FROM Ledger L 
+            '        LEFT JOIN Subgroup Sg ON L.SubCode = Sg.Subcode " &
+            '        " Where 1=1 " & Replace(ReportFrm.GetWhereCondition("L.Site_Code", rowSite), "''", "'") &
+            '        Replace(ReportFrm.GetWhereCondition("L.DivCode", rowDivision), "''", "'") &
+            '        " And IsNull(L.AmtCr,0) > 0
+            '        AND Sg.Nature = 'Bank' "
+
             Dim bBankPayment As String = " Select 'Bank Payment' AS Type, 
-                    Sum(CASE WHEN L.V_Date < " & AgL.Chk_Date(ReportFrm.FGetText(rowFromDate)) & " THEN IsNull(L.AmtCr,0) ELSE 0 END) AS Opening,
-                    Sum(CASE WHEN L.V_Date >= " & AgL.Chk_Date(ReportFrm.FGetText(rowFromDate)) & " AND L.V_Date <= " & AgL.Chk_Date(ReportFrm.FGetText(rowToDate)) & " THEN IsNull(L.AmtCr,0) ELSE 0 END) AS PeriodAmount,
-                    Sum(CASE WHEN L.V_Date <= " & AgL.Chk_Date(ReportFrm.FGetText(rowToDate)) & " THEN IsNull(L.AmtCr,0) ELSE 0 END) AS Closing
+                    Sum(CASE WHEN L.V_Date < " & AgL.Chk_Date(ReportFrm.FGetText(rowFromDate)) & " THEN CASE WHEN L.V_Type='JV'  THEN -IsNull(L.AmtCr,0) ELSE  IsNull(L.AmtCr,0) END ELSE 0 END) AS Opening,
+                    Sum(CASE WHEN L.V_Date >= " & AgL.Chk_Date(ReportFrm.FGetText(rowFromDate)) & " AND L.V_Date <= " & AgL.Chk_Date(ReportFrm.FGetText(rowToDate)) & " THEN CASE WHEN L.V_Type='JV'  THEN -IsNull(L.AmtCr,0) ELSE  IsNull(L.AmtCr,0) END ELSE 0 END) AS PeriodAmount,
+                    Sum(CASE WHEN L.V_Date <= " & AgL.Chk_Date(ReportFrm.FGetText(rowToDate)) & " THEN CASE WHEN L.V_Type='JV'  THEN -IsNull(L.AmtCr,0) ELSE  IsNull(L.AmtCr,0) END ELSE 0 END) AS Closing
                     FROM Ledger L 
                     LEFT JOIN Subgroup Sg ON L.SubCode = Sg.Subcode " &
                     " Where 1=1 " & Replace(ReportFrm.GetWhereCondition("L.Site_Code", rowSite), "''", "'") &
                     Replace(ReportFrm.GetWhereCondition("L.DivCode", rowDivision), "''", "'") &
                     " And IsNull(L.AmtCr,0) > 0
                     AND Sg.Nature = 'Bank' "
+
 
             Dim bDepositToHOBankAccount As String = " Select 'Deposit To HO Bank Account', 
                     Sum(CASE WHEN L.V_Date < " & AgL.Chk_Date(ReportFrm.FGetText(rowFromDate)) & " THEN IsNull(L.AmtCr,0) ELSE 0 END) AS Opening,

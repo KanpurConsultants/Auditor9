@@ -1,7 +1,7 @@
 ; Field definition file for table: ADORecordset
 Copies	string	255	1	
-DocID	string	255	D1   SIR 2021    1200	
+DocID	string	255	D1   SIR 2022     784	
 Sr	long	1	
 PaymentModeName	string	255	Cash	
-Amount	number	99	
+Amount	number	1550	
 ReferenceNo	string	255		

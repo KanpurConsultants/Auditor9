@@ -377,11 +377,13 @@ Public Class FrmPurchaseInvoiceHeader
         Dim dtTemp As DataTable
         Dim IsDuplicateLrNo As Integer = 0
 
-        mQry = "Select count(*) From PurchInvoiceTransport Where Transporter ='" & Dgl1.Item(Col1Value, rowTransporter).Tag & "' AND LrNo = '" & Dgl1.Item(Col1Value, rowLrNo).Value & "' And DocID <>'" & SearchCode & "'"
-        IsDuplicateLrNo = AgL.Dman_Execute(mQry, AgL.GCn).ExecuteScalar
+        If (Dgl1.Item(Col1Value, rowTransporter).Tag <> Nothing) And (Dgl1.Item(Col1Value, rowLrNo).Value <> Nothing) Then
+            mQry = "Select count(*) From PurchInvoiceTransport Where Transporter ='" & Dgl1.Item(Col1Value, rowTransporter).Tag & "' AND LrNo = '" & Dgl1.Item(Col1Value, rowLrNo).Value & "' And DocID <>'" & SearchCode & "'"
+            IsDuplicateLrNo = AgL.Dman_Execute(mQry, AgL.GcnRead).ExecuteScalar
 
-        If IsDuplicateLrNo > 0 Then
-            Exit Sub
+            If IsDuplicateLrNo > 0 Then
+                Exit Sub
+            End If
         End If
 
         mQry = "Delete From PurchInvoiceTransport Where DocId = '" & SearchCode & "'"

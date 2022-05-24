@@ -1,22 +1,22 @@
 <?xml version="1.0" standalone="yes"?>
 <NewDataSet>
   <Table>
-    <CompanySalesTaxNo>09AHDPG3382R1ZS</CompanySalesTaxNo>
-    <CompanyName>GALA ENTERPRISES</CompanyName>
+    <CompanySalesTaxNo>09AAHCP2173P1ZT</CompanySalesTaxNo>
+    <CompanyName>PRATHAM APPAREL (INDIA) PVT. LTD</CompanyName>
     <Year>2021-2022</Year>
-    <MonthName>June</MonthName>
-    <OutTaxableSuppOtherThanZeroTotalTaxablevalue>0</OutTaxableSuppOtherThanZeroTotalTaxablevalue>
-    <OutTaxableSuppOtherThanZeroIntegratedTax>0</OutTaxableSuppOtherThanZeroIntegratedTax>
-    <OutTaxableSuppOtherThanZeroCentralTax>0</OutTaxableSuppOtherThanZeroCentralTax>
+    <MonthName>March</MonthName>
+    <OutTaxableSuppOtherThanZeroTotalTaxablevalue>11230158.67</OutTaxableSuppOtherThanZeroTotalTaxablevalue>
+    <OutTaxableSuppOtherThanZeroIntegratedTax>31205</OutTaxableSuppOtherThanZeroIntegratedTax>
+    <OutTaxableSuppOtherThanZeroCentralTax>265951.660000001</OutTaxableSuppOtherThanZeroCentralTax>
     <OutTaxableSuppOtherThanZeroCess>0</OutTaxableSuppOtherThanZeroCess>
-    <OutTaxableSuppZeroTotalTaxablevalue>91021.09</OutTaxableSuppZeroTotalTaxablevalue>
+    <OutTaxableSuppZeroTotalTaxablevalue>0</OutTaxableSuppZeroTotalTaxablevalue>
     <OutTaxableSuppZeroIntegratedTax>0</OutTaxableSuppZeroIntegratedTax>
     <OutTaxableSuppZeroCess>0</OutTaxableSuppZeroCess>
     <OutTaxableSuppNillTotalTaxablevalue>0</OutTaxableSuppNillTotalTaxablevalue>
-    <InwardSuppliesReverseChargeTotalTaxablevalue>0</InwardSuppliesReverseChargeTotalTaxablevalue>
+    <InwardSuppliesReverseChargeTotalTaxablevalue>104589.7</InwardSuppliesReverseChargeTotalTaxablevalue>
     <InwardSuppliesReverseChargeIntegratedTax>0</InwardSuppliesReverseChargeIntegratedTax>
-    <InwardSuppliesReverseChargeCentralTax>0</InwardSuppliesReverseChargeCentralTax>
-    <InwardSuppliesReverseChargeStateTax>0</InwardSuppliesReverseChargeStateTax>
+    <InwardSuppliesReverseChargeCentralTax>5663.782</InwardSuppliesReverseChargeCentralTax>
+    <InwardSuppliesReverseChargeStateTax>5663.782</InwardSuppliesReverseChargeStateTax>
     <InwardSuppliesReverseChargeCess>0</InwardSuppliesReverseChargeCess>
     <NonGstOutwardTotalTaxablevalue>0</NonGstOutwardTotalTaxablevalue>
     <ImportOfGoodsIntegratedTax>0</ImportOfGoodsIntegratedTax>
@@ -24,14 +24,14 @@
     <ImportOfServiceIntegratedTax>0</ImportOfServiceIntegratedTax>
     <ImportOfServiceCess>0</ImportOfServiceCess>
     <InwardSuppliesReverseChargeOtherThan1And2IntegratedTax>0</InwardSuppliesReverseChargeOtherThan1And2IntegratedTax>
-    <InwardSuppliesReverseChargeOtherThan1And2CentralTax>0</InwardSuppliesReverseChargeOtherThan1And2CentralTax>
-    <InwardSuppliesReverseChargeOtherThan1And2StateTax>0</InwardSuppliesReverseChargeOtherThan1And2StateTax>
+    <InwardSuppliesReverseChargeOtherThan1And2CentralTax>5663.782</InwardSuppliesReverseChargeOtherThan1And2CentralTax>
+    <InwardSuppliesReverseChargeOtherThan1And2StateTax>5663.782</InwardSuppliesReverseChargeOtherThan1And2StateTax>
     <InwardSuppliesReverseChargeOtherThan1And2Cess>0</InwardSuppliesReverseChargeOtherThan1And2Cess>
     <ISDIntegratedTax>0</ISDIntegratedTax>
     <ISDCentralTax>0</ISDCentralTax>
     <ISDCess>0</ISDCess>
-    <AllOtherItcIntegratedTax>28501.59</AllOtherItcIntegratedTax>
-    <AllOtherItcCentralTax>7287.24</AllOtherItcCentralTax>
+    <AllOtherItcIntegratedTax>212429.75</AllOtherItcIntegratedTax>
+    <AllOtherItcCentralTax>72600.6400000001</AllOtherItcCentralTax>
     <AllOtherItcCess>0</AllOtherItcCess>
     <IneligibleITCIntegratedTax>0</IneligibleITCIntegratedTax>
     <IneligibleITCCentralTax>0</IneligibleITCCentralTax>

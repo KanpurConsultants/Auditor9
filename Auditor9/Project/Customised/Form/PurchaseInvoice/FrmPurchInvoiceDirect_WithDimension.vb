@@ -8169,13 +8169,20 @@ Public Class FrmPurchInvoiceDirect_WithDimension
                 Dgl1.Item(Col1BarcodeType, mRow).Value = AgL.XNull(DtItemCategory.Rows(0)("BarcodeType"))
 
                 Dgl1.Item(Col1HSN, mRow).Value = AgL.XNull(DtItemCategory.Rows(0)("HSN"))
-                Dgl1.Item(Col1IsNewItemAllowedPurch, mRow).Value = AgL.VNull(DtItemCategory.Rows(0)("IsNewItemAllowedPurch"))
+
+                If EntryNCat = "PR" Then
+                    Dgl1.Item(Col1IsNewItemAllowedPurch, mRow).Value = 0
+                Else
+                    Dgl1.Item(Col1IsNewItemAllowedPurch, mRow).Value = AgL.VNull(DtItemCategory.Rows(0)("IsNewItemAllowedPurch"))
+                End If
+
+
                 Dgl1.Item(Col1IsNewDimension1AllowedPurch, mRow).Value = AgL.VNull(DtItemCategory.Rows(0)("IsNewDimension1AllowedPurch"))
-                Dgl1.Item(Col1IsNewDimension2AllowedPurch, mRow).Value = AgL.VNull(DtItemCategory.Rows(0)("IsNewDimension2AllowedPurch"))
-                Dgl1.Item(Col1IsNewDimension3AllowedPurch, mRow).Value = AgL.VNull(DtItemCategory.Rows(0)("IsNewDimension3AllowedPurch"))
-                Dgl1.Item(Col1IsNewDimension4AllowedPurch, mRow).Value = AgL.VNull(DtItemCategory.Rows(0)("IsNewDimension4AllowedPurch"))
-            Else
-                Dgl1.Item(Col1IsNewItemAllowedPurch, mRow).Value = ""
+                    Dgl1.Item(Col1IsNewDimension2AllowedPurch, mRow).Value = AgL.VNull(DtItemCategory.Rows(0)("IsNewDimension2AllowedPurch"))
+                    Dgl1.Item(Col1IsNewDimension3AllowedPurch, mRow).Value = AgL.VNull(DtItemCategory.Rows(0)("IsNewDimension3AllowedPurch"))
+                    Dgl1.Item(Col1IsNewDimension4AllowedPurch, mRow).Value = AgL.VNull(DtItemCategory.Rows(0)("IsNewDimension4AllowedPurch"))
+                Else
+                    Dgl1.Item(Col1IsNewItemAllowedPurch, mRow).Value = ""
                 Dgl1.Item(Col1IsNewDimension1AllowedPurch, mRow).Value = ""
                 Dgl1.Item(Col1IsNewDimension2AllowedPurch, mRow).Value = ""
                 Dgl1.Item(Col1IsNewDimension3AllowedPurch, mRow).Value = ""
@@ -14961,6 +14968,15 @@ Public Class FrmPurchInvoiceDirect_WithDimension
         End If
 
         mName = mName + "-" + mSearchCode
+
+        If (mName.Length > 255) Then
+            mName = mName.Substring(0, 255)
+        End If
+
+        If (ItemSpecification.Length > 255) Then
+            ItemSpecification = ItemSpecification.Substring(0, 255)
+        End If
+
 
         If Code = "" Then
             Dim mMaxId As String = AgL.GetMaxId("Item", "Code", AgL.GcnMain, AgL.PubDivCode, AgL.PubSiteCode, 8, True, True, AgL.ECmd, AgL.Gcn_ConnectionString)

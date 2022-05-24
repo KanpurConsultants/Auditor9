@@ -1,55 +1,55 @@
 ; Field definition file for table: ADORecordset
 Copies	string	255	1	
 CopyPrintingCaption	string	255		
-DocNoCaption	string	255	Invoice No.	
-DocDateCaption	string	255	Invoice Date	
-DocID	string	255	D1    PI 2021    1597	
+DocNoCaption	string	255	Doc.No.	
+DocDateCaption	string	255	Doc.Date	
+DocID	string	255	D1    PR 2022      13	
 SiteStateCode	string	255	09	
 SiteStateName	string	255	Uttar Pradesh	
 Sr	number	1	
-V_Date	datetime	31/Mar/2022 12:00:00 AM	
-Voucher_Type	string	255	Purchase Invoice	
-NCat	string	255	PI	
-DocNo	string	255	D1-PI-1589	
+V_Date	datetime	19/May/2022 12:00:00 AM	
+Voucher_Type	string	255	Purchase Return	
+NCat	string	255	PR	
+DocNo	string	255	D1-PR-5	
 AgentName	string	255		
 AgentCaption	string	255	Agent	
-PartyName	string	255	SATYEN & CO.	
-PartyAddress	string	255	AMRITSAR	
-PartyPinCode	string	255		
-PartyCityName	string	255	AMRITSAR	
-PartyStateCode	string	255	03	
-PartyStateName	string	255	Punjab	
-PartyMobile	string	255		
+PartyName	string	255	GURUKRIPA SYNTHETIC	
+PartyAddress	string	255	KANPUR	
+PartyPinCode	string	255	208001	
+PartyCityName	string	255	KANPUR	
+PartyStateCode	string	255	09	
+PartyStateName	string	255	Uttar Pradesh	
+PartyMobile	string	255	9839086485	
 ContactPerson	string	255		
-PartySalesTaxNo	string	255		
+PartySalesTaxNo	string	255	09ACCPM4009R1Z7	
 PartyAadharNo	string	255		
-PartyPanNo	string	255		
-ShipToPartyName	string	255	SATYEN & CO.	
-ShipToPartyAddress	string	255	AMRITSAR	
-ShipToPartyCity	string	255	AMRITSAR	
-ShipToPartyPincode	string	255		
-ShipToPartyStateCode	string	255	03	
-ShipToPartyStateName	string	255	Punjab	
-ShipToPartyMobile	string	255		
-ShipToPartySalesTaxNo	string	255		
+PartyPanNo	string	255	ACCPM4009R	
+ShipToPartyName	string	255	GURUKRIPA SYNTHETIC	
+ShipToPartyAddress	string	255	KANPUR	
+ShipToPartyCity	string	255	KANPUR	
+ShipToPartyPincode	string	255	208001	
+ShipToPartyStateCode	string	255	09	
+ShipToPartyStateName	string	255	Uttar Pradesh	
+ShipToPartyMobile	string	255	9839086485	
+ShipToPartySalesTaxNo	string	255	09ACCPM4009R1Z7	
 ShipToPartyAadharNo	string	255		
 ShipToPartyPanNo	string	255		
-TransporterName	string	255	TCI EXPRESS, MUMBAI	
-LrNo	string	255	659933595	
+TransporterName	string	255		
+LrNo	string	255		
 LrDate	datetime		
 PrivateMark	string	255		
-Weight	number	0	
-Freight	number	0	
+Weight	number		
+Freight	number		
 FreightType	string	255		
 RoadPermitNo	string	255		
 RoadPermitDate	datetime		
-ReferenceNo	string	255		
-ItemName	string	255	SATYAM - HI TECH WEAVING LLP - KOTI	
-ItemGroupName	string	255	HI TECH WEAVING LLP	
-ItemCatName	string	255	KOTI	
-ItemSpecification	string	255	SATYAM	
-InvoiceLineSpecification	string	255	SATYAM	
-HSN	string	255	521021	
+ReferenceNo	string	255	837	
+ItemName	string	255	A-1013 - GURUKRIPA - SAREE-D1    PI 2019     137	
+ItemGroupName	string	255	GURUKRIPA	
+ItemCatName	string	255	SAREE	
+ItemSpecification	string	255	A-1013	
+InvoiceLineSpecification	string	255	A-1013	
+HSN	string	255	5407	
 D1Spec	string	255		
 D2Spec	string	255		
 D3Spec	string	255		
@@ -61,18 +61,18 @@ ItemGroupCaption	string	255	Item Group
 ItemCaption	string	255	Item	
 BarcodeCaption	string	255		
 D1Caption	string	255	Design	
-D2Caption	string	255	Shade	
+D2Caption	string	255		
 D3Caption	string	255		
 D4Caption	string	255		
 SalesTaxGroupItem	string	255	GST 5%	
 GrossTaxRate	number	5	
 Pcs	number	0	
-Qty	number	10	
-DocQty	number	10	
+Qty	number	2	
+DocQty	number	2	
 FreeQty	number	0	
 LossQty	number	0	
 RejQty	number	0	
-Rate	number	450	
+Rate	number	418	
 Unit	string	255	Pcs	
 UnitDecimalPlaces	number	0	
 DiscountPer	number	0	
@@ -80,32 +80,32 @@ DiscountAmount	number	0
 AdditionalDiscountPer	number	0	
 AdditionalDiscountAmount	number	0	
 TotalDiscount	number	0	
-AmountBeforeDiscount	number	4500	
-Amount	number	4500	
-Taxable_Amount	number	4500	
+AmountBeforeDiscount	number	836	
+Amount	number	836	
+Taxable_Amount	number	836	
 Tax1_Per	number	0	
 Tax1	number	0	
-Tax2_Per	number	0	
-Tax2	number	0	
-Tax3_Per	number	0	
-Tax3	number	0	
+Tax2_Per	number	2.5	
+Tax2	number	20.9	
+Tax3_Per	number	2.5	
+Tax3	number	20.9	
 Tax4_Per	number	0	
 Tax4	number	0	
 Tax5_Per	number	0	
 Tax5	number	0	
-Net_Amount	number	4500	
+Net_Amount	number	877.72	
 HRemarks	string	255		
 LRemarks	string	255		
-H_Gross_Amount	number	4500	
+H_Gross_Amount	number	2565	
 H_SpecialDiscount_Per	number	0	
 H_SpecialDiscount	number	0	
-H_Taxable_Amount	number	4500	
+H_Taxable_Amount	number	2565	
 H_Tax1_Per	number	0	
 H_Tax1	number	0	
 H_Tax2_Per	number	0	
-H_Tax2	number	0	
+H_Tax2	number	64.13	
 H_Tax3_Per	number	0	
-H_Tax3	number	0	
+H_Tax3	number	64.13	
 H_Tax4_Per	number	0	
 H_Tax4	number	0	
 H_Tax5_Per	number	0	
@@ -114,16 +114,16 @@ H_Deduction_Per	number	0
 H_Deduction	number	0	
 H_Other_Charge_Per	number	0	
 H_Other_Charge	number	0	
-Round_Off	number	0	
-H_Net_Amount	number	4500	
+Round_Off	number	0.26	
+H_Net_Amount	number	2693	
 H_TotalDiscount	number	0	
-H_AmountBeforeDiscount	number	4500	
-Default_BankAccountDetail	string	255	<B> Bank Detail :- <BR> KOTAK MAHINDRA : 2913816082  IFSC : KKBK0000131 <BR>	
+H_AmountBeforeDiscount	number	2565	
+Default_BankAccountDetail	string	255		
 DocumentPrintHeaderPattern	string	255	Center Aligned	
 DimDetail	string	255		
 HsnDescription	string	255		
 PrintedByUser	string	255	SUPER	
-PrintTitle	string	255	Purchase Invoice	
+PrintTitle	string	255	Purchase Return (Debit Note)	
 TermsAndConditions	string	255		
 CompanyLogo	BLOB		
 CompanyAuthorisedSignature	BLOB		

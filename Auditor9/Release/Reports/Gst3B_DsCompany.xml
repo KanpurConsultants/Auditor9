@@ -2,34 +2,34 @@
 <NewDataSet>
   <Table>
     <Code>1</Code>
-    <EffectiveFromDate>1900-01-01T00:00:00-08:00</EffectiveFromDate>
-    <EffectiveUptoDate>2000-01-01T00:00:00-08:00</EffectiveUptoDate>
+    <EffectiveFromDate>1900-01-01T00:00:00+05:30</EffectiveFromDate>
+    <EffectiveUptoDate>2000-01-01T00:00:00+05:30</EffectiveUptoDate>
     <Div_Code xml:space="preserve"> </Div_Code>
     <Site_Code xml:space="preserve"> </Site_Code>
-    <DocumentHeaderRowFirstLeft xml:space="preserve"> </DocumentHeaderRowFirstLeft>
-    <DocumentHeaderRowFirstMiddle xml:space="preserve"> </DocumentHeaderRowFirstMiddle>
-    <DocumentHeaderRowFirstRight xml:space="preserve"> </DocumentHeaderRowFirstRight>
-    <DocumentHeaderRow1Left>GALA ENTERPRISES</DocumentHeaderRow1Left>
-    <DocumentHeaderRow2Left>13/152 PARMAT</DocumentHeaderRow2Left>
-    <DocumentHeaderRow3Left>Kanpur,208001</DocumentHeaderRow3Left>
-    <DocumentHeaderRow4Left />
+    <DocumentHeaderRow1Left>PRATHAM APPAREL (INDIA) PVT. LTD</DocumentHeaderRow1Left>
+    <DocumentHeaderRow2Left>128/268 Y-1 BLOCK KIDWAI NAGAR</DocumentHeaderRow2Left>
+    <DocumentHeaderRow3Left>KANPUR,208011</DocumentHeaderRow3Left>
+    <DocumentHeaderRow4Left xml:space="preserve"> </DocumentHeaderRow4Left>
     <DocumentHeaderRow5Left xml:space="preserve"> </DocumentHeaderRow5Left>
-    <DocumentHeaderRow1Right>GST No : 09AHDPG3382R1ZS</DocumentHeaderRow1Right>
-    <DocumentHeaderRow2Right>Contact No : ,9335671971</DocumentHeaderRow2Right>
+    <DocumentHeaderRow1Right>GST No : 09AAHCP2173P1ZT</DocumentHeaderRow1Right>
+    <DocumentHeaderRow2Right>PAN No : AAHCP2173P</DocumentHeaderRow2Right>
     <DocumentHeaderRow3Right xml:space="preserve"> </DocumentHeaderRow3Right>
     <DocumentHeaderRow4Right xml:space="preserve"> </DocumentHeaderRow4Right>
     <DocumentHeaderRow5Right xml:space="preserve"> </DocumentHeaderRow5Right>
-    <DocumentHeaderRowLastLeft xml:space="preserve"> </DocumentHeaderRowLastLeft>
-    <DocumentHeaderRowLastMiddle xml:space="preserve"> </DocumentHeaderRowLastMiddle>
-    <DocumentHeaderRowLastRight xml:space="preserve"> </DocumentHeaderRowLastRight>
     <IsSalesTaxApplicable>true</IsSalesTaxApplicable>
     <WeekOffDays>0</WeekOffDays>
     <EntryBy>System</EntryBy>
-    <EntryDate>2020-01-15T08:43:38-08:00</EntryDate>
+    <EntryDate>2019-02-09T17:23:00+05:30</EntryDate>
     <ApproveBy xml:space="preserve"> </ApproveBy>
-    <ApproveDate>1900-01-01T00:00:00-08:00</ApproveDate>
+    <ApproveDate>1900-01-01T00:00:00+05:30</ApproveDate>
     <MoveToLog xml:space="preserve"> </MoveToLog>
-    <MoveToLogDate>1900-01-01T00:00:00-08:00</MoveToLogDate>
-    <UploadDate>1900-01-01T00:00:00-08:00</UploadDate>
+    <MoveToLogDate>1900-01-01T00:00:00+05:30</MoveToLogDate>
+    <UploadDate>1900-01-01T00:00:00+05:30</UploadDate>
+    <DocumentHeaderRowFirstLeft xml:space="preserve"> </DocumentHeaderRowFirstLeft>
+    <DocumentHeaderRowFirstMiddle xml:space="preserve"> </DocumentHeaderRowFirstMiddle>
+    <DocumentHeaderRowFirstRight xml:space="preserve"> </DocumentHeaderRowFirstRight>
+    <DocumentHeaderRowLastLeft xml:space="preserve"> </DocumentHeaderRowLastLeft>
+    <DocumentHeaderRowLastMiddle xml:space="preserve"> </DocumentHeaderRowLastMiddle>
+    <DocumentHeaderRowLastRight xml:space="preserve"> </DocumentHeaderRowLastRight>
   </Table>
 </NewDataSet>

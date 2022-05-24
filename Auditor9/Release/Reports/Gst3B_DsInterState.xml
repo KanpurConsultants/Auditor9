@@ -1,2 +1,12 @@
 <?xml version="1.0" standalone="yes"?>
-<NewDataSet />
+<NewDataSet>
+  <Table>
+    <PlaceOfSupply>Jharkhand</PlaceOfSupply>
+    <TotalTaxablevalue_Unregistered>5705</TotalTaxablevalue_Unregistered>
+    <AmountOfIntegratedTax_Unregistered>285.25</AmountOfIntegratedTax_Unregistered>
+    <TotalTaxablevalue_Composition>0</TotalTaxablevalue_Composition>
+    <AmountOfIntegratedTax_Composition>0</AmountOfIntegratedTax_Composition>
+    <TotalTaxablevalue_UINholders>0</TotalTaxablevalue_UINholders>
+    <AmountOfIntegratedTax_UINholders>0</AmountOfIntegratedTax_UINholders>
+  </Table>
+</NewDataSet>

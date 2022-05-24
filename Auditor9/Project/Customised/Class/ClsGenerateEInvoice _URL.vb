@@ -939,7 +939,7 @@ Public Class ClsGenerateEInvoice_URL
                         C.CityName AS SaleToPartyCityName, H.PartyPinCode, S.ManualCode AS SaleToPartyStateCode,
                         VShipToPartyReg.SalesTaxNo As ShipToPartySalesTaxNo, ShipParty.Name AS ShipToPartyName, ShipParty.Address AS ShipToPartyAddress, ShipCity.CityName AS ShipToPartyCity, 
                         ShipParty.Pin AS ShipToPartyPinCode, ShipState.ManualCode AS ShipToPartyStateCode,
-                        CASE WHEN I.ItemType = 'SP' THEN 'Y' ELSE 'N' END AS IsService, IfNull(L.Remarks,I.Description) AS ItemDesc,
+                        CASE WHEN I.ItemType = 'SP' THEN 'Y' ELSE 'N' END AS IsService, Left(IfNull(L.Remarks,I.Description),300) AS ItemDesc,
                         L.HSN AS HSN, 
                         1 AS Qty, IfNull(L.Unit,'Nos') As Unit, 
                         Lc.Taxable_Amount AS Rate, 

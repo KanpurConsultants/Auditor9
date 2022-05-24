@@ -1528,7 +1528,8 @@ Public Class ClsFunction
                ClsMain.FDivisionNameForCustomization().Contains("SUMAN") Or
                ClsMain.FDivisionNameForCustomization().Contains("AARNAV") Or
                ClsMain.FDivisionNameForCustomization().Contains("RADHA") Or
-               ClsMain.FDivisionNameForCustomization().Contains("RADHA") Or
+               ClsMain.FDivisionNameForCustomization().Contains("SHREE") Or
+               ClsMain.FDivisionNameForCustomization().Contains("SUBHASHINI FAB") Or
                ClsMain.FDivisionNameForCustomization().Contains("SITARAM HARISH") Or
                ClsMain.FDivisionNameForCustomization().Contains("SHREE RAM") Then
             FGetNewVersionFlag = False

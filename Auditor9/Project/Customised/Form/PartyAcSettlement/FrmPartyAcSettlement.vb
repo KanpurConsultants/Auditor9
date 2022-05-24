@@ -1110,6 +1110,11 @@ Public Class FrmPartyAcSettlement
         Dim mCondStr$ = ""
         mCondStr = " " & AgL.CondStrFinancialYear("H.V_Date", AgL.PubStartDate, AgL.PubEndDate) &
                         " And " & AgL.PubSiteCondition("H.Site_Code", AgL.PubSiteCode) & " And H.Div_Code = '" & AgL.PubDivCode & "' "
+        If AgL.PubServerName.ToString() <> "" Then
+            mCondStr = " And H.V_Date Between " & AgL.Chk_Date(AgL.PubStartDate) & " and " & AgL.Chk_Date(AgL.PubEndDate) & " "
+            mCondStr = mCondStr & " And " & AgL.PubSiteCondition("H.Site_Code", AgL.PubSiteCode) & " And H.Div_Code = '" & AgL.PubDivCode & "' "
+        End If
+
         mCondStr = mCondStr & " And Vt.NCat in ('" & EntryNCat & "')"
 
         'If IsApplyVTypePermission Then

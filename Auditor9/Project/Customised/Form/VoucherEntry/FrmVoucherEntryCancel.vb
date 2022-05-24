@@ -73,16 +73,17 @@ Public Class FrmVoucherEntryCancel
         End Set
     End Property
     Public Sub Ini_Grid()
+        Dim i1 As Int64 = DtV_TypeSettings.Rows.Count
         Dgl1.ColumnCount = 0
         With AgCL
             .AddAgTextColumn(Dgl1, ColSNo, 40, 5, ColSNo, True, True, False)
             .AddAgTextColumn(Dgl1, Col1Select, 35, 0, Col1Select, True, True, False)
             .AddAgDateColumn(Dgl1, Col1EffectiveDate, 100, Col1EffectiveDate, False, True)
-            .AddAgTextColumn(Dgl1, Col1Subcode, 150, 0, AgL.XNull(DtV_TypeSettings.Rows(0)("Caption_SubcodeLine")), True, True)
+            .AddAgTextColumn(Dgl1, Col1Subcode, 150, 0, Col1Subcode, True, True)
             .AddAgTextColumn(Dgl1, Col1LinkedSubcode, 150, 0, Col1LinkedSubcode, True, True)
             .AddAgTextColumn(Dgl1, Col1DrCr, 150, 0, Col1DrCr, False, True)
             .AddAgTextColumn(Dgl1, Col1HeaderSubcode, 150, 0, Col1HeaderSubcode, False, True)
-            .AddAgTextColumn(Dgl1, Col1Specification, 130, 0, AgL.XNull(DtV_TypeSettings.Rows(0)("Caption_Specification")), CType(AgL.VNull(DtV_TypeSettings.Rows(0)("IsVisible_Specification")), Boolean), True)
+            .AddAgTextColumn(Dgl1, Col1Specification, 130, 0, Col1Specification, CType(AgL.VNull(DtV_TypeSettings.Rows(0)("IsVisible_Specification")), Boolean), True)
             .AddAgTextColumn(Dgl1, Col1SalesTaxGroup, 100, 0, Col1SalesTaxGroup, False, True)
             .AddAgTextColumn(Dgl1, Col1QtyDecimalPlaces, 50, 0, Col1QtyDecimalPlaces, False, True, False)
             .AddAgNumberColumn(Dgl1, Col1Qty, 80, 8, 4, False, Col1Qty, CType(AgL.VNull(DtV_TypeSettings.Rows(0)("IsVisible_Qty")), Boolean), True, True)

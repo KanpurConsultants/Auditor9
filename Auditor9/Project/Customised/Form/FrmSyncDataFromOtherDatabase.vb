@@ -67,6 +67,9 @@ Public Class FrmSyncDataFromOtherDatabase
     Private SadhviEnterprises_KanpurBranch As String = "SADHVI ENTERPRISES BRANCH"
     Private SadhviEmbroidery_KanpurBranch As String = "SADHVI EMBROIDERY BRANCH"
 
+    Private SadhviEnterprises_KanpurBranch2 As String = "SADHVI ENTERPRISES BRANCH 2"
+    Private SadhviEmbroidery_KanpurBranch2 As String = "SADHVI EMBROIDERY BRANCH 2"
+
     Private SadhviEnterprises_BhopalBranch As String = "SADHVI ENTERPRISES BHOPAL BRANCH"
     Private SadhviEmbroidery_BhopalBranch As String = "SADHVI EMBROIDERY BHOPAL BRANCH"
 
@@ -158,6 +161,10 @@ Public Class FrmSyncDataFromOtherDatabase
         End If
 
         If DatabaseName.Contains("SHADHVIJaunpur") Then
+            IsValidDatabase = "Yes"
+        End If
+
+        If DatabaseName.Contains("SHADHVIKANPURB2") Then
             IsValidDatabase = "Yes"
         End If
 
@@ -950,8 +957,10 @@ Public Class FrmSyncDataFromOtherDatabase
 
         Dim DtLocalData_Header As DataTable
         Dim DtLocalData_Line As DataTable
-        Dim ExportSiteCode As String = FGetExportSiteCodeFromSiteCode(AgL.XNull(DtExternalData_Header.Rows(0)("Site_Code")))
-
+        Dim ExportSiteCode As String
+        If DtExternalData_Header.Rows.Count > 0 Then
+            ExportSiteCode = FGetExportSiteCodeFromSiteCode(AgL.XNull(DtExternalData_Header.Rows(0)("Site_Code")))
+        End If
         Dim bEntryType As String = ""
         If DtExternalData_Header.Rows.Count > 0 Then
             mQry = " Select NCat From Voucher_Type Where V_Type = '" & AgL.XNull(DtExternalData_Header.Rows(0)("V_Type")) & "'"
@@ -994,7 +1003,7 @@ Public Class FrmSyncDataFromOtherDatabase
             UpdateParentProgressBar("Updating Sale" & bEntryType, mParentPrgBarMaxVal)
             UpdateChildProgressBar("Checking Sale" & bEntryType + AgL.XNull(DtExternalData_Header.Rows(I)("V_Type")) + "-" + AgL.XNull(DtExternalData_Header.Rows(I)("ManualRefNo")) + " exists or not.", mChildPrgMaxVal, mChildPrgCnt)
             For J As Integer = 0 To DtLocalData_Header.Rows.Count - 1
-                If AgL.XNull(DtExternalData_Header.Rows(I)("DocId")) = AgL.XNull(DtLocalData_Header.Rows(J)("OMSId")) & ExportSiteCode = AgL.XNull(DtLocalData_Header.Rows(J)("Site_Code")) Then
+                If AgL.XNull(DtExternalData_Header.Rows(I)("DocId")) = AgL.XNull(DtLocalData_Header.Rows(J)("OMSId")) And ExportSiteCode = AgL.XNull(DtLocalData_Header.Rows(J)("Site_Code")) Then
                     bUpdateClauseQry = ""
                     For F As Integer = 0 To DtFieldList_Header.Rows.Count - 1
                         If DtFieldList_Header.Rows(F)("Name") = "DocId" Or
@@ -1391,7 +1400,7 @@ Public Class FrmSyncDataFromOtherDatabase
         For I = 0 To DtExternalData_Header.Rows.Count - 1
             UpdateParentProgressBar("Inserting Purch" & bEntryType, mParentPrgBarMaxVal)
             UpdateChildProgressBar("Checking Purch" & bEntryType & AgL.XNull(DtExternalData_Header.Rows(I)("V_Type")) & "-" & AgL.XNull(DtExternalData_Header.Rows(I)("ManualRefNo")) & " exist or not.", mChildPrgMaxVal, mChildPrgCnt)
-            If DtPurchInvoice.Select("OMSId = '" & AgL.XNull(DtExternalData_Header.Rows(I)("DocId")) & "'AND Site_Code = '" & ExportSiteCode & "' ").Length = 0 Then
+            If DtPurchInvoice.Select("OMSId = '" & AgL.XNull(DtExternalData_Header.Rows(I)("DocId")) & "' AND Site_Code = '" & ExportSiteCode & "' ").Length = 0 Then
                 Dim PurchInvoiceTableList(0) As FrmPurchInvoiceDirect_WithDimension.StructPurchInvoice
                 Dim PurchInvoiceTable As New FrmPurchInvoiceDirect_WithDimension.StructPurchInvoice
 
@@ -1572,7 +1581,7 @@ Public Class FrmSyncDataFromOtherDatabase
         For I = 0 To DtExternalData_Header.Rows.Count - 1
             UpdateParentProgressBar("Inserting Ledger Heads", mParentPrgBarMaxVal)
             UpdateChildProgressBar("Checking " + AgL.XNull(DtExternalData_Header.Rows(I)("V_Type")) + "-" + AgL.XNull(DtExternalData_Header.Rows(I)("ManualRefNo")) + " exists or not.", mChildPrgMaxVal, mChildPrgCnt)
-            If DtLedgerHead.Select("OMSId = '" & AgL.XNull(DtExternalData_Header.Rows(I)("DocId")) & "'AND Site_Code = '" & ExportSiteCode & "' ").Length = 0 Then
+            If DtLedgerHead.Select("OMSId = '" & AgL.XNull(DtExternalData_Header.Rows(I)("DocId")) & "' AND Site_Code = '" & ExportSiteCode & "' ").Length = 0 Then
                 Dim LedgerHeadTableList(0) As FrmVoucherEntry.StructLedgerHead
                 Dim LedgerHeadTable As New FrmVoucherEntry.StructLedgerHead
 
@@ -1734,7 +1743,7 @@ Public Class FrmSyncDataFromOtherDatabase
                 From LedgerHead H
                 LEFT JOIN SubGroup Sg On H.SubCode = Sg.SubCode
                 LEFT JOIN City C On H.PartyCity = C.CityCode
-                Where H.OMSId In (" & bExternalDocIdStr & ") AND H.Site_Code =  '" & ExportSiteCode & "'"
+                Where H.OMSId In (" & bExternalDocIdStr & ") AND H.Site_Code =  '" & ExportSiteCode & "' "
         DtLocalData_Header = AgL.FillData(mQry, IIf(AgL.PubServerName = "", AgL.GCn, AgL.GcnRead)).Tables(0)
         mQry = "PRAGMA table_info(LedgerHead);"
         DtFieldList_Header = AgL.FillData(mQry, Connection_ExternalDatabase).Tables(0)
@@ -1748,7 +1757,7 @@ Public Class FrmSyncDataFromOtherDatabase
             UpdateParentProgressBar("Updating Ledger Heads", mParentPrgBarMaxVal)
             UpdateChildProgressBar("Checking " + AgL.XNull(DtExternalData_Header.Rows(I)("V_Type")) + "-" + AgL.XNull(DtExternalData_Header.Rows(I)("ManualRefNo")) + " exists or not.", mChildPrgMaxVal, mChildPrgCnt)
             For J As Integer = 0 To DtLocalData_Header.Rows.Count - 1
-                If AgL.XNull(DtExternalData_Header.Rows(I)("DocId")) = AgL.XNull(DtLocalData_Header.Rows(J)("OMSId")) & ExportSiteCode = AgL.XNull(DtLocalData_Header.Rows(J)("Site_Code")) Then
+                If AgL.XNull(DtExternalData_Header.Rows(I)("DocId")) = AgL.XNull(DtLocalData_Header.Rows(J)("OMSId")) And ExportSiteCode = AgL.XNull(DtLocalData_Header.Rows(J)("Site_Code")) Then
                     bUpdateClauseQry = ""
                     For F As Integer = 0 To DtFieldList_Header.Rows.Count - 1
                         If DtFieldList_Header.Rows(F)("Name") = "DocId" Or
@@ -2026,7 +2035,7 @@ Public Class FrmSyncDataFromOtherDatabase
             UpdateParentProgressBar("Updating Purch" & bEntryType, mParentPrgBarMaxVal)
             UpdateChildProgressBar("Checking Purch" & bEntryType + AgL.XNull(DtExternalData_Header.Rows(I)("V_Type")) + "-" + AgL.XNull(DtExternalData_Header.Rows(I)("ManualRefNo")) + " exists or not.", mChildPrgMaxVal, mChildPrgCnt)
             For J As Integer = 0 To DtLocalData_Header.Rows.Count - 1
-                If AgL.XNull(DtExternalData_Header.Rows(I)("DocId")) = AgL.XNull(DtLocalData_Header.Rows(J)("OMSId")) & ExportSiteCode = AgL.XNull(DtLocalData_Header.Rows(J)("Site_Code")) Then
+                If AgL.XNull(DtExternalData_Header.Rows(I)("DocId")) = AgL.XNull(DtLocalData_Header.Rows(J)("OMSId")) And ExportSiteCode = AgL.XNull(DtLocalData_Header.Rows(J)("Site_Code")) Then
                     bUpdateClauseQry = ""
                     For F As Integer = 0 To DtFieldList_Header.Rows.Count - 1
                         If DtFieldList_Header.Rows(F)("Name") = "DocId" Or
@@ -2491,6 +2500,14 @@ Public Class FrmSyncDataFromOtherDatabase
                     Else
                         bSadhviBranch = AgL.XNull(AgL.Dman_Execute("Select SubCode From SubGroup With (NoLock)
                         Where Name = '" & SadhviEnterprises_JaunpurBranch & "'", IIf(AgL.PubServerName = "", Conn, AgL.GcnRead)).ExecuteScalar())
+                    End If
+                ElseIf AgL.XNull(DtHeader.Rows(0)("Site_Code")) = "5" Then
+                    If AgL.XNull(DtHeader.Rows(0)("Div_Code")) = "E" Then
+                        bSadhviBranch = AgL.XNull(AgL.Dman_Execute("Select SubCode From SubGroup With (NoLock)
+                        Where Name = '" & SadhviEmbroidery_KanpurBranch2 & "'", IIf(AgL.PubServerName = "", Conn, AgL.GcnRead)).ExecuteScalar())
+                    Else
+                        bSadhviBranch = AgL.XNull(AgL.Dman_Execute("Select SubCode From SubGroup With (NoLock)
+                        Where Name = '" & SadhviEnterprises_KanpurBranch2 & "'", IIf(AgL.PubServerName = "", Conn, AgL.GcnRead)).ExecuteScalar())
                     End If
                 End If
 

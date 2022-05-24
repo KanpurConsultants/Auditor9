@@ -2598,7 +2598,7 @@ Public Class ClsReports
             mCondStr = "  "
             mCondStr = mCondStr & " AND Date(LG.V_Date) <= " & AgL.Chk_Date(CDate(ReportFrm.FGetText(2)).ToString("s")) & " "
             mCondStr = mCondStr & ReportFrm.GetWhereCondition("LG.Subcode", 4)
-            mCondStr = mCondStr & ReportFrm.GetWhereCondition("Party.GroupCode", 5)
+            mCondStr = mCondStr & ReportFrm.GetWhereCondition("SG.GroupCode", 5)
             mCondStr = mCondStr & ReportFrm.GetWhereCondition("LTV.Agent", 6)
             mCondStr = mCondStr & ReportFrm.GetWhereCondition("CT.CityCode", 7)
             mCondStr = mCondStr & ReportFrm.GetWhereCondition("Ct.State", 8)
@@ -2988,7 +2988,7 @@ Public Class ClsReports
             mCondStr = "  "
             mCondStr = mCondStr & " AND Date(LG.V_Date) <= " & AgL.Chk_Date(CDate(ReportFrm.FGetText(2)).ToString("s")) & " "
             mCondStr = mCondStr & ReportFrm.GetWhereCondition("LG.Subcode", 4)
-            mCondStr = mCondStr & ReportFrm.GetWhereCondition("Party.GroupCode", 5)
+            mCondStr = mCondStr & ReportFrm.GetWhereCondition("SG.GroupCode", 5)
             mCondStr = mCondStr & ReportFrm.GetWhereCondition("LTV.Agent", 6)
             mCondStr = mCondStr & ReportFrm.GetWhereCondition("CT.CityCode", 7)
             mCondStr = mCondStr & ReportFrm.GetWhereCondition("Ct.State", 8)

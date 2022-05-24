@@ -3,14 +3,16 @@
   <Table>
     <Code>1</Code>
     <EffectiveUptoDate>2000-01-01T00:00:00+05:30</EffectiveUptoDate>
-    <DocumentHeaderRow1Left>JEET TEXTILES</DocumentHeaderRow1Left>
-    <DocumentHeaderRow2Left>55/32-B, GENERAL GANJ</DocumentHeaderRow2Left>
-    <DocumentHeaderRow3Left>Kanpur,208001</DocumentHeaderRow3Left>
-    <DocumentHeaderRow1Right>GST No : 09ABJPT9807C1ZA,PAN No : ABJPT9807C</DocumentHeaderRow1Right>
-    <DocumentHeaderRow2Right>Phone : 9648006600, 9451020234</DocumentHeaderRow2Right>
+    <DocumentHeaderRow1Left>BHAGWANT SINGH &amp; SONS</DocumentHeaderRow1Left>
+    <DocumentHeaderRow2Left>49/2, NAUGHARA,,KANPUR-208001</DocumentHeaderRow2Left>
+    <DocumentHeaderRow3Left />
+    <DocumentHeaderRow4Left />
+    <DocumentHeaderRow1Right>Phone : 0512-2388355 9936400702, 7860950982 </DocumentHeaderRow1Right>
+    <DocumentHeaderRow2Right>GSTIN : 09ACCPS3957J1Z2</DocumentHeaderRow2Right>
+    <DocumentHeaderRow3Right>PAN NO : ACCPS3957J</DocumentHeaderRow3Right>
     <IsSalesTaxApplicable>true</IsSalesTaxApplicable>
     <WeekOffDays>0</WeekOffDays>
     <EntryBy>System</EntryBy>
-    <EntryDate>2019-03-25T10:28:10+05:30</EntryDate>
+    <EntryDate>2018-11-26T11:05:33+05:30</EntryDate>
   </Table>
 </NewDataSet>

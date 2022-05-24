@@ -1,17 +1,19 @@
 <?xml version="1.0" standalone="yes"?>
 <NewDataSet>
   <Table>
-    <DocNo>D1-PS-576</DocNo>
-    <V_Date>2022-02-03T00:00:00+05:30</V_Date>
-    <HSubcodeName>SIYARAM SILK MILLS LTD.</HSubcodeName>
-    <Address>KAMALA MILLS COMPOUND,SENAPATI BAPAT MARG,LOWER PAREL MUMBAI</Address>
-    <CityName>MUMBAI</CityName>
-    <StateCode>27</StateCode>
-    <StateName>Maharashtra</StateName>
-    <PartyGSTNo>27AAACS6995D1Z2</PartyGSTNo>
-    <UptoDate>2022-02-03T00:00:00+05:30</UptoDate>
+    <DocNo>D1-PS-1</DocNo>
+    <V_Date>2022-03-31T00:00:00+05:30</V_Date>
+    <HSubcodeName>B.D.BATRA &amp; COMPANY</HSubcodeName>
+    <Address>BHILWARA</Address>
+    <CityName>BHILWARA</CityName>
+    <StateCode>08</StateCode>
+    <StateName>Rajasthan</StateName>
+    <PartyGSTNo>08ABDPB5560G1ZY</PartyGSTNo>
+    <UpToDate>2022-05-24T00:00:00+05:30</UpToDate>
     <DrCr>Cr</DrCr>
-    <HRemarks>Paid B.no:9071828303,828304</HRemarks>
+    <LSubcodeName>CASH A/C..</LSubcodeName>
+    <Amount>55401</Amount>
+    <LineTotalAmount>55401</LineTotalAmount>
     <PrintedByUser>SUPER</PrintedByUser>
     <PrintTitle>Payment Settlement</PrintTitle>
   </Table>
