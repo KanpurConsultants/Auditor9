@@ -77,6 +77,7 @@ Public Class FrmPartyAcSettlement
     Friend WithEvents MnuPrintCheque As ToolStripMenuItem
     Public WithEvents TxtLinkedParty As AgControls.AgTextBox
     Protected WithEvents LblLinkedParty As Label
+    Protected WithEvents LblPartyDisc As Label
     Dim mFlag_Import As Boolean = False
 
     Public Sub New(ByVal StrUPVar As String, ByVal DTUP As DataTable, ByVal NCatStr As String)
@@ -175,6 +176,7 @@ Public Class FrmPartyAcSettlement
         Me.TxtDifferenceJVDocNo = New AgControls.AgTextBox()
         Me.TxtLinkedParty = New AgControls.AgTextBox()
         Me.LblLinkedParty = New System.Windows.Forms.Label()
+        Me.LblPartyDisc = New System.Windows.Forms.Label()
         Me.GroupBox2.SuspendLayout()
         Me.GBoxMoveToLog.SuspendLayout()
         Me.GBoxApprove.SuspendLayout()
@@ -386,6 +388,7 @@ Public Class FrmPartyAcSettlement
         'TP1
         '
         Me.TP1.BackColor = System.Drawing.Color.FromArgb(CType(CType(234, Byte), Integer), CType(CType(234, Byte), Integer), CType(CType(234, Byte), Integer))
+        Me.TP1.Controls.Add(Me.LblPartyDisc)
         Me.TP1.Controls.Add(Me.Label3)
         Me.TP1.Controls.Add(Me.TxtDrCr)
         Me.TP1.Controls.Add(Me.BtnFill)
@@ -426,6 +429,7 @@ Public Class FrmPartyAcSettlement
         Me.TP1.Controls.SetChildIndex(Me.BtnFill, 0)
         Me.TP1.Controls.SetChildIndex(Me.TxtDrCr, 0)
         Me.TP1.Controls.SetChildIndex(Me.Label3, 0)
+        Me.TP1.Controls.SetChildIndex(Me.LblPartyDisc, 0)
         '
         'Topctrl1
         '
@@ -960,6 +964,16 @@ Public Class FrmPartyAcSettlement
         Me.LblLinkedParty.Size = New System.Drawing.Size(91, 14)
         Me.LblLinkedParty.TabIndex = 3022
         Me.LblLinkedParty.Text = "Linked Party"
+        '
+        'LblPartyDisc
+        '
+        Me.LblPartyDisc.AutoSize = True
+        Me.LblPartyDisc.Font = New System.Drawing.Font("Verdana", 9.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.LblPartyDisc.Location = New System.Drawing.Point(784, 17)
+        Me.LblPartyDisc.Name = "LblPartyDisc"
+        Me.LblPartyDisc.Size = New System.Drawing.Size(91, 14)
+        Me.LblPartyDisc.TabIndex = 814
+        Me.LblPartyDisc.Text = "LblPartyDisc"
         '
         'FrmPartyAcSettlement
         '
@@ -1545,9 +1559,15 @@ Public Class FrmPartyAcSettlement
             End If
         Next
 
+        Dim mInvoiceLists As String = ""
+        If mInvoiceList.Length > 220 Then
+            mInvoiceLists = mInvoiceList.Substring(0, 220)
+        Else
+            mInvoiceLists = mInvoiceList
+        End If
 
         If mLedgerPostingData <> "" Then mLedgerPostingData += " UNION ALL "
-        mNarration = "Payment Settlement for Invoices : " & mInvoiceList
+        mNarration = "Payment Settlement for Invoices : " & mInvoiceLists
         If TxtDrCr.Text = "Credit" Then
             If mTotalAmount > 0 Then
                 mLedgerPostingData += " Select " & AgL.Chk_Text(TxtParty.Tag) & " as Subcode, " & AgL.Chk_Text(TxtLinkedParty.Tag) & " As LinkedSubCode, Null as ContraAc, " & mTotalAmount & " as AmtDr, 0 as AmtCr, '" & mNarration & "' as Narration, '" & mChqNo & "' as ChqNo, '" & mChqDate & "' as ChqDate "
@@ -2139,7 +2159,7 @@ Public Class FrmPartyAcSettlement
 
                 mQry = " Select Sg.Nature, PSg.Code, PSg.Name 
                             From SubGroup Sg
-                            LEFT JOIN ViewHelpSubgroup PSg On Sg.Parent = PSg.Code
+                            LEFT JOIN ViewHelpSubgroup PSg On Sg.Parent = PSg.Code                            
                             Where Sg.SubCode = '" & TxtParty.Tag & "'
                             And Sg.Parent Is Not Null "
                 Dim DtParty As DataTable = AgL.FillData(mQry, AgL.GCn).Tables(0)
@@ -2151,7 +2171,6 @@ Public Class FrmPartyAcSettlement
                         TxtDrCr.Text = "Credit"
                         TxtDrCr.Tag = "Cr"
                     End If
-
 
                     TxtLinkedParty.Tag = AgL.XNull(DtParty.Rows(0)("Code"))
                     TxtLinkedParty.Text = AgL.XNull(DtParty.Rows(0)("Name"))
@@ -2368,6 +2387,7 @@ Public Class FrmPartyAcSettlement
         Dgl2.RowCount = 1 : Dgl2.Rows.Clear()
         Dgl3.RowCount = 1 : Dgl3.Rows.Clear()
         LblSettlementAmt.Text = 0 : LblPaidAmt.Text = 0 : LblInvoiceAmt.Text = 0
+        LblPartyDisc.Text = ""
     End Sub
 
     Private Sub DGL1_KeyDown(ByVal sender As Object, ByVal e As System.Windows.Forms.KeyEventArgs) Handles Dgl1.KeyDown, Dgl2.KeyDown, Dgl3.KeyDown
@@ -2649,7 +2669,8 @@ Public Class FrmPartyAcSettlement
         Dim mQry As String
         Try
 
-            mQry = "Select Nature From subgroup Where Subcode ='" & TxtParty.Tag & "'"
+            mQry = "Select SG.Nature From subgroup SG 
+                    Where SG.Subcode ='" & TxtParty.Tag & "'"
             If AgL.XNull(AgL.Dman_Execute(mQry, AgL.GCn).executeScalar()) = "Customer" Then
                 TxtDrCr.Text = "Debit"
                 TxtDrCr.Tag = "Dr"
@@ -2658,6 +2679,10 @@ Public Class FrmPartyAcSettlement
                 TxtDrCr.Tag = "Cr"
             End If
 
+            mQry = "Select PD.DiscountPer From subgroup SG 
+                    LEFT JOIN PersonDiscount PD ON PD.Person = SG.Subcode AND PD.ItemCategory IS NULL AND PD.ItemGroup IS NULL 
+                    Where SG.Subcode ='" & TxtParty.Tag & "'"
+            LblPartyDisc.Text = AgL.XNull(AgL.Dman_Execute(mQry, AgL.GCn).executeScalar())
 
             'mQry = "select H.DocID, H.V_Date, H.Taxable_Amount, H.Net_Amount, H.Div_Code || H.Site_Code || '-' || H.V_Type || '-' || H.ManualRefNo As InvoiceNo                    
             '        from PurchInvoice H
@@ -3201,7 +3226,7 @@ Public Class FrmPartyAcSettlement
         dsInvoice = AgL.FillData(mQry, AgL.GCn).Tables(0)
 
         mQry = "select (Case When IH.PartyDocNo Is Null Then L.DivCode || L.Site_Code || '-' || L.V_Type || '-' || L.RecId Else IH.PartyDocNo End) As PaymentNo,
-                L.V_Date, 'Ch.-' || L. Chq_No || ',Dt.-' || L.Chq_Date as Narration, H.PaidAmount, cSg.Name as ContraName
+                L.V_Date, CASE WHEN L.Chq_No IS NOT NULL THEN 'Ch.-' || L. Chq_No || ',Dt.-' || Cast(strftime('%d/%m/%Y', IfNull(L.Chq_Date,L.V_Date)) As nvarchar)  ELSE NULL END as Narration, H.PaidAmount, cSg.Name as ContraName
                 from Cloth_SupplierSettlementPayments H
                 Left Join LedgerHead LH On H.DocID = LH.DocId
                 Left Join Ledger L On H.PaymentDocId =  L.DocID And IfNull(H.PaymentDocIDSr, L.V_SNo) = L.V_SNo And LH.Subcode = L.Subcode

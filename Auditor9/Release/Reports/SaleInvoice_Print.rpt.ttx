@@ -1,53 +1,60 @@
 ; Field definition file for table: ADORecordset
 Copies	string	255	1	
 CopyPrintingCaption	string	255		
-DocNoCaption	string	255	Invoice No.	
-DocDateCaption	string	255	Invoice Date	
+DocNoCaption	string	255	Doc.No.	
+DocDateCaption	string	255	Doc.Date	
 SiteStateCode	string	255	09	
 SiteStateName	string	255	Uttar Pradesh	
-DocID	string	255	D1    SI 2022     920	
+DocID	string	255	D1   SRR 2022       1	
 Sr	number	1	
-V_Date	datetime	11/Apr/2022 12:00:00 AM	
+V_Date	datetime	02/Apr/2022 12:00:00 AM	
 DeliveryDate	datetime		
-Voucher_Type	string	255	Tax Invoice	
-NCat	string	255	SI	
-InvoiceNo	string	255	SI-920	
-RateType	string	255	Super Net	
+Voucher_Type	string	255	Sale Return Retail	
+NCat	string	255	SR	
+InvoiceNo	string	255	SRR-1	
+GenDocNo	string	255		
+AmsDocNo	string	255		
+AmsDocDate	datetime		
+AmsDocNetAmount	number	0	
+RateType	string	255		
 DocumentPrintShowRateType	string	255	Show If Not Blank	
-AgentName	string	255	SANJAY SHARMA	
+AgentName	string	255		
+SalesRepName	string	255		
+SalesRepCode	string	255		
 AgentCaption	string	255	Agent	
-SaleToPartyName	string	255	SATYAM JEWELARS  & CLOTH HOUSE	
-SaleToPartyAddress	string	255	HARAURA BAZAR DIST: SULTANPUR
-	
-CityName	string	255	SULTANPUR	
-SaleToPartyPincode	string	255	228121	
+SaleToPartyName	string	255		
+SaleToPartyAddress	string	255		
+CityName	string	255	Kanpur	
+SaleToPartyPincode	string	255		
 StateCode	string	255	09	
 StateName	string	255	Uttar Pradesh	
-SaleToPartyMobile	string	255	9918044010	
+SaleToPartyMobile	string	255		
 ContactPerson	string	255		
 SaleToPartySalesTaxNo	string	255		
-SaleToPartyAadharNo	string	255	482522358596	
-SaleToPartyPanNo	string	255	AKSPG2500R	
-ShipToPartyName	string	255	SATYAM JEWELARS  & CLOTH HOUSE	
-ShipToPartyAddress	string	255	HARAURA BAZAR DIST: SULTANPUR
-	
-ShipToPartyCity	string	255	SULTANPUR	
-ShipToPartyPincode	string	255	228121	
+SaleToPartyAadharNo	string	255		
+SaleToPartyPanNo	string	255		
+SaleToPartyLicenseNo	string	255		
+ShipToPartyName	string	255		
+ShipToPartyAddress	string	255		
+ShipToPartyCity	string	255	Kanpur	
+ShipToPartyPincode	string	255		
 ShipToPartyStateCode	string	255	09	
 ShipToPartyStateName	string	255	Uttar Pradesh	
-ShipToPartyMobile	string	255	9918044010	
+ShipToPartyMobile	string	255		
 ShipToPartySalesTaxNo	string	255		
-ShipToPartyAadharNo	string	255	482522358596	
-ShipToPartyPanNo	string	255	AKSPG2500R	
+ShipToPartyAadharNo	string	255		
+ShipToPartyPanNo	string	255		
+ShipToPartyLicenseNo	string	255		
 ShipToAddress	string	255		
-TermsAndConditions	string	255	<b>1.</b> Goods once sold will not be taken back. <b>2.</b> No Guarantee in the Age of Fashion. <b>3.</b> Interest @ 24% per annum will be charge after 30 days from the date of bill. <b>4.</b> All disputes subject to Kanpur Jurisdiction OR disputes will be settle through Cawnpore Kapda Committee Arbitration Board which will be abide by the both parties	
-TransporterName	string	255	HINDUSTAN TRANSPORT SERVICES., KANPUR	
+TermsAndConditions	string	255		
+TransporterName	string	255		
 LrNo	string	255		
 LrDate	datetime		
+NoOfBales	number		
 PrivateMark	string	255		
-Weight	number	0	
-Freight	number	0	
-ChargedWeight	number	0	
+Weight	number		
+Freight	number		
+ChargedWeight	number		
 FreightType	string	255		
 RoadPermitNo	string	255		
 RoadPermitDate	datetime		
@@ -60,19 +67,44 @@ BookedTo	string	255
 Destination	string	255		
 DescriptionOfGoods	string	255		
 DescriptionOfPacking	string	255		
-ReferenceNo	string	255		
-ItemName	string	255	RED GOLD          [KESHAVAM FASHION 58 | SAREE PRINT]	
-ItemGroupName	string	255	S-ENT-58-PRINT	
-ItemCatName	string	255	SAREE PRINT	
-ItemSpecification	string	255	RED GOLD	
+ReferenceNo	string	255	SIR1320	
+BarcodeName	string	255	1245	
+ItemName	string	255	GKG-SE-NA-HALKI-SAREE-D1   ISS 2021     811	
+ItemGroupName	string	255	SE-NA-HALKI	
+ItemCatName	string	255	SAREE	
+ItemManualCode	string	255	D100096157	
+ItemSpecification	string	255	GKG	
 InvoiceLineSpecification	string	255		
-HSN	string	255	540754	
+HSN	string	255	540752	
 MaintainStockYn	boolean	True	
+D1Spec	string	255		
+D2Spec	string	255		
+D3Spec	string	255		
+D4Spec	string	255		
+SizeSpec	string	255		
+ItemInvoiceGroupCode	string	255		
+ItemInvoiceGroupDesc	string	255		
+ItemTypeCaption	string	255	Item Type	
+ItemCategoryCaption	string	255	Item Category	
+ItemGroupCaption	string	255	Item Group	
+ItemCaption	string	255	Item	
+BarcodeCaption	string	255		
+D1Caption	string	255	Quality	
+D2Caption	string	255	Colour	
+D3Caption	string	255	Design	
+D4Caption	string	255	Width	
 SalesTaxGroupItem	string	255	GST 5%	
 GrossTaxRate	number	5	
-Pcs	number	8	
-Qty	number	8	
-Rate	number	365	
+MRP	number	595	
+LotNo	string	255		
+ExpiryDate	datetime		
+ItemRemark1	string	255		
+Pcs	number	1	
+Qty	number	1	
+Rate	number	595	
+ItemState	string	255		
+CatalogSpecification	string	255		
+CatalogSiteName	string	255		
 Unit	string	255	Pcs	
 UnitDecimalPlaces	number	0	
 DiscountPer	number	0	
@@ -82,34 +114,39 @@ AdditionalDiscountAmount	number	0
 AdditionPer	number	0	
 AdditionAmount	number	0	
 TotalDiscount	number	0	
-AmountBeforeDiscount	number	2920	
-Amount	number	2920	
-Taxable_Amount	number	2920	
+Deal	string	255		
+AmountBeforeDiscount	number	595	
+Amount	number	595	
+Taxable_Amount	number	566.67	
 Tax1_Per	number	0	
 Tax1	number	0	
 Tax2_Per	number	2.5	
-Tax2	number	73	
+Tax2	number	14.17	
 Tax3_Per	number	2.5	
-Tax3	number	73	
+Tax3	number	14.17	
 Tax4_Per	number	0	
 Tax4	number	0	
 Tax5_Per	number	0	
 Tax5	number	0	
-Net_Amount	number	3066	
+Net_Amount	number	595	
 LRemarks	string	255		
 HRemarks	string	255		
+SalesTaxSummaryStr	string	255	540752 Taxable Amt : -566.67 Tax Amt : -28.34, 	
+H_Discount	number	0	
+H_AdditionalDiscount	number	0	
+H_Additional	number	0	
 H_TotalDiscount	number	0	
-H_AmountBeforeDiscount	number	2920	
-H_Gross_Amount	number	2920	
+H_AmountBeforeDiscount	number	595	
+H_Gross_Amount	number	595	
 H_SpecialDiscount_Per	number	0	
 H_SpecialDiscount	number	0	
-H_Taxable_Amount	number	2920	
+H_Taxable_Amount	number	566.67	
 H_Tax1_Per	number	0	
 H_Tax1	number	0	
 H_Tax2_Per	number	0	
-H_Tax2	number	73	
+H_Tax2	number	14.17	
 H_Tax3_Per	number	0	
-H_Tax3	number	73	
+H_Tax3	number	14.17	
 H_Tax4_Per	number	0	
 H_Tax4	number	0	
 H_Tax5_Per	number	0	
@@ -118,18 +155,26 @@ H_Deduction_Per	number	0
 H_Deduction	number	0	
 H_Other_Charge_Per	number	0	
 H_Other_Charge	number	0	
-Round_Off	number	0	
-H_Net_Amount	number	3066	
+H_Other_Charge1_Per	number	0	
+H_Other_Charge1	number	0	
+H_Other_Charge2_Per	number	0	
+H_Other_Charge2	number	0	
+Round_Off	number	0.01	
+H_Net_Amount	number	595	
 EInvoiceIRN	string	255		
-EInvoiceAckNo	string	255		
-EInvoiceAckDate	datetime		
-Default_BankAccountDetail	string	255	Bank Detail : 	HDFC A/c : 50200003154727    IFSC : HDFC0002006	
+EInvoiceACKNo	string	255		
+EInvoiceACKDate	datetime		
+Default_BankAccountDetail	string	255		
 DocumentPrintHeaderPattern	string	255	Center Aligned	
 DimDetail	string	255		
 PrintedByUser	string	255	SUPER	
-EntryByUser	string	255	sameer	
-PrintTitle	string	255	TAX INVOICE	
+EntryByUser	string	255	user	
+PrintTitle	string	255	Sale Return Retail	
 DocumentPrintShowPrintDateTimeYn	string	255	1	
+DocumentPrintShowPartyBalance	string	255	Hide	
+TodaysOpeningBalance	long	0	
+TodaysDr	long	0	
+TodaysCr	long	0	
+TodaysClosingBalance	long	0	
 CompanyLogo	BLOB		
 CompanyAuthorisedSignature	BLOB		
-EInvoiceQrCode	BLOB		

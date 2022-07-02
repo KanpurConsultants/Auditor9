@@ -3,13 +3,13 @@
   <Table>
     <Code>1</Code>
     <EffectiveUptoDate>2000-01-01T00:00:00+05:30</EffectiveUptoDate>
-    <DocumentHeaderRow1Left>BHAGWANT SINGH &amp; SONS</DocumentHeaderRow1Left>
-    <DocumentHeaderRow2Left>49/2, NAUGHARA,,KANPUR-208001</DocumentHeaderRow2Left>
+    <DocumentHeaderRow1Left>HARSHEEN ENTERPRISES</DocumentHeaderRow1Left>
+    <DocumentHeaderRow2Left>49/2, NAUGHARA ,KANPUR-208001</DocumentHeaderRow2Left>
     <DocumentHeaderRow3Left />
     <DocumentHeaderRow4Left />
-    <DocumentHeaderRow1Right>Phone : 0512-2388355 9936400702, 7860950982 </DocumentHeaderRow1Right>
-    <DocumentHeaderRow2Right>GSTIN : 09ACCPS3957J1Z2</DocumentHeaderRow2Right>
-    <DocumentHeaderRow3Right>PAN NO : ACCPS3957J</DocumentHeaderRow3Right>
+    <DocumentHeaderRow1Right>Phone : 9936400702, 7860950982</DocumentHeaderRow1Right>
+    <DocumentHeaderRow2Right>GSTIN : 09DMYPK9079L1ZN</DocumentHeaderRow2Right>
+    <DocumentHeaderRow3Right>Helpline    : 8400400702 </DocumentHeaderRow3Right>
     <IsSalesTaxApplicable>true</IsSalesTaxApplicable>
     <WeekOffDays>0</WeekOffDays>
     <EntryBy>System</EntryBy>

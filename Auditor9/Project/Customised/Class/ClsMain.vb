@@ -22030,7 +22030,7 @@ Thanks
                     I.Default_MarginPer, I.BarcodeType, I.BarcodePattern, I.Default_DiscountPerPurchase, I.Default_AdditionalDiscountPerPurchase,  I.Default_AdditionPerPurchase,
                     I.ManualCode, IfNull(I.PrintingDescription,I.Description) AS PrintingDescription, 
                     I.ShowItemInOtherDivisions AS ShowItemGroupInOtherDivisions, 
-                    I.ShowItemInOtherSites AS ShowItemGroupInOtherSites, 
+                    I.ShowItemInOtherSites AS ShowItemGroupInOtherSites, I.CalcCode,
                     I.DefaultSupplier, I.Site_Code, I.SalesRepresentativeCommissionPer, I.OMSId  
                     FROM Item I
                     WHERE I.V_Type = 'IG'"

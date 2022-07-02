@@ -2858,7 +2858,7 @@ Public Class ClsReports
                         LEFT JOIN City CT On SG.CityCode  =CT.CityCode 
                         Left Join SiteMast Site On LG.Site_Code = Site.Code
                         Left Join Subgroup D On LG.DivCode = D.SubCode
-                        Where (LG.AmtDr+LG.AmtCr)  - IfNull(Adj.AdjAmt,0) >0                         
+                        Where Round((LG.AmtDr+LG.AmtCr)  - IsNull(Adj.AdjAmt,0),3) >0                         
                         And SG.Nature ='Supplier'                            
                     " & mCondStr
 

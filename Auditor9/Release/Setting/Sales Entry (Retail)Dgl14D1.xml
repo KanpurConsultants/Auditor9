@@ -25,7 +25,7 @@
     <Name>Barcode</Name>
     <Index>3</Index>
     <Width>100</Width>
-    <Visible>False</Visible>
+    <Visible>True</Visible>
     <AggregateFunction />
   </Column>
   <Column>
@@ -46,14 +46,14 @@
     <Name>Item Category</Name>
     <Index>6</Index>
     <Width>100</Width>
-    <Visible>True</Visible>
+    <Visible>False</Visible>
     <AggregateFunction />
   </Column>
   <Column>
     <Name>Item Group</Name>
     <Index>7</Index>
     <Width>100</Width>
-    <Visible>True</Visible>
+    <Visible>False</Visible>
     <AggregateFunction />
   </Column>
   <Column>
@@ -375,7 +375,7 @@
     <Name>Sales Rep.</Name>
     <Index>53</Index>
     <Width>100</Width>
-    <Visible>True</Visible>
+    <Visible>False</Visible>
     <AggregateFunction />
   </Column>
   <Column>
@@ -739,7 +739,7 @@
     <Name>Taxable Amount</Name>
     <Index>105</Index>
     <Width>100</Width>
-    <Visible>True</Visible>
+    <Visible>False</Visible>
     <AggregateFunction />
   </Column>
   <Column>
@@ -760,14 +760,14 @@
     <Name>IGST @</Name>
     <Index>108</Index>
     <Width>100</Width>
-    <Visible>True</Visible>
+    <Visible>False</Visible>
     <AggregateFunction />
   </Column>
   <Column>
     <Name>IGST</Name>
     <Index>109</Index>
     <Width>100</Width>
-    <Visible>True</Visible>
+    <Visible>False</Visible>
     <AggregateFunction />
   </Column>
   <Column>
@@ -788,14 +788,14 @@
     <Name>CGST @</Name>
     <Index>112</Index>
     <Width>100</Width>
-    <Visible>True</Visible>
+    <Visible>False</Visible>
     <AggregateFunction />
   </Column>
   <Column>
     <Name>CGST</Name>
     <Index>113</Index>
     <Width>100</Width>
-    <Visible>True</Visible>
+    <Visible>False</Visible>
     <AggregateFunction />
   </Column>
   <Column>
@@ -816,14 +816,14 @@
     <Name>SGST @</Name>
     <Index>116</Index>
     <Width>100</Width>
-    <Visible>True</Visible>
+    <Visible>False</Visible>
     <AggregateFunction />
   </Column>
   <Column>
     <Name>SGST</Name>
     <Index>117</Index>
     <Width>100</Width>
-    <Visible>True</Visible>
+    <Visible>False</Visible>
     <AggregateFunction />
   </Column>
   <Column>
@@ -844,7 +844,7 @@
     <Name>Sub Total 1</Name>
     <Index>120</Index>
     <Width>100</Width>
-    <Visible>True</Visible>
+    <Visible>False</Visible>
     <AggregateFunction />
   </Column>
   <Column>

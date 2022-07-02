@@ -307,7 +307,14 @@ Public Class FrmRecelculateSales
                 SaleInvoiceTable.Line_DocDealQty = AgL.XNull(DtSaleInvoiceDetail_ForHeader.Rows(J)("DocDealQty"))
                 SaleInvoiceTable.Line_OmsId = ""
                 'SaleInvoiceTable.Line_Rate = AgL.XNull(DtSaleInvoiceDetail_ForHeader.Rows(J)("Rate"))
-                SaleInvoiceTable.Line_Rate = Math.Round(AgL.VNull(DtSaleInvoiceDetail_ForHeader.Rows(J)("Rate")) - (AgL.VNull(DtSaleInvoiceDetail_ForHeader.Rows(J)("Rate")) * AgL.VNull(DtSaleInvoiceDetail_ForHeader.Rows(J)("CalcCode")) / 100), 2)
+
+                If AgL.StrCmp(AgL.PubDBName, "SHADHVINANDI") Then
+                    SaleInvoiceTable.Line_Rate = Math.Round(AgL.VNull(DtSaleInvoiceDetail_ForHeader.Rows(J)("Rate")) - (AgL.VNull(DtSaleInvoiceDetail_ForHeader.Rows(J)("Rate")) * AgL.VNull(DtSaleInvoiceDetail_ForHeader.Rows(J)("CalcCode")) / 100), 0)
+                Else
+                    SaleInvoiceTable.Line_Rate = Math.Round(AgL.VNull(DtSaleInvoiceDetail_ForHeader.Rows(J)("Rate")) - (AgL.VNull(DtSaleInvoiceDetail_ForHeader.Rows(J)("Rate")) * AgL.VNull(DtSaleInvoiceDetail_ForHeader.Rows(J)("CalcCode")) / 100), 2)
+                End If
+
+
                 SaleInvoiceTable.Line_DiscountPer = AgL.VNull(DtSaleInvoiceDetail_ForHeader.Rows(J)("DiscountPer"))
                 SaleInvoiceTable.Line_DiscountAmount = AgL.VNull(DtSaleInvoiceDetail_ForHeader.Rows(J)("DiscountAmount"))
                 SaleInvoiceTable.Line_AdditionalDiscountPer = AgL.VNull(DtSaleInvoiceDetail_ForHeader.Rows(J)("AdditionalDiscountPer"))
@@ -335,16 +342,26 @@ Public Class FrmRecelculateSales
                 SaleInvoiceTable.Line_NetWeight = AgL.VNull(DtSaleInvoiceDetail_ForHeader.Rows(J)("NetWeight"))
 
                 SaleInvoiceTable.Line_Gross_Amount = SaleInvoiceTable.Line_Amount
-                SaleInvoiceTable.Line_Taxable_Amount = SaleInvoiceTable.Line_Amount
+
                 SaleInvoiceTable.Line_Tax1_Per = AgL.VNull(DtSaleInvoiceDetail_ForHeader.Rows(J)("Tax1_Per"))
-                SaleInvoiceTable.Line_Tax1 = Math.Round(SaleInvoiceTable.Line_Taxable_Amount * SaleInvoiceTable.Line_Tax1_Per / 100, 2)
                 SaleInvoiceTable.Line_Tax2_Per = AgL.VNull(DtSaleInvoiceDetail_ForHeader.Rows(J)("Tax2_Per"))
-                SaleInvoiceTable.Line_Tax2 = Math.Round(SaleInvoiceTable.Line_Taxable_Amount * SaleInvoiceTable.Line_Tax2_Per / 100, 2)
                 SaleInvoiceTable.Line_Tax3_Per = AgL.VNull(DtSaleInvoiceDetail_ForHeader.Rows(J)("Tax3_Per"))
-                SaleInvoiceTable.Line_Tax3 = Math.Round(SaleInvoiceTable.Line_Taxable_Amount * SaleInvoiceTable.Line_Tax3_Per / 100, 2)
                 SaleInvoiceTable.Line_Tax4_Per = AgL.VNull(DtSaleInvoiceDetail_ForHeader.Rows(J)("Tax4_Per"))
-                SaleInvoiceTable.Line_Tax4 = Math.Round(SaleInvoiceTable.Line_Taxable_Amount * SaleInvoiceTable.Line_Tax4_Per / 100, 2)
                 SaleInvoiceTable.Line_Tax5_Per = AgL.VNull(DtSaleInvoiceDetail_ForHeader.Rows(J)("Tax5_Per"))
+
+                If AgL.StrCmp(AgL.PubDBName, "SHADHVINANDI") Then
+                    Dim Tax As Double = 0
+                    Tax = SaleInvoiceTable.Line_Tax1_Per + SaleInvoiceTable.Line_Tax2_Per + SaleInvoiceTable.Line_Tax3_Per + SaleInvoiceTable.Line_Tax4_Per + SaleInvoiceTable.Line_Tax5_Per
+                    SaleInvoiceTable.Line_Taxable_Amount = SaleInvoiceTable.Line_Amount * 100 / (100 + Tax)
+                Else
+                    SaleInvoiceTable.Line_Taxable_Amount = SaleInvoiceTable.Line_Amount
+                End If
+
+
+                SaleInvoiceTable.Line_Tax1 = Math.Round(SaleInvoiceTable.Line_Taxable_Amount * SaleInvoiceTable.Line_Tax1_Per / 100, 2)
+                SaleInvoiceTable.Line_Tax2 = Math.Round(SaleInvoiceTable.Line_Taxable_Amount * SaleInvoiceTable.Line_Tax2_Per / 100, 2)
+                SaleInvoiceTable.Line_Tax3 = Math.Round(SaleInvoiceTable.Line_Taxable_Amount * SaleInvoiceTable.Line_Tax3_Per / 100, 2)
+                SaleInvoiceTable.Line_Tax4 = Math.Round(SaleInvoiceTable.Line_Taxable_Amount * SaleInvoiceTable.Line_Tax4_Per / 100, 2)
                 SaleInvoiceTable.Line_Tax5 = Math.Round(SaleInvoiceTable.Line_Taxable_Amount * SaleInvoiceTable.Line_Tax5_Per / 100, 2)
                 SaleInvoiceTable.Line_SubTotal1 = SaleInvoiceTable.Line_Taxable_Amount + SaleInvoiceTable.Line_Tax1 + SaleInvoiceTable.Line_Tax2 + SaleInvoiceTable.Line_Tax3 + SaleInvoiceTable.Line_Tax4 + SaleInvoiceTable.Line_Tax5
                 SaleInvoiceTable.Line_Other_Charge = AgL.VNull(DtSaleInvoiceDetail_ForHeader.Rows(J)("Other_Charge"))

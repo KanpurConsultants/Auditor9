@@ -264,7 +264,7 @@ Public Class FrmItemGroup
     End Sub
     Public Overridable Sub FrmYarn_BaseEvent_FindMain() Handles Me.BaseEvent_FindMain
         Dim mConStr$ = ""
-        AgL.PubFindQry = "SELECT I.Code As SearchCode, I.Description as Item_Group, IC.Description as ItemCategory, T.Name AS ItemType, Sm.Name As SiteName 
+        AgL.PubFindQry = "SELECT I.Code As SearchCode, I.Description as Item_Group, IC.Description as ItemCategory, T.Name AS ItemType, Sm.Name As SiteName, I.CalcCode  
                         FROM ItemGroup I  
                         Left Join ItemCategory IC On I.ItemCategory = IC.Code
                         Left Join ItemType T On I.ItemType = T.Code 

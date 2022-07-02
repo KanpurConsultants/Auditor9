@@ -14060,6 +14060,11 @@ Public Class FrmPurchInvoiceDirect_WithDimension
                 FGetPrint(SearchCode, ClsMain.PrintFor.DocumentPrint, True)
             End If
         End If
+
+        If AgL.StrCmp(AgL.PubDBName, "SHADHVINANDI") And LblV_Type.Tag = "PR" Then
+            mQry = " Update Ledger set SubCode ='PURCH' Where DocId ='" & mSearchCode & "' and AmtCr > 0 "
+            AgL.Dman_ExecuteNonQry(mQry, AgL.GCn, AgL.ECmd)
+        End If
     End Sub
     Private Function FValidateSalesTaxGroup() As Boolean
         Dim bAllowedSalesTaxGroupParty As String = FGetSettings(SettingFields.AllowedSalesTaxGroupParty, SettingType.General)

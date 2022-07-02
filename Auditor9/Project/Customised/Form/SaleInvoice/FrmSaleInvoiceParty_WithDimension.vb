@@ -912,7 +912,9 @@ Public Class FrmSaleInvoiceParty_WithDimension
                             '    AND Sp.DocID IS NULL "
 
                             mQry = FGetBalanceGoodsReturnQry()
+                            Dgl2.AgSearchMethod = AgControls.AgLib.TxtSearchMethod.Comprehensive
                             Dgl2.AgHelpDataSet(Col2ReferenceNo) = AgL.FillData(mQry, AgL.GCn)
+
                         End If
                     End If
 
@@ -1065,7 +1067,7 @@ Public Class FrmSaleInvoiceParty_WithDimension
         End If
     End Sub
     Private Function FGetBalanceGoodsReturnQry() As String
-        mQry = "SELECT H.DocID, H.V_Type + '-' + H.ManualRefNo AS ReturnNo, 
+        mQry = "SELECT H.DocID, H.V_Type || '-' || H.V_Prefix || '-' || H.ManualRefNo AS ReturnNo, 
                 IsNull(Abs(H.Net_Amount),0) - IsNull(Abs(VPayment.AdjustedAmount),0) AS BalanceAmount
                 FROM SaleInvoice H 
                 LEFT JOIN Voucher_Type Vt ON H.V_Type = Vt.V_Type
@@ -1078,6 +1080,7 @@ Public Class FrmSaleInvoiceParty_WithDimension
 	                GROUP BY Sip.ReferenceDocID
                 ) AS VPayment ON H.DocId = VPayment.ReferenceDocID
                 WHERE Vt.NCat = 'SR'
+                And H.Div_Code=" & AgL.Chk_Text(AgL.PubDivCode) & " And H.Site_Code=" & AgL.Chk_Text(AgL.PubSiteCode) & "
                 AND IsNull(Abs(H.Net_Amount),0) - IsNull(Abs(VPayment.AdjustedAmount),0) > 0  "
         FGetBalanceGoodsReturnQry = mQry
     End Function

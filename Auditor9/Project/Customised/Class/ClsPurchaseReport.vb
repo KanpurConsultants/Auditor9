@@ -330,7 +330,7 @@ Public Class ClsPurchaseReport
                     H.Div_Code || H.Site_Code || '-' || H.V_Type || '-' || H.ManualRefNo as ManualRefNo, 
                     H.SalesTaxGroupParty, L.SalesTaxGroupItem,
                     L.Item, I.Specification As ItemSpecification, IfNull(I.HSN,IC.HSN) As HSN, 
-                    IC.Description As ItemCategoryDesc, IG.Description As ItemGroupDesc, 
+                    IC.Description As ItemCategoryDesc, IG.Description As ItemGroupDesc, B.Description AS BarcodeDesc,
                     Case When Sku.V_Type = '" & ItemV_Type.SKU & "' Then I.Specification Else Sku.Specification End as ItemDesc,
                     D1.Description as Dimension1Desc, D2.Description as Dimension2Desc,
                     D3.Description as Dimension3Desc, D4.Description as Dimension4Desc, Size.Description as SizeDesc,
@@ -344,6 +344,7 @@ Public Class ClsPurchaseReport
                     Transporter.Name as TransporterName, HT.LRNo, strftime('%d/%m/%Y', HT.LRDate) as LRDate, HT.NoOfBales, Cust.Name as CustomerName
                     FROM PurchInvoice H 
                     Left Join PurchInvoiceDetail L On H.DocID = L.DocID 
+                    Left Join Barcode B On B.GenDocID = L.DocID AND B.GenSr = L.Sr
                     Left Join PurchInvoiceTransport HT On H.DocId = HT.DocID
                     Left Join viewHelpSubgroup Transporter On HT.Transporter = Transporter.Code
                     LEFT JOIN SubGroup Prs On H.Process = Prs.SubCode
@@ -403,6 +404,7 @@ Public Class ClsPurchaseReport
                     Max(VMain.Dimension2Desc) As Dimension2, 
                     Max(VMain.Dimension3Desc) As Dimension3, 
                     Max(VMain.Dimension4Desc) As Dimension4, 
+                    Max(VMain.BarcodeDesc) As Barcode, 
                     Max(VMain.SizeDesc) As Size, 
                     Sum(VMain.Qty) As Qty, Max(VMain.Unit) As Unit, 
                     Sum(VMain.DealQty) As DealQty, Max(VMain.DealUnit) As DealUnit, 
