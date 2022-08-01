@@ -2667,6 +2667,7 @@ Public Class FrmPartyAcSettlement
         Dim DtTemp As DataTable
         Dim I As Integer
         Dim mQry As String
+        Dim Disc As String = ""
         Try
 
             mQry = "Select SG.Nature From subgroup SG 
@@ -2682,7 +2683,10 @@ Public Class FrmPartyAcSettlement
             mQry = "Select PD.DiscountPer From subgroup SG 
                     LEFT JOIN PersonDiscount PD ON PD.Person = SG.Subcode AND PD.ItemCategory IS NULL AND PD.ItemGroup IS NULL 
                     Where SG.Subcode ='" & TxtParty.Tag & "'"
-            LblPartyDisc.Text = AgL.XNull(AgL.Dman_Execute(mQry, AgL.GCn).executeScalar())
+            Disc = AgL.XNull(AgL.Dman_Execute(mQry, AgL.GCn).executeScalar())
+            If Disc <> "" Then
+                LblPartyDisc.Text = "Disc % " + Disc
+            End If
 
             'mQry = "select H.DocID, H.V_Date, H.Taxable_Amount, H.Net_Amount, H.Div_Code || H.Site_Code || '-' || H.V_Type || '-' || H.ManualRefNo As InvoiceNo                    
             '        from PurchInvoice H

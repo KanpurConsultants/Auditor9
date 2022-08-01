@@ -3021,14 +3021,18 @@ Public Class FrmPurchInvoiceDirect
 
         If BtnHeaderDetail.Tag IsNot Nothing Then
             If CType(BtnHeaderDetail.Tag, FrmPurchaseInvoiceHeader).Dgl1.Item(FrmPurchaseInvoiceHeader.Col1Value, FrmPurchaseInvoiceHeader.rowLrNo).Value <> "" Then
-                mQry = "Select Count(*) From PurchInvoiceTransport 
+                If AgL.StrCmp(AgL.PubDBName, "Sadhvi") Then
+
+                Else
+                    mQry = "Select Count(*) From PurchInvoiceTransport 
                     Where LrNo = '" & CType(BtnHeaderDetail.Tag, FrmPurchaseInvoiceHeader).Dgl1.Item(FrmPurchaseInvoiceHeader.Col1Value, FrmPurchaseInvoiceHeader.rowLrNo).Value & "'
                     And Transporter = '" & CType(BtnHeaderDetail.Tag, FrmPurchaseInvoiceHeader).Dgl1.Item(FrmPurchaseInvoiceHeader.Col1Value, FrmPurchaseInvoiceHeader.rowTransporter).Tag & "'
                     And DocId <> '" & mSearchCode & "'"
-                If AgL.VNull(AgL.Dman_Execute(mQry, AgL.GCn).ExecuteScalar()) > 0 Then
-                    MsgBox("LR No " & CType(BtnHeaderDetail.Tag, FrmPurchaseInvoiceHeader).Dgl1.Item(FrmPurchaseInvoiceHeader.Col1Value, FrmPurchaseInvoiceHeader.rowLrNo).Value & " is alredy entered for " & CType(BtnHeaderDetail.Tag, FrmPurchaseInvoiceHeader).Dgl1.Item(FrmPurchaseInvoiceHeader.Col1Value, FrmPurchaseInvoiceHeader.rowTransporter).Value, MsgBoxStyle.Information)
-                    passed = False
-                    Exit Sub
+                    If AgL.VNull(AgL.Dman_Execute(mQry, AgL.GCn).ExecuteScalar()) > 0 Then
+                        MsgBox("LR No " & CType(BtnHeaderDetail.Tag, FrmPurchaseInvoiceHeader).Dgl1.Item(FrmPurchaseInvoiceHeader.Col1Value, FrmPurchaseInvoiceHeader.rowLrNo).Value & " is alredy entered for " & CType(BtnHeaderDetail.Tag, FrmPurchaseInvoiceHeader).Dgl1.Item(FrmPurchaseInvoiceHeader.Col1Value, FrmPurchaseInvoiceHeader.rowTransporter).Value, MsgBoxStyle.Information)
+                        passed = False
+                        Exit Sub
+                    End If
                 End If
             End If
         End If

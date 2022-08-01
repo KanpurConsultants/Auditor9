@@ -1,46 +1,47 @@
 ; Field definition file for table: ADORecordset
-DivisionName	string	255	SADHVI EMBROIDERY {EMBROIDERY}, KANPUR	
-PartyName	string	255	GOVIND SAREE CENTER, MADHOGANJ	
-Address	string	255	SADAR BAZAR MADHUGANJ DIST-HARDOI	
-Mobile	string	255	9415438642	
-AgentName	string	255	VINOD KUMAR MANDHANI, KANPUR	
+DivisionName	string	255	SADHVI ENTERPRISES {ENTERPRISES}, KANPUR	
+PartyName	string	255	RAVI VASTRALAY{AMANIGANJ}, AMANIGANJ 	
+Address	string	255	AMANIGANJ DIST:-AYODHYA
+	
+Mobile	string	255	9450763938	
+AgentName	string	255	TILAK VASTRALAY{RUDHOLI), KANPUR	
 SalesRepresentativeName	string	255		
 AreaName	string	255		
-DrDocID	string	255	E1    SI 2021    3140	
-DrDivision	string	255	E	
-DrSubcode	string	255	D100002786	
-DrSr	number	120	
-DrDate	datetime	29/May/2021 00:00:00	
-DrDocNo	string	255	SI-865	
-DrAmount	number	59913	
-DrTaxableAmount	number	57060	
-DrTaxAmount	number	2853.08	
-DrDays	number	113	
+DrDocID	string	255	D1    SI 2022    3796	
+DrDivision	string	255	D	
+DrSubcode	string	255	D100019782	
+DrSr	number	43	
+DrDate	datetime	21/Jun/2022 12:00:00 AM	
+DrDocNo	string	255	SI-3796	
+DrAmount	number	103813	
+DrTaxableAmount	number	98869	
+DrTaxAmount	number	4943.6	
+DrDays	number	9	
 DrInterest	number	0	
-DrCumAmount	number	1473412	
-DrBalAmount	number	59913	
-DrTotal	number	1525615	
+DrCumAmount	number	1007910	
+DrBalAmount	number	94925	
+DrTotal	number	1007910	
 DrNarration	string	255	Tax Invoice	
-CrDocID	string	255		
-CrDivision	string	255	E	
-CrSubcode	string	255	D100002786	
-CrSr	number	120	
-CrDate	datetime		
-CrDocNo	string	255		
-CrAmount	number	0	
+CrDocID	string	255	D1    SR 2022    1503	
+CrDivision	string	255	D	
+CrSubcode	string	255	D100019782	
+CrSr	number	43	
+CrDate	datetime	21/Jun/2022 12:00:00 AM	
+CrDocNo	string	255	SR-1503	
+CrAmount	number	8888	
 CrTaxableAmount	number	0	
 CrTaxAmount	number	0	
-CrDays	number		
-CrInterest	number		
-CrCumAmount	number	1413499	
+CrDays	number	39	
+CrInterest	number	0	
+CrCumAmount	number	912985	
 CrBalAmount	number	0	
-CrTotal	number	1413499	
-CrNarration	string	255		
+CrTotal	number	912985	
+CrNarration	string	255	Sale Return	
 AdditionPer	number	0	
 AdditionAmount	number	0	
-GrReturnAmt	number	121464	
-GrSaleAmt	number	1475827	
-ReturnPer	number	8.23	
-AveragePaymentDays	number	52.5167209636569	
-DrMonth	string	255	05/2021	
-CrMonth	string	255		
+GrReturnAmt	number	9502	
+GrSaleAmt	number	1007910	
+ReturnPer	number	0.94	
+AveragePaymentDays	number	14.6154333837713	
+DrMonth	string	255	06/2022	
+CrMonth	string	255	06/2022	

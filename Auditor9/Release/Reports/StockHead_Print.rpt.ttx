@@ -3,21 +3,21 @@ Copies	string	255	1
 CopyPrintingCaption	string	255		
 DocNoCaption	string	255	Doc.No.	
 DocDateCaption	string	255	Doc.Date	
-DocID	string	255	D1   ISS 2021     952	
+DocID	string	255	D1   ISS 2022     342	
 SiteStateCode	string	255	09	
 SiteStateName	string	255	Uttar Pradesh	
 Sr	number	1	
-V_Date	datetime	29/Mar/2022 12:00:00 AM	
+V_Date	datetime	29/Jul/2022 12:00:00 AM	
 Voucher_Type	string	255	DELIVERY CHALLAN	
 NCat	string	255	ISS	
-DocNo	string	255	D1-ISS-844	
-PartyName	string	255	SADHVI ENTERPRISES BRANCH 1	
-PartyAddress	string	255	55/56 KAHOO KOTHI KANPUR	
-PartyPinCode	string	255	208001	
+DocNo	string	255	D1-ISS-342	
+PartyName	string	255	NANDI SAREES	
+PartyAddress	string	255	106/391 P.ROAD GANDHI NAGAR NEAR LENIN PARK KANPUR	
+PartyPinCode	string	255	208012	
 PartyCityName	string	255	KANPUR	
 PartyStateCode	string	255	09	
 PartyStateName	string	255	Uttar Pradesh	
-PartyMobile	string	255	7985889213,9628777727,	
+PartyMobile	string	255	6387210109	
 ContactPerson	string	255		
 PartySalesTaxNo	string	255		
 PartyAadharNo	string	255		
@@ -32,10 +32,10 @@ FreightType	string	255
 RoadPermitNo	string	255		
 RoadPermitDate	datetime		
 ReferenceNo	string	255		
-ItemName	string	255	SANSKAR          [ANAND SYNTHTICS(362) | SAREE]	
-ItemGroupName	string	255	S-ENT-362HALKI	
+ItemName	string	255	SATYAM           [PRABHAT SILK MILLS | SAREE]	
+ItemGroupName	string	255	S-ENT-839 DYD	
 ItemCatName	string	255	SAREE	
-ItemSpecification	string	255	SANSKAR	
+ItemSpecification	string	255	SATYAM	
 InvoiceLineSpecification	string	255		
 HSN	string	255	540752	
 D1Spec	string	255		
@@ -50,12 +50,12 @@ D4Caption	string	255
 SalesTaxGroupItem	string	255		
 GrossTaxRate	number		
 Pcs	number	0	
-Qty	number	80	
-Rate	number	255	
+Qty	number	10	
+Rate	number	900	
 Unit	string	255	Pcs	
 UnitDecimalPlaces	number	0	
-Amount	number	20400	
-Taxable_Amount	number	0	
+Amount	number	9000	
+Taxable_Amount	number	9000	
 Tax1_Per	number	0	
 Tax1	number	0	
 Tax2_Per	number	0	

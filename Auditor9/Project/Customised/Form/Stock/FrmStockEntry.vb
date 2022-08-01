@@ -3457,13 +3457,36 @@ Public Class FrmStockEntry
         PrintingCopies = FGetSettings(SettingFields.PrintingCopyCaptions, SettingType.General).ToString.Split(",")
         mQry = ""
         Dim SQryRate As String = ""
+        Dim SQryTaxableAmt As String = ""
+        Dim SQryAmt As String = ""
 
         If DglMain.Item(Col1Value, rowParty).Tag = "D100027005" Or DglMain.Item(Col1Value, rowParty).Tag = "D100027015" Then
             SQryRate = "Case When IfNull(L.MRP,0)=0 then L.Rate else L.MRP End "
         Else
             SQryRate = "L.Rate "
-
         End If
+
+        If AgL.StrCmp(AgL.PubDBName, "Sadhvi") Then
+            If DglMain.Item(Col1Value, rowParty).Tag = "D100027005" Or DglMain.Item(Col1Value, rowParty).Tag = "D100027015" Then
+                SQryAmt = "(Case When IfNull(L.MRP,0)=0 then L.Rate else L.MRP End)*L.DocQty "
+            Else
+                SQryAmt = "L.Amount"
+            End If
+        Else
+            SQryAmt = "L.Amount"
+        End If
+
+        If AgL.StrCmp(AgL.PubDBName, "Sadhvi") Then
+            If DglMain.Item(Col1Value, rowParty).Tag = "D100027005" Or DglMain.Item(Col1Value, rowParty).Tag = "D100027015" Then
+                SQryTaxableAmt = "(Case When IfNull(L.MRP,0)=0 then L.Rate else L.MRP End)*L.DocQty "
+            Else
+                SQryTaxableAmt = "L.Amount"
+            End If
+        Else
+            SQryTaxableAmt = "L.Taxable_Amount"
+        End If
+
+
         For I = 1 To PrintingCopies.Length
             If mQry <> "" Then mQry = mQry + " Union All "
 
@@ -3477,7 +3500,7 @@ Public Class FrmStockEntry
                 IfNull(D1.Specification,'') as D1Spec, IfNull(D2.Specification,'') as D2Spec, IfNull(D3.Specification,'') as D3Spec, IfNull(D4.Specification,'') as D4Spec, IfNull(Size.Specification,'') as SizeSpec,
                 '" & AgL.PubCaptionDimension1 & "' as D1Caption, '" & AgL.PubCaptionDimension2 & "' as D2Caption, '" & AgL.PubCaptionDimension3 & "' as D3Caption, '" & AgL.PubCaptionDimension4 & "' as D4Caption, 
                 L.SalesTaxGroupItem, STGI.GrossTaxRate, L.Pcs, Abs(L.Qty) as Qty, " & SQryRate & " AS Rate, L.Unit, U.DecimalPlaces as UnitDecimalPlaces,  
-                Abs(L.Amount) as Amount,Abs(L.Taxable_Amount) as Taxable_Amount,Abs(L.Tax1_Per) Tax1_Per, Abs(L.Tax1) as Tax1, Abs(L.Tax2_Per) as Tax2_Per, Abs(L.Tax2) as Tax2, Abs(L.Tax3_Per) as Tax3_Per, Abs(L.Tax3) as Tax3, Abs(L.Tax4_Per) as Tax4_Per, Abs(L.Tax4) as Tax4, Abs(L.Tax5_Per) as Tax5_Per, Abs(L.Tax5) as Tax5, Abs(L.Net_Amount) as Net_Amount,
+                Abs(" & SQryAmt & ") as Amount,Abs(" & SQryTaxableAmt & ") as Taxable_Amount, Abs(L.Tax1_Per) Tax1_Per, Abs(L.Tax1) as Tax1, Abs(L.Tax2_Per) as Tax2_Per, Abs(L.Tax2) as Tax2, Abs(L.Tax3_Per) as Tax3_Per, Abs(L.Tax3) as Tax3, Abs(L.Tax4_Per) as Tax4_Per, Abs(L.Tax4) as Tax4, Abs(L.Tax5_Per) as Tax5_Per, Abs(L.Tax5) as Tax5, Abs(L.Net_Amount) as Net_Amount,
                 IfNull(H.Remarks,'') as HRemarks, IfNull(L.Remark,'') as LRemarks,
                 abs(H.Gross_Amount) as H_Gross_Amount, H.SpecialDiscount_Per as H_SpecialDiscount_Per, H.SpecialDiscount as H_SpecialDiscount,abs(H.Taxable_Amount) as H_Taxable_Amount,abs(H.Tax1_Per) as H_Tax1_Per, abs(H.Tax1) as H_Tax1, 
                 abs(H.Tax2_Per) as H_Tax2_Per, abs(H.Tax2) as H_Tax2, abs(H.Tax3_Per) as H_Tax3_Per, abs(H.Tax3) as H_Tax3, abs(H.Tax4_Per) as H_Tax4_Per, abs(H.Tax4) as H_Tax4, 
@@ -3761,11 +3784,11 @@ Public Class FrmStockEntry
                 'Dgl1.Item(Col1Amount, I).Value = Format(Val(Dgl1.Item(Col1DocQty, I).Value) * Val(Dgl1.Item(Col1Rate, I).Value), "0.".PadRight(CType(Dgl1.Columns(Col1Amount), AgControls.AgTextColumn).AgNumberRightPlaces + 2, "0"))
                 'End If
 
-                If DglMain.Item(Col1Value, rowParty).Tag = "D100027005" Or DglMain.Item(Col1Value, rowParty).Tag = "D100027015" Then
-                    Dgl1.Item(Col1Amount, I).Value = Format(Val(Dgl1.Item(Col1DocQty, I).Value) * Val(Dgl1.Item(Col1MRP, I).Value), "0.".PadRight(CType(Dgl1.Columns(Col1Amount), AgControls.AgTextColumn).AgNumberRightPlaces + 2, "0"))
-                Else
-                    Dgl1.Item(Col1Amount, I).Value = Format(Val(Dgl1.Item(Col1DocQty, I).Value) * Val(Dgl1.Item(Col1Rate, I).Value), "0.".PadRight(CType(Dgl1.Columns(Col1Amount), AgControls.AgTextColumn).AgNumberRightPlaces + 2, "0"))
-                End If
+                'If DglMain.Item(Col1Value, rowParty).Tag = "D100027005" Or DglMain.Item(Col1Value, rowParty).Tag = "D100027015" Then
+                '    Dgl1.Item(Col1Amount, I).Value = Format(Val(Dgl1.Item(Col1DocQty, I).Value) * Val(Dgl1.Item(Col1MRP, I).Value), "0.".PadRight(CType(Dgl1.Columns(Col1Amount), AgControls.AgTextColumn).AgNumberRightPlaces + 2, "0"))
+                'Else
+                Dgl1.Item(Col1Amount, I).Value = Format(Val(Dgl1.Item(Col1DocQty, I).Value) * Val(Dgl1.Item(Col1Rate, I).Value), "0.".PadRight(CType(Dgl1.Columns(Col1Amount), AgControls.AgTextColumn).AgNumberRightPlaces + 2, "0"))
+                'End If
 
 
                 If LblV_Type.Tag = Ncat.LrEntry Then

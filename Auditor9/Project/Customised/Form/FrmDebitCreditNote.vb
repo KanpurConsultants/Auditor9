@@ -85,6 +85,12 @@ Public Class FrmDebitCreditNote
     Public WithEvents TxtLinkedParty As AgControls.AgTextBox
     Protected WithEvents LblLinkedParty As Label
     Friend WithEvents MnuPrintBulk As ToolStripMenuItem
+    Protected WithEvents TxtEInvoiceIRN As AgControls.AgTextBox
+    Protected WithEvents LblEInvoiceIRN As Label
+    Protected WithEvents TxtEInvoiceACKNo As AgControls.AgTextBox
+    Protected WithEvents LblEInvoiceACKNo As Label
+    Protected WithEvents TxtEInvoiceACKDate As AgControls.AgTextBox
+    Protected WithEvents Label5 As Label
     Dim WithEvents GridReportFrm As AgLibrary.FrmRepDisplay
 
     Class OutstandingBill
@@ -151,6 +157,7 @@ Public Class FrmDebitCreditNote
         Me.MnuEditSave = New System.Windows.Forms.ToolStripMenuItem()
         Me.MnuReport = New System.Windows.Forms.ToolStripMenuItem()
         Me.MnuEmailDocument = New System.Windows.Forms.ToolStripMenuItem()
+        Me.MnuPrintBulk = New System.Windows.Forms.ToolStripMenuItem()
         Me.OFDMain = New System.Windows.Forms.OpenFileDialog()
         Me.PnlFifo = New System.Windows.Forms.Panel()
         Me.TxtPartyDocNo = New AgControls.AgTextBox()
@@ -162,7 +169,12 @@ Public Class FrmDebitCreditNote
         Me.BtnAttachments = New System.Windows.Forms.Button()
         Me.TxtLinkedParty = New AgControls.AgTextBox()
         Me.LblLinkedParty = New System.Windows.Forms.Label()
-        Me.MnuPrintBulk = New System.Windows.Forms.ToolStripMenuItem()
+        Me.TxtEInvoiceIRN = New AgControls.AgTextBox()
+        Me.LblEInvoiceIRN = New System.Windows.Forms.Label()
+        Me.TxtEInvoiceACKNo = New AgControls.AgTextBox()
+        Me.LblEInvoiceACKNo = New System.Windows.Forms.Label()
+        Me.TxtEInvoiceACKDate = New AgControls.AgTextBox()
+        Me.Label5 = New System.Windows.Forms.Label()
         Me.GroupBox2.SuspendLayout()
         Me.GBoxMoveToLog.SuspendLayout()
         Me.GBoxApprove.SuspendLayout()
@@ -372,12 +384,13 @@ Public Class FrmDebitCreditNote
         '
         Me.TabControl1.Font = New System.Drawing.Font("Tahoma", 8.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.TabControl1.Location = New System.Drawing.Point(-4, 17)
-        Me.TabControl1.Size = New System.Drawing.Size(992, 146)
+        Me.TabControl1.Size = New System.Drawing.Size(992, 196)
         Me.TabControl1.TabIndex = 0
         '
         'TP1
         '
         Me.TP1.BackColor = System.Drawing.Color.FromArgb(CType(CType(234, Byte), Integer), CType(CType(234, Byte), Integer), CType(CType(234, Byte), Integer))
+        Me.TP1.Controls.Add(Me.Label5)
         Me.TP1.Controls.Add(Me.TxtLinkedParty)
         Me.TP1.Controls.Add(Me.LblLinkedParty)
         Me.TP1.Controls.Add(Me.BtnAttachments)
@@ -387,8 +400,13 @@ Public Class FrmDebitCreditNote
         Me.TP1.Controls.Add(Me.LblPartyDocDate)
         Me.TP1.Controls.Add(Me.TxtPartyDocNo)
         Me.TP1.Controls.Add(Me.LblPartyDocNo)
+        Me.TP1.Controls.Add(Me.TxtEInvoiceACKDate)
         Me.TP1.Controls.Add(Me.TxtVoucherCategory)
         Me.TP1.Controls.Add(Me.BtnFillPartyDetail)
+        Me.TP1.Controls.Add(Me.TxtEInvoiceACKNo)
+        Me.TP1.Controls.Add(Me.LblEInvoiceACKNo)
+        Me.TP1.Controls.Add(Me.TxtEInvoiceIRN)
+        Me.TP1.Controls.Add(Me.LblEInvoiceIRN)
         Me.TP1.Controls.Add(Me.TxtNature)
         Me.TP1.Controls.Add(Me.Panel3)
         Me.TP1.Controls.Add(Me.TxtRemarks)
@@ -401,7 +419,7 @@ Public Class FrmDebitCreditNote
         Me.TP1.Controls.Add(Me.Label25)
         Me.TP1.Controls.Add(Me.TxtStructure)
         Me.TP1.Location = New System.Drawing.Point(4, 22)
-        Me.TP1.Size = New System.Drawing.Size(984, 120)
+        Me.TP1.Size = New System.Drawing.Size(984, 170)
         Me.TP1.Text = "Document Detail"
         Me.TP1.Controls.SetChildIndex(Me.LblReferenceNo, 0)
         Me.TP1.Controls.SetChildIndex(Me.TxtStructure, 0)
@@ -428,11 +446,16 @@ Public Class FrmDebitCreditNote
         Me.TP1.Controls.SetChildIndex(Me.Label2, 0)
         Me.TP1.Controls.SetChildIndex(Me.TxtSite_Code, 0)
         Me.TP1.Controls.SetChildIndex(Me.LblV_Date, 0)
+        Me.TP1.Controls.SetChildIndex(Me.LblEInvoiceIRN, 0)
         Me.TP1.Controls.SetChildIndex(Me.LblDocId, 0)
+        Me.TP1.Controls.SetChildIndex(Me.TxtEInvoiceIRN, 0)
         Me.TP1.Controls.SetChildIndex(Me.TxtDocId, 0)
+        Me.TP1.Controls.SetChildIndex(Me.LblEInvoiceACKNo, 0)
         Me.TP1.Controls.SetChildIndex(Me.LblSite_Code, 0)
+        Me.TP1.Controls.SetChildIndex(Me.TxtEInvoiceACKNo, 0)
         Me.TP1.Controls.SetChildIndex(Me.BtnFillPartyDetail, 0)
         Me.TP1.Controls.SetChildIndex(Me.TxtVoucherCategory, 0)
+        Me.TP1.Controls.SetChildIndex(Me.TxtEInvoiceACKDate, 0)
         Me.TP1.Controls.SetChildIndex(Me.LblPartyDocNo, 0)
         Me.TP1.Controls.SetChildIndex(Me.TxtPartyDocNo, 0)
         Me.TP1.Controls.SetChildIndex(Me.LblPartyDocDate, 0)
@@ -442,6 +465,7 @@ Public Class FrmDebitCreditNote
         Me.TP1.Controls.SetChildIndex(Me.BtnAttachments, 0)
         Me.TP1.Controls.SetChildIndex(Me.LblLinkedParty, 0)
         Me.TP1.Controls.SetChildIndex(Me.TxtLinkedParty, 0)
+        Me.TP1.Controls.SetChildIndex(Me.Label5, 0)
         '
         'Topctrl1
         '
@@ -596,9 +620,9 @@ Public Class FrmDebitCreditNote
             Or System.Windows.Forms.AnchorStyles.Left) _
             Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
         Me.Pnl1.Controls.Add(Me.PnlCustomGrid)
-        Me.Pnl1.Location = New System.Drawing.Point(4, 190)
+        Me.Pnl1.Location = New System.Drawing.Point(4, 237)
         Me.Pnl1.Name = "Pnl1"
-        Me.Pnl1.Size = New System.Drawing.Size(973, 195)
+        Me.Pnl1.Size = New System.Drawing.Size(973, 148)
         Me.Pnl1.TabIndex = 9
         '
         'PnlCustomGrid
@@ -664,7 +688,7 @@ Public Class FrmDebitCreditNote
         Me.TxtRemarks.AgValueType = AgControls.AgTextBox.TxtValueType.Text_Value
         Me.TxtRemarks.BorderStyle = System.Windows.Forms.BorderStyle.None
         Me.TxtRemarks.Font = New System.Drawing.Font("Verdana", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.TxtRemarks.Location = New System.Drawing.Point(380, 100)
+        Me.TxtRemarks.Location = New System.Drawing.Point(380, 138)
         Me.TxtRemarks.MaxLength = 255
         Me.TxtRemarks.Name = "TxtRemarks"
         Me.TxtRemarks.Size = New System.Drawing.Size(414, 16)
@@ -674,7 +698,7 @@ Public Class FrmDebitCreditNote
         '
         Me.Label30.AutoSize = True
         Me.Label30.Font = New System.Drawing.Font("Verdana", 9.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Label30.Location = New System.Drawing.Point(258, 102)
+        Me.Label30.Location = New System.Drawing.Point(259, 140)
         Me.Label30.Name = "Label30"
         Me.Label30.Size = New System.Drawing.Size(65, 14)
         Me.Label30.TabIndex = 723
@@ -698,7 +722,7 @@ Public Class FrmDebitCreditNote
         Me.LinkLabel1.Font = New System.Drawing.Font("Verdana", 9.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.LinkLabel1.LinkBehavior = System.Windows.Forms.LinkBehavior.NeverUnderline
         Me.LinkLabel1.LinkColor = System.Drawing.Color.White
-        Me.LinkLabel1.Location = New System.Drawing.Point(4, 169)
+        Me.LinkLabel1.Location = New System.Drawing.Point(4, 213)
         Me.LinkLabel1.Name = "LinkLabel1"
         Me.LinkLabel1.Size = New System.Drawing.Size(230, 20)
         Me.LinkLabel1.TabIndex = 739
@@ -709,9 +733,9 @@ Public Class FrmDebitCreditNote
         'PnlCalcGrid
         '
         Me.PnlCalcGrid.Anchor = CType((System.Windows.Forms.AnchorStyles.Bottom Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
-        Me.PnlCalcGrid.Location = New System.Drawing.Point(651, 413)
+        Me.PnlCalcGrid.Location = New System.Drawing.Point(665, 413)
         Me.PnlCalcGrid.Name = "PnlCalcGrid"
-        Me.PnlCalcGrid.Size = New System.Drawing.Size(327, 157)
+        Me.PnlCalcGrid.Size = New System.Drawing.Size(313, 157)
         Me.PnlCalcGrid.TabIndex = 10
         '
         'TxtNature
@@ -732,7 +756,7 @@ Public Class FrmDebitCreditNote
         Me.TxtNature.AgValueType = AgControls.AgTextBox.TxtValueType.Text_Value
         Me.TxtNature.BorderStyle = System.Windows.Forms.BorderStyle.None
         Me.TxtNature.Font = New System.Drawing.Font("Arial", 11.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.TxtNature.Location = New System.Drawing.Point(736, 162)
+        Me.TxtNature.Location = New System.Drawing.Point(736, 178)
         Me.TxtNature.MaxLength = 20
         Me.TxtNature.Name = "TxtNature"
         Me.TxtNature.Size = New System.Drawing.Size(95, 18)
@@ -795,16 +819,16 @@ Public Class FrmDebitCreditNote
         '
         'Panel2
         '
-        Me.Panel2.Location = New System.Drawing.Point(4, 119)
+        Me.Panel2.Location = New System.Drawing.Point(4, 174)
         Me.Panel2.Name = "Panel2"
-        Me.Panel2.Size = New System.Drawing.Size(973, 227)
+        Me.Panel2.Size = New System.Drawing.Size(973, 172)
         Me.Panel2.TabIndex = 1
         '
         'Panel3
         '
-        Me.Panel3.Location = New System.Drawing.Point(4, 119)
+        Me.Panel3.Location = New System.Drawing.Point(4, 176)
         Me.Panel3.Name = "Panel3"
-        Me.Panel3.Size = New System.Drawing.Size(973, 227)
+        Me.Panel3.Size = New System.Drawing.Size(973, 170)
         Me.Panel3.TabIndex = 9
         '
         'LblCurrentBalance
@@ -812,7 +836,7 @@ Public Class FrmDebitCreditNote
         Me.LblCurrentBalance.AutoSize = True
         Me.LblCurrentBalance.BackColor = System.Drawing.Color.Transparent
         Me.LblCurrentBalance.Font = New System.Drawing.Font("Verdana", 9.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.LblCurrentBalance.Location = New System.Drawing.Point(379, 172)
+        Me.LblCurrentBalance.Location = New System.Drawing.Point(379, 216)
         Me.LblCurrentBalance.Name = "LblCurrentBalance"
         Me.LblCurrentBalance.Size = New System.Drawing.Size(38, 14)
         Me.LblCurrentBalance.TabIndex = 3004
@@ -865,7 +889,7 @@ Public Class FrmDebitCreditNote
         Me.Label3.AutoSize = True
         Me.Label3.BackColor = System.Drawing.Color.Transparent
         Me.Label3.Font = New System.Drawing.Font("Verdana", 9.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Label3.Location = New System.Drawing.Point(261, 172)
+        Me.Label3.Location = New System.Drawing.Point(261, 216)
         Me.Label3.Name = "Label3"
         Me.Label3.Size = New System.Drawing.Size(122, 14)
         Me.Label3.TabIndex = 3005
@@ -875,7 +899,7 @@ Public Class FrmDebitCreditNote
         '
         Me.MnuOptions.Items.AddRange(New System.Windows.Forms.ToolStripItem() {Me.MnuImportFromExcel, Me.MnuImportGSTDataFromDos, Me.MnuImportGSTDataFromExcel, Me.MnuImportFromTally, Me.MnuImportFromDos, Me.MnuEditSave, Me.MnuReport, Me.MnuEmailDocument, Me.MnuPrintBulk})
         Me.MnuOptions.Name = "MnuOptions"
-        Me.MnuOptions.Size = New System.Drawing.Size(222, 224)
+        Me.MnuOptions.Size = New System.Drawing.Size(222, 202)
         '
         'MnuImportFromExcel
         '
@@ -925,6 +949,12 @@ Public Class FrmDebitCreditNote
         Me.MnuEmailDocument.Size = New System.Drawing.Size(221, 22)
         Me.MnuEmailDocument.Text = "Email Document"
         '
+        'MnuPrintBulk
+        '
+        Me.MnuPrintBulk.Name = "MnuPrintBulk"
+        Me.MnuPrintBulk.Size = New System.Drawing.Size(221, 22)
+        Me.MnuPrintBulk.Text = "Print Bulk"
+        '
         'OFDMain
         '
         Me.OFDMain.FileName = "price.xls"
@@ -938,7 +968,7 @@ Public Class FrmDebitCreditNote
         Me.PnlFifo.Anchor = CType((System.Windows.Forms.AnchorStyles.Bottom Or System.Windows.Forms.AnchorStyles.Left), System.Windows.Forms.AnchorStyles)
         Me.PnlFifo.Location = New System.Drawing.Point(4, 413)
         Me.PnlFifo.Name = "PnlFifo"
-        Me.PnlFifo.Size = New System.Drawing.Size(641, 159)
+        Me.PnlFifo.Size = New System.Drawing.Size(626, 159)
         Me.PnlFifo.TabIndex = 3006
         '
         'TxtPartyDocNo
@@ -1052,7 +1082,7 @@ Public Class FrmDebitCreditNote
         Me.BtnAttachments.FlatStyle = System.Windows.Forms.FlatStyle.Flat
         Me.BtnAttachments.Font = New System.Drawing.Font("Verdana", 8.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.BtnAttachments.ForeColor = System.Drawing.Color.FromArgb(CType(CType(192, Byte), Integer), CType(CType(0, Byte), Integer), CType(CType(0, Byte), Integer))
-        Me.BtnAttachments.Location = New System.Drawing.Point(814, 89)
+        Me.BtnAttachments.Location = New System.Drawing.Point(814, 139)
         Me.BtnAttachments.Margin = New System.Windows.Forms.Padding(0)
         Me.BtnAttachments.Name = "BtnAttachments"
         Me.BtnAttachments.Size = New System.Drawing.Size(134, 23)
@@ -1097,11 +1127,107 @@ Public Class FrmDebitCreditNote
         Me.LblLinkedParty.TabIndex = 3020
         Me.LblLinkedParty.Text = "Linked Party"
         '
-        'MnuPrintBulk
+        'TxtEInvoiceIRN
         '
-        Me.MnuPrintBulk.Name = "MnuPrintBulk"
-        Me.MnuPrintBulk.Size = New System.Drawing.Size(221, 22)
-        Me.MnuPrintBulk.Text = "Print Bulk"
+        Me.TxtEInvoiceIRN.AgAllowUserToEnableMasterHelp = False
+        Me.TxtEInvoiceIRN.AgLastValueTag = Nothing
+        Me.TxtEInvoiceIRN.AgLastValueText = Nothing
+        Me.TxtEInvoiceIRN.AgMandatory = False
+        Me.TxtEInvoiceIRN.AgMasterHelp = False
+        Me.TxtEInvoiceIRN.AgNumberLeftPlaces = 0
+        Me.TxtEInvoiceIRN.AgNumberNegetiveAllow = False
+        Me.TxtEInvoiceIRN.AgNumberRightPlaces = 0
+        Me.TxtEInvoiceIRN.AgPickFromLastValue = False
+        Me.TxtEInvoiceIRN.AgRowFilter = ""
+        Me.TxtEInvoiceIRN.AgSearchMethod = AgControls.AgLib.TxtSearchMethod.Simple
+        Me.TxtEInvoiceIRN.AgSelectedValue = Nothing
+        Me.TxtEInvoiceIRN.AgTxtCase = AgControls.AgTextBox.TxtCase.None
+        Me.TxtEInvoiceIRN.AgValueType = AgControls.AgTextBox.TxtValueType.Text_Value
+        Me.TxtEInvoiceIRN.BorderStyle = System.Windows.Forms.BorderStyle.None
+        Me.TxtEInvoiceIRN.Font = New System.Drawing.Font("Verdana", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.TxtEInvoiceIRN.Location = New System.Drawing.Point(380, 100)
+        Me.TxtEInvoiceIRN.MaxLength = 255
+        Me.TxtEInvoiceIRN.Name = "TxtEInvoiceIRN"
+        Me.TxtEInvoiceIRN.Size = New System.Drawing.Size(413, 16)
+        Me.TxtEInvoiceIRN.TabIndex = 3007
+        '
+        'LblEInvoiceIRN
+        '
+        Me.LblEInvoiceIRN.AutoSize = True
+        Me.LblEInvoiceIRN.Font = New System.Drawing.Font("Verdana", 9.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.LblEInvoiceIRN.Location = New System.Drawing.Point(259, 100)
+        Me.LblEInvoiceIRN.Name = "LblEInvoiceIRN"
+        Me.LblEInvoiceIRN.Size = New System.Drawing.Size(89, 14)
+        Me.LblEInvoiceIRN.TabIndex = 3008
+        Me.LblEInvoiceIRN.Text = "EInvoiceIRN"
+        '
+        'TxtEInvoiceACKNo
+        '
+        Me.TxtEInvoiceACKNo.AgAllowUserToEnableMasterHelp = False
+        Me.TxtEInvoiceACKNo.AgLastValueTag = Nothing
+        Me.TxtEInvoiceACKNo.AgLastValueText = Nothing
+        Me.TxtEInvoiceACKNo.AgMandatory = False
+        Me.TxtEInvoiceACKNo.AgMasterHelp = False
+        Me.TxtEInvoiceACKNo.AgNumberLeftPlaces = 0
+        Me.TxtEInvoiceACKNo.AgNumberNegetiveAllow = False
+        Me.TxtEInvoiceACKNo.AgNumberRightPlaces = 0
+        Me.TxtEInvoiceACKNo.AgPickFromLastValue = False
+        Me.TxtEInvoiceACKNo.AgRowFilter = ""
+        Me.TxtEInvoiceACKNo.AgSearchMethod = AgControls.AgLib.TxtSearchMethod.Simple
+        Me.TxtEInvoiceACKNo.AgSelectedValue = Nothing
+        Me.TxtEInvoiceACKNo.AgTxtCase = AgControls.AgTextBox.TxtCase.None
+        Me.TxtEInvoiceACKNo.AgValueType = AgControls.AgTextBox.TxtValueType.Text_Value
+        Me.TxtEInvoiceACKNo.BorderStyle = System.Windows.Forms.BorderStyle.None
+        Me.TxtEInvoiceACKNo.Font = New System.Drawing.Font("Verdana", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.TxtEInvoiceACKNo.Location = New System.Drawing.Point(380, 119)
+        Me.TxtEInvoiceACKNo.MaxLength = 255
+        Me.TxtEInvoiceACKNo.Name = "TxtEInvoiceACKNo"
+        Me.TxtEInvoiceACKNo.Size = New System.Drawing.Size(257, 16)
+        Me.TxtEInvoiceACKNo.TabIndex = 3009
+        '
+        'LblEInvoiceACKNo
+        '
+        Me.LblEInvoiceACKNo.AutoSize = True
+        Me.LblEInvoiceACKNo.Font = New System.Drawing.Font("Verdana", 9.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.LblEInvoiceACKNo.Location = New System.Drawing.Point(259, 118)
+        Me.LblEInvoiceACKNo.Name = "LblEInvoiceACKNo"
+        Me.LblEInvoiceACKNo.Size = New System.Drawing.Size(109, 14)
+        Me.LblEInvoiceACKNo.TabIndex = 3010
+        Me.LblEInvoiceACKNo.Text = "EInvoiceACKNo"
+        '
+        'TxtEInvoiceACKDate
+        '
+        Me.TxtEInvoiceACKDate.AgAllowUserToEnableMasterHelp = False
+        Me.TxtEInvoiceACKDate.AgLastValueTag = Nothing
+        Me.TxtEInvoiceACKDate.AgLastValueText = Nothing
+        Me.TxtEInvoiceACKDate.AgMandatory = False
+        Me.TxtEInvoiceACKDate.AgMasterHelp = False
+        Me.TxtEInvoiceACKDate.AgNumberLeftPlaces = 0
+        Me.TxtEInvoiceACKDate.AgNumberNegetiveAllow = False
+        Me.TxtEInvoiceACKDate.AgNumberRightPlaces = 0
+        Me.TxtEInvoiceACKDate.AgPickFromLastValue = False
+        Me.TxtEInvoiceACKDate.AgRowFilter = ""
+        Me.TxtEInvoiceACKDate.AgSearchMethod = AgControls.AgLib.TxtSearchMethod.Simple
+        Me.TxtEInvoiceACKDate.AgSelectedValue = Nothing
+        Me.TxtEInvoiceACKDate.AgTxtCase = AgControls.AgTextBox.TxtCase.None
+        Me.TxtEInvoiceACKDate.AgValueType = AgControls.AgTextBox.TxtValueType.Text_Value
+        Me.TxtEInvoiceACKDate.BorderStyle = System.Windows.Forms.BorderStyle.None
+        Me.TxtEInvoiceACKDate.Font = New System.Drawing.Font("Verdana", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.TxtEInvoiceACKDate.Location = New System.Drawing.Point(691, 119)
+        Me.TxtEInvoiceACKDate.MaxLength = 255
+        Me.TxtEInvoiceACKDate.Name = "TxtEInvoiceACKDate"
+        Me.TxtEInvoiceACKDate.Size = New System.Drawing.Size(103, 16)
+        Me.TxtEInvoiceACKDate.TabIndex = 3011
+        '
+        'Label5
+        '
+        Me.Label5.AutoSize = True
+        Me.Label5.Font = New System.Drawing.Font("Verdana", 9.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.Label5.Location = New System.Drawing.Point(643, 119)
+        Me.Label5.Name = "Label5"
+        Me.Label5.Size = New System.Drawing.Size(38, 14)
+        Me.Label5.TabIndex = 3021
+        Me.Label5.Text = "Date"
         '
         'FrmDebitCreditNote
         '
@@ -1127,6 +1253,9 @@ Public Class FrmDebitCreditNote
         Me.Controls.SetChildIndex(Me.LinkLabel1, 0)
         Me.Controls.SetChildIndex(Me.PnlCalcGrid, 0)
         Me.Controls.SetChildIndex(Me.TxtCustomFields, 0)
+        Me.Controls.SetChildIndex(Me.LblCurrentBalance, 0)
+        Me.Controls.SetChildIndex(Me.Label3, 0)
+        Me.Controls.SetChildIndex(Me.PnlFifo, 0)
         Me.Controls.SetChildIndex(Me.TabControl1, 0)
         Me.Controls.SetChildIndex(Me.GroupBox1, 0)
         Me.Controls.SetChildIndex(Me.GrpUP, 0)
@@ -1136,9 +1265,6 @@ Public Class FrmDebitCreditNote
         Me.Controls.SetChildIndex(Me.GroupBox2, 0)
         Me.Controls.SetChildIndex(Me.GBoxDivision, 0)
         Me.Controls.SetChildIndex(Me.Topctrl1, 0)
-        Me.Controls.SetChildIndex(Me.LblCurrentBalance, 0)
-        Me.Controls.SetChildIndex(Me.Label3, 0)
-        Me.Controls.SetChildIndex(Me.PnlFifo, 0)
         Me.GroupBox2.ResumeLayout(False)
         Me.GroupBox2.PerformLayout()
         Me.GBoxMoveToLog.ResumeLayout(False)
@@ -1709,6 +1835,9 @@ Public Class FrmDebitCreditNote
                     " PartyDocNo = " & AgL.Chk_Text(TxtPartyDocNo.Text) & ", " &
                     " PartyDocDate = " & AgL.Chk_Date(TxtPartyDocDate.Text) & ", " &
                     " Remarks = " & AgL.Chk_Text(TxtRemarks.Text) & ", " &
+                    " EInvoiceIRN = " & AgL.Chk_Text(TxtEInvoiceIRN.Text) & ", " &
+                    " EInvoiceACKNo = " & AgL.Chk_Text(TxtEInvoiceACKNo.Text) & ", " &
+                    " EInvoiceACKDate = " & AgL.Chk_Date(TxtEInvoiceACKDate.Text) & ", " &
                     " BankAc = " & AgL.Chk_Text(TxtBank.Tag) & ", " &
                     " UploadDate = Null, " &
                     " CustomFields = " & AgL.Chk_Text(TxtCustomFields.Tag) &
@@ -2175,6 +2304,10 @@ Public Class FrmDebitCreditNote
 
 
                 TxtRemarks.Text = AgL.XNull(.Rows(0)("Remarks"))
+
+                TxtEInvoiceIRN.Text = AgL.XNull(.Rows(0)("EInvoiceIRN"))
+                TxtEInvoiceACKNo.Text = AgL.XNull(.Rows(0)("EInvoiceACKNo"))
+                TxtEInvoiceACKDate.Text = ClsMain.FormatDate(AgL.XNull(.Rows(0)("EInvoiceACKDate")))
 
                 AgCalcGrid1.FMoveRecFooterTable(DsTemp.Tables(0), EntryNCat, TxtV_Date.Text, mMultiplyWithMinus)
 
@@ -3301,6 +3434,7 @@ Public Class FrmDebitCreditNote
                 abs(LC.Tax4_Per) as Tax4_Per, abs(LC.Tax4) as Tax4, abs(LC.Tax5_Per) as Tax5_Per, abs(LC.Tax5) as Tax5, 
                 abs(LC.Net_Amount) as Net_Amount, IfNull(L.Remarks,'') as LRemarks, IfNull(H.Remarks,'') as HRemarks, 
                 abs(HC.Gross_Amount) as H_Gross_Amount, 
+                IfNull(H.EInvoiceIRN,'') EInvoiceIRN, H.EInvoiceAckNo, H.EInvoiceAckDate,
                 HC.SpecialDiscount_Per as H_SpecialDiscount_Per, HC.SpecialDiscount as H_SpecialDiscount, Abs(HC.Taxable_Amount) as H_Taxable_Amount,
                 Abs(HC.Tax1_Per) as H_Tax1_Per, Abs(HC.Tax1) as H_Tax1, HC.Tax2_Per as H_Tax2_Per, abs(HC.Tax2) as H_Tax2, 
                 HC.Tax3_Per as H_Tax3_Per, abs(HC.Tax3) as H_Tax3, HC.Tax4_Per as H_Tax4_Per, abs(HC.Tax4) as H_Tax4, 
@@ -3350,7 +3484,7 @@ Public Class FrmDebitCreditNote
 
 
         'If mDocReportFileName = "" Then
-        ClsMain.FPrintThisDocument(Me, objRepPrint, TxtV_Type.Tag, mQry, "DebitCreditNote_Print.rpt", mPrintTitle, , , , TxtPartyName.Tag, TxtV_Date.Text, IsPrintToPrinter)
+        ClsMain.FPrintThisDocument(Me, objRepPrint, TxtV_Type.Tag, mQry, "DebitCreditNote_Print.rpt", mPrintTitle, , , , TxtPartyName.Tag, TxtV_Date.Text, IsPrintToPrinter,,, mSearchCode)
         'Else
         'ClsMain.FPrintThisDocument(Me, objRepPrint, TxtV_Type.Tag, mQry, mDocReportFileName, mPrintTitle, , , , TxtPartyName.Tag, TxtV_Date.Text, IsPrintToPrinter)
         'End If

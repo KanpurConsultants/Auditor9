@@ -546,7 +546,7 @@ Public Class FrmImportDataFromBranch
                             PurchInvoiceTable.Line_DocDealQty = AgL.XNull(DtPurchInvoiceDetail_ForHeader.Rows(J)("DealQty"))
 
                             PurchInvoiceTable.Line_OmsId = AgL.XNull(DtPurchInvoiceDetail_ForHeader.Rows(J)("DocId")) + AgL.XNull(DtPurchInvoiceDetail_ForHeader.Rows(J)("Sr"))
-                            PurchInvoiceTable.Line_Rate = AgL.XNull(DtPurchInvoiceDetail_ForHeader.Rows(J)("MRP"))
+                            PurchInvoiceTable.Line_Rate = AgL.XNull(DtPurchInvoiceDetail_ForHeader.Rows(J)("Rate"))
                             PurchInvoiceTable.Line_MRP = AgL.XNull(DtPurchInvoiceDetail_ForHeader.Rows(J)("MRP"))
                             PurchInvoiceTable.Line_Sale_Rate = AgL.XNull(DtPurchInvoiceDetail_ForHeader.Rows(J)("MRP"))
 
@@ -569,15 +569,15 @@ Public Class FrmImportDataFromBranch
                             PurchInvoiceTable.Line_DiscountAmount = 0
                             PurchInvoiceTable.Line_AdditionalDiscountPer = 0
                             PurchInvoiceTable.Line_AdditionalDiscountAmount = 0
-                            PurchInvoiceTable.Line_Amount = AgL.VNull(DtPurchInvoiceDetail_ForHeader.Rows(J)("Amount1"))
+                            PurchInvoiceTable.Line_Amount = AgL.VNull(DtPurchInvoiceDetail_ForHeader.Rows(J)("Amount"))
                             PurchInvoiceTable.Line_Remark = AgL.XNull(DtPurchInvoiceDetail_ForHeader.Rows(J)("Remark"))
                             PurchInvoiceTable.Line_BaleNo = AgL.XNull(DtPurchInvoiceDetail_ForHeader.Rows(J)("BaleNo"))
                             PurchInvoiceTable.Line_LotNo = AgL.XNull(DtPurchInvoiceDetail_ForHeader.Rows(J)("LotNo"))
                             PurchInvoiceTable.Line_ReferenceDocId = ""
                             PurchInvoiceTable.Line_GrossWeight = AgL.VNull(DtPurchInvoiceDetail_ForHeader.Rows(J)("GrossWeight"))
                             PurchInvoiceTable.Line_NetWeight = 0
-                            PurchInvoiceTable.Line_Gross_Amount = AgL.VNull(DtPurchInvoiceDetail_ForHeader.Rows(J)("Amount1"))
-                            PurchInvoiceTable.Line_Taxable_Amount = AgL.VNull(DtPurchInvoiceDetail_ForHeader.Rows(J)("Amount1"))
+                            PurchInvoiceTable.Line_Gross_Amount = AgL.VNull(DtPurchInvoiceDetail_ForHeader.Rows(J)("Amount"))
+                            PurchInvoiceTable.Line_Taxable_Amount = AgL.VNull(DtPurchInvoiceDetail_ForHeader.Rows(J)("Amount"))
                             PurchInvoiceTable.Line_Tax1_Per = 0
                             PurchInvoiceTable.Line_Tax1 = 0
                             PurchInvoiceTable.Line_Tax2_Per = 0
@@ -588,11 +588,11 @@ Public Class FrmImportDataFromBranch
                             PurchInvoiceTable.Line_Tax4 = 0
                             PurchInvoiceTable.Line_Tax5_Per = 0
                             PurchInvoiceTable.Line_Tax5 = 0
-                            PurchInvoiceTable.Line_SubTotal1 = AgL.VNull(DtPurchInvoiceDetail_ForHeader.Rows(J)("Amount1"))
+                            PurchInvoiceTable.Line_SubTotal1 = AgL.VNull(DtPurchInvoiceDetail_ForHeader.Rows(J)("Amount"))
                             PurchInvoiceTable.Line_Other_Charge = 0
                             PurchInvoiceTable.Line_Deduction = 0
                             PurchInvoiceTable.Line_Round_Off = 0
-                            PurchInvoiceTable.Line_Net_Amount = AgL.VNull(DtPurchInvoiceDetail_ForHeader.Rows(J)("Amount1"))
+                            PurchInvoiceTable.Line_Net_Amount = AgL.VNull(DtPurchInvoiceDetail_ForHeader.Rows(J)("Amount"))
 
                             'For Header Values
                             Tot_Gross_Amount += PurchInvoiceTable.Line_Gross_Amount

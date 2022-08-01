@@ -75,6 +75,9 @@ Public Class FrmSyncDataFromOtherDatabase
 
     Private SadhviEnterprises_JaunpurBranch As String = "SADHVI ENTERPRISES JAUNPUR BRANCH"
     Private SadhviEmbroidery_JaunpurBranch As String = "SADHVI EMBROIDERY JAUNPUR BRANCH"
+
+    Private SadhviEnterprises_NandiSaree As String = "NANDI SAREES"
+    Private SadhviEmbroidery_NandiSaree As String = "NANDI SAREES EMBROIDERY"
     Private Sub BtnOK_Click(sender As Object, e As EventArgs) Handles BtnOK.Click
         BtnOK.Enabled = False
         _backgroundWorker1 = New System.ComponentModel.BackgroundWorker()
@@ -2508,6 +2511,14 @@ Public Class FrmSyncDataFromOtherDatabase
                     Else
                         bSadhviBranch = AgL.XNull(AgL.Dman_Execute("Select SubCode From SubGroup With (NoLock)
                         Where Name = '" & SadhviEnterprises_KanpurBranch2 & "'", IIf(AgL.PubServerName = "", Conn, AgL.GcnRead)).ExecuteScalar())
+                    End If
+                ElseIf AgL.XNull(DtHeader.Rows(0)("Site_Code")) = "6" Then
+                    If AgL.XNull(DtHeader.Rows(0)("Div_Code")) = "E" Then
+                        bSadhviBranch = AgL.XNull(AgL.Dman_Execute("Select SubCode From SubGroup With (NoLock)
+                        Where Name = '" & SadhviEnterprises_NandiSaree & "'", IIf(AgL.PubServerName = "", Conn, AgL.GcnRead)).ExecuteScalar())
+                    Else
+                        bSadhviBranch = AgL.XNull(AgL.Dman_Execute("Select SubCode From SubGroup With (NoLock)
+                        Where Name = '" & SadhviEmbroidery_NandiSaree & "'", IIf(AgL.PubServerName = "", Conn, AgL.GcnRead)).ExecuteScalar())
                     End If
                 End If
 

@@ -3177,4 +3177,3 @@ D:\Active Projects\Desktop\Auditor9\Auditor9\Project\Customised\obj\Debug\Custom
 D:\Active Projects\Desktop\Auditor9\Auditor9\Project\Customised\obj\Debug\Customised.pdb
 D:\Active Projects\Desktop\Auditor9\Auditor9\Release\Customised.pdb
 D:\Active Projects\Desktop\Auditor9\Auditor9\Release\Customised.xml
-D:\Active Projects\Desktop\Auditor9\Auditor9\Project\Customised\obj\Debug\Customised.vbprojResolveAssemblyReference.cache

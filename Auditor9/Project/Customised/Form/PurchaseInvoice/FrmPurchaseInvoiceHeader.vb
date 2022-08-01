@@ -378,11 +378,15 @@ Public Class FrmPurchaseInvoiceHeader
         Dim IsDuplicateLrNo As Integer = 0
 
         If (Dgl1.Item(Col1Value, rowTransporter).Tag <> Nothing) And (Dgl1.Item(Col1Value, rowLrNo).Value <> Nothing) Then
-            mQry = "Select count(*) From PurchInvoiceTransport Where Transporter ='" & Dgl1.Item(Col1Value, rowTransporter).Tag & "' AND LrNo = '" & Dgl1.Item(Col1Value, rowLrNo).Value & "' And DocID <>'" & SearchCode & "'"
-            IsDuplicateLrNo = AgL.Dman_Execute(mQry, AgL.GcnRead).ExecuteScalar
+            If AgL.StrCmp(AgL.PubDBName, "Sadhvi") Then
 
-            If IsDuplicateLrNo > 0 Then
-                Exit Sub
+            Else
+                mQry = "Select count(*) From PurchInvoiceTransport Where Transporter ='" & Dgl1.Item(Col1Value, rowTransporter).Tag & "' AND LrNo = '" & Dgl1.Item(Col1Value, rowLrNo).Value & "' And DocID <>'" & SearchCode & "'"
+                IsDuplicateLrNo = AgL.Dman_Execute(mQry, AgL.GcnRead).ExecuteScalar
+
+                If IsDuplicateLrNo > 0 Then
+                    Exit Sub
+                End If
             End If
         End If
 

@@ -3,14 +3,14 @@ Copies	string	255	1
 CopyPrintingCaption	string	255		
 DocNoCaption	string	255	Invoice No.	
 DocDateCaption	string	255	Invoice Date	
-DocID	string	255	D1    PI 2022      75	
+DocID	string	255	D1    PI 2022      76	
 SiteStateCode	string	255	09	
 SiteStateName	string	255	Uttar Pradesh	
 Sr	number	1	
-V_Date	datetime	14/Jun/2022 12:00:00 AM	
+V_Date	datetime	28/Jun/2022 12:00:00 AM	
 Voucher_Type	string	255	Purchase Invoice	
 NCat	string	255	PI	
-DocNo	string	255	D1-PI-75	
+DocNo	string	255	D1-PI-76	
 AgentName	string	255		
 AgentCaption	string	255	Agent	
 PartyName	string	255	SADHVI ENTERPRISES	
@@ -44,10 +44,10 @@ FreightType	string	255
 RoadPermitNo	string	255		
 RoadPermitDate	datetime		
 ReferenceNo	string	255		
-ItemName	string	255	EKK-SE-NA-HALKI-SAREE-D1   ISS 2022     3091	
-ItemGroupName	string	255	SE-NA-HALKI	
+ItemName	string	255	TANU-S-ENT-304 HALKI-SAREE-D1   ISS 2022     3381	
+ItemGroupName	string	255	S-ENT-304 HALKI	
 ItemCatName	string	255	SAREE	
-ItemSpecification	string	255	EKK	
+ItemSpecification	string	255	TANU	
 InvoiceLineSpecification	string	255		
 HSN	string	255	540752	
 D1Spec	string	255		
@@ -67,12 +67,12 @@ D4Caption	string	255	Width
 SalesTaxGroupItem	string	255	GST 5%	
 GrossTaxRate	number	5	
 Pcs	number	0	
-Qty	number	60	
-DocQty	number	60	
+Qty	number	24	
+DocQty	number	24	
 FreeQty	number	0	
 LossQty	number	0	
 RejQty	number	0	
-Rate	number	499	
+Rate	number	140	
 Unit	string	255	Pcs	
 UnitDecimalPlaces	number	0	
 DiscountPer	number	0	
@@ -80,9 +80,9 @@ DiscountAmount	number	0
 AdditionalDiscountPer	number	0	
 AdditionalDiscountAmount	number	0	
 TotalDiscount	number	0	
-AmountBeforeDiscount	number	29940	
-Amount	number	29940	
-Taxable_Amount	number	29940	
+AmountBeforeDiscount	number	4200	
+Amount	number	4200	
+Taxable_Amount	number	4200	
 Tax1_Per	number	0	
 Tax1	number	0	
 Tax2_Per	number	0	
@@ -93,13 +93,13 @@ Tax4_Per	number	0
 Tax4	number	0	
 Tax5_Per	number	0	
 Tax5	number	0	
-Net_Amount	number	29940	
+Net_Amount	number	4200	
 HRemarks	string	255		
 LRemarks	string	255		
-H_Gross_Amount	number	29940	
+H_Gross_Amount	number	8280	
 H_SpecialDiscount_Per	number	0	
 H_SpecialDiscount	number	0	
-H_Taxable_Amount	number	29940	
+H_Taxable_Amount	number	8280	
 H_Tax1_Per	number	0	
 H_Tax1	number	0	
 H_Tax2_Per	number	0	
@@ -115,9 +115,9 @@ H_Deduction	number	0
 H_Other_Charge_Per	number	0	
 H_Other_Charge	number	0	
 Round_Off	number	0	
-H_Net_Amount	number	29940	
+H_Net_Amount	number	8280	
 H_TotalDiscount	number	0	
-H_AmountBeforeDiscount	number	29940	
+H_AmountBeforeDiscount	number	8280	
 Default_BankAccountDetail	string	255		
 DocumentPrintHeaderPattern	string	255	Center Aligned	
 DimDetail	string	255		

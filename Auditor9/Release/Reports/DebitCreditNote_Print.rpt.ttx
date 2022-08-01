@@ -5,59 +5,62 @@ DocNoCaption	string	255	Doc.No.
 DocDateCaption	string	255	Doc.Date	
 SiteStateCode	string	255	09	
 SiteStateName	string	255	Uttar Pradesh	
-DocID	string	255	D1   DNC 2021       1	
+DocID	string	255	D1   CNC 2022       2	
 Sr	number	1	
-V_Date	datetime	14/Feb/2022 12:00:00 AM	
-Voucher_Type	string	255	DEBIT NOTE (Customers)	
-NCat	string	255	DNC	
-InvoiceNo	string	255	DNC1	
-PartyName	string	255	PRINCE GARMENT	
-PartyAddress	string	255	HARDOI ROAD	
-CityName	string	255	BILGRAM	
-PartyPincode	string	255	241301	
+V_Date	datetime	02/Apr/2022 12:00:00 AM	
+Voucher_Type	string	255	CREDIT NOTE (Customers)	
+NCat	string	255	CNC	
+InvoiceNo	string	255	CNC2	
+PartyName	string	255	SUHAG SAREE CENTER	
+PartyAddress	string	255	SABJI MANDI GURSHAIGANJ (KANNAUJ)	
+CityName	string	255	GURSAHAIGANJ	
+PartyPincode	string	255	209722	
 StateCode	string	255	09	
 StateName	string	255	Uttar Pradesh	
-PartyMobile	string	255	9919832060	
-ContactPerson	string	255		
-PartySalesTaxNo	string	255	09AAAPI2691H1ZQ	
+PartyMobile	string	255	9565787493	
+ContactPerson	string	255	MOHD IMRAN ANSARI	
+PartySalesTaxNo	string	255	09CEGPA8702R1Z1	
 PartyAadharNo	string	255		
 PartyPanNo	string	255		
 TermsAndConditions	string	255		
 ReferenceNo	string	255		
 LineAccountName	string	255		
-LineSpecification	string	255	227	
-HSN	string	255		
+LineSpecification	string	255	10333	
+HSN	string	255	540752	
 SalesTaxGroupItem	string	255	GST 5%	
 GrossTaxRate	number	5	
 Qty	number	0	
 Rate	number	0	
 Unit	string	255		
 UnitDecimalPlaces	number		
-Amount	number	1314	
-Taxable_Amount	number	1314	
+Amount	number	1120	
+Taxable_Amount	number	1120	
 Tax1_Per	number	0	
 Tax1	number	0	
 Tax2_Per	number	2.5	
-Tax2	number	32.85	
+Tax2	number	28	
 Tax3_Per	number	2.5	
-Tax3	number	32.85	
+Tax3	number	28	
 Tax4_Per	number	0	
 Tax4	number	0	
 Tax5_Per	number	0	
 Tax5	number	0	
-Net_Amount	number	1380	
-LRemarks	string	255	wrong	
-HRemarks	string	255	wrong	
-H_Gross_Amount	number	1314	
+Net_Amount	number	1176.03	
+LRemarks	string	255	10333	
+HRemarks	string	255		
+H_Gross_Amount	number	4997	
+EInvoiceIRN	string	255	fde5dbd7e51c1b64d7364a11b21d8c0d6c71e9227b7d696dcb59def8725e9bed	
+EInvoiceAckNo	string	255	142211228663127	
+EInvoiceAckDate	datetime	02/May/2022 4:18:00 PM	
 H_SpecialDiscount_Per	number	0	
 H_SpecialDiscount	number	0	
-H_Taxable_Amount	number	1314	
+H_Taxable_Amount	number	4997	
 H_Tax1_Per	number	0	
 H_Tax1	number	0	
 H_Tax2_Per	number	0	
-H_Tax2	number	32.85	
+H_Tax2	number	124.93	
 H_Tax3_Per	number	0	
-H_Tax3	number	32.85	
+H_Tax3	number	124.93	
 H_Tax4_Per	number	0	
 H_Tax4	number	0	
 H_Tax5_Per	number	0	
@@ -66,13 +69,13 @@ H_Deduction_Per	number	0
 H_Deduction	number	0	
 H_Other_Charge_Per	number	0	
 H_Other_Charge	number	0	
-Round_Off	number	0.3	
-H_Net_Amount	number	1380	
-Default_BankAccountDetail	string	255	<B> BANK DETAIL -: BANK OF INDIA A/C NO 696030110000045 IFSC CODE : BKID0006960 </B>	
+Round_Off	number	-0.14	
+H_Net_Amount	number	5247	
+Default_BankAccountDetail	string	255	Bank Detail : 	HDFC A/c : 50200003154727    IFSC : HDFC0002006	
 DocumentPrintHeaderPattern	string	255	Center Aligned	
 PrintedByUser	string	255	SUPER	
-EntryByUser	string	255	SUPER	
-PrintTitle	string	255	DEBIT NOTE (Customers)	
+EntryByUser	string	255	durgesh	
+PrintTitle	string	255	CREDIT NOTE (Customers)	
 DocumentPrintShowPrintDateTimeYn	string	255	1	
 CompanyLogo	BLOB		
 CompanyAuthorisedSignature	BLOB		
