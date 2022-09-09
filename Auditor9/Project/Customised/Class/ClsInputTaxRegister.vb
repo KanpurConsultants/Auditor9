@@ -33,12 +33,14 @@ Public Class ClsInputTaxRegister
     Public Const Col1NCat As String = "Ncat"
     Public Const Col1InvoiceValue As String = "Invoice Value"
 
-    Dim rowFromDate As Integer = 0
-    Dim rowToDate As Integer = 1
-    Dim rowSite As Integer = 2
-    Dim rowDivision As Integer = 3
-    Dim rowParty As Integer = 4
-    Dim rowGSTR2 As Integer = 5
+    Dim rowReportType As Integer = 0
+    Dim rowFromDate As Integer = 1
+    Dim rowToDate As Integer = 2
+    Dim rowSite As Integer = 3
+    Dim rowDivision As Integer = 4
+    Dim rowVoucherType As Integer = 5
+    Dim rowParty As Integer = 6
+    Dim rowGSTR2 As Integer = 7
     Public Property GRepFormName() As String
         Get
             GRepFormName = mGRepFormName
@@ -60,6 +62,7 @@ Public Class ClsInputTaxRegister
     Dim mHelpDivisionQry$ = "Select 'o' As Tick, Div_Code As Code, Div_Name As Name From Division "
     Dim mHelpYesNoQry$ = " Select 'Yes' As Code, 'Yes' AS [Value] Union All Select 'No' As Code, 'No' AS [Value] "
     Dim mHelpPartyQry$ = " Select 'o' As Tick,  Sg.SubCode As Code, Sg.DispName || ',' ||  City.CityName AS Party, Sg.Address FROM SubGroup Sg Left Join City On Sg.CityCode = City.CityCode Where Sg.Nature In ('Customer','Supplier','Cash') "
+    Dim mHelpVTypeQry$ = " Select 'o' As Tick, Vt.V_Type AS Code, Vt.Description AS [Voucher Type]  FROM Voucher_Type VT Where Vt.NCat In ('" & Ncat.PurchaseInvoice & "', '" & Ncat.JobInvoice & "', '" & Ncat.PurchaseReturn & "', '" & Ncat.ExpenseVoucher & "') "
     Dim mHelpCityQry$ = "Select 'o' As Tick, CityCode, CityName From City "
     Dim mHelpStateQry$ = "Select 'o' As Tick, Code, Description From State "
     Dim mHelpItemQry$ = "Select 'o' As Tick, Code, Description As [Item] From Item Where V_Type = '" & ItemV_Type.Item & "'"
@@ -71,18 +74,23 @@ Public Class ClsInputTaxRegister
     Dim mHelpTagQry$ = "Select Distinct 'o' As Tick, H.Tags as Code, H.Tags as Description  FROM PurchInvoiceDetail H "
     Public Sub Ini_Grid()
         Try
+            mQry = "Select 'Doc.Header Wise Detail' as Code, 'Doc.Header Wise Detail' as Name 
+                            Union All Select 'Voucher Type Wise Summary' as Code, 'Voucher Type Wise Summary' as Name "
+            ReportFrm.CreateHelpGrid("Report Type", "Report Type", FrmRepDisplay.FieldFilterDataType.StringType, FrmRepDisplay.FieldDataType.SingleSelection, mQry, "Voucher Type Wise Summary",,, 300)
+
             Dim mLastMonthDate As String = DateAdd(DateInterval.Month, -1, CDate(AgL.Dman_Execute("SELECT date('now')", AgL.GCn).ExecuteScalar()))
-            ReportFrm.CreateHelpGrid("FromDate", "From Date", Aglibrary.FrmReportLayout.FieldFilterDataType.StringType, Aglibrary.FrmReportLayout.FieldDataType.DateType, "", AgL.RetMonthStartDate(mLastMonthDate))
-            ReportFrm.CreateHelpGrid("ToDate", "To Date", Aglibrary.FrmReportLayout.FieldFilterDataType.StringType, Aglibrary.FrmReportLayout.FieldDataType.DateType, "", AgL.RetMonthEndDate(mLastMonthDate))
+            ReportFrm.CreateHelpGrid("FromDate", "From Date", AgLibrary.FrmReportLayout.FieldFilterDataType.StringType, AgLibrary.FrmReportLayout.FieldDataType.DateType, "", AgL.RetMonthStartDate(mLastMonthDate))
+            ReportFrm.CreateHelpGrid("ToDate", "To Date", AgLibrary.FrmReportLayout.FieldFilterDataType.StringType, AgLibrary.FrmReportLayout.FieldDataType.DateType, "", AgL.RetMonthEndDate(mLastMonthDate))
             ReportFrm.CreateHelpGrid("Site", "Site", FrmRepDisplay.FieldFilterDataType.StringType, FrmRepDisplay.FieldDataType.MultiSelection, mHelpSiteQry, "[SITECODE]")
             ReportFrm.CreateHelpGrid("Division", "Division", FrmRepDisplay.FieldFilterDataType.StringType, FrmRepDisplay.FieldDataType.MultiSelection, mHelpDivisionQry, "[DIVISIONCODE]")
+            ReportFrm.CreateHelpGrid("VoucherType", "Voucher Type", FrmRepDisplay.FieldFilterDataType.StringType, FrmRepDisplay.FieldDataType.MultiSelection, mHelpVTypeQry,, 600, 650, 300)
             ReportFrm.CreateHelpGrid("Party", "Party", FrmRepDisplay.FieldFilterDataType.StringType, FrmRepDisplay.FieldDataType.MultiSelection, mHelpPartyQry,, 600, 650, 300)
             mQry = "Select 'Reconciled' as Code, 'Reconciled' as Name 
                     Union All 
                     Select 'Not Reconciled' as Code, 'Not Reconciled' as Name 
                     Union All 
                     Select 'Both' as Code, 'Both' as Name"
-            ReportFrm.CreateHelpGrid("GSTR2", "GSTR2", Aglibrary.FrmReportLayout.FieldFilterDataType.StringType, Aglibrary.FrmReportLayout.FieldDataType.SingleSelection, mQry, "Not Reconciled")
+            ReportFrm.CreateHelpGrid("GSTR2", "GSTR2", AgLibrary.FrmReportLayout.FieldFilterDataType.StringType, AgLibrary.FrmReportLayout.FieldDataType.SingleSelection, mQry, "Not Reconciled")
         Catch ex As Exception
             MsgBox(ex.Message)
         End Try
@@ -108,9 +116,15 @@ Public Class ClsInputTaxRegister
 
             If mFilterGrid IsNot Nothing And mGridRow IsNot Nothing Then
                 If mGridRow.DataGridView.Columns.Contains("Search Code") = True Then
-                    ClsMain.FOpenForm(mGridRow.Cells("Search Code").Value, ReportFrm)
-                    ReportFrm.FiterGridCopy_Arr.RemoveAt(ReportFrm.FiterGridCopy_Arr.Count - 1)
-                    Exit Sub
+                    If mFilterGrid.Item(GFilter, 0).Value = "Voucher Type Wise Summary" Then
+                        mFilterGrid.Item(GFilter, 0).Value = "Doc.Header Wise Detail"
+                        mFilterGrid.Item(GFilter, rowVoucherType).Value = mGridRow.Cells("Voucher Type").Value
+                        mFilterGrid.Item(GFilterCode, rowVoucherType).Value = "'" + mGridRow.Cells("Search Code").Value + "'"
+                    ElseIf mFilterGrid.Item(GFilter, 0).Value = "Doc.Header Wise Detail" Then
+                        ClsMain.FOpenForm(mGridRow.Cells("Search Code").Value, ReportFrm)
+                        ReportFrm.FiterGridCopy_Arr.RemoveAt(ReportFrm.FiterGridCopy_Arr.Count - 1)
+                        Exit Sub
+                    End If
                 Else
                     Exit Sub
                 End If
@@ -120,6 +134,7 @@ Public Class ClsInputTaxRegister
                          And Date(IfNull(H.VendorDocDate, H.V_Date)) <= " & AgL.Chk_Date(ReportFrm.FGetText(rowToDate)) & " "
             mPurchCondStr = mPurchCondStr & Replace(ReportFrm.GetWhereCondition("H.Site_Code", rowSite), "''", "'")
             mPurchCondStr = mPurchCondStr & Replace(ReportFrm.GetWhereCondition("H.Div_Code", rowDivision), "''", "'")
+            mPurchCondStr = mPurchCondStr & ReportFrm.GetWhereCondition("H.V_Type", rowVoucherType)
             mPurchCondStr = mPurchCondStr & ReportFrm.GetWhereCondition("H.Vendor", rowParty)
             mPurchCondStr = mPurchCondStr & " And CharIndex('" & ClsMain.VoucherTypeTags.ExcludeInSalesTaxReturns & "','+' || IfNull(Vt.VoucherTypeTags,'')) = 0 "
 
@@ -142,7 +157,7 @@ Public Class ClsInputTaxRegister
                 mLedgerHeadCondStr += " And CharIndex('+GSTR2',IsNull(L.Tags,'')) = 0 "
             End If
 
-            Dim mStrQry As String = " SELECT L.DocId, Vt.Ncat, H.VendorSalesTaxNo As GSTINofRecipient, 
+            Dim mStrQry As String = " SELECT L.DocId, Vt.Ncat, H.V_Type, Vt.Description as VoucherType, H.VendorSalesTaxNo As GSTINofRecipient, 
                     Replace(Replace(Sg.Name,'{',''),'}','') As ReceiverName,
                     '" & IIf(AgL.PubPrintDivisionShortNameOnDocumentsYn, AgL.PubDivShortName, "") & IIf(AgL.PubPrintSiteShortNameOnDocumentsYn, AgL.PubSiteShortName, "") & "' || (Case When VT.Short_Name Is Not Null Then VT.Short_Name Else '' End) || H.ManualRefNo as InvoiceNumber, 
                     strftime('%d/%m/%Y', H.V_Date) As InvoiceDate, 
@@ -166,12 +181,12 @@ Public Class ClsInputTaxRegister
                     left join SubGroup Sg On H.Vendor = Sg.SubCode
                     LEFT JOIN City C On H.VendorCity = C.CityCode
                     LEFT JOIN State S on C.State = S.Code " & mPurchCondStr &
-                    " And Vt.NCat In ('" & Ncat.PurchaseInvoice & "', '" & Ncat.JobInvoice & "')
+                    " And Vt.NCat In ('" & Ncat.PurchaseInvoice & "', '" & Ncat.JobInvoice & "', '" & Ncat.PurchaseReturn & "')
                     And H.SalesTaxGroupParty In ('" & PostingGroupSalesTaxParty.Registered & "','" & PostingGroupSalesTaxParty.Composition & "') "
 
             mStrQry += " UNION ALL "
 
-            mStrQry += "SELECT L.DocId, Vt.Ncat, H.PartySalesTaxNo As GSTINofRecipient, 
+            mStrQry += "SELECT L.DocId, Vt.Ncat, H.V_Type, Vt.Description as VoucherType, H.PartySalesTaxNo As GSTINofRecipient, 
                     Replace(Replace(Sg.Name,'{',''),'}','') As ReceiverName,
                     'SSF-KNP-' || (Case When VT.Short_Name Is Not Null Then VT.Short_Name Else '' End) || H.ManualRefNo as InvoiceNumber, 
                     strftime('%d/%m/%Y', H.V_Date) As InvoiceDate, 
@@ -200,7 +215,18 @@ Public Class ClsInputTaxRegister
                     " And Vt.NCat = '" & Ncat.ExpenseVoucher & "'
                     And H.SalesTaxGroupParty In ('" & PostingGroupSalesTaxParty.Registered & "','" & PostingGroupSalesTaxParty.Composition & "') "
 
-            mQry = "Select H.DocId As SearchCode, Max(H.Ncat) As Ncat, Max(H.GSTINofRecipient) As GstNoOfRecipient, Max(H.ReceiverName) As ReceiverName, 
+            If ReportFrm.FGetText(0) = "Voucher Type Wise Summary" Then
+                mQry = " Select H.V_Type as SearchCode, Max(H.VoucherType) As VoucherType,                          
+                                Sum(H.TaxableValue) As TaxableValue, 
+                                Sum(H.IntegratedTaxAmount) As IntegratedTaxAmount,
+                                Sum(H.CentralTaxAmount) As CentralTaxAmount,
+                                Sum(H.StateTaxAmount) As StateTaxAmount,
+                                Sum(H.CessAmount) As CessAmount
+                    From (" & mStrQry & ") As H
+                    GROUP By H.V_Type
+                    Order By Max(H.VoucherType)"
+            Else
+                mQry = "Select H.DocId As SearchCode, Max(H.Ncat) As Ncat, Max(H.GSTINofRecipient) As GstNoOfRecipient, Max(H.ReceiverName) As ReceiverName, 
                                 Max(H.InvoiceNumber) As InvoiceNumber,
                                 Max(H.InvoiceDate) As InvoiceDate, 
                                 Max(H.PartyInvoiceNo) As PartyInvoiceNo,
@@ -219,6 +245,7 @@ Public Class ClsInputTaxRegister
                                 From (" + mStrQry + ") As H 
                                 Group By H.DocID, H.SalesTaxGroupItem 
                                 Order By Max(OrderByDate), PartyInvoiceNo, DocId "
+            End If
 
             DsHeader = AgL.FillData(mQry, AgL.GCn)
 
@@ -232,13 +259,16 @@ Public Class ClsInputTaxRegister
 
             ReportFrm.ProcFillGrid(DsHeader)
 
-            ReportFrm.DGL1.Columns(Col1NCat).Visible = False
-            ReportFrm.DGL1.Columns(Col1SalesTaxGroupItem).Visible = False
-            ReportFrm.DGL1.Columns(Col1Tags).Visible = True
-            ReportFrm.DGL1.Columns(Col1Tags).HeaderCell.Style.BackColor = Color.LightCyan
-            ReportFrm.DGL1.Columns(Col1Tags).HeaderCell.Style.ForeColor = Color.Black
+            If ReportFrm.FGetText(0) = "Doc.Header Wise Detail" Then
+                ReportFrm.DGL1.Columns(Col1NCat).Visible = False
+                ReportFrm.DGL1.Columns(Col1SalesTaxGroupItem).Visible = False
+                ReportFrm.DGL1.Columns(Col1Tags).Visible = True
+                ReportFrm.DGL1.Columns(Col1Tags).HeaderCell.Style.BackColor = Color.LightCyan
+                ReportFrm.DGL1.Columns(Col1Tags).HeaderCell.Style.ForeColor = Color.Black
+                ReportFrm.DGL2.Item(Col1InvoiceValue, 0).Value = ""
+            End If
 
-            ReportFrm.DGL2.Item(Col1InvoiceValue, 0).Value = ""
+
         Catch ex As Exception
             MsgBox(ex.Message)
             DsHeader = Nothing

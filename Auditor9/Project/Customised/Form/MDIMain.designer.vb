@@ -317,6 +317,7 @@ Partial Class MDIMain
         Me.MnuPrintCheque = New System.Windows.Forms.ToolStripMenuItem()
         Me.MnuBank = New System.Windows.Forms.ToolStripMenuItem()
         Me.MnuChequePrinting = New System.Windows.Forms.ToolStripMenuItem()
+        Me.MnuMatchData = New System.Windows.Forms.ToolStripMenuItem()
         Me.MnuMain.SuspendLayout()
         Me.SuspendLayout()
         '
@@ -2097,7 +2098,7 @@ Partial Class MDIMain
         '
         'MnuUtility
         '
-        Me.MnuUtility.DropDownItems.AddRange(New System.Windows.Forms.ToolStripItem() {Me.MnuYearEnd, Me.MnuCompanyMaster, Me.MnuDivisionMaster, Me.MnuSiteMaster, Me.MnuSettings, Me.MnuSettingsVisibility, Me.MnuSettingsCommon, Me.MnuSettingsMenus, Me.MnuSettingsEInvoice, Me.MnuUpdateTableStructure, Me.MnuExecuteQuery, Me.MnuBackupDatabase, Me.MnuItemMerging, Me.MnuVoucherTypeTimePlan, Me.MnuLogReport, Me.MnuSyncWithActualDatabase, Me.MnuRestoreDatabase, Me.MnuVoucherType, Me.MnuSplitLedgerOpening, Me.MnuBulkEmail, Me.MnuDataCorrection, Me.MnuDeleteData, Me.MnuTDSParameters, Me.MnuExportDataForBranch, Me.MnuImportDataFromBranch, Me.MnuOpeningTransfer, Me.MnuImportDataCustom, Me.MnuAdjustStockFIFO, Me.MnuUpdateLinkedAccount, Me.MnuDeleteAttachments, Me.MnuInconsistencyReport, Me.MnuRecheckBills})
+        Me.MnuUtility.DropDownItems.AddRange(New System.Windows.Forms.ToolStripItem() {Me.MnuYearEnd, Me.MnuCompanyMaster, Me.MnuDivisionMaster, Me.MnuSiteMaster, Me.MnuSettings, Me.MnuSettingsVisibility, Me.MnuSettingsCommon, Me.MnuSettingsMenus, Me.MnuSettingsEInvoice, Me.MnuUpdateTableStructure, Me.MnuExecuteQuery, Me.MnuBackupDatabase, Me.MnuItemMerging, Me.MnuVoucherTypeTimePlan, Me.MnuLogReport, Me.MnuSyncWithActualDatabase, Me.MnuRestoreDatabase, Me.MnuVoucherType, Me.MnuSplitLedgerOpening, Me.MnuBulkEmail, Me.MnuDataCorrection, Me.MnuDeleteData, Me.MnuTDSParameters, Me.MnuExportDataForBranch, Me.MnuImportDataFromBranch, Me.MnuOpeningTransfer, Me.MnuImportDataCustom, Me.MnuAdjustStockFIFO, Me.MnuUpdateLinkedAccount, Me.MnuDeleteAttachments, Me.MnuInconsistencyReport, Me.MnuRecheckBills, Me.MnuMatchData})
         Me.MnuUtility.Name = "MnuUtility"
         Me.MnuUtility.Size = New System.Drawing.Size(50, 20)
         Me.MnuUtility.Text = "Utility"
@@ -2425,6 +2426,12 @@ Partial Class MDIMain
         Me.MnuChequePrinting.Size = New System.Drawing.Size(160, 22)
         Me.MnuChequePrinting.Text = "Cheque Printing"
         '
+        'MnuMatchData
+        '
+        Me.MnuMatchData.Name = "MnuMatchData"
+        Me.MnuMatchData.Size = New System.Drawing.Size(215, 22)
+        Me.MnuMatchData.Text = "Match Data"
+        '
         'MDIMain
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
@@ -2745,4 +2752,5 @@ Partial Class MDIMain
     Friend WithEvents MnuLRUpdation As ToolStripMenuItem
     Friend WithEvents MnuExportSqliteDataToSqlServer As ToolStripMenuItem
     Friend WithEvents MnuTCSInputReport As ToolStripMenuItem
+    Friend WithEvents MnuMatchData As ToolStripMenuItem
 End Class

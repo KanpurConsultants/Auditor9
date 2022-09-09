@@ -1,54 +1,54 @@
 ; Field definition file for table: ADORecordset
 Copies	string	255	1	
 CopyPrintingCaption	string	255		
-DocNoCaption	string	255	Invoice No.	
-DocDateCaption	string	255	Invoice Date	
+DocNoCaption	string	255	Doc.No.	
+DocDateCaption	string	255	Doc.Date	
 SiteStateCode	string	255	09	
 SiteStateName	string	255	Uttar Pradesh	
-DocID	string	255	D1    SI 2022       1	
+DocID	string	255	D1    SR 2022    2349	
 Sr	number	1	
-V_Date	datetime	01/Apr/2022 12:00:00 AM	
+V_Date	datetime	26/Aug/2022 12:00:00 AM	
 DeliveryDate	datetime		
-Voucher_Type	string	255	Tax Invoice	
-NCat	string	255	SI	
-InvoiceNo	string	255	SI-1	
+Voucher_Type	string	255	Sale Return	
+NCat	string	255	SR	
+InvoiceNo	string	255	SR-2349	
 RateType	string	255	Super Net	
 DocumentPrintShowRateType	string	255	Show If Not Blank	
-AgentName	string	255	DIRECT CUSTOMER	
+AgentName	string	255	DIRECT (CASH)	
 AgentCaption	string	255	Agent	
-SaleToPartyName	string	255	MAA MATCHING CENTER	
-SaleToPartyAddress	string	255	FATEHPUR	
-CityName	string	255	FATEHPUR	
-SaleToPartyPincode	string	255	212601	
+SaleToPartyName	string	255	CASH A/C - ANMOL SAREE CENTRE	
+SaleToPartyAddress	string	255	PURANI SABJI MANDI DURGA MANDIR LALGANJ DIST:RAIBARELY	
+CityName	string	255	LALGANJ	
+SaleToPartyPincode	string	255	229206	
 StateCode	string	255	09	
 StateName	string	255	Uttar Pradesh	
-SaleToPartyMobile	string	255	7800430572	
+SaleToPartyMobile	string	255	6306436723	
 ContactPerson	string	255		
-SaleToPartySalesTaxNo	string	255	09AGLPR8784P2ZY	
-SaleToPartyAadharNo	string	255		
-SaleToPartyPanNo	string	255	AGLPR8784P	
-ShipToPartyName	string	255	MAA MATCHING CENTER	
-ShipToPartyAddress	string	255	FATEHPUR	
-ShipToPartyCity	string	255	FATEHPUR	
-ShipToPartyPincode	string	255	212601	
+SaleToPartySalesTaxNo	string	255		
+SaleToPartyAadharNo	string	255	589333380856	
+SaleToPartyPanNo	string	255		
+ShipToPartyName	string	255	CASH A/C - ANMOL SAREE CENTRE	
+ShipToPartyAddress	string	255	PURANI SABJI MANDI DURGA MANDIR LALGANJ DIST:RAIBARELY	
+ShipToPartyCity	string	255	LALGANJ	
+ShipToPartyPincode	string	255	229206	
 ShipToPartyStateCode	string	255	09	
 ShipToPartyStateName	string	255	Uttar Pradesh	
-ShipToPartyMobile	string	255	7800430572	
-ShipToPartySalesTaxNo	string	255	09AGLPR8784P2ZY	
-ShipToPartyAadharNo	string	255		
-ShipToPartyPanNo	string	255	AGLPR8784P	
+ShipToPartyMobile	string	255	6306436723	
+ShipToPartySalesTaxNo	string	255		
+ShipToPartyAadharNo	string	255	589333380856	
+ShipToPartyPanNo	string	255		
 ShipToAddress	string	255		
 TermsAndConditions	string	255	<b>1.</b> Goods once sold will not be taken back. <b>2.</b> No Guarantee in the Age of Fashion. <b>3.</b> Interest @ 24% per annum will be charge after 30 days from the date of bill. <b>4.</b> All disputes subject to Kanpur Jurisdiction OR disputes will be settle through Cawnpore Kapda Committee Arbitration Board which will be abide by the both parties	
-TransporterName	string	255	ANIL ROAD LINES , KANPUR	
-LrNo	string	255	38562	
-LrDate	datetime	03/Apr/2022 12:00:00 AM	
+TransporterName	string	255	BAKSHI TRANSPORT COMPANY, KANPUR	
+LrNo	string	255		
+LrDate	datetime		
 PrivateMark	string	255		
 Weight	number	0	
 Freight	number	0	
 ChargedWeight	number	0	
 FreightType	string	255		
-RoadPermitNo	string	255	471241476932	
-RoadPermitDate	datetime	01/Apr/2022 5:31:00 PM	
+RoadPermitNo	string	255		
+RoadPermitDate	datetime		
 VehicleNo	string	255		
 ShipMethod	string	255		
 PreCarriageBy	string	255		
@@ -58,19 +58,19 @@ BookedTo	string	255
 Destination	string	255		
 DescriptionOfGoods	string	255		
 DescriptionOfPacking	string	255		
-ReferenceNo	string	255		
-ItemName	string	255	7481          [GAURI FASHION | SAREE]	
-ItemGroupName	string	255	CUNDARI	
+ReferenceNo	string	255	SIC824	
+ItemName	string	255	RAJVI          [SHYAM FABRICS(807) | SAREE]	
+ItemGroupName	string	255	S-ENT-807 DYD	
 ItemCatName	string	255	SAREE	
-ItemSpecification	string	255	7481	
+ItemSpecification	string	255	RAJVI	
 InvoiceLineSpecification	string	255		
 HSN	string	255	540752	
 MaintainStockYn	boolean	True	
 SalesTaxGroupItem	string	255	GST 5%	
 GrossTaxRate	number	5	
-Pcs	number	2	
-Qty	number	2	
-Rate	number	1299	
+Pcs	number	1	
+Qty	number	1	
+Rate	number	695	
 Unit	string	255	Pcs	
 UnitDecimalPlaces	number	0	
 DiscountPer	number	0	
@@ -80,34 +80,34 @@ AdditionalDiscountAmount	number	0
 AdditionPer	number	0	
 AdditionAmount	number	0	
 TotalDiscount	number	0	
-AmountBeforeDiscount	number	2598	
-Amount	number	2598	
-Taxable_Amount	number	2598	
+AmountBeforeDiscount	number	695	
+Amount	number	695	
+Taxable_Amount	number	695	
 Tax1_Per	number	0	
 Tax1	number	0	
 Tax2_Per	number	2.5	
-Tax2	number	64.95	
+Tax2	number	17.38	
 Tax3_Per	number	2.5	
-Tax3	number	64.95	
+Tax3	number	17.38	
 Tax4_Per	number	0	
 Tax4	number	0	
 Tax5_Per	number	0	
 Tax5	number	0	
-Net_Amount	number	2727.91	
+Net_Amount	number	730	
 LRemarks	string	255		
 HRemarks	string	255		
 H_TotalDiscount	number	0	
-H_AmountBeforeDiscount	number	66605	
-H_Gross_Amount	number	66605	
+H_AmountBeforeDiscount	number	695	
+H_Gross_Amount	number	695	
 H_SpecialDiscount_Per	number	0	
 H_SpecialDiscount	number	0	
-H_Taxable_Amount	number	66605	
+H_Taxable_Amount	number	695	
 H_Tax1_Per	number	0	
 H_Tax1	number	0	
 H_Tax2_Per	number	0	
-H_Tax2	number	1665.13	
+H_Tax2	number	17.38	
 H_Tax3_Per	number	0	
-H_Tax3	number	1665.13	
+H_Tax3	number	17.38	
 H_Tax4_Per	number	0	
 H_Tax4	number	0	
 H_Tax5_Per	number	0	
@@ -116,17 +116,17 @@ H_Deduction_Per	number	0
 H_Deduction	number	0	
 H_Other_Charge_Per	number	0	
 H_Other_Charge	number	0	
-Round_Off	number	-0.26	
-H_Net_Amount	number	69935	
-EInvoiceIRN	string	255	1b4266f058571aa16fd4602e15f384e5a52a7813712fbc8d93fd6ac4759fe0c9	
-EInvoiceAckNo	string	255	142211128954934	
-EInvoiceAckDate	datetime	01/Apr/2022 5:31:00 PM	
+Round_Off	number	-0.24	
+H_Net_Amount	number	730	
+EInvoiceIRN	string	255		
+EInvoiceAckNo	string	255		
+EInvoiceAckDate	datetime		
 Default_BankAccountDetail	string	255	Bank Detail : 	HDFC A/c : 50200003154727    IFSC : HDFC0002006	
 DocumentPrintHeaderPattern	string	255	Center Aligned	
 DimDetail	string	255		
 PrintedByUser	string	255	SUPER	
-EntryByUser	string	255	PANKAJ	
-PrintTitle	string	255	TAX INVOICE	
+EntryByUser	string	255	VIKAS	
+PrintTitle	string	255	Sale Return	
 DocumentPrintShowPrintDateTimeYn	string	255	1	
 CompanyLogo	BLOB		
 CompanyAuthorisedSignature	BLOB		

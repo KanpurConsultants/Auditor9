@@ -74,14 +74,14 @@
     <Name>Reference No</Name>
     <Index>10</Index>
     <Width>150</Width>
-    <Visible>False</Visible>
+    <Visible>True</Visible>
     <AggregateFunction />
   </Column>
   <Column>
     <Name>Reference Date</Name>
     <Index>11</Index>
     <Width>115</Width>
-    <Visible>False</Visible>
+    <Visible>True</Visible>
     <AggregateFunction />
   </Column>
   <Column>

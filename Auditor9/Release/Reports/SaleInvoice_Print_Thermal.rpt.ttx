@@ -1,17 +1,17 @@
 ; Field definition file for table: ADORecordset
 Copies	string	255	1	
-CopyPrintingCaption	string	255	Original	
+CopyPrintingCaption	string	255		
 DocNoCaption	string	255	Invoice No.	
 DocDateCaption	string	255	Invoice Date	
 SiteStateCode	string	255	09	
 SiteStateName	string	255	Uttar Pradesh	
-DocID	string	255	D1   SIR 2022    1091	
+DocID	string	255	D1   SIR 2022    2673	
 Sr	number	1	
-V_Date	datetime	21/Jun/2022 12:00:00 AM	
+V_Date	datetime	08/Sep/2022 12:00:00 AM	
 DeliveryDate	datetime		
 Voucher_Type	string	255	Sale Invoice Retail	
 NCat	string	255	SI	
-InvoiceNo	string	255	SIR-1091	
+InvoiceNo	string	255	SIR-1480	
 GenDocNo	string	255		
 AmsDocNo	string	255		
 AmsDocDate	datetime		
@@ -19,27 +19,27 @@ AmsDocNetAmount	number	0
 RateType	string	255		
 DocumentPrintShowRateType	string	255	Show If Not Blank	
 AgentName	string	255		
-SalesRepName	string	255	MANNAT	
-SalesRepCode	string	255	18	
+SalesRepName	string	255	INDER	
+SalesRepCode	string	255	7	
 AgentCaption	string	255	Agent	
-SaleToPartyName	string	255		
+SaleToPartyName	string	255	aa	
 SaleToPartyAddress	string	255		
-CityName	string	255	Kanpur	
+CityName	string	255		
 SaleToPartyPincode	string	255		
-StateCode	string	255	09	
-StateName	string	255	Uttar Pradesh	
+StateCode	string	255		
+StateName	string	255		
 SaleToPartyMobile	string	255		
 ContactPerson	string	255		
 SaleToPartySalesTaxNo	string	255		
 SaleToPartyAadharNo	string	255		
 SaleToPartyPanNo	string	255		
 SaleToPartyLicenseNo	string	255		
-ShipToPartyName	string	255		
+ShipToPartyName	string	255	aa	
 ShipToPartyAddress	string	255		
-ShipToPartyCity	string	255	Kanpur	
+ShipToPartyCity	string	255		
 ShipToPartyPincode	string	255		
-ShipToPartyStateCode	string	255	09	
-ShipToPartyStateName	string	255	Uttar Pradesh	
+ShipToPartyStateCode	string	255		
+ShipToPartyStateName	string	255		
 ShipToPartyMobile	string	255		
 ShipToPartySalesTaxNo	string	255		
 ShipToPartyAadharNo	string	255		
@@ -68,12 +68,12 @@ Destination	string	255
 DescriptionOfGoods	string	255		
 DescriptionOfPacking	string	255		
 ReferenceNo	string	255		
-BarcodeName	string	255	1699	
-ItemName	string	255	HKG-SE-NA-HALKI-SAREE-D1   ISS 2021     865	
-ItemGroupName	string	255	SE-NA-HALKI	
+BarcodeName	string	255	1599	
+ItemName	string	255	788-S-ENT-870DYD-SAREE-D1   ISS 2021     832	
+ItemGroupName	string	255	S-ENT-870DYD	
 ItemCatName	string	255	SAREE	
-ItemManualCode	string	255	D100096957	
-ItemSpecification	string	255	HKG	
+ItemManualCode	string	255	D100096800	
+ItemSpecification	string	255	788	
 InvoiceLineSpecification	string	255		
 HSN	string	255	540752	
 MaintainStockYn	boolean	True	
@@ -95,13 +95,13 @@ D3Caption	string	255	Design
 D4Caption	string	255	Width	
 SalesTaxGroupItem	string	255	GST 5%	
 GrossTaxRate	number	5	
-MRP	number	695	
+MRP	number	2795	
 LotNo	string	255		
 ExpiryDate	datetime		
 ItemRemark1	string	255		
 Pcs	number	1	
 Qty	number	1	
-Rate	number	695	
+Rate	number	2795	
 ItemState	string	255		
 CatalogSpecification	string	255		
 CatalogSiteName	string	255		
@@ -115,38 +115,38 @@ AdditionPer	number	0
 AdditionAmount	number	0	
 TotalDiscount	number	0	
 Deal	string	255		
-AmountBeforeDiscount	number	695	
-Amount	number	695	
-Taxable_Amount	number	661.9	
+AmountBeforeDiscount	number	2795	
+Amount	number	2795	
+Taxable_Amount	number	2661.9	
 Tax1_Per	number	0	
 Tax1	number	0	
 Tax2_Per	number	2.5	
-Tax2	number	16.55	
+Tax2	number	66.55	
 Tax3_Per	number	2.5	
-Tax3	number	16.55	
+Tax3	number	66.55	
 Tax4_Per	number	0	
 Tax4	number	0	
 Tax5_Per	number	0	
 Tax5	number	0	
-Net_Amount	number	695	
+Net_Amount	number	2795	
 LRemarks	string	255		
 HRemarks	string	255		
-SalesTaxSummaryStr	string	255	540752 Taxable Amt : 1323.8 Tax Amt : 66.2, 	
+SalesTaxSummaryStr	string	255	540752 Taxable Amt : 2661.9 Tax Amt : 133.1, 	
 H_Discount	number	0	
 H_AdditionalDiscount	number	0	
 H_Additional	number	0	
 H_TotalDiscount	number	0	
-H_AmountBeforeDiscount	number	1390	
-H_Gross_Amount	number	1390	
+H_AmountBeforeDiscount	number	2795	
+H_Gross_Amount	number	2795	
 H_SpecialDiscount_Per	number	0	
 H_SpecialDiscount	number	0	
-H_Taxable_Amount	number	1323.8	
+H_Taxable_Amount	number	2661.9	
 H_Tax1_Per	number	0	
 H_Tax1	number	0	
 H_Tax2_Per	number	0	
-H_Tax2	number	33.1	
+H_Tax2	number	66.55	
 H_Tax3_Per	number	0	
-H_Tax3	number	33.1	
+H_Tax3	number	66.55	
 H_Tax4_Per	number	0	
 H_Tax4	number	0	
 H_Tax5_Per	number	0	
@@ -160,7 +160,7 @@ H_Other_Charge1	number	0
 H_Other_Charge2_Per	number	0	
 H_Other_Charge2	number	0	
 Round_Off	number	0	
-H_Net_Amount	number	1390	
+H_Net_Amount	number	2795	
 EInvoiceIRN	string	255		
 EInvoiceACKNo	string	255		
 EInvoiceACKDate	datetime		

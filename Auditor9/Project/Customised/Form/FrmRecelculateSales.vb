@@ -306,7 +306,8 @@ Public Class FrmRecelculateSales
                 SaleInvoiceTable.Line_DealUnit = AgL.XNull(DtSaleInvoiceDetail_ForHeader.Rows(J)("DealUnit"))
                 SaleInvoiceTable.Line_DocDealQty = AgL.XNull(DtSaleInvoiceDetail_ForHeader.Rows(J)("DocDealQty"))
                 SaleInvoiceTable.Line_OmsId = ""
-                'SaleInvoiceTable.Line_Rate = AgL.XNull(DtSaleInvoiceDetail_ForHeader.Rows(J)("Rate"))
+                SaleInvoiceTable.Line_Cost = AgL.XNull(DtSaleInvoiceDetail_ForHeader.Rows(J)("Rate"))
+                SaleInvoiceTable.Line_SalesRepresentative = AgL.XNull(DtSaleInvoiceDetail_ForHeader.Rows(J)("SalesRepresentative"))
 
                 If AgL.StrCmp(AgL.PubDBName, "SHADHVINANDI") Then
                     SaleInvoiceTable.Line_Rate = Math.Round(AgL.VNull(DtSaleInvoiceDetail_ForHeader.Rows(J)("Rate")) - (AgL.VNull(DtSaleInvoiceDetail_ForHeader.Rows(J)("Rate")) * AgL.VNull(DtSaleInvoiceDetail_ForHeader.Rows(J)("CalcCode")) / 100), 0)

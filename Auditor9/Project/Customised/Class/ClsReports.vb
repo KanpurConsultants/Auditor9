@@ -2214,7 +2214,13 @@ Public Class ClsReports
             mCondStr = "  "
             mCondStr = mCondStr & " And Party.Nature='Customer' "
             mCondStr = mCondStr & ReportFrm.GetWhereCondition("L.Subcode", 4)
-            mCondStr = mCondStr & ReportFrm.GetWhereCondition("IfNull(ReferenceLh.V_Type,L.V_Type)", 5)
+
+            If AgL.StrCmp(ClsMain.FDivisionNameForCustomization(6), "SADHVI") And AgL.StrCmp(AgL.PubDBName, "SADHVI") Then
+                mCondStr = mCondStr & " And IfNull(ReferenceLh.V_Type,L.V_Type) Not In ('IMR') "
+            Else
+                mCondStr = mCondStr & ReportFrm.GetWhereCondition("IfNull(ReferenceLh.V_Type,L.V_Type)", 5)
+            End If
+
             'mCondStr = mCondStr & ReportFrm.GetWhereCondition("L.V_Type", 5)
             mCondStr = mCondStr & ReportFrm.GetWhereCondition("LTV." & mFieldName, 6)
             mCondStr = mCondStr & ReportFrm.GetWhereCondition("City.CityCode", 7)

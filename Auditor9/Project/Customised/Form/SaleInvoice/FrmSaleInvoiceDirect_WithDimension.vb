@@ -12055,11 +12055,11 @@ Public Class FrmSaleInvoiceDirect_WithDimension
 
                     mQry = "Insert Into SaleInvoiceDetail(DocId, Sr, Barcode, Item, Specification, SalesTaxGroupItem, 
                            DocQty, FreeQty, Qty, Unit, Pcs, UnitMultiplier, DealUnit, 
-                           DocDealQty, Rate, DiscountPer, DiscountAmount, AdditionalDiscountPer, AdditionalDiscountAmount,  
+                           DocDealQty, Cost, Rate, DiscountPer, DiscountAmount, AdditionalDiscountPer, AdditionalDiscountAmount,  
                            ExtraDiscountPer, ExtraDiscountAmount,  
                            AdditionPer, AdditionAmount,Amount, Remark, BaleNo, LotNo, Catalog, 
                            MRP, Deal, ExpiryDate, ReconcileDateTime,
-                           ReferenceDocId, ReferenceDocIdSr, ReferenceNo, 
+                           ReferenceDocId, ReferenceDocIdSr, ReferenceNo, SalesRepresentative, 
                            SaleInvoice, SaleInvoiceSr, V_Nature, GrossWeight, NetWeight, OMSId, Gross_Amount, 
                            SpecialDiscount_Per, SpecialDiscount, SpecialAddition_Per, SpecialAddition,
                            Taxable_Amount,
@@ -12079,6 +12079,7 @@ Public Class FrmSaleInvoiceDirect_WithDimension
                             " & Val(SaleInvoiceTableList(I).Line_UnitMultiplier) & ", 
                             " & AgL.Chk_Text(SaleInvoiceTableList(I).Line_DealUnit) & ", 
                             " & Val(SaleInvoiceTableList(I).Line_DocDealQty) & ", 
+                            " & Val(SaleInvoiceTableList(I).Line_Cost) & ", 
                             " & Val(SaleInvoiceTableList(I).Line_Rate) & ", 
                             " & Val(SaleInvoiceTableList(I).Line_DiscountPer) & ", 
                             " & Val(SaleInvoiceTableList(I).Line_DiscountAmount) & ", 
@@ -12099,7 +12100,8 @@ Public Class FrmSaleInvoiceDirect_WithDimension
                             " & AgL.Chk_Date(SaleInvoiceTableList(I).Line_ReconcileDateTime) & ", 
                             " & AgL.Chk_Text(SaleInvoiceTableList(I).Line_ReferenceDocId) & ", 
                             " & AgL.Chk_Text(SaleInvoiceTableList(I).Line_ReferenceDocIdSr) & ", 
-                            " & AgL.Chk_Text(SaleInvoiceTableList(I).Line_ReferenceNo) & ", 
+                            " & AgL.Chk_Text(SaleInvoiceTableList(I).Line_ReferenceNo) & ",
+                            " & AgL.Chk_Text(SaleInvoiceTableList(I).Line_SalesRepresentative) & ", 
                             " & AgL.Chk_Text(SaleInvoiceTableList(I).Line_SaleInvoice) & ", 
                             " & AgL.Chk_Text(SaleInvoiceTableList(I).Line_SaleInvoiceSr) & ", 
                             " & AgL.Chk_Text(SaleInvoiceTableList(I).Line_V_Nature) & ", 
@@ -12341,7 +12343,6 @@ Public Class FrmSaleInvoiceDirect_WithDimension
         Return SaleInvoiceTableList(0).DocID
     End Function
 
-
     Private Sub Dgl1_CellLeave(sender As Object, e As DataGridViewCellEventArgs) Handles Dgl1.CellLeave
         'If e.ColumnIndex = Dgl1.Columns(Col1Item).Index Then
         '    If Dgl1.Item(Col1Item, e.RowIndex).Value = "" Then
@@ -12440,10 +12441,12 @@ Public Class FrmSaleInvoiceDirect_WithDimension
         Dim Line_FreeQty As String
         Dim Line_Qty As String
         Dim Line_Unit As String
+        Dim Line_SalesRepresentative As String
         Dim Line_Pcs As String
         Dim Line_UnitMultiplier As String
         Dim Line_DealUnit As String
         Dim Line_DocDealQty As String
+        Dim Line_Cost As String
         Dim Line_Rate As String
         Dim Line_DiscountPer As String
         Dim Line_DiscountAmount As String

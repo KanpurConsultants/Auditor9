@@ -230,6 +230,10 @@ Public Class ClsFunction
                 Case MDI.MnuImportDataCustom.Name
                     FrmObj = New FrmSyncDataFromOtherDatabase()
 
+                Case MDI.MnuMatchData.Name
+                    FrmObj = New FrmMatchDataFromOtherDatabase()
+
+
                 Case MDI.MnuDivisionMaster.Name, MdiCheque.MnuChequeCompanyMaster.Name, MdiSchool.MnuDivisionMaster.Name, MdiSpare.MnuDivisionMaster.Name, MdiKirana.MnuDivisionMaster.Name
                     If AgL.StrCmp(AgL.PubUserName, AgLibrary.ClsConstant.PubSuperUserName) Then
                         FrmObj = New FrmPerson("AE**", DTUP, SubgroupType.Division)
@@ -285,7 +289,7 @@ Public Class ClsFunction
                     '    FrmObj = New FrmCustomerAcSettlementAadhat(StrUserPermission, DTUP, Ncat.ReceiptSettlement)
                     'Else
                     FrmObj = New FrmPartyAcSettlement(StrUserPermission, DTUP, Ncat.ReceiptSettlement)
-                    'End If
+                'End If
                 Case MDI.MnuPurchaseOrder.Name, MdiKirana.MnuPurchaseOrder.Name
                     If FGetNewVersionFlag() = True Then
                         FrmObj = New FrmPurchInvoiceDirect_WithDimension(StrUserPermission, DTUP, Ncat.PurchaseOrder)

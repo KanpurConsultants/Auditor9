@@ -344,7 +344,7 @@ Public Class ClsConcurLedger
                                 Select H.DocId
                                 From LedgerHead H 
                                 LEFT JOIN Voucher_Type Vt On H.V_Type = Vt.V_Type
-                                Where Vt.NCat In ('" & Ncat.PaymentSettlement & "')) "
+                                Where Vt.NCat In ('" & Ncat.PaymentSettlement & "','" & Ncat.ReceiptSettlement & "')) "
                     End If
 
                     '//For Cheque Cancellation Working But not okay for old data

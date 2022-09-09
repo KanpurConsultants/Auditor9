@@ -11344,7 +11344,7 @@ Thanks
             AgL.AddFieldSqlite(AgL.GcnMain, "SaleInvoiceDetail", "Remarks2", "nVarchar(255)", "", True)
             AgL.AddFieldSqlite(AgL.GcnMain, "SaleInvoiceDetail", "GenDocId", "nVarchar(21)", "", True)
             AgL.AddFieldSqlite(AgL.GcnMain, "SaleInvoiceDetail", "GenDocIdSr", "Int", "", True)
-
+            AgL.AddFieldSqlite(AgL.GcnMain, "SaleInvoiceDetail", "Cost", "Float", "", True)
 
 
             AgL.AddFieldSqlite(AgL.GcnMain, "SaleInvoiceDetail", "Gross_Amount", "Float", "0", False)
