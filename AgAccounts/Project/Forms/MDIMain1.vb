@@ -8,13 +8,13 @@ Public Class MDIMain1
 
 
             If FOpenIni(StrPath + IniName, AgLibrary.ClsConstant.PubSuperUserName, AgLibrary.ClsConstant.PubSuperUserPassword) Then
-                AgIniVar.FOpenConnection("5", "4")
+                AgIniVar.FOpenConnection("4", "1")
             End If
 
-            AgIniVar.FOpenConnection("5", "4")
-            AgL.PubSiteList = "'4'"
+            AgIniVar.FOpenConnection("4", "1")
+            AgL.PubSiteList = "'1'"
             AgL.PubDivCode = "D"
-            AgL.PubSiteCode = "4"
+            AgL.PubSiteCode = "1"
             AgL.PubSiteName = AgL.Dman_Execute("Select Name From SiteMast Where Code = '" & AgL.PubSiteCode & "'", AgL.GCn).ExecuteScalar
             AgL.PubDivName = AgL.Dman_Execute("Select Sg.DispName From Division D Left Join Subgroup Sg On D.Subcode = Sg.Subcode Where D.Div_Code = '" & AgL.PubDivCode & "'", AgL.GCn).ExecuteScalar
 

@@ -15,17 +15,17 @@
               <xs:element name="SubCode" type="xs:string" minOccurs="0" />
               <xs:element name="Narration" type="xs:string" minOccurs="0" />
               <xs:element name="Amt1" type="xs:double" minOccurs="0" />
-              <xs:element name="Amt2" type="xs:long" minOccurs="0" />
-              <xs:element name="Amt" type="xs:long" minOccurs="0" />
+              <xs:element name="Amt2" type="xs:double" minOccurs="0" />
+              <xs:element name="Amt" type="xs:double" minOccurs="0" />
               <xs:element name="Add1" type="xs:string" minOccurs="0" />
-              <xs:element name="Add2" msdata:DataType="System.Object, mscorlib, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" type="xs:anyType" minOccurs="0" />
+              <xs:element name="Add2" type="xs:string" minOccurs="0" />
               <xs:element name="CityName" type="xs:string" minOccurs="0" />
               <xs:element name="Country" type="xs:string" minOccurs="0" />
               <xs:element name="SiteName" type="xs:string" minOccurs="0" />
               <xs:element name="AcGroupName" type="xs:string" minOccurs="0" />
-              <xs:element name="AmtDay1" type="xs:long" minOccurs="0" />
+              <xs:element name="AmtDay1" type="xs:double" minOccurs="0" />
               <xs:element name="AmtDay2" type="xs:double" minOccurs="0" />
-              <xs:element name="Days" type="xs:long" minOccurs="0" />
+              <xs:element name="Days" type="xs:int" minOccurs="0" />
             </xs:sequence>
           </xs:complexType>
         </xs:element>

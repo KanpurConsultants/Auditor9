@@ -5,43 +5,49 @@ DocNoCaption	string	255	Doc.No.
 DocDateCaption	string	255	Doc.Date	
 SiteStateCode	string	255	09	
 SiteStateName	string	255	Uttar Pradesh	
-DocID	string	255	D1   WSR 2020       1	
+DocID	string	255	D1   WSR 2022      12	
 Sr	number	1	
-V_Date	datetime	27-Jun-20 12:00:00 AM	
+V_Date	datetime	21/Jul/2022 12:00:00 AM	
 DeliveryDate	datetime		
 Voucher_Type	string	255	W Sale Return	
 NCat	string	255	SR	
-InvoiceNo	string	255	537	
+InvoiceNo	string	255	12	
 RateType	string	255	A	
 AgentName	string	255	DIRECT	
 AgentCaption	string	255	Agent	
-SaleToPartyName	string	255	MEENA GARMENTS-SIRATHU	
-SaleToPartyCode	string	255	3052	
-SaleToPartyAddress	string	255	DHATA ROAD,
-DIST. KAUSHAMBI
-	
-CityName	string	255	SIRATHU	
-SaleToPartyPincode	string	255	212217	
-StateCode	string	255	09	
-StateName	string	255	Uttar Pradesh	
-SaleToPartyMobile	string	255	7054665356	
+SaleToPartyName	string	255	FASHION SHREE- SAHEBGANJ	
+SaleToPartyCode	string	255	4706	
+SaleToPartyAddress	string	255	FASHION SHREE 
+GROUND FLOOR
+GOLA ROAD
+NAWANAGAR
+SAHEBGANJ
+BIHAR-843125	
+CityName	string	255	SAHEBGANJ	
+SaleToPartyPincode	string	255	843125	
+StateCode	string	255	10	
+StateName	string	255	Bihar	
+SaleToPartyMobile	string	255	7542906390	
 ContactPerson	string	255		
-SaleToPartySalesTaxNo	string	255	09DQUPK2434P1ZY	
+SaleToPartySalesTaxNo	string	255	10CQCPK6315A1ZP	
 SaleToPartyAadharNo	string	255		
-SaleToPartyPanNo	string	255	DQUPK2434P	
-ShipToPartyName	string	255	MEENA GARMENTS-SIRATHU	
-ShipToPartyManualCode	string	255	3052	
-ShipToPartyAddress	string	255	DHATA ROAD,
-DIST. KAUSHAMBI
-	
-ShipToPartyCity	string	255	SIRATHU	
-ShipToPartyPincode	string	255	212217	
-ShipToPartyStateCode	string	255	09	
-ShipToPartyStateName	string	255	Uttar Pradesh	
-ShipToPartyMobile	string	255	7054665356	
-ShipToPartySalesTaxNo	string	255	09DQUPK2434P1ZY	
+SaleToPartyPanNo	string	255	CQCPK6315A	
+ShipToPartyName	string	255	FASHION SHREE- SAHEBGANJ	
+ShipToPartyManualCode	string	255	4706	
+ShipToPartyAddress	string	255	FASHION SHREE 
+GROUND FLOOR
+GOLA ROAD
+NAWANAGAR
+SAHEBGANJ
+BIHAR-843125	
+ShipToPartyCity	string	255	SAHEBGANJ	
+ShipToPartyPincode	string	255	843125	
+ShipToPartyStateCode	string	255	10	
+ShipToPartyStateName	string	255	Bihar	
+ShipToPartyMobile	string	255	7542906390	
+ShipToPartySalesTaxNo	string	255	10CQCPK6315A1ZP	
 ShipToPartyAadharNo	string	255		
-ShipToPartyPanNo	string	255	DQUPK2434P	
+ShipToPartyPanNo	string	255	CQCPK6315A	
 ShipToAddress	string	255		
 TermsAndConditions	string	255		
 TransporterName	string	255		
@@ -61,25 +67,25 @@ PreCarriageBy	string	255
 PreCarriagePlace	string	255		
 BookedFrom	string	255		
 BookedTo	string	255		
-Destination	string	255	SIRATHU	
+Destination	string	255	SAHEBGANJ	
 DescriptionOfGoods	string	255		
 DescriptionOfPacking	string	255		
 ReferenceNo	string	255		
-ContraDocNo	string	255	537	
-ContraDocNoCsv	string	255	537	
-ItemName	string	255	BABA SUIT-6103          [TAREFUL HASAN | BABA SUIT]	
-ItemGroupName	string	255	TAREFUL HASAN	
-ItemCatName	string	255	BABA SUIT	
-ItemSpecification	string	255	BABA SUIT	
+ContraDocNo	string	255	12	
+ContraDocNoCsv	string	255	12	
+ItemName	string	255	KURTI	
+ItemGroupName	string	255	SUNSHINE-KNP	
+ItemCatName	string	255	KURTI	
+ItemSpecification	string	255		
 InvoiceLineSpecification	string	255		
-HSN	string	255	6103	
+HSN	string	255		
 MaintainStockYn	boolean	True	
 SalesTaxGroupItem	string	255	GST 0%	
 GrossTaxRate	number	0	
-Pcs	number	437	
-Qty	number	437	
-Rate	number	69989	
-Unit	string	255	Pcs	
+Pcs	number	12	
+Qty	number	12	
+Rate	number	14535	
+Unit	string	255	PCS	
 UnitDecimalPlaces	number	0	
 DiscountCalculationPattern	string	255		
 DiscountPer	number	0	
@@ -89,11 +95,11 @@ AdditionalDiscountAmount	number	0
 AdditionPer	number	0	
 AdditionAmount	number	0	
 TotalDiscount	number	0	
-AmountBeforeDiscount	number	69989	
-Amount	number	69989	
-Taxable_Amount	number	69989	
+AmountBeforeDiscount	number	14535	
+Amount	number	14535	
+Taxable_Amount	number	14535	
 Tax1_Per	number	0	
-Tax1	number	3497	
+Tax1	number	0	
 Tax2_Per	number	0	
 Tax2	number	0	
 Tax3_Per	number	0	
@@ -102,17 +108,17 @@ Tax4_Per	number	0
 Tax4	number	0	
 Tax5_Per	number	0	
 Tax5	number	0	
-Net_Amount	number	73486	
+Net_Amount	number	14535	
 LRemarks	string	255		
 HRemarks	string	255		
 H_TotalDiscount	number	0	
-H_AmountBeforeDiscount	number	69989	
-H_Gross_Amount	number	69989	
+H_AmountBeforeDiscount	number	14535	
+H_Gross_Amount	number	14535	
 H_SpecialDiscount_Per	number	0	
 H_SpecialDiscount	number	0	
-H_Taxable_Amount	number	69989	
+H_Taxable_Amount	number	14535	
 H_Tax1_Per	number	0	
-H_Tax1	number	3497	
+H_Tax1	number	0	
 H_Tax2_Per	number	0	
 H_Tax2	number	0	
 H_Tax3_Per	number	0	
@@ -126,7 +132,7 @@ H_Deduction	number	0
 H_Other_Charge_Per	number	0	
 H_Other_Charge	number	0	
 Round_Off	number	0	
-H_Net_Amount	number	73486	
+H_Net_Amount	number	14535	
 Default_BankAccountDetail	string	255		
 DocumentPrintHeaderPattern	string	255	Center Aligned	
 DimDetail	string	255		
@@ -136,3 +142,4 @@ PrintTitle	string	255	W Sale Return
 PurchInvoiceNo	string	255		
 CompanyLogo	BLOB		
 CompanyAuthorisedSignature	BLOB		
+EInvoiceQrCode	BLOB		

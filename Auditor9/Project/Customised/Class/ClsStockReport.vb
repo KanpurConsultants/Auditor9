@@ -45,11 +45,12 @@ Public Class ClsStockReport
     Public rowSize As Integer = 16
     Public rowHSN As Integer = 17
     Public rowLotNo As Integer = 18
-    Public rowShowZeroBalance As Integer = 19
-    Public rowValuationPercentage As Integer = 20
-    Public rowSite As Integer = 21
-    Public rowDivision As Integer = 22
-    Public rowIncludeOpening As Integer = 23
+    Public rowGodown As Integer = 19
+    Public rowShowZeroBalance As Integer = 20
+    Public rowValuationPercentage As Integer = 21
+    Public rowSite As Integer = 22
+    Public rowDivision As Integer = 23
+    Public rowIncludeOpening As Integer = 24
 
     Dim IsLastPurchaseRateUpdated As Boolean = False
     Dim IsMultiItemStockLedgerAllowedProgramatically As Boolean = False
@@ -87,6 +88,7 @@ Public Class ClsStockReport
     Dim mHelpDimension3Qry$ = "Select 'o' As Tick, Code, Description From Dimension3 "
     Dim mHelpDimension4Qry$ = "Select 'o' As Tick, Code, Description From Dimension4 "
     Dim mHelpSizeQry$ = "Select 'o' As Tick, Code, Description From Size "
+    Dim mHelpGodownQry$ = "Select 'o' As Tick, Sg.Code, Sg.Name From viewHelpSubgroup Sg  Where SubgroupType ='" & SubgroupType.Godown & "' "
     Dim mHelpProcessQry$ = "Select 'o' As Tick, SubCode, Name FROM Subgroup WHERE SubgroupType = 'Process' "
     Public Sub Ini_Grid()
         Try
@@ -164,6 +166,7 @@ Public Class ClsStockReport
             ReportFrm.FilterGrid.Rows(rowHSN).Visible = False 'Hide HSN Row
             ReportFrm.CreateHelpGrid("LotNo", "Lot No", FrmRepDisplay.FieldFilterDataType.StringType, FrmRepDisplay.FieldDataType.StringType, "")
             ReportFrm.FilterGrid.Rows(rowLotNo).Visible = False 'Hide LotNo Row
+            ReportFrm.CreateHelpGrid("Godown", "Godown", FrmRepDisplay.FieldFilterDataType.StringType, FrmRepDisplay.FieldDataType.MultiSelection, mHelpGodownQry)
             ReportFrm.CreateHelpGrid("ShowZeroBalance", "Show Zero Balance", FrmRepDisplay.FieldFilterDataType.StringType, FrmRepDisplay.FieldDataType.SingleSelection, mHelpYesNoQry, "Yes")
             ReportFrm.CreateHelpGrid("ValuationPercentage", "Valuation Percentage", AgLibrary.FrmReportLayout.FieldFilterDataType.NumericType, AgLibrary.FrmReportLayout.FieldDataType.NumericType, "", "")
             ReportFrm.CreateHelpGrid("Site", "Site", FrmRepDisplay.FieldFilterDataType.StringType, FrmRepDisplay.FieldDataType.MultiSelection, mHelpSiteQry, "[SITECODE]")
@@ -450,6 +453,12 @@ Public Class ClsStockReport
                                 mFilterGrid.Item(GFilterCode, rowLotNo).Value = "'" + mGridRow.Cells("LotNo").Value + "'"
                             End If
                         End If
+                        If mGridRow.DataGridView.Columns.Contains("Godown") = True Then
+                            If AgL.XNull(mGridRow.Cells("Godown").Value) <> "" Then
+                                mFilterGrid.Item(GFilter, rowGodown).Value = mGridRow.Cells("Godown").Value
+                                mFilterGrid.Item(GFilterCode, rowGodown).Value = "'" + mGridRow.Cells("Godown").Value + "'"
+                            End If
+                        End If
                         If mGridRow.DataGridView.Columns.Contains("Process Code") = True Then
                             If AgL.XNull(mGridRow.Cells("Process").Value) <> "" Then
                                 mFilterGrid.Item(GFilter, rowProcess).Value = mGridRow.Cells("Process").Value
@@ -526,6 +535,7 @@ Public Class ClsStockReport
             mCondStr = mCondStr & ReportFrm.GetWhereCondition("Sku.Size", rowSize)
             mCondStr = mCondStr & ReportFrm.GetWhereCondition("IfNull(Sku.HSN,IC.HSN)", rowHSN)
             mCondStr = mCondStr & ReportFrm.GetWhereCondition("L.LotNo", rowLotNo)
+            mCondStr = mCondStr & ReportFrm.GetWhereCondition("L.Godown", rowGodown)
 
             If AgL.XNull(ReportFrm.FGetText(rowItem)) <> "" Then
                 mCondStr = mCondStr & ReportFrm.GetWhereCondition("IfNull(Sku.BaseItem,Sku.Code)", rowItem)

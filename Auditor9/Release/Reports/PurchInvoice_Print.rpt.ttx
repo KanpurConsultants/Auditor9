@@ -3,35 +3,35 @@ Copies	string	255	1
 CopyPrintingCaption	string	255		
 DocNoCaption	string	255	Invoice No.	
 DocDateCaption	string	255	Invoice Date	
-DocID	string	255	D1    PI 2022      76	
-SiteStateCode	string	255	09	
-SiteStateName	string	255	Uttar Pradesh	
+DocID	string	255	D4    PI 2022    2135	
+SiteStateCode	string	255	07	
+SiteStateName	string	255	Delhi	
 Sr	number	1	
-V_Date	datetime	28/Jun/2022 12:00:00 AM	
+V_Date	datetime	10/Sep/2022 12:00:00 AM	
 Voucher_Type	string	255	Purchase Invoice	
 NCat	string	255	PI	
-DocNo	string	255	D1-PI-76	
+DocNo	string	255	D4-PI-378	
 AgentName	string	255		
 AgentCaption	string	255	Agent	
-PartyName	string	255	SADHVI ENTERPRISES	
-PartyAddress	string	255		
+PartyName	string	255	HELLO BROTHER FASHION LLP-DELHI	
+PartyAddress	string	255	IX/6749,JANTA GALI, GANDHI NAGAR	
 PartyPinCode	string	255		
 PartyCityName	string	255		
 PartyStateCode	string	255		
 PartyStateName	string	255		
-PartyMobile	string	255		
+PartyMobile	string	255	9250933314	
 ContactPerson	string	255		
-PartySalesTaxNo	string	255		
+PartySalesTaxNo	string	255	07AAKFH8525K1ZY	
 PartyAadharNo	string	255		
-PartyPanNo	string	255		
-ShipToPartyName	string	255	SADHVI ENTERPRISES	
-ShipToPartyAddress	string	255		
+PartyPanNo	string	255	AAKFH8525K	
+ShipToPartyName	string	255	HELLO BROTHER FASHION LLP-DELHI	
+ShipToPartyAddress	string	255	IX/6749,JANTA GALI, GANDHI NAGAR	
 ShipToPartyCity	string	255		
 ShipToPartyPincode	string	255		
 ShipToPartyStateCode	string	255		
 ShipToPartyStateName	string	255		
-ShipToPartyMobile	string	255		
-ShipToPartySalesTaxNo	string	255		
+ShipToPartyMobile	string	255	9250933314	
+ShipToPartySalesTaxNo	string	255	07AAKFH8525K1ZY	
 ShipToPartyAadharNo	string	255		
 ShipToPartyPanNo	string	255		
 TransporterName	string	255		
@@ -43,69 +43,51 @@ Freight	number
 FreightType	string	255		
 RoadPermitNo	string	255		
 RoadPermitDate	datetime		
-ReferenceNo	string	255		
-ItemName	string	255	TANU-S-ENT-304 HALKI-SAREE-D1   ISS 2022     3381	
-ItemGroupName	string	255	S-ENT-304 HALKI	
-ItemCatName	string	255	SAREE	
-ItemSpecification	string	255	TANU	
+ReferenceNo	string	255	HLLP/08957/22-23	
+ItemName	string	255	BABA SUIT-620319          [HELLO BROTHER | BABA SUIT]	
+ItemGroupName	string	255	HELLO BROTHER	
+ItemCatName	string	255	BABA SUIT	
+ItemSpecification	string	255	BABA SUIT	
 InvoiceLineSpecification	string	255		
-HSN	string	255	540752	
-D1Spec	string	255		
-D2Spec	string	255		
-D3Spec	string	255		
-D4Spec	string	255		
-SizeSpec	string	255		
-ItemTypeCaption	string	255	Item Type	
-ItemCategoryCaption	string	255	Item Category	
-ItemGroupCaption	string	255	Item Group	
-ItemCaption	string	255	Item	
-BarcodeCaption	string	255		
-D1Caption	string	255	Quality	
-D2Caption	string	255	Colour	
-D3Caption	string	255	Design	
-D4Caption	string	255	Width	
+HSN	string	255	620319	
 SalesTaxGroupItem	string	255	GST 5%	
 GrossTaxRate	number	5	
 Pcs	number	0	
-Qty	number	24	
-DocQty	number	24	
-FreeQty	number	0	
-LossQty	number	0	
-RejQty	number	0	
-Rate	number	140	
+Qty	number	3	
+Rate	number	440	
 Unit	string	255	Pcs	
 UnitDecimalPlaces	number	0	
 DiscountPer	number	0	
 DiscountAmount	number	0	
-AdditionalDiscountPer	number	0	
-AdditionalDiscountAmount	number	0	
-TotalDiscount	number	0	
-AmountBeforeDiscount	number	4200	
-Amount	number	4200	
-Taxable_Amount	number	4200	
+AdditionalDiscountPer	number	5	
+AdditionalDiscountAmount	number	66	
+TotalDiscount	number	66	
+AmountBeforeDiscount	number	1320	
+Amount	number	1254	
+Taxable_Amount	number	1194.29	
 Tax1_Per	number	0	
 Tax1	number	0	
-Tax2_Per	number	0	
-Tax2	number	0	
-Tax3_Per	number	0	
-Tax3	number	0	
+Tax2_Per	number	2.5	
+Tax2	number	29.86	
+Tax3_Per	number	2.5	
+Tax3	number	29.86	
 Tax4_Per	number	0	
 Tax4	number	0	
 Tax5_Per	number	0	
 Tax5	number	0	
-Net_Amount	number	4200	
+Net_Amount	number	1253.94	
 HRemarks	string	255		
 LRemarks	string	255		
-H_Gross_Amount	number	8280	
+H_Gross_Amount	number	98659.3	
 H_SpecialDiscount_Per	number	0	
 H_SpecialDiscount	number	0	
-H_Taxable_Amount	number	8280	
+H_Taxable_Amount	number	93753.53	
 H_Tax1_Per	number	0	
 H_Tax1	number	0	
 H_Tax2_Per	number	0	
-H_Tax2	number	0	
+H_Tax2	number	2452.88	
 H_Tax3_Per	number	0	
-H_Tax3	number	0	
+H_Tax3	number	2452.88	
 H_Tax4_Per	number	0	
 H_Tax4	number	0	
 H_Tax5_Per	number	0	
@@ -114,17 +96,16 @@ H_Deduction_Per	number	0
 H_Deduction	number	0	
 H_Other_Charge_Per	number	0	
 H_Other_Charge	number	0	
-Round_Off	number	0	
-H_Net_Amount	number	8280	
-H_TotalDiscount	number	0	
-H_AmountBeforeDiscount	number	8280	
-Default_BankAccountDetail	string	255		
+Round_Off	number	-0.29	
+H_Net_Amount	number	98659	
+H_TotalDiscount	number	5186.7	
+H_AmountBeforeDiscount	number	103846	
+Default_BankAccountDetail	string	255	Bank : YES Bank, Branch : CIVIL LINES, KANPUR,<BR>Beneficiary : Shyama Shyam Fabrics Pvt. Ltd.,<BR>A/c No.: 007384600000880, IFSC : YESB0000073	
 DocumentPrintHeaderPattern	string	255	Center Aligned	
 DimDetail	string	255		
 HsnDescription	string	255		
 PrintedByUser	string	255	SUPER	
 PrintTitle	string	255	Purchase Invoice	
-TermsAndConditions	string	255		
 CompanyLogo	BLOB		
 CompanyAuthorisedSignature	BLOB		
 EInvoiceQrCode	BLOB		

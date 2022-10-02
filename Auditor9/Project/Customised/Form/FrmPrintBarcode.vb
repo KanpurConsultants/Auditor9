@@ -609,34 +609,46 @@ Public Class FrmPrintBarcode
 
 
 
-                mQry = mQry & " From [#" & bTempTable & "] H 
+                If AgL.StrCmp(AgL.PubDBName, "NaveenSaree") Then
+                    mQry = mQry & ",strftime('%m', PI.V_Date) ||  cast((cast(H.SaleRate as Int)) as text) || Substr(strftime('%Y', PI.V_Date),3,2) as DNo, IfNull(PI.VendorDocNo,'') || '-11' || cast((cast(H.PurchaseRate as Int)) as text) BillNo, D.DispName AS DivisionName 
+                        From [#" & bTempTable & "] H 
+                        Left Join Barcode B On H.Code = B.Code
+                        Left Join PurchInvoice PI on PI.DocId = B.GenDocId
+                        Left Join SubGroup D on D.SubCode = PI.Div_Code
+                        Left Join Item I On B.Item = I.Code                         
+                        Left Join Item IG On I.ItemGroup = IG.Code "
+                Else
+                    mQry = mQry & " From [#" & bTempTable & "] H 
                         Left Join Barcode B On H.Code = B.Code
                         Left Join Item I On B.Item = I.Code                         
-                        Left Join Item IG On I.ItemGroup = IG.Code
-                        "
+                        Left Join Item IG On I.ItemGroup = IG.Code "
+                End If
+
+
+
 
                 If mQry.Trim <> "" Then
-                    DsRep = AgL.FillData(mQry, AgL.GCn)
-                    AgPL.CreateFieldDefFile1(DsRep, AgL.PubReportPath & "\" & RepName & ".ttx", True)
-                    mCrd.Load(AgL.PubReportPath & "\" & RepName)
-                    mCrd.SetDataSource(DsRep.Tables(0))
-                    CType(ReportView.Controls("CrvReport"), CrystalDecisions.Windows.Forms.CrystalReportViewer).ReportSource = mCrd
+                        DsRep = AgL.FillData(mQry, AgL.GCn)
+                        AgPL.CreateFieldDefFile1(DsRep, AgL.PubReportPath & "\" & RepName & ".ttx", True)
+                        mCrd.Load(AgL.PubReportPath & "\" & RepName)
+                        mCrd.SetDataSource(DsRep.Tables(0))
+                        CType(ReportView.Controls("CrvReport"), CrystalDecisions.Windows.Forms.CrystalReportViewer).ReportSource = mCrd
 
 
 
-                    AgPL.Formula_Set(mCrd, RepTitle)
-                    If PrintAction = PrintAction_Preview Then
-                        'ReportView.CrvReport.ShowPrintButton = False
-                        AgPL.Show_Report(ReportView, "* " & RepTitle & " *", Me.MdiParent)
-                    Else
-                        mCrd.PrintToPrinter(1, True, 0, 0)
+                        AgPL.Formula_Set(mCrd, RepTitle)
+                        If PrintAction = PrintAction_Preview Then
+                            'ReportView.CrvReport.ShowPrintButton = False
+                            AgPL.Show_Report(ReportView, "* " & RepTitle & " *", Me.MdiParent)
+                        Else
+                            mCrd.PrintToPrinter(1, True, 0, 0)
+                        End If
+                        If mDocId <> "" Then
+                            Call AgL.LogTableEntry(mDocId, Me.Text, "P", AgL.PubMachineName, AgL.PubUserName, AgL.PubLoginDate, AgL.GCn, AgL.ECmd)
+                        End If
                     End If
-                    If mDocId <> "" Then
-                        Call AgL.LogTableEntry(mDocId, Me.Text, "P", AgL.PubMachineName, AgL.PubUserName, AgL.PubLoginDate, AgL.GCn, AgL.ECmd)
-                    End If
-                End If
-            Else
-                If DsRep.Tables(0).Rows.Count = 0 Then Err.Raise(1, , "No Records to Print!")
+                Else
+                    If DsRep.Tables(0).Rows.Count = 0 Then Err.Raise(1, , "No Records to Print!")
             End If
         Catch Ex As Exception
             MsgBox(Ex.Message)

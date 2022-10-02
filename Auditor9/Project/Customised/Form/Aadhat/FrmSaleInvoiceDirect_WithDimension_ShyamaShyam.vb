@@ -7629,14 +7629,72 @@ Public Class FrmSaleInvoiceDirect_WithDimension_ShyamaShyam
             End If
         Else
             If ClsMain.IsScopeOfWorkContains("+Cloth Aadhat Module") Then
-                FGetPrintCrystal_Aadhat(Me, SearchCode, mPrintFor, IsPrintToPrinter, BulkCondStr, "")
+                If AgL.StrCmp(AgL.PubDBName, "ShyamaShyam_W") And LblV_Type.Tag = Ncat.SaleReturn Then
+                    FGetPrintCrystal1(SearchCode, mPrintFor, IsPrintToPrinter, BulkCondStr)
+                Else
+                    FGetPrintCrystal_Aadhat(Me, SearchCode, mPrintFor, IsPrintToPrinter, BulkCondStr, "")
+                End If
             Else
-                FGetPrintCrystal(SearchCode, mPrintFor, IsPrintToPrinter, BulkCondStr)
+                    FGetPrintCrystal(SearchCode, mPrintFor, IsPrintToPrinter, BulkCondStr)
             End If
         End If
 
         Clipboard.SetText(AgL.PubTempStr)
         AgL.PubTempStr = ""
+    End Sub
+
+    Sub FGetPrintCrystal1(SearchCode As String, mPrintFor As ClsMain.PrintFor, Optional ByVal IsPrintToPrinter As Boolean = False, Optional BulkCondStr As String = "")
+        Try
+            mQry = "Select LE.Code, 'W' AS ATYPE, SM.Name as SiteName,  H.DocID, L.Sr, Null as InvoiceNo, Max(H.ManualRefNo) AS InvoiceNoW, 
+                    H.V_Date, Max(Sp.Name) as SaleToPartyName, Max(Sg.DispName) AS PartyName, Max(Sg.ManualCode) AS PartyCode, Max(Sg.Address) Address, 
+                    Max(c.CityName) AS CityName, Max(spp.Name) as ShipToPartyName,
+                    Max(IG.Description) As Brand, 
+                    (select sPI.VendorDocNo from purchInvoice sPI 
+                    Left Join PurchInvoiceDetail sPIL On sPI.DocID = sPIL.DocId                    
+                    where sPI.DocId In (Select DocID from SaleInvoiceGeneratedEntries Where Code='" & mSearchCode & "' And V_Type='WPI' )
+                    And sPIL.Item = L.Item) as PInvNo, 
+                    Sum(Case When I.ItemType <> '" & ItemTypeCode.ServiceProduct & "' Then L.Qty else 0 End) as Qty, sUM(L.Amount)*0.01 As Amount,
+                    Sum(L.Rate)*0.01 As GoodsValue, 
+                    (Case When Max(L.DiscountPer)>0 Then Cast(PrintF('%.2f',Max(L.DiscountPer)) as VarChar) || ' Per Pcs ' Else '' End) || 
+                    (Case When Max(L.AdditionalDiscountPer)>0 Then Cast(PrintF('%.2f',Max(L.AdditionalDiscountPer)) as Varchar) || ' % ' Else '' End) || 
+                    (Case When Max(L.ExtraDiscountPer)>0 Then Cast(PrintF('%.2f',Max(L.ExtraDiscountPer)) as Varchar) || ' Ex% ' Else '' End) || 
+                    (Case When Max(L.AdditionPer)>0 Then Cast(PrintF('%.2f',Max(L.AdditionPer)) as Varchar) || ' Aadhat%' Else '' End) As DiscountPer,
+                    Sum(L.DiscountAmount + L.AdditionalDiscountAmount + L.ExtraDiscountAmount - L.AdditionAmount)*0.01 As TotalDiscount, 
+                    Sum(L.Other_Charge)*0.01 as OtherCharge, Sum(L.Other_Charge1)*0.01 as OtherCharge1,
+                    Sum(L.Tax1 + L.Tax2 + L.Tax3 + L.Tax4_Per + L.Tax5)*0.01 As Tax,                    
+                    Sum(L.Net_Amount)*0.01 As NetAmount, IfNull(Max(L.Remark),'') as LRemarks, Max(Tr.DispName) As TransportName, Max(SIT.LrNo) As LRNO, strftime('%d-%m-%Y',Max(SIT.LrDate)) As LRDate, 
+                    Max(SIT.NoOfBales) As NOOfBales, Max(SIT.PrivateMark) As PrivateMark , Max(SIT.BookedFrom) BookedFrom, Max(SIT.Destination) As Destination,
+                    '" & AgL.PubUserName & "' as PrintedByUser, H.EntryBy as EntryByUser, H.EntryDate as UserEntryDate     
+                    From SaleInvoice H 
+                    Left Join SaleInvoiceDetail L ON H.DocID = L.DocID 
+                    LEFT JOIN SaleInvoiceDetailSku Sids With (NoLock) On L.DocId = Sids.DocId And L.Sr = Sids.Sr
+                    Left Join Item I ON L.Item = I.Code 
+                    Left Join Item IG ON Sids.ItemGroup = IG.Code 
+                    Left Join viewHelpSubgroup Sp ON H.SaleToParty = Sp.Code  
+                    Left Join Subgroup Sg ON H.BillToParty = Sg.Subcode 
+                    Left Join viewHelpSubgroup Spp ON H.ShipToParty = Spp.Code  
+                    Left Join City C ON Sg.CityCode = C.CityCode 
+                    Left Join SaleInvoiceTransport SIT ON H.DocID = SIT.DocID 
+                    Left Join Subgroup Tr ON SIT.Transporter = Tr.Subcode 
+                    Left Join SaleInvoiceGeneratedEntries LE ON H.DocID = LE.DocId 
+                    Left Join SiteMast SM On H.Site_Code= Sm.Code
+                    WHERE H.DocID ='" & mSearchCode & "'
+                    GROUP BY H.DocID, IG.Description, L.Sr                     
+                    ORDER BY LE.Code, H.DocID, L.Sr
+                   "
+
+            Dim objRepPrint As Object
+            If mPrintFor = ClsMain.PrintFor.EMail Then
+                objRepPrint = New AgLibrary.FrmMailComposeWithCrystal(AgL)
+            Else
+                objRepPrint = New AgLibrary.RepView()
+            End If
+
+
+            ClsMain.FPrintThisDocument(objRepPrint, objRepPrint, "", mQry, "SaleReturn_Print_AadhatW2.rpt", "CHALLAN", , , , "", AgL.PubLoginDate, IsPrintToPrinter)
+        Catch ex As Exception
+            MsgBox(ex.Message & "  In FGetPrintCrysal Procedure of ClsMasterPartyLedgerAadhat")
+        End Try
     End Sub
 
 

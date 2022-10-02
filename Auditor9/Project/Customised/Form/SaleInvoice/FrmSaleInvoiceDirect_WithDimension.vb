@@ -8808,6 +8808,7 @@ Public Class FrmSaleInvoiceDirect_WithDimension
 
                 Dim mCompanyLogoFileName As String
                 Dim mCompanyAuthorisedSignatoryFileName As String
+                Dim mEInvoiceQrCodeFileName As String = ""
 
                 AgL.PubTempStr = AgL.PubTempStr & "Start fetching logo & signature file name from setting : " & AgL.PubStopWatch.ElapsedMilliseconds.ToString & vbCrLf
                 If TypeOf (objFrm) Is AgTemplate.TempTransaction Then
@@ -8818,10 +8819,13 @@ Public Class FrmSaleInvoiceDirect_WithDimension
                     mCompanyLogoFileName = ClsMain.FGetSettings(SettingFields.CompanyLogoFileName, SettingType.General, AgL.PubDivCode, AgL.PubSiteCode, "", "", "", "", "")
                     mCompanyAuthorisedSignatoryFileName = ClsMain.FGetSettings(SettingFields.CompanyAuthorisedSignatoryFileName, SettingType.General, AgL.PubDivCode, AgL.PubSiteCode, "", "", "", "", "")
                 End If
+                mEInvoiceQrCodeFileName = PubAttachmentPath + mSearchCode + "\" + "EInvoiceQrCode.PNG"
+
                 AgL.PubTempStr = AgL.PubTempStr & "End fetching logo & signature file name from setting : " & AgL.PubStopWatch.ElapsedMilliseconds.ToString & vbCrLf
 
                 DsMainDocPrintRep.Tables(0).Columns.Add("CompanyLogo", System.Type.GetType("System.Byte[]"))
                 DsMainDocPrintRep.Tables(0).Columns.Add("CompanyAuthorisedSignature", System.Type.GetType("System.Byte[]"))
+                DsMainDocPrintRep.Tables(0).Columns.Add("EInvoiceQrCode", System.Type.GetType("System.Byte[]"))
 
                 AgL.PubTempStr = AgL.PubTempStr & "Start Reading Logo File : " & AgL.PubStopWatch.ElapsedMilliseconds.ToString & vbCrLf
                 Dim FileCompanyLogo() As Byte
@@ -8851,6 +8855,21 @@ Public Class FrmSaleInvoiceDirect_WithDimension
                     DsMainDocPrintRep.Tables(0).Rows(I)("CompanyAuthorisedSignature") = FileCompanySign
                 Next
                 AgL.PubTempStr = AgL.PubTempStr & "End Reading Signature File : " & AgL.PubStopWatch.ElapsedMilliseconds.ToString & vbCrLf
+
+
+                AgL.PubTempStr = AgL.PubTempStr & "Start Reading EInvoice QR File : " & AgL.PubStopWatch.ElapsedMilliseconds.ToString & vbCrLf
+                Dim FileEInvoiceQR() As Byte
+                If File.Exists(mEInvoiceQrCodeFileName) Then
+                    FileEInvoiceQR = ReadFile(mEInvoiceQrCodeFileName)
+                Else
+                    FileEInvoiceQR = ConvertToByteArray(My.Resources.BlankImage)
+                End If
+
+
+                For I = 0 To DsMainDocPrintRep.Tables(0).Rows.Count - 1
+                    DsMainDocPrintRep.Tables(0).Rows(I)("EInvoiceQrCode") = FileEInvoiceQR
+                Next
+                AgL.PubTempStr = AgL.PubTempStr & "End Reading EInvoice QR File : " & AgL.PubStopWatch.ElapsedMilliseconds.ToString & vbCrLf
 
 
                 AgPL.CreateFieldDefFile1(DsMainDocPrintRep, AgL.PubReportPath & "\" & RepName & ".ttx", True)
@@ -11326,6 +11345,19 @@ Public Class FrmSaleInvoiceDirect_WithDimension
                 FrmObj.IniGrid(mSearchCode)
                 FrmObj.StartPosition = FormStartPosition.CenterParent
                 FrmObj.ShowDialog()
+
+            Case MnuGenerateEBill.Name
+                Dim StrSenderText As String = Me.Text
+                GridReportFrm = New AgLibrary.FrmRepDisplay(StrSenderText, AgL)
+                GridReportFrm.Filter_IniGrid()
+
+                Dim CRep As ClsGenerateEInvoice_URL = New ClsGenerateEInvoice_URL(GridReportFrm, mSearchCode)
+                CRep.GRepFormName = Replace(Replace(Replace(Replace(StrSenderText, "&", ""), " ", ""), "(", ""), ")", "")
+                CRep.Ini_Grid()
+                ClsMain.FAdjustBackgroudMaximizedWindow(Me.MdiParent)
+                GridReportFrm.MdiParent = Me.MdiParent
+                GridReportFrm.Show()
+                CRep.ProcGenerateEInvoice()
 
             Case MnuShowLedgerPosting.Name
                 FShowLedgerPosting()

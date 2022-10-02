@@ -1,0 +1,30 @@
+; Field definition file for table: ADORecordset
+Code	string	255	678	
+Barcode	string	255	678	
+BarCodeImg	BLOB		
+ItemDesc	string	255	FACE BOOK	
+ItemCategoryDesc	string	255	SAREE	
+ItemGroupDesc	string	255	KALA SHREE	
+Dimension1Desc	string	255		
+Dimension2Desc	string	255		
+Dimension3Desc	string	255		
+Dimension4Desc	string	255		
+SizeDesc	string	255		
+PurchaseRate	number	750	
+SaleRate	number	998	
+MRP	number	0	
+ReceiveQty	number	10	
+GenSr	number	1	
+ItemMasterPurchaseRate	number	750	
+ItemMasterSaleRate	number	998	
+BarcodeRatePrefix	string	255		
+Title1	string	255		
+Title2	string	255		
+Title3	string	255		
+SaleRate_RateType	string	255		
+SaleRate_RateTypeEncoded	long	0	
+RandomNo1	long	523	
+RandomNo2	long	996	
+DNo	string	255	0399821	
+BillNo	string	255	7656567-750	
+DivisionName	string	255	VIPUL SAREES	

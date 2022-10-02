@@ -323,6 +323,8 @@ Public Class FrmSaleInvoiceW_OnlyW
                     End If
 
                     Dim bSaleInvoiceDocIdStr As String = ""
+                    Dim WSaleInvoice As String = ""
+                    Dim WSaleInvoiceNo As Int32 = 0
 
                     mQry = "Select Si.DocId As SaleInvoiceDocId, Sg.Name As SaleToPartyName, Max(Sg1.Name) As BillToPartyName, Max(Sg2.Name) As ShipToPartyName,
                             Si.DocId As InvoiceDocId, Si.ManualRefNo As invoiceNo, Si.V_Type As InvoiceV_Type, Si.V_Date As InvoiceDate, 
@@ -377,6 +379,13 @@ Public Class FrmSaleInvoiceW_OnlyW
                                 Dgl2.Item(Col2InvoiceNo, Dgl2.Rows.Count - 1).Tag = AgL.XNull(DtTemp.Rows(I)("InvoiceDocId"))
                                 Dgl2.Item(Col2InvoiceNo, Dgl2.Rows.Count - 1).Value = AgL.XNull(DtTemp.Rows(I)("InvoiceNo"))
                                 Dgl2.Item(Col2InvoiceDate, Dgl2.Rows.Count - 1).Value = AgL.XNull(DtTemp.Rows(I)("InvoiceDate"))
+
+                                Dgl2.Item(Col2WInvoiceDate, Dgl2.Rows.Count - 1).Value = AgL.PubLoginDate
+                                WSaleInvoice = AgTemplate.ClsMain.FGetManualRefNo("ManualRefNo", "SaleInvoice", "WSI", AgL.PubLoginDate, AgL.PubDivCode, AgL.PubSiteCode, AgTemplate.ClsMain.ManualRefType.Max)
+                                WSaleInvoiceNo = Convert.ToInt32(WSaleInvoice) + Dgl2.Rows.Count - 1
+                                Dgl2.Item(Col2WInvoiceNo, Dgl2.Rows.Count - 1).Value = WSaleInvoiceNo.ToString()
+
+
                                 Dgl2.Item(Col2ShipToParty, Dgl2.Rows.Count - 1).Tag = FGetSubCodeFromOMSId(AgL.XNull(DtTemp.Rows(I)("ShipToParty")))
                                 Dgl2.Item(Col2ShipToParty, Dgl2.Rows.Count - 1).Value = AgL.XNull(DtTemp.Rows(I)("ShipToPartyName"))
 
@@ -535,7 +544,7 @@ Public Class FrmSaleInvoiceW_OnlyW
                         mQry = " Select H.DocId As SaleOrderDocId, H.V_Type As OrderV_Type, H.ManualRefNo As OrderManualRefNo, 
                                 H.SaleToParty, H.BillToParty, H.Site_Code, H.Div_Code, L.Item As ItemGroup,
                                 I.Description As ItemGroupDesc, Sg.Name As SaleToPartyName,
-                                Supp.SubCode As Supplier, Supp.Name As SupplierName, Sg1.Name As BillToPartyName
+                                Supp.SubCode As MasterSupplier, Supp.Name As MasterSupplierName, CSupp.SubCode As Supplier, CSupp.Name As SupplierName, Sg1.Name As BillToPartyName
                                 From SaleInvoice H 
                                 LEFT JOIN SaleInvoiceDetail L ON H.DocId = L.DocId
                                 LEFT JOIN Item I ON L.Item = I.Code
@@ -543,6 +552,11 @@ Public Class FrmSaleInvoiceW_OnlyW
                                 LEFT JOIN SubGroup Supp On I.DefaultSupplier = Supp.SubCode
                                 LEFT JOIN SubGroup Sg1 ON H.BillToParty = Sg1.SubCode
                                 LEFT JOIN SubGroup Sg2 On Supp.Parent = Sg2.SubCode
+                                Left Join 
+                                (
+                                 select Parent, Max(Code) AS ChildSupp  from ViewHelpSubGroup CS Group By Parent
+                                ) CS On CS.Parent =I.DefaultSupplier
+                                LEFT JOIN SubGroup CSupp On CS.ChildSupp = CSupp.SubCode
                                 Where IfNull(H.ReferenceDocId,H.DocId)  = '" & TxtOrderNo.Tag & "'"
                         Dim DtSaleOrderDetail As DataTable = AgL.FillData(mQry, Connection_Pakka).Tables(0)
                         Dgl2.RowCount = 1 : Dgl2.Rows.Clear()
@@ -576,6 +590,12 @@ Public Class FrmSaleInvoiceW_OnlyW
                                 Dgl2.Item(Col2InvoiceNo, I).Tag = ""
                                 Dgl2.Item(Col2InvoiceNo, I).Value = ""
                                 Dgl2.Item(Col2InvoiceDate, I).Value = ""
+
+                                Dgl2.Item(Col2WInvoiceDate, I).Value = AgL.PubLoginDate
+                                WSaleInvoice = AgTemplate.ClsMain.FGetManualRefNo("ManualRefNo", "SaleInvoice", "WSI", AgL.PubLoginDate, AgL.PubDivCode, AgL.PubSiteCode, AgTemplate.ClsMain.ManualRefType.Max)
+                                WSaleInvoiceNo = Convert.ToInt32(WSaleInvoice) + Dgl2.Rows.Count - 1
+                                Dgl2.Item(Col2WInvoiceNo, I).Value = WSaleInvoiceNo.ToString()
+
                                 Dgl2.Item(Col2ItemGroup, I).Tag = FGetItemCodeFromOMSId(AgL.XNull(DtSaleOrderDetail.Rows(I)("ItemGroup")))
                                 Dgl2.Item(Col2ItemGroup, I).Value = AgL.XNull(DtSaleOrderDetail.Rows(I)("ItemGroupDesc"))
                                 Dgl2.Item(Col2Amount, I).Value = 0
@@ -623,8 +643,8 @@ Public Class FrmSaleInvoiceW_OnlyW
                                 Dgl1.Item(Col1PurchInvoiceDocId, I).Value = ""
                                 Dgl1.Item(Col1Supplier, I).Tag = FGetSubCodeFromOMSId(AgL.XNull(DtSaleOrderDetail.Rows(I)("Supplier")))
                                 Dgl1.Item(Col1Supplier, I).Value = AgL.XNull(DtSaleOrderDetail.Rows(I)("SupplierName"))
-                                Dgl1.Item(Col1MasterSupplier, I).Tag = FGetSubCodeFromOMSId(AgL.XNull(DtSaleOrderDetail.Rows(I)("Supplier")))
-                                Dgl1.Item(Col1MasterSupplier, I).Value = AgL.XNull(DtSaleOrderDetail.Rows(I)("SupplierName"))
+                                Dgl1.Item(Col1MasterSupplier, I).Tag = FGetSubCodeFromOMSId(AgL.XNull(DtSaleOrderDetail.Rows(I)("MasterSupplier")))
+                                Dgl1.Item(Col1MasterSupplier, I).Value = AgL.XNull(DtSaleOrderDetail.Rows(I)("MasterSupplierName"))
                                 Dgl1.Item(Col1InvoiceNo, I).Value = ""
                                 Dgl1.Item(Col1InvoiceDate, I).Value = ""
                                 Dgl1.Item(Col1ItemGroup, I).Tag = FGetItemCodeFromOMSId(AgL.XNull(DtSaleOrderDetail.Rows(I)("ItemGroup")))

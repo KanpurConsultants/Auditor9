@@ -299,6 +299,7 @@ Partial Class MDIMain
         Me.MnuDeleteAttachments = New System.Windows.Forms.ToolStripMenuItem()
         Me.MnuInconsistencyReport = New System.Windows.Forms.ToolStripMenuItem()
         Me.MnuRecheckBills = New System.Windows.Forms.ToolStripMenuItem()
+        Me.MnuMatchData = New System.Windows.Forms.ToolStripMenuItem()
         Me.MnuUserSetup = New System.Windows.Forms.ToolStripMenuItem()
         Me.MnuUserMaster = New System.Windows.Forms.ToolStripMenuItem()
         Me.MnuUserPermission = New System.Windows.Forms.ToolStripMenuItem()
@@ -317,7 +318,6 @@ Partial Class MDIMain
         Me.MnuPrintCheque = New System.Windows.Forms.ToolStripMenuItem()
         Me.MnuBank = New System.Windows.Forms.ToolStripMenuItem()
         Me.MnuChequePrinting = New System.Windows.Forms.ToolStripMenuItem()
-        Me.MnuMatchData = New System.Windows.Forms.ToolStripMenuItem()
         Me.MnuMain.SuspendLayout()
         Me.SuspendLayout()
         '
@@ -2308,6 +2308,12 @@ Partial Class MDIMain
         Me.MnuRecheckBills.Size = New System.Drawing.Size(215, 22)
         Me.MnuRecheckBills.Text = "Re-Check Bills"
         '
+        'MnuMatchData
+        '
+        Me.MnuMatchData.Name = "MnuMatchData"
+        Me.MnuMatchData.Size = New System.Drawing.Size(215, 22)
+        Me.MnuMatchData.Text = "Match Data"
+        '
         'MnuUserSetup
         '
         Me.MnuUserSetup.AccessibleDescription = "+Multi User Module"
@@ -2425,12 +2431,6 @@ Partial Class MDIMain
         Me.MnuChequePrinting.Name = "MnuChequePrinting"
         Me.MnuChequePrinting.Size = New System.Drawing.Size(160, 22)
         Me.MnuChequePrinting.Text = "Cheque Printing"
-        '
-        'MnuMatchData
-        '
-        Me.MnuMatchData.Name = "MnuMatchData"
-        Me.MnuMatchData.Size = New System.Drawing.Size(215, 22)
-        Me.MnuMatchData.Text = "Match Data"
         '
         'MDIMain
         '

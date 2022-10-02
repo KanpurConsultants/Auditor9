@@ -49,8 +49,8 @@ Public Class MDIMain
             If AgL Is Nothing Then
                 If FOpenIni(StrPath + IniName, AgLibrary.ClsConstant.PubSuperUserName, AgLibrary.ClsConstant.PubSuperUserPassword) Then
                     'If FOpenIni(StrPath + IniName, "Sa", "") Then
-                    AgL.PubSiteCode = "6"
-                    AgL.PubDivCode = "D"
+                    AgL.PubSiteCode = "1"
+                    AgL.PubDivCode = "E"
                     AgL.PubLoginDate = DateTime.Now()
                     AgL.PubLastTransactionDate = Now()
                     'Dim clsf As New ClsMain(AgL)
@@ -58,11 +58,11 @@ Public Class MDIMain
                     'End
 
 
-                    AgIniVar.FOpenConnection("6", AgL.PubSiteCode, False)
+                    AgIniVar.FOpenConnection("5", AgL.PubSiteCode, False)
                 End If
                 AgL.PubStopWatch.Start()
 
-                AgL.PubDivCode = "D"
+                AgL.PubDivCode = "E"
 
                 Try
                     mCrd.Load(AgL.PubReportPath & "\" & "SaleInvoice_Print.rpt")

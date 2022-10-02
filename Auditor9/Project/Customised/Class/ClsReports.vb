@@ -96,6 +96,7 @@ Public Class ClsReports
     Public Shared mHelpSaleBillQry$ = " SELECT 'o' As Tick,DocId, ReferenceNo AS BillNo, V_Date AS Date FROM SaleChallan "
     Public Shared mHelpItemReportingGroupQry$ = "Select 'o' As Tick,I.Code,I.Description  AS ItemReportingGroup FROM ItemReportingGroup I "
     Public Shared mHelpItemCategoryQry$ = "Select 'o' As Tick, Code, Description As [Item Category] From ItemCategory "
+    Public Shared mHelpItemTypeQry$ = "Select 'o' As Tick, Code, Name FROM ItemType "
     Public Shared mHelpItemStateQry$ = "Select 'o' As Tick, Code, Description As [Item Category] From Item Where V_Type = '" & ItemV_Type.ItemState & "' And IfNull(Status,'Active') = 'Active' "
     Public Shared mHelpTagQry$ = "Select 'o' As Tick, H.Code, H.Description   FROM Tag H "
     Public Shared mHelpVoucherTypeQry$ = "SELECT 'o' As Tick, H.V_Type AS Code, H.Description FROM Voucher_Type H  "
@@ -167,6 +168,7 @@ Public Class ClsReports
                     ReportFrm.CreateHelpGrid("Agent", "Agent", FrmRepDisplay.FieldFilterDataType.StringType, FrmRepDisplay.FieldDataType.MultiSelection, mHelpSalesAgentQry)
                     ReportFrm.CreateHelpGrid("Item Group", "Item Group", FrmRepDisplay.FieldFilterDataType.StringType, FrmRepDisplay.FieldDataType.MultiSelection, mHelpItemGroupQry)
                     ReportFrm.CreateHelpGrid("Item Category", "Item Category", FrmRepDisplay.FieldFilterDataType.StringType, FrmRepDisplay.FieldDataType.MultiSelection, mHelpItemCategoryQry)
+                    ReportFrm.CreateHelpGrid("Item Type", "Item Type", FrmRepDisplay.FieldFilterDataType.StringType, FrmRepDisplay.FieldDataType.MultiSelection, mHelpItemTypeQry)
                     ReportFrm.CreateHelpGrid("City", "City", FrmRepDisplay.FieldFilterDataType.StringType, FrmRepDisplay.FieldDataType.MultiSelection, mHelpCityQry)
                     ReportFrm.CreateHelpGrid("State", "State", FrmRepDisplay.FieldFilterDataType.StringType, FrmRepDisplay.FieldDataType.MultiSelection, mHelpStateQry)
                     ReportFrm.CreateHelpGrid("SalesRepresentative", "Sales Representative", FrmRepDisplay.FieldFilterDataType.StringType, FrmRepDisplay.FieldDataType.MultiSelection, mHelpSalesRepresentativeQry)
@@ -183,7 +185,7 @@ Public Class ClsReports
                     ReportFrm.CreateHelpGrid("Account Type", "Account Type", FrmRepDisplay.FieldFilterDataType.StringType, FrmRepDisplay.FieldDataType.MultiSelection, mHelpAccountType)
                     ReportFrm.CreateHelpGrid("Account Nature", "Account Nature", FrmRepDisplay.FieldFilterDataType.StringType, FrmRepDisplay.FieldDataType.MultiSelection, mHelpAccountNature)
                     ReportFrm.CreateHelpGrid("Department", "Department", FrmRepDisplay.FieldFilterDataType.StringType, FrmRepDisplay.FieldDataType.MultiSelection, mHelpDepartment)
-                    ReportFrm.FilterGrid.Rows(18).Visible = False 'Hide HSN Row
+                    ReportFrm.FilterGrid.Rows(19).Visible = False 'Hide HSN Row
 
 
                 Case SaleInvoiceReportAadhat
@@ -778,12 +780,12 @@ Public Class ClsReports
                         mFilterGrid.Item(GFilterCode, 3).Value = "'" + mGridRow.Cells("Search Code").Value + "'"
                     ElseIf mFilterGrid.Item(GFilter, 0).Value = "Account Type Wise Summary" Then
                         mFilterGrid.Item(GFilter, 0).Value = "Doc.Header Wise Detail"
-                        mFilterGrid.Item(GFilter, 24).Value = mGridRow.Cells("Account Type").Value
-                        mFilterGrid.Item(GFilterCode, 24).Value = "'" + mGridRow.Cells("Search Code").Value + "'"
+                        mFilterGrid.Item(GFilter, 25).Value = mGridRow.Cells("Account Type").Value
+                        mFilterGrid.Item(GFilterCode, 25).Value = "'" + mGridRow.Cells("Search Code").Value + "'"
                     ElseIf mFilterGrid.Item(GFilter, 0).Value = "Account Nature Wise Summary" Then
                         mFilterGrid.Item(GFilter, 0).Value = "Doc.Header Wise Detail"
-                        mFilterGrid.Item(GFilter, 25).Value = mGridRow.Cells("Account Nature").Value
-                        mFilterGrid.Item(GFilterCode, 25).Value = "'" + mGridRow.Cells("Search Code").Value + "'"
+                        mFilterGrid.Item(GFilter, 26).Value = mGridRow.Cells("Account Nature").Value
+                        mFilterGrid.Item(GFilterCode, 26).Value = "'" + mGridRow.Cells("Search Code").Value + "'"
                     ElseIf mFilterGrid.Item(GFilter, 0).Value = "Item Wise Summary" Then
                         mFilterGrid.Item(GFilter, 0).Value = "Item Wise Detail"
                         mFilterGrid.Item(GFilter, 4).Value = mGridRow.Cells("Item").Value
@@ -802,52 +804,52 @@ Public Class ClsReports
                         mFilterGrid.Item(GFilterCode, 9).Value = "'" + mGridRow.Cells("Search Code").Value + "'"
                     ElseIf mFilterGrid.Item(GFilter, 0).Value = "Department Wise Summary" Then
                         mFilterGrid.Item(GFilter, 0).Value = "Item Wise Detail"
-                        mFilterGrid.Item(GFilter, 26).Value = mGridRow.Cells("Department").Value
-                        mFilterGrid.Item(GFilterCode, 26).Value = "'" + mGridRow.Cells("Search Code").Value + "'"
+                        mFilterGrid.Item(GFilter, 27).Value = mGridRow.Cells("Department").Value
+                        mFilterGrid.Item(GFilterCode, 27).Value = "'" + mGridRow.Cells("Search Code").Value + "'"
                     ElseIf mFilterGrid.Item(GFilter, 0).Value = "Item Category Wise Summary" Then
                         mFilterGrid.Item(GFilter, 0).Value = "Item Wise Detail"
                         mFilterGrid.Item(GFilter, 10).Value = mGridRow.Cells("Item Category").Value
                         mFilterGrid.Item(GFilterCode, 10).Value = "'" + mGridRow.Cells("Search Code").Value + "'"
                     ElseIf mFilterGrid.Item(GFilter, 0).Value = "City Wise Summary" Then
                         mFilterGrid.Item(GFilter, 0).Value = "Doc.Header Wise Detail"
-                        mFilterGrid.Item(GFilter, 11).Value = mGridRow.Cells("City").Value
-                        mFilterGrid.Item(GFilterCode, 11).Value = "'" + mGridRow.Cells("Search Code").Value + "'"
+                        mFilterGrid.Item(GFilter, 12).Value = mGridRow.Cells("City").Value
+                        mFilterGrid.Item(GFilterCode, 12).Value = "'" + mGridRow.Cells("Search Code").Value + "'"
                     ElseIf mFilterGrid.Item(GFilter, 0).Value = "Area Wise Summary" Then
                         mFilterGrid.Item(GFilter, 0).Value = "Doc.Header Wise Detail"
-                        mFilterGrid.Item(GFilter, 11).Value = mGridRow.Cells("Area").Value
-                        mFilterGrid.Item(GFilterCode, 11).Value = "'" + mGridRow.Cells("Search Code").Value + "'"
+                        mFilterGrid.Item(GFilter, 12).Value = mGridRow.Cells("Area").Value
+                        mFilterGrid.Item(GFilterCode, 12).Value = "'" + mGridRow.Cells("Search Code").Value + "'"
                     ElseIf mFilterGrid.Item(GFilter, 0).Value = "State Wise Summary" Then
                         mFilterGrid.Item(GFilter, 0).Value = "Doc.Header Wise Detail"
-                        mFilterGrid.Item(GFilter, 12).Value = mGridRow.Cells("State").Value
-                        mFilterGrid.Item(GFilterCode, 12).Value = "'" + mGridRow.Cells("Search Code").Value + "'"
+                        mFilterGrid.Item(GFilter, 13).Value = mGridRow.Cells("State").Value
+                        mFilterGrid.Item(GFilterCode, 13).Value = "'" + mGridRow.Cells("Search Code").Value + "'"
                     ElseIf mFilterGrid.Item(GFilter, 0).Value = "Sales Representative Wise Summary" Then
                         mFilterGrid.Item(GFilter, 0).Value = "Doc.Header Wise Detail"
-                        mFilterGrid.Item(GFilter, 13).Value = mGridRow.Cells("Sales Representative").Value
-                        mFilterGrid.Item(GFilterCode, 13).Value = "'" + mGridRow.Cells("Search Code").Value + "'"
+                        mFilterGrid.Item(GFilter, 14).Value = mGridRow.Cells("Sales Representative").Value
+                        mFilterGrid.Item(GFilterCode, 14).Value = "'" + mGridRow.Cells("Search Code").Value + "'"
                     ElseIf mFilterGrid.Item(GFilter, 0).Value = "User Wise Summary" Then
                         mFilterGrid.Item(GFilter, 0).Value = "Doc.Header Wise Detail"
-                        mFilterGrid.Item(GFilter, 17).Value = mGridRow.Cells("User Name").Value
-                        mFilterGrid.Item(GFilterCode, 17).Value = "'" + mGridRow.Cells("Search Code").Value + "'"
+                        mFilterGrid.Item(GFilter, 18).Value = mGridRow.Cells("User Name").Value
+                        mFilterGrid.Item(GFilterCode, 18).Value = "'" + mGridRow.Cells("Search Code").Value + "'"
                     ElseIf mFilterGrid.Item(GFilter, 0).Value = "Responsible Person Wise Summary" Then
                         mFilterGrid.Item(GFilter, 0).Value = "Doc.Header Wise Detail"
-                        mFilterGrid.Item(GFilter, 14).Value = mGridRow.Cells("Responsible Person").Value
-                        mFilterGrid.Item(GFilterCode, 14).Value = "'" + mGridRow.Cells("Search Code").Value + "'"
+                        mFilterGrid.Item(GFilter, 15).Value = mGridRow.Cells("Responsible Person").Value
+                        mFilterGrid.Item(GFilterCode, 15).Value = "'" + mGridRow.Cells("Search Code").Value + "'"
                     ElseIf mFilterGrid.Item(GFilter, 0).Value = "HSN Wise Summary" Then
                         mFilterGrid.Item(GFilter, 0).Value = "Item Wise Detail"
-                        mFilterGrid.Item(GFilter, 18).Value = mGridRow.Cells("HSN").Value
-                        mFilterGrid.Item(GFilterCode, 18).Value = "'" + mGridRow.Cells("Search Code").Value + "'"
+                        mFilterGrid.Item(GFilter, 19).Value = mGridRow.Cells("HSN").Value
+                        mFilterGrid.Item(GFilterCode, 19).Value = "'" + mGridRow.Cells("Search Code").Value + "'"
                     ElseIf mFilterGrid.Item(GFilter, 0).Value = "Party Tax Group Wise Summary" Then
                         mFilterGrid.Item(GFilter, 0).Value = "Doc.Header Wise Detail"
-                        mFilterGrid.Item(GFilter, 19).Value = mGridRow.Cells("Party Tax Group").Value
-                        mFilterGrid.Item(GFilterCode, 19).Value = "'" + mGridRow.Cells("Search Code").Value + "'"
+                        mFilterGrid.Item(GFilter, 20).Value = mGridRow.Cells("Party Tax Group").Value
+                        mFilterGrid.Item(GFilterCode, 20).Value = "'" + mGridRow.Cells("Search Code").Value + "'"
                     ElseIf mFilterGrid.Item(GFilter, 0).Value = "Item Tax Group Wise Summary" Then
                         mFilterGrid.Item(GFilter, 0).Value = "Doc.Header Wise Detail"
-                        mFilterGrid.Item(GFilter, 20).Value = mGridRow.Cells("Item Tax Group").Value
-                        mFilterGrid.Item(GFilterCode, 20).Value = "'" + mGridRow.Cells("Search Code").Value + "'"
+                        mFilterGrid.Item(GFilter, 21).Value = mGridRow.Cells("Item Tax Group").Value
+                        mFilterGrid.Item(GFilterCode, 21).Value = "'" + mGridRow.Cells("Search Code").Value + "'"
                     ElseIf mFilterGrid.Item(GFilter, 0).Value = "Catalog Wise Summary" Then
                         mFilterGrid.Item(GFilter, 0).Value = "Doc.Header Wise Detail"
-                        mFilterGrid.Item(GFilter, 21).Value = mGridRow.Cells("Catalog").Value
-                        mFilterGrid.Item(GFilterCode, 21).Value = "'" + mGridRow.Cells("Search Code").Value + "'"
+                        mFilterGrid.Item(GFilter, 22).Value = mGridRow.Cells("Catalog").Value
+                        mFilterGrid.Item(GFilterCode, 22).Value = "'" + mGridRow.Cells("Search Code").Value + "'"
 
                     ElseIf mFilterGrid.Item(GFilter, 0).Value = "Site Wise Summary" Then
                         mFilterGrid.Item(GFilter, 0).Value = "Doc.Header Wise Detail"
@@ -855,8 +857,8 @@ Public Class ClsReports
                         mFilterGrid.Item(GFilterCode, 5).Value = "'" + mGridRow.Cells("Search Code").Value + "'"
                     ElseIf mFilterGrid.Item(GFilter, 0).Value = "Division Wise Summary" Then
                         mFilterGrid.Item(GFilter, 0).Value = "Doc.Header Wise Detail"
-                        mFilterGrid.Item(GFilter, 16).Value = mGridRow.Cells("Division").Value
-                        mFilterGrid.Item(GFilterCode, 16).Value = "'" + mGridRow.Cells("Search Code").Value + "'"
+                        mFilterGrid.Item(GFilter, 17).Value = mGridRow.Cells("Division").Value
+                        mFilterGrid.Item(GFilterCode, 17).Value = "'" + mGridRow.Cells("Search Code").Value + "'"
                     ElseIf mFilterGrid.Item(GFilter, 0).Value = "Doc.Header Wise Detail" Or
                             mFilterGrid.Item(GFilter, 0).Value = "Item Wise Detail" Then
 
@@ -889,17 +891,18 @@ Public Class ClsReports
             mCondStr = mCondStr & ReportFrm.GetWhereCondition("LTV.Agent", 8)
             mCondStr = mCondStr & ReportFrm.GetWhereCondition("I.ItemGroup", 9)
             mCondStr = mCondStr & ReportFrm.GetWhereCondition("I.ItemCategory", 10)
-            mCondStr = mCondStr & ReportFrm.GetWhereCondition("City.CityCode", 11)
-            mCondStr = mCondStr & ReportFrm.GetWhereCondition("City.State", 12)
-            mCondStr = mCondStr & ReportFrm.GetWhereCondition("L.SalesRepresentative", 13)
-            mCondStr = mCondStr & ReportFrm.GetWhereCondition("H.ResponsiblePerson", 14)
-            mCondStr = mCondStr & ReportFrm.GetWhereCondition("H.EntryBy", 17)
-            mCondStr = mCondStr & ReportFrm.GetWhereCondition("L.Catalog", 21)
-            mCondStr = mCondStr & ReportFrm.GetWhereCondition("DS.CityCode", 22)
-            mCondStr = mCondStr & ReportFrm.GetWhereCondition("L.ItemState", 23)
-            mCondStr = mCondStr & ReportFrm.GetWhereCondition("Party.SubgroupType", 24)
-            mCondStr = mCondStr & ReportFrm.GetWhereCondition("Party.Nature", 25)
-            mCondStr = mCondStr & ReportFrm.GetWhereCondition("IG.Department", 26)
+            mCondStr = mCondStr & ReportFrm.GetWhereCondition("I.ItemType", 11)
+            mCondStr = mCondStr & ReportFrm.GetWhereCondition("City.CityCode", 12)
+            mCondStr = mCondStr & ReportFrm.GetWhereCondition("City.State", 13)
+            mCondStr = mCondStr & ReportFrm.GetWhereCondition("L.SalesRepresentative", 14)
+            mCondStr = mCondStr & ReportFrm.GetWhereCondition("H.ResponsiblePerson", 15)
+            mCondStr = mCondStr & ReportFrm.GetWhereCondition("H.EntryBy", 18)
+            mCondStr = mCondStr & ReportFrm.GetWhereCondition("L.Catalog", 22)
+            mCondStr = mCondStr & ReportFrm.GetWhereCondition("DS.CityCode", 23)
+            mCondStr = mCondStr & ReportFrm.GetWhereCondition("L.ItemState", 24)
+            mCondStr = mCondStr & ReportFrm.GetWhereCondition("Party.SubgroupType", 25)
+            mCondStr = mCondStr & ReportFrm.GetWhereCondition("Party.Nature", 26)
+            mCondStr = mCondStr & ReportFrm.GetWhereCondition("IG.Department", 27)
 
             'If ReportFrm.FGetText(8) <> "All" Then
             '    mCondStr += " And H.Agent = '" & ReportFrm.FGetCode(8) & "' "
@@ -907,18 +910,18 @@ Public Class ClsReports
 
             'mCondStr = mCondStr & ReportFrm.GetWhereCondition("H.Agent", 8)
 
-            If ReportFrm.FGetText(15) <> "All" Then
-                mTags = ReportFrm.FGetText(15).ToString.Split(",")
+            If ReportFrm.FGetText(16) <> "All" Then
+                mTags = ReportFrm.FGetText(16).ToString.Split(",")
                 For J = 0 To mTags.Length - 1
                     mCondStr += " And CharIndex('+' || '" & mTags(J) & "',H.Tags) > 0 "
                 Next
             End If
-            mCondStr = mCondStr & Replace(ReportFrm.GetWhereCondition("H.Div_Code", 16), "''", "'")
-            If AgL.XNull(ReportFrm.FGetText(18)) <> "All" Then
-                mCondStr = mCondStr & " And IfNull(IfNull(IfNull(I.HSN,IC.HSN),Bi.HSN),'') = '" & AgL.XNull(ReportFrm.FGetText(18)) & "' "
+            mCondStr = mCondStr & Replace(ReportFrm.GetWhereCondition("H.Div_Code", 17), "''", "'")
+            If AgL.XNull(ReportFrm.FGetText(19)) <> "All" Then
+                mCondStr = mCondStr & " And IfNull(IfNull(IfNull(I.HSN,IC.HSN),Bi.HSN),'') = '" & AgL.XNull(ReportFrm.FGetText(19)) & "' "
             End If
-            mCondStr = mCondStr & ReportFrm.GetWhereCondition("H.SalesTaxGroupParty", 19)
-            mCondStr = mCondStr & ReportFrm.GetWhereCondition("L.SalesTaxGroupItem", 20)
+            mCondStr = mCondStr & ReportFrm.GetWhereCondition("H.SalesTaxGroupParty", 20)
+            mCondStr = mCondStr & ReportFrm.GetWhereCondition("L.SalesTaxGroupItem", 21)
 
 
             mQry = " SELECT H.DocID, H.V_Type, Vt.Description as VoucherType, H.Site_Code, H.Div_Code, Site.Name as Site, Div.Div_Name as Division,
@@ -975,15 +978,31 @@ Public Class ClsReports
                     GROUP By VMain.DocId 
                     Order By Max(VMain.V_Date_ActualFormat), Cast(Max(Replace(Vmain.ManualRefNo,'-','')) as Integer) "
                 Else
-                    mQry = " Select VMain.DocId As SearchCode, Max(VMain.Division) as Division, Max(Vmain.Site) as Site, Max(VMain.V_Date) As InvoiceDate, Max(VMain.V_Type) as DocType, Max(VMain.InvoiceNo) As InvoiceNo,
-                    Max(VMain.SaleToPartyName) As Party, Max(Vmain.Brand) as Brand, Max(VMain.SalesTaxGroupParty) As SalesTaxGroupParty, IfNull(Sum(VMain.AmountExDiscount),0) As AmountExDiscount, 
-                    IfNull(Sum(VMain.Discount+VMain.AdditionalDiscount),0) As Discount, IfNull(Sum(VMain.Addition),0) as Addition, IfNull(Sum(VMain.SpecialDiscount),0) As SpecialDiscount, IfNull(Sum(VMain.SpecialAddition),0) As SpecialAddition,
-                    IfNull(Sum(VMain.Amount),0) As Amount,IfNull(Sum(VMain.Taxable_Amount),0) As TaxableAmount, IfNull(Sum(VMain.TotalTax),0) As TaxAmount, IfNull(Sum(VMain.Net_Amount),0) As NetAmount, Max(VMain.Tags) as Tags, Max(VMain.OrderTags) as OrderTags
-                    From (" & mQry & ") As VMain
-                    GROUP By VMain.DocId 
-                    Order By Max(VMain.V_Date_ActualFormat), Cast(Max(Replace(Vmain.ManualRefNo,'-','')) as Integer) "
+                    If (AgL.PubServerName <> "") Then
+                        mQry = " Select VMain.DocId As SearchCode, Max(VMain.Division) as Division, Max(Vmain.Site) as Site, Row_Number() OVER (ORDER BY Max(VMain.V_Date_ActualFormat),Cast(Max(Replace(Vmain.ManualRefNo,'-','')) as Integer),VMain.DocId) AS Sr,
+                                Max(VMain.V_Date) As InvoiceDate, Max(VMain.V_Type) as DocType, Max(VMain.InvoiceNo) As InvoiceNo,
+                                Max(VMain.SaleToPartyName) As Party, Max(Vmain.Brand) as Brand, Max(VMain.SalesTaxGroupParty) As SalesTaxGroupParty, IfNull(Sum(VMain.AmountExDiscount),0) As AmountExDiscount, 
+                                IfNull(Sum(VMain.Discount+VMain.AdditionalDiscount),0) As Discount, IfNull(Sum(VMain.Addition),0) as Addition, IfNull(Sum(VMain.SpecialDiscount),0) As SpecialDiscount, IfNull(Sum(VMain.SpecialAddition),0) As SpecialAddition,
+                                IfNull(Sum(VMain.Amount),0) As Amount,IfNull(Sum(VMain.Taxable_Amount),0) As TaxableAmount, IfNull(Sum(VMain.TotalTax),0) As TaxAmount, IfNull(Sum(VMain.Net_Amount),0) As NetAmount, Max(VMain.Tags) as Tags, Max(VMain.OrderTags) as OrderTags
+                                From (" & mQry & ") As VMain
+                                GROUP By VMain.DocId 
+                                Order By Max(VMain.V_Date_ActualFormat), Cast(Max(Replace(Vmain.ManualRefNo,'-','')) as Integer),VMain.DocId "
+                    Else
+                        mQry = " Select VMain.DocId As SearchCode, Max(VMain.Division) as Division, Max(Vmain.Site) as Site, 
+                                Max(VMain.V_Date) As InvoiceDate, Max(VMain.V_Type) as DocType, Max(VMain.InvoiceNo) As InvoiceNo,
+                                Max(VMain.SaleToPartyName) As Party, Max(Vmain.Brand) as Brand, Max(VMain.SalesTaxGroupParty) As SalesTaxGroupParty, IfNull(Sum(VMain.AmountExDiscount),0) As AmountExDiscount, 
+                                IfNull(Sum(VMain.Discount+VMain.AdditionalDiscount),0) As Discount, IfNull(Sum(VMain.Addition),0) as Addition, IfNull(Sum(VMain.SpecialDiscount),0) As SpecialDiscount, IfNull(Sum(VMain.SpecialAddition),0) As SpecialAddition,
+                                IfNull(Sum(VMain.Amount),0) As Amount,IfNull(Sum(VMain.Taxable_Amount),0) As TaxableAmount, IfNull(Sum(VMain.TotalTax),0) As TaxAmount, IfNull(Sum(VMain.Net_Amount),0) As NetAmount, Max(VMain.Tags) as Tags, Max(VMain.OrderTags) as OrderTags
+                                From (" & mQry & ") As VMain
+                                GROUP By VMain.DocId 
+                                Order By Max(VMain.V_Date_ActualFormat), Cast(Max(Replace(Vmain.ManualRefNo,'-','')) as Integer) "
+
+                    End If
+
+
+
                 End If
-            ElseIf ReportFrm.FGetText(0) = "Item Wise Detail" Then
+                    ElseIf ReportFrm.FGetText(0) = "Item Wise Detail" Then
                 If GRepFormName = SaleOrderReport Then
                     mQry = " Select VMain.DocId As SearchCode, Max(Vmain.Site) as Site, Max(VMain.Division) as Division, Max(VMain.V_Date) As [Order Date], Max(VMain.V_Type) as DocType, Max(VMain.InvoiceNo) As [Order No],
                     Max(VMain.SaleToPartyName) As Party, Max(VMain.ItemDesc) As Item, Sum(VMain.Qty) As Qty, Max(VMain.Unit) As Unit, Max(VMain.HSN) As HSN, 

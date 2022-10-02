@@ -1,0 +1,139 @@
+; Field definition file for table: ADORecordset
+Copies	string	255	1	
+CopyPrintingCaption	string	255		
+DocNoCaption	string	255	Doc.No.	
+DocDateCaption	string	255	Doc.Date	
+SiteStateCode	string	255	09	
+SiteStateName	string	255	Uttar Pradesh	
+DocID	string	255	D1   WSR 2022       8	
+Sr	number	1	
+V_Date	datetime	30/May/2022 12:00:00 AM	
+DeliveryDate	datetime		
+Voucher_Type	string	255	W Sale Return	
+NCat	string	255	SR	
+InvoiceNo	string	255	8	
+RateType	string	255	A	
+AgentName	string	255	DIRECT	
+AgentCaption	string	255	Agent	
+SaleToPartyName	string	255	RIKITA SALES-GWALIOR	
+SaleToPartyCode	string	255	1774	
+SaleToPartyAddress	string	255	BALAJI GARMENTS PLAZA ,
+3RD FLOOR ,
+DARJI OLI,LASKAR	
+CityName	string	255	GWALIOR	
+SaleToPartyPincode	string	255	474001	
+StateCode	string	255	23	
+StateName	string	255	Madhya Pradesh	
+SaleToPartyMobile	string	255	9098518208	
+ContactPerson	string	255		
+SaleToPartySalesTaxNo	string	255	23BRRPJ5671D1ZO	
+SaleToPartyAadharNo	string	255		
+SaleToPartyPanNo	string	255	BRRPJ5671D	
+ShipToPartyName	string	255	RIKITA SALES-GWALIOR	
+ShipToPartyManualCode	string	255	1774	
+ShipToPartyAddress	string	255	BALAJI GARMENTS PLAZA ,
+3RD FLOOR ,
+DARJI OLI,LASKAR	
+ShipToPartyCity	string	255	GWALIOR	
+ShipToPartyPincode	string	255	474001	
+ShipToPartyStateCode	string	255	23	
+ShipToPartyStateName	string	255	Madhya Pradesh	
+ShipToPartyMobile	string	255	9098518208	
+ShipToPartySalesTaxNo	string	255	23BRRPJ5671D1ZO	
+ShipToPartyAadharNo	string	255		
+ShipToPartyPanNo	string	255	BRRPJ5671D	
+ShipToAddress	string	255		
+TermsAndConditions	string	255		
+TransporterName	string	255		
+LrNo	string	255		
+LrDate	datetime		
+NoOfBales	number		
+PrivateMark	string	255		
+Weight	number		
+Freight	number		
+ChargedWeight	number		
+FreightType	string	255		
+RoadPermitNo	string	255		
+RoadPermitDate	datetime		
+VehicleNo	string	255		
+ShipMethod	string	255		
+PreCarriageBy	string	255		
+PreCarriagePlace	string	255		
+BookedFrom	string	255		
+BookedTo	string	255		
+Destination	string	255	GWALIOR	
+DescriptionOfGoods	string	255		
+DescriptionOfPacking	string	255		
+ReferenceNo	string	255		
+ContraDocNo	string	255	8	
+ContraDocNoCsv	string	255	8	
+ItemName	string	255	READYMADE SUIT 	
+ItemGroupName	string	255	HARSHA	
+ItemCatName	string	255	READYMADE SUIT 	
+ItemSpecification	string	255		
+InvoiceLineSpecification	string	255		
+HSN	string	255	6204	
+MaintainStockYn	boolean	True	
+SalesTaxGroupItem	string	255	GST 0%	
+GrossTaxRate	number	0	
+Pcs	number	64	
+Qty	number	64	
+Rate	number	78880	
+Unit	string	255	PCS	
+UnitDecimalPlaces	number	0	
+DiscountCalculationPattern	string	255		
+DiscountPer	number	0	
+DiscountAmount	number	0	
+AdditionalDiscountPer	number	1	
+AdditionalDiscountAmount	number	788.8	
+AdditionPer	number	0	
+AdditionAmount	number	0	
+TotalDiscount	number	788.8	
+AmountBeforeDiscount	number	78880	
+Amount	number	78091.2	
+Taxable_Amount	number	78091.2	
+Tax1_Per	number	0	
+Tax1	number	2366	
+Tax2_Per	number	0	
+Tax2	number	0	
+Tax3_Per	number	0	
+Tax3	number	0	
+Tax4_Per	number	0	
+Tax4	number	0	
+Tax5_Per	number	0	
+Tax5	number	0	
+Net_Amount	number	80457.2	
+LRemarks	string	255	RIKITA SALES-GWALIOR,GWALIOR	
+HRemarks	string	255		
+H_TotalDiscount	number	788.8	
+H_AmountBeforeDiscount	number	78880	
+H_Gross_Amount	number	78091.2	
+H_SpecialDiscount_Per	number	0	
+H_SpecialDiscount	number	0	
+H_Taxable_Amount	number	78091.2	
+H_Tax1_Per	number	0	
+H_Tax1	number	2366	
+H_Tax2_Per	number	0	
+H_Tax2	number	0	
+H_Tax3_Per	number	0	
+H_Tax3	number	0	
+H_Tax4_Per	number	0	
+H_Tax4	number	0	
+H_Tax5_Per	number	0	
+H_Tax5	number	0	
+H_Deduction_Per	number	0	
+H_Deduction	number	0	
+H_Other_Charge_Per	number	0	
+H_Other_Charge	number	0	
+Round_Off	number	0	
+H_Net_Amount	number	80457.2	
+Default_BankAccountDetail	string	255		
+DocumentPrintHeaderPattern	string	255	Center Aligned	
+DimDetail	string	255		
+PrintedByUser	string	255	SUPER	
+EntryByUser	string	255	satendra	
+PrintTitle	string	255	W Sale Return	
+PurchInvoiceNo	string	255		
+CompanyLogo	BLOB		
+CompanyAuthorisedSignature	BLOB		
+EInvoiceQrCode	BLOB		

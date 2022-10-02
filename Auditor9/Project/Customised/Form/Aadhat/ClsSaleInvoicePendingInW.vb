@@ -115,9 +115,9 @@ Public Class ClsSaleInvoicePendingInW
             'mCondStr = " Where PH.V_Type='SI' And Date(PH.V_Date) between " & AgL.Chk_Date(AgL.PubStartDate) & " And " & AgL.Chk_Date(AgL.PubEndDate) & " "
             mCondStr = " Where PH.V_Type='SI' And Date(PH.V_Date) >='2020-01-01' "
             If ReportFrm.FGetText(0) = "Pending" Then
-                mCondStr += " And H.DocID Is Null "
+                mCondStr += " And H.DocID Is Null And  ifNull(PH.isAlreadyUploaded ,0)=0 "
             ElseIf ReportFrm.FGetText(0) = "Recorded" Then
-                mCondStr += " And H.DocID Is Not Null "
+                mCondStr += " And ( H.DocID Is Not Null or ifNull(PH.isAlreadyUploaded ,1)=1 )  "
             End If
             mCondStr += ReportFrm.GetWhereCondition("L.Subcode", 1)
             mCondStr = mCondStr & Replace(ReportFrm.GetWhereCondition("PH.Site_Code", 2), "''", "'")
@@ -213,7 +213,7 @@ Public Class ClsSaleInvoicePendingInW
             ReportFrm.DGL1.AutoResizeRows()
 
         Catch ex As Exception
-                MsgBox(ex.Message)
+            MsgBox(ex.Message)
             DsHeader = Nothing
         End Try
     End Sub

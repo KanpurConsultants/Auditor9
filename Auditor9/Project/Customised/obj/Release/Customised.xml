@@ -6,6 +6,366 @@ Customised
 </name>
 </assembly>
 <members>
+<member name="M:Customised.FrmSaleInvoiceDirect_WithDimension_ShyamaShyam.Ini_Grid_Purchase">
+ ''''''''''''''''''''''''''Start Logic for Aadhat''''''''''''''''''''''
+</member>
+<member name="T:Customised.My.Resources.Message">
+<summary>
+  A strongly-typed resource class, for looking up localized strings, etc.
+</summary>
+</member>
+<member name="P:Customised.My.Resources.Message.ResourceManager">
+<summary>
+  Returns the cached ResourceManager instance used by this class.
+</summary>
+</member>
+<member name="P:Customised.My.Resources.Message.Culture">
+<summary>
+  Overrides the current thread's CurrentUICulture property for all
+  resource lookups using this strongly typed resource class.
+</summary>
+</member>
+<member name="P:Customised.My.Resources.Message.Bank_Cheqe_Leaf_Required">
+<summary>
+  Looks up a localized string similar to Please Upload Cheque Leaf.
+</summary>
+</member>
+<member name="P:Customised.My.Resources.Message.Bank_Delete">
+<summary>
+  Looks up a localized string similar to Bank Successfully Deleted.
+</summary>
+</member>
+<member name="P:Customised.My.Resources.Message.Bank_Delete_Record">
+<summary>
+  Looks up a localized string similar to Do you want Delete This Record? .
+</summary>
+</member>
+<member name="P:Customised.My.Resources.Message.Bank_Exit">
+<summary>
+  Looks up a localized string similar to Do you want to Exit?.
+</summary>
+</member>
+<member name="P:Customised.My.Resources.Message.Bank_Height_Validate">
+<summary>
+  Looks up a localized string similar to Margin Should Be Positive.
+</summary>
+</member>
+<member name="P:Customised.My.Resources.Message.Bank_Name_Required">
+<summary>
+  Looks up a localized string similar to Please Enter Bank Name.
+</summary>
+</member>
+<member name="P:Customised.My.Resources.Message.Bank_Save">
+<summary>
+  Looks up a localized string similar to Bank Successfully Saved.
+</summary>
+</member>
+<member name="P:Customised.My.Resources.Message.Bank_Width_Validate">
+<summary>
+  Looks up a localized string similar to Margin Should Be Positive.
+</summary>
+</member>
+<member name="P:Customised.My.Resources.Message.Company_Already_Exit">
+<summary>
+  Looks up a localized string similar to Already Exit.
+</summary>
+</member>
+<member name="P:Customised.My.Resources.Message.Company_Delete">
+<summary>
+  Looks up a localized string similar to Do you Delete This Record?.
+</summary>
+</member>
+<member name="P:Customised.My.Resources.Message.Company_Delete_After">
+<summary>
+  Looks up a localized string similar to Company sucessfully Deleted.
+</summary>
+</member>
+<member name="P:Customised.My.Resources.Message.Company_Exit">
+<summary>
+  Looks up a localized string similar to Do you want to Exit?.
+</summary>
+</member>
+<member name="P:Customised.My.Resources.Message.Company_Inserted">
+<summary>
+  Looks up a localized string similar to Company Created Successfully.{0}{0} Login Details: {0}  User Id = admin {0}  Password =admin.
+</summary>
+</member>
+<member name="P:Customised.My.Resources.Message.Company_Name_Required">
+<summary>
+  Looks up a localized string similar to Please Enter Company Name.
+</summary>
+</member>
+<member name="P:Customised.My.Resources.Message.Company_New_Password">
+<summary>
+  Looks up a localized string similar to Please Enter New Password.
+</summary>
+</member>
+<member name="P:Customised.My.Resources.Message.Company_NotMatched">
+<summary>
+  Looks up a localized string similar to Old Password is Not Matched.
+</summary>
+</member>
+<member name="P:Customised.My.Resources.Message.Company_Old_Password">
+<summary>
+  Looks up a localized string similar to Please Enter Old Password.
+</summary>
+</member>
+<member name="P:Customised.My.Resources.Message.Company_Pwd_Conformation">
+<summary>
+  Looks up a localized string similar to  Please Enter Confirm Password.
+</summary>
+</member>
+<member name="P:Customised.My.Resources.Message.Company_Pwd_Mismatch">
+<summary>
+  Looks up a localized string similar to Confirmation Password is Mismatch.
+</summary>
+</member>
+<member name="P:Customised.My.Resources.Message.Company_save">
+<summary>
+  Looks up a localized string similar to Company Successfully Saved.
+</summary>
+</member>
+<member name="P:Customised.My.Resources.Message.Company_Updated">
+<summary>
+  Looks up a localized string similar to Successfully Saved.
+</summary>
+</member>
+<member name="P:Customised.My.Resources.Message.Main_Esc_Msg">
+<summary>
+  Looks up a localized string similar to Do you want to Exit?.
+</summary>
+</member>
+<member name="P:Customised.My.Resources.Message.Payee_Delete">
+<summary>
+  Looks up a localized string similar to Suceessfully Deleted.
+</summary>
+</member>
+<member name="P:Customised.My.Resources.Message.Payee_Delete_Record">
+<summary>
+  Looks up a localized string similar to Do you Delete This Record?.
+</summary>
+</member>
+<member name="P:Customised.My.Resources.Message.Payee_Exit">
+<summary>
+  Looks up a localized string similar to Do you want to Exit?.
+</summary>
+</member>
+<member name="P:Customised.My.Resources.Message.Payee_Name_Required">
+<summary>
+  Looks up a localized string similar to Please Enter The Name.
+</summary>
+</member>
+<member name="P:Customised.My.Resources.Message.Payee_Saved">
+<summary>
+  Looks up a localized string similar to Successfully Saved.
+</summary>
+</member>
+<member name="T:Customised.My.Resources.Resources">
+<summary>
+  A strongly-typed resource class, for looking up localized strings, etc.
+</summary>
+</member>
+<member name="P:Customised.My.Resources.Resources.ResourceManager">
+<summary>
+  Returns the cached ResourceManager instance used by this class.
+</summary>
+</member>
+<member name="P:Customised.My.Resources.Resources.Culture">
+<summary>
+  Overrides the current thread's CurrentUICulture property for all
+  resource lookups using this strongly typed resource class.
+</summary>
+</member>
+<member name="P:Customised.My.Resources.Resources._41104_200">
+<summary>
+  Looks up a localized resource of type System.Drawing.Bitmap.
+</summary>
+</member>
+<member name="P:Customised.My.Resources.Resources.approved">
+<summary>
+  Looks up a localized resource of type System.Drawing.Bitmap.
+</summary>
+</member>
+<member name="P:Customised.My.Resources.Resources.Attention">
+<summary>
+  Looks up a localized resource of type System.Drawing.Bitmap.
+</summary>
+</member>
+<member name="P:Customised.My.Resources.Resources.BlankImage">
+<summary>
+  Looks up a localized resource of type System.Drawing.Bitmap.
+</summary>
+</member>
+<member name="P:Customised.My.Resources.Resources.browse_32">
+<summary>
+  Looks up a localized resource of type System.Drawing.Bitmap.
+</summary>
+</member>
+<member name="P:Customised.My.Resources.Resources.Cancel">
+<summary>
+  Looks up a localized resource of type System.Drawing.Bitmap.
+</summary>
+</member>
+<member name="P:Customised.My.Resources.Resources.company_32">
+<summary>
+  Looks up a localized resource of type System.Drawing.Bitmap.
+</summary>
+</member>
+<member name="P:Customised.My.Resources.Resources.copy_icon">
+<summary>
+  Looks up a localized resource of type System.Drawing.Bitmap.
+</summary>
+</member>
+<member name="P:Customised.My.Resources.Resources.Copy_of_stock_vector_vector_ok_and_cancel_button_set_54696784">
+<summary>
+  Looks up a localized resource of type System.Drawing.Bitmap.
+</summary>
+</member>
+<member name="P:Customised.My.Resources.Resources.Copy1">
+<summary>
+  Looks up a localized resource of type System.Drawing.Bitmap.
+</summary>
+</member>
+<member name="P:Customised.My.Resources.Resources.copy1_icon">
+<summary>
+  Looks up a localized resource of type System.Drawing.Bitmap.
+</summary>
+</member>
+<member name="P:Customised.My.Resources.Resources.delete_32">
+<summary>
+  Looks up a localized resource of type System.Drawing.Bitmap.
+</summary>
+</member>
+<member name="P:Customised.My.Resources.Resources.disc">
+<summary>
+  Looks up a localized resource of type System.Drawing.Bitmap.
+</summary>
+</member>
+<member name="P:Customised.My.Resources.Resources.disc1">
+<summary>
+  Looks up a localized resource of type System.Drawing.Bitmap.
+</summary>
+</member>
+<member name="P:Customised.My.Resources.Resources.ExcelIcon">
+<summary>
+  Looks up a localized resource of type System.Drawing.Bitmap.
+</summary>
+</member>
+<member name="P:Customised.My.Resources.Resources.exit_32">
+<summary>
+  Looks up a localized resource of type System.Drawing.Bitmap.
+</summary>
+</member>
+<member name="P:Customised.My.Resources.Resources.eye_PNG35677">
+<summary>
+  Looks up a localized resource of type System.Drawing.Bitmap.
+</summary>
+</member>
+<member name="P:Customised.My.Resources.Resources.eye_PNG356771">
+<summary>
+  Looks up a localized resource of type System.Drawing.Bitmap.
+</summary>
+</member>
+<member name="P:Customised.My.Resources.Resources.Icon1">
+<summary>
+  Looks up a localized resource of type System.Drawing.Icon similar to (Icon).
+</summary>
+</member>
+<member name="P:Customised.My.Resources.Resources.images">
+<summary>
+  Looks up a localized resource of type System.Drawing.Bitmap.
+</summary>
+</member>
+<member name="P:Customised.My.Resources.Resources.information">
+<summary>
+  Looks up a localized resource of type System.Drawing.Bitmap.
+</summary>
+</member>
+<member name="P:Customised.My.Resources.Resources.new_32">
+<summary>
+  Looks up a localized resource of type System.Drawing.Bitmap.
+</summary>
+</member>
+<member name="P:Customised.My.Resources.Resources.Ok">
+<summary>
+  Looks up a localized resource of type System.Drawing.Bitmap.
+</summary>
+</member>
+<member name="P:Customised.My.Resources.Resources.PdfIcon">
+<summary>
+  Looks up a localized resource of type System.Drawing.Bitmap.
+</summary>
+</member>
+<member name="P:Customised.My.Resources.Resources.Plain">
+<summary>
+  Looks up a localized resource of type System.Drawing.Icon similar to (Icon).
+</summary>
+</member>
+<member name="P:Customised.My.Resources.Resources.print_cheque_32">
+<summary>
+  Looks up a localized resource of type System.Drawing.Bitmap.
+</summary>
+</member>
+<member name="P:Customised.My.Resources.Resources.QUEST">
+<summary>
+  Looks up a localized resource of type System.Drawing.Bitmap.
+</summary>
+</member>
+<member name="P:Customised.My.Resources.Resources.report_32">
+<summary>
+  Looks up a localized resource of type System.Drawing.Bitmap.
+</summary>
+</member>
+<member name="P:Customised.My.Resources.Resources.reset">
+<summary>
+  Looks up a localized resource of type System.Drawing.Bitmap.
+</summary>
+</member>
+<member name="P:Customised.My.Resources.Resources.save_32">
+<summary>
+  Looks up a localized resource of type System.Drawing.Bitmap.
+</summary>
+</member>
+<member name="P:Customised.My.Resources.Resources.search_32">
+<summary>
+  Looks up a localized resource of type System.Drawing.Bitmap.
+</summary>
+</member>
+<member name="P:Customised.My.Resources.Resources.search25">
+<summary>
+  Looks up a localized resource of type System.Drawing.Bitmap.
+</summary>
+</member>
+<member name="P:Customised.My.Resources.Resources.stock_vector_vector_ok_and_cancel_button_set_54696784">
+<summary>
+  Looks up a localized resource of type System.Drawing.Bitmap.
+</summary>
+</member>
+<member name="P:Customised.My.Resources.Resources.Tree_Child">
+<summary>
+  Looks up a localized resource of type System.Drawing.Bitmap.
+</summary>
+</member>
+<member name="P:Customised.My.Resources.Resources.Untitled_11111">
+<summary>
+  Looks up a localized resource of type System.Drawing.Bitmap.
+</summary>
+</member>
+<member name="P:Customised.My.Resources.Resources.wordicon">
+<summary>
+  Looks up a localized resource of type System.Drawing.Bitmap.
+</summary>
+</member>
+<member name="M:Customised.GSTINValidator.IsValid(System.String)">
+ <summary>
+ Method to check if a GSTIN Is valid. Checks the GSTIN format And thecheck digit Is valid for the passed input GSTIN
+ </summary>
+ <param name="GSTIN">GSTIN to Validate</param>
+</member>
+<member name="M:Customised.GSTINValidator.GenerateCheckSum(System.String)">
+ <summary>Generates and returns checksum digit for given GSTIN (without checksum digit)</summary>
+ <param name="GSTIN">GSTIN without checksum digit to generate checksum digit</param>
+</member>
 <member name="T:Customised.ExcelHandler">
  <summary>
  Excel File handler used to read and write excel file.
@@ -37,86 +397,8 @@ Customised
  <param name="a_dtData">DataTable of data.</param>
  <returns>Object Array</returns>
 </member>
-<member name="T:Customised.My.Resources.Resources">
-<summary>
-  A strongly-typed resource class, for looking up localized strings, etc.
-</summary>
-</member>
-<member name="P:Customised.My.Resources.Resources.ResourceManager">
-<summary>
-  Returns the cached ResourceManager instance used by this class.
-</summary>
-</member>
-<member name="P:Customised.My.Resources.Resources.Culture">
-<summary>
-  Overrides the current thread's CurrentUICulture property for all
-  resource lookups using this strongly typed resource class.
-</summary>
-</member>
-<member name="P:Customised.My.Resources.Resources.approved">
-<summary>
-  Looks up a localized resource of type System.Drawing.Bitmap.
-</summary>
-</member>
-<member name="P:Customised.My.Resources.Resources.copy_icon">
-<summary>
-  Looks up a localized resource of type System.Drawing.Bitmap.
-</summary>
-</member>
-<member name="P:Customised.My.Resources.Resources.Copy_of_stock_vector_vector_ok_and_cancel_button_set_54696784">
-<summary>
-  Looks up a localized resource of type System.Drawing.Bitmap.
-</summary>
-</member>
-<member name="P:Customised.My.Resources.Resources.Copy1">
-<summary>
-  Looks up a localized resource of type System.Drawing.Bitmap.
-</summary>
-</member>
-<member name="P:Customised.My.Resources.Resources.copy1_icon">
-<summary>
-  Looks up a localized resource of type System.Drawing.Bitmap.
-</summary>
-</member>
-<member name="P:Customised.My.Resources.Resources.disc">
-<summary>
-  Looks up a localized resource of type System.Drawing.Bitmap.
-</summary>
-</member>
-<member name="P:Customised.My.Resources.Resources.disc1">
-<summary>
-  Looks up a localized resource of type System.Drawing.Bitmap.
-</summary>
-</member>
-<member name="P:Customised.My.Resources.Resources.Icon1">
-<summary>
-  Looks up a localized resource of type System.Drawing.Icon similar to (Icon).
-</summary>
-</member>
-<member name="P:Customised.My.Resources.Resources.images">
-<summary>
-  Looks up a localized resource of type System.Drawing.Bitmap.
-</summary>
-</member>
-<member name="P:Customised.My.Resources.Resources.Ok">
-<summary>
-  Looks up a localized resource of type System.Drawing.Bitmap.
-</summary>
-</member>
-<member name="P:Customised.My.Resources.Resources.stock_vector_vector_ok_and_cancel_button_set_54696784">
-<summary>
-  Looks up a localized resource of type System.Drawing.Bitmap.
-</summary>
-</member>
-<member name="P:Customised.My.Resources.Resources.Tree_Child">
-<summary>
-  Looks up a localized resource of type System.Drawing.Bitmap.
-</summary>
-</member>
-<member name="P:Customised.My.Resources.Resources.Untitled_11111">
-<summary>
-  Looks up a localized resource of type System.Drawing.Bitmap.
-</summary>
+<member name="M:Customised.FrmSaleInvoiceDirect_WithDimension.Ini_Grid_Purchase">
+ ''''''''''''''''''''''''''Start Logic for Aadhat''''''''''''''''''''''
 </member>
 </members>
 </doc>
