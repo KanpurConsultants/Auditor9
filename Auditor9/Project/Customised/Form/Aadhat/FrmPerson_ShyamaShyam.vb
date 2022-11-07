@@ -2420,7 +2420,7 @@ Public Class FrmPerson_ShyamaShyam
             Exit Sub
         End If
 
-        If Dgl1.Item(Col1Value, rowSalesTaxNo).Value <> "" Then
+        If Dgl1.Item(Col1Value, rowSalesTaxNo).Value <> "" And Dgl1.Item(Col1Value, rowCity).Value <> "ALL INDIA" Then
             If GSTINValidator.IsValid(Dgl1.Item(Col1Value, rowSalesTaxNo).Value) = False Then
                 MsgBox("GST No is not valid...!", MsgBoxStyle.Information)
                 Dgl1.CurrentCell = Dgl1(Col1Value, rowSalesTaxNo)

@@ -1,43 +1,45 @@
 ; Field definition file for table: ADORecordset
-Code	string	255	D212555	
+Code	string	255	D13351	
 ATYPE	string	255	W	
-SiteName	string	255	AHMEDABAD	
-DocID	string	255	D2   WSI 2022    1706	
+SiteName	string	255	KANPUR	
+DocID	string	255	D1   WSI 2022     319	
 Sr	number	1	
 InvoiceNo	string	255		
-InvoiceNoW	string	255	6393	
-V_Date	datetime	21/Sep/2022 12:00:00 AM	
-SaleToPartyName	string	255	CHAHAT TRADERS-SIWAN, SIWAN	
-PartyName	string	255	MONTY-MUZAFFERPUR	
-PartyCode	string	255	1280	
-Address	string	255	SANJAY HOSIERY,
-SHEETLA GALI,SUTTA PATTI,
-MUZAFFARPUR(BIHAR)-843116
+InvoiceNoW	string	255	1490	
+V_Date	datetime	16/May/2022 12:00:00 AM	
+SaleToPartyName	string	255	JAISWAL GARMENTS & VIVEK VASTRALAYA-MAHARAJGANJ, MAHARAJGANJ	
+PartyName	string	255	D.K. TRADERS-GORAKHPUR	
+PartyCode	string	255	1185	
+Address	string	255	D.K. TRADERS
+SHREE LAXMI KATRA NEAR,
+HAJI BOOT HOSUE,
+HINDI BAZAR,
+GORAKHPUR(U.P)-273001
 	
-CityName	string	255	MUZAFFERPUR	
+CityName	string	255	GORAKHPUR	
 ShipToPartyName	string	255		
-Brand	string	255	KIVON (NET)	
-PInvNo	string	255	1178	
-Qty	number	10	
-Amount	number	150	
-GoodsValue	number	150	
+Brand	string	255	PATUDI SUITS	
+PInvNo	string	255	7878	
+Qty	number	1	
+Amount	number	10	
+GoodsValue	number	10	
 DiscountPer	string	255		
 TotalDiscount	number	0	
 OtherCharge	number	0	
 OtherCharge1	number	0	
-Tax	number	28.8375	
-NetAmount	number	178.84	
+Tax	number	10.3956	
+NetAmount	number	20.4	
 LRemarks	string	255		
-TransportName	string	255	ATC SUPPLY CHAINS SOLUTIONS	
-LRNO	string	255	476700	
-LRDate	string	255	22-09-2022	
-NOOfBales	long	2	
-PrivateMark	string	255	2264/3 (1600/3)	
-BookedFrom	string	255	AHMEDABAD	
-Destination	string	255	SIWAN	
+TransportName	string	255	SWASTIK TRANSPORT CO.	
+LRNO	string	255	130981-1	
+LRDate	string	255	17-05-2018	
+NOOfBales	long	0	
+PrivateMark	string	255		
+BookedFrom	string	255		
+Destination	string	255		
 PrintedByUser	string	255	SUPER	
 EntryByUser	string	255	SUPER	
-UserEntryDate	datetime	01/Oct/2022 12:00:00 AM	
+UserEntryDate	datetime	28/Oct/2022 12:00:00 AM	
 CompanyLogo	BLOB		
 CompanyAuthorisedSignature	BLOB		
 EInvoiceQrCode	BLOB		

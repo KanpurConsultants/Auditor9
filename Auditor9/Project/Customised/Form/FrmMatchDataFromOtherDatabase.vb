@@ -22,6 +22,7 @@ Public Class FrmMatchDataFromOtherDatabase
 
     Dim DtSiteMast As DataTable
     Dim DtDivMast As DataTable
+    Dim DtExternalData_Item As New DataTable
     Dim DtExternalData_SaleInvoice As New DataTable
     Dim DtExternalData_PurchInvoice As New DataTable
     Dim DtExternalData_LedgerHead As New DataTable
@@ -165,11 +166,35 @@ Public Class FrmMatchDataFromOtherDatabase
         Dim mChildPrgCnt As Integer = 0
         Dim mChildPrgMaxVal As Integer = 0
 
+        mQry = "DELETE FROM TempToMatchItem"
+        AgL.Dman_ExecuteNonQry(mQry, AgL.GCn, AgL.ECmd)
+
+        mQry = "DELETE FROM TempToMatchPurchInvoice"
+        AgL.Dman_ExecuteNonQry(mQry, AgL.GCn, AgL.ECmd)
+
         mQry = "DELETE FROM TempToMatchSaleInvoice"
         AgL.Dman_ExecuteNonQry(mQry, AgL.GCn, AgL.ECmd)
 
         mQry = "DELETE FROM TempToMatchLedger"
         AgL.Dman_ExecuteNonQry(mQry, AgL.GCn, AgL.ECmd)
+
+        For I = 0 To DtExternalData_Item.Rows.Count - 1
+            mQry = "INSERT INTO TempToMatchItem (Code, ManualCode, Description, DisplayName, Specification, Unit, DealQty, DealUnit, ItemGroup, ItemCategory, ItemType, OmsId)
+                    SELECT '" & AgL.XNull(DtExternalData_Item.Rows(I)("Code")) & "', '" & AgL.XNull(DtExternalData_Item.Rows(I)("ManualCode")) & "', '" & AgL.XNull(DtExternalData_Item.Rows(I)("Description")) & "', 
+                    '" & AgL.XNull(DtExternalData_Item.Rows(I)("DisplayName")) & "','" & AgL.XNull(DtExternalData_Item.Rows(I)("Specification")) & "', '" & AgL.XNull(DtExternalData_Item.Rows(I)("Unit")) & "', '" & AgL.XNull(DtExternalData_Item.Rows(I)("DealQty")) & "', '" & AgL.XNull(DtExternalData_Item.Rows(I)("DealUnit")) & "', 
+                    '" & AgL.XNull(DtExternalData_Item.Rows(I)("ItemGroup")) & "', '" & AgL.XNull(DtExternalData_Item.Rows(I)("ItemCategory")) & "', 
+                    '" & AgL.XNull(DtExternalData_Item.Rows(I)("ItemType")) & "', '" & AgL.XNull(DtExternalData_Item.Rows(I)("OmsId")) & "' "
+            AgL.Dman_ExecuteNonQry(mQry, AgL.GCn, AgL.ECmd)
+        Next
+
+        For I = 0 To DtExternalData_PurchInvoice.Rows.Count - 1
+            mQry = "INSERT INTO TempToMatchPurchInvoice (DocID, V_Type, V_Prefix, V_Date, V_No, Div_Code, Site_Code, ManualRefNo, VendorDocNo, VendorDocDate, OmsId, Sr, Item, Qty, Rate, MRP, Amount)
+                    SELECT '" & AgL.XNull(DtExternalData_PurchInvoice.Rows(I)("DocID")) & "', '" & AgL.XNull(DtExternalData_PurchInvoice.Rows(I)("V_Type")) & "', '" & AgL.XNull(DtExternalData_PurchInvoice.Rows(I)("V_Prefix")) & "', 
+                    '" & AgL.XNull(DtExternalData_PurchInvoice.Rows(I)("V_Date")) & "', '" & AgL.XNull(DtExternalData_PurchInvoice.Rows(I)("V_No")) & "', '" & AgL.XNull(DtExternalData_PurchInvoice.Rows(I)("Div_Code")) & "','" & AgL.XNull(DtExternalData_PurchInvoice.Rows(I)("Site_Code")) & "', '" & AgL.XNull(DtExternalData_PurchInvoice.Rows(I)("ManualRefNo")) & "', 
+                    '" & AgL.XNull(DtExternalData_PurchInvoice.Rows(I)("VendorDocNo")) & "', '" & AgL.XNull(DtExternalData_PurchInvoice.Rows(I)("VendorDocDate")) & "', '" & AgL.XNull(DtExternalData_PurchInvoice.Rows(I)("OmsId")) & "', 
+                    '" & AgL.XNull(DtExternalData_PurchInvoice.Rows(I)("Sr")) & "', '" & AgL.XNull(DtExternalData_PurchInvoice.Rows(I)("Item")) & "', '" & AgL.XNull(DtExternalData_PurchInvoice.Rows(I)("Qty")) & "', '" & AgL.XNull(DtExternalData_PurchInvoice.Rows(I)("Rate")) & "', '" & AgL.XNull(DtExternalData_PurchInvoice.Rows(I)("MRP")) & "', '" & AgL.XNull(DtExternalData_PurchInvoice.Rows(I)("Amount")) & "' "
+            AgL.Dman_ExecuteNonQry(mQry, AgL.GCn, AgL.ECmd)
+        Next
 
         For I = 0 To DtExternalData_SaleInvoice.Rows.Count - 1
             mQry = "INSERT INTO TempToMatchSaleInvoice (Export_Site_Code, DocID, V_Date, V_No, Div_Code, Site_Code, ManualRefNo, BillToPartyName_Master, SaleToPartyName_Master, Qty, Amount, AmtDr, AmtCr)
@@ -298,6 +323,19 @@ Public Class FrmMatchDataFromOtherDatabase
             End If
         Next
 
+        mQry = "SELECT I.Code, I.ManualCode, I.Description, I.DisplayName, I.Specification, I.Unit, I.DealQty, I.DealUnit, I.ItemGroup, I.ItemCategory, I.ItemType, I.OmsId  
+                FROM Item I "
+        DtExternalData_Item = AgL.FillData(mQry, Connection_ExternalDatabase).Tables(0)
+
+        mQry = " SELECT H.DocID, H.V_Type, H.V_Prefix, H.V_Date, H.V_No, H.Div_Code, H.Site_Code, H.ManualRefNo, H.VendorDocNo, H.VendorDocDate, H.OmsId,
+                    L.Sr, L.ReferenceNo, L.Barcode, L.Item, L.Qty, L.Rate, L.MRP, L.Amount
+                    FROM PurchInvoice H
+                    LEFT JOIN PurchInvoiceDetail L ON L.DocID = H.DocID 
+                    LEFT JOIN Voucher_Type Vt On H.V_Type = Vt.V_Type
+                    Where Vt.NCat = '" & Ncat.PurchaseInvoice & "'"
+        mQry = mQry & " AND Date(H.V_Date) >= " & AgL.Chk_Date(CDate(DglMain.Item(Col1Value, rowDataSyncFromDate).Value).ToString("s")) & ""
+        DtExternalData_PurchInvoice = AgL.FillData(mQry, Connection_ExternalDatabase).Tables(0)
+
         mQry = " Select SM.Export_Site_Code, H.DocID, H.V_Date, H.V_No, H.Div_Code, H.Site_Code, H.ManualRefNo,  
                     Sg.Name As BillToPartyName_Master, Sg1.Name As SaleToPartyName_Master, SIL.Qty, SIL.Amount, L.AmtDr, L.AmtCr
                     From SaleInvoice H
@@ -316,18 +354,6 @@ Public Class FrmMatchDataFromOtherDatabase
                     Where Vt.NCat = '" & Ncat.SaleInvoice & "'"
         mQry = mQry & " AND Date(H.V_Date) >= " & AgL.Chk_Date(CDate(DglMain.Item(Col1Value, rowDataSyncFromDate).Value).ToString("s")) & ""
         DtExternalData_SaleInvoice = AgL.FillData(mQry, Connection_ExternalDatabase).Tables(0)
-
-
-
-        mQry = " Select Sg.Name As BillToPartyName, Sg1.Name As VendorName_Master,  H.*
-                    From PurchInvoice H 
-                    LEFT JOIN Voucher_Type Vt On H.V_Type = Vt.V_Type
-                    LEFT JOIN SubGroup Sg On H.BillToParty = Sg.SubCode
-                    LEFT JOIN SubGroup Sg1 ON H.Vendor = Sg1.SubCode 
-                    Where Vt.NCat = '" & Ncat.PurchaseInvoice & "'"
-        mQry = mQry & " AND Date(H.V_Date) >= " & AgL.Chk_Date(CDate(DglMain.Item(Col1Value, rowDataSyncFromDate).Value).ToString("s")) & ""
-        DtExternalData_PurchInvoice = AgL.FillData(mQry, Connection_ExternalDatabase).Tables(0)
-
 
         mQry = " SELECT Max(SM.Export_Site_Code) AS Export_Site_Code, H.DocId, H.SubCode, H.V_Date, Sum(H.AmtDr) AS AmtDr, Sum(H.AmtCr) AS AmtCr  
                  FROM Ledger H

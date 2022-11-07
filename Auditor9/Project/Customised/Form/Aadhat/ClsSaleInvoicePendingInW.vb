@@ -119,7 +119,7 @@ Public Class ClsSaleInvoicePendingInW
             ElseIf ReportFrm.FGetText(0) = "Recorded" Then
                 mCondStr += " And ( H.DocID Is Not Null or ifNull(PH.isAlreadyUploaded ,1)=1 )  "
             End If
-            mCondStr += ReportFrm.GetWhereCondition("L.Subcode", 1)
+            mCondStr += ReportFrm.GetWhereCondition("SG.Subcode", 1)
             mCondStr = mCondStr & Replace(ReportFrm.GetWhereCondition("PH.Site_Code", 2), "''", "'")
             mCondStr = mCondStr & Replace(ReportFrm.GetWhereCondition("PH.Div_Code", 3), "''", "'")
 
@@ -176,6 +176,7 @@ Public Class ClsSaleInvoicePendingInW
                     Left Join ODB.Division Div On  PH.Div_Code = Div.Div_Code
                     Left Join ODB.ViewHelpSubgroup Psg On PH.SaleToParty = Psg.Code
                     Left Join ODB.ViewHelpSubgroup Pbsg On PH.BillToParty = Pbsg.Code
+                    Left Join SubGroup SG On SG.OmsId = PH.SaleToParty
                     Left Join SaleInvoice H On PH.DocID = H.AmsDocId
                     " + mCondStr
 

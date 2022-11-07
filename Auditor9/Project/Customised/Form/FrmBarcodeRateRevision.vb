@@ -929,9 +929,21 @@ Public Class FrmBarcodeRateRevision
                     Next
                 Next
 
-                mQry = " Select Barcode, BarCodeImg, ItemDesc, ItemCategoryDesc, ItemGroupDesc, 
+                If AgL.StrCmp(AgL.PubDBName, "NaveenSaree") Then
+                    mQry = " Select H.Barcode, H.BarCodeImg, H.ItemDesc, H.ItemCategoryDesc, H.ItemGroupDesc, 
+                        H.Dimension1Desc, H.Dimension2Desc, H.Dimension3Desc, H.Dimension4Desc, H.SizeDesc, H.PurchaseRate, H.SaleRate, H.MRP, H.ReceiveQty,
+                        strftime('%m', PI.V_Date) ||  cast((cast(H.SaleRate as Int)) as text) || Substr(strftime('%Y', PI.V_Date),3,2) as DNo, IfNull(PI.VendorDocNo,'') || '-11' || cast((cast(H.PurchaseRate as Int)) as text) BillNo, D.DispName AS DivisionName 
+                        From [#" & bTempTable & "] H 
+                        Left Join Barcode B On H.BarCode = B.Code
+                        Left Join PurchInvoice PI on PI.DocId = B.GenDocId
+                        Left Join SubGroup D on D.SubCode = PI.Div_Code
+                        Left Join Item I On B.Item = I.Code                         
+                        Left Join Item IG On I.ItemGroup = IG.Code "
+                Else
+                    mQry = " Select Barcode, BarCodeImg, ItemDesc, ItemCategoryDesc, ItemGroupDesc, 
                         Dimension1Desc, Dimension2Desc, Dimension3Desc, Dimension4Desc, SizeDesc, PurchaseRate, SaleRate, MRP, ReceiveQty " &
                         " From [#" & bTempTable & "] H "
+                End If
 
                 If mQry.Trim <> "" Then
                     DsRep = AgL.FillData(mQry, AgL.GCn)

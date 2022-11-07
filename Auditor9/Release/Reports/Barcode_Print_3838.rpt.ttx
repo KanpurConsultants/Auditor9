@@ -11,17 +11,17 @@ Dimension3Desc	string	255
 Dimension4Desc	string	255		
 SizeDesc	string	255		
 PurchaseRate	number	100	
-SaleRate	number	0	
-MRP	number	0	
+SaleRate	number	150	
+MRP	number	175	
 ReceiveQty	number	10	
 GenSr	number	1	
 ItemMasterPurchaseRate	number	100	
-ItemMasterSaleRate	number	0	
+ItemMasterSaleRate	number	150	
 BarcodeRatePrefix	number		
 Title1	string	255	GUR SHEEL	
 Title2	string	255	MAMA KAPDE WALE	
 Title3	number		
 SaleRate_RateType	number		
 SaleRate_RateTypeEncoded	number	0	
-RandomNo1	number	317	
-RandomNo2	number	771	
+RandomNo1	number	513	
+RandomNo2	number	494	

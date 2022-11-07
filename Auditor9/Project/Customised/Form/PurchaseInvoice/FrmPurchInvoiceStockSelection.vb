@@ -415,9 +415,12 @@ Public Class FrmPurchaseInvoiceStockSelection
         Dim StrRtn As String = ""
         Dim bPendingStockQry As String = ""
 
-        Dim mTableName As String = "Select V_Date, Process, Godown, Item, Qty_Iss, Qty_Rec From Stock
-                                    UNION ALL 
-                                    Select V_Date, Process, Godown, Item, Qty_Iss, Qty_Rec From StockVirtual "
+        'Dim mTableName As String = "Select V_Date, Process, Godown, Item, Qty_Iss, Qty_Rec From Stock
+        '                            UNION ALL 
+        '                            Select V_Date, Process, Godown, Item, Qty_Iss, Qty_Rec From StockVirtual "
+
+        Dim mTableName As String = "Select V_Date, Process, Godown, Item, Qty_Iss, Qty_Rec From Stock"
+
 
         bPendingStockQry = " SELECT L.Process, L.Item, 
 	                IsNull(Sum(L.Qty_Rec),0) - IsNull(Sum(L.Qty_Iss),0) AS BalanceQty
@@ -427,10 +430,15 @@ Public Class FrmPurchaseInvoiceStockSelection
                     IIf(AgL.XNull(DglMain.Item(Col1Value, rowGodown).Tag) = "", "", "And L.Godown = '" & DglMain.Item(Col1Value, rowGodown).Tag & "'") &
                     IIf(AgL.XNull(DglMain.Item(Col1Value, rowFromProcess).Tag) = "", "", "And L.Process = '" & DglMain.Item(Col1Value, rowFromProcess).Tag & "'") &
                     " GROUP BY L.Process, L.Item
-                    HAVING IsNull(Sum(L.Qty_Rec),0) - IsNull(Sum(L.Qty_Iss),0) > 0 "
+                    HAVING IsNull(Sum(L.Qty_Rec),0) - IsNull(Sum(L.Qty_Iss),0) <> 0 "
 
-        mQry = " SELECT 'o' As Tick, VPendingStock.Item As SearchKey, 
-                Prs.Name As Process, Ic.Description As ItemCategory, Ig.Description As ItemGroup, I.Description As Item,
+        mQry = " SELECT 'o' As Tick, V.ItemCode As SearchKey,
+                 Max(V.Process) Process, Max(V.ItemCategory) ItemCategory, Max(V.ItemType) ItemType, Max(V.ItemGroup) ItemGroup, Max(V.Item) Item, Max(V.Dimension1) Dimension1, Max(V.Dimension2) Dimension2,
+                 Max(V.Dimension3) Dimension3, Max(V.Dimension4) Dimension4, Max(V.Size) Size, Sum(V.BalanceQty) as BalanceQty, Max(Unit) AS Unit, Max(Sku) Sku,
+                 Max(V.QtyDecimalPlaces) as QtyDecimalPlaces,Max(V.BarcodePattern) as BarcodePattern, Max(V.BarcodeType) as BarcodeType,
+                 V.ItemCategoryCode, V.ItemGroupCode, V.ItemCode, V.Dimension1Code,V.Dimension2Code,V.Dimension3Code,V.Dimension4Code,
+                 V.SizeCode, V.ItemTypeCode, Max(V.SkuCode) AS SkuCode ,V.ProcessCode
+                 FROM (SELECT Prs.Name As Process, Ic.Description As ItemCategory, Ig.Description As ItemGroup, I.Description As Item,
                 D1.Description As Dimension1, D2.Description As Dimension2, 
                 D3.Description As Dimension3, D4.Description As Dimension4,
                 Size.Description As Size, VPendingStock.BalanceQty AS BalanceQty, Sku.Unit,
@@ -491,8 +499,10 @@ Public Class FrmPurchaseInvoiceStockSelection
 
 
 
-        mQry += " Order By Ic.Description, Ig.Description, I.Description,
-                D1.Description, D2.Description, D3.Description, D4.Description, Size.Description "
+        mQry += " ) V               
+                    GROUP BY  V.ItemCategoryCode, V.ItemGroupCode, V.ItemCode, V.Dimension1Code,V.Dimension2Code,V.Dimension3Code,V.Dimension4Code, V.SizeCode, V.ItemTypeCode,V.ProcessCode
+                    HAVING Sum(V.BalanceQty) >0
+                    Order By Max(V.ItemCategory), Max(V.ItemGroup), Max(V.Item), Max(V.Dimension1), Max(V.Dimension2), Max(V.Dimension3), Max(V.Dimension4), Max(V.Size) "
 
         DtTemp = AgL.FillData(mQry, AgL.GCn).Tables(0)
 
@@ -558,7 +568,7 @@ Public Class FrmPurchaseInvoiceStockSelection
             'Dgl1.Item(Col1Stock, I).Value = AgL.VNull(DtTemp.Rows(I)("BalanceQty"))
             Dgl1.Item(Col1Stock, I).Value = Format(Math.Abs(AgL.VNull(DtTemp.Rows(I)("BalanceQty"))), "0.".PadRight(AgL.VNull(DtTemp.Rows(I)("QtyDecimalPlaces")) + 2, "0"))
             Dgl1.Item(Col1Unit, I).Value = AgL.XNull(DtTemp.Rows(I)("Unit"))
-            Dgl1.Item(Col1Unit, I).Tag = AgL.VNull(DtTemp.Rows(I)("ShowDimensionDetailInSales"))
+            'Dgl1.Item(Col1Unit, I).Tag = AgL.VNull(DtTemp.Rows(I)("ShowDimensionDetailInSales"))
 
             Dgl1.Item(Col1QtyDecimalPlaces, I).Value = AgL.VNull(DtTemp.Rows(I)("QtyDecimalPlaces"))
 

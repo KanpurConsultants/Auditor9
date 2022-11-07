@@ -1,39 +1,39 @@
 ; Field definition file for table: ADORecordset
-DocId	string	255	D1  WRCT 2020     427	
-V_type	string	255	WRCT	
-RecId	string	255	419	
-V_Date	datetime	03/Oct/2020 12:00:00 AM	
+DocId	string	255	D1   WSI 2021     885	
+V_type	string	255	WSI	
+RecId	string	255	868	
+V_Date	datetime	27/Dec/2021 12:00:00 AM	
 Site_Code	string	255	1	
 Div_Code	string	255	D	
-Subcode	string	255	D400000025	
-LinkedSubcode	string	255	D100001969	
+Subcode	string	255	D100002759	
+LinkedSubcode	string	255	D100002760	
 GoodsReturn	number	0	
 Adjustment	number	0	
-Payment	number	1000	
-Balance	number	-1000	
-AmtDr	number	0	
-AmtCr	number	1000	
-Narration	string	255	KANPUR CASH. 	
+Payment	number	0	
+Balance	number	1166.97	
+AmtDr	number	1166.97	
+AmtCr	number	0	
+Narration	string	255		
 AdjDocID	string	255		
 DueDate	datetime		
 AdjDate	datetime		
 AdjAmount	string	255		
 InterestBalance	string	255		
-PartyName	string	255	AGARWAL DRESSES [W], PIPRAICH	
-PartyCity	string	255	PIPRAICH	
-LinkedPartyName	string	255	AGARWAL DRESSES-PIPRAICH	
-LrNo	string	255		
-Brand	string	255		
-AmsInvNo	string	255		
-AmsInvAmt	number	0	
-GoodsValue	number	0	
+PartyName	string	255	PATWA GENERAL STOERS [W], BIRDPUR	
+PartyCity	string	255	BIRDPUR	
+LinkedPartyName	string	255	PATWA GENERAL STOERS-BIRDPUR	
+LrNo	string	255	42214 * 1	
+Brand	string	255	KROSS SHIRT,	
+AmsInvNo	string	255	809	
+AmsInvAmt	number	1166.97	
+GoodsValue	number	1111.4	
 DiscountPer	number	0	
 Discount	number	0	
-TaxableAmt	number	0	
-TaxAmt	number	0	
+TaxableAmt	number	1111.4	
+TaxAmt	number	55.5704	
 OtherChgAmt	number	0	
 Deduction	number	0	
-BillAmt	number	0	
+BillAmt	number	1166.97	
 Commission	number	0	
 NetPurAmt	number	0	
 Div_Name	string	255	DEMO	

@@ -4940,6 +4940,36 @@ Public Class FrmSaleInvoiceDirect_Aadhat
         End Try
     End Sub
 
+    Private Function CheckDuplicate_OtherCharge(ItemCode As String) As Boolean
+        Dim I As Integer = 0
+        CheckDuplicate_OtherCharge = False
+        With Dgl1
+            For I = 0 To .Rows.Count - 1
+                If .Item(Col1Item, I).Value <> "" Then
+                    If .Item(Col1Item, I).Value = ItemCode Then
+                        CheckDuplicate_OtherCharge = True
+                    End If
+                End If
+            Next
+        End With
+    End Function
+
+    Private Function GetSalesTaxGroup_OtherCharge() As String
+        Dim I As Integer = 0
+        Dim GstP As Integer = 0
+        GetSalesTaxGroup_OtherCharge = ""
+        With Dgl1
+            For I = 0 To .Rows.Count - 1
+                If .Item(Col1Item, I).Value <> "" And .Item(Col1SalesTaxGroup, I).Value <> "" Then
+                    If Convert.ToInt16(Replace(Replace(.Item(Col1SalesTaxGroup, I).Value, "GST ", ""), "%", "")) > GstP Then
+                        GstP = Convert.ToInt16(Replace(Replace(.Item(Col1SalesTaxGroup, I).Value, "GST ", ""), "%", ""))
+                    End If
+                End If
+            Next
+        End With
+        GetSalesTaxGroup_OtherCharge = "GST " + GstP.ToString() + "%"
+    End Function
+
     Private Sub FFormatRateCells(ByVal mRow As Integer)
         Dim I As Integer = 0
         Try
@@ -9584,6 +9614,7 @@ Public Class FrmSaleInvoiceDirect_Aadhat
         End If
     End Sub
     Private Sub BtnSave_Click(sender As Object, e As EventArgs) Handles BtnSave.Click
+        ProcToAddOtherCharge()
         Topctrl1.FButtonClick(13)
     End Sub
     Private Function FGetSalesTaxGroupItemForPurchase(bItemCode As String, bAmount As Double, bQty As Double, bV_Date As String, bSalesTaxGroup_Default As String)
@@ -9702,7 +9733,7 @@ Public Class FrmSaleInvoiceDirect_Aadhat
             Dim bUnSyncedQry As String = " Select H.DocId
                 From SaleInvoice H 
                 LEFT JOIN Kachha.SaleInvoice Wh On H.DocId = Wh.AmsDocId 
-                Where (H.BillToParty = '" & SubCode & "' Or H.SaleToParty = '" & SubCode & "') And Wh.DocId Is Null 
+                Where (H.BillToParty = '" & SubCode & "' Or H.SaleToParty = '" & SubCode & "') And Wh.DocId Is Null And ifNull(H.isAlreadyUploaded ,0) =0 
                 AND Date(H.V_Date) >= " & AgL.Chk_Date(CDate(mFromDate).ToString("s")) & "
 
                 UNION ALL 
@@ -9763,7 +9794,7 @@ Public Class FrmSaleInvoiceDirect_Aadhat
             Dim bUnSyncedQry As String = " Select H.DocId
                 From SaleInvoice H 
                 LEFT JOIN Kachha.SaleInvoice Wh On H.DocId = Wh.AmsDocId 
-                Where (H.BillToParty = '" & SubCode & "' Or H.SaleToParty = '" & SubCode & "') And Wh.DocId Is Null 
+                Where (H.BillToParty = '" & SubCode & "' Or H.SaleToParty = '" & SubCode & "') And Wh.DocId Is Null And ifNull(H.isAlreadyUploaded ,0) =0 
                 AND Date(H.V_Date) >= " & AgL.Chk_Date(CDate(mFromDate).ToString("s")) & "
 
                 UNION ALL 
@@ -9816,6 +9847,60 @@ Public Class FrmSaleInvoiceDirect_Aadhat
 
     Private Sub LblCreditLimit_DoubleClick(sender As Object, e As EventArgs) Handles LblCreditLimit.DoubleClick
         MsgBox(FGetCurrentBalanceIncludeWString(TxtBillToParty.Tag))
+    End Sub
+
+    Private Sub ProcToAddOtherCharge()
+        Dim DrTemp As DataRow() = Nothing
+        Dim DtTemp As DataTable = Nothing
+        Dim SalesTaxGroup_OtherCharge As String
+        Dim mRow As Integer
+        Dim I As Integer
+        SalesTaxGroup_OtherCharge = GetSalesTaxGroup_OtherCharge()
+
+        mQry = " SELECT I.Code AS Item, I.ManualCode as ItemManualCode, I.Description as ItemName, I.Unit, I.Rate, 1 AS Qty, I.HSN, '" + SalesTaxGroup_OtherCharge + "' AS SalesTaxGroupItem,
+                		I.ItemCategory, IC.Description as ItemCategoryName, I.ItemGroup, IG.Description as ItemGroupName  
+               			FROM Item I  With (NoLock) 
+                        Left Join ItemCategory IC  With (NoLock) On I.ItemCategory = IC.Code 
+                        Left Join ItemGroup IG  With (NoLock) On I.ItemGroup = IG.Code 
+                        Left Join ItemType IT  With (NoLock) On I.ItemType = IT.Code 
+						WHERE I.Code IN ('HandlingCharge','CourierCharge')"
+
+
+        DtTemp = AgL.FillData(mQry, AgL.GCn).Tables(0)
+        If DtTemp.Rows.Count > 0 Then
+            'Dgl1.Rows(Dgl1.CurrentCell.RowIndex).Visible = False
+            For I = 0 To DtTemp.Rows.Count - 1
+
+                If CheckDuplicate_OtherCharge(AgL.XNull(DtTemp.Rows(I)("Item"))) = False Then
+
+                    mRow = Dgl1.Rows.Add()
+                    Dgl1.Item(ColSNo, mRow).Value = Dgl1.Rows.Count - 1
+                    Dgl1.Item(Col1ItemCategory, mRow).Tag = AgL.XNull(DtTemp.Rows(I)("ItemCategory"))
+                    Dgl1.Item(Col1ItemCategory, mRow).Value = AgL.XNull(DtTemp.Rows(I)("ItemCategoryName"))
+                    Dgl1.Item(Col1ItemGroup, mRow).Tag = AgL.XNull(DtTemp.Rows(I)("ItemGroup"))
+                    Dgl1.Item(Col1ItemGroup, mRow).Value = AgL.XNull(DtTemp.Rows(I)("ItemGroupName"))
+                    Dgl1.Item(Col1ItemCode, mRow).Tag = AgL.XNull(DtTemp.Rows(I)("Item"))
+                    Dgl1.Item(Col1ItemCode, mRow).Value = AgL.XNull(DtTemp.Rows(I)("ItemManualCode"))
+                    Dgl1.Item(Col1Item, mRow).Tag = AgL.XNull(DtTemp.Rows(I)("Item"))
+                    Dgl1.Item(Col1Item, mRow).Value = AgL.XNull(DtTemp.Rows(I)("ItemName"))
+                    Dgl1.Item(Col1Unit, mRow).Value = AgL.XNull(DtTemp.Rows(I)("Unit"))
+                    Dgl1.Item(Col1Rate, mRow).Value = AgL.VNull(DtTemp.Rows(I)("Rate"))
+                    Dgl1.Item(Col1DocQty, mRow).Value = AgL.VNull(DtTemp.Rows(I)("Qty"))
+                    Dgl1.Item(Col1Qty, mRow).Value = AgL.VNull(DtTemp.Rows(I)("Qty"))
+                    'Dgl1.Item(Col1Unit, mRow).Tag = AgL.XNull(DtTemp.Rows(I)("ShowDimensionDetailInSales"))
+                    Dgl1.Item(Col1AdditionCalculationPattern, mRow).Value = DiscountCalculationPattern.RatePerQty.ToUpper()
+                    Dgl1.Item(Col1SalesTaxGroup, mRow).Tag = AgL.XNull(DtTemp.Rows(I)("SalesTaxGroupItem"))
+                    Dgl1.Item(Col1SalesTaxGroup, mRow).Value = AgL.XNull(DtTemp.Rows(I)("SalesTaxGroupItem"))
+
+                    Dgl1.Item(Col1SalesTaxGroup_BaseRate, mRow).Tag = Dgl1.Item(Col1SalesTaxGroup, mRow).Tag
+                    Dgl1.Item(Col1SalesTaxGroup_BaseRate, mRow).Value = Dgl1.Item(Col1SalesTaxGroup, mRow).Value
+                End If
+
+            Next
+
+            Calculation()
+        End If
+
     End Sub
 End Class
 

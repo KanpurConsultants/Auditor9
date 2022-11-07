@@ -1,57 +1,53 @@
 ; Field definition file for table: ADORecordset
 Copies	string	255	1	
 CopyPrintingCaption	string	255		
-DocNoCaption	string	255	Doc.No.	
-DocDateCaption	string	255	Doc.Date	
+DocNoCaption	string	255	Invoice No.	
+DocDateCaption	string	255	Invoice Date	
 SiteStateCode	string	255	09	
 SiteStateName	string	255	Uttar Pradesh	
-DocID	string	255	D1    SR 2022       7	
+DocID	string	255	D1    SI 2022     295	
 Sr	number	1	
-V_Date	datetime	30/May/2022 12:00:00 AM	
+V_Date	datetime	02/Nov/2022 12:00:00 AM	
 DeliveryDate	datetime		
-Voucher_Type	string	255	Sale Return	
-NCat	string	255	SR	
-InvoiceNo	string	255	SSF-KNP-7	
-RateType	string	255		
-AgentName	string	255	DIRECT	
+Voucher_Type	string	255	Tax Invoice	
+NCat	string	255	SI	
+InvoiceNo	string	255	SSF-KNP-296	
+RateType	string	255	B	
+AgentName	string	255		
 AgentCaption	string	255	Agent	
-SaleToPartyName	string	255	RIKITA SALES-GWALIOR	
-SaleToPartyCode	string	255	1774	
-SaleToPartyAddress	string	255	BALAJI GARMENTS PLAZA ,
-3RD FLOOR ,
-DARJI OLI,LASKAR	
-CityName	string	255	GWALIOR	
-SaleToPartyPincode	string	255	474001	
-StateCode	string	255	23	
-StateName	string	255	Madhya Pradesh	
-SaleToPartyMobile	string	255	9098518208	
+SaleToPartyName	string	255	DIKSHA GARMENTS-FAZILNAGAR	
+SaleToPartyCode	string	255	2771	
+SaleToPartyAddress	string	255	COLLEGE ROAD,	
+CityName	string	255	FAZILNAGAR	
+SaleToPartyPincode	string	255	274001	
+StateCode	string	255	09	
+StateName	string	255	Uttar Pradesh	
+SaleToPartyMobile	string	255	9838824780	
 ContactPerson	string	255		
-SaleToPartySalesTaxNo	string	255	23BRRPJ5671D1ZO	
+SaleToPartySalesTaxNo	string	255	09COFPK2897N1Z3	
 SaleToPartyAadharNo	string	255		
-SaleToPartyPanNo	string	255	BRRPJ5671D	
-ShipToPartyName	string	255	RIKITA SALES-GWALIOR	
-ShipToPartyManualCode	string	255	1774	
-ShipToPartyAddress	string	255	BALAJI GARMENTS PLAZA ,
-3RD FLOOR ,
-DARJI OLI,LASKAR	
-ShipToPartyCity	string	255	GWALIOR	
-ShipToPartyPincode	string	255	474001	
-ShipToPartyStateCode	string	255	23	
-ShipToPartyStateName	string	255	Madhya Pradesh	
-ShipToPartyMobile	string	255	9098518208	
-ShipToPartySalesTaxNo	string	255	23BRRPJ5671D1ZO	
+SaleToPartyPanNo	string	255	COFPK2897N	
+ShipToPartyName	string	255	DIKSHA GARMENTS-FAZILNAGAR	
+ShipToPartyManualCode	string	255	2771	
+ShipToPartyAddress	string	255	COLLEGE ROAD,	
+ShipToPartyCity	string	255	FAZILNAGAR	
+ShipToPartyPincode	string	255	274001	
+ShipToPartyStateCode	string	255	09	
+ShipToPartyStateName	string	255	Uttar Pradesh	
+ShipToPartyMobile	string	255	9838824780	
+ShipToPartySalesTaxNo	string	255	09COFPK2897N1Z3	
 ShipToPartyAadharNo	string	255		
-ShipToPartyPanNo	string	255	BRRPJ5671D	
+ShipToPartyPanNo	string	255	COFPK2897N	
 ShipToAddress	string	255		
-TermsAndConditions	string	255		
+TermsAndConditions	string	255	(1) Payment within <CreditDays> days from date of Invoice. <BR>(2) Overdue Interest @ <Default_DebtorsInterestRate> P.A. after due date. <BR>(3) Goods dispatched by transport at the owner risk. <BR>(4) All disputes are subject to <CompanyCity> jurisdiction only.	
 TransporterName	string	255		
 LrNo	string	255		
 LrDate	datetime		
-NoOfBales	number		
+NoOfBales	number	0	
 PrivateMark	string	255		
-Weight	number		
-Freight	number		
-ChargedWeight	number		
+Weight	number	0	
+Freight	number	0	
+ChargedWeight	number	0	
 FreightType	string	255		
 RoadPermitNo	string	255		
 RoadPermitDate	datetime		
@@ -59,26 +55,26 @@ VehicleNo	string	255
 ShipMethod	string	255		
 PreCarriageBy	string	255		
 PreCarriagePlace	string	255		
-BookedFrom	string	255		
+BookedFrom	string	255	KANPUR	
 BookedTo	string	255		
-Destination	string	255	GWALIOR	
+Destination	string	255	FAZILNAGAR	
 DescriptionOfGoods	string	255		
 DescriptionOfPacking	string	255		
-ReferenceNo	string	255	SSF-KNP-909	
-ContraDocNo	string	255	909	
-ContraDocNoCsv	string	255	909	
-ItemName	string	255	READYMADE SUIT-620443          [HARSHA | READYMADE SUIT]	
-ItemGroupName	string	255	HARSHA	
-ItemCatName	string	255	READYMADE SUIT	
-ItemSpecification	string	255	READYMADE SUIT	
+ReferenceNo	string	255		
+ContraDocNo	string	255	13259	
+ContraDocNoCsv	string	255	13259	
+ItemName	string	255	BABA SUIT-61111000          [TAREFUL HASAN | BABA SUIT]	
+ItemGroupName	string	255	TAREFUL HASAN	
+ItemCatName	string	255	BABA SUIT	
+ItemSpecification	string	255	BABA SUIT	
 InvoiceLineSpecification	string	255		
-HSN	string	255	620443	
+HSN	string	255	61111000	
 MaintainStockYn	boolean	True	
 SalesTaxGroupItem	string	255	GST 5%	
 GrossTaxRate	number	5	
-Pcs	number	36	
-Qty	number	36	
-Rate	number	705	
+Pcs	number	0	
+Qty	number	10	
+Rate	number	100	
 Unit	string	255	Pcs	
 UnitDecimalPlaces	number	0	
 DiscountCalculationPattern	string	255		
@@ -89,34 +85,34 @@ AdditionalDiscountAmount	number	0
 AdditionPer	number	0	
 AdditionAmount	number	0	
 TotalDiscount	number	0	
-AmountBeforeDiscount	number	25380	
-Amount	number	25380	
-Taxable_Amount	number	25380	
-Tax1_Per	number	5	
-Tax1	number	1269	
-Tax2_Per	number	0	
-Tax2	number	0	
-Tax3_Per	number	0	
-Tax3	number	0	
+AmountBeforeDiscount	number	1000	
+Amount	number	1000	
+Taxable_Amount	number	1000	
+Tax1_Per	number	0	
+Tax1	number	0	
+Tax2_Per	number	2.5	
+Tax2	number	25	
+Tax3_Per	number	2.5	
+Tax3	number	25	
 Tax4_Per	number	0	
 Tax4	number	0	
 Tax5_Per	number	0	
 Tax5	number	0	
-Net_Amount	number	26649	
+Net_Amount	number	1049.55	
 LRemarks	string	255		
 HRemarks	string	255		
 H_TotalDiscount	number	0	
-H_AmountBeforeDiscount	number	45120	
-H_Gross_Amount	number	45120	
+H_AmountBeforeDiscount	number	1130	
+H_Gross_Amount	number	1130	
 H_SpecialDiscount_Per	number	0	
 H_SpecialDiscount	number	0	
-H_Taxable_Amount	number	45120	
+H_Taxable_Amount	number	1130	
 H_Tax1_Per	number	0	
-H_Tax1	number	2256	
+H_Tax1	number	0	
 H_Tax2_Per	number	0	
-H_Tax2	number	0	
+H_Tax2	number	28.25	
 H_Tax3_Per	number	0	
-H_Tax3	number	0	
+H_Tax3	number	28.25	
 H_Tax4_Per	number	0	
 H_Tax4	number	0	
 H_Tax5_Per	number	0	
@@ -125,8 +121,8 @@ H_Deduction_Per	number	0
 H_Deduction	number	0	
 H_Other_Charge_Per	number	0	
 H_Other_Charge	number	0	
-Round_Off	number	0	
-H_Net_Amount	number	47376	
+Round_Off	number	-0.5	
+H_Net_Amount	number	1186	
 EInvoiceIRN	string	255		
 EInvoiceACKNo	string	255		
 EInvoiceACKDate	datetime		
@@ -134,9 +130,9 @@ Default_BankAccountDetail	string	255	Bank : YES Bank, Branch : CIVIL LINES, KANP
 DocumentPrintHeaderPattern	string	255	Center Aligned	
 DimDetail	string	255		
 PrintedByUser	string	255	SUPER	
-EntryByUser	string	255	arun bajpa	
-PrintTitle	string	255	Sale Return	
-PurchInvoiceNo	string	255		
+EntryByUser	string	255	SUPER	
+PrintTitle	string	255	TAX INVOICE	
+PurchInvoiceNo	string	255	4	
 CompanyLogo	BLOB		
 CompanyAuthorisedSignature	BLOB		
 EInvoiceQrCode	BLOB		

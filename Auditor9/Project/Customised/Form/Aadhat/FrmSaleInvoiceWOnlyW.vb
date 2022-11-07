@@ -380,7 +380,7 @@ Public Class FrmSaleInvoiceW_OnlyW
                                 Dgl2.Item(Col2InvoiceNo, Dgl2.Rows.Count - 1).Value = AgL.XNull(DtTemp.Rows(I)("InvoiceNo"))
                                 Dgl2.Item(Col2InvoiceDate, Dgl2.Rows.Count - 1).Value = AgL.XNull(DtTemp.Rows(I)("InvoiceDate"))
 
-                                Dgl2.Item(Col2WInvoiceDate, Dgl2.Rows.Count - 1).Value = AgL.PubLoginDate
+                                'Dgl2.Item(Col2WInvoiceDate, Dgl2.Rows.Count - 1).Value = AgL.PubLoginDate
                                 WSaleInvoice = AgTemplate.ClsMain.FGetManualRefNo("ManualRefNo", "SaleInvoice", "WSI", AgL.PubLoginDate, AgL.PubDivCode, AgL.PubSiteCode, AgTemplate.ClsMain.ManualRefType.Max)
                                 WSaleInvoiceNo = Convert.ToInt32(WSaleInvoice) + Dgl2.Rows.Count - 1
                                 Dgl2.Item(Col2WInvoiceNo, Dgl2.Rows.Count - 1).Value = WSaleInvoiceNo.ToString()
@@ -591,7 +591,7 @@ Public Class FrmSaleInvoiceW_OnlyW
                                 Dgl2.Item(Col2InvoiceNo, I).Value = ""
                                 Dgl2.Item(Col2InvoiceDate, I).Value = ""
 
-                                Dgl2.Item(Col2WInvoiceDate, I).Value = AgL.PubLoginDate
+                                'Dgl2.Item(Col2WInvoiceDate, I).Value = AgL.PubLoginDate
                                 WSaleInvoice = AgTemplate.ClsMain.FGetManualRefNo("ManualRefNo", "SaleInvoice", "WSI", AgL.PubLoginDate, AgL.PubDivCode, AgL.PubSiteCode, AgTemplate.ClsMain.ManualRefType.Max)
                                 WSaleInvoiceNo = Convert.ToInt32(WSaleInvoice) + Dgl2.Rows.Count - 1
                                 Dgl2.Item(Col2WInvoiceNo, I).Value = WSaleInvoiceNo.ToString()
@@ -1473,7 +1473,13 @@ Public Class FrmSaleInvoiceW_OnlyW
             SaleInvoiceTableList(0).V_No = 0
             SaleInvoiceTableList(0).V_Date = Dgl2.Item(Col2WInvoiceDate, mRow).Value
             'SaleInvoiceTableList(0).V_Date = Dgl2.Item(Col2InvoiceDate, mRow).Value
-            SaleInvoiceTableList(0).ManualRefNo = Dgl2.Item(Col2WInvoiceNo, mRow).Value
+            'SaleInvoiceTableList(0).ManualRefNo = Dgl2.Item(Col2WInvoiceNo, mRow).Value
+
+            Dim WSaleInvoice As String = ""
+            WSaleInvoice = AgTemplate.ClsMain.FGetManualRefNo("ManualRefNo", "SaleInvoice", "WSI", AgL.PubLoginDate, AgL.PubDivCode, AgL.PubSiteCode, AgTemplate.ClsMain.ManualRefType.Max)
+
+            SaleInvoiceTableList(0).ManualRefNo = WSaleInvoice
+
             SaleInvoiceTableList(0).SaleToParty = Dgl2.Item(Col2Party, mRow).Tag
             SaleInvoiceTableList(0).SaleToPartyName = Dgl2.Item(Col2Party, mRow).Value
             SaleInvoiceTableList(0).AgentCode = ""

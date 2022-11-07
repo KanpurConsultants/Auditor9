@@ -13930,11 +13930,16 @@ Public Class FrmPurchInvoiceDirect_WithDimension
                         Exit Function
                     End If
                 ElseIf LblNCatNature.Tag = NCatNature.Return_ Then
-                    If AgL.VNull(DtBarcodeLastValues.Rows(0)("CurrentStock")) > 0 And AgL.VNull(DtBarcodeLastValues.Rows(0)("CurrentStock")) <> AgL.VNull(DtBarcodeLastValues.Rows(0)("Qty")) Then
-                        MsgBox("Barcode " & AgL.XNull(DtBarcode.Rows(0)("Description")) & " Is Already In Our Stock. Can't Receive It.")
-                        FGetBarcodeDetail = False
-                        Exit Function
+                    If AgL.StrCmp(AgL.PubDBName, "SHADHVINANDI") Then
+
+                    Else
+                        If AgL.VNull(DtBarcodeLastValues.Rows(0)("CurrentStock")) > 0 And AgL.VNull(DtBarcodeLastValues.Rows(0)("CurrentStock")) <> AgL.VNull(DtBarcodeLastValues.Rows(0)("Qty")) Then
+                            MsgBox("Barcode " & AgL.XNull(DtBarcode.Rows(0)("Description")) & " Is Already In Our Stock. Can't Receive It.")
+                            FGetBarcodeDetail = False
+                            Exit Function
+                        End If
                     End If
+
                 ElseIf LblNCatNature.Tag = NCatNature.Order Then
                     If AgL.VNull(DtBarcodeLastValues.Rows(0)("CurrentStock")) < 0 Then
                         MsgBox("Barcode " & DtBarcode.Rows(0)("Description") & " Is Not In Stock. Can't Issue It.")
