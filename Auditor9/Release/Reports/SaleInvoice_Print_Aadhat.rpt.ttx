@@ -3,116 +3,122 @@ Copies	string	255	1
 CopyPrintingCaption	string	255		
 DocNoCaption	string	255	Invoice No.	
 DocDateCaption	string	255	Invoice Date	
-SiteStateCode	string	255	09	
-SiteStateName	string	255	Uttar Pradesh	
-DocID	string	255	D1    SI 2022     295	
+SiteStateCode	string	255	07	
+SiteStateName	string	255	Delhi	
+DocID	string	255	D4    SI 2022     531	
 Sr	number	1	
-V_Date	datetime	02/Nov/2022 12:00:00 AM	
+V_Date	datetime	04/Nov/2022 12:00:00 AM	
 DeliveryDate	datetime		
 Voucher_Type	string	255	Tax Invoice	
 NCat	string	255	SI	
-InvoiceNo	string	255	SSF-KNP-296	
-RateType	string	255	B	
+InvoiceNo	string	255	SSF-DLI-531	
+RateType	string	255	A	
 AgentName	string	255		
 AgentCaption	string	255	Agent	
-SaleToPartyName	string	255	DIKSHA GARMENTS-FAZILNAGAR	
-SaleToPartyCode	string	255	2771	
-SaleToPartyAddress	string	255	COLLEGE ROAD,	
-CityName	string	255	FAZILNAGAR	
-SaleToPartyPincode	string	255	274001	
+SaleToPartyName	string	255	AGARWAL FASHION MART	
+SaleToPartyCode	string	255	5114	
+SaleToPartyAddress	string	255	RUPEDIHA BAZAR,
+TEHSIL NANPARA,BAHRAICH
+(U.P) PIN NO.271881
+	
+CityName	string	255	BAHRAICH	
+SaleToPartyPincode	string	255	271881	
 StateCode	string	255	09	
 StateName	string	255	Uttar Pradesh	
-SaleToPartyMobile	string	255	9838824780	
+SaleToPartyMobile	string	255	9532582591	
 ContactPerson	string	255		
-SaleToPartySalesTaxNo	string	255	09COFPK2897N1Z3	
+SaleToPartySalesTaxNo	string	255	09AGPPA6338L1ZY	
 SaleToPartyAadharNo	string	255		
-SaleToPartyPanNo	string	255	COFPK2897N	
-ShipToPartyName	string	255	DIKSHA GARMENTS-FAZILNAGAR	
-ShipToPartyManualCode	string	255	2771	
-ShipToPartyAddress	string	255	COLLEGE ROAD,	
-ShipToPartyCity	string	255	FAZILNAGAR	
-ShipToPartyPincode	string	255	274001	
+SaleToPartyPanNo	string	255	AGPPA6338L	
+ShipToPartyName	string	255	AGARWAL FASHION MART	
+ShipToPartyManualCode	string	255	5114	
+ShipToPartyAddress	string	255	RUPEDIHA BAZAR,
+TEHSIL NANPARA,BAHRAICH
+(U.P) PIN NO.271881
+	
+ShipToPartyCity	string	255	BAHRAICH	
+ShipToPartyPincode	string	255	271881	
 ShipToPartyStateCode	string	255	09	
 ShipToPartyStateName	string	255	Uttar Pradesh	
-ShipToPartyMobile	string	255	9838824780	
-ShipToPartySalesTaxNo	string	255	09COFPK2897N1Z3	
+ShipToPartyMobile	string	255	9532582591	
+ShipToPartySalesTaxNo	string	255	09AGPPA6338L1ZY	
 ShipToPartyAadharNo	string	255		
-ShipToPartyPanNo	string	255	COFPK2897N	
+ShipToPartyPanNo	string	255	AGPPA6338L	
 ShipToAddress	string	255		
 TermsAndConditions	string	255	(1) Payment within <CreditDays> days from date of Invoice. <BR>(2) Overdue Interest @ <Default_DebtorsInterestRate> P.A. after due date. <BR>(3) Goods dispatched by transport at the owner risk. <BR>(4) All disputes are subject to <CompanyCity> jurisdiction only.	
-TransporterName	string	255		
+TransporterName	string	255	JAI HANUMAN TRANSPORT COMPANY	
 LrNo	string	255		
 LrDate	datetime		
-NoOfBales	number	0	
+NoOfBales	number	2	
 PrivateMark	string	255		
 Weight	number	0	
 Freight	number	0	
 ChargedWeight	number	0	
 FreightType	string	255		
-RoadPermitNo	string	255		
-RoadPermitDate	datetime		
+RoadPermitNo	string	255	781295999120	
+RoadPermitDate	datetime	04/Nov/2022 4:15:00 PM	
 VehicleNo	string	255		
 ShipMethod	string	255		
 PreCarriageBy	string	255		
 PreCarriagePlace	string	255		
-BookedFrom	string	255	KANPUR	
+BookedFrom	string	255	DELHI	
 BookedTo	string	255		
-Destination	string	255	FAZILNAGAR	
+Destination	string	255	RUPAIDIHA	
 DescriptionOfGoods	string	255		
 DescriptionOfPacking	string	255		
 ReferenceNo	string	255		
-ContraDocNo	string	255	13259	
-ContraDocNoCsv	string	255	13259	
-ItemName	string	255	BABA SUIT-61111000          [TAREFUL HASAN | BABA SUIT]	
-ItemGroupName	string	255	TAREFUL HASAN	
-ItemCatName	string	255	BABA SUIT	
-ItemSpecification	string	255	BABA SUIT	
+ContraDocNo	string	255	15169	
+ContraDocNoCsv	string	255	15169	
+ItemName	string	255	COAT PANT-620339          [CLUB MERINO | COAT PANT]	
+ItemGroupName	string	255	CLUB MERINO	
+ItemCatName	string	255	COAT PANT	
+ItemSpecification	string	255	COAT PANT	
 InvoiceLineSpecification	string	255		
-HSN	string	255	61111000	
+HSN	string	255	620339	
 MaintainStockYn	boolean	True	
-SalesTaxGroupItem	string	255	GST 5%	
-GrossTaxRate	number	5	
+SalesTaxGroupItem	string	255	GST 12%	
+GrossTaxRate	number	12	
 Pcs	number	0	
-Qty	number	10	
-Rate	number	100	
+Qty	number	7	
+Rate	number	1082.71285714286	
 Unit	string	255	Pcs	
 UnitDecimalPlaces	number	0	
 DiscountCalculationPattern	string	255		
 DiscountPer	number	0	
 DiscountAmount	number	0	
-AdditionalDiscountPer	number	0	
-AdditionalDiscountAmount	number	0	
+AdditionalDiscountPer	number	3	
+AdditionalDiscountAmount	number	271.95	
 AdditionPer	number	0	
 AdditionAmount	number	0	
-TotalDiscount	number	0	
-AmountBeforeDiscount	number	1000	
-Amount	number	1000	
-Taxable_Amount	number	1000	
-Tax1_Per	number	0	
-Tax1	number	0	
-Tax2_Per	number	2.5	
-Tax2	number	25	
-Tax3_Per	number	2.5	
-Tax3	number	25	
+TotalDiscount	number	271.95	
+AmountBeforeDiscount	number	9065	
+Amount	number	8793.05	
+Taxable_Amount	number	7850.94	
+Tax1_Per	number	12	
+Tax1	number	942.11	
+Tax2_Per	number	0	
+Tax2	number	0	
+Tax3_Per	number	0	
+Tax3	number	0	
 Tax4_Per	number	0	
 Tax4	number	0	
 Tax5_Per	number	0	
 Tax5	number	0	
-Net_Amount	number	1049.55	
+Net_Amount	number	8793.08	
 LRemarks	string	255		
 HRemarks	string	255		
-H_TotalDiscount	number	0	
-H_AmountBeforeDiscount	number	1130	
-H_Gross_Amount	number	1130	
+H_TotalDiscount	number	6424.35	
+H_AmountBeforeDiscount	number	214817	
+H_Gross_Amount	number	208392.65	
 H_SpecialDiscount_Per	number	0	
 H_SpecialDiscount	number	0	
-H_Taxable_Amount	number	1130	
+H_Taxable_Amount	number	191872.92	
 H_Tax1_Per	number	0	
-H_Tax1	number	0	
+H_Tax1	number	16519.74	
 H_Tax2_Per	number	0	
-H_Tax2	number	28.25	
+H_Tax2	number	0	
 H_Tax3_Per	number	0	
-H_Tax3	number	28.25	
+H_Tax3	number	0	
 H_Tax4_Per	number	0	
 H_Tax4	number	0	
 H_Tax5_Per	number	0	
@@ -121,18 +127,18 @@ H_Deduction_Per	number	0
 H_Deduction	number	0	
 H_Other_Charge_Per	number	0	
 H_Other_Charge	number	0	
-Round_Off	number	-0.5	
-H_Net_Amount	number	1186	
-EInvoiceIRN	string	255		
-EInvoiceACKNo	string	255		
-EInvoiceACKDate	datetime		
+Round_Off	number	0.34	
+H_Net_Amount	number	208393	
+EInvoiceIRN	string	255	d6558e775206fb10f7f326c033a1c87aae93ad313116724509d3f653c57cf63e	
+EInvoiceACKNo	string	255	172211895096441	
+EInvoiceACKDate	datetime	04/Nov/2022 4:15:00 PM	
 Default_BankAccountDetail	string	255	Bank : YES Bank, Branch : CIVIL LINES, KANPUR,<BR>Beneficiary : Shyama Shyam Fabrics Pvt. Ltd.,<BR>A/c No.: 007384600000880, IFSC : YESB0000073	
 DocumentPrintHeaderPattern	string	255	Center Aligned	
 DimDetail	string	255		
 PrintedByUser	string	255	SUPER	
-EntryByUser	string	255	SUPER	
+EntryByUser	string	255	SUMIT	
 PrintTitle	string	255	TAX INVOICE	
-PurchInvoiceNo	string	255	4	
+PurchInvoiceNo	string	255	2955/22-23	
 CompanyLogo	BLOB		
 CompanyAuthorisedSignature	BLOB		
 EInvoiceQrCode	BLOB		

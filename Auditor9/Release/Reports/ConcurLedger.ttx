@@ -1,46 +1,46 @@
 ; Field definition file for table: ADORecordset
-DivisionName	string	255	Shiva Saree Center {SHIVA}, KANPUR	
-PartyName	string	255	AMIR CLOTH HOUSE, MISHRIKH	
-Address	string	255	MELA MAIDAAN MISHRIKH	
-Mobile	string	255	7860758980	
-AgentName	string	255	GOVERDHAN LAAL AGARWAL, KANPUR	
+DivisionName	string	255	SADHVI EMBROIDERY {EMBROIDERY}, KANPUR	
+PartyName	string	255	RANGOLI COLLECTIONS, UNNAO	
+Address	string	255	RAJDHANI MARG SUKLAGANG NEAR PUNJAB &SINDH BANK DIST-UNNAO	
+Mobile	string	255	8318535935	
+AgentName	string	255	PURSHOTTAM NARAIN AWASTHI, KANPUR	
 SalesRepresentativeName	string	255		
-AreaName	string	255	MISHRIKH	
-DrDocID	string	255	D1    SI 2017       6	
-DrDivision	string	255	D	
-DrSubcode	string	255	D100000502	
-DrSr	long	0	
-DrDate	datetime	24/Jul/2017 5:30:00 AM	
-DrDocNo	string	255	SI-170006	
-DrAmount	number	43856.02	
-DrTaxableAmount	number	41768	
-DrTaxAmount	number	2088.42	
-DrDays	long	1835	
-DrInterest	number	39686.69	
-DrCumAmount	number	43856.02	
-DrBalAmount	number	0	
-DrTotal	number	2322056.14	
-DrNarration	string	255	Sale Invoice	
-CrDocID	string	255	D1    CR 2017     114	
-CrDivision	string	255	D	
-CrSubcode	string	255	D100000502	
-CrSr	long	0	
-CrDate	datetime	15/Oct/2017 5:30:00 AM	
-CrDocNo	string	255	CR-155	
-CrAmount	number	10000	
+AreaName	string	255		
+DrDocID	string	255	E1    SI 2022    1194	
+DrDivision	string	255	E	
+DrSubcode	string	255	D100001990	
+DrSr	number	26	
+DrDate	datetime	17/May/2022 12:00:00 AM	
+DrDocNo	string	255	SI-1194	
+DrAmount	number	16601	
+DrTaxableAmount	number	15030.75	
+DrTaxAmount	number	1570	
+DrDays	number	166	
+DrInterest	number	0	
+DrCumAmount	number	186413	
+DrBalAmount	number	752	
+DrTotal	number	186413	
+DrNarration	string	255	RT : DharaTax Invoice	
+CrDocID	string	255	E1  RCTB 2022     201	
+CrDivision	string	255	E	
+CrSubcode	string	255	D100001990	
+CrSr	number	26	
+CrDate	datetime	18/Jul/2022 12:00:00 AM	
+CrDocNo	string	255	RCTB-201	
+CrAmount	number	15849	
 CrTaxableAmount	number	0	
 CrTaxAmount	number	0	
-CrDays	long	1782	
-CrInterest	number	8787.95	
-CrCumAmount	number	10000	
+CrDays	number	134	
+CrInterest	number	0	
+CrCumAmount	number	185661	
 CrBalAmount	number	0	
-CrTotal	number	1575762.14	
-CrNarration	string	255		
-AdditionPer	number	0	
-AdditionAmount	number	0	
-GrReturnAmt	number	5985	
-GrSaleAmt	number	2322056.14	
-ReturnPer	number	0.26	
-AveragePaymentDays	number	597.837052612957	
-DrMonth	string	255	07-2017	
-CrMonth	string	255	10-2017	
+CrTotal	number	185661	
+CrNarration	string	255	Chq : 000225 P&SBICICI EMB A/C (695705501002)	
+AdditionPer	number	5	
+AdditionAmount	number	715.75	
+GrReturnAmt	number	3848	
+GrSaleAmt	number	169970	
+ReturnPer	number	2.26	
+AveragePaymentDays	number	69.4218258988647	
+DrMonth	string	255	05/2022	
+CrMonth	string	255	07/2022	

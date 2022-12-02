@@ -1,5 +1,5 @@
 ; Field definition file for table: ADORecordset
-Subcode	string	255	D100000003	
-LinkedSubcode	string	255	D100000740	
-Name	string	255	A KRISHNA CRAFT -AHMEDABAD	
-Balance	number	-19009.75	
+Subcode	string	255		
+LinkedSubcode	string	255		
+Name	string	255		
+Balance	number	-500	

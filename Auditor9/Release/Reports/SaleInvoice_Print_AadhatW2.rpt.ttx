@@ -1,45 +1,44 @@
 ; Field definition file for table: ADORecordset
-Code	string	255	D13351	
+Code	string	255	D13426	
 ATYPE	string	255	W	
 SiteName	string	255	KANPUR	
-DocID	string	255	D1   WSI 2022     319	
+DocID	string	255	D1   WSI 2022     393	
 Sr	number	1	
 InvoiceNo	string	255		
-InvoiceNoW	string	255	1490	
-V_Date	datetime	16/May/2022 12:00:00 AM	
-SaleToPartyName	string	255	JAISWAL GARMENTS & VIVEK VASTRALAYA-MAHARAJGANJ, MAHARAJGANJ	
-PartyName	string	255	D.K. TRADERS-GORAKHPUR	
-PartyCode	string	255	1185	
-Address	string	255	D.K. TRADERS
-SHREE LAXMI KATRA NEAR,
-HAJI BOOT HOSUE,
-HINDI BAZAR,
-GORAKHPUR(U.P)-273001
+InvoiceNoW	string	255	1560	
+V_Date	datetime	10/Nov/2022 12:00:00 AM	
+SaleToPartyName	string	255	E.G. MART-DEORIA, DEORIA	
+PartyName	string	255	E.G. MART	
+PartyCode	string	255	3778	
+Address	string	255	E.G. MART
+NEAR SURAJ TALKIES,
+HANUMAN MANDIR ROAD,
+DEORIA(U.P.)-274001
 	
-CityName	string	255	GORAKHPUR	
+CityName	string	255	DEORIA	
 ShipToPartyName	string	255		
-Brand	string	255	PATUDI SUITS	
-PInvNo	string	255	7878	
-Qty	number	1	
+Brand	string	255	AERO CLUB	
+PInvNo	string	255	788	
+Qty	number	10	
 Amount	number	10	
 GoodsValue	number	10	
 DiscountPer	string	255		
 TotalDiscount	number	0	
 OtherCharge	number	0	
 OtherCharge1	number	0	
-Tax	number	10.3956	
-NetAmount	number	20.4	
+Tax	number	0.565	
+NetAmount	number	10.56	
 LRemarks	string	255		
-TransportName	string	255	SWASTIK TRANSPORT CO.	
-LRNO	string	255	130981-1	
-LRDate	string	255	17-05-2018	
+TransportName	string	255	NARAYAN TRANSPORT SERVICE	
+LRNO	string	255	78	
+LRDate	string	255		
 NOOfBales	long	0	
 PrivateMark	string	255		
-BookedFrom	string	255		
-Destination	string	255		
+BookedFrom	string	255	KANPUR	
+Destination	string	255	DEORIA	
 PrintedByUser	string	255	SUPER	
 EntryByUser	string	255	SUPER	
-UserEntryDate	datetime	28/Oct/2022 12:00:00 AM	
+UserEntryDate	datetime	10/Nov/2022 12:00:00 AM	
 CompanyLogo	BLOB		
 CompanyAuthorisedSignature	BLOB		
 EInvoiceQrCode	BLOB		

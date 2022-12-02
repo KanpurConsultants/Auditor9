@@ -1458,6 +1458,11 @@ Public Class FrmPurchInvoiceDirect
                 TxtShipToParty.Visible = False
             End If
 
+            If NCAT = AgLibrary.ClsMain.agConstants.Ncat.PurchaseReturn And AgL.StrCmp(AgL.PubDBName, "Sadhvi") Then
+                LblTags.Visible = True
+                TxtTags.Visible = True
+            End If
+
 
         Catch ex As Exception
             MsgBox(ex.Message & " [ApplyUISettings]")

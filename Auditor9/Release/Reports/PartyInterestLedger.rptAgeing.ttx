@@ -1,6 +1,6 @@
 ; Field definition file for table: ADORecordset
-SearchCode	string	255	D100002759	
+SearchCode	string	255	D100004630	
 Sr	long	1	
-Party	string	255	PATWA GENERAL STOERS [W], BIRDPUR	
-BalanceAmount	number	1844.79	
-BalanceMonth	string	255	2022-02-03	
+Party	string	255	BIRENDRA VASTRALAY [W], SAKLA BAZAR	
+BalanceAmount	number	9.99	
+BalanceMonth	string	255	2022-03-28	

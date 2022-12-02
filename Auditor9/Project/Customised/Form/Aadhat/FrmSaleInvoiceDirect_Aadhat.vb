@@ -1538,12 +1538,12 @@ Public Class FrmSaleInvoiceDirect_Aadhat
             .AddAgNumberColumn(Dgl1, Col1Rate, 80, 8, 2, False, Col1Rate, True, False, True)
             .AddAgNumberColumn(Dgl1, Col1DiscountPer, 80, 2, 3, False, Col1DiscountPer, CType(AgL.VNull(DtV_TypeSettings.Rows(0)("IsVisible_DiscountPer")), Boolean), False, True)
             .AddAgNumberColumn(Dgl1, Col1DiscountAmount, 100, 8, 3, False, Col1DiscountAmount, CType(AgL.VNull(DtV_TypeSettings.Rows(0)("IsVisible_DiscountAmount")), Boolean), Not CType(AgL.VNull(DtV_TypeSettings.Rows(0)("IsEditable_DiscountAmount")), Boolean), True)
-            .AddAgNumberColumn(Dgl1, Col1AdditionalDiscountPer, 80, 2, 3, False, Col1AdditionalDiscountPer, CType(AgL.VNull(DtV_TypeSettings.Rows(0)("IsVisible_AdditionalDiscountPer")), Boolean), False, True)
+            .AddAgNumberColumn(Dgl1, Col1AdditionalDiscountPer, 80, 2, 3, False, Col1AdditionalDiscountPer, CType(AgL.VNull(DtV_TypeSettings.Rows(0)("IsVisible_AdditionalDiscountPer")), Boolean), True, True)
             .AddAgNumberColumn(Dgl1, Col1AdditionalDiscountAmount, 100, 8, 3, False, Col1AdditionalDiscountAmount, CType(AgL.VNull(DtV_TypeSettings.Rows(0)("IsVisible_AdditionalDiscountAmount")), Boolean), Not CType(AgL.VNull(DtV_TypeSettings.Rows(0)("IsEditable_AdditionalDiscountAmount")), Boolean), True)
 
 
-            .AddAgNumberColumn(Dgl1, Col1AdditionPer, 80, 2, 3, False, Col1AdditionPer, True, False, True)
-            .AddAgNumberColumn(Dgl1, Col1AdditionAmount, 100, 8, 3, False, Col1AdditionAmount, True, False, True)
+            .AddAgNumberColumn(Dgl1, Col1AdditionPer, 80, 2, 3, False, Col1AdditionPer, True, True, True)
+            .AddAgNumberColumn(Dgl1, Col1AdditionAmount, 100, 8, 3, False, Col1AdditionAmount, True, True, True)
 
 
             .AddAgNumberColumn(Dgl1, Col1Amount, 100, 8, 2, False, Col1Amount, True, True, True)

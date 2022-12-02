@@ -288,7 +288,7 @@ Public Class ClsGenerateEInvoice_URL
                 LEFT JOIN (Select SubCode, Distance
                             From SubgroupSiteDivisionDetail 
                             Where Site_Code = '" & AgL.PubSiteCode & "' 
-                            And Div_Code = '" & AgL.PubDivCode & "') As VDist On IsNull('',H.SubCode) = VDist.SubCode " & mLedgerHeadCondStr
+                            And Div_Code = '" & AgL.PubDivCode & "') As VDist On IsNull(H.SubCode,'') = VDist.SubCode " & mLedgerHeadCondStr
 
 
             DsHeader = AgL.FillData(mQry, AgL.GCn)

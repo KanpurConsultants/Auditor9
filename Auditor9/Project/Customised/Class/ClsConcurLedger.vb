@@ -391,12 +391,16 @@ Public Class ClsConcurLedger
                     (Case When IfNull(L.Chq_No,'') <>'' Then 'Chq : ' || IfNull(L.Chq_No,'') Else '' End) || 
                     (Case When IfNull(LH.PartyDocNo,'') <>'' Then 'Inv : ' || IfNull(LH.PartyDocNo,'') Else '' End) ||
                     (Case When IfNull(Inv.RateType,'') <>'' Then 'RT : ' || IfNull(RT.Description,'') Else '' End) ||
-                    (Case When IfNull(Trd.Type,'')='Cancelled' OR IfNull(Trr.Type,'')='Cancelled' Then ' Cancelled Amt.' || Cast(L.AmtDr as NVarchar) Else '' End) || IfNull(L.Narration,'')
+                    (Case When IfNull(Trd.Type,'')='Cancelled' OR IfNull(Trr.Type,'')='Cancelled' Then ' Cancelled Amt.' || Cast(L.AmtDr as NVarchar) Else '' End) || IfNull(L.Narration,'')+
+                    (Case When PI.V_Type ='PR' AND PI.Tags IS NOT NULL Then ' '+PI.Tags Else '' End)+
+                    (Case When INV.V_Type IN ('SI','SR') AND INV.Remarks IS NOT NULL Then ' '+Substr(INV.Remarks,0,15) Else '' End)+
+                    (Case When PI.V_Type IN ('PI','PR') AND PI.Remarks IS NOT NULL Then ' '+Substr(PI.Remarks,0,15) Else '' End)
                     as DrNarration,
                     INV.Taxable_Amount, INV.Tax1+INV.Tax2+INV.Tax3+INV.Tax4+INV.Tax5 as Tax_Amount
                     from ledger L With (NoLock)
                     Left Join LedgerHead LH With (NoLock) on L.DocID = LH.DocID
                     Left Join SaleInvoice INV With (NoLock) On L.DocID = INV.DocID
+                    Left Join PurchInvoice PI With (NoLock) On L.DocID = PI.DocID
                     Left Join RateType Rt On Inv.RateType = Rt.Code
                     Left Join TransactionReferences Trd With (NoLock) On L.DocID = Trd.DocId And L.V_SNo = Trd.DocIDSr And L.V_Date >= '2019-07-01'
                     Left Join TransactionReferences Trr With (NoLock) On L.DocID = Trr.ReferenceDocId And L.TSr = Trr.ReferenceSr And L.V_Date >= '2019-07-01'
@@ -452,12 +456,15 @@ Public Class ClsConcurLedger
                     (Case When IfNull(LH.PartyDocNo,'') <>'' Then 'Inv : ' || IfNull(LH.PartyDocNo,'') Else '' End) ||                    
                     (Case When VT.NCAT Not In ('" & Ncat.SaleInvoice & "', '" & Ncat.PurchaseInvoice & "') And '" & ClsMain.FDivisionNameForCustomization(6) & "' = 'SADHVI' Then IfNull(L.Narration,'') Else '' End) ||
                     (Case When IfNull(Trd.Type,'')='Cancelled' OR IfNull(Trr.Type,'')='Cancelled' Then ' Cancelled Amt.' || Cast(L.AmtCr as NVarchar)  Else '' End) ||
-                    (Case When IfNull(LTrim(Substr(L.ReferenceDocID,4,5)),'VR') <>'VR' Then ' Ref : ' || IfNull(LTrim(Substr(L.ReferenceDocID,4,5)),'') Else '' End)
+                    (Case When IfNull(LTrim(Substr(L.ReferenceDocID,4,5)),'VR') <>'VR' Then ' Ref : ' || IfNull(LTrim(Substr(L.ReferenceDocID,4,5)),'') Else '' End)+
+                    (Case When INV.V_Type IN ('PI','PR') AND INV.Remarks IS NOT NULL Then ' '+Substr(INV.Remarks,0,15) Else '' End)+
+                    (Case When SI.V_Type IN ('SI','SR') AND SI.Remarks IS NOT NULL Then ' '+Substr(SI.Remarks,0,15) Else '' End)
                     as CrNarration,
                     INV.Taxable_Amount, INV.Tax1+INV.Tax2+INV.Tax3+INV.Tax4+INV.Tax5 as Tax_Amount
                     from ledger L  With (NoLock)
                     Left Join LedgerHead LH  With (NoLock) On L.DocID = LH.DocID
                     Left Join PurchInvoice INV With (NoLock) On L.DocID = INV.DocID
+                    Left Join SaleInvoice SI With (NoLock) On L.DocID = SI.DocID
                     Left Join TransactionReferences Trd With (NoLock) On L.DocID = Trd.DocId And L.V_SNo = Trd.DocIDSr And L.V_Date >= '2019-07-01'
                     Left Join TransactionReferences Trr With (NoLock) On L.DocID = Trr.ReferenceDocId And L.TSr = Trr.ReferenceSr And L.V_Date >= '2019-07-01'
                     Left Join Voucher_Type Vt On L.V_Type = VT.V_Type
@@ -668,7 +675,7 @@ Public Class ClsConcurLedger
 
 
             mQry = "Select D.Name as DivisionName, Sg.Name as PartyName, Sg.Address, Sg.Mobile, Agent.Name as AgentName, 
-                    SRep.Name as SalesRepresentativeName, Area.Description as AreaName, H.*, SL.AdditionPer, SL.AdditionAmount, Gr.GrReturnAmt, Gr.GrSaleAmt, Gr.ReturnPer, Sg1.AveragePaymentDays, "
+                    SRep.Name as SalesRepresentativeName, Area.Description as AreaName, H.*, SL.AdditionPer, SL.AdditionAmount, Gr.GrReturnAmt, Gr.GrSaleAmt, Gr.ReturnPer, CASE WHEN sg1.SubgroupType ='Customer' THEN Sg1.AveragePaymentDays ELSE 0 END AveragePaymentDays,"
             If AgL.PubServerName <> "" Then
                 mQry = mQry & "Substring(Convert(NVARCHAR, H.DrDate,103),4,7) As [DrMonth], Substring(Convert(NVARCHAR, H.CrDate,103),4,7) As [CrMonth]  "
             Else
@@ -695,6 +702,14 @@ Public Class ClsConcurLedger
                                 WHERE VT.NCat IN ('SI','SR') OR VT.V_Type ='OB' AND Sg.Nature ='Customer'
                                 GROUP BY L.SubCode, L.DivCode  
                                 HAVING Sum(L.AmtCr) > 0
+                                UNION ALL 
+                                SELECT L.SubCode, L.DivCode, Sum(L.AmtDr) AS GrReturnAmt, (CASE WHEN Sum(L.AmtCr) = 0 THEN Sum(L.AmtDr) ELSE Sum(L.AmtCr) END) AS GrSaleAmt,  Round((Sum(L.AmtDr) /  (CASE WHEN Sum(L.AmtCr) = 0 THEN Sum(L.AmtDr) ELSE Sum(L.AmtCr) END))*100,2) 	AS ReturnPer
+                                FROM Ledger L With (NoLock)
+                                LEFT JOIN Voucher_Type VT With (NoLock) ON L.V_Type = vt.V_type
+                                LEFT JOIN subgroup Sg  With (NoLock) ON L.SubCode = Sg.Subcode 
+                                WHERE VT.NCat IN ('PI','PR') OR VT.V_Type ='OB' AND Sg.Nature ='Supplier'
+                                GROUP BY L.SubCode, L.DivCode  
+                                HAVING Sum(L.AmtDr) > 0
                               ) as Gr On Gr.Subcode  COLLATE DATABASE_DEFAULT = H.DrSubcode  COLLATE DATABASE_DEFAULT And Gr.DivCode  COLLATE DATABASE_DEFAULT = H.DrDivision  COLLATE DATABASE_DEFAULT
                     Left Join (
                                 SELECT DocID, Max(AdditionPer) AS AdditionPer, Sum(AdditionAmount) AS AdditionAmount  

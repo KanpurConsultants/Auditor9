@@ -414,6 +414,16 @@ Public Class FrmSaleInvoiceW_OnlyW
                                 If bSaleInvoiceDocIdStr <> "" Then bSaleInvoiceDocIdStr = bSaleInvoiceDocIdStr + ","
                                 bSaleInvoiceDocIdStr = bSaleInvoiceDocIdStr + Dgl2.Item(Col2InvoiceNo, Dgl2.Rows.Count - 1).Tag
 
+                                Dim mOtherCharge As Double = 0
+                                mQry = " Select IfNull(Sum(L.Amount),0) As OtherCharge
+                                    From SaleInvoiceDetail L
+                                    LEFT JOIN Item I On L.Item = I.Code
+                                    Where L.DocId = '" & Dgl2.Item(Col2SaleInvoiceDocId, Dgl2.Rows.Count - 1).Value & "'
+                                    And I.ItemType In ('" & ItemTypeCode.ServiceProduct & "') And  L.Item in ('CourierCharge','HandlingCharge')"
+                                mOtherCharge = AgL.Dman_Execute(mQry, Connection_Pakka).ExecuteScalar()
+                                Dgl2.Item(Col2WPacking, Dgl2.Rows.Count - 1).Value = mOtherCharge
+
+
                                 'FCopyTransportDetail(Dgl2.Item(Col2InvoiceNo, Dgl2.Rows.Count - 1).Tag)
 
                                 Dim DTDiscounts As DataTable = FGetDiscountRates(AgL.XNull(DtTemp.Rows(I)("BillToParty")),
@@ -1473,333 +1483,335 @@ Public Class FrmSaleInvoiceW_OnlyW
             SaleInvoiceTableList(0).V_No = 0
             SaleInvoiceTableList(0).V_Date = Dgl2.Item(Col2WInvoiceDate, mRow).Value
             'SaleInvoiceTableList(0).V_Date = Dgl2.Item(Col2InvoiceDate, mRow).Value
-            'SaleInvoiceTableList(0).ManualRefNo = Dgl2.Item(Col2WInvoiceNo, mRow).Value
 
-            Dim WSaleInvoice As String = ""
-            WSaleInvoice = AgTemplate.ClsMain.FGetManualRefNo("ManualRefNo", "SaleInvoice", "WSI", AgL.PubLoginDate, AgL.PubDivCode, AgL.PubSiteCode, AgTemplate.ClsMain.ManualRefType.Max)
-
-            SaleInvoiceTableList(0).ManualRefNo = WSaleInvoice
+            If mMode = "E" Then
+                SaleInvoiceTableList(0).ManualRefNo = Dgl2.Item(Col2WInvoiceNo, mRow).Value
+            Else
+                Dim WSaleInvoice As String = ""
+                WSaleInvoice = AgTemplate.ClsMain.FGetManualRefNo("ManualRefNo", "SaleInvoice", "WSI", AgL.PubLoginDate, AgL.PubDivCode, AgL.PubSiteCode, AgTemplate.ClsMain.ManualRefType.Max)
+                SaleInvoiceTableList(0).ManualRefNo = WSaleInvoice
+            End If
 
             SaleInvoiceTableList(0).SaleToParty = Dgl2.Item(Col2Party, mRow).Tag
-            SaleInvoiceTableList(0).SaleToPartyName = Dgl2.Item(Col2Party, mRow).Value
-            SaleInvoiceTableList(0).AgentCode = ""
-            SaleInvoiceTableList(0).AgentName = ""
-            SaleInvoiceTableList(0).BillToPartyCode = Dgl2.Item(Col2MasterParty, mRow).Tag
-            SaleInvoiceTableList(0).BillToPartyName = Dgl2.Item(Col2MasterParty, mRow).Value
-            SaleInvoiceTableList(0).SaleToPartyAddress = ""
-            SaleInvoiceTableList(0).SaleToPartyCityCode = ""
-            SaleInvoiceTableList(0).SaleToPartyMobile = ""
-            SaleInvoiceTableList(0).SaleToPartySalesTaxNo = ""
-            SaleInvoiceTableList(0).ShipToPartyCode = Dgl2.Item(Col2ShipToParty, mRow).Tag
-            SaleInvoiceTableList(0).ShipToAddress = ""
-            SaleInvoiceTableList(0).SalesTaxGroupParty = ""
-            SaleInvoiceTableList(0).PlaceOfSupply = PlaceOfSupplay.WithinState
-            SaleInvoiceTableList(0).StructureCode = ""
-            SaleInvoiceTableList(0).CustomFields = ""
-            SaleInvoiceTableList(0).ReferenceDocId = ""
-            SaleInvoiceTableList(0).Tags = "+" & TxtTag.Text
-            SaleInvoiceTableList(0).Remarks = "Pakka Invoice No : " + Dgl2.Item(Col2InvoiceNo, mRow).Value.ToString +
+                SaleInvoiceTableList(0).SaleToPartyName = Dgl2.Item(Col2Party, mRow).Value
+                SaleInvoiceTableList(0).AgentCode = ""
+                SaleInvoiceTableList(0).AgentName = ""
+                SaleInvoiceTableList(0).BillToPartyCode = Dgl2.Item(Col2MasterParty, mRow).Tag
+                SaleInvoiceTableList(0).BillToPartyName = Dgl2.Item(Col2MasterParty, mRow).Value
+                SaleInvoiceTableList(0).SaleToPartyAddress = ""
+                SaleInvoiceTableList(0).SaleToPartyCityCode = ""
+                SaleInvoiceTableList(0).SaleToPartyMobile = ""
+                SaleInvoiceTableList(0).SaleToPartySalesTaxNo = ""
+                SaleInvoiceTableList(0).ShipToPartyCode = Dgl2.Item(Col2ShipToParty, mRow).Tag
+                SaleInvoiceTableList(0).ShipToAddress = ""
+                SaleInvoiceTableList(0).SalesTaxGroupParty = ""
+                SaleInvoiceTableList(0).PlaceOfSupply = PlaceOfSupplay.WithinState
+                SaleInvoiceTableList(0).StructureCode = ""
+                SaleInvoiceTableList(0).CustomFields = ""
+                SaleInvoiceTableList(0).ReferenceDocId = ""
+                SaleInvoiceTableList(0).Tags = "+" & TxtTag.Text
+                SaleInvoiceTableList(0).Remarks = "Pakka Invoice No : " + Dgl2.Item(Col2InvoiceNo, mRow).Value.ToString +
                                                         " And Invoice Amount : " + Dgl2.Item(Col2Amount, mRow).Value.ToString +
                                                         IIf(AgL.XNull(Dgl2.Item(Col2ShipToParty, mRow).Value) <> "", " And Ship To Party : " + AgL.XNull(Dgl2.Item(Col2ShipToParty, mRow).Value).ToString, "")
-            SaleInvoiceTableList(0).Status = "Active"
-            SaleInvoiceTableList(0).EntryBy = AgL.PubUserName
-            SaleInvoiceTableList(0).EntryDate = AgL.GetDateTime(AgL.GcnRead)
-            SaleInvoiceTableList(0).ApproveBy = ""
-            SaleInvoiceTableList(0).ApproveDate = ""
-            SaleInvoiceTableList(0).MoveToLog = ""
-            SaleInvoiceTableList(0).MoveToLogDate = ""
-            SaleInvoiceTableList(0).UploadDate = ""
-            SaleInvoiceTableList(0).LockText = "Genereded From Sale Invoice W Entry.Can't Edit."
+                SaleInvoiceTableList(0).Status = "Active"
+                SaleInvoiceTableList(0).EntryBy = AgL.PubUserName
+                SaleInvoiceTableList(0).EntryDate = AgL.GetDateTime(AgL.GcnRead)
+                SaleInvoiceTableList(0).ApproveBy = ""
+                SaleInvoiceTableList(0).ApproveDate = ""
+                SaleInvoiceTableList(0).MoveToLog = ""
+                SaleInvoiceTableList(0).MoveToLogDate = ""
+                SaleInvoiceTableList(0).UploadDate = ""
+                SaleInvoiceTableList(0).LockText = "Genereded From Sale Invoice W Entry.Can't Edit."
 
-            SaleInvoiceTableList(0).Deduction_Per = 0
-            SaleInvoiceTableList(0).Deduction = 0
-            SaleInvoiceTableList(0).Other_Charge_Per = 0
-            SaleInvoiceTableList(0).Other_Charge = 0
-            SaleInvoiceTableList(0).Round_Off = 0
-            SaleInvoiceTableList(0).Net_Amount = 0
+                SaleInvoiceTableList(0).Deduction_Per = 0
+                SaleInvoiceTableList(0).Deduction = 0
+                SaleInvoiceTableList(0).Other_Charge_Per = 0
+                SaleInvoiceTableList(0).Other_Charge = 0
+                SaleInvoiceTableList(0).Round_Off = 0
+                SaleInvoiceTableList(0).Net_Amount = 0
 
-            For I = 0 To Dgl2.Rows.Count - 1
-                If Val(Dgl2.Item(Col2WQty, I).Value) > 0 Then
-                    SaleInvoiceTableList(UBound(SaleInvoiceTableList)).Line_Sr = UBound(SaleInvoiceTableList) + 1
-                    SaleInvoiceTableList(UBound(SaleInvoiceTableList)).Line_ItemCode = Dgl2.Item(Col2ItemGroup, I).Tag
-                    SaleInvoiceTableList(UBound(SaleInvoiceTableList)).Line_ItemName = Dgl2.Item(Col2ItemGroup, I).Value
-                    SaleInvoiceTableList(UBound(SaleInvoiceTableList)).Line_Specification = ""
-                    SaleInvoiceTableList(UBound(SaleInvoiceTableList)).Line_SalesTaxGroupItem = "GST 0%"
-                    SaleInvoiceTableList(UBound(SaleInvoiceTableList)).Line_ReferenceNo = ""
-                    SaleInvoiceTableList(UBound(SaleInvoiceTableList)).Line_DocQty = Dgl2.Item(Col2WQty, I).Value
-                    SaleInvoiceTableList(UBound(SaleInvoiceTableList)).Line_FreeQty = 0
-                    SaleInvoiceTableList(UBound(SaleInvoiceTableList)).Line_Qty = Val(Dgl2.Item(Col2WQty, I).Value)
-                    SaleInvoiceTableList(UBound(SaleInvoiceTableList)).Line_Unit = "Nos"
-                    SaleInvoiceTableList(UBound(SaleInvoiceTableList)).Line_Pcs = 0
-                    SaleInvoiceTableList(UBound(SaleInvoiceTableList)).Line_UnitMultiplier = 0
-                    SaleInvoiceTableList(UBound(SaleInvoiceTableList)).Line_DealUnit = ""
-                    SaleInvoiceTableList(UBound(SaleInvoiceTableList)).Line_DocDealQty = ""
-                    SaleInvoiceTableList(UBound(SaleInvoiceTableList)).Line_DiscountPer = Val(Dgl2.Item(Col2DiscountPer, I).Value)
-                    SaleInvoiceTableList(UBound(SaleInvoiceTableList)).Line_DiscountAmount = Val(Dgl2.Item(Col2WDiscount, I).Value)
-                    SaleInvoiceTableList(UBound(SaleInvoiceTableList)).Line_AdditionalDiscountPer = Val(Dgl2.Item(Col2AdditionalDiscountPer, I).Value)
-                    SaleInvoiceTableList(UBound(SaleInvoiceTableList)).Line_AdditionalDiscountAmount = 0
-                    SaleInvoiceTableList(UBound(SaleInvoiceTableList)).Line_ExtraDiscountPer = Val(Dgl2.Item(Col2ExtraDiscountPer, I).Value)
-                    SaleInvoiceTableList(UBound(SaleInvoiceTableList)).Line_ExtraDiscountAmount = 0
-                    SaleInvoiceTableList(UBound(SaleInvoiceTableList)).Line_AdditionPer = Val(Dgl2.Item(Col2AdditionPer, I).Value)
-                    SaleInvoiceTableList(UBound(SaleInvoiceTableList)).Line_AdditionAmount = 0
-                    SaleInvoiceTableList(UBound(SaleInvoiceTableList)).Line_Amount = Val(Dgl2.Item(Col2WSaleInvoiceAmount, I).Value)
-                    SaleInvoiceTableList(UBound(SaleInvoiceTableList)).Line_Rate = (Val(Dgl2.Item(Col2WSaleInvoiceAmount, I).Value) +
+                For I = 0 To Dgl2.Rows.Count - 1
+                    If Val(Dgl2.Item(Col2WQty, I).Value) > 0 Then
+                        SaleInvoiceTableList(UBound(SaleInvoiceTableList)).Line_Sr = UBound(SaleInvoiceTableList) + 1
+                        SaleInvoiceTableList(UBound(SaleInvoiceTableList)).Line_ItemCode = Dgl2.Item(Col2ItemGroup, I).Tag
+                        SaleInvoiceTableList(UBound(SaleInvoiceTableList)).Line_ItemName = Dgl2.Item(Col2ItemGroup, I).Value
+                        SaleInvoiceTableList(UBound(SaleInvoiceTableList)).Line_Specification = ""
+                        SaleInvoiceTableList(UBound(SaleInvoiceTableList)).Line_SalesTaxGroupItem = "GST 0%"
+                        SaleInvoiceTableList(UBound(SaleInvoiceTableList)).Line_ReferenceNo = ""
+                        SaleInvoiceTableList(UBound(SaleInvoiceTableList)).Line_DocQty = Dgl2.Item(Col2WQty, I).Value
+                        SaleInvoiceTableList(UBound(SaleInvoiceTableList)).Line_FreeQty = 0
+                        SaleInvoiceTableList(UBound(SaleInvoiceTableList)).Line_Qty = Val(Dgl2.Item(Col2WQty, I).Value)
+                        SaleInvoiceTableList(UBound(SaleInvoiceTableList)).Line_Unit = "Nos"
+                        SaleInvoiceTableList(UBound(SaleInvoiceTableList)).Line_Pcs = 0
+                        SaleInvoiceTableList(UBound(SaleInvoiceTableList)).Line_UnitMultiplier = 0
+                        SaleInvoiceTableList(UBound(SaleInvoiceTableList)).Line_DealUnit = ""
+                        SaleInvoiceTableList(UBound(SaleInvoiceTableList)).Line_DocDealQty = ""
+                        SaleInvoiceTableList(UBound(SaleInvoiceTableList)).Line_DiscountPer = Val(Dgl2.Item(Col2DiscountPer, I).Value)
+                        SaleInvoiceTableList(UBound(SaleInvoiceTableList)).Line_DiscountAmount = Val(Dgl2.Item(Col2WDiscount, I).Value)
+                        SaleInvoiceTableList(UBound(SaleInvoiceTableList)).Line_AdditionalDiscountPer = Val(Dgl2.Item(Col2AdditionalDiscountPer, I).Value)
+                        SaleInvoiceTableList(UBound(SaleInvoiceTableList)).Line_AdditionalDiscountAmount = 0
+                        SaleInvoiceTableList(UBound(SaleInvoiceTableList)).Line_ExtraDiscountPer = Val(Dgl2.Item(Col2ExtraDiscountPer, I).Value)
+                        SaleInvoiceTableList(UBound(SaleInvoiceTableList)).Line_ExtraDiscountAmount = 0
+                        SaleInvoiceTableList(UBound(SaleInvoiceTableList)).Line_AdditionPer = Val(Dgl2.Item(Col2AdditionPer, I).Value)
+                        SaleInvoiceTableList(UBound(SaleInvoiceTableList)).Line_AdditionAmount = 0
+                        SaleInvoiceTableList(UBound(SaleInvoiceTableList)).Line_Amount = Val(Dgl2.Item(Col2WSaleInvoiceAmount, I).Value)
+                        SaleInvoiceTableList(UBound(SaleInvoiceTableList)).Line_Rate = (Val(Dgl2.Item(Col2WSaleInvoiceAmount, I).Value) +
                                                                                     Val(Dgl2.Item(Col2WDiscount, I).Value)) / Val(Dgl2.Item(Col2WQty, I).Value)
-                    SaleInvoiceTableList(UBound(SaleInvoiceTableList)).Line_Remark = TxtRemark.Text
-                    SaleInvoiceTableList(UBound(SaleInvoiceTableList)).Line_BaleNo = ""
-                    SaleInvoiceTableList(UBound(SaleInvoiceTableList)).Line_LotNo = ""
-                    SaleInvoiceTableList(UBound(SaleInvoiceTableList)).Line_ReferenceDocId = ""
-                    SaleInvoiceTableList(UBound(SaleInvoiceTableList)).Line_SaleInvoice = Dgl2.Item(Col2WSaleOrderDocId, I).Value
-                    SaleInvoiceTableList(UBound(SaleInvoiceTableList)).Line_SaleInvoiceSr = 1
-                    SaleInvoiceTableList(UBound(SaleInvoiceTableList)).Line_GrossWeight = 0
-                    SaleInvoiceTableList(UBound(SaleInvoiceTableList)).Line_NetWeight = 0
-                    SaleInvoiceTableList(UBound(SaleInvoiceTableList)).Line_Gross_Amount = SaleInvoiceTableList(UBound(SaleInvoiceTableList)).Line_Amount
-                    SaleInvoiceTableList(UBound(SaleInvoiceTableList)).Line_Taxable_Amount = SaleInvoiceTableList(UBound(SaleInvoiceTableList)).Line_Amount
-                    SaleInvoiceTableList(UBound(SaleInvoiceTableList)).Line_Tax1_Per = 0
-                    'SaleInvoiceTableList(UBound(SaleInvoiceTableList)).Line_Tax1 = SaleInvoiceTableList(UBound(SaleInvoiceTableList)).Line_Amount * SaleInvoiceTableList(UBound(SaleInvoiceTableList)).Line_Tax1_Per / 100
-                    SaleInvoiceTableList(UBound(SaleInvoiceTableList)).Line_Tax1 = Val(Dgl2.Item(Col2Tax, I).Value)
-                    SaleInvoiceTableList(UBound(SaleInvoiceTableList)).Line_Tax2_Per = 0
-                    SaleInvoiceTableList(UBound(SaleInvoiceTableList)).Line_Tax2 = SaleInvoiceTableList(UBound(SaleInvoiceTableList)).Line_Amount * SaleInvoiceTableList(UBound(SaleInvoiceTableList)).Line_Tax2_Per / 100
-                    SaleInvoiceTableList(UBound(SaleInvoiceTableList)).Line_Tax3_Per = 0
-                    SaleInvoiceTableList(UBound(SaleInvoiceTableList)).Line_Tax3 = SaleInvoiceTableList(UBound(SaleInvoiceTableList)).Line_Amount * SaleInvoiceTableList(UBound(SaleInvoiceTableList)).Line_Tax3_Per / 100
-                    SaleInvoiceTableList(UBound(SaleInvoiceTableList)).Line_Tax4_Per = 0
-                    SaleInvoiceTableList(UBound(SaleInvoiceTableList)).Line_Tax4 = SaleInvoiceTableList(UBound(SaleInvoiceTableList)).Line_Amount * SaleInvoiceTableList(UBound(SaleInvoiceTableList)).Line_Tax4_Per / 100
-                    SaleInvoiceTableList(UBound(SaleInvoiceTableList)).Line_Tax5_Per = 0
-                    SaleInvoiceTableList(UBound(SaleInvoiceTableList)).Line_Tax5 = SaleInvoiceTableList(UBound(SaleInvoiceTableList)).Line_Amount * SaleInvoiceTableList(UBound(SaleInvoiceTableList)).Line_Tax5_Per / 100
-                    SaleInvoiceTableList(UBound(SaleInvoiceTableList)).Line_SubTotal1 = SaleInvoiceTableList(UBound(SaleInvoiceTableList)).Line_Amount +
+                        SaleInvoiceTableList(UBound(SaleInvoiceTableList)).Line_Remark = TxtRemark.Text
+                        SaleInvoiceTableList(UBound(SaleInvoiceTableList)).Line_BaleNo = ""
+                        SaleInvoiceTableList(UBound(SaleInvoiceTableList)).Line_LotNo = ""
+                        SaleInvoiceTableList(UBound(SaleInvoiceTableList)).Line_ReferenceDocId = ""
+                        SaleInvoiceTableList(UBound(SaleInvoiceTableList)).Line_SaleInvoice = Dgl2.Item(Col2WSaleOrderDocId, I).Value
+                        SaleInvoiceTableList(UBound(SaleInvoiceTableList)).Line_SaleInvoiceSr = 1
+                        SaleInvoiceTableList(UBound(SaleInvoiceTableList)).Line_GrossWeight = 0
+                        SaleInvoiceTableList(UBound(SaleInvoiceTableList)).Line_NetWeight = 0
+                        SaleInvoiceTableList(UBound(SaleInvoiceTableList)).Line_Gross_Amount = SaleInvoiceTableList(UBound(SaleInvoiceTableList)).Line_Amount
+                        SaleInvoiceTableList(UBound(SaleInvoiceTableList)).Line_Taxable_Amount = SaleInvoiceTableList(UBound(SaleInvoiceTableList)).Line_Amount
+                        SaleInvoiceTableList(UBound(SaleInvoiceTableList)).Line_Tax1_Per = 0
+                        'SaleInvoiceTableList(UBound(SaleInvoiceTableList)).Line_Tax1 = SaleInvoiceTableList(UBound(SaleInvoiceTableList)).Line_Amount * SaleInvoiceTableList(UBound(SaleInvoiceTableList)).Line_Tax1_Per / 100
+                        SaleInvoiceTableList(UBound(SaleInvoiceTableList)).Line_Tax1 = Val(Dgl2.Item(Col2Tax, I).Value)
+                        SaleInvoiceTableList(UBound(SaleInvoiceTableList)).Line_Tax2_Per = 0
+                        SaleInvoiceTableList(UBound(SaleInvoiceTableList)).Line_Tax2 = SaleInvoiceTableList(UBound(SaleInvoiceTableList)).Line_Amount * SaleInvoiceTableList(UBound(SaleInvoiceTableList)).Line_Tax2_Per / 100
+                        SaleInvoiceTableList(UBound(SaleInvoiceTableList)).Line_Tax3_Per = 0
+                        SaleInvoiceTableList(UBound(SaleInvoiceTableList)).Line_Tax3 = SaleInvoiceTableList(UBound(SaleInvoiceTableList)).Line_Amount * SaleInvoiceTableList(UBound(SaleInvoiceTableList)).Line_Tax3_Per / 100
+                        SaleInvoiceTableList(UBound(SaleInvoiceTableList)).Line_Tax4_Per = 0
+                        SaleInvoiceTableList(UBound(SaleInvoiceTableList)).Line_Tax4 = SaleInvoiceTableList(UBound(SaleInvoiceTableList)).Line_Amount * SaleInvoiceTableList(UBound(SaleInvoiceTableList)).Line_Tax4_Per / 100
+                        SaleInvoiceTableList(UBound(SaleInvoiceTableList)).Line_Tax5_Per = 0
+                        SaleInvoiceTableList(UBound(SaleInvoiceTableList)).Line_Tax5 = SaleInvoiceTableList(UBound(SaleInvoiceTableList)).Line_Amount * SaleInvoiceTableList(UBound(SaleInvoiceTableList)).Line_Tax5_Per / 100
+                        SaleInvoiceTableList(UBound(SaleInvoiceTableList)).Line_SubTotal1 = SaleInvoiceTableList(UBound(SaleInvoiceTableList)).Line_Amount +
                                                                 SaleInvoiceTableList(UBound(SaleInvoiceTableList)).Line_Tax1 +
                                                                 SaleInvoiceTableList(UBound(SaleInvoiceTableList)).Line_Tax2 +
                                                                 SaleInvoiceTableList(UBound(SaleInvoiceTableList)).Line_Tax3 +
                                                                 SaleInvoiceTableList(UBound(SaleInvoiceTableList)).Line_Tax4 +
                                                                 SaleInvoiceTableList(UBound(SaleInvoiceTableList)).Line_Tax5
 
-                    SaleInvoiceTableList(UBound(SaleInvoiceTableList)).Line_Other_Charge = Val(Dgl2.Item(Col2WFreight, I).Value)
-                    SaleInvoiceTableList(UBound(SaleInvoiceTableList)).Line_Other_Charge1 = Val(Dgl2.Item(Col2WPacking, I).Value)
+                        SaleInvoiceTableList(UBound(SaleInvoiceTableList)).Line_Other_Charge = Val(Dgl2.Item(Col2WFreight, I).Value)
+                        SaleInvoiceTableList(UBound(SaleInvoiceTableList)).Line_Other_Charge1 = Val(Dgl2.Item(Col2WPacking, I).Value)
 
 
 
-                    'For Header Values
-                    Tot_Gross_Amount += SaleInvoiceTableList(UBound(SaleInvoiceTableList)).Line_Gross_Amount
-                    Tot_Taxable_Amount += SaleInvoiceTableList(UBound(SaleInvoiceTableList)).Line_Taxable_Amount
-                    Tot_Tax1 += SaleInvoiceTableList(UBound(SaleInvoiceTableList)).Line_Tax1
-                    Tot_Tax2 += SaleInvoiceTableList(UBound(SaleInvoiceTableList)).Line_Tax2
-                    Tot_Tax3 += SaleInvoiceTableList(UBound(SaleInvoiceTableList)).Line_Tax3
-                    Tot_Tax4 += SaleInvoiceTableList(UBound(SaleInvoiceTableList)).Line_Tax4
-                    Tot_Tax5 += SaleInvoiceTableList(UBound(SaleInvoiceTableList)).Line_Tax5
-                    Tot_SubTotal1 += SaleInvoiceTableList(UBound(SaleInvoiceTableList)).Line_SubTotal1
-                    Tot_Other_Charges += SaleInvoiceTableList(UBound(SaleInvoiceTableList)).Line_Other_Charge
-                    Tot_Other_Charges1 += SaleInvoiceTableList(UBound(SaleInvoiceTableList)).Line_Other_Charge1
+                        'For Header Values
+                        Tot_Gross_Amount += SaleInvoiceTableList(UBound(SaleInvoiceTableList)).Line_Gross_Amount
+                        Tot_Taxable_Amount += SaleInvoiceTableList(UBound(SaleInvoiceTableList)).Line_Taxable_Amount
+                        Tot_Tax1 += SaleInvoiceTableList(UBound(SaleInvoiceTableList)).Line_Tax1
+                        Tot_Tax2 += SaleInvoiceTableList(UBound(SaleInvoiceTableList)).Line_Tax2
+                        Tot_Tax3 += SaleInvoiceTableList(UBound(SaleInvoiceTableList)).Line_Tax3
+                        Tot_Tax4 += SaleInvoiceTableList(UBound(SaleInvoiceTableList)).Line_Tax4
+                        Tot_Tax5 += SaleInvoiceTableList(UBound(SaleInvoiceTableList)).Line_Tax5
+                        Tot_SubTotal1 += SaleInvoiceTableList(UBound(SaleInvoiceTableList)).Line_SubTotal1
+                        Tot_Other_Charges += SaleInvoiceTableList(UBound(SaleInvoiceTableList)).Line_Other_Charge
+                        Tot_Other_Charges1 += SaleInvoiceTableList(UBound(SaleInvoiceTableList)).Line_Other_Charge1
 
 
-                    'SaleInvoiceTableList(UBound(SaleInvoiceTableList)) = SaleInvoiceTable
-                    ReDim Preserve SaleInvoiceTableList(UBound(SaleInvoiceTableList) + 1)
+                        'SaleInvoiceTableList(UBound(SaleInvoiceTableList)) = SaleInvoiceTable
+                        ReDim Preserve SaleInvoiceTableList(UBound(SaleInvoiceTableList) + 1)
 
-                    '#Region "Packing Charge"
-                    '                    If Val(Dgl2.Item(Col2WPacking, I).Value) > 0 Then
-                    '                        SaleInvoiceTableList(UBound(SaleInvoiceTableList)).Line_Sr = UBound(SaleInvoiceTableList) + 1
-                    '                        SaleInvoiceTableList(UBound(SaleInvoiceTableList)).Line_ItemCode = ""
-                    '                        SaleInvoiceTableList(UBound(SaleInvoiceTableList)).Line_ItemName = ItemCode.Packing
-                    '                        SaleInvoiceTableList(UBound(SaleInvoiceTableList)).Line_Specification = ""
-                    '                        SaleInvoiceTableList(UBound(SaleInvoiceTableList)).Line_SalesTaxGroupItem = "GST 0%"
-                    '                        SaleInvoiceTableList(UBound(SaleInvoiceTableList)).Line_ReferenceNo = ""
-                    '                        SaleInvoiceTableList(UBound(SaleInvoiceTableList)).Line_DocQty = 1
-                    '                        SaleInvoiceTableList(UBound(SaleInvoiceTableList)).Line_FreeQty = 0
-                    '                        SaleInvoiceTableList(UBound(SaleInvoiceTableList)).Line_Qty = 1
-                    '                        SaleInvoiceTableList(UBound(SaleInvoiceTableList)).Line_Unit = "Nos"
-                    '                        SaleInvoiceTableList(UBound(SaleInvoiceTableList)).Line_Pcs = 0
-                    '                        SaleInvoiceTableList(UBound(SaleInvoiceTableList)).Line_UnitMultiplier = 0
-                    '                        SaleInvoiceTableList(UBound(SaleInvoiceTableList)).Line_DealUnit = ""
-                    '                        SaleInvoiceTableList(UBound(SaleInvoiceTableList)).Line_DocDealQty = ""
-                    '                        SaleInvoiceTableList(UBound(SaleInvoiceTableList)).Line_DiscountPer = 0
-                    '                        SaleInvoiceTableList(UBound(SaleInvoiceTableList)).Line_DiscountAmount = 0
-                    '                        SaleInvoiceTableList(UBound(SaleInvoiceTableList)).Line_AdditionalDiscountPer = 0
-                    '                        SaleInvoiceTableList(UBound(SaleInvoiceTableList)).Line_AdditionalDiscountAmount = 0
-                    '                        SaleInvoiceTableList(UBound(SaleInvoiceTableList)).Line_Amount = Val(Dgl2.Item(Col2WPacking, I).Value)
-                    '                        SaleInvoiceTableList(UBound(SaleInvoiceTableList)).Line_Rate = Val(Dgl2.Item(Col2WPacking, I).Value)
-                    '                        SaleInvoiceTableList(UBound(SaleInvoiceTableList)).Line_Remark = ""
-                    '                        SaleInvoiceTableList(UBound(SaleInvoiceTableList)).Line_BaleNo = ""
-                    '                        SaleInvoiceTableList(UBound(SaleInvoiceTableList)).Line_LotNo = ""
-                    '                        SaleInvoiceTableList(UBound(SaleInvoiceTableList)).Line_ReferenceDocId = ""
-                    '                        SaleInvoiceTableList(UBound(SaleInvoiceTableList)).Line_SaleInvoice = ""
-                    '                        SaleInvoiceTableList(UBound(SaleInvoiceTableList)).Line_SaleInvoiceSr = ""
-                    '                        SaleInvoiceTableList(UBound(SaleInvoiceTableList)).Line_GrossWeight = 0
-                    '                        SaleInvoiceTableList(UBound(SaleInvoiceTableList)).Line_NetWeight = 0
-                    '                        SaleInvoiceTableList(UBound(SaleInvoiceTableList)).Line_Gross_Amount = SaleInvoiceTableList(UBound(SaleInvoiceTableList)).Line_Amount
-                    '                        SaleInvoiceTableList(UBound(SaleInvoiceTableList)).Line_Taxable_Amount = SaleInvoiceTableList(UBound(SaleInvoiceTableList)).Line_Amount
-                    '                        SaleInvoiceTableList(UBound(SaleInvoiceTableList)).Line_Tax1_Per = 0
-                    '                        SaleInvoiceTableList(UBound(SaleInvoiceTableList)).Line_Tax1 = SaleInvoiceTableList(UBound(SaleInvoiceTableList)).Line_Taxable_Amount * SaleInvoiceTableList(UBound(SaleInvoiceTableList)).Line_Tax1_Per / 100
-                    '                        SaleInvoiceTableList(UBound(SaleInvoiceTableList)).Line_Tax2_Per = 0
-                    '                        SaleInvoiceTableList(UBound(SaleInvoiceTableList)).Line_Tax2 = SaleInvoiceTableList(UBound(SaleInvoiceTableList)).Line_Taxable_Amount * SaleInvoiceTableList(UBound(SaleInvoiceTableList)).Line_Tax2_Per / 100
-                    '                        SaleInvoiceTableList(UBound(SaleInvoiceTableList)).Line_Tax3_Per = 0
-                    '                        SaleInvoiceTableList(UBound(SaleInvoiceTableList)).Line_Tax3 = SaleInvoiceTableList(UBound(SaleInvoiceTableList)).Line_Taxable_Amount * SaleInvoiceTableList(UBound(SaleInvoiceTableList)).Line_Tax3_Per / 100
-                    '                        SaleInvoiceTableList(UBound(SaleInvoiceTableList)).Line_Tax4_Per = 0
-                    '                        SaleInvoiceTableList(UBound(SaleInvoiceTableList)).Line_Tax4 = SaleInvoiceTableList(UBound(SaleInvoiceTableList)).Line_Taxable_Amount * SaleInvoiceTableList(UBound(SaleInvoiceTableList)).Line_Tax4_Per / 100
-                    '                        SaleInvoiceTableList(UBound(SaleInvoiceTableList)).Line_Tax5_Per = 0
-                    '                        SaleInvoiceTableList(UBound(SaleInvoiceTableList)).Line_Tax5 = SaleInvoiceTableList(UBound(SaleInvoiceTableList)).Line_Taxable_Amount * SaleInvoiceTableList(UBound(SaleInvoiceTableList)).Line_Tax5_Per / 100
-                    '                        SaleInvoiceTableList(UBound(SaleInvoiceTableList)).Line_SubTotal1 = SaleInvoiceTableList(UBound(SaleInvoiceTableList)).Line_Amount + SaleInvoiceTableList(UBound(SaleInvoiceTableList)).Line_Tax1 + SaleInvoiceTableList(UBound(SaleInvoiceTableList)).Line_Tax2 +
-                    '                                                                    SaleInvoiceTableList(UBound(SaleInvoiceTableList)).Line_Tax3 + SaleInvoiceTableList(UBound(SaleInvoiceTableList)).Line_Tax4 + SaleInvoiceTableList(UBound(SaleInvoiceTableList)).Line_Tax5
-                    '                        'For Header Values
-                    '                        Tot_Gross_Amount += SaleInvoiceTableList(UBound(SaleInvoiceTableList)).Line_Gross_Amount
-                    '                        Tot_Taxable_Amount += SaleInvoiceTableList(UBound(SaleInvoiceTableList)).Line_Taxable_Amount
-                    '                        Tot_Tax1 += SaleInvoiceTableList(UBound(SaleInvoiceTableList)).Line_Tax1
-                    '                        Tot_Tax2 += SaleInvoiceTableList(UBound(SaleInvoiceTableList)).Line_Tax2
-                    '                        Tot_Tax3 += SaleInvoiceTableList(UBound(SaleInvoiceTableList)).Line_Tax3
-                    '                        Tot_Tax4 += SaleInvoiceTableList(UBound(SaleInvoiceTableList)).Line_Tax4
-                    '                        Tot_Tax5 += SaleInvoiceTableList(UBound(SaleInvoiceTableList)).Line_Tax5
-                    '                        Tot_SubTotal1 += SaleInvoiceTableList(UBound(SaleInvoiceTableList)).Line_SubTotal1
+                        '#Region "Packing Charge"
+                        '                    If Val(Dgl2.Item(Col2WPacking, I).Value) > 0 Then
+                        '                        SaleInvoiceTableList(UBound(SaleInvoiceTableList)).Line_Sr = UBound(SaleInvoiceTableList) + 1
+                        '                        SaleInvoiceTableList(UBound(SaleInvoiceTableList)).Line_ItemCode = ""
+                        '                        SaleInvoiceTableList(UBound(SaleInvoiceTableList)).Line_ItemName = ItemCode.Packing
+                        '                        SaleInvoiceTableList(UBound(SaleInvoiceTableList)).Line_Specification = ""
+                        '                        SaleInvoiceTableList(UBound(SaleInvoiceTableList)).Line_SalesTaxGroupItem = "GST 0%"
+                        '                        SaleInvoiceTableList(UBound(SaleInvoiceTableList)).Line_ReferenceNo = ""
+                        '                        SaleInvoiceTableList(UBound(SaleInvoiceTableList)).Line_DocQty = 1
+                        '                        SaleInvoiceTableList(UBound(SaleInvoiceTableList)).Line_FreeQty = 0
+                        '                        SaleInvoiceTableList(UBound(SaleInvoiceTableList)).Line_Qty = 1
+                        '                        SaleInvoiceTableList(UBound(SaleInvoiceTableList)).Line_Unit = "Nos"
+                        '                        SaleInvoiceTableList(UBound(SaleInvoiceTableList)).Line_Pcs = 0
+                        '                        SaleInvoiceTableList(UBound(SaleInvoiceTableList)).Line_UnitMultiplier = 0
+                        '                        SaleInvoiceTableList(UBound(SaleInvoiceTableList)).Line_DealUnit = ""
+                        '                        SaleInvoiceTableList(UBound(SaleInvoiceTableList)).Line_DocDealQty = ""
+                        '                        SaleInvoiceTableList(UBound(SaleInvoiceTableList)).Line_DiscountPer = 0
+                        '                        SaleInvoiceTableList(UBound(SaleInvoiceTableList)).Line_DiscountAmount = 0
+                        '                        SaleInvoiceTableList(UBound(SaleInvoiceTableList)).Line_AdditionalDiscountPer = 0
+                        '                        SaleInvoiceTableList(UBound(SaleInvoiceTableList)).Line_AdditionalDiscountAmount = 0
+                        '                        SaleInvoiceTableList(UBound(SaleInvoiceTableList)).Line_Amount = Val(Dgl2.Item(Col2WPacking, I).Value)
+                        '                        SaleInvoiceTableList(UBound(SaleInvoiceTableList)).Line_Rate = Val(Dgl2.Item(Col2WPacking, I).Value)
+                        '                        SaleInvoiceTableList(UBound(SaleInvoiceTableList)).Line_Remark = ""
+                        '                        SaleInvoiceTableList(UBound(SaleInvoiceTableList)).Line_BaleNo = ""
+                        '                        SaleInvoiceTableList(UBound(SaleInvoiceTableList)).Line_LotNo = ""
+                        '                        SaleInvoiceTableList(UBound(SaleInvoiceTableList)).Line_ReferenceDocId = ""
+                        '                        SaleInvoiceTableList(UBound(SaleInvoiceTableList)).Line_SaleInvoice = ""
+                        '                        SaleInvoiceTableList(UBound(SaleInvoiceTableList)).Line_SaleInvoiceSr = ""
+                        '                        SaleInvoiceTableList(UBound(SaleInvoiceTableList)).Line_GrossWeight = 0
+                        '                        SaleInvoiceTableList(UBound(SaleInvoiceTableList)).Line_NetWeight = 0
+                        '                        SaleInvoiceTableList(UBound(SaleInvoiceTableList)).Line_Gross_Amount = SaleInvoiceTableList(UBound(SaleInvoiceTableList)).Line_Amount
+                        '                        SaleInvoiceTableList(UBound(SaleInvoiceTableList)).Line_Taxable_Amount = SaleInvoiceTableList(UBound(SaleInvoiceTableList)).Line_Amount
+                        '                        SaleInvoiceTableList(UBound(SaleInvoiceTableList)).Line_Tax1_Per = 0
+                        '                        SaleInvoiceTableList(UBound(SaleInvoiceTableList)).Line_Tax1 = SaleInvoiceTableList(UBound(SaleInvoiceTableList)).Line_Taxable_Amount * SaleInvoiceTableList(UBound(SaleInvoiceTableList)).Line_Tax1_Per / 100
+                        '                        SaleInvoiceTableList(UBound(SaleInvoiceTableList)).Line_Tax2_Per = 0
+                        '                        SaleInvoiceTableList(UBound(SaleInvoiceTableList)).Line_Tax2 = SaleInvoiceTableList(UBound(SaleInvoiceTableList)).Line_Taxable_Amount * SaleInvoiceTableList(UBound(SaleInvoiceTableList)).Line_Tax2_Per / 100
+                        '                        SaleInvoiceTableList(UBound(SaleInvoiceTableList)).Line_Tax3_Per = 0
+                        '                        SaleInvoiceTableList(UBound(SaleInvoiceTableList)).Line_Tax3 = SaleInvoiceTableList(UBound(SaleInvoiceTableList)).Line_Taxable_Amount * SaleInvoiceTableList(UBound(SaleInvoiceTableList)).Line_Tax3_Per / 100
+                        '                        SaleInvoiceTableList(UBound(SaleInvoiceTableList)).Line_Tax4_Per = 0
+                        '                        SaleInvoiceTableList(UBound(SaleInvoiceTableList)).Line_Tax4 = SaleInvoiceTableList(UBound(SaleInvoiceTableList)).Line_Taxable_Amount * SaleInvoiceTableList(UBound(SaleInvoiceTableList)).Line_Tax4_Per / 100
+                        '                        SaleInvoiceTableList(UBound(SaleInvoiceTableList)).Line_Tax5_Per = 0
+                        '                        SaleInvoiceTableList(UBound(SaleInvoiceTableList)).Line_Tax5 = SaleInvoiceTableList(UBound(SaleInvoiceTableList)).Line_Taxable_Amount * SaleInvoiceTableList(UBound(SaleInvoiceTableList)).Line_Tax5_Per / 100
+                        '                        SaleInvoiceTableList(UBound(SaleInvoiceTableList)).Line_SubTotal1 = SaleInvoiceTableList(UBound(SaleInvoiceTableList)).Line_Amount + SaleInvoiceTableList(UBound(SaleInvoiceTableList)).Line_Tax1 + SaleInvoiceTableList(UBound(SaleInvoiceTableList)).Line_Tax2 +
+                        '                                                                    SaleInvoiceTableList(UBound(SaleInvoiceTableList)).Line_Tax3 + SaleInvoiceTableList(UBound(SaleInvoiceTableList)).Line_Tax4 + SaleInvoiceTableList(UBound(SaleInvoiceTableList)).Line_Tax5
+                        '                        'For Header Values
+                        '                        Tot_Gross_Amount += SaleInvoiceTableList(UBound(SaleInvoiceTableList)).Line_Gross_Amount
+                        '                        Tot_Taxable_Amount += SaleInvoiceTableList(UBound(SaleInvoiceTableList)).Line_Taxable_Amount
+                        '                        Tot_Tax1 += SaleInvoiceTableList(UBound(SaleInvoiceTableList)).Line_Tax1
+                        '                        Tot_Tax2 += SaleInvoiceTableList(UBound(SaleInvoiceTableList)).Line_Tax2
+                        '                        Tot_Tax3 += SaleInvoiceTableList(UBound(SaleInvoiceTableList)).Line_Tax3
+                        '                        Tot_Tax4 += SaleInvoiceTableList(UBound(SaleInvoiceTableList)).Line_Tax4
+                        '                        Tot_Tax5 += SaleInvoiceTableList(UBound(SaleInvoiceTableList)).Line_Tax5
+                        '                        Tot_SubTotal1 += SaleInvoiceTableList(UBound(SaleInvoiceTableList)).Line_SubTotal1
 
-                    '                        'SaleInvoiceTableList(UBound(SaleInvoiceTableList)) = SaleInvoiceTable
-                    '                        ReDim Preserve SaleInvoiceTableList(UBound(SaleInvoiceTableList) + 1)
-                    '                    End If
-                    '#End Region
+                        '                        'SaleInvoiceTableList(UBound(SaleInvoiceTableList)) = SaleInvoiceTable
+                        '                        ReDim Preserve SaleInvoiceTableList(UBound(SaleInvoiceTableList) + 1)
+                        '                    End If
+                        '#End Region
 
-                    '#Region "Freight Charge"
-                    '                    If Val(Dgl2.Item(Col2WFreight, I).Value) > 0 Then
-                    '                        SaleInvoiceTableList(UBound(SaleInvoiceTableList)).Line_Sr = UBound(SaleInvoiceTableList) + 1
-                    '                        SaleInvoiceTableList(UBound(SaleInvoiceTableList)).Line_ItemCode = ""
-                    '                        SaleInvoiceTableList(UBound(SaleInvoiceTableList)).Line_ItemName = ItemCode.Freight
-                    '                        SaleInvoiceTableList(UBound(SaleInvoiceTableList)).Line_Specification = ""
-                    '                        SaleInvoiceTableList(UBound(SaleInvoiceTableList)).Line_SalesTaxGroupItem = "GST 0%"
-                    '                        SaleInvoiceTableList(UBound(SaleInvoiceTableList)).Line_ReferenceNo = ""
-                    '                        SaleInvoiceTableList(UBound(SaleInvoiceTableList)).Line_DocQty = 1
-                    '                        SaleInvoiceTableList(UBound(SaleInvoiceTableList)).Line_FreeQty = 0
-                    '                        SaleInvoiceTableList(UBound(SaleInvoiceTableList)).Line_Qty = 1
-                    '                        SaleInvoiceTableList(UBound(SaleInvoiceTableList)).Line_Unit = "Nos"
-                    '                        SaleInvoiceTableList(UBound(SaleInvoiceTableList)).Line_Pcs = 0
-                    '                        SaleInvoiceTableList(UBound(SaleInvoiceTableList)).Line_UnitMultiplier = 0
-                    '                        SaleInvoiceTableList(UBound(SaleInvoiceTableList)).Line_DealUnit = ""
-                    '                        SaleInvoiceTableList(UBound(SaleInvoiceTableList)).Line_DocDealQty = ""
-                    '                        SaleInvoiceTableList(UBound(SaleInvoiceTableList)).Line_DiscountPer = 0
-                    '                        SaleInvoiceTableList(UBound(SaleInvoiceTableList)).Line_DiscountAmount = 0
-                    '                        SaleInvoiceTableList(UBound(SaleInvoiceTableList)).Line_AdditionalDiscountPer = 0
-                    '                        SaleInvoiceTableList(UBound(SaleInvoiceTableList)).Line_AdditionalDiscountAmount = 0
-                    '                        SaleInvoiceTableList(UBound(SaleInvoiceTableList)).Line_Amount = Val(Dgl2.Item(Col2WFreight, I).Value)
-                    '                        SaleInvoiceTableList(UBound(SaleInvoiceTableList)).Line_Rate = Val(Dgl2.Item(Col2WFreight, I).Value)
-                    '                        SaleInvoiceTableList(UBound(SaleInvoiceTableList)).Line_Remark = ""
-                    '                        SaleInvoiceTableList(UBound(SaleInvoiceTableList)).Line_BaleNo = ""
-                    '                        SaleInvoiceTableList(UBound(SaleInvoiceTableList)).Line_LotNo = ""
-                    '                        SaleInvoiceTableList(UBound(SaleInvoiceTableList)).Line_ReferenceDocId = ""
-                    '                        SaleInvoiceTableList(UBound(SaleInvoiceTableList)).Line_SaleInvoice = ""
-                    '                        SaleInvoiceTableList(UBound(SaleInvoiceTableList)).Line_SaleInvoiceSr = ""
-                    '                        SaleInvoiceTableList(UBound(SaleInvoiceTableList)).Line_GrossWeight = 0
-                    '                        SaleInvoiceTableList(UBound(SaleInvoiceTableList)).Line_NetWeight = 0
-                    '                        SaleInvoiceTableList(UBound(SaleInvoiceTableList)).Line_Gross_Amount = SaleInvoiceTableList(UBound(SaleInvoiceTableList)).Line_Amount
-                    '                        SaleInvoiceTableList(UBound(SaleInvoiceTableList)).Line_Taxable_Amount = SaleInvoiceTableList(UBound(SaleInvoiceTableList)).Line_Amount
-                    '                        SaleInvoiceTableList(UBound(SaleInvoiceTableList)).Line_Tax1_Per = 0
-                    '                        SaleInvoiceTableList(UBound(SaleInvoiceTableList)).Line_Tax1 = SaleInvoiceTableList(UBound(SaleInvoiceTableList)).Line_Taxable_Amount * SaleInvoiceTableList(UBound(SaleInvoiceTableList)).Line_Tax1_Per / 100
-                    '                        SaleInvoiceTableList(UBound(SaleInvoiceTableList)).Line_Tax2_Per = 0
-                    '                        SaleInvoiceTableList(UBound(SaleInvoiceTableList)).Line_Tax2 = SaleInvoiceTableList(UBound(SaleInvoiceTableList)).Line_Taxable_Amount * SaleInvoiceTableList(UBound(SaleInvoiceTableList)).Line_Tax2_Per / 100
-                    '                        SaleInvoiceTableList(UBound(SaleInvoiceTableList)).Line_Tax3_Per = 0
-                    '                        SaleInvoiceTableList(UBound(SaleInvoiceTableList)).Line_Tax3 = SaleInvoiceTableList(UBound(SaleInvoiceTableList)).Line_Taxable_Amount * SaleInvoiceTableList(UBound(SaleInvoiceTableList)).Line_Tax3_Per / 100
-                    '                        SaleInvoiceTableList(UBound(SaleInvoiceTableList)).Line_Tax4_Per = 0
-                    '                        SaleInvoiceTableList(UBound(SaleInvoiceTableList)).Line_Tax4 = SaleInvoiceTableList(UBound(SaleInvoiceTableList)).Line_Taxable_Amount * SaleInvoiceTableList(UBound(SaleInvoiceTableList)).Line_Tax4_Per / 100
-                    '                        SaleInvoiceTableList(UBound(SaleInvoiceTableList)).Line_Tax5_Per = 0
-                    '                        SaleInvoiceTableList(UBound(SaleInvoiceTableList)).Line_Tax5 = SaleInvoiceTableList(UBound(SaleInvoiceTableList)).Line_Taxable_Amount * SaleInvoiceTableList(UBound(SaleInvoiceTableList)).Line_Tax5_Per / 100
-                    '                        SaleInvoiceTableList(UBound(SaleInvoiceTableList)).Line_SubTotal1 = SaleInvoiceTableList(UBound(SaleInvoiceTableList)).Line_Taxable_Amount + SaleInvoiceTableList(UBound(SaleInvoiceTableList)).Line_Tax1 + SaleInvoiceTableList(UBound(SaleInvoiceTableList)).Line_Tax2 +
-                    '                                                                    SaleInvoiceTableList(UBound(SaleInvoiceTableList)).Line_Tax3 + SaleInvoiceTableList(UBound(SaleInvoiceTableList)).Line_Tax4 + SaleInvoiceTableList(UBound(SaleInvoiceTableList)).Line_Tax5
-                    '                        'For Header Values
-                    '                        Tot_Gross_Amount += SaleInvoiceTableList(UBound(SaleInvoiceTableList)).Line_Gross_Amount
-                    '                        Tot_Taxable_Amount += SaleInvoiceTableList(UBound(SaleInvoiceTableList)).Line_Taxable_Amount
-                    '                        Tot_Tax1 += SaleInvoiceTableList(UBound(SaleInvoiceTableList)).Line_Tax1
-                    '                        Tot_Tax2 += SaleInvoiceTableList(UBound(SaleInvoiceTableList)).Line_Tax2
-                    '                        Tot_Tax3 += SaleInvoiceTableList(UBound(SaleInvoiceTableList)).Line_Tax3
-                    '                        Tot_Tax4 += SaleInvoiceTableList(UBound(SaleInvoiceTableList)).Line_Tax4
-                    '                        Tot_Tax5 += SaleInvoiceTableList(UBound(SaleInvoiceTableList)).Line_Tax5
-                    '                        Tot_SubTotal1 += SaleInvoiceTableList(UBound(SaleInvoiceTableList)).Line_SubTotal1
+                        '#Region "Freight Charge"
+                        '                    If Val(Dgl2.Item(Col2WFreight, I).Value) > 0 Then
+                        '                        SaleInvoiceTableList(UBound(SaleInvoiceTableList)).Line_Sr = UBound(SaleInvoiceTableList) + 1
+                        '                        SaleInvoiceTableList(UBound(SaleInvoiceTableList)).Line_ItemCode = ""
+                        '                        SaleInvoiceTableList(UBound(SaleInvoiceTableList)).Line_ItemName = ItemCode.Freight
+                        '                        SaleInvoiceTableList(UBound(SaleInvoiceTableList)).Line_Specification = ""
+                        '                        SaleInvoiceTableList(UBound(SaleInvoiceTableList)).Line_SalesTaxGroupItem = "GST 0%"
+                        '                        SaleInvoiceTableList(UBound(SaleInvoiceTableList)).Line_ReferenceNo = ""
+                        '                        SaleInvoiceTableList(UBound(SaleInvoiceTableList)).Line_DocQty = 1
+                        '                        SaleInvoiceTableList(UBound(SaleInvoiceTableList)).Line_FreeQty = 0
+                        '                        SaleInvoiceTableList(UBound(SaleInvoiceTableList)).Line_Qty = 1
+                        '                        SaleInvoiceTableList(UBound(SaleInvoiceTableList)).Line_Unit = "Nos"
+                        '                        SaleInvoiceTableList(UBound(SaleInvoiceTableList)).Line_Pcs = 0
+                        '                        SaleInvoiceTableList(UBound(SaleInvoiceTableList)).Line_UnitMultiplier = 0
+                        '                        SaleInvoiceTableList(UBound(SaleInvoiceTableList)).Line_DealUnit = ""
+                        '                        SaleInvoiceTableList(UBound(SaleInvoiceTableList)).Line_DocDealQty = ""
+                        '                        SaleInvoiceTableList(UBound(SaleInvoiceTableList)).Line_DiscountPer = 0
+                        '                        SaleInvoiceTableList(UBound(SaleInvoiceTableList)).Line_DiscountAmount = 0
+                        '                        SaleInvoiceTableList(UBound(SaleInvoiceTableList)).Line_AdditionalDiscountPer = 0
+                        '                        SaleInvoiceTableList(UBound(SaleInvoiceTableList)).Line_AdditionalDiscountAmount = 0
+                        '                        SaleInvoiceTableList(UBound(SaleInvoiceTableList)).Line_Amount = Val(Dgl2.Item(Col2WFreight, I).Value)
+                        '                        SaleInvoiceTableList(UBound(SaleInvoiceTableList)).Line_Rate = Val(Dgl2.Item(Col2WFreight, I).Value)
+                        '                        SaleInvoiceTableList(UBound(SaleInvoiceTableList)).Line_Remark = ""
+                        '                        SaleInvoiceTableList(UBound(SaleInvoiceTableList)).Line_BaleNo = ""
+                        '                        SaleInvoiceTableList(UBound(SaleInvoiceTableList)).Line_LotNo = ""
+                        '                        SaleInvoiceTableList(UBound(SaleInvoiceTableList)).Line_ReferenceDocId = ""
+                        '                        SaleInvoiceTableList(UBound(SaleInvoiceTableList)).Line_SaleInvoice = ""
+                        '                        SaleInvoiceTableList(UBound(SaleInvoiceTableList)).Line_SaleInvoiceSr = ""
+                        '                        SaleInvoiceTableList(UBound(SaleInvoiceTableList)).Line_GrossWeight = 0
+                        '                        SaleInvoiceTableList(UBound(SaleInvoiceTableList)).Line_NetWeight = 0
+                        '                        SaleInvoiceTableList(UBound(SaleInvoiceTableList)).Line_Gross_Amount = SaleInvoiceTableList(UBound(SaleInvoiceTableList)).Line_Amount
+                        '                        SaleInvoiceTableList(UBound(SaleInvoiceTableList)).Line_Taxable_Amount = SaleInvoiceTableList(UBound(SaleInvoiceTableList)).Line_Amount
+                        '                        SaleInvoiceTableList(UBound(SaleInvoiceTableList)).Line_Tax1_Per = 0
+                        '                        SaleInvoiceTableList(UBound(SaleInvoiceTableList)).Line_Tax1 = SaleInvoiceTableList(UBound(SaleInvoiceTableList)).Line_Taxable_Amount * SaleInvoiceTableList(UBound(SaleInvoiceTableList)).Line_Tax1_Per / 100
+                        '                        SaleInvoiceTableList(UBound(SaleInvoiceTableList)).Line_Tax2_Per = 0
+                        '                        SaleInvoiceTableList(UBound(SaleInvoiceTableList)).Line_Tax2 = SaleInvoiceTableList(UBound(SaleInvoiceTableList)).Line_Taxable_Amount * SaleInvoiceTableList(UBound(SaleInvoiceTableList)).Line_Tax2_Per / 100
+                        '                        SaleInvoiceTableList(UBound(SaleInvoiceTableList)).Line_Tax3_Per = 0
+                        '                        SaleInvoiceTableList(UBound(SaleInvoiceTableList)).Line_Tax3 = SaleInvoiceTableList(UBound(SaleInvoiceTableList)).Line_Taxable_Amount * SaleInvoiceTableList(UBound(SaleInvoiceTableList)).Line_Tax3_Per / 100
+                        '                        SaleInvoiceTableList(UBound(SaleInvoiceTableList)).Line_Tax4_Per = 0
+                        '                        SaleInvoiceTableList(UBound(SaleInvoiceTableList)).Line_Tax4 = SaleInvoiceTableList(UBound(SaleInvoiceTableList)).Line_Taxable_Amount * SaleInvoiceTableList(UBound(SaleInvoiceTableList)).Line_Tax4_Per / 100
+                        '                        SaleInvoiceTableList(UBound(SaleInvoiceTableList)).Line_Tax5_Per = 0
+                        '                        SaleInvoiceTableList(UBound(SaleInvoiceTableList)).Line_Tax5 = SaleInvoiceTableList(UBound(SaleInvoiceTableList)).Line_Taxable_Amount * SaleInvoiceTableList(UBound(SaleInvoiceTableList)).Line_Tax5_Per / 100
+                        '                        SaleInvoiceTableList(UBound(SaleInvoiceTableList)).Line_SubTotal1 = SaleInvoiceTableList(UBound(SaleInvoiceTableList)).Line_Taxable_Amount + SaleInvoiceTableList(UBound(SaleInvoiceTableList)).Line_Tax1 + SaleInvoiceTableList(UBound(SaleInvoiceTableList)).Line_Tax2 +
+                        '                                                                    SaleInvoiceTableList(UBound(SaleInvoiceTableList)).Line_Tax3 + SaleInvoiceTableList(UBound(SaleInvoiceTableList)).Line_Tax4 + SaleInvoiceTableList(UBound(SaleInvoiceTableList)).Line_Tax5
+                        '                        'For Header Values
+                        '                        Tot_Gross_Amount += SaleInvoiceTableList(UBound(SaleInvoiceTableList)).Line_Gross_Amount
+                        '                        Tot_Taxable_Amount += SaleInvoiceTableList(UBound(SaleInvoiceTableList)).Line_Taxable_Amount
+                        '                        Tot_Tax1 += SaleInvoiceTableList(UBound(SaleInvoiceTableList)).Line_Tax1
+                        '                        Tot_Tax2 += SaleInvoiceTableList(UBound(SaleInvoiceTableList)).Line_Tax2
+                        '                        Tot_Tax3 += SaleInvoiceTableList(UBound(SaleInvoiceTableList)).Line_Tax3
+                        '                        Tot_Tax4 += SaleInvoiceTableList(UBound(SaleInvoiceTableList)).Line_Tax4
+                        '                        Tot_Tax5 += SaleInvoiceTableList(UBound(SaleInvoiceTableList)).Line_Tax5
+                        '                        Tot_SubTotal1 += SaleInvoiceTableList(UBound(SaleInvoiceTableList)).Line_SubTotal1
 
-                    '                        'SaleInvoiceTableList(UBound(SaleInvoiceTableList)) = SaleInvoiceTable
-                    '                        ReDim Preserve SaleInvoiceTableList(UBound(SaleInvoiceTableList) + 1)
-                    '                    End If
-                    '#End Region
-                End If
-            Next
-
-            SaleInvoiceTableList(0).Gross_Amount = Tot_Gross_Amount
-            SaleInvoiceTableList(0).Taxable_Amount = Tot_Taxable_Amount
-            SaleInvoiceTableList(0).Tax1 = Tot_Tax1
-            SaleInvoiceTableList(0).Tax2 = Tot_Tax2
-            SaleInvoiceTableList(0).Tax3 = Tot_Tax3
-            SaleInvoiceTableList(0).Tax4 = Tot_Tax4
-            SaleInvoiceTableList(0).Tax5 = Tot_Tax5
-            SaleInvoiceTableList(0).SubTotal1 = Tot_SubTotal1
-            SaleInvoiceTableList(0).Other_Charge = Tot_Other_Charges
-            SaleInvoiceTableList(0).Other_Charge1 = Tot_Other_Charges1
-            SaleInvoiceTableList(0).Deduction = 0
-            SaleInvoiceTableList(0).Round_Off = Math.Round(Math.Round(SaleInvoiceTableList(0).SubTotal1 + SaleInvoiceTableList(0).Other_Charge + SaleInvoiceTableList(0).Other_Charge1) - (SaleInvoiceTableList(0).SubTotal1 + SaleInvoiceTableList(0).Other_Charge + SaleInvoiceTableList(0).Other_Charge1), 2)
-            SaleInvoiceTableList(0).Net_Amount = Math.Round(SaleInvoiceTableList(0).SubTotal1 + SaleInvoiceTableList(0).Other_Charge + SaleInvoiceTableList(0).Other_Charge1)
-
-
-
-            Dim Tot_RoundOff As Double = 0
-            Dim Tot_NetAmount As Double = 0
-            For J As Integer = 0 To SaleInvoiceTableList.Length - 1
-                If Val(SaleInvoiceTableList(0).Gross_Amount) > 0 Then
-                    SaleInvoiceTableList(J).Line_Round_Off = Math.Round(SaleInvoiceTableList(0).Round_Off * SaleInvoiceTableList(J).Line_Gross_Amount / SaleInvoiceTableList(0).Gross_Amount, 2)
-                    SaleInvoiceTableList(J).Line_Net_Amount = Math.Round(SaleInvoiceTableList(0).Net_Amount * SaleInvoiceTableList(J).Line_Gross_Amount / SaleInvoiceTableList(0).Gross_Amount, 2)
-                End If
-                Tot_RoundOff += SaleInvoiceTableList(J).Line_Round_Off
-                Tot_NetAmount += SaleInvoiceTableList(J).Line_Net_Amount
-            Next
-
-            If Tot_RoundOff <> SaleInvoiceTableList(0).Round_Off Then
-                SaleInvoiceTableList(0).Line_Round_Off = SaleInvoiceTableList(0).Line_Round_Off + (SaleInvoiceTableList(0).Round_Off - Tot_RoundOff)
-            End If
-
-            If Tot_NetAmount <> SaleInvoiceTableList(0).Net_Amount Then
-                SaleInvoiceTableList(0).Line_Net_Amount = SaleInvoiceTableList(0).Line_Net_Amount + (SaleInvoiceTableList(0).Net_Amount - Tot_NetAmount)
-            End If
-
-            'If SaleInvoiceTableList(0).Net_Amount > 0 Then
-            Dim bDocId As String = FrmSaleInvoiceDirect_WithDimension_ShyamaShyam.InsertSaleInvoice(SaleInvoiceTableList)
-            If AgL.XNull(bDocId) <> "" And (AgL.XNull(SaleInvoiceTableList(0).V_Type) = "SI" Or AgL.XNull(SaleInvoiceTableList(0).V_Type) = "WSI") Then
-
-                For M As Integer = 0 To Dgl2.Rows.Count - 1
-                    If AgL.XNull(Dgl2.Item(Col2WInvoiceNo, M).Value) <> "" Then
-                        Dgl2.Item(Col2WSaleInvoiceDocId, M).Value = bDocId
+                        '                        'SaleInvoiceTableList(UBound(SaleInvoiceTableList)) = SaleInvoiceTable
+                        '                        ReDim Preserve SaleInvoiceTableList(UBound(SaleInvoiceTableList) + 1)
+                        '                    End If
+                        '#End Region
                     End If
                 Next
 
+                SaleInvoiceTableList(0).Gross_Amount = Tot_Gross_Amount
+                SaleInvoiceTableList(0).Taxable_Amount = Tot_Taxable_Amount
+                SaleInvoiceTableList(0).Tax1 = Tot_Tax1
+                SaleInvoiceTableList(0).Tax2 = Tot_Tax2
+                SaleInvoiceTableList(0).Tax3 = Tot_Tax3
+                SaleInvoiceTableList(0).Tax4 = Tot_Tax4
+                SaleInvoiceTableList(0).Tax5 = Tot_Tax5
+                SaleInvoiceTableList(0).SubTotal1 = Tot_SubTotal1
+                SaleInvoiceTableList(0).Other_Charge = Tot_Other_Charges
+                SaleInvoiceTableList(0).Other_Charge1 = Tot_Other_Charges1
+                SaleInvoiceTableList(0).Deduction = 0
+                SaleInvoiceTableList(0).Round_Off = Math.Round(Math.Round(SaleInvoiceTableList(0).SubTotal1 + SaleInvoiceTableList(0).Other_Charge + SaleInvoiceTableList(0).Other_Charge1) - (SaleInvoiceTableList(0).SubTotal1 + SaleInvoiceTableList(0).Other_Charge + SaleInvoiceTableList(0).Other_Charge1), 2)
+                SaleInvoiceTableList(0).Net_Amount = Math.Round(SaleInvoiceTableList(0).SubTotal1 + SaleInvoiceTableList(0).Other_Charge + SaleInvoiceTableList(0).Other_Charge1)
 
-                mQry = " UPDATE SaleInvoice Set 
+
+
+                Dim Tot_RoundOff As Double = 0
+                Dim Tot_NetAmount As Double = 0
+                For J As Integer = 0 To SaleInvoiceTableList.Length - 1
+                    If Val(SaleInvoiceTableList(0).Gross_Amount) > 0 Then
+                        SaleInvoiceTableList(J).Line_Round_Off = Math.Round(SaleInvoiceTableList(0).Round_Off * SaleInvoiceTableList(J).Line_Gross_Amount / SaleInvoiceTableList(0).Gross_Amount, 2)
+                        SaleInvoiceTableList(J).Line_Net_Amount = Math.Round(SaleInvoiceTableList(0).Net_Amount * SaleInvoiceTableList(J).Line_Gross_Amount / SaleInvoiceTableList(0).Gross_Amount, 2)
+                    End If
+                    Tot_RoundOff += SaleInvoiceTableList(J).Line_Round_Off
+                    Tot_NetAmount += SaleInvoiceTableList(J).Line_Net_Amount
+                Next
+
+                If Tot_RoundOff <> SaleInvoiceTableList(0).Round_Off Then
+                    SaleInvoiceTableList(0).Line_Round_Off = SaleInvoiceTableList(0).Line_Round_Off + (SaleInvoiceTableList(0).Round_Off - Tot_RoundOff)
+                End If
+
+                If Tot_NetAmount <> SaleInvoiceTableList(0).Net_Amount Then
+                    SaleInvoiceTableList(0).Line_Net_Amount = SaleInvoiceTableList(0).Line_Net_Amount + (SaleInvoiceTableList(0).Net_Amount - Tot_NetAmount)
+                End If
+
+                'If SaleInvoiceTableList(0).Net_Amount > 0 Then
+                Dim bDocId As String = FrmSaleInvoiceDirect_WithDimension_ShyamaShyam.InsertSaleInvoice(SaleInvoiceTableList)
+                If AgL.XNull(bDocId) <> "" And (AgL.XNull(SaleInvoiceTableList(0).V_Type) = "SI" Or AgL.XNull(SaleInvoiceTableList(0).V_Type) = "WSI") Then
+
+                    For M As Integer = 0 To Dgl2.Rows.Count - 1
+                        If AgL.XNull(Dgl2.Item(Col2WInvoiceNo, M).Value) <> "" Then
+                            Dgl2.Item(Col2WSaleInvoiceDocId, M).Value = bDocId
+                        End If
+                    Next
+
+
+                    mQry = " UPDATE SaleInvoice Set 
                             AmsDocId = " & AgL.Chk_Text(Dgl2.Item(Col2SaleInvoiceDocId, mRow).Value) & ",
                             AmsDocNo = " & AgL.Chk_Text(Dgl2.Item(Col2InvoiceNo, mRow).Value) & ",
                             AmsDocDate = " & AgL.Chk_Date(Dgl2.Item(Col2InvoiceDate, mRow).Value) & ",
                             AmsDocTaxAmount = " & Val(Dgl2.Item(Col2Tax, mRow).Value) & ", 
                             AmsDocNetAmount = " & Val(Dgl2.Item(Col2Amount, mRow).Value) & "  
                             Where DocId = '" & bDocId & "'"
-                AgL.Dman_ExecuteNonQry(mQry, AgL.GCn, AgL.ECmd)
+                    AgL.Dman_ExecuteNonQry(mQry, AgL.GCn, AgL.ECmd)
 
 
-                mQry = " INSERT INTO SaleInvoiceGeneratedEntries(Code, Type, DocId, SaleOrderNo, SaleOrderDocId, Site_Code, Div_Code, V_Type, Remarks) 
+                    mQry = " INSERT INTO SaleInvoiceGeneratedEntries(Code, Type, DocId, SaleOrderNo, SaleOrderDocId, Site_Code, Div_Code, V_Type, Remarks) 
                             Select '" & mSearchCode & "' As Code, 'Sale Invoice', '" & bDocId & "', '" & TxtOrderNo.Text & "', 
                             '" & TxtSaleOrderDocId_W.Text & "', '" & AgL.PubSiteCode & "', '" & AgL.PubDivCode & "', '" & SaleInvoiceTableList(0).V_Type & "', '" & TxtRemark.Text & "' "
-                AgL.Dman_ExecuteNonQry(mQry, AgL.GCn, AgL.ECmd)
+                    AgL.Dman_ExecuteNonQry(mQry, AgL.GCn, AgL.ECmd)
 
-                mQry = "Update PurchInvoice Set GenDocId = '" & bDocId & "' Where DocID = (Select DocID From SaleInvoiceGeneratedEntries Where Code = '" & mSearchCode & "' And Type = 'Purchase Invoice')"
-                AgL.Dman_ExecuteNonQry(mQry, AgL.GCn, AgL.ECmd)
+                    mQry = "Update PurchInvoice Set GenDocId = '" & bDocId & "' Where DocID = (Select DocID From SaleInvoiceGeneratedEntries Where Code = '" & mSearchCode & "' And Type = 'Purchase Invoice')"
+                    AgL.Dman_ExecuteNonQry(mQry, AgL.GCn, AgL.ECmd)
 
-                If BtnTransportDetail.Tag IsNot Nothing Then
-                    CType(BtnTransportDetail.Tag, FrmSaleInvoiceTransport).FSave(bDocId, Conn, Cmd)
+                    If BtnTransportDetail.Tag IsNot Nothing Then
+                        CType(BtnTransportDetail.Tag, FrmSaleInvoiceTransport).FSave(bDocId, Conn, Cmd)
+                    End If
+
+
+                    'mQry = "Insert Into TransactionReferences (DocID, ReferenceDocID, IsEditingAllowed, IsDeletingAllowed) 
+                    '        Values (" & AgL.Chk_Text(bDocId) & ", '" & bDocId & "', 1, 0) "
+                    'AgL.Dman_ExecuteNonQry(mQry, Conn, Cmd)
+                Else
                 End If
 
-
-                'mQry = "Insert Into TransactionReferences (DocID, ReferenceDocID, IsEditingAllowed, IsDeletingAllowed) 
-                '        Values (" & AgL.Chk_Text(bDocId) & ", '" & bDocId & "', 1, 0) "
-                'AgL.Dman_ExecuteNonQry(mQry, Conn, Cmd)
-            Else
-            End If
-
-            If AgL.XNull(Dgl2.Item(Col2GeneratedDocId, mRow).Value) <> "" Then
-                'Dim SourceDatabasePath As String = AgL.INIRead(StrPath + "\" + IniName, "CompanyInfo", "ActualDBPath", "")
-                'Dim SourcePath As String = System.IO.Path.GetDirectoryName(SourceDatabasePath) + "\Images\" + AgL.XNull(Dgl2.Item(Col2GeneratedDocId, mRow).Value)
-                Dim SourcePath As String = PubAttachmentPath + AgL.XNull(Dgl2.Item(Col2GeneratedDocId, mRow).Value)
-                If (Directory.Exists(SourcePath)) Then
-                    My.Computer.FileSystem.RenameDirectory(SourcePath, bDocId)
+                If AgL.XNull(Dgl2.Item(Col2GeneratedDocId, mRow).Value) <> "" Then
+                    'Dim SourceDatabasePath As String = AgL.INIRead(StrPath + "\" + IniName, "CompanyInfo", "ActualDBPath", "")
+                    'Dim SourcePath As String = System.IO.Path.GetDirectoryName(SourceDatabasePath) + "\Images\" + AgL.XNull(Dgl2.Item(Col2GeneratedDocId, mRow).Value)
+                    Dim SourcePath As String = PubAttachmentPath + AgL.XNull(Dgl2.Item(Col2GeneratedDocId, mRow).Value)
+                    If (Directory.Exists(SourcePath)) Then
+                        My.Computer.FileSystem.RenameDirectory(SourcePath, bDocId)
+                    End If
                 End If
-            End If
 
-            Dgl2.Item(Col2GeneratedDocId, mRow).Value = bDocId
-        End If
+                Dgl2.Item(Col2GeneratedDocId, mRow).Value = bDocId
+            End If
     End Sub
     Private Sub BtnOk_Click(sender As Object, e As EventArgs) Handles BtnSave.Click
         FProcSave()

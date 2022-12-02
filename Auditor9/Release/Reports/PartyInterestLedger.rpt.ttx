@@ -1,51 +1,51 @@
 ; Field definition file for table: ADORecordset
 RecordType	string	255		
-DocId	string	255	D1    JV 2019    1017	
-V_type	string	255	JV	
-RecId	string	255	1351	
-V_Date	datetime	28/Jan/2020 12:00:00 AM	
-Site_Code	string	255	1	
+DocId	string	255	D2   WSI 2021    1016	
+V_type	string	255	WSI	
+RecId	string	255	941	
+V_Date	datetime	18/Jun/2021 12:00:00 AM	
+Site_Code	string	255	2	
 Div_Code	string	255	D	
-Subcode	string	255	D100002759	
-LinkedSubcode	string	255	D100002760	
+Subcode	string	255	D100004630	
+LinkedSubcode	string	255	D100004632	
 GoodsReturn	number	0	
-Adjustment	number	918.15	
+Adjustment	number	0	
 Payment	number	0	
-Balance	number	918.15	
-AmtDr	number	918.15	
+Balance	number	493.66	
+AmtDr	number	493.66	
 AmtCr	number	0	
-Narration	string	255	Receipt Received.  RCT : .  
-119721	
-AdjDocID	string	255	RCT-2876	
-DueDate	datetime	28/Jan/2020 12:00:00 AM	
-AdjDate	datetime	03/Feb/2020 12:00:00 AM	
-AdjPayment	number	918.15	
-ChqNo	string	255	119721	
-AdjAmount	number	918.15	
+Narration	string	255	 RCT : .  
+NEFT	
+AdjDocID	string	255	RCT-2057	
+DueDate	datetime	18/Jun/2021 12:00:00 AM	
+AdjDate	datetime	19/Aug/2021 12:00:00 AM	
+AdjPayment	number	493.66	
+ChqNo	string	255	NEFT	
+AdjAmount	number	493.66	
 InterestBalance	number	0	
-SalePartyName	string	255		
-PartyName	string	255	PATWA GENERAL STOERS [W], BIRDPUR	
-PartyCity	string	255	BIRDPUR	
-LinkedPartyName	string	255	PATWA GENERAL STOERS-BIRDPUR, BIRDPUR	
-LinkedPartyCity	string	255	BIRDPUR	
-LrNo	string	255		
-Brand	string	255		
-AmsInvNo	string	255		
-AmsInvAmt	number	0	
-TaxableAmt	string	255		
-TaxAmt	string	255		
-OtherChgAmt	string	255		
-BillAmt	string	255		
+SalePartyName	string	255	BIRENDRA VASTRALAY-SAKALA BAZAR	
+PartyName	string	255	BIRENDRA VASTRALAY [W], SAKLA BAZAR	
+PartyCity	string	255	SAKLA BAZAR	
+LinkedPartyName	string	255	BIRENDRA VASTRALAY-SAKALA BAZAR, SAKLA BAZAR	
+LinkedPartyCity	string	255	SAKLA BAZAR	
+LrNo	string	255	5021775632 * 1	
+Brand	string	255	KRISHNA TEXTILE,	
+AmsInvNo	string	255	907	
+AmsInvAmt	number	493.66	
+TaxableAmt	number	470.15	
+TaxAmt	number	23.5075	
+OtherChgAmt	number	0	
+BillAmt	number	493.66	
 Div_Name	string	255	DEMO	
-Site_Name	string	255	KANPUR	
-InterestDays	number	-54	
-Narration1	string	255	Receipt Received.  RCT : .  	
-IntRate	number	-12	
-InterestAmount	number	-16.3	
+Site_Name	string	255	AHMEDABAD	
+InterestDays	number	2	
+Narration1	string	255	 RCT : .  	
+IntRate	number	18	
+InterestAmount	number	0.49	
 InterestLeaverageDays	number	60	
 InterestSlabDescription	string	255	60-60	
-CreditLimit	number	3000000	
-PakkaBalance	number	2746.35	
-PakkaPartyCount	long	113	
+CreditLimit	number	500000	
+PakkaBalance	number	2890.89	
+PakkaPartyCount	long	16	
 AveragePaymentDays	number		
-SiteShortName	string	255	KNP-	
+SiteShortName	string	255	ADI-	

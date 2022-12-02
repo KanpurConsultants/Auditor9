@@ -87,7 +87,7 @@
   <Column>
     <Name>Size</Name>
     <Index>12</Index>
-    <Width>100</Width>
+    <Width>196</Width>
     <Visible>True</Visible>
     <AggregateFunction />
   </Column>
