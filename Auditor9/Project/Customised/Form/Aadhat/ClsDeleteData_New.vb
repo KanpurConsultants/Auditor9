@@ -131,6 +131,10 @@ Public Class ClsDeleteData_New
     Dim mHelpSizeQry$ = "Select 'o' As Tick, Code, Description As Name From Item Where V_Type = '" & ItemV_Type.SIZE & "' Order By Specification "
     Dim mHelpTagQry$ = "Select 'o' As Tick, H.Code, H.Description FROM Tag H "
     Dim mHelpAccountGroupQry$ = "SELECT GroupCode As Code, GroupName FROM AcGroup WHERE GroupName IN ('Sundry Creditors','Sundry Debtors') "
+    Dim mHelpAccountQry$ = "SELECT SG.Subcode As Code, SG.Name  
+                            FROM Subgroup SG
+                            LEFT JOIN AcGroup AG ON AG.GroupCode = SG.GroupCode 
+                            WHERE AG.GroupName IN ('Sundry Creditors','Sundry Debtors') "
 
     Dim DsRep As DataSet = Nothing, DsRep1 As DataSet = Nothing, DsRep2 As DataSet = Nothing
     Dim mQry$ = "", RepName$ = "", RepTitle$ = "", OrderByStr$ = ""
@@ -148,6 +152,7 @@ Public Class ClsDeleteData_New
         Try
             ReportFrm.CreateHelpGrid("AsOnDate", "As On Date", AgLibrary.FrmReportLayout.FieldFilterDataType.StringType, AgLibrary.FrmReportLayout.FieldDataType.DateType, "", AgL.PubLoginDate)
             ReportFrm.CreateHelpGrid("Account Group", "Account Group", AgLibrary.FrmReportLayout.FieldFilterDataType.StringType, AgLibrary.FrmReportLayout.FieldDataType.SingleSelection, mHelpAccountGroupQry, "")
+            ReportFrm.CreateHelpGrid("Account", "Account", AgLibrary.FrmReportLayout.FieldFilterDataType.StringType, AgLibrary.FrmReportLayout.FieldDataType.SingleSelection, mHelpAccountQry, "")
             ReportFrm.BtnPrint.Text = "Delete"
         Catch ex As Exception
             MsgBox(ex.Message)
@@ -199,6 +204,9 @@ Public Class ClsDeleteData_New
                         WHERE Date(H.V_Date) <= " & AgL.Chk_Date(CDate(ReportFrm.FGetText(0)).ToString("s")) & "
                         AND H.V_Type IN ('WPS','PS','RS','WRS') 
                         AND Ag.GroupCode = " & ReportFrm.FGetCode(1) & ""
+                If (ReportFrm.FGetCode(2) <> "") Then
+                    mQry = mQry & " And Sg.SubCode = " & ReportFrm.FGetCode(2) & ""
+                End If
 
                 mQry += " UNION ALL "
 
@@ -215,6 +223,9 @@ Public Class ClsDeleteData_New
                         AND Date(H.V_Date) <= " & AgL.Chk_Date(CDate(ReportFrm.FGetText(0)).ToString("s")) & "
                         AND H.V_Type IN ('WPS','PS','RS','WRS') 
                         AND Ag.GroupCode = " & ReportFrm.FGetCode(1) & ""
+                If (ReportFrm.FGetCode(2) <> "") Then
+                    mQry = mQry & " And Sg.SubCode = " & ReportFrm.FGetCode(2) & ""
+                End If
 
                 mQry += " UNION ALL "
 
@@ -230,8 +241,12 @@ Public Class ClsDeleteData_New
                         WHERE L.PaymentDocId Is Not Null
                         And Date(H.V_Date) <= " & AgL.Chk_Date(CDate(ReportFrm.FGetText(0)).ToString("s")) & "
                         AND H.V_Type IN ('WPS','PS','RS','WRS') 
-                        AND Ag.GroupCode = " & ReportFrm.FGetCode(1) & "
-                        Order By H.V_Date Desc "
+                        AND Ag.GroupCode = " & ReportFrm.FGetCode(1) & ""
+                If (ReportFrm.FGetCode(2) <> "") Then
+                    mQry = mQry & " And Sg.SubCode = " & ReportFrm.FGetCode(2) & ""
+                End If
+
+                mQry = mQry & " Order By H.V_Date Desc "
                 Dim DtSelectedData As DataTable = AgL.FillData(mQry, AgL.GCn).Tables(0)
 
                 For I As Integer = 0 To DtSelectedData.Rows.Count - 1
@@ -351,7 +366,16 @@ Public Class ClsDeleteData_New
                         FROM Ledger L 
                         WHERE L.V_Type NOT IN ('OB','WOB')
                         And L.DocId Not In ('D1    RC 2019       1', 'D1   WRS 2019      52', 'D1   WRS 2019     124', 'D1   WRS 2019     126', 'D1   WRS 2019     127', 'D1   WRS 2020      65', 'D1   WRS 2020     167')
-                        GROUP BY L.DocId
+                        AND L.DocId In ( SELECT H.DocId
+                        FROM Ledger H
+                        LEFT JOIN Subgroup Sg ON H.LinkedSubcode = Sg.Subcode
+                        LEFT JOIN AcGroup Ag ON Sg.GroupCode = Ag.GroupCode
+                        Where 1=1 AND Ag.GroupCode = " & ReportFrm.FGetCode(1) & ""
+                If (ReportFrm.FGetCode(2) <> "") Then
+                    mQry = mQry & " And Sg.SubCode = " & ReportFrm.FGetCode(2) & ""
+                End If
+
+                mQry = mQry & " GROUP BY H.DocId ) GROUP BY L.DocId
                         HAVING IfNull(Sum(L.AmtDr),0) - IfNull(Sum(L.AmtCr),0) > 0.1"
                 Dim DtDiffDocIds As DataTable = AgL.FillData(mQry, AgL.GCn).Tables(0)
 

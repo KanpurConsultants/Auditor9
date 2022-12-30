@@ -212,6 +212,7 @@
     <Compile Include="EInvoice\Functions.vb" />
     <Compile Include="EInvoice\JSON.vb" />
     <Compile Include="EInvoice\MobWebAPI.vb" />
+    <Compile Include="Form\Aadhat\ClsDeleteLedgerAcData.vb" />
     <Compile Include="Form\FrmSerializeEntryNo.Designer.vb">
       <DependentUpon>FrmSerializeEntryNo.vb</DependentUpon>
     </Compile>

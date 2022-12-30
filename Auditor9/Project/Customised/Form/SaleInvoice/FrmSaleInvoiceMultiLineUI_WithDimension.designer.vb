@@ -26,6 +26,8 @@ Partial Class FrmSaleInvoiceMultiLineUI_WithDimension
         Me.Pnl1 = New System.Windows.Forms.Panel()
         Me.BtnOk = New System.Windows.Forms.Button()
         Me.Panel1 = New System.Windows.Forms.Panel()
+        Me.LblTotalQty = New System.Windows.Forms.Label()
+        Me.LblTotalQtyText = New System.Windows.Forms.Label()
         Me.SuspendLayout()
         '
         'Pnl1
@@ -63,23 +65,57 @@ Partial Class FrmSaleInvoiceMultiLineUI_WithDimension
         Me.Panel1.Size = New System.Drawing.Size(536, 2)
         Me.Panel1.TabIndex = 744
         '
-        'FrmSaleInvoiceMultiLineUI
+        'LblTotalQty
+        '
+        Me.LblTotalQty.Anchor = CType((((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Bottom) _
+            Or System.Windows.Forms.AnchorStyles.Left) _
+            Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
+        Me.LblTotalQty.AutoSize = True
+        Me.LblTotalQty.Font = New System.Drawing.Font("Arial", 9.75!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.LblTotalQty.ForeColor = System.Drawing.SystemColors.ControlDarkDark
+        Me.LblTotalQty.Location = New System.Drawing.Point(287, 244)
+        Me.LblTotalQty.Name = "LblTotalQty"
+        Me.LblTotalQty.Size = New System.Drawing.Size(12, 16)
+        Me.LblTotalQty.TabIndex = 746
+        Me.LblTotalQty.Text = "."
+        Me.LblTotalQty.TextAlign = System.Drawing.ContentAlignment.MiddleLeft
+        '
+        'LblTotalQtyText
+        '
+        Me.LblTotalQtyText.Anchor = CType((((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Bottom) _
+            Or System.Windows.Forms.AnchorStyles.Left) _
+            Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
+        Me.LblTotalQtyText.AutoSize = True
+        Me.LblTotalQtyText.Font = New System.Drawing.Font("Arial", 9.75!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.LblTotalQtyText.ForeColor = System.Drawing.Color.Maroon
+        Me.LblTotalQtyText.Location = New System.Drawing.Point(202, 244)
+        Me.LblTotalQtyText.Name = "LblTotalQtyText"
+        Me.LblTotalQtyText.Size = New System.Drawing.Size(72, 16)
+        Me.LblTotalQtyText.TabIndex = 745
+        Me.LblTotalQtyText.Text = "Total Qty :"
+        '
+        'FrmSaleInvoiceMultiLineUI_WithDimension
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
         Me.ClientSize = New System.Drawing.Size(536, 267)
+        Me.Controls.Add(Me.LblTotalQty)
+        Me.Controls.Add(Me.LblTotalQtyText)
         Me.Controls.Add(Me.BtnOk)
         Me.Controls.Add(Me.Panel1)
         Me.Controls.Add(Me.Pnl1)
         Me.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle
         Me.KeyPreview = True
         Me.MaximizeBox = False
-        Me.Name = "FrmSaleInvoiceMultiLineUI"
+        Me.Name = "FrmSaleInvoiceMultiLineUI_WithDimension"
         Me.Text = "Line Detail"
         Me.ResumeLayout(False)
+        Me.PerformLayout()
 
     End Sub
     Friend WithEvents Pnl1 As Panel
     Friend WithEvents BtnOk As Button
     Friend WithEvents Panel1 As Panel
+    Public WithEvents LblTotalQty As Label
+    Public WithEvents LblTotalQtyText As Label
 End Class

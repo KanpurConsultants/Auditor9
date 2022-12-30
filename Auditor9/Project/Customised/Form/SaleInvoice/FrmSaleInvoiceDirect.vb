@@ -6082,7 +6082,7 @@ Public Class FrmSaleInvoiceDirect
         Dim mDocPrintHeaderPattern As String = ""
         Dim mTermsAndConditions As String
 
-        mQry = "Select H.DocID, H.Div_Code, H.Site_Code, H.V_Type, VT.NCat, VT.Description as V_TypeDescription,
+        mQry = "Select H.DocID, H.Div_Code, H.Site_Code, H.V_Type, H.Structure, VT.NCat, VT.Description as V_TypeDescription,
                 H.V_Date, H.SaleToParty 
                 From SaleInvoice H With (NoLock) 
                 Left Join Voucher_Type Vt With (NoLock) On H.V_Type = VT.V_Type
@@ -6097,34 +6097,48 @@ Public Class FrmSaleInvoiceDirect
             mDocPrintHeaderPattern = ClsMain.FGetSettings(SettingFields.DocumentPrintHeaderPattern, SettingType.General, AgL.XNull(dtDoc.Rows(0)("Div_Code")), AgL.XNull(dtDoc.Rows(0)("Site_Code")), VoucherCategory.Sales, AgL.XNull(dtDoc.Rows(0)("NCAT")), AgL.XNull(dtDoc.Rows(0)("V_Type")), "", "")
             mPrintTitle = AgL.XNull(dtDoc.Rows(0)("V_TypeDescription"))
 
-            If AgL.XNull(dtDoc.Rows(0)("NCAT")) = Ncat.SaleInvoice Then
-                mPrintTitle = "TAX INVOICE"
-                mDocNoCaption = "Invoice No."
-                mDocDateCaption = "Invoice Date"
-            End If
-
-
-            'Dim mDocNoCaption As String = FGetSettings(SettingFields.DocumentPrintEntryNoCaption, SettingType.General)
-            'Dim mDocDateCaption As String = FGetSettings(SettingFields.DocumentPrintEntryDateCaption, SettingType.General)
-            'Dim mDocReportFileName As String = FGetSettings(SettingFields.DocumentPrintReportFileName, SettingType.General)
-            'Dim mDocNoPrefix As String = FGetSettings(SettingFields.DocumentPrintEntryNoPrefix, SettingType.General)
-
-
-
-            Dim bPrimaryQry As String = ""
-            If BulkCondStr <> "" Then
-                bPrimaryQry = " Select * From SaleInvoice  With (NoLock) Where DocID In (" & BulkCondStr & ")"
-                PrintingCopies = PrintingCopiesStr.Split(",") 'FGetSettings(SettingFields.PrintingBulkCopyCaptions, SettingType.General).ToString.Split(",")
+            Dim StrRate As String = ""
+            If AgL.StrCmp(AgL.PubDBName, "ShyamaShyam") And mDocReportFileName = "SaleInvoice_Print_Aadhat.rpt" And AgL.XNull(dtDoc.Rows(0)("Structure")) = "GstSaleMrp" Then
+                mDocReportFileName = "SaleInvoice_Print_Aadhat_MRP.rpt"
+                StrRate = " Round(L.Rate *100/(100+STGI.GrossTaxRate),2) AS Rate,"
+                StrRate = "(Case when abs(IfNull(I.MaintainStockYn,1)) =1 AND I.ItemType <> '" & ItemTypeCode.ServiceProduct & "' Then (Case When L.Taxable_Amount >0 And (L.Taxable_Amount <> L.Amount Or L.AdditionAmount > 0 ) Then Round(L.Rate *100/(100+STGI.GrossTaxRate),2) Else L.Rate End ) Else 0 End) as Rate, "
             Else
-                bPrimaryQry = " Select * From SaleInvoice  With (NoLock) Where DocID = '" & SearchCode & "'"
-                PrintingCopies = PrintingCopiesStr.Split(",")
+                StrRate = "(Case when abs(IfNull(I.MaintainStockYn,1)) =1 AND I.ItemType <> '" & ItemTypeCode.ServiceProduct & "' Then (Case When L.Taxable_Amount >0 And (L.Taxable_Amount <> L.Amount Or L.AdditionAmount > 0 ) Then (L.Taxable_Amount - (L.DiscountAmount + L.AdditionalDiscountAmount))/L.DocQty Else L.Rate End ) Else 0 End) as Rate, "
             End If
+
+
+
+
+
+            If AgL.XNull(dtDoc.Rows(0)("NCAT")) = Ncat.SaleInvoice Then
+                    mPrintTitle = "TAX INVOICE"
+                    mDocNoCaption = "Invoice No."
+                    mDocDateCaption = "Invoice Date"
+                End If
+
+
+                'Dim mDocNoCaption As String = FGetSettings(SettingFields.DocumentPrintEntryNoCaption, SettingType.General)
+                'Dim mDocDateCaption As String = FGetSettings(SettingFields.DocumentPrintEntryDateCaption, SettingType.General)
+                'Dim mDocReportFileName As String = FGetSettings(SettingFields.DocumentPrintReportFileName, SettingType.General)
+                'Dim mDocNoPrefix As String = FGetSettings(SettingFields.DocumentPrintEntryNoPrefix, SettingType.General)
+
+
+
+                Dim bPrimaryQry As String = ""
+                If BulkCondStr <> "" Then
+                    bPrimaryQry = " Select * From SaleInvoice  With (NoLock) Where DocID In (" & BulkCondStr & ")"
+                    PrintingCopies = PrintingCopiesStr.Split(",") 'FGetSettings(SettingFields.PrintingBulkCopyCaptions, SettingType.General).ToString.Split(",")
+                Else
+                    bPrimaryQry = " Select * From SaleInvoice  With (NoLock) Where DocID = '" & SearchCode & "'"
+                    PrintingCopies = PrintingCopiesStr.Split(",")
+                End If
 
             'PrintingCopies = AgL.XNull(DtV_TypeSettings.Rows(0)("PrintingCopyCaptions")).ToString.Split(",")
 
+
             mQry = ""
-            For I = 1 To PrintingCopies.Length
-                If mQry <> "" Then mQry = mQry + " Union All "
+                For I = 1 To PrintingCopies.Length
+                    If mQry <> "" Then mQry = mQry + " Union All "
 
                 mQry = mQry + "
                 Select '" & I & "' as Copies, '" & AgL.XNull(PrintingCopies(I - 1)) & "' as CopyPrintingCaption, '" & mDocNoCaption & "' as DocNoCaption, '" & mDocDateCaption & "' as DocDateCaption, SiteState.ManualCode as SiteStateCode, SiteState.Description as SiteStateName, H.DocID, L.Sr, H.V_Date, H.DeliveryDate, VT.Description as Voucher_Type, VT.NCat, '" & mDocNoPrefix & "' || H.ManualRefNo as InvoiceNo, RT.Description as RateType, IfNull(Agent.DispName,'') as AgentName, '" & AgL.PubDtEnviro.Rows(0)("Caption_SalesAgent") & "' as AgentCaption,
@@ -6156,9 +6170,8 @@ Public Class FrmSaleInvoiceDirect
                 IC.Description as ItemCatName, I.Specification as ItemSpecification, L.Specification as InvoiceLineSpecification, I.HSN, I.MaintainStockYn,
                 L.SalesTaxGroupItem, STGI.GrossTaxRate, 
                 (Case when abs(IfNull(I.MaintainStockYn,1)) =1 AND I.ItemType <> '" & ItemTypeCode.ServiceProduct & "' Then L.Pcs Else 0 End) as Pcs, 
-                (Case when abs(IfNull(I.MaintainStockYn,1)) =1 AND I.ItemType <> '" & ItemTypeCode.ServiceProduct & "' Then abs(L.Qty) Else 0 End) as Qty,                 
-                (Case when abs(IfNull(I.MaintainStockYn,1)) =1 AND I.ItemType <> '" & ItemTypeCode.ServiceProduct & "' Then (Case When L.Taxable_Amount >0 And (L.Taxable_Amount <> L.Amount Or L.AdditionAmount > 0 ) Then (L.Taxable_Amount - (L.DiscountAmount + L.AdditionalDiscountAmount))/L.DocQty Else L.Rate End ) Else 0 End) as Rate, 
-                L.Unit, U.DecimalPlaces as UnitDecimalPlaces, 
+                (Case when abs(IfNull(I.MaintainStockYn,1)) =1 AND I.ItemType <> '" & ItemTypeCode.ServiceProduct & "' Then abs(L.Qty) Else 0 End) as Qty,  " +
+                StrRate + " L.Unit, U.DecimalPlaces as UnitDecimalPlaces, 
                 Null as DiscountCalculationPattern, L.DiscountPer, L.DiscountAmount, L.AdditionalDiscountPer, L.AdditionalDiscountAmount, L.AdditionPer, L.AdditionAmount, 
                 L.DiscountAmount+L.AdditionalDiscountAmount-L.AdditionAmount as TotalDiscount, 
                 abs(L.Amount)+L.DiscountAmount+L.AdditionalDiscountAmount as AmountBeforeDiscount,
@@ -6212,32 +6225,32 @@ Public Class FrmSaleInvoiceDirect
                 "
 
             Next
-            mQry = mQry + " Order By Copies, H.DocID, L.Sr "
+                mQry = mQry + " Order By Copies, H.DocID, L.Sr "
 
 
-            Dim objRepPrint As Object
-            If mPrintFor = ClsMain.PrintFor.EMail Then
-                objRepPrint = New AgLibrary.FrmMailComposeWithCrystal(AgL)
-                FGetMailConfiguration(objRepPrint, SearchCode)
-                objRepPrint.SearchCode = SearchCode
-                objRepPrint.TxtToEmail.Text = AgL.XNull(AgL.Dman_Execute("Select Sg.EMail
+                Dim objRepPrint As Object
+                If mPrintFor = ClsMain.PrintFor.EMail Then
+                    objRepPrint = New AgLibrary.FrmMailComposeWithCrystal(AgL)
+                    FGetMailConfiguration(objRepPrint, SearchCode)
+                    objRepPrint.SearchCode = SearchCode
+                    objRepPrint.TxtToEmail.Text = AgL.XNull(AgL.Dman_Execute("Select Sg.EMail
                     From PurchInvoice H 
                     LEFT JOIN SubGroup Sg  On H.Vendor = Sg.SubCode
                     Where H.GenDocId = '" & SearchCode & "'", AgL.GCn).ExecuteScalar())
-            ElseIf mPrintFor = ClsMain.PrintFor.Whatsapp Then
-                objRepPrint = New FrmWhatsapp(AgL)
-                FGetWhatsappConfiguration(objRepPrint, SearchCode)
-            Else
-                objRepPrint = New AgLibrary.RepView(AgL)
-            End If
+                ElseIf mPrintFor = ClsMain.PrintFor.Whatsapp Then
+                    objRepPrint = New FrmWhatsapp(AgL)
+                    FGetWhatsappConfiguration(objRepPrint, SearchCode)
+                Else
+                    objRepPrint = New AgLibrary.RepView(AgL)
+                End If
 
 
-            If mDocReportFileName = "" Then
-                ClsMain.FPrintThisDocument(ObjFrm, objRepPrint, AgL.XNull(dtDoc.Rows(0)("V_Type")), mQry, "SaleInvoice_Print.rpt", mPrintTitle, , , , AgL.XNull(dtDoc.Rows(0)("SaleToParty")), AgL.XNull(dtDoc.Rows(0)("V_Date")), IsPrintToPrinter,,, mSearchCode)
-            Else
-                ClsMain.FPrintThisDocument(ObjFrm, objRepPrint, AgL.XNull(dtDoc.Rows(0)("V_Type")), mQry, mDocReportFileName, mPrintTitle, , , , AgL.XNull(dtDoc.Rows(0)("SaleToParty")), AgL.XNull(dtDoc.Rows(0)("V_Date")), IsPrintToPrinter,,, mSearchCode)
+                If mDocReportFileName = "" Then
+                    ClsMain.FPrintThisDocument(ObjFrm, objRepPrint, AgL.XNull(dtDoc.Rows(0)("V_Type")), mQry, "SaleInvoice_Print.rpt", mPrintTitle, , , , AgL.XNull(dtDoc.Rows(0)("SaleToParty")), AgL.XNull(dtDoc.Rows(0)("V_Date")), IsPrintToPrinter,,, mSearchCode)
+                Else
+                    ClsMain.FPrintThisDocument(ObjFrm, objRepPrint, AgL.XNull(dtDoc.Rows(0)("V_Type")), mQry, mDocReportFileName, mPrintTitle, , , , AgL.XNull(dtDoc.Rows(0)("SaleToParty")), AgL.XNull(dtDoc.Rows(0)("V_Date")), IsPrintToPrinter,,, mSearchCode)
+                End If
             End If
-        End If
     End Sub
 
     Public Sub FPrintThisDocument(ByVal objFrm As Object, ByVal objRepFrm As Object, ByVal V_Type As String,

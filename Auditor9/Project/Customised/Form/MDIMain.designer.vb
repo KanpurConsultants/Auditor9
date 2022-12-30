@@ -289,6 +289,7 @@ Partial Class MDIMain
         Me.MnuBulkEmail = New System.Windows.Forms.ToolStripMenuItem()
         Me.MnuDataCorrection = New System.Windows.Forms.ToolStripMenuItem()
         Me.MnuDeleteData = New System.Windows.Forms.ToolStripMenuItem()
+        Me.MnuDeleteLedgerAcData = New System.Windows.Forms.ToolStripMenuItem()
         Me.MnuTDSParameters = New System.Windows.Forms.ToolStripMenuItem()
         Me.MnuExportDataForBranch = New System.Windows.Forms.ToolStripMenuItem()
         Me.MnuImportDataFromBranch = New System.Windows.Forms.ToolStripMenuItem()
@@ -2098,7 +2099,7 @@ Partial Class MDIMain
         '
         'MnuUtility
         '
-        Me.MnuUtility.DropDownItems.AddRange(New System.Windows.Forms.ToolStripItem() {Me.MnuYearEnd, Me.MnuCompanyMaster, Me.MnuDivisionMaster, Me.MnuSiteMaster, Me.MnuSettings, Me.MnuSettingsVisibility, Me.MnuSettingsCommon, Me.MnuSettingsMenus, Me.MnuSettingsEInvoice, Me.MnuUpdateTableStructure, Me.MnuExecuteQuery, Me.MnuBackupDatabase, Me.MnuItemMerging, Me.MnuVoucherTypeTimePlan, Me.MnuLogReport, Me.MnuSyncWithActualDatabase, Me.MnuRestoreDatabase, Me.MnuVoucherType, Me.MnuSplitLedgerOpening, Me.MnuBulkEmail, Me.MnuDataCorrection, Me.MnuDeleteData, Me.MnuTDSParameters, Me.MnuExportDataForBranch, Me.MnuImportDataFromBranch, Me.MnuOpeningTransfer, Me.MnuImportDataCustom, Me.MnuAdjustStockFIFO, Me.MnuUpdateLinkedAccount, Me.MnuDeleteAttachments, Me.MnuInconsistencyReport, Me.MnuRecheckBills, Me.MnuMatchData})
+        Me.MnuUtility.DropDownItems.AddRange(New System.Windows.Forms.ToolStripItem() {Me.MnuYearEnd, Me.MnuCompanyMaster, Me.MnuDivisionMaster, Me.MnuSiteMaster, Me.MnuSettings, Me.MnuSettingsVisibility, Me.MnuSettingsCommon, Me.MnuSettingsMenus, Me.MnuSettingsEInvoice, Me.MnuUpdateTableStructure, Me.MnuExecuteQuery, Me.MnuBackupDatabase, Me.MnuItemMerging, Me.MnuVoucherTypeTimePlan, Me.MnuLogReport, Me.MnuSyncWithActualDatabase, Me.MnuRestoreDatabase, Me.MnuVoucherType, Me.MnuSplitLedgerOpening, Me.MnuBulkEmail, Me.MnuDataCorrection, Me.MnuDeleteData, Me.MnuDeleteLedgerAcData, Me.MnuTDSParameters, Me.MnuExportDataForBranch, Me.MnuImportDataFromBranch, Me.MnuOpeningTransfer, Me.MnuImportDataCustom, Me.MnuAdjustStockFIFO, Me.MnuUpdateLinkedAccount, Me.MnuDeleteAttachments, Me.MnuInconsistencyReport, Me.MnuRecheckBills, Me.MnuMatchData})
         Me.MnuUtility.Name = "MnuUtility"
         Me.MnuUtility.Size = New System.Drawing.Size(50, 20)
         Me.MnuUtility.Text = "Utility"
@@ -2241,6 +2242,13 @@ Partial Class MDIMain
         Me.MnuDeleteData.Size = New System.Drawing.Size(215, 22)
         Me.MnuDeleteData.Tag = ""
         Me.MnuDeleteData.Text = "Delete Data"
+        '
+        'MnuDeleteLedgerAcData
+        '
+        Me.MnuDeleteLedgerAcData.AccessibleDescription = "+Double Entry Module"
+        Me.MnuDeleteLedgerAcData.Name = "MnuDeleteLedgerAcData"
+        Me.MnuDeleteLedgerAcData.Size = New System.Drawing.Size(215, 22)
+        Me.MnuDeleteLedgerAcData.Text = "Delete Ledger  A/C Data"
         '
         'MnuTDSParameters
         '
@@ -2753,4 +2761,5 @@ Partial Class MDIMain
     Friend WithEvents MnuExportSqliteDataToSqlServer As ToolStripMenuItem
     Friend WithEvents MnuTCSInputReport As ToolStripMenuItem
     Friend WithEvents MnuMatchData As ToolStripMenuItem
+    Friend WithEvents MnuDeleteLedgerAcData As ToolStripMenuItem
 End Class

@@ -6212,7 +6212,7 @@ Public Class FrmPurchInvoiceDirect
                             " & Val(PurchInvoiceTableList(I).Line_Net_Amount) & ""
                     AgL.Dman_ExecuteNonQry(mQry, AgL.GCn, AgL.ECmd)
 
-                    If ClsMain.FDivisionNameForCustomization(12) = "NANDI SAREES" Then
+                    If AgL.StrCmp(AgL.PubDBName, "SHADHVINANDI") Then
                         mQry = "Insert Into PurchInvoiceDetailSku
                             (DocId, Sr, ItemCategory, ItemGroup, Item ) "
                         mQry += " Select " & AgL.Chk_Text(PurchInvoiceTableList(0).DocID) & ", " & Val(PurchInvoiceTableList(I).Line_Sr) & ", " &

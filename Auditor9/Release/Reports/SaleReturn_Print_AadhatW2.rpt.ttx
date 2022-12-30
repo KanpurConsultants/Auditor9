@@ -1,34 +1,34 @@
 ; Field definition file for table: ADORecordset
 Code	string	255		
 ATYPE	string	255	W	
-SiteName	string	255	KANPUR	
-DocID	string	255	D1   WSR 2022       8	
+SiteName	string	255	LUDIYANA	
+DocID	string	255	D3   WSR 2022      39	
 Sr	number	1	
 InvoiceNo	string	255		
-InvoiceNoW	string	255	8	
-V_Date	datetime	30/May/2022 12:00:00 AM	
-SaleToPartyName	string	255	RIKITA SALES-GWALIOR, GWALIOR	
-PartyName	string	255	SONA COLLECTION-GWALIOR	
-PartyCode	string	255	1437	
-Address	string	255	SONAM COLLECTION
-1ST FLOOR, MAHARAJA AGRASEN COMPLEX,
-DARJI OLI, NEAR GORKHI, LASHKAR,
-GWALIOR(M.P.)-474001
-	
-CityName	string	255	GWALIOR	
+InvoiceNoW	string	255	39	
+V_Date	datetime	28/Nov/2022 12:00:00 AM	
+SaleToPartyName	string	255	KRISHNA GARMENTS-ALLAHABAD, ALLAHABAD	
+PartyName	string	255	KRISHNA GARMENTS	
+PartyCode	string	255	3948	
+Address	string	255	KRISHNA GARMENTS
+141 A/125 A,
+HEWAT ROAD,
+NEAR SOUTH MALAKA SABJI MANDI,
+ALLAHABAD(U.P.)-211001	
+CityName	string	255	ALLAHABAD	
 ShipToPartyName	string	255		
-Brand	string	255	HARSHA	
+Brand	string	255	A.S. NARANG	
 PInvNo	string	255		
-Qty	number	-64	
-Amount	number	-780.912	
-GoodsValue	number	788.8	
-DiscountPer	string	255	1.00 % 	
-TotalDiscount	number	7.888	
+Qty	number	-3	
+Amount	number	-3	
+GoodsValue	number	3	
+DiscountPer	string	255		
+TotalDiscount	number	0	
 OtherCharge	number	0	
 OtherCharge1	number	0	
-Tax	number	-23.66	
-NetAmount	number	-804.572	
-LRemarks	string	255	RIKITA SALES-GWALIOR,GWALIOR	
+Tax	number	0	
+NetAmount	number	-3	
+LRemarks	string	255		
 TransportName	string	255		
 LRNO	string	255		
 LRDate	string	255		
@@ -37,8 +37,8 @@ PrivateMark	string	255
 BookedFrom	string	255		
 Destination	string	255		
 PrintedByUser	string	255	SUPER	
-EntryByUser	string	255	satendra	
-UserEntryDate	datetime	30/May/2022 12:00:00 AM	
+EntryByUser	string	255	RANJANA	
+UserEntryDate	datetime	28/Nov/2022 12:00:00 AM	
 CompanyLogo	BLOB		
 CompanyAuthorisedSignature	BLOB		
 EInvoiceQrCode	BLOB		

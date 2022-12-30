@@ -213,6 +213,14 @@ Public Class ClsFunction
                     cRepProc.Ini_Grid()
                     FrmObj = ReportFrm
 
+                Case MDI.MnuDeleteLedgerAcData.Name
+                    Dim cRepProc As ClsDeleteLedgerAcData
+                    ReportFrm = New AgLibrary.FrmReportLayout(AgL, "", "", StrSenderText, "")
+                    cRepProc = New ClsDeleteLedgerAcData(ReportFrm)
+                    cRepProc.GRepFormName = Replace(Replace(Replace(Replace(StrSenderText, "&", ""), " ", ""), "(", ""), ")", "")
+                    cRepProc.Ini_Grid()
+                    FrmObj = ReportFrm
+
                 Case MDI.MnuDeleteAttachments.Name
                     Dim cRepProc As ClsDeleteAttachments
                     ReportFrm = New AgLibrary.FrmReportLayout(AgL, "", "", StrSenderText, "")
@@ -1536,7 +1544,13 @@ Public Class ClsFunction
                ClsMain.FDivisionNameForCustomization().Contains("SUBHASHINI FAB") Or
                ClsMain.FDivisionNameForCustomization().Contains("SITARAM HARISH") Or
                ClsMain.FDivisionNameForCustomization().Contains("SHREE RAM") Then
-            FGetNewVersionFlag = False
+
+            If ClsMain.FDivisionNameForCustomization() = "SADHVI ENTERPRISES (R)" Then
+                FGetNewVersionFlag = True
+            Else
+                FGetNewVersionFlag = False
+            End If
+
         Else
             FGetNewVersionFlag = True
         End If

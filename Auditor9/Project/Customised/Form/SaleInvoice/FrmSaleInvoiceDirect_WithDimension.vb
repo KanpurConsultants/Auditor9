@@ -5534,49 +5534,50 @@ Public Class FrmSaleInvoiceDirect_WithDimension
             passed = False : Exit Sub
         End If
 
-        'If ClsMain.FDivisionNameForCustomization(12) = "NANDI SAREES" Then
-        'Dim DiscountedItem As Integer = 0
-        'For I = 0 To Dgl1.Rows.Count - 1
-        '    If AgL.XNull(Dgl1(Col1Item, I).Value) <> "" Then
-        '        If Val(Dgl1(Col1Rate, I).Value) < 100 Then
-        '            DiscountedItem = DiscountedItem + Val(Dgl1(Col1Qty, I).Value)
-        '        End If
-        '    End If
-        'Next
 
-        'If DiscountedItem > 1 Then
-        '    MsgBox("Only 1 Item should have Rate less than 100.")
-        '    passed = False : Exit Sub
-        'End If
+        If AgL.StrCmp(AgL.PubDBName, "SHADHVINANDI") Then
+            Dim DiscountedItem As Integer = 0
+            For I = 0 To Dgl1.Rows.Count - 1
+                If AgL.XNull(Dgl1(Col1Item, I).Value) <> "" Then
+                    If Val(Dgl1(Col1Rate, I).Value) < 100 Then
+                        DiscountedItem = DiscountedItem + Val(Dgl1(Col1Qty, I).Value)
+                    End If
+                End If
+            Next
 
-        'If DiscountedItem > 0 Then
-        '    If (CType(DglMain.Item(Col1BtnDetail, rowSaleToParty).Tag, FrmSaleInvoiceParty_WithDimension).Dgl1.Item(FrmSaleInvoiceParty_WithDimension.Col1Value, FrmSaleInvoiceParty_WithDimension.rowAadharNo).Value) Is Nothing Then
-        '        MsgBox("Party Aadhar No. Mandatory")
-        '        passed = False : Exit Sub
-        '        End
-        '    ElseIf (CType(DglMain.Item(Col1BtnDetail, rowSaleToParty).Tag, FrmSaleInvoiceParty_WithDimension).Dgl1.Item(FrmSaleInvoiceParty_WithDimension.Col1Value, FrmSaleInvoiceParty_WithDimension.rowAadharNo).Value) IsNot Nothing Then
-        '    If (CType(DglMain.Item(Col1BtnDetail, rowSaleToParty).Tag, FrmSaleInvoiceParty_WithDimension).Dgl1.Item(FrmSaleInvoiceParty_WithDimension.Col1Value, FrmSaleInvoiceParty_WithDimension.rowAadharNo).Value).ToString.Trim = "" Then
-        '            MsgBox("Party Aadhar No. Mandatory")
-        '            passed = False : Exit Sub
-        '        End If
-        '    End If
-        'End If
+            If DiscountedItem > 1 Then
+                MsgBox("Only 1 Item should have Rate less than 100.")
+                passed = False : Exit Sub
+            End If
 
-        'If DiscountedItem > 0 Then
-        '    If (CType(DglMain.Item(Col1BtnDetail, rowSaleToParty).Tag, FrmSaleInvoiceParty_WithDimension).Dgl1.Item(FrmSaleInvoiceParty_WithDimension.Col1Value, FrmSaleInvoiceParty_WithDimension.rowAadharNo).Value) IsNot Nothing Then
-        '        If (CType(DglMain.Item(Col1BtnDetail, rowSaleToParty).Tag, FrmSaleInvoiceParty_WithDimension).Dgl1.Item(FrmSaleInvoiceParty_WithDimension.Col1Value, FrmSaleInvoiceParty_WithDimension.rowAadharNo).Value).ToString.Trim <> "" Then
+            If DiscountedItem > 0 Then
+                If (CType(DglMain.Item(Col1BtnDetail, rowSaleToParty).Tag, FrmSaleInvoiceParty_WithDimension).Dgl1.Item(FrmSaleInvoiceParty_WithDimension.Col1Value, FrmSaleInvoiceParty_WithDimension.rowAadharNo).Value) Is Nothing Then
+                    MsgBox("Party Aadhar No. Mandatory")
+                    passed = False : Exit Sub
+                    End
+                ElseIf (CType(DglMain.Item(Col1BtnDetail, rowSaleToParty).Tag, FrmSaleInvoiceParty_WithDimension).Dgl1.Item(FrmSaleInvoiceParty_WithDimension.Col1Value, FrmSaleInvoiceParty_WithDimension.rowAadharNo).Value) IsNot Nothing Then
+                    If (CType(DglMain.Item(Col1BtnDetail, rowSaleToParty).Tag, FrmSaleInvoiceParty_WithDimension).Dgl1.Item(FrmSaleInvoiceParty_WithDimension.Col1Value, FrmSaleInvoiceParty_WithDimension.rowAadharNo).Value).ToString.Trim = "" Then
+                        MsgBox("Party Aadhar No. Mandatory")
+                        passed = False : Exit Sub
+                    End If
+                End If
+            End If
 
-        '            mQry = "Select Count(*) From SaleInvoice With (NoLock)  Where DocId <> '" & mSearchCode & "' AND SaleToPartyAadharNo = '" & CType(DglMain.Item(Col1BtnDetail, rowSaleToParty).Tag, FrmSaleInvoiceParty_WithDimension).Dgl1.Item(FrmSaleInvoiceParty_WithDimension.Col1Value, FrmSaleInvoiceParty_WithDimension.rowAadharNo).Value & "' "
+            If DiscountedItem > 0 Then
+                If (CType(DglMain.Item(Col1BtnDetail, rowSaleToParty).Tag, FrmSaleInvoiceParty_WithDimension).Dgl1.Item(FrmSaleInvoiceParty_WithDimension.Col1Value, FrmSaleInvoiceParty_WithDimension.rowAadharNo).Value) IsNot Nothing Then
+                    If (CType(DglMain.Item(Col1BtnDetail, rowSaleToParty).Tag, FrmSaleInvoiceParty_WithDimension).Dgl1.Item(FrmSaleInvoiceParty_WithDimension.Col1Value, FrmSaleInvoiceParty_WithDimension.rowAadharNo).Value).ToString.Trim <> "" Then
 
-        '            If AgL.VNull(AgL.Dman_Execute(mQry, AgL.GcnRead).ExecuteScalar()) > 0 Then
-        '                MsgBox("Party Aadhar No. Is Already Used")
-        '                passed = False : Exit Sub
-        '            End If
-        '        End If
-        '        End If
-        'End If
+                        mQry = "Select Count(*) From SaleInvoice With (NoLock)  Where DocId <> '" & mSearchCode & "' AND SaleToPartyAadharNo = '" & CType(DglMain.Item(Col1BtnDetail, rowSaleToParty).Tag, FrmSaleInvoiceParty_WithDimension).Dgl1.Item(FrmSaleInvoiceParty_WithDimension.Col1Value, FrmSaleInvoiceParty_WithDimension.rowAadharNo).Value & "' "
 
-        'End If
+                        If AgL.VNull(AgL.Dman_Execute(mQry, AgL.GcnRead).ExecuteScalar()) > 0 Then
+                            MsgBox("Party Aadhar No. Is Already Used")
+                            passed = False : Exit Sub
+                        End If
+                    End If
+                End If
+            End If
+
+        End If
 
         Dim bCntItemCount As Integer = 0
         If SettingFields_MaximumItemLimit > 0 Then
@@ -13908,6 +13909,41 @@ Public Class FrmSaleInvoiceDirect_WithDimension
     End Sub
 
     Private Sub FrmSaleInvoiceDirect_BaseEvent_Save_PostTrans(SearchCode As String) Handles Me.BaseEvent_Save_PostTrans
+        Dim I As Integer
+        Dim mConn As Object = Nothing
+        If AgL.PubServerName = "" Then
+            mConn = New SQLite.SQLiteConnection(AgL.GCn.ConnectionString.ToString)
+        Else
+            mConn = New SqlClient.SqlConnection(AgL.GCn.ConnectionString)
+        End If
+        mConn.Open()
+        mQry = " Select * From SaleInvoicePayment With (NoLock) Where DocId = '" & mSearchCode & "' 
+                    And PaymentMode = '" & PaymentMode.Credit & "'"
+        Dim DtSaleInvoicePayment As DataTable = AgL.FillData(mQry, IIf(AgL.PubServerName = "", AgL.GCn, AgL.GcnRead)).Tables(0)
+
+        For I = 0 To DtSaleInvoicePayment.Rows.Count - 1
+            mQry = "SELECT H.DispName SaleToPartyName, H.Address as SaleToPartyAddress, H.CityCode as SaleToPartyCity, C.CityName, C.State, S.ManualCode as StateManualCode, 
+                    H.Pin as SaleToPartyPincode, H.Mobile SaleToPartyMobile, H.SalesTaxPostingGroup,
+                    (Select RegistrationNo From SubgroupRegistration SR  With (NoLock) Where SR.Subcode = H.Subcode and SR.RegistrationType = '" & SubgroupRegistrationType.SalesTaxNo & "') as SaleToPartySalesTaxNo,
+                    (Select RegistrationNo From SubgroupRegistration SR  With (NoLock) Where SR.Subcode = H.Subcode and SR.RegistrationType = '" & SubgroupRegistrationType.AadharNo & "') as SaleToPartyAadharNo,
+                    (Select RegistrationNo From SubgroupRegistration SR  With (NoLock) Where SR.Subcode = H.Subcode and SR.RegistrationType = '" & SubgroupRegistrationType.PanNo & "') as SaleToPartyPanNo
+                    FROM Subgroup H  With (NoLock)                     
+                    Left Join City C With (NoLock) On H.CityCode = C.CityCode    
+                    Left Join State S With (NoLock) On C.State = S.Code                    
+                    WHERE H.Subcode = '" & AgL.XNull(DtSaleInvoicePayment.Rows(I)("PostToAc")) & "' "
+            Dim DtTemp = AgL.FillData(mQry, AgL.GCn).Tables(0)
+            mQry = "Update SaleInvoice Set 
+                    SalesTaxGroupParty=" & AgL.Chk_Text(AgL.XNull(DtTemp.Rows(0)("SalesTaxPostingGroup"))) & ",
+                    SaleToPartyName=" & AgL.Chk_Text(AgL.XNull(DtTemp.Rows(0)("SaleToPartyName"))) & ",
+                    SaleToPartyAddress=" & AgL.Chk_Text(AgL.XNull(DtTemp.Rows(0)("SaleToPartyAddress"))) & ",
+                    PlaceOfSupply=" & AgL.Chk_Text(ClsFunction.GetPlaceOfSupply(AgL.XNull(DtTemp.Rows(0)("SaleToPartyCity")), "")) & ",
+                    SaleToPartySalesTaxNo=" & AgL.Chk_Text(AgL.XNull(DtTemp.Rows(0)("SaleToPartySalesTaxNo"))) & ",
+                    SaleToPartyCity=" & AgL.Chk_Text(AgL.XNull(DtTemp.Rows(0)("SaleToPartyCity"))) & "
+                    Where DocId = '" & SearchCode & "'"
+            AgL.Dman_ExecuteNonQry(mQry, mConn)
+        Next
+        mConn.close()
+
         If AgL.StrCmp(Topctrl1.Mode, "Add") Then
             If FGetSettings(SettingFields.ActionToPrintOnAdd, SettingType.General) = ActionToPrint.AskAndPrintOnScreen Then
                 If MsgBox("Do you want to print ? ", MsgBoxStyle.Question + MsgBoxStyle.YesNo) = MsgBoxResult.Yes Then
@@ -13936,6 +13972,8 @@ Public Class FrmSaleInvoiceDirect_WithDimension
                 FSendSms(False)
             End If
         End If
+
+
     End Sub
     Private Sub Dgl2_CellBeginEdit(sender As Object, e As DataGridViewCellCancelEventArgs) Handles Dgl2.CellBeginEdit
         Try

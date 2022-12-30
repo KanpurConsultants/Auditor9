@@ -617,6 +617,14 @@ Public Class FrmPrintBarcode
                         Left Join SubGroup D on D.SubCode = PI.Div_Code
                         Left Join Item I On B.Item = I.Code                         
                         Left Join Item IG On I.ItemGroup = IG.Code "
+                ElseIf AgL.StrCmp(AgL.PubDBName, "Madhulika") Then
+                    mQry = mQry & ",PI.VendorDocNo 
+                        From [#" & bTempTable & "] H 
+                        Left Join Barcode B On H.Code = B.Code
+                        Left Join PurchInvoice PI on PI.DocId = B.GenDocId
+                        Left Join SubGroup D on D.SubCode = PI.Div_Code
+                        Left Join Item I On B.Item = I.Code                         
+                        Left Join Item IG On I.ItemGroup = IG.Code "
                 Else
                     mQry = mQry & " From [#" & bTempTable & "] H 
                         Left Join Barcode B On H.Code = B.Code

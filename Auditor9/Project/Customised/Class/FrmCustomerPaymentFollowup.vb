@@ -791,8 +791,8 @@ Public Class FrmCustomerPaymentFollowup
                 End If
 
 
-                If DateDiff(DateInterval.Day, CDate(AgL.PubLoginDate), AgL.XNull(Dgl2.Item(Col1Value, rowNextDate).Value)) > 31 Then
-                    MsgBox("Next date can not exceed 31 days")
+                If DateDiff(DateInterval.Day, CDate(AgL.PubLoginDate), AgL.XNull(Dgl2.Item(Col1Value, rowNextDate).Value)) > 365 Then
+                    MsgBox("Next date can not exceed 365 days")
                     Dgl2.CurrentCell = Dgl2(Col1Value, rowNextDate)
                     Dgl2.Focus()
                     Exit Sub

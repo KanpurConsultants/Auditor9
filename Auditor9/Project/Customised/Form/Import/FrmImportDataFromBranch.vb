@@ -16,12 +16,13 @@ Public Class FrmImportDataFromBranch
         If ClsMain.FDivisionNameForCustomization(6) = "SADHVI" Then
             If AgL.StrCmp(AgL.PubDBName, "SHADHVINEW") Or AgL.StrCmp(AgL.PubDBName, "SHADHVIKANPURB2") Or AgL.StrCmp(AgL.PubDBName, "SHADHVIjaunpur") Then
                 ProcImportStockIssueDataFromSqlite_Sadhvi()
+            ElseIf AgL.StrCmp(AgL.PubDBName, "SHADHVINANDI")
+                ProcImportStockIssueDataFromSqlite_SadhviRetail()
             Else
                 ProcImportSaleInvoiceDataFromSqlite_Sadhvi()
             End If
-            'ProcImportSaleInvoiceDataFromSqlite_Sadhvi()
-        ElseIf ClsMain.FDivisionNameForCustomization(12) = "NANDI SAREES" Then
-            ProcImportStockIssueDataFromSqlite_SadhviRetail()
+            'ElseIf ClsMain.FDivisionNameForCustomization(12) = "NANDI SAREES" Then
+            '    ProcImportStockIssueDataFromSqlite_SadhviRetail()
         ElseIf ClsMain.FDivisionNameForCustomization(18) = "SHRI PARWATI SAREE" Then
             ProcImportSaleInvoiceDataFromSqlite_Parwati()
         ElseIf ClsMain.FDivisionNameForCustomization(13) = "JAIN BROTHERS" Or

@@ -223,10 +223,25 @@ Public Class FrmSaleInvoiceMultiLineUI_WithDimension
                             Dgl1.Item(Col1Rate, mRowIndex).Value = AgL.VNull(Dgl1.Item(Col1Rate, mRowIndex - 1).Value)
                         End If
                     End If
+
+                Case Col1Qty
+                    Calcultaion()
+
             End Select
         Catch ex As Exception
             MsgBox(ex.Message)
         End Try
+    End Sub
+    Private Sub Calcultaion()
+        Dim I As Integer
+        LblTotalQty.Text = 0
+        Dim bQty As Double = 0
+        For I = 0 To Dgl1.RowCount - 1
+            If Dgl1.Item(Col1Size, I).Value <> "" And Dgl1.Item(Col1Qty, I).Value <> "" And Dgl1.Rows(I).Visible Then
+                bQty = Val(Dgl1.Item(Col1Qty, I).Value) + bQty
+            End If
+        Next
+        LblTotalQty.Text = bQty
     End Sub
     Private Sub BtnChargeDuw_Click(ByVal sender As Object, ByVal e As System.EventArgs) Handles BtnOk.Click
         Dim I As Integer = 0

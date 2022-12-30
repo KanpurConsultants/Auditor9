@@ -1,0 +1,144 @@
+; Field definition file for table: ADORecordset
+Copies	string	255	1	
+CopyPrintingCaption	string	255		
+DocNoCaption	string	255	Invoice No.	
+DocDateCaption	string	255	Invoice Date	
+SiteStateCode	string	255	07	
+SiteStateName	string	255	Delhi	
+DocID	string	255	D4    SI 2022     606	
+Sr	number	1	
+V_Date	datetime	15/Dec/2022 12:00:00 AM	
+DeliveryDate	datetime		
+Voucher_Type	string	255	Tax Invoice	
+NCat	string	255	SI	
+InvoiceNo	string	255	SSF-DLI-608	
+RateType	string	255	B	
+AgentName	string	255		
+AgentCaption	string	255	Agent	
+SaleToPartyName	string	255	SANU COLLECTION -WAIDHAN 	
+SaleToPartyCode	string	255	5139	
+SaleToPartyAddress	string	255	WARD NO ,40 NEAR SHIV MANDIR 
+TULSI MARG ,WAIDHAN 
+M.P.486886
+	
+CityName	string	255	WAIDHAN	
+SaleToPartyPincode	string	255	486886	
+StateCode	string	255	23	
+StateName	string	255	Madhya Pradesh	
+SaleToPartyMobile	string	255		
+ContactPerson	string	255		
+SaleToPartySalesTaxNo	string	255	23BUIPG2733B2Z8	
+SaleToPartyAadharNo	string	255		
+SaleToPartyPanNo	string	255	BUIPG2733B	
+ShipToPartyName	string	255	SANU COLLECTION -WAIDHAN 	
+ShipToPartyManualCode	string	255	5139	
+ShipToPartyAddress	string	255	WARD NO ,40 NEAR SHIV MANDIR 
+TULSI MARG ,WAIDHAN 
+M.P.486886
+	
+ShipToPartyCity	string	255	WAIDHAN	
+ShipToPartyPincode	string	255	486886	
+ShipToPartyStateCode	string	255	23	
+ShipToPartyStateName	string	255	Madhya Pradesh	
+ShipToPartyMobile	string	255		
+ShipToPartySalesTaxNo	string	255	23BUIPG2733B2Z8	
+ShipToPartyAadharNo	string	255		
+ShipToPartyPanNo	string	255	BUIPG2733B	
+ShipToAddress	string	255		
+TermsAndConditions	string	255	(1) Payment within <CreditDays> days from date of Invoice. <BR>(2) Overdue Interest @ <Default_DebtorsInterestRate> P.A. after due date. <BR>(3) Goods dispatched by transport at the owner risk. <BR>(4) All disputes are subject to <CompanyCity> jurisdiction only.	
+TransporterName	string	255	DELHI PURVANCHAL	
+LrNo	string	255	33500	
+LrDate	datetime	16/Dec/2022 12:00:00 AM	
+NoOfBales	number	1	
+PrivateMark	string	255		
+Weight	number	0	
+Freight	number	0	
+ChargedWeight	number	0	
+FreightType	string	255		
+RoadPermitNo	string	255	771304753188	
+RoadPermitDate	datetime	15/Dec/2022 12:50:00 PM	
+VehicleNo	string	255		
+ShipMethod	string	255		
+PreCarriageBy	string	255		
+PreCarriagePlace	string	255		
+BookedFrom	string	255	DELHI	
+BookedTo	string	255		
+Destination	string	255	WAIDHAN	
+DescriptionOfGoods	string	255		
+DescriptionOfPacking	string	255		
+ReferenceNo	string	255		
+ContraDocNo	string	255	15190	
+ContraDocNoCsv	string	255	15190	
+ItemName	string	255	DENIM-620342          [SPARKY | DENIM]	
+ItemGroupName	string	255	SPARKY	
+ItemCatName	string	255	DENIM	
+ItemSpecification	string	255	DENIM	
+InvoiceLineSpecification	string	255		
+HSN	string	255	620342	
+MaintainStockYn	boolean	True	
+SalesTaxGroupItem	string	255	GST 5%	
+GrossTaxRate	number	5	
+Pcs	number	0	
+Qty	number	28	
+Rate	number	856.57	
+Unit	string	255	Pcs	
+UnitDecimalPlaces	number	0	
+DiscountCalculationPattern	string	255		
+DiscountPer	number	0	
+DiscountAmount	number	0	
+AdditionalDiscountPer	number	0	
+AdditionalDiscountAmount	number	0	
+AdditionPer	number	0	
+AdditionAmount	number	0	
+TotalDiscount	number	0	
+AmountBeforeDiscount	number	25183.2	
+Amount	number	25183.2	
+Taxable_Amount	number	23984	
+Tax1_Per	number	5	
+Tax1	number	1199.2	
+Tax2_Per	number	0	
+Tax2	number	0	
+Tax3_Per	number	0	
+Tax3	number	0	
+Tax4_Per	number	0	
+Tax4	number	0	
+Tax5_Per	number	0	
+Tax5	number	0	
+Net_Amount	number	25183.28	
+LRemarks	string	255	1054	
+HRemarks	string	255		
+H_TotalDiscount	number	0	
+H_AmountBeforeDiscount	number	137390.6	
+H_Gross_Amount	number	137390.6	
+H_SpecialDiscount_Per	number	0	
+H_SpecialDiscount	number	0	
+H_Taxable_Amount	number	130041.17	
+H_Tax1_Per	number	0	
+H_Tax1	number	7349.44	
+H_Tax2_Per	number	0	
+H_Tax2	number	0	
+H_Tax3_Per	number	0	
+H_Tax3	number	0	
+H_Tax4_Per	number	0	
+H_Tax4	number	0	
+H_Tax5_Per	number	0	
+H_Tax5	number	0	
+H_Deduction_Per	number	0	
+H_Deduction	number	0	
+H_Other_Charge_Per	number	0	
+H_Other_Charge	number	0	
+Round_Off	number	0.39	
+H_Net_Amount	number	137391	
+EInvoiceIRN	string	255	04a908513588d05dc3718e53805defa9378b85cf160f689f304ab46a58276bf3	
+EInvoiceACKNo	string	255	172212078162865	
+EInvoiceACKDate	datetime	15/Dec/2022 12:50:00 PM	
+Default_BankAccountDetail	string	255	Bank : YES Bank, Branch : CIVIL LINES, KANPUR,<BR>Beneficiary : Shyama Shyam Fabrics Pvt. Ltd.,<BR>A/c No.: 007384600000880, IFSC : YESB0000073	
+DocumentPrintHeaderPattern	string	255	Center Aligned	
+DimDetail	string	255		
+PrintedByUser	string	255	SUPER	
+EntryByUser	string	255	SANDEEP	
+PrintTitle	string	255	TAX INVOICE	
+PurchInvoiceNo	string	255	JKJ30530/22-23	
+CompanyLogo	BLOB		
+CompanyAuthorisedSignature	BLOB		
+EInvoiceQrCode	BLOB		

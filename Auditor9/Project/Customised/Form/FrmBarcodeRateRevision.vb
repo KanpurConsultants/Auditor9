@@ -785,6 +785,11 @@ Public Class FrmBarcodeRateRevision
         Try
             RepName = "RepBarCodeImage" : RepTitle = "Item Barcode"
             Dim mDocReportFileName As String = FGetSettings(SettingFields.BarcodePrintReportFileName, SettingType.General)
+            Dim mBarcodePrintTitle1 As String = FGetSettings(SettingFields.BarcodePrintTitle1, SettingType.General)
+            Dim mBarcodePrintTitle2 As String = FGetSettings(SettingFields.BarcodePrintTitle2, SettingType.General)
+            Dim mBarcodePrintTitle3 As String = FGetSettings(SettingFields.BarcodePrintTitle3, SettingType.General)
+            Dim mBarcodeRatePrefix As String = FGetSettings(SettingFields.BarcodePrintSaleRatePrefix, SettingType.General)
+
             If mDocReportFileName = "" Then
                 RepName = "Barcode_Print.rpt"
                 'RepName = "Barcode_Print_3838.rpt"
@@ -939,10 +944,22 @@ Public Class FrmBarcodeRateRevision
                         Left Join SubGroup D on D.SubCode = PI.Div_Code
                         Left Join Item I On B.Item = I.Code                         
                         Left Join Item IG On I.ItemGroup = IG.Code "
+                ElseIf AgL.StrCmp(AgL.PubDBName, "Madhulika") Then
+                    mQry = " Select Barcode, BarCodeImg, ItemDesc, ItemCategoryDesc, ItemGroupDesc,PI.VendorDocNo, 
+                        Dimension1Desc, Dimension2Desc, Dimension3Desc, Dimension4Desc, SizeDesc, H.PurchaseRate, H.SaleRate, H.MRP, ReceiveQty, 
+                        " & AgL.Chk_Text(mBarcodePrintTitle1) & " As Title1,
+                        " & AgL.Chk_Text(mBarcodePrintTitle2) & " as Title2,
+                        " & AgL.Chk_Text(mBarcodePrintTitle3) & " as Title3 
+                         From [#" & bTempTable & "] H 
+                         Left Join Barcode B On H.BarCode = B.Code
+                         Left Join PurchInvoice PI on PI.DocId = B.GenDocId "
                 Else
                     mQry = " Select Barcode, BarCodeImg, ItemDesc, ItemCategoryDesc, ItemGroupDesc, 
-                        Dimension1Desc, Dimension2Desc, Dimension3Desc, Dimension4Desc, SizeDesc, PurchaseRate, SaleRate, MRP, ReceiveQty " &
-                        " From [#" & bTempTable & "] H "
+                        Dimension1Desc, Dimension2Desc, Dimension3Desc, Dimension4Desc, SizeDesc, PurchaseRate, SaleRate, MRP, ReceiveQty, 
+                        " & AgL.Chk_Text(mBarcodePrintTitle1) & " As Title1,
+                        " & AgL.Chk_Text(mBarcodePrintTitle2) & " as Title2,
+                        " & AgL.Chk_Text(mBarcodePrintTitle3) & " as Title3 
+                         From [#" & bTempTable & "] H "
                 End If
 
                 If mQry.Trim <> "" Then
@@ -958,7 +975,7 @@ Public Class FrmBarcodeRateRevision
                     'End If
                 End If
             Else
-                If DsRep.Tables(0).Rows.Count = 0 Then Err.Raise(1, , "No Records to Print!")
+                If DsRep.Tables(0).Rows.Count = 0 Then Err.Raise(1, , "No Records To Print!")
             End If
         Catch Ex As Exception
             MsgBox(Ex.Message)

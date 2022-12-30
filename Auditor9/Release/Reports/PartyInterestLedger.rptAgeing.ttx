@@ -1,6 +1,6 @@
 ; Field definition file for table: ADORecordset
-SearchCode	string	255	D100004630	
+SearchCode	string	255	D100004849	
 Sr	long	1	
-Party	string	255	BIRENDRA VASTRALAY [W], SAKLA BAZAR	
-BalanceAmount	number	9.99	
-BalanceMonth	string	255	2022-03-28	
+Party	string	255	DEEPAK GARMENTS AND GENERAL STORES- BHATNI, BHATNI	
+BalanceAmount	number	1694.49	
+BalanceMonth	string	255	2022-10-14	
