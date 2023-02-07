@@ -319,6 +319,7 @@ Partial Class MDIMain
         Me.MnuPrintCheque = New System.Windows.Forms.ToolStripMenuItem()
         Me.MnuBank = New System.Windows.Forms.ToolStripMenuItem()
         Me.MnuChequePrinting = New System.Windows.Forms.ToolStripMenuItem()
+        Me.MnuGenerateBarcodeSS = New System.Windows.Forms.ToolStripMenuItem()
         Me.MnuMain.SuspendLayout()
         Me.SuspendLayout()
         '
@@ -1153,7 +1154,7 @@ Partial Class MDIMain
         '
         'MnuPurchase
         '
-        Me.MnuPurchase.DropDownItems.AddRange(New System.Windows.Forms.ToolStripItem() {Me.MnuPurchaseOrder, Me.MnuPurchaseGoodsReceipt, Me.MnuPurchaseEntry, Me.MnuPurchaseReturnEntry, Me.MnuGenerateBarcode, Me.MnuLocalFreightEntry, Me.MnuLREntry, Me.MnuLRTransfer, Me.MnuBarcodeRateRevision, Me.MnuPurchaseReports})
+        Me.MnuPurchase.DropDownItems.AddRange(New System.Windows.Forms.ToolStripItem() {Me.MnuPurchaseOrder, Me.MnuPurchaseGoodsReceipt, Me.MnuPurchaseEntry, Me.MnuPurchaseReturnEntry, Me.MnuGenerateBarcodeSS, Me.MnuGenerateBarcode, Me.MnuLocalFreightEntry, Me.MnuLREntry, Me.MnuLRTransfer, Me.MnuBarcodeRateRevision, Me.MnuPurchaseReports})
         Me.MnuPurchase.Name = "MnuPurchase"
         Me.MnuPurchase.Size = New System.Drawing.Size(67, 20)
         Me.MnuPurchase.Text = "Purchase"
@@ -2440,6 +2441,13 @@ Partial Class MDIMain
         Me.MnuChequePrinting.Size = New System.Drawing.Size(160, 22)
         Me.MnuChequePrinting.Text = "Cheque Printing"
         '
+        'MnuGenerateBarcodeSS
+        '
+        Me.MnuGenerateBarcodeSS.AccessibleDescription = "+Barcode Module"
+        Me.MnuGenerateBarcodeSS.Name = "MnuGenerateBarcodeSS"
+        Me.MnuGenerateBarcodeSS.Size = New System.Drawing.Size(201, 22)
+        Me.MnuGenerateBarcodeSS.Text = "Generate Barcode SS"
+        '
         'MDIMain
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
@@ -2762,4 +2770,5 @@ Partial Class MDIMain
     Friend WithEvents MnuTCSInputReport As ToolStripMenuItem
     Friend WithEvents MnuMatchData As ToolStripMenuItem
     Friend WithEvents MnuDeleteLedgerAcData As ToolStripMenuItem
+    Friend WithEvents MnuGenerateBarcodeSS As ToolStripMenuItem
 End Class

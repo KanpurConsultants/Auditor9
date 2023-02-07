@@ -3572,7 +3572,7 @@ Public Class ClsReportProcedures
             mCondStr = " Where H.Nature in ('Customer', 'Supplier') And H.Parent Is Null "
 
             If AgL.XNull(ReportFrm.FGetText(1)) <> "" And AgL.XNull(ReportFrm.FGetText(2)) = "" Then
-                If ClsMain.FDivisionNameForCustomization(22) = "W SHYAMA SHYAM FABRICS" Or ClsMain.FDivisionNameForCustomization(20) = "SHYAMA SHYAM FABRICS" Then
+                If ClsMain.FDivisionNameForCustomization(22) = "W SHYAMA SHYAM FABRICS" Or ClsMain.FDivisionNameForCustomization(20) = "SHYAMA SHYAM FABRICS" Or ClsMain.FDivisionNameForCustomization(25) = "SHYAMA SHYAM VENTURES LLP" Or ClsMain.FDivisionNameForCustomization(27) = "W SHYAMA SHYAM VENTURES LLP" Then
                     mCondStr = mCondStr & " And H.Subcode In (Select BillToParty From SaleInvoice Where V_Type='WSI' And Date(EntryDate) = " & AgL.Chk_Date(ReportFrm.FGetText(1)) & ") "
                 Else
                     mCondStr = mCondStr & " And H.Subcode In (Select BillToParty From SaleInvoice Where V_Type='SI' And Date(EntryDate) = " & AgL.Chk_Date(ReportFrm.FGetText(1)) & ") "
@@ -3589,7 +3589,7 @@ Public Class ClsReportProcedures
             End If
 
             If AgL.XNull(ReportFrm.FGetText(1)) <> "" And AgL.XNull(ReportFrm.FGetText(2)) <> "" Then
-                If ClsMain.FDivisionNameForCustomization(22) = "W SHYAMA SHYAM FABRICS" Or ClsMain.FDivisionNameForCustomization(20) = "SHYAMA SHYAM FABRICS" Then
+                If ClsMain.FDivisionNameForCustomization(22) = "W SHYAMA SHYAM FABRICS" Or ClsMain.FDivisionNameForCustomization(20) = "SHYAMA SHYAM FABRICS" Or ClsMain.FDivisionNameForCustomization(25) = "SHYAMA SHYAM VENTURES LLP" Or ClsMain.FDivisionNameForCustomization(27) = "W SHYAMA SHYAM VENTURES LLP" Then
                     mCondStr = mCondStr & " And H.Subcode In (Select BillToParty From SaleInvoice Where V_Type='WSI' And Date(EntryDate) Between " & AgL.Chk_Date(ReportFrm.FGetText(1)) & " And " & AgL.Chk_Date(ReportFrm.FGetText(2)) & ") "
                 Else
                     mCondStr = mCondStr & " And H.Subcode In (Select BillToParty From SaleInvoice Where V_Type='SI' And Date(EntryDate) Between " & AgL.Chk_Date(ReportFrm.FGetText(1)) & " And " & AgL.Chk_Date(ReportFrm.FGetText(2)) & ") "

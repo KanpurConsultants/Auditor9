@@ -3,82 +3,82 @@ Copies	string	255	1
 CopyPrintingCaption	string	255		
 DocNoCaption	string	255	Invoice No.	
 DocDateCaption	string	255	Invoice Date	
-SiteStateCode	string	255	07	
-SiteStateName	string	255	Delhi	
-DocID	string	255	D4    SI 2022     599	
+SiteStateCode	string	255	09	
+SiteStateName	string	255	Uttar Pradesh	
+DocID	string	255	D1    SI 2022       3	
 Sr	number	1	
-V_Date	datetime	08/Dec/2022 12:00:00 AM	
+V_Date	datetime	01/Feb/2023 12:00:00 AM	
 DeliveryDate	datetime		
 Voucher_Type	string	255	Tax Invoice	
 NCat	string	255	SI	
-InvoiceNo	string	255	SSF-DLI-600	
+InvoiceNo	string	255	SSVLLP-KNP-3	
 RateType	string	255	B	
 AgentName	string	255		
 AgentCaption	string	255	Agent	
-SaleToPartyName	string	255	E.G. MART-DEORIA	
-SaleToPartyCode	string	255	3779	
-SaleToPartyAddress	string	255	NEAR SURAJ TALKIES,
-HANUMAN MANDIR ROAD,
+SaleToPartyName	string	255	GITA THE READYMADE SHOP -HATA	
+SaleToPartyCode	string	255	30	
+SaleToPartyAddress	string	255	MAIN MARKET,
+KUSHINAGAR 
 	
-CityName	string	255	DEORIA	
-SaleToPartyPincode	string	255	274001	
+CityName	string	255	HATA	
+SaleToPartyPincode	string	255	274203	
 StateCode	string	255	09	
 StateName	string	255	Uttar Pradesh	
-SaleToPartyMobile	string	255	9565512360	
+SaleToPartyMobile	string	255	9838250254	
 ContactPerson	string	255		
-SaleToPartySalesTaxNo	string	255	09AOCPA0399E1Z8	
+SaleToPartySalesTaxNo	string	255	09CLUPK1909D1ZW	
 SaleToPartyAadharNo	string	255		
-SaleToPartyPanNo	string	255	AOCPA0399E	
-ShipToPartyName	string	255	E.G. MART-DEORIA	
-ShipToPartyManualCode	string	255	3779	
-ShipToPartyAddress	string	255	NEAR SURAJ TALKIES,
-HANUMAN MANDIR ROAD,
+SaleToPartyPanNo	string	255	CLUPK1909D	
+ShipToPartyName	string	255	GITA THE READYMADE SHOP -HATA	
+ShipToPartyManualCode	string	255	30	
+ShipToPartyAddress	string	255	MAIN MARKET,
+KUSHINAGAR 
 	
-ShipToPartyCity	string	255	DEORIA	
-ShipToPartyPincode	string	255	274001	
+ShipToPartyCity	string	255	HATA	
+ShipToPartyPincode	string	255	274203	
 ShipToPartyStateCode	string	255	09	
 ShipToPartyStateName	string	255	Uttar Pradesh	
-ShipToPartyMobile	string	255	9565512360	
-ShipToPartySalesTaxNo	string	255	09AOCPA0399E1Z8	
+ShipToPartyMobile	string	255	9838250254	
+ShipToPartySalesTaxNo	string	255	09CLUPK1909D1ZW	
 ShipToPartyAadharNo	string	255		
-ShipToPartyPanNo	string	255	AOCPA0399E	
+ShipToPartyPanNo	string	255	CLUPK1909D	
 ShipToAddress	string	255		
 TermsAndConditions	string	255	(1) Payment within <CreditDays> days from date of Invoice. <BR>(2) Overdue Interest @ <Default_DebtorsInterestRate> P.A. after due date. <BR>(3) Goods dispatched by transport at the owner risk. <BR>(4) All disputes are subject to <CompanyCity> jurisdiction only.	
-TransporterName	string	255	ATC SUPPLY CHAINS SOLUTIONS	
-LrNo	string	255	528457	
-LrDate	datetime	08/Dec/2022 12:00:00 AM	
+TransporterName	string	255	SWASTIK TRANSPORT CO-KANPUR	
+LrNo	string	255		
+LrDate	datetime		
 NoOfBales	number	1	
 PrivateMark	string	255		
 Weight	number	0	
 Freight	number	0	
 ChargedWeight	number	0	
 FreightType	string	255		
-RoadPermitNo	string	255	711303271120	
-RoadPermitDate	datetime	08/Dec/2022 12:20:00 PM	
+RoadPermitNo	string	255		
+RoadPermitDate	datetime		
 VehicleNo	string	255		
 ShipMethod	string	255		
 PreCarriageBy	string	255		
 PreCarriagePlace	string	255		
-BookedFrom	string	255	DELHI	
+BookedFrom	string	255	KANPUR	
 BookedTo	string	255		
-Destination	string	255	DEORIA	
+Destination	string	255	HATA	
 DescriptionOfGoods	string	255		
 DescriptionOfPacking	string	255		
 ReferenceNo	string	255		
-ContraDocNo	string	255	15234	
-ContraDocNoCsv	string	255	15234	
-ItemName	string	255	COAT PANT-61111000          [AERO CLUB (DELHI) | COAT PANT]	
-ItemGroupName	string	255	AERO CLUB (DELHI)	
-ItemCatName	string	255	COAT PANT	
-ItemSpecification	string	255	COAT PANT	
+ContraDocNo	string	255	3	
+ContraDocNoCsv	string	255	3	
+ItemName	string	255	BABA SUIT -61111000          [TAREFUL HASAN  | BABA SUIT ]	
+ItemGroupName	string	255	TAREFUL HASAN 	
+ItemCatName	string	255	BABA SUIT 	
+ItemSpecification	string	255	BABA SUIT 	
 InvoiceLineSpecification	string	255		
 HSN	string	255	61111000	
 MaintainStockYn	boolean	True	
-SalesTaxGroupItem	string	255	GST 12%	
-GrossTaxRate	number	12	
+SalesTaxGroupItem	string	255	GST 5%	
+GrossTaxRate	number	5	
 Pcs	number	0	
-Qty	number	12	
-Rate	number	1080	
+Qty	number	24	
+Rate	number	538	
 Unit	string	255	Pcs	
 UnitDecimalPlaces	number	0	
 DiscountCalculationPattern	string	255		
@@ -89,34 +89,34 @@ AdditionalDiscountAmount	number	0
 AdditionPer	number	0	
 AdditionAmount	number	0	
 TotalDiscount	number	0	
-AmountBeforeDiscount	number	12960	
-Amount	number	12960	
-Taxable_Amount	number	12960	
-Tax1_Per	number	12	
-Tax1	number	1555.2	
-Tax2_Per	number	0	
-Tax2	number	0	
-Tax3_Per	number	0	
-Tax3	number	0	
+AmountBeforeDiscount	number	12912	
+Amount	number	12912	
+Taxable_Amount	number	12912	
+Tax1_Per	number	0	
+Tax1	number	0	
+Tax2_Per	number	2.5	
+Tax2	number	322.8	
+Tax3_Per	number	2.5	
+Tax3	number	322.8	
 Tax4_Per	number	0	
 Tax4	number	0	
 Tax5_Per	number	0	
 Tax5	number	0	
-Net_Amount	number	14515.16	
-LRemarks	string	255	1156-11*13	
+Net_Amount	number	13557.58	
+LRemarks	string	255		
 HRemarks	string	255		
 H_TotalDiscount	number	0	
-H_AmountBeforeDiscount	number	264445	
-H_Gross_Amount	number	264445	
+H_AmountBeforeDiscount	number	52261	
+H_Gross_Amount	number	52261	
 H_SpecialDiscount_Per	number	0	
 H_SpecialDiscount	number	0	
-H_Taxable_Amount	number	264445	
+H_Taxable_Amount	number	52261	
 H_Tax1_Per	number	0	
-H_Tax1	number	23305.05	
+H_Tax1	number	0	
 H_Tax2_Per	number	0	
-H_Tax2	number	0	
+H_Tax2	number	1306.53	
 H_Tax3_Per	number	0	
-H_Tax3	number	0	
+H_Tax3	number	1306.53	
 H_Tax4_Per	number	0	
 H_Tax4	number	0	
 H_Tax5_Per	number	0	
@@ -125,18 +125,18 @@ H_Deduction_Per	number	0
 H_Deduction	number	0	
 H_Other_Charge_Per	number	0	
 H_Other_Charge	number	0	
-Round_Off	number	-0.05	
-H_Net_Amount	number	287750	
-EInvoiceIRN	string	255	8ae20de94620feb967a9b89ed2bb91ec08cd305a4bc392d8e6db9e2ad903c6f4	
-EInvoiceACKNo	string	255	172212047237244	
-EInvoiceACKDate	datetime	08/Dec/2022 12:20:00 PM	
-Default_BankAccountDetail	string	255	Bank : YES Bank, Branch : CIVIL LINES, KANPUR,<BR>Beneficiary : Shyama Shyam Fabrics Pvt. Ltd.,<BR>A/c No.: 007384600000880, IFSC : YESB0000073	
+Round_Off	number	-0.06	
+H_Net_Amount	number	54874	
+EInvoiceIRN	string	255		
+EInvoiceACKNo	string	255		
+EInvoiceACKDate	datetime		
+Default_BankAccountDetail	string	255	Bank : YES Bank, Branch : CIVIL LINES, KANPUR,<BR>Beneficiary : Shyama Shyam Ventures LLP.,<BR>A/c No.: 007363300005035, IFSC : YESB0000073	
 DocumentPrintHeaderPattern	string	255	Center Aligned	
 DimDetail	string	255		
 PrintedByUser	string	255	SUPER	
 EntryByUser	string	255	SUMIT	
 PrintTitle	string	255	TAX INVOICE	
-PurchInvoiceNo	string	255	TI/000153	
+PurchInvoiceNo	string	255	4122	
 CompanyLogo	BLOB		
 CompanyAuthorisedSignature	BLOB		
 EInvoiceQrCode	BLOB		

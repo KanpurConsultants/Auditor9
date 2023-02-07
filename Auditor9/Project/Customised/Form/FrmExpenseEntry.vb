@@ -3014,7 +3014,7 @@ Public Class FrmExpenseEntry
         TxtLinkedParty.Enabled = False
 
         If FDivisionNameForCustomization(20) = "SHYAMA SHYAM FABRICS" Or
-            FDivisionNameForCustomization(22) = "W SHYAMA SHYAM FABRICS" Then
+            FDivisionNameForCustomization(22) = "W SHYAMA SHYAM FABRICS" Or ClsMain.FDivisionNameForCustomization(25) = "SHYAMA SHYAM VENTURES LLP" Or ClsMain.FDivisionNameForCustomization(27) = "W SHYAMA SHYAM VENTURES LLP" Then
             TxtLinkedParty.Visible = True
             LblLinkedParty.Visible = True
         Else

@@ -188,6 +188,7 @@ Public Class FrmItemMaster
         Me.MnuBulkEdit = New System.Windows.Forms.ToolStripMenuItem()
         Me.MnuImportDesignFromDos = New System.Windows.Forms.ToolStripMenuItem()
         Me.MnuBulkRateEdit = New System.Windows.Forms.ToolStripMenuItem()
+        Me.MnuBarcodePrint = New System.Windows.Forms.ToolStripMenuItem()
         Me.OFDMain = New System.Windows.Forms.OpenFileDialog()
         Me.Pnl1 = New System.Windows.Forms.Panel()
         Me.BtnAttachments = New System.Windows.Forms.Button()
@@ -428,58 +429,64 @@ Public Class FrmItemMaster
         '
         'MnuOptions
         '
-        Me.MnuOptions.Items.AddRange(New System.Windows.Forms.ToolStripItem() {Me.MnuImportFromExcel, Me.MnuImportFromDos, Me.MnuImportFromTally, Me.MnuImportRateListFromExcel, Me.MnuImportRateListFromDos, Me.MnuBulkEdit, Me.MnuImportDesignFromDos, Me.MnuBulkRateEdit})
+        Me.MnuOptions.Items.AddRange(New System.Windows.Forms.ToolStripItem() {Me.MnuImportFromExcel, Me.MnuImportFromDos, Me.MnuImportFromTally, Me.MnuImportRateListFromExcel, Me.MnuImportRateListFromDos, Me.MnuBulkEdit, Me.MnuImportDesignFromDos, Me.MnuBulkRateEdit, Me.MnuBarcodePrint})
         Me.MnuOptions.Name = "MnuOptions"
-        Me.MnuOptions.Size = New System.Drawing.Size(218, 202)
+        Me.MnuOptions.Size = New System.Drawing.Size(219, 180)
         Me.MnuOptions.Text = "Option"
         '
         'MnuImportFromExcel
         '
         Me.MnuImportFromExcel.Name = "MnuImportFromExcel"
-        Me.MnuImportFromExcel.Size = New System.Drawing.Size(217, 22)
+        Me.MnuImportFromExcel.Size = New System.Drawing.Size(218, 22)
         Me.MnuImportFromExcel.Text = "Import From Excel"
         '
         'MnuImportFromDos
         '
         Me.MnuImportFromDos.Name = "MnuImportFromDos"
-        Me.MnuImportFromDos.Size = New System.Drawing.Size(217, 22)
+        Me.MnuImportFromDos.Size = New System.Drawing.Size(218, 22)
         Me.MnuImportFromDos.Text = "Import From Dos"
         '
         'MnuImportFromTally
         '
         Me.MnuImportFromTally.Name = "MnuImportFromTally"
-        Me.MnuImportFromTally.Size = New System.Drawing.Size(217, 22)
+        Me.MnuImportFromTally.Size = New System.Drawing.Size(218, 22)
         Me.MnuImportFromTally.Text = "Import From Tally"
         '
         'MnuImportRateListFromExcel
         '
         Me.MnuImportRateListFromExcel.Name = "MnuImportRateListFromExcel"
-        Me.MnuImportRateListFromExcel.Size = New System.Drawing.Size(217, 22)
+        Me.MnuImportRateListFromExcel.Size = New System.Drawing.Size(218, 22)
         Me.MnuImportRateListFromExcel.Text = "Import Rate List From Excel"
         '
         'MnuImportRateListFromDos
         '
         Me.MnuImportRateListFromDos.Name = "MnuImportRateListFromDos"
-        Me.MnuImportRateListFromDos.Size = New System.Drawing.Size(217, 22)
+        Me.MnuImportRateListFromDos.Size = New System.Drawing.Size(218, 22)
         Me.MnuImportRateListFromDos.Text = "Import Rate List From Dos"
         '
         'MnuBulkEdit
         '
         Me.MnuBulkEdit.Name = "MnuBulkEdit"
-        Me.MnuBulkEdit.Size = New System.Drawing.Size(217, 22)
+        Me.MnuBulkEdit.Size = New System.Drawing.Size(218, 22)
         Me.MnuBulkEdit.Text = "Bulk Edit"
         '
         'MnuImportDesignFromDos
         '
         Me.MnuImportDesignFromDos.Name = "MnuImportDesignFromDos"
-        Me.MnuImportDesignFromDos.Size = New System.Drawing.Size(217, 22)
+        Me.MnuImportDesignFromDos.Size = New System.Drawing.Size(218, 22)
         Me.MnuImportDesignFromDos.Text = "Import Design From Dos"
         '
         'MnuBulkRateEdit
         '
         Me.MnuBulkRateEdit.Name = "MnuBulkRateEdit"
-        Me.MnuBulkRateEdit.Size = New System.Drawing.Size(217, 22)
+        Me.MnuBulkRateEdit.Size = New System.Drawing.Size(218, 22)
         Me.MnuBulkRateEdit.Text = "Bulk Rate Edit"
+        '
+        'MnuBarcodePrint
+        '
+        Me.MnuBarcodePrint.Name = "MnuBarcodePrint"
+        Me.MnuBarcodePrint.Size = New System.Drawing.Size(218, 22)
+        Me.MnuBarcodePrint.Text = "Barcode Print"
         '
         'OFDMain
         '
@@ -599,6 +606,7 @@ Public Class FrmItemMaster
     Friend WithEvents MnuImportDesignFromDos As ToolStripMenuItem
     Protected WithEvents BtnAttachments As Button
     Friend WithEvents MnuBulkRateEdit As ToolStripMenuItem
+    Friend WithEvents MnuBarcodePrint As ToolStripMenuItem
 #End Region
 
     Private Sub FGetItemTypeSetting()
@@ -786,7 +794,11 @@ Public Class FrmItemMaster
             End If
 
             If AgL.XNull(AgL.Dman_Execute("Select BarcodeType From Item IG With (NoLock) Where IG.Code = '" & Dgl1.Item(Col1Value, rowItemGroup).Tag & "' And BarcodePattern = '" & BarcodePattern.Auto & "' ", AgL.GCn).executescalar()) = BarcodeType.Fixed Then
-                Dgl1.Item(Col1Value, rowBarcode).Value = AgL.XNull(AgL.Dman_Execute("Select IfNull(Max(CAST(Description as BIGINT)),0) + 1 From BarCode  With (NoLock)", AgL.GCn).ExecuteScalar())
+                If ClsMain.FDivisionNameForCustomization(6) = "SADHVI" And AgL.StrCmp(AgL.PubDBName, "Sadhvi") Then
+                    Dgl1.Item(Col1Value, rowBarcode).Value = AgL.Dman_Execute("Select IfNull(Max(CAST(Description as BIGINT)),0) + 1 From BarCode  With (NoLock) WHERE Item NOT IN ('Lr','LrBale') ", AgL.GCn).ExecuteScalar()
+                Else
+                    Dgl1.Item(Col1Value, rowBarcode).Value = AgL.XNull(AgL.Dman_Execute("Select IfNull(Max(CAST(Description as BIGINT)),0) + 1 From BarCode  With (NoLock)", AgL.GCn).ExecuteScalar())
+                End If
             End If
 
 
@@ -874,7 +886,8 @@ Public Class FrmItemMaster
         Dim mCode As Integer = 0
         If Dgl1.Item(Col1Value, rowBarcode).Tag Is Nothing Then Dgl1.Item(Col1Value, rowBarcode).Tag = ""
         If Dgl1.Item(Col1Value, rowBarcode).Tag = "" Then
-            If Dgl1.Item(Col1Value, rowBarcode).Value <> "" And Dgl1.Item(Col1Value, rowBarcode).Value <> Nothing Then
+            'If Dgl1.Item(Col1Value, rowBarcode).Value <> "" And Dgl1.Item(Col1Value, rowBarcode).Value <> Nothing Then
+            If AgL.XNull(Dgl1.Item(Col1Value, rowBarcode).Value) <> "" Then
                 mCode = AgL.Dman_Execute("Select IfNull(Max(Code),0) + 1 From BarCode With (NoLock)", IIf(AgL.PubServerName = "", Conn, AgL.GcnRead)).ExecuteScalar()
                 mQry = " INSERT INTO Barcode (Code, Description, Item, Div_Code, GenDocID, GenSr, Qty)
                     VALUES (" & AgL.Chk_Text(mCode) & ", " & AgL.Chk_Text(Dgl1.Item(Col1Value, rowBarcode).Value) & ", " & AgL.Chk_Text(SearchCode) & ",
@@ -1528,7 +1541,11 @@ Public Class FrmItemMaster
 
         If Topctrl1.Mode = "Add" Then
             If AgL.XNull(AgL.Dman_Execute("Select BarcodeType From Item IG With (NoLock) Where IG.Code = '" & Dgl1.Item(Col1Value, rowItemGroup).Tag & "' And BarcodePattern = '" & BarcodePattern.Auto & "' ", AgL.GCn).executescalar()) = BarcodeType.Fixed Then
-                Dgl1.Item(Col1Value, rowBarcode).Value = AgL.Dman_Execute("Select IfNull(Max(CAST(Description as BIGINT)),0) + 1 From BarCode  With (NoLock)", AgL.GCn).ExecuteScalar()
+                If ClsMain.FDivisionNameForCustomization(6) = "SADHVI" And AgL.StrCmp(AgL.PubDBName, "Sadhvi") Then
+                    Dgl1.Item(Col1Value, rowBarcode).Value = AgL.Dman_Execute("Select IfNull(Max(CAST(Description as BIGINT)),0) + 1 From BarCode  With (NoLock) WHERE Item NOT IN ('Lr','LrBale') ", AgL.GCn).ExecuteScalar()
+                Else
+                    Dgl1.Item(Col1Value, rowBarcode).Value = AgL.Dman_Execute("Select IfNull(Max(CAST(Description as BIGINT)),0) + 1 From BarCode  With (NoLock)", AgL.GCn).ExecuteScalar()
+                End If
             End If
         End If
 
@@ -2848,11 +2865,11 @@ Public Class FrmItemMaster
             Return bFieldName
         End If
     End Function
-    Private Sub MnuImport_Click(sender As Object, e As EventArgs) Handles MnuImportFromExcel.Click, MnuImportFromDos.Click, MnuImportFromTally.Click, MnuImportRateListFromExcel.Click, MnuImportRateListFromDos.Click, MnuBulkEdit.Click, MnuImportDesignFromDos.Click, MnuBulkRateEdit.Click
+    Private Sub MnuImport_Click(sender As Object, e As EventArgs) Handles MnuImportFromExcel.Click, MnuImportFromDos.Click, MnuImportFromTally.Click, MnuImportRateListFromExcel.Click, MnuImportRateListFromDos.Click, MnuBulkEdit.Click, MnuImportDesignFromDos.Click, MnuBulkRateEdit.Click, MnuBarcodePrint.Click
         Select Case sender.name
             Case MnuImportFromExcel.Name
                 FImportFromExcel(ImportFor.Excel)
-                'FImportItem_SparePart()
+            'FImportItem_SparePart()
 
             Case MnuImportFromDos.Name
                 FImportFromExcel(ImportFor.Dos, True)
@@ -2876,6 +2893,15 @@ Public Class FrmItemMaster
 
             Case MnuBulkRateEdit.Name
                 FOpenBulkRateEdit()
+
+            Case MnuBarcodePrint.Name
+                Dim FrmObj As FrmPrintBarcode
+                FrmObj = New FrmPrintBarcode()
+                FrmObj.DocId = mSearchCode
+                FrmObj.PrintBarcodeFrom = Me.Name
+                FrmObj.LblTitle.Text = Dgl1.Item(Col1Value, rowItemName).Value + " - " + Dgl1.Item(Col1Value, rowBarcode).Value
+                FrmObj.StartPosition = FormStartPosition.CenterParent
+                FrmObj.ShowDialog()
         End Select
     End Sub
     Private Sub FOpenBulkRateEdit()

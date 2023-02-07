@@ -653,6 +653,7 @@ Public Class ClsMain
             FCreateTable_PersonDiscount()
             FCreateTable_PersonAdditionalDiscount()
             FCreateTable_PersonAddition()
+            FCreateTable_PersonAdditionalCommission()
             FCreateTable_PersonExtraDiscount()
             FCreateTable_ItemPersonInterestSlab()
             FCreateTable_UnitConversion()
@@ -1499,7 +1500,7 @@ Public Class ClsMain
                 AgL.Dman_ExecuteNonQry(mQry, AgL.GcnMain)
             End If
 
-            If FDivisionNameForCustomization(20) = "SHYAMA SHYAM FABRICS" Then
+            If FDivisionNameForCustomization(20) = "SHYAMA SHYAM FABRICS" Or ClsMain.FDivisionNameForCustomization(25) = "SHYAMA SHYAM VENTURES LLP" Then
 
                 FSeedSingleIfNotExists_Voucher_Type("JVD", "JOURNAL TDS", Ncat.JournalVoucher, VoucherCategory.Journal)
                 FSeedSingleIfNotExists_Voucher_Type("JVT", "JOURNAL TCS", Ncat.JournalVoucher, VoucherCategory.Journal)
@@ -1618,7 +1619,7 @@ Public Class ClsMain
 
 
 
-            If FDivisionNameForCustomization(22) = "W SHYAMA SHYAM FABRICS" Then
+            If FDivisionNameForCustomization(22) = "W SHYAMA SHYAM FABRICS" Or ClsMain.FDivisionNameForCustomization(27) = "W SHYAMA SHYAM VENTURES LLP" Then
                 FSeedSingleIfNotExists_Voucher_Type("JVD", "JOURNAL TDS", Ncat.JournalVoucher, VoucherCategory.Journal)
                 FSeedSingleIfNotExists_Voucher_Type("JVT", "JOURNAL TCS", Ncat.JournalVoucher, VoucherCategory.Journal)
 
@@ -5857,7 +5858,7 @@ Sincerely
         FSeedSingleIfNotExist_Setting(SettingType.General, "", Ncat.SaleInvoice, SettingFields.UseGlobalItemHelpYn, "0", AgDataType.YesNo, "50")
         FSeedSingleIfNotExist_Setting(SettingType.General, "", Ncat.SaleInvoice, SettingFields.ShowReferenceNoHeaderHelpYn, "1", AgDataType.YesNo, "50")
         FSeedSingleIfNotExist_Setting(SettingType.General, "", Ncat.SaleInvoice, SettingFields.ShowReferenceNoHeaderButtonYn, "0", AgDataType.YesNo, "50")
-
+        FSeedSingleIfNotExist_Setting(SettingType.General, "", Ncat.SaleInvoice, SettingFields.AllowToCheckBarcodeStockYn, "1", AgDataType.YesNo, "50")
 
         mQry = "  Select 'Doc Qty' as Code, 'Doc Qty' as Name "
         mQry += " Union All "
@@ -6716,6 +6717,8 @@ Thanks
         Public Shared AskVoucherTypeBeforeOpeningEntry As String = "Ask Voucher Type To Open Y/N"
         Public Shared LinkInvoiceWithReturnYn As String = "Link Invoice With Return Y/N"
         Public Shared CalculateAmountOn As String = "Calculate Amount On"
+
+        Public Shared AllowToCheckBarcodeStockYn As String = "Allow To Check Barcode Stock Y/N"
 
         Public Shared AllowZeroQtyYn As String = "Allow Zero Qty Y/N"
         Public Shared AllowLineRowDeletionYn As String = "Allow Line Row Deletion Y/N"
@@ -7823,7 +7826,7 @@ Thanks
             FSeedSingleIfNotExist_EntryHeaderUISetting("FrmPerson", SubgroupType.LedgerAccount, "Dgl1", ConfigurableFields.FrmPersonHeaderDgl1.Remarks, 0, 0)
             FSeedSingleIfNotExist_EntryHeaderUISetting("FrmPerson", SubgroupType.LedgerAccount, "Dgl1", FrmPerson.hcShowAccountInOtherDivisions, 0, 0)
             FSeedSingleIfNotExist_EntryHeaderUISetting("FrmPerson", SubgroupType.LedgerAccount, "Dgl1", FrmPerson.hcShowAccountInOtherSites, 0, 0)
-            If FDivisionNameForCustomization(20) = "SHYAMA SHYAM FABRICS" Or FDivisionNameForCustomization(22) = "W SHYAMA SHYAM FABRICS" Then
+            If FDivisionNameForCustomization(20) = "SHYAMA SHYAM FABRICS" Or FDivisionNameForCustomization(22) = "W SHYAMA SHYAM FABRICS" Or ClsMain.FDivisionNameForCustomization(25) = "SHYAMA SHYAM VENTURES LLP" Or ClsMain.FDivisionNameForCustomization(27) = "W SHYAMA SHYAM VENTURES LLP" Then
                 FSeedSingleIfNotExist_EntryHeaderUISetting("FrmPerson", SubgroupType.LedgerAccount, "Dgl1", FrmPerson_ShyamaShyam.hcStatus, 1, 0)
             End If
 
@@ -7928,6 +7931,7 @@ Thanks
             FSeedSingleIfNotExist_EntryHeaderUISetting("FrmPerson", SubgroupType.Customer, "Dgl1", ConfigurableFields.FrmPersonHeaderDgl1.CreditLimit, 1)
             FSeedSingleIfNotExist_EntryHeaderUISetting("FrmPerson", SubgroupType.Customer, "Dgl1", ConfigurableFields.FrmPersonHeaderDgl1.Discount, 0, 0)
             FSeedSingleIfNotExist_EntryHeaderUISetting("FrmPerson", SubgroupType.Customer, "Dgl1", ConfigurableFields.FrmPersonHeaderDgl1.Addition, 0, 0)
+            FSeedSingleIfNotExist_EntryHeaderUISetting("FrmPerson", SubgroupType.Supplier, "Dgl1", ConfigurableFields.FrmPersonHeaderDgl1.AdditionalCommission, 0, 0)
             FSeedSingleIfNotExist_EntryHeaderUISetting("FrmPerson", SubgroupType.Customer, "Dgl1", FrmPerson.hcBankName, 0, 0)
             FSeedSingleIfNotExist_EntryHeaderUISetting("FrmPerson", SubgroupType.Customer, "Dgl1", FrmPerson.hcBankAccount, 0, 0)
             FSeedSingleIfNotExist_EntryHeaderUISetting("FrmPerson", SubgroupType.Customer, "Dgl1", FrmPerson.hcBankIFSC, 0, 0)
@@ -10475,6 +10479,7 @@ Thanks
             Public Const Distance As String = "Distance"
             Public Const Discount As String = "Discount"
             Public Const Addition As String = "Addition"
+            Public Const AdditionalCommission As String = "Additional Commission"
             Public Const ExtraDiscount As String = "Extra Discount"
             Public Const CreditDays As String = "Credit Days"
             Public Const CreditLimit As String = "Credit Limit"
@@ -14114,6 +14119,7 @@ Thanks
                         PRIMARY KEY ([Code],[SalesTaxGroupItem]) ); "
                 AgL.Dman_ExecuteNonQry(mQry, AgL.GcnMain)
             End If
+            AgL.AddFieldSqlite(AgL.GcnMain, "ItemCategorySalesTax", "MRPGreaterThan", "float", "0", True)
         Catch ex As Exception
             MsgBox(ex.Message & "  [FCreateTable_ItemCategorySalesTax]")
         End Try
@@ -15852,7 +15858,7 @@ Thanks
             AgL.AddFieldSqlite(AgL.GcnMain, "Subgroup", "OmsId", "nVarchar(50)", "", True)
             AgL.AddFieldSqlite(AgL.GcnMain, "Subgroup", "UploadDate", "DateTime", "", True)
 
-            If FDivisionNameForCustomization(20) = "SHYAMA SHYAM FABRICS" Or FDivisionNameForCustomization(22) = "W SHYAMA SHYAM FABRICS" Then
+            If FDivisionNameForCustomization(20) = "SHYAMA SHYAM FABRICS" Or FDivisionNameForCustomization(22) = "W SHYAMA SHYAM FABRICS" Or ClsMain.FDivisionNameForCustomization(25) = "SHYAMA SHYAM VENTURES LLP" Or ClsMain.FDivisionNameForCustomization(27) = "W SHYAMA SHYAM VENTURES LLP" Then
                 AgL.AddFieldSqlite(AgL.GcnMain, "Subgroup", "WStatus", "nVarchar(20)", "", True)
             End If
 
@@ -19122,6 +19128,30 @@ Thanks
             AgL.AddFieldSqlite(AgL.GcnMain, "PersonAddition", "AdditionPer", "float", "0", True)
         Catch ex As Exception
             MsgBox(ex.Message & "  [FCreateTable_PersonAddition]")
+        End Try
+    End Sub
+
+    Private Sub FCreateTable_PersonAdditionalCommission()
+        Dim mQry As String
+        Try
+            If Not AgL.IsTableExist("PersonAdditionalCommission", AgL.GcnMain) Then
+                mQry = " CREATE TABLE [PersonAdditionalCommission] 
+                        (
+                        Person nVarchar(10) COLLATE NOCASE References Subgroup(Subcode),
+                        ItemCategory nVarchar(10) COLLATE NOCASE References Item(Code),
+                        ItemGroup nVarchar(10) COLLATE NOCASE References Item(Code),
+                        Div_Code nVarchar(1) COLLATE NOCASE References Division(Div_Code),
+                        Site_Code nVarchar(2) COLLATE NOCASE References SiteMast(Code),
+                        Process nVarchar(10) COLLATE NOCASE References Subgroup(Subcode)                        
+                        ); "
+                AgL.Dman_ExecuteNonQry(mQry, AgL.GcnMain)
+                mQry = "CREATE UNIQUE INDEX [IX_PersonAdditionalCommission] On [PersonAdditionalCommission] ([Person],[ItemCategory],[ItemGroup],[Div_Code],[Site_Code],[Process]);"
+                AgL.Dman_ExecuteNonQry(mQry, AgL.GcnMain)
+            End If
+            AgL.AddFieldSqlite(AgL.GcnMain, "PersonAdditionalCommission", "AdditionalCommissionCalculationPattern", "nVarchar(30)", "", True)
+            AgL.AddFieldSqlite(AgL.GcnMain, "PersonAdditionalCommission", "AdditionalCommissionPer", "float", "0", True)
+        Catch ex As Exception
+            MsgBox(ex.Message & "  [FCreateTable_PersonAdditionalCommission]")
         End Try
     End Sub
 

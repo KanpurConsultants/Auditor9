@@ -3718,7 +3718,7 @@ Public Class FrmSaleInvoiceDirect_WithDimension_ShyamaShyam
             DglMain.Item(Col1Value, rowBillToParty).Value = DglMain.Item(Col1Value, rowSaleToParty).Value
             DglMain(Col1Head, rowBillToParty).Tag = Nothing
 
-            If FDivisionNameForCustomization(20) = "SHYAMA SHYAM FABRICS" Or FDivisionNameForCustomization(22) = "W SHYAMA SHYAM FABRICS" Then
+            If FDivisionNameForCustomization(20) = "SHYAMA SHYAM FABRICS" Or FDivisionNameForCustomization(22) = "W SHYAMA SHYAM FABRICS" Or ClsMain.FDivisionNameForCustomization(25) = "SHYAMA SHYAM VENTURES LLP" Or ClsMain.FDivisionNameForCustomization(27) = "W SHYAMA SHYAM VENTURES LLP" Then
                 mQry = "Select Par.Code, Par.Name
                             From SubGroup Sg
                             LEFT JOIN ViewHelpSubGroup Par On Sg.Parent = Par.Code
@@ -3961,7 +3961,7 @@ Public Class FrmSaleInvoiceDirect_WithDimension_ShyamaShyam
                 ElseIf DglMain(Col1Value, rowSaleToParty).Visible = True Then
                     If FDivisionNameForCustomization(12) = "MAA KI KRIPA" Or
                             FDivisionNameForCustomization(16) = "KAMAKHYA TRADERS" Or
-                        FDivisionNameForCustomization(22) = "W SHYAMA SHYAM FABRICS" Then
+                        FDivisionNameForCustomization(22) = "W SHYAMA SHYAM FABRICS" Or ClsMain.FDivisionNameForCustomization(27) = "W SHYAMA SHYAM VENTURES LLP" Then
                         DglMain.CurrentCell = DglMain(Col1Value, rowV_Date)
                     Else
                         DglMain.CurrentCell = DglMain(Col1Value, rowSaleToParty)
@@ -7629,7 +7629,7 @@ Public Class FrmSaleInvoiceDirect_WithDimension_ShyamaShyam
             End If
         Else
             If ClsMain.IsScopeOfWorkContains("+Cloth Aadhat Module") Then
-                If AgL.StrCmp(AgL.PubDBName, "ShyamaShyam_W") And LblV_Type.Tag = Ncat.SaleReturn Then
+                If (AgL.StrCmp(AgL.PubDBName, "ShyamaShyam_W") Or AgL.StrCmp(AgL.PubDBName, "ShyamaShyamV_W")) And LblV_Type.Tag = Ncat.SaleReturn Then
                     FGetPrintCrystal1(SearchCode, mPrintFor, IsPrintToPrinter, BulkCondStr)
                 Else
                     FGetPrintCrystal_Aadhat(Me, SearchCode, mPrintFor, IsPrintToPrinter, BulkCondStr, "")
@@ -13693,7 +13693,7 @@ Public Class FrmSaleInvoiceDirect_WithDimension_ShyamaShyam
 
                 If FDivisionNameForCustomization(12) = "MAA KI KRIPA" Or
                         FDivisionNameForCustomization(16) = "KAMAKHYA TRADERS" Or
-                    FDivisionNameForCustomization(22) = "W SHYAMA SHYAM FABRICS" Then
+                    FDivisionNameForCustomization(22) = "W SHYAMA SHYAM FABRICS" Or ClsMain.FDivisionNameForCustomization(27) = "W SHYAMA SHYAM VENTURES LLP" Then
                     PurchInvoiceTable.Line_Taxable_Amount = PurchInvoiceTable.Line_Amount
                     PurchInvoiceTable.Line_Tax1_Per = 0
                     PurchInvoiceTable.Line_Tax1 = 0
@@ -13797,7 +13797,7 @@ Public Class FrmSaleInvoiceDirect_WithDimension_ShyamaShyam
 
             If FDivisionNameForCustomization(12) = "MAA KI KRIPA" Or
                     FDivisionNameForCustomization(16) = "KAMAKHYA TRADERS" Or
-                FDivisionNameForCustomization(22) = "W SHYAMA SHYAM FABRICS" Then
+                FDivisionNameForCustomization(22) = "W SHYAMA SHYAM FABRICS" Or ClsMain.FDivisionNameForCustomization(27) = "W SHYAMA SHYAM VENTURES LLP" Then
                 PurchInvoiceTableList(0).Other_Charge = Val(DglPurchase.Item(Col5OtherCharge, I).Value)
                 PurchInvoiceTableList(0).Other_Charge1 = Val(DglPurchase.Item(Col5OtherCharge1, I).Value)
                 PurchInvoiceTableList(0).Deduction = Val(DglPurchase.Item(Col5Deduction, I).Value)
@@ -14005,7 +14005,7 @@ Public Class FrmSaleInvoiceDirect_WithDimension_ShyamaShyam
 
         If FDivisionNameForCustomization(12) = "MAA KI KRIPA" Or
                 FDivisionNameForCustomization(16) = "KAMAKHYA TRADERS" Or
-            FDivisionNameForCustomization(22) = "W SHYAMA SHYAM FABRICS" Then
+            FDivisionNameForCustomization(22) = "W SHYAMA SHYAM FABRICS" Or ClsMain.FDivisionNameForCustomization(27) = "W SHYAMA SHYAM VENTURES LLP" Then
             mQry = " CREATE " & IIf(AgL.PubServerName = "", "Temp", "") & " TABLE [#TempSaleInvoicePurchaseSummary](
                 Serial Integer,
                 ItemGroup NVARCHAR(10),

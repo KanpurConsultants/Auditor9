@@ -29,7 +29,7 @@ Public Class FrmPrintBarcode
     Public Const Col1SaleRate As String = "Sale Rate"
     Public Const Col1MRP As String = "MRP"
 
-    Dim mQry As String = "", mDocId As String = ""
+    Dim mQry As String = "", mDocId As String = "", mPrintBarcodeFrom As String = ""
 
     Private Const PrintAction_PrintToPrinter As String = "Print To Printer"
     Private Const PrintAction_Preview As String = "Preview"
@@ -39,6 +39,14 @@ Public Class FrmPrintBarcode
         End Get
         Set(ByVal value As String)
             mDocId = value
+        End Set
+    End Property
+    Public Property PrintBarcodeFrom() As String
+        Get
+            PrintBarcodeFrom = mPrintBarcodeFrom
+        End Get
+        Set(ByVal value As String)
+            mPrintBarcodeFrom = value
         End Set
     End Property
     Public Sub New(ByVal StrUPVar As String, ByVal DTUP As DataTable)
@@ -208,7 +216,55 @@ Public Class FrmPrintBarcode
         Dim DtTemp As DataTable
         Dim I As Integer = 0
 
-        mQry = "Select L.DocId, L.Sr, L.V_Type || '-' || L.RecId As RecId, L.V_Date As V_Date, 
+        If (PrintBarcodeFrom = "FrmItemMaster") Then
+            mQry = "Select L.GenDocId AS DocId, 1 AS Sr, L.GenDocId As RecId, SKU.EntryDate As V_Date, 
+                L.Item as ItemCode,
+                Case When Sku.V_Type = '" & ItemV_Type.SKU & "' Then I.Specification Else Sku.Specification End as ItemName,
+                1 As Qty, SKU.Rate, NULL Sale_Rate, L.MRP,
+                IsNull(Ig.BarcodeType,Ic.BarcodeType) As BarcodeType, 
+                IsNull(Ig.BarcodePattern,Ic.BarcodePattern) As BarcodePattern,
+                IC.Description As ItemCategoryDesc, IG.Description As ItemGroupDesc, 
+                D1.Specification as Dimension1Desc, D2.Specification as Dimension2Desc,
+                D3.Specification as Dimension3Desc, D4.Specification as Dimension4Desc, 
+                D.DispName as SizeDesc
+                From Barcode L 
+                LEFT JOIN Item Sku ON Sku.Code = L.Item
+                Left Join Item IC On Sku.ItemCategory = IC.Code
+                Left Join Item IG On Sku.ItemGroup = IG.Code
+                LEFT JOIN Item I ON Sku.BaseItem = I.Code
+                LEFT JOIN Item D1 ON Sku.Dimension1 = D1.Code
+                LEFT JOIN Item D2 ON Sku.Dimension2 = D2.Code
+                LEFT JOIN Item D3 ON Sku.Dimension3 = D3.Code
+                LEFT JOIN Item D4 ON Sku.Dimension4 = D4.Code
+                LEFT JOIN Item Size ON Sku.Size = Size.Code
+                LEFT JOIN Subgroup D on D.Subcode = SKU.Div_Code
+                Where L.GenDocId = '" & mDocId & "'"
+        ElseIf (PrintBarcodeFrom = "FrmBarcodeRateRevision") Then
+            mQry = "Select L.GenDocId AS DocId, 1 AS Sr, L.GenDocId As RecId, SKU.EntryDate As V_Date, 
+                L.Item as ItemCode,
+                Case When Sku.V_Type = '" & ItemV_Type.SKU & "' Then I.Specification Else Sku.Specification End as ItemName,
+                H.PrintQty As Qty, SKU.Rate, NULL Sale_Rate, L.MRP,
+                IsNull(Ig.BarcodeType,Ic.BarcodeType) As BarcodeType, 
+                IsNull(Ig.BarcodePattern,Ic.BarcodePattern) As BarcodePattern,
+                IC.Description As ItemCategoryDesc, IG.Description As ItemGroupDesc, 
+                D1.Specification as Dimension1Desc, D2.Specification as Dimension2Desc,
+                D3.Specification as Dimension3Desc, D4.Specification as Dimension4Desc, 
+                D.DispName as SizeDesc
+                From BarcodeRateRevisionDetail H
+                LEFT JOIN Barcode L ON L.Code = H.Barcode
+                LEFT JOIN Item Sku ON Sku.Code = L.Item
+                Left Join Item IC On Sku.ItemCategory = IC.Code
+                Left Join Item IG On Sku.ItemGroup = IG.Code
+                LEFT JOIN Item I ON Sku.BaseItem = I.Code
+                LEFT JOIN Item D1 ON Sku.Dimension1 = D1.Code
+                LEFT JOIN Item D2 ON Sku.Dimension2 = D2.Code
+                LEFT JOIN Item D3 ON Sku.Dimension3 = D3.Code
+                LEFT JOIN Item D4 ON Sku.Dimension4 = D4.Code
+                LEFT JOIN Item Size ON Sku.Size = Size.Code
+                LEFT JOIN Subgroup D on D.Subcode = SKU.Div_Code
+                Where H.Code = '" & mDocId & "'"
+        Else
+            mQry = "Select L.DocId, L.Sr, L.V_Type || '-' || L.RecId As RecId, L.V_Date As V_Date, 
                 L.Item as ItemCode,
                 Case When Sku.V_Type = '" & ItemV_Type.SKU & "' Then I.Specification Else Sku.Specification End as ItemName,
                 Case When IfNull(Pidd.Pcs,0) <> 0 Then IfNull(Pidd.Pcs,0)
@@ -236,6 +292,8 @@ Public Class FrmPrintBarcode
                 Where L.DocId = '" & mDocId & "'
                 And IfNull(L.Qty_Rec,0) > 0 
                 And (Case When IsNull(Ig.BarcodeType,'N/A') = 'N/A' Then Ic.BarcodeType Else IsNull(Ig.BarcodeType,'N/A') End) <> '" & BarcodeType.NA & "'"
+        End If
+
         DtTemp = AgL.FillData(mQry, AgL.GCn).Tables(0)
 
         With DtTemp
@@ -326,7 +384,30 @@ Public Class FrmPrintBarcode
         For I = 0 To Dgl1.Rows.Count - 1
             If Val(Dgl1.Item(Col1PrintQty, I).Value) <> 0 Then
                 If Dgl1.Item(Col1BarcodeType, I).Value = BarcodeType.Fixed Then
-                    mQry = "Select 'o' As Tick, B.Code As Code, B.Description As Barcode, 
+                    If (PrintBarcodeFrom = "FrmItemMaster") Then
+                        mQry = "Select 'o' As Tick, B.Code As Code, B.Description As Barcode, 
+                        Case When Sku.V_Type = '" & ItemV_Type.SKU & "' Then I.Specification Else Sku.Specification End as ItemDesc,
+                        IC.Description As ItemCategoryDesc, IG.Description As ItemGroupDesc, 
+                        D1.Specification as Dimension1Desc, D2.Specification as Dimension2Desc,
+                        D3.Specification as Dimension3Desc, D4.Specification as Dimension4Desc, 
+                        D.DispName as SizeDesc, CAST(IfNull(B.PurchaseRate,0)*1.0 AS DECIMAL(18,2)) As PurchaseRate, 
+                        CAST(IfNull(B.SaleRate,0)*1.0 AS DECIMAL(18,2)) As SaleRate, CAST(IfNull(B.MRP,0)*1.0 AS DECIMAL(18,2)) As MRP,
+                        CAST(" & Val(Dgl1.Item(Col1PrintQty, I).Value) & " as Float) As Qty, CAST(IfNull(B.Qty,0)*1.0 AS DECIMAL(18,2)) As ReceiveQty
+                        From Item Sku
+                        Left Join Item IC On Sku.ItemCategory = IC.Code
+                        Left Join Item IG On Sku.ItemGroup = IG.Code
+                        LEFT JOIN Item I ON Sku.BaseItem = I.Code
+                        LEFT JOIN Item D1 ON Sku.Dimension1 = D1.Code
+                        LEFT JOIN Item D2 ON Sku.Dimension2 = D2.Code
+                        LEFT JOIN Item D3 ON Sku.Dimension3 = D3.Code
+                        LEFT JOIN Item D4 ON Sku.Dimension4 = D4.Code
+                        LEFT JOIN Item Size ON Sku.Size = Size.Code
+                        LEFT JOIN Barcode B On Sku.Barcode = B.Code
+                        LEFT JOIN Subgroup D on D.Subcode = SKU.Div_Code
+                        Where Sku.Code = '" & Dgl1.Item(Col1ItemCode, I).Value & "' "
+                        DtTemp = AgL.FillData(mQry, AgL.GCn).Tables(0)
+                    Else
+                        mQry = "Select 'o' As Tick, B.Code As Code, B.Description As Barcode, 
                         Case When Sku.V_Type = '" & ItemV_Type.SKU & "' Then I.Specification Else Sku.Specification End as ItemDesc,
                         IC.Description As ItemCategoryDesc, IG.Description As ItemGroupDesc, 
                         D1.Specification as Dimension1Desc, D2.Specification as Dimension2Desc,
@@ -345,7 +426,9 @@ Public Class FrmPrintBarcode
                         LEFT JOIN Item Size ON Sku.Size = Size.Code
                         LEFT JOIN Barcode B On Sku.Barcode = B.Code
                         Where Sku.Code = '" & Dgl1.Item(Col1ItemCode, I).Value & "' "
-                    DtTemp = AgL.FillData(mQry, AgL.GCn).Tables(0)
+                        DtTemp = AgL.FillData(mQry, AgL.GCn).Tables(0)
+                    End If
+
                 Else
                     mQry = "Select 'o' As Tick, B.Code As Code, B.Description As Barcode, 
                         Case When Sku.V_Type = '" & ItemV_Type.SKU & "' Then I.Specification Else Sku.Specification End as ItemDesc,

@@ -1084,7 +1084,7 @@ Public Class FrmPartyAcSettlement
         mQry = "Delete From LedgerM Where DocId = '" & StrDocID & "'"
         AgL.Dman_ExecuteNonQry(mQry, Conn, Cmd)
 
-        If FDivisionNameForCustomization(22) = "W SHYAMA SHYAM FABRICS" Then
+        If FDivisionNameForCustomization(22) = "W SHYAMA SHYAM FABRICS" Or ClsMain.FDivisionNameForCustomization(27) = "W SHYAMA SHYAM VENTURES LLP" Then
             FUnLockPakkaEntries(StrDocID, Conn, Cmd)
         End If
     End Sub
@@ -1622,7 +1622,7 @@ Public Class FrmPartyAcSettlement
 
         SaveFifoAdjustment(Conn, Cmd)
 
-        If FDivisionNameForCustomization(22) = "W SHYAMA SHYAM FABRICS" Then
+        If FDivisionNameForCustomization(22) = "W SHYAMA SHYAM FABRICS" Or ClsMain.FDivisionNameForCustomization(27) = "W SHYAMA SHYAM VENTURES LLP" Then
             FLockPakkaEntries(mSearchCode, Conn, Cmd)
         End If
 
@@ -2786,7 +2786,7 @@ Public Class FrmPartyAcSettlement
                         Dgl2.Item(Col2InvoiceAmount, I).Value = AgL.VNull(.Rows(I)("Bal_Amount"))
                         Dgl2.Item(Col2Select, I).Value = "o"
 
-                        If ClsMain.IsScopeOfWorkContains(IndustryType.SubIndustryType.AadhatModule) Or FDivisionNameForCustomization(22) = "W SHYAMA SHYAM FABRICS" Then
+                        If ClsMain.IsScopeOfWorkContains(IndustryType.SubIndustryType.AadhatModule) Or FDivisionNameForCustomization(22) = "W SHYAMA SHYAM FABRICS" Or ClsMain.FDivisionNameForCustomization(27) = "W SHYAMA SHYAM VENTURES LLP" Then
                             Dim DtCommission As DataTable
                             mQry = "select  Round(Sum(Commission+AdditionalCommission),2) as Commission, (Case When Commission>0 Then cast(Commission_Per as NVarchar) || ' Per Pcs' || (Case When AdditionalCommission>0 Then ', ' Else '' End)  Else '' End) || (Case When AdditionalCommission>0 Then cast(AdditionalCommission_Per as NVarchar) || ' %' Else '' End) as Remark  from purchInvoiceDetail Where DocID = '" & Dgl2.Item(Col2InvoiceNo, I).Tag & "'"
                             DtCommission = AgL.FillData(mQry, AgL.GCn).Tables(0)
@@ -2891,7 +2891,7 @@ Public Class FrmPartyAcSettlement
                         Dgl3.Item(Col3Amount, I).Value = AgL.VNull(.Rows(I)("AmtDr"))
 
 
-                        If ClsMain.IsScopeOfWorkContains(IndustryType.SubIndustryType.AadhatModule) Or FDivisionNameForCustomization(22) = "W SHYAMA SHYAM FABRICS" Then
+                        If ClsMain.IsScopeOfWorkContains(IndustryType.SubIndustryType.AadhatModule) Or FDivisionNameForCustomization(22) = "W SHYAMA SHYAM FABRICS" Or ClsMain.FDivisionNameForCustomization(27) = "W SHYAMA SHYAM VENTURES LLP" Then
                             Dim DtCommission As DataTable
                             mQry = "select  Sum(Abs(Round(Commission+AdditionalCommission,2))) as Commission, (Case When Commission>0 Then cast(Commission_Per as NVarchar) || ' Per Pcs' || (Case When AdditionalCommission>0 Then ', ' Else '' End)  Else '' End) || (Case When AdditionalCommission>0 Then cast(AdditionalCommission_Per as NVarchar) || ' %' Else '' End) as Remark  from purchInvoiceDetail Where DocID = '" & Dgl3.Item(Col3PaymentNo, I).Tag & "'"
                             DtCommission = AgL.FillData(mQry, AgL.GCn).Tables(0)
@@ -3225,12 +3225,12 @@ Public Class FrmPartyAcSettlement
                 Left Join LedgerHead LH On H.DocID = LH.DocId
                 Left Join Ledger L On H.PurchaseInvoiceDocID =  L.DocID  And IfNull(H.PurchaseInvoiceDocIDSr,L.V_SNo) = L.V_SNo And LH.Subcode = L.Subcode
                 Left Join LedgerHead IH On L.DocID = IH.DocID
-                where H.DocID ='" & mSearchCode & "'"
+                where H.DocID ='" & mSearchCode & "' Order By H.DocID, H.Sr "
 
         dsInvoice = AgL.FillData(mQry, AgL.GCn).Tables(0)
 
         mQry = "select (Case When IH.PartyDocNo Is Null Then L.DivCode || L.Site_Code || '-' || L.V_Type || '-' || L.RecId Else IH.PartyDocNo End) As PaymentNo,
-                L.V_Date, CASE WHEN L.Chq_No IS NOT NULL THEN 'Ch.-' || L. Chq_No || ',Dt.-' || Cast(strftime('%d/%m/%Y', IfNull(L.Chq_Date,L.V_Date)) As nvarchar)  ELSE NULL END as Narration, H.PaidAmount, cSg.Name as ContraName
+                L.V_Date, CASE WHEN L.Chq_No IS NOT NULL THEN 'Ch.-' || L. Chq_No || ',Dt.-' || Cast(strftime('%d/%m/%Y', IfNull(L.Chq_Date,L.V_Date)) As nvarchar)  When IH.PartyDocNo Is NOT Null Then L.DivCode + L.Site_Code + '-' + L.V_Type + '-' + L.RecId ELSE NULL END as Narration, H.PaidAmount, cSg.Name as ContraName
                 from Cloth_SupplierSettlementPayments H
                 Left Join LedgerHead LH On H.DocID = LH.DocId
                 Left Join Ledger L On H.PaymentDocId =  L.DocID And IfNull(H.PaymentDocIDSr, L.V_SNo) = L.V_SNo And LH.Subcode = L.Subcode
@@ -4134,7 +4134,7 @@ Public Class FrmPartyAcSettlement
         TxtLinkedParty.Enabled = False
 
         If FDivisionNameForCustomization(20) = "SHYAMA SHYAM FABRICS" Or
-            FDivisionNameForCustomization(22) = "W SHYAMA SHYAM FABRICS" Then
+            FDivisionNameForCustomization(22) = "W SHYAMA SHYAM FABRICS" Or ClsMain.FDivisionNameForCustomization(25) = "SHYAMA SHYAM VENTURES LLP" Or ClsMain.FDivisionNameForCustomization(27) = "W SHYAMA SHYAM VENTURES LLP" Then
             TxtLinkedParty.Visible = True
             LblLinkedParty.Visible = True
         Else

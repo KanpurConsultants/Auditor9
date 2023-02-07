@@ -195,7 +195,7 @@ Public Class FrmCustomerPaymentFollowup
         Dgl2.Item(Col1Head, rowTotalDueBalance).Value = hcTotalDueBalance
         Dgl2.Item(Col1Head, rowCurrentBalance).Value = hcCurrentBalance
         Dgl2.Item(Col1Head, rowCurrentBalancePakka).Value = hcCurrentBalancePakka
-        If Not ClsMain.FDivisionNameForCustomization(22) = "W SHYAMA SHYAM FABRICS" Then
+        If Not ClsMain.FDivisionNameForCustomization(22) = "W SHYAMA SHYAM FABRICS" Or ClsMain.FDivisionNameForCustomization(27) = "W SHYAMA SHYAM VENTURES LLP" Then
             Dgl2.Rows(rowCurrentBalancePakka).Visible = False
         End If
 
@@ -304,7 +304,7 @@ Public Class FrmCustomerPaymentFollowup
                                                                        UNION ALL 
                                                                        SELECT H.PaymentDocId || IfNull(H.PaymentDocIdSr,'')   FROM Cloth_SupplierSettlementPayments H
                                                                        ) "
-        If ClsMain.FDivisionNameForCustomization(22) = "W SHYAMA SHYAM FABRICS" Then
+        If ClsMain.FDivisionNameForCustomization(22) = "W SHYAMA SHYAM FABRICS" Or ClsMain.FDivisionNameForCustomization(27) = "W SHYAMA SHYAM VENTURES LLP" Then
             mCondStr = mCondStr & " And LG.DocID Not In ( SELECT H.DocID FROM LedgerHead H LEFT JOIN LedgerHeadDetail L ON H.DocID = L.DocID WHERE H.V_Type In ('WPS','WRS') ) "
         Else
             mCondStr = mCondStr & " And LG.DocID Not In ( SELECT H.DocID FROM LedgerHead H LEFT JOIN LedgerHeadDetail L ON H.DocID = L.DocID WHERE H.V_Type In ('" & Ncat.PaymentSettlement & "','" & Ncat.ReceiptSettlement & "') ) "
@@ -600,12 +600,12 @@ Public Class FrmCustomerPaymentFollowup
 
         If mMainCondStr.GroupOn = "Linked Party" Then
             Dgl2.Item(Col1Value, rowCurrentBalance).Value = AgL.Dman_Execute("Select Sum(AmtDr-AmtCr)  as Balance From Ledger ODBL Where IfNull(LinkedSubcode,Subcode) In ('" & mMainCondStr.PartyCodes.Replace(",", "','") & "') ", AgL.GCn).ExecuteScalar()
-            If ClsMain.FDivisionNameForCustomization(22) = "W SHYAMA SHYAM FABRICS" Then
+            If ClsMain.FDivisionNameForCustomization(22) = "W SHYAMA SHYAM FABRICS" Or ClsMain.FDivisionNameForCustomization(27) = "W SHYAMA SHYAM VENTURES LLP" Then
                 Dgl2.Item(Col1Value, rowCurrentBalancePakka).Value = AgL.Dman_Execute("Select Sum(AmtDr-AmtCr)  as Balance From ODB.Ledger ODBL Where IfNull(LinkedSubcode,Subcode) In (Select OmsID From Subgroup Where Subcode In  ('" & mMainCondStr.PartyCodes.Replace(",", "','") & "')) ", AgL.GCn).ExecuteScalar()
             End If
         Else
             Dgl2.Item(Col1Value, rowCurrentBalance).Value = AgL.Dman_Execute("Select Sum(AmtDr-AmtCr)  as Balance From Ledger ODBL Where Subcode In ('" & mMainCondStr.PartyCodes.Replace(",", "','") & "') ", AgL.GCn).ExecuteScalar()
-            If ClsMain.FDivisionNameForCustomization(22) = "W SHYAMA SHYAM FABRICS" Then
+            If ClsMain.FDivisionNameForCustomization(22) = "W SHYAMA SHYAM FABRICS" Or ClsMain.FDivisionNameForCustomization(27) = "W SHYAMA SHYAM VENTURES LLP" Then
                 Dgl2.Item(Col1Value, rowCurrentBalancePakka).Value = AgL.Dman_Execute("Select Sum(AmtDr-AmtCr)  as Balance From ODB.Ledger ODBL Where Subcode In (Select OmsID From Subgroup Where Subcode In  ('" & mMainCondStr.PartyCodes.Replace(",", "','") & "')) ", AgL.GCn).ExecuteScalar()
             End If
 
@@ -1252,7 +1252,7 @@ Public Class FrmCustomerPaymentFollowup
         'Else
 
         '    Dim mMultiplier As Double
-        '    If ClsMain.FDivisionNameForCustomization(22) = "W SHYAMA SHYAM FABRICS" Then
+        '    If ClsMain.FDivisionNameForCustomization(22) = "W SHYAMA SHYAM FABRICS" Or ClsMain.FDivisionNameForCustomization(27) = "W SHYAMA SHYAM VENTURES LLP" Then
         '        mMultiplier = 0.01
         '    Else
         '        mMultiplier = 1.0

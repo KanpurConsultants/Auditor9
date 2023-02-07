@@ -1516,7 +1516,7 @@ Public Class FrmPerson_ShyamaShyam
                     mQry = "Update Subgroup set UploadDate=Null where Subcode  In (Select Subcode From Subgroup Where Parent = '" & mSearchCode & "')"
                     AgL.Dman_ExecuteNonQry(mQry, AgL.GCn, AgL.ECmd)
                 Else
-                    If ClsMain.FDivisionNameForCustomization(22) = "W SHYAMA SHYAM FABRICS" Then
+                    If ClsMain.FDivisionNameForCustomization(22) = "W SHYAMA SHYAM FABRICS" Or ClsMain.FDivisionNameForCustomization(27) = "W SHYAMA SHYAM VENTURES LLP" Then
                         mQry = "UPDATE SubgroupSiteDivisionDetail SET Agent =(SELECT sl.Agent FROM Subgroup ss  LEFT JOIN subgroup sp ON ss.Parent = sp.Subcode LEFT JOIN  SubgroupSiteDivisionDetail sL ON sp.Subcode = sl.SubCode AND sl.Site_Code = SubgroupSiteDivisionDetail.Site_Code Where SubgroupSiteDivisionDetail.SubCode = ss.Subcode)
                             WHERE Subcode ='" & mSearchCode & "'"
                         AgL.Dman_ExecuteNonQry(mQry, AgL.GCn, AgL.ECmd)

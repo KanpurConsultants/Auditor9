@@ -119,7 +119,7 @@ Public Class ClsCustomerPaymentFollowup
             mQry = "Select 'Party' as Code, 'Party' as Name 
                     Union All
                     Select 'Linked Party' as Code, 'Linked Party' as Name"
-            If ClsMain.FDivisionNameForCustomization(22) = "W SHYAMA SHYAM FABRICS" Then
+            If ClsMain.FDivisionNameForCustomization(22) = "W SHYAMA SHYAM FABRICS" Or ClsMain.FDivisionNameForCustomization(27) = "W SHYAMA SHYAM VENTURES LLP" Then
                 ReportFrm.CreateHelpGrid("Group On", "Group On", FrmRepDisplay.FieldFilterDataType.StringType, FrmRepDisplay.FieldDataType.SingleSelection, mQry, "Linked Party")
             Else
                 ReportFrm.CreateHelpGrid("Group On", "Group On", FrmRepDisplay.FieldFilterDataType.StringType, FrmRepDisplay.FieldDataType.SingleSelection, mQry, "Party")
@@ -217,7 +217,7 @@ Public Class ClsCustomerPaymentFollowup
                                                                        UNION ALL 
                                                                        SELECT H.PaymentDocId || IfNull(H.PaymentDocIdSr,'')   FROM Cloth_SupplierSettlementPayments H
                                                                        ) "
-        If ClsMain.FDivisionNameForCustomization(22) = "W SHYAMA SHYAM FABRICS" Then
+        If ClsMain.FDivisionNameForCustomization(22) = "W SHYAMA SHYAM FABRICS" Or ClsMain.FDivisionNameForCustomization(27) = "W SHYAMA SHYAM VENTURES LLP" Then
             mCondStr = mCondStr & " And LG.DocID Not In ( SELECT H.DocID FROM LedgerHead H LEFT JOIN LedgerHeadDetail L ON H.DocID = L.DocID WHERE H.V_Type In ('WPS','WRS') ) "
         Else
             mCondStr = mCondStr & " And LG.DocID Not In ( SELECT H.DocID FROM LedgerHead H LEFT JOIN LedgerHeadDetail L ON H.DocID = L.DocID WHERE H.V_Type In ('" & Ncat.PaymentSettlement & "','" & Ncat.ReceiptSettlement & "') ) "

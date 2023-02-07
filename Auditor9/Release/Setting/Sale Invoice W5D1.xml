@@ -31,7 +31,7 @@
   <Column>
     <Name>Invoice Date</Name>
     <Index>4</Index>
-    <Width>80</Width>
+    <Width>117</Width>
     <Visible>True</Visible>
     <AggregateFunction />
   </Column>

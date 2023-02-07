@@ -907,6 +907,14 @@ Public Class FrmSaleInvoiceW_OnlyW
                                 Exit Function
                             End If
 
+                            If CDate(Dgl2.Item(Col2WInvoiceDate, J).Value) < CDate(AgL.PubStartDate) Or CDate(Dgl2.Item(Col2WInvoiceDate, J).Value) > CDate(AgL.PubEndDate) Then
+                                MsgBox("Date Should be only Current Financial Year.", MsgBoxStyle.Information)
+                                Dgl2.CurrentCell = Dgl2.Item(Col2WInvoiceDate, J)
+                                Dgl2.Focus()
+                                FDataValidation = False
+                                Exit Function
+                            End If
+
                             If CDate(Dgl2.Item(Col2WInvoiceDate, J).Value) < CDate(mFromTransDate) Then
                                 MsgBox("Date can not be older then " & mFromTransDate, MsgBoxStyle.Information)
                                 Dgl2.CurrentCell = Dgl2.Item(Col2WInvoiceDate, J)

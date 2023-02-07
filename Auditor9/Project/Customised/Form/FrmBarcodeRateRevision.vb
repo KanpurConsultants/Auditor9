@@ -58,6 +58,7 @@ Public Class FrmBarcodeRateRevision
         Me.MnuImportFromDos = New System.Windows.Forms.ToolStripMenuItem()
         Me.MnuImportFromTally = New System.Windows.Forms.ToolStripMenuItem()
         Me.MnuBulkEdit = New System.Windows.Forms.ToolStripMenuItem()
+        Me.MnuPrintBarcode = New System.Windows.Forms.ToolStripMenuItem()
         Me.OFDMain = New System.Windows.Forms.OpenFileDialog()
         Me.Pnl2 = New System.Windows.Forms.Panel()
         Me.LblBarcode = New System.Windows.Forms.Label()
@@ -158,33 +159,39 @@ Public Class FrmBarcodeRateRevision
         '
         'MnuOptions
         '
-        Me.MnuOptions.Items.AddRange(New System.Windows.Forms.ToolStripItem() {Me.MnuImportFromExcel, Me.MnuImportFromDos, Me.MnuImportFromTally, Me.MnuBulkEdit})
+        Me.MnuOptions.Items.AddRange(New System.Windows.Forms.ToolStripItem() {Me.MnuImportFromExcel, Me.MnuImportFromDos, Me.MnuImportFromTally, Me.MnuBulkEdit, Me.MnuPrintBarcode})
         Me.MnuOptions.Name = "MnuOptions"
-        Me.MnuOptions.Size = New System.Drawing.Size(171, 92)
+        Me.MnuOptions.Size = New System.Drawing.Size(172, 114)
         '
         'MnuImportFromExcel
         '
         Me.MnuImportFromExcel.Name = "MnuImportFromExcel"
-        Me.MnuImportFromExcel.Size = New System.Drawing.Size(170, 22)
+        Me.MnuImportFromExcel.Size = New System.Drawing.Size(171, 22)
         Me.MnuImportFromExcel.Text = "Import From Excel"
         '
         'MnuImportFromDos
         '
         Me.MnuImportFromDos.Name = "MnuImportFromDos"
-        Me.MnuImportFromDos.Size = New System.Drawing.Size(170, 22)
+        Me.MnuImportFromDos.Size = New System.Drawing.Size(171, 22)
         Me.MnuImportFromDos.Text = "Import From Dos"
         '
         'MnuImportFromTally
         '
         Me.MnuImportFromTally.Name = "MnuImportFromTally"
-        Me.MnuImportFromTally.Size = New System.Drawing.Size(170, 22)
+        Me.MnuImportFromTally.Size = New System.Drawing.Size(171, 22)
         Me.MnuImportFromTally.Text = "Import From Tally"
         '
         'MnuBulkEdit
         '
         Me.MnuBulkEdit.Name = "MnuBulkEdit"
-        Me.MnuBulkEdit.Size = New System.Drawing.Size(170, 22)
+        Me.MnuBulkEdit.Size = New System.Drawing.Size(171, 22)
         Me.MnuBulkEdit.Text = "Bulk Edit"
+        '
+        'MnuPrintBarcode
+        '
+        Me.MnuPrintBarcode.Name = "MnuPrintBarcode"
+        Me.MnuPrintBarcode.Size = New System.Drawing.Size(171, 22)
+        Me.MnuPrintBarcode.Text = "Print Barcode"
         '
         'OFDMain
         '
@@ -326,6 +333,7 @@ Public Class FrmBarcodeRateRevision
     Friend WithEvents MnuImportFromTally As ToolStripMenuItem
     Public WithEvents OFDMain As OpenFileDialog
     Friend WithEvents MnuBulkEdit As ToolStripMenuItem
+    Friend WithEvents MnuPrintBarcode As ToolStripMenuItem
     Friend WithEvents MnuImportFromDos As ToolStripMenuItem
     Friend WithEvents Pnl1 As Panel
     Public WithEvents Pnl2 As Panel
@@ -614,6 +622,21 @@ Public Class FrmBarcodeRateRevision
                 Next
             End If
         End If
+    End Sub
+    Private Sub Mnu_Click(sender As Object, e As EventArgs) Handles MnuImportFromExcel.Click, MnuPrintBarcode.Click
+        Select Case sender.name
+            Case MnuPrintBarcode.Name
+                Dim FrmObj As FrmPrintBarcode
+                FrmObj = New FrmPrintBarcode()
+                FrmObj.DocId = mSearchCode
+                FrmObj.PrintBarcodeFrom = Me.Name
+                FrmObj.LblTitle.Text = Me.Name + "-" + DglMain.Item(Col1Value, rowV_Date).Value
+                'FrmObj.LblTitle.Text = DglMain.Item(Col1Value, rowV_Type).Value + " - " + DglMain.Item(Col1Value, rowReferenceNo).Value
+                FrmObj.StartPosition = FormStartPosition.CenterParent
+                FrmObj.ShowDialog()
+
+
+        End Select
     End Sub
     Private Sub TxtBarcode_Validating(sender As Object, e As CancelEventArgs) Handles TxtBarcode.Validating
         Dim DtBarcode As DataTable

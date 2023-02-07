@@ -1,8 +1,8 @@
 ; Field definition file for table: ADORecordset
-Code	string	255	221	
-Barcode	string	255	221	
+Code	string	255	195	
+Barcode	string	255	195	
 BarCodeImg	BLOB		
-ItemDesc	string	255	jiv playstore	
+ItemDesc	string	255	ARPITA NANKI	
 ItemCategoryDesc	string	255	SAREE	
 ItemGroupDesc	string	255	MTS	
 Dimension1Desc	string	255		
@@ -10,21 +10,21 @@ Dimension2Desc	string	255
 Dimension3Desc	string	255		
 Dimension4Desc	string	255		
 SizeDesc	string	255		
-PurchaseRate	number	100	
-SaleRate	number	133	
-MRP	number	150	
-ReceiveQty	number	10	
+PurchaseRate	number	729	
+SaleRate	number	1500	
+MRP	number	0	
+ReceiveQty	number	6	
 GenSr	number	1	
-ItemMasterPurchaseRate	number	100	
-ItemMasterSaleRate	number	133	
+ItemMasterPurchaseRate	number	729	
+ItemMasterSaleRate	number	1500	
 BarcodeRatePrefix	string	255		
 Title1	string	255		
 Title2	string	255		
 Title3	string	255		
 SaleRate_RateType	string	255		
 SaleRate_RateTypeEncoded	long	0	
-RandomNo1	long	779	
-RandomNo2	long	139	
-DNo	string	255	1213322	
-BillNo	string	255	-11100	
+RandomNo1	long	866	
+RandomNo2	long	240	
+DNo	string	255	09150022	
+BillNo	string	255	10105-11729	
 DivisionName	string	255	NAVEEN SAREE EMPORIUM	

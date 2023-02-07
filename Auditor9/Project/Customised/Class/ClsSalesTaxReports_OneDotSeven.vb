@@ -226,7 +226,7 @@ Public Class ClsSalesTaxReports_OneDotSeven
             Exit Function
         End If
 
-        If ClsMain.FDivisionNameForCustomization(20) = "SHYAMA SHYAM FABRICS" Then
+        If ClsMain.FDivisionNameForCustomization(20) = "SHYAMA SHYAM FABRICS" Or ClsMain.FDivisionNameForCustomization(25) = "SHYAMA SHYAM VENTURES LLP" Then
             If AgL.XNull(ReportFrm.FGetCode(rowSite)).ToString.Replace("'", "") <> AgL.PubSiteCode Then
                 MsgBox("Please select correct Site.", MsgBoxStyle.Information)
                 FCheckDivisionSiteValidation = False

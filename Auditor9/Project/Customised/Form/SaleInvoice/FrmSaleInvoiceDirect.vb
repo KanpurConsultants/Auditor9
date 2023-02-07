@@ -4245,28 +4245,29 @@ Public Class FrmSaleInvoiceDirect
     Private Function Validate_Barcode(BarcodeDescription As String) As Boolean
         Dim DtBarcodeLastValues As DataTable
 
-
-        mQry = "Select H.Qty, L.* From BarcodeSiteDetail L  With (NoLock) Left Join Barcode H  With (NoLock) On L.Code = H.Code Where H.Description = '" & BarcodeDescription & "' And L.Div_Code = '" & TxtDivision.Tag & "' And L.Site_Code = '" & TxtSite_Code.Tag & "'"
-        DtBarcodeLastValues = AgL.FillData(mQry, AgL.GCn).Tables(0)
-        If DtBarcodeLastValues.Rows.Count > 0 Then
-            If LblV_Type.Tag = Ncat.SaleInvoice Then
-                If AgL.VNull(DtBarcodeLastValues.Rows(0)("CurrentStock")) <= 0 Then
-                    MsgBox("Barcode " & BarcodeDescription & " Is Not In Stock. Can't Issue It.")
-                    Exit Function
+        If CType(AgL.VNull(FGetSettings(SettingFields.AllowToCheckBarcodeStockYn, SettingType.General)), Boolean) = True Then
+            mQry = "Select H.Qty, L.* From BarcodeSiteDetail L  With (NoLock) Left Join Barcode H  With (NoLock) On L.Code = H.Code Where H.Description = '" & BarcodeDescription & "' And L.Div_Code = '" & TxtDivision.Tag & "' And L.Site_Code = '" & TxtSite_Code.Tag & "'"
+            DtBarcodeLastValues = AgL.FillData(mQry, AgL.GCn).Tables(0)
+            If DtBarcodeLastValues.Rows.Count > 0 Then
+                If LblV_Type.Tag = Ncat.SaleInvoice Then
+                    If AgL.VNull(DtBarcodeLastValues.Rows(0)("CurrentStock")) <= 0 Then
+                        MsgBox("Barcode " & BarcodeDescription & " Is Not In Stock. Can't Issue It.")
+                        Exit Function
+                    End If
+                    'If Not AgL.XNull(DtBarcodeLastValues.Rows(0)("Status")) = BarcodeStatus.Receive Then
+                    '    MsgBox("Barcode " & BarcodeDescription & " Status Is Not Receive. Can't Issue It.")
+                    '    Exit Function
+                    'End If
+                ElseIf LblV_Type.Tag = Ncat.SaleReturn Then
+                    If AgL.VNull(DtBarcodeLastValues.Rows(0)("CurrentStock")) > 0 And AgL.VNull(DtBarcodeLastValues.Rows(0)("CurrentStock")) <> AgL.VNull(DtBarcodeLastValues.Rows(0)("Qty")) Then
+                        MsgBox("Barcode " & BarcodeDescription & " Is Already In Our Stock. Can't Receive It.")
+                        Exit Function
+                    End If
+                    'If Not AgL.XNull(DtBarcodeLastValues.Rows(0)("Status")) = BarcodeStatus.Issue Then
+                    '        MsgBox("Barcode " & BarcodeDescription & " Status Is Not Issue. Can't Receive It.")
+                    '        Exit Function
+                    '    End If
                 End If
-                'If Not AgL.XNull(DtBarcodeLastValues.Rows(0)("Status")) = BarcodeStatus.Receive Then
-                '    MsgBox("Barcode " & BarcodeDescription & " Status Is Not Receive. Can't Issue It.")
-                '    Exit Function
-                'End If
-            ElseIf LblV_Type.Tag = Ncat.SaleReturn Then
-                If AgL.VNull(DtBarcodeLastValues.Rows(0)("CurrentStock")) > 0 And AgL.VNull(DtBarcodeLastValues.Rows(0)("CurrentStock")) <> AgL.VNull(DtBarcodeLastValues.Rows(0)("Qty")) Then
-                    MsgBox("Barcode " & BarcodeDescription & " Is Already In Our Stock. Can't Receive It.")
-                    Exit Function
-                End If
-                'If Not AgL.XNull(DtBarcodeLastValues.Rows(0)("Status")) = BarcodeStatus.Issue Then
-                '        MsgBox("Barcode " & BarcodeDescription & " Status Is Not Issue. Can't Receive It.")
-                '        Exit Function
-                '    End If
             End If
         End If
 
@@ -5959,6 +5960,7 @@ Public Class FrmSaleInvoiceDirect
                 (Case When SP.DispName Is Null Then IfNull(H.SaleToPartyPanNo,'') Else IfNull((Select RegistrationNo From SubgroupRegistration Where Subcode=H.ShipToParty And RegistrationType = '" & SubgroupRegistrationType.PanNo & "'),'') End) as ShipToPartyPanNo, 
                 H.ShipToAddress, H.TermsAndConditions, IfNull(Transporter.Name,'') as TransporterName, IfNull(TD.LrNo,'') as LrNo, TD.LrDate, IfNull(TD.PrivateMark,'') PrivateMark, TD.Weight, TD.Freight, TD.ChargedWeight, IfNull(TD.PaymentType,'') as FreightType, 
                 IfNull(TD.RoadPermitNo,'') as RoadPermitNo, TD.RoadPermitDate, IfNull(TD.VehicleNo,'') as VehicleNo, IfNull(TD.ShipMethod,'') as ShipMethod, IfNull(TD.PreCarriageBy,'') PreCarriageBy, IfNull(TD.PreCarriagePlace,'') as PreCarriagePlace, IfNull(TD.BookedFrom,'') as BookedFrom, IfNull(TD.BookedTo,'') as BookedTo, IfNull(TD.Destination,'') as Destination, IfNull(TD.DescriptionOfGoods,'') as DescriptionOfGoods, IfNull(TD.DescriptionOfPacking,'') as DescriptionOfPacking, 
+                IsNull((Select RegistrationNo From SubgroupRegistration Where Subcode=Transporter.Code And RegistrationType = 'Sales Tax No'),'')  as TransporterSalesTaxNo,
                 IfNull(H.SaleToPartyDocNo,IfNull(L.ReferenceNo,'')) as ReferenceNo,
                 I.Description as ItemName, " & IIf(mPrintFor = ClsMain.PrintFor.QA, "IG.Description", "IfNull(IG.PrintingDescription,IG.Description)") & " as ItemGroupName, 
                 IC.Description as ItemCatName, I.Specification as ItemSpecification, L.Specification as InvoiceLineSpecification, IfNull(I.HSN, IC.HSN) as HSN, IfNull(I.MaintainStockYn, IC.MaintainStockYn) as MaintainStockYn,
@@ -6098,7 +6100,7 @@ Public Class FrmSaleInvoiceDirect
             mPrintTitle = AgL.XNull(dtDoc.Rows(0)("V_TypeDescription"))
 
             Dim StrRate As String = ""
-            If AgL.StrCmp(AgL.PubDBName, "ShyamaShyam") And mDocReportFileName = "SaleInvoice_Print_Aadhat.rpt" And AgL.XNull(dtDoc.Rows(0)("Structure")) = "GstSaleMrp" Then
+            If (AgL.StrCmp(AgL.PubDBName, "ShyamaShyam") Or AgL.StrCmp(AgL.PubDBName, "ShyamaShyamV")) And mDocReportFileName = "SaleInvoice_Print_Aadhat.rpt" And AgL.XNull(dtDoc.Rows(0)("Structure")) = "GstSaleMrp" Then
                 mDocReportFileName = "SaleInvoice_Print_Aadhat_MRP.rpt"
                 StrRate = " Round(L.Rate *100/(100+STGI.GrossTaxRate),2) AS Rate,"
                 StrRate = "(Case when abs(IfNull(I.MaintainStockYn,1)) =1 AND I.ItemType <> '" & ItemTypeCode.ServiceProduct & "' Then (Case When L.Taxable_Amount >0 And (L.Taxable_Amount <> L.Amount Or L.AdditionAmount > 0 ) Then Round(L.Rate *100/(100+STGI.GrossTaxRate),2) Else L.Rate End ) Else 0 End) as Rate, "

@@ -65,6 +65,8 @@ Public Class FrmPurchInvoiceDirect_WithDimension
     Public Const Col1DiscountAmount As String = "Disc. Amt"
     Public Const Col1AdditionalDiscountPer As String = "Add. Disc. %"
     Public Const Col1AdditionalDiscountAmount As String = "Add. Disc. Amt"
+    Public Const Col1AdditionalCommissionPer As String = "Add. Comm. %"
+    Public Const Col1AdditionalCommissionAmount As String = "Add. Comm. Amt"
     Public Const Col1AdditionPer As String = "Addition %"
     Public Const Col1AdditionAmount As String = "Addition Amt"
     Public Const Col1Amount As String = "Amount"
@@ -247,6 +249,7 @@ Public Class FrmPurchInvoiceDirect_WithDimension
     Public WithEvents LblTotalPcs As Label
     Public WithEvents LblTotalPcsText As Label
     Friend WithEvents MnuShowLedgerPosting As ToolStripMenuItem
+    Public WithEvents TxtPartyComPer As AgControls.AgTextBox
     Dim mFirstInvoiceForSelectedParty As Boolean = False
 
 
@@ -297,6 +300,7 @@ Public Class FrmPurchInvoiceDirect_WithDimension
         Me.MnuRequestForPermission = New System.Windows.Forms.ToolStripMenuItem()
         Me.MnuReferenceEntries = New System.Windows.Forms.ToolStripMenuItem()
         Me.MnuWizard = New System.Windows.Forms.ToolStripMenuItem()
+        Me.MnuShowLedgerPosting = New System.Windows.Forms.ToolStripMenuItem()
         Me.MnuHistory = New System.Windows.Forms.ToolStripMenuItem()
         Me.Label6 = New System.Windows.Forms.Label()
         Me.LblCurrentBalance = New System.Windows.Forms.Label()
@@ -308,7 +312,7 @@ Public Class FrmPurchInvoiceDirect_WithDimension
         Me.PnlConsumptionTotal = New System.Windows.Forms.Panel()
         Me.LblTotalBomQty = New System.Windows.Forms.Label()
         Me.Label5 = New System.Windows.Forms.Label()
-        Me.MnuShowLedgerPosting = New System.Windows.Forms.ToolStripMenuItem()
+        Me.TxtPartyComPer = New AgControls.AgTextBox()
         Me.GroupBox2.SuspendLayout()
         Me.GBoxMoveToLog.SuspendLayout()
         Me.GBoxApprove.SuspendLayout()
@@ -742,72 +746,78 @@ Public Class FrmPurchInvoiceDirect_WithDimension
         '
         Me.MnuOptions.Items.AddRange(New System.Windows.Forms.ToolStripItem() {Me.MnuImportFromExcel, Me.MnuImportFromDos, Me.MnuImportFromTally, Me.MnuImportOpeningFromExcel, Me.MnuEditSave, Me.MnuGenerateEWayBill, Me.MnuPrintBarcode, Me.MnuRequestForPermission, Me.MnuReferenceEntries, Me.MnuWizard, Me.MnuShowLedgerPosting, Me.MnuHistory})
         Me.MnuOptions.Name = "MnuOptions"
-        Me.MnuOptions.Size = New System.Drawing.Size(220, 290)
+        Me.MnuOptions.Size = New System.Drawing.Size(221, 268)
         '
         'MnuImportFromExcel
         '
         Me.MnuImportFromExcel.Name = "MnuImportFromExcel"
-        Me.MnuImportFromExcel.Size = New System.Drawing.Size(219, 22)
+        Me.MnuImportFromExcel.Size = New System.Drawing.Size(220, 22)
         Me.MnuImportFromExcel.Text = "Import From Excel"
         '
         'MnuImportFromDos
         '
         Me.MnuImportFromDos.Name = "MnuImportFromDos"
-        Me.MnuImportFromDos.Size = New System.Drawing.Size(219, 22)
+        Me.MnuImportFromDos.Size = New System.Drawing.Size(220, 22)
         Me.MnuImportFromDos.Text = "Import From Dos"
         '
         'MnuImportFromTally
         '
         Me.MnuImportFromTally.Name = "MnuImportFromTally"
-        Me.MnuImportFromTally.Size = New System.Drawing.Size(219, 22)
+        Me.MnuImportFromTally.Size = New System.Drawing.Size(220, 22)
         Me.MnuImportFromTally.Text = "Import From Tally"
         '
         'MnuImportOpeningFromExcel
         '
         Me.MnuImportOpeningFromExcel.Name = "MnuImportOpeningFromExcel"
-        Me.MnuImportOpeningFromExcel.Size = New System.Drawing.Size(219, 22)
+        Me.MnuImportOpeningFromExcel.Size = New System.Drawing.Size(220, 22)
         Me.MnuImportOpeningFromExcel.Text = "Import Opening From Excel"
         '
         'MnuEditSave
         '
         Me.MnuEditSave.Name = "MnuEditSave"
-        Me.MnuEditSave.Size = New System.Drawing.Size(219, 22)
+        Me.MnuEditSave.Size = New System.Drawing.Size(220, 22)
         Me.MnuEditSave.Text = "Edit & Save"
         '
         'MnuGenerateEWayBill
         '
         Me.MnuGenerateEWayBill.Name = "MnuGenerateEWayBill"
-        Me.MnuGenerateEWayBill.Size = New System.Drawing.Size(219, 22)
+        Me.MnuGenerateEWayBill.Size = New System.Drawing.Size(220, 22)
         Me.MnuGenerateEWayBill.Text = "Generate EWay Bill"
         '
         'MnuPrintBarcode
         '
         Me.MnuPrintBarcode.Name = "MnuPrintBarcode"
-        Me.MnuPrintBarcode.Size = New System.Drawing.Size(219, 22)
+        Me.MnuPrintBarcode.Size = New System.Drawing.Size(220, 22)
         Me.MnuPrintBarcode.Text = "Print Barcode"
         '
         'MnuRequestForPermission
         '
         Me.MnuRequestForPermission.Name = "MnuRequestForPermission"
-        Me.MnuRequestForPermission.Size = New System.Drawing.Size(219, 22)
+        Me.MnuRequestForPermission.Size = New System.Drawing.Size(220, 22)
         Me.MnuRequestForPermission.Text = "Request For Permission"
         '
         'MnuReferenceEntries
         '
         Me.MnuReferenceEntries.Name = "MnuReferenceEntries"
-        Me.MnuReferenceEntries.Size = New System.Drawing.Size(219, 22)
+        Me.MnuReferenceEntries.Size = New System.Drawing.Size(220, 22)
         Me.MnuReferenceEntries.Text = "Reference Entries"
         '
         'MnuWizard
         '
         Me.MnuWizard.Name = "MnuWizard"
-        Me.MnuWizard.Size = New System.Drawing.Size(219, 22)
+        Me.MnuWizard.Size = New System.Drawing.Size(220, 22)
         Me.MnuWizard.Text = "Wizard"
+        '
+        'MnuShowLedgerPosting
+        '
+        Me.MnuShowLedgerPosting.Name = "MnuShowLedgerPosting"
+        Me.MnuShowLedgerPosting.Size = New System.Drawing.Size(220, 22)
+        Me.MnuShowLedgerPosting.Text = "Show Ledger Posting"
         '
         'MnuHistory
         '
         Me.MnuHistory.Name = "MnuHistory"
-        Me.MnuHistory.Size = New System.Drawing.Size(219, 22)
+        Me.MnuHistory.Size = New System.Drawing.Size(220, 22)
         Me.MnuHistory.Text = "History"
         '
         'Label6
@@ -930,11 +940,31 @@ Public Class FrmPurchInvoiceDirect_WithDimension
         Me.Label5.TabIndex = 659
         Me.Label5.Text = "Total Qty :"
         '
-        'MnuShowLedgerPosting
+        'TxtPartyComPer
         '
-        Me.MnuShowLedgerPosting.Name = "MnuShowLedgerPosting"
-        Me.MnuShowLedgerPosting.Size = New System.Drawing.Size(219, 22)
-        Me.MnuShowLedgerPosting.Text = "Show Ledger Posting"
+        Me.TxtPartyComPer.AgAllowUserToEnableMasterHelp = False
+        Me.TxtPartyComPer.AgLastValueTag = Nothing
+        Me.TxtPartyComPer.AgLastValueText = Nothing
+        Me.TxtPartyComPer.AgMandatory = False
+        Me.TxtPartyComPer.AgMasterHelp = False
+        Me.TxtPartyComPer.AgNumberLeftPlaces = 0
+        Me.TxtPartyComPer.AgNumberNegetiveAllow = False
+        Me.TxtPartyComPer.AgNumberRightPlaces = 0
+        Me.TxtPartyComPer.AgPickFromLastValue = False
+        Me.TxtPartyComPer.AgRowFilter = ""
+        Me.TxtPartyComPer.AgSearchMethod = AgControls.AgLib.TxtSearchMethod.Simple
+        Me.TxtPartyComPer.AgSelectedValue = Nothing
+        Me.TxtPartyComPer.AgTxtCase = AgControls.AgTextBox.TxtCase.None
+        Me.TxtPartyComPer.AgValueType = AgControls.AgTextBox.TxtValueType.Text_Value
+        Me.TxtPartyComPer.BorderStyle = System.Windows.Forms.BorderStyle.None
+        Me.TxtPartyComPer.Font = New System.Drawing.Font("Verdana", 9.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.TxtPartyComPer.Location = New System.Drawing.Point(463, 209)
+        Me.TxtPartyComPer.MaxLength = 20
+        Me.TxtPartyComPer.Name = "TxtPartyComPer"
+        Me.TxtPartyComPer.Size = New System.Drawing.Size(81, 15)
+        Me.TxtPartyComPer.TabIndex = 3023
+        Me.TxtPartyComPer.Text = "TxtPartyComPer"
+        Me.TxtPartyComPer.Visible = False
         '
         'FrmPurchInvoiceDirect_WithDimension
         '
@@ -942,6 +972,7 @@ Public Class FrmPurchInvoiceDirect_WithDimension
         Me.BackColor = System.Drawing.SystemColors.Control
         Me.ClientSize = New System.Drawing.Size(984, 622)
         Me.ContextMenuStrip = Me.MnuOptions
+        Me.Controls.Add(Me.TxtPartyComPer)
         Me.Controls.Add(Me.CheckBoxFullCalculate)
         Me.Controls.Add(Me.PnlConsumptionTotal)
         Me.Controls.Add(Me.Pnl4)
@@ -981,6 +1012,7 @@ Public Class FrmPurchInvoiceDirect_WithDimension
         Me.Controls.SetChildIndex(Me.Pnl4, 0)
         Me.Controls.SetChildIndex(Me.PnlConsumptionTotal, 0)
         Me.Controls.SetChildIndex(Me.CheckBoxFullCalculate, 0)
+        Me.Controls.SetChildIndex(Me.TxtPartyComPer, 0)
         Me.GroupBox2.ResumeLayout(False)
         Me.GroupBox2.PerformLayout()
         Me.GBoxMoveToLog.ResumeLayout(False)
@@ -1404,6 +1436,8 @@ Public Class FrmPurchInvoiceDirect_WithDimension
                 .AddAgNumberColumn(Dgl1, Col1DiscountAmount, 100, 8, 3, False, Col1DiscountAmount, True, False, True)
                 .AddAgNumberColumn(Dgl1, Col1AdditionalDiscountPer, 80, 2, 3, False, Col1AdditionalDiscountPer, False, False, True)
                 .AddAgNumberColumn(Dgl1, Col1AdditionalDiscountAmount, 100, 8, 3, False, Col1AdditionalDiscountAmount, False, False, True)
+                .AddAgNumberColumn(Dgl1, Col1AdditionalCommissionPer, 80, 2, 3, False, Col1AdditionalCommissionPer, False, False, True)
+                .AddAgNumberColumn(Dgl1, Col1AdditionalCommissionAmount, 100, 8, 3, False, Col1AdditionalCommissionAmount, False, False, True)
                 .AddAgNumberColumn(Dgl1, Col1AdditionPer, 80, 2, 3, False, AgL.PubCaptionLineAddition & " @", False, False, True)
                 .AddAgNumberColumn(Dgl1, Col1AdditionAmount, 100, 8, 3, False, AgL.PubCaptionLineAddition, False, False, True)
                 .AddAgNumberColumn(Dgl1, Col1Amount, 100, 8, 2, False, Col1Amount, True, True, True)
@@ -1726,6 +1760,7 @@ Public Class FrmPurchInvoiceDirect_WithDimension
                 " BillToParty = " & AgL.Chk_Text(DglMain.Item(Col1Value, rowBillToParty).Tag) & ", " &
                 " LinkedParty = " & AgL.Chk_Text(DglMain.Item(Col1Value, rowLinkedParty).Tag) & ", " &
                 " ShipToParty = " & AgL.Chk_Text(Dgl2.Item(Col1Value, rowShipToParty).Tag) & ", " &
+                " AdditionalCommission = " & AgL.Chk_Text(TxtPartyComPer.Tag) & ", " &
                 " Structure = " & AgL.Chk_Text(TxtStructure.Tag) & ", " &
                 " CustomFields = " & AgL.Chk_Text(TxtCustomFields.Tag) & ", " &
                 " RateType = " & AgL.Chk_Text(Dgl2.Item(Col1Value, rowRateType).Tag) & ", " &
@@ -2222,7 +2257,7 @@ Public Class FrmPurchInvoiceDirect_WithDimension
                             BaleNo, LrBaleCode, SalesTaxGroupItem, ProfitMarginPer, DocQty, 
                             FreeQty, RejQty, LossQty, Qty, Unit, Pcs,
                             UnitMultiplier, DocDealQty, FreeDealQty, LossDealQtyPer, LossDealQty, DealQty, DealUnit,                             StockUnit, StockUnitMultiplier, StockQty,
-                            Rate, DiscountPer, DiscountAmount, AdditionalDiscountPer, AdditionalDiscountAmount, AdditionPer, AdditionAmount, 
+                            Rate, DiscountPer, DiscountAmount, AdditionalDiscountPer, AdditionalDiscountAmount, AdditionalCommission_Per, AdditionalCommission, AdditionPer, AdditionAmount, 
                             Amount, Sale_Rate, MRP, 
                             FromProcess, Catalog, SaleInvoice, SaleInvoiceSr, Remark, LRNo, LRDate, HSN, LotNo, Godown, ReferenceNo, ReferenceDate, ReferenceDocID, ReferenceTSr, ReferenceSr, ReferenceDocIdBalanceQty, 
                             RawMaterial, RawMaterialConsumptionQty, Deal, DealAmount, ExpiryDate " & IIf(TxtStructure.Tag = "", "", ",") & AgCalcGrid1.FLineTableFieldNameStr() & ") "
@@ -2260,6 +2295,8 @@ Public Class FrmPurchInvoiceDirect_WithDimension
                             " " & Val(Dgl1.Item(Col1DiscountAmount, LineGridRowIndex).Value) & ", " &
                             " " & Val(Dgl1.Item(Col1AdditionalDiscountPer, LineGridRowIndex).Value) & ", " &
                             " " & Val(Dgl1.Item(Col1AdditionalDiscountAmount, LineGridRowIndex).Value) & ", " &
+                            " " & Val(Dgl1.Item(Col1AdditionalCommissionPer, LineGridRowIndex).Value) & ", " &
+                            " " & Val(Dgl1.Item(Col1AdditionalCommissionAmount, LineGridRowIndex).Value) & ", " &
                             " " & Val(Dgl1.Item(Col1AdditionPer, LineGridRowIndex).Value) & ", " &
                             " " & Val(Dgl1.Item(Col1AdditionAmount, LineGridRowIndex).Value) & ", " &
                             " " & Val(Dgl1.Item(Col1Amount, LineGridRowIndex).Value) & ", " &
@@ -2643,6 +2680,8 @@ Public Class FrmPurchInvoiceDirect_WithDimension
                                 " 	DiscountAmount = " & Val(Dgl1.Item(Col1DiscountAmount, LineGridRowIndex).Value) & ", " &
                                 " 	AdditionalDiscountPer = " & Val(Dgl1.Item(Col1AdditionalDiscountPer, LineGridRowIndex).Value) & ", " &
                                 " 	AdditionalDiscountAmount = " & Val(Dgl1.Item(Col1AdditionalDiscountAmount, LineGridRowIndex).Value) & ", " &
+                                " 	AdditionalCommission_Per = " & Val(Dgl1.Item(Col1AdditionalCommissionPer, LineGridRowIndex).Value) & ", " &
+                                " 	AdditionalCommission = " & Val(Dgl1.Item(Col1AdditionalCommissionAmount, LineGridRowIndex).Value) & ", " &
                                 " 	AdditionPer = " & Val(Dgl1.Item(Col1AdditionPer, LineGridRowIndex).Value) & ", " &
                                 " 	AdditionAmount = " & Val(Dgl1.Item(Col1AdditionAmount, LineGridRowIndex).Value) & ", " &
                                 " 	Amount = " & Val(Dgl1.Item(Col1Amount, LineGridRowIndex).Value) & ", " &
@@ -3020,7 +3059,7 @@ Public Class FrmPurchInvoiceDirect_WithDimension
 
                 DglMain.Item(Col1Value, rowProcess).Tag = AgL.XNull(.Rows(0)("Process"))
                 DglMain.Item(Col1Value, rowProcess).Value = AgL.XNull(.Rows(0)("ProcessDesc"))
-
+                TxtPartyComPer.Tag = AgL.VNull(.Rows(0)("AdditionalCommission"))
                 DglMain.Item(Col1Value, rowPrevProcess).Tag = AgL.XNull(.Rows(0)("PrevProcess"))
                 DglMain.Item(Col1Value, rowFirstProcessOfCombination).Tag = AgL.XNull(.Rows(0)("FirstProcessOfCombination"))
                 DglMain.Item(Col1Value, rowLastProcessOfCombination).Tag = AgL.XNull(.Rows(0)("LastProcessOfCombination"))
@@ -3069,6 +3108,14 @@ Public Class FrmPurchInvoiceDirect_WithDimension
                 Dim DtRegistration As DataTable = AgL.FillData(mQry, AgL.GCn).Tables(0)
                 If DtRegistration.Rows.Count > 0 Then
                     Dgl2.Item(Col1Value, rowSalesTaxNo).Value = DtRegistration.Rows(0)("SalesTaxNo")
+                End If
+
+                mQry = "Select H.Person, H.AdditionalCommissionPer
+                                    From PersonAdditionalCommission H  With (NoLock)                                                                    
+                                    Where Person = '" & DglMain.Item(Col1Value, rowVendor).Tag & "' AND H.ItemCategory Is Null"
+                Dim DtTempC As DataTable = AgL.FillData(mQry, AgL.GCn).Tables(0)
+                If DtTempC.Rows.Count > 0 Then
+                    TxtPartyComPer.Text = AgL.XNull(DtTempC.Rows(0)("AdditionalCommissionPer"))
                 End If
 
 
@@ -3456,6 +3503,8 @@ Public Class FrmPurchInvoiceDirect_WithDimension
                             Dgl1.Item(Col1DiscountAmount, I).Value = AgL.VNull(.Rows(I)("DiscountAmount"))
                             Dgl1.Item(Col1AdditionalDiscountPer, I).Value = AgL.VNull(.Rows(I)("AdditionalDiscountPer"))
                             Dgl1.Item(Col1AdditionalDiscountAmount, I).Value = AgL.VNull(.Rows(I)("AdditionalDiscountAmount"))
+                            Dgl1.Item(Col1AdditionalCommissionPer, I).Value = AgL.VNull(.Rows(I)("AdditionalCommission_Per"))
+                            Dgl1.Item(Col1AdditionalCommissionAmount, I).Value = AgL.VNull(.Rows(I)("AdditionalCommission"))
                             Dgl1.Item(Col1AdditionPer, I).Value = AgL.VNull(.Rows(I)("AdditionPer"))
                             Dgl1.Item(Col1AdditionAmount, I).Value = AgL.VNull(.Rows(I)("AdditionAmount"))
                             Dgl1.Item(Col1Deal, I).Value = AgL.XNull(.Rows(I)("Deal"))
@@ -3943,6 +3992,14 @@ Public Class FrmPurchInvoiceDirect_WithDimension
 
                         Dgl2.Item(Col1Value, rowAgent).Tag = AgL.XNull(DtTemp.Rows(0)("Agent"))
                         Dgl2.Item(Col1Value, rowAgent).Value = AgL.XNull(DtTemp.Rows(0)("AgentName"))
+                    End If
+
+                    mQry = "Select H.Person, H.AdditionalCommissionPer
+                                    From PersonAdditionalCommission H  With (NoLock)                                                                    
+                                    Where Person = '" & DglMain.Item(Col1Value, rowVendor).Tag & "' AND H.ItemCategory Is Null"
+                    Dim DtTempC As DataTable = AgL.FillData(mQry, AgL.GCn).Tables(0)
+                    If DtTempC.Rows.Count > 0 Then
+                        TxtPartyComPer.Text = AgL.XNull(DtTempC.Rows(0)("AdditionalCommissionPer"))
                     End If
 
                     Dgl1.AgHelpDataSet(Col1ReferenceNo) = Nothing
@@ -4474,7 +4531,7 @@ Public Class FrmPurchInvoiceDirect_WithDimension
         LblTotalAmount.Text = 0
 
         LblTotalBomQty.Text = 0
-
+        TxtPartyComPer.Tag = 0
         Dim DEALARR() As String = Nothing
         Dim DEALRATE As Double
 
@@ -4530,6 +4587,17 @@ Public Class FrmPurchInvoiceDirect_WithDimension
                     End If
                 End If
 
+                If Val(TxtPartyComPer.Text) > 0 Then
+                    'If AgL.XNull(Dgl1(Col1AdditionalCommissionCalculationPattern, I).Value).ToUpper = DiscountCalculationPattern.RatePerQty.ToUpper Then
+                    '    Dgl1.Item(Col1AdditionalCommissionAmount, I).Value = Format(Val(Dgl1.Item(Col1DocQty, I).Value) * Val(Dgl1.Item(Col1AdditionalCommissionPer, I).Value), "0.00")
+                    'ElseIf AgL.XNull(Dgl1(Col1AdditionalCommissionCalculationPattern, I).Value).ToUpper = DiscountCalculationPattern.Percentage.ToUpper Then
+                    '    Dgl1.Item(Col1AdditionalCommissionAmount, I).Value = Format(Val(Dgl1.Item(Col1Amount, I).Value) * Val(Dgl1.Item(Col1AdditionalCommissionPer, I).Value) / 100, "0.00")
+                    'Else
+                    Dgl1.Item(Col1AdditionalCommissionPer, I).Value = TxtPartyComPer.Text
+                    Dgl1.Item(Col1AdditionalCommissionAmount, I).Value = Val(Dgl1.Item(Col1Amount, I).Value) * Val(Dgl1.Item(Col1AdditionalCommissionPer, I).Value) / 100
+                    TxtPartyComPer.Tag = Val(TxtPartyComPer.Tag) + Val(Dgl1.Item(Col1AdditionalCommissionAmount, I).Value)
+                    'End If
+                End If
 
                 If Val(Dgl1.Item(Col1AdditionPer, I).Value) > 0 Then
                     If AgL.XNull(Dgl1(Col1AdditionCalculationPattern, I).Value).ToUpper = DiscountCalculationPattern.RatePerQty.ToUpper Then

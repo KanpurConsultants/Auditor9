@@ -5,56 +5,56 @@ DocNoCaption	string	255	Invoice No.
 DocDateCaption	string	255	Invoice Date	
 SiteStateCode	string	255	09	
 SiteStateName	string	255	Uttar Pradesh	
-DocID	string	255	D1    SI 2020       4	
+DocID	string	255	D1    SI 2022     546	
 Sr	number	1	
-V_Date	datetime	14/Jul/2020 12:00:00 AM	
+V_Date	datetime	04/May/2022 12:00:00 AM	
 DeliveryDate	datetime		
 Voucher_Type	string	255	Tax Invoice	
 NCat	string	255	SI	
-InvoiceNo	string	255	1920/-3	
+InvoiceNo	string	255	/546	
 GenDocNo	string	255		
 AmsDocNo	string	255		
 AmsDocDate	datetime		
 AmsDocNetAmount	number	0	
 RateType	string	255		
 DocumentPrintShowRateType	string	255	Show If Not Blank	
-AgentName	string	255	LALIT GUPTA	
+AgentName	string	255	A.K.MISHRA	
 SalesRepName	string	255		
 SalesRepCode	string	255		
 AgentCaption	string	255	Agent	
-SaleToPartyName	string	255	APSARA FASHION HOUSE	
-SaleToPartyAddress	string	255	CHHATARPUR	
-CityName	string	255	CHHATARPUR	
+SaleToPartyName	string	255	SHANTI SONS	
+SaleToPartyAddress	string	255	CHOWK, FARUKHABAD	
+CityName	string	255	FARUKHABAD	
 SaleToPartyPincode	string	255		
 StateCode	string	255	09	
 StateName	string	255	Uttar Pradesh	
 SaleToPartyMobile	string	255		
 ContactPerson	string	255		
-SaleToPartySalesTaxNo	string	255	23ADKPN1801B1Z9	
+SaleToPartySalesTaxNo	string	255	09AHOPR3846G1ZS	
 SaleToPartyAadharNo	string	255		
-SaleToPartyPanNo	string	255		
+SaleToPartyPanNo	string	255	AHOPR3846G	
 SaleToPartyLicenseNo	string	255		
-ShipToPartyName	string	255	APSARA FASHION HOUSE	
-ShipToPartyAddress	string	255	CHHATARPUR	
-ShipToPartyCity	string	255	CHHATARPUR	
+ShipToPartyName	string	255	SHANTI SONS	
+ShipToPartyAddress	string	255	CHOWK, FARUKHABAD	
+ShipToPartyCity	string	255	FARUKHABAD	
 ShipToPartyPincode	string	255		
 ShipToPartyStateCode	string	255	09	
 ShipToPartyStateName	string	255	Uttar Pradesh	
 ShipToPartyMobile	string	255		
-ShipToPartySalesTaxNo	string	255	23ADKPN1801B1Z9	
+ShipToPartySalesTaxNo	string	255	09AHOPR3846G1ZS	
 ShipToPartyAadharNo	string	255		
-ShipToPartyPanNo	string	255		
+ShipToPartyPanNo	string	255	AHOPR3846G	
 ShipToPartyLicenseNo	string	255		
 ShipToAddress	string	255		
 TermsAndConditions	string	255	(1) Payment within 30 days from date of Invoice. <BR>(2) Overdue Interest @ 24% P.A. after due date. <BR>(3) Goods dispatched by transport at the owner risk. <BR>(4) All disputes are subject to <CompanyCity> jurisdiction only.	
-TransporterName	string	255	MAURANIPUR UNION TRANSPORT CO., 	
+TransporterName	string	255		
 LrNo	string	255		
 LrDate	datetime		
-NoOfBales	number	0	
+NoOfBales	number		
 PrivateMark	string	255		
-Weight	number	0	
-Freight	number	0	
-ChargedWeight	number	0	
+Weight	number		
+Freight	number		
+ChargedWeight	number		
 FreightType	string	255		
 RoadPermitNo	string	255		
 RoadPermitDate	datetime		
@@ -69,12 +69,13 @@ DescriptionOfGoods	string	255
 DescriptionOfPacking	string	255		
 ReferenceNo	string	255		
 BarcodeName	string	255		
-ItemName	string	255	S/L 58" - G.C.TEXTILES - SHIRTING	
-ItemGroupName	string	255	G.C.TEXTILES	
-ItemCatName	string	255	SHIRTING	
-ItemSpecification	string	255	S/L 58"	
+ItemName	string	255	ROYALTR 46 - SIYARAM551512 - wovenfabric manmade551512	
+ItemGroupName	string	255	SIYARAM551512	
+ItemCatName	string	255	wovenfabric manmade551512	
+ItemManualCode	string	255	55179226	
+ItemSpecification	string	255	ROYALTR 46	
 InvoiceLineSpecification	string	255		
-HSN	string	255	6006	
+HSN	string	255	551512	
 MaintainStockYn	boolean	True	
 D1Spec	string	255		
 D2Spec	string	255		
@@ -98,54 +99,54 @@ MRP	number	0
 LotNo	string	255		
 ExpiryDate	datetime		
 ItemRemark1	string	255		
-Pcs	number	1	
-Qty	number	10	
-Rate	number	75	
+Pcs	number	2	
+Qty	number	25	
+Rate	number	440	
 ItemState	string	255		
 CatalogSpecification	string	255		
 CatalogSiteName	string	255		
 Unit	string	255	Meter	
 UnitDecimalPlaces	number	2	
-DiscountPer	number	0	
-DiscountAmount	number	0	
+DiscountPer	number	12	
+DiscountAmount	number	1320	
 AdditionalDiscountPer	number	0	
 AdditionalDiscountAmount	number	0	
 AdditionPer	number	0	
 AdditionAmount	number	0	
-TotalDiscount	number	0	
+TotalDiscount	number	1320	
 Deal	string	255		
-AmountBeforeDiscount	number	750	
-Amount	number	750	
-Taxable_Amount	number	750	
+AmountBeforeDiscount	number	11000	
+Amount	number	9680	
+Taxable_Amount	number	9680	
 Tax1_Per	number	0	
 Tax1	number	0	
 Tax2_Per	number	2.5	
-Tax2	number	18.75	
+Tax2	number	242	
 Tax3_Per	number	2.5	
-Tax3	number	18.75	
+Tax3	number	242	
 Tax4_Per	number	0	
 Tax4	number	0	
 Tax5_Per	number	0	
 Tax5	number	0	
-Net_Amount	number	788	
+Net_Amount	number	10163.99	
 LRemarks	string	255		
 HRemarks	string	255		
 SalesTaxSummaryStr	string	255		
-H_Discount	number	0	
+H_Discount	number	2737.18	
 H_AdditionalDiscount	number	0	
 H_Additional	number	0	
-H_TotalDiscount	number	0	
-H_AmountBeforeDiscount	number	750	
-H_Gross_Amount	number	750	
+H_TotalDiscount	number	2737.18	
+H_AmountBeforeDiscount	number	30271.5	
+H_Gross_Amount	number	27534.32	
 H_SpecialDiscount_Per	number	0	
 H_SpecialDiscount	number	0	
-H_Taxable_Amount	number	750	
+H_Taxable_Amount	number	27534.32	
 H_Tax1_Per	number	0	
 H_Tax1	number	0	
 H_Tax2_Per	number	0	
-H_Tax2	number	18.75	
+H_Tax2	number	688.36	
 H_Tax3_Per	number	0	
-H_Tax3	number	18.75	
+H_Tax3	number	688.36	
 H_Tax4_Per	number	0	
 H_Tax4	number	0	
 H_Tax5_Per	number	0	
@@ -158,13 +159,16 @@ H_Other_Charge1_Per	number	0
 H_Other_Charge1	number	0	
 H_Other_Charge2_Per	number	0	
 H_Other_Charge2	number	0	
-Round_Off	number	0.5	
-H_Net_Amount	number	788	
-Default_BankAccountDetail	string	255	<B> Bank Detail :- <BR> ALLAHABAD BANK : 20763905582  IFSC : ALLA0210069 <BR> KOTAK MAHINDRA : 2913816082  IFSC : KKBK0000131 <BR>	
+Round_Off	number	-0.04	
+H_Net_Amount	number	28911	
+EInvoiceIRN	string	255		
+EInvoiceACKNo	string	255		
+EInvoiceACKDate	datetime		
+Default_BankAccountDetail	string	255	<B> Bank Detail :- <BR> KOTAK MAHINDRA : 2913816082  IFSC : KKBK0000131 <BR>	
 DocumentPrintHeaderPattern	string	255	Center Aligned	
-DimDetail	string	255	10 	
+DimDetail	string	255	12.5 X 1, 12.5 X 1	
 PrintedByUser	string	255	SUPER	
-EntryByUser	string	255	SUPER	
+EntryByUser	string	255	sa	
 PrintTitle	string	255	TAX INVOICE	
 DocumentPrintShowPrintDateTimeYn	string	255	1	
 DocumentPrintShowPartyBalance	string	255	Hide	
@@ -174,3 +178,4 @@ TodaysCr	long	0
 TodaysClosingBalance	long	0	
 CompanyLogo	BLOB		
 CompanyAuthorisedSignature	BLOB		
+EInvoiceQrCode	BLOB		

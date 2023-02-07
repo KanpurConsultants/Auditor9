@@ -60,33 +60,34 @@ Public Class FrmPerson
     Public Const rowDiscount As Integer = 31
     Public Const rowExtraDiscount As Integer = 32
     Public Const rowAddition As Integer = 33
-    Public Const rowCreditDays As Integer = 34
-    Public Const rowCreditLimit As Integer = 35
-    Public Const rowBankName As Integer = 36
-    Public Const rowBankAccount As Integer = 37
-    Public Const rowBankIFSC As Integer = 38
-    Public Const rowShowAccountInOtherDivisions As Integer = 39
-    Public Const rowShowAccountInOtherSites As Integer = 40
-    Public Const rowWeekOffDays As Integer = 41
-    Public Const rowProcesses As Integer = 42
-    Public Const rowChequeFormat As Integer = 43
-    Public Const rowBlockedTransactions As Integer = 44
-    Public Const rowLockText As Integer = 45
-    Public Const rowGrade As Integer = 46
-    Public Const rowTdsGroup As Integer = 47
-    Public Const rowTdsCategory As Integer = 48
-    Public Const rowReligion As Integer = 49
-    Public Const rowCaste As Integer = 50
-    Public Const rowReconciliationUpToDate As Integer = 51
-    Public Const rowDivisionScopeOfWork As Integer = 52
-    Public Const rowFairDiscountPer As Integer = 53
-    Public Const rowPrevProcess As Integer = 54
-    Public Const rowProcessScopeOfWork As Integer = 55
-    Public Const rowCombinationOfProcesses As Integer = 56
-    Public Const rowFirstProcessOfCombination As Integer = 57
-    Public Const rowLastProcessOfCombination As Integer = 58
-    Public Const rowTags As Integer = 59
-    Public Const rowRemarks As Integer = 60
+    Public Const rowAdditionalCommission As Integer = 34
+    Public Const rowCreditDays As Integer = 35
+    Public Const rowCreditLimit As Integer = 36
+    Public Const rowBankName As Integer = 37
+    Public Const rowBankAccount As Integer = 38
+    Public Const rowBankIFSC As Integer = 39
+    Public Const rowShowAccountInOtherDivisions As Integer = 40
+    Public Const rowShowAccountInOtherSites As Integer = 41
+    Public Const rowWeekOffDays As Integer = 42
+    Public Const rowProcesses As Integer = 43
+    Public Const rowChequeFormat As Integer = 44
+    Public Const rowBlockedTransactions As Integer = 45
+    Public Const rowLockText As Integer = 46
+    Public Const rowGrade As Integer = 47
+    Public Const rowTdsGroup As Integer = 48
+    Public Const rowTdsCategory As Integer = 49
+    Public Const rowReligion As Integer = 50
+    Public Const rowCaste As Integer = 51
+    Public Const rowReconciliationUpToDate As Integer = 52
+    Public Const rowDivisionScopeOfWork As Integer = 53
+    Public Const rowFairDiscountPer As Integer = 54
+    Public Const rowPrevProcess As Integer = 55
+    Public Const rowProcessScopeOfWork As Integer = 56
+    Public Const rowCombinationOfProcesses As Integer = 57
+    Public Const rowFirstProcessOfCombination As Integer = 58
+    Public Const rowLastProcessOfCombination As Integer = 59
+    Public Const rowTags As Integer = 60
+    Public Const rowRemarks As Integer = 61
 
     'Public Const rowContactPerson As Integer = 15
     'Public Const rowSalesTaxNo As Integer = 16
@@ -809,6 +810,12 @@ Public Class FrmPerson
             Dgl1.Item(Col1Value, rowAddition).Value = AgL.XNull(DsTemp.Tables(0).Rows(0)("AdditionPer"))
         End If
 
+        mQry = "Select AdditionalCommissionPer from PersonAdditionalCommission With (NoLock) Where Person = '" & mSearchCode & "' And ItemCategory Is Null And ItemGroup Is Null And Process Is Null "
+        DsTemp = AgL.FillData(mQry, AgL.GCn)
+        If DsTemp.Tables(0).Rows.Count > 0 Then
+            Dgl1.Item(Col1Value, rowAdditionalCommission).Value = AgL.XNull(DsTemp.Tables(0).Rows(0)("AdditionalCommissionPer"))
+        End If
+
         mQry = "Select ExtraDiscountPer from PersonExtraDiscount With (NoLock) Where Person = '" & mSearchCode & "' And ItemCategory Is Null And ItemGroup Is Null And Process Is Null "
         DsTemp = AgL.FillData(mQry, AgL.GCn)
         If DsTemp.Tables(0).Rows.Count > 0 Then
@@ -1342,6 +1349,13 @@ Public Class FrmPerson
                 AgL.Dman_ExecuteNonQry(mQry, AgL.GCn, AgL.ECmd)
             End If
 
+            mQry = "Delete from PersonAdditionalCommission Where Person = '" & mSearchCode & "' And ItemGroup Is Null And ItemCategory Is Null And Process Is Null"
+            AgL.Dman_ExecuteNonQry(mQry, AgL.GCn, AgL.ECmd)
+            If Val(Dgl1.Item(Col1Value, rowAdditionalCommission).Value) > 0 Then
+                mQry = "Insert Into PersonAdditionalCommission (Person, AdditionalCommissionPer) Values (" & AgL.Chk_Text(mSearchCode) & ", " & Val(Dgl1.Item(Col1Value, rowAdditionalCommission).Value) & ") "
+                AgL.Dman_ExecuteNonQry(mQry, AgL.GCn, AgL.ECmd)
+            End If
+
             mQry = "Delete from PersonExtraDiscount Where Person = '" & mSearchCode & "' And ItemGroup Is Null And ItemCategory Is Null And Process Is Null "
             AgL.Dman_ExecuteNonQry(mQry, AgL.GCn, AgL.ECmd)
             If Val(Dgl1.Item(Col1Value, rowExtraDiscount).Value) > 0 Then
@@ -1530,7 +1544,7 @@ Public Class FrmPerson
                     mQry = "Update Subgroup set UploadDate=Null where Subcode  In (Select Subcode From Subgroup Where Parent = '" & mSearchCode & "')"
                     AgL.Dman_ExecuteNonQry(mQry, AgL.GCn, AgL.ECmd)
                 Else
-                    If ClsMain.FDivisionNameForCustomization(22) = "W SHYAMA SHYAM FABRICS" Then
+                    If ClsMain.FDivisionNameForCustomization(22) = "W SHYAMA SHYAM FABRICS" Or ClsMain.FDivisionNameForCustomization(27) = "W SHYAMA SHYAM VENTURES LLP" Then
                         mQry = "UPDATE SubgroupSiteDivisionDetail SET Agent =(SELECT sl.Agent FROM Subgroup ss  LEFT JOIN subgroup sp ON ss.Parent = sp.Subcode LEFT JOIN  SubgroupSiteDivisionDetail sL ON sp.Subcode = sl.SubCode AND sl.Site_Code = SubgroupSiteDivisionDetail.Site_Code Where SubgroupSiteDivisionDetail.SubCode = ss.Subcode)
                             WHERE Subcode ='" & mSearchCode & "'"
                         AgL.Dman_ExecuteNonQry(mQry, AgL.GCn, AgL.ECmd)
@@ -1903,7 +1917,7 @@ Public Class FrmPerson
 
 
 
-        Dgl1.Rows.Add(61)
+        Dgl1.Rows.Add(62)
 
         Dgl1.Item(Col1Head, rowSubgroupType).Value = ConfigurableFields.FrmPersonHeaderDgl1.SubgroupType
         Dgl1.Item(Col1Head, rowCode).Value = ConfigurableFields.FrmPersonHeaderDgl1.Code
@@ -1935,6 +1949,7 @@ Public Class FrmPerson
         Dgl1.Item(Col1Head, rowDistance).Value = ConfigurableFields.FrmPersonHeaderDgl1.Distance
         Dgl1.Item(Col1Head, rowDiscount).Value = ConfigurableFields.FrmPersonHeaderDgl1.Discount
         Dgl1.Item(Col1Head, rowAddition).Value = ConfigurableFields.FrmPersonHeaderDgl1.Addition
+        Dgl1.Item(Col1Head, rowAdditionalCommission).Value = ConfigurableFields.FrmPersonHeaderDgl1.AdditionalCommission
         Dgl1.Item(Col1Head, rowExtraDiscount).Value = ConfigurableFields.FrmPersonHeaderDgl1.ExtraDiscount
         Dgl1.Item(Col1Head, rowCreditDays).Value = ConfigurableFields.FrmPersonHeaderDgl1.CreditDays
         Dgl1.Item(Col1Head, rowCreditLimit).Value = ConfigurableFields.FrmPersonHeaderDgl1.CreditLimit
@@ -3979,6 +3994,9 @@ Public Class FrmPerson
         AgL.Dman_ExecuteNonQry(mQry, Conn, Cmd)
 
         mQry = "Delete from PersonAddition Where Person = '" & SearchCode & "'"
+        AgL.Dman_ExecuteNonQry(mQry, Conn, Cmd)
+
+        mQry = "Delete from PersonAdditionalCommission Where Person = '" & SearchCode & "'"
         AgL.Dman_ExecuteNonQry(mQry, Conn, Cmd)
 
         mQry = "Delete from PersonExtraDiscount Where Person = '" & SearchCode & "'"

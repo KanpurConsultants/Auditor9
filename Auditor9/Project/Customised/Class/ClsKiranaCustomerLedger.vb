@@ -200,7 +200,7 @@ Public Class ClsKiranaCustomerLedger
                                                                        UNION ALL 
                                                                        SELECT H.PaymentDocId || H.PaymentDocIdSr   FROM Cloth_SupplierSettlementPayments H
                                                                        ) "
-            If ClsMain.FDivisionNameForCustomization(22) = "W SHYAMA SHYAM FABRICS" Then
+            If ClsMain.FDivisionNameForCustomization(22) = "W SHYAMA SHYAM FABRICS" Or ClsMain.FDivisionNameForCustomization(27) = "W SHYAMA SHYAM VENTURES LLP" Then
                 mCondStr = mCondStr & " And LG.DocID Not In ( SELECT H.DocID FROM LedgerHead H LEFT JOIN LedgerHeadDetail L ON H.DocID = L.DocID WHERE H.V_Type In ('WPS','WRS') ) "
             Else
                 mCondStr = mCondStr & " And LG.DocID Not In ( SELECT H.DocID FROM LedgerHead H LEFT JOIN LedgerHeadDetail L ON H.DocID = L.DocID WHERE H.V_Type In ('" & Ncat.PaymentSettlement & "','" & Ncat.ReceiptSettlement & "') ) "
@@ -643,7 +643,7 @@ Public Class ClsKiranaCustomerLedger
 
         mCondStr = CreateCondStr()
 
-        If ClsMain.FDivisionNameForCustomization(20) = "SHYAMA SHYAM FABRICS" Or ClsMain.FDivisionNameForCustomization(22) = "W SHYAMA SHYAM FABRICS" Then Exit Sub
+        If ClsMain.FDivisionNameForCustomization(20) = "SHYAMA SHYAM FABRICS" Or ClsMain.FDivisionNameForCustomization(22) = "W SHYAMA SHYAM FABRICS" Or ClsMain.FDivisionNameForCustomization(25) = "SHYAMA SHYAM VENTURES LLP" Or ClsMain.FDivisionNameForCustomization(27) = "W SHYAMA SHYAM VENTURES LLP" Then Exit Sub
 
         mQry = "Select Sg.Subcode From Ledger Lg "
         If ReportFrm.FGetText(rowGroupOn) = "Linked Party" Then
@@ -685,7 +685,7 @@ Public Class ClsKiranaCustomerLedger
 
             GetDataReady(CreateCondStr, ShowDataIn.Crystal)
 
-            If ClsMain.FDivisionNameForCustomization(22) = "W SHYAMA SHYAM FABRICS" Then
+            If ClsMain.FDivisionNameForCustomization(22) = "W SHYAMA SHYAM FABRICS" Or ClsMain.FDivisionNameForCustomization(27) = "W SHYAMA SHYAM VENTURES LLP" Then
                 mMultiplier = 0.01
 
                 Dim mDbPath As String
@@ -709,7 +709,7 @@ Public Class ClsKiranaCustomerLedger
             If ReportFrm.FGetText(rowReportType) = "Interest Ledger" Then
                 Dim sQryInterestRate As String
                 If AgL.PubServerName = "" Then
-                    If ClsMain.FDivisionNameForCustomization(20) = "SHYAMA SHYAM FABRICS" Or ClsMain.FDivisionNameForCustomization(22) = "W SHYAMA SHYAM FABRICS" Then
+                    If ClsMain.FDivisionNameForCustomization(20) = "SHYAMA SHYAM FABRICS" Or ClsMain.FDivisionNameForCustomization(22) = "W SHYAMA SHYAM FABRICS" Or ClsMain.FDivisionNameForCustomization(25) = "SHYAMA SHYAM VENTURES LLP" Or ClsMain.FDivisionNameForCustomization(27) = "W SHYAMA SHYAM VENTURES LLP" Then
                         sQryPurchaseBrand = "(Select group_concat(Brand ,',') || ',' From (Select IfNull(sGroup.Description, sItem.Description)  as Brand  from PurchInvoiceDetail sPID  With (NoLock) Left Join Item sItem On sPID.Item = sItem.Code Left Join Item sGroup On sItem.ItemGroup = sGroup.Code Where sPID.DocID = PI.DocID And sItem.ItemType = '" & ItemTypeCode.TradingProduct & "' Group By IfNull(sGroup.Description, sItem.Description)))"
                         sQrySaleBrand = "(Select group_concat(Brand ,',') || ',' From (Select IfNull(sGroup.Description, sItem.Description)  as Brand  from SaleInvoiceDetail sSID  With (NoLock) Left Join Item sItem On sSID.Item = sItem.Code Left Join Item sGroup On sItem.ItemGroup = sGroup.Code Where sSID.DocID = SI.DocID And sItem.ItemType = '" & ItemTypeCode.TradingProduct & "' Group By IfNull(sGroup.Description, sItem.Description)))"
                     Else
@@ -737,7 +737,7 @@ Public Class ClsKiranaCustomerLedger
 		                                            ) 
                                             And H.InterestDays > DaysGreaterThan
                                             Order By DaysGreaterThan Desc limit 1)"
-                    If ClsMain.FDivisionNameForCustomization(22) <> "W SHYAMA SHYAM FABRICS" Then
+                    If ClsMain.FDivisionNameForCustomization(22) <> "W SHYAMA SHYAM FABRICS" Or ClsMain.FDivisionNameForCustomization(27) = "W SHYAMA SHYAM VENTURES LLP" Then
                         sQryInterestRate = sQryInterestRate.Replace("H.LinkedSubcode", "H.Subcode")
                     End If
                 Else
@@ -879,7 +879,7 @@ Public Class ClsKiranaCustomerLedger
             Else
 
                 If AgL.PubServerName = "" Then
-                    If ClsMain.FDivisionNameForCustomization(20) = "SHYAMA SHYAM FABRICS" Or ClsMain.FDivisionNameForCustomization(22) = "W SHYAMA SHYAM FABRICS" Then
+                    If ClsMain.FDivisionNameForCustomization(20) = "SHYAMA SHYAM FABRICS" Or ClsMain.FDivisionNameForCustomization(22) = "W SHYAMA SHYAM FABRICS" Or ClsMain.FDivisionNameForCustomization(25) = "SHYAMA SHYAM VENTURES LLP" Or ClsMain.FDivisionNameForCustomization(27) = "W SHYAMA SHYAM VENTURES LLP" Then
                         sQryPurchaseBrand = "(Select group_concat(Brand ,',') || ',' From (Select IfNull(sGroup.Description, sItem.Description)  as Brand  from PurchInvoiceDetail sPID  With (NoLock) Left Join Item sItem On sPID.Item = sItem.Code Left Join Item sGroup On sItem.ItemGroup = sGroup.Code Where sPID.DocID = PI.DocID And sItem.ItemType = '" & ItemTypeCode.TradingProduct & "' Group By IfNull(sGroup.Description, sItem.Description)))"
                         sQrySaleBrand = "(Select group_concat(Brand ,',') || ',' From (Select IfNull(sGroup.Description, sItem.Description)  as Brand  from SaleInvoiceDetail sSID  With (NoLock) Left Join Item sItem On sSID.Item = sItem.Code Left Join Item sGroup On sItem.ItemGroup = sGroup.Code Where sSID.DocID = SI.DocID And sItem.ItemType = '" & ItemTypeCode.TradingProduct & "' Group By IfNull(sGroup.Description, sItem.Description)))"
                     Else
@@ -1356,7 +1356,7 @@ Public Class ClsKiranaCustomerLedger
 
 
         Dim mMultiplier As Double
-        If ClsMain.FDivisionNameForCustomization(22) = "W SHYAMA SHYAM FABRICS" Then
+        If ClsMain.FDivisionNameForCustomization(22) = "W SHYAMA SHYAM FABRICS" Or ClsMain.FDivisionNameForCustomization(27) = "W SHYAMA SHYAM VENTURES LLP" Then
             mMultiplier = 0.01
         Else
             mMultiplier = 1.0

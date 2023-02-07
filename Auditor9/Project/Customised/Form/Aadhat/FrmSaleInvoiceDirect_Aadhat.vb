@@ -3175,7 +3175,7 @@ Public Class FrmSaleInvoiceDirect_Aadhat
                 Dgl1.Item(Col1PurchaseAc, mRow).Tag = AgL.XNull(DtItem.Rows(0)("PurchaseAc"))
                 Dgl1.Item(Col1SalesAc, mRow).Value = AgL.XNull(DtItem.Rows(0)("SalesAcName"))
                 Dgl1.Item(Col1SalesAc, mRow).Tag = AgL.XNull(DtItem.Rows(0)("SalesAc"))
-                If FDivisionNameForCustomization(20) = "SHYAMA SHYAM FABRICS" Then
+                If FDivisionNameForCustomization(20) = "SHYAMA SHYAM FABRICS" Or ClsMain.FDivisionNameForCustomization(25) = "SHYAMA SHYAM VENTURES LLP" Then
                     If CDate(TxtV_Date.Text) >= "01/Apr/2021" Then
                         If AgL.XNull(DtItem.Rows(0)("HSN")).ToString.Length < 6 Then
                             MsgBox("HSN code length is less than 6 characters")
@@ -3456,22 +3456,32 @@ Public Class FrmSaleInvoiceDirect_Aadhat
                     Dim bRateAfterDiscount As Double = Val(Dgl1.Item(Col1Amount, mRowIndex).Value) /
                             Val(Dgl1.Item(Col1Qty, mRowIndex).Value)
 
-                    mQry = "Select " & IIf(AgL.PubServerName <> "", "Top 1", "") & " SalesTaxGroupItem From ItemCategorySalesTax  With (NoLock)
+                    If (AgL.StrCmp(AgL.PubDBName, "ShyamaShyam") Or AgL.StrCmp(AgL.PubDBName, "ShyamaShyamV")) And (TxtStructure.Tag = "GstSaleMrp") Then
+                        mQry = "Select " & IIf(AgL.PubServerName <> "", "Top 1", "") & " SalesTaxGroupItem From ItemCategorySalesTax  With (NoLock)
+                        Where Code='" & Dgl1.Item(Col1ItemCategory, mRowIndex).Tag & "' 
+                        And MRPGreaterThan < " & Val(bRateAfterDiscount) & " 
+                        And Date(WEF) <= " & AgL.Chk_Date(CDate(TxtV_Date.Text).ToString("s")) & " 
+                        Order By WEF Desc, MRPGreaterThan Desc " & IIf(AgL.PubServerName = "", "Limit 1", "")
+                    Else
+                        mQry = "Select " & IIf(AgL.PubServerName <> "", "Top 1", "") & " SalesTaxGroupItem From ItemCategorySalesTax  With (NoLock)
                         Where Code='" & Dgl1.Item(Col1ItemCategory, mRowIndex).Tag & "' 
                         And RateGreaterThan < " & Val(bRateAfterDiscount) & " 
                         And Date(WEF) <= " & AgL.Chk_Date(CDate(TxtV_Date.Text).ToString("s")) & " 
                         Order By WEF Desc, RateGreaterThan Desc " & IIf(AgL.PubServerName = "", "Limit 1", "")
 
+                    End If
+
+
                     DtMain = AgL.FillData(mQry, AgL.GCn).Tables(0)
-                    If DtMain.Rows.Count > 0 Then
-                        Dgl1.Item(Col1SalesTaxGroup, mRowIndex).Value = AgL.XNull(DtMain.Rows(0)("SalesTaxGroupItem"))
-                        Dgl1.Item(Col1SalesTaxGroup, mRowIndex).Tag = AgL.XNull(DtMain.Rows(0)("SalesTaxGroupItem"))
-                    Else
-                        Dgl1.Item(Col1SalesTaxGroup, mRowIndex).Value = Dgl1.Item(Col1SalesTaxGroup_BaseRate, mRowIndex).Value
-                        Dgl1.Item(Col1SalesTaxGroup, mRowIndex).Tag = Dgl1.Item(Col1SalesTaxGroup_BaseRate, mRowIndex).Tag
+                        If DtMain.Rows.Count > 0 Then
+                            Dgl1.Item(Col1SalesTaxGroup, mRowIndex).Value = AgL.XNull(DtMain.Rows(0)("SalesTaxGroupItem"))
+                            Dgl1.Item(Col1SalesTaxGroup, mRowIndex).Tag = AgL.XNull(DtMain.Rows(0)("SalesTaxGroupItem"))
+                        Else
+                            Dgl1.Item(Col1SalesTaxGroup, mRowIndex).Value = Dgl1.Item(Col1SalesTaxGroup_BaseRate, mRowIndex).Value
+                            Dgl1.Item(Col1SalesTaxGroup, mRowIndex).Tag = Dgl1.Item(Col1SalesTaxGroup_BaseRate, mRowIndex).Tag
+                        End If
                     End If
                 End If
-            End If
         End If
     End Sub
     Private Sub Validating_ItemCategory(ByVal mColumn As Integer, ByVal mRow As Integer)
@@ -3917,7 +3927,7 @@ Public Class FrmSaleInvoiceDirect_Aadhat
 
 
 
-                        If FDivisionNameForCustomization(20) = "SHYAMA SHYAM FABRICS" Then
+                        If FDivisionNameForCustomization(20) = "SHYAMA SHYAM FABRICS" Or ClsMain.FDivisionNameForCustomization(25) = "SHYAMA SHYAM VENTURES LLP" Then
                             mQry = "Select IfNull(I.HSN, IC.HSN) as HSN from Item I Left Join Item IC On I.ItemCategory = IC.Code Where I.Code = '" & Dgl1(Col1Item, I).Tag & "'"
                             Dim dtHsn As DataTable
                             dtHsn = AgL.FillData(mQry, AgL.GCn).Tables(0)

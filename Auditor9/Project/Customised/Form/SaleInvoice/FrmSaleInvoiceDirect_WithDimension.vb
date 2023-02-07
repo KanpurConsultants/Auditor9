@@ -4022,37 +4022,37 @@ Public Class FrmSaleInvoiceDirect_WithDimension
                 DglMain.Item(Col1Value, rowBillToParty).Value = DglMain.Item(Col1Value, rowSaleToParty).Value
                 DglMain(Col1Head, rowBillToParty).Tag = Nothing
 
-                If FDivisionNameForCustomization(20) = "SHYAMA SHYAM FABRICS" Or FDivisionNameForCustomization(22) = "W SHYAMA SHYAM FABRICS" Then
-                    mQry = "Select Par.Code, Par.Name
+            If FDivisionNameForCustomization(20) = "SHYAMA SHYAM FABRICS" Or FDivisionNameForCustomization(22) = "W SHYAMA SHYAM FABRICS" Or ClsMain.FDivisionNameForCustomization(25) = "SHYAMA SHYAM VENTURES LLP" Or ClsMain.FDivisionNameForCustomization(27) = "W SHYAMA SHYAM VENTURES LLP" Then
+                mQry = "Select Par.Code, Par.Name
                             From SubGroup Sg
                             LEFT JOIN ViewHelpSubGroup Par On Sg.Parent = Par.Code
                             Where Sg.SubCode = '" & DglMain.Item(Col1Value, rowSaleToParty).Tag & "'"
-                    Dim DtBillToParty As DataTable = AgL.FillData(mQry, AgL.GCn).Tables(0)
-                    If DtBillToParty.Rows.Count > 0 Then
-                        DglMain.Item(Col1Value, rowBillToParty).Tag = AgL.XNull(DtBillToParty.Rows(0)("Code"))
-                        DglMain.Item(Col1Value, rowBillToParty).Value = AgL.XNull(DtBillToParty.Rows(0)("Name"))
-                    End If
-                    Dim DtTemp1 As DataTable
-                    mQry = "Select H.*, RT.Description as RateTypeName, Agent.Name as AgentName, Transporter.Name as TransporterName 
+                Dim DtBillToParty As DataTable = AgL.FillData(mQry, AgL.GCn).Tables(0)
+                If DtBillToParty.Rows.Count > 0 Then
+                    DglMain.Item(Col1Value, rowBillToParty).Tag = AgL.XNull(DtBillToParty.Rows(0)("Code"))
+                    DglMain.Item(Col1Value, rowBillToParty).Value = AgL.XNull(DtBillToParty.Rows(0)("Name"))
+                End If
+                Dim DtTemp1 As DataTable
+                mQry = "Select H.*, RT.Description as RateTypeName, Agent.Name as AgentName, Transporter.Name as TransporterName 
                                     From SubgroupSiteDivisionDetail H  With (NoLock)
                                     Left Join RateType RT With (NoLock) on H.RateType = RT.Code
                                     Left Join viewHelpSubgroup agent With (NoLock) On H.Agent = Agent.Code
                                     Left Join viewHelpSubgroup Transporter With (NoLock) On H.Transporter = Transporter.Code
                                     Where H.Subcode = '" & DglMain.Item(Col1Value, rowBillToParty).Tag & "' And H.Site_Code='" & DglMain.Item(Col1Value, rowSite_Code).Tag & "' And H.Div_Code='" & TxtDivision.Tag & "'"
-                    DtTemp1 = AgL.FillData(mQry, AgL.GCn).Tables(0)
-                    If DtTemp1.Rows.Count > 0 Then
-                        Dgl2(Col1Value, rowRateType).Tag = AgL.XNull(DtTemp1.Rows(0)("RateType"))
-                        Dgl2(Col1Value, rowRateType).Value = AgL.XNull(DtTemp1.Rows(0)("RateTypeName"))
-                        Dgl3(Col1Value, rowAgent).Tag = AgL.XNull(DtTemp1.Rows(0)("Agent"))
-                        Dgl3(Col1Value, rowAgent).Value = AgL.XNull(DtTemp1.Rows(0)("AgentName"))
-                        Dgl3(Col1Value, rowTransporter).Tag = AgL.XNull(DtTemp1.Rows(0)("Transporter"))
-                        Dgl3(Col1Value, rowTransporter).Value = AgL.XNull(DtTemp1.Rows(0)("TransporterName"))
-                    End If
+                DtTemp1 = AgL.FillData(mQry, AgL.GCn).Tables(0)
+                If DtTemp1.Rows.Count > 0 Then
+                    Dgl2(Col1Value, rowRateType).Tag = AgL.XNull(DtTemp1.Rows(0)("RateType"))
+                    Dgl2(Col1Value, rowRateType).Value = AgL.XNull(DtTemp1.Rows(0)("RateTypeName"))
+                    Dgl3(Col1Value, rowAgent).Tag = AgL.XNull(DtTemp1.Rows(0)("Agent"))
+                    Dgl3(Col1Value, rowAgent).Value = AgL.XNull(DtTemp1.Rows(0)("AgentName"))
+                    Dgl3(Col1Value, rowTransporter).Tag = AgL.XNull(DtTemp1.Rows(0)("Transporter"))
+                    Dgl3(Col1Value, rowTransporter).Value = AgL.XNull(DtTemp1.Rows(0)("TransporterName"))
                 End If
+            End If
 
 
 
-                If DglMain.Item(Col1BtnDetail, rowSaleToParty).Tag IsNot Nothing Then
+            If DglMain.Item(Col1BtnDetail, rowSaleToParty).Tag IsNot Nothing Then
                     Dgl2.Item(Col1Value, rowSalesTaxNo).Value = CType(DglMain.Item(Col1BtnDetail, rowSaleToParty).Tag, FrmSaleInvoiceParty_WithDimension).Dgl1.Item(FrmSaleInvoiceParty_WithDimension.Col1Value, FrmSaleInvoiceParty_WithDimension.rowSalesTaxNo).Value
                     Dgl2.Item(Col1Value, rowAadharNo).Value = CType(DglMain.Item(Col1BtnDetail, rowSaleToParty).Tag, FrmSaleInvoiceParty_WithDimension).Dgl1.Item(FrmSaleInvoiceParty_WithDimension.Col1Value, FrmSaleInvoiceParty_WithDimension.rowAadharNo).Value
                 End If
@@ -4335,7 +4335,7 @@ Public Class FrmSaleInvoiceDirect_WithDimension
                 ElseIf DglMain(Col1Value, rowSaleToParty).Visible = True Then
                     If FDivisionNameForCustomization(12) = "MAA KI KRIPA" Or
                         FDivisionNameForCustomization(16) = "KAMAKHYA TRADERS" Or
-                        FDivisionNameForCustomization(22) = "W SHYAMA SHYAM FABRICS" Then
+                        FDivisionNameForCustomization(22) = "W SHYAMA SHYAM FABRICS" Or ClsMain.FDivisionNameForCustomization(27) = "W SHYAMA SHYAM VENTURES LLP" Then
                         DglMain.CurrentCell = DglMain(Col1Value, rowV_Date)
                     Else
                         DglMain.CurrentCell = DglMain(Col1Value, rowSaleToParty)
@@ -5535,49 +5535,49 @@ Public Class FrmSaleInvoiceDirect_WithDimension
         End If
 
 
-        If AgL.StrCmp(AgL.PubDBName, "SHADHVINANDI") Then
-            Dim DiscountedItem As Integer = 0
-            For I = 0 To Dgl1.Rows.Count - 1
-                If AgL.XNull(Dgl1(Col1Item, I).Value) <> "" Then
-                    If Val(Dgl1(Col1Rate, I).Value) < 100 Then
-                        DiscountedItem = DiscountedItem + Val(Dgl1(Col1Qty, I).Value)
-                    End If
-                End If
-            Next
+        'If AgL.StrCmp(AgL.PubDBName, "SHADHVINANDI") Then
+        '    Dim DiscountedItem As Integer = 0
+        '    For I = 0 To Dgl1.Rows.Count - 1
+        '        If AgL.XNull(Dgl1(Col1Item, I).Value) <> "" Then
+        '            If Val(Dgl1(Col1Rate, I).Value) < 100 Then
+        '                DiscountedItem = DiscountedItem + Val(Dgl1(Col1Qty, I).Value)
+        '            End If
+        '        End If
+        '    Next
 
-            If DiscountedItem > 1 Then
-                MsgBox("Only 1 Item should have Rate less than 100.")
-                passed = False : Exit Sub
-            End If
+        '    If DiscountedItem > 1 Then
+        '        MsgBox("Only 1 Item should have Rate less than 100.")
+        '        passed = False : Exit Sub
+        '    End If
 
-            If DiscountedItem > 0 Then
-                If (CType(DglMain.Item(Col1BtnDetail, rowSaleToParty).Tag, FrmSaleInvoiceParty_WithDimension).Dgl1.Item(FrmSaleInvoiceParty_WithDimension.Col1Value, FrmSaleInvoiceParty_WithDimension.rowAadharNo).Value) Is Nothing Then
-                    MsgBox("Party Aadhar No. Mandatory")
-                    passed = False : Exit Sub
-                    End
-                ElseIf (CType(DglMain.Item(Col1BtnDetail, rowSaleToParty).Tag, FrmSaleInvoiceParty_WithDimension).Dgl1.Item(FrmSaleInvoiceParty_WithDimension.Col1Value, FrmSaleInvoiceParty_WithDimension.rowAadharNo).Value) IsNot Nothing Then
-                    If (CType(DglMain.Item(Col1BtnDetail, rowSaleToParty).Tag, FrmSaleInvoiceParty_WithDimension).Dgl1.Item(FrmSaleInvoiceParty_WithDimension.Col1Value, FrmSaleInvoiceParty_WithDimension.rowAadharNo).Value).ToString.Trim = "" Then
-                        MsgBox("Party Aadhar No. Mandatory")
-                        passed = False : Exit Sub
-                    End If
-                End If
-            End If
+        '    If DiscountedItem > 0 Then
+        '        If (CType(DglMain.Item(Col1BtnDetail, rowSaleToParty).Tag, FrmSaleInvoiceParty_WithDimension).Dgl1.Item(FrmSaleInvoiceParty_WithDimension.Col1Value, FrmSaleInvoiceParty_WithDimension.rowAadharNo).Value) Is Nothing Then
+        '            MsgBox("Party Aadhar No. Mandatory")
+        '            passed = False : Exit Sub
+        '            End
+        '        ElseIf (CType(DglMain.Item(Col1BtnDetail, rowSaleToParty).Tag, FrmSaleInvoiceParty_WithDimension).Dgl1.Item(FrmSaleInvoiceParty_WithDimension.Col1Value, FrmSaleInvoiceParty_WithDimension.rowAadharNo).Value) IsNot Nothing Then
+        '            If (CType(DglMain.Item(Col1BtnDetail, rowSaleToParty).Tag, FrmSaleInvoiceParty_WithDimension).Dgl1.Item(FrmSaleInvoiceParty_WithDimension.Col1Value, FrmSaleInvoiceParty_WithDimension.rowAadharNo).Value).ToString.Trim = "" Then
+        '                MsgBox("Party Aadhar No. Mandatory")
+        '                passed = False : Exit Sub
+        '            End If
+        '        End If
+        '    End If
 
-            If DiscountedItem > 0 Then
-                If (CType(DglMain.Item(Col1BtnDetail, rowSaleToParty).Tag, FrmSaleInvoiceParty_WithDimension).Dgl1.Item(FrmSaleInvoiceParty_WithDimension.Col1Value, FrmSaleInvoiceParty_WithDimension.rowAadharNo).Value) IsNot Nothing Then
-                    If (CType(DglMain.Item(Col1BtnDetail, rowSaleToParty).Tag, FrmSaleInvoiceParty_WithDimension).Dgl1.Item(FrmSaleInvoiceParty_WithDimension.Col1Value, FrmSaleInvoiceParty_WithDimension.rowAadharNo).Value).ToString.Trim <> "" Then
+        '    If DiscountedItem > 0 Then
+        '        If (CType(DglMain.Item(Col1BtnDetail, rowSaleToParty).Tag, FrmSaleInvoiceParty_WithDimension).Dgl1.Item(FrmSaleInvoiceParty_WithDimension.Col1Value, FrmSaleInvoiceParty_WithDimension.rowAadharNo).Value) IsNot Nothing Then
+        '            If (CType(DglMain.Item(Col1BtnDetail, rowSaleToParty).Tag, FrmSaleInvoiceParty_WithDimension).Dgl1.Item(FrmSaleInvoiceParty_WithDimension.Col1Value, FrmSaleInvoiceParty_WithDimension.rowAadharNo).Value).ToString.Trim <> "" Then
 
-                        mQry = "Select Count(*) From SaleInvoice With (NoLock)  Where DocId <> '" & mSearchCode & "' AND SaleToPartyAadharNo = '" & CType(DglMain.Item(Col1BtnDetail, rowSaleToParty).Tag, FrmSaleInvoiceParty_WithDimension).Dgl1.Item(FrmSaleInvoiceParty_WithDimension.Col1Value, FrmSaleInvoiceParty_WithDimension.rowAadharNo).Value & "' "
+        '                mQry = "Select Count(*) From SaleInvoice With (NoLock)  Where DocId <> '" & mSearchCode & "' AND SaleToPartyAadharNo = '" & CType(DglMain.Item(Col1BtnDetail, rowSaleToParty).Tag, FrmSaleInvoiceParty_WithDimension).Dgl1.Item(FrmSaleInvoiceParty_WithDimension.Col1Value, FrmSaleInvoiceParty_WithDimension.rowAadharNo).Value & "' "
 
-                        If AgL.VNull(AgL.Dman_Execute(mQry, AgL.GcnRead).ExecuteScalar()) > 0 Then
-                            MsgBox("Party Aadhar No. Is Already Used")
-                            passed = False : Exit Sub
-                        End If
-                    End If
-                End If
-            End If
+        '                If AgL.VNull(AgL.Dman_Execute(mQry, AgL.GcnRead).ExecuteScalar()) > 0 Then
+        '                    MsgBox("Party Aadhar No. Is Already Used")
+        '                    passed = False : Exit Sub
+        '                End If
+        '            End If
+        '        End If
+        '    End If
 
-        End If
+        'End If
 
         Dim bCntItemCount As Integer = 0
         If SettingFields_MaximumItemLimit > 0 Then
@@ -15048,7 +15048,7 @@ Public Class FrmSaleInvoiceDirect_WithDimension
 
                 If FDivisionNameForCustomization(12) = "MAA KI KRIPA" Or
                         FDivisionNameForCustomization(16) = "KAMAKHYA TRADERS" Or
-                    FDivisionNameForCustomization(22) = "W SHYAMA SHYAM FABRICS" Then
+                    FDivisionNameForCustomization(22) = "W SHYAMA SHYAM FABRICS" Or ClsMain.FDivisionNameForCustomization(27) = "W SHYAMA SHYAM VENTURES LLP" Then
                     PurchInvoiceTable.Line_Taxable_Amount = PurchInvoiceTable.Line_Amount
                     PurchInvoiceTable.Line_Tax1_Per = 0
                     PurchInvoiceTable.Line_Tax1 = 0
@@ -15147,7 +15147,7 @@ Public Class FrmSaleInvoiceDirect_WithDimension
 
             If FDivisionNameForCustomization(12) = "MAA KI KRIPA" Or
                     FDivisionNameForCustomization(16) = "KAMAKHYA TRADERS" Or
-                FDivisionNameForCustomization(22) = "W SHYAMA SHYAM FABRICS" Then
+                FDivisionNameForCustomization(22) = "W SHYAMA SHYAM FABRICS" Or ClsMain.FDivisionNameForCustomization(27) = "W SHYAMA SHYAM VENTURES LLP" Then
                 PurchInvoiceTableList(0).Other_Charge = Val(DglPurchase.Item(Col5OtherCharge, I).Value)
                 PurchInvoiceTableList(0).Other_Charge1 = Val(DglPurchase.Item(Col5OtherCharge1, I).Value)
                 PurchInvoiceTableList(0).Deduction = Val(DglPurchase.Item(Col5Deduction, I).Value)
@@ -15353,7 +15353,7 @@ Public Class FrmSaleInvoiceDirect_WithDimension
 
         If FDivisionNameForCustomization(12) = "MAA KI KRIPA" Or
                 FDivisionNameForCustomization(16) = "KAMAKHYA TRADERS" Or
-            FDivisionNameForCustomization(22) = "W SHYAMA SHYAM FABRICS" Then
+            FDivisionNameForCustomization(22) = "W SHYAMA SHYAM FABRICS" Or ClsMain.FDivisionNameForCustomization(27) = "W SHYAMA SHYAM VENTURES LLP" Then
             mQry = " CREATE " & IIf(AgL.PubServerName = "", "Temp", "") & " TABLE [#TempSaleInvoicePurchaseSummary](
                 Serial Integer,
                 ItemGroup NVARCHAR(10),

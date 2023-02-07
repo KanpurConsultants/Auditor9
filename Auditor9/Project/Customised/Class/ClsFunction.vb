@@ -172,7 +172,7 @@ Public Class ClsFunction
                 Case MDI.MnuCompanyMaster.Name, MdiSchool.MnuCompanyMaster.Name, MdiSpare.MnuCompanyMaster.Name, MdiKirana.MnuCompanyMaster.Name
                     FrmObj = New FrmCompanyInput
                 Case MDI.MnuCustomerMaster.Name, MdiSpare.MnuCustomerMaster.Name, MdiSchool.MnuCustomerMaster.Name, MdiKirana.MnuCustomerMaster.Name
-                    If ClsMain.FDivisionNameForCustomization(20) = "SHYAMA SHYAM FABRICS" Or ClsMain.FDivisionNameForCustomization(22) = "W SHYAMA SHYAM FABRICS" Then
+                    If ClsMain.FDivisionNameForCustomization(20) = "SHYAMA SHYAM FABRICS" Or ClsMain.FDivisionNameForCustomization(22) = "W SHYAMA SHYAM FABRICS" Or ClsMain.FDivisionNameForCustomization(25) = "SHYAMA SHYAM VENTURES LLP" Or ClsMain.FDivisionNameForCustomization(27) = "W SHYAMA SHYAM VENTURES LLP" Then
                         FrmObj = New FrmPerson_ShyamaShyam(StrUserPermission, DTUP)
                     Else
                         FrmObj = New FrmPerson(StrUserPermission, DTUP)
@@ -317,7 +317,7 @@ Public Class ClsFunction
                         FrmObj = New FrmPurchInvoiceDirect(StrUserPermission, DTUP, Ncat.PurchaseReturn)
                     End If
                 Case MDI.MnuSalesOrder.Name, MdiKirana.MnuSalesOrder.Name
-                    If ClsMain.FDivisionNameForCustomization(20) = "SHYAMA SHYAM FABRICS" Or ClsMain.FDivisionNameForCustomization(22) = "W SHYAMA SHYAM FABRICS" Then
+                    If ClsMain.FDivisionNameForCustomization(20) = "SHYAMA SHYAM FABRICS" Or ClsMain.FDivisionNameForCustomization(22) = "W SHYAMA SHYAM FABRICS" Or ClsMain.FDivisionNameForCustomization(25) = "SHYAMA SHYAM VENTURES LLP" Or ClsMain.FDivisionNameForCustomization(27) = "W SHYAMA SHYAM VENTURES LLP" Then
                         FrmObj = New FrmSaleInvoiceDirect(StrUserPermission, DTUP, Ncat.SaleOrder)
                     Else
                         If FGetNewVersionFlag() = True Then
@@ -327,7 +327,7 @@ Public Class ClsFunction
                         End If
                     End If
                 Case MDI.MnuSalesEntry.Name, MdiSchool.MnuSalesEntry.Name, MdiKirana.MnuSalesEntry.Name
-                    If ClsMain.FDivisionNameForCustomization(20) = "SHYAMA SHYAM FABRICS" Or ClsMain.FDivisionNameForCustomization(22) = "W SHYAMA SHYAM FABRICS" Then
+                    If ClsMain.FDivisionNameForCustomization(20) = "SHYAMA SHYAM FABRICS" Or ClsMain.FDivisionNameForCustomization(22) = "W SHYAMA SHYAM FABRICS" Or ClsMain.FDivisionNameForCustomization(25) = "SHYAMA SHYAM VENTURES LLP" Or ClsMain.FDivisionNameForCustomization(27) = "W SHYAMA SHYAM VENTURES LLP" Then
                         FrmObj = New FrmSaleInvoiceDirect(StrUserPermission, DTUP, Ncat.SaleInvoice)
                     Else
                         If FGetNewVersionFlag() = True Then
@@ -350,7 +350,7 @@ Public Class ClsFunction
                     FrmObj = New FrmSaleInvoiceDirect_WithDimension(StrUserPermission, DTUP, Ncat.SaleInvoiceOverlay, mCustomUI_Retail)
 
                 Case MDI.MnuSalesReturnEntry.Name
-                    If ClsMain.FDivisionNameForCustomization(22) = "W SHYAMA SHYAM FABRICS" Then
+                    If ClsMain.FDivisionNameForCustomization(22) = "W SHYAMA SHYAM FABRICS" Or ClsMain.FDivisionNameForCustomization(27) = "W SHYAMA SHYAM VENTURES LLP" Then
                         FrmObj = New FrmSaleInvoiceDirect_WithDimension_ShyamaShyam(StrUserPermission, DTUP, Ncat.SaleReturn)
                     Else
                         If FGetNewVersionFlag() = True Then
@@ -440,6 +440,8 @@ Public Class ClsFunction
                     FrmObj = New FrmBarcodeRateRevision(StrUserPermission, DTUP)
                 Case MDI.MnuGenerateBarcode.Name
                     FrmObj = New FrmPrintBarcode(StrUserPermission, DTUP)
+                Case MDI.MnuGenerateBarcodeSS.Name
+                    FrmObj = New FrmPrintBarcodeSS(StrUserPermission, DTUP)
                 Case MDI.MnuShape.Name
                     FrmObj = New FrmShape(StrUserPermission, DTUP)
                 Case MDI.MnuPermissionApproval.Name
@@ -1540,7 +1542,6 @@ Public Class ClsFunction
                ClsMain.FDivisionNameForCustomization().Contains("SUMAN") Or
                ClsMain.FDivisionNameForCustomization().Contains("AARNAV") Or
                ClsMain.FDivisionNameForCustomization().Contains("RADHA") Or
-               ClsMain.FDivisionNameForCustomization().Contains("SHREE") Or
                ClsMain.FDivisionNameForCustomization().Contains("SUBHASHINI FAB") Or
                ClsMain.FDivisionNameForCustomization().Contains("SITARAM HARISH") Or
                ClsMain.FDivisionNameForCustomization().Contains("SHREE RAM") Then

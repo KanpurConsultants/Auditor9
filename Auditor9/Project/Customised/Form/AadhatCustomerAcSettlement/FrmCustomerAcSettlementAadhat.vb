@@ -2927,7 +2927,7 @@ Public Class FrmCustomerAcSettlementAadhat
         '    Exit Sub
         'End If
 
-        If ClsMain.FDivisionNameForCustomization(22) = "W SHYAMA SHYAM FABRICS" Then
+        If ClsMain.FDivisionNameForCustomization(22) = "W SHYAMA SHYAM FABRICS" Or ClsMain.FDivisionNameForCustomization(27) = "W SHYAMA SHYAM VENTURES LLP" Then
             TxtV_Type.Tag = "WRS"
             TxtV_Type.Text = "W Receipt Settlement"
             LblV_Type.Tag = EntryNCat

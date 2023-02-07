@@ -571,7 +571,7 @@ Public Class FrmSaleInvoiceTransport
             AgL.Dman_ExecuteNonQry(mQry, Conn, Cmd)
         End If
 
-        If ClsMain.FDivisionNameForCustomization(22) = "W SHYAMA SHYAM FABRICS" Then
+        If ClsMain.FDivisionNameForCustomization(22) = "W SHYAMA SHYAM FABRICS" Or ClsMain.FDivisionNameForCustomization(27) = "W SHYAMA SHYAM VENTURES LLP" Then
             mQry = "INSERT INTO PurchInvoiceTransport (DocID, Transporter, LrNo, LrDate, PrivateMark, Weight, Freight, PaymentType, RoadPermitNo, RoadPermitDate, UploadDate,   NoOfBales)
                     SELECT (Select DocID From PurchInvoice Where GenDocID = '" & SearchCode & "') as  DocID, Transporter, LrNo, LrDate, PrivateMark, Weight, Freight, PaymentType, RoadPermitNo, RoadPermitDate, UploadDate,    NoOfBales
                     FROM SaleInvoiceTransport WHERE DocID = '" & SearchCode & "' "

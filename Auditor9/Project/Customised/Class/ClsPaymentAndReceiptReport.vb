@@ -165,7 +165,7 @@ Public Class ClsPaymentAndReceiptReport
                     City.CityCode, City.CityName, State.Code As StateCode, State.Description As StateName,
                     H.Div_Code || H.Site_Code || '-' || H.V_Type || '-' || H.ManualRefNo as VoucherNo, H.ManualRefNo RecId, L.Amount as Amount, 
                     (Case  When IfNull(Trd.Type,'')='Cancelled' OR IfNull(Trr.Type,'')='Cancelled' Then 0 Else L.Amount End) as NetReceipt, "
-            'If ClsMain.FDivisionNameForCustomization(20) = "SHYAMA SHYAM FABRICS" Or ClsMain.FDivisionNameForCustomization(22) = "W SHYAMA SHYAM FABRICS" Then
+            'If ClsMain.FDivisionNameForCustomization(20) = "SHYAMA SHYAM FABRICS" Or ClsMain.FDivisionNameForCustomization(22) = "W SHYAMA SHYAM FABRICS" Or ClsMain.FDivisionNameForCustomization(25) = "SHYAMA SHYAM VENTURES LLP" Or ClsMain.FDivisionNameForCustomization(27) = "W SHYAMA SHYAM VENTURES LLP" Then
             '    mMainQry = mMainQry & "(Case  When IfNull(Trd.Type,'')='Cancelled' OR IfNull(Trr.Type,'')='Cancelled' Then 0 Else L.Amount End) as Amount, "
             'Else
             '    mMainQry = mMainQry & "L.Amount as Amount, "
@@ -182,7 +182,7 @@ Public Class ClsPaymentAndReceiptReport
                     Left Join City On Party.CityCode = City.CityCode 
                     Left Join State On City.State = State.Code
                     LEFT JOIN Voucher_Type Vt On H.V_Type = Vt.V_Type "
-            'If ClsMain.FDivisionNameForCustomization(20) = "SHYAMA SHYAM FABRICS" Or ClsMain.FDivisionNameForCustomization(22) = "W SHYAMA SHYAM FABRICS" Then
+            'If ClsMain.FDivisionNameForCustomization(20) = "SHYAMA SHYAM FABRICS" Or ClsMain.FDivisionNameForCustomization(22) = "W SHYAMA SHYAM FABRICS" Or ClsMain.FDivisionNameForCustomization(25) = "SHYAMA SHYAM VENTURES LLP" Or ClsMain.FDivisionNameForCustomization(27) = "W SHYAMA SHYAM VENTURES LLP" Then
             mMainQry = mMainQry & " Left Join TransactionReferences Trd With (NoLock) On H.DocID = Trd.DocId And Trd.DocIDSr=1 and IfNull(Trd.Type,'')='Cancelled' And H.V_Date >= '2019-07-01'
                     Left Join TransactionReferences Trr With (NoLock) On H.DocID = Trr.ReferenceDocId And Trr.ReferenceSr=1 And IfNull(Trr.Type,'')='Cancelled' And H.V_Date >= '2019-07-01' "
             'End If

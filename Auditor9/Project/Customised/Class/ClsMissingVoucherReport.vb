@@ -113,13 +113,16 @@ Public Class ClsMissingVoucherReport
             End If
 
             Dim DsSale As DataSet
+            Dim DsSaleLedger As DataSet
             Dim DsPurchase As DataSet
             Dim DsLedgerHead As DataSet
 
             DsSale = FGetDataFromTables("SaleInvoice")
+            DsSaleLedger = FGetDataFromLedgerTables("SaleInvoice")
             DsPurchase = FGetDataFromTables("PurchInvoice")
             DsLedgerHead = FGetDataFromTables("LedgerHead")
 
+            DsSale.Merge(DsSaleLedger)
             DsSale.Merge(DsPurchase)
             DsSale.Merge(DsLedgerHead)
 
@@ -198,5 +201,59 @@ Public Class ClsMissingVoucherReport
         Next
 
         FGetDataFromTables = DsTemp
+    End Function
+
+    Private Function FGetDataFromLedgerTables(bTableName As String) As DataSet
+        Dim DsTemp As DataSet
+        Dim mCondStr As String
+
+        mCondStr = " Where 1=1 "
+        mCondStr = mCondStr & " And Date(H.V_Date) >= " & AgL.Chk_Date(ReportFrm.FGetText(rowFromDate)) & " 
+                         And Date(H.V_Date) <= " & AgL.Chk_Date(ReportFrm.FGetText(rowToDate)) & " "
+        mCondStr = mCondStr & Replace(ReportFrm.GetWhereCondition("H.Site_Code", rowSite), "''", "'")
+        mCondStr = mCondStr & Replace(ReportFrm.GetWhereCondition("H.Div_Code", rowDivision), "''", "'")
+
+        If bTableName = "LedgerHead" Then
+            mCondStr = mCondStr & " And Vt.NCat Not In ('" & Ncat.PurchaseInvoice & "','" & Ncat.PurchaseReturn & "')"
+        End If
+
+        mQry = " SELECT H.V_Type, H.Div_Code, H.Site_Code,
+                    Max(Vt.Description) As VoucherType, Max(Sm.Name) As Site, 
+                    Max(D.Div_Name) As Division,
+                    Min(CAST(H.ManualRefNo AS Int)) As StartDocNo,
+                    Max(CAST(H.ManualRefNo AS Int)) As EndDocNo,
+                    '' As MissingVoucherList
+                    FROM " & bTableName & " H 
+                    LEFT JOIN Voucher_Type Vt On H.V_Type = Vt.V_Type 
+                    LEFT JOIN SiteMast Sm On H.Site_Code = Sm.Code 
+                    LEFT JOIN Division D On H.Div_Code = D.Div_Code " & mCondStr &
+                " GROUP BY H.V_Type, H.Div_Code, H.Site_Code "
+        DsTemp = AgL.FillData(mQry, AgL.GCn)
+
+        For I As Integer = 0 To DsTemp.Tables(0).Rows.Count - 1
+            mQry = "SELECT Max(Vt.Description) +' Ledger' AS Description, CAST(Max(H.RecId) AS Int) As ManualRefNo
+                        FROM Ledger H 
+                        LEFT JOIN Voucher_Type Vt ON H.V_Type = Vt.V_Type
+                        WHERE Date(H.V_Date) >= " & AgL.Chk_Date(ReportFrm.FGetText(rowFromDate)) & " 
+                        And Date(H.V_Date) <= " & AgL.Chk_Date(ReportFrm.FGetText(rowToDate)) & "
+                        AND H.V_Type = '" & DsTemp.Tables(0).Rows(I)("V_Type") & "' 
+                        AND H.Site_Code = '" & DsTemp.Tables(0).Rows(I)("Site_Code") & "' 
+                        AND H.DivCode = '" & DsTemp.Tables(0).Rows(I)("Div_Code") & "' 
+                        GROUP BY H.DocId
+                        ORDER BY CAST(Max(H.RecId) AS Int) "
+            Dim DtData As DataTable = AgL.FillData(mQry, AgL.GCn).Tables(0)
+
+            Dim mList As String = ""
+            For J As Integer = 0 To DtData.Rows.Count - 1
+                If J > 0 Then
+                    If AgL.VNull(DtData.Rows(J)("ManualRefNo")) - AgL.VNull(DtData.Rows(J - 1)("ManualRefNo")) > 1 Then
+                        mList += Convert.ToString(AgL.VNull(DtData.Rows(J)("ManualRefNo")) - 1) + ", "
+                    End If
+                End If
+            Next
+            DsTemp.Tables(0).Rows(I)("MissingVoucherList") = mList
+        Next
+
+        FGetDataFromLedgerTables = DsTemp
     End Function
 End Class

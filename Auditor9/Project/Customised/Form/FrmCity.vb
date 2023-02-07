@@ -420,7 +420,7 @@ Public Class FrmCity
     End Sub
 
     Private Sub FrmQuality1_BaseFunction_DispText() Handles Me.BaseFunction_DispText
-        If FDivisionNameForCustomization(22) = "W SHYAMA SHYAM FABRICS" Then
+        If FDivisionNameForCustomization(22) = "W SHYAMA SHYAM FABRICS" Or ClsMain.FDivisionNameForCustomization(27) = "W SHYAMA SHYAM VENTURES LLP" Then
             LblZone.Visible = True
             TxtZone.Visible = True
         Else

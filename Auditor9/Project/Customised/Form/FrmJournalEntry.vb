@@ -1505,7 +1505,7 @@ Public Class FrmJournalEntry
                                 .CurrentCell = .Item(Col1ReferenceDate, I) : Dgl1.Focus()
                                 passed = False : Exit Sub
                             End If
-                            If FDivisionNameForCustomization(22) = "W SHYAMA SHYAM FABRICS" Then
+                            If FDivisionNameForCustomization(22) = "W SHYAMA SHYAM FABRICS" Or ClsMain.FDivisionNameForCustomization(27) = "W SHYAMA SHYAM VENTURES LLP" Then
                                 If CDate(.Item(Col1ReferenceDate, I).Value) > CDate("31-Dec-2019") Then
                                     MsgBox("Reference Date can not exceed year end date")
                                     .CurrentCell = .Item(Col1ReferenceDate, I) : Dgl1.Focus()

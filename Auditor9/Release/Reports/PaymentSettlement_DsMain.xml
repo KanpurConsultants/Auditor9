@@ -1,14 +1,16 @@
 <?xml version="1.0" standalone="yes"?>
 <NewDataSet>
   <Table>
-    <DocNo>E1-PS-6</DocNo>
-    <V_Date>2022-06-22T00:00:00+05:30</V_Date>
-    <HSubcodeName>DHANLAXMI TEXTILES</HSubcodeName>
-    <CityName>BHIWANDI</CityName>
-    <StateCode>27</StateCode>
-    <StateName>Maharashtra</StateName>
-    <PartyGSTNo>27AWZPS4109B1Z7</PartyGSTNo>
-    <UpToDate>2022-06-22T00:00:00+05:30</UpToDate>
+    <DocNo>D1-PS-9</DocNo>
+    <V_Date>2022-09-14T00:00:00+05:30</V_Date>
+    <HSubcodeName>B.D.BATRA &amp; COMPANY</HSubcodeName>
+    <Address>9-S-9 &amp; 10 BASANT VIHAR ABOVE INDIAN BANK BHILWARA</Address>
+    <CityName>BHILWARA</CityName>
+    <StateCode>08</StateCode>
+    <StateName>Rajasthan</StateName>
+    <Mobile>9414934328</Mobile>
+    <PartyGSTNo>08ABDPB5560G1ZY</PartyGSTNo>
+    <UpToDate>2022-09-14T00:00:00+05:30</UpToDate>
     <DrCr>Cr</DrCr>
     <PrintedByUser>SUPER</PrintedByUser>
     <PrintTitle>Payment Settlement</PrintTitle>

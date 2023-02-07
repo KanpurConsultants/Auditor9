@@ -9,7 +9,7 @@ Public Class ClsShyamaShyam
             If ClsMain.IsScopeOfWorkContains("+Cloth Aadhat Module") Or ClsMain.IsScopeOfWorkContains("+Double Entry Module") Or
                 ClsMain.IsScopeOfWorkContains(IndustryType.SubIndustryType.AadhatModule) Then
                 If ClsMain.FDivisionNameForCustomization(20) = "SHYAMA SHYAM FABRICS" Or
-                        ClsMain.FDivisionNameForCustomization(22) = "W SHYAMA SHYAM FABRICS" Then
+                        ClsMain.FDivisionNameForCustomization(22) = "W SHYAMA SHYAM FABRICS" Or ClsMain.FDivisionNameForCustomization(25) = "SHYAMA SHYAM VENTURES LLP" Or ClsMain.FDivisionNameForCustomization(27) = "W SHYAMA SHYAM VENTURES LLP" Then
                     FCreateTable_SaleInvoiceGeneratedEntries()
                     FCreateTable_WPurchInvoiceDetail()
                     FCreateTable_WSaleInvoiceDetail()
@@ -78,7 +78,7 @@ Public Class ClsShyamaShyam
             AgL.Dman_ExecuteNonQry(mQry, AgL.GcnMain)
         End If
 
-        If ClsMain.FDivisionNameForCustomization(22) = "W SHYAMA SHYAM FABRICS" Then
+        If ClsMain.FDivisionNameForCustomization(22) = "W SHYAMA SHYAM FABRICS" Or ClsMain.FDivisionNameForCustomization(27) = "W SHYAMA SHYAM VENTURES LLP" Then
 
 
             If AgL.FillData("Select * from Voucher_Type Where V_Type='WSI'", AgL.GcnMain).tables(0).Rows.Count = 0 Then
@@ -376,7 +376,7 @@ Public Class ClsShyamaShyam
         ClsObj.FSeedSingleIfNotExist_EntryHeaderUISetting("FrmSaleInvoiceReturn_Aadhat", Ncat.SaleReturn, "DGL2", FrmSaleInvoiceReturn_Aadhat.hcPurchaseInvoiceNo, 1)
 
 
-        If ClsMain.FDivisionNameForCustomization(22) = "W SHYAMA SHYAM FABRICS" Then
+        If ClsMain.FDivisionNameForCustomization(22) = "W SHYAMA SHYAM FABRICS" Or ClsMain.FDivisionNameForCustomization(27) = "W SHYAMA SHYAM VENTURES LLP" Then
             ClsObj.FSeedSingleIfNotExist_EntryHeaderUISetting("FrmSaleInvoiceDirect", Ncat.SaleReturn, "Dgl2", FrmSaleInvoiceDirect_WithDimension.HcAmsDocNo, 1,,, "Ams Ret.No.")
             ClsObj.FSeedSingleIfNotExist_EntryHeaderUISetting("FrmSaleInvoiceDirect", Ncat.SaleReturn, "Dgl2", FrmSaleInvoiceDirect_WithDimension.HcAmsDocDate, 1,,, "Ams Ret.Date")
             ClsObj.FSeedSingleIfNotExist_EntryHeaderUISetting("FrmSaleInvoiceDirect", Ncat.SaleReturn, "Dgl2", FrmSaleInvoiceDirect_WithDimension.HcAmsDocNetAmount, 1,,, "Ams Ret.Amt")
