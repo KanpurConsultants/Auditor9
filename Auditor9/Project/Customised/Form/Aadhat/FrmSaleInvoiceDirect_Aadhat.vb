@@ -2008,13 +2008,16 @@ Public Class FrmSaleInvoiceDirect_Aadhat
     Private Sub InsertSaleInvoiceDetailHelpValues(DocID As String, Sr As Integer, LineGridRowIndex As Integer, ByRef Conn As Object, ByRef Cmd As Object)
         mQry = "
                 Insert Into SaleInvoiceDetailHelpValues 
-                (DocID, Sr, PurchaseRate, PurchaseDiscountPer, PurchaseAdditionalDiscountPer, 
+                (DocID, Sr, PurchaseRate, PurchaseDiscountPer, PurchaseDiscountAmount, PurchaseAdditionalDiscountPer, PurchaseAdditionalDiscountAmount, PurchaseAmount,
                 DefaultDiscountPer, DefaultAdditionalDiscountPer, DefaultAdditionPer, 
                 PersonalDiscountPer, PersonalAdditionalDiscountPer, PersonalAdditionPer,
                 DiscountCalculationPattern, AdditionalDiscountCalculationPattern, AdditionCalculationPattern) 
                 Values('" & DocID & "', " & Sr & ", " & Val(Dgl1.Item(Col1PurchaseRate, LineGridRowIndex).Value) & ", 
                 " & Val(Dgl1.Item(Col1PurchaseDiscountPer, LineGridRowIndex).Value) & ", 
+                " & Val(Dgl1.Item(Col1PurchaseDiscountAmount, LineGridRowIndex).Value) & ", 
                 " & Val(Dgl1.Item(Col1PurchaseAdditionalDiscountPer, LineGridRowIndex).Value) & ", 
+                " & Val(Dgl1.Item(Col1PurchaseAdditionalDiscountAmount, LineGridRowIndex).Value) & ", 
+                " & Val(Dgl1.Item(Col1PurchaseAmount, LineGridRowIndex).Value) & ", 
                 " & Val(Dgl1.Item(Col1DefaultDiscountPer, LineGridRowIndex).Value) & ", 
                 " & Val(Dgl1.Item(Col1DefaultAdditionalDiscountPer, LineGridRowIndex).Value) & ", 
                 " & Val(Dgl1.Item(Col1DefaultAdditionPer, LineGridRowIndex).Value) & ", 
@@ -3706,8 +3709,31 @@ Public Class FrmSaleInvoiceDirect_Aadhat
                 End If
 
                 'Patch
-                Dgl1.Item(Col1PurchaseAmount, I).Value = Format(Val(Dgl1.Item(Col1DocQty, I).Value) * Val(Dgl1.Item(Col1Rate, I).Value), "0.00")
+                If (AgL.StrCmp(AgL.PubDBName, "ShyamaShyam") Or AgL.StrCmp(AgL.PubDBName, "ShyamaShyamV")) And (TxtStructure.Tag = "GstSaleMrp") Then
+                    Dim PurchRate As Double = 0
+                    Dim SaleGSTRate As Double = 0
+                    Dim ItemType As String = ""
+                    Dim SalesTaxGroup As String = ""
+                    ItemType = AgL.XNull(AgL.Dman_Execute(" SELECT I.ItemType  FROM Item I Where I.Code = '" & Dgl1.Item(Col1Item, I).Tag & "'", AgL.GCn).ExecuteScalar())
+                    If ItemType = "SP" Then
+                        SalesTaxGroup = Dgl1.Item(Col1PurchaseSalesTaxGroup, I).Value
+                    Else
+                        SalesTaxGroup = Dgl1.Item(Col1SalesTaxGroup, I).Value
+                    End If
+                    If SalesTaxGroup = "GST 5%" Then
+                        SaleGSTRate = 5
+                    ElseIf SalesTaxGroup = "GST 12%" Then
+                        SaleGSTRate = 12
+                    ElseIf SalesTaxGroup = "GST 18%" Then
+                        SaleGSTRate = 18
+                    End If
 
+
+                    PurchRate = Val(Dgl1.Item(Col1Rate, I).Value) * 100 / (100 + SaleGSTRate)
+                        Dgl1.Item(Col1PurchaseTaxableAmount, I).Value = Format(Val(Dgl1.Item(Col1DocQty, I).Value) * Val(PurchRate - (PurchRate * Val(Dgl1.Item(Col1PurchaseAdditionalDiscountPer, I).Value) / 100)), "0.00")
+                    Else
+                        Dgl1.Item(Col1PurchaseAmount, I).Value = Format(Val(Dgl1.Item(Col1DocQty, I).Value) * Val(Dgl1.Item(Col1Rate, I).Value), "0.00")
+                End If
 
                 'If Val(Dgl1.Item(Col1PurchaseDiscountPer, I).Value) > 0 Then
                 '    Dgl1.Item(Col1PurchaseDiscountAmount, I).Value = Format(Val(Dgl1.Item(Col1PurchaseAmount, I).Value) * Val(Dgl1.Item(Col1PurchaseDiscountPer, I).Value) / 100, "0.00")
@@ -3749,7 +3775,12 @@ Public Class FrmSaleInvoiceDirect_Aadhat
                 'If Val(Dgl1.Item(Col1PurchaseAdditionalDiscountPer, I).Value) > 0 Then
                 '    Dgl1.Item(Col1PurchaseAdditionalDiscountAmount, I).Value = Format((Val(Dgl1.Item(Col1PurchaseAmount, I).Value) - Val(Dgl1.Item(Col1PurchaseDiscountAmount, I).Value)) * Val(Dgl1.Item(Col1PurchaseAdditionalDiscountPer, I).Value) / 100, "0.00")
                 'End If
-                Dgl1.Item(Col1PurchaseAmount, I).Value = Format(Val(Dgl1.Item(Col1PurchaseAmount, I).Value) - Val(Dgl1.Item(Col1PurchaseDiscountAmount, I).Value) - Val(Dgl1.Item(Col1PurchaseAdditionalDiscountAmount, I).Value), "0.00")
+                If (AgL.StrCmp(AgL.PubDBName, "ShyamaShyam") Or AgL.StrCmp(AgL.PubDBName, "ShyamaShyamV")) And (TxtStructure.Tag = "GstSaleMrp") Then
+                    Dgl1.Item(Col1PurchaseAmount, I).Value = Format(Val(Dgl1.Item(Col1PurchaseAmount, I).Value), "0.00")
+                Else
+                    Dgl1.Item(Col1PurchaseAmount, I).Value = Format(Val(Dgl1.Item(Col1PurchaseAmount, I).Value) - Val(Dgl1.Item(Col1PurchaseDiscountAmount, I).Value) - Val(Dgl1.Item(Col1PurchaseAdditionalDiscountAmount, I).Value), "0.00")
+                End If
+
 
                 'Footer Calculation
                 Dim bQty As Double = 0
@@ -9186,7 +9217,8 @@ Public Class FrmSaleInvoiceDirect_Aadhat
                                        mSaleInvoiceOrderSummaryDgl.Item(Col4Supplier, 0).Tag)
 
                 If TxtStructure.Tag = "GstSaleMrp" Then
-                    Dgl1.Item(Col1PurchaseTaxableAmount, I).Value = Math.Round(Val(Dgl1.Item(Col1PurchaseAmount, I).Value) * 100 / (100 + Tax1_Per + Tax2_Per + Tax3_Per), 2)
+                    '    'Dgl1.Item(Col1PurchaseTaxableAmount, I).Value = Math.Round(Val(Dgl1.Item(Col1PurchaseAmount, I).Value) * 100 / (100 + Tax1_Per + Tax2_Per + Tax3_Per), 2)
+                    '    Dgl1.Item(Col1PurchaseTaxableAmount, I).Value = Math.Round(Val(Dgl1.Item(Col1PurchaseAmount, I).Value) * 100 / (100 + Tax1_Per + Tax2_Per + Tax3_Per), 2)
                 Else
                     Dgl1.Item(Col1PurchaseTaxableAmount, I).Value = Val(Dgl1.Item(Col1PurchaseAmount, I).Value)
                 End If
@@ -9212,6 +9244,10 @@ Public Class FrmSaleInvoiceDirect_Aadhat
                     Tax5 = Math.Round((Val(Dgl1.Item(Col1PurchaseTaxableAmount, I).Value) + Tax1 + Tax2 + Tax3 + Tax4) * mTcsRateRegistered / 100, 2)
                 Else
                     Tax5 = 0
+                End If
+
+                If TxtStructure.Tag = "GstSaleMrp" Then
+                    Dgl1.Item(Col1PurchaseAmount, I).Value = Val(Dgl1.Item(Col1PurchaseTaxableAmount, I).Value) + Tax1 + Tax2 + Tax3 + Tax4 + Tax5
                 End If
 
                 mQry = " INSERT INTO [#TempSaleInvoicePurchaseSummary](SaleOrderDocId, SaleOrderNo, GrossAmount, TotalTax, Netamount) "
@@ -9346,7 +9382,7 @@ Public Class FrmSaleInvoiceDirect_Aadhat
             PurchInvoiceTable.Round_Off = 0
             PurchInvoiceTable.Net_Amount = 0
 
-            mQry = " SELECT Lv.PurchaseDiscountPer, Lv.PurchaseAdditionalDiscountPer, I.SalesTaxPostingGroup As SalesTaxGroup_BaseRate, L.*
+            mQry = " SELECT Lv.PurchaseDiscountPer, Lv.PurchaseDiscountAmount, Lv.PurchaseAdditionalDiscountPer, Lv.PurchaseAdditionalDiscountAmount, Lv.PurchaseAmount, I.SalesTaxPostingGroup As SalesTaxGroup_BaseRate, L.*
                         FROM SaleInvoiceDetail L With (NoLock)
                         LEFT JOIN SaleInvoiceDetailHelpValues Lv ON L.DocID = Lv.DocId And L.Sr = Lv.Sr
                         LEFT JOIN SaleInvoice Si With (NoLock) On L.SaleInvoice = Si.DocId
@@ -9377,11 +9413,17 @@ Public Class FrmSaleInvoiceDirect_Aadhat
                 PurchInvoiceTable.Line_DiscountPer = AgL.XNull(DtTemp.Rows(J)("PurchaseDiscountPer"))
                 PurchInvoiceTable.Line_DiscountAmount = Math.Round(PurchInvoiceTable.Line_Qty * PurchInvoiceTable.Line_DiscountPer, 2)
                 PurchInvoiceTable.Line_AdditionalDiscountPer = AgL.XNull(DtTemp.Rows(J)("PurchaseAdditionalDiscountPer"))
-                PurchInvoiceTable.Line_AdditionalDiscountAmount = Math.Round(((PurchInvoiceTable.Line_Qty * PurchInvoiceTable.Line_Rate) - PurchInvoiceTable.Line_DiscountAmount) * PurchInvoiceTable.Line_AdditionalDiscountPer / 100, 2)
 
-                PurchInvoiceTable.Line_Amount = AgL.VNull(DtTemp.Rows(J)("Amount"))
-                'Patch
-                PurchInvoiceTable.Line_Amount = Math.Round((PurchInvoiceTable.Line_Qty * PurchInvoiceTable.Line_Rate) - PurchInvoiceTable.Line_DiscountAmount - PurchInvoiceTable.Line_AdditionalDiscountAmount, 2)
+                If (AgL.StrCmp(AgL.PubDBName, "ShyamaShyam") Or AgL.StrCmp(AgL.PubDBName, "ShyamaShyamV")) And (TxtStructure.Tag = "GstSaleMrp") Then
+                    PurchInvoiceTable.Line_AdditionalDiscountAmount = AgL.VNull(DtTemp.Rows(J)("PurchaseAdditionalDiscountAmount"))
+                    PurchInvoiceTable.Line_Amount = Math.Round(AgL.VNull(DtTemp.Rows(J)("PurchaseAmount")), 2)
+                Else
+                    PurchInvoiceTable.Line_AdditionalDiscountAmount = Math.Round(((PurchInvoiceTable.Line_Qty * PurchInvoiceTable.Line_Rate) - PurchInvoiceTable.Line_DiscountAmount) * PurchInvoiceTable.Line_AdditionalDiscountPer / 100, 2)
+                    PurchInvoiceTable.Line_Amount = AgL.VNull(DtTemp.Rows(J)("Amount"))
+                    'Patch
+                    PurchInvoiceTable.Line_Amount = Math.Round((PurchInvoiceTable.Line_Qty * PurchInvoiceTable.Line_Rate) - PurchInvoiceTable.Line_DiscountAmount - PurchInvoiceTable.Line_AdditionalDiscountAmount, 2)
+                End If
+
 
                 Dim bSalesTaxGroupItem As String = FGetSalesTaxGroupItemForPurchase(PurchInvoiceTable.Line_ItemCode, PurchInvoiceTable.Line_Amount,
                                                  PurchInvoiceTable.Line_Qty, PurchInvoiceTable.V_Date, AgL.XNull(DtTemp.Rows(0)("SalesTaxGroup_BaseRate")))
@@ -9652,13 +9694,23 @@ Public Class FrmSaleInvoiceDirect_Aadhat
                 bSalesTaxGroupItem = AgL.XNull(AgL.Dman_Execute(" Select Description From PostingGroupSalesTaxItem Where GrossTaxRate = " & mMaxPurchaseTaxRate & "", AgL.GcnRead).ExecuteScalar())
             Else
                 Dim bRateAfterDiscount As Double = bAmount / bQty
-                mQry = "Select " & IIf(AgL.PubServerName <> "", "Top 1", "") & " SalesTaxGroupItem 
+                If (AgL.StrCmp(AgL.PubDBName, "ShyamaShyam") Or AgL.StrCmp(AgL.PubDBName, "ShyamaShyamV")) And (TxtStructure.Tag = "GstSaleMrp") Then
+                    mQry = "Select " & IIf(AgL.PubServerName <> "", "Top 1", "") & " SalesTaxGroupItem 
+                        From Item I With (NoLock) 
+                        LEFT JOIN ItemCategorySalesTax St With (NoLock) On I.ItemCategory = St.Code
+                        Where I.Code ='" & bItemCode & "' 
+                        And MRPGreaterThan < " & Val(bRateAfterDiscount) & " 
+                        And Date(WEF) <= " & AgL.Chk_Date(CDate(bV_Date).ToString("s")) & " 
+                        Order By WEF Desc, RateGreaterThan Desc " & IIf(AgL.PubServerName = "", "Limit 1", "")
+                Else
+                    mQry = "Select " & IIf(AgL.PubServerName <> "", "Top 1", "") & " SalesTaxGroupItem 
                         From Item I With (NoLock) 
                         LEFT JOIN ItemCategorySalesTax St With (NoLock) On I.ItemCategory = St.Code
                         Where I.Code ='" & bItemCode & "' 
                         And RateGreaterThan < " & Val(bRateAfterDiscount) & " 
                         And Date(WEF) <= " & AgL.Chk_Date(CDate(bV_Date).ToString("s")) & " 
                         Order By WEF Desc, RateGreaterThan Desc " & IIf(AgL.PubServerName = "", "Limit 1", "")
+                End If
                 Dim DtMain As DataTable = AgL.FillData(mQry, AgL.GCn).Tables(0)
                 If DtMain.Rows.Count > 0 Then
                     bSalesTaxGroupItem = AgL.XNull(DtMain.Rows(0)("SalesTaxGroupItem"))
@@ -9761,7 +9813,7 @@ Public Class FrmSaleInvoiceDirect_Aadhat
                 LEFT JOIN LedgerHeadDetail L ON H.DocId = L.DocId
                 LEFT JOIN Voucher_Type Vt On H.V_Type = Vt.V_Type 
                 Where (H.SubCode = '" & SubCode & "' Or L.SubCode = '" & SubCode & "' or H.LinkedSubCode = '" & SubCode & "' Or L.LinkedSubCode = '" & SubCode & "')
-                And H.UploadDate Is Null
+                And H.UploadDate Is Null AND H.V_Type Not In ('JVA') 
                 And Vt.NCat Not In ('" & Ncat.PurchaseInvoice & "','" & Ncat.PurchaseReturn & "')
                 AND Date(H.V_Date) >= " & AgL.Chk_Date(CDate(mFromDate).ToString("s")) & "
                 Group By H.DocId "
@@ -9822,7 +9874,7 @@ Public Class FrmSaleInvoiceDirect_Aadhat
                 LEFT JOIN LedgerHeadDetail L ON H.DocId = L.DocId
                 LEFT JOIN Voucher_Type Vt On H.V_Type = Vt.V_Type 
                 Where (H.SubCode = '" & SubCode & "' Or L.SubCode = '" & SubCode & "' or H.LinkedSubCode = '" & SubCode & "' Or L.LinkedSubCode = '" & SubCode & "')
-                And H.UploadDate Is Null
+                And H.UploadDate Is Null AND H.V_Type Not In ('JVA') 
                 And Vt.NCat Not In ('" & Ncat.PurchaseInvoice & "','" & Ncat.PurchaseReturn & "')
                 AND Date(H.V_Date) >= " & AgL.Chk_Date(CDate(mFromDate).ToString("s")) & "
                 Group By H.DocId "

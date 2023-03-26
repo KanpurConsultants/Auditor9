@@ -3,35 +3,39 @@ Copies	string	255	1
 CopyPrintingCaption	string	255		
 DocNoCaption	string	255	Invoice No.	
 DocDateCaption	string	255	Invoice Date	
-DocID	string	255	D1    PI 2022      19	
-SiteStateCode	string	255	09	
-SiteStateName	string	255	Uttar Pradesh	
+DocID	string	255	D4    PI 2022      92	
+SiteStateCode	string	255	07	
+SiteStateName	string	255	Delhi	
 Sr	number	1	
-V_Date	datetime	21/Sep/2022 12:00:00 AM	
+V_Date	datetime	19/Mar/2023 12:00:00 AM	
 Voucher_Type	string	255	Purchase Invoice	
 NCat	string	255	PI	
-DocNo	string	255	D1-PI-19	
+DocNo	string	255	D4-PI-92	
 AgentName	string	255		
 AgentCaption	string	255	Agent	
-PartyName	string	255	M.J.GARMENT-AGRA	
-PartyAddress	string	255		
+PartyName	string	255	J K JAIN SPARKY (INDIA) LLP - DELHI	
+PartyAddress	string	255	IX/2270, MAIN ROAD KAILASH,
+NAGAR DELHI-110031
+	
 PartyPinCode	string	255		
-PartyCityName	string	255	AGRA	
-PartyStateCode	string	255	09	
-PartyStateName	string	255	Uttar Pradesh	
+PartyCityName	string	255		
+PartyStateCode	string	255		
+PartyStateName	string	255		
 PartyMobile	string	255		
 ContactPerson	string	255		
-PartySalesTaxNo	string	255		
+PartySalesTaxNo	string	255	07AAMFJ8750C1Z8	
 PartyAadharNo	string	255		
-PartyPanNo	string	255		
-ShipToPartyName	string	255	M.J.GARMENT-AGRA	
-ShipToPartyAddress	string	255		
-ShipToPartyCity	string	255	AGRA	
+PartyPanNo	string	255	AAMFJ8750C	
+ShipToPartyName	string	255	J K JAIN SPARKY (INDIA) LLP - DELHI	
+ShipToPartyAddress	string	255	IX/2270, MAIN ROAD KAILASH,
+NAGAR DELHI-110031
+	
+ShipToPartyCity	string	255		
 ShipToPartyPincode	string	255		
-ShipToPartyStateCode	string	255	09	
-ShipToPartyStateName	string	255	Uttar Pradesh	
+ShipToPartyStateCode	string	255		
+ShipToPartyStateName	string	255		
 ShipToPartyMobile	string	255		
-ShipToPartySalesTaxNo	string	255		
+ShipToPartySalesTaxNo	string	255	07AAMFJ8750C1Z8	
 ShipToPartyAadharNo	string	255		
 ShipToPartyPanNo	string	255		
 TransporterName	string	255		
@@ -43,64 +47,64 @@ Freight	number
 FreightType	string	255		
 RoadPermitNo	string	255		
 RoadPermitDate	datetime		
-ReferenceNo	string	255	203	
-ItemName	string	255	COAT PANT..-AERO CLUB-READYMADE-COAT PANT.. - AERO CLUB - READYMADE-7101-34*38 - COAT PANT.. - AERO CLUB - READYMADE	
-ItemGroupName	string	255	AERO CLUB	
-ItemCatName	string	255	READYMADE	
-ItemSpecification	string	255	COAT PANT..	
-InvoiceLineSpecification	string	255	COAT PANT..	
-HSN	string	255	12	
-SalesTaxGroupItem	string	255	GST 0%	
-GrossTaxRate	number	0	
+ReferenceNo	string	255	121	
+ItemName	string	255	DENIM-62034200          [SPARKY  | DENIM]	
+ItemGroupName	string	255	SPARKY 	
+ItemCatName	string	255	DENIM	
+ItemSpecification	string	255	DENIM	
+InvoiceLineSpecification	string	255		
+HSN	string	255	62034200	
+SalesTaxGroupItem	string	255	GST 5%	
+GrossTaxRate	number	5	
 Pcs	number	0	
-Qty	number	36	
-Rate	number	1275	
+Qty	number	1	
+Rate	number	550	
 Unit	string	255	Pcs	
 UnitDecimalPlaces	number	0	
 DiscountPer	number	0	
 DiscountAmount	number	0	
-AdditionalDiscountPer	number	0	
-AdditionalDiscountAmount	number	0	
-TotalDiscount	number	0	
-AmountBeforeDiscount	number	45900	
-Amount	number	45900	
-Taxable_Amount	number	45900	
+AdditionalDiscountPer	number	3	
+AdditionalDiscountAmount	number	16.01	
+TotalDiscount	number	16.01	
+AmountBeforeDiscount	number	549.51	
+Amount	number	533.5	
+Taxable_Amount	number	508.1	
 Tax1_Per	number	0	
 Tax1	number	0	
-Tax2_Per	number	0	
-Tax2	number	0	
-Tax3_Per	number	0	
-Tax3	number	0	
+Tax2_Per	number	2.5	
+Tax2	number	12.7	
+Tax3_Per	number	2.5	
+Tax3	number	12.7	
 Tax4_Per	number	0	
 Tax4	number	0	
 Tax5_Per	number	0	
 Tax5	number	0	
-Net_Amount	number	43146	
+Net_Amount	number	533.41	
 HRemarks	string	255		
 LRemarks	string	255		
-H_Gross_Amount	number	525600	
+H_Gross_Amount	number	1579.28	
 H_SpecialDiscount_Per	number	0	
 H_SpecialDiscount	number	0	
-H_Taxable_Amount	number	525600	
+H_Taxable_Amount	number	1504.08	
 H_Tax1_Per	number	0	
 H_Tax1	number	0	
 H_Tax2_Per	number	0	
-H_Tax2	number	0	
+H_Tax2	number	37.6	
 H_Tax3_Per	number	0	
-H_Tax3	number	0	
+H_Tax3	number	37.6	
 H_Tax4_Per	number	0	
 H_Tax4	number	0	
 H_Tax5_Per	number	0	
 H_Tax5	number	0	
-H_Deduction_Per	number	6	
-H_Deduction	number	31536	
+H_Deduction_Per	number	0	
+H_Deduction	number	0	
 H_Other_Charge_Per	number	0	
 H_Other_Charge	number	0	
-Round_Off	number	0	
-H_Net_Amount	number	494064	
-H_TotalDiscount	number	0	
-H_AmountBeforeDiscount	number	525600	
-Default_BankAccountDetail	string	255	<B> Bank Detail :- <BR> KOTAK MAHINDRA : 2913816082  IFSC : KKBK0000131 <BR>	
+Round_Off	number	-0.28	
+H_Net_Amount	number	1579	
+H_TotalDiscount	number	47.38	
+H_AmountBeforeDiscount	number	1626.66	
+Default_BankAccountDetail	string	255	Bank : HDFC BANK LTD, Branch : LATOUSE ROAD, KANPUR,<BR>Beneficiary : Shyama Shyam Ventures LLP.,<BR>A/c No.: 50200078285760, IFSC : HDFC0009597	
 DocumentPrintHeaderPattern	string	255	Center Aligned	
 DimDetail	string	255		
 HsnDescription	string	255		

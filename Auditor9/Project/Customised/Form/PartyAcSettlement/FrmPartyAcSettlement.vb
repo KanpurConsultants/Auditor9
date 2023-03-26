@@ -3076,7 +3076,7 @@ Public Class FrmPartyAcSettlement
 
 
     Private Sub FManageAadhatCommission()
-        If Not ClsMain.IsScopeOfWorkContains(IndustryType.SubIndustryType.AadhatModule) And Not FDivisionNameForCustomization(22) = "W SHYAMA SHYAM FABRICS" Then Exit Sub
+        If Not ClsMain.IsScopeOfWorkContains(IndustryType.SubIndustryType.AadhatModule) And Not FDivisionNameForCustomization(14) = "W SHYAMA SHYAM" Then Exit Sub
 
         Dim I As Integer
         Dim mRow As Integer

@@ -59,7 +59,7 @@
   <Column>
     <Name>Item</Name>
     <Index>9</Index>
-    <Width>130</Width>
+    <Width>243</Width>
     <Visible>True</Visible>
     <AggregateFunction />
   </Column>

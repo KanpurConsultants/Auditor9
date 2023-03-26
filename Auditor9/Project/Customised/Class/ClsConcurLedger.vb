@@ -391,10 +391,10 @@ Public Class ClsConcurLedger
                     (Case When IfNull(L.Chq_No,'') <>'' Then 'Chq : ' || IfNull(L.Chq_No,'') Else '' End) || 
                     (Case When IfNull(LH.PartyDocNo,'') <>'' Then 'Inv : ' || IfNull(LH.PartyDocNo,'') Else '' End) ||
                     (Case When IfNull(Inv.RateType,'') <>'' Then 'RT : ' || IfNull(RT.Description,'') Else '' End) ||
-                    (Case When IfNull(Trd.Type,'')='Cancelled' OR IfNull(Trr.Type,'')='Cancelled' Then ' Cancelled Amt.' || Cast(L.AmtDr as NVarchar) Else '' End) || IfNull(L.Narration,'')+
-                    (Case When PI.V_Type ='PR' AND PI.Tags IS NOT NULL Then ' '+PI.Tags Else '' End)+
-                    (Case When INV.V_Type IN ('SI','SR') AND INV.Remarks IS NOT NULL Then ' '+Substr(INV.Remarks,0,15) Else '' End)+
-                    (Case When PI.V_Type IN ('PI','PR') AND PI.Remarks IS NOT NULL Then ' '+Substr(PI.Remarks,0,15) Else '' End)
+                    (Case When IfNull(Trd.Type,'')='Cancelled' OR IfNull(Trr.Type,'')='Cancelled' Then ' Cancelled Amt.' || Cast(L.AmtDr as NVarchar) Else '' End) || IfNull(L.Narration,'')||
+                    (Case When PI.V_Type ='PR' AND PI.Tags IS NOT NULL Then ' '+PI.Tags Else '' End)||
+                    (Case When INV.V_Type IN ('SI','SR') AND INV.Remarks IS NOT NULL Then ' '||Substr(INV.Remarks,0,15) Else '' End)||
+                    (Case When PI.V_Type IN ('PI','PR') AND PI.Remarks IS NOT NULL Then ' '||Substr(PI.Remarks,0,15) Else '' End)
                     as DrNarration,
                     INV.Taxable_Amount, INV.Tax1+INV.Tax2+INV.Tax3+INV.Tax4+INV.Tax5 as Tax_Amount
                     from ledger L With (NoLock)
@@ -456,8 +456,8 @@ Public Class ClsConcurLedger
                     (Case When IfNull(LH.PartyDocNo,'') <>'' Then 'Inv : ' || IfNull(LH.PartyDocNo,'') Else '' End) ||                    
                     (Case When VT.NCAT Not In ('" & Ncat.SaleInvoice & "', '" & Ncat.PurchaseInvoice & "') And '" & ClsMain.FDivisionNameForCustomization(6) & "' = 'SADHVI' Then IfNull(L.Narration,'') Else '' End) ||
                     (Case When IfNull(Trd.Type,'')='Cancelled' OR IfNull(Trr.Type,'')='Cancelled' Then ' Cancelled Amt.' || Cast(L.AmtCr as NVarchar)  Else '' End) ||
-                    (Case When IfNull(LTrim(Substr(L.ReferenceDocID,4,5)),'VR') <>'VR' Then ' Ref : ' || IfNull(LTrim(Substr(L.ReferenceDocID,4,5)),'') Else '' End)+
-                    (Case When INV.V_Type IN ('PI','PR') AND INV.Remarks IS NOT NULL Then ' '+Substr(INV.Remarks,0,15) Else '' End)+
+                    (Case When IfNull(LTrim(Substr(L.ReferenceDocID,4,5)),'VR') <>'VR' Then ' Ref : ' || IfNull(LTrim(Substr(L.ReferenceDocID,4,5)),'') Else '' End)||
+                    (Case When INV.V_Type IN ('PI','PR') AND INV.Remarks IS NOT NULL Then ' '+Substr(INV.Remarks,0,15) Else '' End)||
                     (Case When SI.V_Type IN ('SI','SR') AND SI.Remarks IS NOT NULL Then ' '+Substr(SI.Remarks,0,15) Else '' End)
                     as CrNarration,
                     INV.Taxable_Amount, INV.Tax1+INV.Tax2+INV.Tax3+INV.Tax4+INV.Tax5 as Tax_Amount

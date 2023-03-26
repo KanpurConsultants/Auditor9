@@ -1,6 +1,6 @@
 ; Field definition file for table: ADORecordset
-SearchCode	string	255	D100004849	
+SearchCode	string	255	D100005085	
 Sr	long	1	
-Party	string	255	DEEPAK GARMENTS AND GENERAL STORES- BHATNI, BHATNI	
-BalanceAmount	number	1694.49	
-BalanceMonth	string	255	2022-10-14	
+Party	string	255	BABA READYMADE SHOWROOM [W], JAMUI	
+BalanceAmount	number	10104.58	
+BalanceMonth	string	255	2023-01-24	

@@ -5,56 +5,58 @@ DocNoCaption	string	255	Invoice No.
 DocDateCaption	string	255	Invoice Date	
 SiteStateCode	string	255	07	
 SiteStateName	string	255	Delhi	
-DocID	string	255	D4    SI 2022     418	
+DocID	string	255	D4    SI 2022      91	
 Sr	number	1	
-V_Date	datetime	26/Sep/2022 12:00:00 AM	
+V_Date	datetime	19/Mar/2023 12:00:00 AM	
 DeliveryDate	datetime		
 Voucher_Type	string	255	Tax Invoice	
 NCat	string	255	SI	
-InvoiceNo	string	255	SSF-DLI-418	
+InvoiceNo	string	255	SSVLLP-DLI-91	
 RateType	string	255	A	
 AgentName	string	255		
 AgentCaption	string	255	Agent	
-SaleToPartyName	string	255	ASHISH ENTERPRISES-SISWA BAZAR	
-SaleToPartyCode	string	255	3830	
-SaleToPartyAddress	string	255	OPP. UNION BANK OF INDIA,
-FALMANDI,
+SaleToPartyName	string	255	EKTA HANDLOOM STORES-SISWABAZAR	
+SaleToPartyCode	string	255	127	
+SaleToPartyAddress	string	255	BANK ROAD,
+DISTT.MAHARAJGANJ
+
 	
 CityName	string	255	SISWA BAZAR	
 SaleToPartyPincode	string	255	273163	
 StateCode	string	255	09	
 StateName	string	255	Uttar Pradesh	
-SaleToPartyMobile	string	255	9415492634	
+SaleToPartyMobile	string	255	9696417799	
 ContactPerson	string	255		
-SaleToPartySalesTaxNo	string	255	09ABMPJ7101L1ZF	
+SaleToPartySalesTaxNo	string	255	09AQKPK4487H1ZB	
 SaleToPartyAadharNo	string	255		
-SaleToPartyPanNo	string	255	ABMPJ7101L	
-ShipToPartyName	string	255	ASHISH ENTERPRISES-SISWA BAZAR	
-ShipToPartyManualCode	string	255	3830	
-ShipToPartyAddress	string	255	OPP. UNION BANK OF INDIA,
-FALMANDI,
+SaleToPartyPanNo	string	255	AQKPK4487H	
+ShipToPartyName	string	255	EKTA HANDLOOM STORES-SISWABAZAR	
+ShipToPartyManualCode	string	255	127	
+ShipToPartyAddress	string	255	BANK ROAD,
+DISTT.MAHARAJGANJ
+
 	
 ShipToPartyCity	string	255	SISWA BAZAR	
 ShipToPartyPincode	string	255	273163	
 ShipToPartyStateCode	string	255	09	
 ShipToPartyStateName	string	255	Uttar Pradesh	
-ShipToPartyMobile	string	255	9415492634	
-ShipToPartySalesTaxNo	string	255	09ABMPJ7101L1ZF	
+ShipToPartyMobile	string	255	9696417799	
+ShipToPartySalesTaxNo	string	255	09AQKPK4487H1ZB	
 ShipToPartyAadharNo	string	255		
-ShipToPartyPanNo	string	255	ABMPJ7101L	
+ShipToPartyPanNo	string	255	AQKPK4487H	
 ShipToAddress	string	255		
 TermsAndConditions	string	255	(1) Payment within <CreditDays> days from date of Invoice. <BR>(2) Overdue Interest @ <Default_DebtorsInterestRate> P.A. after due date. <BR>(3) Goods dispatched by transport at the owner risk. <BR>(4) All disputes are subject to <CompanyCity> jurisdiction only.	
-TransporterName	string	255	MEHTA INTERSTATE TRANSPORTCORPORATION	
-LrNo	string	255	47022342	
-LrDate	datetime	27/Sep/2022 12:00:00 AM	
-NoOfBales	number	1	
+TransporterName	string	255		
+LrNo	string	255		
+LrDate	datetime		
+NoOfBales	number	0	
 PrivateMark	string	255		
 Weight	number	0	
 Freight	number	0	
 ChargedWeight	number	0	
 FreightType	string	255		
-RoadPermitNo	string	255	761287295382	
-RoadPermitDate	datetime	26/Sep/2022 4:33:00 PM	
+RoadPermitNo	string	255		
+RoadPermitDate	datetime		
 VehicleNo	string	255		
 ShipMethod	string	255		
 PreCarriageBy	string	255		
@@ -65,20 +67,20 @@ Destination	string	255	SISWA BAZAR
 DescriptionOfGoods	string	255		
 DescriptionOfPacking	string	255		
 ReferenceNo	string	255		
-ContraDocNo	string	255	14974	
-ContraDocNoCsv	string	255	14974	
-ItemName	string	255	DENIM-620342          [SPARKY | DENIM]	
-ItemGroupName	string	255	SPARKY	
+ContraDocNo	string	255	15442	
+ContraDocNoCsv	string	255	15442	
+ItemName	string	255	DENIM-62034200          [SPARKY  | DENIM]	
+ItemGroupName	string	255	SPARKY 	
 ItemCatName	string	255	DENIM	
 ItemSpecification	string	255	DENIM	
 InvoiceLineSpecification	string	255		
-HSN	string	255	620342	
+HSN	string	255	62034200	
 MaintainStockYn	boolean	True	
-SalesTaxGroupItem	string	255	GST 12%	
-GrossTaxRate	number	12	
+SalesTaxGroupItem	string	255	GST 5%	
+GrossTaxRate	number	5	
 Pcs	number	0	
-Qty	number	20	
-Rate	number	936.96	
+Qty	number	1	
+Rate	number	523.81	
 Unit	string	255	Pcs	
 UnitDecimalPlaces	number	0	
 DiscountCalculationPattern	string	255		
@@ -89,11 +91,11 @@ AdditionalDiscountAmount	number	0
 AdditionPer	number	0	
 AdditionAmount	number	0	
 TotalDiscount	number	0	
-AmountBeforeDiscount	number	20988	
-Amount	number	20988	
-Taxable_Amount	number	18739.29	
-Tax1_Per	number	12	
-Tax1	number	2248.71	
+AmountBeforeDiscount	number	550	
+Amount	number	550	
+Taxable_Amount	number	523.81	
+Tax1_Per	number	5	
+Tax1	number	26.19	
 Tax2_Per	number	0	
 Tax2	number	0	
 Tax3_Per	number	0	
@@ -102,17 +104,17 @@ Tax4_Per	number	0
 Tax4	number	0	
 Tax5_Per	number	0	
 Tax5	number	0	
-Net_Amount	number	20988	
-LRemarks	string	255	1020	
+Net_Amount	number	550	
+LRemarks	string	255		
 HRemarks	string	255		
 H_TotalDiscount	number	0	
-H_AmountBeforeDiscount	number	126103	
-H_Gross_Amount	number	126103	
+H_AmountBeforeDiscount	number	1830	
+H_Gross_Amount	number	1830	
 H_SpecialDiscount_Per	number	0	
 H_SpecialDiscount	number	0	
-H_Taxable_Amount	number	117877.96	
+H_Taxable_Amount	number	1666.68	
 H_Tax1_Per	number	0	
-H_Tax1	number	8225.05	
+H_Tax1	number	163.32	
 H_Tax2_Per	number	0	
 H_Tax2	number	0	
 H_Tax3_Per	number	0	
@@ -125,18 +127,18 @@ H_Deduction_Per	number	0
 H_Deduction	number	0	
 H_Other_Charge_Per	number	0	
 H_Other_Charge	number	0	
-Round_Off	number	-0.01	
-H_Net_Amount	number	126103	
-EInvoiceIRN	string	255	2754224e012f27ca4336a79072057071d1fb5aacdb4e0d40b9c0fdedf24d52aa	
-EInvoiceACKNo	string	255	172211722926682	
-EInvoiceACKDate	datetime	26/Sep/2022 4:33:00 PM	
-Default_BankAccountDetail	string	255	Bank : YES Bank, Branch : CIVIL LINES, KANPUR,<BR>Beneficiary : Shyama Shyam Fabrics Pvt. Ltd.,<BR>A/c No.: 007384600000880, IFSC : YESB0000073	
+Round_Off	number	0	
+H_Net_Amount	number	1830	
+EInvoiceIRN	string	255		
+EInvoiceACKNo	string	255		
+EInvoiceACKDate	datetime		
+Default_BankAccountDetail	string	255	Bank : HDFC BANK LTD, Branch : LATOUSE ROAD, KANPUR,<BR>Beneficiary : Shyama Shyam Ventures LLP.,<BR>A/c No.: 50200078285760, IFSC : HDFC0009597	
 DocumentPrintHeaderPattern	string	255	Center Aligned	
 DimDetail	string	255		
 PrintedByUser	string	255	SUPER	
-EntryByUser	string	255	SANDEEP	
+EntryByUser	string	255	SUPER	
 PrintTitle	string	255	TAX INVOICE	
-PurchInvoiceNo	string	255	JKJ23442/22-23	
+PurchInvoiceNo	string	255	121	
 CompanyLogo	BLOB		
 CompanyAuthorisedSignature	BLOB		
 EInvoiceQrCode	BLOB		

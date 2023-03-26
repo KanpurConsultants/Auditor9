@@ -11652,7 +11652,9 @@ Thanks
             End If
             AgL.AddFieldSqlite(AgL.GcnMain, "SaleInvoiceDetailHelpValues", "PurchaseRate", "Float", "0", False)
             AgL.AddFieldSqlite(AgL.GcnMain, "SaleInvoiceDetailHelpValues", "PurchaseDiscountPer", "Float", "0", False)
+            AgL.AddFieldSqlite(AgL.GcnMain, "SaleInvoiceDetailHelpValues", "PurchaseDiscountAmount", "Float", "0", False)
             AgL.AddFieldSqlite(AgL.GcnMain, "SaleInvoiceDetailHelpValues", "PurchaseAdditionalDiscountPer", "Float", "0", False)
+            AgL.AddFieldSqlite(AgL.GcnMain, "SaleInvoiceDetailHelpValues", "PurchaseAdditionalDiscountAmount", "Float", "0", False)
             AgL.AddFieldSqlite(AgL.GcnMain, "SaleInvoiceDetailHelpValues", "PurchaseDeal", "nVarchar(10)", "", True)
             AgL.AddFieldSqlite(AgL.GcnMain, "SaleInvoiceDetailHelpValues", "PurchaseAmount", "Float", "0", False)
             AgL.AddFieldSqlite(AgL.GcnMain, "SaleInvoiceDetailHelpValues", "DefaultDiscountPer", "Float", "0", False)
@@ -24776,20 +24778,34 @@ Thanks
         bSelectionQry = " Select * From " & bTableName & " With (NoLock) "
         Dim DtDebug As DataTable = AgL.FillData(bSelectionQry, IIf(AgL.PubServerName = "", AgL.GCn, AgL.GcnRead)).Tables(0)
 
-        mQry = " Select Count(*)  " &
-        " From (" & bSelectionQry & ") As V1 Group by tmpCol " &
-        " Having Round(Sum(Case When IfNull(V1.Amount*1.0,0) > 0 Then IfNull(V1.Amount*1.0,0) Else 0 End),3) <> Round(abs(Sum(Case When IfNull(V1.Amount*1.0,0) < 0 Then IfNull(V1.Amount*1.0,0) Else 0 End)),3)  "
+        'With DtDebug
+        '    For I = 0 To DtDebug.Rows.Count - 1
+        '        Debug.Print("TmpCol = " + AgL.VNull(.Rows(I)("TmpCol")).ToString() + "; PostAc=" + AgL.XNull(.Rows(I)("PostAc")) + ", Amount=" + AgL.VNull(.Rows(I)("Amount")).ToString() + " In Row No = " + I.ToString())
+        '    Next
+        'End With
+
+
+        If (AgL.StrCmp(AgL.PubDBName, "ShyamaShyam_W") Or AgL.StrCmp(AgL.PubDBName, "ShyamaShyamV_W")) Then
+            mQry = " Select Count(*)  " &
+                    " From (" & bSelectionQry & ") As V1 Group by tmpCol " &
+                    " Having Round(Sum(Case When IfNull(V1.Amount*1.0,0) > 0 Then IfNull(V1.Amount*1.0,0) Else 0 End),0) <> Round(abs(Sum(Case When IfNull(V1.Amount*1.0,0) < 0 Then IfNull(V1.Amount*1.0,0) Else 0 End)),0)  "
+        Else
+            mQry = " Select Count(*)  " &
+                    " From (" & bSelectionQry & ") As V1 Group by tmpCol " &
+                    " Having Round(Sum(Case When IfNull(V1.Amount*1.0,0) > 0 Then IfNull(V1.Amount*1.0,0) Else 0 End),3) <> Round(abs(Sum(Case When IfNull(V1.Amount*1.0,0) < 0 Then IfNull(V1.Amount*1.0,0) Else 0 End)),3)  "
+        End If
+
         DtTemp = AgL.FillData(mQry, IIf(AgL.PubServerName = "", Conn, AgL.GcnRead)).Tables(0)
         If DtTemp.Rows.Count > 0 Then
             If AgL.VNull(DtTemp.Rows(0)(0)) > 0 Then
                 Console.Write(mQry)
-                Err.Raise(1, , "Error In Ledger Posting. Debit and Credit balances are not equal.")
+                Err.Raise(1, , "Error In Ledger Posting. Debit And Credit balances are Not equal.")
             End If
         End If
 
 
         If MultiplyWithMinus Then
-            mQry = " Select V1.PostAc, IfNull(Sum(Cast(V1.Amount as Float)),0) As Amount, " &
+            mQry = " Select V1.PostAc, IfNull(Sum(Cast(V1.Amount As Float)),0) As Amount, " &
         " Case When IfNull(Sum(V1.Amount),0) > 0 Then 'Cr' " &
         "      When IfNull(Sum(V1.Amount),0) < 0 Then 'Dr' End As DrCr " &
         " From (" & bSelectionQry & ") As V1 " &

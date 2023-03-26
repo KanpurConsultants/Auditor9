@@ -1,47 +1,49 @@
 ; Field definition file for table: ADORecordset
 DivisionName	string	255	SADHVI ENTERPRISES {ENTERPRISES}, KANPUR	
-PartyName	string	255	RAVI VASTRALAY{AMANIGANJ}, AMANIGANJ 	
-Address	string	255	AMANIGANJ DIST:-AYODHYA
+PartyName	string	255	MAA DURGA VASTRALAY
+, KANPUR	
+Address	string	255	PIPARI ROAD CHAUBEPUR KANPUR
 	
-Mobile	string	255	9450763938	
-AgentName	string	255	TILAK VASTRALAY{RUDHOLI), KANPUR	
+Mobile	string	255	9839255603
+	
+AgentName	string	255	DIRECT (CASH), KANPUR	
 SalesRepresentativeName	string	255		
 AreaName	string	255		
-DrDocID	string	255	D1    SI 2022    3796	
+DrDocID	string	255		
 DrDivision	string	255	D	
-DrSubcode	string	255	D100019782	
-DrSr	number	43	
-DrDate	datetime	21/Jun/2022 12:00:00 AM	
-DrDocNo	string	255	SI-3796	
-DrAmount	number	103813	
-DrTaxableAmount	number	98869	
-DrTaxAmount	number	4943.6	
-DrDays	number	9	
-DrInterest	number	0	
-DrCumAmount	number	1007910	
-DrBalAmount	number	94925	
-DrTotal	number	1007910	
-DrNarration	string	255	Tax Invoice	
-CrDocID	string	255	D1    SR 2022    1503	
+DrSubcode	string	255	D100003475	
+DrSr	number	0	
+DrDate	datetime		
+DrDocNo	string	255		
+DrAmount	number	0	
+DrTaxableAmount	number	0	
+DrTaxAmount	number	0	
+DrDays	number		
+DrInterest	number		
+DrCumAmount	number	0	
+DrBalAmount	number	0	
+DrTotal	number	0	
+DrNarration	string	255		
+CrDocID	string	255	D1  RCTB 2022     769	
 CrDivision	string	255	D	
-CrSubcode	string	255	D100019782	
-CrSr	number	43	
-CrDate	datetime	21/Jun/2022 12:00:00 AM	
-CrDocNo	string	255	SR-1503	
-CrAmount	number	8888	
+CrSubcode	string	255	D100003475	
+CrSr	number	0	
+CrDate	datetime	13/Feb/2023 12:00:00 AM	
+CrDocNo	string	255	RCTB-768	
+CrAmount	number	50000	
 CrTaxableAmount	number	0	
 CrTaxAmount	number	0	
-CrDays	number	39	
+CrDays	number	3	
 CrInterest	number	0	
-CrCumAmount	number	912985	
-CrBalAmount	number	0	
-CrTotal	number	912985	
-CrNarration	string	255	Sale Return	
-AdditionPer	number	0	
-AdditionAmount	number	0	
-GrReturnAmt	number	9502	
-GrSaleAmt	number	1007910	
-ReturnPer	number	0.94	
-AveragePaymentDays	number	14.6154333837713	
-DrMonth	string	255	06/2022	
-CrMonth	string	255	06/2022	
+CrCumAmount	number	50000	
+CrBalAmount	number	50000	
+CrTotal	number	50000	
+CrNarration	string	255	Chq : 000004 BUPBICICI CC A/C(695705600416), .	
+AdditionPer	number		
+AdditionAmount	number		
+GrReturnAmt	number		
+GrSaleAmt	number		
+ReturnPer	number		
+AveragePaymentDays	number	0	
+DrMonth	string	255		
+CrMonth	string	255	02/2023	

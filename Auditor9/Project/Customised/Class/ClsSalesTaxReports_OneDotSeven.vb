@@ -639,7 +639,7 @@ Public Class ClsSalesTaxReports_OneDotSeven
                     strftime('%d/%m/%Y', H.V_Date) As InvoiceDate, L.Net_Amount As LineNet_Amount, 
                     H.Net_Amount As HeaderNet_Amount, 
                     S.ManualCode || '-' || S.Description As PlaceOfSupply, 'N' As ReverseCharge,
-                    '' As ApplicableTaxRate, 'Regular' As InvoiceType,	'' As ECommerceGSTIN,	 
+                    '' As ApplicableTaxRate, 'Regular B2B' As InvoiceType,	'' As ECommerceGSTIN,	 
                     L.SalesTaxGroupItem,
                     IfNull(L.Tax1_Per,0) + IfNull(L.Tax2_Per,0) + IfNull(L.Tax3_Per,0) As Rate,	
                     L.Taxable_Amount As TaxableValue, 
@@ -1133,7 +1133,7 @@ Public Class ClsSalesTaxReports_OneDotSeven
         xlApp.AlertBeforeOverwriting = False
         xlApp.DisplayAlerts = False
 
-        TemplateWorkBook = xlApp.Workbooks.Open(My.Application.Info.DirectoryPath + "\Templates\" + "GSTR1_Excel_Workbook_Template_V1.8.xlsx")
+        TemplateWorkBook = xlApp.Workbooks.Open(My.Application.Info.DirectoryPath + "\Templates\" + "GSTR1_Excel_Workbook_Template_V2.0.xlsx")
         TemplateWorkBook.SaveAs(OutputFile)
         xlApp.Workbooks.Close()
         OutputWorkBook = xlApp.Workbooks.Open(OutputFile)
@@ -1163,7 +1163,7 @@ Public Class ClsSalesTaxReports_OneDotSeven
             FGetGSTR1FileCreationData(DtTableB2b, DtTableB2CL, DtTableB2CS, DtTableCDNR,
                                       DtTableCDNUR, DtTableEXEMP, DtTableHSN, DtTableDOCS)
 
-            xlWorkSheet_B2b = OutputWorkBook.Worksheets("b2b")
+            xlWorkSheet_B2b = OutputWorkBook.Worksheets("b2b,sez,de")
             FillGSTR1ExcelFiles(DtTableB2b, xlWorkSheet_B2b)
 
             xlWorkSheet_B2CL = OutputWorkBook.Worksheets("b2cl")

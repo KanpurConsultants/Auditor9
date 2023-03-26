@@ -967,7 +967,8 @@ Public Class FrmImportDataFromBranch
         'Where I1.code IS NULL  "
         DtItemList = AgL.FillData(mQry, AgL.GCn).Tables(0)
 
-        Dim mItemCode As String = AgL.GetMaxId("Item", "Code", AgL.GcnMain, AgL.PubDivCode, AgL.PubSiteCode, 8, True, True, AgL.ECmd, AgL.Gcn_ConnectionString)
+        'Dim mItemCode As String = AgL.GetMaxId("Item", "Code", AgL.GcnMain, AgL.PubDivCode, AgL.PubSiteCode, 8, True, True, AgL.ECmd, AgL.Gcn_ConnectionString)
+        Dim mItemCode As String = AgL.GetMaxId("Item", "Code", AgL.GCn, AgL.PubDivCode, AgL.PubSiteCode, 8, True, True, AgL.ECmd, AgL.Gcn_ConnectionString)
         Dim mItemDescription As String = ""
         For R As Integer = 0 To DtItemList.Rows.Count - 1
 

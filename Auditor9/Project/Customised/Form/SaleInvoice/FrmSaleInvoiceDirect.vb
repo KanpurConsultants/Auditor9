@@ -4438,6 +4438,10 @@ Public Class FrmSaleInvoiceDirect
             End If
         End If
 
+        If AgL.StrCmp(AgL.PubDBName, "SHADHVINEW") Or AgL.StrCmp(AgL.PubDBName, "SHADHVIKANPURB2") Or AgL.StrCmp(AgL.PubDBName, "SHADHVIjaunpur") Or AgL.StrCmp(AgL.PubDBName, "SHADHVINANDI") Then
+            Dgl1.Columns(Col1Rate).ReadOnly = True
+        End If
+
         Dim bAllowRowDeletion As Boolean = True
         If LblV_Type.Tag = Ncat.SaleOrder Then
             If AgL.VNull(AgL.Dman_Execute("Select Count(*) 
@@ -4809,6 +4813,9 @@ Public Class FrmSaleInvoiceDirect
     End Sub
 
     Private Sub Dgl1_EditingControl_KeyDown(ByVal sender As Object, ByVal e As System.Windows.Forms.KeyEventArgs) Handles Dgl1.EditingControl_KeyDown
+        If AgL.StrCmp(AgL.PubDBName, "SHADHVINEW") Or AgL.StrCmp(AgL.PubDBName, "SHADHVIKANPURB2") Or AgL.StrCmp(AgL.PubDBName, "SHADHVIjaunpur") Or AgL.StrCmp(AgL.PubDBName, "SHADHVINANDI") Then
+            Dgl1.Columns(Col1Rate).ReadOnly = True
+        End If
         Try
             Select Case Dgl1.Columns(Dgl1.CurrentCell.ColumnIndex).Name
                 Case Col1Item
@@ -5900,6 +5907,10 @@ Public Class FrmSaleInvoiceDirect
         Dim I As Integer, J As Integer
         Dim sQryPayment As String = ""
         Dim mDocumentNoPattern As String = ""
+        Dim DtDoc As DataTable
+        Dim dtTemp As DataTable
+        Dim mSaleToParty As String
+        Dim mSalesTaxGroupParty As String
 
 
         mDocumentNoPattern = ClsMain.FGetSettings(ClsMain.SettingFields.DocumentNoPattern, SettingType.General, "", "", "", "", "", "", "")
@@ -5908,6 +5919,46 @@ Public Class FrmSaleInvoiceDirect
         Dim mDocDateCaption As String = FGetSettings(SettingFields.DocumentPrintEntryDateCaption, SettingType.General)
         Dim mDocReportFileName As String = FGetSettings(SettingFields.DocumentPrintReportFileName, SettingType.General)
         Dim SettingPrintRateType As String = FGetSettings(SettingFields.PrintRateType, SettingType.General)
+
+        AgL.PubTempStr = AgL.PubTempStr & "Start Feching basic header detail of document : " & AgL.PubStopWatch.ElapsedMilliseconds.ToString & vbCrLf
+        mQry = "Select VT.nCat, H.V_Type, H.Div_Code, H.Site_Code, H.V_date From SaleInvoice H With (NoLock) Left Join Voucher_Type Vt With (NoLock) On H.V_Type = Vt.V_Type Where H.DocID = '" & SearchCode & "'"
+        DtDoc = AgL.FillData(mQry, AgL.GCn).Tables(0)
+        AgL.PubTempStr = AgL.PubTempStr & "End Feching basic header detail of document : " & AgL.PubStopWatch.ElapsedMilliseconds.ToString & vbCrLf
+
+        AgL.PubTempStr = AgL.PubTempStr & "Start Feching Party Detail from document Header Table : " & AgL.PubStopWatch.ElapsedMilliseconds.ToString & vbCrLf
+        mQry = "Select IfNull(SalesTaxGroupParty,'') as SalesTaxGroupParty, IfNull(SaleToParty,'') as SaleToParty From SaleInvoice Where DocID = '" & SearchCode & "'"
+        dtTemp = AgL.FillData(mQry, AgL.GCn).Tables(0)
+        If dtTemp.Rows.Count > 0 Then
+            mSaleToParty = AgL.XNull(dtTemp.Rows(0)("SaleToParty"))
+            mSalesTaxGroupParty = AgL.XNull(dtTemp.Rows(0)("SalesTaxGroupParty"))
+        Else
+            MsgBox("Party detail can not be fetched for selected invoice. Can't generate print.")
+            Exit Sub
+        End If
+        AgL.PubTempStr = AgL.PubTempStr & "End Feching Party Detail from document Header Table : " & AgL.PubStopWatch.ElapsedMilliseconds.ToString & vbCrLf
+
+        AgL.PubTempStr = AgL.PubTempStr & "Start Feching Show Party Balance In Report from setting : " & AgL.PubStopWatch.ElapsedMilliseconds.ToString & vbCrLf
+        Dim DocumentPrintShowPartyBalance As String = FGetSettings(SettingFields.DocumentPrintShowPartyBalance, SettingType.General)
+        AgL.PubTempStr = AgL.PubTempStr & "End Feching Show Party Balance In Report from setting : " & AgL.PubStopWatch.ElapsedMilliseconds.ToString & vbCrLf
+
+        Dim mOpeningBalance As Double = 0, mTodaysDr As Double = 0, mTodaysCr As Double = 0, mClosingBalance As Double = 0
+        If DocumentPrintShowPartyBalance <> DocumentPrintFieldsVisibilityOptions.Hide Then
+            AgL.PubTempStr = AgL.PubTempStr & "Start Feching Party Balance To Print From Ledger Table : " & AgL.PubStopWatch.ElapsedMilliseconds.ToString & vbCrLf
+            mQry = "Select IfNull(Sum(Case When LG.V_Date < " & AgL.Chk_Date(AgL.XNull(DtDoc.Rows(0)("V_Date"))) & " THEN LG.AmtDr-LG.AmtCr ELSE 0 END),0) AS OpeningBalance,
+	               IfNull(Sum(CASE WHEN LG.V_Date = " & AgL.Chk_Date(AgL.XNull(DtDoc.Rows(0)("V_Date"))) & " THEN LG.AmtDr ELSE 0 END),0) AS TodaysDr,
+	               IfNull(Sum(CASE WHEN LG.V_Date = " & AgL.Chk_Date(AgL.XNull(DtDoc.Rows(0)("V_Date"))) & " THEN LG.AmtCr ELSE 0 END),0) AS TodaysCr,
+	               IfNull(Sum(CASE WHEN LG.V_Date <= " & AgL.Chk_Date(AgL.XNull(DtDoc.Rows(0)("V_Date"))) & " THEN LG.AmtDr-LG.AmtCr ELSE 0 END),0) AS ClosingBalance     
+                   FROM Ledger LG
+                   WHERE LG.SubCode ='" & mSaleToParty & "'"
+            dtTemp = AgL.FillData(mQry, AgL.GCn).Tables(0)
+            If dtTemp.Rows.Count > 0 Then
+                mOpeningBalance = AgL.VNull(dtTemp.Rows(0)("OpeningBalance"))
+                mTodaysDr = AgL.VNull(dtTemp.Rows(0)("TodaysDr"))
+                mTodaysCr = AgL.VNull(dtTemp.Rows(0)("TodaysCr"))
+                mClosingBalance = AgL.VNull(dtTemp.Rows(0)("ClosingBalance"))
+            End If
+            AgL.PubTempStr = AgL.PubTempStr & "End Feching Party Balance To Print From Ledger Table : " & AgL.PubStopWatch.ElapsedMilliseconds.ToString & vbCrLf
+        End If
 
         If LblV_Type.Tag = Ncat.SaleInvoice Then
             If Not AgL.PubDtDivisionSiteSetting.Rows(0)("IsSalesTaxApplicable") Then
@@ -5942,7 +5993,7 @@ Public Class FrmSaleInvoiceDirect
                 Replace(Replace(Replace(Replace('" & mDocumentNoPattern & "','<DIVISION>',IfNull(Dm.ShortName,'')),'<SITE>',IfNull(Site.ShortName,'')),'<DOCTYPE>',IfNull(Vt.Short_Name,'')),'<DOCNO>',IfNull(H.ManualRefNo,'')) As InvoiceNo,
                 IfNull(RT.Description,'" & AgL.XNull(DtV_TypeSettings.Rows(0)("SaleRate_Caption")) & "') as RateType, 
                 '" & FGetSettings(SettingFields.DocumentPrintShowRateType, SettingType.General) & "' as DocumentPrintShowRateType,
-                IfNull(Agent.DispName,'') as AgentName, '" & AgL.PubDtEnviro.Rows(0)("Caption_SalesAgent") & "' as AgentCaption,
+                IfNull(Agent.DispName,'') as AgentName, '" & AgL.PubDtEnviro.Rows(0)("Caption_SalesAgent") & "' as AgentCaption, BP.Nature AS BillToPartyNature,
                 (Case When BP.Nature = 'Cash' Then BP.DispName || ' - ' || IsNull(H.SaleToPartyName,'') Else H.SaletoPartyName End) as SaleToPartyName, 
                 IfNull(H.SaleToPartyAddress,'') as SaleToPartyAddress, IfNull(C.CityName,'') as CityName, IfNull(H.SaleToPartyPincode,'') as SaleToPartyPincode, 
                 IfNull(State.ManualCode,'') as StateCode, IfNull(State.Description,'')  as StateName, 
@@ -5988,8 +6039,9 @@ Public Class FrmSaleInvoiceDirect
                 '" & AgL.XNull(AgL.PubDtEnviro.Rows(0)("Default_BankAccountDetail")) & "' as Default_BankAccountDetail,
                 '" & FGetSettings(SettingFields.DocumentPrintHeaderPattern, SettingType.General) & "' as DocumentPrintHeaderPattern, IfNull(L.DimensionDetail,'') as DimDetail,
                 '" & AgL.PubUserName & "' as PrintedByUser, H.EntryBy as EntryByUser, '" & mPrintTitle & "' as PrintTitle,
-                '" & FGetSettings(SettingFields.DocumentPrintShowPrintDateTimeYn, SettingType.General) & "' as DocumentPrintShowPrintDateTimeYn
-                
+                '" & FGetSettings(SettingFields.DocumentPrintShowPrintDateTimeYn, SettingType.General) & "' as DocumentPrintShowPrintDateTimeYn,
+                '" & DocumentPrintShowPartyBalance & "' as DocumentPrintShowPartyBalance, 
+                " & mOpeningBalance & " as TodaysOpeningBalance, " & mTodaysDr & " as TodaysDr, " & mTodaysCr & " as TodaysCr, " & mClosingBalance & " as TodaysClosingBalance
                 from (" & bPrimaryQry & ") as H
                 Left Join SaleInvoiceTrnSetting TS  With (NoLock) On H.DocId = TS.DocID
                 Left Join SaleInvoiceDetail L  With (NoLock) On H.DocID = L.DocID

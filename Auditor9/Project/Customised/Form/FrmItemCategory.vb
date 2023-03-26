@@ -12,6 +12,7 @@ Public Class FrmItemCategory
     Public WithEvents DGL1 As New AgControls.AgDataGrid
     Public Const Col1WEF As String = "WEF"
     Public Const Col1RateGreaterThan As String = "Rate Greater Than"
+    Public Const Col1MRPGreaterThan As String = "MRP Greater Than"
     Public Const Col1SalesTaxGroup As String = "Sales Tax Group"
 
     Dim DtItemTypeSetting As DataTable
@@ -852,8 +853,8 @@ Public Class FrmItemCategory
 
         For I = 0 To DGL1.Rows.Count - 1
             If DGL1.Item(Col1SalesTaxGroup, I).Value <> "" And Val(DGL1.Item(Col1RateGreaterThan, I).Value) > 0 Then
-                mQry = " Insert Into ItemCategorySalesTax (Code,WEF, RateGreaterThan, SalesTaxGroupItem) " &
-                       " Values ('" & SearchCode & "', " & AgL.Chk_Date(DGL1.Item(Col1WEF, I).Value) & ", " & Val(DGL1.Item(Col1RateGreaterThan, I).Value) & ", " & AgL.Chk_Text(DGL1.Item(Col1SalesTaxGroup, I).Value) & " )"
+                mQry = " Insert Into ItemCategorySalesTax (Code,WEF, RateGreaterThan, MRPGreaterThan, SalesTaxGroupItem) " &
+                       " Values ('" & SearchCode & "', " & AgL.Chk_Date(DGL1.Item(Col1WEF, I).Value) & ", " & Val(DGL1.Item(Col1RateGreaterThan, I).Value) & ", " & Val(DGL1.Item(Col1MRPGreaterThan, I).Value) & "," & AgL.Chk_Text(DGL1.Item(Col1SalesTaxGroup, I).Value) & " )"
                 AgL.Dman_ExecuteNonQry(mQry, AgL.GCn, AgL.ECmd)
             End If
         Next
@@ -919,7 +920,7 @@ Public Class FrmItemCategory
 
 
         Dim I As Integer
-        mQry = " Select  H.Code, H.WEF, H.RateGreaterThan, H.SalesTaxGroupItem 
+        mQry = " Select  H.Code, H.WEF, H.RateGreaterThan, H.MrpGreaterThan, H.SalesTaxGroupItem 
                         From ItemCategorySalesTax H 
                         Where H.Code='" & SearchCode & "' 
                         Order By H.WEF, H.RateGreaterThan "
@@ -933,6 +934,7 @@ Public Class FrmItemCategory
                     DGL1.Item(ColSNo, I).Value = DGL1.Rows.Count - 1
                     DGL1.Item(Col1WEF, I).Value = ClsMain.FormatDate(AgL.XNull(.Rows(I)("WEF")))
                     DGL1.Item(Col1RateGreaterThan, I).Value = Format(AgL.VNull(.Rows(I)("RateGreaterThan")), "0.00")
+                    DGL1.Item(Col1MRPGreaterThan, I).Value = Format(AgL.VNull(.Rows(I)("MrpGreaterThan")), "0.00")
                     DGL1.Item(Col1SalesTaxGroup, I).Tag = AgL.XNull(.Rows(I)("SalesTaxGroupItem"))
                     DGL1.Item(Col1SalesTaxGroup, I).Value = AgL.XNull(.Rows(I)("SalesTaxGroupItem"))
                 Next I
@@ -1148,6 +1150,7 @@ Public Class FrmItemCategory
             .AddAgTextColumn(DGL1, ColSNo, 40, 5, ColSNo, False, True, False)
             .AddAgDateColumn(DGL1, Col1WEF, 90, Col1WEF, True, False)
             .AddAgNumberColumn(DGL1, Col1RateGreaterThan, 80, 8, 2, False, Col1RateGreaterThan, True, False, True)
+            .AddAgNumberColumn(DGL1, Col1MRPGreaterThan, 80, 8, 2, False, Col1MRPGreaterThan, True, False, True)
             .AddAgTextColumn(DGL1, Col1SalesTaxGroup, 100, 0, Col1SalesTaxGroup, True, False, False)
         End With
         AgL.AddAgDataGrid(DGL1, Pnl1)

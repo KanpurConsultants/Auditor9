@@ -375,7 +375,7 @@
     <Name>Sales Rep.</Name>
     <Index>53</Index>
     <Width>100</Width>
-    <Visible>True</Visible>
+    <Visible>False</Visible>
     <AggregateFunction />
   </Column>
   <Column>

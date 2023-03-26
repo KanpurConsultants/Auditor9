@@ -2258,7 +2258,11 @@ Public Class FrmPerson
 
                 Case rowTransporter
                     If Dgl1.Item(Col1Head, Dgl1.CurrentCell.RowIndex).Tag Is Nothing Then
-                        mQry = "select Code, Name From viewHelpSubgroup Where subgroupType = '" & AgLibrary.ClsMain.agConstants.SubgroupType.Transporter & "' Order By Name"
+                        If AgL.StrCmp(AgL.PubDBName, "Sadhvi") Then
+                            mQry = "select Code, Name From viewHelpSubgroup Where subgroupType = '" & AgLibrary.ClsMain.agConstants.SubgroupType.Transporter & "' AND Site_Code = '" & AgL.PubSiteCode & "' Order By Name"
+                        Else
+                            mQry = "select Code, Name From viewHelpSubgroup Where subgroupType = '" & AgLibrary.ClsMain.agConstants.SubgroupType.Transporter & "' Order By Name"
+                        End If
                         Dgl1.Item(Col1Head, Dgl1.CurrentCell.RowIndex).Tag = AgL.FillData(mQry, AgL.GCn)
                     End If
                     If Dgl1.AgHelpDataSet(Col1Value) Is Nothing Then

@@ -397,7 +397,7 @@ Public Class ClsPartyLedgerGrid
             mCondStr = CreateCondStr()
 
 
-            If ClsMain.FDivisionNameForCustomization(22) = "W SHYAMA SHYAM FABRICS" Or ClsMain.FDivisionNameForCustomization(27) = "W SHYAMA SHYAM VENTURES LLP" Then
+            If ClsMain.FDivisionNameForCustomization(22) = "W SHYAMA SHYAM FABRICS" Or ClsMain.FDivisionNameForCustomization(25) = "SHYAMA SHYAM VENTURES LLP" Or ClsMain.FDivisionNameForCustomization(27) = "W SHYAMA SHYAM VENTURES LLP" Then
                 mMultiplier = 0.01
             Else
                 mMultiplier = 1.0
@@ -445,8 +445,8 @@ Public Class ClsPartyLedgerGrid
 
                     If AgL.PubServerName = "" Then
                         If ClsMain.FDivisionNameForCustomization(20) = "SHYAMA SHYAM FABRICS" Or ClsMain.FDivisionNameForCustomization(22) = "W SHYAMA SHYAM FABRICS" Or ClsMain.FDivisionNameForCustomization(25) = "SHYAMA SHYAM VENTURES LLP" Or ClsMain.FDivisionNameForCustomization(27) = "W SHYAMA SHYAM VENTURES LLP" Then
-                            sQryPurchaseBrand = "(Select group_concat(Brand ,',') || ',' From (Select IfNull(sGroup.Description, sItem.Description)  as Brand  from PurchInvoiceDetail sPID  With (NoLock) Left Join PurchInvoiceDetailSku sPIDS On sPID.DocID = sPIDS.DocID Left Join Item sItem On sPID.Item = sItem.Code Left Join Item sGroup On IfNull(sPIDS.ItemGroup,sItem.ItemGroup) = sGroup.Code Where sPID.DocID = PI.DocID And sItem.ItemType  In ('" & ItemTypeCode.TradingProduct & "','Wool') Group By IfNull(sGroup.Description, sItem.Description)))"
-                            sQrySaleBrand = "(Select group_concat(Brand ,',') || ',' From (Select IfNull(sGroup.Description, sItem.Description)  as Brand  from SaleInvoiceDetail sSID  With (NoLock) Left Join SaleInvoiceDetailSku sSIDS On sSID.DocID = sSIDS.DocID Left Join Item sItem On sSID.Item = sItem.Code Left Join Item sGroup On IfNull(sSIDS.ItemGroup,sItem.ItemGroup) = sGroup.Code Where sSID.DocID = SI.DocID And sItem.ItemType  In ('" & ItemTypeCode.TradingProduct & "','Wool') Group By IfNull(sGroup.Description, sItem.Description)))"
+                            sQryPurchaseBrand = "(Select group_concat(Brand ,',') || ',' From (Select IfNull(sGroup.Description, sItem.Description)  as Brand  from PurchInvoiceDetail sPID  With (NoLock) Left Join PurchInvoiceDetailSku sPIDS On sPID.DocID = sPIDS.DocID Left Join Item sItem On sPID.Item = sItem.Code Left Join Item sGroup On IfNull(sPIDS.ItemGroup,sItem.ItemGroup) = sGroup.Code Where sPID.DocID = PI.DocID And sItem.ItemType  In ('" & ItemTypeCode.TradingProduct & "','Wool') AND IfNull(sGroup.Code,'') not in ('CourierCharge','HandlingCharge') Group By IfNull(sGroup.Description, sItem.Description)))"
+                            sQrySaleBrand = "(Select group_concat(Brand ,',') || ',' From (Select IfNull(sGroup.Description, sItem.Description)  as Brand  from SaleInvoiceDetail sSID  With (NoLock) Left Join SaleInvoiceDetailSku sSIDS On sSID.DocID = sSIDS.DocID Left Join Item sItem On sSID.Item = sItem.Code Left Join Item sGroup On IfNull(sSIDS.ItemGroup,sItem.ItemGroup) = sGroup.Code Where sSID.DocID = SI.DocID And sItem.ItemType  In ('" & ItemTypeCode.TradingProduct & "','Wool') AND IfNull(sGroup.Code,'') not in ('CourierCharge','HandlingCharge') Group By IfNull(sGroup.Description, sItem.Description)))"
                         Else
                             sQryPurchaseBrand = "(Select group_concat(Brand ,',') || ',' From (Select sGroup.Description  as Brand  from PurchInvoiceDetailSku sPID  With (NoLock) Left Join Item sGroup On sPID.ItemGroup = sGroup.Code Where sPID.DocID = PI.DocID And sGroup.ItemType  In ('" & ItemTypeCode.TradingProduct & "','Wool') Group By sGroup.Description))"
                             sQrySaleBrand = "(Select group_concat(Brand ,',') || ',' From (Select sGroup.Description  as Brand  from SaleInvoiceDetailSku sSID  With (NoLock) Left Join Item sGroup On sSID.ItemGroup = sGroup.Code Where sSID.DocID = SI.DocID And sGroup.ItemType  In ('" & ItemTypeCode.TradingProduct & "','Wool') Group By sGroup.Description))"
@@ -511,8 +511,8 @@ Public Class ClsPartyLedgerGrid
                         If AgL.PubServerName = "" Then
 
                             If ClsMain.FDivisionNameForCustomization(20) = "SHYAMA SHYAM FABRICS" Or ClsMain.FDivisionNameForCustomization(22) = "W SHYAMA SHYAM FABRICS" Or ClsMain.FDivisionNameForCustomization(25) = "SHYAMA SHYAM VENTURES LLP" Or ClsMain.FDivisionNameForCustomization(27) = "W SHYAMA SHYAM VENTURES LLP" Then
-                                sQryPurchaseBrand = "(Select group_concat(Brand ,',') || ',' From (Select IfNull(sGroup.Description, sItem.Description)  as Brand  from PurchInvoiceDetail sPID  With (NoLock)  Left Join PurchInvoiceDetailSku sPIDS On sPID.DocID = sPIDS.DocID  Left Join Item sItem On sPID.Item = sItem.Code Left Join Item sGroup On IfNull(sPIDS.ItemGroup,sItem.ItemGroup) = sGroup.Code Where sPID.DocID = PI.DocID And sItem.ItemType  In ('" & ItemTypeCode.TradingProduct & "','Wool') Group By IfNull(sGroup.Description, sItem.Description)))"
-                                sQrySaleBrand = "(Select group_concat(Brand ,',') || ',' From (Select IfNull(sGroup.Description, sItem.Description)  as Brand  from SaleInvoiceDetail sSID  With (NoLock)  Left Join SaleInvoiceDetailSku sSIDS On sSID.DocID = sSIDS.DocID  Left Join Item sItem On sSID.Item = sItem.Code Left Join Item sGroup On IfNull(sSIDS.ItemGroup,sItem.ItemGroup) = sGroup.Code Where sSID.DocID = SI.DocID And sItem.ItemType  In ('" & ItemTypeCode.TradingProduct & "','Wool') Group By IfNull(sGroup.Description, sItem.Description)))"
+                                sQryPurchaseBrand = "(Select group_concat(Brand ,',') || ',' From (Select IfNull(sGroup.Description, sItem.Description)  as Brand  from PurchInvoiceDetail sPID  With (NoLock)  Left Join PurchInvoiceDetailSku sPIDS On sPID.DocID = sPIDS.DocID  Left Join Item sItem On sPID.Item = sItem.Code Left Join Item sGroup On IfNull(sPIDS.ItemGroup,sItem.ItemGroup) = sGroup.Code Where sPID.DocID = PI.DocID And sItem.ItemType  In ('" & ItemTypeCode.TradingProduct & "','Wool') AND IfNull(sGroup.Code,'') not in ('CourierCharge','HandlingCharge','Packing') Group By IfNull(sGroup.Description, sItem.Description)))"
+                                sQrySaleBrand = "(Select group_concat(Brand ,',') || ',' From (Select IfNull(sGroup.Description, sItem.Description)  as Brand  from SaleInvoiceDetail sSID  With (NoLock)  Left Join SaleInvoiceDetailSku sSIDS On sSID.DocID = sSIDS.DocID  Left Join Item sItem On sSID.Item = sItem.Code Left Join Item sGroup On IfNull(sSIDS.ItemGroup,sItem.ItemGroup) = sGroup.Code Where sSID.DocID = SI.DocID And sItem.ItemType  In ('" & ItemTypeCode.TradingProduct & "','Wool') AND IfNull(sGroup.Code,'') not in ('CourierCharge','HandlingCharge','Packing') Group By IfNull(sGroup.Description, sItem.Description)))"
                             Else
                                 sQryPurchaseBrand = "(Select group_concat(Brand ,',') || ',' From (Select sGroup.Description  as Brand  from PurchInvoiceDetailSku sPID  With (NoLock) Left Join Item sGroup On sPID.ItemGroup = sGroup.Code Where sPID.DocID = PI.DocID And sGroup.ItemType  In ('" & ItemTypeCode.TradingProduct & "','Wool') Group By sGroup.Description))"
                                 sQrySaleBrand = "(Select group_concat(Brand ,',') || ',' From (Select sGroup.Description  as Brand  from SaleInvoiceDetailSku sSID  With (NoLock) Left Join Item sGroup On sSID.ItemGroup = sGroup.Code Where sSID.DocID = SI.DocID And sGroup.ItemType  In ('" & ItemTypeCode.TradingProduct & "','Wool') Group By sGroup.Description))"
@@ -2989,20 +2989,25 @@ Public Class ClsPartyLedgerGrid
                 End If
 
             Else
-                mMultiplier = 1.0
+                If (ClsMain.FDivisionNameForCustomization(25) = "SHYAMA SHYAM VENTURES LLP") Then
+                    mMultiplier = 0.01
+                Else
+                    mMultiplier = 1.0
+                End If
+
                 sQryPakkaPartyCount = "(Select 1 as PartyCount)"
-                sQryPakkaBalance = "(Select 0.00 as Balance)"
-                SetAveragePaymentDays()
-                sQryLinkedPakaaBalance = "Select '' as Subcode, '' as LinkedSubcode, '' as Name, 0.0 as Balance "
-            End If
+                    sQryPakkaBalance = "(Select 0.00 as Balance)"
+                    SetAveragePaymentDays()
+                    sQryLinkedPakaaBalance = "Select '' as Subcode, '' as LinkedSubcode, '' as Name, 0.0 as Balance "
+                End If
 
 
-            If ReportFrm.FGetText(rowReportType) = "Interest Ledger" Or ReportFrm.FGetText(rowNextStep) = "Interest Ledger" Then
+                If ReportFrm.FGetText(rowReportType) = "Interest Ledger" Or ReportFrm.FGetText(rowNextStep) = "Interest Ledger" Then
                 Dim sQryInterestRate As String
                 If AgL.PubServerName = "" Then
                     If ClsMain.FDivisionNameForCustomization(20) = "SHYAMA SHYAM FABRICS" Or ClsMain.FDivisionNameForCustomization(22) = "W SHYAMA SHYAM FABRICS" Or ClsMain.FDivisionNameForCustomization(25) = "SHYAMA SHYAM VENTURES LLP" Or ClsMain.FDivisionNameForCustomization(27) = "W SHYAMA SHYAM VENTURES LLP" Then
-                        sQryPurchaseBrand = "(Select group_concat(Brand ,',') || ',' From (Select IfNull(sGroup.Description, sItem.Description)  as Brand  from PurchInvoiceDetail sPID  With (NoLock)  Left Join PurchInvoiceDetailSku sPIDS On sPID.DocID = sPIDS.DocID  Left Join Item sItem On sPID.Item = sItem.Code Left Join Item sGroup On IfNull(sPIDS.ItemGroup,sItem.ItemGroup) = sGroup.Code Where sPID.DocID = PI.DocID And sItem.ItemType  In ('" & ItemTypeCode.TradingProduct & "','Wool') Group By IfNull(sGroup.Description, sItem.Description)))"
-                        sQrySaleBrand = "(Select group_concat(Brand ,',') || ',' From (Select IfNull(sGroup.Description, sItem.Description)  as Brand  from SaleInvoiceDetail sSID  With (NoLock)  Left Join SaleInvoiceDetailSku sSIDS On sSID.DocID = sSIDS.DocID  Left Join Item sItem On sSID.Item = sItem.Code Left Join Item sGroup On IfNull(sSIDS.ItemGroup,sItem.ItemGroup) = sGroup.Code Where sSID.DocID = SI.DocID And sItem.ItemType  In ('" & ItemTypeCode.TradingProduct & "','Wool') Group By IfNull(sGroup.Description, sItem.Description)))"
+                        sQryPurchaseBrand = "(Select group_concat(Brand ,',') || ',' From (Select IfNull(sGroup.Description, sItem.Description)  as Brand  from PurchInvoiceDetail sPID  With (NoLock)  Left Join PurchInvoiceDetailSku sPIDS On sPID.DocID = sPIDS.DocID  Left Join Item sItem On sPID.Item = sItem.Code Left Join Item sGroup On IfNull(sPIDS.ItemGroup,sItem.ItemGroup) = sGroup.Code Where sPID.DocID = PI.DocID And sItem.ItemType  In ('" & ItemTypeCode.TradingProduct & "','Wool')  AND IfNull(sGroup.Code,'') not in ('CourierCharge','HandlingCharge','Packing') Group By IfNull(sGroup.Description, sItem.Description)))"
+                        sQrySaleBrand = "(Select group_concat(Brand ,',') || ',' From (Select IfNull(sGroup.Description, sItem.Description)  as Brand  from SaleInvoiceDetail sSID  With (NoLock)  Left Join SaleInvoiceDetailSku sSIDS On sSID.DocID = sSIDS.DocID  Left Join Item sItem On sSID.Item = sItem.Code Left Join Item sGroup On IfNull(sSIDS.ItemGroup,sItem.ItemGroup) = sGroup.Code Where sSID.DocID = SI.DocID And sItem.ItemType  In ('" & ItemTypeCode.TradingProduct & "','Wool')  AND IfNull(sGroup.Code,'') not in ('CourierCharge','HandlingCharge','Packing') Group By IfNull(sGroup.Description, sItem.Description)))"
                     Else
                         sQryPurchaseBrand = "(Select group_concat(Brand ,',') || ',' From (Select sGroup.Description  as Brand  from PurchInvoiceDetailSku sPID  With (NoLock) Left Join Item sGroup On sPID.ItemGroup = sGroup.Code Where sPID.DocID = PI.DocID And sGroup.ItemType In ('" & ItemTypeCode.TradingProduct & "','Wool') Group By sGroup.Description))"
                         sQrySaleBrand = "(Select group_concat(Brand ,',') || ',' From (Select sGroup.Description  as Brand  from SaleInvoiceDetailSku sSID  With (NoLock) Left Join Item sGroup On sSID.ItemGroup = sGroup.Code Where sSID.DocID = SI.DocID And sGroup.ItemType  In ('" & ItemTypeCode.TradingProduct & "','Wool') Group By sGroup.Description))"

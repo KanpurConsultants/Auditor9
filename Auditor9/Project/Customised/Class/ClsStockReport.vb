@@ -94,8 +94,12 @@ Public Class ClsStockReport
         Try
             mQry = "Select 'Stock Balance' as Code, 'Stock Balance' as Name 
                             Union All Select 'Stock Summary' as Code, 'Stock Summary' as Name
-                            Union All Select 'Stock Summary With Valuation' as Code, 'Stock Summary With Valuation' as Name 
+                            Union All Select 'Stock Summary With Valuation' as Code, 'Stock Summary With Valuation' as Name
                             Union All Select 'Stock Ledger' as Code, 'Stock Ledger' as Name "
+            If AgL.StrCmp(AgL.PubDBName, "Aeroclub") Then
+                mQry = mQry + "                            Union All Select 'Stock Balance With Sale Rate' as Code, 'Stock Balance With Sale Rate' as Name "
+            End If
+
             ReportFrm.CreateHelpGrid("Report Type", "Report Type", FrmRepDisplay.FieldFilterDataType.StringType, FrmRepDisplay.FieldDataType.SingleSelection, mQry, "Stock Balance")
             mQry = "SELECT 'o' As Tick, 'ItemCategoryCode' As Code, 'Item Category' As Name 
                         UNION ALL 
@@ -392,6 +396,7 @@ Public Class ClsStockReport
                 If mGridRow.DataGridView.Columns.Contains("Search Code") = True Then
                     If mFilterGrid.Item(GFilter, rowReportType).Value = "Stock Balance" Or
                         mFilterGrid.Item(GFilter, rowReportType).Value = "Stock Summary With Valuation" Or
+                        mFilterGrid.Item(GFilter, rowReportType).Value = "Stock Balance With Sale Rate" Or
                         mFilterGrid.Item(GFilter, rowReportType).Value = "Stock Summary" Then
                         If mGridRow.DataGridView.Columns.Contains("Item Category Code") = True Then
                             If AgL.XNull(mGridRow.Cells("Item Category").Value) <> "" Then
@@ -758,7 +763,7 @@ Public Class ClsStockReport
                 bGroupOn = "ItemCategoryCode,ItemGroupCode,ItemCode,Dimension1Code,Dimension2Code,Dimension3Code,Dimension4Code,SizeCode"
             End If
 
-            If ReportFrm.FGetText(rowReportType) = "Stock Summary" Or ReportFrm.FGetText(rowReportType) = "Stock Summary With Valuation" Or ReportFrm.FGetText(rowReportType) = "Stock Balance" Then
+            If ReportFrm.FGetText(rowReportType) = "Stock Summary" Or ReportFrm.FGetText(rowReportType) = "Stock Summary With Valuation" Or ReportFrm.FGetText(rowReportType) = "Stock Balance" Or ReportFrm.FGetText(rowReportType) = "Stock Balance With Sale Rate" Then
                 mQry = " Select Max(VMain.SkuCode) As SearchCode 
                     " & IIf(bGroupOn.Contains("ItemCategoryCode"), ", ItemCategoryCode, Max(VMain.ItemCategoryName) as ItemCategory", "") & " 
                     " & IIf(bGroupOn.Contains("ItemGroupCode"), ", ItemGroupCode, Max(VMain.ItemGroupName) as ItemGroup", "") & " 
@@ -787,9 +792,16 @@ Public Class ClsStockReport
                         mQry += " Round(Sum(VMain.Opening),Max(VMain.DecimalPlaces)) As [Opening], Round(Sum(VMain.Qty_Rec),Max(VMain.DecimalPlaces)) as [ReceiveQty], Round(Sum(VMain.Qty_Iss),Max(VMain.DecimalPlaces)) as [IssueQty],"
                     End If
 
-                    mQry += " Round(Sum(VMain.Closing), IfNull(Max(VMain.DecimalPlaces),0)) as [Closing], Sum(VMain.Amount) as Amount
-                    From (" & mMainQry & ") As VMain
-                    GROUP By " & bGroupOn & ""
+                    If ReportFrm.FGetText(rowReportType) = "Stock Balance With Sale Rate" And AgL.StrCmp(AgL.PubDBName, "Aeroclub") Then
+                        mQry += " Round(Sum(VMain.Closing), IfNull(Max(VMain.DecimalPlaces),0)) as [Closing], Max(I.Rate) as Rate, Sum(VMain.Amount) as Amount
+                                From (" & mMainQry & ") As VMain
+                                Left join Item I on VMain.Dimension1Code = I.Code
+                                GROUP By " & bGroupOn & ""
+                    Else
+                        mQry += " Round(Sum(VMain.Closing), IfNull(Max(VMain.DecimalPlaces),0)) as [Closing], Sum(VMain.Amount) as Amount
+                                From (" & mMainQry & ") As VMain
+                                GROUP By " & bGroupOn & ""
+                    End If
                 End If
 
 
@@ -798,10 +810,10 @@ Public Class ClsStockReport
                 'End If
 
                 If UCase(ReportFrm.FGetText(rowShowZeroBalance)) = "NO" Then
-                        mQry += " Having Sum(VMain.Closing) <> 0 "
-                    End If
+                    mQry += " Having Sum(VMain.Closing) <> 0 "
+                End If
 
-                    mQry += " Order By 1
+                mQry += " Order By 1
                     " & IIf(bGroupOn.Contains("ItemCategoryCode"), ", ItemCategory", "") & " 
                     " & IIf(bGroupOn.Contains("ItemGroupCode"), ", ItemGroup", "") & " 
                     " & IIf(bGroupOn.Contains("Dimension1Code"), ", Dimension1", "") & " 
@@ -813,8 +825,8 @@ Public Class ClsStockReport
                     " & IIf(bGroupOn.Contains("LotNo"), ", LotNo", "") & "
                     " & IIf(bGroupOn.Contains("ProcessCode"), ", Process", "") & " 
                     "
-                Else
-                    mQry = " Select VMain.DocID As SearchCode 
+            Else
+                mQry = " Select VMain.DocID As SearchCode 
                     , Max(VMain.V_Date) As [Doc Date], Max(VMain.V_Type) as DocType, Max(VMain.RecId) As [Doc No]
                     , Max(Vmain.PartyName) as PartyName, Max(VMain.LocationName) As [Location Name]
                     , Round(Sum(VMain.Qty_Rec),4) as [Receive Qty]
@@ -876,7 +888,7 @@ Public Class ClsStockReport
                 Next
             End If
 
-            If ReportFrm.FGetText(rowReportType) = "Stock Balance" Then
+            If ReportFrm.FGetText(rowReportType) = "Stock Balance" Or ReportFrm.FGetText(rowReportType) = "Stock Balance With Sale Rate" Then
                 If ReportFrm.DGL1.Columns.Contains("Closing") Then ReportFrm.DGL1.Columns("Closing").Visible = True
             ElseIf ReportFrm.FGetText(rowReportType) = "Stock Summary" Then
                 If ReportFrm.DGL1.Columns.Contains("Opening") Then ReportFrm.DGL1.Columns("Opening").Visible = True

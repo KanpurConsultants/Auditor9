@@ -210,3 +210,4 @@ D:\Active Projects\Desktop\Auditor9\Auditor9\Project\Customised\obj\x86\Debug\Cu
 D:\Active Projects\Desktop\Auditor9\Auditor9\Project\Customised\obj\x86\Debug\Customised.WriteInExcel.resources
 D:\Active Projects\Desktop\Auditor9\Auditor9\Project\Customised\obj\x86\Debug\Customised.Resources.resources
 D:\Active Projects\Desktop\Auditor9\Auditor9\Project\Customised\obj\x86\Debug\Customised.vbproj.GenerateResource.Cache
+D:\Active Projects\Desktop\Auditor9\Auditor9\Project\Customised\obj\x86\Debug\Customised.FrmPrintBarcodeSS.resources

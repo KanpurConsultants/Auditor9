@@ -1,46 +1,46 @@
 ; Field definition file for table: ADORecordset
-DivisionName	string	255	SADHVI EMBROIDERY {EMBROIDERY}, KANPUR	
-PartyName	string	255	RANGOLI COLLECTIONS, UNNAO	
-Address	string	255	RAJDHANI MARG SUKLAGANG NEAR PUNJAB &SINDH BANK DIST-UNNAO	
-Mobile	string	255	8318535935	
-AgentName	string	255	PURSHOTTAM NARAIN AWASTHI, KANPUR	
+DivisionName	string	255	SADHVI ENTERPRISES (B), KANPUR	
+PartyName	string	255	HAZI SHAUKAT CLOTH HOUSE , RUDAULI	
+Address	string	255	RUDAULI	
+Mobile	string	255	9415596769	
+AgentName	string	255		
 SalesRepresentativeName	string	255		
 AreaName	string	255		
-DrDocID	string	255	E1    SI 2022    1194	
-DrDivision	string	255	E	
-DrSubcode	string	255	D100001990	
-DrSr	number	26	
-DrDate	datetime	17/May/2022 12:00:00 AM	
-DrDocNo	string	255	SI-1194	
-DrAmount	number	16601	
-DrTaxableAmount	number	15030.75	
-DrTaxAmount	number	1570	
-DrDays	number	166	
-DrInterest	number	0	
-DrCumAmount	number	186413	
-DrBalAmount	number	752	
-DrTotal	number	186413	
-DrNarration	string	255	RT : DharaTax Invoice	
-CrDocID	string	255	E1  RCTB 2022     201	
-CrDivision	string	255	E	
-CrSubcode	string	255	D100001990	
-CrSr	number	26	
-CrDate	datetime	18/Jul/2022 12:00:00 AM	
-CrDocNo	string	255	RCTB-201	
-CrAmount	number	15849	
+DrDocID	string	255	D1    SI 2022     854	
+DrDivision	string	255	D	
+DrSubcode	string	255	D100000134	
+DrSr	long	70	
+DrDate	datetime	27/Dec/2022 12:00:00 AM	
+DrDocNo	string	255	SI-854	
+DrAmount	number	36839	
+DrTaxableAmount	number	35085	
+DrTaxAmount	number	1754.36	
+DrDays	long	22	
+DrInterest	number	266.45	
+DrCumAmount	number	1531528	
+DrBalAmount	number	33372	
+DrTotal	number	1880038	
+DrNarration	string	255	Tax Invoice DK MAURYA 	
+CrDocID	string	255	D1    SR 2022     483	
+CrDivision	string	255	D	
+CrSubcode	string	255	D100000134	
+CrSr	long	70	
+CrDate	datetime	14/Feb/2023 12:00:00 AM	
+CrDocNo	string	255	SR-483	
+CrAmount	number	3467	
 CrTaxableAmount	number	0	
 CrTaxAmount	number	0	
-CrDays	number	134	
-CrInterest	number	0	
-CrCumAmount	number	185661	
+CrDays	long	3	
+CrInterest	number	3.42	
+CrCumAmount	number	1498156	
 CrBalAmount	number	0	
-CrTotal	number	185661	
-CrNarration	string	255	Chq : 000225 P&SBICICI EMB A/C (695705501002)	
-AdditionPer	number	5	
-AdditionAmount	number	715.75	
-GrReturnAmt	number	3848	
-GrSaleAmt	number	169970	
-ReturnPer	number	2.26	
-AveragePaymentDays	number	69.4218258988647	
-DrMonth	string	255	05/2022	
-CrMonth	string	255	07/2022	
+CrTotal	number	1498156	
+CrNarration	string	255	Sale Return	
+AdditionPer	number	0	
+AdditionAmount	number	0	
+GrReturnAmt	number	103993	
+GrSaleAmt	number	1875890	
+ReturnPer	number	5.54	
+AveragePaymentDays	number	64.4998817252243	
+DrMonth	string	255	12-2022	
+CrMonth	string	255	02-2023	

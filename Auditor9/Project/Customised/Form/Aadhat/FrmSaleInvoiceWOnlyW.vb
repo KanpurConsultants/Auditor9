@@ -2926,7 +2926,7 @@ Public Class FrmSaleInvoiceW_OnlyW
                     H.V_Date, Max(Sp.Name) as SaleToPartyName, Max(Sg.DispName) AS PartyName, Max(Sg.ManualCode) AS PartyCode, Max(Sg.Address) Address, 
                     Max(c.CityName) AS CityName, Max(spp.Name) as ShipToPartyName,
                     Max(I.Description) As Brand, 
-                    (select sPI.VendorDocNo from purchInvoice sPI 
+                    (select GROUP_CONCAT(sPI.VendorDocNo) from purchInvoice sPI 
                     Left Join PurchInvoiceDetail sPIL On sPI.DocID = sPIL.DocId                    
                     where sPI.DocId In (Select DocID from SaleInvoiceGeneratedEntries Where Code='" & mSearchCode & "' And V_Type='WPI' )
                     And sPIL.Item = L.Item) as PInvNo, 

@@ -4650,6 +4650,10 @@ Public Class ClsReports
 
             RepTitle = "Log Report"
 
+            'To Update LogTable V_Type For ItemMaster
+            mQry = "UPDATE LogTable SET V_Type = 'ITEM' WHERE EntryPoint ='Item Master'  AND V_Type IS NULL "
+            AgL.Dman_ExecuteNonQry(mQry, AgL.GCn, AgL.ECmd)
+
             If mFilterGrid IsNot Nothing And mGridRow IsNot Nothing Then
                 If mGridRow.DataGridView.Columns.Contains("Search Code") = True Then
                     If ReportFrm.DGL1.Columns(ReportFrm.DGL1.CurrentCell.ColumnIndex).Name = "Action" And
@@ -4695,13 +4699,15 @@ Public Class ClsReports
             mCondStr = mCondStr & ReportFrm.GetWhereCondition("H.Site_Code", 5).Replace("''", "'")
 
             mQry = " SELECT H.DocId As SearchCode, Sm.Name AS SiteName, D.Div_Name AS DivisionName,   
-                    IfNull(Vt.Description,H.EntryPoint) AS EntryType, H.ManualRefNo, H.V_Date AS EntryDate, Sg.Name AS PartyName, 
+                    IfNull(Vt.Description,H.EntryPoint) AS EntryType, CASE WHEN H.EntryPoint ='Item Master' THEN I.Description WHEN H.EntryPoint ='Sales Entry' THEN SI.ManualRefNo ELSE H.ManualRefNo END AS ManualRefNo, H.V_Date AS EntryDate, Sg.Name AS PartyName, 
                     H.MachineName, H.U_Name As UserName, H.U_EntDt As ActionDateTime,
                     CASE WHEN H.U_AE = 'A' THEN 'Add'
 	                     WHEN H.U_AE = 'E' THEN 'Edit'
 	                     WHEN H.U_AE = 'D' THEN 'Delete'
 	                     WHEN H.U_AE = 'P' THEN 'Print' END AS Action 
                     FROM LogTable H
+                    LEFT JOIN Item I ON I.Code = H.DocId 
+                    LEFT JOIN SaleInvoice  SI ON SI.DocId = H.DocId 
                     LEFT JOIN ViewHelpSubgroup Sg ON H.SubCode = Sg.Code  
                     LEFT JOIN SiteMast Sm ON H.Site_Code = Sm.Code
                     LEFT JOIN Division D ON H.Div_Code = D.Div_Code

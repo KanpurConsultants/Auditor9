@@ -1,44 +1,44 @@
 ; Field definition file for table: ADORecordset
-Code	string	255	D13426	
+Code	string	255	D213831	
 ATYPE	string	255	W	
-SiteName	string	255	KANPUR	
-DocID	string	255	D1   WSI 2022     393	
+SiteName	string	255	AHMEDABAD	
+DocID	string	255	D2   WSI 2022    2932	
 Sr	number	1	
 InvoiceNo	string	255		
-InvoiceNoW	string	255	1560	
-V_Date	datetime	10/Nov/2022 12:00:00 AM	
-SaleToPartyName	string	255	E.G. MART-DEORIA, DEORIA	
-PartyName	string	255	E.G. MART	
-PartyCode	string	255	3778	
-Address	string	255	E.G. MART
-NEAR SURAJ TALKIES,
-HANUMAN MANDIR ROAD,
-DEORIA(U.P.)-274001
+InvoiceNoW	string	255	7447	
+V_Date	datetime	08/Feb/2023 12:00:00 AM	
+SaleToPartyName	string	255	NIRMAL HANDLOOOM-MUZAFFERPUR, MUZAFFERPUR	
+PartyName	string	255	NIRMAL HANDLOOM-MUZAFERPUR	
+PartyCode	string	255	1328	
+Address	string	255	NIRMAL HANDLOOM
+SHEETLA GALI,SUTTA PATTI
+MUZAFFARPUR(BIHAR)-843116
 	
-CityName	string	255	DEORIA	
+CityName	string	255	MUZAFFERPUR	
 ShipToPartyName	string	255		
-Brand	string	255	AERO CLUB	
-PInvNo	string	255	788	
-Qty	number	10	
-Amount	number	10	
-GoodsValue	number	10	
+Brand	string	255	VISHAL SALWAR SUIT	
+PInvNo	string	255	449,450,451,452,453,454,455,456,458,459	
+Qty	number	39	
+Amount	number	619.2	
+GoodsValue	number	619.2	
 DiscountPer	string	255		
 TotalDiscount	number	0	
-OtherCharge	number	0	
+OtherCharge	number	7	
 OtherCharge1	number	0	
-Tax	number	0.565	
-NetAmount	number	10.56	
-LRemarks	string	255		
-TransportName	string	255	NARAYAN TRANSPORT SERVICE	
-LRNO	string	255	78	
-LRDate	string	255		
-NOOfBales	long	0	
-PrivateMark	string	255		
-BookedFrom	string	255	KANPUR	
-Destination	string	255	DEORIA	
+Tax	number	0	
+NetAmount	number	625.854	
+LRemarks	string	255	DABBO
+	
+TransportName	string	255	ANJANI AIR CARGO-ADI	
+LRNO	string	255	1011	
+LRDate	string	255	09-02-2023	
+NOOfBales	long	10	
+PrivateMark	string	255	DABBO	
+BookedFrom	string	255		
+Destination	string	255		
 PrintedByUser	string	255	SUPER	
-EntryByUser	string	255	SUPER	
-UserEntryDate	datetime	10/Nov/2022 12:00:00 AM	
+EntryByUser	string	255	ranjana	
+UserEntryDate	datetime	16/Feb/2023 12:00:00 AM	
 CompanyLogo	BLOB		
 CompanyAuthorisedSignature	BLOB		
 EInvoiceQrCode	BLOB		
