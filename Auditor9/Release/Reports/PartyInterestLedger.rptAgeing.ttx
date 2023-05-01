@@ -1,6 +1,6 @@
 ; Field definition file for table: ADORecordset
-SearchCode	string	255	D100005085	
+SearchCode	string	255	D100001360	
 Sr	long	1	
-Party	string	255	BABA READYMADE SHOWROOM [W], JAMUI	
-BalanceAmount	number	10104.58	
-BalanceMonth	string	255	2023-01-24	
+Party	string	255	SHANU READYMADE CENTER-DEORIA [W], DEORIA	
+BalanceAmount	number	921.6328	
+BalanceMonth	string	255	2023-01-26	

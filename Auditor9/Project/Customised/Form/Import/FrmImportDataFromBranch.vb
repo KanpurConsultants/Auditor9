@@ -873,14 +873,14 @@ Public Class FrmImportDataFromBranch
 
         'To Update ItemName 
         If ClsMain.FDivisionNameForCustomization(6) = "SADHVI" Then
-            mQry = "Select H_Temp.Code, H_Temp.ManualCode,H_Temp.Description,H_Temp.DisplayName
+            mQry = "Select H_Temp.Code, H_Temp.Specification, H_Temp.ManualCode,H_Temp.Description,H_Temp.DisplayName
                     From Source." & bTableName & " H_Temp 
                     LEFT JOIN " & bTableName & " H On " & bJoinCondStr &
                     " Where H." & bPrimaryField & " Is Not Null "
             DtTempItems = AgL.FillData(mQry, mSqlConn).Tables(0)
 
             For I = 0 To DtTempItems.Rows.Count - 1
-                mQry = "UPDATE Item Set ManualCode = '" + AgL.XNull(DtTempItems.Rows(I)("ManualCode")) + "', Description='" + AgL.XNull(DtTempItems.Rows(I)("Description")) + "', DisplayName ='" + AgL.XNull(DtTempItems.Rows(I)("DisplayName")) + "' Where Code = '" + AgL.XNull(DtTempItems.Rows(I)("Code")) + "' "
+                mQry = "UPDATE Item Set ManualCode = '" + AgL.XNull(DtTempItems.Rows(I)("ManualCode")) + "', Specification = '" + AgL.XNull(DtTempItems.Rows(I)("Specification")) + "', Description='" + AgL.XNull(DtTempItems.Rows(I)("Description")) + "', DisplayName ='" + AgL.XNull(DtTempItems.Rows(I)("DisplayName")) + "' Where Code = '" + AgL.XNull(DtTempItems.Rows(I)("Code")) + "' "
                 AgL.Dman_ExecuteNonQry(mQry, mSqlConn, mSqlCmd)
             Next
         End If

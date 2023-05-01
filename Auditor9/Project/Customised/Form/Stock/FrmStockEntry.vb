@@ -3459,6 +3459,7 @@ Public Class FrmStockEntry
         Dim SQryRate As String = ""
         Dim SQryTaxableAmt As String = ""
         Dim SQryAmt As String = ""
+        Dim SQryItemGroup As String = ""
 
         If DglMain.Item(Col1Value, rowParty).Tag = "D100027005" Or DglMain.Item(Col1Value, rowParty).Tag = "D100027015" Then
             SQryRate = "Case When IfNull(L.MRP,0)=0 then L.Rate else L.MRP End "
@@ -3486,6 +3487,11 @@ Public Class FrmStockEntry
             SQryTaxableAmt = "L.Taxable_Amount"
         End If
 
+        If AgL.StrCmp(AgL.PubDBName, "Sadhvi") And (DglMain(Col1Value, rowV_Type).Tag = "IGISS" Or DglMain(Col1Value, rowV_Type).Tag = "IGREC") And (AgL.PubDivCode = "F" Or AgL.PubDivCode = "G") Then
+            SQryItemGroup = "I.Description"
+        Else
+            SQryItemGroup = "IfNull(IG.PrintingDescription,IG.Description)"
+        End If
 
         For I = 1 To PrintingCopies.Length
             If mQry <> "" Then mQry = mQry + " Union All "
@@ -3495,7 +3501,7 @@ Public Class FrmStockEntry
                 H.PartyName as PartyName, IfNull(H.PartyAddress,'') as PartyAddress, IfNull(H.PartyPinCode,'') as PartyPinCode, IfNull(C.CityName,'') as PartyCityName, IfNull(State.ManualCode,'') as PartyStateCode, IfNull(State.Description,'') as PartyStateName, 
                 IfNull(H.PartyMobile,'') as PartyMobile, IfNull(Sg.ContactPerson,'') as ContactPerson, IfNull(H.PartySalesTaxNo,'') as PartySalesTaxNo, IfNull(H.PartyAadharNo,'') as PartyAadharNo, IfNull(H.PartyPanNo,'') as PartyPanNo,
                 IfNull(Transporter.Name,IfNull(MTransporter.Name,'')) as TransporterName, IfNull(TD.LrNo,'') LrNo, TD.LrDate, IfNull(TD.PrivateMark,'') PrivateMark, TD.Weight, TD.Freight, IfNull(TD.PaymentType,'') as FreightType, IfNull(TD.RoadPermitNo,'') RoadPermitNo, TD.RoadPermitDate, IfNull(L.ReferenceNo,'') as ReferenceNo,
-                I.Description as ItemName, " & IIf(mPrintFor = ClsMain.PrintFor.QA, "IG.Description", "IfNull(IG.PrintingDescription,IG.Description)") & " as ItemGroupName, IC.Description as ItemCatName, 
+                I.Description as ItemName, " & IIf(mPrintFor = ClsMain.PrintFor.QA, "IG.Description", SQryItemGroup) & " as ItemGroupName, IC.Description as ItemCatName, 
                 I.Specification as ItemSpecification, L.Specification as InvoiceLineSpecification, IfNull(I.HSN,IC.HSN) as HSN,
                 IfNull(D1.Specification,'') as D1Spec, IfNull(D2.Specification,'') as D2Spec, IfNull(D3.Specification,'') as D3Spec, IfNull(D4.Specification,'') as D4Spec, IfNull(Size.Specification,'') as SizeSpec,
                 '" & AgL.PubCaptionDimension1 & "' as D1Caption, '" & AgL.PubCaptionDimension2 & "' as D2Caption, '" & AgL.PubCaptionDimension3 & "' as D3Caption, '" & AgL.PubCaptionDimension4 & "' as D4Caption, 

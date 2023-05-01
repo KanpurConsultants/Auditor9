@@ -93,7 +93,6 @@ Partial Class FrmItemMerging
         Me.Controls.Add(Me.Pnl1)
         Me.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle
         Me.KeyPreview = True
-        Me.MaximizeBox = False
         Me.Name = "FrmItemMerging"
         Me.Text = "Master Merging"
         Me.PnlTotals.ResumeLayout(False)

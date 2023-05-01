@@ -388,7 +388,7 @@ Public Class ClsSalesTaxReports_OneDotSeven
                                     Where SaleInvoiceDetail.DocId = H.DocId And SaleInvoiceDetail.ReferenceNo = Max(H.InvoiceNumber)
                                     GROUP BY SaleInvoiceDetail.ReferenceDate), Max(H.InvoiceDate)) As InvoiceDate,
                                 Max(H.DebitCreditNoteNo) As DebitCreditNoteNo, Max(H.DebitCreditNoteDate) As DebitCreditNoteDate, 
-                                Max(H.DocumentType) As DocumentType,
+                                Max(H.DocumentType) As DocumentType, 'Regular B2B' As NoteSupplyType,
                                 Max(H.PlaceOfSupply) As PlaceOfSupply, Sum(H.LineNet_Amount) As DebitCreditNoteValue, 
                                 Max(H.ApplicableTaxRate) As ApplicableTaxRate, Max(H.Rate) As Rate,
                                 Sum(H.TaxableValue) As TaxableValue, Sum(H.CessAmount) As CessAmount, Max(H.PreGST) As PreGst
@@ -657,7 +657,6 @@ Public Class ClsSalesTaxReports_OneDotSeven
                     LEFT JOIN State S on C.State = S.Code " & mCondStr &
                     " And Vt.NCat = '" & Ncat.SaleInvoice & "' And IfNull(S.ManualCode,'') <> '00'
                     And H.SalesTaxGroupParty In ('" & PostingGroupSalesTaxParty.Registered & "')"
-
         Return mStrQry
     End Function
     Private Function FGetB2CLargeQry(mCondStr As String) As String
@@ -2631,9 +2630,18 @@ Public Class ClsSalesTaxReports_OneDotSeven
                         Left Join City On H.PartyCity = City.CityCode
                         Left Join State on City.State = State.Code " & mCondStr &
                         " And IfNull(H.SalesTaxGroupRegType,'') <> 'SEZ'  And IfNull(State.ManualCode,'') <> '00' " &
-                        " And H.V_Type In ('" & Ncat.DebitNoteCustomer & "',
-                        '" & Ncat.CreditNoteCustomer & "')"
-
+                        " And H.V_Type In ('" & Ncat.DebitNoteCustomer & "','" & Ncat.CreditNoteCustomer & "') 
+                        UNION ALL 
+                        Select L.DocId, H.V_Date As VoucherDate, Vt.Description As VoucherType, H.PartyName As PartyName, H.PartySalesTaxNo, H.ManualRefNo As VoucherNo, -L.Taxable_Amount As TaxableValue, 
+                        -L.Tax1 As IntegratedTax, -L.Tax2 As CentralTax, -L.Tax3 As StateTax, -L.Tax4 As Cess,
+                        -(IfNull(L.Tax1,0) + IfNull(L.Tax2,0) + IfNull(L.Tax3,0) + IfNull(L.Tax4,0)) As TaxAmount
+                        From LedgerHead H 
+                        Left Join LedgerHeadDetailCharges L On H.DocId = L.DocId 
+                        Left Join Voucher_Type Vt On H.V_Type = Vt.V_Type 
+                        Left Join City On H.PartyCity = City.CityCode
+                        Left Join State On City.State = State.Code " & mCondStr &
+                        " And IfNull(H.SalesTaxGroupRegType,'') <> 'SEZ'  And IfNull(State.ManualCode,'') <> '00' " &
+                        " And H.V_Type In ('" & Ncat.IncomeVoucher & "')"
 
         '" And Vt.NCat = '" & agConstants.Ncat.CreditNote & "' "
         Return mStrQry

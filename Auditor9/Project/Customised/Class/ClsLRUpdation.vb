@@ -151,7 +151,7 @@ Public Class ClsLRUpdation
                     LEFT JOIN SubGroup T On Sit.Transporter = T.SubCode
                     LEFT JOIN Voucher_Type Vt ON H.V_Type = Vt.V_Type
                     WHERE 1=1 " & mCondStr
-            mQry = mQry + " Order By H.V_Date "
+            mQry = mQry + " Order By H.V_Date,H.V_Type,H.V_No "
 
             DsHeader = AgL.FillData(mQry, AgL.GCn)
 

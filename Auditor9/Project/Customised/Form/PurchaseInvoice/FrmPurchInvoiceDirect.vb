@@ -2836,8 +2836,70 @@ Public Class FrmPurchInvoiceDirect
                 'If AgL.StrCmp(Dgl1.Item(Col1BillingType, I).Value, "Doc Measure") Then
                 'Dgl1.Item(Col1Amount, I).Value = Format(Val(Dgl1.Item(Col1TotalDocMeasure, I).Value) * MRATE, "0.".PadRight(CType(Dgl1.Columns(Col1Amount), AgControls.AgTextColumn).AgNumberRightPlaces + 2, "0"))
                 'Else
-                Dgl1.Item(Col1Amount, I).Value = Format(Val(Dgl1.Item(Col1DocQty, I).Value) * MRATE, "0.".PadRight(CType(Dgl1.Columns(Col1Amount), AgControls.AgTextColumn).AgNumberRightPlaces + 2, "0"))
-                'End If
+
+                If (AgL.StrCmp(AgL.PubDBName, "ShyamaShyam") Or AgL.StrCmp(AgL.PubDBName, "ShyamaShyamV")) And (TxtStructure.Tag = "GstPurMrp") Then
+                    Dim DtMain As DataTable
+                    Dim DtMain1 As DataTable
+                    Dim PurchRate As Double = 0
+                    Dim SaleGSTRate As Double = 0
+                    Dim TaxableRate As Double = 0
+                    Dim TaxableAmount As Double = 0
+                    Dim PurchGSTRate As Double = 0
+                    Dim ItemType As String = ""
+                    Dim SalesTaxGroup As String = ""
+
+                    mQry = "Select SalesTaxGroupItem From ItemCategorySalesTax  With (NoLock) 
+                            Where Code='" & Dgl1.Item(Col1ItemCategory, I).Tag & "' 
+                            And MRPGreaterThan < " & Val(Dgl1.Item(Col1Rate, I).Value) & " 
+                            And Date(WEF) <= " & AgL.Chk_Date(CDate(TxtV_Date.Text).ToString("s")) & " 
+                            Order By WEF Desc, RateGreaterThan Desc Limit 1"
+                    DtMain1 = AgL.FillData(mQry, AgL.GCn).Tables(0)
+                    If DtMain1.Rows.Count > 0 Then
+                        SalesTaxGroup = AgL.XNull(DtMain1.Rows(0)("SalesTaxGroupItem"))
+                    Else
+                        SalesTaxGroup = AgL.XNull(AgL.PubDtEnviro.Rows(0)("Default_SalesTaxGroupItem"))
+                    End If
+
+                    If SalesTaxGroup = "GST 5%" Then
+                        SaleGSTRate = 5
+                    ElseIf SalesTaxGroup = "GST 12%" Then
+                        SaleGSTRate = 12
+                    ElseIf SalesTaxGroup = "GST 18%" Then
+                        SaleGSTRate = 18
+                    End If
+
+
+                    PurchRate = Val(Dgl1.Item(Col1Rate, I).Value) * 100 / (100 + SaleGSTRate)
+                    TaxableRate = Val(PurchRate - (PurchRate * Val(Dgl1.Item(Col1AdditionalDiscountPer, I).Value) / 100))
+                    TaxableAmount = Val(Dgl1.Item(Col1DocQty, I).Value) * TaxableRate
+
+                    mQry = "Select SalesTaxGroupItem From ItemCategorySalesTax  With (NoLock) 
+                            Where Code='" & Dgl1.Item(Col1ItemCategory, I).Tag & "' 
+                            And RateGreaterThan < " & Val(TaxableRate) & " 
+                            And Date(WEF) <= " & AgL.Chk_Date(CDate(TxtV_Date.Text).ToString("s")) & " 
+                            Order By WEF Desc, RateGreaterThan Desc Limit 1"
+                    DtMain = AgL.FillData(mQry, AgL.GCn).Tables(0)
+                    If DtMain.Rows.Count > 0 Then
+                        Dgl1.Item(Col1SalesTaxGroup, I).Value = AgL.XNull(DtMain.Rows(0)("SalesTaxGroupItem"))
+                        Dgl1.Item(Col1SalesTaxGroup, I).Tag = AgL.XNull(DtMain.Rows(0)("SalesTaxGroupItem"))
+                    Else
+                        Dgl1.Item(Col1SalesTaxGroup, I).Value = AgL.XNull(AgL.PubDtEnviro.Rows(0)("Default_SalesTaxGroupItem"))
+                        Dgl1.Item(Col1SalesTaxGroup, I).Tag = AgL.XNull(AgL.PubDtEnviro.Rows(0)("Default_SalesTaxGroupItem"))
+                    End If
+                    SalesTaxGroup = Dgl1.Item(Col1SalesTaxGroup, I).Value
+                    If SalesTaxGroup = "GST 5%" Then
+                        PurchGSTRate = 5
+                    ElseIf SalesTaxGroup = "GST 12%" Then
+                        PurchGSTRate = 12
+                    ElseIf SalesTaxGroup = "GST 18%" Then
+                        PurchGSTRate = 18
+                    End If
+
+                    Dgl1.Item(Col1Amount, I).Value = Format(TaxableAmount + (TaxableAmount * PurchGSTRate / 100), "0.00")
+
+                Else
+                    Dgl1.Item(Col1Amount, I).Value = Format(Val(Dgl1.Item(Col1DocQty, I).Value) * MRATE, "0.".PadRight(CType(Dgl1.Columns(Col1Amount), AgControls.AgTextColumn).AgNumberRightPlaces + 2, "0"))
+                End If
 
                 If Val(Dgl1.Item(Col1DiscountPer, I).Value) > 0 Then
                     If Dgl1(Col1DiscountCalculationPattern, I).Value.ToUpper = DiscountCalculationPattern.RatePerQty.ToUpper Then
@@ -2869,8 +2931,11 @@ Public Class FrmPurchInvoiceDirect
                     End If
                 End If
 
-
-                Dgl1.Item(Col1Amount, I).Value = Val(Dgl1.Item(Col1Amount, I).Value) - Val(Dgl1.Item(Col1DiscountAmount, I).Value) - Val(Dgl1.Item(Col1AdditionalDiscountAmount, I).Value) + Val(Dgl1.Item(Col1AdditionAmount, I).Value)
+                If (AgL.StrCmp(AgL.PubDBName, "ShyamaShyam") Or AgL.StrCmp(AgL.PubDBName, "ShyamaShyamV")) And (TxtStructure.Tag = "GstPurMrp") Then
+                    Dgl1.Item(Col1Amount, I).Value = Dgl1.Item(Col1Amount, I).Value
+                Else
+                    Dgl1.Item(Col1Amount, I).Value = Val(Dgl1.Item(Col1Amount, I).Value) - Val(Dgl1.Item(Col1DiscountAmount, I).Value) - Val(Dgl1.Item(Col1AdditionalDiscountAmount, I).Value) + Val(Dgl1.Item(Col1AdditionAmount, I).Value)
+                End If
 
                 'Footer Calculation
                 If AgL.XNull(Dgl1.Item(Col1ItemType, I).Tag) <> ItemTypeCode.ServiceProduct Then
@@ -4516,7 +4581,7 @@ Public Class FrmPurchInvoiceDirect
 
             mQry = "    Select  H.DocID,  H.Div_Code || H.Site_Code || '-' || H.V_Type || '-' || H.ManualRefNo as InvoiceNo, IfNull(H.VendorDocNo,'') as PartyDocNo, H.VendorDocDate as PartyDocDate, H.V_Date as InvoiceDate, 
                 SI.Item, I.ManualCode as ItemManualCode, I.Description as ItemName, SI.Qty_Rec + IfNull(SR.Qty_Ret,0) Qty_Bal, SI.Unit, L.DiscountPer, L.AdditionalDiscountPer, L.Rate,
-                I.ItemCategory, IC.Description as ItemCategoryName, I.ItemGroup, IG.Description as ItemGroupName,
+                I.ItemType, IT.Name as ItemTypeName, I.ItemCategory, IC.Description as ItemCategoryName, I.ItemGroup, IG.Description as ItemGroupName,
                 U.ShowDimensionDetailInSales, U.DecimalPlaces as QtyDecimalPlaces, IG.Default_DiscountPerPurchase, L.SalesTaxGroupItem, SI.DocID as StockDocID, SI.TSr as StockTSr, SI.Sr as StockSr 
                 From
                     (    
@@ -4541,6 +4606,7 @@ Public Class FrmPurchInvoiceDirect
                 Left Join PurchInvoice H  With (NoLock) On SI.DocID = H.DocID
                 Left Join Item I  With (NoLock) on SI.Item = I.Code
                 Left Join Unit U  With (NoLock) On I.Unit = U.Code 
+                Left Join ItemType IT With (NoLock) On I.ItemType = IT.Code
                 Left Join ItemCategory IC  With (NoLock) On I.ItemCategory = IC.Code
                 Left Join ItemGroup IG  With (NoLock) On I.ItemGroup = IG.Code
                 Left Join PurchInvoiceDetail L  With (NoLock) On L.DocID = SI.DocID And L.Sr = SI.TSr
@@ -4560,6 +4626,8 @@ Public Class FrmPurchInvoiceDirect
                         Dgl1.Item(ColSNo, mRow).Value = Dgl1.Rows.Count - 1
                     End If
 
+                    Dgl1.Item(Col1ItemType, mRow).Tag = AgL.XNull(DtTemp.Rows(I)("ItemType"))
+                    Dgl1.Item(Col1ItemType, mRow).Value = AgL.XNull(DtTemp.Rows(I)("ItemTypeName"))
                     Dgl1.Item(Col1ItemCategory, mRow).Tag = AgL.XNull(DtTemp.Rows(I)("ItemCategory"))
                     Dgl1.Item(Col1ItemCategory, mRow).Value = AgL.XNull(DtTemp.Rows(I)("ItemCategoryName"))
                     Dgl1.Item(Col1ItemGroup, mRow).Tag = AgL.XNull(DtTemp.Rows(I)("ItemGroup"))
@@ -4599,6 +4667,10 @@ Public Class FrmPurchInvoiceDirect
                     Dgl1.Item(Col1ReferenceDocID, mRow).Value = AgL.XNull(DtTemp.Rows(I)("StockDocID"))
                     Dgl1.Item(Col1ReferenceTSr, mRow).Value = AgL.XNull(DtTemp.Rows(I)("StockTSr"))
                     Dgl1.Item(Col1ReferenceSr, mRow).Value = AgL.XNull(DtTemp.Rows(I)("StockSr"))
+
+                    Dim DrItemTypeSetting As DataRow
+                    DrItemTypeSetting = FItemTypeSettings(Dgl1(Col1ItemType, mRow).Tag)
+                    Dgl1(Col1DiscountCalculationPattern, mRow).Value = AgL.XNull(DrItemTypeSetting("DiscountCalculationPatternPurchase"))
 
                 Next
 

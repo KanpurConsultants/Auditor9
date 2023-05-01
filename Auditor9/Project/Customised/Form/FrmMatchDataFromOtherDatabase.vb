@@ -332,7 +332,7 @@ Public Class FrmMatchDataFromOtherDatabase
                     FROM PurchInvoice H
                     LEFT JOIN PurchInvoiceDetail L ON L.DocID = H.DocID 
                     LEFT JOIN Voucher_Type Vt On H.V_Type = Vt.V_Type
-                    Where Vt.NCat = '" & Ncat.PurchaseInvoice & "'"
+                    Where Vt.NCat = Vt.NCat "
         mQry = mQry & " AND Date(H.V_Date) >= " & AgL.Chk_Date(CDate(DglMain.Item(Col1Value, rowDataSyncFromDate).Value).ToString("s")) & ""
         DtExternalData_PurchInvoice = AgL.FillData(mQry, Connection_ExternalDatabase).Tables(0)
 
@@ -351,7 +351,7 @@ Public Class FrmMatchDataFromOtherDatabase
                     LEFT JOIN Voucher_Type Vt On H.V_Type = Vt.V_Type
                     LEFT JOIN SubGroup Sg On H.BillToParty = Sg.SubCode
                     LEFT JOIN SubGroup Sg1 ON H.SaleToParty = Sg1.SubCode 
-                    Where Vt.NCat = '" & Ncat.SaleInvoice & "'"
+                    Where Vt.NCat = Vt.NCat "
         mQry = mQry & " AND Date(H.V_Date) >= " & AgL.Chk_Date(CDate(DglMain.Item(Col1Value, rowDataSyncFromDate).Value).ToString("s")) & ""
         DtExternalData_SaleInvoice = AgL.FillData(mQry, Connection_ExternalDatabase).Tables(0)
 

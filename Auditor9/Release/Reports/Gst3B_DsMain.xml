@@ -1,13 +1,13 @@
 <?xml version="1.0" standalone="yes"?>
 <NewDataSet>
   <Table>
-    <CompanySalesTaxNo>09ATDPS6186M1ZT</CompanySalesTaxNo>
-    <CompanyName>Shiva Saree Center</CompanyName>
-    <Year>2021-2022</Year>
-    <MonthName>August</MonthName>
-    <OutTaxableSuppOtherThanZeroTotalTaxablevalue>363871.38</OutTaxableSuppOtherThanZeroTotalTaxablevalue>
-    <OutTaxableSuppOtherThanZeroIntegratedTax>0</OutTaxableSuppOtherThanZeroIntegratedTax>
-    <OutTaxableSuppOtherThanZeroCentralTax>9096.82</OutTaxableSuppOtherThanZeroCentralTax>
+    <CompanySalesTaxNo>09AAXCS4102R1ZH</CompanySalesTaxNo>
+    <CompanyName>SHYAMA SHYAM FABRICS PVT. LTD.</CompanyName>
+    <Year>2022-2023</Year>
+    <MonthName>March</MonthName>
+    <OutTaxableSuppOtherThanZeroTotalTaxablevalue>5502386.77</OutTaxableSuppOtherThanZeroTotalTaxablevalue>
+    <OutTaxableSuppOtherThanZeroIntegratedTax>152903.49</OutTaxableSuppOtherThanZeroIntegratedTax>
+    <OutTaxableSuppOtherThanZeroCentralTax>62528.23</OutTaxableSuppOtherThanZeroCentralTax>
     <OutTaxableSuppOtherThanZeroCess>0</OutTaxableSuppOtherThanZeroCess>
     <OutTaxableSuppZeroTotalTaxablevalue>0</OutTaxableSuppZeroTotalTaxablevalue>
     <OutTaxableSuppZeroIntegratedTax>0</OutTaxableSuppZeroIntegratedTax>
@@ -30,8 +30,8 @@
     <ISDIntegratedTax>0</ISDIntegratedTax>
     <ISDCentralTax>0</ISDCentralTax>
     <ISDCess>0</ISDCess>
-    <AllOtherItcIntegratedTax>33185.09</AllOtherItcIntegratedTax>
-    <AllOtherItcCentralTax>315</AllOtherItcCentralTax>
+    <AllOtherItcIntegratedTax>4480.97</AllOtherItcIntegratedTax>
+    <AllOtherItcCentralTax>139513.37</AllOtherItcCentralTax>
     <AllOtherItcCess>0</AllOtherItcCess>
     <IneligibleITCIntegratedTax>0</IneligibleITCIntegratedTax>
     <IneligibleITCCentralTax>0</IneligibleITCCentralTax>

@@ -545,6 +545,12 @@ Public Class ClsReports
                     ReportFrm.CreateHelpGrid("VoucherType", "Voucher Type", FrmRepDisplay.FieldFilterDataType.StringType, FrmRepDisplay.FieldDataType.MultiSelection, mHelpVoucherTypeQry)
                     ReportFrm.CreateHelpGrid("Division", "Division", FrmRepDisplay.FieldFilterDataType.StringType, FrmRepDisplay.FieldDataType.MultiSelection, mHelpDivisionQry)
                     ReportFrm.CreateHelpGrid("Site", "Site", FrmRepDisplay.FieldFilterDataType.StringType, FrmRepDisplay.FieldDataType.MultiSelection, mHelpSiteQry)
+                    mQry = "Select 'All' as Code, 'All' as Name                             
+                            Union All Select 'A' as Code, 'Only Add' as Name 
+                            Union All Select 'E' as Code, 'Only Edit' as Name 
+                            Union All Select 'D' as Code, 'Only Delete' as Name 
+                            Union All Select 'P' as Code, 'Only Print' as Name "
+                    ReportFrm.CreateHelpGrid("Action", "Action", FrmRepDisplay.FieldFilterDataType.StringType, FrmRepDisplay.FieldDataType.SingleSelection, mQry, "All")
             End Select
         Catch ex As Exception
             MsgBox(ex.Message)
@@ -2793,7 +2799,7 @@ Public Class ClsReports
                 ElseIf ReportFrm.FGetText(0) = "Party Wise Summary" Then
                     mQry = " Select VMain.Subcode || '^' || VMain.Div_Code  As SearchCode, Max(VMain.PartyName) As [Party], Max(VMain.PartyCity) as City, 
                         IfNull(Max(Party.Mobile),'') || (Case  When IfNull(Max(Party.Phone),'')='' Then '' Else ', ' || IfNull(Max(Party.Phone),'')  End)  as ContactNo, 
-                        Max(Division.ManualCode) as Division, Max(Agent.Name) as AgentName,
+                        Max(VPartyGST.SalesTaxNo) as GstNo, Max(Division.ManualCode) as Division, Max(Agent.Name) as AgentName,
                         sum(VMain.PendingAmt) as [Amount], Sum(VMain.AmtDay2) As [Amount GE " & mLeavergeDays.ToString & " Days],
                         Max(Cast(VMain.DaysDiff as Int)) As FirstBillAge 
                         From (" & mQry & ") As VMain
@@ -2801,6 +2807,9 @@ Public Class ClsReports
                         Left Join Subgroup Party On VMain.Subcode  COLLATE DATABASE_DEFAULT = Party.SubCode  COLLATE DATABASE_DEFAULT
                         Left Join (Select SILTV.Subcode, SILTV.Div_Code, Max(SILTV.Agent) as Agent From SubgroupSiteDivisionDetail SILTV  Group By SILTV.Subcode, SILTV.Div_Code) as LTV On Party.Subcode  COLLATE DATABASE_DEFAULT = LTV.Subcode  COLLATE DATABASE_DEFAULT And VMain.Div_Code COLLATE DATABASE_DEFAULT = LTV.Div_Code  COLLATE DATABASE_DEFAULT                    
                         Left Join viewHelpSubgroup Agent On LTV.Agent  COLLATE DATABASE_DEFAULT = Agent.Code  COLLATE DATABASE_DEFAULT
+                        LEFT JOIN (Select Subcode, RegistrationNo As SalesTaxNo
+                            From SubgroupRegistration 
+                            Where RegistrationType = 'Sales Tax No') As VPartyGST On VMain.Subcode = VPartyGST.SubCode
                         GROUP By VMain.Subcode, VMain.Div_Code
                         Having Sum(VMain.AmtDay2)<>0
                         Order By [Party]"
@@ -3192,7 +3201,7 @@ Public Class ClsReports
                 ElseIf ReportFrm.FGetText(0) = "Party Wise Summary" Then
                     mQry = " Select VMain.Subcode || '^' || VMain.Div_Code  As SearchCode, Max(VMain.PartyName) As [Party], Max(VMain.PartyCity) as City, 
                         IfNull(Max(Party.Mobile),'') || (Case  When IfNull(Max(Party.Phone),'')='' Then '' Else ', ' || IfNull(Max(Party.Phone),'')  End)  as ContactNo, 
-                        Max(Division.ManualCode) as Division, Max(Agent.Name) as AgentName,
+                        Max(VPartyGST.SalesTaxNo) as GstNo, Max(Division.ManualCode) as Division, Max(Agent.Name) as AgentName,
                         sum(VMain.PendingAmt) as [Amount], Sum(VMain.AmtDay2) As [Amount GE " & mLeavergeDays.ToString & " Days],
                         Max(Cast(VMain.DaysDiff as Int)) As FirstBillAge 
                         From (" & mQry & ") As VMain
@@ -3200,6 +3209,9 @@ Public Class ClsReports
                         Left Join Subgroup Party On VMain.Subcode  COLLATE DATABASE_DEFAULT = Party.SubCode  COLLATE DATABASE_DEFAULT
                         Left Join (Select SILTV.Subcode, SILTV.Div_Code, Max(SILTV.Agent) as Agent From SubgroupSiteDivisionDetail SILTV  Group By SILTV.Subcode, SILTV.Div_Code) as LTV On Party.Subcode  COLLATE DATABASE_DEFAULT = LTV.Subcode  COLLATE DATABASE_DEFAULT And VMain.Div_Code COLLATE DATABASE_DEFAULT = LTV.Div_Code  COLLATE DATABASE_DEFAULT                    
                         Left Join viewHelpSubgroup Agent On LTV.Agent  COLLATE DATABASE_DEFAULT = Agent.Code  COLLATE DATABASE_DEFAULT
+                        LEFT JOIN (Select Subcode, RegistrationNo As SalesTaxNo
+                            From SubgroupRegistration 
+                            Where RegistrationType = 'Sales Tax No') As VPartyGST On VMain.Subcode = VPartyGST.SubCode
                         GROUP By VMain.Subcode, VMain.Div_Code
                         Having Sum(VMain.AmtDay2)<>0
                         Order By [Party]"
@@ -4698,13 +4710,23 @@ Public Class ClsReports
             mCondStr = mCondStr & ReportFrm.GetWhereCondition("H.Div_Code", 4).Replace("''", "'")
             mCondStr = mCondStr & ReportFrm.GetWhereCondition("H.Site_Code", 5).Replace("''", "'")
 
+            If ReportFrm.FilterGrid.Item(GFilter, 6).Value = "Only Add" Then
+                mCondStr = mCondStr & " AND H.U_AE ='A' "
+            ElseIf ReportFrm.FilterGrid.Item(GFilter, 6).Value = "Only Edit" Then
+                mCondStr = mCondStr & " AND H.U_AE ='E' "
+            ElseIf ReportFrm.FilterGrid.Item(GFilter, 6).Value = "Only Delete" Then
+                mCondStr = mCondStr & " AND H.U_AE ='D' "
+            ElseIf ReportFrm.FilterGrid.Item(GFilter, 6).Value = "Only Print" Then
+                mCondStr = mCondStr & " AND H.U_AE ='P' "
+            End If
+
             mQry = " SELECT H.DocId As SearchCode, Sm.Name AS SiteName, D.Div_Name AS DivisionName,   
                     IfNull(Vt.Description,H.EntryPoint) AS EntryType, CASE WHEN H.EntryPoint ='Item Master' THEN I.Description WHEN H.EntryPoint ='Sales Entry' THEN SI.ManualRefNo ELSE H.ManualRefNo END AS ManualRefNo, H.V_Date AS EntryDate, Sg.Name AS PartyName, 
                     H.MachineName, H.U_Name As UserName, H.U_EntDt As ActionDateTime,
                     CASE WHEN H.U_AE = 'A' THEN 'Add'
 	                     WHEN H.U_AE = 'E' THEN 'Edit'
 	                     WHEN H.U_AE = 'D' THEN 'Delete'
-	                     WHEN H.U_AE = 'P' THEN 'Print' END AS Action 
+	                     WHEN H.U_AE = 'P' THEN 'Print' END AS Action, H.Modifications
                     FROM LogTable H
                     LEFT JOIN Item I ON I.Code = H.DocId 
                     LEFT JOIN SaleInvoice  SI ON SI.DocId = H.DocId 

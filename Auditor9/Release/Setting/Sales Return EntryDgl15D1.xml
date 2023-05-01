@@ -186,14 +186,14 @@
     <Name>Disc. %</Name>
     <Index>26</Index>
     <Width>50</Width>
-    <Visible>False</Visible>
+    <Visible>True</Visible>
     <AggregateFunction />
   </Column>
   <Column>
     <Name>Disc. Amt</Name>
     <Index>27</Index>
     <Width>100</Width>
-    <Visible>False</Visible>
+    <Visible>True</Visible>
     <AggregateFunction />
   </Column>
   <Column>
@@ -505,28 +505,28 @@
     <AggregateFunction />
   </Column>
   <Column>
-    <Name>Special Addition @</Name>
+    <Name>Special Discount @</Name>
     <Index>72</Index>
     <Width>100</Width>
     <Visible>False</Visible>
     <AggregateFunction />
   </Column>
   <Column>
-    <Name>Special Addition</Name>
+    <Name>Special Discount</Name>
     <Index>73</Index>
     <Width>100</Width>
     <Visible>False</Visible>
     <AggregateFunction />
   </Column>
   <Column>
-    <Name>Special Addition PostAc</Name>
+    <Name>Special Discount PostAc</Name>
     <Index>74</Index>
     <Width>100</Width>
     <Visible>False</Visible>
     <AggregateFunction />
   </Column>
   <Column>
-    <Name>Special Addition ContraAc</Name>
+    <Name>Special Discount ContraAc</Name>
     <Index>75</Index>
     <Width>100</Width>
     <Visible>False</Visible>
@@ -536,7 +536,7 @@
     <Name>Taxable Amount</Name>
     <Index>76</Index>
     <Width>100</Width>
-    <Visible>False</Visible>
+    <Visible>True</Visible>
     <AggregateFunction />
   </Column>
   <Column>
@@ -557,14 +557,14 @@
     <Name>IGST @</Name>
     <Index>79</Index>
     <Width>100</Width>
-    <Visible>False</Visible>
+    <Visible>True</Visible>
     <AggregateFunction />
   </Column>
   <Column>
     <Name>IGST</Name>
     <Index>80</Index>
     <Width>100</Width>
-    <Visible>False</Visible>
+    <Visible>True</Visible>
     <AggregateFunction />
   </Column>
   <Column>
@@ -585,14 +585,14 @@
     <Name>CGST @</Name>
     <Index>83</Index>
     <Width>100</Width>
-    <Visible>False</Visible>
+    <Visible>True</Visible>
     <AggregateFunction />
   </Column>
   <Column>
     <Name>CGST</Name>
     <Index>84</Index>
     <Width>100</Width>
-    <Visible>False</Visible>
+    <Visible>True</Visible>
     <AggregateFunction />
   </Column>
   <Column>
@@ -613,14 +613,14 @@
     <Name>SGST @</Name>
     <Index>87</Index>
     <Width>100</Width>
-    <Visible>False</Visible>
+    <Visible>True</Visible>
     <AggregateFunction />
   </Column>
   <Column>
     <Name>SGST</Name>
     <Index>88</Index>
     <Width>100</Width>
-    <Visible>False</Visible>
+    <Visible>True</Visible>
     <AggregateFunction />
   </Column>
   <Column>
@@ -641,7 +641,7 @@
     <Name>Sub Total 1</Name>
     <Index>91</Index>
     <Width>100</Width>
-    <Visible>False</Visible>
+    <Visible>True</Visible>
     <AggregateFunction />
   </Column>
   <Column>

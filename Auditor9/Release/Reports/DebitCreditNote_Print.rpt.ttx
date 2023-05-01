@@ -7,37 +7,38 @@ SiteStateCode	string	255	07
 SiteStateName	string	255	Delhi	
 DocID	string	255	D4   CNC 2022       1	
 Sr	number	1	
-V_Date	datetime	31/Jan/2023 12:00:00 AM	
+V_Date	datetime	06/Mar/2023 12:00:00 AM	
 Voucher_Type	string	255	CREDIT NOTE (Customers)	
 NCat	string	255	CNC	
-InvoiceNo	string	255	SSF-DLI-CNC1	
-PartyName	string	255	GITA THE READYMADE SHOP-HATA	
-PartyAddress	string	255	MAIN MARKET,
-KHUSHINAGAR,	
-CityName	string	255	HATA	
-PartyPincode	string	255	274203	
+InvoiceNo	string	255	SSVLLP-DLI-1	
+PartyName	string	255	BHOLA NATH KRISHNA MOHAN PRASAD -SAHJANWA	
+PartyAddress	string	255	MANJHARIYA ,GHAFHSARA
+BAZAR SAHJANWA (U,P)
+	
+CityName	string	255	SAHJANWA	
+PartyPincode	string	255	273209	
 StateCode	string	255	09	
 StateName	string	255	Uttar Pradesh	
-PartyMobile	string	255	9838250254	
+PartyMobile	string	255	9792956716	
 ContactPerson	string	255		
-PartySalesTaxNo	string	255	09CLUPK1909D1ZW	
+PartySalesTaxNo	string	255	09AFMPP2796P1ZA	
 PartyAadharNo	string	255		
 PartyPanNo	string	255		
 TermsAndConditions	string	255		
 ReferenceNo	string	255		
 LineAccountName	string	255		
-LineSpecification	string	255	629	
+LineSpecification	string	255	38	
 HSN	string	255	62031200	
-SalesTaxGroupItem	string	255	GST 12%	
-GrossTaxRate	number	12	
+SalesTaxGroupItem	string	255	GST 5%	
+GrossTaxRate	number	5	
 Qty	number	0	
 Rate	number	0	
 Unit	string	255		
 UnitDecimalPlaces	number		
-Amount	number	1919.64	
-Taxable_Amount	number	1919.64	
-Tax1_Per	number	12	
-Tax1	number	230.36	
+Amount	number	4867.72	
+Taxable_Amount	number	4867.72	
+Tax1_Per	number	5	
+Tax1	number	243.39	
 Tax2_Per	number	0	
 Tax2	number	0	
 Tax3_Per	number	0	
@@ -46,18 +47,18 @@ Tax4_Per	number	0
 Tax4	number	0	
 Tax5_Per	number	0	
 Tax5	number	0	
-Net_Amount	number	2150	
-LRemarks	string	255	RATE DIFFERENCE(BLACK JACK)	
+Net_Amount	number	5111	
+LRemarks	string	255	2 PERCENT EXTRA DISCOUNT AGAINST BILL NO.:33,36,38	
 HRemarks	string	255		
-H_Gross_Amount	number	1919.64	
+H_Gross_Amount	number	4867.72	
 EInvoiceIRN	string	255		
 EInvoiceACKNo	string	255		
 EInvoiceACKDate	datetime		
 H_SpecialDiscount_Per	number	0	
 H_SpecialDiscount	number	0	
-H_Taxable_Amount	number	1919.64	
+H_Taxable_Amount	number	4867.72	
 H_Tax1_Per	number	0	
-H_Tax1	number	230.36	
+H_Tax1	number	243.39	
 H_Tax2_Per	number	0	
 H_Tax2	number	0	
 H_Tax3_Per	number	0	
@@ -70,9 +71,9 @@ H_Deduction_Per	number	0
 H_Deduction	number	0	
 H_Other_Charge_Per	number	0	
 H_Other_Charge	number	0	
-Round_Off	number	0	
-H_Net_Amount	number	2150	
-Default_BankAccountDetail	string	255	Bank : YES Bank, Branch : CIVIL LINES, KANPUR,<BR>Beneficiary : Shyama Shyam Fabrics Pvt. Ltd.,<BR>A/c No.: 007384600000880, IFSC : YESB0000073	
+Round_Off	number	0.11	
+H_Net_Amount	number	5111	
+Default_BankAccountDetail	string	255	Bank : HDFC BANK LTD, Branch : LATOUSE ROAD, KANPUR,<BR>Beneficiary : Shyama Shyam Ventures LLP.,<BR>A/c No.: 50200078285760, IFSC : HDFC0009597	
 DocumentPrintHeaderPattern	string	255	Center Aligned	
 PrintedByUser	string	255	SUPER	
 EntryByUser	string	255	ARUN BAJPA	

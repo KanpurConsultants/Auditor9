@@ -1,52 +1,49 @@
 ; Field definition file for table: ADORecordset
 Copies	string	255	1	
 CopyPrintingCaption	string	255		
-DocNoCaption	string	255	Invoice No.	
-DocDateCaption	string	255	Invoice Date	
-SiteStateCode	string	255	24	
-SiteStateName	string	255	Gujarat	
-DocID	string	255	D2   WSI 2022    2932	
+DocNoCaption	string	255	Doc.No.	
+DocDateCaption	string	255	Doc.Date	
+SiteStateCode	string	255	09	
+SiteStateName	string	255	Uttar Pradesh	
+DocID	string	255	D1    SR 2022    5211	
 Sr	number	1	
-V_Date	datetime	08/Feb/2023 12:00:00 AM	
+V_Date	datetime	02/Feb/2023 12:00:00 AM	
 DeliveryDate	datetime		
-Voucher_Type	string	255	W Sale Invoice	
-NCat	string	255	SI	
-InvoiceNo	string	255	7447	
-RateType	string	255		
-AgentName	string	255		
+Voucher_Type	string	255	Sale Return	
+NCat	string	255	SR	
+InvoiceNo	string	255	SR-5211	
+RateType	string	255	Super Net	
+DocumentPrintShowRateType	string	255	Show If Not Blank	
+AgentName	string	255	SURESH KUMAR PAHLAJANI	
 AgentCaption	string	255	Agent	
-SaleToPartyName	string	255	NIRMAL HANDLOOOM-MUZAFFERPUR	
-SaleToPartyCode	string	255	1603	
-SaleToPartyAddress	string	255	SHEETLA GALI,
-SUTTA PATTI,	
-CityName	string	255	MUZAFFERPUR	
-SaleToPartyPincode	string	255		
-StateCode	string	255	10	
-StateName	string	255	Bihar	
-SaleToPartyMobile	string	255	8488050514	
-ContactPerson	string	255		
-SaleToPartySalesTaxNo	string	255	10ABZPN5344G1ZH	
+BillToPartyNature	string	255	Customer	
+SaleToPartyName	string	255	VINOD KUMAR CLOTH MERCHANT	
+SaleToPartyAddress	string	255	WARD NO 11 SUPER MARKET KHAGA (FATEPUR)	
+CityName	string	255	KHAGA	
+SaleToPartyPincode	string	255	212655	
+StateCode	string	255	09	
+StateName	string	255	Uttar Pradesh	
+SaleToPartyMobile	string	255	8601856365	
+ContactPerson	string	255	VINOD KUMAR	
+SaleToPartySalesTaxNo	string	255	09ALYPK3016D1Z0	
 SaleToPartyAadharNo	string	255		
-SaleToPartyPanNo	string	255		
-ShipToPartyName	string	255	NIRMAL HANDLOOOM-MUZAFFERPUR	
-ShipToPartyManualCode	string	255	1603	
-ShipToPartyAddress	string	255	SHEETLA GALI,
-SUTTA PATTI,	
-ShipToPartyCity	string	255	MUZAFFERPUR	
-ShipToPartyPincode	string	255		
-ShipToPartyStateCode	string	255	10	
-ShipToPartyStateName	string	255	Bihar	
-ShipToPartyMobile	string	255	8488050514	
-ShipToPartySalesTaxNo	string	255	10ABZPN5344G1ZH	
+SaleToPartyPanNo	string	255	ALYPK3016D	
+ShipToPartyName	string	255	VINOD KUMAR CLOTH MERCHANT	
+ShipToPartyAddress	string	255	WARD NO 11 SUPER MARKET KHAGA (FATEPUR)	
+ShipToPartyCity	string	255	KHAGA	
+ShipToPartyPincode	string	255	212655	
+ShipToPartyStateCode	string	255	09	
+ShipToPartyStateName	string	255	Uttar Pradesh	
+ShipToPartyMobile	string	255	8601856365	
+ShipToPartySalesTaxNo	string	255	09ALYPK3016D1Z0	
 ShipToPartyAadharNo	string	255		
-ShipToPartyPanNo	string	255		
+ShipToPartyPanNo	string	255	ALYPK3016D	
 ShipToAddress	string	255		
-TermsAndConditions	string	255	(1) Payment within <CreditDays> days from date of Invoice. <BR>(2) Overdue Interest @ <Default_DebtorsInterestRate> P.A. after due date. <BR>(3) Goods dispatched by transport at the owner risk. <BR>(4) All disputes are subject to <CompanyCity> jurisdiction only.	
-TransporterName	string	255	ANJANI AIR CARGO-ADI	
-LrNo	string	255	1011	
-LrDate	datetime	09/Feb/2023 12:00:00 AM	
-NoOfBales	number	10	
-PrivateMark	string	255	DABBO	
+TermsAndConditions	string	255	<b>1.</b> Goods once sold will not be taken back. <b>2.</b> No Guarantee in the Age of Fashion. <b>3.</b> Interest @ 24% per annum will be charge after 30 days from the date of bill. <b>4.</b> All disputes subject to Kanpur Jurisdiction OR disputes will be settle through Cawnpore Kapda Committee Arbitration Board which will be abide by the both parties	
+TransporterName	string	255	NEW KHAGA ROAD LINES, KANPUR	
+LrNo	string	255		
+LrDate	datetime		
+PrivateMark	string	255		
 Weight	number	0	
 Freight	number	0	
 ChargedWeight	number	0	
@@ -59,27 +56,25 @@ PreCarriageBy	string	255
 PreCarriagePlace	string	255		
 BookedFrom	string	255		
 BookedTo	string	255		
-Destination	string	255	MUZAFFERPUR	
+Destination	string	255		
 DescriptionOfGoods	string	255		
 DescriptionOfPacking	string	255		
-ReferenceNo	string	255		
-ContraDocNo	string	255	8532	
-ContraDocNoCsv	string	255	8532	
-ItemName	string	255	VISHAL SALWAR SUIT	
-ItemGroupName	string	255		
-ItemCatName	string	255	READYMADE SUIT 	
-ItemSpecification	string	255		
+TransporterSalesTaxNo	string	255	09BKEPK1053L1Z3	
+ReferenceNo	string	255	SI11132	
+ItemName	string	255	SIMRAN           [SHYAM FABRICS(SHAGUN-807) | SAREE]	
+ItemGroupName	string	255	S-ENT-807 DYD	
+ItemCatName	string	255	SAREE	
+ItemSpecification	string	255	SIMRAN 	
 InvoiceLineSpecification	string	255		
-HSN	string	255		
+HSN	string	255	540752	
 MaintainStockYn	boolean	True	
-SalesTaxGroupItem	string	255	GST 0%	
-GrossTaxRate	number	0	
-Pcs	number	0	
-Qty	number	39	
-Rate	number	1587.69230769231	
-Unit	string	255	Nos	
-UnitDecimalPlaces	number		
-DiscountCalculationPattern	string	255		
+SalesTaxGroupItem	string	255	GST 5%	
+GrossTaxRate	number	5	
+Pcs	number	4	
+Qty	number	4	
+Rate	number	995	
+Unit	string	255	Pcs	
+UnitDecimalPlaces	number	0	
 DiscountPer	number	0	
 DiscountAmount	number	0	
 AdditionalDiscountPer	number	0	
@@ -87,35 +82,34 @@ AdditionalDiscountAmount	number	0
 AdditionPer	number	0	
 AdditionAmount	number	0	
 TotalDiscount	number	0	
-AmountBeforeDiscount	number	61920	
-Amount	number	61920	
-Taxable_Amount	number	61920	
+AmountBeforeDiscount	number	3980	
+Amount	number	3980	
+Taxable_Amount	number	3980	
 Tax1_Per	number	0	
 Tax1	number	0	
-Tax2_Per	number	0	
-Tax2	number	0	
-Tax3_Per	number	0	
-Tax3	number	0	
+Tax2_Per	number	2.5	
+Tax2	number	99.5	
+Tax3_Per	number	2.5	
+Tax3	number	99.5	
 Tax4_Per	number	0	
 Tax4	number	0	
 Tax5_Per	number	0	
 Tax5	number	0	
-Net_Amount	number	62585.4	
-LRemarks	string	255	DABBO
-	
-HRemarks	string	255	Pakka Invoice No :  And Invoice Amount : 0	
+Net_Amount	number	4178.96	
+LRemarks	string	255		
+HRemarks	string	255		
 H_TotalDiscount	number	0	
-H_AmountBeforeDiscount	number	651395	
-H_Gross_Amount	number	651395	
+H_AmountBeforeDiscount	number	15182	
+H_Gross_Amount	number	15182	
 H_SpecialDiscount_Per	number	0	
 H_SpecialDiscount	number	0	
-H_Taxable_Amount	number	651395	
+H_Taxable_Amount	number	15182	
 H_Tax1_Per	number	0	
 H_Tax1	number	0	
 H_Tax2_Per	number	0	
-H_Tax2	number	0	
+H_Tax2	number	379.61	
 H_Tax3_Per	number	0	
-H_Tax3	number	0	
+H_Tax3	number	379.61	
 H_Tax4_Per	number	0	
 H_Tax4	number	0	
 H_Tax5_Per	number	0	
@@ -123,19 +117,24 @@ H_Tax5	number	0
 H_Deduction_Per	number	0	
 H_Deduction	number	0	
 H_Other_Charge_Per	number	0	
-H_Other_Charge	number	7000	
-Round_Off	number	0	
-H_Net_Amount	number	658395	
-EInvoiceIRN	string	255		
-EInvoiceACKNo	string	255		
-EInvoiceACKDate	datetime		
-Default_BankAccountDetail	string	255		
+H_Other_Charge	number	0	
+Round_Off	number	0.22	
+H_Net_Amount	number	15941	
+EInvoiceIRN	string	255	41a43ce26f967d3a53274d013eb4f69291d851ff2fb4406523426b502205b771	
+EInvoiceAckNo	string	255	142312255748732	
+EInvoiceAckDate	datetime	03/Feb/2023 7:25:00 PM	
+Default_BankAccountDetail	string	255	Bank Detail : 	HDFC A/c : 50200003154727    IFSC : HDFC0002006	
 DocumentPrintHeaderPattern	string	255	Center Aligned	
 DimDetail	string	255		
 PrintedByUser	string	255	SUPER	
-EntryByUser	string	255	ranjana	
-PrintTitle	string	255	TAX INVOICE	
-PurchInvoiceNo	string	255		
+EntryByUser	string	255	sameer	
+PrintTitle	string	255	Sale Return	
+DocumentPrintShowPrintDateTimeYn	string	255	1	
+DocumentPrintShowPartyBalance	string	255	Hide	
+TodaysOpeningBalance	number	0	
+TodaysDr	number	0	
+TodaysCr	number	0	
+TodaysClosingBalance	number	0	
 CompanyLogo	BLOB		
 CompanyAuthorisedSignature	BLOB		
 EInvoiceQrCode	BLOB		

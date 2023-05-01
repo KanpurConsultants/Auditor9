@@ -328,7 +328,7 @@ Public Class FrmSaleInvoiceW_OnlyW
 
                     mQry = "Select Si.DocId As SaleInvoiceDocId, Sg.Name As SaleToPartyName, Max(Sg1.Name) As BillToPartyName, Max(Sg2.Name) As ShipToPartyName,
                             Si.DocId As InvoiceDocId, Si.ManualRefNo As invoiceNo, Si.V_Type As InvoiceV_Type, Si.V_Date As InvoiceDate, 
-                            Ig.Code As ItemGroup, Ig.Description As ItemGroupDesc,
+                            Ig.Code As ItemGroup, Ig.Description As ItemGroupDesc, Max(H.Tags) Tags,
                             Max(Si.SaleToParty) As SaleToParty, Max(Si.BillToParty) As BillToParty, 
                             Max(H.ShipToParty) As ShipToParty, Max(Si.Site_Code) As Site_Code, 
                             Max(Si.Div_Code) As Div_Code, Max(Si.Net_Amount) As Amount,
@@ -367,6 +367,7 @@ Public Class FrmSaleInvoiceW_OnlyW
                                 '    BtnOk.Enabled = True
                                 'End If
 
+                                TxtTag.Text = AgL.XNull(DtTemp.Rows(I)("Tags"))
 
                                 Dgl2.Rows.Add()
                                 Dgl2.Item(ColSNo, Dgl2.Rows.Count - 1).Value = Dgl2.Rows.Count

@@ -38,11 +38,29 @@ Public Class FrmCompany
         Dim DTTemp As New DataTable
         Dim I As Integer
         Dim CondStr As String = " Where 1 = 1 "
+        Dim mQry As String = ""
+        Dim DivName As String
+
+        mQry = "Select Name From Subgroup With (NoLock) Where Subcode = 'D' "
+        'If AgL.PubServerName <> "" Then
+        DivName = AgL.Dman_Execute(mQry, AgL.GcnMain).ExecuteScalar()
+        'Else
+        '    DivName = AgL.Dman_Execute(mQry, AgL.GCn).ExecuteScalar()
+        'End If
 
         FGMain.Rows.Clear()
-        DTTemp = AgL.FillData("Select Comp_Code,Comp_Name,CYear, City From Company 
+        If DivName = "SHYAMA SHYAM FABRICS PVT. LTD." Or DivName = "SHYAMA SHYAM VENTURES LLP" Then
+            Dim Datetime As DateTime = DateTime.Now.AddDays(30)
+            mQry = "Select Comp_Code,Comp_Name,CYear, City From Company 
+                        Where Date(Start_Dt) <= " & AgL.Chk_Date(CDate(Datetime).ToString("s")) & "
+                        Order By Start_Dt Desc"
+        Else
+            mQry = "Select Comp_Code,Comp_Name,CYear, City From Company 
                         Where Date(Start_Dt) <= " & AgL.Chk_Date(CDate(DateTime.Now).ToString("s")) & "
-                        Order By Start_Dt Desc", AgL.GcnMain).TABLES(0)
+                        Order By Start_Dt Desc"
+        End If
+
+        DTTemp = AgL.FillData(mQry, AgL.GcnMain).TABLES(0)
 
         If DTTemp.Rows.Count = 0 Then
             MsgBox("Company Detail Not Exists!..." & vbCrLf & "Contact to System Administrator!...")

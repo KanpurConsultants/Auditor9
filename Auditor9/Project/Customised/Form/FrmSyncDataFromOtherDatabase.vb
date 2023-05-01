@@ -285,7 +285,7 @@ Public Class FrmSyncDataFromOtherDatabase
         If IsApplicableImport_SaleInvoice = True Then
             FLoadSale()
             FDeleteSale(DtExternalData_SaleInvoice, Ncat.SaleInvoice)
-            FUpdateSale(DtExternalData_SaleInvoice)
+            'FUpdateSale(DtExternalData_SaleInvoice)
             FAddSale(DtExternalData_SaleInvoice)
         End If
 
@@ -299,7 +299,7 @@ Public Class FrmSyncDataFromOtherDatabase
 
         If IsApplicableImport_SaleReturn = True Then
             FLoadSale()
-            FUpdateSale(DtExternalData_SaleReturn)
+            'FUpdateSale(DtExternalData_SaleReturn)
             FAddSale(DtExternalData_SaleReturn)
             FDeleteSale(DtExternalData_SaleReturn, Ncat.SaleReturn)
         End If
@@ -311,13 +311,13 @@ Public Class FrmSyncDataFromOtherDatabase
 
         If IsApplicableImport_PurchInvoice = True Then
             FLoadPurch()
-            FUpdatePurch(DtExternalData_PurchInvoice)
+            'FUpdatePurch(DtExternalData_PurchInvoice)
             FAddPurch(DtExternalData_PurchInvoice)
         End If
 
         If IsApplicableImport_PurchReturn = True Then
             FLoadPurch()
-            FUpdatePurch(DtExternalData_PurchReturn)
+            'FUpdatePurch(DtExternalData_PurchReturn)
             FAddPurch(DtExternalData_PurchReturn)
             FDeletePurch(DtExternalData_PurchReturn, Ncat.PurchaseReturn)
         End If
@@ -329,7 +329,7 @@ Public Class FrmSyncDataFromOtherDatabase
 
         If IsApplicableImport_LedgerHead = True Then
             FLoadLedgerHead()
-            FUpdateLedgerHead(DtExternalData_LedgerHead)
+            'FUpdateLedgerHead(DtExternalData_LedgerHead)
             FAddLedgerHead(DtExternalData_LedgerHead)
             FDeleteLedgerHead(DtExternalData_LedgerHead)
         End If
@@ -1455,7 +1455,7 @@ Public Class FrmSyncDataFromOtherDatabase
                             SaleInvoiceTable.Line_ItemCode = AgL.XNull(DtExternalData_Line.Rows(J)("Item"))
                         End If
                     Else
-                            SaleInvoiceTable.Line_ItemCode = FGetCodeFromOMSId(AgL.XNull(DtExternalData_Line.Rows(J)("Item")), ExportSiteCode, DtItem, "Code")
+                        SaleInvoiceTable.Line_ItemCode = FGetCodeFromOMSId(AgL.XNull(DtExternalData_Line.Rows(J)("Item")), ExportSiteCode, DtItem, "Code")
                     End If
 
                     SaleInvoiceTable.Line_ItemName = AgL.XNull(DtExternalData_Line.Rows(J)("ItemDesc"))
@@ -2490,7 +2490,7 @@ Public Class FrmSyncDataFromOtherDatabase
                 End If
             End If
         Else
-                DtRow = DtTable.Select("OMSId = '" & Code & "' ")
+            DtRow = DtTable.Select("OMSId = '" & Code & "' ")
         End If
 
         If DtRow.Length > 0 Then

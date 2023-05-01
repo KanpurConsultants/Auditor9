@@ -1,17 +1,17 @@
 ; Field definition file for table: ADORecordset
 Copies	string	255	1	
-CopyPrintingCaption	string	255	Original	
-DocNoCaption	string	255	Invoice No.	
-DocDateCaption	string	255	Invoice Date	
+CopyPrintingCaption	string	255		
+DocNoCaption	string	255	Doc.No.	
+DocDateCaption	string	255	Doc.Date	
 SiteStateCode	string	255	09	
 SiteStateName	string	255	Uttar Pradesh	
-DocID	string	255	D1   SIR 2022    1091	
+DocID	string	255	D1    SO 2023       1	
 Sr	number	1	
-V_Date	datetime	21/Jun/2022 12:00:00 AM	
+V_Date	datetime	12/Apr/2023 12:00:00 AM	
 DeliveryDate	datetime		
-Voucher_Type	string	255	Sale Invoice Retail	
-NCat	string	255	SI	
-InvoiceNo	string	255	SIR-1091	
+Voucher_Type	string	255	Sale Order	
+NCat	string	255	SO	
+InvoiceNo	string	255	SO-1	
 GenDocNo	string	255		
 AmsDocNo	string	255		
 AmsDocDate	datetime		
@@ -19,42 +19,43 @@ AmsDocNetAmount	number	0
 RateType	string	255		
 DocumentPrintShowRateType	string	255	Show If Not Blank	
 AgentName	string	255		
-SalesRepName	string	255	MANNAT	
-SalesRepCode	string	255	18	
+SalesRepName	string	255		
+SalesRepCode	string	255		
 AgentCaption	string	255	Agent	
-SaleToPartyName	string	255		
-SaleToPartyAddress	string	255		
-CityName	string	255	Kanpur	
-SaleToPartyPincode	string	255		
+SaleToPartyName	string	255	KISHORE STORE	
+SaleToPartyAddress	string	255	MAIN ROAD LALBANGLA	
+CityName	string	255	KANPUR	
+SaleToPartyPincode	string	255	208007	
 StateCode	string	255	09	
 StateName	string	255	Uttar Pradesh	
-SaleToPartyMobile	string	255		
+SaleToPartyMobile	string	255	9335052174	
 ContactPerson	string	255		
-SaleToPartySalesTaxNo	string	255		
+SaleToPartySalesTaxNo	string	255	09ASLPG5097Q1ZR	
 SaleToPartyAadharNo	string	255		
-SaleToPartyPanNo	string	255		
+SaleToPartyPanNo	string	255	ASLPG5097Q	
 SaleToPartyLicenseNo	string	255		
-ShipToPartyName	string	255		
-ShipToPartyAddress	string	255		
-ShipToPartyCity	string	255	Kanpur	
-ShipToPartyPincode	string	255		
+ShipToPartyName	string	255	KISHORE STORE	
+ShipToPartyAddress	string	255	MAIN ROAD LALBANGLA	
+ShipToPartyCity	string	255	KANPUR	
+ShipToPartyPincode	string	255	208007	
 ShipToPartyStateCode	string	255	09	
 ShipToPartyStateName	string	255	Uttar Pradesh	
-ShipToPartyMobile	string	255		
-ShipToPartySalesTaxNo	string	255		
+ShipToPartyMobile	string	255	9335052174	
+ShipToPartySalesTaxNo	string	255	09ASLPG5097Q1ZR	
 ShipToPartyAadharNo	string	255		
-ShipToPartyPanNo	string	255		
+ShipToPartyPanNo	string	255	ASLPG5097Q	
 ShipToPartyLicenseNo	string	255		
+TransporterSalesTaxNo	string	255		
 ShipToAddress	string	255		
-TermsAndConditions	string	255	(1) Check the goods before leaving counter. <BR>(2) All disputes are subject to <CompanyCity> jurisdiction only.	
-TransporterName	string	255		
+TermsAndConditions	string	255		
+TransporterName	string	255	BY E RIKSHA, KANPUR	
 LrNo	string	255		
 LrDate	datetime		
-NoOfBales	number		
+NoOfBales	number	0	
 PrivateMark	string	255		
-Weight	number		
-Freight	number		
-ChargedWeight	number		
+Weight	number	0	
+Freight	number	0	
+ChargedWeight	number	0	
 FreightType	string	255		
 RoadPermitNo	string	255		
 RoadPermitDate	datetime		
@@ -68,20 +69,20 @@ Destination	string	255
 DescriptionOfGoods	string	255		
 DescriptionOfPacking	string	255		
 ReferenceNo	string	255		
-BarcodeName	string	255	1699	
-ItemName	string	255	HKG-SE-NA-HALKI-SAREE-D1   ISS 2021     865	
-ItemGroupName	string	255	SE-NA-HALKI	
-ItemCatName	string	255	SAREE	
-ItemManualCode	string	255	D100096957	
-ItemSpecification	string	255	HKG	
+BarcodeName	string	255		
+ItemName	string	255	HALF SHIRT	
+ItemGroupName	string	255		
+ItemCatName	string	255	HALF SHIRT	
+ItemManualCode	string	255		
+ItemSpecification	string	255		
 InvoiceLineSpecification	string	255		
-HSN	string	255	540752	
+HSN	string	255	6105	
 MaintainStockYn	boolean	True	
-D1Spec	string	255		
-D2Spec	string	255		
-D3Spec	string	255		
+D1Spec	string	255	STAR +	
+D2Spec	string	255	20-ACENT ALEN HOUSE	
+D3Spec	string	255	ALEN HOUSE	
 D4Spec	string	255		
-SizeSpec	string	255		
+SizeSpec	string	255	20	
 ItemInvoiceGroupCode	string	255		
 ItemInvoiceGroupDesc	string	255		
 ItemTypeCaption	string	255	Item Type	
@@ -95,18 +96,18 @@ D3Caption	string	255	Design
 D4Caption	string	255	Width	
 SalesTaxGroupItem	string	255	GST 5%	
 GrossTaxRate	number	5	
-MRP	number	695	
+MRP	number	0	
 LotNo	string	255		
 ExpiryDate	datetime		
 ItemRemark1	string	255		
-Pcs	number	1	
-Qty	number	1	
-Rate	number	695	
+Pcs	number	10	
+Qty	number	10	
+Rate	number	115	
 ItemState	string	255		
 CatalogSpecification	string	255		
 CatalogSiteName	string	255		
 Unit	string	255	Pcs	
-UnitDecimalPlaces	number	0	
+UnitDecimalPlaces	number	2	
 DiscountPer	number	0	
 DiscountAmount	number	0	
 AdditionalDiscountPer	number	0	
@@ -115,38 +116,38 @@ AdditionPer	number	0
 AdditionAmount	number	0	
 TotalDiscount	number	0	
 Deal	string	255		
-AmountBeforeDiscount	number	695	
-Amount	number	695	
-Taxable_Amount	number	661.9	
+AmountBeforeDiscount	number	1150	
+Amount	number	1150	
+Taxable_Amount	number	0	
 Tax1_Per	number	0	
 Tax1	number	0	
-Tax2_Per	number	2.5	
-Tax2	number	16.55	
-Tax3_Per	number	2.5	
-Tax3	number	16.55	
+Tax2_Per	number	0	
+Tax2	number	0	
+Tax3_Per	number	0	
+Tax3	number	0	
 Tax4_Per	number	0	
 Tax4	number	0	
 Tax5_Per	number	0	
 Tax5	number	0	
-Net_Amount	number	695	
+Net_Amount	number	0	
 LRemarks	string	255		
 HRemarks	string	255		
-SalesTaxSummaryStr	string	255	540752 Taxable Amt : 1323.8 Tax Amt : 66.2, 	
+SalesTaxSummaryStr	string	255		
 H_Discount	number	0	
 H_AdditionalDiscount	number	0	
 H_Additional	number	0	
 H_TotalDiscount	number	0	
-H_AmountBeforeDiscount	number	1390	
-H_Gross_Amount	number	1390	
+H_AmountBeforeDiscount	number	2380	
+H_Gross_Amount	number	0	
 H_SpecialDiscount_Per	number	0	
 H_SpecialDiscount	number	0	
-H_Taxable_Amount	number	1323.8	
+H_Taxable_Amount	number	0	
 H_Tax1_Per	number	0	
 H_Tax1	number	0	
 H_Tax2_Per	number	0	
-H_Tax2	number	33.1	
+H_Tax2	number	0	
 H_Tax3_Per	number	0	
-H_Tax3	number	33.1	
+H_Tax3	number	0	
 H_Tax4_Per	number	0	
 H_Tax4	number	0	
 H_Tax5_Per	number	0	
@@ -160,21 +161,22 @@ H_Other_Charge1	number	0
 H_Other_Charge2_Per	number	0	
 H_Other_Charge2	number	0	
 Round_Off	number	0	
-H_Net_Amount	number	1390	
+H_Net_Amount	number	0	
 EInvoiceIRN	string	255		
-EInvoiceACKNo	string	255		
-EInvoiceACKDate	datetime		
-Default_BankAccountDetail	string	255		
+EInvoiceAckNo	string	255		
+EInvoiceAckDate	datetime		
+Default_BankAccountDetail	string	255	<B> BANK DETAIL -: BANK OF INDIA A/C NO 696030110000045 IFSC CODE : BKID0006960 </B>	
 DocumentPrintHeaderPattern	string	255	Center Aligned	
 DimDetail	string	255		
 PrintedByUser	string	255	SUPER	
-EntryByUser	string	255	SUPER	
-PrintTitle	string	255	Sale Invoice Retail	
+EntryByUser	string	255	SA	
+PrintTitle	string	255	Sale Order	
 DocumentPrintShowPrintDateTimeYn	string	255	1	
 DocumentPrintShowPartyBalance	string	255	Hide	
-TodaysOpeningBalance	long	0	
-TodaysDr	long	0	
-TodaysCr	long	0	
-TodaysClosingBalance	long	0	
+TodaysOpeningBalance	number	0	
+TodaysDr	number	0	
+TodaysCr	number	0	
+TodaysClosingBalance	number	0	
 CompanyLogo	BLOB		
 CompanyAuthorisedSignature	BLOB		
+EInvoiceQrCode	BLOB		
