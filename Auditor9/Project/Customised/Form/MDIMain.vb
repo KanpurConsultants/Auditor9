@@ -49,7 +49,7 @@ Public Class MDIMain
             If AgL Is Nothing Then
                 If FOpenIni(StrPath + IniName, AgLibrary.ClsConstant.PubSuperUserName, AgLibrary.ClsConstant.PubSuperUserPassword) Then
                     'If FOpenIni(StrPath + IniName, "Sa", "") Then
-                    AgL.PubSiteCode = "6"
+                    AgL.PubSiteCode = "3"
                     AgL.PubDivCode = "D"
                     AgL.PubLoginDate = DateTime.Now()
                     AgL.PubLastTransactionDate = Now()
@@ -58,7 +58,7 @@ Public Class MDIMain
                     'End
 
 
-                    AgIniVar.FOpenConnection("5", AgL.PubSiteCode, False)
+                    AgIniVar.FOpenConnection("6", AgL.PubSiteCode, False)
                 End If
                 AgL.PubStopWatch.Start()
 

@@ -367,7 +367,7 @@ Public Class FrmSaleInvoiceW_OnlyW
                                 '    BtnOk.Enabled = True
                                 'End If
 
-                                TxtTag.Text = AgL.XNull(DtTemp.Rows(I)("Tags"))
+                                'TxtTag.Text = AgL.XNull(DtTemp.Rows(I)("Tags"))
 
                                 Dgl2.Rows.Add()
                                 Dgl2.Item(ColSNo, Dgl2.Rows.Count - 1).Value = Dgl2.Rows.Count
@@ -474,7 +474,7 @@ Public Class FrmSaleInvoiceW_OnlyW
                         mQry = "Select H.GenDocId As SaleInvoiceDocId, H.DocId As PurchInvoiceDocId, Max(H.Vendor) As Supplier, Supp.Name As SupplierName, 
                             Max(H.VendorDocNo) As InvoiceNo, H.V_Date As InvoiceDate, 
                             Ig.Code as ItemGroup, Ig.Description As ItemGroupDesc,
-                            Max(H.Net_Amount) As Amount, 
+                            Max(H.Net_Amount) As Amount, Max(H.Tags) As Tags, 
                             Max(H.BillToParty) As BillToParty, Max(H.Site_Code) As Site_Code, 
                             Max(H.Div_Code) As Div_Code, Min(L.DiscountPer) As InvoiceDiscountPer,
                             Min(L.AdditionalDiscountPer) As InvoiceAdditionalDiscountPer,
@@ -503,6 +503,7 @@ Public Class FrmSaleInvoiceW_OnlyW
                                 'Else
                                 '    BtnOk.Enabled = True
                                 'End If
+                                TxtTag.Text = AgL.XNull(DtTemp.Rows(I)("Tags"))
 
                                 Dgl1.Rows.Add()
                                 Dgl1.Item(ColSNo, I).Value = Dgl1.Rows.Count
@@ -1153,7 +1154,7 @@ Public Class FrmSaleInvoiceW_OnlyW
                 PurchInvoiceTable.ReferenceDocId = ""
                 PurchInvoiceTable.GenDocId = ""
                 PurchInvoiceTable.GenDocIdSr = ""
-                PurchInvoiceTable.Tags = "+" & TxtTag.Text
+                PurchInvoiceTable.Tags = TxtTag.Text
                 PurchInvoiceTable.Remarks = "Kachha Invoice Amount : " + Dgl1.Item(Col1WAmount, I).Value.ToString
                 PurchInvoiceTable.Status = "Active"
                 PurchInvoiceTable.EntryBy = AgL.PubUserName
@@ -1518,11 +1519,11 @@ Public Class FrmSaleInvoiceW_OnlyW
                 SaleInvoiceTableList(0).StructureCode = ""
                 SaleInvoiceTableList(0).CustomFields = ""
                 SaleInvoiceTableList(0).ReferenceDocId = ""
-                SaleInvoiceTableList(0).Tags = "+" & TxtTag.Text
-                SaleInvoiceTableList(0).Remarks = "Pakka Invoice No : " + Dgl2.Item(Col2InvoiceNo, mRow).Value.ToString +
-                                                        " And Invoice Amount : " + Dgl2.Item(Col2Amount, mRow).Value.ToString +
-                                                        IIf(AgL.XNull(Dgl2.Item(Col2ShipToParty, mRow).Value) <> "", " And Ship To Party : " + AgL.XNull(Dgl2.Item(Col2ShipToParty, mRow).Value).ToString, "")
-                SaleInvoiceTableList(0).Status = "Active"
+            SaleInvoiceTableList(0).Tags = TxtTag.Text
+            SaleInvoiceTableList(0).Remarks = "Pakka Invoice No : " + Dgl2.Item(Col2InvoiceNo, mRow).Value.ToString +
+                                                            " And Invoice Amount : " + Dgl2.Item(Col2Amount, mRow).Value.ToString +
+                                                            IIf(AgL.XNull(Dgl2.Item(Col2ShipToParty, mRow).Value) <> "", " And Ship To Party : " + AgL.XNull(Dgl2.Item(Col2ShipToParty, mRow).Value).ToString, "")
+            SaleInvoiceTableList(0).Status = "Active"
                 SaleInvoiceTableList(0).EntryBy = AgL.PubUserName
                 SaleInvoiceTableList(0).EntryDate = AgL.GetDateTime(AgL.GcnRead)
                 SaleInvoiceTableList(0).ApproveBy = ""

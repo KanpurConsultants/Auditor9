@@ -921,7 +921,7 @@ Public Class FrmSaleInvoiceParty_WithDimension
                 Case Col2PostToAc
                     If e.KeyCode <> Keys.Enter And e.KeyCode <> Keys.Insert Then
                         If Dgl2.AgHelpDataSet(Col2PostToAc) Is Nothing Then
-                            mQry = "Select H.Code, H.Name From viewHelpSubgroup H  With (NoLock) where H.Nature In ('Customer') Order By H.Name"
+                            mQry = "Select H.Code, H.Name From viewHelpSubgroup H  With (NoLock) where H.Nature In ('Customer','Bank') Order By H.Name"
                             Dgl2.AgHelpDataSet(Col2PostToAc) = AgL.FillData(mQry, AgL.GCn)
                         End If
                     End If

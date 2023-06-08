@@ -5176,10 +5176,10 @@ LblForLastRecord:
 
         If Trim(FGMain(GFilterCode, 3).Value) <> "" Then
             StrCondition1 = StrCondition1 & " And LG.DivCode  IN (" & FGMain(GFilterCode, 3).Value & ") "
-            StrConditionOP = " And LG.DivCode  IN (" & FGMain(GFilterCode, 3).Value & ") "
+            StrConditionOP = StrConditionOP & " And LG.DivCode  IN (" & FGMain(GFilterCode, 3).Value & ") "
         Else
             StrCondition1 = StrCondition1 & " And LG.DivCode  IN (" & AgL.PubDivisionList & ") "
-            StrConditionOP = " And LG.DivCode  IN (" & AgL.PubDivisionList & ") "
+            StrConditionOP = StrConditionOP & " And LG.DivCode  IN (" & AgL.PubDivisionList & ") "
         End If
 
         If Trim(FGMain(GFilterCode, 6).Value) <> "" Then

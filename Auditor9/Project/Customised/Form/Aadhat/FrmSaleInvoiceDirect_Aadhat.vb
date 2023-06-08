@@ -107,6 +107,7 @@ Public Class FrmSaleInvoiceDirect_Aadhat
     Public Const Col4GrossAmount As String = "Gross Amount"
     Public Const Col4TotalTax As String = "Total Tax"
     Public Const Col4NetAmount As String = "Net Amount"
+    Public Const Col4RoundOff As String = "ROff"
     Public Const Col4TcsYn As String = "TCS (Y/N)"
 
     '---------------------------------End Aadhat Customization---------------------------------------
@@ -157,6 +158,7 @@ Public Class FrmSaleInvoiceDirect_Aadhat
     Dim DtItemTypeSettingsAll As DataTable
 
     Dim mPrevRowIndex As Integer = 0
+    Dim mRoundOffChanges As Integer = 0
     Protected WithEvents BtnHeaderDetail As Button
     Friend WithEvents MnuOptions As ContextMenuStrip
     Private components As System.ComponentModel.IContainer
@@ -3824,8 +3826,9 @@ Public Class FrmSaleInvoiceDirect_Aadhat
         If BtnFillPartyDetail.Tag IsNot Nothing Then
             CType(BtnFillPartyDetail.Tag, FrmSaleInvoiceParty_WithDimension).InvoiceAmount = Val(AgCalcGrid1.AgChargesValue(AgTemplate.ClsMain.Charges.NETAMOUNT, AgStructure.AgCalcGrid.AgCalcGridColumn.Col_Amount))
         End If
-
-        FLoadPurchaseDataFromSaleInvoice()
+        If (mRoundOffChanges = 0) Then
+            FLoadPurchaseDataFromSaleInvoice()
+        End If
     End Sub
 
     Private Sub FrmSaleOrder_BaseEvent_Data_Validation(ByRef passed As Boolean) Handles Me.BaseEvent_Data_Validation
@@ -4193,6 +4196,7 @@ Public Class FrmSaleInvoiceDirect_Aadhat
         BtnFillPartyDetail.Tag = Nothing
         BtnHeaderDetail.Tag = Nothing
         BtnFillPartyDetail.Tag = Nothing
+        mRoundOffChanges = 0
     End Sub
 
     Private Sub Dgl1_CellEnter(ByVal sender As Object, ByVal e As System.Windows.Forms.DataGridViewCellEventArgs) Handles Dgl1.CellEnter
@@ -8983,6 +8987,24 @@ Public Class FrmSaleInvoiceDirect_Aadhat
         End If
     End Sub
 
+    Private Sub Dgl4_EditingControl_Validating(ByVal sender As Object, ByVal e As System.ComponentModel.CancelEventArgs) Handles Dgl4.EditingControl_Validating
+        If Topctrl1.Mode = "Browse" Then Exit Sub
+        Dim mRowIndex As Integer, mColumnIndex As Integer
+        Try
+            mRowIndex = Dgl4.CurrentCell.RowIndex
+            mColumnIndex = Dgl4.CurrentCell.ColumnIndex
+            If Dgl4.Item(mColumnIndex, mRowIndex).Value Is Nothing Then Dgl4.Item(mColumnIndex, mRowIndex).Value = ""
+            Select Case Dgl4.Columns(Dgl4.CurrentCell.ColumnIndex).Name
+                Case Col4RoundOff
+                    Dgl4.Item(Col4NetAmount, mRowIndex).Value = Dgl4.Item(Col4GrossAmount, mRowIndex).Value + Dgl4.Item(Col4TotalTax, mRowIndex).Value + Dgl4.Item(Col4RoundOff, mRowIndex).Value
+
+
+            End Select
+        Catch ex As Exception
+            MsgBox(ex.Message)
+        End Try
+    End Sub
+
     Private Sub BtnAttachments_Click(sender As Object, e As EventArgs) Handles BtnAttachments.Click
         Dim FrmObj As New AgLibrary.FrmAttachmentViewer(AgL)
         FrmObj.LblDocNo.Text = "Document No. : " + TxtReferenceNo.Text
@@ -9105,6 +9127,7 @@ Public Class FrmSaleInvoiceDirect_Aadhat
             .AddAgTextColumn(Dgl4, Col4GrossAmount, 100, 0, Col4GrossAmount, True, True)
             .AddAgTextColumn(Dgl4, Col4TotalTax, 100, 0, Col4TotalTax, True, True)
             .AddAgTextColumn(Dgl4, Col4NetAmount, 100, 0, Col4NetAmount, True, True)
+            .AddAgTextColumn(Dgl4, Col4RoundOff, 100, 0, Col4RoundOff, True, false)
             .AddAgTextColumn(Dgl4, Col4TcsYn, 100, 0, Col4TcsYn, True, False)
         End With
         AgL.AddAgDataGrid(Dgl4, Pnl4)
@@ -9200,6 +9223,7 @@ Public Class FrmSaleInvoiceDirect_Aadhat
                 SaleOrderNo NVARCHAR(20),
                 GrossAmount Float,
                 TotalTax Float,
+                RoundOff Float,
                 NetAmount Float
                 ); "
         AgL.Dman_ExecuteNonQry(mQry, mConn)
@@ -9250,11 +9274,12 @@ Public Class FrmSaleInvoiceDirect_Aadhat
                     Dgl1.Item(Col1PurchaseAmount, I).Value = Val(Dgl1.Item(Col1PurchaseTaxableAmount, I).Value) + Tax1 + Tax2 + Tax3 + Tax4 + Tax5
                 End If
 
-                mQry = " INSERT INTO [#TempSaleInvoicePurchaseSummary](SaleOrderDocId, SaleOrderNo, GrossAmount, TotalTax, Netamount) "
+                mQry = " INSERT INTO [#TempSaleInvoicePurchaseSummary](SaleOrderDocId, SaleOrderNo, GrossAmount, TotalTax, RoundOff, Netamount) "
                 mQry += " Select " & AgL.Chk_Text(Dgl1.Item(Col1SaleInvoice, I).Tag) & " As SaleOrderDocId, 
                     " & AgL.Chk_Text(Dgl1.Item(Col1SaleInvoice, I).Value) & " As SaleOrderNo, 
                     " & Val(Dgl1.Item(Col1PurchaseAmount, I).Value) & " As GrossAmount, 
                     " & Tax1 + Tax2 + Tax3 + Tax4 + Tax5 & " As TotalTax, 
+                    " & Tax1 & " As RoundOff, 
                     " & Val(Dgl1.Item(Col1PurchaseTaxableAmount, I).Value) +
                             Tax1 + Tax2 + Tax3 + Tax4 + Tax5 & " As NetAmount "
                 AgL.Dman_ExecuteNonQry(mQry, mConn)
@@ -9262,7 +9287,7 @@ Public Class FrmSaleInvoiceDirect_Aadhat
         Next
 
         mQry = " Select H.SaleOrderDocId, Max(H.SaleOrderNo) As SaleOrderNo, Sum(H.GrossAmount) As GrossAmount,
-                    Sum(H.TotalTax) As TotalTax, Sum(H.NetAmount) As NetAmount
+                    Sum(H.TotalTax) As TotalTax, Sum(H.RoundOff) As RoundOff, Sum(H.NetAmount) As NetAmount
                     From [#TempSaleInvoicePurchaseSummary] H
                     Group By H.SaleOrderDocId "
         Dim DtTemp As DataTable = AgL.FillData(mQry, mConn).Tables(0)
@@ -9290,7 +9315,10 @@ Public Class FrmSaleInvoiceDirect_Aadhat
 
                 Dgl4.Item(Col4GrossAmount, I).Value = AgL.VNull(DtTemp.Rows(I)("GrossAmount"))
                 Dgl4.Item(Col4TotalTax, I).Value = AgL.VNull(DtTemp.Rows(I)("TotalTax"))
+
+                Dgl4.Item(Col4RoundOff, I).Value = Math.Round(Math.Round(AgL.VNull(DtTemp.Rows(I)("NetAmount")), 0) - AgL.VNull(DtTemp.Rows(I)("GrossAmount")) - AgL.VNull(DtTemp.Rows(I)("TotalTax")), 2)
                 Dgl4.Item(Col4NetAmount, I).Value = Math.Round(AgL.VNull(DtTemp.Rows(I)("NetAmount")), 0)
+
             Next I
         End If
         mConn.Close()
@@ -9516,6 +9544,8 @@ Public Class FrmSaleInvoiceDirect_Aadhat
             PurchInvoiceTableList(0).Round_Off = Math.Round(Math.Round(PurchInvoiceTableList(0).SubTotal1) - PurchInvoiceTableList(0).SubTotal1, 2)
             PurchInvoiceTableList(0).Net_Amount = Math.Round(PurchInvoiceTableList(0).SubTotal1)
 
+            PurchInvoiceTableList(0).Round_Off = Dgl4.Item(Col4RoundOff, I).Value
+            PurchInvoiceTableList(0).Net_Amount = Dgl4.Item(Col4NetAmount, I).Value
             Dim Tot_RoundOff As Double = 0
             Dim Tot_NetAmount As Double = 0
             For J = 0 To PurchInvoiceTableList.Length - 1
@@ -9534,6 +9564,7 @@ Public Class FrmSaleInvoiceDirect_Aadhat
             If Tot_NetAmount <> PurchInvoiceTableList(0).Net_Amount Then
                 PurchInvoiceTableList(0).Line_Net_Amount = PurchInvoiceTableList(0).Line_Net_Amount + (PurchInvoiceTableList(0).Net_Amount - Tot_NetAmount)
             End If
+
             Dim bDocId As String = FrmSaleInvoiceDirect_WithDimension_ShyamaShyam.InsertPurchInvoice(PurchInvoiceTableList)
 
             mQry = " UPDATE SaleInvoiceDetail Set Remarks1 = '" & bDocId & "' 
@@ -9666,6 +9697,7 @@ Public Class FrmSaleInvoiceDirect_Aadhat
         End If
     End Sub
     Private Sub BtnSave_Click(sender As Object, e As EventArgs) Handles BtnSave.Click
+        mRoundOffChanges = 1
         ProcToAddOtherCharge()
         Topctrl1.FButtonClick(13)
     End Sub

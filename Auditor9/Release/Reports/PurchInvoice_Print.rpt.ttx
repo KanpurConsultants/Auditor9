@@ -3,35 +3,35 @@ Copies	string	255	1
 CopyPrintingCaption	string	255		
 DocNoCaption	string	255	Invoice No.	
 DocDateCaption	string	255	Invoice Date	
-DocID	string	255	D1    PI 2022    1884	
+DocID	string	255	F1    PI 2023      20	
 SiteStateCode	string	255	09	
 SiteStateName	string	255	Uttar Pradesh	
 Sr	number	1	
-V_Date	datetime	31/Mar/2023 12:00:00 AM	
+V_Date	datetime	02/May/2023 12:00:00 AM	
 Voucher_Type	string	255	Purchase Invoice	
 NCat	string	255	PI	
-DocNo	string	255	D1-PI-1883	
-AgentName	string	255	KAMAL TEXTILE(CHIMPU BHAI)	
+DocNo	string	255	F1-PI-2	
+AgentName	string	255		
 AgentCaption	string	255	Agent	
-PartyName	string	255	KAYAAN PRINTS PVT LTD	
-PartyAddress	string	255	F-5723-52,LIFT NO.6 3RD FLOOR,RAGHUKUL TEXTILE MARKET,RING ROAD	
-PartyPinCode	string	255		
+PartyName	string	255	UTSAV SAREES	
+PartyAddress	string	255	26 , MILLENIUM -2 TEXTILES MARKET RING ROAD SURAT	
+PartyPinCode	string	255	395002	
 PartyCityName	string	255	SURAT	
 PartyStateCode	string	255	24	
 PartyStateName	string	255	Gujarat	
-PartyMobile	string	255	9727556771	
+PartyMobile	string	255	09327150280	
 ContactPerson	string	255		
-PartySalesTaxNo	string	255	24AAECK6927B1ZS	
+PartySalesTaxNo	string	255	24AFIPJ3605H1ZR	
 PartyAadharNo	string	255		
-PartyPanNo	string	255	AAECK6927B	
-ShipToPartyName	string	255	KAYAAN PRINTS PVT LTD	
-ShipToPartyAddress	string	255	F-5723-52,LIFT NO.6 3RD FLOOR,RAGHUKUL TEXTILE MARKET,RING ROAD	
+PartyPanNo	string	255	AFIPJ3605H	
+ShipToPartyName	string	255	UTSAV SAREES	
+ShipToPartyAddress	string	255	26 , MILLENIUM -2 TEXTILES MARKET RING ROAD SURAT	
 ShipToPartyCity	string	255	SURAT	
-ShipToPartyPincode	string	255		
+ShipToPartyPincode	string	255	395002	
 ShipToPartyStateCode	string	255	24	
 ShipToPartyStateName	string	255	Gujarat	
-ShipToPartyMobile	string	255	9727556771	
-ShipToPartySalesTaxNo	string	255	24AAECK6927B1ZS	
+ShipToPartyMobile	string	255	09327150280	
+ShipToPartySalesTaxNo	string	255	24AFIPJ3605H1ZR	
 ShipToPartyAadharNo	string	255		
 ShipToPartyPanNo	string	255		
 TransporterName	string	255		
@@ -44,17 +44,35 @@ FreightType	string	255
 RoadPermitNo	string	255		
 RoadPermitDate	datetime		
 ReferenceNo	string	255		
-ItemName	string	255	KAYA - HIMALEE - SAREE	
-ItemGroupName	string	255	HIMALEE	
-ItemCatName	string	255	SAREE	
-ItemSpecification	string	255	KAYA	
-InvoiceLineSpecification	string	255	KAYA	
+ItemName	string	255	DIL LAGI - UTSAV - SAREE D	
+ItemGroupName	string	255	UTSAV	
+ItemCatName	string	255	SAREE D	
+ItemSpecification	string	255	DIL LAGI	
+InvoiceLineSpecification	string	255	DIL LAGI	
 HSN	string	255	5407	
+D1Spec	string	255		
+D2Spec	string	255		
+D3Spec	string	255		
+D4Spec	string	255		
+SizeSpec	string	255		
+ItemTypeCaption	string	255	Item Type	
+ItemCategoryCaption	string	255	Item Category	
+ItemGroupCaption	string	255	Item Group	
+ItemCaption	string	255	Item	
+BarcodeCaption	string	255		
+D1Caption	string	255		
+D2Caption	string	255		
+D3Caption	string	255		
+D4Caption	string	255		
 SalesTaxGroupItem	string	255	GST 5%	
 GrossTaxRate	number	5	
 Pcs	number	0	
-Qty	number	10	
-Rate	number	505	
+Qty	number	80	
+DocQty	number	80	
+FreeQty	number	0	
+LossQty	number	0	
+RejQty	number	0	
+Rate	number	215	
 Unit	string	255	Pcs	
 UnitDecimalPlaces	number	0	
 DiscountPer	number	0	
@@ -62,11 +80,11 @@ DiscountAmount	number	0
 AdditionalDiscountPer	number	0	
 AdditionalDiscountAmount	number	0	
 TotalDiscount	number	0	
-AmountBeforeDiscount	number	5050	
-Amount	number	5050	
-Taxable_Amount	number	5050	
+AmountBeforeDiscount	number	17200	
+Amount	number	17200	
+Taxable_Amount	number	17200	
 Tax1_Per	number	5	
-Tax1	number	252.5	
+Tax1	number	860	
 Tax2_Per	number	0	
 Tax2	number	0	
 Tax3_Per	number	0	
@@ -75,15 +93,15 @@ Tax4_Per	number	0
 Tax4	number	0	
 Tax5_Per	number	0	
 Tax5	number	0	
-Net_Amount	number	5302	
+Net_Amount	number	18060	
 HRemarks	string	255		
 LRemarks	string	255		
-H_Gross_Amount	number	5050	
+H_Gross_Amount	number	17200	
 H_SpecialDiscount_Per	number	0	
 H_SpecialDiscount	number	0	
-H_Taxable_Amount	number	5050	
+H_Taxable_Amount	number	17200	
 H_Tax1_Per	number	0	
-H_Tax1	number	252.5	
+H_Tax1	number	860	
 H_Tax2_Per	number	0	
 H_Tax2	number	0	
 H_Tax3_Per	number	0	
@@ -96,16 +114,17 @@ H_Deduction_Per	number	0
 H_Deduction	number	0	
 H_Other_Charge_Per	number	0	
 H_Other_Charge	number	0	
-Round_Off	number	-0.5	
-H_Net_Amount	number	5302	
+Round_Off	number	0	
+H_Net_Amount	number	18060	
 H_TotalDiscount	number	0	
-H_AmountBeforeDiscount	number	5050	
-Default_BankAccountDetail	string	255	<BR>UNION BANK OF INDIA A/C 305201010035623   </BR>   IFSC : UBIN0530522 </BR>	
+H_AmountBeforeDiscount	number	17200	
+Default_BankAccountDetail	string	255		
 DocumentPrintHeaderPattern	string	255	Center Aligned	
 DimDetail	string	255		
 HsnDescription	string	255		
 PrintedByUser	string	255	SUPER	
 PrintTitle	string	255	Purchase Invoice	
+TermsAndConditions	string	255		
 CompanyLogo	BLOB		
 CompanyAuthorisedSignature	BLOB		
 EInvoiceQrCode	BLOB		

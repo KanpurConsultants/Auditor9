@@ -127,6 +127,7 @@ Public Class FrmSyncData
             FDeleteLedgerHead(AgL.GCn, AgL.ECmd)
             FDeleteSubGroup(AgL.GCn, AgL.ECmd)
             FDeleteItem(AgL.GCn, AgL.ECmd)
+            FAddTransactionReferencesCancelled(AgL.GCn, AgL.ECmd)
             FAddTransactionReferences(AgL.GCn, AgL.ECmd)
         Else
             MsgBox("Some masters are not synced successfully, that's why can't process transactions.", MsgBoxStyle.Information)
@@ -1735,6 +1736,59 @@ Public Class FrmSyncData
                 End If
             Next
         Next
+    End Sub
+
+    Public Sub FAddTransactionReferencesCancelled(Conn As Object, Cmd As Object)
+        Dim mTrans As String = ""
+        Dim ErrorLog As String = ""
+        Dim DtMain As DataTable = Nothing
+        Dim DtTemp As DataTable
+        Dim I As Integer
+        Dim J As Integer
+
+
+        UpdateLabel("Start Inserting Transaction References Cancelled...")
+
+
+        mQry = " Select *
+            From TransactionReferences H 
+            Where H.Type Is Not Null And H.UploadDate Is Null AND H.Type='Cancelled'"
+        Dim DtHeaderSource As DataTable = AgL.FillData(mQry, Connection_Pakka).Tables(0)
+
+        Try
+            AgL.ECmd = AgL.GCn.CreateCommand
+            AgL.ETrans = AgL.GCn.BeginTransaction(IsolationLevel.ReadCommitted)
+            AgL.ECmd.Transaction = AgL.ETrans
+            mTrans = "Begin"
+
+
+            For I = 0 To DtHeaderSource.Rows.Count - 1
+                mQry = "Select H.* from TransactionReferences H 
+                    Where H.DocId=(Select IfNull(Max(DocID),'') From LedgerHead Where OmsId = '" & DtHeaderSource.Rows(I)("DocID") & "')
+                    And H.ReferenceDocId=(Select IfNull(Max(DocID),'') From LedgerHead Where OmsId = '" & DtHeaderSource.Rows(I)("ReferenceDocID") & "')"
+                DtTemp = AgL.FillData(mQry, AgL.GCn).Tables(0)
+                If DtTemp.Rows.Count = 0 Then
+                    Dim mDocID As String = AgL.Dman_Execute("Select IfNull(Max(DocID),'') From LedgerHead Where OmsId = '" & DtHeaderSource.Rows(I)("DocID") & "'", AgL.GCn).ExecuteScalar()
+                    Dim mReferenceDocID As String = AgL.Dman_Execute("Select IfNull(Max(DocID),'') From LedgerHead Where OmsId = '" & DtHeaderSource.Rows(I)("ReferenceDocID") & "'", AgL.GCn).ExecuteScalar()
+                    If mDocID <> "" And mReferenceDocID <> "" Then
+                        mQry = "Insert Into TransactionReferences(DocID, DocIdSr, ReferenceDocID, Referencesr, Type, Remark)
+                        Values (" & AgL.Chk_Text(mDocID) & ", " & AgL.Chk_Text(DtHeaderSource.Rows(I)("DocIDSr")) & ", " & AgL.Chk_Text(mReferenceDocID) & ", " & AgL.Chk_Text(DtHeaderSource.Rows(I)("ReferenceSr")) & ", " & AgL.Chk_Text(DtHeaderSource.Rows(I)("Type")) & ", " & AgL.Chk_Text(DtHeaderSource.Rows(I)("Remark")) & ")"
+                        AgL.Dman_ExecuteNonQry(mQry, Conn, Cmd)
+
+                        mQry = " UPDATE Pakka.TransactionReferences Set UploadDate = " & AgL.Chk_Date(AgL.PubLoginDate) & " 
+                            Where Pakka.TransactionReferences.DocId = '" & AgL.XNull(DtHeaderSource.Rows(I)("DocId")) & "'
+                            And Pakka.TransactionReferences.ReferenceDocId = '" & AgL.XNull(DtHeaderSource.Rows(I)("ReferenceDocId")) & "'"
+                        AgL.Dman_ExecuteNonQry(mQry, Conn, Cmd)
+                    End If
+                End If
+            Next
+            AgL.ETrans.Commit()
+            mTrans = "Commit"
+        Catch ex As Exception
+            AgL.ETrans.Rollback()
+            MsgBox(ex.Message)
+        End Try
+
     End Sub
 
     Public Sub FAddTransactionReferences(Conn As Object, Cmd As Object)

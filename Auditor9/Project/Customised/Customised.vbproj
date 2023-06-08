@@ -846,6 +846,12 @@
     <Compile Include="Form\SaleInvoice\FrmSaleInvoiceReconciliation.vb">
       <SubType>Form</SubType>
     </Compile>
+    <Compile Include="Form\Stock\FrmStockHeader.Designer.vb">
+      <DependentUpon>FrmStockHeader.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Form\Stock\FrmStockHeader.vb">
+      <SubType>Form</SubType>
+    </Compile>
     <Compile Include="Form\VoucherEntry\ClsChequePrinting.vb" />
     <Compile Include="Form\VoucherEntry\ClsSaleOrderStatusAadhat.vb" />
     <Compile Include="Form\VoucherEntry\FrmPaymentEntryJobWorker.vb">
@@ -1832,6 +1838,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Form\SaleInvoice\FrmSaleInvoiceReconciliation.resx">
       <DependentUpon>FrmSaleInvoiceReconciliation.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Form\Stock\FrmStockHeader.resx">
+      <DependentUpon>FrmStockHeader.vb</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Form\VoucherEntry\FrmPaymentEntryJobWorker.resx">
       <DependentUpon>FrmPaymentEntryJobWorker.vb</DependentUpon>

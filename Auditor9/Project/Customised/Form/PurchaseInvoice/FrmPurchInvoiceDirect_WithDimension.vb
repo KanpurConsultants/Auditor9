@@ -7234,7 +7234,7 @@ Public Class FrmPurchInvoiceDirect_WithDimension
                     , I.Size, Size.Description as SizeName,
                     I.ProfitMarginPer, IG.Default_DiscountPerPurchase, 
                     IG.Default_AdditionalDiscountPerPurchase, IG.Default_AdditionPerPurchase,
-                    I.PurchaseRate as Rate, I.SalesTaxPostingGroup,
+                    I.PurchaseRate as Rate, I.SalesTaxPostingGroup, IC.BarcodePattern, IC.BarcodeType,
                     I.DealQty As UnitMultiplier, I.DealUnit, U1.DecimalPlaces As DealDecimalPlaces,
                     I.ProfitMarginPer, IG.Default_DiscountPerPurchase, IG.Default_AdditionalDiscountPerPurchase, 
                     IG.Default_AdditionPerPurchase, I.V_Type As ItemV_Type 
@@ -7256,6 +7256,9 @@ Public Class FrmPurchInvoiceDirect_WithDimension
                 Dgl1.Item(Col1ItemType, mRow).Value = AgL.XNull(dtItem.Rows(0)("ItemTypeName"))
                 Dgl1.Item(Col1ItemCategory, mRow).Tag = AgL.XNull(dtItem.Rows(0)("ItemCategory"))
                 Dgl1.Item(Col1ItemCategory, mRow).Value = AgL.XNull(dtItem.Rows(0)("ItemCategoryName"))
+                Dgl1.Item(Col1BarcodePattern, mRow).Value = AgL.XNull(dtItem.Rows(0)("BarcodePattern"))
+                Dgl1.Item(Col1BarcodeType, mRow).Value = AgL.XNull(dtItem.Rows(0)("BarcodeType"))
+
                 If AgL.XNull(dtItem.Rows(0)("ItemGroup")) <> "" Then
                     Dgl1.Item(Col1ItemGroup, mRow).Tag = AgL.XNull(dtItem.Rows(0)("ItemGroup"))
                     Dgl1.Item(Col1ItemGroup, mRow).Value = AgL.XNull(dtItem.Rows(0)("ItemGroupName"))

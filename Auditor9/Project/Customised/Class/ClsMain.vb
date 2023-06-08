@@ -5170,6 +5170,7 @@ Sincerely
             AgL.AddFieldSqlite(AgL.GcnMain, "StockHead", "SubTotal1", "Float", "0", False)
             AgL.AddFieldSqlite(AgL.GcnMain, "StockHead", "Round_Off", "Float", "0", False)
             AgL.AddFieldSqlite(AgL.GcnMain, "StockHead", "Net_Amount", "Float", "0", False)
+            AgL.AddFieldSqlite(AgL.GcnMain, "StockHead", "LrCode", "BigInt", "", True, "References Barcode(Code)")
 
 
 
@@ -24776,16 +24777,17 @@ Thanks
 
 
         bSelectionQry = " Select * From " & bTableName & " With (NoLock) "
-        Dim DtDebug As DataTable = AgL.FillData(bSelectionQry, IIf(AgL.PubServerName = "", AgL.GCn, AgL.GcnRead)).Tables(0)
+        'Dim DtDebug As DataTable = AgL.FillData(bSelectionQry, IIf(AgL.PubServerName = "", AgL.GCn, AgL.GcnRead)).Tables(0)
 
         'With DtDebug
         '    For I = 0 To DtDebug.Rows.Count - 1
-        '        Debug.Print("TmpCol = " + AgL.VNull(.Rows(I)("TmpCol")).ToString() + "; PostAc=" + AgL.XNull(.Rows(I)("PostAc")) + ", Amount=" + AgL.VNull(.Rows(I)("Amount")).ToString() + " In Row No = " + I.ToString())
+        '        'Debug.Print("TmpCol = " + AgL.VNull(.Rows(I)("TmpCol")).ToString() + "; PostAc=" + AgL.XNull(.Rows(I)("PostAc")) + ", Amount=" + AgL.VNull(.Rows(I)("Amount")).ToString() + " In Row No = " + I.ToString())
+        '        Debug.Print("Union All Select  '" + AgL.VNull(.Rows(I)("TmpCol")).ToString() + "' AS tmpCol, '" + AgL.XNull(.Rows(I)("PostAc")) + "'  AS AC," + AgL.VNull(.Rows(I)("Amount")).ToString() + " AS Amount," + I.ToString() + " AS RowId ")
         '    Next
         'End With
 
 
-        If (AgL.StrCmp(AgL.PubDBName, "ShyamaShyam_W") Or AgL.StrCmp(AgL.PubDBName, "ShyamaShyamV_W")) Then
+        If (AgL.StrCmp(AgL.PubDBName, "ShyamaShyam") Or AgL.StrCmp(AgL.PubDBName, "ShyamaShyamV") Or AgL.StrCmp(AgL.PubDBName, "ShyamaShyam_W") Or AgL.StrCmp(AgL.PubDBName, "ShyamaShyamV_W")) Then
             mQry = " Select Count(*)  " &
                     " From (" & bSelectionQry & ") As V1 Group by tmpCol " &
                     " Having Round(Sum(Case When IfNull(V1.Amount*1.0,0) > 0 Then IfNull(V1.Amount*1.0,0) Else 0 End),0) <> Round(abs(Sum(Case When IfNull(V1.Amount*1.0,0) < 0 Then IfNull(V1.Amount*1.0,0) Else 0 End)),0)  "
@@ -24796,6 +24798,7 @@ Thanks
         End If
 
         DtTemp = AgL.FillData(mQry, IIf(AgL.PubServerName = "", Conn, AgL.GcnRead)).Tables(0)
+        'If DtTemp.Rows.Count > 0 And AgL.PubDBName <> "ShyamaShyam" Then
         If DtTemp.Rows.Count > 0 Then
             If AgL.VNull(DtTemp.Rows(0)(0)) > 0 Then
                 Console.Write(mQry)

@@ -43,8 +43,8 @@ IntRate	number	-12
 InterestAmount	number	-6.75	
 InterestLeaverageDays	number	60	
 InterestSlabDescription	string	255	60-60	
-CreditLimit	number	5000000	
-PakkaBalance	number	31697.03	
-PakkaPartyCount	long	213	
+CreditLimit	number	4900000	
+PakkaBalance	number	58482.85	
+PakkaPartyCount	long	248	
 AveragePaymentDays	number		
 SiteShortName	string	255	LDH-	

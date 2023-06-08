@@ -101,6 +101,7 @@ Public Class FrmStockEntry
     Public rowBtnStockBalance As Integer = 13
     Public rowBtnStandardConsumption As Integer = 14
     Public rowBtnAttachments As Integer = 15
+    Public rowBtnTransportDetail As Integer = 16
 
 
     Public Const hcProcess As String = "Process"
@@ -114,6 +115,7 @@ Public Class FrmStockEntry
     Public Const hcToGodown As String = "To Godown"
     Public Const hcResponsiblePerson As String = "Responsible Person"
     Public Const hcTransporter As String = "Transporter"
+    Public Const hcBtnTransportDetail As String = "Transport Detail"
     Public Const hcInsurancePolicyNo As String = "Ins.Policy No"
     Public Const hcInsuranceBalanceValue As String = "Ins.Balance Value"
     Public Const hcInsuredValue As String = "Insured Value"
@@ -147,10 +149,13 @@ Public Class FrmStockEntry
     Public Const Col4StockProcessQty As String = "Stock Process Qty"
 
     Dim mV_Type As String = ""
+
+
     Dim DtItemRelation As DataTable
     Public Shared mFlag_Import As Boolean = False
     Dim mPrevRowIndex As Integer = 0
     Friend WithEvents MnuShowLedgerPosting As ToolStripMenuItem
+    Friend WithEvents MnuPrintBulk As ToolStripMenuItem
     Dim Dgl As New AgControls.AgDataGrid
     Public Property LinkedDocId() As String
         Get
@@ -215,6 +220,7 @@ Public Class FrmStockEntry
         Me.Label5 = New System.Windows.Forms.Label()
         Me.TxtNature = New AgControls.AgTextBox()
         Me.MnuShowLedgerPosting = New System.Windows.Forms.ToolStripMenuItem()
+        Me.MnuPrintBulk = New System.Windows.Forms.ToolStripMenuItem()
         Me.GroupBox2.SuspendLayout()
         Me.GBoxMoveToLog.SuspendLayout()
         Me.GBoxApprove.SuspendLayout()
@@ -710,7 +716,7 @@ Public Class FrmStockEntry
         '
         'MnuOptions
         '
-        Me.MnuOptions.Items.AddRange(New System.Windows.Forms.ToolStripItem() {Me.MnuImportFromExcel, Me.MnuImportOpeningFromExcel, Me.MnuEditSave, Me.MnuWizard, Me.MnuHistory, Me.MnuShowLedgerPosting, Me.MnuReport, Me.MnuPrintQACopy})
+        Me.MnuOptions.Items.AddRange(New System.Windows.Forms.ToolStripItem() {Me.MnuImportFromExcel, Me.MnuImportOpeningFromExcel, Me.MnuEditSave, Me.MnuWizard, Me.MnuHistory, Me.MnuShowLedgerPosting, Me.MnuPrintBulk, Me.MnuReport, Me.MnuPrintQACopy})
         Me.MnuOptions.Name = "MnuOptions"
         Me.MnuOptions.Size = New System.Drawing.Size(220, 202)
         '
@@ -833,6 +839,11 @@ Public Class FrmStockEntry
         Me.MnuShowLedgerPosting.Size = New System.Drawing.Size(219, 22)
         Me.MnuShowLedgerPosting.Text = "Show Ledger Posting"
         '
+        'MnuPrintBulk
+        '
+        Me.MnuPrintBulk.Name = "MnuPrintBulk"
+        Me.MnuPrintBulk.Size = New System.Drawing.Size(197, 22)
+        Me.MnuPrintBulk.Text = "Print Bulk"
         'FrmStockEntry
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
@@ -1175,8 +1186,8 @@ Public Class FrmStockEntry
             Dgl2.BorderStyle = BorderStyle.None
         End If
 
-        Dgl2.Rows.Add(16)
-        For I = 0 To Dgl2.Rows.Count - 1
+        Dgl2.Rows.Add(17)
+        For I = 0 To Dgl2.Rows.Count - 2
             Dgl2.Rows(I).Visible = False
         Next
 
@@ -1201,6 +1212,8 @@ Public Class FrmStockEntry
         Dgl2.Item(Col1Value, rowBtnStandardConsumption) = New DataGridViewButtonCell
         Dgl2.Item(Col1Head, rowBtnAttachments).Value = hcBtnAttachments
         Dgl2.Item(Col1Value, rowBtnAttachments) = New DataGridViewButtonCell
+        Dgl2.Item(Col1Head, rowBtnTransportDetail).Value = hcBtnTransportDetail
+        Dgl2.Item(Col1Value, rowBtnTransportDetail) = New DataGridViewButtonCell
 
 
 
@@ -1252,6 +1265,10 @@ Public Class FrmStockEntry
 
         If DglMain.Rows(rowParty).Visible = True Then
             CType(DglMain.Item(Col1BtnDetail, rowParty).Tag, FrmStockEntryParty).FSave(mSearchCode, Conn, Cmd)
+        End If
+
+        If Dgl2.Item(Col1Value, rowBtnTransportDetail).Tag IsNot Nothing Then
+            CType(Dgl2.Item(Col1Value, rowBtnTransportDetail).Tag, FrmStockHeader).FSave(mSearchCode, Conn, Cmd)
         End If
 
         FSaveTransferDetail(mSearchCode, Conn, Cmd)
@@ -2082,6 +2099,10 @@ Public Class FrmStockEntry
         GetUISetting(Dgl1, Me.Name, AgL.PubDivCode, AgL.PubSiteCode, bNCat, DglMain.Item(Col1Value, rowV_Type).Tag, DglMain.Item(Col1Value, rowProcess).Tag, DglMain.Item(Col1Value, rowSettingGroup).Tag, ClsMain.GridTypeConstants.HorizontalGrid)
         GetUISetting(Dgl4, Me.Name, AgL.PubDivCode, AgL.PubSiteCode, bNCat, DglMain.Item(Col1Value, rowV_Type).Tag, DglMain.Item(Col1Value, rowProcess).Tag, DglMain.Item(Col1Value, rowSettingGroup).Tag, ClsMain.GridTypeConstants.HorizontalGrid)
         If Dgl4.Visible = False Then PnlConsumptionTotal.Visible = False
+        If AgL.StrCmp(AgL.PubDBName, "Sadhvi") And LblV_Type.Tag = Ncat.StockReceive Then
+            DglMain.Rows(rowPartyDocNo).Visible = True
+            DglMain.Rows(rowPartyDocDate).Visible = True
+        End If
     End Sub
     Private Sub FrmSaleOrder_BaseFunction_MoveRec(ByVal SearchCode As String) Handles Me.BaseFunction_MoveRec
         Dim I As Integer
@@ -2169,6 +2190,9 @@ Public Class FrmStockEntry
                 TxtNature.Text = AgL.XNull(.Rows(0)("Nature"))
 
                 DglMain.Item(Col1BtnDetail, rowParty).Tag = Nothing
+
+                Dgl2.Item(Col1Value, rowBtnTransportDetail).Tag = Nothing
+                ShowTransportDetail(False)
 
                 If LblV_Type.Tag = Ncat.LrEntry Then
                     Dim bLRNoBarcode As String = AgL.XNull(AgL.Dman_Execute("Select Code From BarCode 
@@ -2818,6 +2842,11 @@ Public Class FrmStockEntry
             Exit Sub
         End If
 
+        If AgL.StrCmp(AgL.PubDBName, "Sadhvi") And LblV_Type.Tag = Ncat.StockReceive And DglMain(Col1Value, rowPartyDocNo).Value = "" Then
+            MsgBox("Party DocNo is Required . Record will not be saved")
+            passed = False
+            Exit Sub
+        End If
 
         'If AgCL.AgIsBlankGrid(Dgl1, Dgl1.Columns(Col1Item).Index) Then passed = False : Exit Sub
 
@@ -2858,7 +2887,6 @@ Public Class FrmStockEntry
                 End If
             Next
         End If
-
 
 
 
@@ -3156,6 +3184,15 @@ Public Class FrmStockEntry
         For i = 0 To Dgl2.Rows.Count - 1
             Dgl2(Col1Head, i).Tag = Nothing
         Next
+
+        Try
+            If Dgl2.Item(Col1Value, rowBtnTransportDetail).Tag IsNot Nothing Then
+                For i = 0 To CType(Dgl2.Item(Col1Value, rowBtnTransportDetail).Tag, FrmStockHeader).Dgl1.Rows.Count - 1
+                    CType(Dgl2.Item(Col1Value, rowBtnTransportDetail).Tag, FrmStockHeader).Dgl1.Item(FrmStockHeader.Col1Head, i).Tag = Nothing
+                Next
+            End If
+        Catch ex As Exception
+        End Try
     End Sub
     Private Sub FrmSaleQuotation_BaseFunction_DispText() Handles Me.BaseFunction_DispText
         Dim i As Integer
@@ -5351,6 +5388,9 @@ Public Class FrmStockEntry
                     End If
                 Case rowBtnAttachments
                     ShowAttachments()
+
+                Case rowBtnTransportDetail
+                    ShowTransportDetail()
             End Select
         End If
     End Sub
@@ -5527,7 +5567,7 @@ Public Class FrmStockEntry
             End If
         End If
     End Sub
-    Private Sub MnuImport_Click(sender As Object, e As EventArgs) Handles MnuImportFromExcel.Click, MnuImportOpeningFromExcel.Click, MnuReport.Click, MnuHistory.Click, MnuWizard.Click, MnuPrintQACopy.Click, MnuShowLedgerPosting.Click
+    Private Sub MnuImport_Click(sender As Object, e As EventArgs) Handles MnuImportFromExcel.Click, MnuImportOpeningFromExcel.Click, MnuReport.Click, MnuHistory.Click, MnuWizard.Click, MnuPrintQACopy.Click, MnuShowLedgerPosting.Click, MnuPrintBulk.Click
         Select Case sender.name
             Case MnuImportFromExcel.Name
                 FImportFromExcel()
@@ -5561,8 +5601,53 @@ Public Class FrmStockEntry
 
             Case MnuShowLedgerPosting.Name
                 FShowLedgerPosting()
+
+            Case MnuPrintBulk.Name
+                FPrintBulk(mSearchCode)
         End Select
     End Sub
+    Private Sub FPrintBulk(SearchCode As String)
+        Dim dtTemp As DataTable
+        Dim I As Integer
+        Dim FrmObj As New FrmPrintDialog
+        FrmObj.IniGrid()
+        FrmObj.Dgl1.Item(FrmPrintDialog.Col1Value, FrmPrintDialog.rowFromNo).Value = DglMain.Item(Col1Value, rowReferenceNo).Value
+        FrmObj.Dgl1.Item(FrmPrintDialog.Col1Value, FrmPrintDialog.rowToNo).Value = DglMain.Item(Col1Value, rowReferenceNo).Value
+        FrmObj.StartPosition = FormStartPosition.CenterParent
+        FrmObj.ShowDialog()
+
+        If FrmObj.mOkButtonPressed Then
+            mQry = "SELECT H.DocID FROM StockHead H WHERE H.V_Type = '" & DglMain.Item(Col1Value, rowV_Type).Tag & "' 
+                    And H.Div_Code = '" & TxtDivision.Tag & "' And H.Site_Code = '" & DglMain.Item(Col1Value, rowSite_Code).Tag & "'"
+            If FrmObj.Dgl1.Item(FrmPrintDialog.Col1Value, FrmPrintDialog.rowFromNo).Value <> "" Then
+                mQry += " AND Cast(H.ManualRefNo AS BIGINT) >= " & Val(FrmObj.Dgl1.Item(FrmPrintDialog.Col1Value, FrmPrintDialog.rowFromNo).Value) & " "
+            End If
+            If FrmObj.Dgl1.Item(FrmPrintDialog.Col1Value, FrmPrintDialog.rowToNo).Value <> "" Then
+                mQry += " AND Cast(H.ManualRefNo AS BIGINT) <= " & Val(FrmObj.Dgl1.Item(FrmPrintDialog.Col1Value, FrmPrintDialog.rowToNo).Value) & ""
+            End If
+            If FrmObj.Dgl1.Item(FrmPrintDialog.Col1Value, FrmPrintDialog.rowFromDate).Value <> "" Then
+                mQry += " AND H.V_Date >= " & AgL.Chk_Date(CDate(FrmObj.Dgl1.Item(FrmPrintDialog.Col1Value, FrmPrintDialog.rowFromDate).Value).ToString("s")) & ""
+            End If
+            If FrmObj.Dgl1.Item(FrmPrintDialog.Col1Value, FrmPrintDialog.rowToDate).Value <> "" Then
+                mQry += " AND H.V_Date <= " & AgL.Chk_Date(CDate(FrmObj.Dgl1.Item(FrmPrintDialog.Col1Value, FrmPrintDialog.rowToDate).Value).ToString("s")) & ""
+            End If
+
+            If FrmObj.Dgl1.Item(FrmPrintDialog.Col1Value, FrmPrintDialog.rowFromDate).Value = "" Or
+                FrmObj.Dgl1.Item(FrmPrintDialog.Col1Value, FrmPrintDialog.rowToDate).Value = "" Then
+                mQry += " AND Date(H.V_Date) >= " & AgL.Chk_Date(CDate(AgL.PubStartDate).ToString("s")) & ""
+                mQry += " AND Date(H.V_Date) <= " & AgL.Chk_Date(CDate(AgL.PubEndDate).ToString("s")) & ""
+            End If
+
+
+            dtTemp = AgL.FillData(mQry, AgL.GCn).Tables(0)
+            If dtTemp.Rows.Count > 0 Then
+                For I = 0 To dtTemp.Rows.Count - 1
+                    FGetPrint(AgL.XNull(dtTemp.Rows(I)("DocID")), ClsMain.PrintFor.DocumentPrint, True)
+                Next
+            End If
+        End If
+    End Sub
+
     Private Sub FWizard()
         Dim StrSenderText As String = Me.Text
         GridReportFrm = New AgLibrary.FrmRepDisplay(StrSenderText, AgL)
@@ -6079,10 +6164,40 @@ Public Class FrmStockEntry
                     ShowBaseDetail(bRowIndex)
                 Case Col1ReferenceDocId
                     ClsMain.FOpenForm(Dgl1.Item(Col1ReferenceDocId, bRowIndex).Tag, Me)
+
             End Select
         Catch ex As Exception
             MsgBox(ex.Message & " in Dgl1_CellContentClick function")
         End Try
+    End Sub
+
+    Private Sub ShowTransportDetail(Optional ShowDialog As Boolean = True)
+        If Dgl2.Item(Col1Value, rowBtnTransportDetail).Tag IsNot Nothing Then
+            CType(Dgl2.Item(Col1Value, rowBtnTransportDetail).Tag, FrmStockHeader).PartyCode = DglMain.Item(Col1Value, rowParty).Tag
+            CType(Dgl2.Item(Col1Value, rowBtnTransportDetail).Tag, FrmStockHeader).V_Type = LblV_Type.Tag
+            CType(Dgl2.Item(Col1Value, rowBtnTransportDetail).Tag, FrmStockHeader).EntryMode = Topctrl1.Mode
+            If ShowDialog Then Dgl2.Item(Col1Value, rowBtnTransportDetail).Tag.ShowDialog()
+        Else
+            Dim FrmObj As FrmStockHeader
+            FrmObj = New FrmStockHeader()
+            FrmObj.PartyCode = DglMain.Item(Col1Value, rowParty).Tag
+            FrmObj.V_Type = LblV_Type.Tag
+            FrmObj.EntryMode = Topctrl1.Mode
+            FrmObj.IniGrid(mSearchCode)
+            Dgl2.Item(Col1Value, rowBtnTransportDetail).Tag = FrmObj
+            If ShowDialog Then Dgl2.Item(Col1Value, rowBtnTransportDetail).Tag.ShowDialog()
+        End If
+        If Dgl1.AgHelpDataSet(Col1BaleNo) IsNot Nothing Then Dgl1.AgHelpDataSet(Col1BaleNo).Dispose() : Dgl1.AgHelpDataSet(Col1BaleNo) = Nothing
+        'If Dgl2.Rows(rowStockInNo).Visible = True Then
+        '    Dgl2.Focus()
+        'Else
+        Dgl1.Focus()
+        'End If
+        If CType(Dgl2.Item(Col1Value, rowBtnTransportDetail).Tag, FrmStockHeader).Dgl1(FrmStockHeader.Col1Value, FrmStockHeader.rowLrNo).Value <> "" Then
+            Dgl2.Item(Col1Value, rowBtnTransportDetail).Style.BackColor = Color.SkyBlue
+        Else
+            Dgl2.Item(Col1Value, rowBtnTransportDetail).Style.BackColor = Color.Transparent
+        End If
     End Sub
     Private Sub ShowBaseDetail(mRow As Integer)
         If Dgl1.Item(Col1BtnBaseDetail, mRow).Tag IsNot Nothing Then

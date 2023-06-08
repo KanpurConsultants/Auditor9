@@ -2,5 +2,5 @@
 SearchCode	string	255	D100001360	
 Sr	long	1	
 Party	string	255	SHANU READYMADE CENTER-DEORIA [W], DEORIA	
-BalanceAmount	number	921.6328	
-BalanceMonth	string	255	2023-01-26	
+BalanceAmount	number	1282.4328	
+BalanceMonth	string	255	2023-01-23	

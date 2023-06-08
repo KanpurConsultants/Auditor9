@@ -2809,7 +2809,7 @@ Public Class ClsReports
                         Left Join viewHelpSubgroup Agent On LTV.Agent  COLLATE DATABASE_DEFAULT = Agent.Code  COLLATE DATABASE_DEFAULT
                         LEFT JOIN (Select Subcode, RegistrationNo As SalesTaxNo
                             From SubgroupRegistration 
-                            Where RegistrationType = 'Sales Tax No') As VPartyGST On VMain.Subcode = VPartyGST.SubCode
+                            Where RegistrationType = 'Sales Tax No') As VPartyGST On VMain.Subcode COLLATE DATABASE_DEFAULT = VPartyGST.SubCode COLLATE DATABASE_DEFAULT
                         GROUP By VMain.Subcode, VMain.Div_Code
                         Having Sum(VMain.AmtDay2)<>0
                         Order By [Party]"
@@ -3211,7 +3211,7 @@ Public Class ClsReports
                         Left Join viewHelpSubgroup Agent On LTV.Agent  COLLATE DATABASE_DEFAULT = Agent.Code  COLLATE DATABASE_DEFAULT
                         LEFT JOIN (Select Subcode, RegistrationNo As SalesTaxNo
                             From SubgroupRegistration 
-                            Where RegistrationType = 'Sales Tax No') As VPartyGST On VMain.Subcode = VPartyGST.SubCode
+                            Where RegistrationType = 'Sales Tax No') As VPartyGST On VMain.Subcode COLLATE DATABASE_DEFAULT = VPartyGST.SubCode COLLATE DATABASE_DEFAULT
                         GROUP By VMain.Subcode, VMain.Div_Code
                         Having Sum(VMain.AmtDay2)<>0
                         Order By [Party]"

@@ -1,44 +1,43 @@
 ; Field definition file for table: ADORecordset
-Code	string	255	D213831	
+Code	string	255	D215252	
 ATYPE	string	255	W	
 SiteName	string	255	AHMEDABAD	
-DocID	string	255	D2   WSI 2022    2932	
+DocID	string	255	D2   WSI 2023     329	
 Sr	number	1	
 InvoiceNo	string	255		
-InvoiceNoW	string	255	7447	
-V_Date	datetime	08/Feb/2023 12:00:00 AM	
-SaleToPartyName	string	255	NIRMAL HANDLOOOM-MUZAFFERPUR, MUZAFFERPUR	
-PartyName	string	255	NIRMAL HANDLOOM-MUZAFERPUR	
-PartyCode	string	255	1328	
-Address	string	255	NIRMAL HANDLOOM
-SHEETLA GALI,SUTTA PATTI
-MUZAFFARPUR(BIHAR)-843116
+InvoiceNoW	string	255	319	
+V_Date	datetime	03/May/2023 12:00:00 AM	
+SaleToPartyName	string	255	ARVIND KHADI BHAWAN-BETHIYA, BETIHYA	
+PartyName	string	255	ARVIND KHADI BHAWAN	
+PartyCode	string	255	1146	
+Address	string	255	ARVIND KHADI BHAWAN
+NEELKAMAL MARKET, LAL BAZAR,
+BETHIYA(BIHAR)-845438
 	
-CityName	string	255	MUZAFFERPUR	
+CityName	string	255	BETIHYA	
 ShipToPartyName	string	255		
-Brand	string	255	VISHAL SALWAR SUIT	
-PInvNo	string	255	449,450,451,452,453,454,455,456,458,459	
-Qty	number	39	
-Amount	number	619.2	
-GoodsValue	number	619.2	
-DiscountPer	string	255		
-TotalDiscount	number	0	
-OtherCharge	number	7	
-OtherCharge1	number	0	
-Tax	number	0	
-NetAmount	number	625.854	
-LRemarks	string	255	DABBO
-	
-TransportName	string	255	ANJANI AIR CARGO-ADI	
-LRNO	string	255	1011	
-LRDate	string	255	09-02-2023	
-NOOfBales	long	10	
-PrivateMark	string	255	DABBO	
-BookedFrom	string	255		
-Destination	string	255		
+Brand	string	255	K ROUNAK	
+PInvNo	string	255	787	
+Qty	number	10	
+Amount	number	245	
+GoodsValue	number	250	
+DiscountPer	string	255	2.00 % 	
+TotalDiscount	number	5	
+OtherCharge	number	0	
+OtherCharge1	number	1.3	
+Tax	number	12.266	
+NetAmount	number	258.57	
+LRemarks	string	255		
+TransportName	string	255	ATC SUPPLY CHAINS SOLUTIONS	
+LRNO	string	255	1003491	
+LRDate	string	255	04-04-2023	
+NOOfBales	long	1	
+PrivateMark	string	255	52/1	
+BookedFrom	string	255	AHMEDABAD	
+Destination	string	255	BETIHYA	
 PrintedByUser	string	255	SUPER	
-EntryByUser	string	255	ranjana	
-UserEntryDate	datetime	16/Feb/2023 12:00:00 AM	
+EntryByUser	string	255	SUPER	
+UserEntryDate	datetime	08/May/2023 12:00:00 AM	
 CompanyLogo	BLOB		
 CompanyAuthorisedSignature	BLOB		
 EInvoiceQrCode	BLOB		
