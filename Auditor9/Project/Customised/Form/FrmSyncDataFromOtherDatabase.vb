@@ -2483,7 +2483,7 @@ Public Class FrmSyncDataFromOtherDatabase
             If Code = "CASH" Or Code = "BANK" Or Code = "GRET" Or Code = "RevenuePnt" Then
                 DtRow = DtTable.Select("OMSId = '" & Code & "' ")
             Else
-                If AgL.StrCmp(ClsMain.FDivisionNameForCustomization(6), "SADHVI") And AgL.StrCmp(AgL.PubDBName, "Sadhvi") And (Code = "BNKHDFC8491" Or Code = "BNKHDFC8423") Then
+                If AgL.StrCmp(ClsMain.FDivisionNameForCustomization(6), "SADHVI") And AgL.StrCmp(AgL.PubDBName, "Sadhvi") And (Code = "BNKHDFC8491" Or Code = "BNKHDFC8423" Or Code = "BNKICICI1597" Or Code = "BNKICICI1601") Then
                     DtRow = DtTable.Select("OMSId = '" & Code & "' ")
                 Else
                     DtRow = DtTable.Select("OMSId = '" & Code & "' AND Site_Code = '" & Site_Code & "' ")

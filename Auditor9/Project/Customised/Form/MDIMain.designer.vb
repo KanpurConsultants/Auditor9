@@ -141,6 +141,7 @@ Partial Class MDIMain
         Me.MnuPurchaseGoodsReceipt = New System.Windows.Forms.ToolStripMenuItem()
         Me.MnuPurchaseEntry = New System.Windows.Forms.ToolStripMenuItem()
         Me.MnuPurchaseReturnEntry = New System.Windows.Forms.ToolStripMenuItem()
+        Me.MnuGenerateBarcodeSS = New System.Windows.Forms.ToolStripMenuItem()
         Me.MnuGenerateBarcode = New System.Windows.Forms.ToolStripMenuItem()
         Me.MnuLocalFreightEntry = New System.Windows.Forms.ToolStripMenuItem()
         Me.MnuLREntry = New System.Windows.Forms.ToolStripMenuItem()
@@ -319,7 +320,7 @@ Partial Class MDIMain
         Me.MnuPrintCheque = New System.Windows.Forms.ToolStripMenuItem()
         Me.MnuBank = New System.Windows.Forms.ToolStripMenuItem()
         Me.MnuChequePrinting = New System.Windows.Forms.ToolStripMenuItem()
-        Me.MnuGenerateBarcodeSS = New System.Windows.Forms.ToolStripMenuItem()
+        Me.MnuSizeWiseSaleOrderReport = New System.Windows.Forms.ToolStripMenuItem()
         Me.MnuMain.SuspendLayout()
         Me.SuspendLayout()
         '
@@ -1185,6 +1186,13 @@ Partial Class MDIMain
         Me.MnuPurchaseReturnEntry.Size = New System.Drawing.Size(201, 22)
         Me.MnuPurchaseReturnEntry.Text = "Purchase Return Entry"
         '
+        'MnuGenerateBarcodeSS
+        '
+        Me.MnuGenerateBarcodeSS.AccessibleDescription = "+Barcode Module"
+        Me.MnuGenerateBarcodeSS.Name = "MnuGenerateBarcodeSS"
+        Me.MnuGenerateBarcodeSS.Size = New System.Drawing.Size(201, 22)
+        Me.MnuGenerateBarcodeSS.Text = "Generate Barcode SS"
+        '
         'MnuGenerateBarcode
         '
         Me.MnuGenerateBarcode.AccessibleDescription = "+Barcode Module"
@@ -1905,7 +1913,7 @@ Partial Class MDIMain
         'MnuReports
         '
         Me.MnuReports.AccessibleDescription = ""
-        Me.MnuReports.DropDownItems.AddRange(New System.Windows.Forms.ToolStripItem() {Me.MnuSizeWiseSaleInvoiceReport, Me.MnuSizeWiseStockReport, Me.MnuSizeWiseRateList, Me.MnuSizeWiseJobOrderReport, Me.MnuSizeWiseJobReceiveReport, Me.MnuSizeWiseConsumptionList, Me.MnuSaleInvoiceReportAadhat, Me.MnuBrandList, Me.MnuCustomerDiscountReport, Me.MnuSupplierDiscoutMaster, Me.MnuFairDebitNoteReport, Me.MnuPurchaseSaleComparisonReport, Me.MnuCustomerFairReport, Me.MnuSupplierFairReport, Me.MnuTransportRegisterFormat1, Me.MnuTransportRegisterFormat2, Me.DeleteDataToolStripMenuItem, Me.MnuLinkedPartyMismatchReport, Me.MnuSaleInvoicePendingInW, Me.MnuBillWiseProfitability, Me.MnuSupplierOutstandingWithBankAc, Me.MnuSaleCollectionSummary, Me.MnuPendingToDeliverReport, Me.MnuCustomerPaymentFollowupHistoryReport})
+        Me.MnuReports.DropDownItems.AddRange(New System.Windows.Forms.ToolStripItem() {Me.MnuSizeWiseSaleOrderReport, Me.MnuSizeWiseSaleInvoiceReport, Me.MnuSizeWiseStockReport, Me.MnuSizeWiseRateList, Me.MnuSizeWiseJobOrderReport, Me.MnuSizeWiseJobReceiveReport, Me.MnuSizeWiseConsumptionList, Me.MnuSaleInvoiceReportAadhat, Me.MnuBrandList, Me.MnuCustomerDiscountReport, Me.MnuSupplierDiscoutMaster, Me.MnuFairDebitNoteReport, Me.MnuPurchaseSaleComparisonReport, Me.MnuCustomerFairReport, Me.MnuSupplierFairReport, Me.MnuTransportRegisterFormat1, Me.MnuTransportRegisterFormat2, Me.DeleteDataToolStripMenuItem, Me.MnuLinkedPartyMismatchReport, Me.MnuSaleInvoicePendingInW, Me.MnuBillWiseProfitability, Me.MnuSupplierOutstandingWithBankAc, Me.MnuSaleCollectionSummary, Me.MnuPendingToDeliverReport, Me.MnuCustomerPaymentFollowupHistoryReport})
         Me.MnuReports.Name = "MnuReports"
         Me.MnuReports.Size = New System.Drawing.Size(59, 20)
         Me.MnuReports.Text = "Reports"
@@ -2441,12 +2449,13 @@ Partial Class MDIMain
         Me.MnuChequePrinting.Size = New System.Drawing.Size(160, 22)
         Me.MnuChequePrinting.Text = "Cheque Printing"
         '
-        'MnuGenerateBarcodeSS
+        'MnuSizeWiseSaleOrderReport
         '
-        Me.MnuGenerateBarcodeSS.AccessibleDescription = "+Barcode Module"
-        Me.MnuGenerateBarcodeSS.Name = "MnuGenerateBarcodeSS"
-        Me.MnuGenerateBarcodeSS.Size = New System.Drawing.Size(201, 22)
-        Me.MnuGenerateBarcodeSS.Text = "Generate Barcode SS"
+        Me.MnuSizeWiseSaleOrderReport.AccessibleDescription = "+APPAREL"
+        Me.MnuSizeWiseSaleOrderReport.Name = "MnuSizeWiseSaleOrderReport"
+        Me.MnuSizeWiseSaleOrderReport.Size = New System.Drawing.Size(307, 22)
+        Me.MnuSizeWiseSaleOrderReport.Tag = "REPORT"
+        Me.MnuSizeWiseSaleOrderReport.Text = "Size Wise Sale Order Report"
         '
         'MDIMain
         '
@@ -2771,4 +2780,5 @@ Partial Class MDIMain
     Friend WithEvents MnuMatchData As ToolStripMenuItem
     Friend WithEvents MnuDeleteLedgerAcData As ToolStripMenuItem
     Friend WithEvents MnuGenerateBarcodeSS As ToolStripMenuItem
+    Friend WithEvents MnuSizeWiseSaleOrderReport As ToolStripMenuItem
 End Class

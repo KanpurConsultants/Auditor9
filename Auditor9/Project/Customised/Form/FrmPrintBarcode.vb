@@ -94,6 +94,12 @@ Public Class FrmPrintBarcode
         AgL.GridDesign(Dgl1)
 
         ApplyUISetting()
+        If PrintBarcodeFrom = "FrmItemMaster" And AgL.StrCmp(AgL.PubDBName, "Sadhvi") Then
+            TxtFromDate.Visible = True
+            TxtToDate.Visible = True
+            LblFromDate.Visible = True
+            LblToDate.Visible = True
+        End If
 
         AgCL.GridSetiingShowXml(Me.Text & Dgl1.Name & AgL.PubCompCode & AgL.PubDivCode & AgL.PubSiteCode, Dgl1, False)
     End Sub
@@ -217,7 +223,31 @@ Public Class FrmPrintBarcode
         Dim I As Integer = 0
 
         If (PrintBarcodeFrom = "FrmItemMaster") Then
-            mQry = "Select L.GenDocId AS DocId, 1 AS Sr, L.GenDocId As RecId, SKU.EntryDate As V_Date, 
+            If TxtFromDate.Text <> "" And TxtToDate.Text <> "" Then
+                mQry = "Select L.GenDocId AS DocId, 1 AS Sr, L.GenDocId As RecId, SKU.EntryDate As V_Date, 
+                L.Item as ItemCode,
+                Case When Sku.V_Type = '" & ItemV_Type.SKU & "' Then I.Specification Else Sku.Specification End as ItemName,
+                1 As Qty, SKU.Rate, NULL Sale_Rate, L.MRP,
+                IsNull(Ig.BarcodeType,Ic.BarcodeType) As BarcodeType, 
+                IsNull(Ig.BarcodePattern,Ic.BarcodePattern) As BarcodePattern,
+                IC.Description As ItemCategoryDesc, IG.Description As ItemGroupDesc, 
+                D1.Specification as Dimension1Desc, D2.Specification as Dimension2Desc,
+                D3.Specification as Dimension3Desc, D4.Specification as Dimension4Desc, 
+                D.DispName as SizeDesc
+                From Barcode L 
+                LEFT JOIN Item Sku ON Sku.Code = L.Item
+                Left Join Item IC On Sku.ItemCategory = IC.Code
+                Left Join Item IG On Sku.ItemGroup = IG.Code
+                LEFT JOIN Item I ON Sku.BaseItem = I.Code
+                LEFT JOIN Item D1 ON Sku.Dimension1 = D1.Code
+                LEFT JOIN Item D2 ON Sku.Dimension2 = D2.Code
+                LEFT JOIN Item D3 ON Sku.Dimension3 = D3.Code
+                LEFT JOIN Item D4 ON Sku.Dimension4 = D4.Code
+                LEFT JOIN Item Size ON Sku.Size = Size.Code
+                LEFT JOIN Subgroup D on D.Subcode = SKU.Div_Code
+                Where 1=1 And SKU.EntryDate Between '" & TxtFromDate.Text & "' AND '" & TxtToDate.Text & "' "
+            Else
+                mQry = "Select L.GenDocId AS DocId, 1 AS Sr, L.GenDocId As RecId, SKU.EntryDate As V_Date, 
                 L.Item as ItemCode,
                 Case When Sku.V_Type = '" & ItemV_Type.SKU & "' Then I.Specification Else Sku.Specification End as ItemName,
                 1 As Qty, SKU.Rate, NULL Sale_Rate, L.MRP,
@@ -239,6 +269,7 @@ Public Class FrmPrintBarcode
                 LEFT JOIN Item Size ON Sku.Size = Size.Code
                 LEFT JOIN Subgroup D on D.Subcode = SKU.Div_Code
                 Where L.GenDocId = '" & mDocId & "'"
+            End If
         ElseIf (PrintBarcodeFrom = "FrmBarcodeRateRevision") Then
             mQry = "Select L.GenDocId AS DocId, 1 AS Sr, L.GenDocId As RecId, SKU.EntryDate As V_Date, 
                 L.Item as ItemCode,
@@ -337,6 +368,23 @@ Public Class FrmPrintBarcode
                 strTicked = FHPGD_PendingBarcodeToPrint(PrintAction_Preview)
         End Select
     End Sub
+    Private Sub Txt_Validating(ByVal sender As Object, ByVal e As System.ComponentModel.CancelEventArgs) Handles TxtFromDate.Validating, TxtToDate.Validating
+        Try
+            Select Case sender.NAME
+                Case TxtFromDate.Name, TxtToDate.Name
+                    If TxtFromDate.Text = "" Or TxtToDate.Text = "" Then
+                        Exit Sub
+                    Else
+                        FillBarcodeFromDocId()
+                    End If
+
+
+            End Select
+        Catch ex As Exception
+            MsgBox(ex.Message)
+        End Try
+    End Sub
+
     Private Function FHPGD_PendingBarcodeToPrint(PrintAction As String) As String
         Dim FRH_Multiple As DMHelpGrid.FrmHelpGrid_Multi
         Dim StrRtn As String = ""

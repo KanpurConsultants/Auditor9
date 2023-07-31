@@ -3306,7 +3306,7 @@ Public Class FrmPurchInvoiceDirect_WithDimension
                         Pids.Item As ItemCode, Pids.ItemCategory, Pids.ItemGroup, 
                         Pids.Dimension1, Pids.Dimension2, 
                         Pids.Dimension3, Pids.Dimension4, Pids.Size, 
-                        D1.Description as Dimension1Desc, D2.Description as Dimension2Desc,
+                        Isnull(D1SG.Description,D1.Description) as Dimension1Desc, D2.Description as Dimension2Desc,
                         D3.Description as Dimension3Desc, D4.Description as Dimension4Desc, Size.Description as SizeDesc,
                         I.ItemCategory as MItemCategory, I.ItemGroup as MItemGroup, I.Specification as MItemSpecification, 
                         I.Dimension1 as MDimension1,  I.Dimension2 as MDimension2,  I.Dimension3 as MDimension3,  I.Dimension4 as MDimension4,  I.Size as MSize, 
@@ -3342,6 +3342,7 @@ Public Class FrmPurchInvoiceDirect_WithDimension
                         LEFT JOIN Item D2 ON Pids.Dimension2 = D2.Code
                         LEFT JOIN Item D3 ON Pids.Dimension3 = D3.Code
                         LEFT JOIN Item D4 ON Pids.Dimension4 = D4.Code
+                        Left join ItemSubGroup D1SG  With (NoLock) On D1SG.Item = D1.Code and D1SG.SubCode = Pi.Vendor
                         LEFT JOIN Item Size ON Pids.Size = Size.Code
                         Left Join Barcode  With (NoLock) On L.Barcode = Barcode.Code
                         Left Join Unit U With (NoLock) On L.Unit = U.Code 
@@ -9123,10 +9124,17 @@ Public Class FrmPurchInvoiceDirect_WithDimension
         End If
 
 
-
-        mQry = "SELECT I.Code, I.Description
+        If AgL.StrCmp(AgL.PubDBName, "Aeroclub") Then
+            mQry = "SELECT I.Code, Isnull(ISG.Description,I.Description) As Description
+                        FROM Item I  With (NoLock)
+                        Left join ItemSubGroup ISG  With (NoLock) On ISG.Item = I.Code and ISG.SubCode = '" & DglMain.Item(Col1Value, rowVendor).Tag & "'
+                        Where IfNull(I.Status,'" & AgTemplate.ClsMain.EntryStatus.Active & "') = '" & AgTemplate.ClsMain.EntryStatus.Active & "' " & strCond
+        Else
+            mQry = "SELECT I.Code, I.Description
                         FROM Item I  With (NoLock)
                         Where IfNull(I.Status,'" & AgTemplate.ClsMain.EntryStatus.Active & "') = '" & AgTemplate.ClsMain.EntryStatus.Active & "' " & strCond
+        End If
+
         Dgl1.AgHelpDataSet(Col1Dimension1) = AgL.FillData(mQry, AgL.GCn)
     End Sub
     Private Sub FCreateHelpDimension2(RowIndex As Integer)

@@ -3,11 +3,11 @@ Copies	string	255	1
 CopyPrintingCaption	string	255		
 DocNoCaption	string	255	Invoice No.	
 DocDateCaption	string	255	Invoice Date	
-SiteStateCode	string	255	09	
-SiteStateName	string	255	Uttar Pradesh	
-DocID	string	255	D1    SI 2023       1	
+SiteStateCode	string	255	07	
+SiteStateName	string	255	Delhi	
+DocID	string	255	D1    SI 2022      64	
 Sr	number	1	
-V_Date	datetime	31/May/2023 12:00:00 AM	
+V_Date	datetime	31/Mar/2023 12:00:00 AM	
 DeliveryDate	datetime		
 Voucher_Type	string	255	Tax Invoice	
 NCat	string	255	SI	
@@ -22,28 +22,30 @@ AgentName	string	255
 SalesRepName	string	255		
 SalesRepCode	string	255		
 AgentCaption	string	255	Agent	
-SaleToPartyName	string	255	HO	
-SaleToPartyAddress	string	255	0	
-CityName	string	255	Kanpur	
-SaleToPartyPincode	string	255		
+SaleToPartyName	string	255	ANSARI & BROTHERS	
+SaleToPartyAddress	string	255	JAMA MASJID MARKET MURABBA GALI, AFGAN HATA GORAKHPUR
+	
+CityName	string	255	GORAKHPUR	
+SaleToPartyPincode	string	255	273001	
 StateCode	string	255	09	
 StateName	string	255	Uttar Pradesh	
 SaleToPartyMobile	string	255		
 ContactPerson	string	255		
-SaleToPartySalesTaxNo	string	255		
+SaleToPartySalesTaxNo	string	255	09AAXFA1457C1ZC	
 SaleToPartyAadharNo	string	255		
-SaleToPartyPanNo	string	255		
+SaleToPartyPanNo	string	255	AAXFA1457C	
 SaleToPartyLicenseNo	string	255		
-ShipToPartyName	string	255	HO	
-ShipToPartyAddress	string	255	0	
-ShipToPartyCity	string	255	Kanpur	
-ShipToPartyPincode	string	255		
+ShipToPartyName	string	255	ANSARI & BROTHERS	
+ShipToPartyAddress	string	255	JAMA MASJID MARKET MURABBA GALI, AFGAN HATA GORAKHPUR
+	
+ShipToPartyCity	string	255	GORAKHPUR	
+ShipToPartyPincode	string	255	273001	
 ShipToPartyStateCode	string	255	09	
 ShipToPartyStateName	string	255	Uttar Pradesh	
 ShipToPartyMobile	string	255		
-ShipToPartySalesTaxNo	string	255		
+ShipToPartySalesTaxNo	string	255	09AAXFA1457C1ZC	
 ShipToPartyAadharNo	string	255		
-ShipToPartyPanNo	string	255		
+ShipToPartyPanNo	string	255	AAXFA1457C	
 ShipToPartyLicenseNo	string	255		
 TransporterSalesTaxNo	string	255		
 ShipToAddress	string	255		
@@ -69,16 +71,16 @@ Destination	string	255
 DescriptionOfGoods	string	255		
 DescriptionOfPacking	string	255		
 ReferenceNo	string	255		
-BarcodeName	string	255	7878	
-ItemName	string	255	MODEL NO - EV VEHICLE - EV	
-ItemGroupName	string	255	EV VEHICLE	
-ItemCatName	string	255	EV	
-ItemManualCode	string	255	1	
-ItemSpecification	string	255	MODEL NO	
+BarcodeName	string	255		
+ItemName	string	255	JUNIOR SHIRT - TERRY BOY - SHIRT	
+ItemGroupName	string	255	TERRY BOY	
+ItemCatName	string	255	SHIRT	
+ItemManualCode	string	255	2	
+ItemSpecification	string	255	JUNIOR SHIRT	
 InvoiceLineSpecification	string	255		
 HSN	string	255	12	
 MaintainStockYn	boolean	True	
-D1Spec	string	255		
+D1Spec	string	255	5123-38	
 D2Spec	string	255		
 D3Spec	string	255		
 D4Spec	string	255		
@@ -100,54 +102,58 @@ MRP	number	0
 LotNo	string	255		
 ExpiryDate	datetime		
 ItemRemark1	string	255		
-Pcs	number	1	
-Qty	number	1	
-Rate	number	15000	
+Pcs	number	9	
+Qty	number	9	
+Rate	number	179	
 ItemState	string	255		
 CatalogSpecification	string	255		
 CatalogSiteName	string	255		
 Unit	string	255	Pcs	
 UnitDecimalPlaces	number	0	
-DiscountPer	number	0	
-DiscountAmount	number	0	
+DiscountPer	number	3	
+DiscountAmount	number	48.33	
 AdditionalDiscountPer	number	0	
 AdditionalDiscountAmount	number	0	
 AdditionPer	number	0	
 AdditionAmount	number	0	
-TotalDiscount	number	0	
+TotalDiscount	number	48.33	
 Deal	string	255		
-AmountBeforeDiscount	number	15000	
-Amount	number	15000	
-Taxable_Amount	number	15000	
-Tax1_Per	number	0	
-Tax1	number	0	
-Tax2_Per	number	2.5	
-Tax2	number	375	
-Tax3_Per	number	2.5	
-Tax3	number	375	
+AmountBeforeDiscount	number	1611	
+Amount	number	1562.67	
+Taxable_Amount	number	1488.29	
+Tax1_Per	number	5	
+Tax1	number	74.41	
+Tax2_Per	number	0	
+Tax2	number	0	
+Tax3_Per	number	0	
+Tax3	number	0	
 Tax4_Per	number	0	
 Tax4	number	0	
 Tax5_Per	number	0	
 Tax5	number	0	
-Net_Amount	number	15750	
+Net_Amount	number	1562.66	
 LRemarks	string	255		
+LRemarks1	string	255		
+LRemarks2	string	255		
+LRemarks3	string	255		
+LRemarks4	string	255		
 HRemarks	string	255		
 SalesTaxSummaryStr	string	255		
-H_Discount	number	0	
+H_Discount	number	1876.02	
 H_AdditionalDiscount	number	0	
 H_Additional	number	0	
-H_TotalDiscount	number	0	
-H_AmountBeforeDiscount	number	15000	
-H_Gross_Amount	number	15000	
-H_SpecialDiscount_Per	number	0	
-H_SpecialDiscount	number	0	
-H_Taxable_Amount	number	15000	
+H_TotalDiscount	number	1876.02	
+H_AmountBeforeDiscount	number	62534	
+H_Gross_Amount	number	60657.98	
+H_SpecialDiscount_Per	number	4.76	
+H_SpecialDiscount	number	2887.32	
+H_Taxable_Amount	number	57770.66	
 H_Tax1_Per	number	0	
-H_Tax1	number	0	
+H_Tax1	number	2888.51	
 H_Tax2_Per	number	0	
-H_Tax2	number	375	
+H_Tax2	number	0	
 H_Tax3_Per	number	0	
-H_Tax3	number	375	
+H_Tax3	number	0	
 H_Tax4_Per	number	0	
 H_Tax4	number	0	
 H_Tax5_Per	number	0	
@@ -160,8 +166,8 @@ H_Other_Charge1_Per	number	0
 H_Other_Charge1	number	0	
 H_Other_Charge2_Per	number	0	
 H_Other_Charge2	number	0	
-Round_Off	number	0	
-H_Net_Amount	number	15750	
+Round_Off	number	-0.17	
+H_Net_Amount	number	60659	
 EInvoiceIRN	string	255		
 EInvoiceACKNo	string	255		
 EInvoiceACKDate	datetime		
@@ -169,7 +175,7 @@ Default_BankAccountDetail	string	255	<B> Bank Detail :- <BR> KOTAK MAHINDRA : 29
 DocumentPrintHeaderPattern	string	255	Center Aligned	
 DimDetail	string	255		
 PrintedByUser	string	255	SUPER	
-EntryByUser	string	255	SUPER	
+EntryByUser	string	255	SUMIT	
 PrintTitle	string	255	ESTIMATE 	
 DocumentPrintShowPrintDateTimeYn	string	255	1	
 DocumentPrintShowPartyBalance	string	255	Hide	

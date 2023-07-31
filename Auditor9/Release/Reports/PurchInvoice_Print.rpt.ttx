@@ -1,37 +1,37 @@
 ; Field definition file for table: ADORecordset
 Copies	string	255	1	
 CopyPrintingCaption	string	255		
-DocNoCaption	string	255	Invoice No.	
-DocDateCaption	string	255	Invoice Date	
-DocID	string	255	F1    PI 2023      20	
+DocNoCaption	string	255	Doc.No.	
+DocDateCaption	string	255	Doc.Date	
+DocID	string	255	D1    PR 2022       1	
 SiteStateCode	string	255	09	
 SiteStateName	string	255	Uttar Pradesh	
 Sr	number	1	
-V_Date	datetime	02/May/2023 12:00:00 AM	
-Voucher_Type	string	255	Purchase Invoice	
-NCat	string	255	PI	
-DocNo	string	255	F1-PI-2	
+V_Date	datetime	01/Apr/2022 12:00:00 AM	
+Voucher_Type	string	255	Purchase Return	
+NCat	string	255	PR	
+DocNo	string	255	D1-PR-1	
 AgentName	string	255		
 AgentCaption	string	255	Agent	
-PartyName	string	255	UTSAV SAREES	
-PartyAddress	string	255	26 , MILLENIUM -2 TEXTILES MARKET RING ROAD SURAT	
-PartyPinCode	string	255	395002	
-PartyCityName	string	255	SURAT	
-PartyStateCode	string	255	24	
-PartyStateName	string	255	Gujarat	
-PartyMobile	string	255	09327150280	
+PartyName	string	255	SADHVI ENTERPRISES	
+PartyAddress	string	255		
+PartyPinCode	string	255		
+PartyCityName	string	255	Kanpur	
+PartyStateCode	string	255	09	
+PartyStateName	string	255	Uttar Pradesh	
+PartyMobile	string	255		
 ContactPerson	string	255		
-PartySalesTaxNo	string	255	24AFIPJ3605H1ZR	
+PartySalesTaxNo	string	255		
 PartyAadharNo	string	255		
-PartyPanNo	string	255	AFIPJ3605H	
-ShipToPartyName	string	255	UTSAV SAREES	
-ShipToPartyAddress	string	255	26 , MILLENIUM -2 TEXTILES MARKET RING ROAD SURAT	
-ShipToPartyCity	string	255	SURAT	
-ShipToPartyPincode	string	255	395002	
-ShipToPartyStateCode	string	255	24	
-ShipToPartyStateName	string	255	Gujarat	
-ShipToPartyMobile	string	255	09327150280	
-ShipToPartySalesTaxNo	string	255	24AFIPJ3605H1ZR	
+PartyPanNo	string	255		
+ShipToPartyName	string	255	SADHVI ENTERPRISES	
+ShipToPartyAddress	string	255		
+ShipToPartyCity	string	255	Kanpur	
+ShipToPartyPincode	string	255		
+ShipToPartyStateCode	string	255	09	
+ShipToPartyStateName	string	255	Uttar Pradesh	
+ShipToPartyMobile	string	255		
+ShipToPartySalesTaxNo	string	255		
 ShipToPartyAadharNo	string	255		
 ShipToPartyPanNo	string	255		
 TransporterName	string	255		
@@ -43,13 +43,13 @@ Freight	number
 FreightType	string	255		
 RoadPermitNo	string	255		
 RoadPermitDate	datetime		
-ReferenceNo	string	255		
-ItemName	string	255	DIL LAGI - UTSAV - SAREE D	
-ItemGroupName	string	255	UTSAV	
-ItemCatName	string	255	SAREE D	
-ItemSpecification	string	255	DIL LAGI	
-InvoiceLineSpecification	string	255	DIL LAGI	
-HSN	string	255	5407	
+ReferenceNo	string	255	690	
+ItemName	string	255	SHILAJEET-S-ENT-802 DYD-SAREE-D1   ISS 2021     798	
+ItemGroupName	string	255	S-ENT-802 DYD	
+ItemCatName	string	255	SAREE	
+ItemSpecification	string	255	SHILAJEET	
+InvoiceLineSpecification	string	255	SHILAJEET	
+HSN	string	255	540752	
 D1Spec	string	255		
 D2Spec	string	255		
 D3Spec	string	255		
@@ -60,19 +60,19 @@ ItemCategoryCaption	string	255	Item Category
 ItemGroupCaption	string	255	Item Group	
 ItemCaption	string	255	Item	
 BarcodeCaption	string	255		
-D1Caption	string	255		
-D2Caption	string	255		
-D3Caption	string	255		
-D4Caption	string	255		
+D1Caption	string	255	Quality	
+D2Caption	string	255	Colour	
+D3Caption	string	255	Design	
+D4Caption	string	255	Width	
 SalesTaxGroupItem	string	255	GST 5%	
 GrossTaxRate	number	5	
 Pcs	number	0	
-Qty	number	80	
-DocQty	number	80	
+Qty	number	4	
+DocQty	number	4	
 FreeQty	number	0	
 LossQty	number	0	
 RejQty	number	0	
-Rate	number	215	
+Rate	number	1095	
 Unit	string	255	Pcs	
 UnitDecimalPlaces	number	0	
 DiscountPer	number	0	
@@ -80,11 +80,11 @@ DiscountAmount	number	0
 AdditionalDiscountPer	number	0	
 AdditionalDiscountAmount	number	0	
 TotalDiscount	number	0	
-AmountBeforeDiscount	number	17200	
-Amount	number	17200	
-Taxable_Amount	number	17200	
-Tax1_Per	number	5	
-Tax1	number	860	
+AmountBeforeDiscount	number	4380	
+Amount	number	4380	
+Taxable_Amount	number	4380	
+Tax1_Per	number	0	
+Tax1	number	0	
 Tax2_Per	number	0	
 Tax2	number	0	
 Tax3_Per	number	0	
@@ -93,15 +93,15 @@ Tax4_Per	number	0
 Tax4	number	0	
 Tax5_Per	number	0	
 Tax5	number	0	
-Net_Amount	number	18060	
+Net_Amount	number	4380	
 HRemarks	string	255		
 LRemarks	string	255		
-H_Gross_Amount	number	17200	
+H_Gross_Amount	number	35975	
 H_SpecialDiscount_Per	number	0	
 H_SpecialDiscount	number	0	
-H_Taxable_Amount	number	17200	
+H_Taxable_Amount	number	35975	
 H_Tax1_Per	number	0	
-H_Tax1	number	860	
+H_Tax1	number	0	
 H_Tax2_Per	number	0	
 H_Tax2	number	0	
 H_Tax3_Per	number	0	
@@ -115,15 +115,15 @@ H_Deduction	number	0
 H_Other_Charge_Per	number	0	
 H_Other_Charge	number	0	
 Round_Off	number	0	
-H_Net_Amount	number	18060	
+H_Net_Amount	number	35975	
 H_TotalDiscount	number	0	
-H_AmountBeforeDiscount	number	17200	
+H_AmountBeforeDiscount	number	35975	
 Default_BankAccountDetail	string	255		
 DocumentPrintHeaderPattern	string	255	Center Aligned	
 DimDetail	string	255		
 HsnDescription	string	255		
 PrintedByUser	string	255	SUPER	
-PrintTitle	string	255	Purchase Invoice	
+PrintTitle	string	255	Purchase Return (Debit Note)	
 TermsAndConditions	string	255		
 CompanyLogo	BLOB		
 CompanyAuthorisedSignature	BLOB		

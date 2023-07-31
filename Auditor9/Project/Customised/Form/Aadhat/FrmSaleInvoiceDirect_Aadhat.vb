@@ -9277,7 +9277,7 @@ Public Class FrmSaleInvoiceDirect_Aadhat
                 mQry = " INSERT INTO [#TempSaleInvoicePurchaseSummary](SaleOrderDocId, SaleOrderNo, GrossAmount, TotalTax, RoundOff, Netamount) "
                 mQry += " Select " & AgL.Chk_Text(Dgl1.Item(Col1SaleInvoice, I).Tag) & " As SaleOrderDocId, 
                     " & AgL.Chk_Text(Dgl1.Item(Col1SaleInvoice, I).Value) & " As SaleOrderNo, 
-                    " & Val(Dgl1.Item(Col1PurchaseAmount, I).Value) & " As GrossAmount, 
+                    " & Val(Dgl1.Item(Col1PurchaseTaxableAmount, I).Value) & " As GrossAmount, 
                     " & Tax1 + Tax2 + Tax3 + Tax4 + Tax5 & " As TotalTax, 
                     " & Tax1 & " As RoundOff, 
                     " & Val(Dgl1.Item(Col1PurchaseTaxableAmount, I).Value) +

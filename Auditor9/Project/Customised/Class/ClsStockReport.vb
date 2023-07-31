@@ -618,6 +618,7 @@ Public Class ClsStockReport
                     , Max(IC.Code) as ItemCategoryCode, Max(IC.Description) as ItemCategoryName 
                     , Max(Case When Sku.V_Type = '" & ItemV_Type.SKU & "' Then I.Code Else Sku.Code End) as ItemCode
                     , Max(Case When Sku.V_Type = '" & ItemV_Type.SKU & "' Then I.Specification Else IfNull(Sku.Specification, Sku.Description) End) as ItemName 
+                    , Max(I.Remark) AS ItemRemark
                     , Max(D1.Code) as Dimension1Code, Max(D1.Specification) as Dimension1Name 
                     , Max(D2.Code) as Dimension2Code, Max(D2.Specification) as Dimension2Name 
                     , Max(D3.Code) as Dimension3Code, Max(D3.Specification) as Dimension3Name 
@@ -693,6 +694,7 @@ Public Class ClsStockReport
                     , IC.Code as ItemCategoryCode, IC.Description as ItemCategoryName 
                     , Case When Sku.V_Type = '" & ItemV_Type.SKU & "' Then I.Code Else Sku.Code End as ItemCode
                     , Case When Sku.V_Type = '" & ItemV_Type.SKU & "' Then I.Specification Else IfNull(Sku.Specification,Sku.Description) End as ItemName 
+                    , I.Remark AS ItemRemark
                     , D1.Code as Dimension1Code, D1.Specification as Dimension1Name 
                     , D2.Code as Dimension2Code, D2.Specification as Dimension2Name 
                     , D3.Code as Dimension3Code, D3.Specification as Dimension3Name 
@@ -767,7 +769,7 @@ Public Class ClsStockReport
                 mQry = " Select Max(VMain.SkuCode) As SearchCode 
                     " & IIf(bGroupOn.Contains("ItemCategoryCode"), ", ItemCategoryCode, Max(VMain.ItemCategoryName) as ItemCategory", "") & " 
                     " & IIf(bGroupOn.Contains("ItemGroupCode"), ", ItemGroupCode, Max(VMain.ItemGroupName) as ItemGroup", "") & " 
-                    " & IIf(bGroupOn.Contains("ItemCode"), ", ItemCode, Max(VMain.ItemName) as Item", "") & " 
+                    " & IIf(bGroupOn.Contains("ItemCode"), ", ItemCode, Max(VMain.ItemName) as Item , Max(VMain.ItemRemark) as ItemRemark ", "") & " 
                     " & IIf(bGroupOn.Contains("Dimension1Code"), ", Dimension1Code, Max(VMain.Dimension1Name) as Dimension1", "") & " 
                     " & IIf(bGroupOn.Contains("Dimension2Code"), ", Dimension2Code, Max(VMain.Dimension2Name) as Dimension2", "") & " 
                     " & IIf(bGroupOn.Contains("Dimension3Code"), ", Dimension3Code, Max(VMain.Dimension3Name) as Dimension3", "") & " 

@@ -24,7 +24,7 @@
   <Column>
     <Name>Supplier</Name>
     <Index>3</Index>
-    <Width>100</Width>
+    <Width>205</Width>
     <Visible>True</Visible>
     <AggregateFunction />
   </Column>

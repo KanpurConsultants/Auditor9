@@ -29,6 +29,9 @@ Public Class FrmItemMaster
     Public Const Col1FromUnit As String = "From Unit"
     Public Const Col1Multiplier As String = "Multiplier"
 
+    Public WithEvents DGLItemSubgroup As New AgControls.AgDataGrid
+    Public Const Col1SubCode As String = "SubCode"
+    Public Const Col1Description As String = "Description"
 
     Friend WithEvents MnuOptions As ContextMenuStrip
     Private components As System.ComponentModel.IContainer
@@ -153,6 +156,7 @@ Public Class FrmItemMaster
 
     Dim mItemTypeLastValue As String
     Public WithEvents PnlUnitConversion As Panel
+    Public WithEvents PnlItemSubgroup As Panel
     Dim mItemVTypes As String
 
     Public Sub New(ByVal StrUPVar As String, ByVal DTUP As DataTable, ByVal strVType As String)
@@ -193,6 +197,7 @@ Public Class FrmItemMaster
         Me.Pnl1 = New System.Windows.Forms.Panel()
         Me.BtnAttachments = New System.Windows.Forms.Button()
         Me.PnlUnitConversion = New System.Windows.Forms.Panel()
+        Me.PnlItemSubgroup = New System.Windows.Forms.Panel()
         Me.GrpUP.SuspendLayout()
         Me.GBoxEntryType.SuspendLayout()
         Me.GBoxMoveToLog.SuspendLayout()
@@ -424,14 +429,14 @@ Public Class FrmItemMaster
         Me.PnlRateType.Anchor = CType((System.Windows.Forms.AnchorStyles.Bottom Or System.Windows.Forms.AnchorStyles.Left), System.Windows.Forms.AnchorStyles)
         Me.PnlRateType.Location = New System.Drawing.Point(7, 460)
         Me.PnlRateType.Name = "PnlRateType"
-        Me.PnlRateType.Size = New System.Drawing.Size(609, 112)
+        Me.PnlRateType.Size = New System.Drawing.Size(421, 112)
         Me.PnlRateType.TabIndex = 1
         '
         'MnuOptions
         '
         Me.MnuOptions.Items.AddRange(New System.Windows.Forms.ToolStripItem() {Me.MnuImportFromExcel, Me.MnuImportFromDos, Me.MnuImportFromTally, Me.MnuImportRateListFromExcel, Me.MnuImportRateListFromDos, Me.MnuBulkEdit, Me.MnuImportDesignFromDos, Me.MnuBulkRateEdit, Me.MnuBarcodePrint})
         Me.MnuOptions.Name = "MnuOptions"
-        Me.MnuOptions.Size = New System.Drawing.Size(219, 180)
+        Me.MnuOptions.Size = New System.Drawing.Size(219, 202)
         Me.MnuOptions.Text = "Option"
         '
         'MnuImportFromExcel
@@ -523,16 +528,26 @@ Public Class FrmItemMaster
         'PnlUnitConversion
         '
         Me.PnlUnitConversion.Anchor = CType((System.Windows.Forms.AnchorStyles.Bottom Or System.Windows.Forms.AnchorStyles.Left), System.Windows.Forms.AnchorStyles)
-        Me.PnlUnitConversion.Location = New System.Drawing.Point(622, 460)
+        Me.PnlUnitConversion.Location = New System.Drawing.Point(635, 460)
         Me.PnlUnitConversion.Name = "PnlUnitConversion"
-        Me.PnlUnitConversion.Size = New System.Drawing.Size(347, 112)
+        Me.PnlUnitConversion.Size = New System.Drawing.Size(334, 112)
         Me.PnlUnitConversion.TabIndex = 1061
+        '
+        'PnlItemSubgroup
+        '
+        Me.PnlItemSubgroup.Anchor = CType((System.Windows.Forms.AnchorStyles.Bottom Or System.Windows.Forms.AnchorStyles.Left), System.Windows.Forms.AnchorStyles)
+        Me.PnlItemSubgroup.Location = New System.Drawing.Point(446, 460)
+        Me.PnlItemSubgroup.Name = "PnlItemSubgroup"
+        Me.PnlItemSubgroup.Size = New System.Drawing.Size(200, 100)
+        Me.PnlItemSubgroup.TabIndex = 1062
+        Me.PnlItemSubgroup.Visible = False
         '
         'FrmItemMaster
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.ClientSize = New System.Drawing.Size(974, 622)
         Me.ContextMenuStrip = Me.MnuOptions
+        Me.Controls.Add(Me.PnlItemSubgroup)
         Me.Controls.Add(Me.PnlUnitConversion)
         Me.Controls.Add(Me.BtnAttachments)
         Me.Controls.Add(Me.Pnl1)
@@ -564,6 +579,7 @@ Public Class FrmItemMaster
         Me.Controls.SetChildIndex(Me.Pnl1, 0)
         Me.Controls.SetChildIndex(Me.BtnAttachments, 0)
         Me.Controls.SetChildIndex(Me.PnlUnitConversion, 0)
+        Me.Controls.SetChildIndex(Me.PnlItemSubgroup, 0)
         Me.GrpUP.ResumeLayout(False)
         Me.GrpUP.PerformLayout()
         Me.GBoxEntryType.ResumeLayout(False)
@@ -732,6 +748,7 @@ Public Class FrmItemMaster
         GetUISetting_WithDataTables(Dgl1, Me.Name, AgL.PubDivCode, AgL.PubSiteCode, Dgl1.Item(Col1Value, rowItemType).Tag, mItemVTypes, "", "", ClsMain.GridTypeConstants.VerticalGrid)
         GetUISetting_WithDataTables(DGLRateType, Me.Name, AgL.PubDivCode, AgL.PubSiteCode, Dgl1.Item(Col1Value, rowItemType).Tag, mItemVTypes, "", "", ClsMain.GridTypeConstants.HorizontalGrid)
         GetUISetting_WithDataTables(DGLUnitConversion, Me.Name, AgL.PubDivCode, AgL.PubSiteCode, Dgl1.Item(Col1Value, rowItemType).Tag, mItemVTypes, "", "", ClsMain.GridTypeConstants.HorizontalGrid)
+        'GetUISetting_WithDataTables(DGLItemSubgroup, Me.Name, AgL.PubDivCode, AgL.PubSiteCode, Dgl1.Item(Col1Value, rowItemType).Tag, mItemVTypes, "", "", ClsMain.GridTypeConstants.HorizontalGrid)
     End Sub
     Private Sub FrmItemMasterNew_BaseEvent_ApproveDeletion_InTrans(ByVal SearchCode As String, ByVal Conn As Object, ByVal Cmd As Object) Handles Me.BaseEvent_ApproveDeletion_InTrans
         Dim dtTemp As DataTable
@@ -1007,6 +1024,21 @@ Public Class FrmItemMaster
                       " " & AgL.Chk_Text(DGLUnitConversion.Item(Col1FromUnit, I).Value) & ", " &
                       " " & AgL.Chk_Text(Dgl1.Item(Col1Value, rowStockUnit).Value) & ", 
                       " & Val(DGLUnitConversion.Item(Col1Multiplier, I).Value) & ") "
+                AgL.Dman_ExecuteNonQry(mQry, Conn, Cmd)
+            End If
+        Next
+
+        mQry = "Delete From ItemSubgroup Where Item = '" & SearchCode & "'"
+        AgL.Dman_ExecuteNonQry(mQry, Conn, Cmd)
+
+        For I As Integer = 0 To DGLItemSubgroup.RowCount - 1
+            If DGLItemSubgroup.Item(Col1SubCode, I).Value <> "" Then
+                Dim bItemSubgroupCode As String = AgL.GetMaxId("ItemSubgroup", "Code", AgL.GCn, AgL.PubDivCode, AgL.PubSiteCode, 4, True, True, AgL.ECmd, AgL.Gcn_ConnectionString)
+                mQry = "INSERT INTO ItemSubgroup(Code, Item, SubCode, Description) " &
+                      " VALUES (" & AgL.Chk_Text(bItemSubgroupCode) & ", " &
+                      " " & AgL.Chk_Text(SearchCode) & ", " &
+                      " " & AgL.Chk_Text(DGLItemSubgroup.Item(Col1SubCode, I).tag) & ", " &
+                      " " & AgL.Chk_Text(DGLItemSubgroup.Item(Col1Description, I).Value) & ") "
                 AgL.Dman_ExecuteNonQry(mQry, Conn, Cmd)
             End If
         Next
@@ -1355,6 +1387,22 @@ Public Class FrmItemMaster
 
         DsTemp = Nothing
 
+        mQry = " SELECT SG.Name, ISG.* 
+                FROM ItemSubGroup ISG
+                LEFT JOIN SubGroup SG on SG.SubCode = ISG.SubCode
+                Where ISG.Item = '" & mSearchCode & "'"
+        DsTemp = AgL.FillData(mQry, AgL.GCn)
+        With DsTemp.Tables(0)
+            DGLItemSubgroup.RowCount = 1 : DGLItemSubgroup.Rows.Clear()
+            For I As Integer = 0 To DsTemp.Tables(0).Rows.Count - 1
+                DGLItemSubgroup.Rows.Add()
+                DGLItemSubgroup.Item(ColSNo, I).Value = DGLItemSubgroup.Rows.Count - 1
+                DGLItemSubgroup.Item(Col1SubCode, I).Value = AgL.XNull(.Rows(I)("Name"))
+                DGLItemSubgroup.Item(Col1Description, I).Value = AgL.XNull(.Rows(I)("Description"))
+            Next I
+        End With
+
+        DsTemp = Nothing
 
         SetLastValues()
 
@@ -1623,14 +1671,23 @@ Public Class FrmItemMaster
 
         ChkIsSystemDefine.Enabled = False
         If DGLRateType.Rows.Count <= 1 Then DGLRateType.Visible = False
-
+        PnlItemSubgroup.Visible = False
+        DGLItemSubgroup.Visible = False
+        If (mItemVTypes = "D1" And AgL.StrCmp(AgL.PubDBName, "Aeroclub")) Then
+            DGLItemSubgroup.Visible = True
+            PnlItemSubgroup.Visible = True
+        End If
+        DGLItemSubgroup.Width = 500
+        PnlItemSubgroup.Width = 500
+        PnlItemSubgroup.Height = 100
 
     End Sub
     Private Sub FrmItemMaster_BaseEvent_Topctrl_tbAdd() Handles Me.BaseEvent_Topctrl_tbAdd
-        Dim DsTemp As DataSet
         TxtCustomFields.Tag = AgCustomFields.ClsMain.FGetCustomFieldFromV_Type(ClsMain.Temp_NCat.Item, AgL.GCn)
         AgCustomGrid1.AgCustom = TxtCustomFields.Tag
-        'IniGrid()
+        If AgL.StrCmp(AgL.PubDBName, "Aeroclub") Then
+            IniGrid()
+        End If
 
         If AgL.PubServerName = "" Then
             Dgl1(Col1Value, rowItemCode).Value = AgL.XNull(AgL.Dman_Execute("SELECT  IfNull(Max(CAST(ManualCode AS INTEGER)),0) +1 FROM item  WHERE ABS(ManualCode)>0", AgL.GcnRead).ExecuteScalar)
@@ -1747,6 +1804,33 @@ Public Class FrmItemMaster
         AgL.GridDesign(DGLUnitConversion)
         DGLUnitConversion.Name = "DglUnitConversion"
         DGLUnitConversion.Anchor = AnchorStyles.Left + AnchorStyles.Right + AnchorStyles.Bottom
+
+
+
+        DGLItemSubgroup.ColumnCount = 0
+        With AgCL
+            .AddAgTextColumn(DGLItemSubgroup, ColSNo, 40, 5, ColSNo, False, True, False)
+            .AddAgTextColumn(DGLItemSubgroup, Col1SubCode, 280, 0, Col1SubCode, True, False, False)
+            .AddAgTextColumn(DGLItemSubgroup, Col1Description, 180, 0, Col1Description, True, False, False)
+        End With
+        AgL.AddAgDataGrid(DGLItemSubgroup, PnlItemSubgroup)
+        DGLItemSubgroup.EnableHeadersVisualStyles = False
+        DGLItemSubgroup.AgSkipReadOnlyColumns = True
+        DGLItemSubgroup.RowHeadersVisible = False
+        Dgl1.AllowUserToAddRows = False
+        PnlItemSubgroup.Visible = False
+        DGLItemSubgroup.Visible = False
+        If (mItemVTypes = "D1" And AgL.StrCmp(AgL.PubDBName, "Aeroclub")) Then
+            DGLItemSubgroup.Visible = True
+            PnlItemSubgroup.Visible = True
+        End If
+
+        DGLItemSubgroup.BackgroundColor = Me.BackColor
+        AgL.GridDesign(DGLItemSubgroup)
+        DGLItemSubgroup.Name = "DGLItemSubGroup"
+        DGLItemSubgroup.Width = 500
+        PnlItemSubgroup.Width = 500
+        PnlItemSubgroup.Height = 100
 
 
 
@@ -4794,6 +4878,23 @@ Public Class FrmItemMaster
                         If DGLUnitConversion.AgHelpDataSet(DGLUnitConversion.CurrentCell.ColumnIndex) Is Nothing Then
                             mQry = " SELECT Code, Code as Name  FROM Unit where IsActive=1 Order By Code "
                             DGLUnitConversion.AgHelpDataSet(DGLUnitConversion.CurrentCell.ColumnIndex) = AgL.FillData(mQry, AgL.GCn)
+                        End If
+                    End If
+            End Select
+        Catch ex As Exception
+            MsgBox(ex.Message)
+        End Try
+    End Sub
+
+    Private Sub DGLItemSubGroup_EditingControl_KeyDown(ByVal sender As Object, ByVal e As System.Windows.Forms.KeyEventArgs) Handles DGLItemSubgroup.EditingControl_KeyDown
+        Try
+            If DGLItemSubgroup.CurrentCell Is Nothing Then Exit Sub
+            Select Case DGLItemSubgroup.Columns(DGLItemSubgroup.CurrentCell.ColumnIndex).Name
+                Case Col1SubCode
+                    If e.KeyCode <> Keys.Enter Then
+                        If DGLItemSubgroup.AgHelpDataSet(DGLItemSubgroup.CurrentCell.ColumnIndex) Is Nothing Then
+                            mQry = " SELECT Subcode As Code, Name as Name  FROM Subgroup Order By Name "
+                            DGLItemSubgroup.AgHelpDataSet(DGLItemSubgroup.CurrentCell.ColumnIndex) = AgL.FillData(mQry, AgL.GCn)
                         End If
                     End If
             End Select

@@ -1,6 +1,6 @@
 ; Field definition file for table: ADORecordset
-SearchCode	string	255	D100001360	
+SearchCode	string	255	D100002023	
 Sr	long	1	
-Party	string	255	SHANU READYMADE CENTER-DEORIA [W], DEORIA	
-BalanceAmount	number	1282.4328	
-BalanceMonth	string	255	2023-01-23	
+Party	string	255	PRIYANKA TRADERS [W], Kanpur	
+BalanceAmount	number	0	
+BalanceMonth	string	255		

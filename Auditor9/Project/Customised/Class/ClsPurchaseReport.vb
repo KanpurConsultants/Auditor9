@@ -333,7 +333,8 @@ Public Class ClsPurchaseReport
                     IC.Description As ItemCategoryDesc, IG.Description As ItemGroupDesc, B.Description AS BarcodeDesc,
                     Case When Sku.V_Type = '" & ItemV_Type.SKU & "' Then I.Specification Else Sku.Specification End as ItemDesc,
                     D1.Description as Dimension1Desc, D2.Description as Dimension2Desc,
-                    D3.Description as Dimension3Desc, D4.Description as Dimension4Desc, Size.Description as SizeDesc,
+                    D3.Description as Dimension3Desc, D4.Description as Dimension4Desc, 
+                    D1SG.Description AS ItemSubGroupDesc, Size.Description as SizeDesc,
                     (Case When L.DiscountPer = 0 Then '' else Cast(L.DiscountPer as nVarchar) End)  || (Case When L.AdditionalDiscountPer>0 Then '+' else '' End) || (Case When L.AdditionalDiscountPer=0 Then '' else Cast(L.AdditionalDiscountPer  as nVarchar) End) as DiscountPer, 
                     L.DiscountAmount + L.AdditionalDiscountAmount as Discount, 
                     L.Taxable_Amount, L.Net_Amount, L.Commission, L.AdditionalCommission, L.Commission + L.AdditionalCommission as TotalCommission, L.Qty, L.Unit, 
@@ -357,6 +358,7 @@ Public Class ClsPurchaseReport
                     LEFT JOIN Item D2 ON Sku.Dimension2 = D2.Code
                     LEFT JOIN Item D3 ON Sku.Dimension3 = D3.Code
                     LEFT JOIN Item D4 ON Sku.Dimension4 = D4.Code
+                    Left join ItemSubGroup D1SG  With (NoLock) On D1SG.Item = D1.Code and D1SG.SubCode = H.Vendor
                     LEFT JOIN Item Size ON Sku.Size = Size.Code
                     Left Join viewHelpSubgroup Party On H.Vendor = Party.Code                     
                     Left Join viewHelpSubgroup Sg On H.BillToParty = Sg.Code                     
@@ -404,6 +406,7 @@ Public Class ClsPurchaseReport
                     Max(VMain.Dimension2Desc) As Dimension2, 
                     Max(VMain.Dimension3Desc) As Dimension3, 
                     Max(VMain.Dimension4Desc) As Dimension4, 
+                    Max(VMain.ItemSubGroupDesc) As ItemSubGroupDesc, 
                     Max(VMain.BarcodeDesc) As Barcode, 
                     Max(VMain.SizeDesc) As Size, 
                     Sum(VMain.Qty) As Qty, Max(VMain.Unit) As Unit, 

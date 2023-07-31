@@ -583,6 +583,7 @@ Public Class ClsMain
             FCreateTable_Shape()
             FCreateTable_ItemSize()
             FCreateTable_ItemRatePattern()
+            FCreateTable_ItemSubgroup()
             FCreateTable_ItemRelation()
             FCreateTable_ItemCategorySalesTax()
             FCreateTable_ItemMargin()
@@ -11348,6 +11349,8 @@ Thanks
             AgL.AddFieldSqlite(AgL.GcnMain, "SaleInvoiceDetail", "ReconcileBy", "nVarchar(10)", "", True)
             AgL.AddFieldSqlite(AgL.GcnMain, "SaleInvoiceDetail", "Remarks1", "nVarchar(255)", "", True)
             AgL.AddFieldSqlite(AgL.GcnMain, "SaleInvoiceDetail", "Remarks2", "nVarchar(255)", "", True)
+            AgL.AddFieldSqlite(AgL.GcnMain, "SaleInvoiceDetail", "Remarks3", "nVarchar(255)", "", True)
+            AgL.AddFieldSqlite(AgL.GcnMain, "SaleInvoiceDetail", "Remarks4", "nVarchar(255)", "", True)
             AgL.AddFieldSqlite(AgL.GcnMain, "SaleInvoiceDetail", "GenDocId", "nVarchar(21)", "", True)
             AgL.AddFieldSqlite(AgL.GcnMain, "SaleInvoiceDetail", "GenDocIdSr", "Int", "", True)
             AgL.AddFieldSqlite(AgL.GcnMain, "SaleInvoiceDetail", "Cost", "Float", "", True)
@@ -14802,6 +14805,22 @@ Thanks
         End Try
     End Sub
 
+    Private Sub FCreateTable_ItemSubgroup()
+        Dim mQry As String
+        Try
+            If Not AgL.IsTableExist("ItemSubgroup", AgL.GcnMain) Then
+                mQry = " CREATE TABLE [ItemSubgroup] ([Code] nVarchar(10) NOT NULL,                                       
+                   PRIMARY KEY ([Code]) ); "
+                AgL.Dman_ExecuteNonQry(mQry, AgL.GcnMain)
+            End If
+
+            AgL.AddFieldSqlite(AgL.GcnMain, "ItemSubgroup", "Item", "nVarchar(10)", "", True, "References Item(Code)")
+            AgL.AddFieldSqlite(AgL.GcnMain, "ItemSubgroup", "SubCode", "nVarchar(10)", "", True, "References SubGroup(SubCode)")
+            AgL.AddFieldSqlite(AgL.GcnMain, "ItemSubgroup", "Description", "nVarchar(500)", "", True)
+        Catch ex As Exception
+            MsgBox(ex.Message & "  [FCreateTable_ItemSubgroup]")
+        End Try
+    End Sub
 
 
     Private Sub FCreateTable_ItemBomPattern()
@@ -19829,6 +19848,9 @@ Thanks
             AgL.AddFieldSqlite(AgL.GcnMain, "LedgerHeadSetting", "ActionIfMaximumCashTransactionLimitExceeds", "nVarchar(50)", "None", True)
             AgL.AddFieldSqlite(AgL.GcnMain, "LedgerHeadSetting", "PrintingCopyCaptions", "nVarchar(255)", "", True)
             AgL.AddFieldSqlite(AgL.GcnMain, "LedgerHeadSetting", "AskToPrintAfterSaveYN", "bit", "0", False)
+            AgL.AddFieldSqlite(AgL.GcnMain, "LedgerHeadSetting", "IsVisible_Specification", "bit", "0", True)
+            AgL.AddFieldSqlite(AgL.GcnMain, "LedgerHeadSetting", "IsVisible_Qty", "bit", "0", True)
+            AgL.AddFieldSqlite(AgL.GcnMain, "LedgerHeadSetting", "IsVisible_Rate", "bit", "0", True)
         Catch ex As Exception
             MsgBox(ex.Message & "  [FCreateTable_LedgerHeadSetting]")
         End Try
@@ -24777,14 +24799,14 @@ Thanks
 
 
         bSelectionQry = " Select * From " & bTableName & " With (NoLock) "
-        'Dim DtDebug As DataTable = AgL.FillData(bSelectionQry, IIf(AgL.PubServerName = "", AgL.GCn, AgL.GcnRead)).Tables(0)
+        Dim DtDebug As DataTable = AgL.FillData(bSelectionQry, IIf(AgL.PubServerName = "", AgL.GCn, AgL.GcnRead)).Tables(0)
 
-        'With DtDebug
-        '    For I = 0 To DtDebug.Rows.Count - 1
-        '        'Debug.Print("TmpCol = " + AgL.VNull(.Rows(I)("TmpCol")).ToString() + "; PostAc=" + AgL.XNull(.Rows(I)("PostAc")) + ", Amount=" + AgL.VNull(.Rows(I)("Amount")).ToString() + " In Row No = " + I.ToString())
-        '        Debug.Print("Union All Select  '" + AgL.VNull(.Rows(I)("TmpCol")).ToString() + "' AS tmpCol, '" + AgL.XNull(.Rows(I)("PostAc")) + "'  AS AC," + AgL.VNull(.Rows(I)("Amount")).ToString() + " AS Amount," + I.ToString() + " AS RowId ")
-        '    Next
-        'End With
+        With DtDebug
+            For I = 0 To DtDebug.Rows.Count - 1
+                'Debug.Print("TmpCol = " + AgL.VNull(.Rows(I)("TmpCol")).ToString() + "; PostAc=" + AgL.XNull(.Rows(I)("PostAc")) + ", Amount=" + AgL.VNull(.Rows(I)("Amount")).ToString() + " In Row No = " + I.ToString())
+                Debug.Print("Union All Select  '" + AgL.VNull(.Rows(I)("TmpCol")).ToString() + "' AS tmpCol, '" + AgL.XNull(.Rows(I)("PostAc")) + "'  AS AC," + AgL.VNull(.Rows(I)("Amount")).ToString() + " AS Amount," + I.ToString() + " AS RowId ")
+            Next
+        End With
 
 
         If (AgL.StrCmp(AgL.PubDBName, "ShyamaShyam") Or AgL.StrCmp(AgL.PubDBName, "ShyamaShyamV") Or AgL.StrCmp(AgL.PubDBName, "ShyamaShyam_W") Or AgL.StrCmp(AgL.PubDBName, "ShyamaShyamV_W")) Then

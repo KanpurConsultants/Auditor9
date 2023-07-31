@@ -177,7 +177,8 @@ Public Class FrmSaleInvoiceDirect_WithDimension_ShyamaShyam
     Dim rowAmsDocNo As Integer = 13
     Dim rowAmsDocDate As Integer = 14
     Dim rowAmsDocNetAmount As Integer = 15
-    Dim rowBtnAttachments As Integer = 16
+    Dim rowPakkaRefNo As Integer = 16
+    Dim rowBtnAttachments As Integer = 17
 
 
     Public Const hcSaleToParty As String = "Sale To Party"
@@ -190,6 +191,7 @@ Public Class FrmSaleInvoiceDirect_WithDimension_ShyamaShyam
     Public Const hcDeliveryDate As String = "Delivery Date"
     Public Const hcMinDeliveryDate As String = "Min.Delivery Date"
     Public Const hcReferenceSaleInvoiceNo As String = "Reference No."
+    Public Const hcPakkaRefNo As String = "Pakka Ref No."
     Public Const hcGodown As String = "Godown"
     Public Const hcShipToParty As String = "Ship To Party"
     Public Const HcSalesTaxNo As String = "GST No"
@@ -254,6 +256,9 @@ Public Class FrmSaleInvoiceDirect_WithDimension_ShyamaShyam
     Private _backgroundWorker1 As System.ComponentModel.BackgroundWorker
 
     Dim isInitializingGrids As Boolean
+    Public mDbPath As String = ""
+    Public mDbEncryption As String = ""
+    Dim Connection_Pakka As New SQLite.SQLiteConnection
 
     Public Function FItemTypeSettings(ItemType As String) As DataRow
         Dim DrItemTypeSetting As DataRow()
@@ -1653,7 +1658,7 @@ Public Class FrmSaleInvoiceDirect_WithDimension_ShyamaShyam
         Dgl2.BackgroundColor = Me.BackColor
         Dgl2.BorderStyle = BorderStyle.None
 
-        Dgl2.Rows.Add(17)
+        Dgl2.Rows.Add(18)
 
         For I = 0 To Dgl2.Rows.Count - 1
             Dgl2.Rows(I).Visible = False
@@ -1668,6 +1673,7 @@ Public Class FrmSaleInvoiceDirect_WithDimension_ShyamaShyam
         Dgl2.Item(Col1Head, rowDeliveryDate).Value = hcDeliveryDate
         Dgl2.Item(Col1Head, rowMinDeliveryDate).Value = hcMinDeliveryDate
         Dgl2.Item(Col1Head, rowReferenceSaleInvoiceNo).Value = hcReferenceSaleInvoiceNo
+        Dgl2.Item(Col1Head, rowPakkaRefNo).Value = hcPakkaRefNo
         Dgl2.Item(Col1Head, rowGodown).Value = hcGodown
         Dgl2.Item(Col1Head, rowShipToParty).Value = hcShipToParty
         Dgl2.Item(Col1Head, rowSalesTaxNo).Value = HcSalesTaxNo
@@ -1848,6 +1854,16 @@ Public Class FrmSaleInvoiceDirect_WithDimension_ShyamaShyam
                 " " & AgCustomGrid1.FFooterTableUpdateStr() & " " &
                 " Where DocId = '" & mSearchCode & "'"
         AgL.Dman_ExecuteNonQry(mQry, Conn, Cmd)
+
+        If ClsMain.FDivisionNameForCustomization(22) = "W SHYAMA SHYAM FABRICS" Or ClsMain.FDivisionNameForCustomization(27) = "W SHYAMA SHYAM VENTURES LLP" Then
+            mQry = " Update SaleInvoice " &
+                " SET  " &
+                " AmsDocNo = " & AgL.Chk_Text(Dgl2(Col1Value, rowPakkaRefNo).Value) & ", " &
+                " AmsDocId = " & AgL.Chk_Text(Dgl2(Col1Value, rowPakkaRefNo).Tag) & " " &
+                " Where DocId = '" & mSearchCode & "'"
+            AgL.Dman_ExecuteNonQry(mQry, Conn, Cmd)
+        End If
+
 
         If Topctrl1.Mode.ToUpper = "ADD" Then
             mQry = "
@@ -2717,6 +2733,22 @@ Public Class FrmSaleInvoiceDirect_WithDimension_ShyamaShyam
             DglMain.Rows(rowSaleToPartyName).Visible = False
         End If
 
+        If LblV_Type.Tag = Ncat.SaleReturn Then
+            If ClsMain.FDivisionNameForCustomization(22) = "W SHYAMA SHYAM FABRICS" Or ClsMain.FDivisionNameForCustomization(27) = "W SHYAMA SHYAM VENTURES LLP" Then
+                Dgl2.Rows(rowPakkaRefNo).Visible = True
+
+                mDbPath = AgL.INIRead(StrPath + "\" + IniName, "CompanyInfo", "ActualDBPath", "")
+                mDbEncryption = AgL.INIRead(StrPath + "\" + IniName, "CompanyInfo", "Encryption", "")
+                If Connection_Pakka.ConnectionString = Nothing Then
+                    If mDbEncryption = "N" Then
+                        Connection_Pakka.ConnectionString = "DataSource=" & mDbPath & ";Version=3;"
+                    Else
+                        Connection_Pakka.ConnectionString = "DataSource=" & mDbPath & ";Version=3;Password=" & AgLibrary.ClsConstant.PubDbPassword & ";"
+                    End If
+                    Connection_Pakka.Open()
+                End If
+            End If
+            End If
 
     End Sub
     Private Sub FrmSaleOrder_BaseFunction_MoveRec(ByVal SearchCode As String) Handles Me.BaseFunction_MoveRec
@@ -2836,6 +2868,9 @@ Public Class FrmSaleInvoiceDirect_WithDimension_ShyamaShyam
                 Dgl2(Col1Value, rowAmsDocDate).Value = ClsMain.FormatDate(AgL.XNull(.Rows(0)("AmsDocDate")))
                 Dgl2(Col1Value, rowAmsDocNetAmount).Value = AgL.VNull(.Rows(0)("AmsDocNetAmount"))
 
+                If ClsMain.FDivisionNameForCustomization(22) = "W SHYAMA SHYAM FABRICS" Or ClsMain.FDivisionNameForCustomization(27) = "W SHYAMA SHYAM VENTURES LLP" Then
+                    Dgl2(Col1Value, rowPakkaRefNo).Value = AgL.XNull(.Rows(0)("AmsDocNo"))
+                End If
 
                 Dgl3(Col1Value, rowAgent).Tag = AgL.XNull(.Rows(0)("Agent"))
                 Dgl3(Col1Value, rowAgent).Value = AgL.XNull(.Rows(0)("AgentName"))
@@ -12083,9 +12118,25 @@ Public Class FrmSaleInvoiceDirect_WithDimension_ShyamaShyam
                                     '" & IIf(AgL.PubPrintDivisionShortNameOnDocumentsYn, AgL.PubDivShortName, "") & IIf(AgL.PubPrintSiteShortNameOnDocumentsYn, AgL.PubSiteShortName, "") & "' || (Case When VT.Short_Name Is Not Null Then VT.Short_Name Else '' End) || H.ManualRefNo  as DocNo                                     
                                     FROM SaleInvoice H With (NoLock)                                     
                                     Left Join Voucher_Type Vt on H.V_Type = VT.V_Type
-                                    Where H.Site_Code = '" & DglMain.Item(Col1Value, rowSite_Code).Tag & "' And Div_Code = '" & TxtDivision.Tag & "' And H.V_Type = '" & DglMain.Item(Col1Value, rowV_Type).Tag & "'
+                                    Where H.Site_Code = '" & DglMain.Item(Col1Value, rowSite_Code).Tag & "' And H.Div_Code = '" & TxtDivision.Tag & "' And H.V_Type = '" & DglMain.Item(Col1Value, rowV_Type).Tag & "'
                                     Order By '" & IIf(AgL.PubPrintDivisionShortNameOnDocumentsYn, AgL.PubDivShortName, "") & IIf(AgL.PubPrintSiteShortNameOnDocumentsYn, AgL.PubSiteShortName, "") & "' || (Case When VT.Short_Name Is Not Null Then VT.Short_Name Else '' End) || H.ManualRefNo "
                             Dgl2.Item(Col1Head, Dgl2.CurrentCell.RowIndex).Tag = AgL.FillData(mQry, AgL.GCn)
+                        End If
+
+                        If Dgl2.AgHelpDataSet(Col1Value) Is Nothing Then
+                            Dgl2.AgHelpDataSet(Col1Value,, TabControl1.Top + TP1.Top, TabControl1.Left + TP1.Left) = Dgl2.Item(Col1Head, Dgl2.CurrentCell.RowIndex).Tag
+                        End If
+                    End If
+
+                Case rowPakkaRefNo
+                    If e.KeyCode <> Keys.Enter Then
+                        If Dgl2.Item(Col1Head, Dgl2.CurrentCell.RowIndex).Tag Is Nothing Then
+                            mQry = "SELECT DocID, H.ManualRefNo || '-' || strftime('%d/%m/%Y', H.V_Date)   as DocNo                                     
+                                    FROM SaleInvoice H With (NoLock)                                     
+                                    Left Join Voucher_Type Vt on H.V_Type = VT.V_Type
+                                    Where H.V_Type ='SR' AND H.Site_Code = '" & DglMain.Item(Col1Value, rowSite_Code).Tag & "' And H.Div_Code = '" & TxtDivision.Tag & "' 
+                                    Order By '" & IIf(AgL.PubPrintDivisionShortNameOnDocumentsYn, AgL.PubDivShortName, "") & IIf(AgL.PubPrintSiteShortNameOnDocumentsYn, AgL.PubSiteShortName, "") & "' || (Case When VT.Short_Name Is Not Null Then VT.Short_Name Else '' End) || H.ManualRefNo "
+                            Dgl2.Item(Col1Head, Dgl2.CurrentCell.RowIndex).Tag = AgL.FillData(mQry, Connection_Pakka)
                         End If
 
                         If Dgl2.AgHelpDataSet(Col1Value) Is Nothing Then

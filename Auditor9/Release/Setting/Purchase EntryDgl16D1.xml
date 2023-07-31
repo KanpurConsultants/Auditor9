@@ -11,7 +11,7 @@
     <Name>Barcode</Name>
     <Index>7</Index>
     <Width>100</Width>
-    <Visible>True</Visible>
+    <Visible>False</Visible>
     <AggregateFunction />
   </Column>
   <Column>
@@ -60,7 +60,7 @@
     <Name>Dimension1</Name>
     <Index>8</Index>
     <Width>100</Width>
-    <Visible>False</Visible>
+    <Visible>True</Visible>
     <AggregateFunction />
   </Column>
   <Column>

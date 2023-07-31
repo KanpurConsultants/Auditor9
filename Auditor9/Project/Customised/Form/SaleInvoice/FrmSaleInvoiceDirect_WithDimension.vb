@@ -77,6 +77,10 @@ Public Class FrmSaleInvoiceDirect_WithDimension
     Public Const Col1ExpiryDate As String = "Expiry Date"
     Public Const Col1MRP As String = "MRP"
     Public Const Col1Remark As String = "Remark"
+    Public Const Col1Remark1 As String = "Remark1"
+    Public Const Col1Remark2 As String = "Remark2"
+    Public Const Col1Remark3 As String = "Remark3"
+    Public Const Col1Remark4 As String = "Remark4"
     Public Const Col1Godown As String = "Godown"
     Public Const Col1SalesRepresentative As String = "Sales Rep."
     Public Const Col1Catalog As String = "Catalog"
@@ -1631,6 +1635,10 @@ Public Class FrmSaleInvoiceDirect_WithDimension
             .AddAgDateColumn(Dgl1, Col1ExpiryDate, 90, Col1ExpiryDate, False, False)
             .AddAgNumberColumn(Dgl1, Col1MRP, 100, 8, 2, False, Col1MRP, False, False, True)
             .AddAgTextColumn(Dgl1, Col1Remark, 150, 255, Col1Remark, True, False)
+            .AddAgTextColumn(Dgl1, Col1Remark1, 150, 255, Col1Remark1, True, False)
+            .AddAgTextColumn(Dgl1, Col1Remark2, 150, 255, Col1Remark2, True, False)
+            .AddAgTextColumn(Dgl1, Col1Remark3, 150, 255, Col1Remark3, True, False)
+            .AddAgTextColumn(Dgl1, Col1Remark4, 150, 255, Col1Remark4, True, False)
             .AddAgTextColumn(Dgl1, Col1Godown, 100, 0, Col1Godown, AgL.IsFeatureApplicable_Godown, False)
             .AddAgTextColumn(Dgl1, Col1SalesRepresentative, 100, 0, Col1SalesRepresentative, False, False)
             .AddAgTextColumn(Dgl1, Col1Catalog, 100, 0, Col1Catalog, False, False)
@@ -2514,7 +2522,7 @@ Public Class FrmSaleInvoiceDirect_WithDimension
                            DocQty, FreeQty, LossQty, Qty, Unit, Pcs, UnitMultiplier, DealUnit, 
                            DocDealQty, FreeDealQty, LossDealQtyPer, LossDealQty, DealQty, Rate, DiscountPer, DiscountAmount, AdditionalDiscountPer, AdditionalDiscountAmount,  
                            AdditionPer, AdditionAmount, Deal, DealAmount,
-                           Amount, ExpiryDate, MRP, Remark, SalesRepresentative, Catalog, BaleNo, LotNo, Godown,  
+                           Amount, ExpiryDate, MRP, Remark, Remarks1, Remarks2, Remarks3, Remarks4, SalesRepresentative, Catalog, BaleNo, LotNo, Godown,  
                            ReferenceNo, ReferenceDate, ReferenceDocId, ReferenceDocIDTSr, ReferenceDocIdSr, 
                            StockInDocId, StockInTSr, StockInSr, StockInDiv_Code, SaleInvoice, SaleInvoiceSr,
                            V_Nature " & IIf(TxtStructure.Tag = "", "", ",") & AgCalcGrid1.FLineTableFieldNameStr() & ") "
@@ -2550,6 +2558,10 @@ Public Class FrmSaleInvoiceDirect_WithDimension
                                         " " & AgL.Chk_Date(Dgl1.Item(Col1ExpiryDate, LineGridRowIndex).Value) & ", " &
                                         " " & Val(Dgl1.Item(Col1MRP, LineGridRowIndex).Value) & ", " &
                                         " " & AgL.Chk_Text(Dgl1.Item(Col1Remark, LineGridRowIndex).Value) & ", " &
+                                        " " & AgL.Chk_Text(Dgl1.Item(Col1Remark1, LineGridRowIndex).Value) & ", " &
+                                        " " & AgL.Chk_Text(Dgl1.Item(Col1Remark2, LineGridRowIndex).Value) & ", " &
+                                        " " & AgL.Chk_Text(Dgl1.Item(Col1Remark3, LineGridRowIndex).Value) & ", " &
+                                        " " & AgL.Chk_Text(Dgl1.Item(Col1Remark4, LineGridRowIndex).Value) & ", " &
                                         " " & AgL.Chk_Text(Dgl1.Item(Col1SalesRepresentative, LineGridRowIndex).Tag) & ", " &
                                         " " & AgL.Chk_Text(Dgl1.Item(Col1Catalog, LineGridRowIndex).Tag) & ", " &
                                         " " & AgL.Chk_Text(Dgl1.Item(Col1BaleNo, LineGridRowIndex).Value) & " , " &
@@ -2622,6 +2634,10 @@ Public Class FrmSaleInvoiceDirect_WithDimension
                                     " ExpiryDate = " & AgL.Chk_Date(Dgl1.Item(Col1ExpiryDate, LineGridRowIndex).Value) & ", " &
                                     " MRP = " & Val(Dgl1.Item(Col1MRP, LineGridRowIndex).Value) & ", " &
                                     " Remark = " & AgL.Chk_Text(Dgl1.Item(Col1Remark, LineGridRowIndex).Value) & ", " &
+                                    " Remarks1 = " & AgL.Chk_Text(Dgl1.Item(Col1Remark1, LineGridRowIndex).Value) & ", " &
+                                    " Remarks2 = " & AgL.Chk_Text(Dgl1.Item(Col1Remark2, LineGridRowIndex).Value) & ", " &
+                                    " Remarks3 = " & AgL.Chk_Text(Dgl1.Item(Col1Remark3, LineGridRowIndex).Value) & ", " &
+                                    " Remarks4 = " & AgL.Chk_Text(Dgl1.Item(Col1Remark4, LineGridRowIndex).Value) & ", " &
                                     " BaleNo = " & AgL.Chk_Text(Dgl1.Item(Col1BaleNo, LineGridRowIndex).Value) & ", " &
                                     " LotNo = " & AgL.Chk_Text(Dgl1.Item(Col1LotNo, LineGridRowIndex).Value) & ", " &
                                     " Godown = " & AgL.Chk_Text(Dgl1.Item(Col1Godown, LineGridRowIndex).Tag) & ", " &
@@ -2921,6 +2937,13 @@ Public Class FrmSaleInvoiceDirect_WithDimension
 
         If AgL.StrCmp(AgL.PubDBName, "SHADHVINEW") Or AgL.StrCmp(AgL.PubDBName, "SHADHVIKANPURB2") Or AgL.StrCmp(AgL.PubDBName, "SHADHVIjaunpur") Or AgL.StrCmp(AgL.PubDBName, "SHADHVINANDI") Then
             Dgl1.Columns(Col1Rate).ReadOnly = True
+        End If
+
+        If AgL.StrCmp(AgL.PubDBName, "RVN") Then
+            Dgl1.Columns(Col1Remark1).Visible = True
+            Dgl1.Columns(Col1Remark2).Visible = True
+            Dgl1.Columns(Col1Remark3).Visible = True
+            Dgl1.Columns(Col1Remark4).Visible = True
         End If
 
         'If DglMain.Rows(rowSaleToPartyName).Visible = True And
@@ -3399,6 +3422,10 @@ Public Class FrmSaleInvoiceDirect_WithDimension
                             Dgl1.Item(Col1ExpiryDate, I).Value = ClsMain.FormatDate(AgL.XNull(.Rows(I)("ExpiryDate")))
                             Dgl1.Item(Col1MRP, I).Value = AgL.VNull(.Rows(I)("MRP"))
                             Dgl1.Item(Col1Remark, I).Value = AgL.XNull(.Rows(I)("Remark"))
+                            Dgl1.Item(Col1Remark1, I).Value = AgL.XNull(.Rows(I)("Remarks1"))
+                            Dgl1.Item(Col1Remark2, I).Value = AgL.XNull(.Rows(I)("Remarks2"))
+                            Dgl1.Item(Col1Remark3, I).Value = AgL.XNull(.Rows(I)("Remarks3"))
+                            Dgl1.Item(Col1Remark4, I).Value = AgL.XNull(.Rows(I)("Remarks4"))
                             Dgl1.Item(Col1BaleNo, I).Value = AgL.XNull(.Rows(I)("BaleNo"))
                             Dgl1.Item(Col1LotNo, I).Value = AgL.XNull(.Rows(I)("LotNo"))
                             Dgl1.Item(Col1ReferenceNo, I).Value = AgL.XNull(.Rows(I)("ReferenceNo"))
@@ -5208,6 +5235,8 @@ Public Class FrmSaleInvoiceDirect_WithDimension
                                                 "", Dgl1.Item(Col1ItemType, mRowIndex).Tag, "", "", "")) Then
                         Select Case LblV_Type.Tag
                             Case Ncat.SaleInvoice
+                                FOpenMultiLineUI(mRowIndex)
+                            Case Ncat.SaleOrder
                                 FOpenMultiLineUI(mRowIndex)
                         End Select
                     End If
@@ -8579,7 +8608,7 @@ Public Class FrmSaleInvoiceDirect_WithDimension
                 abs(L.Tax4_Per) as Tax4_Per, (Case When Vt.Ncat = '" & Ncat.SaleReturn & "' Then -1.0 else 1.0 end) * (L.Tax4) as Tax4, 
                 abs(L.Tax5_Per) as Tax5_Per, (Case When Vt.Ncat = '" & Ncat.SaleReturn & "' Then -1.0 else 1.0 end) * (L.Tax5) as Tax5, 
                 (Case When Vt.Ncat = '" & Ncat.SaleReturn & "' Then -1.0 else 1.0 end) * (L.Net_Amount) as Net_Amount, 
-                L.Remark as LRemarks, IfNull(H.Remarks,'') as HRemarks, H.SalesTaxSummaryStr,
+                L.Remark AS LRemarks, L.Remarks1 AS LRemarks1, L.Remarks2 AS LRemarks2,  L.Remarks3 AS LRemarks3,  L.Remarks4 AS LRemarks4, IfNull(H.Remarks,'') as HRemarks, H.SalesTaxSummaryStr,
                 (Select Sum(L1.DiscountAmount) From SaleInvoiceDetail L1 Where L1.DocID = H.DocID) as H_Discount, 
                 (Select Sum(L1.AdditionalDiscountAmount) From SaleInvoiceDetail L1 Where L1.DocID = H.DocID) as H_AdditionalDiscount, 
                 (Select Sum(L1.AdditionAmount) From SaleInvoiceDetail L1 Where L1.DocID = H.DocID) as H_Additional, 
@@ -14063,6 +14092,8 @@ Public Class FrmSaleInvoiceDirect_WithDimension
         FrmObj.DivCode = TxtDivision.Tag
         FrmObj.SettingGroup = DglMain.Item(Col1Value, rowSettingGroup).Tag
         FrmObj.PartyCode = DglMain.Item(Col1Value, rowSaleToParty).Tag
+        FrmObj.GodownCode = Dgl2.Item(Col1Value, rowGodown).Tag
+        FrmObj.V_Date = DglMain.Item(Col1Value, rowV_Date).Tag
         FrmObj.VType = DglMain.Item(Col1Value, rowV_Type).Tag
         FrmObj.RateType = Dgl2.Item(Col1Value, rowRateType).Tag
         FrmObj.DtV_TypeSettings = DtV_TypeSettings

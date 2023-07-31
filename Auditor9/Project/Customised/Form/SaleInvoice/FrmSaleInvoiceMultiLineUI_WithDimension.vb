@@ -10,7 +10,7 @@ Public Class FrmSaleInvoiceMultiLineUI_WithDimension
     Public Const Col1Size As String = "Size"
     Public Const Col1Qty As String = "Qty"
     Public Const Col1Rate As String = "Rate"
-
+    Public Const Col1StockQty As String = "StockQty"
 
     Dim mSearchCode As String
     Dim mSearchCodeSr As Integer
@@ -29,6 +29,25 @@ Public Class FrmSaleInvoiceMultiLineUI_WithDimension
     Dim mRateType As String
     Dim mSettingGroup As String
     Dim mPartyCode As String
+    Dim mGodownCode As String
+    Dim mV_Date As String
+
+    Public Property GodownCode() As String
+        Get
+            GodownCode = mGodownCode
+        End Get
+        Set(ByVal value As String)
+            mGodownCode = value
+        End Set
+    End Property
+    Public Property V_Date() As String
+        Get
+            V_Date = mV_Date
+        End Get
+        Set(ByVal value As String)
+            mV_Date = value
+        End Set
+    End Property
 
     Public Property PartyCode() As String
         Get
@@ -120,7 +139,8 @@ Public Class FrmSaleInvoiceMultiLineUI_WithDimension
             .AddAgTextColumn(Dgl1, ColSNo, 35, 5, ColSNo, True, True, False)
             .AddAgTextColumn(Dgl1, Col1Size, 180, 255, Col1Size, True, False)
             .AddAgNumberColumn(Dgl1, Col1Qty, 100, 8, 2, False, Col1Qty, True, False, True)
-            .AddAgNumberColumn(Dgl1, Col1Rate, 100, 8, 2, False, Col1Rate, True, False, True)
+            .AddAgNumberColumn(Dgl1, Col1Rate, 100, 8, 2, False, Col1Rate, True, True, True)
+            .AddAgNumberColumn(Dgl1, Col1StockQty, 100, 8, 2, False, Col1StockQty, True, True, True)
         End With
         AgL.AddAgDataGrid(Dgl1, Pnl1)
         Dgl1.EnableHeadersVisualStyles = False
@@ -224,6 +244,18 @@ Public Class FrmSaleInvoiceMultiLineUI_WithDimension
                         End If
                     End If
 
+
+                    If ClsMain.FDivisionNameForCustomization(15) = "PRATHAM APPAREL" Then
+                        Dim StockQty As String = ""
+                        mQry = "SELECT isnull(Sum(S.Qty_Rec - S.Qty_Iss),0) AS BalQty  
+                                FROM Stock S WITH (Nolock)
+                                LEFT JOIN Item I WITH (Nolock) ON I.Code = S.Item   
+                                WHERE I.V_Type ='SKU' AND I.ItemType ='MP' AND I.Dimension1 = '" + AgL.XNull(DglRow.Cells(FrmSaleInvoiceDirect_WithDimension.Col1Dimension1).Tag) + "' AND I.Dimension2  = '" + AgL.XNull(DglRow.Cells(FrmSaleInvoiceDirect_WithDimension.Col1Dimension2).Tag) + "' AND  I.Size  = '" + AgL.XNull(Dgl1.Item(Col1Size, mRowIndex).Tag) + "' "
+                        StockQty = AgL.Dman_Execute(mQry, AgL.GcnRead).ExecuteScalar()
+                        Dgl1.Item(Col1StockQty, mRowIndex).Value = StockQty
+                    End If
+
+
                 Case Col1Qty
                     Calcultaion()
 
@@ -248,7 +280,9 @@ Public Class FrmSaleInvoiceMultiLineUI_WithDimension
         Select Case sender.Name
             Case BtnOk.Name
                 If AgL.StrCmp(EntryMode, "Browse") Then Me.Close() : Exit Sub
-                'If FDataValidation() = False Then Exit Select
+                If ClsMain.FDivisionNameForCustomization(15) = "PRATHAM APPAREL" Then
+                    If FDataValidation() = False Then Exit Select
+                End If
                 mOkButtonPressed = True
                 Me.Close()
         End Select
@@ -330,9 +364,25 @@ Public Class FrmSaleInvoiceMultiLineUI_WithDimension
         DtItemRelation = AgL.FillData(mQry, AgL.GCn).Tables(0)
     End Sub
     Private Function FDataValidation() As Boolean
+        FDataValidation = True
         For I As Integer = 0 To Dgl1.Rows.Count - 1
-            FCheckDuplicate(I)
+            'FCheckDuplicate(I)
+            If (FDataValidation = True) Then
+                If (Dgl1.Item(Col1Qty, I).Value > Val(Dgl1.Item(Col1StockQty, I).Value)) Then
+                    FDataValidation = False
+                End If
+            End If
         Next
+
+        If (FDataValidation = False And VType = "SI") Then
+            If MsgBox("Qty is Greater than Stock Qty.Do You Want To Continue ?", MsgBoxStyle.Information + MsgBoxStyle.YesNo) = MsgBoxResult.No Then
+                FDataValidation = False
+            Else
+                FDataValidation = True
+            End If
+        Else
+            FDataValidation = True
+        End If
     End Function
     Private Sub FCheckDuplicate(ByVal mRow As Integer)
         Dim I As Integer = 0

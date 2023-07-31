@@ -935,7 +935,7 @@ Public Class ClsReports
                     strftime('%d/%m/%Y', H.V_Date) As V_Date, H.V_Date As V_Date_ActualFormat,
                     H.SaleToParty, Party.SubgroupType, Party.Nature as AccountNature, I.ItemGroup, I.ItemCategory,
                     (Case When H.SaleToParty=H.BillToParty And (Party.Nature='Cash' Or Party.SubgroupType='" & SubgroupType.RevenuePoint & "') Then Party.Name || ' - ' || IfNull(H.SaleToPartyName,'') When H.SaleToParty=H.BillToParty Then Party.Name When BillToParty.Nature='Cash' And H.SaleToParty<>H.BillToParty Then  BillToParty.Name || ' - ' || Party.Name  Else Party.Name || ' - ' || BillToParty.Name End) As SaleToPartyName ,                     
-                    Party.Mobile,
+                    Party.Mobile, SIT.NoOfBales,
                     LTV.Agent As AgentCode, Agent.Name As AgentName, H.ResponsiblePerson, ResponsiblePerson.Name as ResponsiblePersonName,
                     L.SalesRepresentative, SalesRep.Name as SalesRepresentativeName, H.SalesTaxGroupParty, L.SalesTaxGroupItem,
                     City.CityCode, City.CityName, Area.Code As AreaCode, Area.Description As AreaName, State.Code As StateCode, State.Description As StateName,
@@ -951,6 +951,7 @@ Public Class ClsReports
                     (select Max(Tags) From SaleInvoice Where DocId In (Select SaleInvoice From SaleInvoiceDetail Where DocId=H.DocID)) as OrderTags,
                     (Select Max(I1.Description) from SaleInvoiceDetailSKU DSKU Left Join Item I1 On IfNull(DSKU.ItemGroup, DSKU.Item) = I1.Code Where DSKU.DocID = H.DocID And I1.V_Type='IG') as Brand 
                     FROM SaleInvoice H 
+                    Left Join SaleInvoiceTransport SIT On H.DocID = SIT.DocID
                     Left Join SaleInvoiceDetail L On H.DocID = L.DocID 
                     Left Join SaleInvoiceDetailSku LS On L.DocID = LS.DocID And LS.Sr = L.Sr
                     Left Join Item I On L.Item = I.Code 
@@ -986,7 +987,7 @@ Public Class ClsReports
                 Else
                     If (AgL.PubServerName <> "") Then
                         mQry = " Select VMain.DocId As SearchCode, Max(VMain.Division) as Division, Max(Vmain.Site) as Site, Row_Number() OVER (ORDER BY Max(VMain.V_Date_ActualFormat),Cast(Max(Replace(Vmain.ManualRefNo,'-','')) as Integer),VMain.DocId) AS Sr,
-                                Max(VMain.V_Date) As InvoiceDate, Max(VMain.V_Type) as DocType, Max(VMain.InvoiceNo) As InvoiceNo,
+                                Max(VMain.V_Date) As InvoiceDate, Max(VMain.V_Type) as DocType, Max(VMain.InvoiceNo) As InvoiceNo, Max(VMain.NoOfBales) AS NoOfBales,
                                 Max(VMain.SaleToPartyName) As Party, Max(Vmain.Brand) as Brand, Max(VMain.SalesTaxGroupParty) As SalesTaxGroupParty, IfNull(Sum(VMain.AmountExDiscount),0) As AmountExDiscount, 
                                 IfNull(Sum(VMain.Discount+VMain.AdditionalDiscount),0) As Discount, IfNull(Sum(VMain.Addition),0) as Addition, IfNull(Sum(VMain.SpecialDiscount),0) As SpecialDiscount, IfNull(Sum(VMain.SpecialAddition),0) As SpecialAddition,
                                 IfNull(Sum(VMain.Amount),0) As Amount,IfNull(Sum(VMain.Taxable_Amount),0) As TaxableAmount, IfNull(Sum(VMain.TotalTax),0) As TaxAmount, IfNull(Sum(VMain.Net_Amount),0) As NetAmount, Max(VMain.Tags) as Tags, Max(VMain.OrderTags) as OrderTags
@@ -995,7 +996,7 @@ Public Class ClsReports
                                 Order By Max(VMain.V_Date_ActualFormat), Cast(Max(Replace(Vmain.ManualRefNo,'-','')) as Integer),VMain.DocId "
                     Else
                         mQry = " Select VMain.DocId As SearchCode, Max(VMain.Division) as Division, Max(Vmain.Site) as Site, 
-                                Max(VMain.V_Date) As InvoiceDate, Max(VMain.V_Type) as DocType, Max(VMain.InvoiceNo) As InvoiceNo,
+                                Max(VMain.V_Date) As InvoiceDate, Max(VMain.V_Type) as DocType, Max(VMain.InvoiceNo) As InvoiceNo, IfNull(Cast(Max(VMain.NoOfBales) as Integer),0) AS NoOfBales,
                                 Max(VMain.SaleToPartyName) As Party, Max(Vmain.Brand) as Brand, Max(VMain.SalesTaxGroupParty) As SalesTaxGroupParty, IfNull(Sum(VMain.AmountExDiscount),0) As AmountExDiscount, 
                                 IfNull(Sum(VMain.Discount+VMain.AdditionalDiscount),0) As Discount, IfNull(Sum(VMain.Addition),0) as Addition, IfNull(Sum(VMain.SpecialDiscount),0) As SpecialDiscount, IfNull(Sum(VMain.SpecialAddition),0) As SpecialAddition,
                                 IfNull(Sum(VMain.Amount),0) As Amount,IfNull(Sum(VMain.Taxable_Amount),0) As TaxableAmount, IfNull(Sum(VMain.TotalTax),0) As TaxAmount, IfNull(Sum(VMain.Net_Amount),0) As NetAmount, Max(VMain.Tags) as Tags, Max(VMain.OrderTags) as OrderTags
