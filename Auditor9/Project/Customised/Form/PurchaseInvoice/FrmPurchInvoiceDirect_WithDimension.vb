@@ -7348,13 +7348,24 @@ Public Class FrmPurchInvoiceDirect_WithDimension
                     'Else
                     '    mQry = " Select Top 1 L.Rate, L.MRP From PurchInvoiceDetail L  With (NoLock) LEFT JOIN PurchInvoice H ON L.DocId = H.DocId Where L.Item = '" & Dgl1.Item(Col1Item, mRow).Tag & "' Order By H.V_Date Desc  "
                     'End If
-                    mQry = " Select " & IIf(AgL.PubServerName = "", "", "Top 1") & " L.Rate, L.MRP 
+                    If FDivisionNameForCustomization(14) = "PRATHAM APPARE" Then
+                        mQry = " Select " & IIf(AgL.PubServerName = "", "", "Top 1") & " L.Rate, L.MRP 
+                            From PurchInvoiceDetail L  With (NoLock) 
+                            LEFT JOIN PurchInvoice H  With (NoLock) ON L.DocId = H.DocId 
+                            Where L.Item = '" & Dgl1.Item(Col1Item, mRow).Tag & "' 
+                            And H.V_Type = '" & DglMain.Item(Col1Value, rowV_Type).Tag & "'
+                            And H.Vendor = '" & DglMain.Item(Col1Value, rowVendor).Tag & "'
+                            And IfNull(H.Process,'') = '" & DglMain.Item(Col1Value, rowProcess).Tag & "'
+                            Order By H.V_Date Desc " & IIf(AgL.PubServerName = "", "Limit 1", "") & " "
+                    Else
+                        mQry = " Select " & IIf(AgL.PubServerName = "", "", "Top 1") & " L.Rate, L.MRP 
                             From PurchInvoiceDetail L  With (NoLock) 
                             LEFT JOIN PurchInvoice H  With (NoLock) ON L.DocId = H.DocId 
                             Where L.Item = '" & Dgl1.Item(Col1Item, mRow).Tag & "' 
                             And H.V_Type = '" & DglMain.Item(Col1Value, rowV_Type).Tag & "'
                             And IfNull(H.Process,'') = '" & DglMain.Item(Col1Value, rowProcess).Tag & "'
                             Order By H.V_Date Desc " & IIf(AgL.PubServerName = "", "Limit 1", "") & " "
+                    End If
                     Dim DtTemp As DataTable = AgL.FillData(mQry, AgL.GCn).Tables(0)
 
                     If DtTemp.Rows.Count > 0 Then

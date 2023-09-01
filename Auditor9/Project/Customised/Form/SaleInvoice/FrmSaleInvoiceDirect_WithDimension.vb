@@ -1634,11 +1634,21 @@ Public Class FrmSaleInvoiceDirect_WithDimension
             .AddAgNumberColumn(Dgl1, Col1DealAmount, 100, 8, 2, False, Col1DealAmount, False, False, True)
             .AddAgDateColumn(Dgl1, Col1ExpiryDate, 90, Col1ExpiryDate, False, False)
             .AddAgNumberColumn(Dgl1, Col1MRP, 100, 8, 2, False, Col1MRP, False, False, True)
-            .AddAgTextColumn(Dgl1, Col1Remark, 150, 255, Col1Remark, True, False)
-            .AddAgTextColumn(Dgl1, Col1Remark1, 150, 255, Col1Remark1, True, False)
-            .AddAgTextColumn(Dgl1, Col1Remark2, 150, 255, Col1Remark2, True, False)
-            .AddAgTextColumn(Dgl1, Col1Remark3, 150, 255, Col1Remark3, True, False)
-            .AddAgTextColumn(Dgl1, Col1Remark4, 150, 255, Col1Remark4, True, False)
+
+            If AgL.StrCmp(AgL.PubDBName, "RVN") Then
+                .AddAgTextColumn(Dgl1, Col1Remark, 150, 255, "MOTOR NO", True, False)
+                .AddAgTextColumn(Dgl1, Col1Remark1, 150, 255, "CONTROLLER NO", True, False)
+                .AddAgTextColumn(Dgl1, Col1Remark2, 150, 255, "CHASIS NO", True, False)
+                .AddAgTextColumn(Dgl1, Col1Remark3, 150, 255, "BATTERY NO", True, False)
+                .AddAgTextColumn(Dgl1, Col1Remark4, 150, 255, "CHARGER NO", True, False)
+            Else
+                .AddAgTextColumn(Dgl1, Col1Remark, 150, 255, Col1Remark, True, False)
+                .AddAgTextColumn(Dgl1, Col1Remark1, 150, 255, Col1Remark1, True, False)
+                .AddAgTextColumn(Dgl1, Col1Remark2, 150, 255, Col1Remark2, True, False)
+                .AddAgTextColumn(Dgl1, Col1Remark3, 150, 255, Col1Remark3, True, False)
+                .AddAgTextColumn(Dgl1, Col1Remark4, 150, 255, Col1Remark4, True, False)
+            End If
+
             .AddAgTextColumn(Dgl1, Col1Godown, 100, 0, Col1Godown, AgL.IsFeatureApplicable_Godown, False)
             .AddAgTextColumn(Dgl1, Col1SalesRepresentative, 100, 0, Col1SalesRepresentative, False, False)
             .AddAgTextColumn(Dgl1, Col1Catalog, 100, 0, Col1Catalog, False, False)

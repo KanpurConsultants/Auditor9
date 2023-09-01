@@ -23,15 +23,17 @@ Partial Class FrmPrintBarcode
         Me.Pnl1 = New System.Windows.Forms.Panel()
         Me.BtnClose = New System.Windows.Forms.Button()
         Me.Panel1 = New System.Windows.Forms.Panel()
+        Me.LblToDate = New System.Windows.Forms.Label()
+        Me.TxtToDate = New AgControls.AgTextBox()
+        Me.LblFromDate = New System.Windows.Forms.Label()
+        Me.TxtFromDate = New AgControls.AgTextBox()
         Me.LblTitle = New System.Windows.Forms.Label()
         Me.BtnPrintBarcode = New System.Windows.Forms.Button()
         Me.TxtSkipLables = New AgControls.AgTextBox()
         Me.LblSkipLabels = New System.Windows.Forms.Label()
         Me.BtnPreview = New System.Windows.Forms.Button()
-        Me.LblFromDate = New System.Windows.Forms.Label()
-        Me.TxtFromDate = New AgControls.AgTextBox()
-        Me.LblToDate = New System.Windows.Forms.Label()
-        Me.TxtToDate = New AgControls.AgTextBox()
+        Me.TxtItemGroup = New AgControls.AgTextBox()
+        Me.LblItemGroup = New System.Windows.Forms.Label()
         Me.Panel1.SuspendLayout()
         Me.SuspendLayout()
         '
@@ -69,16 +71,86 @@ Partial Class FrmPrintBarcode
         'Panel1
         '
         Me.Panel1.BackColor = System.Drawing.Color.White
-        Me.Panel1.Controls.Add(Me.LblToDate)
-        Me.Panel1.Controls.Add(Me.TxtToDate)
-        Me.Panel1.Controls.Add(Me.LblFromDate)
-        Me.Panel1.Controls.Add(Me.TxtFromDate)
+        Me.Panel1.Controls.Add(Me.TxtItemGroup)
+        Me.Panel1.Controls.Add(Me.LblItemGroup)
         Me.Panel1.Controls.Add(Me.LblTitle)
         Me.Panel1.Dock = System.Windows.Forms.DockStyle.Top
         Me.Panel1.Location = New System.Drawing.Point(0, 0)
         Me.Panel1.Name = "Panel1"
         Me.Panel1.Size = New System.Drawing.Size(984, 41)
         Me.Panel1.TabIndex = 670
+        '
+        'LblToDate
+        '
+        Me.LblToDate.AutoSize = True
+        Me.LblToDate.Font = New System.Drawing.Font("Verdana", 9.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.LblToDate.Location = New System.Drawing.Point(602, 352)
+        Me.LblToDate.Name = "LblToDate"
+        Me.LblToDate.Size = New System.Drawing.Size(58, 14)
+        Me.LblToDate.TabIndex = 3025
+        Me.LblToDate.Text = "To Date"
+        Me.LblToDate.Visible = False
+        '
+        'TxtToDate
+        '
+        Me.TxtToDate.AgAllowUserToEnableMasterHelp = False
+        Me.TxtToDate.AgLastValueTag = Nothing
+        Me.TxtToDate.AgLastValueText = Nothing
+        Me.TxtToDate.AgMandatory = False
+        Me.TxtToDate.AgMasterHelp = False
+        Me.TxtToDate.AgNumberLeftPlaces = 0
+        Me.TxtToDate.AgNumberNegetiveAllow = False
+        Me.TxtToDate.AgNumberRightPlaces = 0
+        Me.TxtToDate.AgPickFromLastValue = False
+        Me.TxtToDate.AgRowFilter = ""
+        Me.TxtToDate.AgSearchMethod = AgControls.AgLib.TxtSearchMethod.Simple
+        Me.TxtToDate.AgSelectedValue = Nothing
+        Me.TxtToDate.AgTxtCase = AgControls.AgTextBox.TxtCase.None
+        Me.TxtToDate.AgValueType = AgControls.AgTextBox.TxtValueType.Date_Value
+        Me.TxtToDate.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle
+        Me.TxtToDate.Font = New System.Drawing.Font("Verdana", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.TxtToDate.Location = New System.Drawing.Point(669, 350)
+        Me.TxtToDate.MaxLength = 255
+        Me.TxtToDate.Name = "TxtToDate"
+        Me.TxtToDate.Size = New System.Drawing.Size(103, 23)
+        Me.TxtToDate.TabIndex = 3024
+        Me.TxtToDate.Visible = False
+        '
+        'LblFromDate
+        '
+        Me.LblFromDate.AutoSize = True
+        Me.LblFromDate.Font = New System.Drawing.Font("Verdana", 9.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.LblFromDate.Location = New System.Drawing.Point(405, 352)
+        Me.LblFromDate.Name = "LblFromDate"
+        Me.LblFromDate.Size = New System.Drawing.Size(76, 14)
+        Me.LblFromDate.TabIndex = 3023
+        Me.LblFromDate.Text = "From Date"
+        Me.LblFromDate.Visible = False
+        '
+        'TxtFromDate
+        '
+        Me.TxtFromDate.AgAllowUserToEnableMasterHelp = False
+        Me.TxtFromDate.AgLastValueTag = Nothing
+        Me.TxtFromDate.AgLastValueText = Nothing
+        Me.TxtFromDate.AgMandatory = False
+        Me.TxtFromDate.AgMasterHelp = False
+        Me.TxtFromDate.AgNumberLeftPlaces = 0
+        Me.TxtFromDate.AgNumberNegetiveAllow = False
+        Me.TxtFromDate.AgNumberRightPlaces = 0
+        Me.TxtFromDate.AgPickFromLastValue = False
+        Me.TxtFromDate.AgRowFilter = ""
+        Me.TxtFromDate.AgSearchMethod = AgControls.AgLib.TxtSearchMethod.Simple
+        Me.TxtFromDate.AgSelectedValue = Nothing
+        Me.TxtFromDate.AgTxtCase = AgControls.AgTextBox.TxtCase.None
+        Me.TxtFromDate.AgValueType = AgControls.AgTextBox.TxtValueType.Date_Value
+        Me.TxtFromDate.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle
+        Me.TxtFromDate.Font = New System.Drawing.Font("Verdana", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.TxtFromDate.Location = New System.Drawing.Point(490, 350)
+        Me.TxtFromDate.MaxLength = 255
+        Me.TxtFromDate.Name = "TxtFromDate"
+        Me.TxtFromDate.Size = New System.Drawing.Size(103, 23)
+        Me.TxtFromDate.TabIndex = 3022
+        Me.TxtFromDate.Visible = False
         '
         'LblTitle
         '
@@ -147,85 +219,54 @@ Partial Class FrmPrintBarcode
         Me.BtnPreview.Text = "Preview"
         Me.BtnPreview.UseVisualStyleBackColor = True
         '
-        'LblFromDate
+        'TxtItemGroup
         '
-        Me.LblFromDate.AutoSize = True
-        Me.LblFromDate.Font = New System.Drawing.Font("Verdana", 9.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.LblFromDate.Location = New System.Drawing.Point(411, 12)
-        Me.LblFromDate.Name = "LblFromDate"
-        Me.LblFromDate.Size = New System.Drawing.Size(76, 14)
-        Me.LblFromDate.TabIndex = 3023
-        Me.LblFromDate.Text = "From Date"
-        Me.LblFromDate.Visible = False
+        Me.TxtItemGroup.AgAllowUserToEnableMasterHelp = False
+        Me.TxtItemGroup.AgLastValueTag = Nothing
+        Me.TxtItemGroup.AgLastValueText = Nothing
+        Me.TxtItemGroup.AgMandatory = True
+        Me.TxtItemGroup.AgMasterHelp = False
+        Me.TxtItemGroup.AgNumberLeftPlaces = 8
+        Me.TxtItemGroup.AgNumberNegetiveAllow = False
+        Me.TxtItemGroup.AgNumberRightPlaces = 2
+        Me.TxtItemGroup.AgPickFromLastValue = False
+        Me.TxtItemGroup.AgRowFilter = ""
+        Me.TxtItemGroup.AgSearchMethod = AgControls.AgLib.TxtSearchMethod.Simple
+        Me.TxtItemGroup.AgSelectedValue = Nothing
+        Me.TxtItemGroup.AgTxtCase = AgControls.AgTextBox.TxtCase.None
+        Me.TxtItemGroup.AgValueType = AgControls.AgTextBox.TxtValueType.Text_Value
+        Me.TxtItemGroup.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle
+        Me.TxtItemGroup.Font = New System.Drawing.Font("Verdana", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.TxtItemGroup.Location = New System.Drawing.Point(504, 10)
+        Me.TxtItemGroup.MaxLength = 0
+        Me.TxtItemGroup.Name = "TxtItemGroup"
+        Me.TxtItemGroup.Size = New System.Drawing.Size(268, 23)
+        Me.TxtItemGroup.TabIndex = 694
+        Me.TxtItemGroup.Visible = False
         '
-        'TxtFromDate
+        'LblItemGroup
         '
-        Me.TxtFromDate.AgAllowUserToEnableMasterHelp = False
-        Me.TxtFromDate.AgLastValueTag = Nothing
-        Me.TxtFromDate.AgLastValueText = Nothing
-        Me.TxtFromDate.AgMandatory = False
-        Me.TxtFromDate.AgMasterHelp = False
-        Me.TxtFromDate.AgNumberLeftPlaces = 0
-        Me.TxtFromDate.AgNumberNegetiveAllow = False
-        Me.TxtFromDate.AgNumberRightPlaces = 0
-        Me.TxtFromDate.AgPickFromLastValue = False
-        Me.TxtFromDate.AgRowFilter = ""
-        Me.TxtFromDate.AgSearchMethod = AgControls.AgLib.TxtSearchMethod.Simple
-        Me.TxtFromDate.AgSelectedValue = Nothing
-        Me.TxtFromDate.AgTxtCase = AgControls.AgTextBox.TxtCase.None
-        Me.TxtFromDate.AgValueType = AgControls.AgTextBox.TxtValueType.Date_Value
-        Me.TxtFromDate.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle
-        Me.TxtFromDate.Font = New System.Drawing.Font("Verdana", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.TxtFromDate.Location = New System.Drawing.Point(496, 10)
-        Me.TxtFromDate.MaxLength = 255
-        Me.TxtFromDate.Name = "TxtFromDate"
-        Me.TxtFromDate.Size = New System.Drawing.Size(103, 23)
-        Me.TxtFromDate.TabIndex = 3022
-        Me.TxtFromDate.Visible = False
-        '
-        'LblToDate
-        '
-        Me.LblToDate.AutoSize = True
-        Me.LblToDate.Font = New System.Drawing.Font("Verdana", 9.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.LblToDate.Location = New System.Drawing.Point(608, 12)
-        Me.LblToDate.Name = "LblToDate"
-        Me.LblToDate.Size = New System.Drawing.Size(58, 14)
-        Me.LblToDate.TabIndex = 3025
-        Me.LblToDate.Text = "To Date"
-        Me.LblToDate.Visible = False
-        '
-        'TxtToDate
-        '
-        Me.TxtToDate.AgAllowUserToEnableMasterHelp = False
-        Me.TxtToDate.AgLastValueTag = Nothing
-        Me.TxtToDate.AgLastValueText = Nothing
-        Me.TxtToDate.AgMandatory = False
-        Me.TxtToDate.AgMasterHelp = False
-        Me.TxtToDate.AgNumberLeftPlaces = 0
-        Me.TxtToDate.AgNumberNegetiveAllow = False
-        Me.TxtToDate.AgNumberRightPlaces = 0
-        Me.TxtToDate.AgPickFromLastValue = False
-        Me.TxtToDate.AgRowFilter = ""
-        Me.TxtToDate.AgSearchMethod = AgControls.AgLib.TxtSearchMethod.Simple
-        Me.TxtToDate.AgSelectedValue = Nothing
-        Me.TxtToDate.AgTxtCase = AgControls.AgTextBox.TxtCase.None
-        Me.TxtToDate.AgValueType = AgControls.AgTextBox.TxtValueType.Date_Value
-        Me.TxtToDate.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle
-        Me.TxtToDate.Font = New System.Drawing.Font("Verdana", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.TxtToDate.Location = New System.Drawing.Point(675, 10)
-        Me.TxtToDate.MaxLength = 255
-        Me.TxtToDate.Name = "TxtToDate"
-        Me.TxtToDate.Size = New System.Drawing.Size(103, 23)
-        Me.TxtToDate.TabIndex = 3024
-        Me.TxtToDate.Visible = False
+        Me.LblItemGroup.AutoSize = True
+        Me.LblItemGroup.BackColor = System.Drawing.Color.Transparent
+        Me.LblItemGroup.Font = New System.Drawing.Font("Verdana", 9.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.LblItemGroup.Location = New System.Drawing.Point(396, 13)
+        Me.LblItemGroup.Name = "LblItemGroup"
+        Me.LblItemGroup.Size = New System.Drawing.Size(82, 14)
+        Me.LblItemGroup.TabIndex = 695
+        Me.LblItemGroup.Text = "Item Group"
+        Me.LblItemGroup.Visible = False
         '
         'FrmPrintBarcode
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
         Me.ClientSize = New System.Drawing.Size(984, 376)
+        Me.Controls.Add(Me.LblToDate)
         Me.Controls.Add(Me.BtnPreview)
+        Me.Controls.Add(Me.TxtToDate)
+        Me.Controls.Add(Me.LblFromDate)
         Me.Controls.Add(Me.LblSkipLabels)
+        Me.Controls.Add(Me.TxtFromDate)
         Me.Controls.Add(Me.TxtSkipLables)
         Me.Controls.Add(Me.BtnPrintBarcode)
         Me.Controls.Add(Me.Panel1)
@@ -255,4 +296,6 @@ Partial Class FrmPrintBarcode
     Protected WithEvents TxtToDate As AgControls.AgTextBox
     Protected WithEvents LblFromDate As Label
     Protected WithEvents TxtFromDate As AgControls.AgTextBox
+    Public WithEvents TxtItemGroup As AgControls.AgTextBox
+    Public WithEvents LblItemGroup As Label
 End Class

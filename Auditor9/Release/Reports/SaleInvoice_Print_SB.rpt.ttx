@@ -5,13 +5,13 @@ DocNoCaption	string	255	Invoice No.
 DocDateCaption	string	255	Invoice Date	
 SiteStateCode	string	255	07	
 SiteStateName	string	255	Delhi	
-DocID	string	255	D1    SI 2023       3	
+DocID	string	255	D1    SI 2023      59	
 Sr	number	1	
-V_Date	datetime	26/Jul/2023 12:00:00 AM	
+V_Date	datetime	17/Aug/2023 12:00:00 AM	
 DeliveryDate	datetime		
 Voucher_Type	string	255	Tax Invoice	
 NCat	string	255	SI	
-InvoiceNo	string	255	SI-2	
+InvoiceNo	string	255	SI-1	
 GenDocNo	string	255		
 AmsDocNo	string	255		
 AmsDocDate	datetime		
@@ -22,30 +22,30 @@ AgentName	string	255
 SalesRepName	string	255		
 SalesRepCode	string	255		
 AgentCaption	string	255	Agent	
-SaleToPartyName	string	255	SHYAMA SHYAM FABRICS PRIVATE LIMITED	
-SaleToPartyAddress	string	255	10/5 GEETA COLONY GANDHI NAGAR, 
+SaleToPartyName	string	255	ANSAR HOSIERY	
+SaleToPartyAddress	string	255	NA VISHWAMITRA MARG, NALBAND TOLI BUXAR
 	
-CityName	string	255	DELHI	
-SaleToPartyPincode	string	255	110031	
-StateCode	string	255	07	
-StateName	string	255	Delhi	
-SaleToPartyMobile	string	255	6284091285	
+CityName	string	255	NALBAND TOLI	
+SaleToPartyPincode	string	255	802101	
+StateCode	string	255	10	
+StateName	string	255	Bihar	
+SaleToPartyMobile	string	255		
 ContactPerson	string	255		
-SaleToPartySalesTaxNo	string	255	07AAXCS4102R1ZL	
+SaleToPartySalesTaxNo	string	255	10ASRPJ6562D1ZU	
 SaleToPartyAadharNo	string	255		
-SaleToPartyPanNo	string	255	AAXCS4102R	
+SaleToPartyPanNo	string	255	ASRPJ6562D	
 SaleToPartyLicenseNo	string	255		
-ShipToPartyName	string	255	SHYAMA SHYAM FABRICS PRIVATE LIMITED	
-ShipToPartyAddress	string	255	10/5 GEETA COLONY GANDHI NAGAR, 
+ShipToPartyName	string	255	ANSAR HOSIERY	
+ShipToPartyAddress	string	255	NA VISHWAMITRA MARG, NALBAND TOLI BUXAR
 	
-ShipToPartyCity	string	255	DELHI	
-ShipToPartyPincode	string	255	110031	
-ShipToPartyStateCode	string	255	07	
-ShipToPartyStateName	string	255	Delhi	
-ShipToPartyMobile	string	255	6284091285	
-ShipToPartySalesTaxNo	string	255	07AAXCS4102R1ZL	
+ShipToPartyCity	string	255	NALBAND TOLI	
+ShipToPartyPincode	string	255	802101	
+ShipToPartyStateCode	string	255	10	
+ShipToPartyStateName	string	255	Bihar	
+ShipToPartyMobile	string	255		
+ShipToPartySalesTaxNo	string	255	10ASRPJ6562D1ZU	
 ShipToPartyAadharNo	string	255		
-ShipToPartyPanNo	string	255	AAXCS4102R	
+ShipToPartyPanNo	string	255	ASRPJ6562D	
 ShipToPartyLicenseNo	string	255		
 TransporterSalesTaxNo	string	255		
 ShipToAddress	string	255		
@@ -72,15 +72,15 @@ DescriptionOfGoods	string	255
 DescriptionOfPacking	string	255		
 ReferenceNo	string	255		
 BarcodeName	string	255		
-ItemName	string	255	BLAZER - AERO CLUB - BLAZER	
-ItemGroupName	string	255	AERO CLUB	
-ItemCatName	string	255	BLAZER	
-ItemManualCode	string	255	726	
-ItemSpecification	string	255	BLAZER	
+ItemName	string	255	JUNIOR SHIRT - TERRY BOY - SHIRT	
+ItemGroupName	string	255	TERRY BOY	
+ItemCatName	string	255	SHIRT	
+ItemManualCode	string	255	2	
+ItemSpecification	string	255	JUNIOR SHIRT	
 InvoiceLineSpecification	string	255		
 HSN	string	255	12	
 MaintainStockYn	boolean	True	
-D1Spec	string	255	BLAZER	
+D1Spec	string	255	2161-32*36	
 D2Spec	string	255		
 D3Spec	string	255		
 D4Spec	string	255		
@@ -121,17 +121,17 @@ Deal	string	255
 AmountBeforeDiscount	number	5400	
 Amount	number	5238	
 Taxable_Amount	number	4988.57	
-Tax1_Per	number	0	
-Tax1	number	0	
-Tax2_Per	number	2.5	
-Tax2	number	124.71	
-Tax3_Per	number	2.5	
-Tax3	number	124.71	
+Tax1_Per	number	5	
+Tax1	number	249.43	
+Tax2_Per	number	0	
+Tax2	number	0	
+Tax3_Per	number	0	
+Tax3	number	0	
 Tax4_Per	number	0	
 Tax4	number	0	
 Tax5_Per	number	0	
 Tax5	number	0	
-Net_Amount	number	5238.29	
+Net_Amount	number	5238.3	
 LRemarks	string	255		
 LRemarks1	string	255		
 LRemarks2	string	255		
@@ -149,11 +149,11 @@ H_SpecialDiscount_Per	number	0
 H_SpecialDiscount	number	0	
 H_Taxable_Amount	number	8452.86	
 H_Tax1_Per	number	0	
-H_Tax1	number	0	
+H_Tax1	number	422.64	
 H_Tax2_Per	number	0	
-H_Tax2	number	211.32	
+H_Tax2	number	0	
 H_Tax3_Per	number	0	
-H_Tax3	number	211.32	
+H_Tax3	number	0	
 H_Tax4_Per	number	0	
 H_Tax4	number	0	
 H_Tax5_Per	number	0	
