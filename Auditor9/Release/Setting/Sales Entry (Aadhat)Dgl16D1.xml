@@ -477,253 +477,225 @@
     <AggregateFunction />
   </Column>
   <Column>
-    <Name>Special Discount @</Name>
-    <Index>68</Index>
-    <Width>100</Width>
-    <Visible>False</Visible>
-    <AggregateFunction />
-  </Column>
-  <Column>
-    <Name>Special Discount</Name>
-    <Index>69</Index>
-    <Width>100</Width>
-    <Visible>False</Visible>
-    <AggregateFunction />
-  </Column>
-  <Column>
-    <Name>Special Discount PostAc</Name>
-    <Index>70</Index>
-    <Width>100</Width>
-    <Visible>False</Visible>
-    <AggregateFunction />
-  </Column>
-  <Column>
-    <Name>Special Discount ContraAc</Name>
-    <Index>71</Index>
-    <Width>100</Width>
-    <Visible>False</Visible>
-    <AggregateFunction />
-  </Column>
-  <Column>
     <Name>Taxable Amount</Name>
-    <Index>72</Index>
+    <Index>68</Index>
     <Width>100</Width>
     <Visible>True</Visible>
     <AggregateFunction />
   </Column>
   <Column>
     <Name>Taxable Amount PostAc</Name>
-    <Index>73</Index>
+    <Index>69</Index>
     <Width>100</Width>
     <Visible>False</Visible>
     <AggregateFunction />
   </Column>
   <Column>
     <Name>Taxable Amount ContraAc</Name>
-    <Index>74</Index>
+    <Index>70</Index>
     <Width>100</Width>
     <Visible>False</Visible>
     <AggregateFunction />
   </Column>
   <Column>
     <Name>IGST @</Name>
-    <Index>75</Index>
+    <Index>71</Index>
     <Width>100</Width>
     <Visible>True</Visible>
     <AggregateFunction />
   </Column>
   <Column>
     <Name>IGST</Name>
-    <Index>76</Index>
+    <Index>72</Index>
     <Width>100</Width>
     <Visible>True</Visible>
     <AggregateFunction />
   </Column>
   <Column>
     <Name>IGST PostAc</Name>
-    <Index>77</Index>
+    <Index>73</Index>
     <Width>100</Width>
     <Visible>False</Visible>
     <AggregateFunction />
   </Column>
   <Column>
     <Name>IGST ContraAc</Name>
-    <Index>78</Index>
+    <Index>74</Index>
     <Width>100</Width>
     <Visible>False</Visible>
     <AggregateFunction />
   </Column>
   <Column>
     <Name>CGST @</Name>
-    <Index>79</Index>
+    <Index>75</Index>
     <Width>100</Width>
     <Visible>True</Visible>
     <AggregateFunction />
   </Column>
   <Column>
     <Name>CGST</Name>
-    <Index>80</Index>
+    <Index>76</Index>
     <Width>100</Width>
     <Visible>True</Visible>
     <AggregateFunction />
   </Column>
   <Column>
     <Name>CGST PostAc</Name>
-    <Index>81</Index>
+    <Index>77</Index>
     <Width>100</Width>
     <Visible>False</Visible>
     <AggregateFunction />
   </Column>
   <Column>
     <Name>CGST ContraAc</Name>
-    <Index>82</Index>
+    <Index>78</Index>
     <Width>100</Width>
     <Visible>False</Visible>
     <AggregateFunction />
   </Column>
   <Column>
     <Name>SGST @</Name>
-    <Index>83</Index>
+    <Index>79</Index>
     <Width>100</Width>
     <Visible>True</Visible>
     <AggregateFunction />
   </Column>
   <Column>
     <Name>SGST</Name>
-    <Index>84</Index>
+    <Index>80</Index>
     <Width>100</Width>
     <Visible>True</Visible>
     <AggregateFunction />
   </Column>
   <Column>
     <Name>SGST PostAc</Name>
-    <Index>85</Index>
+    <Index>81</Index>
     <Width>100</Width>
     <Visible>False</Visible>
     <AggregateFunction />
   </Column>
   <Column>
     <Name>SGST ContraAc</Name>
-    <Index>86</Index>
+    <Index>82</Index>
     <Width>100</Width>
     <Visible>False</Visible>
     <AggregateFunction />
   </Column>
   <Column>
     <Name>TCS @</Name>
-    <Index>87</Index>
+    <Index>83</Index>
     <Width>100</Width>
     <Visible>False</Visible>
     <AggregateFunction />
   </Column>
   <Column>
     <Name>TCS</Name>
-    <Index>88</Index>
+    <Index>84</Index>
     <Width>100</Width>
     <Visible>False</Visible>
     <AggregateFunction />
   </Column>
   <Column>
     <Name>TCS PostAc</Name>
-    <Index>89</Index>
+    <Index>85</Index>
     <Width>100</Width>
     <Visible>False</Visible>
     <AggregateFunction />
   </Column>
   <Column>
     <Name>TCS ContraAc</Name>
-    <Index>90</Index>
+    <Index>86</Index>
     <Width>100</Width>
     <Visible>False</Visible>
     <AggregateFunction />
   </Column>
   <Column>
     <Name>Sub Total 1</Name>
-    <Index>91</Index>
+    <Index>87</Index>
     <Width>100</Width>
     <Visible>True</Visible>
     <AggregateFunction />
   </Column>
   <Column>
     <Name>Sub Total 1 PostAc</Name>
-    <Index>92</Index>
+    <Index>88</Index>
     <Width>100</Width>
     <Visible>False</Visible>
     <AggregateFunction />
   </Column>
   <Column>
     <Name>Sub Total 1 ContraAc</Name>
-    <Index>93</Index>
+    <Index>89</Index>
     <Width>100</Width>
     <Visible>False</Visible>
     <AggregateFunction />
   </Column>
   <Column>
     <Name>Other Charges @</Name>
-    <Index>94</Index>
+    <Index>90</Index>
     <Width>100</Width>
     <Visible>False</Visible>
     <AggregateFunction />
   </Column>
   <Column>
     <Name>Other Charges</Name>
-    <Index>95</Index>
+    <Index>91</Index>
     <Width>100</Width>
     <Visible>False</Visible>
     <AggregateFunction />
   </Column>
   <Column>
     <Name>Other Charges PostAc</Name>
-    <Index>96</Index>
+    <Index>92</Index>
     <Width>100</Width>
     <Visible>False</Visible>
     <AggregateFunction />
   </Column>
   <Column>
     <Name>Other Charges ContraAc</Name>
-    <Index>97</Index>
+    <Index>93</Index>
     <Width>100</Width>
     <Visible>False</Visible>
     <AggregateFunction />
   </Column>
   <Column>
     <Name>Deduction @</Name>
-    <Index>98</Index>
+    <Index>94</Index>
     <Width>100</Width>
     <Visible>False</Visible>
     <AggregateFunction />
   </Column>
   <Column>
     <Name>Deduction</Name>
-    <Index>99</Index>
+    <Index>95</Index>
     <Width>100</Width>
     <Visible>False</Visible>
     <AggregateFunction />
   </Column>
   <Column>
     <Name>Deduction PostAc</Name>
-    <Index>100</Index>
+    <Index>96</Index>
     <Width>100</Width>
     <Visible>False</Visible>
     <AggregateFunction />
   </Column>
   <Column>
     <Name>Deduction ContraAc</Name>
-    <Index>101</Index>
+    <Index>98</Index>
     <Width>100</Width>
     <Visible>False</Visible>
     <AggregateFunction />
   </Column>
   <Column>
     <Name>Round Off</Name>
-    <Index>102</Index>
+    <Index>100</Index>
     <Width>100</Width>
     <Visible>False</Visible>
     <AggregateFunction />
   </Column>
   <Column>
     <Name>Round Off PostAc</Name>
-    <Index>103</Index>
+    <Index>102</Index>
     <Width>100</Width>
     <Visible>False</Visible>
     <AggregateFunction />
@@ -737,28 +709,28 @@
   </Column>
   <Column>
     <Name>Net Amount</Name>
-    <Index>105</Index>
+    <Index>97</Index>
     <Width>100</Width>
     <Visible>False</Visible>
     <AggregateFunction />
   </Column>
   <Column>
     <Name>Net Amount PostAc</Name>
-    <Index>106</Index>
+    <Index>99</Index>
     <Width>100</Width>
     <Visible>False</Visible>
     <AggregateFunction />
   </Column>
   <Column>
     <Name>Net Amount ContraAc</Name>
-    <Index>107</Index>
+    <Index>101</Index>
     <Width>100</Width>
     <Visible>False</Visible>
     <AggregateFunction />
   </Column>
   <Column>
     <Name>Is Database Value</Name>
-    <Index>108</Index>
+    <Index>103</Index>
     <Width>80</Width>
     <Visible>False</Visible>
     <AggregateFunction />

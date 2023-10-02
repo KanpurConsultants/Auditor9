@@ -812,7 +812,7 @@ Public Class ClsStockReport
                 'End If
 
                 If UCase(ReportFrm.FGetText(rowShowZeroBalance)) = "NO" Then
-                    mQry += " Having Sum(VMain.Closing) <> 0 "
+                    mQry += " Having Round(Sum(VMain.Closing), IsNull(Max(VMain.DecimalPlaces),0)) <> 0 "
                 End If
 
                 mQry += " Order By 1

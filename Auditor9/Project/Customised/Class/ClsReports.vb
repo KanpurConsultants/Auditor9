@@ -418,6 +418,7 @@ Public Class ClsReports
 
                 Case CreditorsOutstandingReport
                     mQry = "Select 'Party Wise Summary' as Code, 'Party Wise Summary' as Name 
+                            Union All Select 'Party Wise Ageing' as Code, 'Party Wise Ageing' as Name 
                             Union All Select 'Invoice Wise Detail' as Code, 'Invoice Wise Detail' as Name 
                             "
                     ReportFrm.CreateHelpGrid("Report Type", "Report Type", FrmRepDisplay.FieldFilterDataType.StringType, FrmRepDisplay.FieldDataType.SingleSelection, mQry, "Party Wise Summary")
@@ -2765,11 +2766,31 @@ Public Class ClsReports
                     'End If
                 Next
 
+                Dim mDays1 As Double
+                Dim mDays2 As Double
+                Dim mDays3 As Double
+                Dim mDays4 As Double
+                Dim mDays5 As Double
+                Dim mDays6 As Double
+
+                mDays1 = mLeavergeDays
+                mDays2 = mDays1 + mLeavergeDays
+                mDays3 = mDays2 + mLeavergeDays
+                mDays4 = mDays3 + mLeavergeDays
+                mDays5 = mDays4 + mLeavergeDays
+                mDays6 = mDays5 + mLeavergeDays
 
 
                 strSql = " SELECT *, "
                 strSql += " (CASE WHEN DaysDiff>= 0 AND  DaysDiff<=" & mLeavergeDays & " THEN  PendingAmt Else 0 end ) AS AmtDay1, "
-                strSql += " (CASE WHEN DaysDiff>" & mLeavergeDays & " THEN  PendingAmt ELSE 0 end) AS AmtDay2 "
+                strSql += " (CASE WHEN DaysDiff>" & mLeavergeDays & " THEN  PendingAmt ELSE 0 end) AS AmtDay2, "
+                strSql += " (CASE WHEN DaysDiff<=" & mDays1 & " THEN  PendingAmt ELSE 0 end) AS AmtDay0, "
+                strSql += " (CASE WHEN DaysDiff>" & mDays1 & " And DaysDiff<=" & mDays2 & " THEN  PendingAmt ELSE 0 end) AS AmtDay30, "
+                strSql += " (CASE WHEN DaysDiff>" & mDays2 & " And DaysDiff<=" & mDays3 & " THEN  PendingAmt ELSE 0 end) AS AmtDay60, "
+                strSql += " (CASE WHEN DaysDiff>" & mDays3 & " And DaysDiff<=" & mDays4 & " THEN  PendingAmt ELSE 0 end) AS AmtDay90, "
+                strSql += " (CASE WHEN DaysDiff>" & mDays4 & " And DaysDiff<=" & mDays5 & " THEN  PendingAmt ELSE 0 end) AS AmtDay120, "
+                strSql += " (CASE WHEN DaysDiff>" & mDays5 & " And DaysDiff<=" & mDays6 & " THEN  PendingAmt ELSE 0 end) AS AmtDay150, "
+                strSql += " (CASE WHEN DaysDiff>" & mDays6 & " THEN  PendingAmt ELSE 0 end) AS AmtDay180 "
                 strSql += " FROM ( "
                 strSql += " SELECT DocId, RecId, V_Date As V_Date,subcode, PartyName,BillAmt,PendingAmt,Status,Site_Code, Div_Code,PartyCity,Narration,V_type,"
                 If AgL.PubServerName = "" Then
@@ -2811,6 +2832,41 @@ Public Class ClsReports
                         LEFT JOIN (Select Subcode, RegistrationNo As SalesTaxNo
                             From SubgroupRegistration 
                             Where RegistrationType = 'Sales Tax No') As VPartyGST On VMain.Subcode COLLATE DATABASE_DEFAULT = VPartyGST.SubCode COLLATE DATABASE_DEFAULT
+                        GROUP By VMain.Subcode, VMain.Div_Code
+                        Having Sum(VMain.AmtDay2)<>0
+                        Order By [Party]"
+                ElseIf ReportFrm.FGetText(0) = "Party Wise Ageing" Then
+                    Dim StrDays0 As String
+                    Dim StrDays1 As String
+                    Dim StrDays2 As String
+                    Dim StrDays3 As String
+                    Dim StrDays4 As String
+                    Dim StrDays5 As String
+                    Dim StrDays6 As String
+                    StrDays0 = "[F 0 T " & mDays1.ToString() & "]"
+                    StrDays1 = "[F " & mDays1.ToString() & " T " & mDays2.ToString() & "]"
+                    StrDays2 = "[F " & mDays2.ToString() & " T " & mDays3.ToString() & "]"
+                    StrDays3 = "[F " & mDays3.ToString() & " T " & mDays4.ToString() & "]"
+                    StrDays4 = "[F " & mDays4.ToString() & " T " & mDays5.ToString() & "]"
+                    StrDays5 = "[F " & mDays5.ToString() & " T " & mDays6.ToString() & "]"
+                    StrDays6 = "[GE " & mDays6.ToString() & "]"
+
+                    mQry = " Select VMain.Subcode || '^' || VMain.Div_Code  As SearchCode, Max(VMain.PartyName) As [Party], Max(VMain.PartyCity) as City, 
+                        IfNull(Max(Party.Mobile),'') || (Case  When IfNull(Max(Party.Phone),'')='' Then '' Else ', ' || IfNull(Max(Party.Phone),'')  End)  as ContactNo, 
+                        Max(Agent.Name) as AgentName,
+                        sum(VMain.PendingAmt) as [Amount], 
+                        Sum(VMain.AmtDay0) As " & StrDays0 & ",
+                        Sum(VMain.AmtDay30) As " & StrDays1 & ",
+                        Sum(VMain.AmtDay60) As " & StrDays2 & ",
+                        Sum(VMain.AmtDay90) As " & StrDays3 & ",
+                        Sum(VMain.AmtDay120) As " & StrDays4 & ",
+                        Sum(VMain.AmtDay150) As " & StrDays5 & ",
+                        Sum(VMain.AmtDay180) As " & StrDays6 & "
+                        From (" & mQry & ") As VMain
+                        Left Join Subgroup Division On VMain.Div_Code  COLLATE DATABASE_DEFAULT = Division.Subcode  COLLATE DATABASE_DEFAULT
+                        Left Join Subgroup Party On VMain.Subcode  COLLATE DATABASE_DEFAULT = Party.SubCode  COLLATE DATABASE_DEFAULT
+                        Left Join (Select SILTV.Subcode, SILTV.Div_Code, Max(SILTV.Agent) as Agent From SubgroupSiteDivisionDetail SILTV  Group By SILTV.Subcode, SILTV.Div_Code) as LTV On Party.Subcode  COLLATE DATABASE_DEFAULT = LTV.Subcode  COLLATE DATABASE_DEFAULT And VMain.Div_Code COLLATE DATABASE_DEFAULT = LTV.Div_Code  COLLATE DATABASE_DEFAULT                    
+                        Left Join viewHelpSubgroup Agent On LTV.Agent  COLLATE DATABASE_DEFAULT = Agent.Code  COLLATE DATABASE_DEFAULT
                         GROUP By VMain.Subcode, VMain.Div_Code
                         Having Sum(VMain.AmtDay2)<>0
                         Order By [Party]"
@@ -3162,16 +3218,30 @@ Public Class ClsReports
 
 
 
+                Dim mDays1 As Double
+                Dim mDays2 As Double
+                Dim mDays3 As Double
+                Dim mDays4 As Double
+                Dim mDays5 As Double
+                Dim mDays6 As Double
+
+                mDays1 = mLeavergeDays
+                mDays2 = mDays1 + mLeavergeDays
+                mDays3 = mDays2 + mLeavergeDays
+                mDays4 = mDays3 + mLeavergeDays
+                mDays5 = mDays4 + mLeavergeDays
+                mDays6 = mDays5 + mLeavergeDays
+
                 strSql = " SELECT *, "
                 strSql += " (CASE WHEN DaysDiff>= 0 AND  DaysDiff<=" & mLeavergeDays & " THEN  PendingAmt Else 0 end ) AS AmtDay1, "
                 strSql += " (CASE WHEN DaysDiff>" & mLeavergeDays & " THEN  PendingAmt ELSE 0 end) AS AmtDay2, "
-                strSql += " (CASE WHEN DaysDiff<=30 THEN  PendingAmt ELSE 0 end) AS AmtDay0, "
-                strSql += " (CASE WHEN DaysDiff>30 And DaysDiff<=60 THEN  PendingAmt ELSE 0 end) AS AmtDay30, "
-                strSql += " (CASE WHEN DaysDiff>60 And DaysDiff<=90 THEN  PendingAmt ELSE 0 end) AS AmtDay60, "
-                strSql += " (CASE WHEN DaysDiff>90 And DaysDiff<=120 THEN  PendingAmt ELSE 0 end) AS AmtDay90, "
-                strSql += " (CASE WHEN DaysDiff>120 And DaysDiff<=150 THEN  PendingAmt ELSE 0 end) AS AmtDay120, "
-                strSql += " (CASE WHEN DaysDiff>150 And DaysDiff<=180 THEN  PendingAmt ELSE 0 end) AS AmtDay150, "
-                strSql += " (CASE WHEN DaysDiff>180 THEN  PendingAmt ELSE 0 end) AS AmtDay180 "
+                strSql += " (CASE WHEN DaysDiff<=" & mDays1 & " THEN  PendingAmt ELSE 0 end) AS AmtDay0, "
+                strSql += " (CASE WHEN DaysDiff>" & mDays1 & " And DaysDiff<=" & mDays2 & " THEN  PendingAmt ELSE 0 end) AS AmtDay30, "
+                strSql += " (CASE WHEN DaysDiff>" & mDays2 & " And DaysDiff<=" & mDays3 & " THEN  PendingAmt ELSE 0 end) AS AmtDay60, "
+                strSql += " (CASE WHEN DaysDiff>" & mDays3 & " And DaysDiff<=" & mDays4 & " THEN  PendingAmt ELSE 0 end) AS AmtDay90, "
+                strSql += " (CASE WHEN DaysDiff>" & mDays4 & " And DaysDiff<=" & mDays5 & " THEN  PendingAmt ELSE 0 end) AS AmtDay120, "
+                strSql += " (CASE WHEN DaysDiff>" & mDays5 & " And DaysDiff<=" & mDays6 & " THEN  PendingAmt ELSE 0 end) AS AmtDay150, "
+                strSql += " (CASE WHEN DaysDiff>" & mDays6 & " THEN  PendingAmt ELSE 0 end) AS AmtDay180 "
                 strSql += " FROM ( "
                 strSql += " SELECT DocId, RecId, V_Date As V_Date,subcode, PartyName,BillAmt,PendingAmt,Status,Site_Code, Div_Code,PartyCity,Narration,V_type,"
                 If AgL.PubServerName = "" Then
@@ -3217,17 +3287,32 @@ Public Class ClsReports
                         Having Sum(VMain.AmtDay2)<>0
                         Order By [Party]"
                 ElseIf ReportFrm.FGetText(0) = "Party Wise Ageing" Then
+                    Dim StrDays0 As String
+                    Dim StrDays1 As String
+                    Dim StrDays2 As String
+                    Dim StrDays3 As String
+                    Dim StrDays4 As String
+                    Dim StrDays5 As String
+                    Dim StrDays6 As String
+                    StrDays0 = "[F 0 T " & mDays1.ToString() & "]"
+                    StrDays1 = "[F " & mDays1.ToString() & " T " & mDays2.ToString() & "]"
+                    StrDays2 = "[F " & mDays2.ToString() & " T " & mDays3.ToString() & "]"
+                    StrDays3 = "[F " & mDays3.ToString() & " T " & mDays4.ToString() & "]"
+                    StrDays4 = "[F " & mDays4.ToString() & " T " & mDays5.ToString() & "]"
+                    StrDays5 = "[F " & mDays5.ToString() & " T " & mDays6.ToString() & "]"
+                    StrDays6 = "[GE " & mDays6.ToString() & "]"
+
                     mQry = " Select VMain.Subcode || '^' || VMain.Div_Code  As SearchCode, Max(VMain.PartyName) As [Party], Max(VMain.PartyCity) as City, 
                         IfNull(Max(Party.Mobile),'') || (Case  When IfNull(Max(Party.Phone),'')='' Then '' Else ', ' || IfNull(Max(Party.Phone),'')  End)  as ContactNo, 
                         Max(Agent.Name) as AgentName,
                         sum(VMain.PendingAmt) as [Amount], 
-                        Sum(VMain.AmtDay0) As [F 0 T 30],
-                        Sum(VMain.AmtDay30) As [F 30 T 60],
-                        Sum(VMain.AmtDay60) As [F 60 T 90],
-                        Sum(VMain.AmtDay90) As [F 90 T 120],
-                        Sum(VMain.AmtDay120) As [F 120 T 150],
-                        Sum(VMain.AmtDay150) As [F 150 T 180],
-                        Sum(VMain.AmtDay180) As [GE 180]
+                        Sum(VMain.AmtDay0) As " & StrDays0 & ",
+                        Sum(VMain.AmtDay30) As " & StrDays1 & ",
+                        Sum(VMain.AmtDay60) As " & StrDays2 & ",
+                        Sum(VMain.AmtDay90) As " & StrDays3 & ",
+                        Sum(VMain.AmtDay120) As " & StrDays4 & ",
+                        Sum(VMain.AmtDay150) As " & StrDays5 & ",
+                        Sum(VMain.AmtDay180) As " & StrDays6 & "
                         From (" & mQry & ") As VMain
                         Left Join Subgroup Division On VMain.Div_Code  COLLATE DATABASE_DEFAULT = Division.Subcode  COLLATE DATABASE_DEFAULT
                         Left Join Subgroup Party On VMain.Subcode  COLLATE DATABASE_DEFAULT = Party.SubCode  COLLATE DATABASE_DEFAULT

@@ -71,9 +71,30 @@
     <AggregateFunction />
   </Column>
   <Column>
-    <Name>Stock Process Qty</Name>
+    <Name>Current Stock</Name>
     <Index>10</Index>
     <Width>100</Width>
+    <Visible>False</Visible>
+    <AggregateFunction />
+  </Column>
+  <Column>
+    <Name>Current Stock Process</Name>
+    <Index>11</Index>
+    <Width>120</Width>
+    <Visible>False</Visible>
+    <AggregateFunction />
+  </Column>
+  <Column>
+    <Name>Wastage</Name>
+    <Index>12</Index>
+    <Width>120</Width>
+    <Visible>False</Visible>
+    <AggregateFunction />
+  </Column>
+  <Column>
+    <Name>Consider In Issue</Name>
+    <Index>13</Index>
+    <Width>35</Width>
     <Visible>False</Visible>
     <AggregateFunction />
   </Column>

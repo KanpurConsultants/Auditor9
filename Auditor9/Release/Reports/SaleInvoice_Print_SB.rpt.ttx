@@ -5,13 +5,13 @@ DocNoCaption	string	255	Invoice No.
 DocDateCaption	string	255	Invoice Date	
 SiteStateCode	string	255	07	
 SiteStateName	string	255	Delhi	
-DocID	string	255	D1    SI 2023      59	
+DocID	string	255	D1    SI 2023      63	
 Sr	number	1	
-V_Date	datetime	17/Aug/2023 12:00:00 AM	
+V_Date	datetime	28/Sep/2023 12:00:00 AM	
 DeliveryDate	datetime		
 Voucher_Type	string	255	Tax Invoice	
 NCat	string	255	SI	
-InvoiceNo	string	255	SI-1	
+InvoiceNo	string	255	SI-64	
 GenDocNo	string	255		
 AmsDocNo	string	255		
 AmsDocDate	datetime		
@@ -22,42 +22,41 @@ AgentName	string	255
 SalesRepName	string	255		
 SalesRepCode	string	255		
 AgentCaption	string	255	Agent	
-SaleToPartyName	string	255	ANSAR HOSIERY	
-SaleToPartyAddress	string	255	NA VISHWAMITRA MARG, NALBAND TOLI BUXAR
+SaleToPartyName	string	255	VIJAY AGENCIES	
+SaleToPartyAddress	string	255	GAUTAM VIHAR 18, H I G 2ND 3RD FLOORTARAMANDAL BEHIND CHAMPPA DEVI PARK
 	
-CityName	string	255	NALBAND TOLI	
-SaleToPartyPincode	string	255	802101	
-StateCode	string	255	10	
-StateName	string	255	Bihar	
+CityName	string	255	GORAKHPUR	
+SaleToPartyPincode	string	255	273017	
+StateCode	string	255	09	
+StateName	string	255	Uttar Pradesh	
 SaleToPartyMobile	string	255		
 ContactPerson	string	255		
-SaleToPartySalesTaxNo	string	255	10ASRPJ6562D1ZU	
+SaleToPartySalesTaxNo	string	255	09AAPFV8226J1ZF	
 SaleToPartyAadharNo	string	255		
-SaleToPartyPanNo	string	255	ASRPJ6562D	
+SaleToPartyPanNo	string	255	AAPFV8226J	
 SaleToPartyLicenseNo	string	255		
-ShipToPartyName	string	255	ANSAR HOSIERY	
-ShipToPartyAddress	string	255	NA VISHWAMITRA MARG, NALBAND TOLI BUXAR
-	
-ShipToPartyCity	string	255	NALBAND TOLI	
-ShipToPartyPincode	string	255	802101	
-ShipToPartyStateCode	string	255	10	
-ShipToPartyStateName	string	255	Bihar	
+ShipToPartyName	string	255	RIDDHI SIDDHI HOSIERY	
+ShipToPartyAddress	string	255	PIPAGANJ GORAKHPUR -UP	
+ShipToPartyCity	string	255	GORAKHPUR	
+ShipToPartyPincode	string	255		
+ShipToPartyStateCode	string	255	09	
+ShipToPartyStateName	string	255	Uttar Pradesh	
 ShipToPartyMobile	string	255		
-ShipToPartySalesTaxNo	string	255	10ASRPJ6562D1ZU	
+ShipToPartySalesTaxNo	string	255	09BVLPS8484F1ZQ	
 ShipToPartyAadharNo	string	255		
-ShipToPartyPanNo	string	255	ASRPJ6562D	
+ShipToPartyPanNo	string	255		
 ShipToPartyLicenseNo	string	255		
-TransporterSalesTaxNo	string	255		
+TransporterSalesTaxNo	string	255	20AADCJ8593P1ZZ	
 ShipToAddress	string	255		
 TermsAndConditions	string	255	(1) Payment within 30 days from date of Invoice. <BR>(2) Overdue Interest @ 24% P.A. after due date. <BR>(3) Goods dispatched by transport at the owner risk. <BR>(4) All disputes are subject to <Kanpur> Jurisdiction only.	
-TransporterName	string	255		
+TransporterName	string	255	JAI MATA DI PARIWAHAN, DHANBAD	
 LrNo	string	255		
 LrDate	datetime		
-NoOfBales	number		
+NoOfBales	number	2	
 PrivateMark	string	255		
-Weight	number		
-Freight	number		
-ChargedWeight	number		
+Weight	number	0	
+Freight	number	0	
+ChargedWeight	number	0	
 FreightType	string	255		
 RoadPermitNo	string	255		
 RoadPermitDate	datetime		
@@ -72,15 +71,15 @@ DescriptionOfGoods	string	255
 DescriptionOfPacking	string	255		
 ReferenceNo	string	255		
 BarcodeName	string	255		
-ItemName	string	255	JUNIOR SHIRT - TERRY BOY - SHIRT	
-ItemGroupName	string	255	TERRY BOY	
-ItemCatName	string	255	SHIRT	
-ItemManualCode	string	255	2	
-ItemSpecification	string	255	JUNIOR SHIRT	
+ItemName	string	255	1552-5*10 - AERO CLUB - KIDS COAT PANT	
+ItemGroupName	string	255	AERO CLUB	
+ItemCatName	string	255	KIDS COAT PANT	
+ItemManualCode	string	255	1253	
+ItemSpecification	string	255	1552-5*10	
 InvoiceLineSpecification	string	255		
-HSN	string	255	12	
+HSN	string	255	611190	
 MaintainStockYn	boolean	True	
-D1Spec	string	255	2161-32*36	
+D1Spec	string	255	1552-5*10	
 D2Spec	string	255		
 D3Spec	string	255		
 D4Spec	string	255		
@@ -102,27 +101,27 @@ MRP	number	0
 LotNo	string	255		
 ExpiryDate	datetime		
 ItemRemark1	string	255		
-Pcs	number	15	
-Qty	number	15	
-Rate	number	360	
+Pcs	number	18	
+Qty	number	18	
+Rate	number	870	
 ItemState	string	255		
 CatalogSpecification	string	255		
 CatalogSiteName	string	255		
 Unit	string	255	Pcs	
 UnitDecimalPlaces	number	0	
 DiscountPer	number	3	
-DiscountAmount	number	162	
+DiscountAmount	number	469.8	
 AdditionalDiscountPer	number	0	
 AdditionalDiscountAmount	number	0	
 AdditionPer	number	0	
 AdditionAmount	number	0	
-TotalDiscount	number	162	
+TotalDiscount	number	469.8	
 Deal	string	255		
-AmountBeforeDiscount	number	5400	
-Amount	number	5238	
-Taxable_Amount	number	4988.57	
+AmountBeforeDiscount	number	15660	
+Amount	number	15190.2	
+Taxable_Amount	number	14466.86	
 Tax1_Per	number	5	
-Tax1	number	249.43	
+Tax1	number	723.34	
 Tax2_Per	number	0	
 Tax2	number	0	
 Tax3_Per	number	0	
@@ -131,7 +130,7 @@ Tax4_Per	number	0
 Tax4	number	0	
 Tax5_Per	number	0	
 Tax5	number	0	
-Net_Amount	number	5238.3	
+Net_Amount	number	15190.2	
 LRemarks	string	255		
 LRemarks1	string	255		
 LRemarks2	string	255		
@@ -139,17 +138,17 @@ LRemarks3	string	255
 LRemarks4	string	255		
 HRemarks	string	255		
 SalesTaxSummaryStr	string	255		
-H_Discount	number	274.5	
+H_Discount	number	3051	
 H_AdditionalDiscount	number	0	
 H_Additional	number	0	
-H_TotalDiscount	number	274.5	
-H_AmountBeforeDiscount	number	9150	
-H_Gross_Amount	number	8875.5	
+H_TotalDiscount	number	3051	
+H_AmountBeforeDiscount	number	101830	
+H_Gross_Amount	number	98779	
 H_SpecialDiscount_Per	number	0	
 H_SpecialDiscount	number	0	
-H_Taxable_Amount	number	8452.86	
+H_Taxable_Amount	number	93892.56	
 H_Tax1_Per	number	0	
-H_Tax1	number	422.64	
+H_Tax1	number	4886.44	
 H_Tax2_Per	number	0	
 H_Tax2	number	0	
 H_Tax3_Per	number	0	
@@ -166,17 +165,17 @@ H_Other_Charge1_Per	number	0
 H_Other_Charge1	number	0	
 H_Other_Charge2_Per	number	0	
 H_Other_Charge2	number	0	
-Round_Off	number	0.5	
-H_Net_Amount	number	8876	
+Round_Off	number	0	
+H_Net_Amount	number	98779	
 EInvoiceIRN	string	255		
 EInvoiceACKNo	string	255		
 EInvoiceACKDate	datetime		
-Default_BankAccountDetail	string	255	<B> Bank Detail :- <BR> KOTAK MAHINDRA : 2913816082  IFSC : KKBK0000131 <BR>	
+Default_BankAccountDetail	string	255	<B> Bank Detail :- <BR> ICICI BANK : 112605503219  IFSC : ICIC0001126 <BR>	
 DocumentPrintHeaderPattern	string	255	Center Aligned	
 DimDetail	string	255		
 PrintedByUser	string	255	SUPER	
-EntryByUser	string	255	SUPER	
-PrintTitle	string	255	ESTIMATE 	
+EntryByUser	string	255	vimal	
+PrintTitle	string	255	Tax Invoice	
 DocumentPrintShowPrintDateTimeYn	string	255	1	
 DocumentPrintShowPartyBalance	string	255	Hide	
 TodaysOpeningBalance	long	0	

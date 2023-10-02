@@ -1,37 +1,39 @@
 ; Field definition file for table: ADORecordset
 Copies	string	255	1	
 CopyPrintingCaption	string	255		
-DocNoCaption	string	255	Doc.No.	
-DocDateCaption	string	255	Doc.Date	
-DocID	string	255	D1    PR 2022       1	
-SiteStateCode	string	255	09	
-SiteStateName	string	255	Uttar Pradesh	
+DocNoCaption	string	255	Invoice No.	
+DocDateCaption	string	255	Invoice Date	
+DocID	string	255	D1    PI 2023       2	
+SiteStateCode	string	255	07	
+SiteStateName	string	255	Delhi	
 Sr	number	1	
-V_Date	datetime	01/Apr/2022 12:00:00 AM	
-Voucher_Type	string	255	Purchase Return	
-NCat	string	255	PR	
-DocNo	string	255	D1-PR-1	
+V_Date	datetime	10/Apr/2023 12:00:00 AM	
+Voucher_Type	string	255	Purchase Invoice	
+NCat	string	255	PI	
+DocNo	string	255	D1-PI-3	
 AgentName	string	255		
 AgentCaption	string	255	Agent	
-PartyName	string	255	SADHVI ENTERPRISES	
-PartyAddress	string	255		
-PartyPinCode	string	255		
+PartyName	string	255	NAVDURGA SALES PRIVATE LIMITED	
+PartyAddress	string	255	SHOP NO 4 PLOT NO.197 JUHI KHURD JUHI KHURD
+	
+PartyPinCode	string	255	208014	
 PartyCityName	string	255	Kanpur	
 PartyStateCode	string	255	09	
 PartyStateName	string	255	Uttar Pradesh	
 PartyMobile	string	255		
 ContactPerson	string	255		
-PartySalesTaxNo	string	255		
+PartySalesTaxNo	string	255	09AADCN9244K1ZZ	
 PartyAadharNo	string	255		
-PartyPanNo	string	255		
-ShipToPartyName	string	255	SADHVI ENTERPRISES	
-ShipToPartyAddress	string	255		
+PartyPanNo	string	255	AADCN9244K	
+ShipToPartyName	string	255	NAVDURGA SALES PRIVATE LIMITED	
+ShipToPartyAddress	string	255	SHOP NO 4 PLOT NO.197 JUHI KHURD JUHI KHURD
+	
 ShipToPartyCity	string	255	Kanpur	
-ShipToPartyPincode	string	255		
+ShipToPartyPincode	string	255	208014	
 ShipToPartyStateCode	string	255	09	
 ShipToPartyStateName	string	255	Uttar Pradesh	
 ShipToPartyMobile	string	255		
-ShipToPartySalesTaxNo	string	255		
+ShipToPartySalesTaxNo	string	255	09AADCN9244K1ZZ	
 ShipToPartyAadharNo	string	255		
 ShipToPartyPanNo	string	255		
 TransporterName	string	255		
@@ -43,14 +45,14 @@ Freight	number
 FreightType	string	255		
 RoadPermitNo	string	255		
 RoadPermitDate	datetime		
-ReferenceNo	string	255	690	
-ItemName	string	255	SHILAJEET-S-ENT-802 DYD-SAREE-D1   ISS 2021     798	
-ItemGroupName	string	255	S-ENT-802 DYD	
-ItemCatName	string	255	SAREE	
-ItemSpecification	string	255	SHILAJEET	
-InvoiceLineSpecification	string	255	SHILAJEET	
-HSN	string	255	540752	
-D1Spec	string	255		
+ReferenceNo	string	255		
+ItemName	string	255	5369-26*30 - JUNIOR SHIRT - TERRY BOY - SHIRT	
+ItemGroupName	string	255	TERRY BOY	
+ItemCatName	string	255	SHIRT	
+ItemSpecification	string	255	5369-26*30	
+InvoiceLineSpecification	string	255	JUNIOR SHIRT	
+HSN	string	255	620590	
+D1Spec	string	255	5369-26*30	
 D2Spec	string	255		
 D3Spec	string	255		
 D4Spec	string	255		
@@ -60,19 +62,19 @@ ItemCategoryCaption	string	255	Item Category
 ItemGroupCaption	string	255	Item Group	
 ItemCaption	string	255	Item	
 BarcodeCaption	string	255		
-D1Caption	string	255	Quality	
-D2Caption	string	255	Colour	
-D3Caption	string	255	Design	
-D4Caption	string	255	Width	
+D1Caption	string	255	Design	
+D2Caption	string	255	Shade	
+D3Caption	string	255		
+D4Caption	string	255		
 SalesTaxGroupItem	string	255	GST 5%	
 GrossTaxRate	number	5	
 Pcs	number	0	
-Qty	number	4	
-DocQty	number	4	
+Qty	number	3	
+DocQty	number	3	
 FreeQty	number	0	
 LossQty	number	0	
 RejQty	number	0	
-Rate	number	1095	
+Rate	number	215	
 Unit	string	255	Pcs	
 UnitDecimalPlaces	number	0	
 DiscountPer	number	0	
@@ -80,11 +82,11 @@ DiscountAmount	number	0
 AdditionalDiscountPer	number	0	
 AdditionalDiscountAmount	number	0	
 TotalDiscount	number	0	
-AmountBeforeDiscount	number	4380	
-Amount	number	4380	
-Taxable_Amount	number	4380	
-Tax1_Per	number	0	
-Tax1	number	0	
+AmountBeforeDiscount	number	645	
+Amount	number	645	
+Taxable_Amount	number	645	
+Tax1_Per	number	5	
+Tax1	number	32.25	
 Tax2_Per	number	0	
 Tax2	number	0	
 Tax3_Per	number	0	
@@ -93,15 +95,15 @@ Tax4_Per	number	0
 Tax4	number	0	
 Tax5_Per	number	0	
 Tax5	number	0	
-Net_Amount	number	4380	
+Net_Amount	number	677.25	
 HRemarks	string	255		
 LRemarks	string	255		
-H_Gross_Amount	number	35975	
+H_Gross_Amount	number	23340	
 H_SpecialDiscount_Per	number	0	
 H_SpecialDiscount	number	0	
-H_Taxable_Amount	number	35975	
+H_Taxable_Amount	number	23340	
 H_Tax1_Per	number	0	
-H_Tax1	number	0	
+H_Tax1	number	1167	
 H_Tax2_Per	number	0	
 H_Tax2	number	0	
 H_Tax3_Per	number	0	
@@ -115,15 +117,15 @@ H_Deduction	number	0
 H_Other_Charge_Per	number	0	
 H_Other_Charge	number	0	
 Round_Off	number	0	
-H_Net_Amount	number	35975	
+H_Net_Amount	number	24507	
 H_TotalDiscount	number	0	
-H_AmountBeforeDiscount	number	35975	
-Default_BankAccountDetail	string	255		
+H_AmountBeforeDiscount	number	23340	
+Default_BankAccountDetail	string	255	<B> Bank Detail :- <BR> ICICI BANK : 112605503219  IFSC : ICIC0001126 <BR>	
 DocumentPrintHeaderPattern	string	255	Center Aligned	
 DimDetail	string	255		
 HsnDescription	string	255		
 PrintedByUser	string	255	SUPER	
-PrintTitle	string	255	Purchase Return (Debit Note)	
+PrintTitle	string	255	Purchase Invoice	
 TermsAndConditions	string	255		
 CompanyLogo	BLOB		
 CompanyAuthorisedSignature	BLOB		

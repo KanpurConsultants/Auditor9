@@ -387,7 +387,7 @@
   </Column>
   <Column>
     <Name>Remark4</Name>
-    <Index>106</Index>
+    <Index>104</Index>
     <Width>150</Width>
     <Visible>False</Visible>
     <AggregateFunction />
@@ -401,14 +401,14 @@
   </Column>
   <Column>
     <Name>Sales Rep.</Name>
-    <Index>108</Index>
+    <Index>106</Index>
     <Width>100</Width>
     <Visible>False</Visible>
     <AggregateFunction />
   </Column>
   <Column>
     <Name>Catalog</Name>
-    <Index>109</Index>
+    <Index>108</Index>
     <Width>100</Width>
     <Visible>False</Visible>
     <AggregateFunction />
@@ -562,21 +562,21 @@
   </Column>
   <Column>
     <Name>Stock In</Name>
-    <Index>111</Index>
+    <Index>109</Index>
     <Width>100</Width>
     <Visible>False</Visible>
     <AggregateFunction />
   </Column>
   <Column>
     <Name>Stock In TSr</Name>
-    <Index>112</Index>
+    <Index>110</Index>
     <Width>100</Width>
     <Visible>False</Visible>
     <AggregateFunction />
   </Column>
   <Column>
     <Name>Stock In Sr</Name>
-    <Index>114</Index>
+    <Index>111</Index>
     <Width>100</Width>
     <Visible>False</Visible>
     <AggregateFunction />
@@ -590,21 +590,21 @@
   </Column>
   <Column>
     <Name>Is Record Locked</Name>
-    <Index>104</Index>
+    <Index>112</Index>
     <Width>150</Width>
     <Visible>False</Visible>
     <AggregateFunction />
   </Column>
   <Column>
     <Name>Purch Disc. %</Name>
-    <Index>110</Index>
+    <Index>113</Index>
     <Width>80</Width>
     <Visible>False</Visible>
     <AggregateFunction />
   </Column>
   <Column>
     <Name>Purch Disc. Amt</Name>
-    <Index>113</Index>
+    <Index>114</Index>
     <Width>100</Width>
     <Visible>False</Visible>
     <AggregateFunction />
@@ -695,14 +695,14 @@
   </Column>
   <Column>
     <Name>M Dimension 3</Name>
-    <Index>129</Index>
+    <Index>128</Index>
     <Width>100</Width>
     <Visible>False</Visible>
     <AggregateFunction />
   </Column>
   <Column>
     <Name>M Dimension 4</Name>
-    <Index>135</Index>
+    <Index>131</Index>
     <Width>100</Width>
     <Visible>False</Visible>
     <AggregateFunction />
@@ -716,7 +716,7 @@
   </Column>
   <Column>
     <Name>Gross Amount</Name>
-    <Index>128</Index>
+    <Index>129</Index>
     <Width>100</Width>
     <Visible>False</Visible>
     <AggregateFunction />
@@ -730,28 +730,28 @@
   </Column>
   <Column>
     <Name>Gross Amount ContraAc</Name>
-    <Index>131</Index>
-    <Width>100</Width>
-    <Visible>False</Visible>
-    <AggregateFunction />
-  </Column>
-  <Column>
-    <Name>Special Discount @</Name>
     <Index>132</Index>
     <Width>100</Width>
     <Visible>False</Visible>
     <AggregateFunction />
   </Column>
   <Column>
-    <Name>Special Discount</Name>
+    <Name>Special Discount @</Name>
     <Index>133</Index>
     <Width>100</Width>
     <Visible>False</Visible>
     <AggregateFunction />
   </Column>
   <Column>
-    <Name>Special Discount PostAc</Name>
+    <Name>Special Discount</Name>
     <Index>134</Index>
+    <Width>100</Width>
+    <Visible>False</Visible>
+    <AggregateFunction />
+  </Column>
+  <Column>
+    <Name>Special Discount PostAc</Name>
+    <Index>135</Index>
     <Width>100</Width>
     <Visible>False</Visible>
     <AggregateFunction />

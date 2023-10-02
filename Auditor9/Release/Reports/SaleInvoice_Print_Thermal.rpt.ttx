@@ -5,13 +5,13 @@ DocNoCaption	string	255	Invoice No.
 DocDateCaption	string	255	Invoice Date	
 SiteStateCode	string	255	09	
 SiteStateName	string	255	Uttar Pradesh	
-DocID	string	255	D1   SIR 2023     304	
+DocID	string	255	D1   SIR 2023    1751	
 Sr	number	1	
-V_Date	datetime	02/May/2023 12:00:00 AM	
+V_Date	datetime	18/Sep/2023 12:00:00 AM	
 DeliveryDate	datetime		
 Voucher_Type	string	255	Sale Invoice Retail	
 NCat	string	255	SI	
-InvoiceNo	string	255	SIR-304	
+InvoiceNo	string	255	SIR-1031	
 GenDocNo	string	255		
 AmsDocNo	string	255		
 AmsDocDate	datetime		
@@ -19,28 +19,28 @@ AmsDocNetAmount	number	0
 RateType	string	255		
 DocumentPrintShowRateType	string	255	Show If Not Blank	
 AgentName	string	255		
-SalesRepName	string	255	SOMU TIWARI	
-SalesRepCode	string	255	6	
+SalesRepName	string	255	HARSHIT YADAV	
+SalesRepCode	string	255	17	
 AgentCaption	string	255	Agent	
-SaleToPartyName	string	255	VIPT	
+SaleToPartyName	string	255		
 SaleToPartyAddress	string	255		
-CityName	string	255	Kanpur	
+CityName	string	255		
 SaleToPartyPincode	string	255		
-StateCode	string	255	09	
-StateName	string	255	Uttar Pradesh	
-SaleToPartyMobile	string	255	8791799262	
+StateCode	string	255		
+StateName	string	255		
+SaleToPartyMobile	string	255		
 ContactPerson	string	255		
 SaleToPartySalesTaxNo	string	255		
 SaleToPartyAadharNo	string	255		
 SaleToPartyPanNo	string	255		
 SaleToPartyLicenseNo	string	255		
-ShipToPartyName	string	255	VIPT	
+ShipToPartyName	string	255		
 ShipToPartyAddress	string	255		
-ShipToPartyCity	string	255	Kanpur	
+ShipToPartyCity	string	255		
 ShipToPartyPincode	string	255		
-ShipToPartyStateCode	string	255	09	
-ShipToPartyStateName	string	255	Uttar Pradesh	
-ShipToPartyMobile	string	255	8791799262	
+ShipToPartyStateCode	string	255		
+ShipToPartyStateName	string	255		
+ShipToPartyMobile	string	255		
 ShipToPartySalesTaxNo	string	255		
 ShipToPartyAadharNo	string	255		
 ShipToPartyPanNo	string	255		
@@ -69,12 +69,12 @@ Destination	string	255
 DescriptionOfGoods	string	255		
 DescriptionOfPacking	string	255		
 ReferenceNo	string	255		
-BarcodeName	string	255	4947	
-ItemName	string	255	KS110-S-ENT-888DYD-SAREE-D1   ISS 2022    11516	
-ItemGroupName	string	255	KOKILA SILK	
+BarcodeName	string	255	7607	
+ItemName	string	255	7 FLOWER-S-ENT-304 HALKI-SAREE-D1   ISS 2023     8141	
+ItemGroupName	string	255	S-ENT-304 HALKI	
 ItemCatName	string	255	SAREE	
-ItemManualCode	string	255	D100112919	
-ItemSpecification	string	255	KS110	
+ItemManualCode	string	255	D100126106	
+ItemSpecification	string	255	7 FLOWER	
 InvoiceLineSpecification	string	255		
 HSN	string	255	540752	
 MaintainStockYn	boolean	True	
@@ -96,58 +96,62 @@ D3Caption	string	255	Design
 D4Caption	string	255	Width	
 SalesTaxGroupItem	string	255	GST 5%	
 GrossTaxRate	number	5	
-MRP	number	2195	
+MRP	number	545	
 LotNo	string	255		
 ExpiryDate	datetime		
 ItemRemark1	string	255		
 Pcs	number	1	
 Qty	number	1	
-Rate	number	2195	
+Rate	number	1500	
 ItemState	string	255		
 CatalogSpecification	string	255		
 CatalogSiteName	string	255		
 Unit	string	255	Pcs	
 UnitDecimalPlaces	number	0	
 DiscountPer	number	0	
-DiscountAmount	number	10	
+DiscountAmount	number	0	
 AdditionalDiscountPer	number	0	
 AdditionalDiscountAmount	number	0	
 AdditionPer	number	0	
 AdditionAmount	number	0	
-TotalDiscount	number	10	
+TotalDiscount	number	0	
 Deal	string	255		
-AmountBeforeDiscount	number	2195	
-Amount	number	2185	
-Taxable_Amount	number	2080.95	
+AmountBeforeDiscount	number	1500	
+Amount	number	1500	
+Taxable_Amount	number	1428.57	
 Tax1_Per	number	0	
 Tax1	number	0	
 Tax2_Per	number	2.5	
-Tax2	number	52.02	
+Tax2	number	35.71	
 Tax3_Per	number	2.5	
-Tax3	number	52.02	
+Tax3	number	35.71	
 Tax4_Per	number	0	
 Tax4	number	0	
 Tax5_Per	number	0	
 Tax5	number	0	
-Net_Amount	number	2185	
+Net_Amount	number	1500	
 LRemarks	string	255		
+LRemarks1	string	255		
+LRemarks2	string	255		
+LRemarks3	string	255		
+LRemarks4	string	255		
 HRemarks	string	255		
-SalesTaxSummaryStr	string	255	540752 Taxable Amt : 2766.66 Tax Amt : 138.32, 540754 Taxable Amt : 947.62 Tax Amt : 47.38, 	
-H_Discount	number	10	
+SalesTaxSummaryStr	string	255	540752 Taxable Amt : 1428.57 Tax Amt : 71.42, 	
+H_Discount	number	0	
 H_AdditionalDiscount	number	0	
 H_Additional	number	0	
-H_TotalDiscount	number	10	
-H_AmountBeforeDiscount	number	3910	
-H_Gross_Amount	number	3900	
+H_TotalDiscount	number	0	
+H_AmountBeforeDiscount	number	1500	
+H_Gross_Amount	number	1500	
 H_SpecialDiscount_Per	number	0	
 H_SpecialDiscount	number	0	
-H_Taxable_Amount	number	3714.28	
+H_Taxable_Amount	number	1428.57	
 H_Tax1_Per	number	0	
 H_Tax1	number	0	
 H_Tax2_Per	number	0	
-H_Tax2	number	92.85	
+H_Tax2	number	35.71	
 H_Tax3_Per	number	0	
-H_Tax3	number	92.85	
+H_Tax3	number	35.71	
 H_Tax4_Per	number	0	
 H_Tax4	number	0	
 H_Tax5_Per	number	0	
@@ -160,8 +164,8 @@ H_Other_Charge1_Per	number	0
 H_Other_Charge1	number	0	
 H_Other_Charge2_Per	number	0	
 H_Other_Charge2	number	0	
-Round_Off	number	0.02	
-H_Net_Amount	number	3900	
+Round_Off	number	0.01	
+H_Net_Amount	number	1500	
 EInvoiceIRN	string	255		
 EInvoiceACKNo	string	255		
 EInvoiceACKDate	datetime		
@@ -169,7 +173,7 @@ Default_BankAccountDetail	string	255
 DocumentPrintHeaderPattern	string	255	Center Aligned	
 DimDetail	string	255		
 PrintedByUser	string	255	SUPER	
-EntryByUser	string	255	user	
+EntryByUser	string	255	SUPER	
 PrintTitle	string	255	Sale Invoice Retail	
 DocumentPrintShowPrintDateTimeYn	string	255	1	
 DocumentPrintShowPartyBalance	string	255	Hide	
