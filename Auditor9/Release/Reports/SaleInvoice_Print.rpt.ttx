@@ -5,46 +5,42 @@ DocNoCaption	string	255	Invoice No.
 DocDateCaption	string	255	Invoice Date	
 SiteStateCode	string	255	09	
 SiteStateName	string	255	Uttar Pradesh	
-DocID	string	255	D1    SI 2023    6260	
+DocID	string	255	D1    SI 2023    6358	
 Sr	number	1	
-V_Date	datetime	22/Sep/2023 12:00:00 AM	
+V_Date	datetime	25/Sep/2023 12:00:00 AM	
 DeliveryDate	datetime		
 Voucher_Type	string	255	Tax Invoice	
 NCat	string	255	SI	
-InvoiceNo	string	255	SI-6260	
+InvoiceNo	string	255	SI-6358	
 RateType	string	255	Super Net	
 DocumentPrintShowRateType	string	255	Show If Not Blank	
-AgentName	string	255	DIRECT CUSTOMER	
+AgentName	string	255	ARCHANA 	
 AgentCaption	string	255	Agent	
 BillToPartyNature	string	255	Customer	
-SaleToPartyName	string	255	SHREE SHYAM ASHIRWAD SAREES	
-SaleToPartyAddress	string	255	56-61, KAHOO KOTHI,KANPUR
-
-	
-CityName	string	255	KANPUR	
-SaleToPartyPincode	string	255	208001	
+SaleToPartyName	string	255	APNA PARIDHAN	
+SaleToPartyAddress	string	255	PANJABI MARKET PRATAPGARHDIST-PRATAPGRAH	
+CityName	string	255	PRATAPGARH	
+SaleToPartyPincode	string	255	230001	
 StateCode	string	255	09	
 StateName	string	255	Uttar Pradesh	
-SaleToPartyMobile	string	255	9415648565	
-ContactPerson	string	255	AMAN GUPTA	
-SaleToPartySalesTaxNo	string	255	09BAVPG0866J1Z4	
+SaleToPartyMobile	string	255	9839355005	
+ContactPerson	string	255	SURESH CHANDRA KESERVANI	
+SaleToPartySalesTaxNo	string	255	09AEXPK7690H1ZK	
 SaleToPartyAadharNo	string	255		
-SaleToPartyPanNo	string	255	BAVPG0866J	
-ShipToPartyName	string	255	SHREE SHYAM ASHIRWAD SAREES	
-ShipToPartyAddress	string	255	56-61, KAHOO KOTHI,KANPUR
-
-	
-ShipToPartyCity	string	255	KANPUR	
-ShipToPartyPincode	string	255	208001	
+SaleToPartyPanNo	string	255	AEXPK7690H	
+ShipToPartyName	string	255	APNA PARIDHAN	
+ShipToPartyAddress	string	255	PANJABI MARKET PRATAPGARHDIST-PRATAPGRAH	
+ShipToPartyCity	string	255	PRATAPGARH	
+ShipToPartyPincode	string	255	230001	
 ShipToPartyStateCode	string	255	09	
 ShipToPartyStateName	string	255	Uttar Pradesh	
-ShipToPartyMobile	string	255	9415648565	
-ShipToPartySalesTaxNo	string	255	09BAVPG0866J1Z4	
+ShipToPartyMobile	string	255	9839355005	
+ShipToPartySalesTaxNo	string	255	09AEXPK7690H1ZK	
 ShipToPartyAadharNo	string	255		
-ShipToPartyPanNo	string	255	BAVPG0866J	
+ShipToPartyPanNo	string	255	AEXPK7690H	
 ShipToAddress	string	255		
 TermsAndConditions	string	255	<b>1.</b> Goods once sold will not be taken back. <b>2.</b> No Guarantee in the Age of Fashion. <b>3.</b> Interest @ 24% per annum will be charge after 30 days from the date of bill. <b>4.</b> All disputes subject to Kanpur Jurisdiction OR disputes will be settle through Cawnpore Kapda Committee Arbitration Board which will be abide by the both parties	
-TransporterName	string	255	LOCAL, KANPUR	
+TransporterName	string	255	KANPUR PRATAPGARH TRANSPORT CO., KANPUR	
 LrNo	string	255		
 LrDate	datetime		
 PrivateMark	string	255		
@@ -63,20 +59,20 @@ BookedTo	string	255
 Destination	string	255		
 DescriptionOfGoods	string	255		
 DescriptionOfPacking	string	255		
-TransporterSalesTaxNo	string	255		
+TransporterSalesTaxNo	string	255	09AKAPB9819N1ZR	
 ReferenceNo	string	255		
-ItemName	string	255	MADHVI          [KALA DARSHAN(15) | SAREE]	
-ItemGroupName	string	255	S-ENT-15-PRINT	
+ItemName	string	255	BHAKTI          [ANUAADI SAREES | SAREE]	
+ItemGroupName	string	255	S-ENT-901DYD	
 ItemCatName	string	255	SAREE	
-ItemSpecification	string	255	MADHVI	
+ItemSpecification	string	255	BHAKTI	
 InvoiceLineSpecification	string	255		
 HSN	string	255	540752	
 MaintainStockYn	boolean	True	
 SalesTaxGroupItem	string	255	GST 5%	
 GrossTaxRate	number	5	
-Pcs	number	11	
-Qty	number	11	
-Rate	number	200	
+Pcs	number	5	
+Qty	number	5	
+Rate	number	1195	
 Unit	string	255	Pcs	
 UnitDecimalPlaces	number	0	
 DiscountPer	number	0	
@@ -86,34 +82,34 @@ AdditionalDiscountAmount	number	0
 AdditionPer	number	0	
 AdditionAmount	number	0	
 TotalDiscount	number	0	
-AmountBeforeDiscount	number	2200	
-Amount	number	2200	
-Taxable_Amount	number	2200	
+AmountBeforeDiscount	number	5975	
+Amount	number	5975	
+Taxable_Amount	number	5975	
 Tax1_Per	number	0	
 Tax1	number	0	
 Tax2_Per	number	2.5	
-Tax2	number	55	
+Tax2	number	149.38	
 Tax3_Per	number	2.5	
-Tax3	number	55	
+Tax3	number	149.38	
 Tax4_Per	number	0	
 Tax4	number	0	
 Tax5_Per	number	0	
 Tax5	number	0	
-Net_Amount	number	2309.99	
+Net_Amount	number	6273.78	
 LRemarks	string	255		
 HRemarks	string	255		
 H_TotalDiscount	number	0	
-H_AmountBeforeDiscount	number	65985	
-H_Gross_Amount	number	65985	
+H_AmountBeforeDiscount	number	125001	
+H_Gross_Amount	number	125001	
 H_SpecialDiscount_Per	number	0	
 H_SpecialDiscount	number	0	
-H_Taxable_Amount	number	65985	
+H_Taxable_Amount	number	125001	
 H_Tax1_Per	number	0	
 H_Tax1	number	0	
 H_Tax2_Per	number	0	
-H_Tax2	number	1649.66	
+H_Tax2	number	3125.07	
 H_Tax3_Per	number	0	
-H_Tax3	number	1649.66	
+H_Tax3	number	3125.07	
 H_Tax4_Per	number	0	
 H_Tax4	number	0	
 H_Tax5_Per	number	0	
@@ -122,8 +118,8 @@ H_Deduction_Per	number	0
 H_Deduction	number	0	
 H_Other_Charge_Per	number	0	
 H_Other_Charge	number	0	
-Round_Off	number	-0.32	
-H_Net_Amount	number	69284	
+Round_Off	number	-0.14	
+H_Net_Amount	number	131251	
 EInvoiceIRN	string	255		
 EInvoiceAckNo	string	255		
 EInvoiceAckDate	datetime		
@@ -131,7 +127,7 @@ Default_BankAccountDetail	string	255	Bank Detail : 	HDFC A/c : 50200003154727   
 DocumentPrintHeaderPattern	string	255	Center Aligned	
 DimDetail	string	255		
 PrintedByUser	string	255	SUPER	
-EntryByUser	string	255	durgesh	
+EntryByUser	string	255	vikas	
 PrintTitle	string	255	TAX INVOICE	
 DocumentPrintShowPrintDateTimeYn	string	255	1	
 DocumentPrintShowPartyBalance	string	255	Hide	

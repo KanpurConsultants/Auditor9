@@ -96,8 +96,11 @@ Public Class ClsStockHeadReport
                             Union All Select 'Item Group Wise Summary' as Code, 'Item Group Wise Summary' as Name 
                             Union All Select 'Item Category Wise Summary' as Code, 'Item Category Wise Summary' as Name 
                             Union All Select 'City Wise Summary' as Code, 'City Wise Summary' as Name 
-                            Union All Select 'State Wise Summary' as Code, 'State Wise Summary' as Name                             
-                            "
+                            Union All Select 'State Wise Summary' as Code, 'State Wise Summary' as Name "
+            If ClsMain.FDivisionNameForCustomization(6) = "SADHVI" And AgL.StrCmp(AgL.PubDBName, "Sadhvi") Then
+                mQry = mQry + "Union All Select 'Item Wise Summary For All' as Code, 'Item Wise Summary For All' as Name "
+            End If
+
             ReportFrm.CreateHelpGrid("Report Type", "Report Type", FrmRepDisplay.FieldFilterDataType.StringType, FrmRepDisplay.FieldDataType.SingleSelection, mQry, "Month Wise Summary")
             ReportFrm.CreateHelpGrid("FromDate", "From Date", FrmRepDisplay.FieldFilterDataType.StringType, FrmRepDisplay.FieldDataType.DateType, "", AgL.PubStartDate)
             ReportFrm.CreateHelpGrid("ToDate", "To Date", FrmRepDisplay.FieldFilterDataType.StringType, FrmRepDisplay.FieldDataType.DateType, "", AgL.PubEndDate)
@@ -189,6 +192,7 @@ Public Class ClsStockHeadReport
             'Else
             '    mCondStr = " Where VT.NCat In ('" & Ncat.PurchaseInvoice & "', '" & Ncat.PurchaseReturn & "') "
             'End If
+
             mCondStr = " Where VT.NCat In ('" & Replace(EntryNCat, ",", "','") & "') "
             mCondStr = mCondStr & " AND H.Div_Code = '" & AgL.PubDivCode & "' "
             mCondStr = mCondStr & " AND Date(H.V_Date) Between " & AgL.Chk_Date(CDate(ReportFrm.FGetText(rowFromDate)).ToString("s")) & " And " & AgL.Chk_Date(CDate(ReportFrm.FGetText(rowToDate)).ToString("s")) & " "
@@ -351,6 +355,65 @@ Public Class ClsStockHeadReport
                     GROUP By Substring(Convert(NVARCHAR, VMain.V_Date_ActualFormat,103),4,7)
                     Order By Max(Year(VMain.V_Date_ActualFormat)), Max(Month(VMain.V_Date_ActualFormat)) "
                 End If
+            ElseIf ReportFrm.FGetText(rowReportType) = "Item Wise Summary For All" Then
+                mCondStr = " Where H.Qty_Iss >0 "
+                mCondStr = mCondStr & " AND H.Div_Code = '" & AgL.PubDivCode & "' "
+                mCondStr = mCondStr & " AND Date(H.V_Date) Between " & AgL.Chk_Date(CDate(ReportFrm.FGetText(rowFromDate)).ToString("s")) & " And " & AgL.Chk_Date(CDate(ReportFrm.FGetText(rowToDate)).ToString("s")) & " "
+                mCondStr = mCondStr & ReportFrm.GetWhereCondition("H.Site_Code", rowSite)
+                mCondStr = mCondStr & ReportFrm.GetWhereCondition("H.V_Type", rowVoucherType)
+                mCondStr = mCondStr & ReportFrm.GetWhereCondition("Sku.ItemCategory", rowItemCategory)
+                mCondStr = mCondStr & ReportFrm.GetWhereCondition("Sku.ItemGroup", rowItemGroup)
+                mCondStr = mCondStr & ReportFrm.GetWhereCondition("H.Item", rowItem)
+                mCondStr = mCondStr & ReportFrm.GetWhereCondition("Sku.Dimension1", rowDimension1)
+                mCondStr = mCondStr & ReportFrm.GetWhereCondition("Sku.Dimension2", rowDimension2)
+                mCondStr = mCondStr & ReportFrm.GetWhereCondition("Sku.Dimension3", rowDimension3)
+                mCondStr = mCondStr & ReportFrm.GetWhereCondition("Sku.Dimension4", rowDimension4)
+                mCondStr = mCondStr & ReportFrm.GetWhereCondition("Sku.Size", rowSize)
+
+                mQry = " SELECT H.DocID, H.V_Date As V_Date, H.V_Date As V_Date_ActualFormat,
+                    Prs.Name As Process, H.SubCode As Party, Sku.ItemGroup, Sku.ItemCategory,
+                    Sku.BaseItem, Sku.Dimension1, Sku.Dimension2, Sku.Dimension3, Sku.Dimension4, Sku.Size,
+                    Party.Name As PartyName, 
+                    City.CityCode, City.CityName, State.Code As StateCode, State.Description As StateName,
+                    H.Div_Code + H.Site_Code + '-' + H.V_Type + '-' + H.RecId as ManualRefNo, 
+                    H.Item, I.Specification As ItemSpecification, I.HSN, 
+                    IC.Description As ItemCategoryDesc, IG.Description As ItemGroupDesc, I.Description As ItemDesc, 
+                    D1.Description as Dimension1Desc, D2.Description as Dimension2Desc,
+                    D3.Description as Dimension3Desc, D4.Description as Dimension4Desc, Size.Description as SizeDesc,
+                    H.Qty_Iss AS Qty, H.Unit
+                    FROM Stock H 
+                    LEFT JOIN SubGroup Prs On H.Process = Prs.SubCode
+                    LEFT JOIN Item Sku ON Sku.Code = H.Item
+                    LEFT JOIN ItemType It On Sku.ItemType = It.Code
+                    Left Join Item IC On Sku.ItemCategory = IC.Code
+                    Left Join Item IG On Sku.ItemGroup = IG.Code
+                    LEFT JOIN Item I ON IsNull(Sku.BaseItem,Sku.Code) = I.Code
+                    LEFT JOIN Item D1 ON Sku.Dimension1 = D1.Code
+                    LEFT JOIN Item D2 ON Sku.Dimension2 = D2.Code
+                    LEFT JOIN Item D3 ON Sku.Dimension3 = D3.Code
+                    LEFT JOIN Item D4 ON Sku.Dimension4 = D4.Code
+                    LEFT JOIN Item Size ON Sku.Size = Size.Code
+                    Left Join viewHelpSubgroup Party On H.SubCode = Party.Code                     
+                    Left Join (Select SILTV.Subcode,SILTV.Div_Code, SILTV.Site_Code, Max(SILTV.Agent) as Agent From SubgroupSiteDivisionDetail SILTV  Group By SILTV.Subcode, SILTV.Div_Code, SILTV.Site_Code ) as LTV On Party.code = LTV.Subcode And H.Site_Code = LTV.Site_Code And H.Div_Code = LTV.Div_Code
+                    Left Join viewHelpSubGroup Agent On LTV.Agent = Agent.Code 
+                    Left Join City On Party.CityCode = City.CityCode 
+                    Left Join State On City.State = State.Code
+                    LEFT JOIN Voucher_Type Vt On H.V_Type = Vt.V_Type  " & mCondStr
+
+                mQry = " Select VMain.Item As SearchCode, 
+                    Max(VMain.ItemCategoryDesc) As ItemCategory, 
+                    Max(VMain.ItemGroupDesc) As ItemGroup, 
+                    Max(VMain.ItemDesc) As Item, 
+                    Max(VMain.Dimension1Desc) As Dimension1, 
+                    Max(VMain.Dimension2Desc) As Dimension2, 
+                    Max(VMain.Dimension3Desc) As Dimension3, 
+                    Max(VMain.Dimension4Desc) As Dimension4, 
+                    Max(VMain.SizeDesc) As Size, 
+                    Sum(VMain.Qty) As Qty, Max(VMain.Unit) As Unit
+                    From (" & mQry & ") As VMain
+                    GROUP By VMain.ItemCategory, VMain.ItemGroup, VMain.Item, 
+                    VMain.Dimension1, VMain.Dimension2, VMain.Dimension3, VMain.Dimension4, VMain.Size
+                    Order By Max(VMain.ItemDesc)"
             End If
 
 

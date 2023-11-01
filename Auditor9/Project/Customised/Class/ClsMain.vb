@@ -6844,6 +6844,10 @@ Thanks
             FSeedSingleIfNotExist_EntryHeaderUISetting("FrmPurchaseInvoiceHeader", Ncat.PurchaseInvoice, "DGL1", FrmPurchaseInvoiceHeader.HcLrPaymentType, 1)
             'End If
 
+            If FDivisionNameForCustomization(6) = "SADHVI" And AgL.StrCmp(AgL.PubDBName, "Sadhvi") Then
+                FSeedSingleIfNotExist_EntryHeaderUISetting("FrmStockHeader", Ncat.StockIssue, "DGL1", FrmStockHeader.HcRoadPermitNo, 1, 0, 0, "EWay Bill No")
+                FSeedSingleIfNotExist_EntryHeaderUISetting("FrmStockHeader", Ncat.StockIssue, "DGL1", FrmStockHeader.HcRoadPermitDate, 1, 0, 0, "EWay Bill Date")
+            End If
 
             'If ClsMain.IsScopeOfWorkContains(IndustryType.CommonModules.PurchaseTransportModule) Then
             FSeedSingleIfNotExist_EntryHeaderUISetting("FrmPurchaseInvoiceHeader", Ncat.PurchaseOrder, "DGL1", FrmPurchaseInvoiceHeader.HcTransporter, 1)
@@ -24823,8 +24827,12 @@ Thanks
         'If DtTemp.Rows.Count > 0 And AgL.PubDBName <> "ShyamaShyam" Then
         If DtTemp.Rows.Count > 0 Then
             If AgL.VNull(DtTemp.Rows(0)(0)) > 0 Then
-                Console.Write(mQry)
-                Err.Raise(1, , "Error In Ledger Posting. Debit And Credit balances are Not equal.")
+                If (AgL.StrCmp(AgL.PubDBName, "ShyamaShyam") Or AgL.StrCmp(AgL.PubDBName, "ShyamaShyamV") Or AgL.StrCmp(AgL.PubDBName, "ShyamaShyam_W") Or AgL.StrCmp(AgL.PubDBName, "ShyamaShyamV_W")) And mV_Type = "PI" Then
+
+                Else
+                    Console.Write(mQry)
+                    Err.Raise(1, , "Error In Ledger Posting. Debit And Credit balances are Not equal.")
+                End If
             End If
         End If
 

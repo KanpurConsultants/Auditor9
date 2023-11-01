@@ -1,51 +1,50 @@
 ; Field definition file for table: ADORecordset
 RecordType	string	255		
-DocId	string	255	D1    JV 2020    5003	
-V_type	string	255	JV	
-RecId	string	255	505	
-V_Date	datetime	04/Jan/2021 12:00:00 AM	
-Site_Code	string	255	1	
+DocId	string	255	D3   WSI 2022     178	
+V_type	string	255	WSI	
+RecId	string	255	3319	
+V_Date	datetime	10/Sep/2022 12:00:00 AM	
+Site_Code	string	255	3	
 Div_Code	string	255	D	
-Subcode	string	255	D100002023	
-LinkedSubcode	string	255	D100002185	
+Subcode	string	255	D100002904	
+LinkedSubcode	string	255	D100003061	
 GoodsReturn	number	0	
-Adjustment	number	892.3	
+Adjustment	number	0	
 Payment	number	0	
-Balance	number	-1107.7	
-AmtDr	number	892.3	
+Balance	number	587.15	
+AmtDr	number	587.15	
 AmtCr	number	0	
-Narration	string	255	Receipt Received.  RCT : .  
-neft	
-AdjDocID	string	255	RCT-2656	
-DueDate	datetime	04/Jan/2021 12:00:00 AM	
-AdjDate	datetime	06/Jan/2021 12:00:00 AM	
-AdjPayment	number	650	
-ChqNo	string	255	neft	
-AdjAmount	number	650	
+Narration	string	255	 KANPUR CASH525 	
+AdjDocID	string	255	WRCT-756	
+DueDate	datetime	10/Sep/2022 12:00:00 AM	
+AdjDate	datetime	06/Nov/2022 12:00:00 AM	
+AdjPayment	number	17.5	
+ChqNo	string	255		
+AdjAmount	number	17.5	
 InterestBalance	number	0	
-SalePartyName	string	255		
-PartyName	string	255	PRIYANKA TRADERS [W], Kanpur	
-PartyCity	string	255	Kanpur	
-LinkedPartyName	string	255	PRIYANKA TRADERS,KANPUR, Kanpur	
-LinkedPartyCity	string	255	Kanpur	
-LrNo	string	255		
-Brand	string	255		
-AmsInvNo	string	255		
-AmsInvAmt	number	0	
-TaxableAmt	string	255		
-TaxAmt	string	255		
-OtherChgAmt	string	255		
-BillAmt	string	255		
+SalePartyName	string	255	BADAL INTERPRISES-BUXAR	
+PartyName	string	255	DEV HANDLOOM [W], BUXAR	
+PartyCity	string	255	BUXAR	
+LinkedPartyName	string	255	BADAL INTERPRISES-BUXAR, BUXAR	
+LinkedPartyCity	string	255	BUXAR	
+LrNo	string	255	5024224916 * 1	
+Brand	string	255	ANGEL ,	
+AmsInvNo	string	255	209	
+AmsInvAmt	number	587.15	
+TaxableAmt	number	559.188	
+TaxAmt	number	27.9594	
+OtherChgAmt	number	0	
+BillAmt	number	587.15	
 Div_Name	string	255	DEMO	
-Site_Name	string	255	KANPUR	
-InterestDays	number	-58	
-Narration1	string	255	Receipt Received.  RCT : .  	
+Site_Name	string	255	LUDIYANA	
+InterestDays	number	-3	
+Narration1	string	255	 KANPUR CASH525 	
 IntRate	number	-12	
-InterestAmount	number	-12.39	
+InterestAmount	number	-0.02	
 InterestLeaverageDays	number	60	
 InterestSlabDescription	string	255	60-60	
 CreditLimit	number	5000000	
-PakkaBalance	number	0	
-PakkaPartyCount	long	0	
+PakkaBalance	number	17720.15	
+PakkaPartyCount	long	104	
 AveragePaymentDays	number		
-SiteShortName	string	255	KNP-	
+SiteShortName	string	255	LDH-	

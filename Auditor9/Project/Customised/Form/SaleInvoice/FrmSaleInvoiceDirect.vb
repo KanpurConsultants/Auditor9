@@ -2043,7 +2043,7 @@ Public Class FrmSaleInvoiceDirect
 
             If Dgl1.Item(Col1Barcode, LineGridRowIndex).Tag <> "" Then
                 mQry = "Select * from SaleInvoiceBarcodeLastTransactionValues With (NoLock) Where  DocId = '" & DocID & "' and Sr =" & Sr & ""
-                DtTemp = AgL.FillData(mQry, Conn).Tables(0)
+                DtTemp = AgL.FillData(mQry, AgL.GcnRead).Tables(0)
                 If DtTemp.Rows.Count > 0 Then
                     mQry = "Update BarcodeSiteDetail set
                                             LastTrnDocID = " & AgL.Chk_Text(AgL.XNull(DtTemp.Rows(0)("LastTrnDocID"))) & ",
@@ -2850,7 +2850,11 @@ Public Class FrmSaleInvoiceDirect
                                     If AgL.XNull(DtBarcodeSiteDetail.Rows(0)("LastTrnDocId")) = SearchCode And
                                    AgL.VNull(DtBarcodeSiteDetail.Rows(0)("LastTrnSr")) = Val(Dgl1.Item(ColSNo, I).Tag) Then
                                     Else
-                                        Dgl1.Item(Col1IsRecordLocked, I).Value = 1
+                                        If ClsMain.FDivisionNameForCustomization(6) = "SADHVI" And AgL.StrCmp(AgL.PubDBName, "Sadhvi") Then
+
+                                        Else
+                                            Dgl1.Item(Col1IsRecordLocked, I).Value = 1
+                                        End If
                                     End If
                                 End If
                             End If

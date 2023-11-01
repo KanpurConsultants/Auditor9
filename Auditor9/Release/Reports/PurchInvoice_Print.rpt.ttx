@@ -1,39 +1,37 @@
 ; Field definition file for table: ADORecordset
 Copies	string	255	1	
 CopyPrintingCaption	string	255		
-DocNoCaption	string	255	Invoice No.	
-DocDateCaption	string	255	Invoice Date	
-DocID	string	255	D1    PI 2023       2	
-SiteStateCode	string	255	07	
-SiteStateName	string	255	Delhi	
+DocNoCaption	string	255	Doc.No.	
+DocDateCaption	string	255	Doc.Date	
+DocID	string	255	D1   ISS 2023       2	
+SiteStateCode	string	255	09	
+SiteStateName	string	255	Uttar Pradesh	
 Sr	number	1	
-V_Date	datetime	10/Apr/2023 12:00:00 AM	
-Voucher_Type	string	255	Purchase Invoice	
-NCat	string	255	PI	
-DocNo	string	255	D1-PI-3	
+V_Date	datetime	16/Oct/2023 12:00:00 AM	
+Voucher_Type	string	255	Stock Issue	
+NCat	string	255	ISS	
+DocNo	string	255	D1-ISS-2	
 AgentName	string	255		
 AgentCaption	string	255	Agent	
-PartyName	string	255	NAVDURGA SALES PRIVATE LIMITED	
-PartyAddress	string	255	SHOP NO 4 PLOT NO.197 JUHI KHURD JUHI KHURD
-	
-PartyPinCode	string	255	208014	
-PartyCityName	string	255	Kanpur	
+PartyName	string	255	RVN EV MOTORS LLP-LUCKNOW	
+PartyAddress	string	255	LGF,C12,SECTOR-M,ALIGANJ	
+PartyPinCode	string	255		
+PartyCityName	string	255	LUCKNOW	
 PartyStateCode	string	255	09	
 PartyStateName	string	255	Uttar Pradesh	
-PartyMobile	string	255		
+PartyMobile	string	255	9335030581	
 ContactPerson	string	255		
-PartySalesTaxNo	string	255	09AADCN9244K1ZZ	
+PartySalesTaxNo	string	255	09ABHFR1008B1ZO	
 PartyAadharNo	string	255		
-PartyPanNo	string	255	AADCN9244K	
-ShipToPartyName	string	255	NAVDURGA SALES PRIVATE LIMITED	
-ShipToPartyAddress	string	255	SHOP NO 4 PLOT NO.197 JUHI KHURD JUHI KHURD
-	
-ShipToPartyCity	string	255	Kanpur	
-ShipToPartyPincode	string	255	208014	
+PartyPanNo	string	255	ABHFR1008B	
+ShipToPartyName	string	255	RVN EV MOTORS LLP-LUCKNOW	
+ShipToPartyAddress	string	255	LGF,C12,SECTOR-M,ALIGANJ	
+ShipToPartyCity	string	255	LUCKNOW	
+ShipToPartyPincode	string	255		
 ShipToPartyStateCode	string	255	09	
 ShipToPartyStateName	string	255	Uttar Pradesh	
-ShipToPartyMobile	string	255		
-ShipToPartySalesTaxNo	string	255	09AADCN9244K1ZZ	
+ShipToPartyMobile	string	255	9335030581	
+ShipToPartySalesTaxNo	string	255	09ABHFR1008B1ZO	
 ShipToPartyAadharNo	string	255		
 ShipToPartyPanNo	string	255		
 TransporterName	string	255		
@@ -46,13 +44,13 @@ FreightType	string	255
 RoadPermitNo	string	255		
 RoadPermitDate	datetime		
 ReferenceNo	string	255		
-ItemName	string	255	5369-26*30 - JUNIOR SHIRT - TERRY BOY - SHIRT	
-ItemGroupName	string	255	TERRY BOY	
-ItemCatName	string	255	SHIRT	
-ItemSpecification	string	255	5369-26*30	
-InvoiceLineSpecification	string	255	JUNIOR SHIRT	
-HSN	string	255	620590	
-D1Spec	string	255	5369-26*30	
+ItemName	string	255	RUBIE 48 V - YAKUZA - EV	
+ItemGroupName	string	255	YAKUZA	
+ItemCatName	string	255	EV	
+ItemSpecification	string	255	RUBIE 48 V	
+InvoiceLineSpecification	string	255	RUBIE 48 V	
+HSN	string	255	871190	
+D1Spec	string	255		
 D2Spec	string	255		
 D3Spec	string	255		
 D4Spec	string	255		
@@ -69,12 +67,12 @@ D4Caption	string	255
 SalesTaxGroupItem	string	255	GST 5%	
 GrossTaxRate	number	5	
 Pcs	number	0	
-Qty	number	3	
-DocQty	number	3	
+Qty	number	1	
+DocQty	number	1	
 FreeQty	number	0	
 LossQty	number	0	
 RejQty	number	0	
-Rate	number	215	
+Rate	number	50000	
 Unit	string	255	Pcs	
 UnitDecimalPlaces	number	0	
 DiscountPer	number	0	
@@ -82,32 +80,32 @@ DiscountAmount	number	0
 AdditionalDiscountPer	number	0	
 AdditionalDiscountAmount	number	0	
 TotalDiscount	number	0	
-AmountBeforeDiscount	number	645	
-Amount	number	645	
-Taxable_Amount	number	645	
-Tax1_Per	number	5	
-Tax1	number	32.25	
-Tax2_Per	number	0	
-Tax2	number	0	
-Tax3_Per	number	0	
-Tax3	number	0	
+AmountBeforeDiscount	number	50000	
+Amount	number	50000	
+Taxable_Amount	number	47619.05	
+Tax1_Per	number	0	
+Tax1	number	0	
+Tax2_Per	number	2.5	
+Tax2	number	1190.48	
+Tax3_Per	number	2.5	
+Tax3	number	1190.48	
 Tax4_Per	number	0	
 Tax4	number	0	
 Tax5_Per	number	0	
 Tax5	number	0	
-Net_Amount	number	677.25	
+Net_Amount	number	50000	
 HRemarks	string	255		
 LRemarks	string	255		
-H_Gross_Amount	number	23340	
+H_Gross_Amount	number	50000	
 H_SpecialDiscount_Per	number	0	
 H_SpecialDiscount	number	0	
-H_Taxable_Amount	number	23340	
+H_Taxable_Amount	number	47619.05	
 H_Tax1_Per	number	0	
-H_Tax1	number	1167	
+H_Tax1	number	0	
 H_Tax2_Per	number	0	
-H_Tax2	number	0	
+H_Tax2	number	1190.48	
 H_Tax3_Per	number	0	
-H_Tax3	number	0	
+H_Tax3	number	1190.48	
 H_Tax4_Per	number	0	
 H_Tax4	number	0	
 H_Tax5_Per	number	0	
@@ -116,16 +114,16 @@ H_Deduction_Per	number	0
 H_Deduction	number	0	
 H_Other_Charge_Per	number	0	
 H_Other_Charge	number	0	
-Round_Off	number	0	
-H_Net_Amount	number	24507	
+Round_Off	number	-0.01	
+H_Net_Amount	number	50000	
 H_TotalDiscount	number	0	
-H_AmountBeforeDiscount	number	23340	
-Default_BankAccountDetail	string	255	<B> Bank Detail :- <BR> ICICI BANK : 112605503219  IFSC : ICIC0001126 <BR>	
+H_AmountBeforeDiscount	number	50000	
+Default_BankAccountDetail	string	255	<B> Bank Detail :- <BR> HDFC : 99915400000007  IFSC : HDFC0009597 <BR>	
 DocumentPrintHeaderPattern	string	255	Center Aligned	
 DimDetail	string	255		
 HsnDescription	string	255		
 PrintedByUser	string	255	SUPER	
-PrintTitle	string	255	Purchase Invoice	
+PrintTitle	string	255	Stock Issue	
 TermsAndConditions	string	255		
 CompanyLogo	BLOB		
 CompanyAuthorisedSignature	BLOB		

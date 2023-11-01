@@ -1,6 +1,6 @@
 ; Field definition file for table: ADORecordset
-SearchCode	string	255	D100002023	
+SearchCode	string	255	D100002904	
 Sr	long	1	
-Party	string	255	PRIYANKA TRADERS [W], Kanpur	
-BalanceAmount	number	0	
-BalanceMonth	string	255		
+Party	string	255	DEV HANDLOOM [W], BUXAR	
+BalanceAmount	number	5697.58	
+BalanceMonth	string	255	2023-04-16	

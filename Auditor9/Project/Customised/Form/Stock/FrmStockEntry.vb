@@ -2194,6 +2194,10 @@ Public Class FrmStockEntry
                 Dgl2.Item(Col1Value, rowBtnTransportDetail).Tag = Nothing
                 ShowTransportDetail(False)
 
+                If CType(Dgl2.Item(Col1Value, rowBtnTransportDetail).Tag, FrmStockHeader).Dgl1(FrmStockHeader.Col1Value, FrmStockHeader.rowLrNo).Value <> "" Then
+                    Dgl2.Item(Col1Value, rowBtnTransportDetail).Value = "LR Filled!"
+                End If
+
                 If LblV_Type.Tag = Ncat.LrEntry Then
                     Dim bLRNoBarcode As String = AgL.XNull(AgL.Dman_Execute("Select Code From BarCode 
                                                 Where GenDocId = '" & SearchCode & "' 
@@ -3575,7 +3579,7 @@ Public Class FrmStockEntry
                 Left Join State SiteState On SiteCity.State = SiteState.Code
                 Left Join SubgroupSiteDivisionDetail SSD On H.Subcode = SSD.Subcode And H.Div_Code = SSD.Div_Code And H.Site_Code = SSD.Site_Code
                 Left Join ViewHelpSubgroup MTransporter  With (NoLock) On SSD.Transporter= MTransporter.Code
-                Where H.DocID = '" & mSearchCode & "'
+                Where H.DocID = '" & SearchCode & "'
                 "
 
 
@@ -3589,11 +3593,11 @@ Public Class FrmStockEntry
             objRepPrint.TxtToEmail.Text = AgL.XNull(AgL.Dman_Execute("Select Sg.Email
                     From SaleInvoice H  With (NoLock)
                     LEFT JOIN SubGroup Sg  With (NoLock) On H.SaleToParty = Sg.SubCode
-                    Where H.DocId = '" & mSearchCode & "'", AgL.GCn).ExecuteScalar())
+                    Where H.DocId = '" & SearchCode & "'", AgL.GCn).ExecuteScalar())
             objRepPrint.TxtCcEmail.Text = AgL.XNull(AgL.Dman_Execute("Select Sg.Email
                     From SaleInvoice H  With (NoLock)
                     LEFT JOIN SubGroup Sg  With (NoLock) On H.Agent = Sg.SubCode
-                    Where H.DocId = '" & mSearchCode & "'", AgL.GCn).ExecuteScalar())
+                    Where H.DocId = '" & SearchCode & "'", AgL.GCn).ExecuteScalar())
             objRepPrint.AttachmentName = "Invoice"
         Else
             objRepPrint = New AgLibrary.RepView()

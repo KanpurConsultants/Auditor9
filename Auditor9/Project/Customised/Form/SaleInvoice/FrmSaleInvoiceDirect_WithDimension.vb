@@ -4565,7 +4565,11 @@ Public Class FrmSaleInvoiceDirect_WithDimension
                                 End If
                             End If
                         Else
-                            mQry = "select Rate from RateListDetail  With (NoLock) where Item ='" & Dgl1.Item(Col1Item, mRow).Tag & "' and RateType Is Null"
+                            If AgL.StrCmp(AgL.PubDBName, "DSG") Then
+                                mQry = "SELECT SaleRate AS Rate  FROM Barcode WHERE Code ='" & Dgl1.Item(Col1Barcode, mRow).Tag & "'"
+                            Else
+                                mQry = "select Rate from RateListDetail  With (NoLock) where Item ='" & Dgl1.Item(Col1Item, mRow).Tag & "' and RateType Is Null"
+                            End If
                             DtItem = AgL.FillData(mQry, AgL.GCn).Tables(0)
                             If DtItem.Rows.Count > 0 Then
                                 Dgl1.Item(Col1Rate, mRow).Value = AgL.VNull(DtItem.Rows(0)("Rate"))

@@ -1,28 +1,27 @@
 ; Field definition file for table: ADORecordset
-Code	string	255	128	
-Barcode	string	255	128	
+Code	string	255	190	
+Barcode	string	255	1190	
 BarCodeImg	BLOB		
-ItemDesc	string	255	ANMOL	
+ItemDesc	string	255	SADABAHAR	
 ItemCategoryDesc	string	255	SAREE	
-ItemGroupDesc	string	255	DALMIA	
+ItemGroupDesc	string	255	SAROJ	
 Dimension1Desc	string	255		
 Dimension2Desc	string	255		
 Dimension3Desc	string	255		
 Dimension4Desc	string	255		
 SizeDesc	string	255		
-PurchaseRate	number	420	
-SaleRate	number	525	
+PurchaseRate	number	809	
+SaleRate	number	1500	
 MRP	number	0	
-ReceiveQty	number	6	
+ReceiveQty	number	2	
 GenSr	number	1	
-ItemMasterPurchaseRate	number	420	
-ItemMasterSaleRate	number	525	
+ItemMasterPurchaseRate	number	0	
+ItemMasterSaleRate	number	0	
 BarcodeRatePrefix	string	255		
-Title1	string	255	SKP ENTERPRISES	
+Title1	string	255	DULHAN SAREE GHAR	
 Title2	string	255		
 Title3	string	255		
 SaleRate_RateType	string	255		
 SaleRate_RateTypeEncoded	long	0	
-RandomNo1	long	878	
-RandomNo2	long	780	
-VendorDocNo	string	255	GT-22/23-640	
+RandomNo1	long	199	
+RandomNo2	long	181	

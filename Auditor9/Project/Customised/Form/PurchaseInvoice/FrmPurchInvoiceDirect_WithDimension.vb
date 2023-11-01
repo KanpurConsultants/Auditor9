@@ -1275,6 +1275,7 @@ Public Class FrmPurchInvoiceDirect_WithDimension
         GetUISetting_WithDataTables(Dgl1, Me.Name, AgL.PubDivCode, AgL.PubSiteCode, bNCat, DglMain.Item(Col1Value, rowV_Type).Tag, DglMain.Item(Col1Value, rowProcess).Tag, DglMain.Item(Col1Value, rowSettingGroup).Tag, ClsMain.GridTypeConstants.HorizontalGrid)
         GetUISetting_WithDataTables(Dgl4, Me.Name, AgL.PubDivCode, AgL.PubSiteCode, bNCat, DglMain.Item(Col1Value, rowV_Type).Tag, DglMain.Item(Col1Value, rowProcess).Tag, DglMain.Item(Col1Value, rowSettingGroup).Tag, ClsMain.GridTypeConstants.HorizontalGrid)
         If Dgl4.Visible = False Then PnlConsumptionTotal.Visible = False
+        If Dgl4.Visible = True Then PnlConsumptionTotal.Visible = True
         If Dgl2.Rows(rowPaidAmount).Visible = True Then
             If AgL.StrCmp(Topctrl1.Mode, "Add") Then
                 Dgl2.Rows(rowPaidAmount).Visible = False
@@ -1527,7 +1528,7 @@ Public Class FrmPurchInvoiceDirect_WithDimension
                 .AddAgTextColumn(Dgl4, Col4Sku, 150, 0, Col4Sku, False, True)
                 .AddAgTextColumn(Dgl4, Col4ItemCategory, 100, 0, Col4ItemCategory, True, True)
                 .AddAgTextColumn(Dgl4, Col4Item, 100, 0, Col4Item, True, True)
-                .AddAgTextColumn(Dgl4, Col4Dimension1, 100, 0, Col4Dimension1, True, True)
+                .AddAgTextColumn(Dgl4, Col4Dimension1, 100, 0, Col4Dimension1, True, False)
                 .AddAgTextColumn(Dgl4, Col4Dimension2, 100, 0, Col4Dimension2, True, True)
                 .AddAgTextColumn(Dgl4, Col4Dimension3, 100, 0, Col4Dimension3, True, True)
                 .AddAgTextColumn(Dgl4, Col4Dimension4, 100, 0, Col4Dimension4, True, True)

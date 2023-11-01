@@ -5,13 +5,13 @@ DocNoCaption	string	255	Invoice No.
 DocDateCaption	string	255	Invoice Date	
 SiteStateCode	string	255	09	
 SiteStateName	string	255	Uttar Pradesh	
-DocID	string	255	D1   SIR 2021       4	
+DocID	string	255	D1   SIR 2023       1	
 Sr	number	1	
-V_Date	datetime	23/Feb/2022 12:00:00 AM	
+V_Date	datetime	26/Oct/2023 12:00:00 AM	
 DeliveryDate	datetime		
 Voucher_Type	string	255	Sale Invoice Retail	
 NCat	string	255	SI	
-InvoiceNo	string	255	SIR-4	
+InvoiceNo	string	255	SIR-1	
 GenDocNo	string	255		
 AmsDocNo	string	255		
 AmsDocDate	datetime		
@@ -22,29 +22,30 @@ AgentName	string	255
 SalesRepName	string	255		
 SalesRepCode	string	255		
 AgentCaption	string	255	Agent	
-SaleToPartyName	string	255	satyam	
-SaleToPartyAddress	string	255	ftp	
-CityName	string	255		
+SaleToPartyName	string	255	hgjh	
+SaleToPartyAddress	string	255	768\	
+CityName	string	255	Kanpur	
 SaleToPartyPincode	string	255		
-StateCode	string	255		
-StateName	string	255		
-SaleToPartyMobile	string	255		
+StateCode	string	255	09	
+StateName	string	255	Uttar Pradesh	
+SaleToPartyMobile	string	255	8798	
 ContactPerson	string	255		
 SaleToPartySalesTaxNo	string	255		
 SaleToPartyAadharNo	string	255		
 SaleToPartyPanNo	string	255		
 SaleToPartyLicenseNo	string	255		
-ShipToPartyName	string	255	satyam	
-ShipToPartyAddress	string	255	ftp	
-ShipToPartyCity	string	255		
+ShipToPartyName	string	255	hgjh	
+ShipToPartyAddress	string	255	768\	
+ShipToPartyCity	string	255	Kanpur	
 ShipToPartyPincode	string	255		
-ShipToPartyStateCode	string	255		
-ShipToPartyStateName	string	255		
-ShipToPartyMobile	string	255		
+ShipToPartyStateCode	string	255	09	
+ShipToPartyStateName	string	255	Uttar Pradesh	
+ShipToPartyMobile	string	255	8798	
 ShipToPartySalesTaxNo	string	255		
 ShipToPartyAadharNo	string	255		
 ShipToPartyPanNo	string	255		
 ShipToPartyLicenseNo	string	255		
+TransporterSalesTaxNo	string	255		
 ShipToAddress	string	255		
 TermsAndConditions	string	255	(1) Check the goods before leaving counter. <BR>(2) All disputes are subject to <CompanyCity> jurisdiction only.	
 TransporterName	string	255		
@@ -68,14 +69,14 @@ Destination	string	255
 DescriptionOfGoods	string	255		
 DescriptionOfPacking	string	255		
 ReferenceNo	string	255		
-BarcodeName	string	255	1009	
-ItemName	string	255	BAHUBALI -S-ENT-307 HALKI-SAREE-D1   ISS 2021     786	
-ItemGroupName	string	255	S-ENT-307 HALKI	
-ItemCatName	string	255	SAREE	
-ItemManualCode	string	255	D100055409	
-ItemSpecification	string	255	BAHUBALI 	
+BarcodeName	string	255	1227	
+ItemName	string	255	1426 - SHUBH LAXMI V - LEHENGA	
+ItemGroupName	string	255	SHUBH LAXMI V	
+ItemCatName	string	255	LEHENGA	
+ItemManualCode	string	255	331	
+ItemSpecification	string	255	1426	
 InvoiceLineSpecification	string	255		
-HSN	string	255	540752	
+HSN	string	255	5407	
 MaintainStockYn	boolean	True	
 D1Spec	string	255		
 D2Spec	string	255		
@@ -93,15 +94,15 @@ D1Caption	string	255	Quality
 D2Caption	string	255	Colour	
 D3Caption	string	255	Design	
 D4Caption	string	255	Width	
-SalesTaxGroupItem	string	255	GST 5%	
-GrossTaxRate	number	5	
-MRP	number	1000	
+SalesTaxGroupItem	string	255	GST 12%	
+GrossTaxRate	number	12	
+MRP	number	0	
 LotNo	string	255		
 ExpiryDate	datetime		
 ItemRemark1	string	255		
 Pcs	number	1	
 Qty	number	1	
-Rate	number	1000	
+Rate	number	14200	
 ItemState	string	255		
 CatalogSpecification	string	255		
 CatalogSiteName	string	255		
@@ -115,38 +116,42 @@ AdditionPer	number	0
 AdditionAmount	number	0	
 TotalDiscount	number	0	
 Deal	string	255		
-AmountBeforeDiscount	number	1000	
-Amount	number	1000	
-Taxable_Amount	number	952.38	
+AmountBeforeDiscount	number	14200	
+Amount	number	14200	
+Taxable_Amount	number	12648.19	
 Tax1_Per	number	0	
 Tax1	number	0	
-Tax2_Per	number	2.5	
-Tax2	number	23.81	
-Tax3_Per	number	2.5	
-Tax3	number	23.81	
+Tax2_Per	number	6	
+Tax2	number	758.89	
+Tax3_Per	number	6	
+Tax3	number	758.89	
 Tax4_Per	number	0	
 Tax4	number	0	
 Tax5_Per	number	0	
 Tax5	number	0	
-Net_Amount	number	1000.01	
+Net_Amount	number	14165.99	
 LRemarks	string	255		
+LRemarks1	string	255		
+LRemarks2	string	255		
+LRemarks3	string	255		
+LRemarks4	string	255		
 HRemarks	string	255		
-SalesTaxSummaryStr	string	255	540752 Taxable Amt : 1428.57 Tax Amt : 71.42, 	
+SalesTaxSummaryStr	string	255	5407 Taxable Amt : 18318.14 Tax Amt : 2081.84, 	
 H_Discount	number	0	
 H_AdditionalDiscount	number	0	
 H_Additional	number	0	
 H_TotalDiscount	number	0	
-H_AmountBeforeDiscount	number	1500	
-H_Gross_Amount	number	1500	
+H_AmountBeforeDiscount	number	20449	
+H_Gross_Amount	number	20449	
 H_SpecialDiscount_Per	number	0	
-H_SpecialDiscount	number	0	
-H_Taxable_Amount	number	1428.57	
+H_SpecialDiscount	number	49	
+H_Taxable_Amount	number	18318.14	
 H_Tax1_Per	number	0	
 H_Tax1	number	0	
 H_Tax2_Per	number	0	
-H_Tax2	number	35.71	
+H_Tax2	number	1040.92	
 H_Tax3_Per	number	0	
-H_Tax3	number	35.71	
+H_Tax3	number	1040.92	
 H_Tax4_Per	number	0	
 H_Tax4	number	0	
 H_Tax5_Per	number	0	
@@ -159,8 +164,8 @@ H_Other_Charge1_Per	number	0
 H_Other_Charge1	number	0	
 H_Other_Charge2_Per	number	0	
 H_Other_Charge2	number	0	
-Round_Off	number	0.01	
-H_Net_Amount	number	1500	
+Round_Off	number	0.02	
+H_Net_Amount	number	20400	
 EInvoiceIRN	string	255		
 EInvoiceACKNo	string	255		
 EInvoiceACKDate	datetime		
@@ -168,7 +173,7 @@ Default_BankAccountDetail	string	255
 DocumentPrintHeaderPattern	string	255	Center Aligned	
 DimDetail	string	255		
 PrintedByUser	string	255	SUPER	
-EntryByUser	string	255	SUPER	
+EntryByUser	string	255	SA	
 PrintTitle	string	255	Sale Invoice Retail	
 DocumentPrintShowPrintDateTimeYn	string	255	1	
 DocumentPrintShowPartyBalance	string	255	Hide	
@@ -178,3 +183,4 @@ TodaysCr	long	0
 TodaysClosingBalance	long	0	
 CompanyLogo	BLOB		
 CompanyAuthorisedSignature	BLOB		
+EInvoiceQrCode	BLOB		
