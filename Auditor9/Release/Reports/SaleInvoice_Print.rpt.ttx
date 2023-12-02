@@ -5,48 +5,48 @@ DocNoCaption	string	255	Invoice No.
 DocDateCaption	string	255	Invoice Date	
 SiteStateCode	string	255	09	
 SiteStateName	string	255	Uttar Pradesh	
-DocID	string	255	D1    SI 2023    6358	
+DocID	string	255	D1    SI 2023   10685	
 Sr	number	1	
-V_Date	datetime	25/Sep/2023 12:00:00 AM	
+V_Date	datetime	24/Nov/2023 12:00:00 AM	
 DeliveryDate	datetime		
 Voucher_Type	string	255	Tax Invoice	
 NCat	string	255	SI	
-InvoiceNo	string	255	SI-6358	
+InvoiceNo	string	255	SI-10685	
 RateType	string	255	Super Net	
 DocumentPrintShowRateType	string	255	Show If Not Blank	
-AgentName	string	255	ARCHANA 	
+AgentName	string	255	DIRECT (CASH)	
 AgentCaption	string	255	Agent	
 BillToPartyNature	string	255	Customer	
-SaleToPartyName	string	255	APNA PARIDHAN	
-SaleToPartyAddress	string	255	PANJABI MARKET PRATAPGARHDIST-PRATAPGRAH	
-CityName	string	255	PRATAPGARH	
-SaleToPartyPincode	string	255	230001	
-StateCode	string	255	09	
-StateName	string	255	Uttar Pradesh	
-SaleToPartyMobile	string	255	9839355005	
-ContactPerson	string	255	SURESH CHANDRA KESERVANI	
-SaleToPartySalesTaxNo	string	255	09AEXPK7690H1ZK	
+SaleToPartyName	string	255	PREM TYRES	
+SaleToPartyAddress	string	255	15/947 NEAR TAMRAKAR PETROL PUMP RATAHARA RATAHARA REWA	
+CityName	string	255	REWA	
+SaleToPartyPincode	string	255	486001	
+StateCode	string	255	23	
+StateName	string	255	Madhya Pradesh	
+SaleToPartyMobile	string	255		
+ContactPerson	string	255		
+SaleToPartySalesTaxNo	string	255	23CALPK1570L1ZK	
 SaleToPartyAadharNo	string	255		
-SaleToPartyPanNo	string	255	AEXPK7690H	
-ShipToPartyName	string	255	APNA PARIDHAN	
-ShipToPartyAddress	string	255	PANJABI MARKET PRATAPGARHDIST-PRATAPGRAH	
-ShipToPartyCity	string	255	PRATAPGARH	
-ShipToPartyPincode	string	255	230001	
-ShipToPartyStateCode	string	255	09	
-ShipToPartyStateName	string	255	Uttar Pradesh	
-ShipToPartyMobile	string	255	9839355005	
-ShipToPartySalesTaxNo	string	255	09AEXPK7690H1ZK	
+SaleToPartyPanNo	string	255	CALPK1570L	
+ShipToPartyName	string	255	PREM TYRES	
+ShipToPartyAddress	string	255	15/947 NEAR TAMRAKAR PETROL PUMP RATAHARA RATAHARA REWA	
+ShipToPartyCity	string	255	REWA	
+ShipToPartyPincode	string	255	486001	
+ShipToPartyStateCode	string	255	23	
+ShipToPartyStateName	string	255	Madhya Pradesh	
+ShipToPartyMobile	string	255		
+ShipToPartySalesTaxNo	string	255	23CALPK1570L1ZK	
 ShipToPartyAadharNo	string	255		
-ShipToPartyPanNo	string	255	AEXPK7690H	
+ShipToPartyPanNo	string	255	CALPK1570L	
 ShipToAddress	string	255		
 TermsAndConditions	string	255	<b>1.</b> Goods once sold will not be taken back. <b>2.</b> No Guarantee in the Age of Fashion. <b>3.</b> Interest @ 24% per annum will be charge after 30 days from the date of bill. <b>4.</b> All disputes subject to Kanpur Jurisdiction OR disputes will be settle through Cawnpore Kapda Committee Arbitration Board which will be abide by the both parties	
-TransporterName	string	255	KANPUR PRATAPGARH TRANSPORT CO., KANPUR	
+TransporterName	string	255		
 LrNo	string	255		
 LrDate	datetime		
 PrivateMark	string	255		
-Weight	number	0	
-Freight	number	0	
-ChargedWeight	number	0	
+Weight	number		
+Freight	number		
+ChargedWeight	number		
 FreightType	string	255		
 RoadPermitNo	string	255		
 RoadPermitDate	datetime		
@@ -59,57 +59,57 @@ BookedTo	string	255
 Destination	string	255		
 DescriptionOfGoods	string	255		
 DescriptionOfPacking	string	255		
-TransporterSalesTaxNo	string	255	09AKAPB9819N1ZR	
+TransporterSalesTaxNo	string	255		
 ReferenceNo	string	255		
-ItemName	string	255	BHAKTI          [ANUAADI SAREES | SAREE]	
-ItemGroupName	string	255	S-ENT-901DYD	
+ItemName	string	255	6962 6986 786          [H.S.S.C SAREE | SAREE]	
+ItemGroupName	string	255	HC	
 ItemCatName	string	255	SAREE	
-ItemSpecification	string	255	BHAKTI	
+ItemSpecification	string	255	6962 6986 786	
 InvoiceLineSpecification	string	255		
 HSN	string	255	540752	
 MaintainStockYn	boolean	True	
 SalesTaxGroupItem	string	255	GST 5%	
 GrossTaxRate	number	5	
-Pcs	number	5	
-Qty	number	5	
-Rate	number	1195	
+Pcs	number	1	
+Qty	number	1	
+Rate	number	5995	
 Unit	string	255	Pcs	
 UnitDecimalPlaces	number	0	
-DiscountPer	number	0	
-DiscountAmount	number	0	
+DiscountPer	number	7	
+DiscountAmount	number	419.65	
 AdditionalDiscountPer	number	0	
 AdditionalDiscountAmount	number	0	
 AdditionPer	number	0	
 AdditionAmount	number	0	
-TotalDiscount	number	0	
-AmountBeforeDiscount	number	5975	
-Amount	number	5975	
-Taxable_Amount	number	5975	
-Tax1_Per	number	0	
-Tax1	number	0	
-Tax2_Per	number	2.5	
-Tax2	number	149.38	
-Tax3_Per	number	2.5	
-Tax3	number	149.38	
+TotalDiscount	number	419.65	
+AmountBeforeDiscount	number	5995	
+Amount	number	5575.35	
+Taxable_Amount	number	5575.35	
+Tax1_Per	number	5	
+Tax1	number	278.77	
+Tax2_Per	number	0	
+Tax2	number	0	
+Tax3_Per	number	0	
+Tax3	number	0	
 Tax4_Per	number	0	
 Tax4	number	0	
 Tax5_Per	number	0	
 Tax5	number	0	
-Net_Amount	number	6273.78	
+Net_Amount	number	5860.14	
 LRemarks	string	255		
 HRemarks	string	255		
-H_TotalDiscount	number	0	
-H_AmountBeforeDiscount	number	125001	
-H_Gross_Amount	number	125001	
+H_TotalDiscount	number	933.35	
+H_AmountBeforeDiscount	number	16269	
+H_Gross_Amount	number	15335.65	
 H_SpecialDiscount_Per	number	0	
 H_SpecialDiscount	number	0	
-H_Taxable_Amount	number	125001	
+H_Taxable_Amount	number	15335.65	
 H_Tax1_Per	number	0	
-H_Tax1	number	0	
+H_Tax1	number	766.77	
 H_Tax2_Per	number	0	
-H_Tax2	number	3125.07	
+H_Tax2	number	0	
 H_Tax3_Per	number	0	
-H_Tax3	number	3125.07	
+H_Tax3	number	0	
 H_Tax4_Per	number	0	
 H_Tax4	number	0	
 H_Tax5_Per	number	0	
@@ -117,9 +117,9 @@ H_Tax5	number	0
 H_Deduction_Per	number	0	
 H_Deduction	number	0	
 H_Other_Charge_Per	number	0	
-H_Other_Charge	number	0	
-Round_Off	number	-0.14	
-H_Net_Amount	number	131251	
+H_Other_Charge	number	17	
+Round_Off	number	-0.42	
+H_Net_Amount	number	16119	
 EInvoiceIRN	string	255		
 EInvoiceAckNo	string	255		
 EInvoiceAckDate	datetime		
@@ -127,7 +127,7 @@ Default_BankAccountDetail	string	255	Bank Detail : 	HDFC A/c : 50200003154727   
 DocumentPrintHeaderPattern	string	255	Center Aligned	
 DimDetail	string	255		
 PrintedByUser	string	255	SUPER	
-EntryByUser	string	255	vikas	
+EntryByUser	string	255	amit	
 PrintTitle	string	255	TAX INVOICE	
 DocumentPrintShowPrintDateTimeYn	string	255	1	
 DocumentPrintShowPartyBalance	string	255	Hide	

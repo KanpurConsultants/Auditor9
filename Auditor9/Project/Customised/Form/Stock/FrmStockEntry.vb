@@ -1001,15 +1001,24 @@ Public Class FrmStockEntry
             mCondStr += " And H.V_Type = '" & mV_Type & "' "
         End If
 
+        'AgL.PubFindQry = " SELECT H.DocID AS SearchCode, Vt.Description AS [StockHead_Type], Cast(strftime('%d/%m/%Y', H.V_Date) As nvarchar) AS Date, SGV.Name AS [Party], " &
+        '                    " H.ManualRefNo AS [Manual_No], H.Remarks,  " &
+        '                    " I.Description as ItemName, L.Qty, H.EntryBy AS [Entry_By], Cast(strftime('%d/%m/%Y', H.EntryDate) As nvarchar) AS [Entry_Date] " &
+        '                    " FROM StockHead H  With (NoLock) " &
+        '                    " LEFT JOIN StockHeadDetail L  With (NoLock) ON H.DocID = L.DocID " &
+        '                    " LEFT JOIN Item I  With (NoLock) ON L.Item = I.Code " &
+        '                    " LEFT JOIN Voucher_Type Vt  With (NoLock) ON H.V_Type = Vt.V_Type " &
+        '                    " LEFT JOIN SubGroup SGV  With (NoLock) ON SGV.SubCode  = H.SubCode " &
+        '                    " Where 1=1 " & mCondStr
+
         AgL.PubFindQry = " SELECT H.DocID AS SearchCode, Vt.Description AS [StockHead_Type], Cast(strftime('%d/%m/%Y', H.V_Date) As nvarchar) AS Date, SGV.Name AS [Party], " &
                             " H.ManualRefNo AS [Manual_No], H.Remarks,  " &
-                            " I.Description as ItemName, L.Qty, H.EntryBy AS [Entry_By], Cast(strftime('%d/%m/%Y', H.EntryDate) As nvarchar) AS [Entry_Date] " &
+                            " H.EntryBy AS [Entry_By], Cast(strftime('%d/%m/%Y', H.EntryDate) As nvarchar) AS [Entry_Date] " &
                             " FROM StockHead H  With (NoLock) " &
-                            " LEFT JOIN StockHeadDetail L  With (NoLock) ON H.DocID = L.DocID " &
-                            " LEFT JOIN Item I  With (NoLock) ON L.Item = I.Code " &
                             " LEFT JOIN Voucher_Type Vt  With (NoLock) ON H.V_Type = Vt.V_Type " &
                             " LEFT JOIN SubGroup SGV  With (NoLock) ON SGV.SubCode  = H.SubCode " &
                             " Where 1=1 " & mCondStr
+
 
         AgL.PubFindQryOrdBy = "[Entry Date]"
     End Sub

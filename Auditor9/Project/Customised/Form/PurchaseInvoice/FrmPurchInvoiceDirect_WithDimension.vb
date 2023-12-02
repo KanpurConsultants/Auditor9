@@ -3598,7 +3598,14 @@ Public Class FrmPurchInvoiceDirect_WithDimension
                             If intQtyDecimalPlaces < Val(Dgl1.Item(Col1QtyDecimalPlaces, I).Value) Then intQtyDecimalPlaces = Val(Dgl1.Item(Col1QtyDecimalPlaces, I).Value)
                             If intDealDecimalPlaces < Val(Dgl1.Item(Col1DealQtyDecimalPlaces, I).Value) Then intDealDecimalPlaces = Val(Dgl1.Item(Col1DealQtyDecimalPlaces, I).Value)
 
-                            LblTotalPcs.Text = Val(LblTotalPcs.Text) + Val(Dgl1.Item(Col1Pcs, I).Value)
+                            If AgL.StrCmp(AgL.PubDBName, "Pratham") And DglMain.Item(Col1Value, rowV_Type).Tag = "CREC" Then
+                                LblTotalDealQtyText.Text = "Total Consumption :"
+                                LblTotalDealQty.Text = Val(LblTotalDealQty.Text) + Val(Dgl1.Item(Col1RawMaterialConsumptionQty, I).Value)
+                            Else
+                                LblTotalPcs.Text = Val(LblTotalPcs.Text) + Val(Dgl1.Item(Col1Pcs, I).Value)
+                            End If
+
+
                             LblTotalQty.Text = Val(LblTotalQty.Text) + Val(Dgl1.Item(Col1Qty, I).Value)
                             LblTotalAmount.Text = Val(LblTotalAmount.Text) + Val(Dgl1.Item(Col1Amount, I).Value)
 

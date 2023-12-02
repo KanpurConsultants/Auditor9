@@ -2850,7 +2850,7 @@ Public Class FrmPurchInvoiceDirect
 
                     mQry = "Select SalesTaxGroupItem From ItemCategorySalesTax  With (NoLock) 
                             Where Code='" & Dgl1.Item(Col1ItemCategory, I).Tag & "' 
-                            And MRPGreaterThan < " & Val(Dgl1.Item(Col1Rate, I).Value) & " 
+                            And MRPGreaterThan <= " & Val(Dgl1.Item(Col1Rate, I).Value) & " 
                             And Date(WEF) <= " & AgL.Chk_Date(CDate(TxtV_Date.Text).ToString("s")) & " 
                             Order By WEF Desc, RateGreaterThan Desc Limit 1"
                     DtMain1 = AgL.FillData(mQry, AgL.GCn).Tables(0)
@@ -2875,7 +2875,7 @@ Public Class FrmPurchInvoiceDirect
 
                     mQry = "Select SalesTaxGroupItem From ItemCategorySalesTax  With (NoLock) 
                             Where Code='" & Dgl1.Item(Col1ItemCategory, I).Tag & "' 
-                            And RateGreaterThan < " & Val(TaxableRate) & " 
+                            And RateGreaterThan <= " & Val(TaxableRate) & " 
                             And Date(WEF) <= " & AgL.Chk_Date(CDate(TxtV_Date.Text).ToString("s")) & " 
                             Order By WEF Desc, RateGreaterThan Desc Limit 1"
                     DtMain = AgL.FillData(mQry, AgL.GCn).Tables(0)
@@ -2989,6 +2989,11 @@ Public Class FrmPurchInvoiceDirect
             passed = False : Exit Sub
         End If
 
+
+        If AgL.StrCmp(AgL.PubDBName, "Sadhvi") And TxtV_Type.Tag = "PR" And TxtTags.Text = "" Then
+            MsgBox("Return Tag is Mandatory. Can not continue.")
+            passed = False : Exit Sub
+        End If
 
         'If mFlag_Import = False Then
         '    If AgCL.AgIsDuplicate(Dgl1, "" + Dgl1.Columns(Col1Item).Index.ToString + "," + Dgl1.Columns(Col1Specification).Index.ToString + "," + Dgl1.Columns(Col1LotNo).Index.ToString + "," + Dgl1.Columns(Col1BaleNo).Index.ToString + "," & Dgl1.Columns(Col1Dimension1).Index & "," & Dgl1.Columns(Col1Dimension2).Index & "") = True Then passed = False : Exit Sub
@@ -4782,10 +4787,22 @@ Public Class FrmPurchInvoiceDirect
         End Try
     End Sub
 
-    Private Sub Txt_KeyDown(ByVal sender As Object, ByVal e As System.Windows.Forms.KeyEventArgs) Handles TxtVendor.KeyDown, TxtBillToParty.KeyDown, TxtProcess.KeyDown, TxtAgent.KeyDown, TxtShipToParty.KeyDown
+    Private Sub Txt_KeyDown(ByVal sender As Object, ByVal e As System.Windows.Forms.KeyEventArgs) Handles TxtVendor.KeyDown, TxtBillToParty.KeyDown, TxtProcess.KeyDown, TxtAgent.KeyDown, TxtShipToParty.KeyDown, TxtTags.KeyDown
         Try
             If AgL.StrCmp(Topctrl1.Mode, "Browse") Then Exit Sub
             Select Case sender.name
+
+
+                Case TxtTags.Name
+                    If AgL.StrCmp(AgL.PubDBName, "Sadhvi") And TxtV_Type.Tag = "PR" Then
+                        If TxtTags.AgHelpDataSet Is Nothing Then
+                            mQry = "SELECT 'FRESH' AS Code, 'FRESH' AS Name
+                                    UNION ALL 
+                                    SELECT 'DEFECT' AS Code, 'DEFECT' AS Name "
+                            TxtTags.AgHelpDataSet(0, TabControl1.Top + TP1.Top, TabControl1.Left + TP1.Left) = AgL.FillData(mQry, AgL.GCn)
+                        End If
+                    End If
+
 
                 Case TxtVendor.Name
                     If TxtVendor.AgHelpDataSet Is Nothing Then

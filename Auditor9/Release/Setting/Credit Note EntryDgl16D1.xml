@@ -39,7 +39,7 @@
     <Name>Specification</Name>
     <Index>5</Index>
     <Width>130</Width>
-    <Visible>False</Visible>
+    <Visible>True</Visible>
     <AggregateFunction />
   </Column>
   <Column>

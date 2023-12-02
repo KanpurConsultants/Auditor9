@@ -5030,7 +5030,13 @@ Public Class FrmSaleInvoiceDirect_WithDimension
     Private Sub FSetSalesTaxGroupItemBasedOnRate(mRowIndex As Integer)
         Dim DtMain As DataTable
         If Dgl1.Item(Col1ItemCategory, mRowIndex).Tag <> "" And Val(Dgl1.Item(Col1Rate, mRowIndex).Value) > 0 Then
-            If AgL.PubServerName = "" Then
+            If AgL.StrCmp(AgL.PubDBName, "ShreeBhawani") And (TxtStructure.Tag = "GstSaleMrp") Then
+                mQry = "Select SalesTaxGroupItem From ItemCategorySalesTax  With (NoLock)
+                Where Code='" & Dgl1.Item(Col1ItemCategory, mRowIndex).Tag & "' 
+                And MRPGreaterThan < " & Val(Dgl1.Item(Col1Rate, mRowIndex).Value) & " 
+                And WEF <= " & AgL.Chk_Date(CDate(DglMain.Item(Col1Value, rowV_Date).Value).ToString("s")) & " 
+                Order By WEF Desc, RateGreaterThan Desc Limit 1"
+            ElseIf AgL.PubServerName = "" Then
                 mQry = "Select SalesTaxGroupItem From ItemCategorySalesTax  With (NoLock)
                 Where Code='" & Dgl1.Item(Col1ItemCategory, mRowIndex).Tag & "' 
                 And RateGreaterThan < " & Val(Dgl1.Item(Col1Rate, mRowIndex).Value) & " 
@@ -8689,12 +8695,19 @@ Public Class FrmSaleInvoiceDirect_WithDimension
             'If ClsMain.IsScopeOfWorkContains(IndustryType.SubIndustryType.RetailModule) Then
             If sQryPayment <> "" Then sQryPayment = sQryPayment + " Union All "
 
-            sQryPayment = sQryPayment + "Select '" & I & "' as Copies, H.DocID,
+            If AgL.StrCmp(AgL.PubDBName, "DSG") Then
+                sQryPayment = sQryPayment + "Select '" & I & "' as Copies, H.DocID,
+                                    H.Sr, Case When PM.Description ='Credit' Then 'Balance' Else PM.Description End AS PaymentModeName, H.Amount, H.ReferenceNo  
+                                    FROM SaleInvoicePayment H
+                                    LEFT JOIN PaymentMode PM ON H.PaymentMode = PM.Code 
+                                    WHERE H.DocID ='" & mSearchCode & "'"
+            Else
+                sQryPayment = sQryPayment + "Select '" & I & "' as Copies, H.DocID,
                                     H.Sr, PM.Description AS PaymentModeName, H.Amount, H.ReferenceNo  
                                     FROM SaleInvoicePayment H
                                     LEFT JOIN PaymentMode PM ON H.PaymentMode = PM.Code 
-                                    WHERE H.DocID ='" & mSearchCode & "'                                   
-                                  "
+                                    WHERE H.DocID ='" & mSearchCode & "'"
+            End If
             'End If
 
         Next
@@ -16099,6 +16112,15 @@ Public Class FrmSaleInvoiceDirect_WithDimension
                         MsgBox("Items are linked with catalog. It can not be change.", MsgBoxStyle.Information)
                         Exit Sub
                     End If
+
+                    'If Dgl1.Columns(Dgl1.CurrentCell.ColumnIndex).Name = Col1Rate Then
+                    '    If AgL.StrCmp(AgL.PubDBName, "RVN") And AgL.PubIsUserAdmin = False Then
+                    '        e.Cancel = True
+                    '        MsgBox("Rate can not be change.", MsgBoxStyle.Information)
+                    '        Exit Sub
+                    '    End If
+                    'End If
+
             End Select
         Catch ex As Exception
             MsgBox(ex.Message)
