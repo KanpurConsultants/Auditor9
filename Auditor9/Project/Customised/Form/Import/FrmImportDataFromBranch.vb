@@ -871,6 +871,15 @@ Public Class FrmImportDataFromBranch
                 " Where H." & bPrimaryField & " Is Null "
         AgL.Dman_ExecuteNonQry(mQry, mSqlConn, mSqlCmd)
 
+        Dim DtItemGroupList As DataTable
+        mQry = "select * from Source.Item Where V_Type ='IG' "
+        DtItemGroupList = AgL.FillData(mQry, AgL.GCn).Tables(0)
+
+        For R As Integer = 0 To DtItemGroupList.Rows.Count - 1
+            mQry = "UPDATE Item SET Description =" & AgL.Chk_Text(AgL.XNull(DtItemGroupList.Rows(R)("Description"))) & " WHERE OmsId = " & AgL.Chk_Text(AgL.XNull(DtItemGroupList.Rows(R)("Code"))) & " "
+            AgL.Dman_ExecuteNonQry(mQry, mSqlConn, mSqlCmd)
+        Next
+
         'To Update ItemName 
         If ClsMain.FDivisionNameForCustomization(6) = "SADHVI" Then
             mQry = "Select H_Temp.Code, H_Temp.Specification, H_Temp.ManualCode,H_Temp.Description,H_Temp.DisplayName
@@ -956,6 +965,15 @@ Public Class FrmImportDataFromBranch
                 LEFT JOIN " & bTableName & " H On " & bJoinCondStr &
                 " Where H." & bPrimaryField & " Is Null AND H_Temp.V_Type <> 'ITEM' "
         AgL.Dman_ExecuteNonQry(mQry, mSqlConn, mSqlCmd)
+
+        Dim DtItemGroupList As DataTable
+        mQry = "select * from Source.Item Where V_Type ='IG' "
+        DtItemGroupList = AgL.FillData(mQry, AgL.GCn).Tables(0)
+
+        For R As Integer = 0 To DtItemGroupList.Rows.Count - 1
+            mQry = "UPDATE Item SET Description =" & AgL.Chk_Text(AgL.XNull(DtItemGroupList.Rows(R)("Description"))) & " WHERE OmsId = " & AgL.Chk_Text(AgL.XNull(DtItemGroupList.Rows(R)("Code"))) & " "
+            AgL.Dman_ExecuteNonQry(mQry, mSqlConn, mSqlCmd)
+        Next
 
         Dim DtItemList As DataTable
         mQry = "select H.DocId,  I.Description, I.Specification, I.ItemGroup, I.ItemCategory, I.ItemType, 

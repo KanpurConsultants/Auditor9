@@ -114,7 +114,7 @@ Public Class FrmSaleInvoiceDirect
     Dim rowShipToParty As Integer = 7
     Dim rowSalesTaxNo As Integer = 8
     Dim rowAadharNo As Integer = 9
-
+    Dim rowStructure As Integer = 10
 
     Public Const hcRateType As String = "Rate Type"
     Public Const hcPartyDocNo As String = "Party Doc.No."
@@ -126,7 +126,7 @@ Public Class FrmSaleInvoiceDirect
     Public Const hcShipToParty As String = "Ship To Party"
     Public Const HcSalesTaxNo As String = "GST No"
     Public Const HcAadharNo As String = "Aadhar No"
-
+    Public Const hcStructure As String = "Structure"
 
     Dim rowCreditDays As Integer = 0
     Dim rowAgent As Integer = 1
@@ -142,6 +142,7 @@ Public Class FrmSaleInvoiceDirect
     Dim rowEInvoiceIRN As Integer = 11
     Dim rowEInvoiceACKNo As Integer = 12
     Dim rowEInvoiceACKDate As Integer = 13
+
 
 
     Dim mPersonalDiscountPer As Double
@@ -1754,7 +1755,7 @@ Public Class FrmSaleInvoiceDirect
         Dgl2.ColumnHeadersVisible = False
 
 
-        Dgl2.Rows.Add(10)
+        Dgl2.Rows.Add(11)
 
         Dgl2.Item(Col1Head, rowRateType).Value = hcRateType
         Dgl2.Item(Col1Head, rowPartyDocNo).Value = hcPartyDocNo
@@ -1766,6 +1767,7 @@ Public Class FrmSaleInvoiceDirect
         Dgl2.Item(Col1Head, rowShipToParty).Value = hcShipToParty
         Dgl2.Item(Col1Head, rowSalesTaxNo).Value = HcSalesTaxNo
         Dgl2.Item(Col1Head, rowAadharNo).Value = HcAadharNo
+        Dgl2.Item(Col1Head, rowStructure).Value = hcStructure
         Dgl2.Name = "Dgl2"
         Dgl2.Tag = "VerticalGrid"
 
@@ -2659,6 +2661,7 @@ Public Class FrmSaleInvoiceDirect
                 AgCustomGrid1.AgCustom = TxtCustomFields.AgSelectedValue
 
                 IniGrid()
+                FGetStructureForInputField()
 
                 TxtReferenceNo.Text = AgL.XNull(.Rows(0)("ManualRefNo"))
                 Dgl2(Col1Value, rowPartyDocNo).Value = AgL.XNull(.Rows(0)("SaleToPartyDocNo"))
@@ -9985,6 +9988,19 @@ Public Class FrmSaleInvoiceDirect
                             Dgl2.AgHelpDataSet(Col1Value) = Dgl2.Item(Col1Head, Dgl2.CurrentCell.RowIndex).Tag
                         End If
                     End If
+
+                Case rowStructure
+                    If e.KeyCode <> Keys.Enter Then
+                        If Dgl2.Item(Col1Head, Dgl2.CurrentCell.RowIndex).Tag Is Nothing Then
+                            mQry = "SELECT Code, Description FROM Structure WHERE Code IN ('GstSale','GstSaleMrp')"
+                            Dgl2.Item(Col1Head, Dgl2.CurrentCell.RowIndex).Tag = AgL.FillData(mQry, AgL.GCn)
+                        End If
+
+                        If Dgl2.AgHelpDataSet(Col1Value) Is Nothing Then
+                            Dgl2.AgHelpDataSet(Col1Value,, TabControl1.Top + TP1.Top, TabControl1.Left + TP1.Left) = Dgl2.Item(Col1Head, Dgl2.CurrentCell.RowIndex).Tag
+                        End If
+                    End If
+
                 Case rowShipToParty
                     If e.KeyCode <> Keys.Enter Then
                         If Dgl2.Item(Col1Head, Dgl2.CurrentCell.RowIndex).Tag Is Nothing Then
@@ -10002,6 +10018,11 @@ Public Class FrmSaleInvoiceDirect
             MsgBox(ex.Message)
         End Try
 
+    End Sub
+    Private Sub FGetStructureForInputField()
+        Dgl2.Item(Col1Value, rowStructure).Tag = TxtStructure.Tag
+        Dgl2.Item(Col1Value, rowStructure).Value = AgL.XNull(AgL.Dman_Execute(" Select Description 
+                        From Structure Where Code = '" & Dgl2.Item(Col1Value, rowStructure).Tag & "'", AgL.GCn).ExecuteScalar())
     End Sub
 
     Private Sub Dgl3_EditingControl_KeyDown(sender As Object, e As KeyEventArgs) Handles Dgl3.EditingControl_KeyDown
@@ -10097,7 +10118,35 @@ Public Class FrmSaleInvoiceDirect
                 End If
             End If
         End If
+
+        Try
+            If mColumn <> Dgl2.Columns(Col1Value).Index Then Exit Sub
+
+            Select Case Dgl2.CurrentCell.RowIndex
+                Case rowStructure
+                    If Dgl1.Rows.Count > 1 Then
+                        If MsgBox("If you will change billing type then you will loss line data in this entry.Do you want to continue", MsgBoxStyle.Question + MsgBoxStyle.YesNo) = MsgBoxResult.Yes Then
+                            FChangeStructure()
+                        Else
+                            FGetStructureForInputField()
+                        End If
+                    Else
+                        FChangeStructure()
+                    End If
+            End Select
+        Catch ex As Exception
+            MsgBox(ex.Message)
+        End Try
     End Sub
+    Private Sub FChangeStructure()
+        TxtStructure.Tag = Dgl2.Item(Col1Value, rowStructure).Tag
+        AgCalcGrid1.AgStructure = TxtStructure.AgSelectedValue
+        IniGrid()
+        FGetStructureForInputField()
+        Dgl2.CurrentCell = Dgl2.Item(Col1Value, rowStructure)
+        Dgl2.Focus()
+    End Sub
+
 
     Private Sub BtnAttachments_Click(sender As Object, e As EventArgs) Handles BtnAttachments.Click
         Dim FrmObj As New AgLibrary.FrmAttachmentViewer(AgL)

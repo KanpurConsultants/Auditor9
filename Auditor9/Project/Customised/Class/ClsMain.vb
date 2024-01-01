@@ -531,7 +531,7 @@ Public Class ClsMain
             If AgL.StrCmp(AgL.PubUserName, "Super") Then
                 'FSeedTable_EntryHeaderUISetting()
                 'FCorrectionQueries()
-                FIndustryWiseSeeding()
+                'FIndustryWiseSeeding()
                 '    '    '    FIndustryWiseSeeding()
                 '    '    '    'FSeedTable_Setting()
                 '    'FSeedTable_Menus()
@@ -7315,6 +7315,8 @@ Thanks
             FSeedSingleIfNotExist_EntryHeaderUISetting("FrmSaleInvoiceDirect", Ncat.SaleInvoice, "Dgl2", FrmSaleInvoiceDirect_WithDimension.hcBtnPendingSaleOrder, 0)
             FSeedSingleIfNotExist_EntryHeaderUISetting("FrmSaleInvoiceDirect", Ncat.SaleInvoice, "Dgl2", FrmSaleInvoiceDirect_WithDimension.HcBtnAttachments)
             FSeedSingleIfNotExist_EntryHeaderUISetting("FrmSaleInvoiceDirect", Ncat.SaleInvoice, "Dgl2", FrmSaleInvoiceDirect_WithDimension.HcBtnMoneyReceived, 0)
+            FSeedSingleIfNotExist_EntryHeaderUISetting("FrmSaleInvoiceDirect", Ncat.SaleInvoice, "Dgl2", FrmSaleInvoiceDirect_WithDimension.hcStructure, 0)
+            FSeedSingleIfNotExist_EntryHeaderUISetting("FrmSaleInvoiceDirect", Ncat.SaleReturn, "Dgl2", FrmSaleInvoiceDirect_WithDimension.hcStructure, 0)
 
             If ClsMain.IsScopeOfWorkContains(IndustryType.CommonModules.SalesExecutiveModule) Or ClsMain.IsScopeOfWorkContains(IndustryType.SubIndustryType.RetailModule) Then
                 FSeedSingleIfNotExist_EntryHeaderUISetting("FrmSaleInvoiceDirect", Ncat.SaleInvoice, "Dgl2", FrmSaleInvoiceDirect_WithDimension.HcSalesRepresentative, 1)

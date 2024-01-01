@@ -3,46 +3,55 @@ Copies	string	255	1
 CopyPrintingCaption	string	255		
 DocNoCaption	string	255	Invoice No.	
 DocDateCaption	string	255	Invoice Date	
-SiteStateCode	string	255	09	
-SiteStateName	string	255	Uttar Pradesh	
-DocID	string	255	D1    SI 2023   10685	
+SiteStateCode	string	255	07	
+SiteStateName	string	255	Delhi	
+DocID	string	255	D1    SI 2023       1	
 Sr	number	1	
-V_Date	datetime	24/Nov/2023 12:00:00 AM	
+V_Date	datetime	30/Dec/2023 12:00:00 AM	
 DeliveryDate	datetime		
 Voucher_Type	string	255	Tax Invoice	
 NCat	string	255	SI	
-InvoiceNo	string	255	SI-10685	
-RateType	string	255	Super Net	
+InvoiceNo	string	255	SI-1	
+GenDocNo	string	255		
+AmsDocNo	string	255		
+AmsDocDate	datetime		
+AmsDocNetAmount	number	0	
+RateType	string	255		
 DocumentPrintShowRateType	string	255	Show If Not Blank	
-AgentName	string	255	DIRECT (CASH)	
+AgentName	string	255		
+SalesRepName	string	255		
+SalesRepCode	string	255		
 AgentCaption	string	255	Agent	
-BillToPartyNature	string	255	Customer	
-SaleToPartyName	string	255	PREM TYRES	
-SaleToPartyAddress	string	255	15/947 NEAR TAMRAKAR PETROL PUMP RATAHARA RATAHARA REWA	
-CityName	string	255	REWA	
-SaleToPartyPincode	string	255	486001	
-StateCode	string	255	23	
-StateName	string	255	Madhya Pradesh	
+SaleToPartyName	string	255	NAVDURGA SALES PRIVATE LIMITED RENT A/C	
+SaleToPartyAddress	string	255		
+CityName	string	255	Kanpur	
+SaleToPartyPincode	string	255		
+StateCode	string	255	09	
+StateName	string	255	Uttar Pradesh	
 SaleToPartyMobile	string	255		
 ContactPerson	string	255		
-SaleToPartySalesTaxNo	string	255	23CALPK1570L1ZK	
+SaleToPartySalesTaxNo	string	255	09AADCN9244K1ZZ	
 SaleToPartyAadharNo	string	255		
-SaleToPartyPanNo	string	255	CALPK1570L	
-ShipToPartyName	string	255	PREM TYRES	
-ShipToPartyAddress	string	255	15/947 NEAR TAMRAKAR PETROL PUMP RATAHARA RATAHARA REWA	
-ShipToPartyCity	string	255	REWA	
-ShipToPartyPincode	string	255	486001	
-ShipToPartyStateCode	string	255	23	
-ShipToPartyStateName	string	255	Madhya Pradesh	
+SaleToPartyPanNo	string	255	AADCN9244K	
+SaleToPartyLicenseNo	string	255		
+ShipToPartyName	string	255	NAVDURGA SALES PRIVATE LIMITED RENT A/C	
+ShipToPartyAddress	string	255		
+ShipToPartyCity	string	255	Kanpur	
+ShipToPartyPincode	string	255		
+ShipToPartyStateCode	string	255	09	
+ShipToPartyStateName	string	255	Uttar Pradesh	
 ShipToPartyMobile	string	255		
-ShipToPartySalesTaxNo	string	255	23CALPK1570L1ZK	
+ShipToPartySalesTaxNo	string	255	09AADCN9244K1ZZ	
 ShipToPartyAadharNo	string	255		
-ShipToPartyPanNo	string	255	CALPK1570L	
+ShipToPartyPanNo	string	255	AADCN9244K	
+ShipToPartyLicenseNo	string	255		
+TransporterSalesTaxNo	string	255		
 ShipToAddress	string	255		
-TermsAndConditions	string	255	<b>1.</b> Goods once sold will not be taken back. <b>2.</b> No Guarantee in the Age of Fashion. <b>3.</b> Interest @ 24% per annum will be charge after 30 days from the date of bill. <b>4.</b> All disputes subject to Kanpur Jurisdiction OR disputes will be settle through Cawnpore Kapda Committee Arbitration Board which will be abide by the both parties	
+TermsAndConditions	string	255	(1) Payment within 30 days from date of Invoice. <BR>(2) Overdue Interest @ 24% P.A. after due date. <BR>(3) Goods dispatched by transport at the owner risk. <BR>(4) All disputes are subject to <Kanpur> Jurisdiction only.	
 TransporterName	string	255		
 LrNo	string	255		
 LrDate	datetime		
+NoOfBales	number		
 PrivateMark	string	255		
 Weight	number		
 Freight	number		
@@ -59,34 +68,59 @@ BookedTo	string	255
 Destination	string	255		
 DescriptionOfGoods	string	255		
 DescriptionOfPacking	string	255		
-TransporterSalesTaxNo	string	255		
 ReferenceNo	string	255		
-ItemName	string	255	6962 6986 786          [H.S.S.C SAREE | SAREE]	
-ItemGroupName	string	255	HC	
-ItemCatName	string	255	SAREE	
-ItemSpecification	string	255	6962 6986 786	
+BarcodeName	string	255		
+ItemName	string	255	A901-11X13 - AERO CLUB - KIDS COAT PANT	
+ItemGroupName	string	255		
+ItemCatName	string	255		
+ItemManualCode	string	255	1556	
+ItemSpecification	string	255	A901-11X13	
 InvoiceLineSpecification	string	255		
-HSN	string	255	540752	
+HSN	string	255	611190	
 MaintainStockYn	boolean	True	
-SalesTaxGroupItem	string	255	GST 5%	
-GrossTaxRate	number	5	
-Pcs	number	1	
-Qty	number	1	
-Rate	number	5995	
+D1Spec	string	255		
+D2Spec	string	255		
+D3Spec	string	255		
+D4Spec	string	255		
+SizeSpec	string	255		
+ItemInvoiceGroupCode	string	255		
+ItemInvoiceGroupDesc	string	255		
+ItemTypeCaption	string	255	Item Type	
+ItemCategoryCaption	string	255	Item Category	
+ItemGroupCaption	string	255	Item Group	
+ItemCaption	string	255	Item	
+BarcodeCaption	string	255		
+D1Caption	string	255	Design	
+D2Caption	string	255	Shade	
+D3Caption	string	255		
+D4Caption	string	255		
+SalesTaxGroupItem	string	255	GST 12%	
+GrossTaxRate	number	12	
+MRP	number	0	
+LotNo	string	255		
+ExpiryDate	datetime		
+ItemRemark1	string	255		
+Pcs	number	10	
+Qty	number	10	
+Rate	number	1150	
+ItemState	string	255		
+CatalogSpecification	string	255		
+CatalogSiteName	string	255		
 Unit	string	255	Pcs	
 UnitDecimalPlaces	number	0	
-DiscountPer	number	7	
-DiscountAmount	number	419.65	
+DiscountPer	number	0	
+DiscountAmount	number	0	
 AdditionalDiscountPer	number	0	
 AdditionalDiscountAmount	number	0	
 AdditionPer	number	0	
 AdditionAmount	number	0	
-TotalDiscount	number	419.65	
-AmountBeforeDiscount	number	5995	
-Amount	number	5575.35	
-Taxable_Amount	number	5575.35	
-Tax1_Per	number	5	
-Tax1	number	278.77	
+TotalDiscount	number	0	
+Deal	string	255		
+AmountBeforeDiscount	number	11500	
+Amount	number	11500	
+Taxable_Amount	number	10267.86	
+Tax1_Per	number	12	
+Tax1	number	1232.14	
 Tax2_Per	number	0	
 Tax2	number	0	
 Tax3_Per	number	0	
@@ -95,17 +129,25 @@ Tax4_Per	number	0
 Tax4	number	0	
 Tax5_Per	number	0	
 Tax5	number	0	
-Net_Amount	number	5860.14	
+Net_Amount	number	11500	
 LRemarks	string	255		
+LRemarks1	string	255		
+LRemarks2	string	255		
+LRemarks3	string	255		
+LRemarks4	string	255		
 HRemarks	string	255		
-H_TotalDiscount	number	933.35	
-H_AmountBeforeDiscount	number	16269	
-H_Gross_Amount	number	15335.65	
+SalesTaxSummaryStr	string	255		
+H_Discount	number	0	
+H_AdditionalDiscount	number	0	
+H_Additional	number	0	
+H_TotalDiscount	number	0	
+H_AmountBeforeDiscount	number	11500	
+H_Gross_Amount	number	11500	
 H_SpecialDiscount_Per	number	0	
 H_SpecialDiscount	number	0	
-H_Taxable_Amount	number	15335.65	
+H_Taxable_Amount	number	10267.86	
 H_Tax1_Per	number	0	
-H_Tax1	number	766.77	
+H_Tax1	number	1232.14	
 H_Tax2_Per	number	0	
 H_Tax2	number	0	
 H_Tax3_Per	number	0	
@@ -117,24 +159,28 @@ H_Tax5	number	0
 H_Deduction_Per	number	0	
 H_Deduction	number	0	
 H_Other_Charge_Per	number	0	
-H_Other_Charge	number	17	
-Round_Off	number	-0.42	
-H_Net_Amount	number	16119	
+H_Other_Charge	number	0	
+H_Other_Charge1_Per	number	0	
+H_Other_Charge1	number	0	
+H_Other_Charge2_Per	number	0	
+H_Other_Charge2	number	0	
+Round_Off	number	0	
+H_Net_Amount	number	11500	
 EInvoiceIRN	string	255		
-EInvoiceAckNo	string	255		
-EInvoiceAckDate	datetime		
-Default_BankAccountDetail	string	255	Bank Detail : 	HDFC A/c : 50200003154727    IFSC : HDFC0002006	
+EInvoiceACKNo	string	255		
+EInvoiceACKDate	datetime		
+Default_BankAccountDetail	string	255	<B> Bank Detail :- <BR> ICICI BANK : 112605503219  IFSC : ICIC0001126 <BR>	
 DocumentPrintHeaderPattern	string	255	Center Aligned	
 DimDetail	string	255		
 PrintedByUser	string	255	SUPER	
-EntryByUser	string	255	amit	
-PrintTitle	string	255	TAX INVOICE	
+EntryByUser	string	255	SUPER	
+PrintTitle	string	255	Tax Invoice	
 DocumentPrintShowPrintDateTimeYn	string	255	1	
 DocumentPrintShowPartyBalance	string	255	Hide	
-TodaysOpeningBalance	number	0	
-TodaysDr	number	0	
-TodaysCr	number	0	
-TodaysClosingBalance	number	0	
+TodaysOpeningBalance	long	0	
+TodaysDr	long	0	
+TodaysCr	long	0	
+TodaysClosingBalance	long	0	
 CompanyLogo	BLOB		
 CompanyAuthorisedSignature	BLOB		
 EInvoiceQrCode	BLOB		

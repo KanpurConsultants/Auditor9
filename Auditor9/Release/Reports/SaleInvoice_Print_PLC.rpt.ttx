@@ -5,13 +5,13 @@ DocNoCaption	string	255	Invoice No.
 DocDateCaption	string	255	Invoice Date	
 SiteStateCode	string	255	24	
 SiteStateName	string	255	Gujarat	
-DocID	string	255	D1    SI 2023     482	
+DocID	string	255	D1    SI 2023     814	
 Sr	number	1	
-V_Date	datetime	22/Sep/2023 12:00:00 AM	
+V_Date	datetime	25/Dec/2023 12:00:00 AM	
 DeliveryDate	datetime		
 Voucher_Type	string	255	Tax Invoice	
 NCat	string	255	SI	
-InvoiceNo	string	255	SI-712	
+InvoiceNo	string	255	SI-815	
 GenDocNo	string	255		
 AmsDocNo	string	255		
 AmsDocDate	datetime		
@@ -49,7 +49,7 @@ ShipToPartyPanNo	string	255	BAYPK1806P
 ShipToPartyLicenseNo	string	255		
 TransporterSalesTaxNo	string	255		
 ShipToAddress	string	255		
-TermsAndConditions	string	255	(1) Payment within 30 days from date of Invoice. <BR>(2) Overdue Interest @ 24% P.A. after due date. <BR>(3) Goods dispatched by transport at the owner risk. <BR>(4) All disputes are subject to <Kanpur> Jurisdiction only.	
+TermsAndConditions	string	255	(1) Payment within 30 days from date of Invoice. <BR>(2) Overdue Interest @ 24% P.A. after due date. <BR>(3) Goods dispatched by transport at the owner risk. <BR>(4) All disputes are subject to Ahemdabad Jurisdiction only.	
 TransporterName	string	255		
 LrNo	string	255		
 LrDate	datetime		
@@ -72,15 +72,15 @@ DescriptionOfGoods	string	255
 DescriptionOfPacking	string	255		
 ReferenceNo	string	255		
 BarcodeName	string	255		
-ItemName	string	255	6034-FREE - NIGHTY. - PINK LADY	
+ItemName	string	255	4776-FREE - NIGHTY. - PINK LADY	
 ItemGroupName	string	255	NIGHTY.	
 ItemCatName	string	255	PINK LADY	
-ItemManualCode	string	255	2207	
-ItemSpecification	string	255	6034-FREE	
+ItemManualCode	string	255	1746	
+ItemSpecification	string	255	4776-FREE	
 InvoiceLineSpecification	string	255		
 HSN	string	255	610819	
 MaintainStockYn	boolean	True	
-D1Spec	string	255	6034-FREE	
+D1Spec	string	255		
 D2Spec	string	255		
 D3Spec	string	255		
 D4Spec	string	255		
@@ -104,56 +104,56 @@ ExpiryDate	datetime
 ItemRemark1	string	255		
 Pcs	number	6	
 Qty	number	6	
-Rate	number	180	
+Rate	number	145	
 ItemState	string	255		
 CatalogSpecification	string	255		
 CatalogSiteName	string	255		
 Unit	string	255	Pcs	
 UnitDecimalPlaces	number	0	
-DiscountPer	number	5	
-DiscountAmount	number	54	
+DiscountPer	number	7	
+DiscountAmount	number	60.9	
 AdditionalDiscountPer	number	0	
 AdditionalDiscountAmount	number	0	
 AdditionPer	number	0	
 AdditionAmount	number	0	
-TotalDiscount	number	54	
+TotalDiscount	number	60.9	
 Deal	string	255		
-AmountBeforeDiscount	number	1080	
-Amount	number	1026	
-Taxable_Amount	number	1026	
+AmountBeforeDiscount	number	870	
+Amount	number	809.1	
+Taxable_Amount	number	809.1	
 Tax1_Per	number	0	
 Tax1	number	0	
 Tax2_Per	number	2.5	
-Tax2	number	25.65	
+Tax2	number	20.23	
 Tax3_Per	number	2.5	
-Tax3	number	25.65	
+Tax3	number	20.23	
 Tax4_Per	number	0	
 Tax4	number	0	
 Tax5_Per	number	0	
 Tax5	number	0	
-Net_Amount	number	1077.3	
+Net_Amount	number	849.59	
 LRemarks	string	255		
 LRemarks1	string	255		
 LRemarks2	string	255		
 LRemarks3	string	255		
 LRemarks4	string	255		
-HRemarks	string	255	MAA KALI TRADERS JALALPUR	
+HRemarks	string	255	TIRUMALA TRADING COMPANY RAIGARH	
 SalesTaxSummaryStr	string	255		
-H_Discount	number	657	
+H_Discount	number	2710.4	
 H_AdditionalDiscount	number	0	
 H_Additional	number	0	
-H_TotalDiscount	number	657	
-H_AmountBeforeDiscount	number	13140	
-H_Gross_Amount	number	12483	
+H_TotalDiscount	number	2710.4	
+H_AmountBeforeDiscount	number	38720	
+H_Gross_Amount	number	36009.6	
 H_SpecialDiscount_Per	number	0	
 H_SpecialDiscount	number	0	
-H_Taxable_Amount	number	12483	
+H_Taxable_Amount	number	36009.6	
 H_Tax1_Per	number	0	
 H_Tax1	number	0	
 H_Tax2_Per	number	0	
-H_Tax2	number	312.08	
+H_Tax2	number	900.29	
 H_Tax3_Per	number	0	
-H_Tax3	number	312.08	
+H_Tax3	number	900.29	
 H_Tax4_Per	number	0	
 H_Tax4	number	0	
 H_Tax5_Per	number	0	
@@ -166,8 +166,8 @@ H_Other_Charge1_Per	number	0
 H_Other_Charge1	number	0	
 H_Other_Charge2_Per	number	0	
 H_Other_Charge2	number	0	
-Round_Off	number	-0.16	
-H_Net_Amount	number	13107	
+Round_Off	number	-0.18	
+H_Net_Amount	number	37810	
 EInvoiceIRN	string	255		
 EInvoiceACKNo	string	255		
 EInvoiceACKDate	datetime		
@@ -176,7 +176,7 @@ DocumentPrintHeaderPattern	string	255	Center Aligned
 DimDetail	string	255		
 PrintedByUser	string	255	SUPER	
 EntryByUser	string	255	saurabh	
-PrintTitle	string	255	ESTIMATE 	
+PrintTitle	string	255	Tax Invoice	
 DocumentPrintShowPrintDateTimeYn	string	255	1	
 DocumentPrintShowPartyBalance	string	255	Hide	
 TodaysOpeningBalance	long	0	

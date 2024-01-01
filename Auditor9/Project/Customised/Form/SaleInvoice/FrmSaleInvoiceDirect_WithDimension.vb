@@ -205,6 +205,7 @@ Public Class FrmSaleInvoiceDirect_WithDimension
     Dim rowCurrency As Integer = 20
     Dim rowCurrencyMultiplier As Integer = 21
     Dim rowSalesTaxApplicable As Integer = 22
+    Dim rowStructure As Integer = 23
 
 
     Public Const hcProcess As String = "Process"
@@ -273,6 +274,7 @@ Public Class FrmSaleInvoiceDirect_WithDimension
     Public Const hcEInvoiceIRN As String = "E-Invoice IRN"
     Public Const hcEInvoiceACKNo As String = "E-Invoice ACK No"
     Public Const hcEInvoiceACKDate As String = "E-Invoice ACK Date"
+    Public Const hcStructure As String = "Structure"
 
     Public Shared mFlag_Import As Boolean = False
     Public mDimensionSrl As Integer
@@ -1820,6 +1822,7 @@ Public Class FrmSaleInvoiceDirect_WithDimension
         Dgl2.Item(Col1Head, rowCurrency).Value = HcCurrency
         Dgl2.Item(Col1Head, rowCurrencyMultiplier).Value = HcCurrencyMultiplier
         Dgl2.Item(Col1Head, rowSalesTaxApplicable).Value = HcSalesTaxApplicable
+        Dgl2.Item(Col1Head, rowStructure).Value = hcStructure
         Dgl2.Name = "Dgl2"
         Dgl2.Tag = "VerticalGrid"
 
@@ -3045,6 +3048,7 @@ Public Class FrmSaleInvoiceDirect_WithDimension
 
 
                 IniGrid()
+                FGetStructureForInputField()
 
                 DglMain.Item(Col1Value, rowReferenceNo).Value = AgL.XNull(.Rows(0)("ManualRefNo"))
                 Dgl2(Col1Value, rowPartyDocNo).Value = AgL.XNull(.Rows(0)("SaleToPartyDocNo"))
@@ -13377,6 +13381,18 @@ Public Class FrmSaleInvoiceDirect_WithDimension
                         End If
                     End If
 
+                Case rowStructure
+                    If e.KeyCode <> Keys.Enter Then
+                        If Dgl2.Item(Col1Head, Dgl2.CurrentCell.RowIndex).Tag Is Nothing Then
+                            mQry = "SELECT Code, Description FROM Structure WHERE Code IN ('GstSale','GstSaleMrp')"
+                            Dgl2.Item(Col1Head, Dgl2.CurrentCell.RowIndex).Tag = AgL.FillData(mQry, AgL.GCn)
+                        End If
+
+                        If Dgl2.AgHelpDataSet(Col1Value) Is Nothing Then
+                            Dgl2.AgHelpDataSet(Col1Value,, TabControl1.Top + TP1.Top, TabControl1.Left + TP1.Left) = Dgl2.Item(Col1Head, Dgl2.CurrentCell.RowIndex).Tag
+                        End If
+                    End If
+
                 Case rowReferenceSaleInvoiceNo
                     If CType(AgL.VNull(FGetSettings(SettingFields.ShowReferenceNoHeaderHelpYn, SettingType.General)), Boolean) = True Then
                         If e.KeyCode <> Keys.Enter Then
@@ -13468,6 +13484,12 @@ Public Class FrmSaleInvoiceDirect_WithDimension
         '    MsgBox(ex.Message)
         'End Try
 
+    End Sub
+
+    Private Sub FGetStructureForInputField()
+        Dgl2.Item(Col1Value, rowStructure).Tag = TxtStructure.Tag
+        Dgl2.Item(Col1Value, rowStructure).Value = AgL.XNull(AgL.Dman_Execute(" Select Description 
+                        From Structure Where Code = '" & Dgl2.Item(Col1Value, rowStructure).Tag & "'", AgL.GCn).ExecuteScalar())
     End Sub
 
     Private Sub Dgl3_EditingControl_KeyDown(sender As Object, e As KeyEventArgs) Handles Dgl3.EditingControl_KeyDown
@@ -13574,6 +13596,16 @@ Public Class FrmSaleInvoiceDirect_WithDimension
                     End If
                 Case rowPartyDocNo
                     FSaleInvoiceSelectionWindowForReturnOneInvoice()
+                Case rowStructure
+                    If Dgl1.Rows.Count > 1 Then
+                        If MsgBox("If you will change billing type then you will loss line data in this entry.Do you want to continue", MsgBoxStyle.Question + MsgBoxStyle.YesNo) = MsgBoxResult.Yes Then
+                            FChangeStructure()
+                        Else
+                            FGetStructureForInputField()
+                        End If
+                    Else
+                        FChangeStructure()
+                    End If
             End Select
         Catch ex As Exception
             MsgBox(ex.Message)
@@ -13591,6 +13623,15 @@ Public Class FrmSaleInvoiceDirect_WithDimension
         '        Dgl1.Focus() : MakeGridCurrentCellNothing(Dgl1.Name)
         '    End If
         'End If
+    End Sub
+
+    Private Sub FChangeStructure()
+        TxtStructure.Tag = Dgl2.Item(Col1Value, rowStructure).Tag
+        AgCalcGrid1.AgStructure = TxtStructure.AgSelectedValue
+        IniGrid()
+        FGetStructureForInputField()
+        Dgl2.CurrentCell = Dgl2.Item(Col1Value, rowStructure)
+        Dgl2.Focus()
     End Sub
 
     Private Sub ShowAttachments()

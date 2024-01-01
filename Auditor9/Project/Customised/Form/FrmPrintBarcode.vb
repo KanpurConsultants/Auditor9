@@ -572,6 +572,10 @@ Public Class FrmPrintBarcode
                 RepName = mDocReportFileName
             End If
 
+            If AgL.StrCmp(AgL.PubDBName, "SHADHVINANDI") Then
+                mBarcodePrintTitle1 = AgL.PubDivPrintName
+            End If
+
             bTempTable = Guid.NewGuid.ToString   'AgL.GetGUID(AgL.GCn).ToString
 
             mQry = "CREATE TEMPORARY TABLE [#" & bTempTable & "] " &

@@ -10,18 +10,33 @@
             </DataSource>
           </DataSources><DataSets>
             <DataSet Name="DsMain">
-              <Fields><Field Name="TableNo">
-                  <DataField>TableNo</DataField>
+              <Fields><Field Name="Site">
+                  <DataField>Site</DataField>
                   <rd:TypeName>System.String</rd:TypeName>
-                </Field><Field Name="Particulars">
-                  <DataField>Particulars</DataField>
+                </Field><Field Name="No">
+                  <DataField>No</DataField>
                   <rd:TypeName>System.String</rd:TypeName>
-                </Field><Field Name="TaxableValue">
-                  <DataField>TaxableValue</DataField>
+                </Field><Field Name="Type">
+                  <DataField>Type</DataField>
+                  <rd:TypeName>System.String</rd:TypeName>
+                </Field><Field Name="Date">
+                  <DataField>Date</DataField>
+                  <rd:TypeName>System.String</rd:TypeName>
+                </Field><Field Name="Narration">
+                  <DataField>Narration</DataField>
+                  <rd:TypeName>System.String</rd:TypeName>
+                </Field><Field Name="Debit">
+                  <DataField>Debit</DataField>
                   <rd:TypeName>System.Double</rd:TypeName>
-                </Field><Field Name="TaxAmount">
-                  <DataField>TaxAmount</DataField>
+                </Field><Field Name="Credit">
+                  <DataField>Credit</DataField>
                   <rd:TypeName>System.Double</rd:TypeName>
+                </Field><Field Name="Closing">
+                  <DataField>Closing</DataField>
+                  <rd:TypeName>System.Double</rd:TypeName>
+                </Field><Field Name="DR_CR_CL">
+                  <DataField>DR_CR_CL</DataField>
+                  <rd:TypeName>System.String</rd:TypeName>
                 </Field></Fields>
               <Query>
                 <DataSourceName>dsReport</DataSourceName>
@@ -124,25 +139,35 @@
               <Tablix Name="Tablix1">
                 <TablixBody>
                     <TablixColumns><TablixColumn>
-                      <Width>0.65in</Width>
+                      <Width>0.407333333333333in</Width>
                     </TablixColumn><TablixColumn>
-                      <Width>7.92133333333333in</Width>
+                      <Width>0.528666666666667in</Width>
                     </TablixColumn><TablixColumn>
-                      <Width>1.144in</Width>
+                      <Width>0.424666666666667in</Width>
                     </TablixColumn><TablixColumn>
-                      <Width>1.21333333333333in</Width>
+                      <Width>0.970666666666667in</Width>
+                    </TablixColumn><TablixColumn>
+                      <Width>2.29666666666667in</Width>
+                    </TablixColumn><TablixColumn>
+                      <Width>0.970666666666667in</Width>
+                    </TablixColumn><TablixColumn>
+                      <Width>0.970666666666667in</Width>
+                    </TablixColumn><TablixColumn>
+                      <Width>0.970666666666667in</Width>
+                    </TablixColumn><TablixColumn>
+                      <Width>0.216666666666667in</Width>
                     </TablixColumn></TablixColumns><TablixRows><TablixRow>
                       <Height>0.25in</Height>
                       <TablixCells><TablixCell>
                           <CellContents>
-                            <Textbox Name="TxtTableNoHeader">
+                            <Textbox Name="TxtSiteHeader">
                               <CanGrow>true</CanGrow>
                               <KeepTogether>true</KeepTogether>
                               <Paragraphs>
                                 <Paragraph>
                                   <TextRuns>
                                     <TextRun>
-                                      <Value>Table No</Value>
+                                      <Value>Site</Value>
                                       <Style>
                                         <FontFamily>Verdana</FontFamily>
                                         <FontSize>8pt</FontSize>
@@ -155,7 +180,7 @@
                                     </Style>
                                 </Paragraph>
                               </Paragraphs>
-                              <rd:DefaultName>TxtTableNoHeader</rd:DefaultName>
+                              <rd:DefaultName>TxtSiteHeader</rd:DefaultName>
                               <Style>
                                 <Border>
                                   <Color>Silver</Color>
@@ -171,14 +196,14 @@
                           </CellContents>
                         </TablixCell><TablixCell>
                           <CellContents>
-                            <Textbox Name="TxtParticularsHeader">
+                            <Textbox Name="TxtNoHeader">
                               <CanGrow>true</CanGrow>
                               <KeepTogether>true</KeepTogether>
                               <Paragraphs>
                                 <Paragraph>
                                   <TextRuns>
                                     <TextRun>
-                                      <Value>Particulars</Value>
+                                      <Value>No</Value>
                                       <Style>
                                         <FontFamily>Verdana</FontFamily>
                                         <FontSize>8pt</FontSize>
@@ -191,7 +216,7 @@
                                     </Style>
                                 </Paragraph>
                               </Paragraphs>
-                              <rd:DefaultName>TxtParticularsHeader</rd:DefaultName>
+                              <rd:DefaultName>TxtNoHeader</rd:DefaultName>
                               <Style>
                                 <Border>
                                   <Color>Silver</Color>
@@ -207,14 +232,14 @@
                           </CellContents>
                         </TablixCell><TablixCell>
                           <CellContents>
-                            <Textbox Name="TxtTaxableValueHeader">
+                            <Textbox Name="TxtTypeHeader">
                               <CanGrow>true</CanGrow>
                               <KeepTogether>true</KeepTogether>
                               <Paragraphs>
                                 <Paragraph>
                                   <TextRuns>
                                     <TextRun>
-                                      <Value>Taxable Value</Value>
+                                      <Value>Type</Value>
                                       <Style>
                                         <FontFamily>Verdana</FontFamily>
                                         <FontSize>8pt</FontSize>
@@ -223,11 +248,11 @@
                                     </TextRun>
                                   </TextRuns>
                                     <Style>
-                                        <TextAlign>Right</TextAlign>
+                                        <TextAlign>Left</TextAlign>
                                     </Style>
                                 </Paragraph>
                               </Paragraphs>
-                              <rd:DefaultName>TxtTaxableValueHeader</rd:DefaultName>
+                              <rd:DefaultName>TxtTypeHeader</rd:DefaultName>
                               <Style>
                                 <Border>
                                   <Color>Silver</Color>
@@ -243,14 +268,86 @@
                           </CellContents>
                         </TablixCell><TablixCell>
                           <CellContents>
-                            <Textbox Name="TxtTaxAmountHeader">
+                            <Textbox Name="TxtDateHeader">
                               <CanGrow>true</CanGrow>
                               <KeepTogether>true</KeepTogether>
                               <Paragraphs>
                                 <Paragraph>
                                   <TextRuns>
                                     <TextRun>
-                                      <Value>Tax Amount</Value>
+                                      <Value>Date</Value>
+                                      <Style>
+                                        <FontFamily>Verdana</FontFamily>
+                                        <FontSize>8pt</FontSize>
+                                        <FontWeight>Bold</FontWeight>
+                                      </Style>
+                                    </TextRun>
+                                  </TextRuns>
+                                    <Style>
+                                        <TextAlign>Left</TextAlign>
+                                    </Style>
+                                </Paragraph>
+                              </Paragraphs>
+                              <rd:DefaultName>TxtDateHeader</rd:DefaultName>
+                              <Style>
+                                <Border>
+                                  <Color>Silver</Color>
+                                  <Style>Solid</Style>
+                                </Border>
+                                <BackgroundColor>Gainsboro</BackgroundColor>
+                                <PaddingLeft>2pt</PaddingLeft>
+                                <PaddingRight>2pt</PaddingRight>
+                                <PaddingTop>2pt</PaddingTop>
+                                <PaddingBottom>2pt</PaddingBottom>
+                              </Style>
+                            </Textbox>
+                          </CellContents>
+                        </TablixCell><TablixCell>
+                          <CellContents>
+                            <Textbox Name="TxtNarrationHeader">
+                              <CanGrow>true</CanGrow>
+                              <KeepTogether>true</KeepTogether>
+                              <Paragraphs>
+                                <Paragraph>
+                                  <TextRuns>
+                                    <TextRun>
+                                      <Value>Narration</Value>
+                                      <Style>
+                                        <FontFamily>Verdana</FontFamily>
+                                        <FontSize>8pt</FontSize>
+                                        <FontWeight>Bold</FontWeight>
+                                      </Style>
+                                    </TextRun>
+                                  </TextRuns>
+                                    <Style>
+                                        <TextAlign>Left</TextAlign>
+                                    </Style>
+                                </Paragraph>
+                              </Paragraphs>
+                              <rd:DefaultName>TxtNarrationHeader</rd:DefaultName>
+                              <Style>
+                                <Border>
+                                  <Color>Silver</Color>
+                                  <Style>Solid</Style>
+                                </Border>
+                                <BackgroundColor>Gainsboro</BackgroundColor>
+                                <PaddingLeft>2pt</PaddingLeft>
+                                <PaddingRight>2pt</PaddingRight>
+                                <PaddingTop>2pt</PaddingTop>
+                                <PaddingBottom>2pt</PaddingBottom>
+                              </Style>
+                            </Textbox>
+                          </CellContents>
+                        </TablixCell><TablixCell>
+                          <CellContents>
+                            <Textbox Name="TxtDebitHeader">
+                              <CanGrow>true</CanGrow>
+                              <KeepTogether>true</KeepTogether>
+                              <Paragraphs>
+                                <Paragraph>
+                                  <TextRuns>
+                                    <TextRun>
+                                      <Value>Debit</Value>
                                       <Style>
                                         <FontFamily>Verdana</FontFamily>
                                         <FontSize>8pt</FontSize>
@@ -263,7 +360,115 @@
                                     </Style>
                                 </Paragraph>
                               </Paragraphs>
-                              <rd:DefaultName>TxtTaxAmountHeader</rd:DefaultName>
+                              <rd:DefaultName>TxtDebitHeader</rd:DefaultName>
+                              <Style>
+                                <Border>
+                                  <Color>Silver</Color>
+                                  <Style>Solid</Style>
+                                </Border>
+                                <BackgroundColor>Gainsboro</BackgroundColor>
+                                <PaddingLeft>2pt</PaddingLeft>
+                                <PaddingRight>2pt</PaddingRight>
+                                <PaddingTop>2pt</PaddingTop>
+                                <PaddingBottom>2pt</PaddingBottom>
+                              </Style>
+                            </Textbox>
+                          </CellContents>
+                        </TablixCell><TablixCell>
+                          <CellContents>
+                            <Textbox Name="TxtCreditHeader">
+                              <CanGrow>true</CanGrow>
+                              <KeepTogether>true</KeepTogether>
+                              <Paragraphs>
+                                <Paragraph>
+                                  <TextRuns>
+                                    <TextRun>
+                                      <Value>Credit</Value>
+                                      <Style>
+                                        <FontFamily>Verdana</FontFamily>
+                                        <FontSize>8pt</FontSize>
+                                        <FontWeight>Bold</FontWeight>
+                                      </Style>
+                                    </TextRun>
+                                  </TextRuns>
+                                    <Style>
+                                        <TextAlign>Right</TextAlign>
+                                    </Style>
+                                </Paragraph>
+                              </Paragraphs>
+                              <rd:DefaultName>TxtCreditHeader</rd:DefaultName>
+                              <Style>
+                                <Border>
+                                  <Color>Silver</Color>
+                                  <Style>Solid</Style>
+                                </Border>
+                                <BackgroundColor>Gainsboro</BackgroundColor>
+                                <PaddingLeft>2pt</PaddingLeft>
+                                <PaddingRight>2pt</PaddingRight>
+                                <PaddingTop>2pt</PaddingTop>
+                                <PaddingBottom>2pt</PaddingBottom>
+                              </Style>
+                            </Textbox>
+                          </CellContents>
+                        </TablixCell><TablixCell>
+                          <CellContents>
+                            <Textbox Name="TxtClosingHeader">
+                              <CanGrow>true</CanGrow>
+                              <KeepTogether>true</KeepTogether>
+                              <Paragraphs>
+                                <Paragraph>
+                                  <TextRuns>
+                                    <TextRun>
+                                      <Value>Closing</Value>
+                                      <Style>
+                                        <FontFamily>Verdana</FontFamily>
+                                        <FontSize>8pt</FontSize>
+                                        <FontWeight>Bold</FontWeight>
+                                      </Style>
+                                    </TextRun>
+                                  </TextRuns>
+                                    <Style>
+                                        <TextAlign>Right</TextAlign>
+                                    </Style>
+                                </Paragraph>
+                              </Paragraphs>
+                              <rd:DefaultName>TxtClosingHeader</rd:DefaultName>
+                              <Style>
+                                <Border>
+                                  <Color>Silver</Color>
+                                  <Style>Solid</Style>
+                                </Border>
+                                <BackgroundColor>Gainsboro</BackgroundColor>
+                                <PaddingLeft>2pt</PaddingLeft>
+                                <PaddingRight>2pt</PaddingRight>
+                                <PaddingTop>2pt</PaddingTop>
+                                <PaddingBottom>2pt</PaddingBottom>
+                              </Style>
+                            </Textbox>
+                          </CellContents>
+                        </TablixCell><TablixCell>
+                          <CellContents>
+                            <Textbox Name="TxtDR_CR_CLHeader">
+                              <CanGrow>true</CanGrow>
+                              <KeepTogether>true</KeepTogether>
+                              <Paragraphs>
+                                <Paragraph>
+                                  <TextRuns>
+                                    <TextRun>
+                                      <Value></Value>
+                                      <Style>
+                                        <FontFamily>Verdana</FontFamily>
+                                        <FontSize>8pt</FontSize>
+                                        <FontWeight>Bold</FontWeight>
+                                      </Style>
+                                    </TextRun>
+                                  </TextRuns>
+                                    <Style>
+                                        <TextAlign>Left</TextAlign>
+                                    </Style>
+                                </Paragraph>
+                              </Paragraphs>
+                              <rd:DefaultName>TxtDR_CR_CLHeader</rd:DefaultName>
                               <Style>
                                 <Border>
                                   <Color>Silver</Color>
@@ -282,14 +487,14 @@
                       <Height>0.25in</Height>
                       <TablixCells><TablixCell>
                           <CellContents>
-                            <Textbox Name="TableNo">
+                            <Textbox Name="Site">
                               <CanGrow>true</CanGrow>
                               <KeepTogether>true</KeepTogether>
                               <Paragraphs>
                                 <Paragraph>
                                   <TextRuns>
                                     <TextRun>
-                                      <Value>=Fields!TableNo.Value</Value>
+                                      <Value>=Fields!Site.Value</Value>
                                         <Style>
                                             <FontFamily>Verdana</FontFamily><FontWeight>=IIf(1=2, "Bold", "Regular")</FontWeight><FontSize>8pt</FontSize>
                                             
@@ -301,7 +506,7 @@
                                     </Style>
                                 </Paragraph>
                               </Paragraphs>
-                              <rd:DefaultName>TableNo</rd:DefaultName>
+                              <rd:DefaultName>Site</rd:DefaultName>
                               <Style>
                                 <Border>
                                   <Color>Silver</Color>
@@ -317,14 +522,14 @@
                           </CellContents>
                         </TablixCell><TablixCell>
                           <CellContents>
-                            <Textbox Name="Particulars">
+                            <Textbox Name="No">
                               <CanGrow>true</CanGrow>
                               <KeepTogether>true</KeepTogether>
                               <Paragraphs>
                                 <Paragraph>
                                   <TextRuns>
                                     <TextRun>
-                                      <Value>=Fields!Particulars.Value</Value>
+                                      <Value>=Fields!No.Value</Value>
                                         <Style>
                                             <FontFamily>Verdana</FontFamily><FontWeight>=IIf(1=2, "Bold", "Regular")</FontWeight><FontSize>8pt</FontSize>
                                             
@@ -336,7 +541,7 @@
                                     </Style>
                                 </Paragraph>
                               </Paragraphs>
-                              <rd:DefaultName>Particulars</rd:DefaultName>
+                              <rd:DefaultName>No</rd:DefaultName>
                               <Style>
                                 <Border>
                                   <Color>Silver</Color>
@@ -352,26 +557,26 @@
                           </CellContents>
                         </TablixCell><TablixCell>
                           <CellContents>
-                            <Textbox Name="TaxableValue">
+                            <Textbox Name="Type">
                               <CanGrow>true</CanGrow>
                               <KeepTogether>true</KeepTogether>
                               <Paragraphs>
                                 <Paragraph>
                                   <TextRuns>
                                     <TextRun>
-                                      <Value>=Fields!TaxableValue.Value</Value>
+                                      <Value>=Fields!Type.Value</Value>
                                         <Style>
                                             <FontFamily>Verdana</FontFamily><FontWeight>=IIf(1=2, "Bold", "Regular")</FontWeight><FontSize>8pt</FontSize>
-                                            <Format>0.00</Format>
+                                            
                                         </Style>
                                     </TextRun>
                                   </TextRuns>
                                     <Style>
-                                        <TextAlign>Right</TextAlign>
+                                        <TextAlign>Left</TextAlign>
                                     </Style>
                                 </Paragraph>
                               </Paragraphs>
-                              <rd:DefaultName>TaxableValue</rd:DefaultName>
+                              <rd:DefaultName>Type</rd:DefaultName>
                               <Style>
                                 <Border>
                                   <Color>Silver</Color>
@@ -387,14 +592,84 @@
                           </CellContents>
                         </TablixCell><TablixCell>
                           <CellContents>
-                            <Textbox Name="TaxAmount">
+                            <Textbox Name="Date">
                               <CanGrow>true</CanGrow>
                               <KeepTogether>true</KeepTogether>
                               <Paragraphs>
                                 <Paragraph>
                                   <TextRuns>
                                     <TextRun>
-                                      <Value>=Fields!TaxAmount.Value</Value>
+                                      <Value>=Fields!Date.Value</Value>
+                                        <Style>
+                                            <FontFamily>Verdana</FontFamily><FontWeight>=IIf(1=2, "Bold", "Regular")</FontWeight><FontSize>8pt</FontSize>
+                                            
+                                        </Style>
+                                    </TextRun>
+                                  </TextRuns>
+                                    <Style>
+                                        <TextAlign>Left</TextAlign>
+                                    </Style>
+                                </Paragraph>
+                              </Paragraphs>
+                              <rd:DefaultName>Date</rd:DefaultName>
+                              <Style>
+                                <Border>
+                                  <Color>Silver</Color>
+                                  <Style>Solid</Style>
+                                </Border>
+                                <BackgroundColor>=iif(RowNumber(nothing) Mod 2 , "White","WhiteSmoke")</BackgroundColor>
+                                <PaddingLeft>2pt</PaddingLeft>
+                                <PaddingRight>2pt</PaddingRight>
+                                <PaddingTop>2pt</PaddingTop>
+                                <PaddingBottom>2pt</PaddingBottom>
+                              </Style>
+                            </Textbox>
+                          </CellContents>
+                        </TablixCell><TablixCell>
+                          <CellContents>
+                            <Textbox Name="Narration">
+                              <CanGrow>true</CanGrow>
+                              <KeepTogether>true</KeepTogether>
+                              <Paragraphs>
+                                <Paragraph>
+                                  <TextRuns>
+                                    <TextRun>
+                                      <Value>=Fields!Narration.Value</Value>
+                                        <Style>
+                                            <FontFamily>Verdana</FontFamily><FontWeight>=IIf(1=2, "Bold", "Regular")</FontWeight><FontSize>8pt</FontSize>
+                                            
+                                        </Style>
+                                    </TextRun>
+                                  </TextRuns>
+                                    <Style>
+                                        <TextAlign>Left</TextAlign>
+                                    </Style>
+                                </Paragraph>
+                              </Paragraphs>
+                              <rd:DefaultName>Narration</rd:DefaultName>
+                              <Style>
+                                <Border>
+                                  <Color>Silver</Color>
+                                  <Style>Solid</Style>
+                                </Border>
+                                <BackgroundColor>=iif(RowNumber(nothing) Mod 2 , "White","WhiteSmoke")</BackgroundColor>
+                                <PaddingLeft>2pt</PaddingLeft>
+                                <PaddingRight>2pt</PaddingRight>
+                                <PaddingTop>2pt</PaddingTop>
+                                <PaddingBottom>2pt</PaddingBottom>
+                              </Style>
+                            </Textbox>
+                          </CellContents>
+                        </TablixCell><TablixCell>
+                          <CellContents>
+                            <Textbox Name="Debit">
+                              <CanGrow>true</CanGrow>
+                              <KeepTogether>true</KeepTogether>
+                              <Paragraphs>
+                                <Paragraph>
+                                  <TextRuns>
+                                    <TextRun>
+                                      <Value>=Fields!Debit.Value</Value>
                                         <Style>
                                             <FontFamily>Verdana</FontFamily><FontWeight>=IIf(1=2, "Bold", "Regular")</FontWeight><FontSize>8pt</FontSize>
                                             <Format>0.00</Format>
@@ -406,7 +681,112 @@
                                     </Style>
                                 </Paragraph>
                               </Paragraphs>
-                              <rd:DefaultName>TaxAmount</rd:DefaultName>
+                              <rd:DefaultName>Debit</rd:DefaultName>
+                              <Style>
+                                <Border>
+                                  <Color>Silver</Color>
+                                  <Style>Solid</Style>
+                                </Border>
+                                <BackgroundColor>=iif(RowNumber(nothing) Mod 2 , "White","WhiteSmoke")</BackgroundColor>
+                                <PaddingLeft>2pt</PaddingLeft>
+                                <PaddingRight>2pt</PaddingRight>
+                                <PaddingTop>2pt</PaddingTop>
+                                <PaddingBottom>2pt</PaddingBottom>
+                              </Style>
+                            </Textbox>
+                          </CellContents>
+                        </TablixCell><TablixCell>
+                          <CellContents>
+                            <Textbox Name="Credit">
+                              <CanGrow>true</CanGrow>
+                              <KeepTogether>true</KeepTogether>
+                              <Paragraphs>
+                                <Paragraph>
+                                  <TextRuns>
+                                    <TextRun>
+                                      <Value>=Fields!Credit.Value</Value>
+                                        <Style>
+                                            <FontFamily>Verdana</FontFamily><FontWeight>=IIf(1=2, "Bold", "Regular")</FontWeight><FontSize>8pt</FontSize>
+                                            <Format>0.00</Format>
+                                        </Style>
+                                    </TextRun>
+                                  </TextRuns>
+                                    <Style>
+                                        <TextAlign>Right</TextAlign>
+                                    </Style>
+                                </Paragraph>
+                              </Paragraphs>
+                              <rd:DefaultName>Credit</rd:DefaultName>
+                              <Style>
+                                <Border>
+                                  <Color>Silver</Color>
+                                  <Style>Solid</Style>
+                                </Border>
+                                <BackgroundColor>=iif(RowNumber(nothing) Mod 2 , "White","WhiteSmoke")</BackgroundColor>
+                                <PaddingLeft>2pt</PaddingLeft>
+                                <PaddingRight>2pt</PaddingRight>
+                                <PaddingTop>2pt</PaddingTop>
+                                <PaddingBottom>2pt</PaddingBottom>
+                              </Style>
+                            </Textbox>
+                          </CellContents>
+                        </TablixCell><TablixCell>
+                          <CellContents>
+                            <Textbox Name="Closing">
+                              <CanGrow>true</CanGrow>
+                              <KeepTogether>true</KeepTogether>
+                              <Paragraphs>
+                                <Paragraph>
+                                  <TextRuns>
+                                    <TextRun>
+                                      <Value>=Fields!Closing.Value</Value>
+                                        <Style>
+                                            <FontFamily>Verdana</FontFamily><FontWeight>=IIf(1=2, "Bold", "Regular")</FontWeight><FontSize>8pt</FontSize>
+                                            <Format>0.00</Format>
+                                        </Style>
+                                    </TextRun>
+                                  </TextRuns>
+                                    <Style>
+                                        <TextAlign>Right</TextAlign>
+                                    </Style>
+                                </Paragraph>
+                              </Paragraphs>
+                              <rd:DefaultName>Closing</rd:DefaultName>
+                              <Style>
+                                <Border>
+                                  <Color>Silver</Color>
+                                  <Style>Solid</Style>
+                                </Border>
+                                <BackgroundColor>=iif(RowNumber(nothing) Mod 2 , "White","WhiteSmoke")</BackgroundColor>
+                                <PaddingLeft>2pt</PaddingLeft>
+                                <PaddingRight>2pt</PaddingRight>
+                                <PaddingTop>2pt</PaddingTop>
+                                <PaddingBottom>2pt</PaddingBottom>
+                              </Style>
+                            </Textbox>
+                          </CellContents>
+                        </TablixCell><TablixCell>
+                          <CellContents>
+                            <Textbox Name="DR_CR_CL">
+                              <CanGrow>true</CanGrow>
+                              <KeepTogether>true</KeepTogether>
+                              <Paragraphs>
+                                <Paragraph>
+                                  <TextRuns>
+                                    <TextRun>
+                                      <Value>=Fields!DR_CR_CL.Value</Value>
+                                        <Style>
+                                            <FontFamily>Verdana</FontFamily><FontWeight>=IIf(1=2, "Bold", "Regular")</FontWeight><FontSize>8pt</FontSize>
+                                            
+                                        </Style>
+                                    </TextRun>
+                                  </TextRuns>
+                                    <Style>
+                                        <TextAlign>Left</TextAlign>
+                                    </Style>
+                                </Paragraph>
+                              </Paragraphs>
+                              <rd:DefaultName>DR_CR_CL</rd:DefaultName>
                               <Style>
                                 <Border>
                                   <Color>Silver</Color>
@@ -425,7 +805,7 @@
                       <Height>0.25in</Height>
                       <TablixCells><TablixCell>
                           <CellContents>
-                            <Textbox Name="TxtTableNoFooter">
+                            <Textbox Name="TxtSiteFooter">
                               <CanGrow>true</CanGrow>
                               <KeepTogether>true</KeepTogether>
                               <Paragraphs>
@@ -445,7 +825,7 @@
                                     </Style>
                                 </Paragraph>
                               </Paragraphs>
-                              <rd:DefaultName>TxtTableNoFooter</rd:DefaultName>
+                              <rd:DefaultName>TxtSiteFooter</rd:DefaultName>
                               <Style>
                                 <Border>
                                   <Color>Silver</Color>
@@ -460,7 +840,7 @@
                           </CellContents>
                         </TablixCell><TablixCell>
                           <CellContents>
-                            <Textbox Name="TxtParticularsFooter">
+                            <Textbox Name="TxtNoFooter">
                               <CanGrow>true</CanGrow>
                               <KeepTogether>true</KeepTogether>
                               <Paragraphs>
@@ -480,7 +860,7 @@
                                     </Style>
                                 </Paragraph>
                               </Paragraphs>
-                              <rd:DefaultName>TxtParticularsFooter</rd:DefaultName>
+                              <rd:DefaultName>TxtNoFooter</rd:DefaultName>
                               <Style>
                                 <Border>
                                   <Color>Silver</Color>
@@ -495,7 +875,7 @@
                           </CellContents>
                         </TablixCell><TablixCell>
                           <CellContents>
-                            <Textbox Name="TxtTaxableValueFooter">
+                            <Textbox Name="TxtTypeFooter">
                               <CanGrow>true</CanGrow>
                               <KeepTogether>true</KeepTogether>
                               <Paragraphs>
@@ -511,11 +891,11 @@
                                     </TextRun>
                                   </TextRuns>
                                     <Style>
-                                        <TextAlign>Right</TextAlign>
+                                        <TextAlign>Left</TextAlign>
                                     </Style>
                                 </Paragraph>
                               </Paragraphs>
-                              <rd:DefaultName>TxtTaxableValueFooter</rd:DefaultName>
+                              <rd:DefaultName>TxtTypeFooter</rd:DefaultName>
                               <Style>
                                 <Border>
                                   <Color>Silver</Color>
@@ -530,7 +910,7 @@
                           </CellContents>
                         </TablixCell><TablixCell>
                           <CellContents>
-                            <Textbox Name="TxtTaxAmountFooter">
+                            <Textbox Name="TxtDateFooter">
                               <CanGrow>true</CanGrow>
                               <KeepTogether>true</KeepTogether>
                               <Paragraphs>
@@ -546,11 +926,186 @@
                                     </TextRun>
                                   </TextRuns>
                                     <Style>
+                                        <TextAlign>Left</TextAlign>
+                                    </Style>
+                                </Paragraph>
+                              </Paragraphs>
+                              <rd:DefaultName>TxtDateFooter</rd:DefaultName>
+                              <Style>
+                                <Border>
+                                  <Color>Silver</Color>
+                                  <Style>Solid</Style>
+                                </Border>
+                                <PaddingLeft>2pt</PaddingLeft>
+                                <PaddingRight>2pt</PaddingRight>
+                                <PaddingTop>2pt</PaddingTop>
+                                <PaddingBottom>2pt</PaddingBottom>
+                              </Style>
+                            </Textbox>
+                          </CellContents>
+                        </TablixCell><TablixCell>
+                          <CellContents>
+                            <Textbox Name="TxtNarrationFooter">
+                              <CanGrow>true</CanGrow>
+                              <KeepTogether>true</KeepTogether>
+                              <Paragraphs>
+                                <Paragraph>
+                                  <TextRuns>
+                                    <TextRun>
+                                        <Value></Value>
+                                      <Style>
+                                        <FontFamily>Verdana</FontFamily>
+                                        <FontSize>8pt</FontSize>
+                                        <FontWeight>Bold</FontWeight>
+                                      </Style>
+                                    </TextRun>
+                                  </TextRuns>
+                                    <Style>
+                                        <TextAlign>Left</TextAlign>
+                                    </Style>
+                                </Paragraph>
+                              </Paragraphs>
+                              <rd:DefaultName>TxtNarrationFooter</rd:DefaultName>
+                              <Style>
+                                <Border>
+                                  <Color>Silver</Color>
+                                  <Style>Solid</Style>
+                                </Border>
+                                <PaddingLeft>2pt</PaddingLeft>
+                                <PaddingRight>2pt</PaddingRight>
+                                <PaddingTop>2pt</PaddingTop>
+                                <PaddingBottom>2pt</PaddingBottom>
+                              </Style>
+                            </Textbox>
+                          </CellContents>
+                        </TablixCell><TablixCell>
+                          <CellContents>
+                            <Textbox Name="TxtDebitFooter">
+                              <CanGrow>true</CanGrow>
+                              <KeepTogether>true</KeepTogether>
+                              <Paragraphs>
+                                <Paragraph>
+                                  <TextRuns>
+                                    <TextRun>
+                                        <Value>200000.00</Value>
+                                      <Style>
+                                        <FontFamily>Verdana</FontFamily>
+                                        <FontSize>8pt</FontSize>
+                                        <FontWeight>Bold</FontWeight>
+                                      </Style>
+                                    </TextRun>
+                                  </TextRuns>
+                                    <Style>
                                         <TextAlign>Right</TextAlign>
                                     </Style>
                                 </Paragraph>
                               </Paragraphs>
-                              <rd:DefaultName>TxtTaxAmountFooter</rd:DefaultName>
+                              <rd:DefaultName>TxtDebitFooter</rd:DefaultName>
+                              <Style>
+                                <Border>
+                                  <Color>Silver</Color>
+                                  <Style>Solid</Style>
+                                </Border>
+                                <PaddingLeft>2pt</PaddingLeft>
+                                <PaddingRight>2pt</PaddingRight>
+                                <PaddingTop>2pt</PaddingTop>
+                                <PaddingBottom>2pt</PaddingBottom>
+                              </Style>
+                            </Textbox>
+                          </CellContents>
+                        </TablixCell><TablixCell>
+                          <CellContents>
+                            <Textbox Name="TxtCreditFooter">
+                              <CanGrow>true</CanGrow>
+                              <KeepTogether>true</KeepTogether>
+                              <Paragraphs>
+                                <Paragraph>
+                                  <TextRuns>
+                                    <TextRun>
+                                        <Value>2104860.00</Value>
+                                      <Style>
+                                        <FontFamily>Verdana</FontFamily>
+                                        <FontSize>8pt</FontSize>
+                                        <FontWeight>Bold</FontWeight>
+                                      </Style>
+                                    </TextRun>
+                                  </TextRuns>
+                                    <Style>
+                                        <TextAlign>Right</TextAlign>
+                                    </Style>
+                                </Paragraph>
+                              </Paragraphs>
+                              <rd:DefaultName>TxtCreditFooter</rd:DefaultName>
+                              <Style>
+                                <Border>
+                                  <Color>Silver</Color>
+                                  <Style>Solid</Style>
+                                </Border>
+                                <PaddingLeft>2pt</PaddingLeft>
+                                <PaddingRight>2pt</PaddingRight>
+                                <PaddingTop>2pt</PaddingTop>
+                                <PaddingBottom>2pt</PaddingBottom>
+                              </Style>
+                            </Textbox>
+                          </CellContents>
+                        </TablixCell><TablixCell>
+                          <CellContents>
+                            <Textbox Name="TxtClosingFooter">
+                              <CanGrow>true</CanGrow>
+                              <KeepTogether>true</KeepTogether>
+                              <Paragraphs>
+                                <Paragraph>
+                                  <TextRuns>
+                                    <TextRun>
+                                        <Value>1904860.00</Value>
+                                      <Style>
+                                        <FontFamily>Verdana</FontFamily>
+                                        <FontSize>8pt</FontSize>
+                                        <FontWeight>Bold</FontWeight>
+                                      </Style>
+                                    </TextRun>
+                                  </TextRuns>
+                                    <Style>
+                                        <TextAlign>Right</TextAlign>
+                                    </Style>
+                                </Paragraph>
+                              </Paragraphs>
+                              <rd:DefaultName>TxtClosingFooter</rd:DefaultName>
+                              <Style>
+                                <Border>
+                                  <Color>Silver</Color>
+                                  <Style>Solid</Style>
+                                </Border>
+                                <PaddingLeft>2pt</PaddingLeft>
+                                <PaddingRight>2pt</PaddingRight>
+                                <PaddingTop>2pt</PaddingTop>
+                                <PaddingBottom>2pt</PaddingBottom>
+                              </Style>
+                            </Textbox>
+                          </CellContents>
+                        </TablixCell><TablixCell>
+                          <CellContents>
+                            <Textbox Name="TxtDR_CR_CLFooter">
+                              <CanGrow>true</CanGrow>
+                              <KeepTogether>true</KeepTogether>
+                              <Paragraphs>
+                                <Paragraph>
+                                  <TextRuns>
+                                    <TextRun>
+                                        <Value>Cr</Value>
+                                      <Style>
+                                        <FontFamily>Verdana</FontFamily>
+                                        <FontSize>8pt</FontSize>
+                                        <FontWeight>Bold</FontWeight>
+                                      </Style>
+                                    </TextRun>
+                                  </TextRuns>
+                                    <Style>
+                                        <TextAlign>Left</TextAlign>
+                                    </Style>
+                                </Paragraph>
+                              </Paragraphs>
+                              <rd:DefaultName>TxtDR_CR_CLFooter</rd:DefaultName>
                               <Style>
                                 <Border>
                                   <Color>Silver</Color>
@@ -566,7 +1121,7 @@
                         </TablixCell></TablixCells>
                     </TablixRow></TablixRows>
                 </TablixBody><TablixColumnHierarchy>
-                  <TablixMembers><TablixMember /><TablixMember /><TablixMember /><TablixMember /></TablixMembers>
+                  <TablixMembers><TablixMember /><TablixMember /><TablixMember /><TablixMember /><TablixMember /><TablixMember /><TablixMember /><TablixMember /><TablixMember /></TablixMembers>
                 </TablixColumnHierarchy>
                 <TablixRowHierarchy>
                   <TablixMembers>
@@ -1250,8 +1805,8 @@
                 </Border>
               </Style>
             </PageFooter>
-            <PageHeight>8.27in</PageHeight>
-            <PageWidth>11.69in</PageWidth>
+            <PageHeight>11.69in</PageHeight>
+            <PageWidth>8.27in</PageWidth>
             <InteractiveHeight>11.69in</InteractiveHeight>
             <InteractiveWidth>8.27in</InteractiveWidth>
             <LeftMargin>0.25in</LeftMargin>

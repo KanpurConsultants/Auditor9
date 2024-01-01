@@ -2,4 +2,4 @@
 Subcode	string	255		
 LinkedSubcode	string	255		
 Name	string	255		
-Balance	number	0	
+Balance	number	-30	
