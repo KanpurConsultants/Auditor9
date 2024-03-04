@@ -153,6 +153,11 @@ Public Class ClsReports
                         mQry = mQry & " Union All Select 'Catalog Wise Summary' as Code, 'Catalog Wise Summary' as Name "
                     End If
 
+                    If AgL.StrCmp(ClsMain.FDivisionNameForCustomization(6), "SADHVI") And AgL.StrCmp(AgL.PubDBName, "SADHVI") Then
+                        mQry = mQry & " Union All Select 'All Addition' as Code, 'All Addition' as Name "
+                        mQry = mQry & " Union All Select 'Un-Adjusted Addition' as Code, 'Un-Adjusted Addition' as Name "
+                    End If
+
                     ReportFrm.CreateHelpGrid("Report Type", "Report Type", FrmRepDisplay.FieldFilterDataType.StringType, FrmRepDisplay.FieldDataType.SingleSelection, mQry, "Month Wise Summary",,, 300)
                     ReportFrm.CreateHelpGrid("FromDate", "From Date", FrmRepDisplay.FieldFilterDataType.StringType, FrmRepDisplay.FieldDataType.DateType, "", AgL.PubStartDate)
                     ReportFrm.CreateHelpGrid("ToDate", "To Date", FrmRepDisplay.FieldFilterDataType.StringType, FrmRepDisplay.FieldDataType.DateType, "", AgL.PubEndDate)
@@ -1004,13 +1009,53 @@ Public Class ClsReports
                                 From (" & mQry & ") As VMain
                                 GROUP By VMain.DocId 
                                 Order By Max(VMain.V_Date_ActualFormat), Cast(Max(Replace(Vmain.ManualRefNo,'-','')) as Integer) "
-
                     End If
-
-
-
                 End If
-                    ElseIf ReportFrm.FGetText(0) = "Item Wise Detail" Then
+            ElseIf ReportFrm.FGetText(0) = "All Addition" Or ReportFrm.FGetText(0) = "Un-Adjusted Addition" Then
+                If GRepFormName = SaleOrderReport Then
+                    mQry = " Select VMain.DocId As SearchCode, Max(VMain.Division) as Division, Max(Vmain.Site) as Site, Max(VMain.V_Date) As OrderDate, Max(VMain.V_Type) as DocType, Max(VMain.InvoiceNo) As OrderNo,
+                                Max(VMain.SaleToPartyName) As Party, Max(Vmain.Brand) as Brand, IfNull(Sum(VMain.AmountExDiscount),0) As AmountExDiscount, IfNull(Sum(VMain.Discount + VMain.AdditionalDiscount),0) As Discount, IfNull(Sum(VMain.Addition),0) as Addition, IfNull(Sum(VMain.SpecialDiscount),0) As SpecialDiscount, IfNull(Sum(VMain.SpecialAddition),0) As SpecialAddition,
+                                IfNull(Sum(VMain.Amount),0) As Amount,IfNull(Sum(VMain.Taxable_Amount),0) As TaxableAmount, IfNull(Sum(VMain.TotalTax),0) As TaxAmount, IfNull(Sum(VMain.Net_Amount),0) As NetAmount
+                                From (" & mQry & ") As VMain
+                                GROUP By VMain.DocId 
+                                Order By Max(VMain.V_Date_ActualFormat), Cast(Max(Replace(Vmain.ManualRefNo,'-','')) as Integer) "
+                Else
+                    If (AgL.PubServerName <> "") Then
+                        mQry = " Select VMain.DocId As SearchCode, Max(VMain.Division) as Division, Max(Vmain.Site) as Site, Row_Number() OVER (ORDER BY Max(VMain.V_Date_ActualFormat),Cast(Max(Replace(Vmain.ManualRefNo,'-','')) as Integer),VMain.DocId) AS Sr,
+                                Max(VMain.V_Date) As InvoiceDate, Max(VMain.V_Type) as DocType, Max(VMain.InvoiceNo) As InvoiceNo, Max(VMain.NoOfBales) AS NoOfBales,
+                                Max(VMain.SaleToPartyName) As Party, Max(Vmain.Brand) as Brand, Max(VMain.SalesTaxGroupParty) As SalesTaxGroupParty, IfNull(Sum(VMain.AmountExDiscount),0) As AmountExDiscount, 
+                                IfNull(Sum(VMain.Discount+VMain.AdditionalDiscount),0) As Discount, IfNull(Sum(VMain.Addition),0) as Addition, -isnull(Max(CNAmount),0) CreditNoteAmt, IsNull(Sum(VMain.Addition),0)+isnull(Max(CNAmount),0) BalAddForCreditNote,
+                                IfNull(Sum(VMain.SpecialDiscount),0) As SpecialDiscount, IfNull(Sum(VMain.SpecialAddition),0) As SpecialAddition,
+                                IfNull(Sum(VMain.Amount),0) As Amount,IfNull(Sum(VMain.Taxable_Amount),0) As TaxableAmount, IfNull(Sum(VMain.TotalTax),0) As TaxAmount, IfNull(Sum(VMain.Net_Amount),0) As NetAmount, Max(VMain.Tags) as Tags, Max(VMain.OrderTags) as OrderTags
+                                From (" & mQry & ") As VMain
+                                LEFT JOIN 
+                                (
+                                SELECT L.SpecificationDocID, Sum(L.Amount) AS CNAmount 
+					            FROM LedgerHead H 
+					            LEFT JOIN LedgerHeadDetail L ON L.DocID = H.DocID
+					            WHERE H.V_Type ='CNC' AND L.SpecificationDocID IS NOT NULL 
+					            GROUP BY L.SpecificationDocID 
+                                ) AS CNC ON CNC.SpecificationDocID = VMain.DocID  
+                                GROUP By VMain.DocId "
+                        mQry = mQry + " HAVING IfNull(Sum(VMain.Addition),0) > 0 "
+
+                        If ReportFrm.FGetText(0) = "Un-Adjusted Addition" Then
+                            mQry = mQry + " And IsNull(Sum(VMain.Addition),0)+isnull(Max(CNAmount),0) > 0 "
+                        End If
+
+                        mQry = mQry + "Order By Max(VMain.V_Date_ActualFormat), Cast(Max(Replace(Vmain.ManualRefNo,'-','')) as Integer),VMain.DocId "
+                    Else
+                            mQry = " Select VMain.DocId As SearchCode, Max(VMain.Division) as Division, Max(Vmain.Site) as Site, 
+                                Max(VMain.V_Date) As InvoiceDate, Max(VMain.V_Type) as DocType, Max(VMain.InvoiceNo) As InvoiceNo, IfNull(Cast(Max(VMain.NoOfBales) as Integer),0) AS NoOfBales,
+                                Max(VMain.SaleToPartyName) As Party, Max(Vmain.Brand) as Brand, Max(VMain.SalesTaxGroupParty) As SalesTaxGroupParty, IfNull(Sum(VMain.AmountExDiscount),0) As AmountExDiscount, 
+                                IfNull(Sum(VMain.Discount+VMain.AdditionalDiscount),0) As Discount, IfNull(Sum(VMain.Addition),0) as Addition, IfNull(Sum(VMain.SpecialDiscount),0) As SpecialDiscount, IfNull(Sum(VMain.SpecialAddition),0) As SpecialAddition,
+                                IfNull(Sum(VMain.Amount),0) As Amount,IfNull(Sum(VMain.Taxable_Amount),0) As TaxableAmount, IfNull(Sum(VMain.TotalTax),0) As TaxAmount, IfNull(Sum(VMain.Net_Amount),0) As NetAmount, Max(VMain.Tags) as Tags, Max(VMain.OrderTags) as OrderTags
+                                From (" & mQry & ") As VMain
+                                GROUP By VMain.DocId 
+                                Order By Max(VMain.V_Date_ActualFormat), Cast(Max(Replace(Vmain.ManualRefNo,'-','')) as Integer) "
+                        End If
+                    End If
+                ElseIf ReportFrm.FGetText(0) = "Item Wise Detail" Then
                 If GRepFormName = SaleOrderReport Then
                     mQry = " Select VMain.DocId As SearchCode, Max(Vmain.Site) as Site, Max(VMain.Division) as Division, Max(VMain.V_Date) As [Order Date], Max(VMain.V_Type) as DocType, Max(VMain.InvoiceNo) As [Order No],
                     Max(VMain.SaleToPartyName) As Party, Max(VMain.ItemDesc) As Item, Sum(VMain.Qty) As Qty, Max(VMain.Unit) As Unit, Max(VMain.HSN) As HSN, 
@@ -1649,7 +1694,7 @@ Public Class ClsReports
 
             mQry = " SELECT H.DocID, L.Sr, H.V_Type, Vt.Description as VoucherType, strftime('%d/%m/%Y', H.V_Date) As V_Date, H.V_Date As V_Date_ActualFormat,
                     H.Subcode,
-                    Party.Name As PartyName , 
+                    Party.Name As PartyName , LinkedParty.Name As LinkedPartyName ,
                     LTV.Agent As AgentCode, Agent.Name As AgentName , 
                     City.CityCode, City.CityName, State.Code As StateCode, State.Description As StateName,
                     H.Div_Code || H.Site_Code || '-' || H.V_Type || '-' || H.ManualRefNo as InvoiceNo, H.ManualRefNo, 
@@ -1658,7 +1703,8 @@ Public Class ClsReports
                     FROM LedgerHead H 
                     Left Join LedgerHeadDetail L On H.DocID = L.DocID 
                     Left Join LedgerHeadDetailCharges LC On L.DocID = LC.DocID And L.Sr = LC.Sr
-                    Left Join viewHelpSubgroup Party On H.Subcode = Party.Code 
+                    Left Join viewHelpSubgroup Party On H.Subcode = Party.Code
+                    Left Join viewHelpSubgroup LinkedParty On H.LinkedSubcode = LinkedParty.Code  
                     Left Join (Select SILTV.Subcode, SILTV.Div_Code, SILTV.Site_Code, Max(SILTV.Agent) as Agent From SubgroupSiteDivisionDetail SILTV  Group By SILTV.Subcode, SILTV.Div_Code, SILTV.Site_Code) as LTV On Party.code = LTV.Subcode And H.Div_Code = LTV.Div_Code and H.Site_Code = LTV.Site_Code
                     Left Join viewHelpSubGroup Agent On LTV.Agent = Agent.Code 
                     Left Join City On H.PartyCity = City.CityCode 
@@ -1675,7 +1721,7 @@ Public Class ClsReports
                     Order By Max(VMain.V_Date_ActualFormat) "
             ElseIf ReportFrm.FGetText(0) = "Entry Line Wise Detail" Then
                 mQry = " Select VMain.DocId As SearchCode, Max(VMain.V_Date) As [Entry Date], Max(VMain.InvoiceNo) As [Entry No],
-                    Max(VMain.PartyName) As Party, Max(VMain.SalesTaxGroupItem)  as SalesTaxGroupItem,  Sum(VMain.Qty) As Qty, Max(VMain.Unit) As Unit, 
+                    Max(VMain.PartyName) As Party, Max(VMain.LinkedPartyName) As LinkedParty, Max(VMain.SalesTaxGroupItem)  as SalesTaxGroupItem,  Sum(VMain.Qty) As Qty, Max(VMain.Unit) As Unit, 
                     Max(VMain.Rate) As Rate,                
                     Sum(VMain.Amount) As Amount,                     
                     Sum(VMain.Taxable_Amount) As [Taxable Amount],

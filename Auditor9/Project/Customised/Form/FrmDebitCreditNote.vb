@@ -3161,10 +3161,14 @@ Public Class FrmDebitCreditNote
         GBoxImportFromExcel.Enabled = False
         TxtLinkedParty.Enabled = False
 
-        If FDivisionNameForCustomization(20) = "SHYAMA SHYAM FABRICS" Or
-            FDivisionNameForCustomization(22) = "W SHYAMA SHYAM FABRICS" Or ClsMain.FDivisionNameForCustomization(25) = "SHYAMA SHYAM VENTURES LLP" Or ClsMain.FDivisionNameForCustomization(27) = "W SHYAMA SHYAM VENTURES LLP" Then
+        If FDivisionNameForCustomization(20) = "SHYAMA SHYAM FABRICS" Or FDivisionNameForCustomization(22) = "W SHYAMA SHYAM FABRICS" Or ClsMain.FDivisionNameForCustomization(25) = "SHYAMA SHYAM VENTURES LLP" Or ClsMain.FDivisionNameForCustomization(27) = "W SHYAMA SHYAM VENTURES LLP" Then
             TxtLinkedParty.Visible = True
             LblLinkedParty.Visible = True
+        ElseIf AgL.StrCmp(AgL.PubDBName, "Sadhvi") Then
+            TxtLinkedParty.Visible = True
+            TxtLinkedParty.Enabled = True
+            LblLinkedParty.Visible = True
+            LblLinkedParty.Text = "Entry For"
         Else
             TxtLinkedParty.Visible = False
             LblLinkedParty.Visible = False

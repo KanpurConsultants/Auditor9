@@ -1,27 +1,27 @@
 ; Field definition file for table: ADORecordset
-Code	string	255	190	
-Barcode	string	255	1190	
+Code	string	255	4	
+Barcode	string	255	00298001	
 BarCodeImg	BLOB		
-ItemDesc	string	255	SADABAHAR	
-ItemCategoryDesc	string	255	SAREE	
-ItemGroupDesc	string	255	SAROJ	
+ItemDesc	string	255	6002-FREE	
+ItemCategoryDesc	string	255	PINK LADY	
+ItemGroupDesc	string	255	NIGHTY.	
 Dimension1Desc	string	255		
 Dimension2Desc	string	255		
 Dimension3Desc	string	255		
 Dimension4Desc	string	255		
 SizeDesc	string	255		
-PurchaseRate	number	809	
-SaleRate	number	1500	
+PurchaseRate	number	0	
+SaleRate	number	0	
 MRP	number	0	
-ReceiveQty	number	2	
+ReceiveQty	number	0	
 GenSr	number	1	
 ItemMasterPurchaseRate	number	0	
-ItemMasterSaleRate	number	0	
+ItemMasterSaleRate	number	160	
 BarcodeRatePrefix	string	255		
-Title1	string	255	DULHAN SAREE GHAR	
+Title1	string	255		
 Title2	string	255		
 Title3	string	255		
 SaleRate_RateType	string	255		
 SaleRate_RateTypeEncoded	long	0	
-RandomNo1	long	199	
-RandomNo2	long	181	
+RandomNo1	long	590	
+RandomNo2	long	615	

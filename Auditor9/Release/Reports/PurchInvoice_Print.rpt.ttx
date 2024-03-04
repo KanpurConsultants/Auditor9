@@ -1,47 +1,37 @@
 ; Field definition file for table: ADORecordset
 Copies	string	255	1	
 CopyPrintingCaption	string	255		
-DocNoCaption	string	255	Invoice No.	
-DocDateCaption	string	255	Invoice Date	
-DocID	string	255	D1    PI 2023      14	
-SiteStateCode	string	255	07	
-SiteStateName	string	255	Delhi	
+DocNoCaption	string	255	Doc.No.	
+DocDateCaption	string	255	Doc.Date	
+DocID	string	255	D1   SEC 2023       1	
+SiteStateCode	string	255	09	
+SiteStateName	string	255	Uttar Pradesh	
 Sr	number	1	
-V_Date	datetime	22/Nov/2023 12:00:00 AM	
-Voucher_Type	string	255	Purchase Invoice	
-NCat	string	255	PI	
-DocNo	string	255	D1-PI-10	
+V_Date	datetime	27/Feb/2024 12:00:00 AM	
+Voucher_Type	string	255	Stock Exchange	
+NCat	string	255	SEC	
+DocNo	string	255	D1-SEC-1	
 AgentName	string	255		
 AgentCaption	string	255	Agent	
-PartyName	string	255	SHRI BIHARIJI GARMENTS	
-PartyAddress	string	255	LOT NO.197 JUHI KHURD,
-,
-JUHI KHURD KANPUR NAGAR,
-KANPUR,
-208014
-	
-PartyPinCode	string	255	208014	
-PartyCityName	string	255	Kanpur	
+PartyName	string	255	ADITYA ENTERPRISES	
+PartyAddress	string	255	SAGAR MARKET,KARACHI KHANA	
+PartyPinCode	string	255	208001	
+PartyCityName	string	255	KANPUR	
 PartyStateCode	string	255	09	
 PartyStateName	string	255	Uttar Pradesh	
 PartyMobile	string	255		
 ContactPerson	string	255		
-PartySalesTaxNo	string	255	09ACCPA5639F1ZU	
+PartySalesTaxNo	string	255	09AFQPA1304J1ZN	
 PartyAadharNo	string	255		
-PartyPanNo	string	255	ACCPA5639F	
-ShipToPartyName	string	255	SHRI BIHARIJI GARMENTS	
-ShipToPartyAddress	string	255	LOT NO.197 JUHI KHURD,
-,
-JUHI KHURD KANPUR NAGAR,
-KANPUR,
-208014
-	
-ShipToPartyCity	string	255	Kanpur	
-ShipToPartyPincode	string	255	208014	
+PartyPanNo	string	255	AFQPA1304J	
+ShipToPartyName	string	255	ADITYA ENTERPRISES	
+ShipToPartyAddress	string	255	SAGAR MARKET,KARACHI KHANA	
+ShipToPartyCity	string	255	KANPUR	
+ShipToPartyPincode	string	255	208001	
 ShipToPartyStateCode	string	255	09	
 ShipToPartyStateName	string	255	Uttar Pradesh	
 ShipToPartyMobile	string	255		
-ShipToPartySalesTaxNo	string	255	09ACCPA5639F1ZU	
+ShipToPartySalesTaxNo	string	255	09AFQPA1304J1ZN	
 ShipToPartyAadharNo	string	255		
 ShipToPartyPanNo	string	255		
 TransporterName	string	255		
@@ -54,12 +44,12 @@ FreightType	string	255
 RoadPermitNo	string	255		
 RoadPermitDate	datetime		
 ReferenceNo	string	255		
-ItemName	string	255	2030-11*13 - AERO CLUB - KIDS COAT PANT	
-ItemGroupName	string	255	AERO CLUB	
-ItemCatName	string	255	KIDS COAT PANT	
-ItemSpecification	string	255	2030-11*13	
-InvoiceLineSpecification	string	255	2030-11*13	
-HSN	string	255	611190	
+ItemName	string	255	AIR SWITCH - YAKUZA SPARES - EV SPARES	
+ItemGroupName	string	255	YAKUZA SPARES	
+ItemCatName	string	255	EV SPARES	
+ItemSpecification	string	255	AIR SWITCH	
+InvoiceLineSpecification	string	255	AIR SWITCH	
+HSN	string	255	87142090	
 D1Spec	string	255		
 D2Spec	string	255		
 D3Spec	string	255		
@@ -74,15 +64,15 @@ D1Caption	string	255	Design
 D2Caption	string	255	Shade	
 D3Caption	string	255		
 D4Caption	string	255		
-SalesTaxGroupItem	string	255	GST 5%	
-GrossTaxRate	number	5	
+SalesTaxGroupItem	string	255	GST 28%	
+GrossTaxRate	number	28	
 Pcs	number	0	
-Qty	number	10	
-DocQty	number	10	
+Qty	number	5	
+DocQty	number	5	
 FreeQty	number	0	
 LossQty	number	0	
 RejQty	number	0	
-Rate	number	100	
+Rate	number	10	
 Unit	string	255	Pcs	
 UnitDecimalPlaces	number	0	
 DiscountPer	number	0	
@@ -90,11 +80,11 @@ DiscountAmount	number	0
 AdditionalDiscountPer	number	0	
 AdditionalDiscountAmount	number	0	
 TotalDiscount	number	0	
-AmountBeforeDiscount	number	1000	
-Amount	number	1000	
-Taxable_Amount	number	1000	
-Tax1_Per	number	5	
-Tax1	number	50	
+AmountBeforeDiscount	number	50	
+Amount	number	50	
+Taxable_Amount	number	0	
+Tax1_Per	number	0	
+Tax1	number	0	
 Tax2_Per	number	0	
 Tax2	number	0	
 Tax3_Per	number	0	
@@ -103,15 +93,15 @@ Tax4_Per	number	0
 Tax4	number	0	
 Tax5_Per	number	0	
 Tax5	number	0	
-Net_Amount	number	1050	
+Net_Amount	number	0	
 HRemarks	string	255		
 LRemarks	string	255		
-H_Gross_Amount	number	1000	
+H_Gross_Amount	number	0	
 H_SpecialDiscount_Per	number	0	
 H_SpecialDiscount	number	0	
-H_Taxable_Amount	number	1000	
+H_Taxable_Amount	number	0	
 H_Tax1_Per	number	0	
-H_Tax1	number	50	
+H_Tax1	number	0	
 H_Tax2_Per	number	0	
 H_Tax2	number	0	
 H_Tax3_Per	number	0	
@@ -125,15 +115,15 @@ H_Deduction	number	0
 H_Other_Charge_Per	number	0	
 H_Other_Charge	number	0	
 Round_Off	number	0	
-H_Net_Amount	number	1050	
+H_Net_Amount	number	0	
 H_TotalDiscount	number	0	
-H_AmountBeforeDiscount	number	1000	
-Default_BankAccountDetail	string	255	<B> Bank Detail :- <BR> ICICI BANK : 112605503219  IFSC : ICIC0001126 <BR>	
+H_AmountBeforeDiscount	number	70	
+Default_BankAccountDetail	string	255	<B> Bank Detail :- <BR> HDFC : 99915400000007  IFSC : HDFC0009597 <BR>	
 DocumentPrintHeaderPattern	string	255	Center Aligned	
 DimDetail	string	255		
 HsnDescription	string	255		
 PrintedByUser	string	255	SUPER	
-PrintTitle	string	255	Purchase Invoice	
+PrintTitle	string	255	Stock Exchange	
 TermsAndConditions	string	255		
 CompanyLogo	BLOB		
 CompanyAuthorisedSignature	BLOB		

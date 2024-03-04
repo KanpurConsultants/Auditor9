@@ -5033,11 +5033,14 @@ Public Class FrmSaleInvoiceDirect_WithDimension
 
     Private Sub FSetSalesTaxGroupItemBasedOnRate(mRowIndex As Integer)
         Dim DtMain As DataTable
+        Dim RatePerQty As Decimal
         If Dgl1.Item(Col1ItemCategory, mRowIndex).Tag <> "" And Val(Dgl1.Item(Col1Rate, mRowIndex).Value) > 0 Then
-            If AgL.StrCmp(AgL.PubDBName, "ShreeBhawani") And (TxtStructure.Tag = "GstSaleMrp") Then
+            If AgL.StrCmp(AgL.PubDBName, "ShreeBhawani") And (TxtStructure.Tag = "GstSaleMrp") And Val(Dgl1.Item(Col1DocQty, mRowIndex).Value) > 0 Then
+                Call Calculation()
+                RatePerQty = Val(Dgl1.Item(Col1Amount, mRowIndex).Value) / Val(Dgl1.Item(Col1Qty, mRowIndex).Value)
                 mQry = "Select SalesTaxGroupItem From ItemCategorySalesTax  With (NoLock)
                 Where Code='" & Dgl1.Item(Col1ItemCategory, mRowIndex).Tag & "' 
-                And MRPGreaterThan < " & Val(Dgl1.Item(Col1Rate, mRowIndex).Value) & " 
+                And MRPGreaterThan < " & Val(RatePerQty) & " 
                 And WEF <= " & AgL.Chk_Date(CDate(DglMain.Item(Col1Value, rowV_Date).Value).ToString("s")) & " 
                 Order By WEF Desc, RateGreaterThan Desc Limit 1"
             ElseIf AgL.PubServerName = "" Then
@@ -5214,8 +5217,12 @@ Public Class FrmSaleInvoiceDirect_WithDimension
                 Case Col1Size
                     Validating_Size(mColumnIndex, mRowIndex)
                     If Dgl1.Item(Col1Unit, mRowIndex).Tag Then ShowSaleInvoiceDimensionDetail(Dgl1.CurrentCell.RowIndex, False)
-                Case Col1Rate
+                Case Col1Rate, Col1DiscountPer
                     FSetSalesTaxGroupItemBasedOnRate(mRowIndex)
+                Case Col1DocQty
+                    If AgL.StrCmp(AgL.PubDBName, "ShreeBhawani") Then
+                        FSetSalesTaxGroupItemBasedOnRate(mRowIndex)
+                    End If
                 Case Col1ReferenceNo
                     If Dgl1.Item(Col1ReferenceNo, mRowIndex).Tag <> "" Then
                         Dgl1.Item(Col1ReferenceDocId, mRowIndex).Value = Dgl1.Item(Col1ReferenceNo, mRowIndex).Tag
@@ -5223,7 +5230,6 @@ Public Class FrmSaleInvoiceDirect_WithDimension
                     End If
 
             End Select
-            Call Calculation()
             Call Calculation()
 
 
@@ -5502,8 +5508,13 @@ Public Class FrmSaleInvoiceDirect_WithDimension
         If ForceCall = True Then
             AgCalcGrid1.Calculation()
         ElseIf mRow > -1 Then
-            If Val(Dgl1.Item(Col1Amount, mRow).Value) <> Val(Dgl1.Item(Col1xAmount, mRow).Value) Then
+            'this is creating prolem. Apply MRP condition here.
+            If TxtStructure.Tag = "GstSaleMrp" Then
                 AgCalcGrid1.Calculation()
+            Else
+                If Val(Dgl1.Item(Col1Amount, mRow).Value) <> Val(Dgl1.Item(Col1xAmount, mRow).Value) Then
+                    AgCalcGrid1.Calculation()
+                End If
             End If
         Else
             AgCalcGrid1.Calculation()

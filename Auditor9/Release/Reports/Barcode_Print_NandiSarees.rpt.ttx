@@ -1,27 +1,27 @@
 ; Field definition file for table: ADORecordset
-Code	string	255	6955	
-Barcode	string	255	7955	
+Code	string	255	9786	
+Barcode	string	255	10786	
 BarCodeImg	BLOB		
-ItemDesc	string	255	1003 6178	
-ItemCategoryDesc	string	255	LEHNGA	
-ItemGroupDesc	string	255	H.S.S.C LANCHA	
+ItemDesc	string	255	185 GS27	
+ItemCategoryDesc	string	255	SAREE 540822	
+ItemGroupDesc	string	255	S-ENT-2114 D	
 Dimension1Desc	string	255		
 Dimension2Desc	string	255		
 Dimension3Desc	string	255		
 Dimension4Desc	string	255		
 SizeDesc	string	255		
-PurchaseRate	number	16995	
-SaleRate	number	26900	
-MRP	number	26900	
+PurchaseRate	number	3100	
+SaleRate	number	4495	
+MRP	number	4495	
 ReceiveQty	number	1	
 GenSr	number	1	
-ItemMasterPurchaseRate	number	16995	
-ItemMasterSaleRate	number	26900	
+ItemMasterPurchaseRate	number	3100	
+ItemMasterSaleRate	number	4495	
 BarcodeRatePrefix	string	255		
-Title1	string	255	SADHVI EMBROIDERY (R)	
+Title1	string	255	SADHVI ENTERPRISES (R)	
 Title2	string	255		
 Title3	string	255		
 SaleRate_RateType	string	255		
 SaleRate_RateTypeEncoded	long	0	
-RandomNo1	long	735	
-RandomNo2	long	931	
+RandomNo1	long	218	
+RandomNo2	long	782	

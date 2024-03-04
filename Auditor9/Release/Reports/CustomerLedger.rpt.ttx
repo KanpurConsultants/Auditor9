@@ -1,44 +1,44 @@
 ; Field definition file for table: ADORecordset
-DocId	string	255	D1   WSI 2019     639	
-V_type	string	255	WSI	
-RecId	string	255	26234	
-V_Date	datetime	23/Jan/2020 12:00:00 AM	
+DocId	string	255	D1    SI 2023      77	
+V_type	string	255	SI	
+RecId	string	255	78	
+V_Date	datetime	02/Nov/2023 12:00:00 AM	
 Site_Code	string	255	1	
 Div_Code	string	255	D	
-Subcode	string	255	D100002764	
-LinkedSubcode	string	255	D100002765	
+Subcode	string	255	D100000101	
+LinkedSubcode	string	255		
 GoodsReturn	number	0	
 Adjustment	number	0	
 Payment	number	0	
-Balance	number	887.69	
-AmtDr	number	887.69	
+Balance	number	129251	
+AmtDr	number	129251	
 AmtCr	number	0	
-Narration	string	255		
+Narration	string	255	RAJU - GUSHAIGANJ	
 AdjDocID	string	255		
 DueDate	datetime		
 AdjDate	datetime		
 AdjAmount	string	255		
 InterestBalance	string	255		
-PartyName	string	255	APARNA GARMENTS (W), FIROZABAD	
-PartyCity	string	255	FIROZABAD	
-LinkedPartyName	string	255	APARNA GARMENTS -FIROZABAD	
-LrNo	string	255	. * 1	
-Brand	string	255	NDS,	
-AmsInvNo	string	255	376	
+PartyName	string	255	SANWARIYA SETH, DELHI	
+PartyCity	string	255	DELHI	
+LinkedPartyName	string	255		
+LrNo	string	255	282222 * 2	
+Brand	string	255	AERO CLUB,	
+AmsInvNo	string	255		
 AmsInvAmt	number	0	
-GoodsValue	number	859.95	
-DiscountPer	number	0	
-Discount	number	0	
-TaxableAmt	number	859.95	
-TaxAmt	number	27.74	
+GoodsValue	number	136040	
+DiscountPer	number	5	
+Discount	number	6789	
+TaxableAmt	number	119236.82	
+TaxAmt	number	10014.22	
 OtherChgAmt	number	0	
 Deduction	number	0	
-BillAmt	number	887.69	
+BillAmt	number	129251	
 Commission	number	0	
 NetPurAmt	number	0	
-Div_Name	string	255	DEMO	
-Site_Name	string	255	KANPUR	
-LeaverageDays	number	60	
-AveragePaymentDays	number		
-SiteShortName	string	255	KNP-	
+Div_Name	string	255	D	
+Site_Name	string	255	HO	
+LeaverageDays	number		
+AveragePaymentDays	number	150.508281783854	
+SiteShortName	string	255		
 Commission_Unsettled	number	0	

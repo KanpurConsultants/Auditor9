@@ -243,6 +243,7 @@ Partial Class MDIMain
         Me.MnuJobInvoiceReport = New System.Windows.Forms.ToolStripMenuItem()
         Me.MnuJobOrderStatusReport = New System.Windows.Forms.ToolStripMenuItem()
         Me.MnuReports = New System.Windows.Forms.ToolStripMenuItem()
+        Me.MnuSizeWiseSaleOrderReport = New System.Windows.Forms.ToolStripMenuItem()
         Me.MnuSizeWiseSaleInvoiceReport = New System.Windows.Forms.ToolStripMenuItem()
         Me.MnuSizeWiseStockReport = New System.Windows.Forms.ToolStripMenuItem()
         Me.MnuSizeWiseRateList = New System.Windows.Forms.ToolStripMenuItem()
@@ -320,7 +321,7 @@ Partial Class MDIMain
         Me.MnuPrintCheque = New System.Windows.Forms.ToolStripMenuItem()
         Me.MnuBank = New System.Windows.Forms.ToolStripMenuItem()
         Me.MnuChequePrinting = New System.Windows.Forms.ToolStripMenuItem()
-        Me.MnuSizeWiseSaleOrderReport = New System.Windows.Forms.ToolStripMenuItem()
+        Me.MnuStockExchange = New System.Windows.Forms.ToolStripMenuItem()
         Me.MnuMain.SuspendLayout()
         Me.SuspendLayout()
         '
@@ -1613,7 +1614,7 @@ Partial Class MDIMain
         '
         'MnuInventory
         '
-        Me.MnuInventory.DropDownItems.AddRange(New System.Windows.Forms.ToolStripItem() {Me.MnuOpeningStock, Me.MnuOpeningStockProcess, Me.MnuStockIssue, Me.MnuStockReceive, Me.MnuStockTransfer, Me.MnuPhysicalStock, Me.MnuPhysicalStockAdjustment, Me.MnuInventoryReports})
+        Me.MnuInventory.DropDownItems.AddRange(New System.Windows.Forms.ToolStripItem() {Me.MnuOpeningStock, Me.MnuOpeningStockProcess, Me.MnuStockIssue, Me.MnuStockReceive, Me.MnuStockTransfer, Me.MnuStockExchange, Me.MnuPhysicalStock, Me.MnuPhysicalStockAdjustment, Me.MnuInventoryReports})
         Me.MnuInventory.Name = "MnuInventory"
         Me.MnuInventory.Size = New System.Drawing.Size(69, 20)
         Me.MnuInventory.Text = "Inventory"
@@ -1917,6 +1918,14 @@ Partial Class MDIMain
         Me.MnuReports.Name = "MnuReports"
         Me.MnuReports.Size = New System.Drawing.Size(59, 20)
         Me.MnuReports.Text = "Reports"
+        '
+        'MnuSizeWiseSaleOrderReport
+        '
+        Me.MnuSizeWiseSaleOrderReport.AccessibleDescription = "+APPAREL"
+        Me.MnuSizeWiseSaleOrderReport.Name = "MnuSizeWiseSaleOrderReport"
+        Me.MnuSizeWiseSaleOrderReport.Size = New System.Drawing.Size(307, 22)
+        Me.MnuSizeWiseSaleOrderReport.Tag = "REPORT"
+        Me.MnuSizeWiseSaleOrderReport.Text = "Size Wise Sale Order Report"
         '
         'MnuSizeWiseSaleInvoiceReport
         '
@@ -2449,13 +2458,11 @@ Partial Class MDIMain
         Me.MnuChequePrinting.Size = New System.Drawing.Size(160, 22)
         Me.MnuChequePrinting.Text = "Cheque Printing"
         '
-        'MnuSizeWiseSaleOrderReport
+        'MnuStockExchange
         '
-        Me.MnuSizeWiseSaleOrderReport.AccessibleDescription = "+APPAREL"
-        Me.MnuSizeWiseSaleOrderReport.Name = "MnuSizeWiseSaleOrderReport"
-        Me.MnuSizeWiseSaleOrderReport.Size = New System.Drawing.Size(307, 22)
-        Me.MnuSizeWiseSaleOrderReport.Tag = "REPORT"
-        Me.MnuSizeWiseSaleOrderReport.Text = "Size Wise Sale Order Report"
+        Me.MnuStockExchange.Name = "MnuStockExchange"
+        Me.MnuStockExchange.Size = New System.Drawing.Size(214, 22)
+        Me.MnuStockExchange.Text = "Stock Exchange"
         '
         'MDIMain
         '
@@ -2781,4 +2788,5 @@ Partial Class MDIMain
     Friend WithEvents MnuDeleteLedgerAcData As ToolStripMenuItem
     Friend WithEvents MnuGenerateBarcodeSS As ToolStripMenuItem
     Friend WithEvents MnuSizeWiseSaleOrderReport As ToolStripMenuItem
+    Friend WithEvents MnuStockExchange As ToolStripMenuItem
 End Class

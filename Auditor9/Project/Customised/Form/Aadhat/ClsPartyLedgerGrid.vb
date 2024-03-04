@@ -1912,15 +1912,24 @@ Public Class ClsPartyLedgerGrid
             GetDataReadyForFIFOBalance(mCondStr)
         End If
 
+        Dim mNarration As String = ""
+        If AgL.StrCmp(AgL.PubDBName, "ShreeBhawani") Then
+            mNarration = "(Case When VT.NCat Not In ( '" & Ncat.SaleInvoice & "', '" & Ncat.PurchaseInvoice & "'  ) Then LG.Narration || '. ' Else '' End)  || IfNull(SI.Remarks,'') || IfNull(LG.Chq_No,'') "
+        Else
+            mNarration = "(Case When VT.NCat Not In ( '" & Ncat.SaleInvoice & "', '" & Ncat.PurchaseInvoice & "'  ) Then LG.Narration || '. ' Else '' End) || IfNull(LG.Chq_No,'') "
+        End If
+
+
 
         mQry = " SELECT LG.DocId, Lg.V_SNo, LG.V_Type, VT.NCat, Sg.SubCode, PSG.Subcode as LinkedSubcode, IfNull(PI.VendorDocNo,LG.RecId) as RecID, LG.V_Date, Sg.Subcode, Sg.Nature, 
                         Sg.name || (Case When IfNull(Ct.CityName,'') <> '' Then ', ' || IfNull(Ct.CityName,'') else '' End) as PartyName, CT.CityName as PartyCity, 
                         LG.AmtDr, LG.AmtCr, LG.AmtDr + LG.AmtCr as Amount,
                         LG.Site_Code, LG.DivCode As Div_Code, 
-                        (Case When VT.NCat Not In ( '" & Ncat.SaleInvoice & "', '" & Ncat.PurchaseInvoice & "'  ) Then LG.Narration || '. ' Else '' End) || IfNull(LG.Chq_No,'') as Narration,
+                        " & mNarration & " as Narration,
                         LG.Clg_Date
                         FROM Ledger LG 
-                        Left Join PurchInvoice PI On LG.DocID = PI.DocID"
+                        Left Join PurchInvoice PI On LG.DocID = PI.DocID
+                        Left Join SaleInvoice SI On LG.DocID = SI.DocID "
         If ReportFrm.FGetText(rowGroupOn) = "Linked Party" Then
             mQry = mQry & " Left Join SubGroup SG On SG.Subcode = IfNull(LG.LinkedSubcode,LG.SubCode)   "
             'mQry = mQry & " Left Join Subgroup PSg On  PSg.Subcode = IfNull(Lg.LinkedSubcode,Lg.Subcode) "

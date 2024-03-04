@@ -4906,7 +4906,8 @@ Sincerely
             AgL.AddFieldSqlite(AgL.GcnMain, "StockHeadDetail", "Round_Off", "Float", "0", False)
             AgL.AddFieldSqlite(AgL.GcnMain, "StockHeadDetail", "Net_Amount", "Float", "0", False)
             AgL.AddFieldSqlite(AgL.GcnMain, "StockHeadDetail", "MRP", "Float", "0", False)
-
+            AgL.AddFieldSqlite(AgL.GcnMain, "StockHeadDetail", "EntryType", "nVarchar(50)", "", True)
+            AgL.AddFieldSqlite(AgL.GcnMain, "PurchInvoiceDetail", "EntryType", "nVarchar(50)", "", True)
 
         Catch ex As Exception
             MsgBox(ex.Message & " [FCreateTable_StockHeadDetail] ")
@@ -6025,6 +6026,17 @@ Sincerely
         FSeedSingleIfNotExist_Setting(SettingType.General, "", Ncat.StockIssue, SettingFields.ActionToPrintOnAdd, ActionToPrint.AskAndPrintOnScreen, AgDataType.Text, "20", "ActionToPrint", AgHelpQueryType.ClassName, AgHelpSelectionType.SingleSelect,,,,, ,, "+SUPPORT")
         FSeedSingleIfNotExist_Setting(SettingType.General, "", Ncat.StockIssue, SettingFields.GeneratedEntryV_TypeForContraSite, "", AgDataType.Text, "255", mVoucher_TypeFieldQry, AgHelpQueryType.SqlQuery, AgHelpSelectionType.SingleSelect,,,,, ,, "+SUPPORT")
     End Sub
+    Private Sub FSeedTable_Settings_NCatWise_StockExchange()
+        FSeedSingleIfNotExist_Setting(SettingType.General, "", Ncat.StockExchange, SettingFields.PostInStockYn, "1", AgDataType.YesNo, "50")
+        FSeedSingleIfNotExist_Setting(SettingType.General, "", Ncat.StockExchange, SettingFields.PostInStockProcessYn, "1", AgDataType.YesNo, "50")
+        FSeedSingleIfNotExist_Setting(SettingType.General, "", Ncat.StockExchange, SettingFields.PrintingCopyCaptions, "", AgDataType.Text, "250",,,,,,,, ,, "+SUPPORT")
+        FSeedSingleIfNotExist_Setting(SettingType.General, "", Ncat.StockExchange, SettingFields.FilterInclude_ItemDivision, "", AgDataType.Text, "255", mDivisionFieldQry, AgHelpQueryType.SqlQuery, AgHelpSelectionType.MultiSelect,,,,, ,, "+SUPPORT")
+        FSeedSingleIfNotExist_Setting(SettingType.General, "", Ncat.StockExchange, SettingFields.FilterInclude_ItemType, "", AgDataType.Text, "255", mItemTypeFieldQry, AgHelpQueryType.SqlQuery, AgHelpSelectionType.MultiSelect,,,,, ,, "+SUPPORT")
+        FSeedSingleIfNotExist_Setting(SettingType.General, "", Ncat.StockExchange, SettingFields.FilterInclude_ItemV_Type, "", AgDataType.Text, "255", "ItemV_Type", AgHelpQueryType.ClassName, AgHelpSelectionType.MultiSelect,,,,, ,, "+SUPPORT")
+        FSeedSingleIfNotExist_Setting(SettingType.General, "", Ncat.StockExchange, SettingFields.FilterInclude_SubgroupType, "", AgDataType.Text, "255", mSubGroupTypeFieldQry, AgHelpQueryType.SqlQuery, AgHelpSelectionType.MultiSelect,,,,, ,, "+SUPPORT")
+        FSeedSingleIfNotExist_Setting(SettingType.General, "", Ncat.StockExchange, SettingFields.ActionToPrintOnAdd, ActionToPrint.AskAndPrintOnScreen, AgDataType.Text, "20", "ActionToPrint", AgHelpQueryType.ClassName, AgHelpSelectionType.SingleSelect,,,,, ,, "+SUPPORT")
+        FSeedSingleIfNotExist_Setting(SettingType.General, "", Ncat.StockExchange, SettingFields.GeneratedEntryV_TypeForContraSite, "", AgDataType.Text, "255", mVoucher_TypeFieldQry, AgHelpQueryType.SqlQuery, AgHelpSelectionType.SingleSelect,,,,, ,, "+SUPPORT")
+    End Sub
     Private Sub FSeedTable_Settings_NCatWise_StockTransfer()
         FSeedSingleIfNotExist_Setting(SettingType.General, "", Ncat.StockTransfer, SettingFields.PostInStockYn, "1", AgDataType.YesNo, "50")
         FSeedSingleIfNotExist_Setting(SettingType.General, "", Ncat.StockTransfer, SettingFields.PostInStockProcessYn, "0", AgDataType.YesNo, "50")
@@ -6240,6 +6252,7 @@ Sincerely
         FSeedTable_Settings_NCatWise_StockIssue()
         FSeedTable_Settings_NCatWise_StockReceive()
         FSeedTable_Settings_NCatWise_StockTransfer()
+        FSeedTable_Settings_NCatWise_StockExchange()
         FSeedTable_Settings_NCatWise_Receipt()
         FSeedTable_Settings_NCatWise_Payment()
         FSeedTable_Settings_NCatWise_VisitReceipt()
@@ -7673,7 +7686,32 @@ Thanks
             FSeedSingleIfNotExist_EntryHeaderUISetting("FrmPurchInvoiceDirect", Ncat.StockTransfer, "Dgl2", FrmPurchInvoiceDirect_WithDimension.hcBtnAttachments)
 
 
+            FSeedSingleIfNotExist_EntryHeaderUISetting("FrmPurchInvoiceDirect", Ncat.StockExchange, "DglMain", AgTemplate.TempTransaction1.hcSite_Code, 1, 1, 1)
+            FSeedSingleIfNotExist_EntryHeaderUISetting("FrmPurchInvoiceDirect", Ncat.StockExchange, "DglMain", AgTemplate.TempTransaction1.hcV_Type, 1, 1, 1)
+            FSeedSingleIfNotExist_EntryHeaderUISetting("FrmPurchInvoiceDirect", Ncat.StockExchange, "DglMain", AgTemplate.TempTransaction1.hcV_Date, 1, 1, 1)
+            FSeedSingleIfNotExist_EntryHeaderUISetting("FrmPurchInvoiceDirect", Ncat.StockExchange, "DglMain", AgTemplate.TempTransaction1.hcV_No, 0, 1, 1)
+            FSeedSingleIfNotExist_EntryHeaderUISetting("FrmPurchInvoiceDirect", Ncat.StockExchange, "DglMain", AgTemplate.TempTransaction1.hcReferenceNo, 1, 1, 1)
+            FSeedSingleIfNotExist_EntryHeaderUISetting("FrmPurchInvoiceDirect", Ncat.StockExchange, "DglMain", AgTemplate.TempTransaction1.hcSettingGroup, 0, 0, 0)
+            FSeedSingleIfNotExist_EntryHeaderUISetting("FrmPurchInvoiceDirect", Ncat.StockExchange, "DglMain", FrmPurchInvoiceDirect_WithDimension.hcProcess, 0)
+            FSeedSingleIfNotExist_EntryHeaderUISetting("FrmPurchInvoiceDirect", Ncat.StockExchange, "DglMain", FrmPurchInvoiceDirect_WithDimension.hcVendor, 1, 1, 1)
 
+            FSeedSingleIfNotExist_EntryHeaderUISetting("FrmPurchInvoiceDirect", Ncat.StockExchange, "Dgl2", FrmPurchInvoiceDirect_WithDimension.hcVendorDocNo, 0)
+            FSeedSingleIfNotExist_EntryHeaderUISetting("FrmPurchInvoiceDirect", Ncat.StockExchange, "Dgl2", FrmPurchInvoiceDirect_WithDimension.hcVendorDocDate, 0)
+            FSeedSingleIfNotExist_EntryHeaderUISetting("FrmPurchInvoiceDirect", Ncat.StockExchange, "Dgl2", FrmPurchInvoiceDirect_WithDimension.hcGodown, 1, 1)
+            FSeedSingleIfNotExist_EntryHeaderUISetting("FrmPurchInvoiceDirect", Ncat.StockExchange, "Dgl2", FrmPurchInvoiceDirect_WithDimension.hcCatalog, 0, 0)
+            FSeedSingleIfNotExist_EntryHeaderUISetting("FrmPurchInvoiceDirect", Ncat.StockExchange, "Dgl2", FrmPurchInvoiceDirect_WithDimension.hcRemarks, 1)
+            FSeedSingleIfNotExist_EntryHeaderUISetting("FrmPurchInvoiceDirect", Ncat.StockExchange, "Dgl2", FrmPurchInvoiceDirect_WithDimension.hcBtnStockBalance, 0)
+            FSeedSingleIfNotExist_EntryHeaderUISetting("FrmPurchInvoiceDirect", Ncat.StockExchange, "Dgl2", FrmPurchInvoiceDirect_WithDimension.hcBtnAttachments)
+            FSeedSingleIfNotExist_EntryHeaderUISetting("FrmPurchInvoiceDirect", Ncat.StockExchange, "Dgl2", FrmPurchInvoiceDirect_WithDimension.hcBtnTransportDetail, 1)
+
+            FSeedSingleIfNotExist_EntryHeaderUISetting("FrmPurchaseInvoiceHeader", Ncat.StockExchange, "DGL1", FrmPurchaseInvoiceHeader.HcTransporter, 1)
+            FSeedSingleIfNotExist_EntryHeaderUISetting("FrmPurchaseInvoiceHeader", Ncat.StockExchange, "DGL1", FrmPurchaseInvoiceHeader.HcLrNo, 1)
+            FSeedSingleIfNotExist_EntryHeaderUISetting("FrmPurchaseInvoiceHeader", Ncat.StockExchange, "DGL1", FrmPurchaseInvoiceHeader.HcLrDate, 1)
+            FSeedSingleIfNotExist_EntryHeaderUISetting("FrmPurchaseInvoiceHeader", Ncat.StockExchange, "DGL1", FrmPurchaseInvoiceHeader.hcNoOfBales, 1)
+            FSeedSingleIfNotExist_EntryHeaderUISetting("FrmPurchaseInvoiceHeader", Ncat.StockExchange, "DGL1", FrmPurchaseInvoiceHeader.HcPrivateMark, 1)
+            FSeedSingleIfNotExist_EntryHeaderUISetting("FrmPurchaseInvoiceHeader", Ncat.StockExchange, "DGL1", FrmPurchaseInvoiceHeader.HcWeight, 1)
+            FSeedSingleIfNotExist_EntryHeaderUISetting("FrmPurchaseInvoiceHeader", Ncat.StockExchange, "DGL1", FrmPurchaseInvoiceHeader.HcFreight, 1)
+            FSeedSingleIfNotExist_EntryHeaderUISetting("FrmPurchaseInvoiceHeader", Ncat.StockExchange, "DGL1", FrmPurchaseInvoiceHeader.HcLrPaymentType, 1)
 
 
 
@@ -7914,6 +7952,17 @@ Thanks
             FSeedSingleIfNotExist_EntryHeaderUISetting("FrmPerson", SubgroupType.Customer, "Dgl1", ConfigurableFields.FrmPersonHeaderDgl1.SalesTaxNo, 1, 0)
             FSeedSingleIfNotExist_EntryHeaderUISetting("FrmPerson", SubgroupType.Customer, "Dgl1", ConfigurableFields.FrmPersonHeaderDgl1.PanNo, 1, 0)
             FSeedSingleIfNotExist_EntryHeaderUISetting("FrmPerson", SubgroupType.Customer, "Dgl1", ConfigurableFields.FrmPersonHeaderDgl1.AadharNo, 1, 0)
+
+            FSeedSingleIfNotExist_EntryHeaderUISetting("FrmPerson", SubgroupType.Customer, "Dgl1", ConfigurableFields.FrmPersonHeaderDgl1.IsMSMERegistred, 0, 0)
+            FSeedSingleIfNotExist_EntryHeaderUISetting("FrmPerson", SubgroupType.Customer, "Dgl1", ConfigurableFields.FrmPersonHeaderDgl1.MSMEType, 0, 0)
+            FSeedSingleIfNotExist_EntryHeaderUISetting("FrmPerson", SubgroupType.Customer, "Dgl1", ConfigurableFields.FrmPersonHeaderDgl1.TradeType, 0, 0)
+            FSeedSingleIfNotExist_EntryHeaderUISetting("FrmPerson", SubgroupType.Customer, "Dgl1", ConfigurableFields.FrmPersonHeaderDgl1.UdyamNo, 0, 0)
+
+            FSeedSingleIfNotExist_EntryHeaderUISetting("FrmPerson", SubgroupType.Supplier, "Dgl1", ConfigurableFields.FrmPersonHeaderDgl1.IsMSMERegistred, 0, 0)
+            FSeedSingleIfNotExist_EntryHeaderUISetting("FrmPerson", SubgroupType.Supplier, "Dgl1", ConfigurableFields.FrmPersonHeaderDgl1.MSMEType, 0, 0)
+            FSeedSingleIfNotExist_EntryHeaderUISetting("FrmPerson", SubgroupType.Supplier, "Dgl1", ConfigurableFields.FrmPersonHeaderDgl1.TradeType, 0, 0)
+            FSeedSingleIfNotExist_EntryHeaderUISetting("FrmPerson", SubgroupType.Supplier, "Dgl1", ConfigurableFields.FrmPersonHeaderDgl1.UdyamNo, 0, 0)
+
             FSeedSingleIfNotExist_EntryHeaderUISetting("FrmPerson", SubgroupType.Customer, "Dgl1", FrmPerson.hcLicenseNo, 0, 0)
             If ClsMain.IsScopeOfWorkContains("+CLOTH TRADING WHOLESALE") Then
                 FSeedSingleIfNotExist_EntryHeaderUISetting("FrmPerson", SubgroupType.Customer, "Dgl1", ConfigurableFields.FrmPersonHeaderDgl1.Parent, 1, 0, 0, "Master Party")
@@ -8794,6 +8843,7 @@ Thanks
             FSeedSingleIfNotExist_EntryLineUISetting("FrmPurchInvoiceDirect", Ncat.StockIssue, "Dgl1", FrmPurchInvoiceDirect_WithDimension.Col1ItemGroup, False)
             FSeedSingleIfNotExist_EntryLineUISetting("FrmPurchInvoiceDirect", Ncat.StockIssue, "Dgl1", FrmPurchInvoiceDirect_WithDimension.Col1ItemCode, False)
             FSeedSingleIfNotExist_EntryLineUISetting("FrmPurchInvoiceDirect", Ncat.StockIssue, "Dgl1", FrmPurchInvoiceDirect_WithDimension.Col1Item, True)
+            FSeedSingleIfNotExist_EntryLineUISetting("FrmPurchInvoiceDirect", Ncat.StockIssue, "Dgl1", FrmPurchInvoiceDirect_WithDimension.Col1EntryType, False)
             If ClsMain.IsScopeOfWorkContains(IndustryType.CommonModules.Dimension1) Then
                 FSeedSingleIfNotExist_EntryLineUISetting("FrmPurchInvoiceDirect", Ncat.StockIssue, "Dgl1", FrmPurchInvoiceDirect_WithDimension.Col1Dimension1, False)
             End If
@@ -8852,6 +8902,37 @@ Thanks
             FSeedSingleIfNotExist_EntryLineUISetting("FrmPurchaseInvoiceDimension", Ncat.StockIssue, "Dgl1", FrmPurchaseInvoiceDimension_WithDimension.Col1UnitMultiplier, False)
             FSeedSingleIfNotExist_EntryLineUISetting("FrmPurchaseInvoiceDimension", Ncat.StockIssue, "Dgl1", FrmPurchaseInvoiceDimension_WithDimension.Col1DealQty, False)
             FSeedSingleIfNotExist_EntryLineUISetting("FrmPurchaseInvoiceDimension", Ncat.StockIssue, "Dgl1", FrmPurchaseInvoiceDimension_WithDimension.Col1TotalDealQty, False)
+
+
+            FSeedSingleIfNotExist_EntryLineUISetting("FrmPurchInvoiceDirect", Ncat.StockExchange, "Dgl1", FrmPurchaseInvoiceDimension_WithDimension.ColSNo, True)
+            FSeedSingleIfNotExist_EntryLineUISetting("FrmPurchInvoiceDirect", Ncat.StockExchange, "Dgl1", FrmPurchaseInvoiceDimension_WithDimension.Col1ItemCategory, False)
+            FSeedSingleIfNotExist_EntryLineUISetting("FrmPurchInvoiceDirect", Ncat.StockExchange, "Dgl1", FrmPurchaseInvoiceDimension_WithDimension.Col1ItemGroup, False)
+            FSeedSingleIfNotExist_EntryLineUISetting("FrmPurchInvoiceDirect", Ncat.StockExchange, "Dgl1", FrmPurchaseInvoiceDimension_WithDimension.Col1Item, False)
+            If ClsMain.IsScopeOfWorkContains(IndustryType.CommonModules.Dimension1) Then
+                FSeedSingleIfNotExist_EntryLineUISetting("FrmPurchInvoiceDirect", Ncat.StockExchange, "Dgl1", FrmPurchaseInvoiceDimension_WithDimension.Col1Dimension1, False)
+            End If
+            If ClsMain.IsScopeOfWorkContains(IndustryType.CommonModules.Dimension2) Then
+                FSeedSingleIfNotExist_EntryLineUISetting("FrmPurchInvoiceDirect", Ncat.StockExchange, "Dgl1", FrmPurchaseInvoiceDimension_WithDimension.Col1Dimension2, False)
+            End If
+            If ClsMain.IsScopeOfWorkContains(IndustryType.CommonModules.Dimension3) Then
+                FSeedSingleIfNotExist_EntryLineUISetting("FrmPurchInvoiceDirect", Ncat.StockExchange, "Dgl1", FrmPurchaseInvoiceDimension_WithDimension.Col1Dimension3, False)
+            End If
+            If ClsMain.IsScopeOfWorkContains(IndustryType.CommonModules.Dimension4) Then
+                FSeedSingleIfNotExist_EntryLineUISetting("FrmPurchInvoiceDirect", Ncat.StockExchange, "Dgl1", FrmPurchaseInvoiceDimension_WithDimension.Col1Dimension4, False)
+            End If
+            FSeedSingleIfNotExist_EntryLineUISetting("FrmPurchInvoiceDirect", Ncat.StockExchange, "Dgl1", FrmPurchaseInvoiceDimension_WithDimension.Col1Size, False)
+            FSeedSingleIfNotExist_EntryLineUISetting("FrmPurchInvoiceDirect", Ncat.StockExchange, "Dgl1", FrmPurchaseInvoiceDimension_WithDimension.Col1Specification, False)
+            FSeedSingleIfNotExist_EntryLineUISetting("FrmPurchInvoiceDirect", Ncat.StockExchange, "Dgl1", FrmPurchaseInvoiceDimension_WithDimension.Col1Pcs, True)
+            FSeedSingleIfNotExist_EntryLineUISetting("FrmPurchInvoiceDirect", Ncat.StockExchange, "Dgl1", FrmPurchaseInvoiceDimension_WithDimension.Col1Qty, False)
+            FSeedSingleIfNotExist_EntryLineUISetting("FrmPurchInvoiceDirect", Ncat.StockExchange, "Dgl1", FrmPurchaseInvoiceDimension_WithDimension.Col1DocQty, True)
+            FSeedSingleIfNotExist_EntryLineUISetting("FrmPurchInvoiceDirect", Ncat.StockExchange, "Dgl1", FrmPurchaseInvoiceDimension_WithDimension.Col1Rate, True)
+            FSeedSingleIfNotExist_EntryLineUISetting("FrmPurchInvoiceDirect", Ncat.StockExchange, "Dgl1", FrmPurchaseInvoiceDimension_WithDimension.Col1Amount, True)
+            FSeedSingleIfNotExist_EntryLineUISetting("FrmPurchInvoiceDirect", Ncat.StockExchange, "Dgl1", FrmPurchaseInvoiceDimension_WithDimension.Col1TotalQty, True)
+            FSeedSingleIfNotExist_EntryLineUISetting("FrmPurchInvoiceDirect", Ncat.StockExchange, "Dgl1", FrmPurchaseInvoiceDimension_WithDimension.Col1UnitMultiplier, False)
+            FSeedSingleIfNotExist_EntryLineUISetting("FrmPurchInvoiceDirect", Ncat.StockExchange, "Dgl1", FrmPurchaseInvoiceDimension_WithDimension.Col1DealQty, False)
+            FSeedSingleIfNotExist_EntryLineUISetting("FrmPurchInvoiceDirect", Ncat.StockExchange, "Dgl1", FrmPurchaseInvoiceDimension_WithDimension.Col1TotalDealQty, False)
+            FSeedSingleIfNotExist_EntryLineUISetting("FrmPurchInvoiceDirect", Ncat.StockExchange, "Dgl1", FrmPurchInvoiceDirect_WithDimension.Col1EntryType, False)
+
 
             If FDivisionNameForCustomization(6) = "SADHVI" And AgL.StrCmp(AgL.PubDBName, "Sadhvi") Then
                 FSeedSingleIfNotExist_EntryLineUISetting("FrmStockEntry", Ncat.StockIssue, "Dgl1", FrmStockEntry.Col1MRP, True)
@@ -10487,6 +10568,10 @@ Thanks
             Public Const Distance As String = "Distance"
             Public Const Discount As String = "Discount"
             Public Const Addition As String = "Addition"
+            Public Const IsMSMERegistred As String = "Is MSME Registred"
+            Public Const MSMEType As String = "MSME Type"
+            Public Const TradeType As String = "Trade Type"
+            Public Const UdyamNo As String = "Udyam No"
             Public Const AdditionalCommission As String = "Additional Commission"
             Public Const ExtraDiscount As String = "Extra Discount"
             Public Const CreditDays As String = "Credit Days"
@@ -10793,6 +10878,7 @@ Thanks
             FSeedSingleIfNotExists_Voucher_Type(Ncat.StockReceive, "Stock Receive", Ncat.StockReceive, VoucherCategory.Stock, "", "Customised", MdiObj.MnuStockReceive.Name, MdiObj.MnuStockReceive.Text)
             FSeedSingleIfNotExists_Voucher_Type(Ncat.StockIssue, "Stock Issue", Ncat.StockIssue, VoucherCategory.Stock, "", "Customised", MdiObj.MnuStockIssue.Name, MdiObj.MnuStockIssue.Text)
             FSeedSingleIfNotExists_Voucher_Type(Ncat.StockTransfer, "Stock Transfer", Ncat.StockTransfer, VoucherCategory.Stock, "", "Customised", MdiObj.MnuStockTransfer.Name, MdiObj.MnuStockTransfer.Text)
+            FSeedSingleIfNotExists_Voucher_Type(Ncat.StockExchange, "Stock Exchange", Ncat.StockExchange, VoucherCategory.Stock, "", "Customised", MdiObj.MnuStockExchange.Name, MdiObj.MnuStockExchange.Text)
             FSeedSingleIfNotExists_Voucher_Type(Ncat.ReceiptSettlement, "Receipt Settlement", Ncat.ReceiptSettlement, VoucherCategory.Receipt, "", "Customised", MdiObj.MnuCustomerAccountSettlement.Name, MdiObj.MnuCustomerAccountSettlement.Text)
             FSeedSingleIfNotExists_Voucher_Type(Ncat.PhysicalStock, "Physical Stock", Ncat.PhysicalStock, VoucherCategory.Stock, "", "Customised", MdiObj.MnuPhysicalStock.Name, MdiObj.MnuPhysicalStock.Text)
             FSeedSingleIfNotExists_Voucher_Type(Ncat.PhysicalStockAdjustment, "Physical Stock Adjustment", Ncat.PhysicalStockAdjustment, VoucherCategory.Stock, "", "Customised")
@@ -15886,6 +15972,11 @@ Thanks
             AgL.AddFieldSqlite(AgL.GcnMain, "Subgroup", "OmsId", "nVarchar(50)", "", True)
             AgL.AddFieldSqlite(AgL.GcnMain, "Subgroup", "UploadDate", "DateTime", "", True)
 
+            AgL.AddFieldSqlite(AgL.GcnMain, "Subgroup", "IsMSMERegistred", "Bit", "0", True)
+            AgL.AddFieldSqlite(AgL.GcnMain, "Subgroup", "MSMEType", "nVarchar(50)", "", True)
+            AgL.AddFieldSqlite(AgL.GcnMain, "Subgroup", "TradeType", "nVarchar(50)", "", True)
+            AgL.AddFieldSqlite(AgL.GcnMain, "Subgroup", "UdyamNo", "nVarchar(50)", "", True)
+
             If FDivisionNameForCustomization(20) = "SHYAMA SHYAM FABRICS" Or FDivisionNameForCustomization(22) = "W SHYAMA SHYAM FABRICS" Or ClsMain.FDivisionNameForCustomization(25) = "SHYAMA SHYAM VENTURES LLP" Or ClsMain.FDivisionNameForCustomization(27) = "W SHYAMA SHYAM VENTURES LLP" Then
                 AgL.AddFieldSqlite(AgL.GcnMain, "Subgroup", "WStatus", "nVarchar(20)", "", True)
             End If
@@ -19791,6 +19882,7 @@ Thanks
             AgL.AddFieldSqlite(AgL.GcnMain, "SubgroupTypeSetting", "PersonCanHaveItemGroupWiseDiscountYn", "Bit", "0", True)
             AgL.AddFieldSqlite(AgL.GcnMain, "SubgroupTypeSetting", "PersonCanHaveItemCategoryWiseDiscountYn", "Bit", "0", True)
             AgL.AddFieldSqlite(AgL.GcnMain, "SubgroupTypeSetting", "PersonCanHaveOwnDistanceYn", "Bit", "0", True)
+            AgL.AddFieldSqlite(AgL.GcnMain, "SubgroupTypeSetting", "IsVisibleMSMEDetailYn", "Bit", "0", True)
             AgL.AddFieldSqlite(AgL.GcnMain, "SubgroupTypeSetting", "Default_SalesTaxGroupPerson", "nVarchar(20)", "Unregistered", True, "References PostingGroupSalesTaxParty(Description)")
             AgL.AddFieldSqlite(AgL.GcnMain, "SubgroupTypeSetting", "FilterInclude_SubgroupTypeForMasterParty", "nVarchar(255)", "", True)
         Catch ex As Exception
@@ -21928,7 +22020,7 @@ Thanks
             Else
                 mQry += " Sg.Name || (Case When Sg.CityCode Is Null Then '' Else ', ' || City.CityName End) as Name, "
             End If
-            mQry += " Sg.Mobile, Sg.Address,Sg.CityCode, Sg.GroupCode, Sg.Nature, Sg.SubgroupType, Sg.Status, Sg.Site_Code, Sg.Parent, Sg.Area, Sg.FatherName, Sg.Tags
+            mQry += " Sg.Mobile, Sg.CreditLimit, Sg.Address,Sg.CityCode, Sg.GroupCode, Sg.Nature, Sg.SubgroupType, Sg.Status, Sg.Site_Code, Sg.Parent, Sg.Area, Sg.FatherName, Sg.Tags
                 From SubGroup Sg                                             
                 Left Join City On Sg.CityCode = City.CityCode                
                "
@@ -25404,6 +25496,8 @@ Thanks
                 NCatDesc = "Packing"
             Case Ncat.StockTransfer
                 NCatDesc = "StockTransfer"
+            Case Ncat.StockExchange
+                NCatDesc = "StockExchange"
             Case Ncat.StockIssue
                 NCatDesc = "StockIssue"
             Case Ncat.StockReceive

@@ -21,10 +21,13 @@ Public Class FrmPurchaseInvoiceDimension_WithDimension
     Public Const Col1Specification As String = "Specification"
     Public Const Col1Pcs As String = "Pcs"
     Public Const Col1Qty As String = "Qty"
+    Public Const Col1DocQty As String = "Doc Qty"
     Public Const Col1TotalQty As String = "Total Qty"
     Public Const Col1UnitMultiplier As String = "Unit Multiplier"
     Public Const Col1DealQty As String = "Deal Qty"
     Public Const Col1TotalDealQty As String = "Total Deal Qty"
+    Public Const Col1Rate As String = "Rate"
+    Public Const Col1Amount As String = "Amount"
 
 
     Public Const Col1MItemCategory As String = "M Item Category"

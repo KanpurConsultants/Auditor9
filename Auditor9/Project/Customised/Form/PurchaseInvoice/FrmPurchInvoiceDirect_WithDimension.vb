@@ -134,6 +134,7 @@ Public Class FrmPurchInvoiceDirect_WithDimension
     Public Const Col1MDimension3 As String = "M Dimension 3"
     Public Const Col1MDimension4 As String = "M Dimension 4"
     Public Const Col1MSize As String = "M Size"
+    Public Const Col1EntryType As String = "Entry Type"
 
     Dim WithEvents GridReportFrm As AgLibrary.FrmRepDisplay
 
@@ -1499,6 +1500,7 @@ Public Class FrmPurchInvoiceDirect_WithDimension
                 .AddAgTextColumn(Dgl1, Col1MDimension3, 100, 0, "M " & AgL.PubCaptionDimension3, True, False, False)
                 .AddAgTextColumn(Dgl1, Col1MDimension4, 100, 0, "M " & AgL.PubCaptionDimension4, True, False, False)
                 .AddAgTextColumn(Dgl1, Col1MSize, 100, 0, Col1MSize, True, False, False)
+                .AddAgTextColumn(Dgl1, Col1EntryType, 100, 0, Col1EntryType, False, False)
             End With
             AgL.AddAgDataGrid(Dgl1, Pnl1)
             Dgl1.EnableHeadersVisualStyles = False
@@ -1862,11 +1864,16 @@ Public Class FrmPurchInvoiceDirect_WithDimension
                         bQty_Issue = Math.Abs(Val(Dgl1.Item(Col1StockQty, I).Value))
                         bQty_Receive = 0
                     Else
-                        bQty_Issue = Math.Abs(Val(Dgl1.Item(Col1Qty, I).Value))
-                        bQty_Receive = 0
+                        If Dgl1.Item(Col1EntryType, I).Value = "Receive" Then
+                            bQty_Issue = 0
+                            bQty_Receive = Math.Abs(Val(Dgl1.Item(Col1Qty, I).Value))
+                        Else
+                            bQty_Issue = Math.Abs(Val(Dgl1.Item(Col1Qty, I).Value))
+                            bQty_Receive = 0
+                        End If
                     End If
 
-                    bDealQty_Issue = Math.Abs(Val(Dgl1.Item(Col1DealQty, I).Value))
+                        bDealQty_Issue = Math.Abs(Val(Dgl1.Item(Col1DealQty, I).Value))
                     bDealQty_Receive = 0
                     bPcs_Issue = Math.Abs(Val(Dgl1.Item(Col1Pcs, I).Value))
                     bPcs_Receive = 0
@@ -2255,9 +2262,9 @@ Public Class FrmPurchInvoiceDirect_WithDimension
         mQry = "Insert Into PurchInvoiceDetail
                             (DocId, Sr, PurchInvoice, PurchInvoiceSr, PurchPlan, PurchPlanSr, 
                             Barcode, Item, Specification, 
-                            BaleNo, LrBaleCode, SalesTaxGroupItem, ProfitMarginPer, DocQty, 
+                            BaleNo, LrBaleCode, SalesTaxGroupItem, EntryType, ProfitMarginPer, DocQty, 
                             FreeQty, RejQty, LossQty, Qty, Unit, Pcs,
-                            UnitMultiplier, DocDealQty, FreeDealQty, LossDealQtyPer, LossDealQty, DealQty, DealUnit,                             StockUnit, StockUnitMultiplier, StockQty,
+                            UnitMultiplier, DocDealQty, FreeDealQty, LossDealQtyPer, LossDealQty, DealQty, DealUnit, StockUnit, StockUnitMultiplier, StockQty,
                             Rate, DiscountPer, DiscountAmount, AdditionalDiscountPer, AdditionalDiscountAmount, AdditionalCommission_Per, AdditionalCommission, AdditionPer, AdditionAmount, 
                             Amount, Sale_Rate, MRP, 
                             FromProcess, Catalog, SaleInvoice, SaleInvoiceSr, Remark, LRNo, LRDate, HSN, LotNo, Godown, ReferenceNo, ReferenceDate, ReferenceDocID, ReferenceTSr, ReferenceSr, ReferenceDocIdBalanceQty, 
@@ -2273,6 +2280,7 @@ Public Class FrmPurchInvoiceDirect_WithDimension
                             " " & AgL.Chk_Text(Dgl1.Item(Col1BaleNo, LineGridRowIndex).Value) & ", " &
                             " " & AgL.Chk_Text(Dgl1.Item(Col1BaleNo, LineGridRowIndex).Tag) & ", " &
                             " " & AgL.Chk_Text(Dgl1.Item(Col1SalesTaxGroup, LineGridRowIndex).Tag) & ", " &
+                            " " & AgL.Chk_Text(Dgl1.Item(Col1EntryType, LineGridRowIndex).Tag) & ", " &
                             " " & Val(Dgl1.Item(Col1ProfitMarginPer, LineGridRowIndex).Value) & ", " &
                             " " & Val(Dgl1.Item(Col1DocQty, LineGridRowIndex).Value) & ", " &
                             " " & Val(Dgl1.Item(Col1FreeQty, LineGridRowIndex).Value) & ", " &
@@ -3392,6 +3400,8 @@ Public Class FrmPurchInvoiceDirect_WithDimension
                             Dgl1.Item(Col1Godown, I).Tag = AgL.XNull(.Rows(I)("Godown"))
                             Dgl1.Item(Col1Godown, I).Value = AgL.XNull(.Rows(I)("GodownName"))
 
+                            Dgl1.Item(Col1EntryType, I).Tag = AgL.XNull(.Rows(I)("EntryType"))
+                            Dgl1.Item(Col1EntryType, I).Value = AgL.XNull(.Rows(I)("EntryType"))
 
                             Dgl1.Item(Col1FromGodown, I).Tag = AgL.XNull(.Rows(I)("FromGodown"))
                             Dgl1.Item(Col1FromGodown, I).Value = AgL.XNull(.Rows(I)("FromGodownName"))
@@ -3476,7 +3486,11 @@ Public Class FrmPurchInvoiceDirect_WithDimension
                             Dgl1.Item(Col1SalesTaxGroup, I).Value = AgL.XNull(.Rows(I)("SalesTaxGroupItem"))
                             Dgl1.Item(Col1QtyDecimalPlaces, I).Value = AgL.VNull(.Rows(I)("QtyDecimalPlaces"))
                             Dgl1.Item(Col1ProfitMarginPer, I).Value = AgL.VNull(.Rows(I)("ProfitMarginPer"))
-                            Dgl1.Item(Col1DocQty, I).Value = Format(Math.Abs(AgL.VNull(.Rows(I)("DocQty"))), "0.".PadRight(AgL.VNull(.Rows(I)("QtyDecimalPlaces")) + 2, "0"))
+                            If Dgl1.Item(Col1EntryType, I).Value = "Receive" Then
+                                Dgl1.Item(Col1DocQty, I).Value = Format(AgL.VNull(.Rows(I)("DocQty")), "0.".PadRight(AgL.VNull(.Rows(I)("QtyDecimalPlaces")) + 2, "0"))
+                            Else
+                                Dgl1.Item(Col1DocQty, I).Value = Format(Math.Abs(AgL.VNull(.Rows(I)("DocQty"))), "0.".PadRight(AgL.VNull(.Rows(I)("QtyDecimalPlaces")) + 2, "0"))
+                            End If
                             Dgl1.Item(Col1FreeQty, I).Value = Format(Math.Abs(AgL.VNull(.Rows(I)("FreeQty"))), "0.".PadRight(AgL.VNull(.Rows(I)("QtyDecimalPlaces")) + 2, "0"))
                             Dgl1.Item(Col1RejQty, I).Value = Format(Math.Abs(AgL.VNull(.Rows(I)("RejQty"))), "0.".PadRight(AgL.VNull(.Rows(I)("QtyDecimalPlaces")) + 2, "0"))
                             Dgl1.Item(Col1LossQty, I).Value = Format(Math.Abs(AgL.VNull(.Rows(I)("LossQty"))), "0.".PadRight(AgL.VNull(.Rows(I)("QtyDecimalPlaces")) + 2, "0"))
@@ -4343,6 +4357,11 @@ Public Class FrmPurchInvoiceDirect_WithDimension
                 Case Col1Dimension1
                     Validating_Dimension1(mColumnIndex, mRowIndex)
                     If Dgl1.Item(Col1Unit, mRowIndex).Tag Then ShowPurchInvoiceDimensionDetail(Dgl1.CurrentCell.RowIndex, False)
+                    If FDivisionNameForCustomization(14) = "PRATHAM APPARE" Then
+                        If Dgl1.Item(Col1Dimension1, mRowIndex).Tag <> "" And Dgl1.Item(Col1Dimension2, mRowIndex).Tag <> "" And Dgl1.Item(Col1Dimension3, mRowIndex).Tag <> "" Then
+                            FOpenMultiLineUI(mRowIndex)
+                        End If
+                    End If
 
                 Case Col1Dimension2
                     Validating_Dimension2(mColumnIndex, mRowIndex)
@@ -4355,8 +4374,7 @@ Public Class FrmPurchInvoiceDirect_WithDimension
                 Case Col1Dimension3
                     Validating_Dimension3(mColumnIndex, mRowIndex)
                     If Dgl1.Item(Col1Unit, mRowIndex).Tag Then ShowPurchInvoiceDimensionDetail(Dgl1.CurrentCell.RowIndex, False)
-                    If FDivisionNameForCustomization(14) = "PRATHAM APPARE" Or
-                       FDivisionNameForCustomization(15) = "AGARWAL UNIFORM" Then
+                    If FDivisionNameForCustomization(14) = "PRATHAM APPARE" Or FDivisionNameForCustomization(15) = "AGARWAL UNIFORM" Then
                         If Dgl1.Item(Col1Dimension1, mRowIndex).Tag = "" Then
                             FCreateHelpDimension1(mRowIndex)
                             If Dgl1.AgHelpDataSet(Col1Dimension1).Tables(0).Rows.Count = 1 Then
@@ -4369,7 +4387,9 @@ Public Class FrmPurchInvoiceDirect_WithDimension
                             If Dgl1.AgHelpDataSet(Col1Dimension2).Tables(0).Rows.Count = 1 Then
                                 Dgl1.Item(Col1Dimension2, mRowIndex).Tag = AgL.XNull(Dgl1.AgHelpDataSet(Col1Dimension2).Tables(0).Rows(0)("Code"))
                                 Dgl1.Item(Col1Dimension2, mRowIndex).Value = AgL.XNull(Dgl1.AgHelpDataSet(Col1Dimension2).Tables(0).Rows(0)("Description"))
-                                FOpenMultiLineUI(mRowIndex)
+                                If Dgl1.Item(Col1Dimension1, mRowIndex).Tag <> "" And Dgl1.Item(Col1Dimension2, mRowIndex).Tag <> "" Then
+                                    FOpenMultiLineUI(mRowIndex)
+                                End If
                             End If
                         End If
                     End If
@@ -4390,6 +4410,14 @@ Public Class FrmPurchInvoiceDirect_WithDimension
                         Dgl1.Item(Col1ReferenceDocID, mRowIndex).Value = Dgl1.Item(Col1ReferenceNo, mRowIndex).Tag
                         Dgl1.Item(Col1ReferenceDate, mRowIndex).Value = ClsMain.FormatDate(AgL.Dman_Execute("Select IfNull(VendorDocDate,V_Date) From PurchInvoice Where DocID = '" & Dgl1.Item(Col1ReferenceNo, mRowIndex).Tag & "'", AgL.GCn).executescalar())
                     End If
+
+                Case Col1EntryType
+                    If Dgl1.Item(Col1EntryType, mRowIndex).Value = "Receive" And DglMain.Item(Col1Value, rowV_Type).Tag = "SEC" Then
+                        Dgl1.Item(Col1DocQty, mRowIndex).Value = -Dgl1.Item(Col1DocQty, mRowIndex).Value
+                    Else
+                        Dgl1.Item(Col1DocQty, mRowIndex).Value = Dgl1.Item(Col1DocQty, mRowIndex).Value
+                    End If
+
 
                 Case Col1Barcode
                     Dim DtBarcode As DataTable
@@ -6026,7 +6054,7 @@ Public Class FrmPurchInvoiceDirect_WithDimension
                 '" & AgL.PubCaptionDimension1 & "' as D1Caption, '" & AgL.PubCaptionDimension2 & "' as D2Caption, '" & AgL.PubCaptionDimension3 & "' as D3Caption, '" & AgL.PubCaptionDimension4 & "' as D4Caption, 
                 L.SalesTaxGroupItem, STGI.GrossTaxRate, 
                 (Case when IfNull(Sku.MaintainStockYn,1) =1 AND Sku.ItemType <> '" & ItemTypeCode.ServiceProduct & "' Then L.Pcs Else 0 End) as Pcs, 
-                (Case when IfNull(Sku.MaintainStockYn,1) =1 AND Sku.ItemType <> '" & ItemTypeCode.ServiceProduct & "' Then abs(L.Qty) Else 0 End) as Qty, 
+                (Case when L.EntryType ='Receive' Then L.Qty when IfNull(Sku.MaintainStockYn,1) =1 AND Sku.ItemType <> '" & ItemTypeCode.ServiceProduct & "' Then abs(L.Qty) Else 0 End) as Qty, 
                 (Case when IfNull(Sku.MaintainStockYn,1) =1 AND Sku.ItemType <> '" & ItemTypeCode.ServiceProduct & "' Then abs(L.DocQty) Else 0 End) as DocQty, 
                 (Case when IfNull(Sku.MaintainStockYn,1) =1 AND Sku.ItemType <> '" & ItemTypeCode.ServiceProduct & "' Then abs(L.FreeQty) Else 0 End) as FreeQty, 
                 (Case when IfNull(Sku.MaintainStockYn,1) =1 AND Sku.ItemType <> '" & ItemTypeCode.ServiceProduct & "' Then abs(L.LossQty) Else 0 End) as LossQty, 
@@ -6034,7 +6062,7 @@ Public Class FrmPurchInvoiceDirect_WithDimension
                 (Case when IfNull(Sku.MaintainStockYn,1) =1 AND Sku.ItemType <> '" & ItemTypeCode.ServiceProduct & "' Then L.Rate Else 0 End) as Rate, 
                 L.Unit, U.DecimalPlaces as UnitDecimalPlaces, L.DiscountPer, L.DiscountAmount, L.AdditionalDiscountPer, L.AdditionalDiscountAmount, 
                 L.DiscountAmount+L.AdditionalDiscountAmount-L.AdditionAmount as TotalDiscount, 
-                abs(L.Amount)+L.DiscountAmount+L.AdditionalDiscountAmount-L.AdditionAmount as AmountBeforeDiscount,
+                (Case when L.EntryType ='Receive' Then L.Amount Else abs(L.Amount) End )+L.DiscountAmount+L.AdditionalDiscountAmount-L.AdditionAmount as AmountBeforeDiscount,
                 Abs(L.Amount) as Amount,Abs(L.Taxable_Amount) as Taxable_Amount,Abs(L.Tax1_Per) Tax1_Per, Abs(L.Tax1) as Tax1, Abs(L.Tax2_Per) as Tax2_Per, Abs(L.Tax2) as Tax2, Abs(L.Tax3_Per) as Tax3_Per, Abs(L.Tax3) as Tax3, Abs(L.Tax4_Per) as Tax4_Per, Abs(L.Tax4) as Tax4, Abs(L.Tax5_Per) as Tax5_Per, Abs(L.Tax5) as Tax5, Abs(L.Net_Amount) as Net_Amount,
                 IfNull(H.Remarks,'') as HRemarks, IfNull(L.Remark,'') as LRemarks,
                 abs(H.Gross_Amount) as H_Gross_Amount, H.SpecialDiscount_Per as H_SpecialDiscount_Per, H.SpecialDiscount as H_SpecialDiscount,abs(H.Taxable_Amount) as H_Taxable_Amount,abs(H.Tax1_Per) as H_Tax1_Per, abs(H.Tax1) as H_Tax1, 
@@ -6737,6 +6765,14 @@ Public Class FrmPurchInvoiceDirect_WithDimension
                     If Dgl1.AgHelpDataSet(Col1SalesTaxGroup) Is Nothing Then
                         mQry = " SELECT Description as Code, Description FROM PostingGroupSalesTaxItem  With (NoLock) "
                         Dgl1.AgHelpDataSet(Col1SalesTaxGroup) = AgL.FillData(mQry, AgL.GCn)
+                    End If
+
+                Case Col1EntryType
+                    If Dgl1.AgHelpDataSet(Col1EntryType) Is Nothing Then
+                        mQry = " SELECT 'Issue' AS Code,'Issue' AS Name
+                                UNION ALL 
+                                SELECT 'Receive' AS Code,'Receive' AS Name "
+                        Dgl1.AgHelpDataSet(Col1EntryType) = AgL.FillData(mQry, AgL.GCn)
                     End If
 
                 Case Col1Dimension1

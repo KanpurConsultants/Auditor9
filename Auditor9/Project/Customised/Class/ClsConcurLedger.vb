@@ -674,7 +674,7 @@ Public Class ClsConcurLedger
 
 
 
-            mQry = "Select D.Name as DivisionName, Sg.Name as PartyName, Sg.Address, Sg.Mobile, Agent.Name as AgentName, 
+            mQry = "Select D.Name as DivisionName, SG.CreditLimit, Sg.Name as PartyName, Sg.Address, Sg.Mobile, Agent.Name as AgentName, 
                     SRep.Name as SalesRepresentativeName, Area.Description as AreaName, H.*, SL.AdditionPer, SL.AdditionAmount, Gr.GrReturnAmt, Gr.GrSaleAmt, Gr.ReturnPer, CASE WHEN sg1.SubgroupType ='Customer' THEN Sg1.AveragePaymentDays ELSE 0 END AveragePaymentDays,"
             If AgL.PubServerName <> "" Then
                 mQry = mQry & "Substring(Convert(NVARCHAR, H.DrDate,103),4,7) As [DrMonth], Substring(Convert(NVARCHAR, H.CrDate,103),4,7) As [CrMonth]  "

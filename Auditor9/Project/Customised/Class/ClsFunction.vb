@@ -387,6 +387,8 @@ Public Class ClsFunction
                     End If
                 Case MDI.MnuStockTransfer.Name, MdiKirana.MnuStockTransfer.Name
                     FrmObj = New FrmPurchInvoiceDirect_WithDimension(StrUserPermission, DTUP, Ncat.StockTransfer)
+                Case MDI.MnuStockExchange.Name
+                    FrmObj = New FrmPurchInvoiceDirect_WithDimension(StrUserPermission, DTUP, Ncat.StockExchange)
                 Case MDI.MnuPhysicalStock.Name
                     FrmObj = New FrmPurchInvoiceDirect_WithDimension(StrUserPermission, DTUP, Ncat.PhysicalStock)
                 Case MDI.MnuPhysicalStockAdjustment.Name

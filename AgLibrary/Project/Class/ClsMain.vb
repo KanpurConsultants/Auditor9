@@ -5962,6 +5962,7 @@ err1:
             Public Const LrEntry As String = "LR"
             Public Const LrTransfer As String = "LRT"
             Public Const StockTransfer As String = "STF"
+            Public Const StockExchange As String = "SEC"
             Public Const Payment As String = "PMT"
             Public Const Receipt As String = "RCT"
             Public Const VisitReceipt As String = "VR"

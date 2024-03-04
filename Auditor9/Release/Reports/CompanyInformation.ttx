@@ -1,5 +1,5 @@
 ; Field definition file for table: ADORecordset
-CompanyName	string	255	pratham apparelindia pvt ltd	
+CompanyName	string	255	Sadhvi	
 Add1	string	255		
 Add2	string	255		
 Add3	string	255		

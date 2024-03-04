@@ -1,6 +1,6 @@
 ; Field definition file for table: ADORecordset
-SearchCode	string	255	D100002904	
+SearchCode	string	255	D100001237	
 Sr	long	1	
-Party	string	255	DEV HANDLOOM [W], BUXAR	
-BalanceAmount	number	5697.58	
-BalanceMonth	string	255	2023-04-16	
+Party	string	255	AGARWAL TRADING COMPANY-PATNA [W], PATNA	
+BalanceAmount	number	28.87	
+BalanceMonth	string	255	2023-09-20	

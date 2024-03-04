@@ -5,27 +5,27 @@ DocNoCaption	string	255	Doc.No.
 DocDateCaption	string	255	Doc.Date	
 SiteStateCode	string	255	09	
 SiteStateName	string	255	Uttar Pradesh	
-DocID	string	255	D1   DNS 2023     705	
+DocID	string	255	D1   DNS 2023     837	
 Sr	number	1	
-V_Date	datetime	25/Nov/2023 12:00:00 AM	
+V_Date	datetime	27/Dec/2023 12:00:00 AM	
 Voucher_Type	string	255	DEBIT NOTE (Suppliers)	
 NCat	string	255	DNS	
-InvoiceNo	string	255	DNS703	
-PartyName	string	255	SHREE SHYAM TEXTILES	
-PartyAddress	string	255	1815 CHEERA KHANA,MALIWARA,CHANDNI CHOWK,DELHI	
-CityName	string	255	DELHI	
-PartyPincode	string	255	110006	
-StateCode	string	255	07	
-StateName	string	255	Delhi	
-PartyMobile	string	255	9811027680	
+InvoiceNo	string	255	DNS835	
+PartyName	string	255	JEEL FASHION	
+PartyAddress	string	255	502,TWIN TOWER,SAHARA DARWAJA ,RING ROAD,SURAT	
+CityName	string	255	SURAT	
+PartyPincode	string	255	395002	
+StateCode	string	255	24	
+StateName	string	255	Gujarat	
+PartyMobile	string	255	9687480086 ,9727555557	
 ContactPerson	string	255		
-PartySalesTaxNo	string	255	07AAHPA2491G1ZZ	
+PartySalesTaxNo	string	255	24AAJPN9641F1ZK	
 PartyAadharNo	string	255		
 PartyPanNo	string	255		
 TermsAndConditions	string	255		
 ReferenceNo	string	255		
 LineAccountName	string	255		
-LineSpecification	string	255	7196	
+LineSpecification	string	255	10861	
 HSN	string	255	5407	
 SalesTaxGroupItem	string	255	GST 5%	
 GrossTaxRate	number	5	
@@ -33,10 +33,10 @@ Qty	number	0
 Rate	number	0	
 Unit	string	255		
 UnitDecimalPlaces	number		
-Amount	number	58693	
-Taxable_Amount	number	58693	
+Amount	number	8732	
+Taxable_Amount	number	8732	
 Tax1_Per	number	5	
-Tax1	number	2934.65	
+Tax1	number	436.6	
 Tax2_Per	number	0	
 Tax2	number	0	
 Tax3_Per	number	0	
@@ -45,18 +45,18 @@ Tax4_Per	number	0
 Tax4	number	0	
 Tax5_Per	number	0	
 Tax5	number	0	
-Net_Amount	number	61628	
-LRemarks	string	255	DISCOUNT	
-HRemarks	string	255	LESS DISCOUNT@8.35= 58693  aaaaaaaaaaaaaabbbbbbbbbbbbbbbbcccccccccccccccccddddddddddddddeeeeeeeeeeeeeeeeeeeeeeffffffffffffffffffffffffffffffffffggggggggggggggggggggggggggggggggggggggggggghhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhh	
-H_Gross_Amount	number	58693	
+Net_Amount	number	9169	
+LRemarks	string	255	DISCOUNT BILL NO. 11879 -11881	
+HRemarks	string	255	PARTY AGAINST CN1005 DIS@6= 8732, (AGAINST BILL NO. 11879,11880,11881)	
+H_Gross_Amount	number	8732	
 EInvoiceIRN	string	255		
 EInvoiceAckNo	string	255		
 EInvoiceAckDate	datetime		
 H_SpecialDiscount_Per	number	0	
 H_SpecialDiscount	number	0	
-H_Taxable_Amount	number	58693	
+H_Taxable_Amount	number	8732	
 H_Tax1_Per	number	0	
-H_Tax1	number	2934.65	
+H_Tax1	number	436.6	
 H_Tax2_Per	number	0	
 H_Tax2	number	0	
 H_Tax3_Per	number	0	
@@ -69,8 +69,8 @@ H_Deduction_Per	number	0
 H_Deduction	number	0	
 H_Other_Charge_Per	number	0	
 H_Other_Charge	number	0	
-Round_Off	number	-0.35	
-H_Net_Amount	number	61628	
+Round_Off	number	-0.4	
+H_Net_Amount	number	9169	
 Default_BankAccountDetail	string	255	Bank Detail : 	HDFC A/c : 50200003154727    IFSC : HDFC0002006	
 DocumentPrintHeaderPattern	string	255	Center Aligned	
 PrintedByUser	string	255	SUPER	

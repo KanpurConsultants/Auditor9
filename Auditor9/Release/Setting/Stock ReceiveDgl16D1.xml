@@ -60,7 +60,7 @@
     <Name>Dimension1</Name>
     <Index>8</Index>
     <Width>208</Width>
-    <Visible>True</Visible>
+    <Visible>False</Visible>
     <AggregateFunction />
   </Column>
   <Column>
@@ -135,21 +135,21 @@
   </Column>
   <Column>
     <Name>Doc Qty</Name>
-    <Index>21</Index>
+    <Index>20</Index>
     <Width>80</Width>
     <Visible>True</Visible>
     <AggregateFunction />
   </Column>
   <Column>
     <Name>Free Qty</Name>
-    <Index>32</Index>
+    <Index>30</Index>
     <Width>60</Width>
     <Visible>False</Visible>
     <AggregateFunction />
   </Column>
   <Column>
     <Name>Rej Qty</Name>
-    <Index>40</Index>
+    <Index>33</Index>
     <Width>70</Width>
     <Visible>False</Visible>
     <AggregateFunction />
@@ -177,14 +177,14 @@
   </Column>
   <Column>
     <Name>Qty Decimal Places</Name>
-    <Index>20</Index>
+    <Index>21</Index>
     <Width>50</Width>
     <Visible>False</Visible>
     <AggregateFunction />
   </Column>
   <Column>
     <Name>Pcs</Name>
-    <Index>28</Index>
+    <Index>25</Index>
     <Width>80</Width>
     <Visible>False</Visible>
     <AggregateFunction />
@@ -198,21 +198,21 @@
   </Column>
   <Column>
     <Name>Pcs Per Measure</Name>
-    <Index>42</Index>
+    <Index>41</Index>
     <Width>70</Width>
     <Visible>False</Visible>
     <AggregateFunction />
   </Column>
   <Column>
     <Name>Doc Deal Qty</Name>
-    <Index>45</Index>
+    <Index>42</Index>
     <Width>70</Width>
     <Visible>False</Visible>
     <AggregateFunction />
   </Column>
   <Column>
     <Name>Free Deal Qty</Name>
-    <Index>56</Index>
+    <Index>47</Index>
     <Width>80</Width>
     <Visible>False</Visible>
     <AggregateFunction />
@@ -233,14 +233,14 @@
   </Column>
   <Column>
     <Name>Deal Qty</Name>
-    <Index>30</Index>
+    <Index>31</Index>
     <Width>70</Width>
     <Visible>False</Visible>
     <AggregateFunction />
   </Column>
   <Column>
     <Name>Deal Unit</Name>
-    <Index>31</Index>
+    <Index>32</Index>
     <Width>60</Width>
     <Visible>False</Visible>
     <AggregateFunction />
@@ -268,7 +268,7 @@
   </Column>
   <Column>
     <Name>Stock Qty</Name>
-    <Index>41</Index>
+    <Index>45</Index>
     <Width>80</Width>
     <Visible>False</Visible>
     <AggregateFunction />
@@ -310,14 +310,14 @@
   </Column>
   <Column>
     <Name>Stock Process Sr</Name>
-    <Index>47</Index>
+    <Index>56</Index>
     <Width>150</Width>
     <Visible>False</Visible>
     <AggregateFunction />
   </Column>
   <Column>
     <Name>Rate</Name>
-    <Index>25</Index>
+    <Index>26</Index>
     <Width>80</Width>
     <Visible>False</Visible>
     <AggregateFunction />
@@ -380,14 +380,14 @@
   </Column>
   <Column>
     <Name>Amount</Name>
-    <Index>26</Index>
+    <Index>27</Index>
     <Width>100</Width>
     <Visible>False</Visible>
     <AggregateFunction />
   </Column>
   <Column>
     <Name>MRP</Name>
-    <Index>27</Index>
+    <Index>28</Index>
     <Width>80</Width>
     <Visible>False</Visible>
     <AggregateFunction />
@@ -408,7 +408,7 @@
   </Column>
   <Column>
     <Name>From Process</Name>
-    <Index>33</Index>
+    <Index>34</Index>
     <Width>100</Width>
     <Visible>False</Visible>
     <AggregateFunction />
@@ -422,7 +422,7 @@
   </Column>
   <Column>
     <Name>Remark</Name>
-    <Index>34</Index>
+    <Index>40</Index>
     <Width>150</Width>
     <Visible>True</Visible>
     <AggregateFunction />
@@ -773,6 +773,13 @@
   <Column>
     <Name>M Size</Name>
     <Index>55</Index>
+    <Width>100</Width>
+    <Visible>False</Visible>
+    <AggregateFunction />
+  </Column>
+  <Column>
+    <Name>Entry Type</Name>
+    <Index>111</Index>
     <Width>100</Width>
     <Visible>False</Visible>
     <AggregateFunction />
