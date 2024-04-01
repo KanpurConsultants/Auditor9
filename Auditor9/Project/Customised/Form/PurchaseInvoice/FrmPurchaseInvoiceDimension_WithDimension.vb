@@ -29,7 +29,6 @@ Public Class FrmPurchaseInvoiceDimension_WithDimension
     Public Const Col1Rate As String = "Rate"
     Public Const Col1Amount As String = "Amount"
 
-
     Public Const Col1MItemCategory As String = "M Item Category"
     Public Const Col1MItemGroup As String = "M Item Group"
     Public Const Col1MItemSpecification As String = "M Item Specification"

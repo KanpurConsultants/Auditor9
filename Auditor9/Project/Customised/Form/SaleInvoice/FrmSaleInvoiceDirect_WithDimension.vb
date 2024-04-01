@@ -2365,7 +2365,7 @@ Public Class FrmSaleInvoiceDirect_WithDimension
         'End If
 
 
-        If TxtNature.Text.ToUpper <> "CASH" Then
+        If TxtNature.Text.ToUpper <> "CASH" And AgL.PubDBName <> "Pratham" Then
             If Val(Dgl1.Item(Col1DiscountPer, LineGridRowIndex).Value) > 0 Or Val(Dgl1.Item(Col1DiscountPer, LineGridRowIndex).Value) <> Val(Dgl1.Item(Col1DefaultDiscountPer, LineGridRowIndex).Value) Or Val(Dgl1.Item(Col1DiscountPer, LineGridRowIndex).Value) <> Val(Dgl1.Item(Col1PersonalDiscountPer, LineGridRowIndex).Value) Then
                 mQry = "Delete From PersonDiscount  
                             Where ItemCategory Is Null

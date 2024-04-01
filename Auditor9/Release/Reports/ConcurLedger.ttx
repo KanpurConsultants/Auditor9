@@ -1,48 +1,47 @@
 ; Field definition file for table: ADORecordset
 DivisionName	string	255	SADHVI ENTERPRISES {ENTERPRISES}, KANPUR	
-CreditLimit	number	200000	
-PartyName	string	255	A TO Z COLLECTION, LUCKNOW	
-Address	string	255	SAROJINI NAGAR LUCKNOW DIST:-LUCKNOW
-	
-Mobile	string	255	8957256177	
-AgentName	string	255	NIRMAL RAJANI, KANPUR	
+CreditLimit	number	0	
+PartyName	string	255	ANULA SAREES, SURAT	
+Address	string	255	202-2ND FLOOR,HI TECH CREST,OPP.MANJULA HOUSE NEAR GOLDEN POINT,FALASAWADI,RING ROAD,SURAT	
+Mobile	string	255	9638904001	
+AgentName	string	255	DEV AGENCY (M.P.FEB), SURAT	
 SalesRepresentativeName	string	255		
 AreaName	string	255		
-DrDocID	string	255	D1    SI 2019   14100	
+DrDocID	string	255	D1   DNS 2023    1058	
 DrDivision	string	255	D	
-DrSubcode	string	255	D100005006	
-DrSr	number	0	
-DrDate	datetime	14/Feb/2020 12:00:00 AM	
-DrDocNo	string	255	SI-10591	
-DrAmount	number	95263	
-DrTaxableAmount	number	90726.3	
-DrTaxAmount	number	4536.44	
-DrDays	number	1441	
+DrSubcode	string	255	D100004971	
+DrSr	number	341	
+DrDate	datetime	22/Feb/2024 12:00:00 AM	
+DrDocNo	string	255	DNS-1056	
+DrAmount	number	95088	
+DrTaxableAmount	number	0	
+DrTaxAmount	number	0	
+DrDays	number	29	
 DrInterest	number	0	
-DrCumAmount	number	95263	
+DrCumAmount	number	27012481	
 DrBalAmount	number	0	
-DrTotal	number	310210.3	
-DrNarration	string	255	RT : DharaTax Invoice	
-CrDocID	string	255	D1    CR 2019    7276	
+DrTotal	number	27666156	
+DrNarration	string	255	D-6493 30*300	
+CrDocID	string	255	D1    PI 2023   13431	
 CrDivision	string	255	D	
-CrSubcode	string	255	D100005006	
-CrSr	number	0	
-CrDate	datetime	14/Feb/2020 12:00:00 AM	
-CrDocNo	string	255	CR-4886	
-CrAmount	number	10000	
-CrTaxableAmount	number	0	
-CrTaxAmount	number	0	
-CrDays	number	1471	
+CrSubcode	string	255	D100004971	
+CrSr	number	341	
+CrDate	datetime	01/Feb/2024 12:00:00 AM	
+CrDocNo	string	255	PI-13432	
+CrAmount	number	89339	
+CrTaxableAmount	number	85085	
+CrTaxAmount	number	4254.25	
+CrDays	number	20	
 CrInterest	number	0	
-CrCumAmount	number	10000	
+CrCumAmount	number	27006732	
 CrBalAmount	number	0	
-CrTotal	number	310210.3	
-CrNarration	string	255	Cash Received	
-AdditionPer	number	5	
-AdditionAmount	number	4320.3	
-GrReturnAmt	number	18616	
-GrSaleAmt	number	310210	
-ReturnPer	number	6	
-AveragePaymentDays	number	44.1043390947796	
-DrMonth	string	255	02/2020	
-CrMonth	string	255	02/2020	
+CrTotal	number	33283519	
+CrNarration	string	255	Inv : 7/8918	
+AdditionPer	number		
+AdditionAmount	number		
+GrReturnAmt	number	2165851	
+GrSaleAmt	number	33283519	
+ReturnPer	number	6.51	
+AveragePaymentDays	number	0	
+DrMonth	string	255	02/2024	
+CrMonth	string	255	02/2024	

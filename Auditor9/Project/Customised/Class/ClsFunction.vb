@@ -1203,6 +1203,13 @@ Public Class ClsFunction
                     End If
 
                     FrmObj = GridReportFrm
+
+                Case MDI.MnuStockExchangeReport.Name
+                    Dim CRep As ClsPurchaseReport = New ClsPurchaseReport(GridReportFrm, Ncat.StockExchange, "")
+                    CRep.GRepFormName = Replace(Replace(Replace(Replace(StrSenderText, "&", ""), " ", ""), "(", ""), ")", "")
+                    CRep.Ini_Grid()
+                    FrmObj = GridReportFrm
+
                 Case MDI.MnuJobOrderReport.Name
                     Dim CRep As ClsPurchaseReport = New ClsPurchaseReport(GridReportFrm, Ncat.JobOrder, "")
                     CRep.GRepFormName = Replace(Replace(Replace(Replace(StrSenderText, "&", ""), " ", ""), "(", ""), ")", "")

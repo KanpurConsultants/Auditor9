@@ -8932,7 +8932,7 @@ Thanks
             FSeedSingleIfNotExist_EntryLineUISetting("FrmPurchInvoiceDirect", Ncat.StockExchange, "Dgl1", FrmPurchaseInvoiceDimension_WithDimension.Col1DealQty, False)
             FSeedSingleIfNotExist_EntryLineUISetting("FrmPurchInvoiceDirect", Ncat.StockExchange, "Dgl1", FrmPurchaseInvoiceDimension_WithDimension.Col1TotalDealQty, False)
             FSeedSingleIfNotExist_EntryLineUISetting("FrmPurchInvoiceDirect", Ncat.StockExchange, "Dgl1", FrmPurchInvoiceDirect_WithDimension.Col1EntryType, False)
-
+            FSeedSingleIfNotExist_EntryLineUISetting("FrmPurchInvoiceDirect", Ncat.StockExchange, "Dgl1", FrmPurchInvoiceDirect_WithDimension.Col1Remark, False)
 
             If FDivisionNameForCustomization(6) = "SADHVI" And AgL.StrCmp(AgL.PubDBName, "Sadhvi") Then
                 FSeedSingleIfNotExist_EntryLineUISetting("FrmStockEntry", Ncat.StockIssue, "Dgl1", FrmStockEntry.Col1MRP, True)

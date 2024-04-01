@@ -386,6 +386,25 @@ Public Class ClsConcurLedger
                         mQry = mQry & " Union All "
                     End If
 
+
+                    Dim mLQry As String
+
+                    If ClsMain.FDivisionNameForCustomization(6) = "SADHVI" Then
+                        mLQry = " from 
+                                (
+                                SELECT L.DocId, L.Site_Code, L.DivCode, L.V_SNo, L.V_No, L.V_Type, L.V_Date, L.SubCode, L.TSr, L.AmtDr, L.RecId, L.EffectiveDate, L.Chq_No, L.Narration     
+					            FROM ledger L With (NoLock) WHERE L.V_Type <> 'DNS'
+					            UNION ALL 
+					            SELECT L.DocId, Max(L.Site_Code) Site_Code, Max(L.DivCode) AS DivCode, Max(L.V_SNo) AS V_SNo, Max(L.V_No) AS V_No, Max(L.V_Type) AS V_Type, Max(L.V_Date) AS V_Date, Max(L.SubCode) AS  SubCode, Max(L.TSr) AS  TSr,
+					            Sum(L.AmtDr) AS AmtDr, Max(L.RecId) AS RecId, Max(L.EffectiveDate) AS EffectiveDate, Max(L.Chq_No) AS Chq_No, Max(L.Narration) AS Narration  
+					            FROM ledger L With (NoLock) WHERE L.V_Type = 'DNS'
+					            GROUP BY L.DocId, L.SubCode   
+					            ) L  "
+                    Else
+                        mLQry = "from ledger L With (NoLock) "
+                    End If
+
+
                     mQry = mQry & "select L.DocId, IfNull(L.EffectiveDate,L.V_Date) as V_Date, L.V_Type || '-' || L.RecId as DocNo, 
                     (Case When IfNull(Trd.Type,'')='Cancelled' OR IfNull(Trr.Type,'')='Cancelled' Then 0 Else L.AmtDr End) as AmtDr, 
                     (Case When IfNull(L.Chq_No,'') <>'' Then 'Chq : ' || IfNull(L.Chq_No,'') Else '' End) || 
@@ -397,7 +416,7 @@ Public Class ClsConcurLedger
                     (Case When PI.V_Type IN ('PI','PR') AND PI.Remarks IS NOT NULL Then ' '||Substr(PI.Remarks,0,15) Else '' End)
                     as DrNarration,
                     INV.Taxable_Amount, INV.Tax1+INV.Tax2+INV.Tax3+INV.Tax4+INV.Tax5 as Tax_Amount
-                    from ledger L With (NoLock)
+                    " & mLQry & "
                     Left Join LedgerHead LH With (NoLock) on L.DocID = LH.DocID
                     Left Join SaleInvoice INV With (NoLock) On L.DocID = INV.DocID
                     Left Join PurchInvoice PI With (NoLock) On L.DocID = PI.DocID

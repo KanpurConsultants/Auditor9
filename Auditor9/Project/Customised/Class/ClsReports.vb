@@ -947,7 +947,7 @@ Public Class ClsReports
                     City.CityCode, City.CityName, Area.Code As AreaCode, Area.Description As AreaName, State.Code As StateCode, State.Description As StateName,
                     Cast(Replace(H.ManualRefNo,'-','') as Integer) as InvoiceNo, H.ManualRefNo, L.Item,
                     I.Specification as ItemSpecification, I.Description As ItemDesc, IfNull(IfNull(I.HSN,IC.HSN),Bi.HSN) as HSN,IG.Description as ItemGroupDescription, IC.Description as ItemCategoryDescription,  
-                    L.Catalog, Catalog.Description as CatalogDesc, IG.Department, Department.Description as DepartmentDesc,
+                    I.PurchaseRate, L.Catalog, Catalog.Description as CatalogDesc, IG.Department, Department.Description as DepartmentDesc,
                     (Case When L.DiscountPer = 0 Then '' else Cast(L.DiscountPer as nVarchar) End)  || (Case When L.AdditionalDiscountPer>0 Then '+' else '' End) || (Case When L.AdditionalDiscountPer=0 Then '' else Cast(L.AdditionalDiscountPer as nVarchar) End)  as DiscountPer, 
                     L.DiscountAmount as Discount, L.AdditionalDiscountAmount as AdditionalDiscount, L.AdditionAmount as Addition, 
                     L.SpecialDiscount_Per, L.SpecialDiscount, L.SpecialAddition_Per, L.SpecialAddition, 
@@ -1175,7 +1175,8 @@ Public Class ClsReports
                 mQry = " Select VMain.Item As SearchCode, Max(VMain.ItemDesc) As [Item],  
                     Count(Distinct Vmain.DocID) as [Doc.Count], Round(Sum(VMain.Qty),3) as Qty,
                     Sum(VMain.AmountExDiscount) as GoodsValue, Sum(VMain.Discount) as Discount, Sum(VMain.Addition) as Addition, Sum(VMain.SpecialDiscount) as SpecialDiscount, Sum(VMain.SpecialAddition) as SpecialAddition,
-                    Sum(VMain.Amount) As Amount, IfNull(Sum(VMain.Taxable_Amount),0) As [Taxable Amount], IfNull(Sum(VMain.TotalTax),0) As TaxAmount, IfNull(Sum(VMain.Net_Amount),0) As [Net Amount]
+                    Sum(VMain.Amount) As Amount, IfNull(Sum(VMain.Taxable_Amount),0) As [Taxable Amount], IfNull(Sum(VMain.TotalTax),0) As TaxAmount, IfNull(Sum(VMain.Net_Amount),0) As [Net Amount],
+                    Max(VMain.PurchaseRate) AS ItemPurchaseRate, IsNull(Sum(VMain.Taxable_Amount),0)-Max(VMain.PurchaseRate)*Sum(VMain.Qty) AS Diif
                     From (" & mQry & ") As VMain
                     GROUP By VMain.Item 
                     Order By Max(VMain.ItemDesc)"

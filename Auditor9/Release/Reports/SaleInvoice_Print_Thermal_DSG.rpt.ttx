@@ -5,13 +5,13 @@ DocNoCaption	string	255	Invoice No.
 DocDateCaption	string	255	Invoice Date	
 SiteStateCode	string	255	09	
 SiteStateName	string	255	Uttar Pradesh	
-DocID	string	255	D1   SIR 2023      85	
+DocID	string	255	D1   SIR 2023     321	
 Sr	number	1	
-V_Date	datetime	16/Nov/2023 12:00:00 AM	
+V_Date	datetime	05/Mar/2024 12:00:00 AM	
 DeliveryDate	datetime		
 Voucher_Type	string	255	Sale Invoice Retail	
 NCat	string	255	SI	
-InvoiceNo	string	255	SIR-84	
+InvoiceNo	string	255	SIR-311	
 GenDocNo	string	255		
 AmsDocNo	string	255		
 AmsDocDate	datetime		
@@ -22,25 +22,25 @@ AgentName	string	255
 SalesRepName	string	255		
 SalesRepCode	string	255		
 AgentCaption	string	255	Agent	
-SaleToPartyName	string	255	BABALU SHUKLA	
-SaleToPartyAddress	string	255	NARI BARI	
-CityName	string	255	PRAYAGRAJ	
+SaleToPartyName	string	255	hjhj	
+SaleToPartyAddress	string	255		
+CityName	string	255		
 SaleToPartyPincode	string	255		
-StateCode	string	255	09	
-StateName	string	255	Uttar Pradesh	
-SaleToPartyMobile	string	255	9451521090	
+StateCode	string	255		
+StateName	string	255		
+SaleToPartyMobile	string	255	ghgh	
 ContactPerson	string	255		
 SaleToPartySalesTaxNo	string	255		
 SaleToPartyAadharNo	string	255		
 SaleToPartyPanNo	string	255		
 SaleToPartyLicenseNo	string	255		
-ShipToPartyName	string	255	BABALU SHUKLA	
-ShipToPartyAddress	string	255	NARI BARI	
-ShipToPartyCity	string	255	PRAYAGRAJ	
+ShipToPartyName	string	255	hjhj	
+ShipToPartyAddress	string	255		
+ShipToPartyCity	string	255		
 ShipToPartyPincode	string	255		
-ShipToPartyStateCode	string	255	09	
-ShipToPartyStateName	string	255	Uttar Pradesh	
-ShipToPartyMobile	string	255	9451521090	
+ShipToPartyStateCode	string	255		
+ShipToPartyStateName	string	255		
+ShipToPartyMobile	string	255	ghgh	
 ShipToPartySalesTaxNo	string	255		
 ShipToPartyAadharNo	string	255		
 ShipToPartyPanNo	string	255		
@@ -69,12 +69,12 @@ Destination	string	255
 DescriptionOfGoods	string	255		
 DescriptionOfPacking	string	255		
 ReferenceNo	string	255		
-BarcodeName	string	255	1178	
-ItemName	string	255	INDIGO - KALASHREE - SAREE	
-ItemGroupName	string	255	KALASHREE	
-ItemCatName	string	255	SAREE	
-ItemManualCode	string	255	293	
-ItemSpecification	string	255	INDIGO	
+BarcodeName	string	255	1958	
+ItemName	string	255	MTT - R.GARMENTS - JEANS	
+ItemGroupName	string	255	R.GARMENTS	
+ItemCatName	string	255	JEANS	
+ItemManualCode	string	255	1089	
+ItemSpecification	string	255	MTT	
 InvoiceLineSpecification	string	255		
 HSN	string	255	5407	
 MaintainStockYn	boolean	True	
@@ -102,56 +102,56 @@ ExpiryDate	datetime
 ItemRemark1	string	255		
 Pcs	number	1	
 Qty	number	1	
-Rate	number	700	
+Rate	number	499	
 ItemState	string	255		
 CatalogSpecification	string	255		
 CatalogSiteName	string	255		
 Unit	string	255	Pcs	
 UnitDecimalPlaces	number	0	
-DiscountPer	number	5	
-DiscountAmount	number	35	
+DiscountPer	number	0	
+DiscountAmount	number	0	
 AdditionalDiscountPer	number	0	
 AdditionalDiscountAmount	number	0	
 AdditionPer	number	0	
 AdditionAmount	number	0	
-TotalDiscount	number	35	
+TotalDiscount	number	0	
 Deal	string	255		
-AmountBeforeDiscount	number	700	
-Amount	number	665	
-Taxable_Amount	number	633.33	
+AmountBeforeDiscount	number	499	
+Amount	number	499	
+Taxable_Amount	number	475.24	
 Tax1_Per	number	0	
 Tax1	number	0	
 Tax2_Per	number	2.5	
-Tax2	number	15.83	
+Tax2	number	11.88	
 Tax3_Per	number	2.5	
-Tax3	number	15.83	
+Tax3	number	11.88	
 Tax4_Per	number	0	
 Tax4	number	0	
 Tax5_Per	number	0	
 Tax5	number	0	
-Net_Amount	number	665	
+Net_Amount	number	499	
 LRemarks	string	255		
 LRemarks1	string	255		
 LRemarks2	string	255		
 LRemarks3	string	255		
 LRemarks4	string	255		
 HRemarks	string	255		
-SalesTaxSummaryStr	string	255	5407 Taxable Amt : 633.33 Tax Amt : 31.66, 	
-H_Discount	number	35	
+SalesTaxSummaryStr	string	255	5407 Taxable Amt : 475.24 Tax Amt : 23.76, 	
+H_Discount	number	0	
 H_AdditionalDiscount	number	0	
 H_Additional	number	0	
-H_TotalDiscount	number	35	
-H_AmountBeforeDiscount	number	700	
-H_Gross_Amount	number	665	
+H_TotalDiscount	number	0	
+H_AmountBeforeDiscount	number	499	
+H_Gross_Amount	number	499	
 H_SpecialDiscount_Per	number	0	
 H_SpecialDiscount	number	0	
-H_Taxable_Amount	number	633.33	
+H_Taxable_Amount	number	475.24	
 H_Tax1_Per	number	0	
 H_Tax1	number	0	
 H_Tax2_Per	number	0	
-H_Tax2	number	15.83	
+H_Tax2	number	11.88	
 H_Tax3_Per	number	0	
-H_Tax3	number	15.83	
+H_Tax3	number	11.88	
 H_Tax4_Per	number	0	
 H_Tax4	number	0	
 H_Tax5_Per	number	0	
@@ -164,8 +164,8 @@ H_Other_Charge1_Per	number	0
 H_Other_Charge1	number	0	
 H_Other_Charge2_Per	number	0	
 H_Other_Charge2	number	0	
-Round_Off	number	0.01	
-H_Net_Amount	number	665	
+Round_Off	number	0	
+H_Net_Amount	number	499	
 EInvoiceIRN	string	255		
 EInvoiceACKNo	string	255		
 EInvoiceACKDate	datetime		
@@ -173,7 +173,7 @@ Default_BankAccountDetail	string	255
 DocumentPrintHeaderPattern	string	255	Center Aligned	
 DimDetail	string	255		
 PrintedByUser	string	255	SUPER	
-EntryByUser	string	255	nitesh	
+EntryByUser	string	255	SUPER	
 PrintTitle	string	255	Sale Invoice Retail	
 DocumentPrintShowPrintDateTimeYn	string	255	1	
 DocumentPrintShowPartyBalance	string	255	Hide	

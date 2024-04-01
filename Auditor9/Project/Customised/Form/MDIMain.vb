@@ -58,7 +58,7 @@ Public Class MDIMain
                     'End
 
 
-                    AgIniVar.FOpenConnection("6", AgL.PubSiteCode, False)
+                    AgIniVar.FOpenConnection("7", AgL.PubSiteCode, False)
                 End If
                 AgL.PubStopWatch.Start()
 

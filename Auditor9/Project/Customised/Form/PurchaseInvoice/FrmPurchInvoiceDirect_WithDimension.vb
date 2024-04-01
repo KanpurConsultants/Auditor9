@@ -544,7 +544,7 @@ Public Class FrmPurchInvoiceDirect_WithDimension
         Me.LblTotalDealQty.AutoSize = True
         Me.LblTotalDealQty.Font = New System.Drawing.Font("Verdana", 9.75!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.LblTotalDealQty.ForeColor = System.Drawing.SystemColors.ControlDarkDark
-        Me.LblTotalDealQty.Location = New System.Drawing.Point(766, 3)
+        Me.LblTotalDealQty.Location = New System.Drawing.Point(708, 3)
         Me.LblTotalDealQty.Name = "LblTotalDealQty"
         Me.LblTotalDealQty.Size = New System.Drawing.Size(13, 16)
         Me.LblTotalDealQty.TabIndex = 666
@@ -556,7 +556,7 @@ Public Class FrmPurchInvoiceDirect_WithDimension
         Me.LblTotalDealQtyText.AutoSize = True
         Me.LblTotalDealQtyText.Font = New System.Drawing.Font("Verdana", 9.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.LblTotalDealQtyText.ForeColor = System.Drawing.Color.Maroon
-        Me.LblTotalDealQtyText.Location = New System.Drawing.Point(655, 3)
+        Me.LblTotalDealQtyText.Location = New System.Drawing.Point(580, 3)
         Me.LblTotalDealQtyText.Name = "LblTotalDealQtyText"
         Me.LblTotalDealQtyText.Size = New System.Drawing.Size(111, 14)
         Me.LblTotalDealQtyText.TabIndex = 665
