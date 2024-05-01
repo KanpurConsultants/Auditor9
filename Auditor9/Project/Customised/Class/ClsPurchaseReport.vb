@@ -60,8 +60,9 @@ Public Class ClsPurchaseReport
     Dim rowCustomer As Integer = 23
     Dim rowOrderBy As Integer = 24
     Dim rowPartyTaxGroup As Integer = 25
-    Dim rowItemTaxGroup As Integer = 26
-    Dim rowPartyTags As Integer = 27
+    Dim rowPartyTradeType As Integer = 26
+    Dim rowItemTaxGroup As Integer = 27
+    Dim rowPartyTags As Integer = 28
 
     'Dim rowTransporter As Integer = 22
     'Dim rowLRNo As Integer = 23
@@ -106,6 +107,9 @@ Public Class ClsPurchaseReport
     Public Shared mHelpPartyTaxGroup$ = "SELECT 'o' As Tick, H.Description AS Code, H.Description FROM PostingGroupSalesTaxParty H  "
     Public Shared mHelpItemTaxGroup$ = "SELECT 'o' As Tick, H.Description AS Code, H.Description FROM PostingGroupSalesTaxItem H  "
     Public Shared mHelpPartyTagQry$ = "Select Distinct 'o' As Tick, H.Tags as Code, H.Tags as Description  FROM SubGroup H "
+    Public Shared mHelpPartyTradeTypeQry$ = "Select 'o' As Tick, 'Manufacturers' As Code, 'Manufacturers' As Description " &
+                                " UNION ALL " &
+                                " Select 'o' As Tick, 'Traders' As Code, 'Traders' As Description "
 
     Public Sub Ini_Grid()
         Try
@@ -164,6 +168,7 @@ Public Class ClsPurchaseReport
             ReportFrm.CreateHelpGrid("Order By", "Order By", FrmRepDisplay.FieldFilterDataType.StringType, FrmRepDisplay.FieldDataType.SingleSelection, mQry, "Doc Date")
 
             ReportFrm.CreateHelpGrid("Party Tax Group", "Party Tax Group", FrmRepDisplay.FieldFilterDataType.StringType, FrmRepDisplay.FieldDataType.MultiSelection, mHelpPartyTaxGroup)
+            ReportFrm.CreateHelpGrid("Party Trade Type", "Party Trade Type", FrmRepDisplay.FieldFilterDataType.StringType, FrmRepDisplay.FieldDataType.MultiSelection, mHelpPartyTradeTypeQry)
             ReportFrm.CreateHelpGrid("Item Tax Group", "Item Tax Group", FrmRepDisplay.FieldFilterDataType.StringType, FrmRepDisplay.FieldDataType.MultiSelection, mHelpItemTaxGroup)
             ReportFrm.CreateHelpGrid("PartyTags", "Party Tags", FrmRepDisplay.FieldFilterDataType.StringType, FrmRepDisplay.FieldDataType.MultiSelection, mHelpPartyTagQry)
         Catch ex As Exception
@@ -284,6 +289,7 @@ Public Class ClsPurchaseReport
             mCondStr = mCondStr & ReportFrm.GetWhereCondition("City.CityCode", rowCity)
             mCondStr = mCondStr & ReportFrm.GetWhereCondition("City.State", rowState)
             mCondStr = mCondStr & ReportFrm.GetWhereCondition("H.SalesTaxGroupParty", rowPartyTaxGroup)
+            mCondStr = mCondStr & ReportFrm.GetWhereCondition("Party.TradeType", rowPartyTradeType)
             mCondStr = mCondStr & ReportFrm.GetWhereCondition("L.SalesTaxGroupItem", rowItemTaxGroup)
             mCondStr = mCondStr & ReportFrm.GetWhereCondition("SI.SaleToParty", rowCustomer)
             If ReportFrm.FGetText(rowHSN) <> "All" Then

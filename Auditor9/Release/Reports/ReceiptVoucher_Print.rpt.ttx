@@ -1,48 +1,46 @@
 ; Field definition file for table: ADORecordset
 Copies	string	255	1	
-CopyPrintingCaption	string	255		
+CopyPrintingCaption	string	255	Original	
 DocNoCaption	string	255	Doc.No.	
 DocDateCaption	string	255	Doc.Date	
 SiteStateCode	string	255	09	
 SiteStateName	string	255	Uttar Pradesh	
-DocID	string	255	D1   PMT 2022     141	
+DocID	string	255	D1    VR 2024      12	
 Sr	number	1	
-V_Date	datetime	30/Sep/2022 12:00:00 AM	
-Voucher_Type	string	255	Payment	
-NCat	string	255	PMT	
-InvoiceNo	string	255	BS/PMT141	
-PartySubcode	string	255	E100001091	
-PartyName	string	255	ELECTRIC EXPENCES A/C	
-PartyAddress	string	255		
+V_Date	datetime	03/Apr/2024 12:00:00 AM	
+Voucher_Type	string	255	MONEY RECEIPT	
+NCat	string	255	VR	
+InvoiceNo	string	255	VR12	
+PartySubcode	string	255	D100001966	
+PartyName	string	255	SHREE ARADHNA SAREES	
+PartyAddress	string	255	J825 MIGGUJANIKANPUR	
 CityName	string	255	KANPUR	
 PartyPincode	string	255		
 StateCode	string	255	09	
 StateName	string	255	Uttar Pradesh	
-PartyMobile	string	255		
-ContactPerson	string	255		
+PartyMobile	string	255	8858013362	
+ContactPerson	string	255	RAKESH KUMAR GUPTA	
 PartySalesTaxNo	string	255		
 PartyAadharNo	string	255		
-PartyPanNo	string	255		
+PartyPanNo	string	255	AQQPG6898Q	
 TermsAndConditions	string	255		
 ReferenceNo	string	255		
-LineAccountName	string	255	AXIS BANK	
+LineAccountName	string	255	CASH A/C	
 LineSpecification	string	255		
 EffectiveDate	datetime	01/Jan/1900 12:00:00 AM	
-Amount	number	1677	
+Amount	number	78787	
 L_Deduction	number	0	
 L_OtherCharge	number	0	
-L_NetAmount	number	1677	
+L_NetAmount	number	78787	
 ChqRefNo	string	255		
 ChqRefDate	datetime	01/Jan/1900 12:00:00 AM	
-LRemarks	string	255	17-8-22 TO 17-9-22	
+LRemarks	string	255		
 HRemarks	string	255		
-Default_BankAccountDetail	string	255	 AXIS A/C NO 921020015690258  IFSC CODE : UTIB0002896 <BR>
- CBI A/C NO 3142400392  IFSC CODE : CBIN0282150 <BR> PNB A/C NO 0254002130000382  IFSC CODE : 25400
-	
+Default_BankAccountDetail	string	255	Bank Detail : 	HDFC A/c : 50200003154727    IFSC : HDFC0002006	
 DocumentPrintHeaderPattern	string	255	Center Aligned	
 PrintedByUser	string	255	SUPER	
-EntryByUser	string	255	kamal	
-PrintTitle	string	255	Payment	
+EntryByUser	string	255	SUPER	
+PrintTitle	string	255	MONEY RECEIPT	
 DocumentPrintShowPrintDateTimeYn	string	255	1	
 CompanyLogo	BLOB		
 CompanyAuthorisedSignature	BLOB		

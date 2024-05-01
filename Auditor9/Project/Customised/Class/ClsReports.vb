@@ -81,6 +81,11 @@ Public Class ClsReports
     Public Shared mHelpPaymentModeQry$ = "Select 'o' As Tick, 'Cash' As Code, 'Cash' As Description " &
                                 " UNION ALL " &
                                 " Select 'o' As Tick, 'Credit' As Code, 'Credit' As Description "
+
+    Public Shared mHelpPartyTradeTypeQry$ = "Select 'o' As Tick, 'Manufacturers' As Code, 'Manufacturers' As Description " &
+                                " UNION ALL " &
+                                " Select 'o' As Tick, 'Traders' As Code, 'Traders' As Description "
+
     Public Shared mHelpOutletQry$ = "Select 'o' As Tick, H.Code, H.Description AS [Table] FROM Outlet H "
     Public Shared mHelpStewardQry$ = "Select 'o' As Tick,  Sg.SubCode AS Code, Sg.DispName AS Steward FROM SubGroup Sg  "
     Public Shared mHelpPartyQry$ = " Select 'o' As Tick,  Sg.SubCode As Code, Sg.DispName || ',' ||  City.CityName AS Party, Sg.Address FROM SubGroup Sg Left Join City On Sg.CityCode = City.CityCode Where Sg.Nature In ('Customer','Supplier','Cash') "
@@ -322,6 +327,7 @@ Public Class ClsReports
                     ReportFrm.CreateHelpGrid("State", "State", FrmRepDisplay.FieldFilterDataType.StringType, FrmRepDisplay.FieldDataType.MultiSelection, mHelpStateQry)
                     ReportFrm.CreateHelpGrid("HSN", "HSN", FrmRepDisplay.FieldFilterDataType.StringType, FrmRepDisplay.FieldDataType.StringType, "")
                     ReportFrm.CreateHelpGrid("Party Tax Group", "Party Tax Group", FrmRepDisplay.FieldFilterDataType.StringType, FrmRepDisplay.FieldDataType.MultiSelection, mHelpPartyTaxGroup)
+                    ReportFrm.CreateHelpGrid("Party Trade Type", "Party Trade Type", FrmRepDisplay.FieldFilterDataType.StringType, FrmRepDisplay.FieldDataType.MultiSelection, mHelpPartyTradeTypeQry)
                     ReportFrm.CreateHelpGrid("Item Tax Group", "Item Tax Group", FrmRepDisplay.FieldFilterDataType.StringType, FrmRepDisplay.FieldDataType.MultiSelection, mHelpItemTaxGroup)
                     ReportFrm.FilterGrid.Rows(13).Visible = False 'Hide HSN Row
 
@@ -2049,7 +2055,8 @@ Public Class ClsReports
                 mCondStr = mCondStr & " And I.HSN = " & AgL.Chk_Text(ReportFrm.FGetText(13)) & " "
             End If
             mCondStr = mCondStr & ReportFrm.GetWhereCondition("H.SalesTaxGroupParty", 14)
-            mCondStr = mCondStr & ReportFrm.GetWhereCondition("L.SalesTaxGroupItem", 15)
+            mCondStr = mCondStr & ReportFrm.GetWhereCondition("Party.TradeType", 15)
+            mCondStr = mCondStr & ReportFrm.GetWhereCondition("L.SalesTaxGroupItem", 16)
 
             mQry = " SELECT H.DocID, L.Sr, strftime('%d/%m/%Y', H.V_Date) As V_Date, H.V_Date As V_Date_ActualFormat,
                     H.Vendor, I.ItemGroup, I.ItemCategory,

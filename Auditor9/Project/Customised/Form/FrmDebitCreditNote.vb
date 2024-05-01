@@ -2963,7 +2963,7 @@ Public Class FrmDebitCreditNote
                     If e.KeyCode <> Keys.Enter Then
                         If sender.AgHelpDataset Is Nothing Then
                             If AgL.StrCmp(AgL.PubDBName, "Sadhvi") Then
-                                mQry = " Select Code, Name From ViewHelpSubGroup Where Code in ('D100037067','D100037068') "
+                                mQry = " Select Code, Name From ViewHelpSubGroup Where Code in ('D100037067','D100037068','D100037144') "
                             Else
                                 mQry = " Select Code, Name From ViewHelpSubGroup "
                             End If

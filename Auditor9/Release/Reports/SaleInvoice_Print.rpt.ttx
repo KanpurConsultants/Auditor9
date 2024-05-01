@@ -5,51 +5,51 @@ DocNoCaption	string	255	Invoice No.
 DocDateCaption	string	255	Invoice Date	
 SiteStateCode	string	255	09	
 SiteStateName	string	255	Uttar Pradesh	
-DocID	string	255	D1    SI 2023    6978	
+DocID	string	255	D1    SI 2024    2304	
 Sr	number	1	
-V_Date	datetime	11/Oct/2023 12:00:00 AM	
+V_Date	datetime	19/Apr/2024 12:00:00 AM	
 DeliveryDate	datetime		
 Voucher_Type	string	255	Tax Invoice	
 NCat	string	255	SI	
-InvoiceNo	string	255	SI-6978	
-RateType	string	255	Dhara	
+InvoiceNo	string	255	SI-2303	
+RateType	string	255	Super Net	
 DocumentPrintShowRateType	string	255	Show If Not Blank	
-AgentName	string	255	AWADHESH KUMAR MISHRA	
+AgentName	string	255	DIRECT (CASH)	
 AgentCaption	string	255	Agent	
 BillToPartyNature	string	255	Customer	
-SaleToPartyName	string	255	SHREE LAXMI CLOTH HOUSE	
-SaleToPartyAddress	string	255	PARI, SALVAN-RAIBARELI	
-CityName	string	255	SALLON	
-SaleToPartyPincode	string	255	229401	
+SaleToPartyName	string	255	SHYAM SUNDER VERMA	
+SaleToPartyAddress	string	255	PATTI DIST:-PRATAPGARH	
+CityName	string	255	PRATAPGARH	
+SaleToPartyPincode	string	255	230135	
 StateCode	string	255	09	
 StateName	string	255	Uttar Pradesh	
-SaleToPartyMobile	string	255	7800722795	
-ContactPerson	string	255	AMIT	
-SaleToPartySalesTaxNo	string	255	09ELZPK0128R1Z3	
-SaleToPartyAadharNo	string	255		
-SaleToPartyPanNo	string	255	ELZPK0128R	
-ShipToPartyName	string	255	SHREE LAXMI CLOTH HOUSE	
-ShipToPartyAddress	string	255	PARI, SALVAN-RAIBARELI	
-ShipToPartyCity	string	255	SALLON	
-ShipToPartyPincode	string	255	229401	
+SaleToPartyMobile	string	255	9876395626	
+ContactPerson	string	255	SHYAM SUNDER S/O RAM RAJ	
+SaleToPartySalesTaxNo	string	255		
+SaleToPartyAadharNo	string	255	729686188924	
+SaleToPartyPanNo	string	255		
+ShipToPartyName	string	255	SHYAM SUNDER VERMA	
+ShipToPartyAddress	string	255	PATTI DIST:-PRATAPGARH	
+ShipToPartyCity	string	255	PRATAPGARH	
+ShipToPartyPincode	string	255	230135	
 ShipToPartyStateCode	string	255	09	
 ShipToPartyStateName	string	255	Uttar Pradesh	
-ShipToPartyMobile	string	255	7800722795	
-ShipToPartySalesTaxNo	string	255	09ELZPK0128R1Z3	
-ShipToPartyAadharNo	string	255		
-ShipToPartyPanNo	string	255	ELZPK0128R	
+ShipToPartyMobile	string	255	9876395626	
+ShipToPartySalesTaxNo	string	255		
+ShipToPartyAadharNo	string	255	729686188924	
+ShipToPartyPanNo	string	255		
 ShipToAddress	string	255		
 TermsAndConditions	string	255	<b>1.</b> Goods once sold will not be taken back. <b>2.</b> No Guarantee in the Age of Fashion. <b>3.</b> Interest @ 24% per annum will be charge after 30 days from the date of bill. <b>4.</b> All disputes subject to Kanpur Jurisdiction OR disputes will be settle through Cawnpore Kapda Committee Arbitration Board which will be abide by the both parties	
-TransporterName	string	255	NEW RAIBAREILLY SALWAN EXPRESS, KANPUR	
-LrNo	string	255	8554	
-LrDate	datetime	12/Oct/2023 12:00:00 AM	
+TransporterName	string	255	KANPUR PRATAPGARH TRANSPORT CO., KANPUR	
+LrNo	string	255		
+LrDate	datetime		
 PrivateMark	string	255		
 Weight	number	0	
 Freight	number	0	
 ChargedWeight	number	0	
 FreightType	string	255		
-RoadPermitNo	string	255	461377131481	
-RoadPermitDate	datetime	11/Oct/2023 6:48:00 PM	
+RoadPermitNo	string	255		
+RoadPermitDate	datetime		
 VehicleNo	string	255		
 ShipMethod	string	255		
 PreCarriageBy	string	255		
@@ -59,12 +59,12 @@ BookedTo	string	255
 Destination	string	255		
 DescriptionOfGoods	string	255		
 DescriptionOfPacking	string	255		
-TransporterSalesTaxNo	string	255	09ADVPA4906F1ZH	
+TransporterSalesTaxNo	string	255	09AKAPB9819N1ZR	
 ReferenceNo	string	255		
-ItemName	string	255	15090          [KAPIL TEX(304) | SAREE]	
-ItemGroupName	string	255	S-ENT-304 HALKI	
+ItemName	string	255	LOLLY POP          [PARIDHAN(KAYRA-802)  | SAREE]	
+ItemGroupName	string	255	S-ENT-802 DYD	
 ItemCatName	string	255	SAREE	
-ItemSpecification	string	255	15090	
+ItemSpecification	string	255	LOLLY POP	
 InvoiceLineSpecification	string	255		
 HSN	string	255	540752	
 MaintainStockYn	boolean	True	
@@ -72,44 +72,44 @@ SalesTaxGroupItem	string	255	GST 5%
 GrossTaxRate	number	5	
 Pcs	number	6	
 Qty	number	6	
-Rate	number	304.5	
+Rate	number	795	
 Unit	string	255	Pcs	
 UnitDecimalPlaces	number	0	
 DiscountPer	number	0	
 DiscountAmount	number	0	
 AdditionalDiscountPer	number	0	
 AdditionalDiscountAmount	number	0	
-AdditionPer	number	5	
-AdditionAmount	number	87	
-TotalDiscount	number	-87	
-AmountBeforeDiscount	number	1827	
-Amount	number	1827	
-Taxable_Amount	number	1827	
+AdditionPer	number	0	
+AdditionAmount	number	0	
+TotalDiscount	number	0	
+AmountBeforeDiscount	number	4770	
+Amount	number	4770	
+Taxable_Amount	number	4770	
 Tax1_Per	number	0	
 Tax1	number	0	
 Tax2_Per	number	2.5	
-Tax2	number	45.68	
+Tax2	number	119.25	
 Tax3_Per	number	2.5	
-Tax3	number	45.68	
+Tax3	number	119.25	
 Tax4_Per	number	0	
 Tax4	number	0	
 Tax5_Per	number	0	
 Tax5	number	0	
-Net_Amount	number	1918.35	
+Net_Amount	number	5008.54	
 LRemarks	string	255		
 HRemarks	string	255		
-H_TotalDiscount	number	-2184.45	
-H_AmountBeforeDiscount	number	43689	
-H_Gross_Amount	number	45873.45	
+H_TotalDiscount	number	0	
+H_AmountBeforeDiscount	number	45938	
+H_Gross_Amount	number	45938	
 H_SpecialDiscount_Per	number	0	
 H_SpecialDiscount	number	0	
-H_Taxable_Amount	number	45873.45	
+H_Taxable_Amount	number	45938	
 H_Tax1_Per	number	0	
 H_Tax1	number	0	
 H_Tax2_Per	number	0	
-H_Tax2	number	1146.86	
+H_Tax2	number	1148.47	
 H_Tax3_Per	number	0	
-H_Tax3	number	1146.86	
+H_Tax3	number	1148.47	
 H_Tax4_Per	number	0	
 H_Tax4	number	0	
 H_Tax5_Per	number	0	
@@ -118,16 +118,16 @@ H_Deduction_Per	number	0
 H_Deduction	number	0	
 H_Other_Charge_Per	number	0	
 H_Other_Charge	number	0	
-Round_Off	number	-0.17	
-H_Net_Amount	number	48167	
-EInvoiceIRN	string	255	6b86af1d1d9a3be5ddc6954e144ffd18ca73f5c02614f407189145b19f8a9d63	
-EInvoiceAckNo	string	255	142313558065667	
-EInvoiceAckDate	datetime	11/Oct/2023 6:40:00 PM	
+Round_Off	number	0.06	
+H_Net_Amount	number	48235	
+EInvoiceIRN	string	255		
+EInvoiceAckNo	string	255		
+EInvoiceAckDate	datetime		
 Default_BankAccountDetail	string	255	Bank Detail : 	HDFC A/c : 50200003154727    IFSC : HDFC0002006	
 DocumentPrintHeaderPattern	string	255	Center Aligned	
 DimDetail	string	255		
 PrintedByUser	string	255	SUPER	
-EntryByUser	string	255	himanshu	
+EntryByUser	string	255	vikas	
 PrintTitle	string	255	TAX INVOICE	
 DocumentPrintShowPrintDateTimeYn	string	255	1	
 DocumentPrintShowPartyBalance	string	255	Hide	

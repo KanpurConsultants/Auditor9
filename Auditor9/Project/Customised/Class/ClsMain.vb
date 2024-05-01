@@ -7872,6 +7872,11 @@ Thanks
             FSeedSingleIfNotExist_EntryHeaderUISetting("FrmPerson", SubgroupType.LedgerAccount, "Dgl1", ConfigurableFields.FrmPersonHeaderDgl1.Remarks, 0, 0)
             FSeedSingleIfNotExist_EntryHeaderUISetting("FrmPerson", SubgroupType.LedgerAccount, "Dgl1", FrmPerson.hcShowAccountInOtherDivisions, 0, 0)
             FSeedSingleIfNotExist_EntryHeaderUISetting("FrmPerson", SubgroupType.LedgerAccount, "Dgl1", FrmPerson.hcShowAccountInOtherSites, 0, 0)
+            FSeedSingleIfNotExist_EntryHeaderUISetting("FrmPerson", SubgroupType.LedgerAccount, "Dgl1", ConfigurableFields.FrmPersonHeaderDgl1.Address, 1, 0)
+            FSeedSingleIfNotExist_EntryHeaderUISetting("FrmPerson", SubgroupType.LedgerAccount, "Dgl1", ConfigurableFields.FrmPersonHeaderDgl1.City, 1, 1, 1)
+            FSeedSingleIfNotExist_EntryHeaderUISetting("FrmPerson", SubgroupType.LedgerAccount, "Dgl1", ConfigurableFields.FrmPersonHeaderDgl1.Pincode, 1, 0)
+            FSeedSingleIfNotExist_EntryHeaderUISetting("FrmPerson", SubgroupType.LedgerAccount, "Dgl1", ConfigurableFields.FrmPersonHeaderDgl1.Parent, 0, 0)
+
             If FDivisionNameForCustomization(20) = "SHYAMA SHYAM FABRICS" Or FDivisionNameForCustomization(22) = "W SHYAMA SHYAM FABRICS" Or ClsMain.FDivisionNameForCustomization(25) = "SHYAMA SHYAM VENTURES LLP" Or ClsMain.FDivisionNameForCustomization(27) = "W SHYAMA SHYAM VENTURES LLP" Then
                 FSeedSingleIfNotExist_EntryHeaderUISetting("FrmPerson", SubgroupType.LedgerAccount, "Dgl1", FrmPerson_ShyamaShyam.hcStatus, 1, 0)
             End If
@@ -22020,7 +22025,8 @@ Thanks
             Else
                 mQry += " Sg.Name || (Case When Sg.CityCode Is Null Then '' Else ', ' || City.CityName End) as Name, "
             End If
-            mQry += " Sg.Mobile, Sg.CreditLimit, Sg.Address,Sg.CityCode, Sg.GroupCode, Sg.Nature, Sg.SubgroupType, Sg.Status, Sg.Site_Code, Sg.Parent, Sg.Area, Sg.FatherName, Sg.Tags
+            mQry += " Sg.Mobile, Sg.CreditLimit, Sg.Address,Sg.CityCode, Sg.GroupCode, Sg.Nature, Sg.SubgroupType, Sg.Status, Sg.Site_Code, Sg.Parent, Sg.Area, Sg.FatherName, 
+                Sg.IsMSMERegistred, Sg.MSMEType, Sg.TradeType, Sg.UdyamNo, Sg.Tags
                 From SubGroup Sg                                             
                 Left Join City On Sg.CityCode = City.CityCode                
                "

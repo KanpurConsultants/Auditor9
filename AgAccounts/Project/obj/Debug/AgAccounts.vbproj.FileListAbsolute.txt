@@ -1016,3 +1016,4 @@ D:\Active Projects\Desktop\Auditor9\AgAccounts\Project\obj\Debug\AgAccounts.MDIM
 D:\Active Projects\Desktop\Auditor9\AgAccounts\Project\obj\Debug\AgAccounts.RepView.resources
 D:\Active Projects\Desktop\Auditor9\AgAccounts\Project\obj\Debug\AgAccounts.Resources.resources
 D:\Active Projects\Desktop\Auditor9\AgAccounts\Project\obj\Debug\AgAccounts.vbproj.GenerateResource.Cache
+D:\Active Projects\Desktop\Auditor9\AgAccounts\Project\obj\Debug\AgAccounts.vbprojResolveAssemblyReference.cache

@@ -87,7 +87,13 @@ Public Class FrmPerson
     Public Const rowFirstProcessOfCombination As Integer = 58
     Public Const rowLastProcessOfCombination As Integer = 59
     Public Const rowTags As Integer = 60
-    Public Const rowRemarks As Integer = 61
+    Public Const rowIsMSMERegistred As Integer = 61
+    Public Const rowMSMEType As Integer = 62
+    Public Const rowTradeType As Integer = 63
+    Public Const rowUdyamNo As Integer = 64
+    Public Const rowRemarks As Integer = 65
+
+
 
     'Public Const rowContactPerson As Integer = 15
     'Public Const rowSalesTaxNo As Integer = 16
@@ -152,7 +158,10 @@ Public Class FrmPerson
     Public Const hcFirstProcessOfCombination As String = "First Process Of Combination"
     Public Const hcLastProcessOfCombination As String = "Last Process Of Combination"
     Public Const hcTags As String = "Tags"
-
+    Public Const hcIsMSMERegistred As String = "Is MSME Registred"
+    Public Const hcMSMEType As String = "MSME Type"
+    Public Const hcTradeType As String = "Trade Type"
+    Public Const hcUdyamNo As String = "Udyam No"
 
 
     Friend WithEvents MnuOptions As ContextMenuStrip
@@ -717,6 +726,11 @@ Public Class FrmPerson
                 Dgl1.Item(Col1Value, rowChequeFormat).Tag = AgL.XNull(.Rows(0)("ChequeFormat"))
                 Dgl1.Item(Col1Value, rowChequeFormat).Value = AgL.XNull(.Rows(0)("ChequeFormatName"))
 
+                Dgl1(Col1Value, rowIsMSMERegistred).Value = AgL.XNull(.Rows(0)("IsMSMERegistred"))
+                Dgl1(Col1Value, rowMSMEType).Value = AgL.XNull(.Rows(0)("MSMEType"))
+                Dgl1(Col1Value, rowTradeType).Value = AgL.XNull(.Rows(0)("TradeType"))
+                Dgl1(Col1Value, rowUdyamNo).Value = AgL.XNull(.Rows(0)("UdyamNo"))
+
                 Dgl1(Col1Value, rowTags).Value = AgL.XNull(.Rows(0)("Tags"))
                 Dgl1.Item(Col1Value, rowContactPerson).Value = AgL.XNull(.Rows(0)("ContactPerson"))
                 Dgl1.Item(Col1Value, rowParent).Tag = AgL.XNull(.Rows(0)("Parent"))
@@ -1209,7 +1223,7 @@ Public Class FrmPerson
                 mQry = "INSERT INTO SubGroup(SubCode, Site_Code, Name, DispName, " &
                         " GroupCode, GroupNature, ManualCode, 	Nature,	Address, CityCode,  " &
                         " PIN, Phone,  ContactPerson, SubgroupType, ShowAccountInOtherDivisions, ShowAccountInOtherSites, WeekOffDays, Grade, TdsGroup, TdsCategory, " &
-                        " Religion, Caste, ReconciliationUpToDate, Tags, Remarks, " &
+                        " Religion, Caste, ReconciliationUpToDate, IsMSMERegistred, MSMEType, TradeType, UdyamNo, Tags, Remarks, " &
                         " Mobile, CreditDays, CreditLimit, FairDiscountPer, EMail, Parent, ChequeFormat, Area, InterestSlab, SalesTaxPostingGroup, SalesTaxGroupRegType, HSN, " &
                         " EntryBy, EntryDate,  EntryType, EntryStatus, Div_Code, Status) " &
                         " VALUES(" & AgL.Chk_Text(mSearchCode) & ", " &
@@ -1230,6 +1244,10 @@ Public Class FrmPerson
                         " " & AgL.Chk_Text(Dgl1(Col1Value, rowReligion).Tag) & ", " &
                         " " & AgL.Chk_Text(Dgl1(Col1Value, rowCaste).Tag) & ", " &
                         " " & AgL.Chk_Date(Dgl1(Col1Value, rowReconciliationUpToDate).Value) & ", " &
+                        " " & AgL.Chk_Text(Dgl1(Col1Value, rowIsMSMERegistred).Value) & ", " &
+                        " " & AgL.Chk_Text(Dgl1(Col1Value, rowMSMEType).Value) & ", " &
+                        " " & AgL.Chk_Text(Dgl1(Col1Value, rowTradeType).Value) & ", " &
+                        " " & AgL.Chk_Text(Dgl1(Col1Value, rowUdyamNo).Value) & ", " &
                         " " & AgL.Chk_Text(Dgl1(Col1Value, rowTags).Value) & ", " &
                         " " & AgL.Chk_Text(Dgl1(Col1Value, rowRemarks).Value) & ", " &
                         " " & AgL.Chk_Text(Dgl1(Col1Value, rowMobile).Value) & ", " &
@@ -1284,6 +1302,10 @@ Public Class FrmPerson
                         " Caste = " & AgL.Chk_Text(Dgl1(Col1Value, rowCaste).Tag) & ", " &
                         " ReconciliationUpToDate = " & AgL.Chk_Date(Dgl1(Col1Value, rowReconciliationUpToDate).Value) & ", " &
                         " FairDiscountPer = " & Val(Dgl1(Col1Value, rowFairDiscountPer).Value) & ", " &
+                        " IsMSMERegistred = " & AgL.Chk_Text(Dgl1(Col1Value, rowIsMSMERegistred).Value) & ", " &
+                        " MSMEType = " & AgL.Chk_Text(Dgl1(Col1Value, rowMSMEType).Value) & ", " &
+                        " TradeType = " & AgL.Chk_Text(Dgl1(Col1Value, rowTradeType).Value) & ", " &
+                        " UdyamNo = " & AgL.Chk_Text(Dgl1(Col1Value, rowUdyamNo).Value) & ", " &
                         " Tags = " & AgL.Chk_Text(Dgl1(Col1Value, rowTags).Value) & ", " &
                         " Remarks = " & AgL.Chk_Text(Dgl1(Col1Value, rowRemarks).Value) & ", " &
                         " EntryType = " & AgL.Chk_Text(Topctrl1.Mode) & ", " &
@@ -1917,7 +1939,7 @@ Public Class FrmPerson
 
 
 
-        Dgl1.Rows.Add(62)
+        Dgl1.Rows.Add(66)
 
         Dgl1.Item(Col1Head, rowSubgroupType).Value = ConfigurableFields.FrmPersonHeaderDgl1.SubgroupType
         Dgl1.Item(Col1Head, rowCode).Value = ConfigurableFields.FrmPersonHeaderDgl1.Code
@@ -1980,6 +2002,11 @@ Public Class FrmPerson
         Dgl1.Item(Col1Head, rowFirstProcessOfCombination).Value = hcFirstProcessOfCombination
         Dgl1.Item(Col1Head, rowLastProcessOfCombination).Value = hcLastProcessOfCombination
         Dgl1.Item(Col1Head, rowTags).Value = hcTags
+
+        Dgl1.Item(Col1Head, rowIsMSMERegistred).Value = hcIsMSMERegistred
+        Dgl1.Item(Col1Head, rowMSMEType).Value = hcMSMEType
+        Dgl1.Item(Col1Head, rowTradeType).Value = hcTradeType
+        Dgl1.Item(Col1Head, rowUdyamNo).Value = hcUdyamNo
 
         Dgl1.Item(Col1Head, rowRemarks).Value = ConfigurableFields.FrmPersonHeaderDgl1.Remarks
         Dgl1.Rows(rowAddress).Height = 50
@@ -2306,6 +2333,41 @@ Public Class FrmPerson
                 Case rowSalesTaxGroupRegType
                     If Dgl1.Item(Col1Head, Dgl1.CurrentCell.RowIndex).Tag Is Nothing Then
                         mQry = " Select Name As Code, Name  FROM PostingGroupSalesTaxRegType "
+                        Dgl1.Item(Col1Head, Dgl1.CurrentCell.RowIndex).Tag = AgL.FillData(mQry, AgL.GCn)
+                    End If
+                    If Dgl1.AgHelpDataSet(Col1Value) Is Nothing Then
+                        Dgl1.AgHelpDataSet(Col1Value) = Dgl1.Item(Col1Head, Dgl1.CurrentCell.RowIndex).Tag
+                    End If
+
+                Case rowIsMSMERegistred
+                    If Dgl1.Item(Col1Head, Dgl1.CurrentCell.RowIndex).Tag Is Nothing Then
+                        mQry = " SELECT 'True' AS code, 'True' AS Name 
+                                UNION ALL 
+                                SELECT 'False' AS code, 'False' AS Name  "
+                        Dgl1.Item(Col1Head, Dgl1.CurrentCell.RowIndex).Tag = AgL.FillData(mQry, AgL.GCn)
+                    End If
+                    If Dgl1.AgHelpDataSet(Col1Value) Is Nothing Then
+                        Dgl1.AgHelpDataSet(Col1Value) = Dgl1.Item(Col1Head, Dgl1.CurrentCell.RowIndex).Tag
+                    End If
+
+                Case rowMSMEType
+                    If Dgl1.Item(Col1Head, Dgl1.CurrentCell.RowIndex).Tag Is Nothing Then
+                        mQry = " SELECT 'Medium' AS code, 'Medium' AS Name 
+                                UNION ALL 
+                                SELECT 'Small' AS code, 'Small' AS Name 
+                                UNION ALL 
+                                SELECT 'Micro' AS code, 'Micro' AS Name  "
+                        Dgl1.Item(Col1Head, Dgl1.CurrentCell.RowIndex).Tag = AgL.FillData(mQry, AgL.GCn)
+                    End If
+                    If Dgl1.AgHelpDataSet(Col1Value) Is Nothing Then
+                        Dgl1.AgHelpDataSet(Col1Value) = Dgl1.Item(Col1Head, Dgl1.CurrentCell.RowIndex).Tag
+                    End If
+
+                Case rowTradeType
+                    If Dgl1.Item(Col1Head, Dgl1.CurrentCell.RowIndex).Tag Is Nothing Then
+                        mQry = " SELECT 'Manufacturers' AS code, 'Manufacturers' AS Name 
+                                UNION ALL 
+                                SELECT 'Traders' AS code, 'Traders' AS Name  "
                         Dgl1.Item(Col1Head, Dgl1.CurrentCell.RowIndex).Tag = AgL.FillData(mQry, AgL.GCn)
                     End If
                     If Dgl1.AgHelpDataSet(Col1Value) Is Nothing Then
