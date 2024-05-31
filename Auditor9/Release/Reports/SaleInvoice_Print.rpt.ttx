@@ -5,42 +5,44 @@ DocNoCaption	string	255	Invoice No.
 DocDateCaption	string	255	Invoice Date	
 SiteStateCode	string	255	09	
 SiteStateName	string	255	Uttar Pradesh	
-DocID	string	255	D1    SI 2024    2304	
+DocID	string	255	D1    SI 2024    2303	
 Sr	number	1	
 V_Date	datetime	19/Apr/2024 12:00:00 AM	
 DeliveryDate	datetime		
 Voucher_Type	string	255	Tax Invoice	
 NCat	string	255	SI	
-InvoiceNo	string	255	SI-2303	
-RateType	string	255	Super Net	
+InvoiceNo	string	255	SI-2302	
+RateType	string	255	Dhara	
 DocumentPrintShowRateType	string	255	Show If Not Blank	
-AgentName	string	255	DIRECT (CASH)	
+AgentName	string	255	DIRECT CUSTOMER	
 AgentCaption	string	255	Agent	
 BillToPartyNature	string	255	Customer	
-SaleToPartyName	string	255	SHYAM SUNDER VERMA	
-SaleToPartyAddress	string	255	PATTI DIST:-PRATAPGARH	
-CityName	string	255	PRATAPGARH	
-SaleToPartyPincode	string	255	230135	
+SaleToPartyName	string	255	JITENDER MAHENDER CLOTH HOUSE	
+SaleToPartyAddress	string	255	BANTHRA	
+CityName	string	255	BANTHRA	
+SaleToPartyPincode	string	255	227101	
 StateCode	string	255	09	
 StateName	string	255	Uttar Pradesh	
-SaleToPartyMobile	string	255	9876395626	
-ContactPerson	string	255	SHYAM SUNDER S/O RAM RAJ	
-SaleToPartySalesTaxNo	string	255		
-SaleToPartyAadharNo	string	255	729686188924	
-SaleToPartyPanNo	string	255		
-ShipToPartyName	string	255	SHYAM SUNDER VERMA	
-ShipToPartyAddress	string	255	PATTI DIST:-PRATAPGARH	
-ShipToPartyCity	string	255	PRATAPGARH	
-ShipToPartyPincode	string	255	230135	
+SaleToPartyMobile	string	255	9005370892	
+ContactPerson	string	255	MAHENDRA	
+SaleToPartySalesTaxNo	string	255	09BDFPM7354G1ZA	
+SaleToPartyAadharNo	string	255		
+SaleToPartyPanNo	string	255	BDFPM7354G	
+ShipToPartyName	string	255	JITENDER MAHENDER CLOTH HOUSE	
+ShipToPartyAddress	string	255	BANTHRA	
+ShipToPartyCity	string	255	BANTHRA	
+ShipToPartyPincode	string	255	227101	
 ShipToPartyStateCode	string	255	09	
 ShipToPartyStateName	string	255	Uttar Pradesh	
-ShipToPartyMobile	string	255	9876395626	
-ShipToPartySalesTaxNo	string	255		
-ShipToPartyAadharNo	string	255	729686188924	
-ShipToPartyPanNo	string	255		
+ShipToPartyMobile	string	255	9005370892	
+ShipToPartySalesTaxNo	string	255	09BDFPM7354G1ZA	
+ShipToPartyAadharNo	string	255		
+ShipToPartyPanNo	string	255	BDFPM7354G	
 ShipToAddress	string	255		
 TermsAndConditions	string	255	<b>1.</b> Goods once sold will not be taken back. <b>2.</b> No Guarantee in the Age of Fashion. <b>3.</b> Interest @ 24% per annum will be charge after 30 days from the date of bill. <b>4.</b> All disputes subject to Kanpur Jurisdiction OR disputes will be settle through Cawnpore Kapda Committee Arbitration Board which will be abide by the both parties	
-TransporterName	string	255	KANPUR PRATAPGARH TRANSPORT CO., KANPUR	
+TransporterName	string	255	NEW KAPIL TRANSPORT, KANPUR	
+TransporterMobile	string	255	9998987878	
+TransporterAddress	string	255	RAMGANJ PAKKA 	
 LrNo	string	255		
 LrDate	datetime		
 PrivateMark	string	255		
@@ -59,57 +61,57 @@ BookedTo	string	255
 Destination	string	255		
 DescriptionOfGoods	string	255		
 DescriptionOfPacking	string	255		
-TransporterSalesTaxNo	string	255	09AKAPB9819N1ZR	
+TransporterSalesTaxNo	string	255	09BAUPK9207Q1ZM	
 ReferenceNo	string	255		
-ItemName	string	255	LOLLY POP          [PARIDHAN(KAYRA-802)  | SAREE]	
-ItemGroupName	string	255	S-ENT-802 DYD	
-ItemCatName	string	255	SAREE	
-ItemSpecification	string	255	LOLLY POP	
+ItemName	string	255	TINDER PRINT          [MP FAB{MADHUSUDAN TEX} | SAREE PRINT]	
+ItemGroupName	string	255	S-ENT-74-PRINT	
+ItemCatName	string	255	SAREE PRINT	
+ItemSpecification	string	255	TINDER PRINT	
 InvoiceLineSpecification	string	255		
-HSN	string	255	540752	
+HSN	string	255	540754	
 MaintainStockYn	boolean	True	
 SalesTaxGroupItem	string	255	GST 5%	
 GrossTaxRate	number	5	
-Pcs	number	6	
-Qty	number	6	
-Rate	number	795	
+Pcs	number	4	
+Qty	number	4	
+Rate	number	442.05	
 Unit	string	255	Pcs	
 UnitDecimalPlaces	number	0	
 DiscountPer	number	0	
 DiscountAmount	number	0	
 AdditionalDiscountPer	number	0	
 AdditionalDiscountAmount	number	0	
-AdditionPer	number	0	
-AdditionAmount	number	0	
-TotalDiscount	number	0	
-AmountBeforeDiscount	number	4770	
-Amount	number	4770	
-Taxable_Amount	number	4770	
+AdditionPer	number	5	
+AdditionAmount	number	84.2	
+TotalDiscount	number	-84.2	
+AmountBeforeDiscount	number	1768.2	
+Amount	number	1768.2	
+Taxable_Amount	number	1768.2	
 Tax1_Per	number	0	
 Tax1	number	0	
 Tax2_Per	number	2.5	
-Tax2	number	119.25	
+Tax2	number	44.21	
 Tax3_Per	number	2.5	
-Tax3	number	119.25	
+Tax3	number	44.21	
 Tax4_Per	number	0	
 Tax4	number	0	
 Tax5_Per	number	0	
 Tax5	number	0	
-Net_Amount	number	5008.54	
+Net_Amount	number	1856.66	
 LRemarks	string	255		
 HRemarks	string	255		
-H_TotalDiscount	number	0	
-H_AmountBeforeDiscount	number	45938	
-H_Gross_Amount	number	45938	
+H_TotalDiscount	number	-209.7	
+H_AmountBeforeDiscount	number	4194	
+H_Gross_Amount	number	4403.7	
 H_SpecialDiscount_Per	number	0	
 H_SpecialDiscount	number	0	
-H_Taxable_Amount	number	45938	
+H_Taxable_Amount	number	4403.7	
 H_Tax1_Per	number	0	
 H_Tax1	number	0	
 H_Tax2_Per	number	0	
-H_Tax2	number	1148.47	
+H_Tax2	number	110.1	
 H_Tax3_Per	number	0	
-H_Tax3	number	1148.47	
+H_Tax3	number	110.1	
 H_Tax4_Per	number	0	
 H_Tax4	number	0	
 H_Tax5_Per	number	0	
@@ -118,8 +120,8 @@ H_Deduction_Per	number	0
 H_Deduction	number	0	
 H_Other_Charge_Per	number	0	
 H_Other_Charge	number	0	
-Round_Off	number	0.06	
-H_Net_Amount	number	48235	
+Round_Off	number	0.1	
+H_Net_Amount	number	4624	
 EInvoiceIRN	string	255		
 EInvoiceAckNo	string	255		
 EInvoiceAckDate	datetime		
@@ -127,7 +129,7 @@ Default_BankAccountDetail	string	255	Bank Detail : 	HDFC A/c : 50200003154727   
 DocumentPrintHeaderPattern	string	255	Center Aligned	
 DimDetail	string	255		
 PrintedByUser	string	255	SUPER	
-EntryByUser	string	255	vikas	
+EntryByUser	string	255	MCHEAK	
 PrintTitle	string	255	TAX INVOICE	
 DocumentPrintShowPrintDateTimeYn	string	255	1	
 DocumentPrintShowPartyBalance	string	255	Hide	

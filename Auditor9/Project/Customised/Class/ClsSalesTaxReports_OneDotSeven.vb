@@ -986,7 +986,7 @@ Public Class ClsSalesTaxReports_OneDotSeven
                 Isnull(Lc.Tax1,0) As IntegratedTaxAmount,  Isnull(Lc.Tax2,0) As CentralTaxAmount, 
                 Isnull(Lc.Tax3,0) As StateTaxAmount, Isnull(Lc.Tax4,0) As CessAmount,
                 Isnull(Lc.Tax1,0) + Isnull(Lc.Tax2,0) + Isnull(Lc.Tax3,0) + Isnull(Lc.Tax4,0) As TaxAmount,
-                '' As ItemCategory, VSale.HSN AS HSN, '' AS UQC, '' As Exception
+                '' As ItemCategory, Isnull(VSale.HSN,L.HSN) AS HSN, '' AS UQC, '' As Exception
                 From LedgerHead H 
                 LEFT JOIN LedgerHeadCharges Hc ON H.DocId = Hc.DocId
                 Left join LedgerHeadDetail L on H.DocId = L.DocID 
@@ -1330,7 +1330,7 @@ Public Class ClsSalesTaxReports_OneDotSeven
                 'B2B
                 Dim DtDistinctGSTNo_B2B As DataTable = DtTableB2b.DefaultView.ToTable(True, "GSTINofRecipient")
                 For I = 0 To DtDistinctGSTNo_B2B.Rows.Count - 1
-                    If I = 0 Then sw.WriteLine(TabStr_1 + """b2b"": [")
+                    If I = 0 Then sw.WriteLine(TabStr_1 + """b2b,sez,de"": [")
                     sw.WriteLine(TabStr_2 + "{")
                     sw.WriteLine(TabStr_3 + """ctin"": """ & DtDistinctGSTNo_B2B.Rows(I)("GSTINofRecipient") & """,")
                     sw.WriteLine(TabStr_3 + """inv"": [")

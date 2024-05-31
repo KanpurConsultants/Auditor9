@@ -3,6 +3,7 @@ Imports System.Xml
 Imports Customised.ClsMain
 Imports System.IO
 Imports AgLibrary.ClsMain.agConstants
+Imports System.Linq
 
 Public Class FrmExpenseEntry
     Inherits AgTemplate.TempTransaction
@@ -83,6 +84,7 @@ Public Class FrmExpenseEntry
     Public WithEvents TxtLinkedParty As AgControls.AgTextBox
     Protected WithEvents LblLinkedParty As Label
     Friend WithEvents MnuShowLedgerPosting As ToolStripMenuItem
+    Protected WithEvents BtnAttachments As Button
     Dim WithEvents GridReportFrm As AgLibrary.FrmRepDisplay
 
     Class OutstandingBill
@@ -147,6 +149,7 @@ Public Class FrmExpenseEntry
         Me.MnuImportFromTally = New System.Windows.Forms.ToolStripMenuItem()
         Me.MnuImportFromDos = New System.Windows.Forms.ToolStripMenuItem()
         Me.MnuEditSave = New System.Windows.Forms.ToolStripMenuItem()
+        Me.MnuShowLedgerPosting = New System.Windows.Forms.ToolStripMenuItem()
         Me.MnuReport = New System.Windows.Forms.ToolStripMenuItem()
         Me.OFDMain = New System.Windows.Forms.OpenFileDialog()
         Me.PnlFifo = New System.Windows.Forms.Panel()
@@ -159,7 +162,7 @@ Public Class FrmExpenseEntry
         Me.Label6 = New System.Windows.Forms.Label()
         Me.TxtLinkedParty = New AgControls.AgTextBox()
         Me.LblLinkedParty = New System.Windows.Forms.Label()
-        Me.MnuShowLedgerPosting = New System.Windows.Forms.ToolStripMenuItem()
+        Me.BtnAttachments = New System.Windows.Forms.Button()
         Me.GroupBox2.SuspendLayout()
         Me.GBoxMoveToLog.SuspendLayout()
         Me.GBoxApprove.SuspendLayout()
@@ -377,6 +380,7 @@ Public Class FrmExpenseEntry
         'TP1
         '
         Me.TP1.BackColor = System.Drawing.Color.FromArgb(CType(CType(234, Byte), Integer), CType(CType(234, Byte), Integer), CType(CType(234, Byte), Integer))
+        Me.TP1.Controls.Add(Me.BtnAttachments)
         Me.TP1.Controls.Add(Me.TxtLinkedParty)
         Me.TP1.Controls.Add(Me.LblLinkedParty)
         Me.TP1.Controls.Add(Me.Label5)
@@ -441,6 +445,7 @@ Public Class FrmExpenseEntry
         Me.TP1.Controls.SetChildIndex(Me.Label5, 0)
         Me.TP1.Controls.SetChildIndex(Me.LblLinkedParty, 0)
         Me.TP1.Controls.SetChildIndex(Me.TxtLinkedParty, 0)
+        Me.TP1.Controls.SetChildIndex(Me.BtnAttachments, 0)
         '
         'Topctrl1
         '
@@ -874,7 +879,7 @@ Public Class FrmExpenseEntry
         '
         Me.MnuOptions.Items.AddRange(New System.Windows.Forms.ToolStripItem() {Me.MnuImportFromExcel, Me.MnuImportGSTDataFromDos, Me.MnuImportGSTDataFromExcel, Me.MnuImportFromTally, Me.MnuImportFromDos, Me.MnuEditSave, Me.MnuShowLedgerPosting, Me.MnuReport})
         Me.MnuOptions.Name = "MnuOptions"
-        Me.MnuOptions.Size = New System.Drawing.Size(222, 202)
+        Me.MnuOptions.Size = New System.Drawing.Size(222, 180)
         '
         'MnuImportFromExcel
         '
@@ -911,6 +916,12 @@ Public Class FrmExpenseEntry
         Me.MnuEditSave.Name = "MnuEditSave"
         Me.MnuEditSave.Size = New System.Drawing.Size(221, 22)
         Me.MnuEditSave.Text = "Edit & Save"
+        '
+        'MnuShowLedgerPosting
+        '
+        Me.MnuShowLedgerPosting.Name = "MnuShowLedgerPosting"
+        Me.MnuShowLedgerPosting.Size = New System.Drawing.Size(221, 22)
+        Me.MnuShowLedgerPosting.Text = "Show Ledger Posting"
         '
         'MnuReport
         '
@@ -1034,7 +1045,7 @@ Public Class FrmExpenseEntry
         Me.TxtPaymentMode.Location = New System.Drawing.Point(380, 99)
         Me.TxtPaymentMode.MaxLength = 0
         Me.TxtPaymentMode.Name = "TxtPaymentMode"
-        Me.TxtPaymentMode.Size = New System.Drawing.Size(414, 16)
+        Me.TxtPaymentMode.Size = New System.Drawing.Size(413, 16)
         Me.TxtPaymentMode.TabIndex = 7
         '
         'Label6
@@ -1083,11 +1094,20 @@ Public Class FrmExpenseEntry
         Me.LblLinkedParty.TabIndex = 3022
         Me.LblLinkedParty.Text = "Linked Party"
         '
-        'MnuShowLedgerPosting
+        'BtnAttachments
         '
-        Me.MnuShowLedgerPosting.Name = "MnuShowLedgerPosting"
-        Me.MnuShowLedgerPosting.Size = New System.Drawing.Size(221, 22)
-        Me.MnuShowLedgerPosting.Text = "Show Ledger Posting"
+        Me.BtnAttachments.FlatStyle = System.Windows.Forms.FlatStyle.Flat
+        Me.BtnAttachments.Font = New System.Drawing.Font("Verdana", 8.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.BtnAttachments.ForeColor = System.Drawing.Color.Black
+        Me.BtnAttachments.Location = New System.Drawing.Point(808, 99)
+        Me.BtnAttachments.Margin = New System.Windows.Forms.Padding(0)
+        Me.BtnAttachments.Name = "BtnAttachments"
+        Me.BtnAttachments.Size = New System.Drawing.Size(115, 29)
+        Me.BtnAttachments.TabIndex = 3023
+        Me.BtnAttachments.TabStop = False
+        Me.BtnAttachments.Text = "Attachments"
+        Me.BtnAttachments.TextAlign = System.Drawing.ContentAlignment.TopCenter
+        Me.BtnAttachments.UseVisualStyleBackColor = True
         '
         'FrmExpenseEntry
         '
@@ -2925,6 +2945,28 @@ Public Class FrmExpenseEntry
             ShowLedgerHeadParty("", TxtPartyName.Tag, TxtNature.Text)
         Else
             ShowLedgerHeadParty(mSearchCode, "", TxtNature.Text)
+        End If
+    End Sub
+
+    Private Sub BtnAttachments_Click(ByVal sender As Object, ByVal e As System.EventArgs) Handles BtnAttachments.Click
+        Dim FrmObj As New AgLibrary.FrmAttachmentViewer(AgL)
+        FrmObj.LblDocNo.Text = "Document No. : " + TxtReferenceNo.Text
+        FrmObj.SearchCode = mSearchCode
+        FrmObj.TableName = "SubGroupAttachments"
+        FrmObj.StartPosition = FormStartPosition.CenterParent
+        FrmObj.ShowDialog()
+        FrmObj.Dispose()
+        FrmObj = Nothing
+        SetAttachmentCaption()
+    End Sub
+
+    Private Sub SetAttachmentCaption()
+        Dim AttachmentPath As String = PubAttachmentPath + mSearchCode + "\"
+        If Directory.Exists(AttachmentPath) Then
+            Dim FileCount As Integer = Directory.GetFiles(AttachmentPath).Count
+            If FileCount > 0 Then BtnAttachments.Text = FileCount.ToString + IIf(FileCount = 1, " Attachment", " Attachments") Else BtnAttachments.Text = "Attachments"
+        Else
+            BtnAttachments.Text = "Attachments"
         End If
     End Sub
 

@@ -2859,6 +2859,14 @@ Public Class FrmDebitCreditNote
             Exit Sub
         End If
 
+        If AgL.StrCmp(AgL.PubDBName, "Sadhvi") And TxtV_Type.Tag = "CNC" Then
+            If TxtLinkedParty.Tag = "" Then
+                MsgBox("Entry For Can Not Be Blank")
+                TxtLinkedParty.Focus()
+                passed = False : Exit Sub
+            End If
+        End If
+
 
         With Dgl1
             For I = 0 To .Rows.Count - 1
