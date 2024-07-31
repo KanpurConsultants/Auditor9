@@ -119,6 +119,8 @@ Public Class ClsSadhviBranchPaymentStatus
                 mHoParties = "'D100028540','D100028541'"
             ElseIf Site = "''5''" Then
                 mHoParties = "'D100025715','D100025716'"
+            ElseIf Site = "''6''" Then
+                mHoParties = "'D600000148','D600000149'"
             End If
 
 

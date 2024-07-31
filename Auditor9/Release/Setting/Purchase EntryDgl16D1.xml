@@ -184,7 +184,7 @@
   </Column>
   <Column>
     <Name>Pcs</Name>
-    <Index>89</Index>
+    <Index>85</Index>
     <Width>80</Width>
     <Visible>False</Visible>
     <AggregateFunction />
@@ -226,7 +226,7 @@
   </Column>
   <Column>
     <Name>Loss Deal Qty</Name>
-    <Index>73</Index>
+    <Index>69</Index>
     <Width>80</Width>
     <Visible>False</Visible>
     <AggregateFunction />
@@ -247,56 +247,56 @@
   </Column>
   <Column>
     <Name>Deal Qty Decimal Places</Name>
-    <Index>85</Index>
+    <Index>73</Index>
     <Width>50</Width>
     <Visible>False</Visible>
     <AggregateFunction />
   </Column>
   <Column>
     <Name>Stock Unit</Name>
-    <Index>97</Index>
+    <Index>89</Index>
     <Width>50</Width>
     <Visible>False</Visible>
     <AggregateFunction />
   </Column>
   <Column>
     <Name>Stock Unit Multiplier</Name>
-    <Index>99</Index>
+    <Index>97</Index>
     <Width>70</Width>
     <Visible>False</Visible>
     <AggregateFunction />
   </Column>
   <Column>
     <Name>Stock Qty</Name>
-    <Index>100</Index>
+    <Index>99</Index>
     <Width>70</Width>
     <Visible>False</Visible>
     <AggregateFunction />
   </Column>
   <Column>
     <Name>Stock Qty Decimal Places</Name>
-    <Index>101</Index>
+    <Index>100</Index>
     <Width>50</Width>
     <Visible>False</Visible>
     <AggregateFunction />
   </Column>
   <Column>
     <Name>Purchase Plan DocID</Name>
-    <Index>102</Index>
+    <Index>101</Index>
     <Width>80</Width>
     <Visible>False</Visible>
     <AggregateFunction />
   </Column>
   <Column>
     <Name>Purchase Plan Sr</Name>
-    <Index>103</Index>
+    <Index>102</Index>
     <Width>80</Width>
     <Visible>False</Visible>
     <AggregateFunction />
   </Column>
   <Column>
     <Name>Stock Process DocID</Name>
-    <Index>104</Index>
+    <Index>103</Index>
     <Width>80</Width>
     <Visible>False</Visible>
     <AggregateFunction />
@@ -310,7 +310,7 @@
   </Column>
   <Column>
     <Name>Stock Process Sr</Name>
-    <Index>107</Index>
+    <Index>106</Index>
     <Width>80</Width>
     <Visible>False</Visible>
     <AggregateFunction />
@@ -352,14 +352,14 @@
   </Column>
   <Column>
     <Name>Add. Comm. %</Name>
-    <Index>108</Index>
+    <Index>107</Index>
     <Width>80</Width>
     <Visible>False</Visible>
     <AggregateFunction />
   </Column>
   <Column>
     <Name>Add. Comm. Amt</Name>
-    <Index>109</Index>
+    <Index>108</Index>
     <Width>100</Width>
     <Visible>False</Visible>
     <AggregateFunction />
@@ -408,14 +408,14 @@
   </Column>
   <Column>
     <Name>From Process</Name>
-    <Index>111</Index>
+    <Index>109</Index>
     <Width>100</Width>
     <Visible>False</Visible>
     <AggregateFunction />
   </Column>
   <Column>
     <Name>Catalog</Name>
-    <Index>113</Index>
+    <Index>111</Index>
     <Width>100</Width>
     <Visible>False</Visible>
     <AggregateFunction />
@@ -429,21 +429,21 @@
   </Column>
   <Column>
     <Name>Godown</Name>
-    <Index>114</Index>
+    <Index>112</Index>
     <Width>100</Width>
     <Visible>False</Visible>
     <AggregateFunction />
   </Column>
   <Column>
     <Name>From Godown</Name>
-    <Index>116</Index>
+    <Index>115</Index>
     <Width>100</Width>
     <Visible>False</Visible>
     <AggregateFunction />
   </Column>
   <Column>
     <Name>To Godown</Name>
-    <Index>118</Index>
+    <Index>117</Index>
     <Width>100</Width>
     <Visible>False</Visible>
     <AggregateFunction />
@@ -471,70 +471,70 @@
   </Column>
   <Column>
     <Name>Sales Tax Group Item</Name>
-    <Index>69</Index>
+    <Index>81</Index>
     <Width>103</Width>
     <Visible>True</Visible>
     <AggregateFunction />
   </Column>
   <Column>
     <Name>Deal</Name>
-    <Index>81</Index>
+    <Index>93</Index>
     <Width>70</Width>
     <Visible>False</Visible>
     <AggregateFunction />
   </Column>
   <Column>
     <Name>Deal Amount</Name>
-    <Index>121</Index>
+    <Index>120</Index>
     <Width>100</Width>
     <Visible>False</Visible>
     <AggregateFunction />
   </Column>
   <Column>
     <Name>Profit Margin %</Name>
-    <Index>93</Index>
+    <Index>104</Index>
     <Width>100</Width>
     <Visible>False</Visible>
     <AggregateFunction />
   </Column>
   <Column>
     <Name>Reference No</Name>
-    <Index>106</Index>
-    <Width>80</Width>
-    <Visible>False</Visible>
-    <AggregateFunction />
-  </Column>
-  <Column>
-    <Name>Reference Date</Name>
     <Index>110</Index>
     <Width>80</Width>
     <Visible>False</Visible>
     <AggregateFunction />
   </Column>
   <Column>
+    <Name>Reference Date</Name>
+    <Index>113</Index>
+    <Width>80</Width>
+    <Visible>False</Visible>
+    <AggregateFunction />
+  </Column>
+  <Column>
     <Name>Reference DocID</Name>
-    <Index>112</Index>
+    <Index>114</Index>
     <Width>80</Width>
     <Visible>False</Visible>
     <AggregateFunction />
   </Column>
   <Column>
     <Name>Reference TSr</Name>
-    <Index>115</Index>
+    <Index>116</Index>
     <Width>80</Width>
     <Visible>False</Visible>
     <AggregateFunction />
   </Column>
   <Column>
     <Name>Reference Sr</Name>
-    <Index>117</Index>
+    <Index>118</Index>
     <Width>80</Width>
     <Visible>False</Visible>
     <AggregateFunction />
   </Column>
   <Column>
     <Name>Reference DocID Date</Name>
-    <Index>123</Index>
+    <Index>122</Index>
     <Width>80</Width>
     <Visible>False</Visible>
     <AggregateFunction />
@@ -548,14 +548,14 @@
   </Column>
   <Column>
     <Name>Purchase Invoice DocID</Name>
-    <Index>120</Index>
+    <Index>121</Index>
     <Width>80</Width>
     <Visible>False</Visible>
     <AggregateFunction />
   </Column>
   <Column>
     <Name>Purchase Invoice Sr</Name>
-    <Index>122</Index>
+    <Index>123</Index>
     <Width>80</Width>
     <Visible>False</Visible>
     <AggregateFunction />

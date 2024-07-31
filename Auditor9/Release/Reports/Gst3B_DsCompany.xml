@@ -1,25 +1,25 @@
 <?xml version="1.0" standalone="yes"?>
 <NewDataSet>
   <Table>
-    <Code>2</Code>
+    <Code>1</Code>
     <EffectiveFromDate>1900-01-01T00:00:00+05:30</EffectiveFromDate>
-    <EffectiveUptoDate>1900-01-01T00:00:00+05:30</EffectiveUptoDate>
+    <EffectiveUptoDate>2000-01-01T00:00:00+05:30</EffectiveUptoDate>
     <Div_Code xml:space="preserve"> </Div_Code>
-    <Site_Code>2</Site_Code>
-    <DocumentHeaderRow1Left>SHYAMA SHYAM VENTURES LLP</DocumentHeaderRow1Left>
-    <DocumentHeaderRow2Left>52, 1 ST FLOOR, NEW CLOTH MARKET</DocumentHeaderRow2Left>
-    <DocumentHeaderRow3Left>AHMEDABAD (GUJRAT)</DocumentHeaderRow3Left>
-    <DocumentHeaderRow4Left xml:space="preserve"> </DocumentHeaderRow4Left>
-    <DocumentHeaderRow5Left xml:space="preserve"> </DocumentHeaderRow5Left>
+    <Site_Code>1</Site_Code>
+    <DocumentHeaderRow1Left>GOLDEN PEARLS FOODS LLP</DocumentHeaderRow1Left>
+    <DocumentHeaderRow2Left>PLOT NO. 197,KHALWA,JUHI KHURD,AFEEM KOTHI</DocumentHeaderRow2Left>
+    <DocumentHeaderRow3Left>Kanpur,208001</DocumentHeaderRow3Left>
+    <DocumentHeaderRow4Left>GST No : 09ABAFG2636B1ZU</DocumentHeaderRow4Left>
+    <DocumentHeaderRow5Left>Mo. No : 8368829559</DocumentHeaderRow5Left>
     <DocumentHeaderRow1Right />
-    <DocumentHeaderRow2Right>GST NO. 24AEUFS4899B1ZF</DocumentHeaderRow2Right>
-    <DocumentHeaderRow3Right>EMAIL : adi.shyamashyam@gmail.com, Contact No. 9879725392</DocumentHeaderRow3Right>
+    <DocumentHeaderRow2Right />
+    <DocumentHeaderRow3Right xml:space="preserve"> </DocumentHeaderRow3Right>
     <DocumentHeaderRow4Right xml:space="preserve"> </DocumentHeaderRow4Right>
     <DocumentHeaderRow5Right xml:space="preserve"> </DocumentHeaderRow5Right>
     <IsSalesTaxApplicable>true</IsSalesTaxApplicable>
     <WeekOffDays>0</WeekOffDays>
-    <EntryBy xml:space="preserve"> </EntryBy>
-    <EntryDate>1900-01-01T00:00:00+05:30</EntryDate>
+    <EntryBy>System</EntryBy>
+    <EntryDate>2019-03-25T10:28:10+05:30</EntryDate>
     <ApproveBy xml:space="preserve"> </ApproveBy>
     <ApproveDate>1900-01-01T00:00:00+05:30</ApproveDate>
     <MoveToLog xml:space="preserve"> </MoveToLog>

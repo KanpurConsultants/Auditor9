@@ -219,6 +219,7 @@ Partial Class MDIMain
         Me.MnuOpeningStockReport = New System.Windows.Forms.ToolStripMenuItem()
         Me.MnuStockIssueReport = New System.Windows.Forms.ToolStripMenuItem()
         Me.MnuStockReceiveReport = New System.Windows.Forms.ToolStripMenuItem()
+        Me.MnuStockExchangeReport = New System.Windows.Forms.ToolStripMenuItem()
         Me.MnuBatchWiseStockBalance = New System.Windows.Forms.ToolStripMenuItem()
         Me.MnuStockVaiuationReportForBank = New System.Windows.Forms.ToolStripMenuItem()
         Me.MnuStatutory = New System.Windows.Forms.ToolStripMenuItem()
@@ -304,6 +305,7 @@ Partial Class MDIMain
         Me.MnuInconsistencyReport = New System.Windows.Forms.ToolStripMenuItem()
         Me.MnuRecheckBills = New System.Windows.Forms.ToolStripMenuItem()
         Me.MnuMatchData = New System.Windows.Forms.ToolStripMenuItem()
+        Me.MnuSendWhatsapp = New System.Windows.Forms.ToolStripMenuItem()
         Me.MnuUserSetup = New System.Windows.Forms.ToolStripMenuItem()
         Me.MnuUserMaster = New System.Windows.Forms.ToolStripMenuItem()
         Me.MnuUserPermission = New System.Windows.Forms.ToolStripMenuItem()
@@ -322,7 +324,7 @@ Partial Class MDIMain
         Me.MnuPrintCheque = New System.Windows.Forms.ToolStripMenuItem()
         Me.MnuBank = New System.Windows.Forms.ToolStripMenuItem()
         Me.MnuChequePrinting = New System.Windows.Forms.ToolStripMenuItem()
-        Me.MnuStockExchangeReport = New System.Windows.Forms.ToolStripMenuItem()
+        Me.MnuSendMessageForPayment = New System.Windows.Forms.ToolStripMenuItem()
         Me.MnuMain.SuspendLayout()
         Me.SuspendLayout()
         '
@@ -1744,6 +1746,13 @@ Partial Class MDIMain
         Me.MnuStockReceiveReport.Tag = "GRID REPORT"
         Me.MnuStockReceiveReport.Text = "Stock Receive Report"
         '
+        'MnuStockExchangeReport
+        '
+        Me.MnuStockExchangeReport.Name = "MnuStockExchangeReport"
+        Me.MnuStockExchangeReport.Size = New System.Drawing.Size(245, 22)
+        Me.MnuStockExchangeReport.Tag = "GRID REPORT"
+        Me.MnuStockExchangeReport.Text = "Stock Exchange Report"
+        '
         'MnuBatchWiseStockBalance
         '
         Me.MnuBatchWiseStockBalance.AccessibleDescription = "+Medical Industry"
@@ -1762,7 +1771,7 @@ Partial Class MDIMain
         '
         'MnuStatutory
         '
-        Me.MnuStatutory.DropDownItems.AddRange(New System.Windows.Forms.ToolStripItem() {Me.MnuGSTReports, Me.MnuEWayBillGeneration, Me.MnuInputTaxRegister, Me.MnuGSTOutputTaxReport, Me.MnuGSTInputTaxReport, Me.MnuTCSOutputReport, Me.MnuTCSInputReport, Me.MnuEBillGeneration})
+        Me.MnuStatutory.DropDownItems.AddRange(New System.Windows.Forms.ToolStripItem() {Me.MnuGSTReports, Me.MnuEWayBillGeneration, Me.MnuInputTaxRegister, Me.MnuGSTOutputTaxReport, Me.MnuGSTInputTaxReport, Me.MnuTCSOutputReport, Me.MnuTCSInputReport, Me.MnuEBillGeneration, Me.MnuSendMessageForPayment})
         Me.MnuStatutory.Name = "MnuStatutory"
         Me.MnuStatutory.Size = New System.Drawing.Size(67, 20)
         Me.MnuStatutory.Text = "Statutory"
@@ -1770,21 +1779,21 @@ Partial Class MDIMain
         'MnuGSTReports
         '
         Me.MnuGSTReports.Name = "MnuGSTReports"
-        Me.MnuGSTReports.Size = New System.Drawing.Size(193, 22)
+        Me.MnuGSTReports.Size = New System.Drawing.Size(219, 22)
         Me.MnuGSTReports.Tag = "GRID REPORT"
         Me.MnuGSTReports.Text = "GST Reports"
         '
         'MnuEWayBillGeneration
         '
         Me.MnuEWayBillGeneration.Name = "MnuEWayBillGeneration"
-        Me.MnuEWayBillGeneration.Size = New System.Drawing.Size(193, 22)
+        Me.MnuEWayBillGeneration.Size = New System.Drawing.Size(219, 22)
         Me.MnuEWayBillGeneration.Tag = "GRID REPORT"
         Me.MnuEWayBillGeneration.Text = "EWay Bill Generation"
         '
         'MnuInputTaxRegister
         '
         Me.MnuInputTaxRegister.Name = "MnuInputTaxRegister"
-        Me.MnuInputTaxRegister.Size = New System.Drawing.Size(193, 22)
+        Me.MnuInputTaxRegister.Size = New System.Drawing.Size(219, 22)
         Me.MnuInputTaxRegister.Tag = "GRID REPORT"
         Me.MnuInputTaxRegister.Text = "Input Tax Register"
         '
@@ -1792,35 +1801,35 @@ Partial Class MDIMain
         '
         Me.MnuGSTOutputTaxReport.AccessibleDescription = ""
         Me.MnuGSTOutputTaxReport.Name = "MnuGSTOutputTaxReport"
-        Me.MnuGSTOutputTaxReport.Size = New System.Drawing.Size(193, 22)
+        Me.MnuGSTOutputTaxReport.Size = New System.Drawing.Size(219, 22)
         Me.MnuGSTOutputTaxReport.Tag = "GRID REPORT"
         Me.MnuGSTOutputTaxReport.Text = "GST Output Tax Report"
         '
         'MnuGSTInputTaxReport
         '
         Me.MnuGSTInputTaxReport.Name = "MnuGSTInputTaxReport"
-        Me.MnuGSTInputTaxReport.Size = New System.Drawing.Size(193, 22)
+        Me.MnuGSTInputTaxReport.Size = New System.Drawing.Size(219, 22)
         Me.MnuGSTInputTaxReport.Tag = "GRID REPORT"
         Me.MnuGSTInputTaxReport.Text = "GST Input Tax Report"
         '
         'MnuTCSOutputReport
         '
         Me.MnuTCSOutputReport.Name = "MnuTCSOutputReport"
-        Me.MnuTCSOutputReport.Size = New System.Drawing.Size(193, 22)
+        Me.MnuTCSOutputReport.Size = New System.Drawing.Size(219, 22)
         Me.MnuTCSOutputReport.Tag = "GRID REPORT"
         Me.MnuTCSOutputReport.Text = "TCS Output Report"
         '
         'MnuTCSInputReport
         '
         Me.MnuTCSInputReport.Name = "MnuTCSInputReport"
-        Me.MnuTCSInputReport.Size = New System.Drawing.Size(193, 22)
+        Me.MnuTCSInputReport.Size = New System.Drawing.Size(219, 22)
         Me.MnuTCSInputReport.Tag = "GRID REPORT"
         Me.MnuTCSInputReport.Text = "TCS Input Report"
         '
         'MnuEBillGeneration
         '
         Me.MnuEBillGeneration.Name = "MnuEBillGeneration"
-        Me.MnuEBillGeneration.Size = New System.Drawing.Size(193, 22)
+        Me.MnuEBillGeneration.Size = New System.Drawing.Size(219, 22)
         Me.MnuEBillGeneration.Tag = "GRID REPORT"
         Me.MnuEBillGeneration.Text = "E Bill Generation"
         '
@@ -2124,7 +2133,7 @@ Partial Class MDIMain
         '
         'MnuUtility
         '
-        Me.MnuUtility.DropDownItems.AddRange(New System.Windows.Forms.ToolStripItem() {Me.MnuYearEnd, Me.MnuCompanyMaster, Me.MnuDivisionMaster, Me.MnuSiteMaster, Me.MnuSettings, Me.MnuSettingsVisibility, Me.MnuSettingsCommon, Me.MnuSettingsMenus, Me.MnuSettingsEInvoice, Me.MnuUpdateTableStructure, Me.MnuExecuteQuery, Me.MnuBackupDatabase, Me.MnuItemMerging, Me.MnuVoucherTypeTimePlan, Me.MnuLogReport, Me.MnuSyncWithActualDatabase, Me.MnuRestoreDatabase, Me.MnuVoucherType, Me.MnuSplitLedgerOpening, Me.MnuBulkEmail, Me.MnuDataCorrection, Me.MnuDeleteData, Me.MnuDeleteLedgerAcData, Me.MnuTDSParameters, Me.MnuExportDataForBranch, Me.MnuImportDataFromBranch, Me.MnuOpeningTransfer, Me.MnuImportDataCustom, Me.MnuAdjustStockFIFO, Me.MnuUpdateLinkedAccount, Me.MnuDeleteAttachments, Me.MnuInconsistencyReport, Me.MnuRecheckBills, Me.MnuMatchData})
+        Me.MnuUtility.DropDownItems.AddRange(New System.Windows.Forms.ToolStripItem() {Me.MnuYearEnd, Me.MnuCompanyMaster, Me.MnuDivisionMaster, Me.MnuSiteMaster, Me.MnuSettings, Me.MnuSettingsVisibility, Me.MnuSettingsCommon, Me.MnuSettingsMenus, Me.MnuSettingsEInvoice, Me.MnuUpdateTableStructure, Me.MnuExecuteQuery, Me.MnuBackupDatabase, Me.MnuItemMerging, Me.MnuVoucherTypeTimePlan, Me.MnuLogReport, Me.MnuSyncWithActualDatabase, Me.MnuRestoreDatabase, Me.MnuVoucherType, Me.MnuSplitLedgerOpening, Me.MnuBulkEmail, Me.MnuDataCorrection, Me.MnuDeleteData, Me.MnuDeleteLedgerAcData, Me.MnuTDSParameters, Me.MnuExportDataForBranch, Me.MnuImportDataFromBranch, Me.MnuOpeningTransfer, Me.MnuImportDataCustom, Me.MnuAdjustStockFIFO, Me.MnuUpdateLinkedAccount, Me.MnuDeleteAttachments, Me.MnuInconsistencyReport, Me.MnuRecheckBills, Me.MnuMatchData, Me.MnuSendWhatsapp})
         Me.MnuUtility.Name = "MnuUtility"
         Me.MnuUtility.Size = New System.Drawing.Size(50, 20)
         Me.MnuUtility.Text = "Utility"
@@ -2347,6 +2356,12 @@ Partial Class MDIMain
         Me.MnuMatchData.Size = New System.Drawing.Size(215, 22)
         Me.MnuMatchData.Text = "Match Data"
         '
+        'MnuSendWhatsapp
+        '
+        Me.MnuSendWhatsapp.Name = "MnuSendWhatsapp"
+        Me.MnuSendWhatsapp.Size = New System.Drawing.Size(215, 22)
+        Me.MnuSendWhatsapp.Text = "Send Whatsapp"
+        '
         'MnuUserSetup
         '
         Me.MnuUserSetup.AccessibleDescription = "+Multi User Module"
@@ -2465,12 +2480,12 @@ Partial Class MDIMain
         Me.MnuChequePrinting.Size = New System.Drawing.Size(160, 22)
         Me.MnuChequePrinting.Text = "Cheque Printing"
         '
-        'MnuStockExchangeReport
+        'MnuSendMessageForPayment
         '
-        Me.MnuStockExchangeReport.Name = "MnuStockExchangeReport"
-        Me.MnuStockExchangeReport.Size = New System.Drawing.Size(245, 22)
-        Me.MnuStockExchangeReport.Tag = "GRID REPORT"
-        Me.MnuStockExchangeReport.Text = "Stock Exchange Report"
+        Me.MnuSendMessageForPayment.Name = "MnuSendMessageForPayment"
+        Me.MnuSendMessageForPayment.Size = New System.Drawing.Size(219, 22)
+        Me.MnuSendMessageForPayment.Tag = "GRID REPORT"
+        Me.MnuSendMessageForPayment.Text = "Send Message For Payment"
         '
         'MDIMain
         '
@@ -2798,4 +2813,6 @@ Partial Class MDIMain
     Friend WithEvents MnuSizeWiseSaleOrderReport As ToolStripMenuItem
     Friend WithEvents MnuStockExchange As ToolStripMenuItem
     Friend WithEvents MnuStockExchangeReport As ToolStripMenuItem
+    Friend WithEvents MnuSendWhatsapp As ToolStripMenuItem
+    Friend WithEvents MnuSendMessageForPayment As ToolStripMenuItem
 End Class

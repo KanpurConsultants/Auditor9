@@ -347,7 +347,7 @@ Public Class ClsSalesTaxReports_OneDotSeven
             'mCondStr = mCondStr & Replace(ReportFrm.GetWhereCondition("H.Div_Code", rowDivision), "''", "'")
             mCondStr = mCondStr & " And H.Div_Code = '" & Replace(ReportFrm.FGetCode(rowDivision), "'", "") & "' "
             mCondStr = mCondStr & " And Vt.NCat In ('" & Ncat.SaleInvoice & "','" & Ncat.SaleReturn & "',
-                                        '" & Ncat.DebitNoteSupplier & "','" & Ncat.DebitNoteCustomer & "','" & Ncat.CreditNoteCustomer & "','" & Ncat.CreditNoteSupplier & "')"
+                                        '" & Ncat.DebitNoteSupplier & "','" & Ncat.DebitNoteCustomer & "','" & Ncat.CreditNoteCustomer & "','" & Ncat.CreditNoteSupplier & "','" & Ncat.IncomeVoucher & "')"
             mCondStr = mCondStr & " AND Date(H.V_Date) Between " & AgL.Chk_Date(CDate(ReportFrm.FGetText(rowFromDate)).ToString("s")) & " And " & AgL.Chk_Date(CDate(ReportFrm.FGetText(rowToDate)).ToString("s")) & " "
             mCondStr = mCondStr & " And CharIndex('" & ClsMain.VoucherTypeTags.ExcludeInSalesTaxReturns & "','+' || IfNull(Vt.VoucherTypeTags,'')) = 0 "
 
@@ -657,10 +657,43 @@ Public Class ClsSalesTaxReports_OneDotSeven
                     LEFT JOIN State S on C.State = S.Code " & mCondStr &
                     " And Vt.NCat = '" & Ncat.SaleInvoice & "' And IfNull(S.ManualCode,'') <> '00'
                     And H.SalesTaxGroupParty In ('" & PostingGroupSalesTaxParty.Registered & "')"
+
+        mStrQry += " UNION ALL "
+
+        mStrQry += " SELECT L.DocId, H.PartySalesTaxNo As GSTINofRecipient, Sg.Name As ReceiverName, 
+                Replace(Replace(Replace(Replace(Replace('" & mDocumentNoPattern & "','<DIVISION>',IfNull(Dm.ShortName,'')),'<SITE>',IfNull(Sm.ShortName,'')),'<DOCTYPE>',IfNull(Vt.Short_Name,'')),'<DOCNO>',IfNull(H.ManualRefNo,'')),'<COMPANYPREFIX>', '" & mCompanyPrefix & "') As InvoiceNumber,
+                strftime('%d/%m/%Y', H.V_Date) As InvoiceDate, -Lc.Net_Amount As LineNet_Amount, 0 As HeaderNet_Amount,  S.ManualCode + '-' + S.Description As PlaceOfSupply, 'N' As ReverseCharge,
+                '' As ApplicableTaxRate, 'Regular B2B' As InvoiceType,	Null As ECommerceGSTIN,	 L.SalesTaxGroupItem,
+                Isnull(Lc.Tax1_Per,0) + Isnull(Lc.Tax2_Per,0) + Isnull(Lc.Tax3_Per,0) As Rate,	-Lc.Taxable_Amount As TaxableValue, 
+                -Isnull(Lc.Tax1,0) As IntegratedTaxAmount,  -Isnull(Lc.Tax2,0) As CentralTaxAmount, 
+                -Isnull(Lc.Tax3,0) As StateTaxAmount, -Isnull(Lc.Tax4,0) As CessAmount,
+                -(Isnull(Lc.Tax1,0) + Isnull(Lc.Tax2,0) + Isnull(Lc.Tax3,0) + Isnull(Lc.Tax4,0)) As TaxAmount,
+                 '' As Exception
+                From LedgerHead H 
+                LEFT JOIN LedgerHeadCharges Hc ON H.DocId = Hc.DocId
+                Left join LedgerHeadDetail L on H.DocId = L.DocID 
+                LEFT JOIN LedgerHeadDetailCharges Lc ON L.DocId = Lc.DocID AND L.Sr = Lc.Sr
+                LEFT JOIN (
+                    Select H.DocId, Max(IsNull(IfNull(I.HSN,Ic.HSN),Bi.HSN)) As HSN
+                    From SaleInvoice H
+                    LEFT JOIN SaleInvoiceDetail L On H.DocId = L.DocId
+                    Left join Item I on L.Item = I.Code
+                    Left Join ItemCategory Ic On I.ItemCategory = Ic.Code 
+                    LEFT JOIN Item Bi On I.BaseItem = Bi.Code
+                    Group BY H.DocId) As VSale On L.SpecificationDocID = VSale.DocId
+                    LEFT JOIN Voucher_Type Vt On H.V_Type = Vt.V_Type
+                    LEFT JOIN SiteMast Sm On H.Site_Code = Sm.Code
+                    LEFT JOIN Division Dm On H.Div_Code = Dm.Div_Code
+                    left join SubGroup Sg On H.SubCode = Sg.SubCode
+                    LEFT JOIN PostingGroupSalesTaxItem Pst ON L.SalesTaxGroupItem = Pst.Description
+                    Left JOIN City C On H.PartyCity = C.CityCode
+                    LEFT JOIN State S on C.State = S.Code  " & mCondStr &
+                    " And H.V_Type In ('IV') "
+
         Return mStrQry
     End Function
     Private Function FGetB2CLargeQry(mCondStr As String) As String
-        Dim mStrQry As String = " SELECT L.DocId, H.SaleToPartySalesTaxNo As GSTINofRecipient, Sg.Name As ReceiverName, 
+        Dim mStrQry As String = " Select L.DocId, H.SaleToPartySalesTaxNo As GSTINofRecipient, Sg.Name As ReceiverName, 
                     Replace(Replace(Replace(Replace(Replace('" & mDocumentNoPattern & "','<DIVISION>',IfNull(Dm.ShortName,'')),'<SITE>',IfNull(Sm.ShortName,'')),'<DOCTYPE>',IfNull(Vt.Short_Name,'')),'<DOCNO>',IfNull(H.ManualRefNo,'')),'<COMPANYPREFIX>', '" & mCompanyPrefix & "') As InvoiceNumber,
                     H.V_Date As InvoiceDate, L.Net_Amount As InvoiceValue, S.Code + '-' + S.Description As PlaceOfSupply, 'N' As ReverseCharge,
                     0 As ApplicableTaxRate, 'Regular' As InvoiceType, '' As ECommerceGSTIN,	 
@@ -1007,6 +1040,39 @@ Public Class ClsSalesTaxReports_OneDotSeven
                 Left JOIN City C On H.PartyCity = C.CityCode
                 LEFT JOIN State S on C.State = S.Code  " & mCondStr &
                 " And H.V_Type In ('DNC','CNC') "
+        mStrQry += " UNION ALL "
+
+        mStrQry += " SELECT L.DocId, H.PartySalesTaxNo As GSTINofRecipient, Sg.Name As ReceiverName, 
+                Replace(Replace(Replace(Replace(Replace('" & mDocumentNoPattern & "','<DIVISION>',IfNull(Dm.ShortName,'')),'<SITE>',IfNull(Sm.ShortName,'')),'<DOCTYPE>',IfNull(Vt.Short_Name,'')),'<DOCNO>',IfNull(H.ManualRefNo,'')),'<COMPANYPREFIX>', '" & mCompanyPrefix & "') As InvoiceNumber,
+                strftime('%d/%m/%Y', H.V_Date) As InvoiceDate, -Lc.Net_Amount As InvoiceValue, S.ManualCode + '-' + S.Description As PlaceOfSupply, 'N' As ReverseCharge,
+                '' As ApplicableTaxRate, 'Regular' As InvoiceType,	Null As ECommerceGSTIN,	 
+                Isnull(Lc.Tax1_Per,0) + Isnull(Lc.Tax2_Per,0) + Isnull(Lc.Tax3_Per,0) As Rate,	L.Qty,
+                -Pst.GrossTaxRate, -Lc.Taxable_Amount As TaxableValue, 
+                -Isnull(Lc.Tax1,0) As IntegratedTaxAmount,  -Isnull(Lc.Tax2,0) As CentralTaxAmount, 
+                -Isnull(Lc.Tax3,0) As StateTaxAmount, -Isnull(Lc.Tax4,0) As CessAmount,
+                -(Isnull(Lc.Tax1,0) + Isnull(Lc.Tax2,0) + Isnull(Lc.Tax3,0) + Isnull(Lc.Tax4,0)) As TaxAmount,
+                '' As ItemCategory, Isnull(VSale.HSN,L.HSN) AS HSN, '' AS UQC, '' As Exception
+                From LedgerHead H 
+                LEFT JOIN LedgerHeadCharges Hc ON H.DocId = Hc.DocId
+                Left join LedgerHeadDetail L on H.DocId = L.DocID 
+                LEFT JOIN LedgerHeadDetailCharges Lc ON L.DocId = Lc.DocID AND L.Sr = Lc.Sr
+                LEFT JOIN (
+                    Select H.DocId, Max(IsNull(IfNull(I.HSN,Ic.HSN),Bi.HSN)) As HSN
+                    From SaleInvoice H
+                    LEFT JOIN SaleInvoiceDetail L On H.DocId = L.DocId
+                    Left join Item I on L.Item = I.Code
+                    Left Join ItemCategory Ic On I.ItemCategory = Ic.Code 
+                    LEFT JOIN Item Bi On I.BaseItem = Bi.Code
+                    Group BY H.DocId) As VSale On L.SpecificationDocID = VSale.DocId
+                LEFT JOIN Voucher_Type Vt On H.V_Type = Vt.V_Type
+                LEFT JOIN SiteMast Sm On H.Site_Code = Sm.Code
+                LEFT JOIN Division Dm On H.Div_Code = Dm.Div_Code
+                left join SubGroup Sg On H.SubCode = Sg.SubCode
+                LEFT JOIN PostingGroupSalesTaxItem Pst ON L.SalesTaxGroupItem = Pst.Description
+                Left JOIN City C On H.PartyCity = C.CityCode
+                LEFT JOIN State S on C.State = S.Code  " & mCondStr &
+                " And H.V_Type In ('IV') "
+
         Return mStrQry
     End Function
     Private Function FGetDOCSQry(mCondStr As String) As String
@@ -1640,7 +1706,7 @@ Public Class ClsSalesTaxReports_OneDotSeven
         mCondStr = mCondStr & " And H.Div_Code = '" & Replace(ReportFrm.FGetCode(rowDivision), "'", "") & "' "
 
         mCondStr = mCondStr & " And Vt.NCat In ('" & Ncat.SaleInvoice & "','" & Ncat.SaleReturn & "',
-                                        '" & Ncat.DebitNoteSupplier & "', '" & Ncat.DebitNoteCustomer & "','" & Ncat.CreditNoteCustomer & "','" & Ncat.CreditNoteSupplier & "')"
+                                        '" & Ncat.DebitNoteSupplier & "', '" & Ncat.DebitNoteCustomer & "','" & Ncat.CreditNoteCustomer & "','" & Ncat.CreditNoteSupplier & "','" & Ncat.IncomeVoucher & "')"
         mCondStr = mCondStr & " AND Date(H.V_Date) Between " & AgL.Chk_Date(CDate(ReportFrm.FGetText(rowFromDate)).ToString("s")) & " And " & AgL.Chk_Date(CDate(ReportFrm.FGetText(rowToDate)).ToString("s")) & " "
         mCondStr = mCondStr & " And CharIndex('" & ClsMain.VoucherTypeTags.ExcludeInSalesTaxReturns & "','+' || IfNull(Vt.VoucherTypeTags,'')) = 0 "
 

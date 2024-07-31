@@ -476,7 +476,11 @@ Public Class FrmReportLayout
                     ElseIf Trim(FGMain(GFilterCode, 6).Value) = "J" Then
                         FCashBank_JournalBook()
                     Else
-                        FBank_CashBookSingle()
+                        If AgL.StrCmp(AgL.PubDBName, "Sadhvi") Then
+                            FBank_CashBookSingle_Sadhvi()
+                        Else
+                            FBank_CashBookSingle()
+                        End If
                     End If
                 Case UCase("Annexure")
                     FAnnexure()
@@ -5265,6 +5269,266 @@ LblForLastRecord:
 
 
         SQL += "Order By LG.V_Date,SerialNo,LG.RecID,LG.DocId,LG.AmtDr "
+
+
+        DTTemp = CMain.FGetDatTable(SQL, AgL.GCn)
+        If DTTemp.Rows.Count > 0 Then StrPrvDocId = AgL.XNull(DTTemp.Rows(I).Item("DocId")) Else StrPrvDocId = ""
+        IntPosition = 0
+        StrDebitAc = ""
+        StrCreditAc = ""
+        StrVDate = "" : StrVNo = "" : StrVType = "" : StrNCat = "" : StrVParticular = "" : DblAmtDr = 0 : DblAmtCr = 0
+        StrChqNo = "" : StrChqDt = "" : StrNarration = ""
+        BlnDebit = False : BlnCredit = False
+
+        For I = 0 To DTTemp.Rows.Count - 1
+            If StrPrvDocId <> AgL.XNull(DTTemp.Rows(I).Item("DocId")) Then
+LblForLastRecord:
+                For J = IntPosition To IIf((DTTemp.Rows.Count - 1) = I, I, I - 1)
+                    StrVDate = AgL.XNull(DTTemp.Rows(J).Item("V_Date"))
+                    StrVNo = AgL.XNull(DTTemp.Rows(J).Item("RecId"))
+                    StrVType = AgL.XNull(DTTemp.Rows(J).Item("V_Type"))
+                    StrNCat = AgL.XNull(DTTemp.Rows(J).Item("NCAT"))
+
+                    'Conditions
+                    If StrDebitAc = "" And StrCreditAc = "" Then
+                        'Case 5 & 3
+                        If StrMainSubCode = Trim(UCase(AgL.XNull(DTTemp.Rows(J).Item("SubCode")))) Then
+                            If Trim(UCase(AgL.XNull(DTTemp.Rows(J).Item("ContraSub")))) <> "" Then StrVParticular = AgL.XNull(DTTemp.Rows(J).Item("CName")) Else StrVParticular = ""
+                            DblAmtCr = AgL.VNull(DTTemp.Rows(J).Item("AmtDr"))
+                            DblAmtDr = AgL.VNull(DTTemp.Rows(J).Item("AmtCr"))
+                            StrChqNo = AgL.XNull(DTTemp.Rows(J).Item("Chq_No"))
+                            StrChqDt = AgL.XNull(DTTemp.Rows(J).Item("Chq_Date"))
+                            StrNarration = AgL.XNull(DTTemp.Rows(J).Item("Narration"))
+                            FAddRowBankCash(DTbankBook, StrVNo, StrVType, StrVParticular, StrVDate, StrChqNo, StrChqDt, StrNarration, DblAmtDr, DblAmtCr, 0, StrWithnarration)
+                        End If
+                    ElseIf (StrDebitAc <> "" Or StrCreditAc <> "") And (UCase(Trim(StrDebitAc)) = StrMainSubCode Or UCase(Trim(StrCreditAc)) = StrMainSubCode) Then
+                        'Case 1 & 4
+                        StrChkFieldFor = ""
+                        If StrDebitAc <> "" And UCase(Trim(StrDebitAc)) = StrMainSubCode Then StrChkFieldFor = "AmtCr"
+                        If StrCreditAc <> "" And UCase(Trim(StrCreditAc)) = StrMainSubCode Then StrChkFieldFor = "AmtDr"
+
+                        If AgL.VNull(DTTemp.Rows(J).Item(StrChkFieldFor)) > 0 Or StrNCat = "OB" Then
+                            If StrMainSubCode <> Trim(UCase(AgL.XNull(DTTemp.Rows(J).Item("SubCode")))) Or StrNCat = "OB" Then
+                                StrVParticular = AgL.XNull(DTTemp.Rows(J).Item("PName"))
+                                If StrNCat = "OB" Then
+                                    DblAmtCr = AgL.VNull(DTTemp.Rows(J).Item("AmtDr"))
+                                    DblAmtDr = AgL.VNull(DTTemp.Rows(J).Item("AmtCr"))
+                                Else
+                                    DblAmtCr = AgL.VNull(DTTemp.Rows(J).Item("AmtCr"))
+                                    DblAmtDr = AgL.VNull(DTTemp.Rows(J).Item("AmtDr"))
+                                End If
+                                StrChqNo = AgL.XNull(DTTemp.Rows(J).Item("Chq_No"))
+                                StrChqDt = AgL.XNull(DTTemp.Rows(J).Item("Chq_Date"))
+                                StrNarration = AgL.XNull(DTTemp.Rows(J).Item("Narration"))
+                                FAddRowBankCash(DTbankBook, StrVNo, StrVType, StrVParticular, StrVDate, StrChqNo, StrChqDt, StrNarration, DblAmtDr, DblAmtCr, 0, StrWithnarration)
+                            End If
+                        End If
+                    ElseIf StrDebitAc <> "" Or StrCreditAc <> "" Then
+                        'Case 2
+                        StrChkFieldFor = ""
+                        StrChkDataFor = ""
+
+                        If StrDebitAc <> "" Then StrChkFieldFor = "AmtCr" : StrChkDataFor = Trim(UCase(StrDebitAc))
+                        If StrCreditAc <> "" Then StrChkFieldFor = "AmtDr" : StrChkDataFor = Trim(UCase(StrCreditAc))
+
+                        If StrMainSubCode = Trim(UCase(AgL.XNull(DTTemp.Rows(J).Item("SubCode")))) Then
+                            StrVParticular = AgL.XNull(DTTemp.Rows(J).Item("CName"))
+                            DblAmtCr = AgL.VNull(DTTemp.Rows(J).Item("AmtDr"))
+                            DblAmtDr = AgL.VNull(DTTemp.Rows(J).Item("AmtCr"))
+                            StrChqNo = AgL.XNull(DTTemp.Rows(J).Item("Chq_No"))
+                            StrChqDt = AgL.XNull(DTTemp.Rows(J).Item("Chq_Date"))
+                            StrNarration = AgL.XNull(DTTemp.Rows(J).Item("Narration"))
+
+                            FAddRowBankCash(DTbankBook, StrVNo, StrVType, StrVParticular, StrVDate, StrChqNo, StrChqDt, StrNarration, DblAmtDr, DblAmtCr, 0, StrWithnarration)
+                        End If
+                    End If
+                Next
+                IntPosition = I
+                StrDebitAc = ""
+                StrCreditAc = ""
+                StrVDate = "" : StrVNo = "" : StrVType = "" : StrVParticular = "" : DblAmtDr = 0 : DblAmtCr = 0
+                StrChqNo = "" : StrChqDt = "" : StrNarration = ""
+                BlnDebit = False : BlnCredit = False
+                If (DTTemp.Rows.Count - 1) = I Then Exit For
+            End If
+
+            If AgL.VNull(DTTemp.Rows(I).Item("AmtDr")) > 0 Then
+                If Not BlnDebit Then
+                    If Trim(StrDebitAc) = "" Then StrDebitAc = AgL.XNull(DTTemp.Rows(I).Item("SubCode")) Else StrDebitAc = "" : BlnDebit = True
+                End If
+            End If
+
+            If AgL.VNull(DTTemp.Rows(I).Item("AmtCr")) > 0 Then
+                If Not BlnCredit Then
+                    If Trim(StrCreditAc) = "" Then StrCreditAc = AgL.XNull(DTTemp.Rows(I).Item("SubCode")) Else StrCreditAc = "" : BlnCredit = True
+                End If
+            End If
+            StrPrvDocId = AgL.XNull(DTTemp.Rows(I).Item("DocId"))
+            If (DTTemp.Rows.Count - 1) = I Then GoTo LblForLastRecord
+        Next
+
+        If DblOpening = 0 Then
+            If Not DTTemp.Rows.Count > 0 Then MsgBox("No Records Found to Print.") : Exit Sub
+        End If
+
+        If FGMain(GFilter, 9).Value = "Day Wise Summary" Then
+            DTbankBook.DefaultView.Sort = "VDate ASC"
+            DTbankBook = DTbankBook.DefaultView.ToTable
+        End If
+
+        FLoadMainReport("BankBookSingle", DTbankBook)
+        CMain.FormulaSet(RptMain, Me.Text, FGMain)
+        CMain.FShowReport(RptMain, Me.MdiParent, Me.Text)
+    End Sub
+    Private Sub FBank_CashBookSingle_Sadhvi()
+        Dim StrConditionOP As String
+        Dim StrCondition1 As String
+        Dim DTTemp As DataTable
+        Dim I As Integer, J As Integer, IntPosition As Integer
+        Dim StrDebitAc As String, StrCreditAc As String
+        Dim BlnDebit As Boolean, BlnCredit As Boolean
+        Dim StrMainSubCode As String
+        Dim StrPrvDocId As String
+        Dim SQL As String
+        Dim DblOpening As Double = 0
+        Dim StrChkFieldFor As String, StrChkDataFor As String
+        Dim StrVDate As String
+        Dim StrVNo As String
+        Dim StrVType As String
+        Dim StrNCat As String
+        Dim StrVParticular As String
+        Dim DblAmtDr As Double
+        Dim DblAmtCr As Double
+        Dim StrChqNo As String
+        Dim StrChqDt As String
+        Dim StrNarration As String
+        Dim StrWithnarration As String
+        Dim DTbankBook As DataTable
+
+        If Not FIsValid(0) Then Exit Sub
+        If Not FIsValid(1) Then Exit Sub
+        If Not FIsValid(3) Then Exit Sub
+        If Not FIsValid(4) Then Exit Sub
+
+        StrWithnarration = "N"
+        DTbankBook = New DataTable("BankBook")
+        With DTbankBook.Columns
+            .Add("VDate", System.Type.GetType("System.DateTime"))
+            .Add("VNo", System.Type.GetType("System.String"))
+            .Add("Type", System.Type.GetType("System.String"))
+            .Add("Particular", System.Type.GetType("System.String"))
+            .Add("AmtCr", System.Type.GetType("System.Double"))
+            .Add("AmtDr", System.Type.GetType("System.Double"))
+            .Add("ChqNo", System.Type.GetType("System.String"))
+            .Add("ChqDt", System.Type.GetType("System.String"))
+            .Add("Narration", System.Type.GetType("System.String"))
+            .Add("OP", System.Type.GetType("System.Double"))
+            .Add("PageWise", System.Type.GetType("System.String"))
+            .Add("WithNarration", System.Type.GetType("System.String"))
+        End With
+
+        StrMainSubCode = UCase(Trim(FGMain(GFilterCode, 4).Value))
+        StrCondition1 = " Where ( Date(CASE WHEN VT.V_Type ='EV' THEN LH.PartyDocDate ELSE LG.V_Date END) Between " & AgL.Chk_Date(CDate(FGMain(GFilter, 0).Value.ToString).ToString("s")) & " And " & AgL.Chk_Date(CDate(FGMain(GFilter, 1).Value.ToString).ToString("s")) & ") "
+        If Trim(FGMain(GFilterCode, 2).Value) <> "" Then
+            StrCondition1 = StrCondition1 & " And LG.Site_Code  IN (" & FGMain(GFilterCode, 2).Value & ") "
+            StrConditionOP = " And LG.Site_Code  IN (" & FGMain(GFilterCode, 2).Value & ") "
+        Else
+            StrCondition1 = StrCondition1 & " And LG.Site_Code  IN (" & AgL.PubSiteList & ") "
+            StrConditionOP = " And LG.Site_Code  IN (" & AgL.PubSiteList & ") "
+        End If
+
+        If Trim(FGMain(GFilterCode, 3).Value) <> "" Then
+            StrCondition1 = StrCondition1 & " And LG.DivCode  IN (" & FGMain(GFilterCode, 3).Value & ") "
+            StrConditionOP = StrConditionOP & " And LG.DivCode  IN (" & FGMain(GFilterCode, 3).Value & ") "
+        Else
+            StrCondition1 = StrCondition1 & " And LG.DivCode  IN (" & AgL.PubDivisionList & ") "
+            StrConditionOP = StrConditionOP & " And LG.DivCode  IN (" & AgL.PubDivisionList & ") "
+        End If
+
+        If Trim(FGMain(GFilterCode, 6).Value) <> "" Then
+            StrWithnarration = Trim(FGMain(GFilterCode, 6).Value)
+        End If
+
+        SQL = "Select  (IfNull(Sum(AmtCr),0)-IfNull(Sum(AmtDr),0)) As OP,Max(V_Date) As V_Date From Ledger LG "
+        SQL = SQL + "Left Join SubGroup SG On LG.SubCode=SG.SubCode  "
+        SQL = SQL + "Where  V_Date<" & AgL.Chk_Date(CDate(FGMain(GFilter, 0).Value.ToString).ToString("s")) & " "
+        SQL = SQL + "And " & "(LG.subcode IN ('" & FGMain(GFilterCode, 4).Value & "')) " & StrConditionOP
+
+
+        DTTemp = CMain.FGetDatTable(SQL, AgL.GCn)
+        If DTTemp.Rows.Count > 0 Then DblOpening = AgL.VNull(DTTemp.Rows(0).Item("OP"))
+
+
+        If DblOpening <> 0 Then
+            StrVDate = FGMain(GFilter, 0).Value
+            StrVParticular = "Opening Balance"
+            StrVType = "OPBAL"
+
+            If DblOpening < 0 Then
+                DblAmtCr = Math.Abs(DblOpening)
+            Else
+                DblAmtDr = Math.Abs(DblOpening)
+            End If
+
+            FAddRowBankCash(DTbankBook, "", StrVType, StrVParticular, StrVDate, "", "", "", DblAmtDr, DblAmtCr, DblOpening, StrWithnarration)
+        End If
+
+        'ABCD
+
+        If FGMain(GFilter, 9).Value = "Day Wise Summary" Then
+            SQL = "Select LG.V_Date As DocId,0 As AmtDr,Sum(LG.AmtDr) As AmtCr,LG.V_Date, "
+            SQL += "LG.V_Date  As RecId,LG.V_Date As V_Type, "
+            SQL += "Max(LG.Chq_No) As Chq_No,Max(LG.Chq_Date) As Chq_Date,Null As SubCode,Max(LG.ContraSub) As ContraSub,Max(LG.Narration) As Narration, "
+            SQL += "Max(SG.Name) As PName,Max(SGC.Name) As CName,Max(IfNull(VT.SerialNo,0)) As SerialNo "
+            SQL += "From Ledger LG "
+            SQL += "Left Join SubGroup SG On LG.SubCode=SG.SubCode "
+            SQL += "Left Join SubGroup SGC On LG.ContraSub=SGC.SubCode "
+            SQL += "Left Join Voucher_Type VT On VT.V_Type=LG.V_Type "
+            SQL += StrCondition1
+
+            SQL += "And (IfNull(LG.TDSCategory,'')='' Or IfNull(LG.System_Generated,'N')<>'Y') "
+
+            SQL += "And DocId In "
+            SQL += "(Select DocId From Ledger LG Where LG.SubCode='" & StrMainSubCode & "') "
+            SQL += "And VT.NCat = 'SI'  "
+            SQL += "And LG.SubCode =  '" & StrMainSubCode & "' "
+            SQL += "Group By LG.V_Date  "
+            SQL += "Order By LG.V_Date "
+            Dim DtDateWiseSummary As DataTable = AgL.FillData(SQL, AgL.GCn).Tables(0)
+            For I = 0 To DtDateWiseSummary.Rows.Count - 1
+                FAddRowBankCash(DTbankBook, "Sale Invoice",
+                                AgL.XNull(DtDateWiseSummary.Rows(I)("V_Type")),
+                                "Sale Invoice",
+                                AgL.XNull(DtDateWiseSummary.Rows(I)("V_Date")),
+                                "", "", "",
+                                AgL.VNull(DtDateWiseSummary.Rows(I)("AmtDr")),
+                                AgL.VNull(DtDateWiseSummary.Rows(I)("AmtCr")), 0, StrWithnarration)
+            Next
+        End If
+
+
+        SQL = "Select LG.DocId,LG.AmtDr,LG.AmtCr,CASE WHEN VT.V_Type ='EV' THEN LH.PartyDocDate ELSE LG.V_Date END V_Date, "
+        SQL += "LG.DivCode || LG.Site_Code || '-' || LG.V_Type " & IIf(FGMain(GFilter, 8).Value = "No", "", "|| '-' || LG.RecId") & "  As RecId,LG.V_Type, "
+        SQL += "VT.NCat,LG.Chq_No,LG.Chq_Date,LG.SubCode,LG.ContraSub,LG.Narration, "
+        SQL += "SG.Name As PName,SGC.Name As CName,IfNull(VT.SerialNo,0) As SerialNo "
+        SQL += "From Ledger LG "
+        SQL += "LEFT JOIN LedgerHead LH ON LH.DocID  = LG.DocID "
+        SQL += "Left Join SubGroup SG On LG.SubCode=SG.SubCode "
+        SQL += "Left Join SubGroup SGC On LG.ContraSub=SGC.SubCode "
+        SQL += "Left Join Voucher_Type VT On VT.V_Type=LG.V_Type "
+        SQL += StrCondition1
+
+        SQL += "And (IfNull(LG.TDSCategory,'')='' Or IfNull(LG.System_Generated,'N')<>'Y') "
+
+        SQL += "And LG.DocId In "
+        SQL += "(Select DocId From Ledger LG Where LG.SubCode='" & StrMainSubCode & "') "
+        'SQL += "Order By LG.V_Date,LG.V_No,LG.DocId,LG.AmtDr "
+        If FGMain(GFilter, 9).Value = "Day Wise Summary" Then
+            SQL += "And VT.NCat <> 'SI'  "
+        End If
+
+
+        SQL += "Order By (CASE WHEN VT.V_Type ='EV' THEN LH.PartyDocDate ELSE LG.V_Date END),SerialNo,LG.RecID,LG.DocId,LG.AmtDr "
 
 
         DTTemp = CMain.FGetDatTable(SQL, AgL.GCn)

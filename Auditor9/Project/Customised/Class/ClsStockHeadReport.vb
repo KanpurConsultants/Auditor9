@@ -284,7 +284,7 @@ Public Class ClsStockHeadReport
             ElseIf ReportFrm.FGetText(rowReportType) = "Party Wise Summary" Then
                 mQry = " Select VMain.Party as SearchCode, Max(VMain.PartyName) As Party, 
                     Sum(VMain.Qty) As Qty, Max(VMain.Unit) As Unit, 
-                    Sum(VMain.DealQty) As DealQty, Max(VMain.DealUnit) As DealUnit
+                    Sum(VMain.DealQty) As DealQty, Max(VMain.DealUnit) As DealUnit, Sum(VMain.Amount) as Amount
                     From (" & mQry & ") As VMain
                     GROUP By VMain.Party 
                     Order By Max(VMain.PartyName)"
@@ -314,7 +314,7 @@ Public Class ClsStockHeadReport
             ElseIf ReportFrm.FGetText(rowReportType) = "Item Group Wise Summary" Then
                 mQry = " Select VMain.ItemGroup as SearchCode, Max(VMain.ItemGroupDesc) As [Item Group], 
                     Sum(VMain.Qty) As Qty, Max(VMain.Unit) As Unit, 
-                    Sum(VMain.DealQty) As DealQty, Max(VMain.DealUnit) As DealUnit 
+                    Sum(VMain.DealQty) As DealQty, Max(VMain.DealUnit) As DealUnit, Sum(VMain.Amount) as Amount
                     From (" & mQry & ") As VMain
                     GROUP By VMain.ItemGroup 
                     Order By Max(VMain.ItemGroupDesc)"
@@ -343,14 +343,14 @@ Public Class ClsStockHeadReport
                 If AgL.PubServerName = "" Then
                     mQry = " Select strftime('%m-%Y',VMain.V_Date_ActualFormat) As SearchCode, strftime('%m-%Y',VMain.V_Date_ActualFormat) As [Month], 
                     Sum(VMain.Qty) As Qty, Max(VMain.Unit) As Unit, 
-                    Sum(VMain.DealQty) As DealQty, Max(VMain.DealUnit) As DealUnit
+                    Sum(VMain.DealQty) As DealQty, Max(VMain.DealUnit) As DealUnit, Sum(VMain.Amount) as Amount
                     From (" & mQry & ") As VMain
                     GROUP By strftime('%m-%Y',VMain.V_Date_ActualFormat)  
                     Order By strftime('%Y',VMain.V_Date_ActualFormat), strftime('%m',VMain.V_Date_ActualFormat)"
                 Else
                     mQry = " Select Substring(Convert(NVARCHAR, VMain.V_Date_ActualFormat,103),4,7) As SearchCode, Substring(Convert(NVARCHAR, VMain.V_Date_ActualFormat,103),4,7) As [Month], 
                     Sum(VMain.Qty) As Qty, Max(VMain.Unit) As Unit, 
-                    Sum(VMain.DealQty) As DealQty, Max(VMain.DealUnit) As DealUnit 
+                    Sum(VMain.DealQty) As DealQty, Max(VMain.DealUnit) As DealUnit , Sum(VMain.Amount) as Amount
                     From (" & mQry & ") As VMain
                     GROUP By Substring(Convert(NVARCHAR, VMain.V_Date_ActualFormat,103),4,7)
                     Order By Max(Year(VMain.V_Date_ActualFormat)), Max(Month(VMain.V_Date_ActualFormat)) "

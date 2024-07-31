@@ -5,6 +5,8 @@ Imports AgLibrary.ClsMain.agConstants
 Imports System.Reflection
 Imports Customised
 Imports System.Linq
+Imports System.Net
+Imports System.Security.Authentication
 
 Public Class ClsMain
     Public CFOpen As New ClsFunction
@@ -3261,6 +3263,8 @@ Sincerely
             End If
 
 
+
+
             If FDivisionNameForCustomization(6) = "SADHVI" Then
                 '09ABNFS4736P1Z7
                 'Sadhvi123#
@@ -6499,6 +6503,9 @@ Thanks
         'FSeedSingleIfNotExist_Setting("E Invoice", "", "", SettingFields.EInvoiceEWBURL, "https://einvapi.charteredinfo.com/eiewb/v1.03", AgDataType.Text, "100",,,,,,,, ,, "+SUPPORT")
         'FSeedSingleIfNotExist_Setting("E Invoice", "", "", SettingFields.EInvoiceCancelEWBURL, "https://einvapi.charteredinfo.com/v1.03", AgDataType.Text, "100",,,,,,,, ,, "+SUPPORT")
 
+        FSeedSingleIfNotExist_Setting("E Invoice", "", "", SettingFields.WhatsappMessageURL, "", AgDataType.Text, "50",,,,)
+        FSeedSingleIfNotExist_Setting("E Invoice", "", "", SettingFields.WhatsappPDFURL, "", AgDataType.Text, "50",,,,)
+        FSeedSingleIfNotExist_Setting("E Invoice", "", "", SettingFields.WhatsappImageURL, "", AgDataType.Text, "50",,,,)
 
         FSeedSingleIfNotExist_Setting("E Invoice", "", "", SettingFields.AuthGenerationURL, "https://einvapi.charteredinfo.com/eivital/dec/v1.03/auth?&aspid=<AspUserId>&password=<AspPassword>&Gstin=<Gstin>&user_name=<EInvioceUserName>&eInvPwd=<EInviocePassword>", AgDataType.Text, "500",,,,,,,, ,, "+SUPPORT")
         FSeedSingleIfNotExist_Setting("E Invoice", "", "", SettingFields.IRNGenerationURL, "https://einvapi.charteredinfo.com/eicore/dec/v1.03/Invoice?&aspid=<AspUserId>&password=<AspPassword>&Gstin=<Gstin>&user_name=<EInvioceUserName>&&AuthToken=<AuthToken>&QrCodeSize=250", AgDataType.Text, "500",,,,,,,, ,, "+SUPPORT")
@@ -6506,7 +6513,7 @@ Thanks
         FSeedSingleIfNotExist_Setting("E Invoice", "", "", SettingFields.SelectEWayBillURL, "https://einvapi.charteredinfo.com/v1.03/dec/ewayapi?action=GetEwayBill&aspid=<AspUserId>&password=<AspPassword>&gstin=<Gstin>&username=<EInvioceUserName>&authtoken=<AuthToken>&ewbNo=<EWBNumber>", AgDataType.Text, "500",,,,,,,, ,, "+SUPPORT")
         FSeedSingleIfNotExist_Setting("E Invoice", "", "", SettingFields.SaveEWayBillFileURL, "https://einvapi.charteredinfo.com/aspapi/v1.0/printdetailewb?&aspid=<AspUserId>&password=<AspPassword>&gstin=<Gstin>", AgDataType.Text, "500",,,,,,,, ,, "+SUPPORT")
         FSeedSingleIfNotExist_Setting("E Invoice", "", "", SettingFields.IRNCancelURL, "https://einvapi.charteredinfo.com/eicore/dec/v1.03/Invoice/Cancel?&aspid=<AspUserId>&password=<AspPassword>&Gstin=<Gstin>&User_Name=<EInvioceUserName>&eInvPwd=<EInviocePassword>&AuthToken=<AuthToken>", AgDataType.Text, "500",,,,,,,, ,, "+SUPPORT")
-		FSeedSingleIfNotExist_Setting(SettingType.General, "", "", SettingFields.GSTR1JsonVersion, "GST3.0.4", AgDataType.Text, "500",,,,,,,, ,, "+SUPPORT")
+        FSeedSingleIfNotExist_Setting(SettingType.General, "", "", SettingFields.GSTR1JsonVersion, "GST3.0.4", AgDataType.Text, "500",,,,,,,, ,, "+SUPPORT")
     End Sub
 
 
@@ -6764,6 +6771,10 @@ Thanks
 
         Public Shared IRNCancelURL As String = "IRN Cancel URL"
         Public Shared GSTR1JsonVersion As String = "Gstr1 Json Version"
+
+        Public Shared WhatsappMessageURL As String = "Whatsapp Message URL"
+        Public Shared WhatsappPDFURL As String = "Whatsapp PDF URL"
+        Public Shared WhatsappImageURL As String = "Whatsapp Image URL"
     End Class
     Public Sub FSeedSingleIfNotExist_EntryHeaderUISetting(EntryName As String, NCat As String, GridName As String, FieldName As String, Optional IsVisible As Boolean = False, Optional IsMandatory As Boolean = False, Optional IsSystemDefined As Boolean = False, Optional Caption As String = "", Optional V_Type As String = "", Optional Process As String = "", Optional SettingGroup As String = "")
         Dim mQry As String
@@ -24437,6 +24448,48 @@ Thanks
             FCheckDuplicatePartyDocNo = True
         End If
     End Function
+    Private Function FGetSettings(FieldName As String, SettingType As String) As String
+        Dim mValue As String
+        mValue = ClsMain.FGetSettings(FieldName, SettingType, AgL.PubDivCode, AgL.PubSiteCode, "", "", "", "", "")
+        FGetSettings = mValue
+    End Function
+
+    Public Shared Function FSendWhatsappMessage(ByVal MobileNoList As String, ByVal Message As String, ByVal Type As String) As Boolean
+        Dim mQry$ = ""
+        Dim BaseAPI As String = ""
+        If MobileNoList.ToString.Replace(",", "") = "" Then
+            Exit Function
+        End If
+
+        Try
+            If Type = "Message" Then
+                'BaseAPI = "https://clicke.co.in/eapi/sendMessage?auth_key=TrBcnEuWHfS8r4CnObJE&message='<Message>'&mobileNumber=<MobileNo>&type=msg"
+                BaseAPI = FGetSettings(SettingFields.WhatsappMessageURL, "E Invoice", "", "", "", "", "", "", "")
+            ElseIf Type = "PDF" Then
+                BaseAPI = "https://clicke.co.in/eapi/sendMessage?auth_key=TrBcnEuWHfS8r4CnObJE&message='<Message>'&pdf='<PdfPath>'&mobileNumber=<MobileNo>&type=pdf"
+            ElseIf Type = "Image" Then
+                BaseAPI = "https://clicke.co.in/eapi/sendMessage?auth_key=TrBcnEuWHfS8r4CnObJE&message=<Message>&img=<ImagePath>&mobileNumber=<MobileNo>&type=img"
+            End If
+
+
+            Dim SmsAPI = BaseAPI.Replace("91XXXXXXXXXX", MobileNoList).Replace("TEXT HERE", Message)
+            'ServicePointManager.SecurityProtocol = SecurityProtocolType.Tls12
+            Const _Tls12 As SslProtocols = DirectCast(&HC00, SslProtocols)
+            Const Tls12 As SecurityProtocolType = DirectCast(_Tls12, SecurityProtocolType)
+            ServicePointManager.SecurityProtocol = Tls12
+            Dim myReq As HttpWebRequest = HttpWebRequest.Create(SmsAPI)
+            Dim myResp As HttpWebResponse = myReq.GetResponse
+            Dim respStreamReader As System.IO.StreamReader = New System.IO.StreamReader(myResp.GetResponseStream())
+            Dim responseString As String = respStreamReader.ReadToEnd()
+            respStreamReader.Close()
+            myResp.Close()
+
+            FSendWhatsappMessage = True
+        Catch ex As Exception
+            MsgBox(ex.Message)
+        End Try
+
+    End Function
 
     Public Shared Sub FReleaseObjects(ByVal obj As Object)
         Try
@@ -24924,6 +24977,7 @@ Thanks
         End If
 
         DtTemp = AgL.FillData(mQry, IIf(AgL.PubServerName = "", Conn, AgL.GcnRead)).Tables(0)
+        DtTemp = AgL.FillData(bSelectionQry, IIf(AgL.PubServerName = "", Conn, AgL.GcnRead)).Tables(0)
         'If DtTemp.Rows.Count > 0 And AgL.PubDBName <> "ShyamaShyam" Then
         If DtTemp.Rows.Count > 0 Then
             If AgL.VNull(DtTemp.Rows(0)(0)) > 0 Then

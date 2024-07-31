@@ -73,6 +73,7 @@
     <DebugType>full</DebugType>
     <PlatformTarget>x86</PlatformTarget>
     <CodeAnalysisRuleSet>MinimumRecommendedRules.ruleset</CodeAnalysisRuleSet>
+    <Prefer32Bit>false</Prefer32Bit>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Release|x86'">
     <DefineTrace>true</DefineTrace>
@@ -83,6 +84,7 @@
     <DebugType>pdbonly</DebugType>
     <PlatformTarget>x86</PlatformTarget>
     <CodeAnalysisRuleSet>MinimumRecommendedRules.ruleset</CodeAnalysisRuleSet>
+    <Prefer32Bit>false</Prefer32Bit>
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="AgAccounts, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
@@ -200,6 +202,7 @@
     <Compile Include="Class\ClsCashCustomerOutstandingReport.vb" />
     <Compile Include="Class\ClsCustomerPaymentFollowupHistory.vb" />
     <Compile Include="Class\ClsFinancialDisplay_New_Old.vb" />
+    <Compile Include="Class\ClsSendMessageForPayment.vb" />
     <Compile Include="Class\ClsGenerateEInvoice _URL.vb" />
     <Compile Include="Class\ClsLRUpdation.vb" />
     <Compile Include="Class\FrmUploadFileOnline.Designer.vb">
@@ -217,6 +220,12 @@
       <DependentUpon>FrmPrintBarcodeSS.vb</DependentUpon>
     </Compile>
     <Compile Include="Form\FrmPrintBarcodeSS.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Form\FrmSendWhatsapp.Designer.vb">
+      <DependentUpon>FrmSendWhatsapp.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Form\FrmSendWhatsapp.vb">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="Form\FrmSerializeEntryNo.Designer.vb">
@@ -1388,6 +1397,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Form\FrmPrintBarcodeSS.resx">
       <DependentUpon>FrmPrintBarcodeSS.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Form\FrmSendWhatsapp.resx">
+      <DependentUpon>FrmSendWhatsapp.vb</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Form\FrmSerializeEntryNo.resx">
       <DependentUpon>FrmSerializeEntryNo.vb</DependentUpon>

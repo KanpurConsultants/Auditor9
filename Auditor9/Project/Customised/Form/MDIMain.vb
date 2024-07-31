@@ -328,6 +328,10 @@ Public Class MDIMain
             End If
         Next
     End Sub
+
+    Private Sub MnuRecheckBills_Click(sender As Object, e As EventArgs) Handles MnuRecheckBills.Click
+
+    End Sub
     'Private Sub FOpenEntryFromShortCut(ByVal e As System.Windows.Forms.KeyEventArgs)
     '    Dim mKeyPressed As String = ""
     '    Dim mQry As String = ""

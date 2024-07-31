@@ -2961,7 +2961,6 @@ D:\Reposotory 2021\Project\Auditor9\Release\Customised.exe
 D:\Reposotory 2021\Project\Auditor9\Release\Customised.pdb
 D:\Reposotory 2021\Project\Auditor9\Release\Customised.xml
 D:\Reposotory 2021\Project\Auditor9\Project\Customised\obj\Debug\Customised.vbprojResolveAssemblyReference.cache
-D:\Active Projects\Desktop\Auditor9\Auditor9\Release\Customised.exe
 D:\Active Projects\Desktop\Auditor9\Auditor9\Release\Customised.exe.config
 D:\Active Projects\Desktop\Auditor9\Auditor9\Project\Customised\obj\Debug\Customised.FrmLeadFollowup.resources
 D:\Active Projects\Desktop\Auditor9\Auditor9\Project\Customised\obj\Debug\Customised.FrmCustomerPaymentFollowup.resources
@@ -2971,6 +2970,8 @@ D:\Active Projects\Desktop\Auditor9\Auditor9\Project\Customised\obj\Debug\Custom
 D:\Active Projects\Desktop\Auditor9\Auditor9\Project\Customised\obj\Debug\Customised.FrmSaleInvoiceReturn_Aadhat.resources
 D:\Active Projects\Desktop\Auditor9\Auditor9\Project\Customised\obj\Debug\Customised.FrmSaleInvoiceW_OnlyW.resources
 D:\Active Projects\Desktop\Auditor9\Auditor9\Project\Customised\obj\Debug\Customised.FrmSaleReturnW.resources
+D:\Active Projects\Desktop\Auditor9\Auditor9\Project\Customised\obj\Debug\Customised.FrmPrintBarcodeSS.resources
+D:\Active Projects\Desktop\Auditor9\Auditor9\Project\Customised\obj\Debug\Customised.FrmSendWhatsapp.resources
 D:\Active Projects\Desktop\Auditor9\Auditor9\Project\Customised\obj\Debug\Customised.FrmSerializeEntryNo.resources
 D:\Active Projects\Desktop\Auditor9\Auditor9\Project\Customised\obj\Debug\Customised.FrmUpdateLinkAccount.resources
 D:\Active Projects\Desktop\Auditor9\Auditor9\Project\Customised\obj\Debug\Customised.FrmChequeData.resources
@@ -2984,6 +2985,7 @@ D:\Active Projects\Desktop\Auditor9\Auditor9\Project\Customised\obj\Debug\Custom
 D:\Active Projects\Desktop\Auditor9\Auditor9\Project\Customised\obj\Debug\Customised.FrmRecelculateSales.resources
 D:\Active Projects\Desktop\Auditor9\Auditor9\Project\Customised\obj\Debug\Customised.FrmCatalog.resources
 D:\Active Projects\Desktop\Auditor9\Auditor9\Project\Customised\obj\Debug\Customised.FrmBlankData.resources
+D:\Active Projects\Desktop\Auditor9\Auditor9\Project\Customised\obj\Debug\Customised.FrmMatchDataFromOtherDatabase.resources
 D:\Active Projects\Desktop\Auditor9\Auditor9\Project\Customised\obj\Debug\Customised.FrmWhatsapp.resources
 D:\Active Projects\Desktop\Auditor9\Auditor9\Project\Customised\obj\Debug\Customised.FrmOrderSettlement_Kirana.resources
 D:\Active Projects\Desktop\Auditor9\Auditor9\Project\Customised\obj\Debug\Customised.FrmPaymentReceiptSettlement_Kirana.resources
@@ -3109,6 +3111,7 @@ D:\Active Projects\Desktop\Auditor9\Auditor9\Project\Customised\obj\Debug\Custom
 D:\Active Projects\Desktop\Auditor9\Auditor9\Project\Customised\obj\Debug\Customised.FrmSaleInvoiceMultiLineUI_WithDimension.resources
 D:\Active Projects\Desktop\Auditor9\Auditor9\Project\Customised\obj\Debug\Customised.FrmSaleInvoiceParty.resources
 D:\Active Projects\Desktop\Auditor9\Auditor9\Project\Customised\obj\Debug\Customised.FrmSaleInvoiceReconciliation.resources
+D:\Active Projects\Desktop\Auditor9\Auditor9\Project\Customised\obj\Debug\Customised.FrmStockHeader.resources
 D:\Active Projects\Desktop\Auditor9\Auditor9\Project\Customised\obj\Debug\Customised.FrmPaymentEntryJobWorker.resources
 D:\Active Projects\Desktop\Auditor9\Auditor9\Project\Customised\obj\Debug\Customised.FrmVoucherEntryParty.resources
 D:\Active Projects\Desktop\Auditor9\Auditor9\Project\Customised\obj\Debug\Customised.FrmSchemeQualification.resources
@@ -3172,12 +3175,10 @@ D:\Active Projects\Desktop\Auditor9\Auditor9\Project\Customised\obj\Debug\Custom
 D:\Active Projects\Desktop\Auditor9\Auditor9\Project\Customised\obj\Debug\Customised.WriteInExcel.resources
 D:\Active Projects\Desktop\Auditor9\Auditor9\Project\Customised\obj\Debug\Customised.Resources.resources
 D:\Active Projects\Desktop\Auditor9\Auditor9\Project\Customised\obj\Debug\Customised.vbproj.GenerateResource.Cache
-D:\Active Projects\Desktop\Auditor9\Auditor9\Project\Customised\obj\Debug\Customised.exe
 D:\Active Projects\Desktop\Auditor9\Auditor9\Project\Customised\obj\Debug\Customised.xml
-D:\Active Projects\Desktop\Auditor9\Auditor9\Project\Customised\obj\Debug\Customised.pdb
+D:\Active Projects\Desktop\Auditor9\Auditor9\Release\Customised.exe
 D:\Active Projects\Desktop\Auditor9\Auditor9\Release\Customised.pdb
 D:\Active Projects\Desktop\Auditor9\Auditor9\Release\Customised.xml
-D:\Active Projects\Desktop\Auditor9\Auditor9\Project\Customised\obj\Debug\Customised.FrmMatchDataFromOtherDatabase.resources
-D:\Active Projects\Desktop\Auditor9\Auditor9\Project\Customised\obj\Debug\Customised.FrmPrintBarcodeSS.resources
-D:\Active Projects\Desktop\Auditor9\Auditor9\Project\Customised\obj\Debug\Customised.FrmStockHeader.resources
+D:\Active Projects\Desktop\Auditor9\Auditor9\Project\Customised\obj\Debug\Customised.exe
+D:\Active Projects\Desktop\Auditor9\Auditor9\Project\Customised\obj\Debug\Customised.pdb
 D:\Active Projects\Desktop\Auditor9\Auditor9\Project\Customised\obj\Debug\Customised.vbprojResolveAssemblyReference.cache

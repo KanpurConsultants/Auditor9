@@ -781,11 +781,11 @@ Public Class ClsStockReport
                     , Max(VMain.Unit) as Unit,"
 
                 If ReportFrm.FGetText(rowReportType) = "Stock Summary With Valuation" Then
-                    mQry += " Round(Max(VMain.ValuationRate),2) as [Rate], 
-                              Round(Sum(VMain.Opening),Max(VMain.DecimalPlaces)) As [Opening], Round(Round(Sum(VMain.Opening),Max(VMain.DecimalPlaces))*Max(VMain.ValuationRate),2) As [OpeningValue] , 
-                              Round(Sum(VMain.Qty_Rec),Max(VMain.DecimalPlaces)) as [ReceiveQty], Round(Round(Sum(VMain.Qty_Rec),Max(VMain.DecimalPlaces))*Max(VMain.ValuationRate),2) as [ReceiveValue],  
-                              Round(Sum(VMain.Qty_Iss),Max(VMain.DecimalPlaces)) as [IssueQty], Round(Round(Sum(VMain.Qty_Iss),Max(VMain.DecimalPlaces))*Max(VMain.ValuationRate),2) as [IssueValue],
-                              Round(Sum(VMain.Closing), IfNull(Max(VMain.DecimalPlaces), 0)) As [Closing], Round(Round(Sum(VMain.Closing), IfNull(Max(VMain.DecimalPlaces), 0))*Max(VMain.ValuationRate),2) as [ClosingValue]
+                    mQry += " Round(Max(IfNull(VMain.ValuationRate,0)),2) as [Rate], 
+                              Round(Sum(VMain.Opening),Max(VMain.DecimalPlaces)) As [Opening], Round(Round(Sum(VMain.Opening),Max(VMain.DecimalPlaces))*Max(IfNull(VMain.ValuationRate,0)),2) As [OpeningValue] , 
+                              Round(Sum(VMain.Qty_Rec),Max(VMain.DecimalPlaces)) as [ReceiveQty], Round(Round(Sum(VMain.Qty_Rec),Max(VMain.DecimalPlaces))*Max(IfNull(VMain.ValuationRate,0)),2) as [ReceiveValue],  
+                              Round(Sum(VMain.Qty_Iss),Max(VMain.DecimalPlaces)) as [IssueQty], Round(Round(Sum(VMain.Qty_Iss),Max(VMain.DecimalPlaces))*Max(IfNull(VMain.ValuationRate,0)),2) as [IssueValue],
+                              Round(Sum(VMain.Closing), IfNull(Max(VMain.DecimalPlaces), 0)) As [Closing], Round(Round(Sum(VMain.Closing), IfNull(Max(VMain.DecimalPlaces), 0))*Max(IfNull(VMain.ValuationRate,0)),2) as [ClosingValue]
                               From (" & mMainQry & ") As VMain
                               GROUP By " & bGroupOn & ""
 

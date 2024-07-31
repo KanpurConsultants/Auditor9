@@ -517,6 +517,9 @@ Public Class ClsFunction
                 'Case MDI.MnuSendSms.Name
                 '    FrmObj = New FrmSendSms(AgL)
 
+                Case MDI.MnuSendWhatsapp.Name
+                    FrmObj = New FrmSendWhatsapp(AgL)
+
                 Case MDI.MnuExportSqlServerData.Name
                     FrmObj = New FrmExportDataFromSqlServer(AgL)
 
@@ -793,6 +796,11 @@ Public Class ClsFunction
                     FrmObj = GridReportFrm
                 Case MDI.MnuEBillGeneration.Name
                     Dim CRep As ClsGenerateEInvoice_URL = New ClsGenerateEInvoice_URL(GridReportFrm)
+                    CRep.GRepFormName = Replace(Replace(Replace(Replace(StrSenderText, "&", ""), " ", ""), "(", ""), ")", "")
+                    CRep.Ini_Grid()
+                    FrmObj = GridReportFrm
+                Case MDI.MnuSendMessageForPayment.Name
+                    Dim CRep As ClsSendMessageForPayment = New ClsSendMessageForPayment(GridReportFrm)
                     CRep.GRepFormName = Replace(Replace(Replace(Replace(StrSenderText, "&", ""), " ", ""), "(", ""), ")", "")
                     CRep.Ini_Grid()
                     FrmObj = GridReportFrm

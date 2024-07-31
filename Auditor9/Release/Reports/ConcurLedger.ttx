@@ -1,47 +1,50 @@
 ; Field definition file for table: ADORecordset
-DivisionName	string	255	SADHVI ENTERPRISES {ENTERPRISES}, KANPUR	
+DivisionName	string	255	SADHVI EMBROIDERY {EMBROIDERY}, KANPUR	
 CreditLimit	number	0	
-PartyName	string	255	ANULA SAREES, SURAT	
-Address	string	255	202-2ND FLOOR,HI TECH CREST,OPP.MANJULA HOUSE NEAR GOLDEN POINT,FALASAWADI,RING ROAD,SURAT	
-Mobile	string	255	9638904001	
-AgentName	string	255	DEV AGENCY (M.P.FEB), SURAT	
+PartyName	string	255	SADHVI ENTERPRISES (Branch), KANPUR	
+Address	string	255	SHOP NO 33,34, 35, JHAJHARIA MARKET,
+GENERALGANJ
+
+	
+Mobile	string	255	7080999555,9839991757,9651014410	
+AgentName	string	255		
 SalesRepresentativeName	string	255		
 AreaName	string	255		
-DrDocID	string	255	D1   DNS 2023    1058	
-DrDivision	string	255	D	
-DrSubcode	string	255	D100004971	
-DrSr	number	341	
-DrDate	datetime	22/Feb/2024 12:00:00 AM	
-DrDocNo	string	255	DNS-1056	
-DrAmount	number	95088	
+DrDocID	string	255	E2    JV 2023       3	
+DrDivision	string	255	E	
+DrSubcode	string	255	D100004830	
+DrSr	number	0	
+DrDate	datetime	22/May/2023 12:00:00 AM	
+DrDocNo	string	255	JV-3	
+DrAmount	number	13039	
 DrTaxableAmount	number	0	
 DrTaxAmount	number	0	
-DrDays	number	29	
+DrDays	number	314	
 DrInterest	number	0	
-DrCumAmount	number	27012481	
+DrCumAmount	number	13039	
 DrBalAmount	number	0	
-DrTotal	number	27666156	
-DrNarration	string	255	D-6493 30*300	
-CrDocID	string	255	D1    PI 2023   13431	
-CrDivision	string	255	D	
-CrSubcode	string	255	D100004971	
-CrSr	number	341	
-CrDate	datetime	01/Feb/2024 12:00:00 AM	
-CrDocNo	string	255	PI-13432	
-CrAmount	number	89339	
-CrTaxableAmount	number	85085	
-CrTaxAmount	number	4254.25	
-CrDays	number	20	
+DrTotal	number	313039	
+DrNarration	string	255	JV : 	
+CrDocID	string	255	D2    PI 2019      20	
+CrDivision	string	255	E	
+CrSubcode	string	255	D100004830	
+CrSr	number	0	
+CrDate	datetime	05/Oct/2019 12:00:00 AM	
+CrDocNo	string	255	PI-21	
+CrAmount	number	6049	
+CrTaxableAmount	number	6049	
+CrTaxAmount	number	0	
+CrDays	number	1609	
 CrInterest	number	0	
-CrCumAmount	number	27006732	
+CrCumAmount	number	6049	
 CrBalAmount	number	0	
-CrTotal	number	33283519	
-CrNarration	string	255	Inv : 7/8918	
+CrTotal	number	87571	
+CrNarration	string	255	Inv : 1	
 AdditionPer	number		
 AdditionAmount	number		
-GrReturnAmt	number	2165851	
-GrSaleAmt	number	33283519	
-ReturnPer	number	6.51	
+GrReturnAmt	number		
+GrSaleAmt	number		
+ReturnPer	number		
 AveragePaymentDays	number	0	
-DrMonth	string	255	02/2024	
-CrMonth	string	255	02/2024	
+DrMonth	string	255	05/2023	
+CrMonth	string	255	10/2019	
