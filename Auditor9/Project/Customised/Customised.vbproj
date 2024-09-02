@@ -144,6 +144,10 @@
       <SpecificVersion>False</SpecificVersion>
       <HintPath>..\..\Release\jose-jwt.dll</HintPath>
     </Reference>
+    <Reference Include="MegaApiClient, Version=1.10.4.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>packages\MegaApiClient.1.10.4\lib\netstandard2.0\MegaApiClient.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
     <Reference Include="Microsoft.ReportViewer.WinForms, Version=10.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
       <HintPath>..\..\Release\Microsoft.ReportViewer.WinForms.dll</HintPath>
@@ -259,6 +263,12 @@
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="Form\FrmWhatsapp.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Form\FrmWhatsappAttachmentTest.Designer.vb">
+      <DependentUpon>FrmWhatsappAttachmentTest.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Form\FrmWhatsappAttachmentTest.vb">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="Form\Kirana\ClsCompleteBalancePosition_Kirana.vb" />
@@ -1452,6 +1462,9 @@
     <EmbeddedResource Include="Form\FrmWhatsapp.resx">
       <DependentUpon>FrmWhatsapp.vb</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Form\FrmWhatsappAttachmentTest.resx">
+      <DependentUpon>FrmWhatsappAttachmentTest.vb</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Form\Kirana\FrmOrderSettlement_Kirana.resx">
       <DependentUpon>FrmOrderSettlement_Kirana.vb</DependentUpon>
     </EmbeddedResource>
@@ -2071,7 +2084,9 @@
     </None>
   </ItemGroup>
   <ItemGroup>
-    <None Include="packages.config" />
+    <None Include="packages.config">
+      <SubType>Designer</SubType>
+    </None>
     <None Include="Resources\Tree_Child.bmp" />
   </ItemGroup>
   <ItemGroup>

@@ -315,6 +315,7 @@ Public Class FrmSaleInvoiceDirect_WithDimension
     Friend WithEvents MnuWhatsappDocument As ToolStripMenuItem
     Friend WithEvents MnuGenerateEBill As ToolStripMenuItem
     Public WithEvents Pnl7 As Panel
+    Friend WithEvents MnuSendWhatsapp As ToolStripMenuItem
     Dim SubReport_DataSetArr() As DataSet = Nothing
 
     Public Function FItemTypeSettings(ItemType As String) As DataRow
@@ -411,6 +412,7 @@ Public Class FrmSaleInvoiceDirect_WithDimension
         Me.Pnl4 = New System.Windows.Forms.Panel()
         Me.Pnl7 = New System.Windows.Forms.Panel()
         Me.PnlItemCategorySummary = New System.Windows.Forms.Panel()
+        Me.MnuSendWhatsapp = New System.Windows.Forms.ToolStripMenuItem()
         Me.GroupBox2.SuspendLayout()
         Me.GBoxMoveToLog.SuspendLayout()
         Me.GBoxApprove.SuspendLayout()
@@ -1069,9 +1071,9 @@ Public Class FrmSaleInvoiceDirect_WithDimension
         '
         'MnuOptions
         '
-        Me.MnuOptions.Items.AddRange(New System.Windows.Forms.ToolStripItem() {Me.MnuImportFromExcel, Me.MnuImportFromDos, Me.MnuImportFromTally, Me.MnuEditSave, Me.MnuCancelEntry, Me.MnuGenerateEWayBill, Me.MnuReconcileBill, Me.MnuEMail, Me.MnuSendSms, Me.MnuWhatsappDocument, Me.MnuPrintQACopy, Me.MnuPrintBulk, Me.MnuReferenceEntries, Me.MnuHistory, Me.MnuShowLedgerPosting, Me.MnuReport, Me.MnuGenerateEBill})
+        Me.MnuOptions.Items.AddRange(New System.Windows.Forms.ToolStripItem() {Me.MnuImportFromExcel, Me.MnuImportFromDos, Me.MnuImportFromTally, Me.MnuEditSave, Me.MnuCancelEntry, Me.MnuGenerateEWayBill, Me.MnuReconcileBill, Me.MnuEMail, Me.MnuSendSms, Me.MnuSendWhatsapp, Me.MnuWhatsappDocument, Me.MnuPrintQACopy, Me.MnuPrintBulk, Me.MnuReferenceEntries, Me.MnuHistory, Me.MnuShowLedgerPosting, Me.MnuReport, Me.MnuGenerateEBill})
         Me.MnuOptions.Name = "MnuOptions"
-        Me.MnuOptions.Size = New System.Drawing.Size(187, 400)
+        Me.MnuOptions.Size = New System.Drawing.Size(187, 422)
         '
         'MnuImportFromExcel
         '
@@ -1307,6 +1309,12 @@ Public Class FrmSaleInvoiceDirect_WithDimension
         Me.PnlItemCategorySummary.Name = "PnlItemCategorySummary"
         Me.PnlItemCategorySummary.Size = New System.Drawing.Size(15, 14)
         Me.PnlItemCategorySummary.TabIndex = 3023
+        '
+        'MnuSendWhatsapp
+        '
+        Me.MnuSendWhatsapp.Name = "MnuSendWhatsapp"
+        Me.MnuSendWhatsapp.Size = New System.Drawing.Size(186, 22)
+        Me.MnuSendWhatsapp.Text = "Send Whatsapp"
         '
         'FrmSaleInvoiceDirect_WithDimension
         '
@@ -1864,8 +1872,14 @@ Public Class FrmSaleInvoiceDirect_WithDimension
         Dgl3.Item(Col1Head, rowAgent).Value = hcAgent
         Dgl3.Item(Col1Head, rowTransporter).Value = hcTransporter
         Dgl3.Item(Col1Head, rowResponsiblePerson).Value = hcResponsiblePerson
-        Dgl3.Item(Col1Head, rowRemarks1).Value = hcRemarks1
-        Dgl3.Item(Col1Head, rowRemarks2).Value = hcRemarks2
+        If AgL.StrCmp(AgL.PubDBName, "RVN") Then
+            Dgl3.Item(Col1Head, rowRemarks1).Value = "Vehicle No"
+            Dgl3.Item(Col1Head, rowRemarks2).Value = "Hypothecation"
+        Else
+            Dgl3.Item(Col1Head, rowRemarks1).Value = hcRemarks1
+            Dgl3.Item(Col1Head, rowRemarks2).Value = hcRemarks2
+        End If
+
         Dgl3.Item(Col1Head, rowTags).Value = hcTags
         Dgl3.Item(Col1Head, rowRemarks).Value = hcRemarks
         Dgl3.Item(Col1Head, rowTermsAndConditions).Value = hcTermsAndConditions
@@ -2958,6 +2972,9 @@ Public Class FrmSaleInvoiceDirect_WithDimension
             Dgl1.Columns(Col1Remark2).Visible = True
             Dgl1.Columns(Col1Remark3).Visible = True
             Dgl1.Columns(Col1Remark4).Visible = True
+
+            Dgl3.Rows(rowRemarks1).Visible = True
+            Dgl3.Rows(rowRemarks2).Visible = True
         End If
 
         'If DglMain.Rows(rowSaleToPartyName).Visible = True And
@@ -8644,7 +8661,7 @@ Public Class FrmSaleInvoiceDirect_WithDimension
                 abs(L.Tax4_Per) as Tax4_Per, (Case When Vt.Ncat = '" & Ncat.SaleReturn & "' Then -1.0 else 1.0 end) * (L.Tax4) as Tax4, 
                 abs(L.Tax5_Per) as Tax5_Per, (Case When Vt.Ncat = '" & Ncat.SaleReturn & "' Then -1.0 else 1.0 end) * (L.Tax5) as Tax5, 
                 (Case When Vt.Ncat = '" & Ncat.SaleReturn & "' Then -1.0 else 1.0 end) * (L.Net_Amount) as Net_Amount, 
-                L.Remark AS LRemarks, L.Remarks1 AS LRemarks1, L.Remarks2 AS LRemarks2,  L.Remarks3 AS LRemarks3,  L.Remarks4 AS LRemarks4, IfNull(H.Remarks,'') as HRemarks, H.SalesTaxSummaryStr,
+                L.Remark AS LRemarks, L.Remarks1 AS LRemarks1, L.Remarks2 AS LRemarks2,  L.Remarks3 AS LRemarks3,  L.Remarks4 AS LRemarks4, IfNull(H.Remarks,'') as HRemarks, IfNull(H.Remarks1,'') as HRemarks1, IfNull(H.Remarks2,'') as HRemarks2, H.SalesTaxSummaryStr,
                 (Select Sum(L1.DiscountAmount) From SaleInvoiceDetail L1 Where L1.DocID = H.DocID) as H_Discount, 
                 (Select Sum(L1.AdditionalDiscountAmount) From SaleInvoiceDetail L1 Where L1.DocID = H.DocID) as H_AdditionalDiscount, 
                 (Select Sum(L1.AdditionAmount) From SaleInvoiceDetail L1 Where L1.DocID = H.DocID) as H_Additional, 
@@ -11348,7 +11365,7 @@ Public Class FrmSaleInvoiceDirect_WithDimension
     End Sub
 
     Private Sub MnuImport_Click(sender As Object, e As EventArgs) Handles MnuImportFromExcel.Click, MnuImportFromDos.Click, MnuImportFromTally.Click, MnuEditSave.Click,
-            MnuGenerateEWayBill.Click, MnuGenerateEBill.Click, MnuReconcileBill.Click, MnuEMail.Click, MnuSendSms.Click, MnuWhatsappDocument.Click, MnuReferenceEntries.Click, MnuReport.Click, MnuHistory.Click, MnuPrintBulk.Click, MnuCancelEntry.Click, MnuShowLedgerPosting.Click
+            MnuGenerateEWayBill.Click, MnuGenerateEBill.Click, MnuReconcileBill.Click, MnuEMail.Click, MnuSendSms.Click, MnuSendWhatsapp.Click, MnuWhatsappDocument.Click, MnuReferenceEntries.Click, MnuReport.Click, MnuHistory.Click, MnuPrintBulk.Click, MnuCancelEntry.Click, MnuShowLedgerPosting.Click
         Select Case sender.name
             Case MnuImportFromExcel.Name
                 FImportFromExcel(ImportFor.Excel)
@@ -11389,6 +11406,9 @@ Public Class FrmSaleInvoiceDirect_WithDimension
 
             Case MnuSendSms.Name
                 FSendSms(True)
+
+            Case MnuSendWhatsapp.Name
+                FSendWhatsapp()
 
             Case MnuWhatsappDocument.Name
                 If AgL.StrCmp(AgL.PubUserName, "Super") Then
@@ -13064,6 +13084,35 @@ Public Class FrmSaleInvoiceDirect_WithDimension
         Else
             FrmObj.FSendSms()
         End If
+    End Sub
+
+    Private Sub FSendWhatsapp()
+        Dim mDocNoPrefix As String = FGetSettings(SettingFields.DocumentPrintEntryNoPrefix, SettingType.General)
+        Dim IsSuccess As Boolean
+        Dim ToMobileNo As String
+        Dim ToMessage As String
+        Dim DtDocData As DataTable = AgL.FillData("Select 
+                    Sg.DispName As DivisionName, 
+                    Party.DispName As PartyName, Party.Mobile As PartyMobile,
+                    Agent.DispName As AgentName, Agent.Mobile As AgentMobile, H.Net_Amount
+                    From SaleInvoice H 
+                    LEFT JOIN Division D On H.Div_Code = D.Div_Code
+                    LEFT JOIN SubGroup Sg On D.SubCode = Sg.SubCode
+                    LEFT JOIN SubGroup Party On H.SaleToParty = Party.SubCode
+                    LEFT JOIN SubGroup Agent On H.Agent = Agent.SubCode
+                    Where H.DocId = '" & mSearchCode & "'", AgL.GCn).Tables(0)
+
+
+        ToMobileNo = AgL.XNull(DtDocData.Rows(0)("PartyMobile"))
+        ToMessage = FGetSettings(SettingFields.SmsMessage, SettingType.General)
+        ToMessage = ToMessage.
+                Replace("<PartyName>", AgL.XNull(DtDocData.Rows(0)("PartyName"))).
+                Replace("<EntryNo>", mDocNoPrefix & DglMain.Item(Col1Value, rowReferenceNo).Value).Replace("<EntryDate>", DglMain.Item(Col1Value, rowV_Date).Value).
+                Replace("<DivisionName>", AgL.XNull(DtDocData.Rows(0)("DivisionName"))).
+                Replace("<AgentName>", AgL.XNull(DtDocData.Rows(0)("AgentName"))).
+                Replace("<NetAmount>", Format(AgL.VNull(DtDocData.Rows(0)("Net_Amount")), "0.00")).
+                Replace("&", "And")
+        IsSuccess = FSendWhatsappMessage(ToMobileNo, ToMessage, "Message")
     End Sub
 
     Private Function GetFieldAliasName(bImportFor As ImportFor, bFieldName As String)

@@ -372,7 +372,6 @@ D:\Active Projects\Desktop\Auditor9\AgLibrary\Release\AgLibrary.dll.config
 D:\Active Projects\Desktop\Auditor9\AgLibrary\Release\AgLibrary.dll
 D:\Active Projects\Desktop\Auditor9\AgLibrary\Release\AgLibrary.pdb
 D:\Active Projects\Desktop\Auditor9\AgLibrary\Release\AgLibrary.xml
-D:\Active Projects\Desktop\Auditor9\AgLibrary\Project\obj\Debug\AgLibrary.vbprojResolveAssemblyReference.cache
 D:\Active Projects\Desktop\Auditor9\AgLibrary\Project\obj\Debug\AgLibrary.FrmAgZip.resources
 D:\Active Projects\Desktop\Auditor9\AgLibrary\Project\obj\Debug\AgLibrary.FrmAttachmentViewer.resources
 D:\Active Projects\Desktop\Auditor9\AgLibrary\Project\obj\Debug\AgLibrary.FrmBackupDatase.resources

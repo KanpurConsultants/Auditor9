@@ -150,6 +150,7 @@ Public Class ClsReports
                             Union All Select 'Item Tax Group Wise Summary' as Code, 'Item Tax Group Wise Summary' as Name
                             Union All Select 'Division Wise Summary' as Code, 'Division Wise Summary' as Name
                             Union All Select 'Site Wise Summary' as Code, 'Site Wise Summary' as Name
+                            Union All Select 'Account Wise Summary' as Code, 'Account Wise Summary' as Name
                             Union All Select 'Account Type Wise Summary' as Code, 'Account Type Wise Summary' as Name
                             Union All Select 'Account Nature Wise Summary' as Code, 'Account Nature Wise Summary' as Name
                             Union All Select 'Department Wise Summary' as Code, 'Department Wise Summary' as Name
@@ -1051,7 +1052,7 @@ Public Class ClsReports
 
                         mQry = mQry + "Order By Max(VMain.V_Date_ActualFormat), Cast(Max(Replace(Vmain.ManualRefNo,'-','')) as Integer),VMain.DocId "
                     Else
-                            mQry = " Select VMain.DocId As SearchCode, Max(VMain.Division) as Division, Max(Vmain.Site) as Site, 
+                        mQry = " Select VMain.DocId As SearchCode, Max(VMain.Division) as Division, Max(Vmain.Site) as Site, 
                                 Max(VMain.V_Date) As InvoiceDate, Max(VMain.V_Type) as DocType, Max(VMain.InvoiceNo) As InvoiceNo, IfNull(Cast(Max(VMain.NoOfBales) as Integer),0) AS NoOfBales,
                                 Max(VMain.SaleToPartyName) As Party, Max(Vmain.Brand) as Brand, Max(VMain.SalesTaxGroupParty) As SalesTaxGroupParty, IfNull(Sum(VMain.AmountExDiscount),0) As AmountExDiscount, 
                                 IfNull(Sum(VMain.Discount+VMain.AdditionalDiscount),0) As Discount, IfNull(Sum(VMain.Addition),0) as Addition, IfNull(Sum(VMain.SpecialDiscount),0) As SpecialDiscount, IfNull(Sum(VMain.SpecialAddition),0) As SpecialAddition,
@@ -1059,9 +1060,9 @@ Public Class ClsReports
                                 From (" & mQry & ") As VMain
                                 GROUP By VMain.DocId 
                                 Order By Max(VMain.V_Date_ActualFormat), Cast(Max(Replace(Vmain.ManualRefNo,'-','')) as Integer) "
-                        End If
                     End If
-                ElseIf ReportFrm.FGetText(0) = "Item Wise Detail" Then
+                End If
+            ElseIf ReportFrm.FGetText(0) = "Item Wise Detail" Then
                 If GRepFormName = SaleOrderReport Then
                     mQry = " Select VMain.DocId As SearchCode, Max(Vmain.Site) as Site, Max(VMain.Division) as Division, Max(VMain.V_Date) As [Order Date], Max(VMain.V_Type) as DocType, Max(VMain.InvoiceNo) As [Order No],
                     Max(VMain.SaleToPartyName) As Party, Max(VMain.ItemDesc) As Item, Sum(VMain.Qty) As Qty, Max(VMain.Unit) As Unit, Max(VMain.HSN) As HSN, 
@@ -1119,6 +1120,22 @@ Public Class ClsReports
                     From (" & mQry & ") As VMain
                     GROUP By VMain.SaleToParty 
                     Order By Max(VMain.SaleToPartyName)"
+            ElseIf ReportFrm.FGetText(0) = "Account Wise Summary" Then
+                If GRepFormName = SaleOrderReport Then
+                    mCondStr = " Where VT.NCat In ('" & Ncat.SaleOrder & "', '" & Ncat.SaleOrderCancel & "') "
+                Else
+                    mCondStr = " Where VT.NCat In ('" & Ncat.SaleInvoice & "', '" & Ncat.SaleReturn & "') "
+                End If
+                mCondStr = mCondStr & " AND Date(H.V_Date) Between " & AgL.Chk_Date(CDate(ReportFrm.FGetText(1)).ToString("s")) & " And " & AgL.Chk_Date(CDate(ReportFrm.FGetText(2)).ToString("s")) & " "
+                mCondStr = mCondStr & Replace(ReportFrm.GetWhereCondition("H.Site_Code", 5), "''", "'")
+                mCondStr = mCondStr & ReportFrm.GetWhereCondition("H.V_Type", 6)
+
+                mQry = " SELECT Max(SG.Name) AS Account, Sum(LG.Amount) AS Amount                      
+                        FROM SaleInvoice H  
+                        LEFT JOIN Voucher_Type Vt On H.V_Type = Vt.V_Type
+                        LEFT JOIN SaleInvoicePayment LG ON LG.DocId = H.DocID
+                        LEFT JOIN Subgroup SG ON SG.Subcode = LG.PostToAc 
+                        " & mCondStr & " GROUP BY LG.PostToAc "
             ElseIf ReportFrm.FGetText(0) = "Account Type Wise Summary" Then
                 mQry = " Select VMain.SubgroupType as SearchCode, Max(VMain.SubgroupType) As AccountType, 
                     Count(Distinct Vmain.DocID) as [Doc.Count],  Sum(VMain.Qty) as Qty,

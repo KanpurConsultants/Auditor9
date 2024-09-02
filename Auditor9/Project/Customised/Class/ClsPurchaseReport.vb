@@ -97,7 +97,7 @@ Public Class ClsPurchaseReport
     Public Shared mHelpItemTypeQry$ = "Select 'o' As Tick, Code, Name FROM ItemType "
     Public Shared mHelpItemCategoryQry$ = "Select 'o' As Tick, Code, Description As [Item Category] From ItemCategory "
     Public Shared mHelpItemGroupQry$ = "Select 'o' As Tick, Code, Description As [Item Group] From ItemGroup "
-    Public Shared mHelpTagQry$ = "Select Distinct 'o' As Tick, H.Tags as Code, H.Tags as Description  FROM PurchInvoice H "
+    Public Shared mHelpTagQry$ = "Select Distinct H.Tags as Code, H.Tags as Name  FROM PurchInvoice H "
     Public Shared mHelpDimension1Qry$ = "Select 'o' As Tick, Code, Description From Dimension1 "
     Public Shared mHelpDimension2Qry$ = "Select 'o' As Tick, Code, Description From Dimension2 "
     Public Shared mHelpDimension3Qry$ = "Select 'o' As Tick, Code, Description From Dimension3 "
@@ -154,7 +154,7 @@ Public Class ClsPurchaseReport
             ReportFrm.CreateHelpGrid("State", "State", FrmRepDisplay.FieldFilterDataType.StringType, FrmRepDisplay.FieldDataType.MultiSelection, mHelpStateQry)
             ReportFrm.CreateHelpGrid("HSN", "HSN", FrmRepDisplay.FieldFilterDataType.StringType, FrmRepDisplay.FieldDataType.StringType, "")
             ReportFrm.FilterGrid.Rows(rowHSN).Visible = False 'Hide HSN Row
-            ReportFrm.CreateHelpGrid("Tags", "Tags", FrmRepDisplay.FieldFilterDataType.StringType, FrmRepDisplay.FieldDataType.MultiSelection, mHelpTagQry)
+            ReportFrm.CreateHelpGrid("Tags", "Tags", FrmRepDisplay.FieldFilterDataType.StringType, FrmRepDisplay.FieldDataType.SingleSelection, mHelpTagQry, "All")
             mQry = "Select 'Settled' as Code, 'Settled' as Name 
                             Union All Select 'Pending' as Code, 'Pending' as Name 
                             Union All Select 'All' as Code, 'All' as Name 
@@ -299,7 +299,8 @@ Public Class ClsPurchaseReport
             If ReportFrm.FGetText(rowTags) <> "All" Then
                 mTags = ReportFrm.FGetText(rowTags).ToString.Split(",")
                 For J = 0 To mTags.Length - 1
-                    mCondStr += " And CharIndex('+' || '" & mTags(J) & "',H.Tags) > 0 "
+                    'mCondStr += " And CharIndex('+' || '" & mTags(J) & "',H.Tags) > 0 "
+                    mCondStr += " And CharIndex('" & mTags(J) & "',H.Tags) > 0 "
                 Next
             End If
 

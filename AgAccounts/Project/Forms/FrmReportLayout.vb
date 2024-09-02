@@ -5449,9 +5449,11 @@ LblForLastRecord:
             StrWithnarration = Trim(FGMain(GFilterCode, 6).Value)
         End If
 
-        SQL = "Select  (IfNull(Sum(AmtCr),0)-IfNull(Sum(AmtDr),0)) As OP,Max(V_Date) As V_Date From Ledger LG "
+        SQL = "Select  (IfNull(Sum(AmtCr),0)-IfNull(Sum(AmtDr),0)) As OP,Max((CASE WHEN VT.V_Type ='EV' THEN LH.PartyDocDate ELSE LG.V_Date END)) As V_Date From Ledger LG "
         SQL = SQL + "Left Join SubGroup SG On LG.SubCode=SG.SubCode  "
-        SQL = SQL + "Where  V_Date<" & AgL.Chk_Date(CDate(FGMain(GFilter, 0).Value.ToString).ToString("s")) & " "
+        SQL = SQL + "LEFT JOIN LedgerHead LH ON LH.DocID  = LG.DocID  "
+        SQL = SQL + "Left Join Voucher_Type VT On VT.V_Type=LG.V_Type  "
+        SQL = SQL + "Where  Date(CASE WHEN VT.V_Type ='EV' THEN LH.PartyDocDate ELSE LG.V_Date END) <" & AgL.Chk_Date(CDate(FGMain(GFilter, 0).Value.ToString).ToString("s")) & " "
         SQL = SQL + "And " & "(LG.subcode IN ('" & FGMain(GFilterCode, 4).Value & "')) " & StrConditionOP
 
 
