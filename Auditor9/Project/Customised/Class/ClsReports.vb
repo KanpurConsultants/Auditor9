@@ -2904,7 +2904,7 @@ Public Class ClsReports
                             From SubgroupRegistration 
                             Where RegistrationType = 'Sales Tax No') As VPartyGST On VMain.Subcode COLLATE DATABASE_DEFAULT = VPartyGST.SubCode COLLATE DATABASE_DEFAULT
                         GROUP By VMain.Subcode, VMain.Div_Code
-                        Having Sum(VMain.AmtDay2)<>0
+                        Having Sum(VMain.PendingAmt)<>0
                         Order By [Party]"
                 ElseIf ReportFrm.FGetText(0) = "Party Wise Ageing" Then
                     Dim StrDays0 As String
@@ -2939,7 +2939,7 @@ Public Class ClsReports
                         Left Join (Select SILTV.Subcode, SILTV.Div_Code, Max(SILTV.Agent) as Agent From SubgroupSiteDivisionDetail SILTV  Group By SILTV.Subcode, SILTV.Div_Code) as LTV On Party.Subcode  COLLATE DATABASE_DEFAULT = LTV.Subcode  COLLATE DATABASE_DEFAULT And VMain.Div_Code COLLATE DATABASE_DEFAULT = LTV.Div_Code  COLLATE DATABASE_DEFAULT                    
                         Left Join viewHelpSubgroup Agent On LTV.Agent  COLLATE DATABASE_DEFAULT = Agent.Code  COLLATE DATABASE_DEFAULT
                         GROUP By VMain.Subcode, VMain.Div_Code
-                        Having Sum(VMain.AmtDay2)<>0
+                        Having Sum(VMain.PendingAmt)<>0
                         Order By [Party]"
                 End If
 
@@ -3325,8 +3325,8 @@ Public Class ClsReports
                 strSql += " FROM #TempRecord where (IfNull(Round(PendingAmt,2),0)<>0  Or RecId='Total')"
                 strSql += " ) As VMain "
 
-
-
+                'mQry = "Select * INTO TempRecord FROM #TempRecord "
+                'AgL.Dman_ExecuteNonQry(mQry, AgL.GCn)
 
                 mQry = strSql
 
@@ -3355,7 +3355,7 @@ Public Class ClsReports
                             From SubgroupRegistration 
                             Where RegistrationType = 'Sales Tax No') As VPartyGST On VMain.Subcode COLLATE DATABASE_DEFAULT = VPartyGST.SubCode COLLATE DATABASE_DEFAULT
                         GROUP By VMain.Subcode, VMain.Div_Code
-                        Having Sum(VMain.AmtDay2)<>0
+                        Having Sum(VMain.PendingAmt)<>0
                         Order By [Party]"
                 ElseIf ReportFrm.FGetText(0) = "Party Wise Ageing" Then
                     Dim StrDays0 As String
@@ -3390,7 +3390,7 @@ Public Class ClsReports
                         Left Join (Select SILTV.Subcode, SILTV.Div_Code, Max(SILTV.Agent) as Agent From SubgroupSiteDivisionDetail SILTV  Group By SILTV.Subcode, SILTV.Div_Code) as LTV On Party.Subcode  COLLATE DATABASE_DEFAULT = LTV.Subcode  COLLATE DATABASE_DEFAULT And VMain.Div_Code COLLATE DATABASE_DEFAULT = LTV.Div_Code  COLLATE DATABASE_DEFAULT                    
                         Left Join viewHelpSubgroup Agent On LTV.Agent  COLLATE DATABASE_DEFAULT = Agent.Code  COLLATE DATABASE_DEFAULT
                         GROUP By VMain.Subcode, VMain.Div_Code
-                        Having Sum(VMain.AmtDay2)<>0
+                        Having Sum(VMain.PendingAmt)<>0
                         Order By [Party]"
                 End If
 

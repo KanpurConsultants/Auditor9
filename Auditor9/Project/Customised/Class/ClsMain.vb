@@ -19560,7 +19560,7 @@ Thanks
             End If
             AgL.AddFieldSqlite(AgL.GcnMain, "DivisionCompanySetting", "Div_Code", "nVarchar(1)", "", True, " references Division(Div_Code) ")
             AgL.AddFieldSqlite(AgL.GcnMain, "DivisionCompanySetting", "Comp_Code", "nVarchar(5)", "", True, " references Company(Comp_Code) ")
-
+            AgL.AddFieldSqlite(AgL.GcnMain, "DivisionCompanySetting", "Site_Code", "nVarchar(2)", "", True, " references SiteMast(Code) ")
             AgL.AddFieldSqlite(AgL.GcnMain, "DivisionCompanySetting", "OpeningStockValue", "Float", "0", False)
             AgL.AddFieldSqlite(AgL.GcnMain, "DivisionCompanySetting", "ClosingStockValue", "Float", "0", False)
 
@@ -24982,6 +24982,7 @@ Thanks
         If DtTemp.Rows.Count > 0 Then
             If AgL.VNull(DtTemp.Rows(0)(0)) > 0 Then
                 If (AgL.StrCmp(AgL.PubDBName, "ShyamaShyam") Or AgL.StrCmp(AgL.PubDBName, "ShyamaShyamV") Or AgL.StrCmp(AgL.PubDBName, "ShyamaShyam_W") Or AgL.StrCmp(AgL.PubDBName, "ShyamaShyamV_W")) And mV_Type = "PI" Then
+
 
                 Else
                     Console.Write(mQry)

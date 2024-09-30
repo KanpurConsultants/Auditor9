@@ -18,12 +18,14 @@ Public Class FrmDivisionCompanySetting
 
     Dim rowDivision As Integer = 0
     Dim rowCompany As Integer = 1
-    Dim rowOpeningStockValue As Integer = 2
-    Dim rowClosingStockValue As Integer = 3
-    Dim rowRemark As Integer = 4
+    Dim rowSite As Integer = 2
+    Dim rowOpeningStockValue As Integer = 3
+    Dim rowClosingStockValue As Integer = 4
+    Dim rowRemark As Integer = 5
 
     Public Const hcDivision As String = "Division"
     Public Const hcCompany As String = "Company"
+    Public Const hcSite As String = "Site"
     Public Const hcOpeningStockValue As String = "Opening Stock Value"
     Public Const hcClosingStockValue As String = "Closing Stock Value"
     Public Const hcRemark As String = "Remark"
@@ -169,10 +171,11 @@ Public Class FrmDivisionCompanySetting
     End Sub
     Public Overridable Sub FrmYarn_BaseEvent_FindMain() Handles Me.BaseEvent_FindMain
         Dim mConStr$ = ""
-        AgL.PubFindQry = "Select D.Div_Name as Div_Name, C.cyear As Comp_Name, H.OpeningStockValue, H.ClosingStockValue, H.Remark
+        AgL.PubFindQry = "Select D.Div_Name as Div_Name, C.cyear As Comp_Name, S.Name AS Site_Name, H.OpeningStockValue, H.ClosingStockValue, H.Remark
                          From DivisionCompanySetting H 
                          Left Join Division D On H.Div_Code = D.Div_Code
-                         LEFT JOIN Company C On H.Comp_Code = C.Comp_Code "
+                         LEFT JOIN Company C On H.Comp_Code = C.Comp_Code 
+                         LEFT JOIN SiteMast S On H.Site_Code = S.Code "
         AgL.PubFindQryOrdBy = "[Description]"
     End Sub
     Private Sub FrmYarn_BaseEvent_Form_PreLoad() Handles Me.BaseEvent_Form_PreLoad
@@ -185,6 +188,7 @@ Public Class FrmDivisionCompanySetting
                 Set 
                 Div_Code = " & AgL.Chk_Text(DglMain.Item(Col1Value, rowDivision).Tag) & ", 
                 Comp_Code = " & AgL.Chk_Text(DglMain.Item(Col1Value, rowCompany).Tag) & ", 
+                Site_Code = " & AgL.Chk_Text(DglMain.Item(Col1Value, rowSite).Tag) & ", 
                 OpeningStockValue = " & Val(DglMain.Item(Col1Value, rowOpeningStockValue).Value) & ",
                 ClosingStockValue = " & Val(DglMain.Item(Col1Value, rowClosingStockValue).Value) & ",
                 Remark = " & AgL.Chk_Text(DglMain.Item(Col1Value, rowRemark).Value) & "
@@ -194,10 +198,11 @@ Public Class FrmDivisionCompanySetting
     Private Sub FrmQuality1_BaseFunction_MoveRec(ByVal SearchCode As String) Handles Me.BaseFunction_MoveRec
         Dim DsTemp As DataSet
 
-        mQry = "Select H.*, D.Div_Name as Div_Name, C.cyear As Comp_Name
+        mQry = "Select H.*, D.Div_Name as Div_Name, C.cyear As Comp_Name,S.Name AS Site_Name
                  From DivisionCompanySetting H 
                  Left Join Division D On H.Div_Code = D.Div_Code
                  LEFT JOIN Company C On H.Comp_Code = C.Comp_Code
+                 LEFT JOIN SiteMast S On H.Site_Code = S.Code
                  Where H.Code = '" & SearchCode & "'"
         DsTemp = AgL.FillData(mQry, AgL.GCn)
 
@@ -208,6 +213,8 @@ Public Class FrmDivisionCompanySetting
                 DglMain.Item(Col1Value, rowDivision).Value = AgL.XNull(DsTemp.Tables(0).Rows(0)("Div_Name"))
                 DglMain.Item(Col1Value, rowCompany).Tag = AgL.XNull(DsTemp.Tables(0).Rows(0)("Comp_Code"))
                 DglMain.Item(Col1Value, rowCompany).Value = AgL.XNull(DsTemp.Tables(0).Rows(0)("Comp_Name"))
+                DglMain.Item(Col1Value, rowSite).Tag = AgL.XNull(DsTemp.Tables(0).Rows(0)("Site_Code"))
+                DglMain.Item(Col1Value, rowSite).Value = AgL.XNull(DsTemp.Tables(0).Rows(0)("Site_Name"))
                 DglMain.Item(Col1Value, rowOpeningStockValue).Value = AgL.XNull(DsTemp.Tables(0).Rows(0)("OpeningStockValue"))
                 DglMain.Item(Col1Value, rowClosingStockValue).Value = AgL.XNull(DsTemp.Tables(0).Rows(0)("ClosingStockValue"))
                 DglMain.Item(Col1Value, rowRemark).Value = AgL.XNull(DsTemp.Tables(0).Rows(0)("Remark"))
@@ -285,10 +292,11 @@ Public Class FrmDivisionCompanySetting
         AgL.GridDesign(DglMain)
         DglMain.Anchor = AnchorStyles.Top + AnchorStyles.Left + AnchorStyles.Right + AnchorStyles.Bottom
 
-        DglMain.Rows.Add(5)
+        DglMain.Rows.Add(6)
 
         DglMain.Item(Col1Head, rowDivision).Value = hcDivision
         DglMain.Item(Col1Head, rowCompany).Value = hcCompany
+        DglMain.Item(Col1Head, rowSite).Value = hcSite
         DglMain.Item(Col1Head, rowOpeningStockValue).Value = hcOpeningStockValue
         DglMain.Item(Col1Head, rowClosingStockValue).Value = hcClosingStockValue
         DglMain.Item(Col1Head, rowRemark).Value = hcRemark
@@ -336,6 +344,17 @@ Public Class FrmDivisionCompanySetting
                         mQry = "Select Comp_Code As Code, cyear As Name " &
                             " From Company " &
                             " Order By Comp_Name "
+                        DglMain.Item(Col1Head, DglMain.CurrentCell.RowIndex).Tag = AgL.FillData(mQry, AgL.GCn)
+                    End If
+                    If DglMain.AgHelpDataSet(Col1Value) Is Nothing Then
+                        DglMain.AgHelpDataSet(Col1Value) = DglMain.Item(Col1Head, DglMain.CurrentCell.RowIndex).Tag
+                    End If
+
+                Case rowSite
+                    If DglMain.Item(Col1Head, DglMain.CurrentCell.RowIndex).Tag Is Nothing Then
+                        mQry = "Select Code As Code, Name As Name " &
+                            " From SiteMast " &
+                            " Order By Code "
                         DglMain.Item(Col1Head, DglMain.CurrentCell.RowIndex).Tag = AgL.FillData(mQry, AgL.GCn)
                     End If
                     If DglMain.AgHelpDataSet(Col1Value) Is Nothing Then

@@ -3512,9 +3512,17 @@ Public Class FrmVoucherEntry
             End If
         End If
 
+        If Not AgL.VNull(AgL.PubDtEnviro.Rows(0)("ShowAccountsOfOtherDivisions")) Then
+            strCond += " And (Sg.Div_Code = '" & AgL.PubDivCode & "' Or IfNull(Sg.ShowAccountInOtherDivisions,0) = 1) "
+        End If
 
-        mQry = "SELECT Sg.Code, Sg.Name, Sg.Address, Ag.GroupName
-                FROM viewHelpSubGroup Sg  With (NoLock)                       
+        If Not AgL.VNull(AgL.PubDtEnviro.Rows(0)("ShowAccountsOfOtherSites")) Then
+            strCond += " And (Sg.Site_Code = '" & AgL.PubSiteCode & "' Or IfNull(Sg.ShowAccountInOtherSites,0) = 1) "
+        End If
+
+
+        mQry = "SELECT Sg.SubCode AS Code, Sg.Name, Sg.Address, Ag.GroupName
+                FROM SubGroup Sg  With (NoLock)                       
                 Left Join AcGroup Ag On Sg.GroupCode = Ag.GroupCode
                 Where IfNull(Sg.Status,'" & AgTemplate.ClsMain.EntryStatus.Active & "') = '" & AgTemplate.ClsMain.EntryStatus.Active & "' " & strCond
         mQry = mQry & " And Sg.SubgroupType Not In ('Master Customer','Master Supplier', 'Ship To Party')"

@@ -2787,7 +2787,7 @@ Public Class ClsFinancialDisplay_New
                 FROM DivisionCompanySetting H
                 LEFT JOIN Company C ON H.Comp_Code = C.Comp_Code
                 WHERE " & AgL.Chk_Date(CDate(mFromDate)) & " BETWEEN Date(C.Start_Dt) AND Date(C.End_Dt) 
-                And H.Div_Code = '" & AgL.PubDivCode & "' "
+                And H.Div_Code = '" & AgL.PubDivCode & "' And H.Site_Code = '" & AgL.PubSiteCode & "' "
 
         'WHERE " & AgL.Chk_Date(CDate(mFromDate)) & " BETWEEN C.Start_Dt AND C.End_Dt 
 
@@ -2854,7 +2854,7 @@ Public Class ClsFinancialDisplay_New
                 FROM DivisionCompanySetting H
                 LEFT JOIN Company C ON H.Comp_Code = C.Comp_Code
                 WHERE " & AgL.Chk_Date(CDate(mFromDate)) & " BETWEEN Date(C.Start_Dt) AND Date(C.End_Dt) 
-                And H.Div_Code = '" & AgL.PubDivCode & "' "
+                And H.Div_Code = '" & AgL.PubDivCode & "' And H.Site_Code = '" & AgL.PubSiteCode & "' "
 
         'WHERE " & AgL.Chk_Date(CDate(mFromDate)) & " BETWEEN C.Start_Dt AND C.End_Dt 
         mDtStockValue = AgL.FillData(mQry, AgL.GCn).Tables(0)

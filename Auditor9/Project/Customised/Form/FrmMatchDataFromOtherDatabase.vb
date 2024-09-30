@@ -206,9 +206,9 @@ Public Class FrmMatchDataFromOtherDatabase
         Next
 
         For I = 0 To DtExternalData_LedgerHead.Rows.Count - 1
-            mQry = "INSERT INTO TempToMatchLedger (Export_Site_Code, DocID, V_Date, SubCode, AmtDr, AmtCr)
-                    SELECT '" & AgL.XNull(DtExternalData_LedgerHead.Rows(I)("Export_Site_Code")) & "', '" & AgL.XNull(DtExternalData_LedgerHead.Rows(I)("DocID")) & "', '" & AgL.XNull(DtExternalData_LedgerHead.Rows(I)("V_Date")) & "', 
-                    '" & AgL.XNull(DtExternalData_LedgerHead.Rows(I)("SubCode")) & "', 
+            mQry = "INSERT INTO TempToMatchLedger (Export_Site_Code, DivCode, DocID, V_Date, RecId, SubCode, AmtDr, AmtCr)
+                    SELECT '" & AgL.XNull(DtExternalData_LedgerHead.Rows(I)("Export_Site_Code")) & "', '" & AgL.XNull(DtExternalData_LedgerHead.Rows(I)("DivCode")) & "', '" & AgL.XNull(DtExternalData_LedgerHead.Rows(I)("DocID")) & "', '" & AgL.XNull(DtExternalData_LedgerHead.Rows(I)("V_Date")) & "', 
+                    '" & AgL.XNull(DtExternalData_LedgerHead.Rows(I)("RecId")) & "', '" & AgL.XNull(DtExternalData_LedgerHead.Rows(I)("SubCode")) & "', 
                     '" & AgL.XNull(DtExternalData_LedgerHead.Rows(I)("AmtDr")) & "', '" & AgL.XNull(DtExternalData_LedgerHead.Rows(I)("AmtCr")) & "' "
             AgL.Dman_ExecuteNonQry(mQry, AgL.GCn, AgL.ECmd)
         Next
@@ -355,7 +355,7 @@ Public Class FrmMatchDataFromOtherDatabase
         mQry = mQry & " AND Date(H.V_Date) >= " & AgL.Chk_Date(CDate(DglMain.Item(Col1Value, rowDataSyncFromDate).Value).ToString("s")) & ""
         DtExternalData_SaleInvoice = AgL.FillData(mQry, Connection_ExternalDatabase).Tables(0)
 
-        mQry = " SELECT Max(SM.Export_Site_Code) AS Export_Site_Code, H.DocId, H.SubCode, H.V_Date, Sum(H.AmtDr) AS AmtDr, Sum(H.AmtCr) AS AmtCr  
+        mQry = " SELECT Max(SM.Export_Site_Code) AS Export_Site_Code, Max(H.DivCode) as DivCode, H.DocId, H.SubCode, H.V_Date, Max(H.RecId) as RecId, Sum(H.AmtDr) AS AmtDr, Sum(H.AmtCr) AS AmtCr  
                  FROM Ledger H
                  LEFT Join SiteMast SM ON 1=1
                  Where 1=1 "

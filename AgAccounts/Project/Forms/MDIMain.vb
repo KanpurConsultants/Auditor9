@@ -5,11 +5,11 @@ Public Class MDIMain
 
 
             If FOpenIni(StrPath, AgLibrary.ClsConstant.PubSuperUserName, AgLibrary.ClsConstant.PubSuperUserPassword) Then
-                AgIniVar.FOpenConnection("1", "1")
+                AgIniVar.FOpenConnection("6", "1")
             End If
 
-            AgIniVar.FOpenConnection("1", "1")
-            AgL.PubDivCode = "E"
+            AgIniVar.FOpenConnection("6", "1")
+            AgL.PubDivCode = "D"
         End If
     End Sub
 
