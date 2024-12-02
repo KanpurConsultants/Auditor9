@@ -2589,7 +2589,7 @@ Public Class FrmPurchInvoiceDirect
                 Case TxtReferenceNo.Name
                     e.Cancel = Not FCheckDuplicateRefNo()
                 Case TxtVendorDocDate.Name
-                    If LblV_Type.Tag = Ncat.PurchaseInvoice Then
+                    If LblV_Type.Tag = Ncat.PurchaseInvoice Or LblV_Type.Tag = Ncat.PurchaseReturn Then
                         ShowPurchInvoiceHeader()
                     End If
                 Case TxtVendorDocNo.Name

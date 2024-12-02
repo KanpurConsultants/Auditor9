@@ -3787,6 +3787,10 @@ Public Class FrmStockEntry
                 If DtInsurance.Rows.Count > 0 Then
                     Dgl2.Item(Col1Value, rowInsuranceBalanceValue).Value = AgL.VNull(DtInsurance.Rows(0)("BalanceInsuranceValue"))
                 End If
+
+            Case rowRemarks
+                ShowTransportDetail()
+
         End Select
     End Sub
     Private Sub ShowAttachments()
@@ -5404,6 +5408,21 @@ Public Class FrmStockEntry
 
                 Case rowBtnTransportDetail
                     ShowTransportDetail()
+            End Select
+        End If
+    End Sub
+
+    Private Sub Dgl2_CellLeave(sender As Object, e As DataGridViewCellEventArgs) Handles Dgl2.CellLeave
+        If e.ColumnIndex = Dgl2.Columns(Col1Value).Index And TypeOf (Dgl2(Col1Value, e.RowIndex)) Is DataGridViewButtonCell Then
+            Select Case e.RowIndex
+                Case rowBtnTransportDetail
+                    If FDivisionNameForCustomization(6) = "SADHVI" And AgL.StrCmp(AgL.PubDBName, "Sadhvi") Then
+                        If AgL.StrCmp(Topctrl1.Mode, "Browse") Then
+                            Exit Sub
+                        Else
+                            ShowTransportDetail()
+                        End If
+                    End If
             End Select
         End If
     End Sub

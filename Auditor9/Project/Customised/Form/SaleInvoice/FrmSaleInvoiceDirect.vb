@@ -211,6 +211,7 @@ Public Class FrmSaleInvoiceDirect
     Friend WithEvents MnuWhatsappDocument As ToolStripMenuItem
     Friend WithEvents MnuGenerateEBill As ToolStripMenuItem
     Friend WithEvents MnuSendWhatsapp As ToolStripMenuItem
+    Friend WithEvents MnuSendWhatsappPDF As ToolStripMenuItem
     Dim UserMovedOverItemCategory As Boolean
 
 
@@ -296,6 +297,7 @@ Public Class FrmSaleInvoiceDirect
         Me.MnuReconcileBill = New System.Windows.Forms.ToolStripMenuItem()
         Me.MnuEMail = New System.Windows.Forms.ToolStripMenuItem()
         Me.MnuSendSms = New System.Windows.Forms.ToolStripMenuItem()
+        Me.MnuSendWhatsapp = New System.Windows.Forms.ToolStripMenuItem()
         Me.MnuWhatsappDocument = New System.Windows.Forms.ToolStripMenuItem()
         Me.MnuPrintQACopy = New System.Windows.Forms.ToolStripMenuItem()
         Me.MnuPrintBulk = New System.Windows.Forms.ToolStripMenuItem()
@@ -311,7 +313,7 @@ Public Class FrmSaleInvoiceDirect
         Me.BtnAttachments = New System.Windows.Forms.Button()
         Me.Pnl3 = New System.Windows.Forms.Panel()
         Me.AgTextBox1 = New AgControls.AgTextBox()
-        Me.MnuSendWhatsapp = New System.Windows.Forms.ToolStripMenuItem()
+        Me.MnuSendWhatsappPDF = New System.Windows.Forms.ToolStripMenuItem()
         Me.GroupBox2.SuspendLayout()
         Me.GBoxMoveToLog.SuspendLayout()
         Me.GBoxApprove.SuspendLayout()
@@ -1215,9 +1217,9 @@ Public Class FrmSaleInvoiceDirect
         '
         'MnuOptions
         '
-        Me.MnuOptions.Items.AddRange(New System.Windows.Forms.ToolStripItem() {Me.MnuImportFromExcel, Me.MnuImportFromDos, Me.MnuImportFromTally, Me.MnuEditSave, Me.MnuGenerateEWayBill, Me.MnuReconcileBill, Me.MnuEMail, Me.MnuSendSms, Me.MnuSendWhatsapp, Me.MnuWhatsappDocument, Me.MnuPrintQACopy, Me.MnuPrintBulk, Me.MnuReferenceEntries, Me.MnuHistory, Me.MnuShowLedgerPosting, Me.MnuReport, Me.MnuGenerateEBill})
+        Me.MnuOptions.Items.AddRange(New System.Windows.Forms.ToolStripItem() {Me.MnuImportFromExcel, Me.MnuImportFromDos, Me.MnuImportFromTally, Me.MnuEditSave, Me.MnuGenerateEWayBill, Me.MnuReconcileBill, Me.MnuEMail, Me.MnuSendSms, Me.MnuSendWhatsapp, Me.MnuSendWhatsappPDF, Me.MnuWhatsappDocument, Me.MnuPrintQACopy, Me.MnuPrintBulk, Me.MnuReferenceEntries, Me.MnuHistory, Me.MnuShowLedgerPosting, Me.MnuReport, Me.MnuGenerateEBill})
         Me.MnuOptions.Name = "MnuOptions"
-        Me.MnuOptions.Size = New System.Drawing.Size(187, 400)
+        Me.MnuOptions.Size = New System.Drawing.Size(187, 422)
         '
         'MnuImportFromExcel
         '
@@ -1266,6 +1268,12 @@ Public Class FrmSaleInvoiceDirect
         Me.MnuSendSms.Name = "MnuSendSms"
         Me.MnuSendSms.Size = New System.Drawing.Size(186, 22)
         Me.MnuSendSms.Text = "Send Sms"
+        '
+        'MnuSendWhatsapp
+        '
+        Me.MnuSendWhatsapp.Name = "MnuSendWhatsapp"
+        Me.MnuSendWhatsapp.Size = New System.Drawing.Size(186, 22)
+        Me.MnuSendWhatsapp.Text = "Send Whatsapp"
         '
         'MnuWhatsappDocument
         '
@@ -1419,11 +1427,11 @@ Public Class FrmSaleInvoiceDirect
         Me.AgTextBox1.TextAlign = System.Windows.Forms.HorizontalAlignment.Right
         Me.AgTextBox1.UseWaitCursor = True
         '
-        'MnuSendWhatsapp
+        'MnuSendWhatsappPDF
         '
-        Me.MnuSendWhatsapp.Name = "MnuSendWhatsapp"
-        Me.MnuSendWhatsapp.Size = New System.Drawing.Size(186, 22)
-        Me.MnuSendWhatsapp.Text = "Send Whatsapp"
+        Me.MnuSendWhatsappPDF.Name = "MnuSendWhatsappPDF"
+        Me.MnuSendWhatsappPDF.Size = New System.Drawing.Size(186, 22)
+        Me.MnuSendWhatsappPDF.Text = "Send Whatsapp PDF"
         '
         'FrmSaleInvoiceDirect
         '
@@ -8259,7 +8267,7 @@ Public Class FrmSaleInvoiceDirect
     End Sub
 
     Private Sub MnuImport_Click(sender As Object, e As EventArgs) Handles MnuImportFromExcel.Click, MnuImportFromDos.Click, MnuImportFromTally.Click, MnuEditSave.Click,
-            MnuGenerateEWayBill.Click, MnuReconcileBill.Click, MnuEMail.Click, MnuSendSms.Click, MnuSendWhatsapp.Click, MnuWhatsappDocument.Click, MnuReferenceEntries.Click, MnuReport.Click, MnuHistory.Click, MnuPrintBulk.Click, MnuShowLedgerPosting.Click, MnuGenerateEBill.Click
+            MnuGenerateEWayBill.Click, MnuReconcileBill.Click, MnuEMail.Click, MnuSendSms.Click, MnuSendWhatsapp.Click, MnuSendWhatsappPDF.Click, MnuWhatsappDocument.Click, MnuReferenceEntries.Click, MnuReport.Click, MnuHistory.Click, MnuPrintBulk.Click, MnuShowLedgerPosting.Click, MnuGenerateEBill.Click
         Select Case sender.name
             Case MnuImportFromExcel.Name
                 FImportFromExcel(ImportFor.Excel)
@@ -8303,6 +8311,9 @@ Public Class FrmSaleInvoiceDirect
 
             Case MnuSendWhatsapp.Name
                 FSendWhatsapp()
+
+            Case MnuSendWhatsappPDF.Name
+                FSendWhatsappPDF()
 
             Case MnuWhatsappDocument.Name
                 If AgL.StrCmp(AgL.PubUserName, "Super") Then
@@ -9766,9 +9777,37 @@ Public Class FrmSaleInvoiceDirect
                 Replace("<AgentName>", AgL.XNull(DtDocData.Rows(0)("AgentName"))).
                 Replace("<NetAmount>", Format(AgL.VNull(DtDocData.Rows(0)("Net_Amount")), "0.00")).
                 Replace("&", "And")
-        IsSuccess = FSendWhatsappMessage(ToMobileNo, ToMessage, "Message")
+        IsSuccess = FSendWhatsappMessage(ToMobileNo, ToMessage, "Message", "")
     End Sub
 
+    Private Sub FSendWhatsappPDF()
+        Dim mDocNoPrefix As String = FGetSettings(SettingFields.DocumentPrintEntryNoPrefix, SettingType.General)
+        Dim IsSuccess As Boolean
+        Dim ToMobileNo As String
+        Dim ToMessage As String
+        Dim DtDocData As DataTable = AgL.FillData("Select 
+                    Sg.DispName As DivisionName, 
+                    Party.DispName As PartyName, Party.Mobile As PartyMobile,
+                    Agent.DispName As AgentName, Agent.Mobile As AgentMobile, H.Net_Amount
+                    From SaleInvoice H 
+                    LEFT JOIN Division D On H.Div_Code = D.Div_Code
+                    LEFT JOIN SubGroup Sg On D.SubCode = Sg.SubCode
+                    LEFT JOIN SubGroup Party On H.SaleToParty = Party.SubCode
+                    LEFT JOIN SubGroup Agent On H.Agent = Agent.SubCode
+                    Where H.DocId = '" & mSearchCode & "'", AgL.GCn).Tables(0)
+
+
+        ToMobileNo = AgL.XNull(DtDocData.Rows(0)("PartyMobile"))
+        ToMessage = FGetSettings(SettingFields.SmsMessage, SettingType.General)
+        ToMessage = ToMessage.
+                Replace("<PartyName>", AgL.XNull(DtDocData.Rows(0)("PartyName"))).
+                Replace("<EntryNo>", mDocNoPrefix & TxtReferenceNo.Text).Replace("<EntryDate>", TxtV_Date.Text).
+                Replace("<DivisionName>", AgL.XNull(DtDocData.Rows(0)("DivisionName"))).
+                Replace("<AgentName>", AgL.XNull(DtDocData.Rows(0)("AgentName"))).
+                Replace("<NetAmount>", Format(AgL.VNull(DtDocData.Rows(0)("Net_Amount")), "0.00")).
+                Replace("&", "And")
+        IsSuccess = FSendWhatsappMessage(ToMobileNo, ToMessage, "PDF", "https://fixkaro.co.in/styam/13411.pdf")
+    End Sub
     Private Function GetFieldAliasName(bImportFor As ImportFor, bFieldName As String)
         Dim bAliasName As String = bFieldName
         If bImportFor = ImportFor.Dos Then

@@ -949,7 +949,7 @@ Public Class ClsReports
                     H.SaleToParty, Party.SubgroupType, Party.Nature as AccountNature, I.ItemGroup, I.ItemCategory,
                     (Case When H.SaleToParty=H.BillToParty And (Party.Nature='Cash' Or Party.SubgroupType='" & SubgroupType.RevenuePoint & "') Then Party.Name || ' - ' || IfNull(H.SaleToPartyName,'') When H.SaleToParty=H.BillToParty Then Party.Name When BillToParty.Nature='Cash' And H.SaleToParty<>H.BillToParty Then  BillToParty.Name || ' - ' || Party.Name  Else Party.Name || ' - ' || BillToParty.Name End) As SaleToPartyName ,                     
                     Party.Mobile, SIT.NoOfBales,
-                    LTV.Agent As AgentCode, Agent.Name As AgentName, H.ResponsiblePerson, ResponsiblePerson.Name as ResponsiblePersonName,
+                    LTV.Agent As AgentCode, Agent.Name As AgentName, H.ResponsiblePerson, ResponsiblePerson.Name as ResponsiblePersonName,G.Name as GodownName,
                     L.SalesRepresentative, SalesRep.Name as SalesRepresentativeName, H.SalesTaxGroupParty, L.SalesTaxGroupItem,
                     City.CityCode, City.CityName, Area.Code As AreaCode, Area.Description As AreaName, State.Code As StateCode, State.Description As StateName,
                     Cast(Replace(H.ManualRefNo,'-','') as Integer) as InvoiceNo, H.ManualRefNo, L.Item,
@@ -977,6 +977,7 @@ Public Class ClsReports
                     Left Join viewHelpSubGroup Agent On LTV.Agent = Agent.Code 
                     Left Join viewHelpSubGroup SalesRep On L.SalesRepresentative = SalesRep.Code 
                     Left Join viewHelpSubGroup ResponsiblePerson On H.ResponsiblePerson = ResponsiblePerson.Code 
+                    Left Join SubGroup G With (NoLock) on L.Godown  = G.Subcode 
                     Left Join City On H.SaleToPartyCity = City.CityCode 
                     Left Join Area On Party.Area = Area.Code 
                     Left Join State On City.State = State.Code                    
@@ -1000,7 +1001,7 @@ Public Class ClsReports
                 Else
                     If (AgL.PubServerName <> "") Then
                         mQry = " Select VMain.DocId As SearchCode, Max(VMain.Division) as Division, Max(Vmain.Site) as Site, Row_Number() OVER (ORDER BY Max(VMain.V_Date_ActualFormat),Cast(Max(Replace(Vmain.ManualRefNo,'-','')) as Integer),VMain.DocId) AS Sr,
-                                Max(VMain.V_Date) As InvoiceDate, Max(VMain.V_Type) as DocType, Max(VMain.InvoiceNo) As InvoiceNo, Max(VMain.NoOfBales) AS NoOfBales,
+                                Max(VMain.V_Date) As InvoiceDate, Max(VMain.V_Type) as DocType, Max(VMain.InvoiceNo) As InvoiceNo, Max(VMain.NoOfBales) AS NoOfBales, Max(VMain.GodownName) AS GodownName,
                                 Max(VMain.SaleToPartyName) As Party, Max(Vmain.Brand) as Brand, Max(VMain.SalesTaxGroupParty) As SalesTaxGroupParty, IfNull(Sum(VMain.AmountExDiscount),0) As AmountExDiscount, 
                                 IfNull(Sum(VMain.Discount+VMain.AdditionalDiscount),0) As Discount, IfNull(Sum(VMain.Addition),0) as Addition, IfNull(Sum(VMain.SpecialDiscount),0) As SpecialDiscount, IfNull(Sum(VMain.SpecialAddition),0) As SpecialAddition,
                                 IfNull(Sum(VMain.Amount),0) As Amount,IfNull(Sum(VMain.Taxable_Amount),0) As TaxableAmount, IfNull(Sum(VMain.TotalTax),0) As TaxAmount, IfNull(Sum(VMain.Net_Amount),0) As NetAmount, Max(VMain.Tags) as Tags, Max(VMain.OrderTags) as OrderTags
@@ -1009,7 +1010,7 @@ Public Class ClsReports
                                 Order By Max(VMain.V_Date_ActualFormat), Cast(Max(Replace(Vmain.ManualRefNo,'-','')) as Integer),VMain.DocId "
                     Else
                         mQry = " Select VMain.DocId As SearchCode, Max(VMain.Division) as Division, Max(Vmain.Site) as Site, 
-                                Max(VMain.V_Date) As InvoiceDate, Max(VMain.V_Type) as DocType, Max(VMain.InvoiceNo) As InvoiceNo, IfNull(Cast(Max(VMain.NoOfBales) as Integer),0) AS NoOfBales,
+                                Max(VMain.V_Date) As InvoiceDate, Max(VMain.V_Type) as DocType, Max(VMain.InvoiceNo) As InvoiceNo, IfNull(Cast(Max(VMain.NoOfBales) as Integer),0) AS NoOfBales, Max(VMain.GodownName) AS GodownName,
                                 Max(VMain.SaleToPartyName) As Party, Max(Vmain.Brand) as Brand, Max(VMain.SalesTaxGroupParty) As SalesTaxGroupParty, IfNull(Sum(VMain.AmountExDiscount),0) As AmountExDiscount, 
                                 IfNull(Sum(VMain.Discount+VMain.AdditionalDiscount),0) As Discount, IfNull(Sum(VMain.Addition),0) as Addition, IfNull(Sum(VMain.SpecialDiscount),0) As SpecialDiscount, IfNull(Sum(VMain.SpecialAddition),0) As SpecialAddition,
                                 IfNull(Sum(VMain.Amount),0) As Amount,IfNull(Sum(VMain.Taxable_Amount),0) As TaxableAmount, IfNull(Sum(VMain.TotalTax),0) As TaxAmount, IfNull(Sum(VMain.Net_Amount),0) As NetAmount, Max(VMain.Tags) as Tags, Max(VMain.OrderTags) as OrderTags
@@ -2904,7 +2905,7 @@ Public Class ClsReports
                             From SubgroupRegistration 
                             Where RegistrationType = 'Sales Tax No') As VPartyGST On VMain.Subcode COLLATE DATABASE_DEFAULT = VPartyGST.SubCode COLLATE DATABASE_DEFAULT
                         GROUP By VMain.Subcode, VMain.Div_Code
-                        Having Sum(VMain.PendingAmt)<>0
+                        Having Sum(VMain.AmtDay2)<>0
                         Order By [Party]"
                 ElseIf ReportFrm.FGetText(0) = "Party Wise Ageing" Then
                     Dim StrDays0 As String
@@ -2939,7 +2940,7 @@ Public Class ClsReports
                         Left Join (Select SILTV.Subcode, SILTV.Div_Code, Max(SILTV.Agent) as Agent From SubgroupSiteDivisionDetail SILTV  Group By SILTV.Subcode, SILTV.Div_Code) as LTV On Party.Subcode  COLLATE DATABASE_DEFAULT = LTV.Subcode  COLLATE DATABASE_DEFAULT And VMain.Div_Code COLLATE DATABASE_DEFAULT = LTV.Div_Code  COLLATE DATABASE_DEFAULT                    
                         Left Join viewHelpSubgroup Agent On LTV.Agent  COLLATE DATABASE_DEFAULT = Agent.Code  COLLATE DATABASE_DEFAULT
                         GROUP By VMain.Subcode, VMain.Div_Code
-                        Having Sum(VMain.PendingAmt)<>0
+                        Having Sum(VMain.AmtDay2)<>0
                         Order By [Party]"
                 End If
 
@@ -3355,7 +3356,7 @@ Public Class ClsReports
                             From SubgroupRegistration 
                             Where RegistrationType = 'Sales Tax No') As VPartyGST On VMain.Subcode COLLATE DATABASE_DEFAULT = VPartyGST.SubCode COLLATE DATABASE_DEFAULT
                         GROUP By VMain.Subcode, VMain.Div_Code
-                        Having Sum(VMain.PendingAmt)<>0
+                        Having Sum(VMain.AmtDay2)<>0
                         Order By [Party]"
                 ElseIf ReportFrm.FGetText(0) = "Party Wise Ageing" Then
                     Dim StrDays0 As String
@@ -3390,7 +3391,7 @@ Public Class ClsReports
                         Left Join (Select SILTV.Subcode, SILTV.Div_Code, Max(SILTV.Agent) as Agent From SubgroupSiteDivisionDetail SILTV  Group By SILTV.Subcode, SILTV.Div_Code) as LTV On Party.Subcode  COLLATE DATABASE_DEFAULT = LTV.Subcode  COLLATE DATABASE_DEFAULT And VMain.Div_Code COLLATE DATABASE_DEFAULT = LTV.Div_Code  COLLATE DATABASE_DEFAULT                    
                         Left Join viewHelpSubgroup Agent On LTV.Agent  COLLATE DATABASE_DEFAULT = Agent.Code  COLLATE DATABASE_DEFAULT
                         GROUP By VMain.Subcode, VMain.Div_Code
-                        Having Sum(VMain.PendingAmt)<>0
+                        Having Sum(VMain.AmtDay2)<>0
                         Order By [Party]"
                 End If
 

@@ -74,6 +74,10 @@ Public Class FrmPurchInvoiceDirect_WithDimension
     Public Const Col1FromProcess As String = "From Process"
     Public Const Col1Catalog As String = "Catalog"
     Public Const Col1Remark As String = "Remark"
+    Public Const Col1Remark1 As String = "Remark1"
+    Public Const Col1Remark2 As String = "Remark2"
+    Public Const Col1Remark3 As String = "Remark3"
+    Public Const Col1Remark4 As String = "Remark4"
     Public Const Col1Godown As String = "Godown"
     Public Const Col1FromGodown As String = "From Godown"
     Public Const Col1ToGodown As String = "To Godown"
@@ -1284,6 +1288,14 @@ Public Class FrmPurchInvoiceDirect_WithDimension
                 Dgl2.Rows(rowPaidAmount).Visible = True
             End If
         End If
+
+        If AgL.StrCmp(AgL.PubDBName, "RVN") Then
+            Dgl1.Columns(Col1Remark1).Visible = True
+            Dgl1.Columns(Col1Remark2).Visible = True
+            Dgl1.Columns(Col1Remark3).Visible = True
+            Dgl1.Columns(Col1Remark4).Visible = True
+        End If
+
     End Sub
 
     Public Function FItemTypeSettings(ItemType As String) As DataRow
@@ -1448,7 +1460,21 @@ Public Class FrmPurchInvoiceDirect_WithDimension
                 .AddAgDateColumn(Dgl1, Col1ExpiryDate, 90, Col1ExpiryDate, False, False)
                 .AddAgTextColumn(Dgl1, Col1FromProcess, 100, 255, Col1FromProcess, True, False)
                 .AddAgTextColumn(Dgl1, Col1Catalog, 100, 0, Col1Catalog, False, False)
-                .AddAgTextColumn(Dgl1, Col1Remark, 200, 255, Col1Remark, True, False)
+
+                If AgL.StrCmp(AgL.PubDBName, "RVN") Then
+                    .AddAgTextColumn(Dgl1, Col1Remark, 150, 255, "MOTOR NO", True, False)
+                    .AddAgTextColumn(Dgl1, Col1Remark1, 150, 255, "CONTROLLER NO", True, False)
+                    .AddAgTextColumn(Dgl1, Col1Remark2, 150, 255, "CHASIS NO", True, False)
+                    .AddAgTextColumn(Dgl1, Col1Remark3, 150, 255, "BATTERY NO", True, False)
+                    .AddAgTextColumn(Dgl1, Col1Remark4, 150, 255, "CHARGER NO", True, False)
+                Else
+                    .AddAgTextColumn(Dgl1, Col1Remark, 150, 255, Col1Remark, True, False)
+                    .AddAgTextColumn(Dgl1, Col1Remark1, 150, 255, Col1Remark1, True, False)
+                    .AddAgTextColumn(Dgl1, Col1Remark2, 150, 255, Col1Remark2, True, False)
+                    .AddAgTextColumn(Dgl1, Col1Remark3, 150, 255, Col1Remark3, True, False)
+                    .AddAgTextColumn(Dgl1, Col1Remark4, 150, 255, Col1Remark4, True, False)
+                End If
+
                 .AddAgTextColumn(Dgl1, Col1Godown, 100, 0, Col1Godown, AgL.IsFeatureApplicable_Godown, False)
                 .AddAgTextColumn(Dgl1, Col1FromGodown, 100, 0, Col1FromGodown, AgL.IsFeatureApplicable_Godown, False)
                 .AddAgTextColumn(Dgl1, Col1ToGodown, 100, 0, Col1ToGodown, AgL.IsFeatureApplicable_Godown, False)
@@ -2267,7 +2293,7 @@ Public Class FrmPurchInvoiceDirect_WithDimension
                             UnitMultiplier, DocDealQty, FreeDealQty, LossDealQtyPer, LossDealQty, DealQty, DealUnit, StockUnit, StockUnitMultiplier, StockQty,
                             Rate, DiscountPer, DiscountAmount, AdditionalDiscountPer, AdditionalDiscountAmount, AdditionalCommission_Per, AdditionalCommission, AdditionPer, AdditionAmount, 
                             Amount, Sale_Rate, MRP, 
-                            FromProcess, Catalog, SaleInvoice, SaleInvoiceSr, Remark, LRNo, LRDate, HSN, LotNo, Godown, ReferenceNo, ReferenceDate, ReferenceDocID, ReferenceTSr, ReferenceSr, ReferenceDocIdBalanceQty, 
+                            FromProcess, Catalog, SaleInvoice, SaleInvoiceSr, Remark, Remarks1, Remarks2, Remarks3, Remarks4, LRNo, LRDate, HSN, LotNo, Godown, ReferenceNo, ReferenceDate, ReferenceDocID, ReferenceTSr, ReferenceSr, ReferenceDocIdBalanceQty, 
                             RawMaterial, RawMaterialConsumptionQty, Deal, DealAmount, ExpiryDate " & IIf(TxtStructure.Tag = "", "", ",") & AgCalcGrid1.FLineTableFieldNameStr() & ") "
         mQry += " Select " & AgL.Chk_Text(mSearchCode) & ", " & Sr & ", " &
                             " " & AgL.Chk_Text(Dgl1.Item(Col1PurchaseInvoice, LineGridRowIndex).Tag) & ", " &
@@ -2316,6 +2342,10 @@ Public Class FrmPurchInvoiceDirect_WithDimension
                             " " & AgL.Chk_Text(Dgl1.Item(Col1SaleInvoice, LineGridRowIndex).Tag) & ", " &
                             " " & Val(Dgl1.Item(Col1SaleInvoiceSr, LineGridRowIndex).Value) & ", " &
                             " " & AgL.Chk_Text(Dgl1.Item(Col1Remark, LineGridRowIndex).Value) & ", " &
+                            " " & AgL.Chk_Text(Dgl1.Item(Col1Remark1, LineGridRowIndex).Value) & ", " &
+                            " " & AgL.Chk_Text(Dgl1.Item(Col1Remark2, LineGridRowIndex).Value) & ", " &
+                            " " & AgL.Chk_Text(Dgl1.Item(Col1Remark3, LineGridRowIndex).Value) & ", " &
+                            " " & AgL.Chk_Text(Dgl1.Item(Col1Remark4, LineGridRowIndex).Value) & ", " &
                             " " & AgL.Chk_Text(Dgl1.Item(Col1LRNo, LineGridRowIndex).Value) & ", " &
                             " " & AgL.Chk_Date(Dgl1.Item(Col1LRDate, LineGridRowIndex).Value) & ", " &
                             " " & AgL.Chk_Text(Dgl1.Item(Col1HSN, LineGridRowIndex).Value) & ", " &
@@ -2699,6 +2729,10 @@ Public Class FrmPurchInvoiceDirect_WithDimension
                                 " 	FromProcess = " & AgL.Chk_Text(Dgl1.Item(Col1FromProcess, LineGridRowIndex).Tag) & ", " &
                                 "   Catalog = " & AgL.Chk_Text(Dgl1.Item(Col1Catalog, LineGridRowIndex).Tag) & ", " &
                                 " 	Remark = " & AgL.Chk_Text(Dgl1.Item(Col1Remark, LineGridRowIndex).Value) & ", " &
+                                " Remarks1 = " & AgL.Chk_Text(Dgl1.Item(Col1Remark1, LineGridRowIndex).Value) & ", " &
+                                " Remarks2 = " & AgL.Chk_Text(Dgl1.Item(Col1Remark2, LineGridRowIndex).Value) & ", " &
+                                " Remarks3 = " & AgL.Chk_Text(Dgl1.Item(Col1Remark3, LineGridRowIndex).Value) & ", " &
+                                " Remarks4 = " & AgL.Chk_Text(Dgl1.Item(Col1Remark4, LineGridRowIndex).Value) & ", " &
                                 " 	SaleInvoice = " & AgL.Chk_Text(Dgl1.Item(Col1SaleInvoice, LineGridRowIndex).Tag) & ", " &
                                 " 	SaleInvoiceSr = " & Val(Dgl1.Item(Col1SaleInvoiceSr, LineGridRowIndex).Value) & ", " &
                                 " 	LRNo = " & AgL.Chk_Text(Dgl1.Item(Col1LRNo, LineGridRowIndex).Value) & ", " &
@@ -3532,6 +3566,10 @@ Public Class FrmPurchInvoiceDirect_WithDimension
                             Dgl1.Item(Col1FromProcess, I).Tag = AgL.XNull(.Rows(I)("FromProcess"))
                             Dgl1.Item(Col1FromProcess, I).Value = AgL.XNull(.Rows(I)("FromProcessName"))
                             Dgl1.Item(Col1Remark, I).Value = AgL.XNull(.Rows(I)("Remark"))
+                            Dgl1.Item(Col1Remark1, I).Value = AgL.XNull(.Rows(I)("Remarks1"))
+                            Dgl1.Item(Col1Remark2, I).Value = AgL.XNull(.Rows(I)("Remarks2"))
+                            Dgl1.Item(Col1Remark3, I).Value = AgL.XNull(.Rows(I)("Remarks3"))
+                            Dgl1.Item(Col1Remark4, I).Value = AgL.XNull(.Rows(I)("Remarks4"))
                             Dgl1.Item(Col1LRNo, I).Value = AgL.XNull(.Rows(I)("LRNo"))
                             Dgl1.Item(Col1LRDate, I).Value = ClsMain.FormatDate(AgL.XNull(.Rows(I)("LRDate")))
                             Dgl1.Item(Col1HSN, I).Value = AgL.XNull(.Rows(I)("HSN"))
@@ -6064,7 +6102,7 @@ Public Class FrmPurchInvoiceDirect_WithDimension
                 L.DiscountAmount+L.AdditionalDiscountAmount-L.AdditionAmount as TotalDiscount, 
                 (Case when L.EntryType ='Receive' Then L.Amount Else abs(L.Amount) End )+L.DiscountAmount+L.AdditionalDiscountAmount-L.AdditionAmount as AmountBeforeDiscount,
                 Abs(L.Amount) as Amount,Abs(L.Taxable_Amount) as Taxable_Amount,Abs(L.Tax1_Per) Tax1_Per, Abs(L.Tax1) as Tax1, Abs(L.Tax2_Per) as Tax2_Per, Abs(L.Tax2) as Tax2, Abs(L.Tax3_Per) as Tax3_Per, Abs(L.Tax3) as Tax3, Abs(L.Tax4_Per) as Tax4_Per, Abs(L.Tax4) as Tax4, Abs(L.Tax5_Per) as Tax5_Per, Abs(L.Tax5) as Tax5, Abs(L.Net_Amount) as Net_Amount,
-                IfNull(H.Remarks,'') as HRemarks, IfNull(L.Remark,'') as LRemarks,
+                IfNull(H.Remarks,'') as HRemarks, IfNull(L.Remark,'') as LRemarks,IfNull(G.Name,'') as GodownName, IfNull(FGodown.Name,'') As FromGodownName, IfNull(TGodown.Name,'')  As ToGodownName,
                 abs(H.Gross_Amount) as H_Gross_Amount, H.SpecialDiscount_Per as H_SpecialDiscount_Per, H.SpecialDiscount as H_SpecialDiscount,abs(H.Taxable_Amount) as H_Taxable_Amount,abs(H.Tax1_Per) as H_Tax1_Per, abs(H.Tax1) as H_Tax1, 
                 abs(H.Tax2_Per) as H_Tax2_Per, abs(H.Tax2) as H_Tax2, abs(H.Tax3_Per) as H_Tax3_Per, abs(H.Tax3) as H_Tax3, abs(H.Tax4_Per) as H_Tax4_Per, abs(H.Tax4) as H_Tax4, 
                 abs(H.Tax5_Per) as H_Tax5_Per, abs(H.Tax5) as H_Tax5, abs(H.Deduction_Per) as H_Deduction_Per, abs(H.Deduction) as H_Deduction, abs(H.Other_Charge_Per) as H_Other_Charge_Per, abs(H.Other_Charge) as H_Other_Charge, H.Round_Off, abs(H.Net_Amount) as H_Net_Amount, 
@@ -6076,6 +6114,7 @@ Public Class FrmPurchInvoiceDirect_WithDimension
                 from PurchInvoice H   With (NoLock)              
                 Left Join PurchInvoiceDetail L  With (NoLock) On H.DocID = L.DocID
                 Left Join PurchInvoiceDetailSku LS  With (NoLock) On LS.DocID = L.DocID And LS.Sr = L.Sr
+                LEFT JOIN PurchInvoiceDetailTransfer Pidt On L.DocId = Pidt.DocId And L.Sr = Pidt.Sr
                 Left Join Item Sku  With (NoLock) On L.Item = Sku.Code
                 Left Join Item I  With (NoLock) On LS.Item = I.Code
                 Left Join Item D1  With (NoLock) On LS.Dimension1 = D1.Code
@@ -6095,6 +6134,9 @@ Public Class FrmPurchInvoiceDirect_WithDimension
                 Left Join Subgroup SP With (NoLock) On H.ShipToParty = SP.Subcode           
                 Left Join Subgroup BP With (NoLock) On H.BillToParty = BP.Subcode           
                 Left Join Subgroup Agent  With (NoLock) On H.Agent = Agent.Subcode
+                Join Subgroup G With (NoLock) on L.Godown  = G.Subcode
+                LEFT JOIN SubGroup FGodown On Pidt.FromGodown = FGodown.SubCode
+                LEFT JOIN SubGroup TGodown On Pidt.ToGodown = TGodown.SubCode
                 Left Join City SC With (NoLock) On SP.CityCode = SC.CityCode
                 Left Join State SS with (NoLock) On SC.State = SS.Code
                 Left Join Voucher_Type Vt  With (NoLock) On H.V_Type = Vt.V_Type

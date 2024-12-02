@@ -368,7 +368,7 @@
     <Name>Remark1</Name>
     <Index>52</Index>
     <Width>150</Width>
-    <Visible>True</Visible>
+    <Visible>False</Visible>
     <AggregateFunction />
   </Column>
   <Column>
@@ -382,14 +382,14 @@
     <Name>Remark3</Name>
     <Index>54</Index>
     <Width>150</Width>
-    <Visible>True</Visible>
+    <Visible>False</Visible>
     <AggregateFunction />
   </Column>
   <Column>
     <Name>Remark4</Name>
     <Index>55</Index>
     <Width>150</Width>
-    <Visible>True</Visible>
+    <Visible>False</Visible>
     <AggregateFunction />
   </Column>
   <Column>
@@ -452,7 +452,7 @@
     <Name>Sale Invoice DocID</Name>
     <Index>64</Index>
     <Width>100</Width>
-    <Visible>False</Visible>
+    <Visible>True</Visible>
     <AggregateFunction />
   </Column>
   <Column>

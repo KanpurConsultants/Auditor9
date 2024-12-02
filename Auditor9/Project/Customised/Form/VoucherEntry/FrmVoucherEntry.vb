@@ -3521,8 +3521,9 @@ Public Class FrmVoucherEntry
         End If
 
 
-        mQry = "SELECT Sg.SubCode AS Code, Sg.Name, Sg.Address, Ag.GroupName
-                FROM SubGroup Sg  With (NoLock)                       
+        mQry = "SELECT Sg.SubCode AS Code, Sg1.Name, Sg.Address, Ag.GroupName
+                FROM SubGroup Sg  With (NoLock)  
+                LEFT JOIN viewHelpSubGroup SG1 On SG1.Code = SG.SubCode                    
                 Left Join AcGroup Ag On Sg.GroupCode = Ag.GroupCode
                 Where IfNull(Sg.Status,'" & AgTemplate.ClsMain.EntryStatus.Active & "') = '" & AgTemplate.ClsMain.EntryStatus.Active & "' " & strCond
         mQry = mQry & " And Sg.SubgroupType Not In ('Master Customer','Master Supplier', 'Ship To Party')"

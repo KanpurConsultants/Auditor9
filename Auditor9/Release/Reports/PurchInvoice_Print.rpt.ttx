@@ -1,78 +1,60 @@
 ; Field definition file for table: ADORecordset
 Copies	string	255	1	
 CopyPrintingCaption	string	255		
-DocNoCaption	string	255	Doc.No.	
-DocDateCaption	string	255	Doc.Date	
-DocID	string	255	D1   SEC 2023       2	
+DocNoCaption	string	255	Invoice No.	
+DocDateCaption	string	255	Invoice Date	
+DocID	string	255	D1    PI 2024    9268	
 SiteStateCode	string	255	09	
 SiteStateName	string	255	Uttar Pradesh	
 Sr	number	1	
-V_Date	datetime	09/Mar/2024 12:00:00 AM	
-Voucher_Type	string	255	Stock Exchange	
-NCat	string	255	SEC	
-DocNo	string	255	D1-SEC-2	
-AgentName	string	255		
+V_Date	datetime	29/Oct/2024 00:00:00	
+Voucher_Type	string	255	Purchase Invoice	
+NCat	string	255	PI	
+DocNo	string	255	D1-PI-9268	
+AgentName	string	255	DIRECT SUPPLIER	
 AgentCaption	string	255	Agent	
-PartyName	string	255	MAA LUXMI AUTO(SPARE PARTS)	
-PartyAddress	string	255	FACTORY NO.28,INDUSTRIAL AREA,DELHI PULL	
-PartyPinCode	string	255	125055	
-PartyCityName	string	255	SIRSA	
-PartyStateCode	string	255	06	
-PartyStateName	string	255	Haryana	
-PartyMobile	string	255		
+PartyName	string	255	ODHNI HERITAGE PVT. LTD.	
+PartyAddress	string	255	33, NISHANT KUNJ OPP,METRO PILLAR 333 MAIN ROAD PITAMPURA, NISHANT KUNJ NEW DELHI-110034	
+PartyPinCode	string	255	110034	
+PartyCityName	string	255	DELHI	
+PartyStateCode	string	255	07	
+PartyStateName	string	255	Delhi	
+PartyMobile	string	255	8588880000,92054 42042	
 ContactPerson	string	255		
-PartySalesTaxNo	string	255	06BEHPK3814G1ZP	
+PartySalesTaxNo	string	255	07AADCO4517C1ZT	
 PartyAadharNo	string	255		
-PartyPanNo	string	255	BEHPK3814G	
-ShipToPartyName	string	255	MAA LUXMI AUTO(SPARE PARTS)	
-ShipToPartyAddress	string	255	FACTORY NO.28,INDUSTRIAL AREA,DELHI PULL	
-ShipToPartyCity	string	255	SIRSA	
-ShipToPartyPincode	string	255	125055	
-ShipToPartyStateCode	string	255	06	
-ShipToPartyStateName	string	255	Haryana	
-ShipToPartyMobile	string	255		
-ShipToPartySalesTaxNo	string	255	06BEHPK3814G1ZP	
+PartyPanNo	string	255	AADCO4517C	
+ShipToPartyName	string	255	ODHNI HERITAGE PVT. LTD.	
+ShipToPartyAddress	string	255	33, NISHANT KUNJ OPP,METRO PILLAR 333 MAIN ROAD PITAMPURA, NISHANT KUNJ NEW DELHI-110034	
+ShipToPartyCity	string	255	DELHI	
+ShipToPartyPincode	string	255	110034	
+ShipToPartyStateCode	string	255	07	
+ShipToPartyStateName	string	255	Delhi	
+ShipToPartyMobile	string	255	8588880000,92054 42042	
+ShipToPartySalesTaxNo	string	255	07AADCO4517C1ZT	
 ShipToPartyAadharNo	string	255		
 ShipToPartyPanNo	string	255		
-TransporterName	string	255		
+TransporterName	string	255	RSC LOGISTIC PVT. LTD., KANPUR	
 LrNo	string	255		
 LrDate	datetime		
 PrivateMark	string	255		
-Weight	number		
-Freight	number		
+Weight	number	0	
+Freight	number	0	
 FreightType	string	255		
 RoadPermitNo	string	255		
 RoadPermitDate	datetime		
-ReferenceNo	string	255		
-ItemName	string	255	WIRES FOR BATTERY - YAKUZA SPARES - EV SPARES	
-ItemGroupName	string	255	YAKUZA SPARES	
-ItemCatName	string	255	EV SPARES	
-ItemSpecification	string	255	WIRES FOR BATTERY	
-InvoiceLineSpecification	string	255	WIRES FOR BATTERY	
-HSN	string	255	87142090	
-D1Spec	string	255		
-D2Spec	string	255		
-D3Spec	string	255		
-D4Spec	string	255		
-SizeSpec	string	255		
-ItemTypeCaption	string	255	Item Type	
-ItemCategoryCaption	string	255	Item Category	
-ItemGroupCaption	string	255	Item Group	
-ItemCaption	string	255	Item	
-BarcodeCaption	string	255		
-D1Caption	string	255	Design	
-D2Caption	string	255	Shade	
-D3Caption	string	255		
-D4Caption	string	255		
-SalesTaxGroupItem	string	255	GST 28%	
-GrossTaxRate	number	28	
+ReferenceNo	string	255	3098	
+ItemName	string	255	4551 GS120          [ODHNI HERITAGE 540752. | SAREE 540752]	
+ItemGroupName	string	255	ODHNI HERITAGE 540752.	
+ItemCatName	string	255	SAREE 540752	
+ItemSpecification	string	255	4551 GS120	
+InvoiceLineSpecification	string	255	4551 GS120	
+HSN	string	255	540752	
+SalesTaxGroupItem	string	255	GST 5%	
+GrossTaxRate	number	5	
 Pcs	number	0	
-Qty	number	-2	
-DocQty	number	2	
-FreeQty	number	0	
-LossQty	number	0	
-RejQty	number	0	
-Rate	number	50	
+Qty	number	2	
+Rate	number	2885	
 Unit	string	255	Pcs	
 UnitDecimalPlaces	number	0	
 DiscountPer	number	0	
@@ -80,11 +62,11 @@ DiscountAmount	number	0
 AdditionalDiscountPer	number	0	
 AdditionalDiscountAmount	number	0	
 TotalDiscount	number	0	
-AmountBeforeDiscount	number	-100	
-Amount	number	100	
-Taxable_Amount	number	78.13	
-Tax1_Per	number	28	
-Tax1	number	21.88	
+AmountBeforeDiscount	number	5770	
+Amount	number	5770	
+Taxable_Amount	number	5770	
+Tax1_Per	number	5	
+Tax1	number	288.5	
 Tax2_Per	number	0	
 Tax2	number	0	
 Tax3_Per	number	0	
@@ -93,15 +75,15 @@ Tax4_Per	number	0
 Tax4	number	0	
 Tax5_Per	number	0	
 Tax5	number	0	
-Net_Amount	number	100	
+Net_Amount	number	6058.57	
 HRemarks	string	255		
-LRemarks	string	255	ok	
-H_Gross_Amount	number	100	
+LRemarks	string	255		
+H_Gross_Amount	number	219890	
 H_SpecialDiscount_Per	number	0	
 H_SpecialDiscount	number	0	
-H_Taxable_Amount	number	78.13	
+H_Taxable_Amount	number	219890	
 H_Tax1_Per	number	0	
-H_Tax1	number	21.88	
+H_Tax1	number	10994.5	
 H_Tax2_Per	number	0	
 H_Tax2	number	0	
 H_Tax3_Per	number	0	
@@ -113,18 +95,17 @@ H_Tax5	number	0
 H_Deduction_Per	number	0	
 H_Deduction	number	0	
 H_Other_Charge_Per	number	0	
-H_Other_Charge	number	0	
-Round_Off	number	0.01	
-H_Net_Amount	number	100	
+H_Other_Charge	number	0.4	
+Round_Off	number	0.1	
+H_Net_Amount	number	230885	
 H_TotalDiscount	number	0	
-H_AmountBeforeDiscount	number	100	
-Default_BankAccountDetail	string	255	<B> Bank Detail :- <BR> HDFC : 99915400000007  IFSC : HDFC0009597 <BR>	
+H_AmountBeforeDiscount	number	219890	
+Default_BankAccountDetail	string	255	Bank Detail : 	HDFC A/c : 50200003154727    IFSC : HDFC0002006	
 DocumentPrintHeaderPattern	string	255	Center Aligned	
 DimDetail	string	255		
 HsnDescription	string	255		
 PrintedByUser	string	255	SUPER	
-PrintTitle	string	255	Stock Exchange	
-TermsAndConditions	string	255		
+PrintTitle	string	255	Purchase Invoice	
 CompanyLogo	BLOB		
 CompanyAuthorisedSignature	BLOB		
 EInvoiceQrCode	BLOB		

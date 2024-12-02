@@ -62,6 +62,8 @@ Public Class ClsLRUpdation
     Public Col1DescriptionOfPacking As String = "Description Of Packing"
     Public Col1RoadPermitNo As String = "Road Permit No"
     Public Col1RoadPermitDate As String = "Road Permit Date"
+    Public Col1EInvoiceACKNo As String = "E-Invoice ACKNo"
+    Public Col1EInvoiceACKDate As String = "E-Invoice ACKDate"
     Public Sub Ini_Grid()
         Try
             mQry = "Select '" & mReportType_PendingForLr & "' as Code, '" & mReportType_PendingForLr & "' as Name 
@@ -135,10 +137,10 @@ Public Class ClsLRUpdation
                 mCondStr += " And (SIt.Transporter IS NULL Or SIt.LrNo IS NULL OR SIt.LrDate IS NULL) "
             End If
 
-
+            'H.V_Date AS InvoiceDate, Sg.Name AS Party, H.EInvoiceACKNo, H.EInvoiceACKDate,
 
             mQry = "SELECT H.DocID As SearchCode, H.V_Type + '-' + H.ManualRefNo AS InvoiceNo, 
-                    H.V_Date AS InvoiceDate, Sg.Name AS Party, 
+                    H.V_Date AS InvoiceDate, Sg.Name AS Party, H.eInvoiceAckNo, H.eInvoiceAckDate,
                     T.Name As Transporter, SIt.LrNo, Cast(SIt.LrDate As nvarchar) As LrDate,
                     SIt.PrivateMark, SIt.Weight, SIt.Freight, SIt.PaymentType, SIt.RoadPermitNo, 
                     Cast(SIt.RoadPermitDate As nvarchar) As RoadPermitDate, 
@@ -147,7 +149,7 @@ Public Class ClsLRUpdation
                     SIt.DescriptionOfGoods, SIt.DescriptionOfPacking, SIt.ChargedWeight, SIt.NoOfBales
                     FROM SaleInvoice H 
                     LEFT JOIN SaleInvoiceTransport SIt ON H.DocID = SIt.DocID
-                    LEFT JOIN Subgroup Sg ON H.SaleToParty = Sg.Subcode
+                    LEFT JOIN ViewHelpSubgroup Sg ON H.SaleToParty = Sg.code
                     LEFT JOIN SubGroup T On Sit.Transporter = T.SubCode
                     LEFT JOIN Voucher_Type Vt ON H.V_Type = Vt.V_Type
                     WHERE 1=1 " & mCondStr

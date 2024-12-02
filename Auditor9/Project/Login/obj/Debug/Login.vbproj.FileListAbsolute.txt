@@ -177,3 +177,7 @@ D:\Active Projects\Desktop\Auditor9\Auditor9\Project\Login\obj\Debug\Equal2.FrmS
 D:\Active Projects\Desktop\Auditor9\Auditor9\Project\Login\obj\Debug\Equal2.MDIMain.resources
 D:\Active Projects\Desktop\Auditor9\Auditor9\Project\Login\obj\Debug\Equal2.Resources.resources
 D:\Active Projects\Desktop\Auditor9\Auditor9\Project\Login\obj\Debug\Login.vbproj.GenerateResource.Cache
+D:\Active Projects\Auditor9\Auditor9\Release\Login.exe.config
+D:\Active Projects\Auditor9\Auditor9\Project\Login\obj\Debug\Login.exe
+D:\Active Projects\Auditor9\Auditor9\Project\Login\obj\Debug\Login.xml
+D:\Active Projects\Auditor9\Auditor9\Project\Login\obj\Debug\Login.pdb

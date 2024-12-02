@@ -326,6 +326,10 @@ Public Class ClsFunction
                             FrmObj = New FrmSaleInvoiceDirect(StrUserPermission, DTUP, Ncat.SaleOrder)
                         End If
                     End If
+
+                Case MDI.MnuSaleChallan.Name
+                    FrmObj = New FrmSaleInvoiceDirect_WithDimension(StrUserPermission, DTUP, Ncat.SaleChallan)
+
                 Case MDI.MnuSalesEntry.Name, MdiSchool.MnuSalesEntry.Name, MdiKirana.MnuSalesEntry.Name
                     If ClsMain.FDivisionNameForCustomization(20) = "SHYAMA SHYAM FABRICS" Or ClsMain.FDivisionNameForCustomization(22) = "W SHYAMA SHYAM FABRICS" Or ClsMain.FDivisionNameForCustomization(25) = "SHYAMA SHYAM VENTURES LLP" Or ClsMain.FDivisionNameForCustomization(27) = "W SHYAMA SHYAM VENTURES LLP" Then
                         FrmObj = New FrmSaleInvoiceDirect(StrUserPermission, DTUP, Ncat.SaleInvoice)

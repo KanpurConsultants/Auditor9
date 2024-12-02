@@ -129,6 +129,9 @@ Public Class ClsStockReport
             If ClsMain.IsScopeOfWorkContains(IndustryType.CommonModules.Size) Then
                 mQry += " UNION ALL SELECT 'o' As Tick, 'SizeCode' As Code, 'Size' As Name "
             End If
+            If ClsMain.IsScopeOfWorkContains(IndustryType.CommonModules.GodownModule) Then
+                mQry += " UNION ALL SELECT 'o' As Tick, 'GodownCode' As Code, 'Godown' As Name "
+            End If
             ReportFrm.CreateHelpGrid("GroupOn", "Group On", FrmRepDisplay.FieldFilterDataType.StringType, FrmRepDisplay.FieldDataType.MultiSelection, mQry, "")
 
 
@@ -624,6 +627,7 @@ Public Class ClsStockReport
                     , Max(D3.Code) as Dimension3Code, Max(D3.Specification) as Dimension3Name 
                     , Max(D4.Code) as Dimension4Code, Max(D4.Specification) as Dimension4Name 
                     , Max(Size.Code) as SizeCode, Max(Size.Description) as SizeName
+                    , Max(Godown.SubCode) as GodownCode, Max(Godown.Name) as GodownName
                     , Max(IfNull(Sku.HSN, IC.HSN)) as HSN, Max(L.LotNo) as LotNo
                     , Max(Prc.SubCode) as ProcessCode, Max(Prc.Name) as ProcessName, 
                     Max(IfNull(Sku.StockUnit, L.Unit)) as Unit, Max(U.DecimalPlaces) as DecimalPlaces, 
@@ -666,6 +670,7 @@ Public Class ClsStockReport
                     LEFT JOIN Item D3 ON Sku.Dimension3 = D3.Code
                     LEFT JOIN Item D4 ON Sku.Dimension4 = D4.Code
                     LEFT JOIN Item Size ON Sku.Size = Size.Code
+                    LEFT JOIN SubGroup Godown ON L.Godown = Godown.SubCode
                     LEFT JOIN SubGroup Prc On L.Process = Prc.SubCode
                     Left Join Unit U On L.Unit = U.Code
                     LEFT JOIN Unit Su On Sku.StockUnit = Su.Code 
@@ -700,6 +705,7 @@ Public Class ClsStockReport
                     , D3.Code as Dimension3Code, D3.Specification as Dimension3Name 
                     , D4.Code as Dimension4Code, D4.Specification as Dimension4Name 
                     , Size.Code as SizeCode, Size.Description as SizeName
+                    , Godown.SubCode as GodownCode, Godown.Name as GodownName
                     , IfNull(Sku.HSN, IC.HSN) as HSN, L.LotNo as LotNo
                     , Prc.SubCode as ProcessCode, Prc.Name as ProcessName, 
                     IfNull(Sku.StockUnit, L.Unit) As Unit, U.DecimalPlaces, 
@@ -740,6 +746,7 @@ Public Class ClsStockReport
                     LEFT JOIN Item D3 ON Sku.Dimension3 = D3.Code
                     LEFT JOIN Item D4 ON Sku.Dimension4 = D4.Code
                     LEFT JOIN Item Size ON Sku.Size = Size.Code
+                    LEFT JOIN SubGroup Godown ON L.Godown = Godown.SubCode
                     LEFT JOIN SubGroup Prc On L.Process = Prc.SubCode
                     Left Join Unit U On L.Unit = U.Code
                     LEFT JOIN Unit Su On Sku.StockUnit = Su.Code 
@@ -775,6 +782,7 @@ Public Class ClsStockReport
                     " & IIf(bGroupOn.Contains("Dimension3Code"), ", Dimension3Code, Max(VMain.Dimension3Name) as Dimension3", "") & " 
                     " & IIf(bGroupOn.Contains("Dimension4Code"), ", Dimension4Code, Max(VMain.Dimension4Name) as Dimension4", "") & " 
                     " & IIf(bGroupOn.Contains("SizeCode"), ", SizeCode, Max(VMain.SizeName) as Size", "") & " 
+                    " & IIf(bGroupOn.Contains("GodownCode"), ", GodownCode, Max(VMain.GodownName) as Godown", "") & " 
                     " & IIf(bGroupOn.Contains("HSN"), ", HSN ", "") & " 
                     " & IIf(bGroupOn.Contains("LotNo"), ", LotNo ", "") & " 
                     " & IIf(bGroupOn.Contains("ProcessCode"), ", ProcessCode, Max(VMain.ProcessName) as Process", "") & " 

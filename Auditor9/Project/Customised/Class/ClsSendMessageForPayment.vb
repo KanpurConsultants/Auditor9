@@ -398,7 +398,7 @@ Public Class ClsSendMessageForPayment
                     mMobileNo = DGL.Item("Contact No", I).Value
                     mMessage = "Dear " + DGL.Item("Party", I).Value + ", Your Rs. " + DGL.Item("Amount", I).Value.ToString() + " Due. Please Do Payment"
 
-                    IsSuccess = FSendWhatsappMessage(mMobileNo, mMessage, "Message")
+                    IsSuccess = FSendWhatsappMessage(mMobileNo, mMessage, "Message", "")
 
                 End If
             Next
@@ -434,7 +434,7 @@ Public Class ClsSendMessageForPayment
                     mMobileNo = DGL.Item("Contact No", I).Value
                     mMessage = "Dear " + DGL.Item("Party", I).Value + ", Your Rs. " + DGL.Item("Amount", I).Value.ToString() + " Due. Please Do Payment"
 
-                    IsSuccess = FSendWhatsappMessage(mMobileNo, mMessage, "PDF")
+                    IsSuccess = FSendWhatsappMessage(mMobileNo, mMessage, "PDF", "")
 
                     'strdata = FGetJsonForIrn(mSearchCode)
 

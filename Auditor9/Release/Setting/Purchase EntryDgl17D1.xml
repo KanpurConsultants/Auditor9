@@ -135,28 +135,28 @@
   </Column>
   <Column>
     <Name>Qty Decimal Places</Name>
-    <Index>19</Index>
+    <Index>24</Index>
     <Width>50</Width>
     <Visible>False</Visible>
     <AggregateFunction />
   </Column>
   <Column>
     <Name>Unit Multiplier</Name>
-    <Index>20</Index>
+    <Index>19</Index>
     <Width>70</Width>
     <Visible>False</Visible>
     <AggregateFunction />
   </Column>
   <Column>
     <Name>Pcs Per Measure</Name>
-    <Index>21</Index>
+    <Index>20</Index>
     <Width>70</Width>
     <Visible>False</Visible>
     <AggregateFunction />
   </Column>
   <Column>
     <Name>Deal Qty</Name>
-    <Index>22</Index>
+    <Index>21</Index>
     <Width>70</Width>
     <Visible>False</Visible>
     <AggregateFunction />
@@ -170,7 +170,7 @@
   </Column>
   <Column>
     <Name>Deal Decimal Places</Name>
-    <Index>24</Index>
+    <Index>22</Index>
     <Width>50</Width>
     <Visible>False</Visible>
     <AggregateFunction />

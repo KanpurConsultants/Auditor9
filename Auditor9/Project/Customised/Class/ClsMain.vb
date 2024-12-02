@@ -7,6 +7,8 @@ Imports Customised
 Imports System.Linq
 Imports System.Net
 Imports System.Security.Authentication
+Imports System.Net.Http
+Imports System.Threading.Tasks
 
 Public Class ClsMain
     Public CFOpen As New ClsFunction
@@ -6120,6 +6122,15 @@ Sincerely
             FSeedSingleIfNotExist_Setting(SettingType.General, "", Ncat.SaleOrder, SettingFields.MaximumItemLimit, "", AgDataType.Number, "50",,,,,,,,,, "+SUPPORT")
         End If
     End Sub
+    Private Sub FSeedTable_Settings_NCatWise_SaleChallan()
+        If ClsMain.IsScopeOfWorkContains(IndustryType.CommonModules.SalesChallan) Then
+            FSeedSingleIfNotExist_Setting(SettingType.General, "", Ncat.SaleChallan, SettingFields.FilterInclude_ItemType, "", AgDataType.Text, "255", mItemTypeFieldQry, AgHelpQueryType.SqlQuery, AgHelpSelectionType.MultiSelect,,,,, ,, "+SUPPORT")
+            FSeedSingleIfNotExist_Setting(SettingType.General, "", Ncat.SaleChallan, SettingFields.FilterInclude_ItemV_Type, "", AgDataType.Text, "255", "ItemV_Type", AgHelpQueryType.ClassName, AgHelpSelectionType.MultiSelect,,,,, ,, "+SUPPORT")
+            FSeedSingleIfNotExist_Setting(SettingType.General, "", Ncat.SaleChallan, SettingFields.PostInStockYn, "0", AgDataType.YesNo, "50")
+            FSeedSingleIfNotExist_Setting(SettingType.General, "", Ncat.SaleChallan, SettingFields.PostInStockProcessYn, "0", AgDataType.YesNo, "50")
+            FSeedSingleIfNotExist_Setting(SettingType.General, "", Ncat.SaleChallan, SettingFields.MaximumItemLimit, "", AgDataType.Number, "50",,,,,,,,,, "+SUPPORT")
+        End If
+    End Sub
     Private Sub FSeedTable_Settings_NCatWise_GoodsReceipt()
         If ClsMain.IsScopeOfWorkContains(IndustryType.CommonModules.PurchaseGoodsReceiptModule) Then
             FSeedSingleIfNotExist_Setting(SettingType.General, "", Ncat.PurchaseGoodsReceipt, SettingFields.FilterInclude_Process, "+" + Process.Purchase, AgDataType.Text, "255", mProcessFieldQry, AgHelpQueryType.SqlQuery, AgHelpSelectionType.MultiSelect,,,,, ,, "+SUPPORT")
@@ -7385,6 +7396,82 @@ Thanks
             FSeedSingleIfNotExist_EntryHeaderUISetting("FrmSaleInvoiceDirect", Ncat.SaleReturn, "Dgl3", FrmSaleInvoiceDirect_WithDimension.hcEInvoiceACKNo)
             FSeedSingleIfNotExist_EntryHeaderUISetting("FrmSaleInvoiceDirect", Ncat.SaleReturn, "Dgl3", FrmSaleInvoiceDirect_WithDimension.hcEInvoiceACKDate)
 
+
+            FSeedSingleIfNotExist_EntryHeaderUISetting("FrmSaleInvoiceDirect", Ncat.SaleChallan, "DglMain", AgTemplate.TempTransaction1.hcSite_Code, 1, 1, 1)
+            FSeedSingleIfNotExist_EntryHeaderUISetting("FrmSaleInvoiceDirect", Ncat.SaleChallan, "DglMain", AgTemplate.TempTransaction1.hcV_Type, 1, 1, 1, "Challan Type")
+            FSeedSingleIfNotExist_EntryHeaderUISetting("FrmSaleInvoiceDirect", Ncat.SaleChallan, "DglMain", AgTemplate.TempTransaction1.hcV_Date, 1, 1, 1, "Challan Date")
+            FSeedSingleIfNotExist_EntryHeaderUISetting("FrmSaleInvoiceDirect", Ncat.SaleChallan, "DglMain", AgTemplate.TempTransaction1.hcV_No, 0, 1, 1)
+            FSeedSingleIfNotExist_EntryHeaderUISetting("FrmSaleInvoiceDirect", Ncat.SaleChallan, "DglMain", AgTemplate.TempTransaction1.hcReferenceNo, 1, 1, 1, "Challan No")
+            FSeedSingleIfNotExist_EntryHeaderUISetting("FrmSaleInvoiceDirect", Ncat.SaleChallan, "DglMain", AgTemplate.TempTransaction1.hcSettingGroup, 0, 0, 0)
+            FSeedSingleIfNotExist_EntryHeaderUISetting("FrmSaleInvoiceDirect", Ncat.SaleChallan, "DglMain", FrmSaleInvoiceDirect_WithDimension.hcSaleToParty, 1, 1, 1)
+            FSeedSingleIfNotExist_EntryHeaderUISetting("FrmSaleInvoiceDirect", Ncat.SaleChallan, "DglMain", FrmSaleInvoiceDirect_WithDimension.hcBillToParty, 1, 1)
+
+            FSeedSingleIfNotExist_EntryHeaderUISetting("FrmSaleInvoiceDirect", Ncat.SaleChallan, "Dgl2", FrmSaleInvoiceDirect_WithDimension.hcShipToParty)
+            FSeedSingleIfNotExist_EntryHeaderUISetting("FrmSaleInvoiceDirect", Ncat.SaleChallan, "Dgl2", FrmSaleInvoiceDirect_WithDimension.HcBtnAttachments)
+            If ClsMain.IsScopeOfWorkContains(IndustryType.CommonModules.GodownModule) Then
+                FSeedSingleIfNotExist_EntryHeaderUISetting("FrmSaleInvoiceDirect", Ncat.SaleChallan, "Dgl2", FrmSaleInvoiceDirect_WithDimension.hcGodown, 1)
+            End If
+
+            FSeedSingleIfNotExist_EntryHeaderUISetting("FrmSaleInvoiceDirect", Ncat.SaleChallan, "Dgl3", FrmSaleInvoiceDirect_WithDimension.hcTransporter, 1)
+            FSeedSingleIfNotExist_EntryHeaderUISetting("FrmSaleInvoiceDirect", Ncat.SaleChallan, "Dgl3", FrmSaleInvoiceDirect_WithDimension.hcRemarks, 1)
+            FSeedSingleIfNotExist_EntryHeaderUISetting("FrmSaleInvoiceDirect", Ncat.SaleChallan, "Dgl3", FrmSaleInvoiceDirect_WithDimension.hcTermsAndConditions, 1)
+            FSeedSingleIfNotExist_EntryHeaderUISetting("FrmSaleInvoiceDirect", Ncat.SaleChallan, "Dgl3", FrmSaleInvoiceDirect_WithDimension.hcTags)
+
+            If ClsMain.IsScopeOfWorkContains(IndustryType.CommonModules.SalesTransportModule) Then
+                FSeedSingleIfNotExist_EntryHeaderUISetting("FrmSaleInvoiceTransport", Ncat.SaleChallan, "DGL1", FrmSaleInvoiceTransport.hcTransporter, 1, 0)
+                FSeedSingleIfNotExist_EntryHeaderUISetting("FrmSaleInvoiceTransport", Ncat.SaleChallan, "DGL1", FrmSaleInvoiceTransport.hcShipMethod, 0, 0)
+                FSeedSingleIfNotExist_EntryHeaderUISetting("FrmSaleInvoiceTransport", Ncat.SaleChallan, "DGL1", FrmSaleInvoiceTransport.hcNoOfBales, 0, 0)
+                FSeedSingleIfNotExist_EntryHeaderUISetting("FrmSaleInvoiceTransport", Ncat.SaleChallan, "DGL1", FrmSaleInvoiceTransport.hcPrivateMark, 1, 0)
+                FSeedSingleIfNotExist_EntryHeaderUISetting("FrmSaleInvoiceTransport", Ncat.SaleChallan, "DGL1", FrmSaleInvoiceTransport.hcBookedFrom, 0, 0)
+                FSeedSingleIfNotExist_EntryHeaderUISetting("FrmSaleInvoiceTransport", Ncat.SaleChallan, "DGL1", FrmSaleInvoiceTransport.hcBookedTo, 0, 0)
+                FSeedSingleIfNotExist_EntryHeaderUISetting("FrmSaleInvoiceTransport", Ncat.SaleChallan, "DGL1", FrmSaleInvoiceTransport.hcDestination, 0, 0)
+                FSeedSingleIfNotExist_EntryHeaderUISetting("FrmSaleInvoiceTransport", Ncat.SaleChallan, "DGL1", FrmSaleInvoiceTransport.hcLrPaymentType, 1, 0)
+            End If
+
+
+
+            FSeedSingleIfNotExist_EntryLineUISetting("FrmSaleInvoiceDirect", Ncat.SaleChallan, "Dgl1", FrmSaleInvoiceDirect_WithDimension.ColSNo, True)
+                FSeedSingleIfNotExist_EntryLineUISetting("FrmSaleInvoiceDirect", Ncat.SaleChallan, "Dgl1", FrmSaleInvoiceDirect_WithDimension.Col1ItemCategory, False)
+                FSeedSingleIfNotExist_EntryLineUISetting("FrmSaleInvoiceDirect", Ncat.SaleChallan, "Dgl1", FrmSaleInvoiceDirect_WithDimension.Col1ItemGroup, False)
+                FSeedSingleIfNotExist_EntryLineUISetting("FrmSaleInvoiceDirect", Ncat.SaleChallan, "Dgl1", FrmSaleInvoiceDirect_WithDimension.Col1ItemCode, False)
+                FSeedSingleIfNotExist_EntryLineUISetting("FrmSaleInvoiceDirect", Ncat.SaleChallan, "Dgl1", FrmSaleInvoiceDirect_WithDimension.Col1Item, True)
+                If ClsMain.IsScopeOfWorkContains(IndustryType.CommonModules.Dimension1) Then
+                    FSeedSingleIfNotExist_EntryLineUISetting("FrmSaleInvoiceDirect", Ncat.SaleChallan, "Dgl1", FrmSaleInvoiceDirect_WithDimension.Col1Dimension1, False)
+                End If
+                If ClsMain.IsScopeOfWorkContains(IndustryType.CommonModules.Dimension2) Then
+                    FSeedSingleIfNotExist_EntryLineUISetting("FrmSaleInvoiceDirect", Ncat.SaleChallan, "Dgl1", FrmSaleInvoiceDirect_WithDimension.Col1Dimension2, False)
+                End If
+                If ClsMain.IsScopeOfWorkContains(IndustryType.CommonModules.Dimension3) Then
+                    FSeedSingleIfNotExist_EntryLineUISetting("FrmSaleInvoiceDirect", Ncat.SaleChallan, "Dgl1", FrmSaleInvoiceDirect_WithDimension.Col1Dimension3, False)
+                End If
+                If ClsMain.IsScopeOfWorkContains(IndustryType.CommonModules.Dimension4) Then
+                    FSeedSingleIfNotExist_EntryLineUISetting("FrmSaleInvoiceDirect", Ncat.SaleChallan, "Dgl1", FrmSaleInvoiceDirect_WithDimension.Col1Dimension4, False)
+                End If
+                FSeedSingleIfNotExist_EntryLineUISetting("FrmSaleInvoiceDirect", Ncat.SaleChallan, "Dgl1", FrmSaleInvoiceDirect_WithDimension.Col1Size, False)
+                FSeedSingleIfNotExist_EntryLineUISetting("FrmSaleInvoiceDirect", Ncat.SaleChallan, "Dgl1", FrmSaleInvoiceDirect_WithDimension.Col1Specification, False)
+                FSeedSingleIfNotExist_EntryLineUISetting("FrmSaleInvoiceDirect", Ncat.SaleChallan, "Dgl1", FrmSaleInvoiceDirect_WithDimension.Col1SalesTaxGroup, True)
+                FSeedSingleIfNotExist_EntryLineUISetting("FrmSaleInvoiceDirect", Ncat.SaleChallan, "Dgl1", FrmSaleInvoiceDirect_WithDimension.Col1BaleNo, False)
+                FSeedSingleIfNotExist_EntryLineUISetting("FrmSaleInvoiceDirect", Ncat.SaleChallan, "Dgl1", FrmSaleInvoiceDirect_WithDimension.Col1LotNo, False)
+                FSeedSingleIfNotExist_EntryLineUISetting("FrmSaleInvoiceDirect", Ncat.SaleChallan, "Dgl1", FrmSaleInvoiceDirect_WithDimension.Col1DocQty, True)
+                FSeedSingleIfNotExist_EntryLineUISetting("FrmSaleInvoiceDirect", Ncat.SaleChallan, "Dgl1", FrmSaleInvoiceDirect_WithDimension.Col1FreeQty, False)
+                FSeedSingleIfNotExist_EntryLineUISetting("FrmSaleInvoiceDirect", Ncat.SaleChallan, "Dgl1", FrmSaleInvoiceDirect_WithDimension.Col1Qty, False)
+                FSeedSingleIfNotExist_EntryLineUISetting("FrmSaleInvoiceDirect", Ncat.SaleChallan, "Dgl1", FrmSaleInvoiceDirect_WithDimension.Col1Unit, True)
+                FSeedSingleIfNotExist_EntryLineUISetting("FrmSaleInvoiceDirect", Ncat.SaleChallan, "Dgl1", FrmSaleInvoiceDirect_WithDimension.Col1QtyDecimalPlaces, False)
+                FSeedSingleIfNotExist_EntryLineUISetting("FrmSaleInvoiceDirect", Ncat.SaleChallan, "Dgl1", FrmSaleInvoiceDirect_WithDimension.Col1Pcs, False)
+                FSeedSingleIfNotExist_EntryLineUISetting("FrmSaleInvoiceDirect", Ncat.SaleChallan, "Dgl1", FrmSaleInvoiceDirect_WithDimension.Col1MasterSaleRate, False,,, False)
+                FSeedSingleIfNotExist_EntryLineUISetting("FrmSaleInvoiceDirect", Ncat.SaleChallan, "Dgl1", FrmSaleInvoiceDirect_WithDimension.Col1RateDiscountPer, False)
+                FSeedSingleIfNotExist_EntryLineUISetting("FrmSaleInvoiceDirect", Ncat.SaleChallan, "Dgl1", FrmSaleInvoiceDirect_WithDimension.Col1Rate, True)
+                FSeedSingleIfNotExist_EntryLineUISetting("FrmSaleInvoiceDirect", Ncat.SaleChallan, "Dgl1", FrmSaleInvoiceDirect_WithDimension.Col1DiscountPer, True)
+                FSeedSingleIfNotExist_EntryLineUISetting("FrmSaleInvoiceDirect", Ncat.SaleChallan, "Dgl1", FrmSaleInvoiceDirect_WithDimension.Col1DiscountAmount, True)
+                FSeedSingleIfNotExist_EntryLineUISetting("FrmSaleInvoiceDirect", Ncat.SaleChallan, "Dgl1", FrmSaleInvoiceDirect_WithDimension.Col1AdditionalDiscountPer, False)
+                FSeedSingleIfNotExist_EntryLineUISetting("FrmSaleInvoiceDirect", Ncat.SaleChallan, "Dgl1", FrmSaleInvoiceDirect_WithDimension.Col1AdditionalDiscountAmount, False)
+                FSeedSingleIfNotExist_EntryLineUISetting("FrmSaleInvoiceDirect", Ncat.SaleChallan, "Dgl1", FrmSaleInvoiceDirect_WithDimension.Col1AdditionPer, False)
+                FSeedSingleIfNotExist_EntryLineUISetting("FrmSaleInvoiceDirect", Ncat.SaleChallan, "Dgl1", FrmSaleInvoiceDirect_WithDimension.Col1AdditionAmount, False)
+                FSeedSingleIfNotExist_EntryLineUISetting("FrmSaleInvoiceDirect", Ncat.SaleChallan, "Dgl1", FrmSaleInvoiceDirect_WithDimension.Col1Amount, True,,, False)
+                FSeedSingleIfNotExist_EntryLineUISetting("FrmSaleInvoiceDirect", Ncat.SaleChallan, "Dgl1", FrmSaleInvoiceDirect_WithDimension.Col1Remark, True)
+                FSeedSingleIfNotExist_EntryLineUISetting("FrmSaleInvoiceDirect", Ncat.SaleChallan, "Dgl1", FrmSaleInvoiceDirect_WithDimension.Col1Godown, False)
+                FSeedSingleIfNotExist_EntryLineUISetting("FrmSaleInvoiceDirect", Ncat.SaleChallan, "Dgl1", FrmSaleInvoiceDirect_WithDimension.Col1SaleInvoice, False, False, "Quot.No")
+                FSeedSingleIfNotExist_EntryLineUISetting("FrmSaleInvoiceDirect", Ncat.SaleChallan, "Dgl1", FrmSaleInvoiceDirect_WithDimension.Col1Progress, True, False)
 
 
             FSeedSingleIfNotExist_EntryHeaderUISetting("FrmSaleInvoiceDirect", Ncat.SaleOrder, "DglMain", AgTemplate.TempTransaction1.hcSite_Code, 1, 1, 1)
@@ -10862,6 +10949,32 @@ Thanks
             AgL.Dman_ExecuteNonQry(mQry, AgL.GcnMain)
         End If
 
+        If AgL.FillData("Select * from Voucher_Prefix Where V_Type='" & V_Type & "' And Prefix = '2022' ", AgL.GcnMain).tables(0).Rows.Count = 0 Then
+            mQry = " 
+                    INSERT INTO Voucher_Prefix
+                    (V_Type, Date_From, Prefix, Start_Srl_No, Date_To, Comp_Code, Site_Code, Div_Code, UpLoadDate, Status_Add, Status_Edit, Status_Delete, Status_Print, Ref_Prefix, Ref_PadLength)
+                    VALUES('" & V_Type & "', '2022-04-01', '2022', 0, '2023-03-31 23:59:59', '1', '1', 'D', NULL, NULL, NULL, NULL, NULL,  Null, Null);
+                    "
+            AgL.Dman_ExecuteNonQry(mQry, AgL.GcnMain)
+        End If
+
+        If AgL.FillData("Select * from Voucher_Prefix Where V_Type='" & V_Type & "' And Prefix = '2023' ", AgL.GcnMain).tables(0).Rows.Count = 0 Then
+            mQry = " 
+                    INSERT INTO Voucher_Prefix
+                    (V_Type, Date_From, Prefix, Start_Srl_No, Date_To, Comp_Code, Site_Code, Div_Code, UpLoadDate, Status_Add, Status_Edit, Status_Delete, Status_Print, Ref_Prefix, Ref_PadLength)
+                    VALUES('" & V_Type & "', '2023-04-01', '2023', 0, '2024-03-31 23:59:59', '1', '1', 'D', NULL, NULL, NULL, NULL, NULL,  Null, Null);
+                    "
+            AgL.Dman_ExecuteNonQry(mQry, AgL.GcnMain)
+        End If
+
+        If AgL.FillData("Select * from Voucher_Prefix Where V_Type='" & V_Type & "' And Prefix = '2024' ", AgL.GcnMain).tables(0).Rows.Count = 0 Then
+            mQry = " 
+                    INSERT INTO Voucher_Prefix
+                    (V_Type, Date_From, Prefix, Start_Srl_No, Date_To, Comp_Code, Site_Code, Div_Code, UpLoadDate, Status_Add, Status_Edit, Status_Delete, Status_Print, Ref_Prefix, Ref_PadLength)
+                    VALUES('" & V_Type & "', '2024-04-01', '2024', 0, '2025-03-31 23:59:59', '1', '1', 'D', NULL, NULL, NULL, NULL, NULL,  Null, Null);
+                    "
+            AgL.Dman_ExecuteNonQry(mQry, AgL.GcnMain)
+        End If
     End Sub
     Private Sub FSeedTable_Voucher_Type()
         Dim mQry As String
@@ -10912,6 +11025,9 @@ Thanks
                 'FSeedSingleIfNotExists_Voucher_Type(Ncat.SaleOrderCancel, "Sale Order Cancel", Ncat.SaleOrderCancel, VoucherCategory.Sales, "", "Customised", MdiObj.MnuSalesOrder.Name, MdiObj.MnuSalesOrder.Text)
             End If
 
+            If ClsMain.IsScopeOfWorkContains(IndustryType.CommonModules.SalesChallan) Then
+                FSeedSingleIfNotExists_Voucher_Type(Ncat.SaleChallan, "Sale Challan", Ncat.SaleChallan, VoucherCategory.Sales, "", "Customised", MdiObj.MnuSaleChallan.Name, MdiObj.MnuSaleChallan.Text)
+            End If
 
             If ClsMain.IsScopeOfWorkContains(IndustryType.CommonModules.PurchaseOrderModule) Then
                 FSeedSingleIfNotExists_Voucher_Type(Ncat.PurchaseOrder, "Purchase Order", Ncat.PurchaseOrder, VoucherCategory.Purchase, "", "Customised", MdiObj.MnuPurchaseOrder.Name, MdiObj.MnuPurchaseOrder.Text)
@@ -12362,6 +12478,10 @@ Thanks
             AgL.AddFieldSqlite(AgL.GcnMain, "PurchInvoiceDetail", "ItemState", "nVarchar(10)", "", True, " references Item(Code) ")
             AgL.AddFieldSqlite(AgL.GcnMain, "PurchInvoiceDetail", "SubRecordType", "nVarchar(30)", "", True)
             AgL.AddFieldSqlite(AgL.GcnMain, "PurchInvoiceDetail", "Remark", "nVarchar(255)", "", True)
+            AgL.AddFieldSqlite(AgL.GcnMain, "PurchInvoiceDetail", "Remarks1", "nVarchar(255)", "", True)
+            AgL.AddFieldSqlite(AgL.GcnMain, "PurchInvoiceDetail", "Remarks2", "nVarchar(255)", "", True)
+            AgL.AddFieldSqlite(AgL.GcnMain, "PurchInvoiceDetail", "Remarks3", "nVarchar(255)", "", True)
+            AgL.AddFieldSqlite(AgL.GcnMain, "PurchInvoiceDetail", "Remarks4", "nVarchar(255)", "", True)
             AgL.AddFieldSqlite(AgL.GcnMain, "PurchInvoiceDetail", "DimensionDetail", "nVarchar(1000)", "", True)
             AgL.AddFieldSqlite(AgL.GcnMain, "PurchInvoiceDetail", "GrossWeight", "Float", "0", False)
             AgL.AddFieldSqlite(AgL.GcnMain, "PurchInvoiceDetail", "NetWeight", "Float", "0", False)
@@ -19840,6 +19960,7 @@ Thanks
             AgL.AddFieldSqlite(AgL.GcnMain, "SaleInvoiceSetting", "IsVisible_BarcodeGunTextbox", "bit", "", True)
             AgL.AddFieldSqlite(AgL.GcnMain, "SaleInvoiceSetting", "DiscountSuggestionPattern", "nVarchar(20)", "", True)
             AgL.AddFieldSqlite(AgL.GcnMain, "SaleInvoiceSetting", "IsAllowedZeroRate", "bit", "", True)
+            AgL.AddFieldSqlite(AgL.GcnMain, "SaleInvoiceSetting", "IsAllowedNegativeStock", "bit", "", True)
             AgL.AddFieldSqlite(AgL.GcnMain, "SaleInvoiceSetting", "ItemHelpType", "nVarchar(20)", "SALE", True)
             AgL.AddFieldSqlite(AgL.GcnMain, "SaleInvoiceSetting", "FilterInclude_Process", "nVarchar(255)", "", True)
 
@@ -19859,6 +19980,7 @@ Thanks
             AgL.AddFieldSqlite(AgL.GcnMain, "SaleInvoiceSetting", "PickSaleRateFromMaster", "bit", "0", True)
             AgL.AddFieldSqlite(AgL.GcnMain, "SaleInvoiceSetting", "IsItemHelpFromSaleOrder", "bit", "0", True)
             AgL.AddFieldSqlite(AgL.GcnMain, "SaleInvoiceSetting", "IsApplicable_SaleOrder", "bit", "0", True)
+            AgL.AddFieldSqlite(AgL.GcnMain, "SaleInvoiceSetting", "IsApplicable_SaleChallan", "bit", "0", True)
             AgL.AddFieldSqlite(AgL.GcnMain, "SaleInvoiceSetting", "GeneratePurchaseFromSaleYN", "bit", "0", True)
             'Field is taken for Getting Sale Order Balance weather it should be fetched on basis of qty or amount.
             AgL.AddFieldSqlite(AgL.GcnMain, "SaleInvoiceSetting", "CalculateContraBalanceOnValueYN", "bit", "0", True)
@@ -24195,6 +24317,49 @@ Thanks
         End Try
     End Sub
 
+    Public Class FileUpload
+
+        '' Function to upload file to a given URL
+        'Public Async Function UploadFileAsync(ByVal filePath As String, ByVal uploadUrl As String) As Task
+        '    ' Create HttpClient instance
+        '    Using client As New HttpClient()
+
+        '        ' Create a multipart/form-data content
+        '        Using content As New MultipartFormDataContent()
+
+        '            ' Open file stream
+        '            Dim fileStream As New FileStream(filePath, FileMode.Open, FileAccess.Read)
+
+        '            ' Create a ByteArrayContent to hold the file data
+        '            Dim fileContent As New ByteArrayContent(ReadStream(fileStream))
+
+        '            ' Add file content to multipart content with a name (use the appropriate key from the form)
+        '            content.Add(fileContent, "file", Path.GetFileName(filePath))
+
+        '            ' Send the POST request with the file content
+        '            Dim response As HttpResponseMessage = Await client.PostAsync(uploadUrl, content)
+
+        '            ' Check if upload was successful
+        '            If response.IsSuccessStatusCode Then
+        '                Console.WriteLine("File uploaded successfully!")
+        '            Else
+        '                Console.WriteLine("Failed to upload file: " & response.ReasonPhrase)
+        '            End If
+        '        End Using
+        '    End Using
+        'End Function
+
+        ' Utility function to read file into byte array
+        'Private Function ReadStream(ByVal fileStream As FileStream) As Byte()
+        '    Using ms As New MemoryStream()
+        '        fileStream.CopyTo(ms)
+        '        Return ms.ToArray()
+        '    End Using
+        'End Function
+
+    End Class
+
+
     Public Shared Function ConvertToByteArray(ByVal value As Bitmap) As Byte()
         Dim bitmapBytes As Byte()
 
@@ -24454,7 +24619,7 @@ Thanks
         FGetSettings = mValue
     End Function
 
-    Public Shared Function FSendWhatsappMessage(ByVal MobileNoList As String, ByVal Message As String, ByVal Type As String) As Boolean
+    Public Shared Function FSendWhatsappMessage(ByVal MobileNoList As String, ByVal Message As String, ByVal Type As String, ByVal FilePath As String) As Boolean
         Dim mQry$ = ""
         Dim BaseAPI As String = ""
         If MobileNoList.ToString.Replace(",", "") = "" Then
@@ -24466,13 +24631,14 @@ Thanks
                 'BaseAPI = "https://clicke.co.in/eapi/sendMessage?auth_key=TrBcnEuWHfS8r4CnObJE&message='<Message>'&mobileNumber=<MobileNo>&type=msg"
                 BaseAPI = FGetSettings(SettingFields.WhatsappMessageURL, "E Invoice", "", "", "", "", "", "", "")
             ElseIf Type = "PDF" Then
-                BaseAPI = "https://clicke.co.in/eapi/sendMessage?auth_key=TrBcnEuWHfS8r4CnObJE&message='<Message>'&pdf='<PdfPath>'&mobileNumber=<MobileNo>&type=pdf"
+                'BaseAPI = "https://clicke.co.in/eapi/sendMessage?auth_key=TrBcnEuWHfS8r4CnObJE&message='<Message>'&pdf='<PdfPath>'&mobileNumber=<MobileNo>&type=pdf"
+                BaseAPI = FGetSettings(SettingFields.WhatsappPDFURL, "E Invoice", "", "", "", "", "", "", "")
             ElseIf Type = "Image" Then
                 BaseAPI = "https://clicke.co.in/eapi/sendMessage?auth_key=TrBcnEuWHfS8r4CnObJE&message=<Message>&img=<ImagePath>&mobileNumber=<MobileNo>&type=img"
             End If
 
 
-            Dim SmsAPI = BaseAPI.Replace("91XXXXXXXXXX", MobileNoList).Replace("TEXT HERE", Message)
+            Dim SmsAPI = BaseAPI.Replace("91XXXXXXXXXX", MobileNoList).Replace("TEXT HERE", Message).Replace("YOUR PDF PATH", FilePath)
             'ServicePointManager.SecurityProtocol = SecurityProtocolType.Tls12
             Const _Tls12 As SslProtocols = DirectCast(&HC00, SslProtocols)
             Const Tls12 As SecurityProtocolType = DirectCast(_Tls12, SecurityProtocolType)
@@ -24977,7 +25143,7 @@ Thanks
         End If
 
         DtTemp = AgL.FillData(mQry, IIf(AgL.PubServerName = "", Conn, AgL.GcnRead)).Tables(0)
-        DtTemp = AgL.FillData(bSelectionQry, IIf(AgL.PubServerName = "", Conn, AgL.GcnRead)).Tables(0)
+        'DtTemp = AgL.FillData(bSelectionQry, IIf(AgL.PubServerName = "", Conn, AgL.GcnRead)).Tables(0)
         'If DtTemp.Rows.Count > 0 And AgL.PubDBName <> "ShyamaShyam" Then
         If DtTemp.Rows.Count > 0 Then
             If AgL.VNull(DtTemp.Rows(0)(0)) > 0 Then
@@ -25547,6 +25713,8 @@ Thanks
                 NCatDesc = "SaleInvoiceOverlay"
             Case Ncat.SaleEnquiry
                 NCatDesc = "SaleEnquiry"
+            Case Ncat.SaleChallan
+                NCatDesc = "SaleChallan"
             Case Ncat.SaleOrder
                 NCatDesc = "SaleOrder"
             Case Ncat.SaleOrderCancel

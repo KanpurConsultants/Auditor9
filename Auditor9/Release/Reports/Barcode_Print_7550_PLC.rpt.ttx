@@ -1,10 +1,10 @@
 ; Field definition file for table: ADORecordset
-Code	string	255	2819	
-Barcode	string	255	454545	
+Code	string	255	2835	
+Barcode	string	255	300831	
 BarCodeImg	BLOB		
-ItemDesc	string	255	5384-FREE	
-ItemCategoryDesc	string	255	PREMIUM-F HEAVY SINKER HOSIERY  COD SET	
-ItemGroupDesc	string	255	PINK LADY	
+ItemDesc	string	255	501-M	
+ItemCategoryDesc	string	255	100 premium cotton	
+ItemGroupDesc	string	255	COD SET	
 Dimension1Desc	string	255		
 Dimension2Desc	string	255		
 Dimension3Desc	string	255		
@@ -16,12 +16,12 @@ MRP	number	0
 ReceiveQty	number	0	
 GenSr	number	1	
 ItemMasterPurchaseRate	number	0	
-ItemMasterSaleRate	number	220	
+ItemMasterSaleRate	number	0	
 BarcodeRatePrefix	string	255		
 Title1	string	255	Pink Lady Creation	
 Title2	string	255		
 Title3	string	255		
 SaleRate_RateType	string	255		
 SaleRate_RateTypeEncoded	long	0	
-RandomNo1	long	454	
-RandomNo2	long	666	
+RandomNo1	long	406	
+RandomNo2	long	965	

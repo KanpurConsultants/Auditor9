@@ -5,13 +5,13 @@ DocNoCaption	string	255	Invoice No.
 DocDateCaption	string	255	Invoice Date	
 SiteStateCode	string	255	09	
 SiteStateName	string	255	Uttar Pradesh	
-DocID	string	255	D1   SIR 2023    3682	
+DocID	string	255	D1   SIR 2024    2006	
 Sr	number	1	
-V_Date	datetime	04/Jan/2024 12:00:00 AM	
+V_Date	datetime	05/Nov/2024 00:00:00	
 DeliveryDate	datetime		
 Voucher_Type	string	255	Sale Invoice Retail	
 NCat	string	255	SI	
-InvoiceNo	string	255	SIR-2266	
+InvoiceNo	string	255	SIR-1194	
 GenDocNo	string	255		
 AmsDocNo	string	255		
 AmsDocDate	datetime		
@@ -19,28 +19,29 @@ AmsDocNetAmount	number	0
 RateType	string	255		
 DocumentPrintShowRateType	string	255	Show If Not Blank	
 AgentName	string	255		
-SalesRepName	string	255	AKASH PATEL	
-SalesRepCode	string	255	18	
+SalesRepName	string	255		
+SalesRepCode	string	255		
+ResponsiblePersonName	string	255		
 AgentCaption	string	255	Agent	
-SaleToPartyName	string	255	ABHAY SINGH	
+SaleToPartyName	string	255	5555	
 SaleToPartyAddress	string	255		
-CityName	string	255	Kanpur	
+CityName	string	255		
 SaleToPartyPincode	string	255		
-StateCode	string	255	09	
-StateName	string	255	Uttar Pradesh	
-SaleToPartyMobile	string	255	9559919825	
+StateCode	string	255		
+StateName	string	255		
+SaleToPartyMobile	string	255	5555555	
 ContactPerson	string	255		
 SaleToPartySalesTaxNo	string	255		
 SaleToPartyAadharNo	string	255		
 SaleToPartyPanNo	string	255		
 SaleToPartyLicenseNo	string	255		
-ShipToPartyName	string	255	ABHAY SINGH	
+ShipToPartyName	string	255	5555	
 ShipToPartyAddress	string	255		
-ShipToPartyCity	string	255	Kanpur	
+ShipToPartyCity	string	255		
 ShipToPartyPincode	string	255		
-ShipToPartyStateCode	string	255	09	
-ShipToPartyStateName	string	255	Uttar Pradesh	
-ShipToPartyMobile	string	255	9559919825	
+ShipToPartyStateCode	string	255		
+ShipToPartyStateName	string	255		
+ShipToPartyMobile	string	255	5555555	
 ShipToPartySalesTaxNo	string	255		
 ShipToPartyAadharNo	string	255		
 ShipToPartyPanNo	string	255		
@@ -69,14 +70,14 @@ Destination	string	255
 DescriptionOfGoods	string	255		
 DescriptionOfPacking	string	255		
 ReferenceNo	string	255		
-BarcodeName	string	255	9194	
-ItemName	string	255	RADHA-S-ENT-809 DYD-SAREE-D1   ISS 2023    13978	
-ItemGroupName	string	255	S-ENT-809 DYD	
-ItemCatName	string	255	SAREE	
-ItemManualCode	string	255	D100133915	
-ItemSpecification	string	255	RADHA	
+BarcodeName	string	255	15345	
+ItemName	string	255	2114/M123 GS134-S-ENT-2114 D-SAREE 540822-D1   ISS 2024    107246	
+ItemGroupName	string	255	S-ENT-2114 D	
+ItemCatName	string	255	SAREE 540822	
+ItemManualCode	string	255	D100159764	
+ItemSpecification	string	255	2114/M123 GS134	
 InvoiceLineSpecification	string	255		
-HSN	string	255	540752	
+HSN	string	255	540822	
 MaintainStockYn	boolean	True	
 D1Spec	string	255		
 D2Spec	string	255		
@@ -96,62 +97,64 @@ D3Caption	string	255	Design
 D4Caption	string	255	Width	
 SalesTaxGroupItem	string	255	GST 5%	
 GrossTaxRate	number	5	
-MRP	number	1595	
+MRP	number	2495	
 LotNo	string	255		
 ExpiryDate	datetime		
 ItemRemark1	string	255		
 Pcs	number	1	
 Qty	number	1	
-Rate	number	1595	
+Rate	number	2495	
 ItemState	string	255		
 CatalogSpecification	string	255		
 CatalogSiteName	string	255		
 Unit	string	255	Pcs	
 UnitDecimalPlaces	number	0	
-DiscountPer	number	5	
-DiscountAmount	number	79.75	
+DiscountPer	number	0	
+DiscountAmount	number	0	
 AdditionalDiscountPer	number	0	
 AdditionalDiscountAmount	number	0	
 AdditionPer	number	0	
 AdditionAmount	number	0	
-TotalDiscount	number	79.75	
+TotalDiscount	number	0	
 Deal	string	255		
-AmountBeforeDiscount	number	1595	
-Amount	number	1515.25	
-Taxable_Amount	number	1443.1	
+AmountBeforeDiscount	number	2495	
+Amount	number	2495	
+Taxable_Amount	number	2376.19	
 Tax1_Per	number	0	
 Tax1	number	0	
 Tax2_Per	number	2.5	
-Tax2	number	36.08	
+Tax2	number	59.4	
 Tax3_Per	number	2.5	
-Tax3	number	36.08	
+Tax3	number	59.4	
 Tax4_Per	number	0	
 Tax4	number	0	
 Tax5_Per	number	0	
 Tax5	number	0	
-Net_Amount	number	1515.22	
+Net_Amount	number	2495	
 LRemarks	string	255		
 LRemarks1	string	255		
 LRemarks2	string	255		
 LRemarks3	string	255		
 LRemarks4	string	255		
 HRemarks	string	255		
-SalesTaxSummaryStr	string	255	540752 Taxable Amt : 20932.39 Tax Amt : 1046.66, 540754 Taxable Amt : 570.48 Tax Amt : 28.52, 620819 Taxable Amt : 1095.24 Tax Amt : 54.76, 	
-H_Discount	number	688	
+HRemarks1	string	255		
+HRemarks2	string	255		
+SalesTaxSummaryStr	string	255	540822 Taxable Amt : 2376.19 Tax Amt : 118.8, 	
+H_Discount	number	0	
 H_AdditionalDiscount	number	0	
 H_Additional	number	0	
-H_TotalDiscount	number	688	
-H_AmountBeforeDiscount	number	24416	
-H_Gross_Amount	number	23728	
+H_TotalDiscount	number	0	
+H_AmountBeforeDiscount	number	2495	
+H_Gross_Amount	number	2495	
 H_SpecialDiscount_Per	number	0	
 H_SpecialDiscount	number	0	
-H_Taxable_Amount	number	22598.11	
+H_Taxable_Amount	number	2376.19	
 H_Tax1_Per	number	0	
 H_Tax1	number	0	
 H_Tax2_Per	number	0	
-H_Tax2	number	564.97	
+H_Tax2	number	59.4	
 H_Tax3_Per	number	0	
-H_Tax3	number	564.97	
+H_Tax3	number	59.4	
 H_Tax4_Per	number	0	
 H_Tax4	number	0	
 H_Tax5_Per	number	0	
@@ -164,8 +167,8 @@ H_Other_Charge1_Per	number	0
 H_Other_Charge1	number	0	
 H_Other_Charge2_Per	number	0	
 H_Other_Charge2	number	0	
-Round_Off	number	-0.05	
-H_Net_Amount	number	23728	
+Round_Off	number	0.01	
+H_Net_Amount	number	2495	
 EInvoiceIRN	string	255		
 EInvoiceACKNo	string	255		
 EInvoiceACKDate	datetime		
@@ -173,7 +176,7 @@ Default_BankAccountDetail	string	255
 DocumentPrintHeaderPattern	string	255	Center Aligned	
 DimDetail	string	255		
 PrintedByUser	string	255	SUPER	
-EntryByUser	string	255	USER	
+EntryByUser	string	255	SUPER	
 PrintTitle	string	255	Sale Invoice Retail	
 DocumentPrintShowPrintDateTimeYn	string	255	1	
 DocumentPrintShowPartyBalance	string	255	Hide	

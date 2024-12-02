@@ -231,6 +231,7 @@ Partial Class MDIMain
         Me.MnuTCSOutputReport = New System.Windows.Forms.ToolStripMenuItem()
         Me.MnuTCSInputReport = New System.Windows.Forms.ToolStripMenuItem()
         Me.MnuEBillGeneration = New System.Windows.Forms.ToolStripMenuItem()
+        Me.MnuSendMessageForPayment = New System.Windows.Forms.ToolStripMenuItem()
         Me.MnuTimeOffice = New System.Windows.Forms.ToolStripMenuItem()
         Me.MnuHolidayMaster = New System.Windows.Forms.ToolStripMenuItem()
         Me.MnuDesignationMaster = New System.Windows.Forms.ToolStripMenuItem()
@@ -324,7 +325,7 @@ Partial Class MDIMain
         Me.MnuPrintCheque = New System.Windows.Forms.ToolStripMenuItem()
         Me.MnuBank = New System.Windows.Forms.ToolStripMenuItem()
         Me.MnuChequePrinting = New System.Windows.Forms.ToolStripMenuItem()
-        Me.MnuSendMessageForPayment = New System.Windows.Forms.ToolStripMenuItem()
+        Me.MnuSaleChallan = New System.Windows.Forms.ToolStripMenuItem()
         Me.MnuMain.SuspendLayout()
         Me.SuspendLayout()
         '
@@ -1308,7 +1309,7 @@ Partial Class MDIMain
         '
         'MnuSale
         '
-        Me.MnuSale.DropDownItems.AddRange(New System.Windows.Forms.ToolStripItem() {Me.MnuSalesEnquiry, Me.MnuSalesOrder, Me.MnuSalesEntry, Me.MnuSalesEntryRetail, Me.MnuSaleEntryOverlay, Me.MnuSaleEntryOverlayRetail, Me.MnuSalesReturnEntry, Me.MnuSalesReturnEntryRetail, Me.MnuSalesDelivery, Me.MnuSaleInvoiceW, Me.MnuSaleReturnW, Me.MnuQuotation, Me.MnuSalesEntryAadhat, Me.MnuPacking, Me.MnuLRUpdation, Me.MnuSaleReports, Me.MnuSaleTools, Me.MnuLeadManagement, Me.MnuFallPico})
+        Me.MnuSale.DropDownItems.AddRange(New System.Windows.Forms.ToolStripItem() {Me.MnuSalesEnquiry, Me.MnuSalesOrder, Me.MnuSaleChallan, Me.MnuSalesEntry, Me.MnuSalesEntryRetail, Me.MnuSaleEntryOverlay, Me.MnuSaleEntryOverlayRetail, Me.MnuSalesReturnEntry, Me.MnuSalesReturnEntryRetail, Me.MnuSalesDelivery, Me.MnuSaleInvoiceW, Me.MnuSaleReturnW, Me.MnuQuotation, Me.MnuSalesEntryAadhat, Me.MnuPacking, Me.MnuLRUpdation, Me.MnuSaleReports, Me.MnuSaleTools, Me.MnuLeadManagement, Me.MnuFallPico})
         Me.MnuSale.Name = "MnuSale"
         Me.MnuSale.Size = New System.Drawing.Size(40, 20)
         Me.MnuSale.Text = "Sale"
@@ -1832,6 +1833,13 @@ Partial Class MDIMain
         Me.MnuEBillGeneration.Size = New System.Drawing.Size(219, 22)
         Me.MnuEBillGeneration.Tag = "GRID REPORT"
         Me.MnuEBillGeneration.Text = "E Bill Generation"
+        '
+        'MnuSendMessageForPayment
+        '
+        Me.MnuSendMessageForPayment.Name = "MnuSendMessageForPayment"
+        Me.MnuSendMessageForPayment.Size = New System.Drawing.Size(219, 22)
+        Me.MnuSendMessageForPayment.Tag = "GRID REPORT"
+        Me.MnuSendMessageForPayment.Text = "Send Message For Payment"
         '
         'MnuTimeOffice
         '
@@ -2480,12 +2488,11 @@ Partial Class MDIMain
         Me.MnuChequePrinting.Size = New System.Drawing.Size(160, 22)
         Me.MnuChequePrinting.Text = "Cheque Printing"
         '
-        'MnuSendMessageForPayment
+        'MnuSaleChallan
         '
-        Me.MnuSendMessageForPayment.Name = "MnuSendMessageForPayment"
-        Me.MnuSendMessageForPayment.Size = New System.Drawing.Size(219, 22)
-        Me.MnuSendMessageForPayment.Tag = "GRID REPORT"
-        Me.MnuSendMessageForPayment.Text = "Send Message For Payment"
+        Me.MnuSaleChallan.Name = "MnuSaleChallan"
+        Me.MnuSaleChallan.Size = New System.Drawing.Size(208, 22)
+        Me.MnuSaleChallan.Text = "Sale Challan"
         '
         'MDIMain
         '
@@ -2815,4 +2822,5 @@ Partial Class MDIMain
     Friend WithEvents MnuStockExchangeReport As ToolStripMenuItem
     Friend WithEvents MnuSendWhatsapp As ToolStripMenuItem
     Friend WithEvents MnuSendMessageForPayment As ToolStripMenuItem
+    Friend WithEvents MnuSaleChallan As ToolStripMenuItem
 End Class
