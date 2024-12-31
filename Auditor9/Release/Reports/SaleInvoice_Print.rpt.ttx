@@ -5,13 +5,13 @@ DocNoCaption	string	255	Invoice No.
 DocDateCaption	string	255	Invoice Date	
 SiteStateCode	string	255	09	
 SiteStateName	string	255	Uttar Pradesh	
-DocID	string	255	D1    SI 2024   13413	
+DocID	string	255	D1    SI 2024   13414	
 Sr	number	1	
-V_Date	datetime	25/Nov/2024 00:00:00	
+V_Date	datetime	12/Dec/2024 00:00:00	
 DeliveryDate	datetime		
 Voucher_Type	string	255	Tax Invoice	
 NCat	string	255	SI	
-InvoiceNo	string	255	SI-13412	
+InvoiceNo	string	255	SI-13413	
 RateType	string	255	Super Net	
 DocumentPrintShowRateType	string	255	Show If Not Blank	
 AgentName	string	255	DIRECT (CASH)	
@@ -63,18 +63,18 @@ DescriptionOfGoods	string	255
 DescriptionOfPacking	string	255		
 TransporterSalesTaxNo	string	255		
 ReferenceNo	string	255		
-ItemName	string	255	S BELA           [VEER DARSHAN | SAREE]	
-ItemGroupName	string	255	S-ENT-62-PRINT	
+ItemName	string	255	SAREE          [BITTU SAREES(853) | SAREE]	
+ItemGroupName	string	255	S-ENT-853 DYD	
 ItemCatName	string	255	SAREE	
-ItemSpecification	string	255	S BELA	
+ItemSpecification	string	255	SAREE	
 InvoiceLineSpecification	string	255		
 HSN	string	255	540752	
 MaintainStockYn	boolean	True	
 SalesTaxGroupItem	string	255	GST 5%	
 GrossTaxRate	number	5	
-Pcs	number	10	
-Qty	number	10	
-Rate	number	755	
+Pcs	number	2	
+Qty	number	2	
+Rate	number	899	
 Unit	string	255	Pcs	
 UnitDecimalPlaces	number	0	
 DiscountPer	number	0	
@@ -84,34 +84,34 @@ AdditionalDiscountAmount	number	0
 AdditionPer	number	0	
 AdditionAmount	number	0	
 TotalDiscount	number	0	
-AmountBeforeDiscount	number	7550	
-Amount	number	7550	
-Taxable_Amount	number	7550	
+AmountBeforeDiscount	number	1798	
+Amount	number	1798	
+Taxable_Amount	number	1798	
 Tax1_Per	number	0	
 Tax1	number	0	
 Tax2_Per	number	2.5	
-Tax2	number	188.75	
+Tax2	number	44.95	
 Tax3_Per	number	2.5	
-Tax3	number	188.75	
+Tax3	number	44.95	
 Tax4_Per	number	0	
 Tax4	number	0	
 Tax5_Per	number	0	
 Tax5	number	0	
-Net_Amount	number	7928	
+Net_Amount	number	1887.84	
 LRemarks	string	255		
 HRemarks	string	255		
 H_TotalDiscount	number	0	
-H_AmountBeforeDiscount	number	7550	
-H_Gross_Amount	number	7550	
+H_AmountBeforeDiscount	number	4663	
+H_Gross_Amount	number	4663	
 H_SpecialDiscount_Per	number	0	
 H_SpecialDiscount	number	0	
-H_Taxable_Amount	number	7550	
+H_Taxable_Amount	number	4663	
 H_Tax1_Per	number	0	
 H_Tax1	number	0	
 H_Tax2_Per	number	0	
-H_Tax2	number	188.75	
+H_Tax2	number	116.58	
 H_Tax3_Per	number	0	
-H_Tax3	number	188.75	
+H_Tax3	number	116.58	
 H_Tax4_Per	number	0	
 H_Tax4	number	0	
 H_Tax5_Per	number	0	
@@ -120,8 +120,8 @@ H_Deduction_Per	number	0
 H_Deduction	number	0	
 H_Other_Charge_Per	number	0	
 H_Other_Charge	number	0	
-Round_Off	number	0.5	
-H_Net_Amount	number	7928	
+Round_Off	number	-0.16	
+H_Net_Amount	number	4896	
 EInvoiceIRN	string	255		
 EInvoiceAckNo	string	255		
 EInvoiceAckDate	datetime		

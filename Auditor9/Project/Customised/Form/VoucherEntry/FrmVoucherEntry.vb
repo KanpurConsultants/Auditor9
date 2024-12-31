@@ -1347,6 +1347,16 @@ Public Class FrmVoucherEntry
         'If Want Then To Edit Save Record which has Not Ledger Posted
         'mCondStr = mCondStr & " And H.DocId In (SELECT H.DocID FROM LedgerHead H LEFT JOIN Ledger L ON H.DocID = L.DocId WHERE L.DocId IS NULL) "
 
+        Dim mIsShowOnlySelfRecords As Boolean = False
+        If AgL.VNull(AgL.Dman_Execute("Select IfNull(IsShowOnlySelfRecords,0) From UserMast With (NoLock) 
+                Where USER_NAME = '" & AgL.PubUserName & "'", AgL.GCn).ExecuteScalar()) = 1 Then
+            mIsShowOnlySelfRecords = True
+        End If
+
+        If mIsShowOnlySelfRecords = True And AgL.StrCmp(AgL.PubUserName, "Super") = False Then
+            mCondStr = mCondStr & " And H.EntryBy = '" & AgL.PubUserName & "'"
+        End If
+
 
         mQry = "Select DocID As SearchCode " &
                 " From LedgerHead H  With (NoLock) " &
@@ -1370,6 +1380,17 @@ Public Class FrmVoucherEntry
         mCondStr = " " & AgL.CondStrFinancialYear("H.V_Date", AgL.PubStartDate, AgL.PubEndDate) &
                         " And " & AgL.PubSiteCondition("H.Site_Code", AgL.PubSiteCode) & " And H.Div_Code = '" & AgL.PubDivCode & "'"
         mCondStr = mCondStr & " And Vt.NCat In ('" & EntryNCat & "')"
+
+        Dim mIsShowOnlySelfRecords As Boolean = False
+        If AgL.VNull(AgL.Dman_Execute("Select IfNull(IsShowOnlySelfRecords,0) From UserMast With (NoLock) 
+                Where USER_NAME = '" & AgL.PubUserName & "'", AgL.GCn).ExecuteScalar()) = 1 Then
+            mIsShowOnlySelfRecords = True
+        End If
+
+        If mIsShowOnlySelfRecords = True And AgL.StrCmp(AgL.PubUserName, "Super") = False Then
+            mCondStr = mCondStr & " And H.EntryBy = '" & AgL.PubUserName & "'"
+        End If
+
         mCondStr = mCondStr & " Order By Cast(H.ManualRefNo as BigInt)"
 
 

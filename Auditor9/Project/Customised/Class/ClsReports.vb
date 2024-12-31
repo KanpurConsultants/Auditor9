@@ -41,6 +41,7 @@ Public Class ClsReports
     Private Const SaleOrderReport As String = "SaleOrderReport"
     Private Const SaleInvoiceReportAadhat As String = "SaleInvoiceReportAadhat"
     Private Const SaleOrderStatus As String = "SaleOrderStatus"
+    Private Const SaleChallanStatus As String = "SaleChallanStatus"
     Private Const PurchaseInvoiceReport As String = "PurchaseInvoiceReport"
     Private Const PurchaseOrderReport As String = "PurchaseOrderReport"
     Private Const DebitCreditNoteReport As String = "DebitCreditNoteReport"
@@ -257,6 +258,37 @@ Public Class ClsReports
                             Select 'Bale Balance' as Code, 'Bale Balance' as Name 
                             "
                     ReportFrm.CreateHelpGrid("Balance Type", "Balance Type", FrmRepDisplay.FieldFilterDataType.StringType, FrmRepDisplay.FieldDataType.SingleSelection, mQry, "Qty Balance",,, 300)
+
+                Case SaleChallanStatus
+                    mQry = "Select 'Item Wise Balance' as Code, 'Item Wise Balance' as Name 
+                            Union All Select 'Item Wise Status' as Code, 'Item Wise Status' as Name 
+                            "
+
+                    ReportFrm.CreateHelpGrid("Report Type", "Report Type", FrmRepDisplay.FieldFilterDataType.StringType, FrmRepDisplay.FieldDataType.SingleSelection, mQry, "Item Wise Balance",,, 300)
+                    ReportFrm.CreateHelpGrid("FromDate", "From Date", FrmRepDisplay.FieldFilterDataType.StringType, FrmRepDisplay.FieldDataType.DateType, "", AgL.PubStartDate)
+                    ReportFrm.CreateHelpGrid("ToDate", "To Date", FrmRepDisplay.FieldFilterDataType.StringType, FrmRepDisplay.FieldDataType.DateType, "", AgL.PubEndDate)
+                    ReportFrm.CreateHelpGrid("Party", "Party", FrmRepDisplay.FieldFilterDataType.StringType, FrmRepDisplay.FieldDataType.MultiSelection, mHelpPartyQry)
+                    ReportFrm.CreateHelpGrid("Item", "Item", FrmRepDisplay.FieldFilterDataType.StringType, FrmRepDisplay.FieldDataType.MultiSelection, mHelpItemQry)
+                    ReportFrm.CreateHelpGrid("Site", "Site", FrmRepDisplay.FieldFilterDataType.StringType, FrmRepDisplay.FieldDataType.MultiSelection, mHelpSiteQry, "[SITECODE]")
+                    ReportFrm.CreateHelpGrid("VoucherType", "Voucher Type", FrmRepDisplay.FieldFilterDataType.StringType, FrmRepDisplay.FieldDataType.MultiSelection, FGetVoucher_TypeQry("SaleInvoice", Ncat.SaleChallan))
+                    ReportFrm.CreateHelpGrid("CashCredit", "Cash/Credit", FrmRepDisplay.FieldFilterDataType.StringType, FrmRepDisplay.FieldDataType.SingleSelection, "Select 'Cash' as Code, 'Cash' as Name Union All Select 'Credit' as Code, 'Credit' as Name Union All Select 'Both' as Code, 'Both' as Name", "Both")
+                    ReportFrm.CreateHelpGrid("Agent", "Agent", FrmRepDisplay.FieldFilterDataType.StringType, FrmRepDisplay.FieldDataType.MultiSelection, mHelpSalesAgentQry)
+                    ReportFrm.CreateHelpGrid("Item Group", "Item Group", FrmRepDisplay.FieldFilterDataType.StringType, FrmRepDisplay.FieldDataType.MultiSelection, mHelpItemGroupQry)
+                    ReportFrm.CreateHelpGrid("Item Category", "Item Category", FrmRepDisplay.FieldFilterDataType.StringType, FrmRepDisplay.FieldDataType.MultiSelection, mHelpItemCategoryQry)
+                    ReportFrm.CreateHelpGrid("City", "City", FrmRepDisplay.FieldFilterDataType.StringType, FrmRepDisplay.FieldDataType.MultiSelection, mHelpCityQry)
+                    ReportFrm.CreateHelpGrid("State", "State", FrmRepDisplay.FieldFilterDataType.StringType, FrmRepDisplay.FieldDataType.MultiSelection, mHelpStateQry)
+                    ReportFrm.CreateHelpGrid("SalesRepresentative", "Sales Representative", FrmRepDisplay.FieldFilterDataType.StringType, FrmRepDisplay.FieldDataType.MultiSelection, mHelpSalesRepresentativeQry)
+                    ReportFrm.CreateHelpGrid("ResponsiblePerson", "ResponsiblePerson", FrmRepDisplay.FieldFilterDataType.StringType, FrmRepDisplay.FieldDataType.MultiSelection, mHelpResponsiblePersonQry)
+                'ReportFrm.CreateHelpGrid("Tag", "Tag", FrmRepDisplay.FieldFilterDataType.StringType, FrmRepDisplay.FieldDataType.MultiSelection, mHelpTagQry)
+                'ReportFrm.CreateHelpGrid("Division", "Division", FrmRepDisplay.FieldFilterDataType.StringType, FrmRepDisplay.FieldDataType.MultiSelection, mHelpDivisionQry, "[DIVISIONCODE]")
+                'mQry = "Select 'Amount Balance' as Code, 'Amount Balance' as Name 
+                '        Union All 
+                '        Select 'Qty Balance' as Code, 'Qty Balance' as Name 
+                '        Union All 
+                '        Select 'Bale Balance' as Code, 'Bale Balance' as Name 
+                '        "
+                'ReportFrm.CreateHelpGrid("Balance Type", "Balance Type", FrmRepDisplay.FieldFilterDataType.StringType, FrmRepDisplay.FieldDataType.SingleSelection, mQry, "Qty Balance",,, 300)
+
 
                 Case DebitCreditNoteReport
                     mQry = "Select 'Entry Head Wise Detail' as Code, 'Entry Head Wise Detail' as Name 
@@ -594,6 +626,9 @@ Public Class ClsReports
             Case SaleOrderStatus
                 ProcSaleOrderStatus()
 
+            Case SaleChallanStatus
+                ProcSaleChallanStatus()
+
             Case DebitCreditNoteReport
                 ProcDebitCreditNoteReport()
 
@@ -774,6 +809,126 @@ Public Class ClsReports
             DsHeader = Nothing
         End Try
     End Sub
+
+    Public Sub ProcSaleChallanStatus(Optional mFilterGrid As AgControls.AgDataGrid = Nothing,
+                                Optional mGridRow As DataGridViewRow = Nothing)
+        Try
+            Dim mCondStr$ = ""
+            Dim strGrpFld As String = "''", strGrpFldHead As String = "''", strGrpFldDesc As String = "''"
+            Dim mTags As String() = Nothing
+            Dim J As Integer
+
+
+
+            RepTitle = "Sale Challan Status"
+
+            If mFilterGrid IsNot Nothing And mGridRow IsNot Nothing Then
+                If mGridRow.DataGridView.Columns.Contains("Search Code") = True Then
+                    If mFilterGrid.Item(GFilter, 0).Value = "Item Wise Balance" Or
+                            mFilterGrid.Item(GFilter, 0).Value = "Item Wise Status" Then
+                        ClsMain.FOpenForm(mGridRow.Cells("Search Code").Value, ReportFrm)
+                        ReportFrm.FiterGridCopy_Arr.RemoveAt(ReportFrm.FiterGridCopy_Arr.Count - 1)
+                        Exit Sub
+                    End If
+                Else
+                    Exit Sub
+                End If
+            End If
+
+            mCondStr = " Where VT.NCat In ('" & Ncat.SaleChallan & "') "
+            mCondStr = mCondStr & " AND H.Div_Code = '" & AgL.PubDivCode & "' "
+            mCondStr = mCondStr & " AND Date(H.V_Date) Between " & AgL.Chk_Date(CDate(ReportFrm.FGetText(1)).ToString("s")) & " And " & AgL.Chk_Date(CDate(ReportFrm.FGetText(2)).ToString("s")) & " "
+            mCondStr = mCondStr & ReportFrm.GetWhereCondition("H.SaleToParty", 3)
+            mCondStr = mCondStr & ReportFrm.GetWhereCondition("L.Item", 4)
+            mCondStr = mCondStr & Replace(ReportFrm.GetWhereCondition("H.Site_Code", 5), "''", "'")
+            mCondStr = mCondStr & ReportFrm.GetWhereCondition("H.V_Type", 6)
+            If ReportFrm.FGetText(7) = "Cash" Then
+                mCondStr = mCondStr & " AND BillToParty.Nature = 'Cash'"
+            ElseIf ReportFrm.FGetText(7) = "Credit" Then
+                mCondStr = mCondStr & " AND BillToParty.Nature <> 'Cash'"
+            End If
+            mCondStr = mCondStr & ReportFrm.GetWhereCondition("LTV.Agent", 8)
+            mCondStr = mCondStr & ReportFrm.GetWhereCondition("I.ItemGroup", 9)
+            mCondStr = mCondStr & ReportFrm.GetWhereCondition("I.ItemCategory", 10)
+            mCondStr = mCondStr & ReportFrm.GetWhereCondition("City.CityCode", 11)
+            mCondStr = mCondStr & ReportFrm.GetWhereCondition("City.State", 12)
+            mCondStr = mCondStr & ReportFrm.GetWhereCondition("L.SalesRepresentative", 13)
+            mCondStr = mCondStr & ReportFrm.GetWhereCondition("H.ResponsiblePerson", 14)
+
+            'If ReportFrm.FGetText(15) <> "All" Then
+            '    mTags = ReportFrm.FGetText(15).ToString.Split(",")
+            '    For J = 0 To mTags.Length - 1
+            '        mCondStr += " And CharIndex('+' || '" & mTags(J) & "',H.Tags) > 0 "
+            '    Next
+            'End If
+            'mCondStr = mCondStr & Replace(ReportFrm.GetWhereCondition("H.Div_Code", 16), "''", "'")
+
+            mQry = " SELECT L.DocID, L.Sr, H.V_Type, Vt.Description as VoucherType, Site.Name as Site, Div.Div_Name as Division,                    
+                    strftime('%d/%m/%Y', H.V_Date) As V_Date, H.V_Date As V_Date_ActualFormat,                    
+                    (Case When H.SaleToParty=H.BillToParty Then Party.Name Else BillToParty.Name || ' - ' || Party.Name End) As SaleToPartyName ,                                         
+                    H.V_Type || '-' || H.ManualRefNo as ChallanNo, H.ManualRefNo, Godown.Name as GodownName,
+                    I.Specification as ItemSpecification, I.Description As ItemDesc,IG.Description as ItemGroupDescription, 
+                    IC.Description as ItemCategoryDescription, L.Qty as NoOfBales, L.Qty, L.Amount,  IfNull(SI.BillQty,0) as BillQty, IfNull(SI.BillAmount,0) as BillAmount, SI.BillNo,                                                           
+                    (Case When L.Qty - IfNull(SI.BillQty,0) > 0  Then L.Qty - IfNull(SI.BillQty,0) Else 0 End) as BalanceQty,                                                            
+                    (Case When L.Amount - IfNull(SI.BillAmount,0) > 0  Then L.Amount - IfNull(SI.BillAmount,0) Else 0 End) as BalanceAmount                                                            
+                    FROM SaleInvoice H 
+                    Left Join SaleInvoiceDetail L On H.DocID = L.DocID 
+                    Left Join (
+                                select BL.SaleInvoice, BL.SaleInvoiceSr, Sum(BL.Qty) as BillQty, Sum(BL.Amount) as BillAmount, Max(BH.V_Type) || '-' || Max(BH.ManualRefNo) As BillNo
+                                From SaleInvoice BH With (NoLock)
+                                Left Join SaleInvoiceDetail BL With (NoLock) On BH.DocId = BL.DocID   
+                                LEFT JOIN Voucher_Type Vt On BH.V_Type = Vt.V_Type    
+                                Where VT.NCat In ('" & Ncat.SaleInvoice & "')                            
+                                Group By BL.SaleInvoice, BL.SaleInvoicesr
+                              ) SI On L.DocID = SI.SaleInvoice And L.Sr = SI.SaleInvoiceSr
+                    Left Join Item I On L.Item = I.Code 
+                    Left Join Item IG On I.ItemGroup = IG.Code
+                    Left Join Item IC On I.ItemCategory = IC.Code
+                    Left Join viewHelpSubgroup Party On H.SaleToParty = Party.Code 
+                    Left Join viewHelpSubgroup BillToParty On H.BillToParty = BillToParty.Code 
+                    Left Join Subgroup Godown On L.Godown = Godown.Subcode
+                    Left Join (Select SILTV.Subcode, Max(SILTV.Agent) as Agent From SubgroupSiteDivisionDetail SILTV  Group By SILTV.Subcode) as LTV On Party.code = LTV.Subcode                                                           
+                    LEFT JOIN Voucher_Type Vt On H.V_Type = Vt.V_Type     
+                    Left Join SiteMast Site On H.Site_Code = Site.Code
+                    Left Join Division Div On H.Div_Code = Div.Div_Code
+                    " & mCondStr
+
+
+            If ReportFrm.FGetText(0) = "Item Wise Balance" Then
+                mQry = " Select VMain.DocId As SearchCode, Max(VMain.Division) as Division, Max(Vmain.Site) as Site, Max(VMain.V_Date) As ChallanDate, Max(VMain.ChallanNo) As ChallanNo,
+                    Max(VMain.SaleToPartyName) As Party, Max(VMain.GodownName) As Godown, Max(Vmain.ItemDesc) as ItemDescription,  Max(VMain.Qty) as ChallanQty
+                    From (" & mQry & ") As VMain
+                    GROUP By VMain.DocId, VMain.Sr  "
+
+                mQry += "Having Max(VMain.BalanceQty) > 0 "
+
+                mQry += "Order By Max(VMain.V_Date_ActualFormat), Cast(Max(Replace(Vmain.ManualRefNo,'-','')) as Integer) "
+
+            ElseIf ReportFrm.FGetText(0) = "Item Wise Status" Then
+                mQry = " Select VMain.DocId As SearchCode, Max(VMain.Division) as Division, Max(Vmain.Site) as Site, Max(VMain.V_Date) As ChallanDate, Max(VMain.ChallanNo) As ChallanNo,
+                    Max(VMain.SaleToPartyName) As Party, Max(VMain.GodownName) As Godown, Max(Vmain.ItemDesc) as ItemDescription,  Max(VMain.Qty) as ChallanQty, Max(Vmain.BillQty) as InvoiceQty, Max(VMain.BalanceQty) as BalanceQty, Max(VMain.BillNo) as BillNo
+                    From (" & mQry & ") As VMain
+                    GROUP By VMain.DocId, VMain.Sr  
+                    Order By Max(VMain.V_Date_ActualFormat), Cast(Max(Replace(Vmain.ManualRefNo,'-','')) as Integer) "
+            End If
+
+
+
+            DsHeader = AgL.FillData(mQry, AgL.GCn)
+
+            If DsHeader.Tables(0).Rows.Count = 0 Then Err.Raise(1, , "No Records To Print!")
+
+            ReportFrm.Text = "Sale Challan Status - " + ReportFrm.FGetText(0)
+            ReportFrm.ClsRep = Me
+            ReportFrm.ReportProcName = "ProcSaleChallanStatus"
+
+            ReportFrm.ProcFillGrid(DsHeader)
+        Catch ex As Exception
+            MsgBox(ex.Message)
+            DsHeader = Nothing
+        End Try
+    End Sub
+
 
     Public Sub ProcSaleReport(Optional mFilterGrid As AgControls.AgDataGrid = Nothing,
                                 Optional mGridRow As DataGridViewRow = Nothing)
@@ -1295,13 +1450,13 @@ Public Class ClsReports
                     Order By Max(VMain.Division)"
             ElseIf ReportFrm.FGetText(0) = "Month Wise Summary" Then
                 If AgL.PubServerName = "" Then
-                    mQry = " Select strftime('%m-%Y',VMain.V_Date_ActualFormat) As SearchCode, strftime('%m-%Y',VMain.V_Date_ActualFormat) As [Month], 
+                    mQry = " Select strftime('%m-%Y',VMain.V_Date_ActualFormat) As SearchCode, strftime('%m-%Y',VMain.V_Date_ActualFormat) As [Month], Max(VMain.GodownName) AS GodownName,
                     Count(Distinct Vmain.DocID) as [Doc.Count],  Round(Sum(VMain.Qty),3) as Qty,
                     Sum(VMain.AmountExDiscount) as GoodsValue, Sum(VMain.Discount) as Discount, Sum(VMain.Addition) as Addition, Sum(VMain.SpecialDiscount) as SpecialDiscount, Sum(VMain.SpecialAddition) as SpecialAddition,
                     Sum(VMain.Amount) As Amount, Sum(VMain.Taxable_Amount) As [Taxable Amount], IfNull(Sum(VMain.TotalTax),0) As TaxAmount, Sum(VMain.Net_Amount) As [Net Amount]
                     From (" & mQry & ") As VMain
-                    GROUP By strftime('%m-%Y',VMain.V_Date_ActualFormat)  
-                    Order By strftime('%Y',VMain.V_Date_ActualFormat), strftime('%m',VMain.V_Date_ActualFormat)"
+                    GROUP By strftime('%m-%Y',VMain.V_Date_ActualFormat),VMain.GodownName  
+                    Order By strftime('%Y',VMain.V_Date_ActualFormat), strftime('%m',VMain.V_Date_ActualFormat), Max(VMain.GodownName)"
                 Else
                     mQry = " Select Substring(Convert(NVARCHAR, VMain.V_Date_ActualFormat,103),4,7) As SearchCode, Substring(Convert(NVARCHAR, VMain.V_Date_ActualFormat,103),4,7) As [Month], 
                     Count(Distinct Vmain.DocID) as [Doc.Count], 

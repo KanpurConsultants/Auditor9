@@ -17,12 +17,11 @@ Public Class FrmImportDataFromBranch
             If AgL.StrCmp(AgL.PubDBName, "SHADHVINEW") Or AgL.StrCmp(AgL.PubDBName, "SHADHVIKANPURB2") Or AgL.StrCmp(AgL.PubDBName, "SHADHVIjaunpur") Then
                 ProcImportStockIssueDataFromSqlite_Sadhvi()
             ElseIf AgL.StrCmp(AgL.PubDBName, "SHADHVINANDI")
-                ProcImportStockIssueDataFromSqlite_SadhviRetail()
+                'ProcImportStockIssueDataFromSqlite_SadhviRetail()
+                ProcImportStockIssueDataFromSqlite_Sadhvi()
             Else
                 ProcImportSaleInvoiceDataFromSqlite_Sadhvi()
             End If
-            'ElseIf ClsMain.FDivisionNameForCustomization(12) = "NANDI SAREES" Then
-            '    ProcImportStockIssueDataFromSqlite_SadhviRetail()
         ElseIf ClsMain.FDivisionNameForCustomization(18) = "SHRI PARWATI SAREE" Then
             ProcImportSaleInvoiceDataFromSqlite_Parwati()
         ElseIf ClsMain.FDivisionNameForCustomization(13) = "JAIN BROTHERS" Or
@@ -154,12 +153,22 @@ Public Class FrmImportDataFromBranch
             mQry = " Select H.*
                     From StockHead H "
             Dim DtHeaderSource As DataTable = AgL.FillData(mQry, Connection).Tables(0)
-
-            mQry = " Select H.V_Type, H.ManualRefNo, I.Description As ItemDesc,
+            If AgL.StrCmp(AgL.PubDBName, "SHADHVINANDI") Then
+                mQry = " Select H.V_Type, H.ManualRefNo, I.Description As ItemDesc, I.ItemGroup AS ItemGroupCode, I.ItemCategory AS ItemCategoryCode, I.SalesTaxPostingGroup AS SalesTaxGroupItem,
+                L.MRP*L.Qty AS Amount1, L.*
+                From StockHead H 
+                LEFT JOIN StockHeadDetail L ON H.DocID = L.DocID
+                LEFT JOIN Item I ON L.Item = I.Code "
+            Else
+                mQry = " Select H.V_Type, H.ManualRefNo, I.Description As ItemDesc,
                 L.*
                 From StockHead H 
                 LEFT JOIN StockHeadDetail L ON H.DocID = L.DocID
                 LEFT JOIN Item I ON L.Item = I.Code "
+            End If
+
+
+
             Dim DtLineDetailSource As DataTable = AgL.FillData(mQry, Connection).Tables(0)
 
             mQry = " Select * From PurchInvoice "
@@ -259,6 +268,8 @@ Public Class FrmImportDataFromBranch
                         For J = 0 To DtPurchInvoiceDetail_ForHeader.Rows.Count - 1
                             PurchInvoiceTable.Line_Sr = AgL.XNull(DtPurchInvoiceDetail_ForHeader.Rows(J)("Sr"))
                             PurchInvoiceTable.Line_ItemCode = AgL.XNull(DtPurchInvoiceDetail_ForHeader.Rows(J)("Item"))
+                            PurchInvoiceTable.Line_ItemGroupCode = AgL.XNull(DtPurchInvoiceDetail_ForHeader.Rows(J)("ItemGroupCode"))
+                            PurchInvoiceTable.Line_ItemCategoryCode = AgL.XNull(DtPurchInvoiceDetail_ForHeader.Rows(J)("ItemCategoryCode"))
                             PurchInvoiceTable.Line_ItemName = AgL.XNull(DtPurchInvoiceDetail_ForHeader.Rows(J)("ItemDesc"))
                             PurchInvoiceTable.Line_Specification = AgL.XNull(DtPurchInvoiceDetail_ForHeader.Rows(J)("Specification"))
                             PurchInvoiceTable.Line_SalesTaxGroupItem = AgL.XNull(DtPurchInvoiceDetail_ForHeader.Rows(J)("SalesTaxGroupItem"))
@@ -275,18 +286,50 @@ Public Class FrmImportDataFromBranch
                             PurchInvoiceTable.Line_OmsId = AgL.XNull(DtPurchInvoiceDetail_ForHeader.Rows(J)("DocId")) + AgL.XNull(DtPurchInvoiceDetail_ForHeader.Rows(J)("Sr"))
                             PurchInvoiceTable.Line_Rate = AgL.XNull(DtPurchInvoiceDetail_ForHeader.Rows(J)("Rate"))
 
-                            If AgL.VNull(AgL.Dman_Execute(" Select Rate From RateListDetail 
+                            If AgL.StrCmp(AgL.PubDBName, "SHADHVINANDI") Then
+                                PurchInvoiceTable.Line_MRP = AgL.XNull(DtPurchInvoiceDetail_ForHeader.Rows(J)("MRP"))
+                                PurchInvoiceTable.Line_Sale_Rate = AgL.XNull(DtPurchInvoiceDetail_ForHeader.Rows(J)("MRP"))
+
+                                If AgL.VNull(AgL.Dman_Execute(" Select Rate From RateListDetail 
                                 Where Code = '" & PurchInvoiceTable.Line_ItemCode & "'
-                                And RateType Is Null ", AgL.GCn).ExecuteScalar()) <> PurchInvoiceTable.Line_Rate Then
-                                mQry = " Update RateListDetail Set Rate = " & PurchInvoiceTable.Line_Rate & " 
+                                And RateType Is Null ", AgL.GCn).ExecuteScalar()) <> PurchInvoiceTable.Line_Sale_Rate Then
+
+                                    mQry = " Update RateListDetail Set Rate = " & PurchInvoiceTable.Line_Sale_Rate & " 
                                     Where Code = '" & PurchInvoiceTable.Line_ItemCode & "' 
                                     And RateType Is Null "
-                                AgL.Dman_ExecuteNonQry(mQry, AgL.GCn, AgL.ECmd)
+                                    AgL.Dman_ExecuteNonQry(mQry, AgL.GCn, AgL.ECmd)
 
-                                mQry = " Update Item Set Rate = " & PurchInvoiceTable.Line_Rate & " 
+                                    mQry = " Update Item Set Remark3 = IfNull(Remark3,'') || ' Last Rate=' || Rate || ' Last P_Rate =' || PurchaseRate || ' ;'
                                     Where Code = '" & PurchInvoiceTable.Line_ItemCode & "'"
-                                AgL.Dman_ExecuteNonQry(mQry, AgL.GCn, AgL.ECmd)
+                                    AgL.Dman_ExecuteNonQry(mQry, AgL.GCn, AgL.ECmd)
+
+                                    mQry = " Update Item Set Rate = " & PurchInvoiceTable.Line_Sale_Rate & ", PurchaseRate = " & PurchInvoiceTable.Line_Rate & " 
+                                    Where Code = '" & PurchInvoiceTable.Line_ItemCode & "'"
+                                    AgL.Dman_ExecuteNonQry(mQry, AgL.GCn, AgL.ECmd)
+
+                                    If AgL.StrCmp(AgL.PubDBName, "SHADHVINANDI") Then
+                                        mQry = " Update Barcode Set SaleRate = " & PurchInvoiceTable.Line_Sale_Rate & ", MRP = " & PurchInvoiceTable.Line_Sale_Rate & ", PurchaseRate = " & PurchInvoiceTable.Line_Rate & "    Where Item = '" & PurchInvoiceTable.Line_ItemCode & "'"
+                                        AgL.Dman_ExecuteNonQry(mQry, AgL.GCn, AgL.ECmd)
+                                    End If
+
+                                End If
+
+                            Else
+                                If AgL.VNull(AgL.Dman_Execute(" Select Rate From RateListDetail 
+                                Where Code = '" & PurchInvoiceTable.Line_ItemCode & "'
+                                And RateType Is Null ", AgL.GCn).ExecuteScalar()) <> PurchInvoiceTable.Line_Rate Then
+                                    mQry = " Update RateListDetail Set Rate = " & PurchInvoiceTable.Line_Rate & " 
+                                    Where Code = '" & PurchInvoiceTable.Line_ItemCode & "' 
+                                    And RateType Is Null "
+                                    AgL.Dman_ExecuteNonQry(mQry, AgL.GCn, AgL.ECmd)
+
+                                    mQry = " Update Item Set Rate = " & PurchInvoiceTable.Line_Rate & " 
+                                    Where Code = '" & PurchInvoiceTable.Line_ItemCode & "'"
+                                    AgL.Dman_ExecuteNonQry(mQry, AgL.GCn, AgL.ECmd)
+                                End If
+
                             End If
+
 
 
 
@@ -352,6 +395,18 @@ Public Class FrmImportDataFromBranch
                     End If
                 End If
             Next
+
+            If AgL.StrCmp(AgL.PubDBName, "SHADHVINANDI") Then
+                mQry = " SELECT H.* 
+                    FROM PurchInvoice H
+                    LEFT JOIN Barcode B ON B.GenDocID = H.DocID
+                    WHERE B.Code IS NULL  "
+                Dim DtPurchInvoiceList As DataTable = AgL.FillData(mQry, IIf(AgL.PubServerName = "", AgL.GCn, AgL.GcnRead)).Tables(0)
+
+                For I = 0 To DtPurchInvoiceList.Rows.Count - 1
+                    GenerateAndInsertBarcode(AgL.XNull(DtPurchInvoiceList.Rows(I)("DocID")), AgL.GCn, AgL.ECmd)
+                Next
+            End If
 
 
             AgL.ETrans.Commit()
@@ -2297,54 +2352,57 @@ Public Class FrmImportDataFromBranch
                             mQry = " Update Item Set Rate = " & PurchInvoiceTable.Line_Rate & " 
                                     Where Code = '" & PurchInvoiceTable.Line_ItemCode & "'"
                             AgL.Dman_ExecuteNonQry(mQry, AgL.GCn, AgL.ECmd)
+
+
                         End If
 
 
 
+
                         PurchInvoiceTable.Line_DiscountPer = 0
-                        PurchInvoiceTable.Line_DiscountAmount = 0
-                        PurchInvoiceTable.Line_AdditionalDiscountPer = 0
-                        PurchInvoiceTable.Line_AdditionalDiscountAmount = 0
-                        PurchInvoiceTable.Line_Amount = AgL.VNull(DtPurchInvoiceDetail_ForHeader.Rows(J)("Amount"))
-                        PurchInvoiceTable.Line_Remark = AgL.XNull(DtPurchInvoiceDetail_ForHeader.Rows(J)("Remark"))
-                        PurchInvoiceTable.Line_BaleNo = AgL.XNull(DtPurchInvoiceDetail_ForHeader.Rows(J)("BaleNo"))
-                        PurchInvoiceTable.Line_LotNo = AgL.XNull(DtPurchInvoiceDetail_ForHeader.Rows(J)("LotNo"))
-                        PurchInvoiceTable.Line_ReferenceDocId = ""
-                        PurchInvoiceTable.Line_Gross_Amount = AgL.VNull(DtPurchInvoiceDetail_ForHeader.Rows(J)("Gross_Amount"))
-                        PurchInvoiceTable.Line_Taxable_Amount = AgL.VNull(DtPurchInvoiceDetail_ForHeader.Rows(J)("Taxable_Amount"))
-                        PurchInvoiceTable.Line_Tax1_Per = AgL.VNull(DtPurchInvoiceDetail_ForHeader.Rows(J)("Tax1_Per"))
-                        PurchInvoiceTable.Line_Tax1 = AgL.VNull(DtPurchInvoiceDetail_ForHeader.Rows(J)("Tax1"))
-                        PurchInvoiceTable.Line_Tax2_Per = AgL.VNull(DtPurchInvoiceDetail_ForHeader.Rows(J)("Tax2_Per"))
-                        PurchInvoiceTable.Line_Tax2 = AgL.VNull(DtPurchInvoiceDetail_ForHeader.Rows(J)("Tax2"))
-                        PurchInvoiceTable.Line_Tax3_Per = AgL.VNull(DtPurchInvoiceDetail_ForHeader.Rows(J)("Tax3_Per"))
-                        PurchInvoiceTable.Line_Tax3 = AgL.VNull(DtPurchInvoiceDetail_ForHeader.Rows(J)("Tax3"))
-                        PurchInvoiceTable.Line_Tax4_Per = AgL.VNull(DtPurchInvoiceDetail_ForHeader.Rows(J)("Tax4_Per"))
-                        PurchInvoiceTable.Line_Tax4 = AgL.VNull(DtPurchInvoiceDetail_ForHeader.Rows(J)("Tax4"))
-                        PurchInvoiceTable.Line_Tax5_Per = AgL.VNull(DtPurchInvoiceDetail_ForHeader.Rows(J)("Tax5_Per"))
-                        PurchInvoiceTable.Line_Tax5 = AgL.VNull(DtPurchInvoiceDetail_ForHeader.Rows(J)("Tax5"))
-                        PurchInvoiceTable.Line_SubTotal1 = AgL.VNull(DtPurchInvoiceDetail_ForHeader.Rows(J)("SubTotal1"))
-                        PurchInvoiceTable.Line_Other_Charge = AgL.VNull(DtPurchInvoiceDetail_ForHeader.Rows(J)("Other_Charge"))
-                        PurchInvoiceTable.Line_Deduction = AgL.VNull(DtPurchInvoiceDetail_ForHeader.Rows(J)("Deduction"))
-                        PurchInvoiceTable.Line_Round_Off = AgL.VNull(DtPurchInvoiceDetail_ForHeader.Rows(J)("Round_Off"))
-                        PurchInvoiceTable.Line_Net_Amount = AgL.VNull(DtPurchInvoiceDetail_ForHeader.Rows(J)("Net_Amount"))
+                                PurchInvoiceTable.Line_DiscountAmount = 0
+                                PurchInvoiceTable.Line_AdditionalDiscountPer = 0
+                                PurchInvoiceTable.Line_AdditionalDiscountAmount = 0
+                                PurchInvoiceTable.Line_Amount = AgL.VNull(DtPurchInvoiceDetail_ForHeader.Rows(J)("Amount"))
+                                PurchInvoiceTable.Line_Remark = AgL.XNull(DtPurchInvoiceDetail_ForHeader.Rows(J)("Remark"))
+                                PurchInvoiceTable.Line_BaleNo = AgL.XNull(DtPurchInvoiceDetail_ForHeader.Rows(J)("BaleNo"))
+                                PurchInvoiceTable.Line_LotNo = AgL.XNull(DtPurchInvoiceDetail_ForHeader.Rows(J)("LotNo"))
+                                PurchInvoiceTable.Line_ReferenceDocId = ""
+                                PurchInvoiceTable.Line_Gross_Amount = AgL.VNull(DtPurchInvoiceDetail_ForHeader.Rows(J)("Gross_Amount"))
+                                PurchInvoiceTable.Line_Taxable_Amount = AgL.VNull(DtPurchInvoiceDetail_ForHeader.Rows(J)("Taxable_Amount"))
+                                PurchInvoiceTable.Line_Tax1_Per = AgL.VNull(DtPurchInvoiceDetail_ForHeader.Rows(J)("Tax1_Per"))
+                                PurchInvoiceTable.Line_Tax1 = AgL.VNull(DtPurchInvoiceDetail_ForHeader.Rows(J)("Tax1"))
+                                PurchInvoiceTable.Line_Tax2_Per = AgL.VNull(DtPurchInvoiceDetail_ForHeader.Rows(J)("Tax2_Per"))
+                                PurchInvoiceTable.Line_Tax2 = AgL.VNull(DtPurchInvoiceDetail_ForHeader.Rows(J)("Tax2"))
+                                PurchInvoiceTable.Line_Tax3_Per = AgL.VNull(DtPurchInvoiceDetail_ForHeader.Rows(J)("Tax3_Per"))
+                                PurchInvoiceTable.Line_Tax3 = AgL.VNull(DtPurchInvoiceDetail_ForHeader.Rows(J)("Tax3"))
+                                PurchInvoiceTable.Line_Tax4_Per = AgL.VNull(DtPurchInvoiceDetail_ForHeader.Rows(J)("Tax4_Per"))
+                                PurchInvoiceTable.Line_Tax4 = AgL.VNull(DtPurchInvoiceDetail_ForHeader.Rows(J)("Tax4"))
+                                PurchInvoiceTable.Line_Tax5_Per = AgL.VNull(DtPurchInvoiceDetail_ForHeader.Rows(J)("Tax5_Per"))
+                                PurchInvoiceTable.Line_Tax5 = AgL.VNull(DtPurchInvoiceDetail_ForHeader.Rows(J)("Tax5"))
+                                PurchInvoiceTable.Line_SubTotal1 = AgL.VNull(DtPurchInvoiceDetail_ForHeader.Rows(J)("SubTotal1"))
+                                PurchInvoiceTable.Line_Other_Charge = AgL.VNull(DtPurchInvoiceDetail_ForHeader.Rows(J)("Other_Charge"))
+                                PurchInvoiceTable.Line_Deduction = AgL.VNull(DtPurchInvoiceDetail_ForHeader.Rows(J)("Deduction"))
+                                PurchInvoiceTable.Line_Round_Off = AgL.VNull(DtPurchInvoiceDetail_ForHeader.Rows(J)("Round_Off"))
+                                PurchInvoiceTable.Line_Net_Amount = AgL.VNull(DtPurchInvoiceDetail_ForHeader.Rows(J)("Net_Amount"))
 
 
-                        'For Header Values
-                        Tot_Gross_Amount += PurchInvoiceTable.Line_Gross_Amount
-                        Tot_Taxable_Amount += PurchInvoiceTable.Line_Taxable_Amount
-                        Tot_Tax1 += PurchInvoiceTable.Line_Tax1
-                        Tot_Tax2 += PurchInvoiceTable.Line_Tax2
-                        Tot_Tax3 += PurchInvoiceTable.Line_Tax3
-                        Tot_Tax4 += PurchInvoiceTable.Line_Tax4
-                        Tot_Tax5 += PurchInvoiceTable.Line_Tax5
-                        Tot_SubTotal1 += PurchInvoiceTable.Line_SubTotal1
+                                'For Header Values
+                                Tot_Gross_Amount += PurchInvoiceTable.Line_Gross_Amount
+                                Tot_Taxable_Amount += PurchInvoiceTable.Line_Taxable_Amount
+                                Tot_Tax1 += PurchInvoiceTable.Line_Tax1
+                                Tot_Tax2 += PurchInvoiceTable.Line_Tax2
+                                Tot_Tax3 += PurchInvoiceTable.Line_Tax3
+                                Tot_Tax4 += PurchInvoiceTable.Line_Tax4
+                                Tot_Tax5 += PurchInvoiceTable.Line_Tax5
+                                Tot_SubTotal1 += PurchInvoiceTable.Line_SubTotal1
 
 
-                        PurchInvoiceTableList(UBound(PurchInvoiceTableList)) = PurchInvoiceTable
-                        ReDim Preserve PurchInvoiceTableList(UBound(PurchInvoiceTableList) + 1)
-                    Next
+                                PurchInvoiceTableList(UBound(PurchInvoiceTableList)) = PurchInvoiceTable
+                                ReDim Preserve PurchInvoiceTableList(UBound(PurchInvoiceTableList) + 1)
+                            Next
 
-                    PurchInvoiceTableList(0).Gross_Amount = Tot_Gross_Amount
+                            PurchInvoiceTableList(0).Gross_Amount = Tot_Gross_Amount
                     PurchInvoiceTableList(0).Taxable_Amount = Tot_Taxable_Amount
                     PurchInvoiceTableList(0).Tax1 = Tot_Tax1
                     PurchInvoiceTableList(0).Tax2 = Tot_Tax2

@@ -33,6 +33,7 @@ Public Class ClsReportProcedures
 #End Region
 
 #Region "Reports Constant"
+    Private Const SaleCertificates As String = "SaleCertificates"
     Private Const SaleOrderRegister As String = "SaleOrderRegister"
     Private Const SaleChallanReport As String = "SaleChallanReport"
     Private Const SaleInvoiceReport As String = "SaleInvoiceReport"
@@ -152,6 +153,20 @@ Public Class ClsReportProcedures
                     ReportFrm.CreateHelpGrid("VoucherType", "Voucher Type", AgLibrary.FrmReportLayout.FieldFilterDataType.StringType, AgLibrary.FrmReportLayout.FieldDataType.MultiSelection, FGetVoucher_TypeQry("SaleInvoice"))
                     ReportFrm.CreateHelpGrid("CashCredit", "Cash/Credit", AgLibrary.FrmReportLayout.FieldFilterDataType.StringType, AgLibrary.FrmReportLayout.FieldDataType.SingleSelection, "Select 'Cash' as Code, 'Cash' as Name Union All Select 'Credit' as Code, 'Credit' as Name Union All Select 'Both' as Code, 'Both' as Name", "Both")
                     ReportFrm.CreateHelpGrid("Agent", "Agent", AgLibrary.FrmReportLayout.FieldFilterDataType.StringType, AgLibrary.FrmReportLayout.FieldDataType.SingleSelection, mHelpAgentQry)
+
+                Case SaleCertificates
+                    mQry = "Select 'Form 21' as Code, 'Form 21' as Name                          
+                            "
+                    ReportFrm.CreateHelpGrid("Report Type", "Report Type", AgLibrary.FrmReportLayout.FieldFilterDataType.StringType, AgLibrary.FrmReportLayout.FieldDataType.SingleSelection, mQry, "Form 21")
+                    ReportFrm.CreateHelpGrid("FromDate", "From Date", AgLibrary.FrmReportLayout.FieldFilterDataType.StringType, AgLibrary.FrmReportLayout.FieldDataType.DateType, "", AgL.PubStartDate)
+                    ReportFrm.CreateHelpGrid("ToDate", "To Date", AgLibrary.FrmReportLayout.FieldFilterDataType.StringType, AgLibrary.FrmReportLayout.FieldDataType.DateType, "", AgL.PubEndDate)
+                    ReportFrm.CreateHelpGrid("Site", "Site", AgLibrary.FrmReportLayout.FieldFilterDataType.StringType, AgLibrary.FrmReportLayout.FieldDataType.MultiSelection, mHelpSiteQry)
+                    ReportFrm.CreateHelpGrid("VoucherType", "Voucher Type", AgLibrary.FrmReportLayout.FieldFilterDataType.StringType, AgLibrary.FrmReportLayout.FieldDataType.MultiSelection, FGetVoucher_TypeQry("SaleInvoice"))
+                    ReportFrm.CreateHelpGrid("Party", "Party", AgLibrary.FrmReportLayout.FieldFilterDataType.StringType, AgLibrary.FrmReportLayout.FieldDataType.MultiSelection, mHelpPartyQry)
+                    ReportFrm.CreateHelpGrid("SaleInvoice", "Invoice No", AgLibrary.FrmReportLayout.FieldFilterDataType.StringType, AgLibrary.FrmReportLayout.FieldDataType.MultiSelection, FGetSaleInvoiceQry("SI"))
+
+
+
 
 
                 Case SizeWiseSaleInvoiceReport
@@ -482,6 +497,14 @@ Public Class ClsReportProcedures
                                 " LEFT JOIN Voucher_Type Vt ON H.V_Type = Vt.V_Type "
     End Function
 
+    Private Function FGetSaleInvoiceQry(ByVal NCat As String) As String
+        FGetSaleInvoiceQry = " SELECT Distinct 'o' As Tick, H.DocID AS Code, VT.Short_Name || '-'|| H.V_Prefix||'-'||H.ManualRefNo AS [Invoice No] " &
+                             " FROM SaleInvoice H 
+                               LEFT JOIN Voucher_Type VT ON VT.V_Type = H.V_Type
+                               LEFT JOIN SiteMast SI ON SI.Code = H.Site_Code 
+                               WHERE VT.NCat ='" & NCat & "' AND H.Site_Code = '" & AgL.PubSiteCode & "' AND H.Div_Code = '" & AgL.PubDivCode & "' "
+    End Function
+
     Private Sub ObjRepFormGlobal_ProcessReport() Handles ReportFrm.ProcessReport
         Select Case mGRepFormName
             Case SaleChallanReport
@@ -490,6 +513,8 @@ Public Class ClsReportProcedures
             Case SaleOrderRegister
                 ProcSaleOrderRegister()
 
+            Case SaleCertificates
+                ProcSaleCertificate()
             Case SaleInvoiceReport
                 ProcSaleReportOld("SaleInvoice", "SaleInvoiceDetail")
 
@@ -1166,6 +1191,59 @@ Public Class ClsReportProcedures
                     I.Specification as ItemSpecification, I.Description As ItemDesc,IG.Description as ItemGroupName, IC.Description as ItemCategoryDescription,  
                     Cast((Case When L.DiscountPer = 0 Then '' else L.DiscountPer End) as nVarchar) || (Case When L.AdditionalDiscountPer>0 Then '+' else '' End) || Cast((Case When L.AdditionalDiscountPer=0 Then '' else L.AdditionalDiscountPer End) as nVarchar) as DiscountPer, L.DiscountAmount + L.AdditionalDiscountAmount as Discount, L.Taxable_Amount, L.Net_Amount, L.Qty, L.Unit, L.Rate, L.Amount -(L.DiscountAmount + L.AdditionalDiscountAmount) as AmountExDiscount,
                     L.Tax1+L.Tax2+L.Tax3+L.Tax4+L.Tax5 as TotalTax
+                    FROM SaleInvoice H 
+                    Left Join SaleInvoiceDetail L On H.DocID = L.DocID 
+                    Left Join Item I On L.Item = I.Code 
+                    Left Join ItemGroup IG On I.ItemGroup = IG.Code
+                    Left Join ItemCategory IC On I.ItemCategory = IC.Code
+                    Left Join viewHelpSubgroup Party On H.SaleToParty = Party.Code 
+                    Left Join viewHelpSubGroup Agent On H.Agent = Agent.Code 
+                    Left Join City On H.SaleToPartyCity = City.CityCode 
+                    Left Join State On City.State = State.Code
+                    LEFT JOIN Voucher_Type Vt On H.V_Type = Vt.V_Type " & mCondStr & OrderByStr
+            DsRep = AgL.FillData(mQry, AgL.GCn)
+
+            If DsRep.Tables(0).Rows.Count = 0 Then Err.Raise(1, , "No Records To Print!")
+
+            ReportFrm.PrintReport(DsRep, RepName, RepTitle)
+        Catch ex As Exception
+            MsgBox(ex.Message)
+            DsRep = Nothing
+        End Try
+    End Sub
+#End Region
+
+#Region "Sale Certificate"
+    Private Sub ProcSaleCertificate()
+        Try
+
+
+            If ReportFrm.FGetText(0) = "Form 21" Then
+                RepName = "SalesCertificate_Form21" : RepTitle = "Form 21"
+            End If
+
+            Dim mCondStr$ = ""
+
+
+            mCondStr = " Where 1 = 1 "
+
+
+
+            mCondStr = mCondStr & " AND Date(H.V_Date) Between " & AgL.Chk_Date(CDate(ReportFrm.FGetText(1)).ToString("s")) & " And " & AgL.Chk_Date(CDate(ReportFrm.FGetText(2)).ToString("s")) & " "
+            mCondStr = mCondStr & ReportFrm.GetWhereCondition("H.Site_Code", 3)
+            mCondStr = mCondStr & ReportFrm.GetWhereCondition("H.V_Type", 4)
+            mCondStr = mCondStr & ReportFrm.GetWhereCondition("H.BillToParty", 5)
+            mCondStr = mCondStr & ReportFrm.GetWhereCondition("H.DocId", 6)
+
+
+
+
+            mQry = "Select  H.DocID, H.V_Date, Agent.Name As AgentName , 
+                    Party.Name As SaleToPartyName , Party.Address As SaleToPartyAddress , Party.Mobile As SaleToPartyMobile ,                     
+                    H.Div_Code || H.Site_Code || '-' || H.V_Type || '-' || H.ManualRefNo as InvoiceNo, H.ManualRefNo, 
+                    I.Specification as ItemSpecification, I.Description As ItemDesc,IG.Description as ItemGroupName, IC.Description as ItemCategoryDescription,  
+                    Cast((Case When L.DiscountPer = 0 Then '' else L.DiscountPer End) as nVarchar) || (Case When L.AdditionalDiscountPer>0 Then '+' else '' End) || Cast((Case When L.AdditionalDiscountPer=0 Then '' else L.AdditionalDiscountPer End) as nVarchar) as DiscountPer, L.DiscountAmount + L.AdditionalDiscountAmount as Discount, L.Taxable_Amount, L.Net_Amount, L.Qty, L.Unit, L.Rate, L.Amount -(L.DiscountAmount + L.AdditionalDiscountAmount) as AmountExDiscount,
+                    L.Remark,L.Remarks1,L.Remarks2,L.Remarks3,L.Remarks4, L.Tax1+L.Tax2+L.Tax3+L.Tax4+L.Tax5 as TotalTax
                     FROM SaleInvoice H 
                     Left Join SaleInvoiceDetail L On H.DocID = L.DocID 
                     Left Join Item I On L.Item = I.Code 

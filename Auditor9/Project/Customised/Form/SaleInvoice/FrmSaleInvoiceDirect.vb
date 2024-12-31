@@ -9806,7 +9806,8 @@ Public Class FrmSaleInvoiceDirect
                 Replace("<AgentName>", AgL.XNull(DtDocData.Rows(0)("AgentName"))).
                 Replace("<NetAmount>", Format(AgL.VNull(DtDocData.Rows(0)("Net_Amount")), "0.00")).
                 Replace("&", "And")
-        IsSuccess = FSendWhatsappMessage(ToMobileNo, ToMessage, "PDF", "https://fixkaro.co.in/styam/13411.pdf")
+        'IsSuccess = FSendWhatsappMessage(ToMobileNo, ToMessage, "PDF", "https://fixkaro.co.in/styam/13411.pdf")
+        IsSuccess = FSendWhatsappMessage(ToMobileNo, ToMessage, "PDF", "https://equal2.in/sadhvi/13413.pdf")
     End Sub
     Private Function GetFieldAliasName(bImportFor As ImportFor, bFieldName As String)
         Dim bAliasName As String = bFieldName

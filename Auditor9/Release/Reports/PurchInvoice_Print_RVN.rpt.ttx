@@ -3,53 +3,53 @@ Copies	string	255	1
 CopyPrintingCaption	string	255		
 DocNoCaption	string	255	Invoice No.	
 DocDateCaption	string	255	Invoice Date	
-DocID	string	255	D1    PI 2024      74	
+DocID	string	255	D1    PI 2024      78	
 SiteStateCode	string	255	09	
 SiteStateName	string	255	Uttar Pradesh	
 Sr	number	1	
-V_Date	datetime	11/Nov/2024 00:00:00	
+V_Date	datetime	02/Dec/2024 00:00:00	
 Voucher_Type	string	255	Purchase Invoice	
 NCat	string	255	PI	
-DocNo	string	255	D1-PI-74	
+DocNo	string	255	D1-PI-78	
 AgentName	string	255		
 AgentCaption	string	255	Agent	
-PartyName	string	255	ADITYA PRAKASH (CAMERA MAN)	
-PartyAddress	string	255		
-PartyPinCode	string	255		
-PartyCityName	string	255	LUCKNOW	
-PartyStateCode	string	255	09	
-PartyStateName	string	255	Uttar Pradesh	
+PartyName	string	255	MAA LUXMI E-VEHICLES PVT LTD	
+PartyAddress	string	255	HISAR ROAD,SIRSA	
+PartyPinCode	string	255	125055	
+PartyCityName	string	255	SIRSA	
+PartyStateCode	string	255	06	
+PartyStateName	string	255	Haryana	
 PartyMobile	string	255		
 ContactPerson	string	255		
-PartySalesTaxNo	string	255		
+PartySalesTaxNo	string	255	06AANCM0950F1ZK	
 PartyAadharNo	string	255		
-PartyPanNo	string	255		
-ShipToPartyName	string	255	ADITYA PRAKASH (CAMERA MAN)	
-ShipToPartyAddress	string	255		
-ShipToPartyCity	string	255	LUCKNOW	
-ShipToPartyPincode	string	255		
-ShipToPartyStateCode	string	255	09	
-ShipToPartyStateName	string	255	Uttar Pradesh	
+PartyPanNo	string	255	AANCM0950F	
+ShipToPartyName	string	255	MAA LUXMI E-VEHICLES PVT LTD	
+ShipToPartyAddress	string	255	HISAR ROAD,SIRSA	
+ShipToPartyCity	string	255	SIRSA	
+ShipToPartyPincode	string	255	125055	
+ShipToPartyStateCode	string	255	06	
+ShipToPartyStateName	string	255	Haryana	
 ShipToPartyMobile	string	255		
-ShipToPartySalesTaxNo	string	255		
+ShipToPartySalesTaxNo	string	255	06AANCM0950F1ZK	
 ShipToPartyAadharNo	string	255		
 ShipToPartyPanNo	string	255		
-TransporterName	string	255		
-LrNo	string	255		
+TransporterName	string	255	BY ROAD, KANPUR	
+LrNo	string	255	GJ01DY8738	
 LrDate	datetime		
 PrivateMark	string	255		
-Weight	number		
-Freight	number		
+Weight	number	0	
+Freight	number	0	
 FreightType	string	255		
 RoadPermitNo	string	255		
 RoadPermitDate	datetime		
 ReferenceNo	string	255		
-ItemName	string	255	AIR SWITCH - YAKUZA SPARES - EV SPARES	
-ItemGroupName	string	255	YAKUZA SPARES	
-ItemCatName	string	255	EV SPARES	
-ItemSpecification	string	255	AIR SWITCH	
-InvoiceLineSpecification	string	255	AIR SWITCH	
-HSN	string	255	87142090	
+ItemName	string	255	RUBIE 60 V BLACK - YAKUZA - EV	
+ItemGroupName	string	255	YAKUZA	
+ItemCatName	string	255	EV	
+ItemSpecification	string	255	RUBIE 60 V BLACK	
+InvoiceLineSpecification	string	255	RUBIE 60 V BLACK	
+HSN	string	255	871190	
 D1Spec	string	255		
 D2Spec	string	255		
 D3Spec	string	255		
@@ -64,15 +64,15 @@ D1Caption	string	255	Design
 D2Caption	string	255	Shade	
 D3Caption	string	255		
 D4Caption	string	255		
-SalesTaxGroupItem	string	255	GST 28%	
-GrossTaxRate	number	28	
+SalesTaxGroupItem	string	255	GST 5%	
+GrossTaxRate	number	5	
 Pcs	number	0	
-Qty	number	10	
-DocQty	number	10	
+Qty	number	6	
+DocQty	number	6	
 FreeQty	number	0	
 LossQty	number	0	
 RejQty	number	0	
-Rate	number	101.56	
+Rate	number	31428.57	
 Unit	string	255	Pcs	
 UnitDecimalPlaces	number	0	
 DiscountPer	number	0	
@@ -80,11 +80,11 @@ DiscountAmount	number	0
 AdditionalDiscountPer	number	0	
 AdditionalDiscountAmount	number	0	
 TotalDiscount	number	0	
-AmountBeforeDiscount	number	1015.6	
-Amount	number	1015.6	
-Taxable_Amount	number	1015.6	
-Tax1_Per	number	0	
-Tax1	number	0	
+AmountBeforeDiscount	number	188571.42	
+Amount	number	188571.42	
+Taxable_Amount	number	188571.42	
+Tax1_Per	number	5	
+Tax1	number	9428.57	
 Tax2_Per	number	0	
 Tax2	number	0	
 Tax3_Per	number	0	
@@ -92,17 +92,19 @@ Tax3	number	0
 Tax4_Per	number	0	
 Tax4	number	0	
 Tax5_Per	number	0	
-Tax5	number	0	
-Net_Amount	number	1016	
+Tax5	number	345.53	
+Net_Amount	number	198494.1	
 HRemarks	string	255		
 LRemarks	string	255		
-GodownName	string	255	TVS AKBARPUR	
-H_Gross_Amount	number	1015.6	
+GodownName	string	255	YAKUZA ACHRYA NAGAR	
+FromGodownName	string	255		
+ToGodownName	string	255		
+H_Gross_Amount	number	1457142.8	
 H_SpecialDiscount_Per	number	0	
 H_SpecialDiscount	number	0	
-H_Taxable_Amount	number	1015.6	
+H_Taxable_Amount	number	1457142.8	
 H_Tax1_Per	number	0	
-H_Tax1	number	0	
+H_Tax1	number	72857.14	
 H_Tax2_Per	number	0	
 H_Tax2	number	0	
 H_Tax3_Per	number	0	
@@ -110,15 +112,15 @@ H_Tax3	number	0
 H_Tax4_Per	number	0	
 H_Tax4	number	0	
 H_Tax5_Per	number	0	
-H_Tax5	number	0	
+H_Tax5	number	2670	
 H_Deduction_Per	number	0	
 H_Deduction	number	0	
 H_Other_Charge_Per	number	0	
-H_Other_Charge	number	0	
-Round_Off	number	0.4	
-H_Net_Amount	number	1016	
+H_Other_Charge	number	1148	
+Round_Off	number	0.06	
+H_Net_Amount	number	1533818	
 H_TotalDiscount	number	0	
-H_AmountBeforeDiscount	number	1015.6	
+H_AmountBeforeDiscount	number	1457142.8	
 Default_BankAccountDetail	string	255	<B> Bank Detail :- <BR> HDFC : 99915400000007  IFSC : HDFC0009597 <BR>	
 DocumentPrintHeaderPattern	string	255	Center Aligned	
 DimDetail	string	255		

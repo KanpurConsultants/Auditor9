@@ -2875,8 +2875,6 @@ Public Class FrmStockEntry
                     End If
 
 
-
-
                     'If Dgl2.Item(Col1Mandatory, I).Value <> "" And (Dgl2.Item(Col1Value, I).Value = "" Or
                     '     Dgl2.Item(Col1Value, I).Value Is Nothing) Then
                     '    MsgBox(Dgl2.Item(Col1Head, I).Value & " is blank...!", MsgBoxStyle.Information)
@@ -2920,6 +2918,10 @@ Public Class FrmStockEntry
         AgL.Dman_ExecuteNonQry(mQry, AgL.GCn)
 
 
+
+
+
+
         With Dgl1
             For I = 0 To .Rows.Count - 1
                 If .Item(Col1SKU, I).Value <> "" And Dgl1.Rows(I).Visible Then
@@ -2940,6 +2942,31 @@ Public Class FrmStockEntry
                         .CurrentCell = .Item(Col1Qty, I) : Dgl1.Focus()
                         passed = False : Exit Sub
                     End If
+
+                    If AgL.StrCmp(AgL.PubDBName, "Sadhvi") Then
+                        If DglMain.Item(Col1Value, rowParty).Tag = "D100027005" Or DglMain.Item(Col1Value, rowParty).Tag = "D100027015" Then
+                            mQry = "SELECT isnull(V.MRP,0) AS LastMRP
+                                    FROM 
+                                    (
+                                    SELECT Row_Number() OVER (ORDER BY SH.V_Date DESC , SHD.DocID DESC , SHD.Sr DESC ) AS SrNo, SHD.* 
+                                    FROM StockHead SH WITH (Nolock)
+                                    LEFT JOIN Stockheaddetail SHD WITH (Nolock) ON SHD.DocID = SH.DocID 
+                                    WHERE SH.V_Type = 'ISS' AND SH.SubCode ='" & DglMain.Item(Col1Value, rowParty).Tag & "'  AND SHD.Item = '" & Dgl1.Item(Col1Item, I).Tag & "'
+                                    ) V WHERE V.SrNo =1 "
+                            Dim LastMRP As Decimal = 0
+                            LastMRP = AgL.VNull(AgL.Dman_Execute(mQry, AgL.GcnRead).ExecuteScalar)
+                            If LastMRP <> Val(Dgl1.Item(Col1MRP, I).Value) Then
+                                If MsgBox("MRP At Row No " & .Item(ColSNo, I).Value & " is Not Equal to Last MRP of Item.Do You Want To Continue ?", MsgBoxStyle.Information + MsgBoxStyle.YesNo) = MsgBoxResult.No Then
+                                    .CurrentCell = .Item(Col1MRP, I) : Dgl1.Focus()
+                                    passed = False : Exit Sub
+                                Else
+
+                                End If
+                            End If
+
+                        End If
+                    End If
+
                 End If
 
                 If AgL.XNull(Dgl1.Item(Col1ReferenceDocId, I).Tag) = "" Then

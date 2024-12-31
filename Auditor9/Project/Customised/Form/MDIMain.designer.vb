@@ -160,6 +160,7 @@ Partial Class MDIMain
         Me.MnuSale = New System.Windows.Forms.ToolStripMenuItem()
         Me.MnuSalesEnquiry = New System.Windows.Forms.ToolStripMenuItem()
         Me.MnuSalesOrder = New System.Windows.Forms.ToolStripMenuItem()
+        Me.MnuSaleChallan = New System.Windows.Forms.ToolStripMenuItem()
         Me.MnuSalesEntry = New System.Windows.Forms.ToolStripMenuItem()
         Me.MnuSalesEntryRetail = New System.Windows.Forms.ToolStripMenuItem()
         Me.MnuSaleEntryOverlay = New System.Windows.Forms.ToolStripMenuItem()
@@ -180,6 +181,7 @@ Partial Class MDIMain
         Me.MnuRateListReport = New System.Windows.Forms.ToolStripMenuItem()
         Me.MnuSaleOrderReport = New System.Windows.Forms.ToolStripMenuItem()
         Me.MnuSaleOrderRegister = New System.Windows.Forms.ToolStripMenuItem()
+        Me.MnuSaleChallanStatus = New System.Windows.Forms.ToolStripMenuItem()
         Me.MnuSaleOrderStatus = New System.Windows.Forms.ToolStripMenuItem()
         Me.MnuSalesRepCommissionReport = New System.Windows.Forms.ToolStripMenuItem()
         Me.MnuSaleSummary = New System.Windows.Forms.ToolStripMenuItem()
@@ -325,7 +327,7 @@ Partial Class MDIMain
         Me.MnuPrintCheque = New System.Windows.Forms.ToolStripMenuItem()
         Me.MnuBank = New System.Windows.Forms.ToolStripMenuItem()
         Me.MnuChequePrinting = New System.Windows.Forms.ToolStripMenuItem()
-        Me.MnuSaleChallan = New System.Windows.Forms.ToolStripMenuItem()
+        Me.MnuSaleCertificate = New System.Windows.Forms.ToolStripMenuItem()
         Me.MnuMain.SuspendLayout()
         Me.SuspendLayout()
         '
@@ -1328,6 +1330,12 @@ Partial Class MDIMain
         Me.MnuSalesOrder.Size = New System.Drawing.Size(208, 22)
         Me.MnuSalesOrder.Text = "Sales Order"
         '
+        'MnuSaleChallan
+        '
+        Me.MnuSaleChallan.Name = "MnuSaleChallan"
+        Me.MnuSaleChallan.Size = New System.Drawing.Size(208, 22)
+        Me.MnuSaleChallan.Text = "Sale Challan"
+        '
         'MnuSalesEntry
         '
         Me.MnuSalesEntry.AccessibleDescription = ""
@@ -1419,7 +1427,7 @@ Partial Class MDIMain
         '
         'MnuSaleReports
         '
-        Me.MnuSaleReports.DropDownItems.AddRange(New System.Windows.Forms.ToolStripItem() {Me.MnuSaleInvoiceReport, Me.MnuSalesAgentCommissionOnPayment, Me.MnuSalesRepresentativeCommissionOnPayment, Me.MnuRateListReport, Me.MnuSaleOrderReport, Me.MnuSaleOrderRegister, Me.MnuSaleOrderStatus, Me.MnuSalesRepCommissionReport, Me.MnuSaleSummary, Me.MnuBarcodeHistory, Me.MnuPartyNotTransactedReport, Me.MnuCashCustomerReport, Me.MnuCashCustomerOutstandingReport})
+        Me.MnuSaleReports.DropDownItems.AddRange(New System.Windows.Forms.ToolStripItem() {Me.MnuSaleInvoiceReport, Me.MnuSalesAgentCommissionOnPayment, Me.MnuSalesRepresentativeCommissionOnPayment, Me.MnuRateListReport, Me.MnuSaleOrderReport, Me.MnuSaleOrderRegister, Me.MnuSaleChallanStatus, Me.MnuSaleOrderStatus, Me.MnuSalesRepCommissionReport, Me.MnuSaleSummary, Me.MnuBarcodeHistory, Me.MnuPartyNotTransactedReport, Me.MnuCashCustomerReport, Me.MnuCashCustomerOutstandingReport, Me.MnuSaleCertificate})
         Me.MnuSaleReports.Name = "MnuSaleReports"
         Me.MnuSaleReports.Size = New System.Drawing.Size(208, 22)
         Me.MnuSaleReports.Text = "Reports"
@@ -1469,6 +1477,14 @@ Partial Class MDIMain
         Me.MnuSaleOrderRegister.Size = New System.Drawing.Size(319, 22)
         Me.MnuSaleOrderRegister.Tag = "REPORT"
         Me.MnuSaleOrderRegister.Text = "Sale Order Register"
+        '
+        'MnuSaleChallanStatus
+        '
+        Me.MnuSaleChallanStatus.AccessibleDescription = "+Sales Challan Module"
+        Me.MnuSaleChallanStatus.Name = "MnuSaleChallanStatus"
+        Me.MnuSaleChallanStatus.Size = New System.Drawing.Size(319, 22)
+        Me.MnuSaleChallanStatus.Tag = "GRID REPORT"
+        Me.MnuSaleChallanStatus.Text = "Sale Challan Status"
         '
         'MnuSaleOrderStatus
         '
@@ -2488,11 +2504,12 @@ Partial Class MDIMain
         Me.MnuChequePrinting.Size = New System.Drawing.Size(160, 22)
         Me.MnuChequePrinting.Text = "Cheque Printing"
         '
-        'MnuSaleChallan
+        'MnuSaleCertificate
         '
-        Me.MnuSaleChallan.Name = "MnuSaleChallan"
-        Me.MnuSaleChallan.Size = New System.Drawing.Size(208, 22)
-        Me.MnuSaleChallan.Text = "Sale Challan"
+        Me.MnuSaleCertificate.Name = "MnuSaleCertificate"
+        Me.MnuSaleCertificate.Size = New System.Drawing.Size(319, 22)
+        Me.MnuSaleCertificate.Tag = "Report"
+        Me.MnuSaleCertificate.Text = "Sale Certificates"
         '
         'MDIMain
         '
@@ -2823,4 +2840,6 @@ Partial Class MDIMain
     Friend WithEvents MnuSendWhatsapp As ToolStripMenuItem
     Friend WithEvents MnuSendMessageForPayment As ToolStripMenuItem
     Friend WithEvents MnuSaleChallan As ToolStripMenuItem
+    Friend WithEvents MnuSaleChallanStatus As ToolStripMenuItem
+    Friend WithEvents MnuSaleCertificate As ToolStripMenuItem
 End Class

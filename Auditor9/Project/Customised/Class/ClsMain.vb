@@ -12043,6 +12043,7 @@ Thanks
             AgL.AddFieldSqlite(AgL.GcnMain, "PurchInvoice", "Remarks", "nVarchar(255)", "", True)
             AgL.AddFieldSqlite(AgL.GcnMain, "PurchInvoice", "Process", "nVarchar(10)", "", True, "References SubGroup(SubCode)")
             AgL.AddFieldSqlite(AgL.GcnMain, "PurchInvoice", "Agent", "nVarchar(10)", "", True, "References Subgroup(Subcode)")
+            AgL.AddFieldSqlite(AgL.GcnMain, "PurchInvoice", "ResponsiblePerson", "nVarchar(10)", "", True, "References Subgroup(Subcode)")
             AgL.AddFieldSqlite(AgL.GcnMain, "PurchInvoice", "VendorName", "nVarchar(100)", "", True)
             AgL.AddFieldSqlite(AgL.GcnMain, "PurchInvoice", "VendorAddress", "nVarchar(255)", "", True)
             AgL.AddFieldSqlite(AgL.GcnMain, "PurchInvoice", "VendorPincode", "nVarchar(6)", "", True)
@@ -18786,7 +18787,11 @@ Thanks
 
                 "
                 AgL.Dman_ExecuteNonQry(mQry, AgL.GcnMain)
+
             End If
+
+            AgL.AddFieldSqlite(AgL.GcnMain, "UserMast", "IsShowOnlySelfRecords", "Bit", "0", True)
+
         Catch ex As Exception
             MsgBox(ex.Message & "  [FCreateTable_UserMast]")
         End Try

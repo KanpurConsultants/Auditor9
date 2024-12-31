@@ -428,6 +428,34 @@
     <AggregateFunction />
   </Column>
   <Column>
+    <Name>Remark1</Name>
+    <Index>112</Index>
+    <Width>150</Width>
+    <Visible>True</Visible>
+    <AggregateFunction />
+  </Column>
+  <Column>
+    <Name>Remark2</Name>
+    <Index>113</Index>
+    <Width>150</Width>
+    <Visible>True</Visible>
+    <AggregateFunction />
+  </Column>
+  <Column>
+    <Name>Remark3</Name>
+    <Index>114</Index>
+    <Width>150</Width>
+    <Visible>True</Visible>
+    <AggregateFunction />
+  </Column>
+  <Column>
+    <Name>Remark4</Name>
+    <Index>115</Index>
+    <Width>150</Width>
+    <Visible>True</Visible>
+    <AggregateFunction />
+  </Column>
+  <Column>
     <Name>Godown</Name>
     <Index>61</Index>
     <Width>100</Width>

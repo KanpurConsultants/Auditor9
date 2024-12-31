@@ -5,13 +5,13 @@ DocNoCaption	string	255	Doc.No.
 DocDateCaption	string	255	Doc.Date	
 SiteStateCode	string	255	09	
 SiteStateName	string	255	Uttar Pradesh	
-DocID	string	255	D3    SC 2024       2	
+DocID	string	255	D3    SC 2024      60	
 Sr	number	1	
-V_Date	datetime	28/Nov/2024 00:00:00	
+V_Date	datetime	12/Dec/2024 00:00:00	
 DeliveryDate	datetime		
 Voucher_Type	string	255	Sale Challan	
 NCat	string	255	SC	
-InvoiceNo	string	255	TVS-SC-2	
+InvoiceNo	string	255	TVS-SC-62	
 GenDocNo	string	255		
 AmsDocNo	string	255		
 AmsDocDate	datetime		
@@ -19,33 +19,33 @@ AmsDocNetAmount	number	0
 RateType	string	255		
 DocumentPrintShowRateType	string	255	Show If Not Blank	
 AgentName	string	255		
-GodownName	string	255	TVS KANPUR	
+GodownName	string	255		
 SalesRepName	string	255		
 SalesRepCode	string	255		
 ResponsiblePersonName	string	255		
 AgentCaption	string	255	Agent	
-SaleToPartyName	string	255	ABHAY KUMAR DIXIT S/O PREM NARAYAN DIXIT	
-SaleToPartyAddress	string	255	1/81 NAWABGANJ NEAR LAL PHATAK KATARIJIYARA NAWABGANJ	
-CityName	string	255	KANPUR	
+SaleToPartyName	string	255	SHRI GAJANAN MAHRAJ INDUSTRIES AUTO SERVICES	
+SaleToPartyAddress	string	255	S-11 TRANSPORT NAGAR,LUCKNOW	
+CityName	string	255	LUCKNOW	
 SaleToPartyPincode	string	255		
 StateCode	string	255	09	
 StateName	string	255	Uttar Pradesh	
-SaleToPartyMobile	string	255	8853888466	
+SaleToPartyMobile	string	255		
 ContactPerson	string	255		
-SaleToPartySalesTaxNo	string	255		
-SaleToPartyAadharNo	string	255	663208483725	
-SaleToPartyPanNo	string	255		
+SaleToPartySalesTaxNo	string	255	09AGSPP3635Q1ZC	
+SaleToPartyAadharNo	string	255		
+SaleToPartyPanNo	string	255	AGSPP3635Q	
 SaleToPartyLicenseNo	string	255		
-ShipToPartyName	string	255	ABHAY KUMAR DIXIT S/O PREM NARAYAN DIXIT	
-ShipToPartyAddress	string	255	1/81 NAWABGANJ NEAR LAL PHATAK KATARIJIYARA NAWABGANJ	
-ShipToPartyCity	string	255	KANPUR	
+ShipToPartyName	string	255	SHRI GAJANAN MAHRAJ INDUSTRIES AUTO SERVICES	
+ShipToPartyAddress	string	255	S-11 TRANSPORT NAGAR,LUCKNOW	
+ShipToPartyCity	string	255	LUCKNOW	
 ShipToPartyPincode	string	255		
 ShipToPartyStateCode	string	255	09	
 ShipToPartyStateName	string	255	Uttar Pradesh	
-ShipToPartyMobile	string	255	8853888466	
-ShipToPartySalesTaxNo	string	255		
-ShipToPartyAadharNo	string	255	663208483725	
-ShipToPartyPanNo	string	255		
+ShipToPartyMobile	string	255		
+ShipToPartySalesTaxNo	string	255	09AGSPP3635Q1ZC	
+ShipToPartyAadharNo	string	255		
+ShipToPartyPanNo	string	255	AGSPP3635Q	
 ShipToPartyLicenseNo	string	255		
 TransporterSalesTaxNo	string	255		
 ShipToAddress	string	255		
@@ -71,12 +71,12 @@ Destination	string	255
 DescriptionOfGoods	string	255		
 DescriptionOfPacking	string	255		
 ReferenceNo	string	255		
-BarcodeName	string	255		
-ItemName	string	255	TVS KING EP3 WEGO -WHITE COLOUR - TVS - EV	
+BarcodeName	string	255	78787878	
+ItemName	string	255	TVS KING EP3 NEP BLUE COLOUR - TVS - EV	
 ItemGroupName	string	255	TVS	
 ItemCatName	string	255	EV	
-ItemManualCode	string	255	251	
-ItemSpecification	string	255	TVS KING EP3 WEGO -WHITE COLOUR	
+ItemManualCode	string	255	265	
+ItemSpecification	string	255	TVS KING EP3 NEP BLUE COLOUR	
 InvoiceLineSpecification	string	255		
 HSN	string	255	87038040	
 MaintainStockYn	boolean	True	
@@ -104,7 +104,7 @@ ExpiryDate	datetime
 ItemRemark1	string	255		
 Pcs	number	1	
 Qty	number	1	
-Rate	number	50000	
+Rate	number	70000	
 ItemState	string	255		
 CatalogSpecification	string	255		
 CatalogSiteName	string	255		
@@ -118,8 +118,8 @@ AdditionPer	number	0
 AdditionAmount	number	0	
 TotalDiscount	number	0	
 Deal	string	255		
-AmountBeforeDiscount	number	50000	
-Amount	number	50000	
+AmountBeforeDiscount	number	70000	
+Amount	number	70000	
 Taxable_Amount	number	0	
 Tax1_Per	number	0	
 Tax1	number	0	
@@ -132,9 +132,9 @@ Tax4	number	0
 Tax5_Per	number	0	
 Tax5	number	0	
 Net_Amount	number	0	
-LRemarks	string	255	Motar No	
+LRemarks	string	255		
 LRemarks1	string	255		
-LRemarks2	string	255	Chesis No	
+LRemarks2	string	255		
 LRemarks3	string	255		
 LRemarks4	string	255		
 HRemarks	string	255		
@@ -145,7 +145,7 @@ H_Discount	number	0
 H_AdditionalDiscount	number	0	
 H_Additional	number	0	
 H_TotalDiscount	number	0	
-H_AmountBeforeDiscount	number	50000	
+H_AmountBeforeDiscount	number	70000	
 H_Gross_Amount	number	0	
 H_SpecialDiscount_Per	number	0	
 H_SpecialDiscount	number	0	

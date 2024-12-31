@@ -5,13 +5,13 @@ DocNoCaption	string	255	Invoice No.
 DocDateCaption	string	255	Invoice Date	
 SiteStateCode	string	255	09	
 SiteStateName	string	255	Uttar Pradesh	
-DocID	string	255	D1    SI 2024      14	
+DocID	string	255	D3   SIR 2024      55	
 Sr	number	1	
-V_Date	datetime	28/Nov/2024 00:00:00	
+V_Date	datetime	12/Dec/2024 00:00:00	
 DeliveryDate	datetime		
-Voucher_Type	string	255	Tax Invoice	
+Voucher_Type	string	255	Sale Invoice Retail	
 NCat	string	255	SI	
-InvoiceNo	string	255	KNP-SI-14	
+InvoiceNo	string	255	TVS-SIR-58	
 GenDocNo	string	255		
 AmsDocNo	string	255		
 AmsDocDate	datetime		
@@ -19,37 +19,37 @@ AmsDocNetAmount	number	0
 RateType	string	255		
 DocumentPrintShowRateType	string	255	Show If Not Blank	
 AgentName	string	255		
-GodownName	string	255		
+GodownName	string	255	TVS KANPUR	
 SalesRepName	string	255		
 SalesRepCode	string	255		
 ResponsiblePersonName	string	255		
 AgentCaption	string	255	Agent	
-SaleToPartyName	string	255	ARCHANA ENTERPRISES	
-SaleToPartyAddress	string	255	23,GANDHI NAGAR,RATH ROAD,ORAI	
-CityName	string	255	ORAI	
-SaleToPartyPincode	string	255	285001	
+SaleToPartyName	string	255	SANJAY KUMAR GUPTA S/O RAM KRISHNA GUPTA	
+SaleToPartyAddress	string	255	RAMAIPUR, KANPUR	
+CityName	string	255	KANPUR	
+SaleToPartyPincode	string	255	209214	
 StateCode	string	255	09	
 StateName	string	255	Uttar Pradesh	
-SaleToPartyMobile	string	255	8840678327	
+SaleToPartyMobile	string	255	9455067925	
 ContactPerson	string	255		
-SaleToPartySalesTaxNo	string	255	09APAPM6798N1ZY	
-SaleToPartyAadharNo	string	255		
-SaleToPartyPanNo	string	255	APAPM6798N	
+SaleToPartySalesTaxNo	string	255		
+SaleToPartyAadharNo	string	255	320796343698	
+SaleToPartyPanNo	string	255		
 SaleToPartyLicenseNo	string	255		
-ShipToPartyName	string	255	ARCHANA ENTERPRISES	
-ShipToPartyAddress	string	255	23,GANDHI NAGAR,RATH ROAD,ORAI	
-ShipToPartyCity	string	255	ORAI	
-ShipToPartyPincode	string	255	285001	
+ShipToPartyName	string	255	SANJAY KUMAR GUPTA S/O RAM KRISHNA GUPTA	
+ShipToPartyAddress	string	255	RAMAIPUR, KANPUR	
+ShipToPartyCity	string	255	KANPUR	
+ShipToPartyPincode	string	255	209214	
 ShipToPartyStateCode	string	255	09	
 ShipToPartyStateName	string	255	Uttar Pradesh	
-ShipToPartyMobile	string	255	8840678327	
-ShipToPartySalesTaxNo	string	255	09APAPM6798N1ZY	
-ShipToPartyAadharNo	string	255		
-ShipToPartyPanNo	string	255	APAPM6798N	
+ShipToPartyMobile	string	255	9455067925	
+ShipToPartySalesTaxNo	string	255		
+ShipToPartyAadharNo	string	255	320796343698	
+ShipToPartyPanNo	string	255		
 ShipToPartyLicenseNo	string	255		
 TransporterSalesTaxNo	string	255		
 ShipToAddress	string	255		
-TermsAndConditions	string	255	(1) Motor warranty one year. <BR>(2) Controller warranty one year. <BR>(3) Battery warranty one year.	
+TermsAndConditions	string	255		
 TransporterName	string	255		
 LrNo	string	255		
 LrDate	datetime		
@@ -70,15 +70,15 @@ BookedTo	string	255
 Destination	string	255		
 DescriptionOfGoods	string	255		
 DescriptionOfPacking	string	255		
-ReferenceNo	string	255		
+ReferenceNo	string	255	SC-62	
 BarcodeName	string	255		
-ItemName	string	255	RUBIE 48 V  BLACK - YAKUZA - EV	
-ItemGroupName	string	255	YAKUZA	
+ItemName	string	255	TVS KING EP3 NEP BLUE COLOUR - TVS - EV	
+ItemGroupName	string	255	TVS	
 ItemCatName	string	255	EV	
-ItemManualCode	string	255	185	
-ItemSpecification	string	255	RUBIE 48 V  BLACK	
+ItemManualCode	string	255	265	
+ItemSpecification	string	255	TVS KING EP3 NEP BLUE COLOUR	
 InvoiceLineSpecification	string	255		
-HSN	string	255	87116020	
+HSN	string	255	87038040	
 MaintainStockYn	boolean	True	
 D1Spec	string	255		
 D2Spec	string	255		
@@ -102,9 +102,9 @@ MRP	number	0
 LotNo	string	255		
 ExpiryDate	datetime		
 ItemRemark1	string	255		
-Pcs	number	5	
-Qty	number	5	
-Rate	number	31500	
+Pcs	number	1	
+Qty	number	1	
+Rate	number	345000	
 ItemState	string	255		
 CatalogSpecification	string	255		
 CatalogSiteName	string	255		
@@ -118,44 +118,44 @@ AdditionPer	number	0
 AdditionAmount	number	0	
 TotalDiscount	number	0	
 Deal	string	255		
-AmountBeforeDiscount	number	157500	
-Amount	number	157500	
-Taxable_Amount	number	150000	
+AmountBeforeDiscount	number	345000	
+Amount	number	345000	
+Taxable_Amount	number	328571.43	
 Tax1_Per	number	0	
 Tax1	number	0	
 Tax2_Per	number	2.5	
-Tax2	number	3750	
+Tax2	number	8214.29	
 Tax3_Per	number	2.5	
-Tax3	number	3750	
+Tax3	number	8214.29	
 Tax4_Per	number	0	
 Tax4	number	0	
 Tax5_Per	number	0	
 Tax5	number	0	
-Net_Amount	number	157500.04	
-LRemarks	string	255		
+Net_Amount	number	345000	
+LRemarks	string	255	AM1HR4500158	
 LRemarks1	string	255		
-LRemarks2	string	255		
+LRemarks2	string	255	MD6EVM1C2R4K00013	
 LRemarks3	string	255		
 LRemarks4	string	255		
 HRemarks	string	255		
-HRemarks1	string	255	NL01AA5997	
-HRemarks2	string	255		
+HRemarks1	string	255		
+HRemarks2	string	255	CHOLAMANDALAM INVERSTMENT FINANCE CO LTD	
 SalesTaxSummaryStr	string	255		
 H_Discount	number	0	
 H_AdditionalDiscount	number	0	
 H_Additional	number	0	
 H_TotalDiscount	number	0	
-H_AmountBeforeDiscount	number	650500	
-H_Gross_Amount	number	650500	
+H_AmountBeforeDiscount	number	345000	
+H_Gross_Amount	number	345000	
 H_SpecialDiscount_Per	number	0	
 H_SpecialDiscount	number	0	
-H_Taxable_Amount	number	619523.79	
+H_Taxable_Amount	number	328571.43	
 H_Tax1_Per	number	0	
 H_Tax1	number	0	
 H_Tax2_Per	number	0	
-H_Tax2	number	15488.07	
+H_Tax2	number	8214.29	
 H_Tax3_Per	number	0	
-H_Tax3	number	15488.07	
+H_Tax3	number	8214.29	
 H_Tax4_Per	number	0	
 H_Tax4	number	0	
 H_Tax5_Per	number	0	
@@ -168,17 +168,17 @@ H_Other_Charge1_Per	number	0
 H_Other_Charge1	number	0	
 H_Other_Charge2_Per	number	0	
 H_Other_Charge2	number	0	
-Round_Off	number	0.07	
-H_Net_Amount	number	650500	
-EInvoiceIRN	string	255	3f1aa168e720f829a3fecd7a7df18643bc13e48ebb6501cf7d4a236d7fc53c5e	
-EInvoiceACKNo	string	255	142416173136771	
-EInvoiceACKDate	datetime	30/Nov/2024 11:56:00	
-Default_BankAccountDetail	string	255	<B> Bank Detail :- <BR> HDFC : 99915400000007  IFSC : HDFC0009597 <BR>	
+Round_Off	number	-0.01	
+H_Net_Amount	number	345000	
+EInvoiceIRN	string	255		
+EInvoiceACKNo	string	255		
+EInvoiceACKDate	datetime		
+Default_BankAccountDetail	string	255	<B> Bank Detail :- <BR> KMB : 5400000007  IFSC : KKBK0005135 <BR>	
 DocumentPrintHeaderPattern	string	255	Center Aligned	
 DimDetail	string	255		
 PrintedByUser	string	255	SUPER	
-EntryByUser	string	255	NIKHIL	
-PrintTitle	string	255	Tax Invoice	
+EntryByUser	string	255	tvs	
+PrintTitle	string	255	Sale Invoice Retail	
 DocumentPrintShowPrintDateTimeYn	string	255	1	
 DocumentPrintShowPartyBalance	string	255	Hide	
 TodaysOpeningBalance	long	0	

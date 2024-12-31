@@ -1550,6 +1550,16 @@ Public Class FrmSaleInvoiceDirect_WithDimension
         mCondStr = mCondStr & " And Vt.NCat In ('" & EntryNCat & "')"
         mCondStr = mCondStr & " And IfNull(Vt.CustomUI,'') = '" & mCustomUI & "'"
 
+        Dim mIsShowOnlySelfRecords As Boolean = False
+        If AgL.VNull(AgL.Dman_Execute("Select IfNull(IsShowOnlySelfRecords,0) From UserMast With (NoLock) 
+                Where USER_NAME = '" & AgL.PubUserName & "'", AgL.GCn).ExecuteScalar()) = 1 Then
+            mIsShowOnlySelfRecords = True
+        End If
+
+        If mIsShowOnlySelfRecords = True And AgL.StrCmp(AgL.PubUserName, "Super") = False Then
+            mCondStr = mCondStr & " And H.EntryBy = '" & AgL.PubUserName & "'"
+        End If
+
         mQry = "Select DocID As SearchCode 
                 From SaleInvoice H  With (NoLock)
                 Left Join Voucher_Type Vt  With (NoLock) On H.V_Type = Vt.V_Type  
@@ -1573,6 +1583,17 @@ Public Class FrmSaleInvoiceDirect_WithDimension
         mCondStr = mCondStr & " And " & AgL.PubSiteCondition("H.Site_Code", AgL.PubSiteCode) & " And H.Div_Code = '" & AgL.PubDivCode & "'"
         mCondStr = mCondStr & " And Vt.NCat In ('" & EntryNCat & "')"
         mCondStr = mCondStr & " And IfNull(Vt.CustomUI,'') = '" & mCustomUI & "'"
+
+        Dim mIsShowOnlySelfRecords As Boolean = False
+        If AgL.VNull(AgL.Dman_Execute("Select IfNull(IsShowOnlySelfRecords,0) From UserMast With (NoLock) 
+                Where USER_NAME = '" & AgL.PubUserName & "'", AgL.GCn).ExecuteScalar()) = 1 Then
+            mIsShowOnlySelfRecords = True
+        End If
+
+        If mIsShowOnlySelfRecords = True And AgL.StrCmp(AgL.PubUserName, "Super") = False Then
+            mCondStr = mCondStr & " And H.EntryBy = '" & AgL.PubUserName & "'"
+        End If
+
 
         AgL.PubFindQry = " SELECT H.DocID AS SearchCode, Vt.Description AS [Invoice_Type], Cast(strftime('%d/%m/%Y', H.V_Date) As nvarchar) AS Date, H.SaleToPartyName [Party Name], H.SaleToPartyMobile as Mobile, " &
                             " H.ManualRefNo AS [Manual_No], H.SalesTaxGroupParty AS [Sales_Tax_Group_Party], " &
@@ -16704,6 +16725,7 @@ Public Class FrmSaleInvoiceDirect_WithDimension
                 VPendingOrder.SaleOrder, VPendingOrder.SaleOrderSr, L.Remark, L.Remarks1, L.Remarks2, L.Remarks3, L.Remarks4,
                 Case When IfNull(U.ShowDimensionDetailInSales,0) = 1 Or IfNull(Ic.ShowDimensionDetailInSales,0) = 1 Then 1
                         Else 0 End As ShowDimensionDetailInSales, 
+                L.BarCode As BarCode, B.Description As BarcodeName, 
                 U.DecimalPlaces as QtyDecimalPlaces, DU.DecimalPlaces as DealQtyDecimalPlaces, I.DealUnit
                 FROM (" & bPendingOrderQry & ") As VPendingOrder
                 LEFT JOIN SaleInvoiceDetail L On VPendingOrder.SaleOrder = L.DocId And VPendingOrder.SaleOrderSr = L.Sr 
@@ -16717,6 +16739,7 @@ Public Class FrmSaleInvoiceDirect_WithDimension
                 LEFT JOIN Item D2 ON D2.Code = Sku.Dimension2
                 LEFT JOIN Item D3 ON D3.Code = Sku.Dimension3
                 LEFT JOIN Item D4 ON D4.Code = Sku.Dimension4
+                LEFT JOIN Barcode B ON B.Code = L.Barcode
                 LEFT JOIN Item Size ON Size.Code = Sku.Size 
                 Left Join Unit U  With (NoLock) On I.Unit = U.Code 
                 LEFT JOIN Unit Du With (NoLock) On I.DealUnit = Du.Code 
@@ -16791,6 +16814,8 @@ Public Class FrmSaleInvoiceDirect_WithDimension
         FRH_Multiple.FFormatColumn(34, , 0, , False)
         FRH_Multiple.FFormatColumn(35, , 0, , False)
         FRH_Multiple.FFormatColumn(36, , 0, , False)
+        FRH_Multiple.FFormatColumn(37, , 0, , False)
+        FRH_Multiple.FFormatColumn(38, , 0, , False)
 
         FRH_Multiple.StartPosition = FormStartPosition.CenterScreen
         FRH_Multiple.ShowDialog()
@@ -16854,6 +16879,9 @@ Public Class FrmSaleInvoiceDirect_WithDimension
 
                 Dgl1.Item(Col1Size, mRow + I).Tag = AgL.XNull(DrSelected(I)("SizeCode"))
                 Dgl1.Item(Col1Size, mRow + I).Value = AgL.XNull(DrSelected(I)("Size"))
+
+                Dgl1.Item(Col1Barcode, mRow + I).Tag = AgL.XNull(DrSelected(I)("Barcode"))
+                Dgl1.Item(Col1Barcode, mRow + I).Value = AgL.XNull(DrSelected(I)("BarcodeName"))
 
                 Dgl1.Item(Col1SalesTaxGroup, mRow + I).Tag = AgL.XNull(DrSelected(I)("SalesTaxPostingGroup"))
                 Dgl1.Item(Col1SalesTaxGroup, mRow + I).Value = AgL.XNull(DrSelected(I)("SalesTaxPostingGroup"))

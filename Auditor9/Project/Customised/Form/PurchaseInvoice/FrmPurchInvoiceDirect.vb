@@ -127,6 +127,8 @@ Public Class FrmPurchInvoiceDirect
     Friend WithEvents MnuShowLedgerPosting As ToolStripMenuItem
     Dim mFirstInvoiceForSelectedParty As Boolean = False
     Friend WithEvents MnuPrintBulk As ToolStripMenuItem
+    Protected WithEvents TxtResponsiblePerson As AgControls.AgTextBox
+    Protected WithEvents LblResponsiblePerson As Label
     Dim mFullItemListInHelp As Boolean = False
 
     Public Sub New(ByVal StrUPVar As String, ByVal DTUP As DataTable, ByVal strNCat As String)
@@ -192,6 +194,7 @@ Public Class FrmPurchInvoiceDirect
         Me.MnuReferenceEntries = New System.Windows.Forms.ToolStripMenuItem()
         Me.MnuShowLedgerPosting = New System.Windows.Forms.ToolStripMenuItem()
         Me.MnuHistory = New System.Windows.Forms.ToolStripMenuItem()
+        Me.MnuPrintBulk = New System.Windows.Forms.ToolStripMenuItem()
         Me.Label6 = New System.Windows.Forms.Label()
         Me.LblCurrentBalance = New System.Windows.Forms.Label()
         Me.TxtTags = New AgControls.AgTextBox()
@@ -199,7 +202,8 @@ Public Class FrmPurchInvoiceDirect
         Me.BtnAttachments = New System.Windows.Forms.Button()
         Me.TxtShipToParty = New AgControls.AgTextBox()
         Me.LblShipToParty = New System.Windows.Forms.Label()
-        Me.MnuPrintBulk = New System.Windows.Forms.ToolStripMenuItem()
+        Me.TxtResponsiblePerson = New AgControls.AgTextBox()
+        Me.LblResponsiblePerson = New System.Windows.Forms.Label()
         Me.GroupBox2.SuspendLayout()
         Me.GBoxMoveToLog.SuspendLayout()
         Me.GBoxApprove.SuspendLayout()
@@ -710,7 +714,7 @@ Public Class FrmPurchInvoiceDirect
         Me.TxtRemarks.Anchor = CType((System.Windows.Forms.AnchorStyles.Bottom Or System.Windows.Forms.AnchorStyles.Left), System.Windows.Forms.AnchorStyles)
         Me.TxtRemarks.BorderStyle = System.Windows.Forms.BorderStyle.None
         Me.TxtRemarks.Font = New System.Drawing.Font("Verdana", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.TxtRemarks.Location = New System.Drawing.Point(76, 418)
+        Me.TxtRemarks.Location = New System.Drawing.Point(76, 436)
         Me.TxtRemarks.MaxLength = 255
         Me.TxtRemarks.Name = "TxtRemarks"
         Me.TxtRemarks.Size = New System.Drawing.Size(238, 16)
@@ -721,7 +725,7 @@ Public Class FrmPurchInvoiceDirect
         Me.Label30.Anchor = CType((System.Windows.Forms.AnchorStyles.Bottom Or System.Windows.Forms.AnchorStyles.Left), System.Windows.Forms.AnchorStyles)
         Me.Label30.AutoSize = True
         Me.Label30.Font = New System.Drawing.Font("Verdana", 9.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Label30.Location = New System.Drawing.Point(3, 419)
+        Me.Label30.Location = New System.Drawing.Point(3, 437)
         Me.Label30.Name = "Label30"
         Me.Label30.Size = New System.Drawing.Size(65, 14)
         Me.Label30.TabIndex = 723
@@ -1068,7 +1072,7 @@ Public Class FrmPurchInvoiceDirect
         '
         Me.MnuOptions.Items.AddRange(New System.Windows.Forms.ToolStripItem() {Me.MnuImportFromExcel, Me.MnuImportFromDos, Me.MnuImportFromTally, Me.MnuEditSave, Me.MnuGenerateEWayBill, Me.MnuRequestForPermission, Me.MnuReferenceEntries, Me.MnuShowLedgerPosting, Me.MnuHistory, Me.MnuPrintBulk})
         Me.MnuOptions.Name = "MnuOptions"
-        Me.MnuOptions.Size = New System.Drawing.Size(198, 246)
+        Me.MnuOptions.Size = New System.Drawing.Size(198, 224)
         '
         'MnuImportFromExcel
         '
@@ -1124,6 +1128,12 @@ Public Class FrmPurchInvoiceDirect
         Me.MnuHistory.Size = New System.Drawing.Size(197, 22)
         Me.MnuHistory.Text = "History"
         '
+        'MnuPrintBulk
+        '
+        Me.MnuPrintBulk.Name = "MnuPrintBulk"
+        Me.MnuPrintBulk.Size = New System.Drawing.Size(197, 22)
+        Me.MnuPrintBulk.Text = "Print Bulk"
+        '
         'Label6
         '
         Me.Label6.AutoSize = True
@@ -1165,7 +1175,7 @@ Public Class FrmPurchInvoiceDirect
         Me.TxtTags.Anchor = CType((System.Windows.Forms.AnchorStyles.Bottom Or System.Windows.Forms.AnchorStyles.Left), System.Windows.Forms.AnchorStyles)
         Me.TxtTags.BorderStyle = System.Windows.Forms.BorderStyle.None
         Me.TxtTags.Font = New System.Drawing.Font("Verdana", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.TxtTags.Location = New System.Drawing.Point(76, 436)
+        Me.TxtTags.Location = New System.Drawing.Point(76, 454)
         Me.TxtTags.MaxLength = 255
         Me.TxtTags.Name = "TxtTags"
         Me.TxtTags.Size = New System.Drawing.Size(238, 16)
@@ -1176,7 +1186,7 @@ Public Class FrmPurchInvoiceDirect
         Me.LblTags.Anchor = CType((System.Windows.Forms.AnchorStyles.Bottom Or System.Windows.Forms.AnchorStyles.Left), System.Windows.Forms.AnchorStyles)
         Me.LblTags.AutoSize = True
         Me.LblTags.Font = New System.Drawing.Font("Verdana", 9.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.LblTags.Location = New System.Drawing.Point(1, 437)
+        Me.LblTags.Location = New System.Drawing.Point(1, 455)
         Me.LblTags.Name = "LblTags"
         Me.LblTags.Size = New System.Drawing.Size(38, 14)
         Me.LblTags.TabIndex = 3018
@@ -1235,11 +1245,42 @@ Public Class FrmPurchInvoiceDirect
         Me.LblShipToParty.Text = "Ship To Party"
         Me.LblShipToParty.Visible = False
         '
-        'MnuPrintBulk
+        'TxtResponsiblePerson
         '
-        Me.MnuPrintBulk.Name = "MnuPrintBulk"
-        Me.MnuPrintBulk.Size = New System.Drawing.Size(197, 22)
-        Me.MnuPrintBulk.Text = "Print Bulk"
+        Me.TxtResponsiblePerson.AgAllowUserToEnableMasterHelp = False
+        Me.TxtResponsiblePerson.AgLastValueTag = Nothing
+        Me.TxtResponsiblePerson.AgLastValueText = Nothing
+        Me.TxtResponsiblePerson.AgMandatory = False
+        Me.TxtResponsiblePerson.AgMasterHelp = False
+        Me.TxtResponsiblePerson.AgNumberLeftPlaces = 8
+        Me.TxtResponsiblePerson.AgNumberNegetiveAllow = False
+        Me.TxtResponsiblePerson.AgNumberRightPlaces = 2
+        Me.TxtResponsiblePerson.AgPickFromLastValue = False
+        Me.TxtResponsiblePerson.AgRowFilter = ""
+        Me.TxtResponsiblePerson.AgSearchMethod = AgControls.AgLib.TxtSearchMethod.Simple
+        Me.TxtResponsiblePerson.AgSelectedValue = Nothing
+        Me.TxtResponsiblePerson.AgTxtCase = AgControls.AgTextBox.TxtCase.None
+        Me.TxtResponsiblePerson.AgValueType = AgControls.AgTextBox.TxtValueType.Text_Value
+        Me.TxtResponsiblePerson.Anchor = CType((System.Windows.Forms.AnchorStyles.Bottom Or System.Windows.Forms.AnchorStyles.Left), System.Windows.Forms.AnchorStyles)
+        Me.TxtResponsiblePerson.BorderStyle = System.Windows.Forms.BorderStyle.None
+        Me.TxtResponsiblePerson.Font = New System.Drawing.Font("Verdana", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.TxtResponsiblePerson.Location = New System.Drawing.Point(76, 418)
+        Me.TxtResponsiblePerson.MaxLength = 20
+        Me.TxtResponsiblePerson.Name = "TxtResponsiblePerson"
+        Me.TxtResponsiblePerson.Size = New System.Drawing.Size(238, 16)
+        Me.TxtResponsiblePerson.TabIndex = 3020
+        '
+        'LblResponsiblePerson
+        '
+        Me.LblResponsiblePerson.Anchor = CType((System.Windows.Forms.AnchorStyles.Bottom Or System.Windows.Forms.AnchorStyles.Left), System.Windows.Forms.AnchorStyles)
+        Me.LblResponsiblePerson.AutoSize = True
+        Me.LblResponsiblePerson.BackColor = System.Drawing.Color.Transparent
+        Me.LblResponsiblePerson.Font = New System.Drawing.Font("Verdana", 9.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.LblResponsiblePerson.Location = New System.Drawing.Point(4, 418)
+        Me.LblResponsiblePerson.Name = "LblResponsiblePerson"
+        Me.LblResponsiblePerson.Size = New System.Drawing.Size(70, 14)
+        Me.LblResponsiblePerson.TabIndex = 3021
+        Me.LblResponsiblePerson.Text = "R. Person"
         '
         'FrmPurchInvoiceDirect
         '
@@ -1247,6 +1288,8 @@ Public Class FrmPurchInvoiceDirect
         Me.BackColor = System.Drawing.SystemColors.ButtonShadow
         Me.ClientSize = New System.Drawing.Size(974, 622)
         Me.ContextMenuStrip = Me.MnuOptions
+        Me.Controls.Add(Me.TxtResponsiblePerson)
+        Me.Controls.Add(Me.LblResponsiblePerson)
         Me.Controls.Add(Me.BtnAttachments)
         Me.Controls.Add(Me.TxtTags)
         Me.Controls.Add(Me.LblTags)
@@ -1293,6 +1336,8 @@ Public Class FrmPurchInvoiceDirect
         Me.Controls.SetChildIndex(Me.LblTags, 0)
         Me.Controls.SetChildIndex(Me.TxtTags, 0)
         Me.Controls.SetChildIndex(Me.BtnAttachments, 0)
+        Me.Controls.SetChildIndex(Me.LblResponsiblePerson, 0)
+        Me.Controls.SetChildIndex(Me.TxtResponsiblePerson, 0)
         Me.GroupBox2.ResumeLayout(False)
         Me.GroupBox2.PerformLayout()
         Me.GBoxMoveToLog.ResumeLayout(False)
@@ -1720,6 +1765,7 @@ Public Class FrmPurchInvoiceDirect
                 " Set  " &
                 " ManualRefNo = " & AgL.Chk_Text(TxtReferenceNo.Text) & ", " &
                 " Agent = " & AgL.Chk_Text(TxtAgent.Tag) & ", " &
+                " ResponsiblePerson = " & AgL.Chk_Text(TxtResponsiblePerson.Tag) & ", " &
                 " Vendor = " & AgL.Chk_Text(TxtVendor.Tag) & ", " &
                 " BillToParty = " & AgL.Chk_Text(TxtBillToParty.Tag) & ", " &
                 " ShipToParty = " & AgL.Chk_Text(TxtShipToParty.Tag) & ", " &
@@ -2236,14 +2282,15 @@ Public Class FrmPurchInvoiceDirect
 
         mQry = " Select H.*, Sg.Name AS  VendorDispName, sParty.Name as ShipToPartyName, Sg.Nature, Sg1.Name AS  BillToPartyName,
                  Vt.Category As Voucher_Category, VC.CityName as VendorCityName, VC.State as VendorStateCode, VS.Description as VendorStateName,
-                 Agent.Name As AgentName
+                 Agent.Name As AgentName,RP.Name As ResponsiblePersonName 
                  From (Select * From PurchInvoice  With (NoLock) Where DocID='" & SearchCode & "') H 
                  LEFT JOIN viewHelpSubGroup Sg  With (NoLock) ON H.Vendor = Sg.Code 
                  LEFT JOIN City C  With (NoLock) On Sg.CityCode = C.CityCode                   
                  LEFT JOIN viewHelpSubGroup Sg1  With (NoLock) On H.BillToParty = Sg1.Code 
                  LEFT JOIN viewHelpSubGroup sParty  With (NoLock) On H.ShipToParty = sParty.Code 
                  LEFT JOIN City C2  With (NoLock) On Sg1.CityCode = C2.CityCode                   
-                 Left Join viewHelpSubgroup Agent  With (NoLock) On H.Agent = Agent.Code                  
+                 Left Join viewHelpSubgroup Agent  With (NoLock) On H.Agent = Agent.Code
+                 Left Join viewHelpSubgroup RP  With (NoLock) On H.ResponsiblePerson = RP.Code                    
                  Left Join City VC  With (NoLock) on H.VendorCity = VC.CityCode
                  Left Join State VS  With (NoLock) on VC.State = VS.Code
                  Left Join Voucher_Type Vt  With (NoLock) On H.V_Type = Vt.V_Type 
@@ -2292,6 +2339,9 @@ Public Class FrmPurchInvoiceDirect
 
                 TxtAgent.Tag = AgL.XNull(.Rows(0)("Agent"))
                 TxtAgent.Text = AgL.XNull(.Rows(0)("AgentName"))
+
+                TxtResponsiblePerson.Tag = AgL.XNull(.Rows(0)("ResponsiblePerson"))
+                TxtResponsiblePerson.Text = AgL.XNull(.Rows(0)("ResponsiblePersonName"))
 
                 BtnFillPartyDetail.Tag = Nothing
                 'Dim FrmObj As New FrmPurchPartyDetail
@@ -3466,6 +3516,7 @@ Public Class FrmPurchInvoiceDirect
 
         If TxtVendor.AgHelpDataSet IsNot Nothing Then TxtVendor.AgHelpDataSet.Dispose() : TxtVendor.AgHelpDataSet = Nothing
         If TxtAgent.AgHelpDataSet IsNot Nothing Then TxtAgent.AgHelpDataSet.Dispose() : TxtAgent.AgHelpDataSet = Nothing
+        If TxtResponsiblePerson.AgHelpDataSet IsNot Nothing Then TxtResponsiblePerson.AgHelpDataSet.Dispose() : TxtResponsiblePerson.AgHelpDataSet = Nothing
 
     End Sub
 
@@ -4787,7 +4838,7 @@ Public Class FrmPurchInvoiceDirect
         End Try
     End Sub
 
-    Private Sub Txt_KeyDown(ByVal sender As Object, ByVal e As System.Windows.Forms.KeyEventArgs) Handles TxtVendor.KeyDown, TxtBillToParty.KeyDown, TxtProcess.KeyDown, TxtAgent.KeyDown, TxtShipToParty.KeyDown, TxtTags.KeyDown
+    Private Sub Txt_KeyDown(ByVal sender As Object, ByVal e As System.Windows.Forms.KeyEventArgs) Handles TxtVendor.KeyDown, TxtBillToParty.KeyDown, TxtProcess.KeyDown, TxtAgent.KeyDown, TxtResponsiblePerson.KeyDown, TxtShipToParty.KeyDown, TxtTags.KeyDown
         Try
             If AgL.StrCmp(Topctrl1.Mode, "Browse") Then Exit Sub
             Select Case sender.name
@@ -4844,6 +4895,12 @@ Public Class FrmPurchInvoiceDirect
                     If TxtAgent.AgHelpDataSet Is Nothing Then
                         mQry = "SELECT Code, Name From ViewHelpSubgroup  With (NoLock) Where SubgroupType = '" & SubgroupType.PurchaseAgent & "' Order By Name "
                         TxtAgent.AgHelpDataSet(0, TabControl1.Top + TP1.Top, TabControl1.Left + TP1.Left) = AgL.FillData(mQry, AgL.GCn)
+                    End If
+
+                Case TxtResponsiblePerson.Name
+                    If TxtResponsiblePerson.AgHelpDataSet Is Nothing Then
+                        mQry = "SELECT Sg.Code, Sg.Name From viewHelpSubgroup Sg  With (NoLock) Left Join HRM_Employee Emp On Sg.Code = Emp.Subcode Where sg.SubgroupType ='" & SubgroupType.Employee & "' And Emp.RelievingDate Is Null And Site_Code = '" & TxtSite_Code.Tag & "' Order By sg.Name "
+                        TxtResponsiblePerson.AgHelpDataSet(0, TabControl1.Top + TP1.Top, TabControl1.Left + TP1.Left) = AgL.FillData(mQry, AgL.GCn)
                     End If
 
 

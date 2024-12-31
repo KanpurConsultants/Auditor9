@@ -5,6 +5,7 @@ Imports Microsoft.Reporting.WinForms
 Imports CrystalDecisions.Shared
 Imports System.Linq
 Imports System.Text
+Imports System.Net
 
 Public Class FrmWhatsapp
     Inherits System.Windows.Forms.Form
@@ -373,39 +374,39 @@ Public Class FrmWhatsapp
                 'Case "A2" ' A2 paper (420 mm by 594 mm).  
                 Case "A3" ' A3 paper (297 mm by 420 mm).  
                     mRepObj.PrintOptions.PaperSize = CrystalDecisions.Shared.PaperSize.PaperA3
-                    ' '' ''Case "A3Extra" ' A3 extra paper (322 mm by 445 mm).  
-                    ' '' ''Case "A3ExtraTransverse" ' A3 extra transverse paper (322 mm by 445 mm).  "
-                    ' '' ''Case "A3Rotated" ' A3 rotated paper (420 mm by 297 mm).  
+                ' '' ''Case "A3Extra" ' A3 extra paper (322 mm by 445 mm).  
+                ' '' ''Case "A3ExtraTransverse" ' A3 extra transverse paper (322 mm by 445 mm).  "
+                ' '' ''Case "A3Rotated" ' A3 rotated paper (420 mm by 297 mm).  
                 Case "A3Transverse" ' A3 transverse paper (297 mm by 420 mm).  
                     mRepObj.PrintOptions.PaperSize = CrystalDecisions.Shared.PaperSize.PaperA3
                 Case "A4" ' A4 paper (210 mm by 297 mm).  
                     mRepObj.PrintOptions.PaperSize = CrystalDecisions.Shared.PaperSize.PaperA4
-                    ' '' ''Case "A4Extra" ' A4 extra paper (236 mm by 322 mm). This value is specific to the PostScript driver and is used only by Linotronic printers to help save paper.  
-                    ' '' ''Case "A4Plus" ' A4 plus paper (210 mm by 330 mm).  
-                    ' '' ''Case "A4Rotated" ' A4 rotated paper (297 mm by 210 mm). Requires Windows 98, Windows NT 4.0, or later.  "
+                ' '' ''Case "A4Extra" ' A4 extra paper (236 mm by 322 mm). This value is specific to the PostScript driver and is used only by Linotronic printers to help save paper.  
+                ' '' ''Case "A4Plus" ' A4 plus paper (210 mm by 330 mm).  
+                ' '' ''Case "A4Rotated" ' A4 rotated paper (297 mm by 210 mm). Requires Windows 98, Windows NT 4.0, or later.  "
                 Case "A4Small" ' A4 small paper (210 mm by 297 mm).  "
                     mRepObj.PrintOptions.PaperSize = CrystalDecisions.Shared.PaperSize.PaperA4Small
-                    ' '' ''Case "A4Transverse" ' A4 transverse paper (210 mm by 297 mm).  "
+                ' '' ''Case "A4Transverse" ' A4 transverse paper (210 mm by 297 mm).  "
                 Case "A5" ' A5 paper (148 mm by 210 mm).  "
                     mRepObj.PrintOptions.PaperSize = CrystalDecisions.Shared.PaperSize.PaperA5
-                    '' '' ''Case "A5Extra" ' A5 extra paper (174 mm by 235 mm).  "
-                    '' '' ''Case "A5Rotated" ' A5 rotated paper (210 mm by 148 mm). Requires Windows 98, Windows NT 4.0, or later.  "
-                    '' '' ''Case "A5Transverse" ' A5 transverse paper (148 mm by 210 mm).  "
-                    '' '' ''Case "A6" ' A6 paper (105 mm by 148 mm). Requires Windows 98, Windows NT 4.0, or later.  "
-                    '' '' ''Case "A6Rotated" ' A6 rotated paper (148 mm by 105 mm). Requires Windows 98, Windows NT 4.0, or later.  "
-                    '' '' ''Case "APlus" ' SuperA/SuperA/A4 paper (227 mm by 356 mm).  "
-                    '' '' ''Case "B4" ' B4 paper (250 mm by 353 mm).  "
-                    '' '' ''Case "B4Envelope" ' B4 envelope (250 mm by 353 mm).  "
-                    '' '' ''Case "B4JisRotated" ' JIS B4 rotated paper (364 mm by 257 mm). Requires Windows 98, Windows NT 4.0, or later.  "
-                    '' '' ''Case "B5" ' B5 paper (176 mm by 250 mm).  "
-                    '' '' ''Case "B5Envelope" ' B5 envelope (176 mm by 250 mm).  "
-                    '' '' ''Case "B5Extra" ' ISO B5 extra paper (201 mm by 276 mm).  "
-                    '' '' ''Case "B5JisRotated" ' JIS B5 rotated paper (257 mm by 182 mm). Requires Windows 98, Windows NT 4.0, or later.  "
-                    '' '' ''Case "B5Transverse" ' JIS B5 transverse paper (182 mm by 257 mm).  "
-                    '' '' ''Case "B6Envelope" ' B6 envelope (176 mm by 125 mm).  "
-                    '' '' ''Case "B6Jis" ' JIS B6 paper (128 mm by 182 mm). Requires Windows 98, Windows NT 4.0, or later.  "
-                    '' '' ''Case "B6JisRotated" ' JIS B6 rotated paper (182 mm by 128 mm). Requires Windows 98, Windows NT 4.0, or later.  "
-                    '' '' ''Case "BPlus" ' SuperB/SuperB/A3 paper (305 mm by 487 mm).  "
+                '' '' ''Case "A5Extra" ' A5 extra paper (174 mm by 235 mm).  "
+                '' '' ''Case "A5Rotated" ' A5 rotated paper (210 mm by 148 mm). Requires Windows 98, Windows NT 4.0, or later.  "
+                '' '' ''Case "A5Transverse" ' A5 transverse paper (148 mm by 210 mm).  "
+                '' '' ''Case "A6" ' A6 paper (105 mm by 148 mm). Requires Windows 98, Windows NT 4.0, or later.  "
+                '' '' ''Case "A6Rotated" ' A6 rotated paper (148 mm by 105 mm). Requires Windows 98, Windows NT 4.0, or later.  "
+                '' '' ''Case "APlus" ' SuperA/SuperA/A4 paper (227 mm by 356 mm).  "
+                '' '' ''Case "B4" ' B4 paper (250 mm by 353 mm).  "
+                '' '' ''Case "B4Envelope" ' B4 envelope (250 mm by 353 mm).  "
+                '' '' ''Case "B4JisRotated" ' JIS B4 rotated paper (364 mm by 257 mm). Requires Windows 98, Windows NT 4.0, or later.  "
+                '' '' ''Case "B5" ' B5 paper (176 mm by 250 mm).  "
+                '' '' ''Case "B5Envelope" ' B5 envelope (176 mm by 250 mm).  "
+                '' '' ''Case "B5Extra" ' ISO B5 extra paper (201 mm by 276 mm).  "
+                '' '' ''Case "B5JisRotated" ' JIS B5 rotated paper (257 mm by 182 mm). Requires Windows 98, Windows NT 4.0, or later.  "
+                '' '' ''Case "B5Transverse" ' JIS B5 transverse paper (182 mm by 257 mm).  "
+                '' '' ''Case "B6Envelope" ' B6 envelope (176 mm by 125 mm).  "
+                '' '' ''Case "B6Jis" ' JIS B6 paper (128 mm by 182 mm). Requires Windows 98, Windows NT 4.0, or later.  "
+                '' '' ''Case "B6JisRotated" ' JIS B6 rotated paper (182 mm by 128 mm). Requires Windows 98, Windows NT 4.0, or later.  "
+                '' '' ''Case "BPlus" ' SuperB/SuperB/A3 paper (305 mm by 487 mm).  "
                 Case "C3Envelope" ' C3 envelope (324 mm by 458 mm).  "
                     mRepObj.PrintOptions.PaperSize = CrystalDecisions.Shared.PaperSize.PaperEnvelopeC3
                 Case "C4Envelope" ' C4 envelope (229 mm by 324 mm).  "
@@ -434,41 +435,41 @@ Public Class FrmWhatsapp
                     mRepObj.PrintOptions.PaperSize = CrystalDecisions.Shared.PaperSize.PaperFanfoldLegalGerman
                 Case "GermanStandardFanfold" ' German standard fanfold (8.5 in. by 12 in.).  "
                     mRepObj.PrintOptions.PaperSize = CrystalDecisions.Shared.PaperSize.PaperFanfoldStdGerman
-                    ' '' ''Case "InviteEnvelope" ' Invitation envelope (220 mm by 220 mm).  "
-                    ' '' ''Case "IsoB4" ' ISO B4 (250 mm by 353 mm).  "
+                ' '' ''Case "InviteEnvelope" ' Invitation envelope (220 mm by 220 mm).  "
+                ' '' ''Case "IsoB4" ' ISO B4 (250 mm by 353 mm).  "
                 Case "Ledger" ' Ledger paper (17 in. by 11 in.).  "
                     mRepObj.PrintOptions.PaperSize = CrystalDecisions.Shared.PaperSize.PaperLedger
                 Case "Legal" ' Legal paper (8.5 in. by 14 in.).  "
                     mRepObj.PrintOptions.PaperSize = CrystalDecisions.Shared.PaperSize.PaperLegal
-                    ' '' ''Case "LegalExtra" ' Legal extra paper (9.275 in. by 15 in.). This value is specific to the PostScript driver and is used only by Linotronic printers in order to conserve paper.  "
+                ' '' ''Case "LegalExtra" ' Legal extra paper (9.275 in. by 15 in.). This value is specific to the PostScript driver and is used only by Linotronic printers in order to conserve paper.  "
                 Case "Letter" ' Letter paper (8.5 in. by 11 in.).  "
                     mRepObj.PrintOptions.PaperSize = CrystalDecisions.Shared.PaperSize.PaperLetter
-                    ' '' ''Case "LetterExtra" ' Letter extra paper (9.275 in. by 12 in.). This value is specific to the PostScript driver and is used only by Linotronic printers in order to conserve paper.  "
-                    ' '' ''Case "LetterExtraTransverse " 'Letter extra transverse paper (9.275 in. by 12 in.).  "
-                    ' '' ''Case "LetterPlus" ' Letter plus paper (8.5 in. by 12.69 in.).  "
-                    ' '' ''Case "LetterRotated" ' Letter rotated paper (11 in. by 8.5 in.).  "
+                ' '' ''Case "LetterExtra" ' Letter extra paper (9.275 in. by 12 in.). This value is specific to the PostScript driver and is used only by Linotronic printers in order to conserve paper.  "
+                ' '' ''Case "LetterExtraTransverse " 'Letter extra transverse paper (9.275 in. by 12 in.).  "
+                ' '' ''Case "LetterPlus" ' Letter plus paper (8.5 in. by 12.69 in.).  "
+                ' '' ''Case "LetterRotated" ' Letter rotated paper (11 in. by 8.5 in.).  "
                 Case "LetterSmall" ' Letter small paper (8.5 in. by 11 in.).  "
                     mRepObj.PrintOptions.PaperSize = CrystalDecisions.Shared.PaperSize.PaperLetterSmall
-                    ' '' ''Case "LetterTransverse" ' Letter transverse paper (8.275 in. by 11 in.).  "
-                    ' '' ''Case "MonarchEnvelope" ' Monarch envelope (3.875 in. by 7.5 in.).  "
+                ' '' ''Case "LetterTransverse" ' Letter transverse paper (8.275 in. by 11 in.).  "
+                ' '' ''Case "MonarchEnvelope" ' Monarch envelope (3.875 in. by 7.5 in.).  "
                 Case "Note" ' Note paper (8.5 in. by 11 in.).  "
                     mRepObj.PrintOptions.PaperSize = CrystalDecisions.Shared.PaperSize.PaperNote
-                    ' '' ''Case "Number10Envelope" ' #10 envelope (4.125 in. by 9.5 in.).  "
-                    ' '' ''Case "Number11Envelope" ' #11 envelope (4.5 in. by 10.375 in.).  "
-                    ' '' ''Case "Number12Envelope" ' #12 envelope (4.75 in. by 11 in.).  "
-                    ' '' ''Case "Number14Envelope" ' #14 envelope (5 in. by 11.5 in.).  "
-                    ' '' ''Case "Number9Envelope" ' #9 envelope (3.875 in. by 8.875 in.).  "
-                    ' '' ''Case "PersonalEnvelope" ' 6 3/4 envelope (3.625 in. by 6.5 in.).  "
+                ' '' ''Case "Number10Envelope" ' #10 envelope (4.125 in. by 9.5 in.).  "
+                ' '' ''Case "Number11Envelope" ' #11 envelope (4.5 in. by 10.375 in.).  "
+                ' '' ''Case "Number12Envelope" ' #12 envelope (4.75 in. by 11 in.).  "
+                ' '' ''Case "Number14Envelope" ' #14 envelope (5 in. by 11.5 in.).  "
+                ' '' ''Case "Number9Envelope" ' #9 envelope (3.875 in. by 8.875 in.).  "
+                ' '' ''Case "PersonalEnvelope" ' 6 3/4 envelope (3.625 in. by 6.5 in.).  "
                 Case "Quarto" ' Quarto paper (215 mm by 275 mm).  "
                     mRepObj.PrintOptions.PaperSize = CrystalDecisions.Shared.PaperSize.PaperQuarto
-                    ' '' ''Case "Standard10x11" ' Standard paper (10 in. by 11 in.).  "
+                ' '' ''Case "Standard10x11" ' Standard paper (10 in. by 11 in.).  "
                 Case "Standard10x14" ' Standard paper (10 in. by 14 in.).  "
                     mRepObj.PrintOptions.PaperSize = CrystalDecisions.Shared.PaperSize.Paper10x14
                 Case "Standard11x17" ' Standard paper (11 in. by 17 in.).  "
                     mRepObj.PrintOptions.PaperSize = CrystalDecisions.Shared.PaperSize.Paper11x17
-                    ' '' ''Case "Standard12x11" ' Standard paper (12 in. by 11 in.). Requires Windows 98, Windows NT 4.0, or later.  "
-                    ' '' ''Case "Standard15x11" ' Standard paper (15 in. by 11 in.).  "
-                    ' '' ''Case "Standard9x11" ' Standard paper (9 in. by 11 in.).  "
+                ' '' ''Case "Standard12x11" ' Standard paper (12 in. by 11 in.). Requires Windows 98, Windows NT 4.0, or later.  "
+                ' '' ''Case "Standard15x11" ' Standard paper (15 in. by 11 in.).  "
+                ' '' ''Case "Standard9x11" ' Standard paper (9 in. by 11 in.).  "
                 Case "Statement" ' Statement paper (5.5 in. by 8.5 in.).  "
                     mRepObj.PrintOptions.PaperSize = CrystalDecisions.Shared.PaperSize.PaperStatement
                 Case "Tabloid" ' Tabloid paper (11 in. by 17 in.).  "
@@ -589,22 +590,136 @@ Public Class FrmWhatsapp
         End If
         Try
             Dim MobileNoList As String = TxtToMobile.Text
-            Dim MS As MemoryStream = CType((CType(CrvReport.ReportSource, ReportDocument).ExportToStream(ExportFormatType.PortableDocFormat)), MemoryStream)
+            'Dim MS As MemoryStream = CType((CType(CrvReport.ReportSource, ReportDocument).ExportToStream(ExportFormatType.PortableDocFormat)), MemoryStream)
 
-            'Dim request As System.Net.FtpWebRequest = DirectCast(System.Net.WebRequest.Create("ftp://182.156.84.26/delivery_challan.pdf"), System.Net.WebRequest)
-            Dim request As System.Net.FtpWebRequest = DirectCast(System.Net.WebRequest.Create("ftp://182.156.84.26/" & mAttachmentName + ".pdf"), System.Net.WebRequest)
-            request.Credentials = New System.Net.NetworkCredential("equal2", "P@ssw0rd!P@ssw0rd!")
-            request.Method = System.Net.WebRequestMethods.Ftp.UploadFile
-            'Dim file() As Byte = System.IO.File.ReadAllBytes("d:\delivery_challan.pdf")
-            Dim file() As Byte = MS.ToArray()
-            Dim strz As System.IO.Stream = request.GetRequestStream()
-            strz.Write(file, 0, file.Length)
-            strz.Close()
-            strz.Dispose()
+            ''Dim request As System.Net.FtpWebRequest = DirectCast(System.Net.WebRequest.Create("ftp://182.156.84.26/delivery_challan.pdf"), System.Net.WebRequest)
+            ''Dim request As System.Net.FtpWebRequest = DirectCast(System.Net.WebRequest.Create("ftp://182.156.84.26/" & mAttachmentName + ".pdf"), System.Net.WebRequest)
+            'Dim request As System.Net.FtpWebRequest = DirectCast(System.Net.WebRequest.Create("ftp://216.48.180.109/sadhvi/" & mAttachmentName + ".pdf"), System.Net.WebRequest)
 
+            'request.Credentials = New System.Net.NetworkCredential("equal2464", "tActL$*$P*67")
+            'request.Method = System.Net.WebRequestMethods.Ftp.UploadFile
+            'Dim file() As Byte = System.IO.File.ReadAllBytes("d:\delivery_challan - Copy.pdf")
+            ''Dim file() As Byte = MS.ToArray()
+            'Dim strz As System.IO.Stream = request.GetRequestStream()
+            'strz.Write(file, 0, file.Length)
+            'strz.Close()
+            'strz.Dispose()
+            Dim server As String = "ftp://216.48.180.109/public_html/sadhvi/"
+            Dim username As String = "equal2464"
+            Dim password As String = "tActL$*$P*67"
+            Dim filePath As String = "d:/Sadhvi/delivery_challan - Copy.pdf"
+            Dim remoteFileName As String = "delivery_challan1.pdf"
+
+            UploadFileToFtp(server, username, password, filePath, remoteFileName)
+            'UploadFile()
             FSendWhatsapp = True
         Catch ex As Exception
             MsgBox(ex.Message)
         End Try
     End Function
+
+    Sub UploadFileToFtp(server As String, username As String, password As String, filePath As String, remoteFileName As String)
+        Try
+            ' Create an FTP request
+            'Dim FUri As Uri = New Uri(server & remoteFileName)
+
+            Dim request As System.Net.FtpWebRequest = DirectCast(System.Net.WebRequest.Create("ftp://216.48.180.109/public_html/sadhvi/" & mAttachmentName + ".pdf"), System.Net.WebRequest)
+
+            'Dim request As FtpWebRequest = CType(WebRequest.Create(FUri), FtpWebRequest)
+            'Dim request As FtpWebRequest = WebRequest.Create(server & "" & remoteFileName)
+            'Dim request As FtpWebRequest = (FtpWebRequest)FtpWebRequest.Create(New Uri("ftp://" + ftpServerIP + "/outbox/" + objFile.Name));
+
+            request.Method = WebRequestMethods.Ftp.UploadFile
+
+            ' Set FTP credentials
+            request.Credentials = New NetworkCredential(username, password)
+
+            ' Enable binary transfer mode for file upload
+            request.UseBinary = True
+            request.UsePassive = True
+            request.KeepAlive = False
+
+            ' Read the file into a byte array
+            Dim fileContents As Byte() = File.ReadAllBytes(filePath)
+
+            ' Get the request stream and upload the file
+            Using requestStream As Stream = request.GetRequestStream()
+                requestStream.Write(fileContents, 0, fileContents.Length)
+            End Using
+
+            ' Get the response from the FTP server
+            Using response As FtpWebResponse = CType(request.GetResponse(), FtpWebResponse)
+                Console.WriteLine("Upload File Complete, status: " & response.StatusDescription)
+            End Using
+        Catch ex As Exception
+            Console.WriteLine("Error: " & ex.Message)
+        End Try
+    End Sub
+    'Function UploadFileToFTPServer() As String
+    '    ' FTP Server Information
+    '    Dim ftpServer As String = "ftp://216.48.180.109"
+    '    Dim ftpUsername As String = "equal2464"
+    '    Dim ftpPassword As String = "tActL$*$P*67"
+    '    Dim filePath As String = "d:/Sadhvi/13414.pdf"
+    '    Dim remotePath As String = "/public_html/sadhvi/13414.pdf"
+
+    '    Try
+    '        ' Combine FTP server address and remote path
+    '        Dim ftpUri As String = ftpServer & remotePath
+    '        ' Create FTP Request
+    '        Dim request As FtpWebRequest = CType(WebRequest.Create(ftpUri), FtpWebRequest)
+    '        request.Method = WebRequestMethods.Ftp.UploadFile
+    '        request.Credentials = New NetworkCredential(ftpUsername, ftpPassword)
+    '        request.UseBinary = True
+    '        request.KeepAlive = False
+
+    '        ' Read the file to upload
+    '        Dim fileContents As Byte() = File.ReadAllBytes(filePath)
+    '        request.ContentLength = fileContents.Length
+
+    '        ' Upload file to server
+    '        Using requestStream As Stream = request.GetRequestStream()
+    '            requestStream.Write(fileContents, 0, fileContents.Length)
+    '        End Using
+
+    '        ' Get response from server
+    '        Using response As FtpWebResponse = CType(request.GetResponse(), FtpWebResponse)
+    '            Console.WriteLine("Upload status: " & response.StatusDescription)
+    '        End Using
+
+    '    Catch ex As Exception
+    '        Console.WriteLine("Error: " & ex.Message)
+    '    End Try
+    'End Function
+    Function UploadFile() As String
+        Dim filePath As String, serverUrl As String
+        filePath = "d:\delivery_challan - Copy.pdf"
+        serverUrl = "ftp://216.48.180.109//sadhvi//"
+        Dim username As String = "equal2464"
+        Dim password As String = "tActL$*$P*67"
+        Try
+            ' Ensure the file exists
+            If Not File.Exists(filePath) Then
+                Throw New FileNotFoundException("The file does not exist.")
+            End If
+
+            ' Create a WebClient instance
+            Using client As New WebClient()
+                ' Add a header if needed (e.g., for authentication)
+                ' client.Headers.Add("Authorization", "Bearer your_token")
+                client.Credentials = New NetworkCredential(UserName, password)
+
+                ' Upload the file
+                Dim responseBytes As Byte() = client.UploadFile(serverUrl, filePath)
+
+                ' Convert the response to a string and return it
+                Return System.Text.Encoding.UTF8.GetString(responseBytes)
+            End Using
+
+        Catch ex As Exception
+            ' Handle errors
+            Return "Error: " & ex.Message
+        End Try
+    End Function
+
 End Class

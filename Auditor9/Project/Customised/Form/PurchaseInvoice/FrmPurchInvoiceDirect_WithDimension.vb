@@ -6134,7 +6134,7 @@ Public Class FrmPurchInvoiceDirect_WithDimension
                 Left Join Subgroup SP With (NoLock) On H.ShipToParty = SP.Subcode           
                 Left Join Subgroup BP With (NoLock) On H.BillToParty = BP.Subcode           
                 Left Join Subgroup Agent  With (NoLock) On H.Agent = Agent.Subcode
-                Join Subgroup G With (NoLock) on L.Godown  = G.Subcode
+                Left Join Subgroup G With (NoLock) on L.Godown  = G.Subcode
                 LEFT JOIN SubGroup FGodown On Pidt.FromGodown = FGodown.SubCode
                 LEFT JOIN SubGroup TGodown On Pidt.ToGodown = TGodown.SubCode
                 Left Join City SC With (NoLock) On SP.CityCode = SC.CityCode
