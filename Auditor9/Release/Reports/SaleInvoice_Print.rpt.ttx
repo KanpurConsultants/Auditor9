@@ -5,50 +5,52 @@ DocNoCaption	string	255	Invoice No.
 DocDateCaption	string	255	Invoice Date	
 SiteStateCode	string	255	09	
 SiteStateName	string	255	Uttar Pradesh	
-DocID	string	255	D1    SI 2024   13414	
+DocID	string	255	D1    SI 2024   15401	
 Sr	number	1	
-V_Date	datetime	12/Dec/2024 00:00:00	
+V_Date	datetime	07/Jan/2025 00:00:00	
 DeliveryDate	datetime		
 Voucher_Type	string	255	Tax Invoice	
 NCat	string	255	SI	
-InvoiceNo	string	255	SI-13413	
+InvoiceNo	string	255	SI-15400	
 RateType	string	255	Super Net	
 DocumentPrintShowRateType	string	255	Show If Not Blank	
-AgentName	string	255	DIRECT (CASH)	
+AgentName	string	255	VINOD KUMAR MANDHANI	
 AgentCaption	string	255	Agent	
 BillToPartyNature	string	255	Customer	
-SaleToPartyName	string	255	SATYAM TRIPATHI	
-SaleToPartyAddress	string	255	RAMGANJ,PAKKA TALAB-FATEHPUR	
-CityName	string	255	FATEHPUR	
-SaleToPartyPincode	string	255	212601	
+SaleToPartyName	string	255	ANURAG TEXTILES	
+SaleToPartyAddress	string	255	KYDGANJ DIST:PRAYAGRAJ
+	
+CityName	string	255	PRAYAGRAJ	
+SaleToPartyPincode	string	255	211003	
 StateCode	string	255	09	
 StateName	string	255	Uttar Pradesh	
-SaleToPartyMobile	string	255	8299399688	
-ContactPerson	string	255	SATYAM TRIPATHI	
-SaleToPartySalesTaxNo	string	255		
-SaleToPartyAadharNo	string	255	424442144924	
-SaleToPartyPanNo	string	255		
-ShipToPartyName	string	255	SATYAM TRIPATHI	
-ShipToPartyAddress	string	255	RAMGANJ,PAKKA TALAB-FATEHPUR	
-ShipToPartyCity	string	255	FATEHPUR	
-ShipToPartyPincode	string	255	212601	
+SaleToPartyMobile	string	255	8887838264	
+ContactPerson	string	255	PRAKASH CHANDRA JAISWAL	
+SaleToPartySalesTaxNo	string	255	09ACVPJ5669B1Z4	
+SaleToPartyAadharNo	string	255		
+SaleToPartyPanNo	string	255	ACVPJ5669B	
+ShipToPartyName	string	255	ANURAG TEXTILES	
+ShipToPartyAddress	string	255	KYDGANJ DIST:PRAYAGRAJ
+	
+ShipToPartyCity	string	255	PRAYAGRAJ	
+ShipToPartyPincode	string	255	211003	
 ShipToPartyStateCode	string	255	09	
 ShipToPartyStateName	string	255	Uttar Pradesh	
-ShipToPartyMobile	string	255	8299399688	
-ShipToPartySalesTaxNo	string	255		
-ShipToPartyAadharNo	string	255	424442144924	
-ShipToPartyPanNo	string	255		
+ShipToPartyMobile	string	255	8887838264	
+ShipToPartySalesTaxNo	string	255	09ACVPJ5669B1Z4	
+ShipToPartyAadharNo	string	255		
+ShipToPartyPanNo	string	255	ACVPJ5669B	
 ShipToAddress	string	255		
 TermsAndConditions	string	255	<b>1.</b> Goods once sold will not be taken back. <b>2.</b> No Guarantee in the Age of Fashion. <b>3.</b> Interest @ 24% per annum will be charge after 30 days from the date of bill. <b>4.</b> All disputes subject to Kanpur Jurisdiction OR disputes will be settle through Cawnpore Kapda Committee Arbitration Board which will be abide by the both parties	
-TransporterName	string	255		
+TransporterName	string	255	SONY GOODS CARRIERS, KANPUR	
 TransporterMobile	string	255		
 TransporterAddress	string	255		
 LrNo	string	255		
 LrDate	datetime		
 PrivateMark	string	255		
-Weight	number		
-Freight	number		
-ChargedWeight	number		
+Weight	number	0	
+Freight	number	0	
+ChargedWeight	number	0	
 FreightType	string	255		
 RoadPermitNo	string	255		
 RoadPermitDate	datetime		
@@ -61,12 +63,12 @@ BookedTo	string	255
 Destination	string	255		
 DescriptionOfGoods	string	255		
 DescriptionOfPacking	string	255		
-TransporterSalesTaxNo	string	255		
+TransporterSalesTaxNo	string	255	09AGFPJ2071F1ZM	
 ReferenceNo	string	255		
-ItemName	string	255	SAREE          [BITTU SAREES(853) | SAREE]	
-ItemGroupName	string	255	S-ENT-853 DYD	
+ItemName	string	255	CAMPUS          [AMAR SAREES(801) | SAREE]	
+ItemGroupName	string	255	S-ENT-801 DYD	
 ItemCatName	string	255	SAREE	
-ItemSpecification	string	255	SAREE	
+ItemSpecification	string	255	CAMPUS	
 InvoiceLineSpecification	string	255		
 HSN	string	255	540752	
 MaintainStockYn	boolean	True	
@@ -74,44 +76,44 @@ SalesTaxGroupItem	string	255	GST 5%
 GrossTaxRate	number	5	
 Pcs	number	2	
 Qty	number	2	
-Rate	number	899	
+Rate	number	1595	
 Unit	string	255	Pcs	
 UnitDecimalPlaces	number	0	
-DiscountPer	number	0	
-DiscountAmount	number	0	
+DiscountPer	number	10	
+DiscountAmount	number	319	
 AdditionalDiscountPer	number	0	
 AdditionalDiscountAmount	number	0	
 AdditionPer	number	0	
 AdditionAmount	number	0	
-TotalDiscount	number	0	
-AmountBeforeDiscount	number	1798	
-Amount	number	1798	
-Taxable_Amount	number	1798	
+TotalDiscount	number	319	
+AmountBeforeDiscount	number	3190	
+Amount	number	2871	
+Taxable_Amount	number	2871	
 Tax1_Per	number	0	
 Tax1	number	0	
 Tax2_Per	number	2.5	
-Tax2	number	44.95	
+Tax2	number	71.78	
 Tax3_Per	number	2.5	
-Tax3	number	44.95	
+Tax3	number	71.78	
 Tax4_Per	number	0	
 Tax4	number	0	
 Tax5_Per	number	0	
 Tax5	number	0	
-Net_Amount	number	1887.84	
+Net_Amount	number	3015	
 LRemarks	string	255		
 HRemarks	string	255		
-H_TotalDiscount	number	0	
-H_AmountBeforeDiscount	number	4663	
-H_Gross_Amount	number	4663	
+H_TotalDiscount	number	319	
+H_AmountBeforeDiscount	number	3190	
+H_Gross_Amount	number	2871	
 H_SpecialDiscount_Per	number	0	
 H_SpecialDiscount	number	0	
-H_Taxable_Amount	number	4663	
+H_Taxable_Amount	number	2871	
 H_Tax1_Per	number	0	
 H_Tax1	number	0	
 H_Tax2_Per	number	0	
-H_Tax2	number	116.58	
+H_Tax2	number	71.78	
 H_Tax3_Per	number	0	
-H_Tax3	number	116.58	
+H_Tax3	number	71.78	
 H_Tax4_Per	number	0	
 H_Tax4	number	0	
 H_Tax5_Per	number	0	
@@ -120,8 +122,8 @@ H_Deduction_Per	number	0
 H_Deduction	number	0	
 H_Other_Charge_Per	number	0	
 H_Other_Charge	number	0	
-Round_Off	number	-0.16	
-H_Net_Amount	number	4896	
+Round_Off	number	0.44	
+H_Net_Amount	number	3015	
 EInvoiceIRN	string	255		
 EInvoiceAckNo	string	255		
 EInvoiceAckDate	datetime		

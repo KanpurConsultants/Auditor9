@@ -2394,7 +2394,7 @@ Public Class FrmPurchInvoiceDirect_WithDimension
         If CType(AgL.VNull(FGetSettings(SettingFields.PostInStockYn, SettingType.General)), Boolean) = True Then
             If AgL.XNull(Dgl1.Item(Col1StockProcess, LineGridRowIndex).Tag) = "" Then
                 mQry = "Insert Into Stock(DocID, TSr, Sr, V_Type, V_Prefix, V_Date, V_No, RecID, Div_Code, Site_Code, 
-                        SubCode, SalesTaxGroupParty, Item, SalesTaxGroupItem,  LotNo, ExpiryDate, MRP, Process, Godown, 
+                        SubCode, SalesTaxGroupParty, Item, SalesTaxGroupItem,  LotNo, ExpiryDate, MRP, Process, Godown, Barcode,
                         EType_IR, Qty_Iss, Qty_Rec, Unit, Pcs_Iss, Pcs_Rec, UnitMultiplier, DealQty_Iss , DealQty_Rec, DealUnit, 
                         Rate, Amount, Sale_Rate, DiscountPer, AdditionalDiscountPer, Deal, Landed_Value, ReferenceDocID, ReferenceTSr, ReferenceDocIDSr) 
                         Values (
@@ -2414,7 +2414,7 @@ Public Class FrmPurchInvoiceDirect_WithDimension
                         " & AgL.Chk_Date(Dgl1.Item(Col1ExpiryDate, LineGridRowIndex).Value) & ", 
                         " & Val(Dgl1.Item(Col1MRP, LineGridRowIndex).Value) & ", 
                         " & AgL.Chk_Text(bProcess) & ", 
-                        " & AgL.Chk_Text(bGodown) & ",
+                        " & AgL.Chk_Text(bGodown) & "," & AgL.Chk_Text(Dgl1.Item(Col1Barcode, LineGridRowIndex).Tag) & ", 
                         '', " & Val(bQty_Issue) & "," & Val(bQty_Receive) & ", 
                         " & AgL.Chk_Text(Dgl1.Item(Col1Unit, LineGridRowIndex).Value) & ",
                         " & Val(bPcs_Issue) & "," & Val(bPcs_Receive) & ", 
@@ -2562,7 +2562,10 @@ Public Class FrmPurchInvoiceDirect_WithDimension
                             bQty_Issue As Double, bQty_Receive As Double, bPcs_Issue As Double, bPcs_Receive As Double, bDealQty_Issue As Double, bDealQty_Receive As Double,
                             ByRef Conn As Object, ByRef Cmd As Object)
         If CType(AgL.VNull(FGetSettings(SettingFields.PostInStockProcessYn, SettingType.General)), Boolean) = True Then
-            mQry = "Insert Into StockProcess(DocID, TSr, Sr, V_Type, V_Prefix, V_Date, V_No, RecID, Div_Code, Site_Code, 
+            If AgL.StrCmp(AgL.PubDBName, "Pratham") And DglMain.Item(Col1Value, rowVendor).Tag = "D100000571" Then
+
+            Else
+                mQry = "Insert Into StockProcess(DocID, TSr, Sr, V_Type, V_Prefix, V_Date, V_No, RecID, Div_Code, Site_Code, 
                     SubCode, SalesTaxGroupParty, Item, SalesTaxGroupItem,  LotNo, 
                     EType_IR, Qty_Iss, Qty_Rec, Pcs_Iss, Pcs_Rec, Unit, UnitMultiplier, DealQty_Iss , DealQty_Rec, DealUnit, 
                     Rate, Amount, Landed_Value, Process, ReferenceDocID, ReferenceTSr, ReferenceDocIDSr, 
@@ -2597,7 +2600,8 @@ Public Class FrmPurchInvoiceDirect_WithDimension
                     " & Val(Dgl1.Item(Col1StockProcessTSr, LineGridRowIndex).Value) & ", 
                     " & Val(Dgl1.Item(Col1StockProcessSr, LineGridRowIndex).Value) & "
                     )"
-            AgL.Dman_ExecuteNonQry(mQry, Conn, Cmd)
+                AgL.Dman_ExecuteNonQry(mQry, Conn, Cmd)
+            End If
         End If
     End Sub
     Private Sub UpdateStockProcess(DocID As String, TSr As Integer, Sr As Integer, LineGridRowIndex As Integer,
@@ -2605,12 +2609,15 @@ Public Class FrmPurchInvoiceDirect_WithDimension
                             bQty_Issue As Double, bQty_Receive As Double, bPcs_Issue As Double, bPcs_Receive As Double, bDealQty_Issue As Double, bDealQty_Receive As Double,
                             ByRef Conn As Object, ByRef Cmd As Object)
         If CType(AgL.VNull(FGetSettings(SettingFields.PostInStockProcessYn, SettingType.General)), Boolean) = True Then
-            If AgL.XNull(Dgl1.Item(Col1StockProcess, LineGridRowIndex).Tag) = "" Then
-                If AgL.Dman_Execute(" Select Count(*) From PurchInvoiceDimensionDetail L With (NoLock)
+            If AgL.StrCmp(AgL.PubDBName, "Pratham") And DglMain.Item(Col1Value, rowVendor).Tag = "D100000571" Then
+
+            Else
+                If AgL.XNull(Dgl1.Item(Col1StockProcess, LineGridRowIndex).Tag) = "" Then
+                    If AgL.Dman_Execute(" Select Count(*) From PurchInvoiceDimensionDetail L With (NoLock)
                             Where L.DocId = '" & DocID & "' And TSr = " & TSr & "", IIf(AgL.PubServerName = "", Conn, AgL.GcnRead)).ExecuteScalar() = 0 Then
-                    If Dgl1.Item(Col1TransactionStockProcessSr, LineGridRowIndex).Value <> "" Then
-                        'If Dgl1.Item(Col1StockSr, LineGridRowIndex).Value.ToString.Contains(",") = 0 Then
-                        mQry = "Update StockProcess Set
+                        If Dgl1.Item(Col1TransactionStockProcessSr, LineGridRowIndex).Value <> "" Then
+                            'If Dgl1.Item(Col1StockSr, LineGridRowIndex).Value.ToString.Contains(",") = 0 Then
+                            mQry = "Update StockProcess Set
                                 V_Type = " & AgL.Chk_Text(DglMain.Item(Col1Value, rowV_Type).Tag) & ", 
                                 V_Prefix = " & AgL.Chk_Text(LblPrefix.Text) & ",
                                 V_Date = " & AgL.Chk_Date(DglMain.Item(Col1Value, rowV_Date).Value) & ", 
@@ -2645,11 +2652,11 @@ Public Class FrmPurchInvoiceDirect_WithDimension
                                 StockProcessTSr = " & AgL.Chk_Text(Dgl1.Item(Col1StockProcessTSr, LineGridRowIndex).Value) & ", 
                                 StockProcessSr = " & AgL.Chk_Text(Dgl1.Item(Col1StockProcessSr, LineGridRowIndex).Value) & " 
                                 Where DocId = '" & DocID & "' and TSr =" & TSr & " And Sr =" & Sr & " "
-                        AgL.Dman_ExecuteNonQry(mQry, Conn, Cmd)
-                        'End If
-                    Else
-                        mDimensionSrl += 1
-                        mQry = "Insert Into StockProcess(DocID, TSr, Sr, V_Type, V_Prefix, V_Date, V_No, RecID, Div_Code, Site_Code, 
+                            AgL.Dman_ExecuteNonQry(mQry, Conn, Cmd)
+                            'End If
+                        Else
+                            mDimensionSrl += 1
+                            mQry = "Insert Into StockProcess(DocID, TSr, Sr, V_Type, V_Prefix, V_Date, V_No, RecID, Div_Code, Site_Code, 
                             SubCode, SalesTaxGroupParty, Barcode, Item, SalesTaxGroupItem,  LotNo, 
                             EType_IR, Qty_Iss, Qty_Rec, Pcs_Iss, Pcs_Rec, Unit, UnitMultiplier, DealQty_Iss , DealQty_Rec, DealUnit, 
                             Rate, Amount, Landed_Value, Process, ReferenceDocID, ReferenceTSr, ReferenceDocIDSr,
@@ -2685,7 +2692,8 @@ Public Class FrmPurchInvoiceDirect_WithDimension
                             " & Val(Dgl1.Item(Col1StockProcessTSr, LineGridRowIndex).Value) & ", 
                             " & Val(Dgl1.Item(Col1StockProcessSr, LineGridRowIndex).Value) & "
                             )"
-                        AgL.Dman_ExecuteNonQry(mQry, Conn, Cmd)
+                            AgL.Dman_ExecuteNonQry(mQry, Conn, Cmd)
+                        End If
                     End If
                 End If
             End If
@@ -4355,7 +4363,7 @@ Public Class FrmPurchInvoiceDirect_WithDimension
 
                     'If CType(AgL.VNull(DtV_TypeSettings.Rows(0)("IsVisible_TransactionHistory")), Boolean) = True Then
                     FShowTransactionHistory(Dgl1.Item(Col1Item, mRowIndex).Tag)
-                    'End If
+                'End If
 
                 Case Col1ItemCode
                     'Validating_ItemCode(mColumnIndex, mRowIndex, DrTemp)
@@ -5486,7 +5494,11 @@ Public Class FrmPurchInvoiceDirect_WithDimension
                         Dgl1.Item(Col1BarcodePattern, Dgl1.CurrentCell.RowIndex).Value = BarcodePattern.Manual Then
                         Dgl1.CurrentCell.ReadOnly = False
                     Else
-                        Dgl1.CurrentCell.ReadOnly = True
+                        If CType(AgL.VNull(DtV_TypeSettings.Rows(0)("IsBarcodeHelpFromStock")), Boolean) = True Then
+                            Dgl1.CurrentCell.ReadOnly = False
+                        Else
+                            Dgl1.CurrentCell.ReadOnly = True
+                        End If
                     End If
                 Case Col1Item
                     If AgL.VNull(Dgl1.Item(Col1Unit, Dgl1.CurrentCell.RowIndex).Tag) And AgL.VNull(Dgl1.Item(Col1DocQty, Dgl1.CurrentCell.RowIndex).Value) <> 0 Then
@@ -6764,6 +6776,15 @@ Public Class FrmPurchInvoiceDirect_WithDimension
                         FOpenItemGroupMaster(Dgl1.Columns(Col1Item).Index, Dgl1.CurrentCell.RowIndex)
                     End If
 
+                Case Col1Barcode
+                    If e.KeyCode <> Keys.Enter Then
+                        If Dgl1.AgHelpDataSet(Col1Barcode) Is Nothing Then
+                            If (LblV_Type.Tag = Ncat.StockTransfer Or LblV_Type.Tag = Ncat.StockIssue) And CType(AgL.VNull(DtV_TypeSettings.Rows(0)("IsBarcodeHelpFromStock")), Boolean) = True Then
+                                FCreateHelpBarcodeHelpFromStock(Dgl1.CurrentCell.RowIndex)
+                            End If
+                        End If
+                    End If
+
                 Case Col1Item
                     'If e.KeyCode <> Keys.Enter And e.KeyCode <> Keys.Insert Then
                     '    If Dgl1.AgHelpDataSet(Col1Item) Is Nothing Then
@@ -6946,6 +6967,59 @@ Public Class FrmPurchInvoiceDirect_WithDimension
             MsgBox(ex.Message)
         End Try
     End Sub
+    Private Sub FCreateHelpBarcodeHelpFromStock(RowIndex As Integer)
+        Dim strCond As String = ""
+        If DtV_TypeSettings.Rows.Count > 0 Then
+            If AgL.XNull(DtV_TypeSettings.Rows(0)("FilterInclude_ItemType")) <> "" Then
+                If AgL.XNull(DtV_TypeSettings.Rows(0)("FilterInclude_ItemType")).ToString.Substring(0, 1) = "+" Then
+                    strCond += " And CharIndex('+' || I.ItemType,'" & AgL.XNull(DtV_TypeSettings.Rows(0)("FilterInclude_ItemType")) & "') > 0 "
+                ElseIf AgL.XNull(DtV_TypeSettings.Rows(0)("FilterInclude_ItemType")).ToString.Substring(0, 1) = "-" Then
+                    strCond += " And CharIndex('-' || I.ItemType,'" & AgL.XNull(DtV_TypeSettings.Rows(0)("FilterInclude_ItemType")) & "') <= 0 "
+                End If
+            End If
+
+            If AgL.XNull(DtV_TypeSettings.Rows(0)("FilterInclude_ItemGroup")) <> "" Then
+                If AgL.XNull(DtV_TypeSettings.Rows(0)("FilterInclude_ItemGroup")).ToString.Substring(0, 1) = "+" Then
+                    strCond += " And CharIndex('+' || I.ItemGroup,'" & AgL.XNull(DtV_TypeSettings.Rows(0)("FilterInclude_ItemGroup")) & "') > 0 "
+                ElseIf AgL.XNull(DtV_TypeSettings.Rows(0)("FilterInclude_ItemGroup")).ToString.Substring(0, 1) = "-" Then
+                    strCond += " And CharIndex('-' || I.ItemGroup,'" & AgL.XNull(DtV_TypeSettings.Rows(0)("FilterInclude_ItemGroup")) & "') <= 0 "
+                End If
+            End If
+
+            If AgL.XNull(DtV_TypeSettings.Rows(0)("FilterInclude_Item")) <> "" Then
+                If AgL.XNull(DtV_TypeSettings.Rows(0)("FilterInclude_Item")).ToString.Substring(0, 1) = "+" Then
+                    strCond += " And CharIndex('+' || I.Code,'" & AgL.XNull(DtV_TypeSettings.Rows(0)("FilterInclude_Item")) & "') > 0 "
+                ElseIf AgL.XNull(DtV_TypeSettings.Rows(0)("FilterInclude_Item")).ToString.Substring(0, 1) = "+" Then
+                    strCond += " And CharIndex('-' || I.Code,'" & AgL.XNull(DtV_TypeSettings.Rows(0)("FilterInclude_Item")) & "') <= 0 "
+                End If
+            End If
+
+            If Dgl1.Item(Col1ItemCategory, RowIndex).Value <> "" And Dgl1.Columns(Col1ItemCategory).Visible Then
+                strCond += " And I.ItemCategory = '" & Dgl1.Item(Col1ItemCategory, RowIndex).Tag & "' "
+            End If
+
+            If Dgl1.Item(Col1ItemGroup, RowIndex).Value <> "" And Dgl1.Columns(Col1ItemGroup).Visible Then
+                strCond += " And I.ItemGroup = '" & Dgl1.Item(Col1ItemGroup, RowIndex).Tag & "' "
+            End If
+        End If
+
+        If Dgl2.Item(Col1Value, rowFromGodown).Tag <> "" Then
+            strCond += " And H.Godown = '" & Dgl2.Item(Col1Value, rowFromGodown).Tag & "' "
+        End If
+
+        mQry = "SELECT H.Barcode As Code,  Max(B.Description) As Description, Max(I.Description) As Item, Sum(isnull(H.Qty_Rec,0) - isnull(H.Qty_Iss,0)) PendingQty, H.Item 
+                FROM Stock H
+                LEFT JOIN Item I On H.Item = I.Code 
+                LEFT JOIN Item IG ON Ig.Code = I.ItemGroup 
+                LEFT JOIN Barcode B ON B.Code = H.Barcode 
+                WHERE 1=1 AND H.Barcode IS NOT NULL AND H.Item Not in ('LrBale','Lr')
+                And I.Code Is Not Null " & strCond
+
+        mQry += " Group By H.Item, H.Barcode HAVING Sum(isnull(H.Qty_Rec,0) - isnull(H.Qty_Iss,0)) > 0 "
+
+        Dgl1.AgHelpDataSet(Col1Barcode, 1) = AgL.FillData(mQry, AgL.GcnRead)
+    End Sub
+
     Private Sub FCreateHelpItemFromPurchaseOrder(RowIndex As Integer)
         Dim strCond As String = ""
         If DtV_TypeSettings.Rows.Count > 0 Then

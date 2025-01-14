@@ -5239,6 +5239,13 @@ Public Class FrmSaleInvoiceDirect_WithDimension
             If Dgl1.Item(mColumnIndex, mRowIndex).Value Is Nothing Then Dgl1.Item(mColumnIndex, mRowIndex).Value = ""
             Select Case Dgl1.Columns(Dgl1.CurrentCell.ColumnIndex).Name
 
+                Case Col1Barcode
+                    If AgL.XNull(Dgl1.Item(Col1Barcode, mRowIndex).Tag) <> "" Then
+                        mQry = " Select Item From Barcode Where Code = '" & Dgl1.Item(Col1Barcode, mRowIndex).Tag & "'"
+                        Dgl1.Item(Col1ItemCode, mRowIndex).Tag = AgL.XNull(AgL.Dman_Execute(mQry, AgL.GCn).ExecuteScalar())
+                    End If
+                    Validating_ItemCode(Dgl1.Item(Col1ItemCode, mRowIndex).Tag, mColumnIndex, mRowIndex)
+
                 Case Col1Item, Col1ItemCode
                     If AgL.XNull(Dgl1.Item(Col1ItemCode, mRowIndex).Value) <> "" Then
                         mQry = " Select Code From Item Where ManualCode = '" & Dgl1.Item(Col1ItemCode, mRowIndex).Value & "'"
@@ -6989,6 +6996,15 @@ Public Class FrmSaleInvoiceDirect_WithDimension
                         End If
                     End If
 
+                Case Col1Barcode
+                    If e.KeyCode <> Keys.Enter Then
+                        If Dgl1.AgHelpDataSet(Col1Barcode) Is Nothing Then
+                            If (LblV_Type.Tag = Ncat.SaleInvoice Or LblV_Type.Tag = Ncat.SaleChallan) And CType(AgL.VNull(DtV_TypeSettings.Rows(0)("IsBarcodeHelpFromStock")), Boolean) = True Then
+                                FCreateHelpBarcodeHelpFromStock(Dgl1.CurrentCell.RowIndex)
+                            End If
+                        End If
+                    End If
+
                 Case Col1ReferenceNo
                     If e.KeyCode <> Keys.Enter Then
                         If LblV_Type.Tag = Ncat.SaleReturn And Val(Dgl3.Item(Col1Value, rowCustomerInvoiceCount).Value) > 0 Then
@@ -8413,6 +8429,58 @@ Public Class FrmSaleInvoiceDirect_WithDimension
         Dgl1.AgHelpDataSet(Col1Item, 15) = AgL.FillData(mQry, AgL.GcnRead)
     End Sub
 
+    Private Sub FCreateHelpBarcodeHelpFromStock(RowIndex As Integer)
+        Dim strCond As String = ""
+        If DtV_TypeSettings.Rows.Count > 0 Then
+            If AgL.XNull(DtV_TypeSettings.Rows(0)("FilterInclude_ItemType")) <> "" Then
+                If AgL.XNull(DtV_TypeSettings.Rows(0)("FilterInclude_ItemType")).ToString.Substring(0, 1) = "+" Then
+                    strCond += " And CharIndex('+' || I.ItemType,'" & AgL.XNull(DtV_TypeSettings.Rows(0)("FilterInclude_ItemType")) & "') > 0 "
+                ElseIf AgL.XNull(DtV_TypeSettings.Rows(0)("FilterInclude_ItemType")).ToString.Substring(0, 1) = "-" Then
+                    strCond += " And CharIndex('-' || I.ItemType,'" & AgL.XNull(DtV_TypeSettings.Rows(0)("FilterInclude_ItemType")) & "') <= 0 "
+                End If
+            End If
+
+            If AgL.XNull(DtV_TypeSettings.Rows(0)("FilterInclude_ItemGroup")) <> "" Then
+                If AgL.XNull(DtV_TypeSettings.Rows(0)("FilterInclude_ItemGroup")).ToString.Substring(0, 1) = "+" Then
+                    strCond += " And CharIndex('+' || I.ItemGroup,'" & AgL.XNull(DtV_TypeSettings.Rows(0)("FilterInclude_ItemGroup")) & "') > 0 "
+                ElseIf AgL.XNull(DtV_TypeSettings.Rows(0)("FilterInclude_ItemGroup")).ToString.Substring(0, 1) = "-" Then
+                    strCond += " And CharIndex('-' || I.ItemGroup,'" & AgL.XNull(DtV_TypeSettings.Rows(0)("FilterInclude_ItemGroup")) & "') <= 0 "
+                End If
+            End If
+
+            If AgL.XNull(DtV_TypeSettings.Rows(0)("FilterInclude_Item")) <> "" Then
+                If AgL.XNull(DtV_TypeSettings.Rows(0)("FilterInclude_Item")).ToString.Substring(0, 1) = "+" Then
+                    strCond += " And CharIndex('+' || I.Code,'" & AgL.XNull(DtV_TypeSettings.Rows(0)("FilterInclude_Item")) & "') > 0 "
+                ElseIf AgL.XNull(DtV_TypeSettings.Rows(0)("FilterInclude_Item")).ToString.Substring(0, 1) = "+" Then
+                    strCond += " And CharIndex('-' || I.Code,'" & AgL.XNull(DtV_TypeSettings.Rows(0)("FilterInclude_Item")) & "') <= 0 "
+                End If
+            End If
+
+            If Dgl1.Item(Col1ItemCategory, RowIndex).Value <> "" And Dgl1.Columns(Col1ItemCategory).Visible Then
+                strCond += " And I.ItemCategory = '" & Dgl1.Item(Col1ItemCategory, RowIndex).Tag & "' "
+            End If
+
+            If Dgl1.Item(Col1ItemGroup, RowIndex).Value <> "" And Dgl1.Columns(Col1ItemGroup).Visible Then
+                strCond += " And I.ItemGroup = '" & Dgl1.Item(Col1ItemGroup, RowIndex).Tag & "' "
+            End If
+        End If
+
+        If Dgl2.Item(Col1Value, rowGodown).Tag <> "" Then
+            strCond += " And H.Godown = '" & Dgl2.Item(Col1Value, rowGodown).Tag & "' "
+        End If
+
+        mQry = "SELECT H.Barcode As Code,  Max(B.Description) As Description, Max(I.Description) As Item, Sum(isnull(H.Qty_Rec,0) - isnull(H.Qty_Iss,0)) PendingQty, H.Item 
+                FROM Stock H
+                LEFT JOIN Item I On H.Item = I.Code 
+                LEFT JOIN Item IG ON Ig.Code = I.ItemGroup 
+                LEFT JOIN Barcode B ON B.Code = H.Barcode 
+                WHERE 1=1 AND H.Barcode IS NOT NULL AND H.Item Not in ('LrBale','Lr')
+                And I.Code Is Not Null " & strCond
+
+        mQry += " Group By H.Item, H.Barcode HAVING Sum(isnull(H.Qty_Rec,0) - isnull(H.Qty_Iss,0)) > 0 "
+
+        Dgl1.AgHelpDataSet(Col1Barcode, 1) = AgL.FillData(mQry, AgL.GcnRead)
+    End Sub
 
     Private Sub FCreateHelpItemGroupFromSaleOrder(RowIndex As Integer)
         Dim strCond As String = ""

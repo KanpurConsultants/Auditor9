@@ -515,6 +515,7 @@ Public Class ClsReportProcedures
 
             Case SaleCertificates
                 ProcSaleCertificate()
+
             Case SaleInvoiceReport
                 ProcSaleReportOld("SaleInvoice", "SaleInvoiceDetail")
 
@@ -1220,12 +1221,20 @@ Public Class ClsReportProcedures
 
             If ReportFrm.FGetText(0) = "Form 21" Then
                 RepName = "SalesCertificate_Form21" : RepTitle = "Form 21"
+                If AgL.StrCmp(AgL.PubDBName, "RVN") Then
+                    RepName = "SalesCertificate_RVN_Form21"
+                End If
             End If
-
             Dim mCondStr$ = ""
 
 
-            mCondStr = " Where 1 = 1 "
+            If AgL.StrCmp(AgL.PubDBName, "RVN") Then
+                mCondStr = " Where 1 = 1 AND IC.Description IN ('EV','CNG') "
+            Else
+                mCondStr = " Where 1 = 1 "
+            End If
+
+
 
 
 
@@ -1243,6 +1252,13 @@ Public Class ClsReportProcedures
                     H.Div_Code || H.Site_Code || '-' || H.V_Type || '-' || H.ManualRefNo as InvoiceNo, H.ManualRefNo, 
                     I.Specification as ItemSpecification, I.Description As ItemDesc,IG.Description as ItemGroupName, IC.Description as ItemCategoryDescription,  
                     Cast((Case When L.DiscountPer = 0 Then '' else L.DiscountPer End) as nVarchar) || (Case When L.AdditionalDiscountPer>0 Then '+' else '' End) || Cast((Case When L.AdditionalDiscountPer=0 Then '' else L.AdditionalDiscountPer End) as nVarchar) as DiscountPer, L.DiscountAmount + L.AdditionalDiscountAmount as Discount, L.Taxable_Amount, L.Net_Amount, L.Qty, L.Unit, L.Rate, L.Amount -(L.DiscountAmount + L.AdditionalDiscountAmount) as AmountExDiscount,
+                    Case When IC.Description ='CNG' Then '225.8' Else '15.01' End AS HP,
+                    Case When IC.Description ='CNG' Then 'CNG' Else 'Electric' End AS FuelUsed,
+                    Case When IC.Description ='CNG' Then 'One' Else 'NA' End AS NoOfCylender,
+                    Case When IC.Description ='CNG' Then '411' Else '418' End AS UnladenWeight,
+                    Case When IC.Description ='CNG' Then '741' Else '748' End AS GrossWeight,
+                    Case When IC.Description ='CNG' Then 'Three-Wheeler (Passenger)' Else '3-wheeled motor vehicle / motor tricycle' End AS TypeofBody,
+                    Case When IC.Description ='CNG' Then '1990' Else '1991' End AS WheelBase,
                     L.Remark,L.Remarks1,L.Remarks2,L.Remarks3,L.Remarks4, L.Tax1+L.Tax2+L.Tax3+L.Tax4+L.Tax5 as TotalTax
                     FROM SaleInvoice H 
                     Left Join SaleInvoiceDetail L On H.DocID = L.DocID 

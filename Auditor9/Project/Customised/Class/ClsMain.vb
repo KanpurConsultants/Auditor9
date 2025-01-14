@@ -19238,7 +19238,7 @@ Thanks
             AgL.AddFieldSqlite(AgL.GcnMain, "PurchaseInvoiceSetting", "DiscountSuggestionPattern", "nVarchar(20)", "", True)
             AgL.AddFieldSqlite(AgL.GcnMain, "PurchaseInvoiceSetting", "ItemHelpType", "nVarchar(20)", "", True)
             AgL.AddFieldSqlite(AgL.GcnMain, "PurchaseInvoiceSetting", "FilterInclude_Process", "nVarchar(255)", "", True)
-
+            AgL.AddFieldSqlite(AgL.GcnMain, "PurchaseInvoiceSetting", "IsBarcodeHelpFromStock", "bit", "0", True)
             AgL.AddFieldSqlite(AgL.GcnMain, "PurchaseInvoiceSetting", "FilterInclude_ItemType", "nVarchar(255)", "", True)
             AgL.AddFieldSqlite(AgL.GcnMain, "PurchaseInvoiceSetting", "FilterInclude_ItemCategory", "nVarchar(255)", "", True)
             AgL.AddFieldSqlite(AgL.GcnMain, "PurchaseInvoiceSetting", "FilterInclude_ItemGroup", "nVarchar(255)", "", True)
@@ -19984,6 +19984,7 @@ Thanks
             AgL.AddFieldSqlite(AgL.GcnMain, "SaleInvoiceSetting", "SaleRate_Caption", "nVarchar(50)", "", True)
             AgL.AddFieldSqlite(AgL.GcnMain, "SaleInvoiceSetting", "PickSaleRateFromMaster", "bit", "0", True)
             AgL.AddFieldSqlite(AgL.GcnMain, "SaleInvoiceSetting", "IsItemHelpFromSaleOrder", "bit", "0", True)
+            AgL.AddFieldSqlite(AgL.GcnMain, "SaleInvoiceSetting", "IsBarcodeHelpFromStock", "bit", "0", True)
             AgL.AddFieldSqlite(AgL.GcnMain, "SaleInvoiceSetting", "IsApplicable_SaleOrder", "bit", "0", True)
             AgL.AddFieldSqlite(AgL.GcnMain, "SaleInvoiceSetting", "IsApplicable_SaleChallan", "bit", "0", True)
             AgL.AddFieldSqlite(AgL.GcnMain, "SaleInvoiceSetting", "GeneratePurchaseFromSaleYN", "bit", "0", True)

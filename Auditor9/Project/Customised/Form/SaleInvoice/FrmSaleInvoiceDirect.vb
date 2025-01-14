@@ -3711,12 +3711,14 @@ Public Class FrmSaleInvoiceDirect
 
 
         If AgL.XNull(DtV_TypeSettings.Rows(0)("DiscountSuggestionPattern")).ToUpper() = DiscountSuggestPattern.FillAutomatically.ToUpper Then
+
+            If Val(Dgl1.Item(Col1PersonalDiscountPer, mRow).Value) <> 0 Then
+                Dgl1.Item(Col1DiscountPer, mRow).Value = Format(Val(Dgl1.Item(Col1PersonalDiscountPer, mRow).Value), "0.000")
+            Else
+                Dgl1.Item(Col1DiscountPer, mRow).Value = Format(Val(Dgl1.Item(Col1DefaultDiscountPer, mRow).Value), "0.000")
+            End If
+
             If AgL.StrCmp(ClsMain.FDivisionNameForCustomization(6), "SADHVI") = False Then
-                If Val(Dgl1.Item(Col1PersonalDiscountPer, mRow).Value) <> 0 Then
-                    Dgl1.Item(Col1DiscountPer, mRow).Value = Format(Val(Dgl1.Item(Col1PersonalDiscountPer, mRow).Value), "0.000")
-                Else
-                    Dgl1.Item(Col1DiscountPer, mRow).Value = Format(Val(Dgl1.Item(Col1DefaultDiscountPer, mRow).Value), "0.000")
-                End If
                 If Val(Dgl1.Item(Col1PersonalAdditionalDiscountPer, mRow).Value) <> 0 Then
                     Dgl1.Item(Col1AdditionalDiscountPer, mRow).Value = Format(Val(Dgl1.Item(Col1PersonalAdditionalDiscountPer, mRow).Value), "0.000")
                 Else

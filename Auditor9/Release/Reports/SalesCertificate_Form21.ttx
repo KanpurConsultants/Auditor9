@@ -1,27 +1,27 @@
 ; Field definition file for table: ADORecordset
-DocID	string	255	D1   SIR 2024       1	
-V_Date	datetime	01/Apr/2024 00:00:00	
-AgentName	string	255		
-SaleToPartyName	string	255	RAJ KUMAR JI, KANPUR	
-SaleToPartyAddress	string	255	BHAUTI BYPASS KANPUR NAGAR	
-SaleToPartyMobile	string	255	7393074994	
-InvoiceNo	string	255	D1-SIR-1	
-ManualRefNo	string	255	1	
-ItemSpecification	string	255	RUBIE 48 V GREY	
-ItemDesc	string	255	RUBIE 48 V GREY - YAKUZA - EV	
+DocID	string	255	D1   SIR 2024    2257	
+V_Date	datetime	01/Jan/2025 00:00:00	
+AgentName	string	255	ASHISH-ACHRYA NAGAR, KANPUR	
+SaleToPartyName	string	255	MAN SINGH, KANPUR	
+SaleToPartyAddress	string	255	PRASAD PURWA BASEN POST , DALEEP NAGAR	
+SaleToPartyMobile	string	255	9336279586	
+InvoiceNo	string	255	D1-SIR-2257	
+ManualRefNo	string	255	2257	
+ItemSpecification	string	255	SPARROW PRO 60 V (BLACK)	
+ItemDesc	string	255	SPARROW PRO 60 V (BLACK) - YAKUZA - EV	
 ItemGroupName	string	255	YAKUZA	
 ItemCategoryDescription	string	255	EV	
 DiscountPer	string	255		
 Discount	number	0	
-Taxable_Amount	number	38571.43	
-Net_Amount	number	40500	
+Taxable_Amount	number	58095.24	
+Net_Amount	number	61000	
 Qty	number	1	
 Unit	string	255	Pcs	
-Rate	number	40500	
-AmountExDiscount	number	40500	
-Remark	string	255	N/W	
-Remarks1	string	255	N/W	
-Remarks2	string	255	R7KMLEV73844	
-Remarks3	string	255	N/W	
-Remarks4	string	255	N/W	
-TotalTax	number	1928.58	
+Rate	number	61000	
+AmountExDiscount	number	61000	
+Remark	string	255	MLM/130905	
+Remarks1	string	255	12M/103389	
+Remarks2	string	255		
+Remarks3	string	255	DLYY/L24/WB/12M	
+Remarks4	string	255	1149038	
+TotalTax	number	2904.76	

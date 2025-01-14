@@ -380,8 +380,8 @@ Public Class ClsStockReport
 
 
 
-            Dim bStockTable As String = " Select DocId, TSr, Sr, V_Date, V_Type, Site_Code, Div_Code, RecId, SubCode, Godown, Process, LotNo, Item, Qty_Iss, Qty_Rec, Unit, Rate From Stock "
-            Dim bStockProcessTable As String = " Select DocId, TSr, Sr, V_Date, V_Type, Site_Code, Div_Code, RecId, SubCode, SubCode As Godown, Process, LotNo, Item, Qty_Iss, Qty_Rec, Unit, Rate From StockProcess "
+            Dim bStockTable As String = " Select DocId, TSr, Sr, V_Date, V_Type, Site_Code, Div_Code, RecId, SubCode, Godown, Process, LotNo, Barcode, Item, Qty_Iss, Qty_Rec, Unit, Rate From Stock "
+            Dim bStockProcessTable As String = " Select DocId, TSr, Sr, V_Date, V_Type, Site_Code, Div_Code, RecId, SubCode, SubCode As Godown, Process, LotNo, Barcode, Item, Qty_Iss, Qty_Rec, Unit, Rate From StockProcess "
             Dim bCombinedTable As String = "(" & bStockTable & " UNION ALL " & bStockProcessTable & ")"
             bStockTable = " (" + bStockTable + ") "
             bStockProcessTable = " (" + bStockProcessTable + ") "
@@ -461,10 +461,10 @@ Public Class ClsStockReport
                                 mFilterGrid.Item(GFilterCode, rowLotNo).Value = "'" + mGridRow.Cells("LotNo").Value + "'"
                             End If
                         End If
-                        If mGridRow.DataGridView.Columns.Contains("Godown") = True Then
+                        If mGridRow.DataGridView.Columns.Contains("Godown Code") = True Then
                             If AgL.XNull(mGridRow.Cells("Godown").Value) <> "" Then
                                 mFilterGrid.Item(GFilter, rowGodown).Value = mGridRow.Cells("Godown").Value
-                                mFilterGrid.Item(GFilterCode, rowGodown).Value = "'" + mGridRow.Cells("Godown").Value + "'"
+                                mFilterGrid.Item(GFilterCode, rowGodown).Value = "'" + mGridRow.Cells("Godown Code").Value + "'"
                             End If
                         End If
                         If mGridRow.DataGridView.Columns.Contains("Process Code") = True Then
@@ -628,7 +628,7 @@ Public Class ClsStockReport
                     , Max(D4.Code) as Dimension4Code, Max(D4.Specification) as Dimension4Name 
                     , Max(Size.Code) as SizeCode, Max(Size.Description) as SizeName
                     , Max(Godown.SubCode) as GodownCode, Max(Godown.Name) as GodownName
-                    , Max(IfNull(Sku.HSN, IC.HSN)) as HSN, Max(L.LotNo) as LotNo
+                    , Max(IfNull(Sku.HSN, IC.HSN)) as HSN, Max(L.LotNo) as LotNo, Max(B.Description) as Barcode
                     , Max(Prc.SubCode) as ProcessCode, Max(Prc.Name) as ProcessName, 
                     Max(IfNull(Sku.StockUnit, L.Unit)) as Unit, Max(U.DecimalPlaces) as DecimalPlaces, 
                     Sum(Case When Sku.StockUnit Is Not Null And Sku.StockUnit <> L.Unit Then L.Qty_Rec * Uc.Multiplier Else L.Qty_Rec End - 
@@ -671,6 +671,7 @@ Public Class ClsStockReport
                     LEFT JOIN Item D4 ON Sku.Dimension4 = D4.Code
                     LEFT JOIN Item Size ON Sku.Size = Size.Code
                     LEFT JOIN SubGroup Godown ON L.Godown = Godown.SubCode
+                    LEFT JOIN Barcode B ON L.Barcode = B.Code
                     LEFT JOIN SubGroup Prc On L.Process = Prc.SubCode
                     Left Join Unit U On L.Unit = U.Code
                     LEFT JOIN Unit Su On Sku.StockUnit = Su.Code 
@@ -706,7 +707,7 @@ Public Class ClsStockReport
                     , D4.Code as Dimension4Code, D4.Specification as Dimension4Name 
                     , Size.Code as SizeCode, Size.Description as SizeName
                     , Godown.SubCode as GodownCode, Godown.Name as GodownName
-                    , IfNull(Sku.HSN, IC.HSN) as HSN, L.LotNo as LotNo
+                    , IfNull(Sku.HSN, IC.HSN) as HSN, L.LotNo as LotNo, B.Description as Barcode
                     , Prc.SubCode as ProcessCode, Prc.Name as ProcessName, 
                     IfNull(Sku.StockUnit, L.Unit) As Unit, U.DecimalPlaces, 
                     0 AS Opening,
@@ -747,6 +748,7 @@ Public Class ClsStockReport
                     LEFT JOIN Item D4 ON Sku.Dimension4 = D4.Code
                     LEFT JOIN Item Size ON Sku.Size = Size.Code
                     LEFT JOIN SubGroup Godown ON L.Godown = Godown.SubCode
+                    LEFT JOIN Barcode B ON L.Barcode = B.Code
                     LEFT JOIN SubGroup Prc On L.Process = Prc.SubCode
                     Left Join Unit U On L.Unit = U.Code
                     LEFT JOIN Unit Su On Sku.StockUnit = Su.Code 
@@ -843,6 +845,7 @@ Public Class ClsStockReport
                     , Round(Sum(VMain.Qty_Iss),4) as [Issue Qty]
                     , Round(Sum(VMain.Closing),4) as [Balance] 
                     , Max(VMain.Unit) as Unit
+                    , Max(VMain.Barcode) as Barcode
                     , Round(Max(VMain.TransactionRate),3) as TransactionRate                    
                     , Round(Max(VMain.ValuationRate),3) as ValuationRate                    
                     , Round(Sum(VMain.Amount),2) as Amount                    
@@ -884,7 +887,7 @@ Public Class ClsStockReport
             If ReportFrm.DGL1.Columns.Contains("Dimension4Code") Then ReportFrm.DGL1.Columns("Dimension4Code").Visible = False
             If ReportFrm.DGL1.Columns.Contains("Size Code") Then ReportFrm.DGL1.Columns("Size Code").Visible = False
             If ReportFrm.DGL1.Columns.Contains("Process Code") Then ReportFrm.DGL1.Columns("Process Code").Visible = False
-
+            If ReportFrm.DGL1.Columns.Contains("Godown Code") Then ReportFrm.DGL1.Columns("Godown Code").Visible = False
 
 
             If ReportFrm.FGetText(rowReportType) = "Stock Ledger" Then

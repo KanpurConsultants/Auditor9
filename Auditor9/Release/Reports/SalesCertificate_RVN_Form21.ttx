@@ -1,0 +1,34 @@
+; Field definition file for table: ADORecordset
+DocID	string	255	D3   SIR 2024      65	
+V_Date	datetime	25/Dec/2024 00:00:00	
+AgentName	string	255		
+SaleToPartyName	string	255	SHASHI KANT S/O RAM NATH, KANPUR DEHAT	
+SaleToPartyAddress	string	255	BANVARIPUR, MADAN PUR , KANPUR DEHAT ,SIKANDRA , U. P. 	
+SaleToPartyMobile	string	255	9558079754	
+InvoiceNo	string	255	D3-SIR-68	
+ManualRefNo	string	255	68	
+ItemSpecification	string	255	TVS KING ZD 225 LC FI	
+ItemDesc	string	255	TVS KING ZD 225 LC FI - TVS-CNG - CNG	
+ItemGroupName	string	255	TVS-CNG	
+ItemCategoryDescription	string	255	CNG	
+DiscountPer	string	255		
+Discount	number	0	
+Taxable_Amount	number	191406.25	
+Net_Amount	number	245000	
+Qty	number	1	
+Unit	string	255	Pcs	
+Rate	number	245000	
+AmountExDiscount	number	245000	
+HP	string	255	225.8	
+FuelUsed	string	255	CNG	
+NoOfCylender	string	255	One	
+UnladenWeight	string	255	411	
+GrossWeight	string	255	741	
+TypeofBody	string	255	Three-Wheeler (Passenger)	
+WheelBase	string	255	1990	
+Remark	string	255	LF4LR4000348	
+Remarks1	string	255		
+Remarks2	string	255	MD6M1LCF8R4L00352	
+Remarks3	string	255		
+Remarks4	string	255		
+TotalTax	number	53593.76	
