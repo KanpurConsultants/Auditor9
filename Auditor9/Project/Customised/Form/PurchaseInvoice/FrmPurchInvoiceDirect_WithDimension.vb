@@ -2542,12 +2542,12 @@ Public Class FrmPurchInvoiceDirect_WithDimension
                             ByRef Conn As Object, ByRef Cmd As Object)
         If AgL.XNull(Dgl1.Item(Col1ToGodown, LineGridRowIndex).Tag) <> "" Then
             mQry = "Insert Into Stock(DocID, TSr, Sr, V_Type, V_Prefix, V_Date, V_No, RecID, Div_Code, Site_Code, 
-                    SubCode, SalesTaxGroupParty, Item, SalesTaxGroupItem,  LotNo, 
+                    SubCode, SalesTaxGroupParty, Item, SalesTaxGroupItem,  LotNo, Barcode,
                     ExpiryDate, MRP, Process, Godown, 
                     EType_IR, Qty_Iss, Qty_Rec, Unit, UnitMultiplier, DealQty_Iss , DealQty_Rec, DealUnit, 
                     Rate, Amount, Sale_Rate, DiscountPer, AdditionalDiscountPer, Deal, Landed_Value, ReferenceDocID, ReferenceTSr, ReferenceDocIDSr, SubRecordType) 
                     Select DocID, TSr, Sr + 1000, V_Type, V_Prefix, V_Date, V_No, RecID, Div_Code, Site_Code, 
-                    SubCode, SalesTaxGroupParty, Item, SalesTaxGroupItem,  LotNo, 
+                    SubCode, SalesTaxGroupParty, Item, SalesTaxGroupItem,  LotNo, Barcode,
                     ExpiryDate, MRP, Process, " & AgL.Chk_Text(Dgl1.Item(Col1ToGodown, LineGridRowIndex).Tag) & ", 
                     EType_IR, Qty_Rec As Qty_Iss, Qty_Iss As Qty_Rec, Unit, UnitMultiplier, 
                     DealQty_Rec As DealQty_Iss, DealQty_Iss As DealQty_Rec, DealUnit, 
@@ -6096,7 +6096,7 @@ Public Class FrmPurchInvoiceDirect_WithDimension
                 (Case When SP.DispName Is Null Then IfNull(H.VendorAadharNo,'') Else IfNull((Select RegistrationNo From SubgroupRegistration Where Subcode=H.ShipToParty And RegistrationType = '" & SubgroupRegistrationType.AadharNo & "'),'') End) as ShipToPartyAadharNo, 
                 (Case When SP.DispName Is Null Then IfNull(H.VendorPanNo,'') Else IfNull((Select RegistrationNo From SubgroupRegistration Where Subcode=H.ShipToParty And RegistrationType = '" & SubgroupRegistrationType.PanNo & "'),'') End) as ShipToPartyPanNo, 
                 IfNull(Transporter.Name,IfNull(MTransporter.Name,'')) as TransporterName, IfNull(TD.LrNo,'') LrNo, TD.LrDate, IfNull(TD.PrivateMark,'') PrivateMark, TD.Weight, TD.Freight, IfNull(TD.PaymentType,'') as FreightType, IfNull(TD.RoadPermitNo,'') RoadPermitNo, TD.RoadPermitDate, IfNull(L.ReferenceNo,'') as ReferenceNo,
-                I.Description as ItemName, IG.Description as ItemGroupName, IC.Description as ItemCatName, 
+                I.Description as ItemName, IG.Description as ItemGroupName, IC.Description as ItemCatName, Barcode.Description as BarcodeName,
                 I.Specification as ItemSpecification, L.Specification as InvoiceLineSpecification, IfNull(I.HSN,IC.HSN) as HSN,
                 D1.Specification as D1Spec, D2.Specification as D2Spec, D3.Specification as D3Spec, D4.Specification as D4Spec, Size.Specification as SizeSpec,
                 '" & AgL.PubCaptionItemType & "' as ItemTypeCaption,'" & AgL.PubCaptionItemCategory & "' as ItemCategoryCaption,
@@ -6114,7 +6114,8 @@ Public Class FrmPurchInvoiceDirect_WithDimension
                 L.DiscountAmount+L.AdditionalDiscountAmount-L.AdditionAmount as TotalDiscount, 
                 (Case when L.EntryType ='Receive' Then L.Amount Else abs(L.Amount) End )+L.DiscountAmount+L.AdditionalDiscountAmount-L.AdditionAmount as AmountBeforeDiscount,
                 Abs(L.Amount) as Amount,Abs(L.Taxable_Amount) as Taxable_Amount,Abs(L.Tax1_Per) Tax1_Per, Abs(L.Tax1) as Tax1, Abs(L.Tax2_Per) as Tax2_Per, Abs(L.Tax2) as Tax2, Abs(L.Tax3_Per) as Tax3_Per, Abs(L.Tax3) as Tax3, Abs(L.Tax4_Per) as Tax4_Per, Abs(L.Tax4) as Tax4, Abs(L.Tax5_Per) as Tax5_Per, Abs(L.Tax5) as Tax5, Abs(L.Net_Amount) as Net_Amount,
-                IfNull(H.Remarks,'') as HRemarks, IfNull(L.Remark,'') as LRemarks,IfNull(G.Name,'') as GodownName, IfNull(FGodown.Name,'') As FromGodownName, IfNull(TGodown.Name,'')  As ToGodownName,
+                IfNull(H.Remarks,'') as HRemarks, IfNull(L.Remark,'') as LRemarks,L.Remark AS LRemarks, L.Remarks1 AS LRemarks1, L.Remarks2 AS LRemarks2,  L.Remarks3 AS LRemarks3,  L.Remarks4 AS LRemarks4,
+                IfNull(G.Name,'') as GodownName, IfNull(FGodown.Name,'') As FromGodownName, IfNull(TGodown.Name,'')  As ToGodownName,
                 abs(H.Gross_Amount) as H_Gross_Amount, H.SpecialDiscount_Per as H_SpecialDiscount_Per, H.SpecialDiscount as H_SpecialDiscount,abs(H.Taxable_Amount) as H_Taxable_Amount,abs(H.Tax1_Per) as H_Tax1_Per, abs(H.Tax1) as H_Tax1, 
                 abs(H.Tax2_Per) as H_Tax2_Per, abs(H.Tax2) as H_Tax2, abs(H.Tax3_Per) as H_Tax3_Per, abs(H.Tax3) as H_Tax3, abs(H.Tax4_Per) as H_Tax4_Per, abs(H.Tax4) as H_Tax4, 
                 abs(H.Tax5_Per) as H_Tax5_Per, abs(H.Tax5) as H_Tax5, abs(H.Deduction_Per) as H_Deduction_Per, abs(H.Deduction) as H_Deduction, abs(H.Other_Charge_Per) as H_Other_Charge_Per, abs(H.Other_Charge) as H_Other_Charge, H.Round_Off, abs(H.Net_Amount) as H_Net_Amount, 
@@ -6122,7 +6123,7 @@ Public Class FrmPurchInvoiceDirect_WithDimension
                 (Select Sum(abs(L1.Amount)+L1.DiscountAmount+L1.AdditionalDiscountAmount-L1.AdditionAmount) From PurchInvoiceDetail L1 Where L1.DocID = H.DocId) as H_AmountBeforeDiscount,
                 '" & AgL.XNull(AgL.PubDtEnviro.Rows(0)("Default_BankAccountDetail")) & "' as Default_BankAccountDetail,
                 '" & FGetSettings(SettingFields.DocumentPrintHeaderPattern, SettingType.General) & "' as DocumentPrintHeaderPattern, 
-                L.DimensionDetail as DimDetail, '' as HsnDescription, '" & AgL.PubUserName & "' as PrintedByUser, '" & mPrintTitle & "' as PrintTitle, '" & mTermsAndConditions & "' as TermsAndConditions
+                isnull(Barcode.Description,L.DimensionDetail)  as DimDetail, '' as HsnDescription, '" & AgL.PubUserName & "' as PrintedByUser, '" & mPrintTitle & "' as PrintTitle, '" & mTermsAndConditions & "' as TermsAndConditions
                 from PurchInvoice H   With (NoLock)              
                 Left Join PurchInvoiceDetail L  With (NoLock) On H.DocID = L.DocID
                 Left Join PurchInvoiceDetailSku LS  With (NoLock) On LS.DocID = L.DocID And LS.Sr = L.Sr
@@ -6134,6 +6135,7 @@ Public Class FrmPurchInvoiceDirect_WithDimension
                 Left Join Item D3  With (NoLock) On LS.Dimension3 = D3.Code
                 Left Join Item D4  With (NoLock) On LS.Dimension4 = D4.Code   
                 Left Join Item Size  With (NoLock) On LS.Size = Size.Code
+                Left Join Barcode With (NoLock) On Barcode.Code = L.Barcode
                 Left Join Unit U  With (NoLock) On I.Unit = U.Code
                 Left Join Item IG  With (NoLock) On LS.ItemGroup = IG.Code
                 Left Join Item IC  With (NoLock) On LS.ItemCategory = IC.Code
@@ -6168,7 +6170,7 @@ Public Class FrmPurchInvoiceDirect_WithDimension
             sQryBom = sQryBom + "Select '" & I & "' as Copies, Max(H.DocID) DocID,
                                     Max(I.Description) AS ItemName, Max(D1.Description) AS Dimension1Name, Max(D2.Description) AS Dimension2Name,
                                     Max(D3.Description) AS Dimension3Name, Max(D4.Description) AS Dimension4Name, Max(Size.Description) AS SizeName,
-                                    Max(IG.Description) AS ItemGroupName, Max(IC.Description) AS ItemCategoryName, 
+                                    Max(IG.Description) AS ItemGroupName, Max(IC.Description) AS ItemCategoryName, NULL as BarcodeName,
                                     Max(L.Qty) AS Qty, Max(L.Unit) AS Unit, Max(U.DecimalPlaces) as UnitDecimalPlaces,
                                     '" & AgL.PubCaptionItemType & "' as ItemTypeCaption,'" & AgL.PubCaptionItemCategory & "' as ItemCategoryCaption,
                                     '" & AgL.PubCaptionItemGroup & "' as ItemGroupCaption,'" & AgL.PubCaptionItem & "' as ItemCaption,'" & AgL.PubCaptionBarcode & "' as BarcodeCaption,
@@ -6199,7 +6201,7 @@ Public Class FrmPurchInvoiceDirect_WithDimension
             sQryMaterialIssue = sQryMaterialIssue + "Select '" & I & "' as Copies, Max(H.DocID) DocID, Max(H.V_Date) as DocDate,
                                     Max(I.Description) AS ItemName, Max(D1.Description) AS Dimension1Name, Max(D2.Description) AS Dimension2Name,
                                     Max(D3.Description) AS Dimension3Name, Max(D4.Description) AS Dimension4Name, Max(Size.Description) AS SizeName,
-                                    Max(IG.Description) AS ItemGroupName, Max(IfNull(IC.Description,I.Description)) AS ItemCategoryName, Max(L.DimensionDetail) as DimensionDetail,
+                                    Max(IG.Description) AS ItemGroupName, Max(IfNull(IC.Description,I.Description)) AS ItemCategoryName, NULL as BarcodeName, Max(L.DimensionDetail) as DimensionDetail,
                                     Max(L.Qty) AS Qty, Max(L.Unit) AS Unit, Max(U.DecimalPlaces) as UnitDecimalPlaces,
                                     '" & AgL.PubCaptionItemType & "' as ItemTypeCaption,'" & AgL.PubCaptionItemCategory & "' as ItemCategoryCaption,
                                     '" & AgL.PubCaptionItemGroup & "' as ItemGroupCaption,'" & AgL.PubCaptionItem & "' as ItemCaption,'" & AgL.PubCaptionBarcode & "' as BarcodeCaption,

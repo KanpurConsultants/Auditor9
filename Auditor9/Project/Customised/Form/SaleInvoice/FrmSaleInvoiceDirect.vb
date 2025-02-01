@@ -3523,12 +3523,20 @@ Public Class FrmSaleInvoiceDirect
                         Dgl1.Item(Col1DefaultAdditionPer, mRow).Value = AgL.VNull(DTDiscounts.Rows(0)("Default_AdditionPerSale"))
                     End If
 
+                    If AgL.StrCmp(ClsMain.FDivisionNameForCustomization(6), "SADHVI") = True Then
+                        Dgl1.Item(Col1DefaultDiscountPer, mRow).Value = AgL.VNull(DtItem.Rows(0)("Default_DiscountPerSale"))
+                    End If
+
                     'Dgl1.Item(Col1DefaultDiscountPer, mRow).Value = AgL.Dman_Execute("Select IfNull(Max(Discount),0) From ItemGroupRateType H  With (NoLock) Where Code = '" & Dgl1.Item(Col1ItemGroup, mRow).Tag & "' And RateType = '" & Dgl2(Col1Value, rowRateType).Tag & "' ", AgL.GCn).ExecuteScalar
                 Else
                     Dgl1.Item(Col1DefaultDiscountPer, mRow).Value = AgL.VNull(DtItem.Rows(0)("Default_DiscountPerSale"))
                     Dgl1.Item(Col1DefaultAdditionalDiscountPer, mRow).Value = AgL.VNull(DtItem.Rows(0)("Default_AdditionalDiscountPerSale"))
                     Dgl1.Item(Col1DefaultAdditionPer, mRow).Value = AgL.VNull(DtItem.Rows(0)("Default_AdditionPerSale"))
                 End If
+
+
+
+
                 Dim DrItemTypeSetting As DataRow
                 DrItemTypeSetting = FItemTypeSettings(Dgl1(Col1ItemType, mRow).Tag)
                 Dgl1(Col1DiscountCalculationPattern, mRow).Value = AgL.XNull(DrItemTypeSetting("DiscountCalculationPatternSale"))
@@ -3685,7 +3693,10 @@ Public Class FrmSaleInvoiceDirect
             If DtItem.Rows.Count > 0 Then
                 If AgL.VNull(DtItem.Rows(0)("DiscountPer")) > 0 Then
                     If Dgl1(Col1DiscountCalculationPattern, mRow).Value.ToString.ToUpper() = AgL.XNull(DtItem.Rows(0)("DiscountCalculationPattern")).toupper() Or Dgl1(Col1DiscountCalculationPattern, mRow).Value.ToString.ToUpper() = "" Then
-                        Dgl1.Item(Col1PersonalDiscountPer, mRow).Value = AgL.VNull(DtItem.Rows(0)("DiscountPer"))
+                        If AgL.StrCmp(ClsMain.FDivisionNameForCustomization(6), "SADHVI") = False Then
+                            Dgl1.Item(Col1PersonalDiscountPer, mRow).Value = AgL.VNull(DtItem.Rows(0)("DiscountPer"))
+                        End If
+
                     Else
                         MsgBox("Discount Calculation Pattern is changes since last invoice.")
                     End If

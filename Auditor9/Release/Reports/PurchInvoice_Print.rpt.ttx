@@ -3,14 +3,14 @@ Copies	string	255	1
 CopyPrintingCaption	string	255		
 DocNoCaption	string	255	Doc.No.	
 DocDateCaption	string	255	Doc.Date	
-DocID	string	255	D1   STF 2024      17	
+DocID	string	255	D1   STF 2024      25	
 SiteStateCode	string	255	09	
 SiteStateName	string	255	Uttar Pradesh	
 Sr	number	1	
-V_Date	datetime	12/Dec/2024 00:00:00	
+V_Date	datetime	05/Jan/2025 00:00:00	
 Voucher_Type	string	255	Stock Transfer	
 NCat	string	255	STF	
-DocNo	string	255	D1-STF-17	
+DocNo	string	255	D1-STF-25	
 AgentName	string	255		
 AgentCaption	string	255	Agent	
 PartyName	string	255		
@@ -44,12 +44,13 @@ FreightType	string	255
 RoadPermitNo	string	255		
 RoadPermitDate	datetime		
 ReferenceNo	string	255		
-ItemName	string	255	RUBIE 60 V MEHROON - YAKUZA - EV	
+ItemName	string	255	RUBIE 48 V BLUE - YAKUZA - EV	
 ItemGroupName	string	255	YAKUZA	
 ItemCatName	string	255	EV	
-ItemSpecification	string	255	RUBIE 60 V MEHROON	
-InvoiceLineSpecification	string	255	RUBIE 60 V MEHROON	
-HSN	string	255	871160	
+BarcodeName	string	255		
+ItemSpecification	string	255	RUBIE 48 V BLUE	
+InvoiceLineSpecification	string	255	RUBIE 48 V BLUE	
+HSN	string	255	871190	
 D1Spec	string	255		
 D2Spec	string	255		
 D3Spec	string	255		
@@ -96,9 +97,14 @@ Tax5	number	0
 Net_Amount	number	0	
 HRemarks	string	255		
 LRemarks	string	255		
+LRemarks5	string	255		
+LRemarks1	string	255		
+LRemarks2	string	255	LCS5BAB56P1212033	
+LRemarks3	string	255		
+LRemarks4	string	255		
 GodownName	string	255		
 FromGodownName	string	255	YAKUZA ACHRYA NAGAR	
-ToGodownName	string	255	YAKUZA PUKHRAYA	
+ToGodownName	string	255	YAKUZA NAUBASTA	
 H_Gross_Amount	number	0	
 H_SpecialDiscount_Per	number	0	
 H_SpecialDiscount	number	0	

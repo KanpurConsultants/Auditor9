@@ -8318,6 +8318,34 @@ Thanks
                 FSeedSingleIfNotExist_EntryHeaderUISetting("FrmPerson", SubgroupType.SalesAgent, "Dgl1", FrmPerson.hcBankIFSC, 0, 0)
             End If
 
+            If AgL.StrCmp(AgL.PubDBName, "RVN") Then
+                FSeedSingleIfNotExist_EntryHeaderUISetting("FrmPerson", "Hypothecation", "Dgl1", ConfigurableFields.FrmPersonHeaderDgl1.SubgroupType, 1, 1, 1)
+                FSeedSingleIfNotExist_EntryHeaderUISetting("FrmPerson", "Hypothecation", "Dgl1", ConfigurableFields.FrmPersonHeaderDgl1.Code, 0, 1, 1)
+                FSeedSingleIfNotExist_EntryHeaderUISetting("FrmPerson", "Hypothecation", "Dgl1", ConfigurableFields.FrmPersonHeaderDgl1.Name, 1, 1, 1)
+                FSeedSingleIfNotExist_EntryHeaderUISetting("FrmPerson", "Hypothecation", "Dgl1", ConfigurableFields.FrmPersonHeaderDgl1.PrintingDescription, 1, 0)
+                FSeedSingleIfNotExist_EntryHeaderUISetting("FrmPerson", "Hypothecation", "Dgl1", ConfigurableFields.FrmPersonHeaderDgl1.Address, 1, 0)
+                FSeedSingleIfNotExist_EntryHeaderUISetting("FrmPerson", "Hypothecation", "Dgl1", ConfigurableFields.FrmPersonHeaderDgl1.City, 1, 1, 1)
+                FSeedSingleIfNotExist_EntryHeaderUISetting("FrmPerson", "Hypothecation", "Dgl1", ConfigurableFields.FrmPersonHeaderDgl1.Pincode, 1, 0)
+                FSeedSingleIfNotExist_EntryHeaderUISetting("FrmPerson", "Hypothecation", "Dgl1", ConfigurableFields.FrmPersonHeaderDgl1.ContactNo, 1, 0)
+                FSeedSingleIfNotExist_EntryHeaderUISetting("FrmPerson", "Hypothecation", "Dgl1", ConfigurableFields.FrmPersonHeaderDgl1.Mobile, 1, 0)
+                FSeedSingleIfNotExist_EntryHeaderUISetting("FrmPerson", "Hypothecation", "Dgl1", ConfigurableFields.FrmPersonHeaderDgl1.Email, 1, 0)
+                FSeedSingleIfNotExist_EntryHeaderUISetting("FrmPerson", "Hypothecation", "Dgl1", ConfigurableFields.FrmPersonHeaderDgl1.AcGroup, 1, 1, 0)
+                FSeedSingleIfNotExist_EntryHeaderUISetting("FrmPerson", "Hypothecation", "Dgl1", ConfigurableFields.FrmPersonHeaderDgl1.SalesTaxGroup, 0, 1, 0)
+                FSeedSingleIfNotExist_EntryHeaderUISetting("FrmPerson", "Hypothecation", "Dgl1", ConfigurableFields.FrmPersonHeaderDgl1.SalesTaxGroupRegType, 0, 0, 0)
+                FSeedSingleIfNotExist_EntryHeaderUISetting("FrmPerson", "Hypothecation", "Dgl1", ConfigurableFields.FrmPersonHeaderDgl1.ContactPerson, 0, 0)
+                FSeedSingleIfNotExist_EntryHeaderUISetting("FrmPerson", "Hypothecation", "Dgl1", ConfigurableFields.FrmPersonHeaderDgl1.SalesTaxNo, 0, 0)
+                FSeedSingleIfNotExist_EntryHeaderUISetting("FrmPerson", "Hypothecation", "Dgl1", ConfigurableFields.FrmPersonHeaderDgl1.PanNo, 1, 0)
+                FSeedSingleIfNotExist_EntryHeaderUISetting("FrmPerson", "Hypothecation", "Dgl1", ConfigurableFields.FrmPersonHeaderDgl1.AadharNo, 1, 0)
+                FSeedSingleIfNotExist_EntryHeaderUISetting("FrmPerson", "Hypothecation", "Dgl1", ConfigurableFields.FrmPersonHeaderDgl1.Parent, 0, 0)
+                FSeedSingleIfNotExist_EntryHeaderUISetting("FrmPerson", "Hypothecation", "Dgl1", ConfigurableFields.FrmPersonHeaderDgl1.Area, 0, 0)
+                FSeedSingleIfNotExist_EntryHeaderUISetting("FrmPerson", "Hypothecation", "Dgl1", ConfigurableFields.FrmPersonHeaderDgl1.CreditDays, 0, 0)
+                FSeedSingleIfNotExist_EntryHeaderUISetting("FrmPerson", "Hypothecation", "Dgl1", ConfigurableFields.FrmPersonHeaderDgl1.CreditLimit, 0, 0)
+                FSeedSingleIfNotExist_EntryHeaderUISetting("FrmPerson", "Hypothecation", "Dgl1", ConfigurableFields.FrmPersonHeaderDgl1.Remarks, 0, 0)
+                FSeedSingleIfNotExist_EntryHeaderUISetting("FrmPerson", "Hypothecation", "Dgl1", FrmPerson.hcBankName, 0, 0)
+                FSeedSingleIfNotExist_EntryHeaderUISetting("FrmPerson", "Hypothecation", "Dgl1", FrmPerson.hcBankAccount, 0, 0)
+                FSeedSingleIfNotExist_EntryHeaderUISetting("FrmPerson", "Hypothecation", "Dgl1", FrmPerson.hcBankIFSC, 0, 0)
+            End If
+
 
             If ClsMain.IsScopeOfWorkContains(IndustryType.CommonModules.PurchaseAgentModule) Then
                 FSeedSingleIfNotExist_EntryHeaderUISetting("FrmPerson", SubgroupType.PurchaseAgent, "Dgl1", ConfigurableFields.FrmPersonHeaderDgl1.SubgroupType, 1, 1, 1)
@@ -16072,6 +16100,7 @@ Thanks
             AgL.AddFieldSqlite(AgL.GcnMain, "Subgroup", "SalesTaxPostingGroup", "nVarchar(20)", "", True, "References PostingGroupSalesTaxParty(Description)")
             AgL.AddFieldSqlite(AgL.GcnMain, "Subgroup", "SalesTaxGroupRegType", "nVarchar(50)", "", True, "")
             AgL.AddFieldSqlite(AgL.GcnMain, "Subgroup", "CommonAc", "bit", "1", True)
+            AgL.AddFieldSqlite(AgL.GcnMain, "Subgroup", "IsSisterConcern", "bit", "0", True)
             AgL.AddFieldSqlite(AgL.GcnMain, "Subgroup", "TDS_CatG", "nVarchar(6)", "", True)
             AgL.AddFieldSqlite(AgL.GcnMain, "Subgroup", "TDSCat_Description", "nVarchar(20)", "", True)
             AgL.AddFieldSqlite(AgL.GcnMain, "Subgroup", "CostCenter", "nVarchar(21)", "", True, "References CostCenterMast(Code)")

@@ -5,13 +5,13 @@ DocNoCaption	string	255	Doc.No.
 DocDateCaption	string	255	Doc.Date	
 SiteStateCode	string	255	09	
 SiteStateName	string	255	Uttar Pradesh	
-DocID	string	255	D3    SC 2024      60	
+DocID	string	255	D3    SC 2024     103	
 Sr	number	1	
-V_Date	datetime	12/Dec/2024 00:00:00	
+V_Date	datetime	24/Jan/2025 00:00:00	
 DeliveryDate	datetime		
 Voucher_Type	string	255	Sale Challan	
 NCat	string	255	SC	
-InvoiceNo	string	255	TVS-SC-62	
+InvoiceNo	string	255	TVS-SC-105	
 GenDocNo	string	255		
 AmsDocNo	string	255		
 AmsDocDate	datetime		
@@ -19,33 +19,33 @@ AmsDocNetAmount	number	0
 RateType	string	255		
 DocumentPrintShowRateType	string	255	Show If Not Blank	
 AgentName	string	255		
-GodownName	string	255		
+GodownName	string	255	TVS RAMADEVI	
 SalesRepName	string	255		
 SalesRepCode	string	255		
 ResponsiblePersonName	string	255		
 AgentCaption	string	255	Agent	
-SaleToPartyName	string	255	SHRI GAJANAN MAHRAJ INDUSTRIES AUTO SERVICES	
-SaleToPartyAddress	string	255	S-11 TRANSPORT NAGAR,LUCKNOW	
-CityName	string	255	LUCKNOW	
-SaleToPartyPincode	string	255		
+SaleToPartyName	string	255	ANAND VERMA S/O PURUSHOTTAM KUMAR	
+SaleToPartyAddress	string	255	39 A, AHIRWAN, KANPUR NAGAR	
+CityName	string	255	KANPUR	
+SaleToPartyPincode	string	255	208007	
 StateCode	string	255	09	
 StateName	string	255	Uttar Pradesh	
-SaleToPartyMobile	string	255		
+SaleToPartyMobile	string	255	7905073524	
 ContactPerson	string	255		
-SaleToPartySalesTaxNo	string	255	09AGSPP3635Q1ZC	
-SaleToPartyAadharNo	string	255		
-SaleToPartyPanNo	string	255	AGSPP3635Q	
+SaleToPartySalesTaxNo	string	255		
+SaleToPartyAadharNo	string	255	543265981760	
+SaleToPartyPanNo	string	255		
 SaleToPartyLicenseNo	string	255		
-ShipToPartyName	string	255	SHRI GAJANAN MAHRAJ INDUSTRIES AUTO SERVICES	
-ShipToPartyAddress	string	255	S-11 TRANSPORT NAGAR,LUCKNOW	
-ShipToPartyCity	string	255	LUCKNOW	
-ShipToPartyPincode	string	255		
+ShipToPartyName	string	255	ANAND VERMA S/O PURUSHOTTAM KUMAR	
+ShipToPartyAddress	string	255	39 A, AHIRWAN, KANPUR NAGAR	
+ShipToPartyCity	string	255	KANPUR	
+ShipToPartyPincode	string	255	208007	
 ShipToPartyStateCode	string	255	09	
 ShipToPartyStateName	string	255	Uttar Pradesh	
-ShipToPartyMobile	string	255		
-ShipToPartySalesTaxNo	string	255	09AGSPP3635Q1ZC	
-ShipToPartyAadharNo	string	255		
-ShipToPartyPanNo	string	255	AGSPP3635Q	
+ShipToPartyMobile	string	255	7905073524	
+ShipToPartySalesTaxNo	string	255		
+ShipToPartyAadharNo	string	255	543265981760	
+ShipToPartyPanNo	string	255		
 ShipToPartyLicenseNo	string	255		
 TransporterSalesTaxNo	string	255		
 ShipToAddress	string	255		
@@ -71,7 +71,7 @@ Destination	string	255
 DescriptionOfGoods	string	255		
 DescriptionOfPacking	string	255		
 ReferenceNo	string	255		
-BarcodeName	string	255	78787878	
+BarcodeName	string	255	MD6EVM1C3R4L00007	
 ItemName	string	255	TVS KING EP3 NEP BLUE COLOUR - TVS - EV	
 ItemGroupName	string	255	TVS	
 ItemCatName	string	255	EV	
@@ -104,7 +104,7 @@ ExpiryDate	datetime
 ItemRemark1	string	255		
 Pcs	number	1	
 Qty	number	1	
-Rate	number	70000	
+Rate	number	345000	
 ItemState	string	255		
 CatalogSpecification	string	255		
 CatalogSiteName	string	255		
@@ -118,8 +118,8 @@ AdditionPer	number	0
 AdditionAmount	number	0	
 TotalDiscount	number	0	
 Deal	string	255		
-AmountBeforeDiscount	number	70000	
-Amount	number	70000	
+AmountBeforeDiscount	number	345000	
+Amount	number	345000	
 Taxable_Amount	number	0	
 Tax1_Per	number	0	
 Tax1	number	0	
@@ -132,20 +132,20 @@ Tax4	number	0
 Tax5_Per	number	0	
 Tax5	number	0	
 Net_Amount	number	0	
-LRemarks	string	255		
+LRemarks	string	255	AM1LR4300009	
 LRemarks1	string	255		
-LRemarks2	string	255		
+LRemarks2	string	255	MD6EVM1C3R4L00007	
 LRemarks3	string	255		
 LRemarks4	string	255		
 HRemarks	string	255		
 HRemarks1	string	255		
-HRemarks2	string	255		
+HRemarks2	string	255	ECOFY FINANCE PVT LTD	
 SalesTaxSummaryStr	string	255		
 H_Discount	number	0	
 H_AdditionalDiscount	number	0	
 H_Additional	number	0	
 H_TotalDiscount	number	0	
-H_AmountBeforeDiscount	number	70000	
+H_AmountBeforeDiscount	number	345000	
 H_Gross_Amount	number	0	
 H_SpecialDiscount_Per	number	0	
 H_SpecialDiscount	number	0	
@@ -177,7 +177,7 @@ Default_BankAccountDetail	string	255	<B> Bank Detail :- <BR> KMB : 5400000007  I
 DocumentPrintHeaderPattern	string	255	Center Aligned	
 DimDetail	string	255		
 PrintedByUser	string	255	SUPER	
-EntryByUser	string	255	SUPER	
+EntryByUser	string	255	tvs	
 PrintTitle	string	255	Sale Challan	
 DocumentPrintShowPrintDateTimeYn	string	255	1	
 DocumentPrintShowPartyBalance	string	255	Hide	

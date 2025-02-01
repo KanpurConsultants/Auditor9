@@ -3343,7 +3343,7 @@ Public Class ClsReports
                     FROM Ledger LG 
                     LEFT JOIN SubGroup SG On SG.SubCode =LG.SubCode  
                     Left Join (Select SILTV.Subcode, Max(SILTV.Agent) as Agent From SubgroupSiteDivisionDetail SILTV  Group By SILTV.Subcode) as LTV On Sg.SubCode = LTV.Subcode
-                    LEFT JOIN City CT On SG.CityCode  =CT.CityCode Where 1=1 " + mCondStr + " And SG.Nature ='Customer'
+                    LEFT JOIN City CT On SG.CityCode  =CT.CityCode Where 1=1 " + mCondStr + " And SG.Nature ='Customer' And IfNull(SG.IsSisterConcern,0) =0
                     GROUP BY LG.SubCode, LG.DivCode 
                     Having IfNull(sum(AmtCr),0) - IfNull(sum(AmtDr),0) < 0 "
                 CurrTempPayment = AgL.FillData(mQry, AgL.GCn).Tables(0)

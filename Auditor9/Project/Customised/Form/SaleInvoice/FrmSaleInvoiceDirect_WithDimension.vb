@@ -3003,8 +3003,10 @@ Public Class FrmSaleInvoiceDirect_WithDimension
         If AgL.StrCmp(AgL.PubDBName, "RVN") Then
             If AgL.PubSiteCode = "1" Then
                 Dgl1.Columns(Col1Remark1).Visible = True
+                Dgl1.Columns(Col1Remark2).Visible = True
                 Dgl1.Columns(Col1Remark3).Visible = True
                 Dgl1.Columns(Col1Remark4).Visible = True
+                Dgl1.Columns(Col1Barcode).Visible = False
                 Dgl1.Columns(Col1SaleInvoice).Visible = False
             ElseIf AgL.PubSiteCode = "3" Then
                 Dgl1.Columns(Col1Remark2).Visible = True
@@ -13783,6 +13785,20 @@ Public Class FrmSaleInvoiceDirect_WithDimension
 
                         If Dgl3.AgHelpDataSet(Col1Value) Is Nothing Then
                             Dgl3.AgHelpDataSet(Col1Value) = Dgl3.Item(Col1Head, Dgl3.CurrentCell.RowIndex).Tag
+                        End If
+                    End If
+
+                Case rowRemarks2
+                    If AgL.StrCmp(AgL.PubDBName, "RVN") Then
+                        If e.KeyCode <> Keys.Enter Then
+                            If Dgl3.Item(Col1Head, Dgl3.CurrentCell.RowIndex).Tag Is Nothing Then
+                                mQry = "SELECT Name AS Code, Name From viewHelpSubgroup Sg  With (NoLock) Where SubgroupType ='Hypothecation' Order By Name"
+                                Dgl3.Item(Col1Head, Dgl3.CurrentCell.RowIndex).Tag = AgL.FillData(mQry, AgL.GCn)
+                            End If
+
+                            If Dgl3.AgHelpDataSet(Col1Value) Is Nothing Then
+                                Dgl3.AgHelpDataSet(Col1Value) = Dgl3.Item(Col1Head, Dgl3.CurrentCell.RowIndex).Tag
+                            End If
                         End If
                     End If
 

@@ -5,55 +5,53 @@ DocNoCaption	string	255	Invoice No.
 DocDateCaption	string	255	Invoice Date	
 SiteStateCode	string	255	09	
 SiteStateName	string	255	Uttar Pradesh	
-DocID	string	255	D1    SI 2024   15401	
+DocID	string	255	D1    SI 2024   16107	
 Sr	number	1	
-V_Date	datetime	07/Jan/2025 00:00:00	
+V_Date	datetime	08/Jan/2025 00:00:00	
 DeliveryDate	datetime		
 Voucher_Type	string	255	Tax Invoice	
 NCat	string	255	SI	
-InvoiceNo	string	255	SI-15400	
-RateType	string	255	Super Net	
+InvoiceNo	string	255	SI-16106	
+RateType	string	255	Dhara	
 DocumentPrintShowRateType	string	255	Show If Not Blank	
-AgentName	string	255	VINOD KUMAR MANDHANI	
+AgentName	string	255	DIRECT CUSTOMER	
 AgentCaption	string	255	Agent	
 BillToPartyNature	string	255	Customer	
-SaleToPartyName	string	255	ANURAG TEXTILES	
-SaleToPartyAddress	string	255	KYDGANJ DIST:PRAYAGRAJ
-	
-CityName	string	255	PRAYAGRAJ	
-SaleToPartyPincode	string	255	211003	
+SaleToPartyName	string	255	SWADESHI VASTRA BHANDAR	
+SaleToPartyAddress	string	255	NAWABGANJ-UNNAO	
+CityName	string	255	NAWABGANJ	
+SaleToPartyPincode	string	255	209859	
 StateCode	string	255	09	
 StateName	string	255	Uttar Pradesh	
-SaleToPartyMobile	string	255	8887838264	
-ContactPerson	string	255	PRAKASH CHANDRA JAISWAL	
-SaleToPartySalesTaxNo	string	255	09ACVPJ5669B1Z4	
+SaleToPartyMobile	string	255	9839309681	
+ContactPerson	string	255		
+SaleToPartySalesTaxNo	string	255	09ADGPG3337D1ZV	
 SaleToPartyAadharNo	string	255		
-SaleToPartyPanNo	string	255	ACVPJ5669B	
-ShipToPartyName	string	255	ANURAG TEXTILES	
-ShipToPartyAddress	string	255	KYDGANJ DIST:PRAYAGRAJ
-	
-ShipToPartyCity	string	255	PRAYAGRAJ	
-ShipToPartyPincode	string	255	211003	
+SaleToPartyPanNo	string	255	ADGPG3337D	
+ShipToPartyName	string	255	SWADESHI VASTRA BHANDAR	
+ShipToPartyAddress	string	255	NAWABGANJ-UNNAO	
+ShipToPartyCity	string	255	NAWABGANJ	
+ShipToPartyPincode	string	255	209859	
 ShipToPartyStateCode	string	255	09	
 ShipToPartyStateName	string	255	Uttar Pradesh	
-ShipToPartyMobile	string	255	8887838264	
-ShipToPartySalesTaxNo	string	255	09ACVPJ5669B1Z4	
+ShipToPartyMobile	string	255	9839309681	
+ShipToPartySalesTaxNo	string	255	09ADGPG3337D1ZV	
 ShipToPartyAadharNo	string	255		
-ShipToPartyPanNo	string	255	ACVPJ5669B	
+ShipToPartyPanNo	string	255	ADGPG3337D	
 ShipToAddress	string	255		
 TermsAndConditions	string	255	<b>1.</b> Goods once sold will not be taken back. <b>2.</b> No Guarantee in the Age of Fashion. <b>3.</b> Interest @ 24% per annum will be charge after 30 days from the date of bill. <b>4.</b> All disputes subject to Kanpur Jurisdiction OR disputes will be settle through Cawnpore Kapda Committee Arbitration Board which will be abide by the both parties	
-TransporterName	string	255	SONY GOODS CARRIERS, KANPUR	
-TransporterMobile	string	255		
-TransporterAddress	string	255		
-LrNo	string	255		
-LrDate	datetime		
+TransporterName	string	255	NEW KAPIL TRANSPORT COMPANY, KANPUR	
+TransporterMobile	string	255	9793300880,8303343199,9170476574	
+TransporterAddress	string	255	GALLA MANDI COLLECTOR GANJ NEAR SANTOSHI MATA TEMPLE-KANPUR	
+LrNo	string	255	13430	
+LrDate	datetime	08/Jan/2025 00:00:00	
 PrivateMark	string	255		
 Weight	number	0	
 Freight	number	0	
 ChargedWeight	number	0	
 FreightType	string	255		
-RoadPermitNo	string	255		
-RoadPermitDate	datetime		
+RoadPermitNo	string	255	491517580046	
+RoadPermitDate	datetime	08/Jan/2025 18:01:00	
 VehicleNo	string	255		
 ShipMethod	string	255		
 PreCarriageBy	string	255		
@@ -63,57 +61,57 @@ BookedTo	string	255
 Destination	string	255		
 DescriptionOfGoods	string	255		
 DescriptionOfPacking	string	255		
-TransporterSalesTaxNo	string	255	09AGFPJ2071F1ZM	
+TransporterSalesTaxNo	string	255	09BAUPK9207Q1ZM	
 ReferenceNo	string	255		
-ItemName	string	255	CAMPUS          [AMAR SAREES(801) | SAREE]	
-ItemGroupName	string	255	S-ENT-801 DYD	
-ItemCatName	string	255	SAREE	
-ItemSpecification	string	255	CAMPUS	
+ItemName	string	255	VANRAJ PRINT          [SHREE HANUMAN FAB(SUDARSHAN) | SAREE HALKA PRI..]	
+ItemGroupName	string	255	S-ENT-61-PRINT	
+ItemCatName	string	255	SAREE HALKA PRI..	
+ItemSpecification	string	255	VANRAJ PRINT	
 InvoiceLineSpecification	string	255		
 HSN	string	255	540752	
 MaintainStockYn	boolean	True	
 SalesTaxGroupItem	string	255	GST 5%	
 GrossTaxRate	number	5	
-Pcs	number	2	
-Qty	number	2	
-Rate	number	1595	
+Pcs	number	11	
+Qty	number	11	
+Rate	number	556.5	
 Unit	string	255	Pcs	
 UnitDecimalPlaces	number	0	
-DiscountPer	number	10	
-DiscountAmount	number	319	
+DiscountPer	number	0	
+DiscountAmount	number	0	
 AdditionalDiscountPer	number	0	
 AdditionalDiscountAmount	number	0	
-AdditionPer	number	0	
-AdditionAmount	number	0	
-TotalDiscount	number	319	
-AmountBeforeDiscount	number	3190	
-Amount	number	2871	
-Taxable_Amount	number	2871	
+AdditionPer	number	5	
+AdditionAmount	number	291.5	
+TotalDiscount	number	-291.5	
+AmountBeforeDiscount	number	6121.5	
+Amount	number	6121.5	
+Taxable_Amount	number	6121.5	
 Tax1_Per	number	0	
 Tax1	number	0	
 Tax2_Per	number	2.5	
-Tax2	number	71.78	
+Tax2	number	153.04	
 Tax3_Per	number	2.5	
-Tax3	number	71.78	
+Tax3	number	153.04	
 Tax4_Per	number	0	
 Tax4	number	0	
 Tax5_Per	number	0	
 Tax5	number	0	
-Net_Amount	number	3015	
+Net_Amount	number	6427.53	
 LRemarks	string	255		
 HRemarks	string	255		
-H_TotalDiscount	number	319	
-H_AmountBeforeDiscount	number	3190	
-H_Gross_Amount	number	2871	
+H_TotalDiscount	number	-2029.67	
+H_AmountBeforeDiscount	number	48943	
+H_Gross_Amount	number	50972.67	
 H_SpecialDiscount_Per	number	0	
 H_SpecialDiscount	number	0	
-H_Taxable_Amount	number	2871	
+H_Taxable_Amount	number	50972.67	
 H_Tax1_Per	number	0	
 H_Tax1	number	0	
 H_Tax2_Per	number	0	
-H_Tax2	number	71.78	
+H_Tax2	number	1274.35	
 H_Tax3_Per	number	0	
-H_Tax3	number	71.78	
+H_Tax3	number	1274.35	
 H_Tax4_Per	number	0	
 H_Tax4	number	0	
 H_Tax5_Per	number	0	
@@ -122,16 +120,16 @@ H_Deduction_Per	number	0
 H_Deduction	number	0	
 H_Other_Charge_Per	number	0	
 H_Other_Charge	number	0	
-Round_Off	number	0.44	
-H_Net_Amount	number	3015	
-EInvoiceIRN	string	255		
-EInvoiceAckNo	string	255		
-EInvoiceAckDate	datetime		
+Round_Off	number	-0.37	
+H_Net_Amount	number	53521	
+EInvoiceIRN	string	255	626342e442a99fa49129f2e240a720a5a29292d7538f4c1aef9d405fa2a16851	
+EInvoiceAckNo	string	255	142516445967336	
+EInvoiceAckDate	datetime	08/Jan/2025 17:56:00	
 Default_BankAccountDetail	string	255	Bank Detail : 	HDFC A/c : 50200003154727    IFSC : HDFC0002006	
 DocumentPrintHeaderPattern	string	255	Center Aligned	
 DimDetail	string	255		
 PrintedByUser	string	255	SUPER	
-EntryByUser	string	255	SUPER	
+EntryByUser	string	255	manish	
 PrintTitle	string	255	TAX INVOICE	
 DocumentPrintShowPrintDateTimeYn	string	255	1	
 DocumentPrintShowPartyBalance	string	255	Hide	
