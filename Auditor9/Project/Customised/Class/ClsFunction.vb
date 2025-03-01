@@ -1122,68 +1122,74 @@ Public Class ClsFunction
                     CRep.Ini_Grid()
                     FrmObj = GridReportFrm
 
-'#Region "Carpet Reports"
-'                Case MDI.MnuDyeingOrderReport.Name
-'                    Dim CRep As ClsPurchaseReport = New ClsPurchaseReport(GridReportFrm, ClsCarpet.NCat_DyeingOrder, "")
-'                    CRep.GRepFormName = Replace(Replace(Replace(Replace(StrSenderText, "&", ""), " ", ""), "(", ""), ")", "")
-'                    CRep.Ini_Grid()
+                Case MDI.MnuBarcodeDetailUpdation.Name
+                    Dim CRep As ClsBarcodeDetailUpdation = New ClsBarcodeDetailUpdation(GridReportFrm)
+                    CRep.GRepFormName = Replace(Replace(Replace(Replace(StrSenderText, "&", ""), " ", ""), "(", ""), ")", "")
+                    CRep.Ini_Grid()
+                    FrmObj = GridReportFrm
 
-'                Case MDI.MnuDyeingReceiveReport.Name
-'                    Dim CRep As ClsStockHeadReport = New ClsStockHeadReport(GridReportFrm, ClsCarpet.NCat_DyeingReceive)
-'                    CRep.GRepFormName = Replace(Replace(Replace(Replace(StrSenderText, "&", ""), " ", ""), "(", ""), ")", "")
-'                    CRep.Ini_Grid()
+                '#Region "Carpet Reports"
+                '                Case MDI.MnuDyeingOrderReport.Name
+                '                    Dim CRep As ClsPurchaseReport = New ClsPurchaseReport(GridReportFrm, ClsCarpet.NCat_DyeingOrder, "")
+                '                    CRep.GRepFormName = Replace(Replace(Replace(Replace(StrSenderText, "&", ""), " ", ""), "(", ""), ")", "")
+                '                    CRep.Ini_Grid()
 
-'                Case MDI.MnuDyeingInvoiceReport.Name
-'                    Dim CRep As ClsPurchaseReport = New ClsPurchaseReport(GridReportFrm, ClsCarpet.NCat_DyeingInvoice, "")
-'                    CRep.GRepFormName = Replace(Replace(Replace(Replace(StrSenderText, "&", ""), " ", ""), "(", ""), ")", "")
-'                    CRep.Ini_Grid()
+                '                Case MDI.MnuDyeingReceiveReport.Name
+                '                    Dim CRep As ClsStockHeadReport = New ClsStockHeadReport(GridReportFrm, ClsCarpet.NCat_DyeingReceive)
+                '                    CRep.GRepFormName = Replace(Replace(Replace(Replace(StrSenderText, "&", ""), " ", ""), "(", ""), ")", "")
+                '                    CRep.Ini_Grid()
 
-'                Case MDI.MnuDyeingOrderStatusReport.Name
-'                    Dim CRep As ClsPurchOrderStatusReport = New ClsPurchOrderStatusReport(GridReportFrm, ClsCarpet.NCat_DyeingOrder)
-'                    CRep.GRepFormName = Replace(Replace(Replace(Replace(StrSenderText, "&", ""), " ", ""), "(", ""), ")", "")
-'                    CRep.Ini_Grid()
+                '                Case MDI.MnuDyeingInvoiceReport.Name
+                '                    Dim CRep As ClsPurchaseReport = New ClsPurchaseReport(GridReportFrm, ClsCarpet.NCat_DyeingInvoice, "")
+                '                    CRep.GRepFormName = Replace(Replace(Replace(Replace(StrSenderText, "&", ""), " ", ""), "(", ""), ")", "")
+                '                    CRep.Ini_Grid()
 
-'                Case MDI.MnuWeavingOrderReport.Name
-'                    Dim CRep As ClsPurchaseReport = New ClsPurchaseReport(GridReportFrm, ClsCarpet.NCat_WeavingOrder, "")
-'                    CRep.GRepFormName = Replace(Replace(Replace(Replace(StrSenderText, "&", ""), " ", ""), "(", ""), ")", "")
-'                    CRep.Ini_Grid()
+                '                Case MDI.MnuDyeingOrderStatusReport.Name
+                '                    Dim CRep As ClsPurchOrderStatusReport = New ClsPurchOrderStatusReport(GridReportFrm, ClsCarpet.NCat_DyeingOrder)
+                '                    CRep.GRepFormName = Replace(Replace(Replace(Replace(StrSenderText, "&", ""), " ", ""), "(", ""), ")", "")
+                '                    CRep.Ini_Grid()
 
-'                Case MDI.MnuWeavingReceiveReport.Name
-'                    Dim CRep As ClsStockHeadReport = New ClsStockHeadReport(GridReportFrm, ClsCarpet.NCat_WeavingReceive)
-'                    CRep.GRepFormName = Replace(Replace(Replace(Replace(StrSenderText, "&", ""), " ", ""), "(", ""), ")", "")
-'                    CRep.Ini_Grid()
+                '                Case MDI.MnuWeavingOrderReport.Name
+                '                    Dim CRep As ClsPurchaseReport = New ClsPurchaseReport(GridReportFrm, ClsCarpet.NCat_WeavingOrder, "")
+                '                    CRep.GRepFormName = Replace(Replace(Replace(Replace(StrSenderText, "&", ""), " ", ""), "(", ""), ")", "")
+                '                    CRep.Ini_Grid()
 
-'                Case MDI.MnuWeavingInvoiceReport.Name
-'                    Dim CRep As ClsPurchaseReport = New ClsPurchaseReport(GridReportFrm, ClsCarpet.NCat_WeavingInvoice, "")
-'                    CRep.GRepFormName = Replace(Replace(Replace(Replace(StrSenderText, "&", ""), " ", ""), "(", ""), ")", "")
-'                    CRep.Ini_Grid()
+                '                Case MDI.MnuWeavingReceiveReport.Name
+                '                    Dim CRep As ClsStockHeadReport = New ClsStockHeadReport(GridReportFrm, ClsCarpet.NCat_WeavingReceive)
+                '                    CRep.GRepFormName = Replace(Replace(Replace(Replace(StrSenderText, "&", ""), " ", ""), "(", ""), ")", "")
+                '                    CRep.Ini_Grid()
 
-'                Case MDI.MnuWeavingOrderStatusReport.Name
-'                    Dim CRep As ClsPurchOrderStatusReport = New ClsPurchOrderStatusReport(GridReportFrm, ClsCarpet.NCat_WeavingOrder)
-'                    CRep.GRepFormName = Replace(Replace(Replace(Replace(StrSenderText, "&", ""), " ", ""), "(", ""), ")", "")
-'                    CRep.Ini_Grid()
+                '                Case MDI.MnuWeavingInvoiceReport.Name
+                '                    Dim CRep As ClsPurchaseReport = New ClsPurchaseReport(GridReportFrm, ClsCarpet.NCat_WeavingInvoice, "")
+                '                    CRep.GRepFormName = Replace(Replace(Replace(Replace(StrSenderText, "&", ""), " ", ""), "(", ""), ")", "")
+                '                    CRep.Ini_Grid()
 
-'                Case MDI.MnuFinishingOrderReport.Name
-'                    Dim CRep As ClsPurchaseReport = New ClsPurchaseReport(GridReportFrm, ClsCarpet.NCat_FinishingOrder, "")
-'                    CRep.GRepFormName = Replace(Replace(Replace(Replace(StrSenderText, "&", ""), " ", ""), "(", ""), ")", "")
-'                    CRep.Ini_Grid()
+                '                Case MDI.MnuWeavingOrderStatusReport.Name
+                '                    Dim CRep As ClsPurchOrderStatusReport = New ClsPurchOrderStatusReport(GridReportFrm, ClsCarpet.NCat_WeavingOrder)
+                '                    CRep.GRepFormName = Replace(Replace(Replace(Replace(StrSenderText, "&", ""), " ", ""), "(", ""), ")", "")
+                '                    CRep.Ini_Grid()
 
-'                Case MDI.MnuFinishingReceiveReport.Name
-'                    Dim CRep As ClsStockHeadReport = New ClsStockHeadReport(GridReportFrm, ClsCarpet.NCat_WeavingReceive)
-'                    CRep.GRepFormName = Replace(Replace(Replace(Replace(StrSenderText, "&", ""), " ", ""), "(", ""), ")", "")
-'                    CRep.Ini_Grid()
+                '                Case MDI.MnuFinishingOrderReport.Name
+                '                    Dim CRep As ClsPurchaseReport = New ClsPurchaseReport(GridReportFrm, ClsCarpet.NCat_FinishingOrder, "")
+                '                    CRep.GRepFormName = Replace(Replace(Replace(Replace(StrSenderText, "&", ""), " ", ""), "(", ""), ")", "")
+                '                    CRep.Ini_Grid()
 
-'                Case MDI.MnuFinishingInvoiceReport.Name
-'                    Dim CRep As ClsPurchaseReport = New ClsPurchaseReport(GridReportFrm, ClsCarpet.NCat_FinishingInvoice, "")
-'                    CRep.GRepFormName = Replace(Replace(Replace(Replace(StrSenderText, "&", ""), " ", ""), "(", ""), ")", "")
-'                    CRep.Ini_Grid()
+                '                Case MDI.MnuFinishingReceiveReport.Name
+                '                    Dim CRep As ClsStockHeadReport = New ClsStockHeadReport(GridReportFrm, ClsCarpet.NCat_WeavingReceive)
+                '                    CRep.GRepFormName = Replace(Replace(Replace(Replace(StrSenderText, "&", ""), " ", ""), "(", ""), ")", "")
+                '                    CRep.Ini_Grid()
 
-'                Case MDI.MnuFinishingOrderStatusReport.Name
-'                    Dim CRep As ClsPurchOrderStatusReport = New ClsPurchOrderStatusReport(GridReportFrm, ClsCarpet.NCat_FinishingOrder)
-'                    CRep.GRepFormName = Replace(Replace(Replace(Replace(StrSenderText, "&", ""), " ", ""), "(", ""), ")", "")
-'                    CRep.Ini_Grid()
+                '                Case MDI.MnuFinishingInvoiceReport.Name
+                '                    Dim CRep As ClsPurchaseReport = New ClsPurchaseReport(GridReportFrm, ClsCarpet.NCat_FinishingInvoice, "")
+                '                    CRep.GRepFormName = Replace(Replace(Replace(Replace(StrSenderText, "&", ""), " ", ""), "(", ""), ")", "")
+                '                    CRep.Ini_Grid()
 
-'#End Region
+                '                Case MDI.MnuFinishingOrderStatusReport.Name
+                '                    Dim CRep As ClsPurchOrderStatusReport = New ClsPurchOrderStatusReport(GridReportFrm, ClsCarpet.NCat_FinishingOrder)
+                '                    CRep.GRepFormName = Replace(Replace(Replace(Replace(StrSenderText, "&", ""), " ", ""), "(", ""), ")", "")
+                '                    CRep.Ini_Grid()
+
+                '#End Region
 
 
                 Case MDI.MnuOpeningStockReport.Name

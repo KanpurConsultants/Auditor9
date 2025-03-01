@@ -5,62 +5,64 @@ DocNoCaption	string	255	Invoice No.
 DocDateCaption	string	255	Invoice Date	
 SiteStateCode	string	255	07	
 SiteStateName	string	255	Delhi	
-DocID	string	255	D1    SI 2023     161	
+DocID	string	255	D1    SI 2024      96	
 Sr	number	1	
-V_Date	datetime	07/Feb/2024 12:00:00 AM	
+V_Date	datetime	19/Feb/2025 00:00:00	
 DeliveryDate	datetime		
 Voucher_Type	string	255	Tax Invoice	
 NCat	string	255	SI	
-InvoiceNo	string	255	SI-162	
+InvoiceNo	string	255	SI-96	
 GenDocNo	string	255		
 AmsDocNo	string	255		
 AmsDocDate	datetime		
 AmsDocNetAmount	number	0	
 RateType	string	255		
 DocumentPrintShowRateType	string	255	Show If Not Blank	
-AgentName	string	255	PANKAJ KUMAR-AR AGENGY	
+AgentName	string	255		
+GodownName	string	255		
 SalesRepName	string	255		
 SalesRepCode	string	255		
+ResponsiblePersonName	string	255		
 AgentCaption	string	255	Agent	
-SaleToPartyName	string	255	A R AGENCIES	
-SaleToPartyAddress	string	255	X/175, TAGORE GALI MOHALLA RAM NAGAR GANDHI NAGAR DELHI-110031
+SaleToPartyName	string	255	A B GARMENTS	
+SaleToPartyAddress	string	255	HOUSE NO. X/2053 SECOND FLOORGALI NO. -1, RAJGARH EXTN. NO.-1 EAST DELHI
 	
 CityName	string	255	DELHI	
 SaleToPartyPincode	string	255	110031	
 StateCode	string	255	07	
 StateName	string	255	Delhi	
-SaleToPartyMobile	string	255	9310461166	
+SaleToPartyMobile	string	255		
 ContactPerson	string	255		
-SaleToPartySalesTaxNo	string	255	07AIQPG3374H2Z0	
+SaleToPartySalesTaxNo	string	255	07ABTFA2968D1Z6	
 SaleToPartyAadharNo	string	255		
-SaleToPartyPanNo	string	255	AIQPG3374H	
+SaleToPartyPanNo	string	255	ABTFA2968D	
 SaleToPartyLicenseNo	string	255		
-ShipToPartyName	string	255	A R AGENCIES	
-ShipToPartyAddress	string	255	X/175, TAGORE GALI MOHALLA RAM NAGAR GANDHI NAGAR DELHI-110031
+ShipToPartyName	string	255	A B GARMENTS	
+ShipToPartyAddress	string	255	HOUSE NO. X/2053 SECOND FLOORGALI NO. -1, RAJGARH EXTN. NO.-1 EAST DELHI
 	
 ShipToPartyCity	string	255	DELHI	
 ShipToPartyPincode	string	255	110031	
 ShipToPartyStateCode	string	255	07	
 ShipToPartyStateName	string	255	Delhi	
-ShipToPartyMobile	string	255	9310461166	
-ShipToPartySalesTaxNo	string	255	07AIQPG3374H2Z0	
+ShipToPartyMobile	string	255		
+ShipToPartySalesTaxNo	string	255	07ABTFA2968D1Z6	
 ShipToPartyAadharNo	string	255		
-ShipToPartyPanNo	string	255	AIQPG3374H	
+ShipToPartyPanNo	string	255	ABTFA2968D	
 ShipToPartyLicenseNo	string	255		
-TransporterSalesTaxNo	string	255	07AOOPK0045D1Z9	
+TransporterSalesTaxNo	string	255		
 ShipToAddress	string	255		
 TermsAndConditions	string	255	(1) Payment within 30 days from date of Invoice. <BR>(2) Overdue Interest @ 24% P.A. after due date. <BR>(3) Goods dispatched by transport at the owner risk. <BR>(4) All disputes are subject to <Kanpur> Jurisdiction only.	
-TransporterName	string	255	JAI MAHARASHTRA CARGO MOVERS, DELHI	
-LrNo	string	255	929853	
-LrDate	datetime	08/Feb/2024 12:00:00 AM	
-NoOfBales	number	1	
+TransporterName	string	255		
+LrNo	string	255		
+LrDate	datetime		
+NoOfBales	number		
 PrivateMark	string	255		
-Weight	number	0	
-Freight	number	0	
-ChargedWeight	number	0	
+Weight	number		
+Freight	number		
+ChargedWeight	number		
 FreightType	string	255		
-RoadPermitNo	string	255	711403713027	
-RoadPermitDate	datetime	08/Feb/2024 12:00:00 AM	
+RoadPermitNo	string	255		
+RoadPermitDate	datetime		
 VehicleNo	string	255		
 ShipMethod	string	255		
 PreCarriageBy	string	255		
@@ -72,11 +74,11 @@ DescriptionOfGoods	string	255
 DescriptionOfPacking	string	255		
 ReferenceNo	string	255		
 BarcodeName	string	255		
-ItemName	string	255	8349-11X13 - AERO CLUB - KIDS COAT PANT	
+ItemName	string	255	812-11X13 - AERO CLUB - KIDS COAT PANT	
 ItemGroupName	string	255	AERO CLUB	
 ItemCatName	string	255	KIDS COAT PANT	
-ItemManualCode	string	255	1652	
-ItemSpecification	string	255	8349-11X13	
+ItemManualCode	string	255	1957	
+ItemSpecification	string	255	812-11X13	
 InvoiceLineSpecification	string	255		
 HSN	string	255	611190	
 MaintainStockYn	boolean	True	
@@ -102,58 +104,60 @@ MRP	number	0
 LotNo	string	255		
 ExpiryDate	datetime		
 ItemRemark1	string	255		
-Pcs	number	6	
-Qty	number	6	
-Rate	number	800	
+Pcs	number	1	
+Qty	number	1	
+Rate	number	1065	
 ItemState	string	255		
 CatalogSpecification	string	255		
 CatalogSiteName	string	255		
 Unit	string	255	Pcs	
 UnitDecimalPlaces	number	0	
 DiscountPer	number	5	
-DiscountAmount	number	240	
+DiscountAmount	number	53.25	
 AdditionalDiscountPer	number	0	
 AdditionalDiscountAmount	number	0	
 AdditionPer	number	0	
 AdditionAmount	number	0	
-TotalDiscount	number	240	
+TotalDiscount	number	53.25	
 Deal	string	255		
-AmountBeforeDiscount	number	4800	
-Amount	number	4560	
-Taxable_Amount	number	4342.86	
+AmountBeforeDiscount	number	1065	
+Amount	number	1011.75	
+Taxable_Amount	number	963.57	
 Tax1_Per	number	0	
 Tax1	number	0	
 Tax2_Per	number	2.5	
-Tax2	number	108.57	
+Tax2	number	24.09	
 Tax3_Per	number	2.5	
-Tax3	number	108.57	
+Tax3	number	24.09	
 Tax4_Per	number	0	
 Tax4	number	0	
 Tax5_Per	number	0	
 Tax5	number	0	
-Net_Amount	number	4560.02	
+Net_Amount	number	1011.88	
 LRemarks	string	255		
 LRemarks1	string	255		
 LRemarks2	string	255		
 LRemarks3	string	255		
 LRemarks4	string	255		
-HRemarks	string	255	NEW RAJ GARMENTS - TIKA MGARH	
+HRemarks	string	255		
+HRemarks1	string	255		
+HRemarks2	string	255		
 SalesTaxSummaryStr	string	255		
-H_Discount	number	5806.25	
+H_Discount	number	53.25	
 H_AdditionalDiscount	number	0	
 H_Additional	number	0	
-H_TotalDiscount	number	5806.25	
-H_AmountBeforeDiscount	number	116255	
-H_Gross_Amount	number	110448.75	
+H_TotalDiscount	number	53.25	
+H_AmountBeforeDiscount	number	2130	
+H_Gross_Amount	number	2076.75	
 H_SpecialDiscount_Per	number	0	
 H_SpecialDiscount	number	0	
-H_Taxable_Amount	number	102605.07	
+H_Taxable_Amount	number	1914.46	
 H_Tax1_Per	number	0	
 H_Tax1	number	0	
 H_Tax2_Per	number	0	
-H_Tax2	number	3921.86	
+H_Tax2	number	81.14	
 H_Tax3_Per	number	0	
-H_Tax3	number	3921.86	
+H_Tax3	number	81.14	
 H_Tax4_Per	number	0	
 H_Tax4	number	0	
 H_Tax5_Per	number	0	
@@ -166,8 +170,8 @@ H_Other_Charge1_Per	number	0
 H_Other_Charge1	number	0	
 H_Other_Charge2_Per	number	0	
 H_Other_Charge2	number	0	
-Round_Off	number	0.21	
-H_Net_Amount	number	110449	
+Round_Off	number	0.26	
+H_Net_Amount	number	2077	
 EInvoiceIRN	string	255		
 EInvoiceACKNo	string	255		
 EInvoiceACKDate	datetime		
@@ -175,7 +179,7 @@ Default_BankAccountDetail	string	255	<B> Bank Detail :- <BR> ICICI BANK : 112605
 DocumentPrintHeaderPattern	string	255	Center Aligned	
 DimDetail	string	255		
 PrintedByUser	string	255	SUPER	
-EntryByUser	string	255	vimal	
+EntryByUser	string	255	SUPER	
 PrintTitle	string	255	Tax Invoice	
 DocumentPrintShowPrintDateTimeYn	string	255	1	
 DocumentPrintShowPartyBalance	string	255	Hide	

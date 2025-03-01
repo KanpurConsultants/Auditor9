@@ -4079,6 +4079,22 @@ Public Class FrmSaleInvoiceDirect
                             End If
                         End If
 
+                        If AgL.VNull(DtV_TypeSettings.Rows(0)("IsAllowedNegativeStock")) = False Then
+                            If Val(Dgl1.Item(Col1Qty, I).Value) > 0 Then
+                                Dim bItemStockQty As Double = 0
+                                mQry = " Select IfNull(Sum(Qty_Rec), 0) - IfNull(Sum(Qty_Iss), 0) " &
+                                          " FROM Stock  With (NoLock) " &
+                                          " WHERE Item = '" & Dgl1.Item(Col1Item, I).Tag & "' " &
+                                          " And DocId <> '" & mSearchCode & "'"
+                                bItemStockQty = AgL.VNull(AgL.Dman_Execute(mQry, AgL.GCn).ExecuteScalar)
+                                If Val(bItemStockQty) < Val(Dgl1.Item(Col1Qty, I).Value) Then
+                                    MsgBox(Dgl1.Item(Col1Item, I).Value & " Have Only " & bItemStockQty.ToString() & " Stock .")
+                                    .CurrentCell = .Item(Col1Qty, I) : Dgl1.Focus() : MakeGridCurrentCellNothing(Dgl1.Name)
+                                    passed = False : Exit Sub
+                                End If
+
+                            End If
+                        End If
 
                         If LblV_Type.Tag = Ncat.SaleReturn Then
                             If AgL.XNull(Dgl1.Item(Col1ReferenceNo, I).Value) = "" Or AgL.XNull(Dgl1.Item(Col1ReferenceNo, I).Value) = Dgl2.Item(Col1Value, rowPartyDocNo).Value Then
@@ -4235,6 +4251,24 @@ Public Class FrmSaleInvoiceDirect
             Calculation()
             Calculation()
         End If
+    End Sub
+    Private Sub MakeGridCurrentCellNothing(GridName As String)
+        Try
+            If GridName <> Dgl1.Name Then Dgl1.CurrentCell = Nothing
+        Catch ex As Exception
+        End Try
+        Try
+            If GridName <> Dgl2.Name Then Dgl2.CurrentCell = Nothing
+        Catch ex As Exception
+        End Try
+        Try
+            If GridName <> Dgl3.Name Then Dgl3.CurrentCell = Nothing
+        Catch ex As Exception
+        End Try
+        Try
+            If GridName <> AgCalcGrid1.Name Then AgCalcGrid1.CurrentCell = Nothing
+        Catch ex As Exception
+        End Try
     End Sub
 
     Private Function ValidateData_Barcode() As Boolean
@@ -6019,6 +6053,12 @@ Public Class FrmSaleInvoiceDirect
 
         'PrintingCopies = AgL.XNull(DtV_TypeSettings.Rows(0)("PrintingCopyCaptions")).ToString.Split(",")
 
+        Dim QryRate As String = " " & IIf(SettingPrintRateType = PrintRateType.Rate, " L.Rate ", "(Case when abs(IfNull(I.MaintainStockYn,1)) =1 AND I.ItemType <> '" & ItemTypeCode.ServiceProduct & "' Then (Case When L.Taxable_Amount >0 And (L.Taxable_Amount <> L.Amount Or L.AdditionAmount > 0 ) Then (L.Taxable_Amount - (L.DiscountAmount + L.AdditionalDiscountAmount))/L.DocQty Else L.Rate End ) Else 0 End)") & " "
+
+        If ClsMain.FDivisionNameForCustomization(6) = "SADHVI" Then
+            QryRate = " " & IIf(SettingPrintRateType = PrintRateType.Rate, " L.Rate ", "(Case when abs(IfNull(I.MaintainStockYn,1)) =1 AND I.ItemType <> '" & ItemTypeCode.ServiceProduct & "' Then (Case When L.Taxable_Amount >0 And (L.Taxable_Amount <> L.Amount Or L.AdditionAmount > 0 ) Then (L.Taxable_Amount)/L.DocQty Else L.Rate End ) Else 0 End)") & " "
+        End If
+
         mQry = ""
         For I = 1 To PrintingCopies.Length
             If mQry <> "" Then mQry = mQry + " Union All "
@@ -6053,8 +6093,8 @@ Public Class FrmSaleInvoiceDirect
                 IC.Description as ItemCatName, I.Specification as ItemSpecification, L.Specification as InvoiceLineSpecification, IfNull(I.HSN, IC.HSN) as HSN, IfNull(I.MaintainStockYn, IC.MaintainStockYn) as MaintainStockYn,
                 L.SalesTaxGroupItem, STGI.GrossTaxRate, 
                 (Case when abs(IfNull(I.MaintainStockYn,1)) =1 AND I.ItemType <> '" & ItemTypeCode.ServiceProduct & "' Then L.Pcs Else 0 End) as Pcs, 
-                (Case when abs(IfNull(I.MaintainStockYn,1)) =1 AND I.ItemType <> '" & ItemTypeCode.ServiceProduct & "' Then abs(L.Qty) Else 0 End) as Qty,           
-                " & IIf(SettingPrintRateType = PrintRateType.Rate, " L.Rate ", "(Case when abs(IfNull(I.MaintainStockYn,1)) =1 AND I.ItemType <> '" & ItemTypeCode.ServiceProduct & "' Then (Case When L.Taxable_Amount >0 And (L.Taxable_Amount <> L.Amount Or L.AdditionAmount > 0 ) Then (L.Taxable_Amount - (L.DiscountAmount + L.AdditionalDiscountAmount))/L.DocQty Else L.Rate End ) Else 0 End)") & " as Rate, 
+                (Case when abs(IfNull(I.MaintainStockYn,1)) =1 AND I.ItemType <> '" & ItemTypeCode.ServiceProduct & "' Then abs(L.Qty) Else 0 End) as Qty,         
+                " & QryRate & " as Rate, 
                 L.Unit, U.DecimalPlaces as UnitDecimalPlaces, 
                 L.DiscountPer, L.DiscountAmount, L.AdditionalDiscountPer, L.AdditionalDiscountAmount, L.AdditionPer, L.AdditionAmount, 
                 L.DiscountAmount+L.AdditionalDiscountAmount-L.AdditionAmount as TotalDiscount, 

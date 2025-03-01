@@ -10,7 +10,7 @@
   <Column>
     <Name>Barcode</Name>
     <Index>1</Index>
-    <Width>100</Width>
+    <Width>244</Width>
     <Visible>True</Visible>
     <AggregateFunction />
   </Column>
@@ -52,7 +52,7 @@
   <Column>
     <Name>Item</Name>
     <Index>7</Index>
-    <Width>229</Width>
+    <Width>269</Width>
     <Visible>True</Visible>
     <AggregateFunction />
   </Column>

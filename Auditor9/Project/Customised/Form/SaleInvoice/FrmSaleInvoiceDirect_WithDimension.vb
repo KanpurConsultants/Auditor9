@@ -1671,7 +1671,7 @@ Public Class FrmSaleInvoiceDirect_WithDimension
 
 
 
-            If AgL.StrCmp(AgL.PubDBName, "RVN") Then
+            If AgL.StrCmp(AgL.PubDBName, "RVN") Or AgL.StrCmp(AgL.PubDBName, "Auto") Then
                 .AddAgTextColumn(Dgl1, Col1Remark, 150, 255, "MOTOR NO", True, False)
                 .AddAgTextColumn(Dgl1, Col1Remark1, 150, 255, "CONTROLLER NO", True, False)
                 .AddAgTextColumn(Dgl1, Col1Remark2, 150, 255, "CHASIS NO", True, False)
@@ -1903,7 +1903,7 @@ Public Class FrmSaleInvoiceDirect_WithDimension
         Dgl3.Item(Col1Head, rowAgent).Value = hcAgent
         Dgl3.Item(Col1Head, rowTransporter).Value = hcTransporter
         Dgl3.Item(Col1Head, rowResponsiblePerson).Value = hcResponsiblePerson
-        If AgL.StrCmp(AgL.PubDBName, "RVN") Then
+        If AgL.StrCmp(AgL.PubDBName, "RVN") Or AgL.StrCmp(AgL.PubDBName, "Auto") Then
             Dgl3.Item(Col1Head, rowRemarks1).Value = "Vehicle No"
             Dgl3.Item(Col1Head, rowRemarks2).Value = "Hypothecation"
         Else
@@ -2565,7 +2565,7 @@ Public Class FrmSaleInvoiceDirect_WithDimension
                                 (
                                     '" & DocID & "', " & TSr & ", " & mDimensionSrl & ", " & AgL.Chk_Text(DglMain.Item(Col1Value, rowV_Type).Tag) & ", " & AgL.Chk_Text(LblPrefix.Text) & ",
                                     " & AgL.Chk_Date(DglMain.Item(Col1Value, rowV_Date).Value) & ", " & AgL.Chk_Text(DglMain.Item(Col1Value, rowV_No).Value) & ", " & AgL.Chk_Text(DglMain.Item(Col1Value, rowReferenceNo).Value) & ",  " & AgL.Chk_Text(TxtDivision.Tag) & ", " & AgL.Chk_Text(DglMain.Item(Col1Value, rowSite_Code).Tag) & ",
-                                    " & AgL.Chk_Text(DglMain.Item(Col1Value, rowSaleToParty).Tag) & ", " & AgL.Chk_Text(bSalesTaxGroupParty) & " , " & AgL.Chk_Text(Dgl1.Item(Col1Barcode, LineGridRowIndex).Tag) & ", " & AgL.Chk_Text(Dgl1.Item(Col1SKU, LineGridRowIndex).Tag) & ", " & AgL.Chk_Text(Dgl1.Item(Col1ItemState, LineGridRowIndex).Tag) & ", " & AgL.Chk_Text(Dgl1.Item(Col1SalesTaxGroup, LineGridRowIndex).Value) & ", " & AgL.Chk_Text(Dgl1.Item(Col1LotNo, LineGridRowIndex).Value) & ", " & AgL.Chk_Text(Dgl1.Item(Col1Godown, LineGridRowIndex).Value) & ",
+                                    " & AgL.Chk_Text(DglMain.Item(Col1Value, rowSaleToParty).Tag) & ", " & AgL.Chk_Text(bSalesTaxGroupParty) & " , " & AgL.Chk_Text(Dgl1.Item(Col1Barcode, LineGridRowIndex).Tag) & ", " & AgL.Chk_Text(Dgl1.Item(Col1SKU, LineGridRowIndex).Tag) & ", " & AgL.Chk_Text(Dgl1.Item(Col1ItemState, LineGridRowIndex).Tag) & ", " & AgL.Chk_Text(Dgl1.Item(Col1SalesTaxGroup, LineGridRowIndex).Value) & ", " & AgL.Chk_Text(Dgl1.Item(Col1LotNo, LineGridRowIndex).Value) & ", " & AgL.Chk_Text(Dgl1.Item(Col1Godown, LineGridRowIndex).Tag) & ",
                                     'I', " & Val(Dgl1.Item(Col1Qty, LineGridRowIndex).Value) & ",0, " & AgL.Chk_Text(Dgl1.Item(Col1Unit, LineGridRowIndex).Value) & ",
                                     " & Val(Dgl1.Item(Col1Pcs, LineGridRowIndex).Value) & ",0, 
                                     " & Val(Dgl1.Item(Col1UnitMultiplier, LineGridRowIndex).Value) & ",
@@ -3000,7 +3000,7 @@ Public Class FrmSaleInvoiceDirect_WithDimension
             Dgl1.Columns(Col1Rate).ReadOnly = True
         End If
 
-        If AgL.StrCmp(AgL.PubDBName, "RVN") Then
+        If AgL.StrCmp(AgL.PubDBName, "RVN") Or AgL.StrCmp(AgL.PubDBName, "Auto") Then
             If AgL.PubSiteCode = "1" Then
                 Dgl1.Columns(Col1Remark1).Visible = True
                 Dgl1.Columns(Col1Remark2).Visible = True
@@ -3020,8 +3020,8 @@ Public Class FrmSaleInvoiceDirect_WithDimension
 
 
             Dgl3.Rows(rowRemarks1).Visible = True
-                Dgl3.Rows(rowRemarks2).Visible = True
-            End If
+            Dgl3.Rows(rowRemarks2).Visible = True
+        End If
 
         'If DglMain.Rows(rowSaleToPartyName).Visible = True And
         '    Not AgL.StrCmp(Topctrl1.Mode, "Browse") Then
@@ -5111,6 +5111,18 @@ Public Class FrmSaleInvoiceDirect_WithDimension
                 And MRPGreaterThan < " & Val(RatePerQty) & " 
                 And WEF <= " & AgL.Chk_Date(CDate(DglMain.Item(Col1Value, rowV_Date).Value).ToString("s")) & " 
                 Order By WEF Desc, RateGreaterThan Desc Limit 1"
+                Dgl1.Item(Col1SalesTaxGroup, mRowIndex).Value = "GST 5%"
+                Dgl1.Item(Col1SalesTaxGroup, mRowIndex).Tag = "GST 5%"
+
+            ElseIf AgL.StrCmp(AgL.PubDBName, "ShreeBhawani") And (TxtStructure.Tag = "GstSaleMrp") Then
+                Call Calculation()
+                mQry = "Select SalesTaxGroupItem From ItemCategorySalesTax  With (NoLock)
+                Where Code='" & Dgl1.Item(Col1ItemCategory, mRowIndex).Tag & "' 
+                And MRPGreaterThan < " & Val(Dgl1.Item(Col1Rate, mRowIndex).Value) & " 
+                And WEF <= " & AgL.Chk_Date(CDate(DglMain.Item(Col1Value, rowV_Date).Value).ToString("s")) & " 
+                Order By WEF Desc, RateGreaterThan Desc Limit 1"
+                Dgl1.Item(Col1SalesTaxGroup, mRowIndex).Value = "GST 5%"
+                Dgl1.Item(Col1SalesTaxGroup, mRowIndex).Tag = "GST 5%"
             ElseIf AgL.PubServerName = "" Then
                 mQry = "Select SalesTaxGroupItem From ItemCategorySalesTax  With (NoLock)
                 Where Code='" & Dgl1.Item(Col1ItemCategory, mRowIndex).Tag & "' 
@@ -5927,6 +5939,19 @@ Public Class FrmSaleInvoiceDirect_WithDimension
                         End If
 
 
+                        If AgL.StrCmp(AgL.PubDBName, "RVN") Or AgL.StrCmp(AgL.PubDBName, "Auto") Then
+                            If AgL.XNull(Dgl1.Item(Col1Barcode, I).Tag) <> "" And AgL.XNull(Dgl1.Item(Col1Item, I).Tag) <> "" Then
+                                Dim BarcodeItem As String
+                                mQry = "Select Item From Barcode 
+                                    Where Code = '" & Dgl1.Item(Col1Barcode, I).Tag & "'"
+                                BarcodeItem = AgL.XNull(AgL.Dman_Execute(mQry, AgL.GCn).ExecuteScalar())
+                                If AgL.XNull(Dgl1.Item(Col1Item, I).Tag) <> BarcodeItem Then
+                                    MsgBox("Item Not Match with Barcode Item At Row No " & Dgl1.Item(ColSNo, I).Value & "")
+                                    .CurrentCell = .Item(Col1Item, I) : Dgl1.Focus()
+                                    passed = False : Exit Sub
+                                End If
+                            End If
+                        End If
 
                         If LblV_Type.Tag = Ncat.SaleReturn Then
                             If CType(AgL.VNull(FGetSettings(SettingFields.LinkInvoiceWithReturnYn, SettingType.General)), Boolean) = True Then
@@ -13789,7 +13814,7 @@ Public Class FrmSaleInvoiceDirect_WithDimension
                     End If
 
                 Case rowRemarks2
-                    If AgL.StrCmp(AgL.PubDBName, "RVN") Then
+                    If AgL.StrCmp(AgL.PubDBName, "RVN") Or AgL.StrCmp(AgL.PubDBName, "Auto") Then
                         If e.KeyCode <> Keys.Enter Then
                             If Dgl3.Item(Col1Head, Dgl3.CurrentCell.RowIndex).Tag Is Nothing Then
                                 mQry = "SELECT Name AS Code, Name From viewHelpSubgroup Sg  With (NoLock) Where SubgroupType ='Hypothecation' Order By Name"
@@ -14668,7 +14693,7 @@ Public Class FrmSaleInvoiceDirect_WithDimension
                     If ClsMain.IsScopeOfWorkContains(IndustryType.SubIndustryType.FallPico) Then
                         FOpenSaleOrderForSaleInvoice_FallPico(-1)
                     Else
-                        If AgL.StrCmp(AgL.PubDBName, "RVN") Then
+                        If AgL.StrCmp(AgL.PubDBName, "RVN") Or AgL.StrCmp(AgL.PubDBName, "Auto") Then
                             FOpenSaleChallanForSaleInvoice(-1)
                         Else
                             FOpenSaleOrderForSaleInvoice(-1)

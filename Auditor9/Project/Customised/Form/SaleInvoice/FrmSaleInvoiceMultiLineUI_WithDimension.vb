@@ -250,7 +250,7 @@ Public Class FrmSaleInvoiceMultiLineUI_WithDimension
                         mQry = "SELECT isnull(Sum(S.Qty_Rec - S.Qty_Iss),0) AS BalQty  
                                 FROM Stock S WITH (Nolock)
                                 LEFT JOIN Item I WITH (Nolock) ON I.Code = S.Item   
-                                WHERE I.V_Type ='SKU' AND I.ItemType ='MP' AND I.Dimension1 = '" + AgL.XNull(DglRow.Cells(FrmSaleInvoiceDirect_WithDimension.Col1Dimension1).Tag) + "' AND I.Dimension2  = '" + AgL.XNull(DglRow.Cells(FrmSaleInvoiceDirect_WithDimension.Col1Dimension2).Tag) + "' AND  I.Size  = '" + AgL.XNull(Dgl1.Item(Col1Size, mRowIndex).Tag) + "' "
+                                WHERE I.V_Type ='SKU' AND I.ItemType ='MP' AND I.ItemCategory = '" + AgL.XNull(DglRow.Cells(FrmSaleInvoiceDirect_WithDimension.Col1ItemCategory).Tag) + "' AND I.Dimension1 = '" + AgL.XNull(DglRow.Cells(FrmSaleInvoiceDirect_WithDimension.Col1Dimension1).Tag) + "' AND I.Dimension2  = '" + AgL.XNull(DglRow.Cells(FrmSaleInvoiceDirect_WithDimension.Col1Dimension2).Tag) + "' AND  I.Size  = '" + AgL.XNull(Dgl1.Item(Col1Size, mRowIndex).Tag) + "' "
                         StockQty = AgL.Dman_Execute(mQry, AgL.GcnRead).ExecuteScalar()
                         Dgl1.Item(Col1StockQty, mRowIndex).Value = StockQty
                     End If

@@ -1289,7 +1289,7 @@ Public Class FrmPurchInvoiceDirect_WithDimension
             End If
         End If
 
-        If AgL.StrCmp(AgL.PubDBName, "RVN") Then
+        If AgL.StrCmp(AgL.PubDBName, "RVN") Or AgL.StrCmp(AgL.PubDBName, "Auto") Then
             Dgl1.Columns(Col1Remark1).Visible = True
             Dgl1.Columns(Col1Remark2).Visible = True
             Dgl1.Columns(Col1Remark3).Visible = True
@@ -1461,7 +1461,7 @@ Public Class FrmPurchInvoiceDirect_WithDimension
                 .AddAgTextColumn(Dgl1, Col1FromProcess, 100, 255, Col1FromProcess, True, False)
                 .AddAgTextColumn(Dgl1, Col1Catalog, 100, 0, Col1Catalog, False, False)
 
-                If AgL.StrCmp(AgL.PubDBName, "RVN") Then
+                If AgL.StrCmp(AgL.PubDBName, "RVN") Or AgL.StrCmp(AgL.PubDBName, "Auto") Then
                     .AddAgTextColumn(Dgl1, Col1Remark, 150, 255, "MOTOR NO", True, False)
                     .AddAgTextColumn(Dgl1, Col1Remark1, 150, 255, "CONTROLLER NO", True, False)
                     .AddAgTextColumn(Dgl1, Col1Remark2, 150, 255, "CHASIS NO", True, False)
@@ -5025,6 +5025,19 @@ Public Class FrmPurchInvoiceDirect_WithDimension
                         End If
                     End If
 
+                    If (AgL.StrCmp(AgL.PubDBName, "RVN") Or AgL.StrCmp(AgL.PubDBName, "Auto")) And LblV_Type.Tag = Ncat.StockTransfer Then
+                        If AgL.XNull(Dgl1.Item(Col1Barcode, I).Tag) <> "" And AgL.XNull(Dgl1.Item(Col1Item, I).Tag) <> "" Then
+                            Dim BarcodeItem As String
+                            mQry = "Select Item From Barcode 
+                                    Where Code = '" & Dgl1.Item(Col1Barcode, I).Tag & "'"
+                            BarcodeItem = AgL.XNull(AgL.Dman_Execute(mQry, AgL.GCn).ExecuteScalar())
+                            If AgL.XNull(Dgl1.Item(Col1Item, I).Tag) <> BarcodeItem Then
+                                MsgBox("Item Not Match with Barcode Item At Row No " & Dgl1.Item(ColSNo, I).Value & "")
+                                .CurrentCell = .Item(Col1Item, I) : Dgl1.Focus()
+                                passed = False : Exit Sub
+                            End If
+                        End If
+                    End If
 
                     If LblV_Type.Tag = Ncat.PurchaseReturn Then
                         If AgL.XNull(Dgl1.Item(Col1ReferenceNo, I).Value) = "" Or AgL.XNull(Dgl1.Item(Col1ReferenceNo, I).Value) = AgL.XNull(Dgl2.Item(Col1Value, rowVendorDocNo).Value) Then
@@ -6895,7 +6908,7 @@ Public Class FrmPurchInvoiceDirect_WithDimension
                                     Left Join Voucher_Type Vt With (NoLock) On H.V_Type = Vt.V_Type  
                                     Where H.Vendor = '" & DglMain.Item(Col1Value, rowVendor).Tag & "' 
                                     And Vt.NCat = '" & Ncat.PurchaseInvoice & "'  
-                                    And H.V_Date <= " & AgL.Chk_Date(DglMain.Item(Col1Value, rowV_Date).Value) & "  
+                                    And H.V_Date <=" & AgL.Chk_Date(DglMain.Item(Col1Value, rowV_Date).Value) & "  
                                     And H.Div_Code = '" & TxtDivision.Tag & "' And H.Site_Code = '" & DglMain(Col1Value, rowSite_Code).Tag & "'"
                             DsTemp = AgL.FillData(mQry, AgL.GCn)
                             If DsTemp.Tables(0).Rows.Count > 0 Then

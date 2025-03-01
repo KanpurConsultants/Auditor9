@@ -189,6 +189,7 @@ Partial Class MDIMain
         Me.MnuPartyNotTransactedReport = New System.Windows.Forms.ToolStripMenuItem()
         Me.MnuCashCustomerReport = New System.Windows.Forms.ToolStripMenuItem()
         Me.MnuCashCustomerOutstandingReport = New System.Windows.Forms.ToolStripMenuItem()
+        Me.MnuSaleCertificate = New System.Windows.Forms.ToolStripMenuItem()
         Me.MnuSaleTools = New System.Windows.Forms.ToolStripMenuItem()
         Me.MnuSchemeQualification = New System.Windows.Forms.ToolStripMenuItem()
         Me.MnuSmsCustomerLedgerBalance = New System.Windows.Forms.ToolStripMenuItem()
@@ -327,7 +328,7 @@ Partial Class MDIMain
         Me.MnuPrintCheque = New System.Windows.Forms.ToolStripMenuItem()
         Me.MnuBank = New System.Windows.Forms.ToolStripMenuItem()
         Me.MnuChequePrinting = New System.Windows.Forms.ToolStripMenuItem()
-        Me.MnuSaleCertificate = New System.Windows.Forms.ToolStripMenuItem()
+        Me.MnuBarcodeDetailUpdation = New System.Windows.Forms.ToolStripMenuItem()
         Me.MnuMain.SuspendLayout()
         Me.SuspendLayout()
         '
@@ -1311,7 +1312,7 @@ Partial Class MDIMain
         '
         'MnuSale
         '
-        Me.MnuSale.DropDownItems.AddRange(New System.Windows.Forms.ToolStripItem() {Me.MnuSalesEnquiry, Me.MnuSalesOrder, Me.MnuSaleChallan, Me.MnuSalesEntry, Me.MnuSalesEntryRetail, Me.MnuSaleEntryOverlay, Me.MnuSaleEntryOverlayRetail, Me.MnuSalesReturnEntry, Me.MnuSalesReturnEntryRetail, Me.MnuSalesDelivery, Me.MnuSaleInvoiceW, Me.MnuSaleReturnW, Me.MnuQuotation, Me.MnuSalesEntryAadhat, Me.MnuPacking, Me.MnuLRUpdation, Me.MnuSaleReports, Me.MnuSaleTools, Me.MnuLeadManagement, Me.MnuFallPico})
+        Me.MnuSale.DropDownItems.AddRange(New System.Windows.Forms.ToolStripItem() {Me.MnuSalesEnquiry, Me.MnuSalesOrder, Me.MnuSaleChallan, Me.MnuSalesEntry, Me.MnuSalesEntryRetail, Me.MnuSaleEntryOverlay, Me.MnuSaleEntryOverlayRetail, Me.MnuSalesReturnEntry, Me.MnuSalesReturnEntryRetail, Me.MnuSalesDelivery, Me.MnuSaleInvoiceW, Me.MnuSaleReturnW, Me.MnuQuotation, Me.MnuSalesEntryAadhat, Me.MnuPacking, Me.MnuBarcodeDetailUpdation, Me.MnuLRUpdation, Me.MnuSaleReports, Me.MnuSaleTools, Me.MnuLeadManagement, Me.MnuFallPico})
         Me.MnuSale.Name = "MnuSale"
         Me.MnuSale.Size = New System.Drawing.Size(40, 20)
         Me.MnuSale.Text = "Sale"
@@ -1539,6 +1540,13 @@ Partial Class MDIMain
         Me.MnuCashCustomerOutstandingReport.Size = New System.Drawing.Size(319, 22)
         Me.MnuCashCustomerOutstandingReport.Tag = "GRID REPORT"
         Me.MnuCashCustomerOutstandingReport.Text = "Cash Customer Outstanding Report"
+        '
+        'MnuSaleCertificate
+        '
+        Me.MnuSaleCertificate.Name = "MnuSaleCertificate"
+        Me.MnuSaleCertificate.Size = New System.Drawing.Size(319, 22)
+        Me.MnuSaleCertificate.Tag = "Report"
+        Me.MnuSaleCertificate.Text = "Sale Certificates"
         '
         'MnuSaleTools
         '
@@ -1861,7 +1869,7 @@ Partial Class MDIMain
         '
         Me.MnuTimeOffice.DropDownItems.AddRange(New System.Windows.Forms.ToolStripItem() {Me.MnuHolidayMaster, Me.MnuDesignationMaster, Me.MnuDepartmentMaster})
         Me.MnuTimeOffice.Name = "MnuTimeOffice"
-        Me.MnuTimeOffice.Size = New System.Drawing.Size(80, 20)
+        Me.MnuTimeOffice.Size = New System.Drawing.Size(81, 20)
         Me.MnuTimeOffice.Text = "Time Office"
         '
         'MnuHolidayMaster
@@ -2424,7 +2432,7 @@ Partial Class MDIMain
         Me.MnuDeveloperTools.AccessibleDescription = "+Developer Tools"
         Me.MnuDeveloperTools.DropDownItems.AddRange(New System.Windows.Forms.ToolStripItem() {Me.MnuExportSqlServerData, Me.MnuImportData, Me.MnuReportSettings, Me.MnuLedgerPostingDifference, Me.MnuMakeDataBlank, Me.MnuSerializeEntryNo, Me.MnuExportSqliteDataToSqlServer})
         Me.MnuDeveloperTools.Name = "MnuDeveloperTools"
-        Me.MnuDeveloperTools.Size = New System.Drawing.Size(102, 20)
+        Me.MnuDeveloperTools.Size = New System.Drawing.Size(103, 20)
         Me.MnuDeveloperTools.Text = "Developer Tools"
         '
         'MnuExportSqlServerData
@@ -2504,12 +2512,12 @@ Partial Class MDIMain
         Me.MnuChequePrinting.Size = New System.Drawing.Size(160, 22)
         Me.MnuChequePrinting.Text = "Cheque Printing"
         '
-        'MnuSaleCertificate
+        'MnuBarcodeDetailUpdation
         '
-        Me.MnuSaleCertificate.Name = "MnuSaleCertificate"
-        Me.MnuSaleCertificate.Size = New System.Drawing.Size(319, 22)
-        Me.MnuSaleCertificate.Tag = "Report"
-        Me.MnuSaleCertificate.Text = "Sale Certificates"
+        Me.MnuBarcodeDetailUpdation.Name = "MnuBarcodeDetailUpdation"
+        Me.MnuBarcodeDetailUpdation.Size = New System.Drawing.Size(208, 22)
+        Me.MnuBarcodeDetailUpdation.Tag = "GRID REPORT"
+        Me.MnuBarcodeDetailUpdation.Text = "Barcode Detail Updation"
         '
         'MDIMain
         '
@@ -2842,4 +2850,5 @@ Partial Class MDIMain
     Friend WithEvents MnuSaleChallan As ToolStripMenuItem
     Friend WithEvents MnuSaleChallanStatus As ToolStripMenuItem
     Friend WithEvents MnuSaleCertificate As ToolStripMenuItem
+    Friend WithEvents MnuBarcodeDetailUpdation As ToolStripMenuItem
 End Class

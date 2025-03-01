@@ -206,6 +206,7 @@
     <Compile Include="Class\ClsCashCustomerOutstandingReport.vb" />
     <Compile Include="Class\ClsCustomerPaymentFollowupHistory.vb" />
     <Compile Include="Class\ClsFinancialDisplay_New_Old.vb" />
+    <Compile Include="Class\ClsBarcodeDetailUpdation.vb" />
     <Compile Include="Class\ClsSendMessageForPayment.vb" />
     <Compile Include="Class\ClsGenerateEInvoice _URL.vb" />
     <Compile Include="Class\ClsLRUpdation.vb" />

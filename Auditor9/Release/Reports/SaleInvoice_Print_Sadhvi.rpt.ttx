@@ -5,53 +5,55 @@ DocNoCaption	string	255	Invoice No.
 DocDateCaption	string	255	Invoice Date	
 SiteStateCode	string	255	09	
 SiteStateName	string	255	Uttar Pradesh	
-DocID	string	255	D1    SI 2024   16108	
+DocID	string	255	D1    SI 2024   20703	
 Sr	number	1	
-V_Date	datetime	08/Jan/2025 00:00:00	
+V_Date	datetime	01/Mar/2025 00:00:00	
 DeliveryDate	datetime		
 Voucher_Type	string	255	Tax Invoice	
 NCat	string	255	SI	
-InvoiceNo	string	255	SI-16107	
+InvoiceNo	string	255	SI-20702	
 RateType	string	255	Dhara	
 DocumentPrintShowRateType	string	255	Show If Not Blank	
-AgentName	string	255	GL SHUKLA	
+AgentName	string	255	DIRECT (CASH)	
 AgentCaption	string	255	Agent	
 BillToPartyNature	string	255	Customer	
-SaleToPartyName	string	255	SHIV SHANKAR TEXTILES	
-SaleToPartyAddress	string	255	NALBAND TOLI BUXAR DIST:BUXAR BIHAR	
-CityName	string	255	BUXAR	
-SaleToPartyPincode	string	255	802101	
-StateCode	string	255	10	
-StateName	string	255	Bihar	
-SaleToPartyMobile	string	255	9122720327	
-ContactPerson	string	255	SHIVJEE PRASAD	
-SaleToPartySalesTaxNo	string	255	10CLBPP0400M1ZO	
+SaleToPartyName	string	255	 JANTA VASTRALAYA	
+SaleToPartyAddress	string	255	NAI BAZAR RAEBARELI SALON DIST:-RAEBARELI 
+	
+CityName	string	255	SALLON	
+SaleToPartyPincode	string	255	229127	
+StateCode	string	255	09	
+StateName	string	255	Uttar Pradesh	
+SaleToPartyMobile	string	255	8182857747	
+ContactPerson	string	255	MOHD TARIQ	
+SaleToPartySalesTaxNo	string	255	09BBNPT6507L1ZV	
 SaleToPartyAadharNo	string	255		
-SaleToPartyPanNo	string	255	CLBPP0400M	
-ShipToPartyName	string	255	SHIV SHANKAR TEXTILES	
-ShipToPartyAddress	string	255	NALBAND TOLI BUXAR DIST:BUXAR BIHAR	
-ShipToPartyCity	string	255	BUXAR	
-ShipToPartyPincode	string	255	802101	
-ShipToPartyStateCode	string	255	10	
-ShipToPartyStateName	string	255	Bihar	
-ShipToPartyMobile	string	255	9122720327	
-ShipToPartySalesTaxNo	string	255	10CLBPP0400M1ZO	
+SaleToPartyPanNo	string	255	BBNPT6507L	
+ShipToPartyName	string	255	 JANTA VASTRALAYA	
+ShipToPartyAddress	string	255	NAI BAZAR RAEBARELI SALON DIST:-RAEBARELI 
+	
+ShipToPartyCity	string	255	SALLON	
+ShipToPartyPincode	string	255	229127	
+ShipToPartyStateCode	string	255	09	
+ShipToPartyStateName	string	255	Uttar Pradesh	
+ShipToPartyMobile	string	255	8182857747	
+ShipToPartySalesTaxNo	string	255	09BBNPT6507L1ZV	
 ShipToPartyAadharNo	string	255		
-ShipToPartyPanNo	string	255	CLBPP0400M	
+ShipToPartyPanNo	string	255	BBNPT6507L	
 ShipToAddress	string	255		
 TermsAndConditions	string	255	<b>1.</b> Goods once sold will not be taken back. <b>2.</b> No Guarantee in the Age of Fashion. <b>3.</b> Interest @ 24% per annum will be charge after 30 days from the date of bill. <b>4.</b> All disputes subject to Kanpur Jurisdiction OR disputes will be settle through Cawnpore Kapda Committee Arbitration Board which will be abide by the both parties	
-TransporterName	string	255	NEW GOLDEN TRANSPORT COMPANY, KANPUR	
-TransporterMobile	string	255		
-TransporterAddress	string	255		
-LrNo	string	255	55747	
-LrDate	datetime	09/Jan/2025 00:00:00	
+TransporterName	string	255	KANPUR SANGIPUR TRANSPORT CO , KANPUR	
+TransporterMobile	string	255	9450065996,7880776118	
+TransporterAddress	string	255	133/135 TP NAGAR NEAR AZAMGARH BALLIA TRANSPORT-KANPUR	
+LrNo	string	255		
+LrDate	datetime		
 PrivateMark	string	255		
 Weight	number	0	
 Freight	number	0	
 ChargedWeight	number	0	
 FreightType	string	255		
-RoadPermitNo	string	255	431517610105	
-RoadPermitDate	datetime	08/Jan/2025 18:47:00	
+RoadPermitNo	string	255		
+RoadPermitDate	datetime		
 VehicleNo	string	255		
 ShipMethod	string	255		
 PreCarriageBy	string	255		
@@ -61,57 +63,57 @@ BookedTo	string	255
 Destination	string	255		
 DescriptionOfGoods	string	255		
 DescriptionOfPacking	string	255		
-TransporterSalesTaxNo	string	255	09AAOFN2532Q1ZL	
+TransporterSalesTaxNo	string	255	09AECPT1872M2ZW	
 ReferenceNo	string	255		
-ItemName	string	255	SAGAR PRINT          [RADHA FASHION{14} | SAREE PR.]	
-ItemGroupName	string	255	S-ENT-14-PRINT	
-ItemCatName	string	255	SAREE PR.	
-ItemSpecification	string	255	SAGAR PRINT	
+ItemName	string	255	GOVINDA PRINT          [KAYAAN PRINTS PVT LTD | SAREE HALKA PRI..]	
+ItemGroupName	string	255	S-ENT-44-BOX	
+ItemCatName	string	255	SAREE HALKA PRI..	
+ItemSpecification	string	255	GOVINDA PRINT	
 InvoiceLineSpecification	string	255		
-HSN	string	255	540754	
+HSN	string	255	540752	
 MaintainStockYn	boolean	True	
 SalesTaxGroupItem	string	255	GST 5%	
 GrossTaxRate	number	5	
-Pcs	number	4	
-Qty	number	4	
-Rate	number	939.75	
+Pcs	number	1	
+Qty	number	1	
+Rate	number	332.03	
 Unit	string	255	Pcs	
 UnitDecimalPlaces	number	0	
-DiscountPer	number	0	
-DiscountAmount	number	0	
+DiscountPer	number	3	
+DiscountAmount	number	9.78	
 AdditionalDiscountPer	number	0	
 AdditionalDiscountAmount	number	0	
 AdditionPer	number	5	
-AdditionAmount	number	179	
-TotalDiscount	number	-179	
-AmountBeforeDiscount	number	3759	
-Amount	number	3759	
-Taxable_Amount	number	3759	
-Tax1_Per	number	5	
-Tax1	number	187.95	
-Tax2_Per	number	0	
-Tax2	number	0	
-Tax3_Per	number	0	
-Tax3	number	0	
+AdditionAmount	number	15.81	
+TotalDiscount	number	-6.03	
+AmountBeforeDiscount	number	341.81	
+Amount	number	332.03	
+Taxable_Amount	number	332.03	
+Tax1_Per	number	0	
+Tax1	number	0	
+Tax2_Per	number	2.5	
+Tax2	number	8.3	
+Tax3_Per	number	2.5	
+Tax3	number	8.3	
 Tax4_Per	number	0	
 Tax4	number	0	
 Tax5_Per	number	0	
 Tax5	number	0	
-Net_Amount	number	3946.93	
+Net_Amount	number	349	
 LRemarks	string	255		
 HRemarks	string	255		
-H_TotalDiscount	number	-1544	
-H_AmountBeforeDiscount	number	30880	
-H_Gross_Amount	number	32424	
+H_TotalDiscount	number	-6.03	
+H_AmountBeforeDiscount	number	326	
+H_Gross_Amount	number	332.03	
 H_SpecialDiscount_Per	number	0	
 H_SpecialDiscount	number	0	
-H_Taxable_Amount	number	32424	
+H_Taxable_Amount	number	332.03	
 H_Tax1_Per	number	0	
-H_Tax1	number	1621.2	
+H_Tax1	number	0	
 H_Tax2_Per	number	0	
-H_Tax2	number	0	
+H_Tax2	number	8.3	
 H_Tax3_Per	number	0	
-H_Tax3	number	0	
+H_Tax3	number	8.3	
 H_Tax4_Per	number	0	
 H_Tax4	number	0	
 H_Tax5_Per	number	0	
@@ -120,16 +122,16 @@ H_Deduction_Per	number	0
 H_Deduction	number	0	
 H_Other_Charge_Per	number	0	
 H_Other_Charge	number	0	
-Round_Off	number	-0.2	
-H_Net_Amount	number	34045	
-EInvoiceIRN	string	255	6eddebdf1399ba6f1f5560ff65470fa465d167dfbd50ff18e88dee0232d0399b	
-EInvoiceAckNo	string	255	142516445967451	
-EInvoiceAckDate	datetime	08/Jan/2025 17:56:00	
+Round_Off	number	0.37	
+H_Net_Amount	number	349	
+EInvoiceIRN	string	255		
+EInvoiceAckNo	string	255		
+EInvoiceAckDate	datetime		
 Default_BankAccountDetail	string	255	Bank Detail : 	HDFC A/c : 50200003154727    IFSC : HDFC0002006	
 DocumentPrintHeaderPattern	string	255	Center Aligned	
 DimDetail	string	255		
 PrintedByUser	string	255	SUPER	
-EntryByUser	string	255	himanshu	
+EntryByUser	string	255	SUPER	
 PrintTitle	string	255	TAX INVOICE	
 DocumentPrintShowPrintDateTimeYn	string	255	1	
 DocumentPrintShowPartyBalance	string	255	Hide	

@@ -268,8 +268,10 @@ Public Class FrmImportDataFromBranch
                         For J = 0 To DtPurchInvoiceDetail_ForHeader.Rows.Count - 1
                             PurchInvoiceTable.Line_Sr = AgL.XNull(DtPurchInvoiceDetail_ForHeader.Rows(J)("Sr"))
                             PurchInvoiceTable.Line_ItemCode = AgL.XNull(DtPurchInvoiceDetail_ForHeader.Rows(J)("Item"))
-                            PurchInvoiceTable.Line_ItemGroupCode = AgL.XNull(DtPurchInvoiceDetail_ForHeader.Rows(J)("ItemGroupCode"))
-                            PurchInvoiceTable.Line_ItemCategoryCode = AgL.XNull(DtPurchInvoiceDetail_ForHeader.Rows(J)("ItemCategoryCode"))
+                            If AgL.StrCmp(AgL.PubDBName, "SHADHVINANDI") Then
+                                PurchInvoiceTable.Line_ItemGroupCode = AgL.XNull(DtPurchInvoiceDetail_ForHeader.Rows(J)("ItemGroupCode"))
+                                PurchInvoiceTable.Line_ItemCategoryCode = AgL.XNull(DtPurchInvoiceDetail_ForHeader.Rows(J)("ItemCategoryCode"))
+                            End If
                             PurchInvoiceTable.Line_ItemName = AgL.XNull(DtPurchInvoiceDetail_ForHeader.Rows(J)("ItemDesc"))
                             PurchInvoiceTable.Line_Specification = AgL.XNull(DtPurchInvoiceDetail_ForHeader.Rows(J)("Specification"))
                             PurchInvoiceTable.Line_SalesTaxGroupItem = AgL.XNull(DtPurchInvoiceDetail_ForHeader.Rows(J)("SalesTaxGroupItem"))
