@@ -1305,8 +1305,8 @@ Public Class ClsMain
             AgL.Dman_ExecuteNonQry(mQry, AgL.GcnMain)
 
 
-            mQry = "Delete FROM EntryHeaderUISetting WHERE  FieldName ='Distance' AND EntryName = 'FrmPerson'"
-            AgL.Dman_ExecuteNonQry(mQry, AgL.GcnMain)
+            'mQry = "Delete FROM EntryHeaderUISetting WHERE  FieldName ='Distance' AND EntryName = 'FrmPerson'"
+            'AgL.Dman_ExecuteNonQry(mQry, AgL.GcnMain)
 
             'mQry = "Update Voucher_Type Set PrintingDescription = 'TAX INVOICE' Where V_Type = '" & Ncat.SaleInvoice & "'"
             'AgL.Dman_ExecuteNonQry(mQry, AgL.GcnMain)
@@ -8318,7 +8318,7 @@ Thanks
                 FSeedSingleIfNotExist_EntryHeaderUISetting("FrmPerson", SubgroupType.SalesAgent, "Dgl1", FrmPerson.hcBankIFSC, 0, 0)
             End If
 
-            If AgL.StrCmp(AgL.PubDBName, "RVN") Then
+            If AgL.StrCmp(AgL.PubDBName, "RVN") Or AgL.StrCmp(AgL.PubDBName, "RVN1") Or AgL.StrCmp(AgL.PubDBName, "RVN2") Or AgL.StrCmp(AgL.PubDBName, "MLAW") Then
                 FSeedSingleIfNotExist_EntryHeaderUISetting("FrmPerson", "Hypothecation", "Dgl1", ConfigurableFields.FrmPersonHeaderDgl1.SubgroupType, 1, 1, 1)
                 FSeedSingleIfNotExist_EntryHeaderUISetting("FrmPerson", "Hypothecation", "Dgl1", ConfigurableFields.FrmPersonHeaderDgl1.Code, 0, 1, 1)
                 FSeedSingleIfNotExist_EntryHeaderUISetting("FrmPerson", "Hypothecation", "Dgl1", ConfigurableFields.FrmPersonHeaderDgl1.Name, 1, 1, 1)
@@ -8594,6 +8594,38 @@ Thanks
                 'FSeedSingleIfNotExist_EntryHeaderUISetting("FrmCuttingConsumptionException", "", "DglMain", FrmCuttingConsumptionException.hcDimension3, True, True)
                 'FSeedSingleIfNotExist_EntryHeaderUISetting("FrmCuttingConsumptionException", "", "DglMain", FrmCuttingConsumptionException.hcBatchQty, False, True)
             End If
+
+
+            FSeedSingleIfNotExist_EntryHeaderUISetting("FrmPurchInvoiceDirect", Ncat.PurchaseGoodsReceipt, "DglMain", AgTemplate.TempTransaction1.hcSite_Code, 1, 1, 1)
+            FSeedSingleIfNotExist_EntryHeaderUISetting("FrmPurchInvoiceDirect", Ncat.PurchaseGoodsReceipt, "DglMain", AgTemplate.TempTransaction1.hcV_Type, 1, 1, 1, "Invoice Type")
+            FSeedSingleIfNotExist_EntryHeaderUISetting("FrmPurchInvoiceDirect", Ncat.PurchaseGoodsReceipt, "DglMain", AgTemplate.TempTransaction1.hcV_Date, 1, 1, 1, "Invoice Date")
+            FSeedSingleIfNotExist_EntryHeaderUISetting("FrmPurchInvoiceDirect", Ncat.PurchaseGoodsReceipt, "DglMain", AgTemplate.TempTransaction1.hcV_No, 0, 1, 1)
+            FSeedSingleIfNotExist_EntryHeaderUISetting("FrmPurchInvoiceDirect", Ncat.PurchaseGoodsReceipt, "DglMain", AgTemplate.TempTransaction1.hcReferenceNo, 1, 1, 1, "Invoice No")
+            FSeedSingleIfNotExist_EntryHeaderUISetting("FrmPurchInvoiceDirect", Ncat.PurchaseGoodsReceipt, "DglMain", AgTemplate.TempTransaction1.hcSettingGroup, 0, 0, 0)
+            FSeedSingleIfNotExist_EntryHeaderUISetting("FrmPurchInvoiceDirect", Ncat.PurchaseGoodsReceipt, "DglMain", FrmPurchInvoiceDirect_WithDimension.hcProcess, 0, 0)
+            FSeedSingleIfNotExist_EntryHeaderUISetting("FrmPurchInvoiceDirect", Ncat.PurchaseGoodsReceipt, "DglMain", FrmPurchInvoiceDirect_WithDimension.hcVendor, 1, 1, 1)
+            FSeedSingleIfNotExist_EntryHeaderUISetting("FrmPurchInvoiceDirect", Ncat.PurchaseGoodsReceipt, "DglMain", FrmPurchInvoiceDirect_WithDimension.hcBillToParty, 1, 1)
+            FSeedSingleIfNotExist_EntryHeaderUISetting("FrmPurchInvoiceDirect", Ncat.PurchaseGoodsReceipt, "DglMain", FrmPurchInvoiceDirect_WithDimension.hcProcess, 0, 0)
+            FSeedSingleIfNotExist_EntryHeaderUISetting("FrmPurchInvoiceDirect", Ncat.PurchaseGoodsReceipt, "DglMain", FrmPurchInvoiceDirect_WithDimension.hcVendor, 1, 1, 1)
+            FSeedSingleIfNotExist_EntryHeaderUISetting("FrmPurchInvoiceDirect", Ncat.PurchaseGoodsReceipt, "DglMain", FrmPurchInvoiceDirect_WithDimension.hcBillToParty, 1, 1)
+            FSeedSingleIfNotExist_EntryHeaderUISetting("FrmPurchInvoiceDirect", Ncat.PurchaseGoodsReceipt, "DglMain", FrmPurchInvoiceDirect_WithDimension.hcLinkedParty)
+
+            FSeedSingleIfNotExist_EntryHeaderUISetting("FrmPurchInvoiceDirect", Ncat.PurchaseGoodsReceipt, "Dgl2", FrmPurchInvoiceDirect_WithDimension.hcStructure, 0)
+            FSeedSingleIfNotExist_EntryHeaderUISetting("FrmPurchInvoiceDirect", Ncat.PurchaseGoodsReceipt, "Dgl2", FrmPurchInvoiceDirect_WithDimension.hcVendorDocNo, 1)
+            FSeedSingleIfNotExist_EntryHeaderUISetting("FrmPurchInvoiceDirect", Ncat.PurchaseGoodsReceipt, "Dgl2", FrmPurchInvoiceDirect_WithDimension.hcVendorDocDate, 1)
+            FSeedSingleIfNotExist_EntryHeaderUISetting("FrmPurchInvoiceDirect", Ncat.PurchaseGoodsReceipt, "Dgl2", FrmPurchInvoiceDirect_WithDimension.hcDeliveryDate, 0, 0, 0, "Due Date")
+            FSeedSingleIfNotExist_EntryHeaderUISetting("FrmPurchInvoiceDirect", Ncat.PurchaseGoodsReceipt, "Dgl2", FrmPurchInvoiceDirect_WithDimension.hcAgent, 0)
+            FSeedSingleIfNotExist_EntryHeaderUISetting("FrmPurchInvoiceDirect", Ncat.PurchaseGoodsReceipt, "Dgl2", FrmPurchInvoiceDirect_WithDimension.hcTags, 0)
+            FSeedSingleIfNotExist_EntryHeaderUISetting("FrmPurchInvoiceDirect", Ncat.PurchaseGoodsReceipt, "Dgl2", FrmPurchInvoiceDirect_WithDimension.hcGodown, 0)
+            FSeedSingleIfNotExist_EntryHeaderUISetting("FrmPurchInvoiceDirect", Ncat.PurchaseGoodsReceipt, "Dgl2", FrmPurchInvoiceDirect_WithDimension.hcSalesTaxNo, 0)
+            FSeedSingleIfNotExist_EntryHeaderUISetting("FrmPurchInvoiceDirect", Ncat.PurchaseGoodsReceipt, "Dgl2", FrmPurchInvoiceDirect_WithDimension.hcCatalog, 0)
+            FSeedSingleIfNotExist_EntryHeaderUISetting("FrmPurchInvoiceDirect", Ncat.PurchaseGoodsReceipt, "Dgl2", FrmPurchInvoiceDirect_WithDimension.hcStockInNo, 0)
+            FSeedSingleIfNotExist_EntryHeaderUISetting("FrmPurchInvoiceDirect", Ncat.PurchaseGoodsReceipt, "Dgl2", FrmPurchInvoiceDirect_WithDimension.hcRemarks, 1)
+            FSeedSingleIfNotExist_EntryHeaderUISetting("FrmPurchInvoiceDirect", Ncat.PurchaseGoodsReceipt, "Dgl2", FrmPurchInvoiceDirect_WithDimension.hcBtnTransportDetail, 1)
+            FSeedSingleIfNotExist_EntryHeaderUISetting("FrmPurchInvoiceDirect", Ncat.PurchaseGoodsReceipt, "Dgl2", FrmPurchInvoiceDirect_WithDimension.hcBtnPendingPurchOrder, 0)
+            FSeedSingleIfNotExist_EntryHeaderUISetting("FrmPurchInvoiceDirect", Ncat.PurchaseGoodsReceipt, "Dgl2", FrmPurchInvoiceDirect_WithDimension.hcBtnPendingStockReceive, 0)
+            FSeedSingleIfNotExist_EntryHeaderUISetting("FrmPurchInvoiceDirect", Ncat.PurchaseGoodsReceipt, "Dgl2", FrmPurchInvoiceDirect_WithDimension.hcBtnAttachments)
+
 
 
             FSeedSingleIfNotExist_EntryHeaderUISetting("FrmPurchInvoiceDirect", Ncat.PurchaseInvoice, "DglMain", AgTemplate.TempTransaction1.hcSite_Code, 1, 1, 1)
@@ -9549,6 +9581,56 @@ Thanks
             End If
 
 
+            FSeedSingleIfNotExist_EntryLineUISetting("FrmPurchInvoiceDirect", Ncat.PurchaseGoodsReceipt, "Dgl1", FrmPurchInvoiceDirect_WithDimension.ColSNo, True, True)
+            FSeedSingleIfNotExist_EntryLineUISetting("FrmPurchInvoiceDirect", Ncat.PurchaseGoodsReceipt, "Dgl1", FrmPurchInvoiceDirect_WithDimension.Col1Barcode, False)
+            FSeedSingleIfNotExist_EntryLineUISetting("FrmPurchInvoiceDirect", Ncat.PurchaseGoodsReceipt, "Dgl1", FrmPurchInvoiceDirect_WithDimension.Col1ItemCode, False)
+            FSeedSingleIfNotExist_EntryLineUISetting("FrmPurchInvoiceDirect", Ncat.PurchaseGoodsReceipt, "Dgl1", FrmPurchInvoiceDirect_WithDimension.Col1Item, True)
+            FSeedSingleIfNotExist_EntryLineUISetting("FrmPurchInvoiceDirect", Ncat.PurchaseGoodsReceipt, "Dgl1", FrmPurchInvoiceDirect_WithDimension.Col1Size, False)
+            FSeedSingleIfNotExist_EntryLineUISetting("FrmPurchInvoiceDirect", Ncat.PurchaseGoodsReceipt, "Dgl1", FrmPurchInvoiceDirect_WithDimension.Col1Specification, False)
+            FSeedSingleIfNotExist_EntryLineUISetting("FrmPurchInvoiceDirect", Ncat.PurchaseGoodsReceipt, "Dgl1", FrmPurchInvoiceDirect_WithDimension.Col1SalesTaxGroup, True)
+            FSeedSingleIfNotExist_EntryLineUISetting("FrmPurchInvoiceDirect", Ncat.PurchaseGoodsReceipt, "Dgl1", FrmPurchInvoiceDirect_WithDimension.Col1BaleNo, False)
+            FSeedSingleIfNotExist_EntryLineUISetting("FrmPurchInvoiceDirect", Ncat.PurchaseGoodsReceipt, "Dgl1", FrmPurchInvoiceDirect_WithDimension.Col1LotNo, False)
+            FSeedSingleIfNotExist_EntryLineUISetting("FrmPurchInvoiceDirect", Ncat.PurchaseGoodsReceipt, "Dgl1", FrmPurchInvoiceDirect_WithDimension.Col1DocQty, True)
+            FSeedSingleIfNotExist_EntryLineUISetting("FrmPurchInvoiceDirect", Ncat.PurchaseGoodsReceipt, "Dgl1", FrmPurchInvoiceDirect_WithDimension.Col1FreeQty)
+            FSeedSingleIfNotExist_EntryLineUISetting("FrmPurchInvoiceDirect", Ncat.PurchaseGoodsReceipt, "Dgl1", FrmPurchInvoiceDirect_WithDimension.Col1LossQty)
+            FSeedSingleIfNotExist_EntryLineUISetting("FrmPurchInvoiceDirect", Ncat.PurchaseGoodsReceipt, "Dgl1", FrmPurchInvoiceDirect_WithDimension.Col1Qty)
+            FSeedSingleIfNotExist_EntryLineUISetting("FrmPurchInvoiceDirect", Ncat.PurchaseGoodsReceipt, "Dgl1", FrmPurchInvoiceDirect_WithDimension.Col1Unit, True)
+            FSeedSingleIfNotExist_EntryLineUISetting("FrmPurchInvoiceDirect", Ncat.PurchaseGoodsReceipt, "Dgl1", FrmPurchInvoiceDirect_WithDimension.Col1Pcs)
+            FSeedSingleIfNotExist_EntryLineUISetting("FrmPurchInvoiceDirect", Ncat.PurchaseGoodsReceipt, "Dgl1", FrmPurchInvoiceDirect_WithDimension.Col1StockUnitMultiplier, False)
+            FSeedSingleIfNotExist_EntryLineUISetting("FrmPurchInvoiceDirect", Ncat.PurchaseGoodsReceipt, "Dgl1", FrmPurchInvoiceDirect_WithDimension.Col1StockUnit, False)
+            FSeedSingleIfNotExist_EntryLineUISetting("FrmPurchInvoiceDirect", Ncat.PurchaseGoodsReceipt, "Dgl1", FrmPurchInvoiceDirect_WithDimension.Col1StockQty, False)
+            FSeedSingleIfNotExist_EntryLineUISetting("FrmPurchInvoiceDirect", Ncat.PurchaseGoodsReceipt, "Dgl1", FrmPurchInvoiceDirect_WithDimension.Col1DocDealQty)
+            FSeedSingleIfNotExist_EntryLineUISetting("FrmPurchInvoiceDirect", Ncat.PurchaseGoodsReceipt, "Dgl1", FrmPurchInvoiceDirect_WithDimension.Col1FreeDealQty)
+            FSeedSingleIfNotExist_EntryLineUISetting("FrmPurchInvoiceDirect", Ncat.PurchaseGoodsReceipt, "Dgl1", FrmPurchInvoiceDirect_WithDimension.Col1LossDealQtyPer)
+            FSeedSingleIfNotExist_EntryLineUISetting("FrmPurchInvoiceDirect", Ncat.PurchaseGoodsReceipt, "Dgl1", FrmPurchInvoiceDirect_WithDimension.Col1LossDealQty)
+            FSeedSingleIfNotExist_EntryLineUISetting("FrmPurchInvoiceDirect", Ncat.PurchaseGoodsReceipt, "Dgl1", FrmPurchInvoiceDirect_WithDimension.Col1DealQty)
+            FSeedSingleIfNotExist_EntryLineUISetting("FrmPurchInvoiceDirect", Ncat.PurchaseGoodsReceipt, "Dgl1", FrmPurchInvoiceDirect_WithDimension.Col1Rate, True)
+            FSeedSingleIfNotExist_EntryLineUISetting("FrmPurchInvoiceDirect", Ncat.PurchaseGoodsReceipt, "Dgl1", FrmPurchInvoiceDirect_WithDimension.Col1DiscountPer, True)
+            FSeedSingleIfNotExist_EntryLineUISetting("FrmPurchInvoiceDirect", Ncat.PurchaseGoodsReceipt, "Dgl1", FrmPurchInvoiceDirect_WithDimension.Col1DiscountAmount, True)
+            FSeedSingleIfNotExist_EntryLineUISetting("FrmPurchInvoiceDirect", Ncat.PurchaseGoodsReceipt, "Dgl1", FrmPurchInvoiceDirect_WithDimension.Col1AdditionalDiscountPer, False)
+            FSeedSingleIfNotExist_EntryLineUISetting("FrmPurchInvoiceDirect", Ncat.PurchaseGoodsReceipt, "Dgl1", FrmPurchInvoiceDirect_WithDimension.Col1AdditionalDiscountAmount, False)
+            FSeedSingleIfNotExist_EntryLineUISetting("FrmPurchInvoiceDirect", Ncat.PurchaseGoodsReceipt, "Dgl1", FrmPurchInvoiceDirect_WithDimension.Col1AdditionPer, False)
+            FSeedSingleIfNotExist_EntryLineUISetting("FrmPurchInvoiceDirect", Ncat.PurchaseGoodsReceipt, "Dgl1", FrmPurchInvoiceDirect_WithDimension.Col1AdditionAmount, False)
+            FSeedSingleIfNotExist_EntryLineUISetting("FrmPurchInvoiceDirect", Ncat.PurchaseGoodsReceipt, "Dgl1", FrmPurchInvoiceDirect_WithDimension.Col1Amount, True,,, False)
+            FSeedSingleIfNotExist_EntryLineUISetting("FrmPurchInvoiceDirect", Ncat.PurchaseGoodsReceipt, "Dgl1", FrmPurchInvoiceDirect_WithDimension.Col1MRP, False)
+            FSeedSingleIfNotExist_EntryLineUISetting("FrmPurchInvoiceDirect", Ncat.PurchaseGoodsReceipt, "Dgl1", FrmPurchInvoiceDirect_WithDimension.Col1ProfitMarginPer, False)
+            FSeedSingleIfNotExist_EntryLineUISetting("FrmPurchInvoiceDirect", Ncat.PurchaseGoodsReceipt, "Dgl1", FrmPurchInvoiceDirect_WithDimension.Col1SaleRate, False)
+            FSeedSingleIfNotExist_EntryLineUISetting("FrmPurchInvoiceDirect", Ncat.PurchaseGoodsReceipt, "Dgl1", FrmPurchInvoiceDirect_WithDimension.Col1HSN, False)
+            FSeedSingleIfNotExist_EntryLineUISetting("FrmPurchInvoiceDirect", Ncat.PurchaseGoodsReceipt, "Dgl1", FrmPurchInvoiceDirect_WithDimension.Col1Remark, True)
+            FSeedSingleIfNotExist_EntryLineUISetting("FrmPurchInvoiceDirect", Ncat.PurchaseGoodsReceipt, "Dgl1", FrmPurchInvoiceDirect_WithDimension.Col1Godown, False)
+            FSeedSingleIfNotExist_EntryLineUISetting("FrmPurchInvoiceDirect", Ncat.PurchaseGoodsReceipt, "Dgl1", FrmPurchInvoiceDirect_WithDimension.Col1PurchaseInvoice, False, False, "Order No")
+
+            FSeedSingleIfNotExist_EntryHeaderUISetting("FrmPurchaseInvoiceHeader", Ncat.PurchaseGoodsReceipt, "DGL1", FrmPurchaseInvoiceHeader.HcTransporter, 1)
+            FSeedSingleIfNotExist_EntryHeaderUISetting("FrmPurchaseInvoiceHeader", Ncat.PurchaseGoodsReceipt, "DGL1", FrmPurchaseInvoiceHeader.HcLrNo, 1)
+            FSeedSingleIfNotExist_EntryHeaderUISetting("FrmPurchaseInvoiceHeader", Ncat.PurchaseGoodsReceipt, "DGL1", FrmPurchaseInvoiceHeader.HcLrDate, 1)
+            FSeedSingleIfNotExist_EntryHeaderUISetting("FrmPurchaseInvoiceHeader", Ncat.PurchaseGoodsReceipt, "DGL1", FrmPurchaseInvoiceHeader.hcNoOfBales, 1)
+            FSeedSingleIfNotExist_EntryHeaderUISetting("FrmPurchaseInvoiceHeader", Ncat.PurchaseGoodsReceipt, "DGL1", FrmPurchaseInvoiceHeader.HcPrivateMark, 1)
+            FSeedSingleIfNotExist_EntryHeaderUISetting("FrmPurchaseInvoiceHeader", Ncat.PurchaseGoodsReceipt, "DGL1", FrmPurchaseInvoiceHeader.HcWeight, 1)
+            FSeedSingleIfNotExist_EntryHeaderUISetting("FrmPurchaseInvoiceHeader", Ncat.PurchaseGoodsReceipt, "DGL1", FrmPurchaseInvoiceHeader.HcFreight, 1)
+            FSeedSingleIfNotExist_EntryHeaderUISetting("FrmPurchaseInvoiceHeader", Ncat.PurchaseGoodsReceipt, "DGL1", FrmPurchaseInvoiceHeader.HcLrPaymentType, 1)
+
+
+
             FSeedSingleIfNotExist_EntryLineUISetting("FrmPurchInvoiceDirect", Ncat.PurchaseInvoice, "Dgl1", FrmPurchInvoiceDirect_WithDimension.ColSNo, True, True)
             FSeedSingleIfNotExist_EntryLineUISetting("FrmPurchInvoiceDirect", Ncat.PurchaseInvoice, "Dgl1", FrmPurchInvoiceDirect_WithDimension.Col1Barcode, False)
             If ClsMain.IsScopeOfWorkContains("+CLOTH TRADING WHOLESALE") Then
@@ -10125,6 +10207,15 @@ Thanks
             FSeedSingleIfNotExist_EntryLineUISetting("FrmJournalEntry", Ncat.JournalVoucher, "Dgl1", FrmJournalEntry.Col1Remark, True, True)
             FSeedSingleIfNotExist_EntryLineUISetting("FrmVoucherEntry", Ncat.JournalVoucher, "Dgl1", FrmVoucherEntry.Col1ReconcileDate, False, ,, False)
 
+            FSeedSingleIfNotExist_EntryLineUISetting("FrmJournalEntry", "JVO", "Dgl1", FrmJournalEntry.Col1EffectiveDate, False, False)
+            FSeedSingleIfNotExist_EntryLineUISetting("FrmJournalEntry", "JVO", "Dgl1", FrmJournalEntry.Col1Subcode, True, True)
+            FSeedSingleIfNotExist_EntryLineUISetting("FrmJournalEntry", "JVO", "Dgl1", FrmJournalEntry.Col1LinkedSubcode, False, False)
+            FSeedSingleIfNotExist_EntryLineUISetting("FrmJournalEntry", "JVO", "Dgl1", FrmJournalEntry.Col1AmountDr, True, True)
+            FSeedSingleIfNotExist_EntryLineUISetting("FrmJournalEntry", "JVO", "Dgl1", FrmJournalEntry.Col1AmountCr, True, True)
+            FSeedSingleIfNotExist_EntryLineUISetting("FrmJournalEntry", "JVO", "Dgl1", FrmJournalEntry.Col1ReferenceNo, False, True)
+            FSeedSingleIfNotExist_EntryLineUISetting("FrmJournalEntry", "JVO", "Dgl1", FrmJournalEntry.Col1ReferenceNo, False, True)
+            FSeedSingleIfNotExist_EntryLineUISetting("FrmJournalEntry", "JVO", "Dgl1", FrmJournalEntry.Col1Remark, True, True)
+            FSeedSingleIfNotExist_EntryLineUISetting("FrmVoucherEntry", "JVO", "Dgl1", FrmVoucherEntry.Col1ReconcileDate, False, ,, False)
 
 
             FSeedSingleIfNotExist_EntryLineUISetting("FrmExpenseEntry", Ncat.ExpenseVoucher, "Dgl1", FrmVoucherEntry.Col1EffectiveDate, False, False)
@@ -21467,6 +21558,7 @@ Thanks
             AgL.AddFieldSqlite(AgL.GcnMain, "Voucher_Type", "SiteList", "nVarchar(255)", "", True)
             AgL.AddFieldSqlite(AgL.GcnMain, "Voucher_Type", "IsFutureDateTransactionAllowed", "Bit", "0", True)
             AgL.AddFieldSqlite(AgL.GcnMain, "Voucher_Type", "IsPostInLedger", "Bit", "1", True)
+            AgL.AddFieldSqlite(AgL.GcnMain, "Voucher_Type", "IsStopToSync", "Bit", "0", True)
             AgL.AddFieldSqlite(AgL.GcnMain, "Voucher_Type", "CustomUI", "nVarchar(50)", "", True)
 
             AgL.AddFieldSqlite(AgL.GcnMain, "Voucher_Type", "EntryBy", "nVarchar(10)", "", True)

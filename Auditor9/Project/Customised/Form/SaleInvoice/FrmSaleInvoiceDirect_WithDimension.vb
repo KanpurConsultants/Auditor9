@@ -76,6 +76,7 @@ Public Class FrmSaleInvoiceDirect_WithDimension
     Public Const Col1Amount As String = "Amount"
     Public Const Col1ExpiryDate As String = "Expiry Date"
     Public Const Col1MRP As String = "MRP"
+    Public Const Col1SalesAc As String = "SalesAc"
     Public Const Col1Remark As String = "Remark"
     Public Const Col1Remark1 As String = "Remark1"
     Public Const Col1Remark2 As String = "Remark2"
@@ -1667,11 +1668,11 @@ Public Class FrmSaleInvoiceDirect_WithDimension
             .AddAgNumberColumn(Dgl1, Col1DealAmount, 100, 8, 2, False, Col1DealAmount, False, False, True)
             .AddAgDateColumn(Dgl1, Col1ExpiryDate, 90, Col1ExpiryDate, False, False)
             .AddAgNumberColumn(Dgl1, Col1MRP, 100, 8, 2, False, Col1MRP, False, False, True)
+            .AddAgTextColumn(Dgl1, Col1SalesAc, 100, 0, Col1SalesAc, False, True)
 
 
 
-
-            If AgL.StrCmp(AgL.PubDBName, "RVN") Or AgL.StrCmp(AgL.PubDBName, "Auto") Then
+            If (AgL.StrCmp(AgL.PubDBName, "RVN") Or AgL.StrCmp(AgL.PubDBName, "RVN1") Or AgL.StrCmp(AgL.PubDBName, "RVN2") Or AgL.StrCmp(AgL.PubDBName, "MLAW")) And AgL.PubSiteCode = "1" Then
                 .AddAgTextColumn(Dgl1, Col1Remark, 150, 255, "MOTOR NO", True, False)
                 .AddAgTextColumn(Dgl1, Col1Remark1, 150, 255, "CONTROLLER NO", True, False)
                 .AddAgTextColumn(Dgl1, Col1Remark2, 150, 255, "CHASIS NO", True, False)
@@ -1903,7 +1904,7 @@ Public Class FrmSaleInvoiceDirect_WithDimension
         Dgl3.Item(Col1Head, rowAgent).Value = hcAgent
         Dgl3.Item(Col1Head, rowTransporter).Value = hcTransporter
         Dgl3.Item(Col1Head, rowResponsiblePerson).Value = hcResponsiblePerson
-        If AgL.StrCmp(AgL.PubDBName, "RVN") Or AgL.StrCmp(AgL.PubDBName, "Auto") Then
+        If AgL.StrCmp(AgL.PubDBName, "RVN") Or AgL.StrCmp(AgL.PubDBName, "RVN1") Or AgL.StrCmp(AgL.PubDBName, "RVN2") Or AgL.StrCmp(AgL.PubDBName, "MLAW") Then
             Dgl3.Item(Col1Head, rowRemarks1).Value = "Vehicle No"
             Dgl3.Item(Col1Head, rowRemarks2).Value = "Hypothecation"
         Else
@@ -2204,7 +2205,14 @@ Public Class FrmSaleInvoiceDirect_WithDimension
         Dim mNarrParty As String
         Dim mNarr As String
 
-        mNarrParty = DglMain.Item(Col1Value, rowV_Type).Value
+
+
+        If (AgL.StrCmp(AgL.PubDBName, "RVN") Or AgL.StrCmp(AgL.PubDBName, "RVN1") Or AgL.StrCmp(AgL.PubDBName, "RVN2") Or AgL.StrCmp(AgL.PubDBName, "MLAW")) And (DglMain.Item(Col1Value, rowV_Type).Tag = "SIS") Then
+            mNarrParty = DglMain.Item(Col1Value, rowV_Type).Value & " : " & DglMain.Item(Col1Value, rowSaleToPartyName).Value & " : " & Dgl1.Item(Col1Item, 0).Value
+        Else
+            mNarrParty = DglMain.Item(Col1Value, rowV_Type).Value
+        End If
+
         mNarr = DglMain.Item(Col1Value, rowV_Type).Value & " : " & DglMain.Item(Col1Value, rowSaleToPartyName).Value
         If Not ClsMain.IsScopeOfWorkContains(IndustryType.SubIndustryType.RetailModule) Then
             If DglMain.Item(Col1Value, rowSaleToPartyMobile).Value <> "" Then
@@ -3000,7 +3008,7 @@ Public Class FrmSaleInvoiceDirect_WithDimension
             Dgl1.Columns(Col1Rate).ReadOnly = True
         End If
 
-        If AgL.StrCmp(AgL.PubDBName, "RVN") Or AgL.StrCmp(AgL.PubDBName, "Auto") Then
+        If AgL.StrCmp(AgL.PubDBName, "RVN") Or AgL.StrCmp(AgL.PubDBName, "RVN1") Or AgL.StrCmp(AgL.PubDBName, "RVN2") Or AgL.StrCmp(AgL.PubDBName, "MLAW") Then
             If AgL.PubSiteCode = "1" Then
                 Dgl1.Columns(Col1Remark1).Visible = True
                 Dgl1.Columns(Col1Remark2).Visible = True
@@ -3009,8 +3017,19 @@ Public Class FrmSaleInvoiceDirect_WithDimension
                 Dgl1.Columns(Col1Barcode).Visible = False
                 Dgl1.Columns(Col1SaleInvoice).Visible = False
             ElseIf AgL.PubSiteCode = "3" Then
-                Dgl1.Columns(Col1Remark2).Visible = True
-                Dgl1.Columns(Col1SaleInvoice).Visible = True
+
+                If DglMain.Item(Col1Value, rowV_Type).Tag = "SIS" Then
+                    Dgl1.Columns(Col1ReferenceNo).Visible = True
+                    Dgl1.Columns(Col1Remark).Visible = True
+                    Dgl1.Columns(Col1Remark1).Visible = False
+                    Dgl1.Columns(Col1Remark2).Visible = False
+                    Dgl1.Columns(Col1SaleInvoice).Visible = False
+                Else
+                    Dgl1.Columns(Col1ReferenceNo).Visible = False
+                    Dgl1.Columns(Col1Remark2).Visible = True
+                    Dgl1.Columns(Col1SaleInvoice).Visible = True
+                End If
+
             Else
                 Dgl1.Columns(Col1Remark1).Visible = True
                 Dgl1.Columns(Col1Remark2).Visible = True
@@ -3314,7 +3333,7 @@ Public Class FrmSaleInvoiceDirect_WithDimension
                         D3.Description as Dimension3Desc, D4.Description as Dimension4Desc, 
                         D1.Specification as Dimension1Specification, D2.Specification as Dimension2Specification,
                         D3.Specification as Dimension3Specification, D4.Specification as Dimension4Specification, 
-                        Size.Description as SizeDesc, IIG.Description as ItemInvoiceGroupDesc,
+                        Size.Description as SizeDesc, IIG.Description as ItemInvoiceGroupDesc, I.SalesAc, SAC.Name as SalesAcName ,
                         I.ItemCategory as MItemCategory, I.ItemGroup as MItemGroup, I.Specification as MItemSpecification, 
                         I.Dimension1 as MDimension1,  I.Dimension2 as MDimension2,  I.Dimension3 as MDimension3,  I.Dimension4 as MDimension4,  I.Size as MSize, 
                         Godown.Name as GodownName, C.Description As CatalogDesc, ISt.Description as ItemStateName, 
@@ -3345,6 +3364,7 @@ Public Class FrmSaleInvoiceDirect_WithDimension
                         Left Join Unit MU  With (NoLock) On L.DealUnit = MU.Code 
                         Left Join Subgroup Godown On L.Godown = Godown.Subcode
                         LEFT JOIN Division D On L.StockInDiv_Code = D.Div_Code
+                        Left Join viewHelpSubgroup SAC On I.SalesAc = SAC.Code
                         Order By L.Sr "
 
                 DsMain = AgL.FillData(mQry, AgL.GCn)
@@ -3435,6 +3455,8 @@ Public Class FrmSaleInvoiceDirect_WithDimension
                             Dgl1.Item(Col1ItemState, I).Tag = AgL.XNull(.Rows(I)("ItemState"))
                             Dgl1.Item(Col1ItemState, I).Value = AgL.XNull(.Rows(I)("ItemStateName"))
 
+                            Dgl1.Item(Col1SalesAc, I).Tag = AgL.XNull(.Rows(I)("SalesAc"))
+                            Dgl1.Item(Col1SalesAc, I).Value = AgL.XNull(.Rows(I)("SalesAcName"))
 
                             Dgl1.Item(Col1Specification, I).Value = AgL.XNull(.Rows(I)("Specification"))
                             Dgl1.Item(Col1MaintainStockYn, I).Value = AgL.VNull(.Rows(I)("MaintainStockYn"))
@@ -4499,7 +4521,7 @@ Public Class FrmSaleInvoiceDirect_WithDimension
                     Case When IfNull(U.ShowDimensionDetailInSales,0) = 1 Or IfNull(Ic.ShowDimensionDetailInSales,0) = 1 Then 1
                          Else 0 End As ShowDimensionDetailInSales, 
                     U.DecimalPlaces as QtyDecimalPlaces, DU.DecimalPlaces as DealQtyDecimalPlaces, 
-                    IG.Default_DiscountPerSale ,
+                    IG.Default_DiscountPerSale ,I.SalesAc, SAC.Name as SalesAcName,
                     IG.Default_AdditionalDiscountPerSale, IG.Default_AdditionPerSale, I.PurchaseRate,
                     IG.Default_DiscountPerPurchase, IG.Default_AdditionalDiscountPerPurchase,
                     I.Div_Code As ItemDiv_Code, D.Div_Name As ItemDiv_Name
@@ -4511,6 +4533,7 @@ Public Class FrmSaleInvoiceDirect_WithDimension
                     Left Join ItemType IT With (NoLock) On I.ItemType = IT.Code                                
                     Left Join Item IIG On IG.ItemInvoiceGroup = IIG.Code
                     LEFT JOIN Division D On I.Div_Code = D.Div_Code
+                    Left Join viewHelpSubgroup SAC On I.SalesAc = SAC.Code
                     Where I.Code ='" & ItemCode & "'"
             DtItem = AgL.FillData(mQry, AgL.GCn).Tables(0)
             If DtItem.Rows.Count > 0 Then
@@ -4537,6 +4560,9 @@ Public Class FrmSaleInvoiceDirect_WithDimension
 
                 Dgl1.Item(Col1ItemInvoiceGroup, mRow).Tag = AgL.XNull(DtItem.Rows(0)("ItemInvoiceGroup"))
                 Dgl1.Item(Col1ItemInvoiceGroup, mRow).Value = AgL.XNull(DtItem.Rows(0)("ItemInvoiceGroupName"))
+
+                Dgl1.Item(Col1SalesAc, mRow).Value = AgL.XNull(DtItem.Rows(0)("SalesAcName"))
+                Dgl1.Item(Col1SalesAc, mRow).Tag = AgL.XNull(DtItem.Rows(0)("SalesAc"))
 
                 Dgl1.Item(Col1ItemCode, mRow).Tag = AgL.XNull(DtItem.Rows(0)("Code"))
                 Dgl1.Item(Col1ItemCode, mRow).Value = AgL.XNull(DtItem.Rows(0)("ManualCode"))
@@ -5144,6 +5170,34 @@ Public Class FrmSaleInvoiceDirect_WithDimension
         End If
     End Sub
 
+    Private Sub Validating_ReferenceNo(ByVal mColumn As Integer, ByVal mRow As Integer)
+        Dim DtTemp As DataTable = Nothing
+        Try
+            Dgl1.Item(Col1ReferenceDocId, mRow).Value = ""
+            Dgl1.Item(Col1ReferenceDate, mRow).Tag = ""
+            Dgl1.Item(Col1ReferenceDocIdSr, mRow).Value = ""
+
+
+
+            mQry = " Select H.DocID, H.V_Date, L.Sr, L.Barcode, Barcode.Description AS BarcodeDesc FROM SaleInvoice H  With (NoLock)  
+                                         LEFT JOIN SaleInvoiceDetail L With (NoLock)  ON L.DocId = H.DocId 
+                                         Left Join Barcode  With (NoLock) On L.Barcode = Barcode.Code
+                                         Where H.DocID = '" & Dgl1.Item(Col1ReferenceNo, mRow).Tag & "'"
+            Dim DtReference As DataTable = AgL.FillData(mQry, AgL.GCn).Tables(0)
+            If DtReference.Rows.Count > 0 Then
+                Dgl1.Item(Col1ReferenceDocId, mRow).Value = AgL.XNull(DtReference.Rows(0)("DocID"))
+                Dgl1.Item(Col1ReferenceDocIdSr, mRow).Value = AgL.VNull(DtReference.Rows(0)("Sr"))
+                Dgl1.Item(Col1ReferenceDate, mRow).Value = ClsMain.FormatDate(AgL.XNull(DtReference.Rows(0)("V_Date")))
+                'Dgl1.Item(Col1Barcode, mRow).Tag = AgL.XNull(DtReference.Rows(0)("Barcode"))
+                Dgl1.Item(Col1Barcode, mRow).Value = AgL.XNull(DtReference.Rows(0)("BarcodeDesc"))
+
+            End If
+
+        Catch ex As Exception
+            MsgBox(ex.Message & " On Validating_ReferenceNo Function ")
+        End Try
+    End Sub
+
 
     Private Sub Validating_ItemCategory(ByVal mColumn As Integer, ByVal mRow As Integer)
         Dim DtTemp As DataTable = Nothing
@@ -5318,8 +5372,12 @@ Public Class FrmSaleInvoiceDirect_WithDimension
                     End If
                 Case Col1ReferenceNo
                     If Dgl1.Item(Col1ReferenceNo, mRowIndex).Tag <> "" Then
-                        Dgl1.Item(Col1ReferenceDocId, mRowIndex).Value = Dgl1.Item(Col1ReferenceNo, mRowIndex).Tag
-                        Dgl1.Item(Col1ReferenceDate, mRowIndex).Value = ClsMain.FormatDate(AgL.Dman_Execute("Select V_Date From SaleInvoice Where DocID = '" & Dgl1.Item(Col1ReferenceNo, mRowIndex).Tag & "' ", AgL.GCn).ExecuteScalar())
+                        If DglMain.Item(Col1Value, rowV_Type).Tag = "SIS" And (AgL.StrCmp(AgL.PubDBName, "RVN") Or AgL.StrCmp(AgL.PubDBName, "RVN1") Or AgL.StrCmp(AgL.PubDBName, "RVN2") Or AgL.StrCmp(AgL.PubDBName, "MLAW")) Then
+                            Validating_ReferenceNo(mColumnIndex, mRowIndex)
+                        Else
+                            Dgl1.Item(Col1ReferenceDocId, mRowIndex).Value = Dgl1.Item(Col1ReferenceNo, mRowIndex).Tag
+                            Dgl1.Item(Col1ReferenceDate, mRowIndex).Value = ClsMain.FormatDate(AgL.Dman_Execute("Select V_Date From SaleInvoice Where DocID = '" & Dgl1.Item(Col1ReferenceNo, mRowIndex).Tag & "' ", AgL.GCn).ExecuteScalar())
+                        End If
                     End If
 
             End Select
@@ -5939,7 +5997,7 @@ Public Class FrmSaleInvoiceDirect_WithDimension
                         End If
 
 
-                        If AgL.StrCmp(AgL.PubDBName, "RVN") Or AgL.StrCmp(AgL.PubDBName, "Auto") Then
+                        If (AgL.StrCmp(AgL.PubDBName, "RVN") Or AgL.StrCmp(AgL.PubDBName, "RVN1") Or AgL.StrCmp(AgL.PubDBName, "RVN2") Or AgL.StrCmp(AgL.PubDBName, "MLAW")) And (DglMain.Item(Col1Value, rowV_Type).Tag <> "SIS") Then
                             If AgL.XNull(Dgl1.Item(Col1Barcode, I).Tag) <> "" And AgL.XNull(Dgl1.Item(Col1Item, I).Tag) <> "" Then
                                 Dim BarcodeItem As String
                                 mQry = "Select Item From Barcode 
@@ -7040,6 +7098,18 @@ Public Class FrmSaleInvoiceDirect_WithDimension
                                          FROM SaleInvoice H  With (NoLock)  
                                          Left Join Voucher_Type VT With (NoLock) On H.V_Type = VT.V_Type
                                          Where VT.Ncat = '" & Ncat.SaleInvoice & "' And H.SaleToParty = '" & DglMain.Item(Col1Value, rowSaleToParty).Tag & "' 
+                                         And H.Div_Code='" & TxtDivision.Tag & "' And H.Site_Code = '" & DglMain.Item(Col1Value, rowSite_Code).Tag & "'  
+                                         And H.V_Date <= " & AgL.Chk_Date(DglMain.Item(Col1Value, rowV_Date).Value) & "  "
+                                Dgl1.AgHelpDataSet(Col1ReferenceNo) = AgL.FillData(mQry, AgL.GCn)
+                            End If
+                        ElseIf DglMain.Item(Col1Value, rowV_Type).Tag = "SIS" And (AgL.StrCmp(AgL.PubDBName, "RVN") Or AgL.StrCmp(AgL.PubDBName, "RVN1") Or AgL.StrCmp(AgL.PubDBName, "RVN2") Or AgL.StrCmp(AgL.PubDBName, "MLAW")) Then
+                            If Dgl1.AgHelpDataSet(Col1ReferenceNo) Is Nothing Then
+                                mQry = " SELECT H.DocID, '" & IIf(AgL.PubPrintDivisionShortNameOnDocumentsYn, AgL.PubDivShortName, "") & IIf(AgL.PubPrintSiteShortNameOnDocumentsYn, AgL.PubSiteShortName, "") & "' || (Case When VT.Short_Name Is Not Null Then VT.Short_Name Else '' End) || H.ManualRefNo ||'-' || ifnull(Barcode.Description,'')  as [Invoice No],  Barcode.Description as [Barcode]  
+                                         FROM SaleInvoice H  With (NoLock)  
+                                         LEFT JOIN SaleInvoiceDetail L With (NoLock)  ON L.DocId = H.DocId 
+                                         Left Join Barcode  With (NoLock) On L.Barcode = Barcode.Code
+                                         Left Join Voucher_Type VT With (NoLock) On H.V_Type = VT.V_Type
+                                         Where VT.Ncat = '" & Ncat.SaleInvoice & "' AND VT.V_Type = '" & VoucherType.SaleInvoiceRetail & "' And H.SaleToParty = '" & DglMain.Item(Col1Value, rowSaleToParty).Tag & "' 
                                          And H.Div_Code='" & TxtDivision.Tag & "' And H.Site_Code = '" & DglMain.Item(Col1Value, rowSite_Code).Tag & "'  
                                          And H.V_Date <= " & AgL.Chk_Date(DglMain.Item(Col1Value, rowV_Date).Value) & "  "
                                 Dgl1.AgHelpDataSet(Col1ReferenceNo) = AgL.FillData(mQry, AgL.GCn)
@@ -13814,7 +13884,7 @@ Public Class FrmSaleInvoiceDirect_WithDimension
                     End If
 
                 Case rowRemarks2
-                    If AgL.StrCmp(AgL.PubDBName, "RVN") Or AgL.StrCmp(AgL.PubDBName, "Auto") Then
+                    If AgL.StrCmp(AgL.PubDBName, "RVN") Or AgL.StrCmp(AgL.PubDBName, "RVN1") Or AgL.StrCmp(AgL.PubDBName, "RVN2") Or AgL.StrCmp(AgL.PubDBName, "MLAW") Then
                         If e.KeyCode <> Keys.Enter Then
                             If Dgl3.Item(Col1Head, Dgl3.CurrentCell.RowIndex).Tag Is Nothing Then
                                 mQry = "SELECT Name AS Code, Name From viewHelpSubgroup Sg  With (NoLock) Where SubgroupType ='Hypothecation' Order By Name"
@@ -14693,7 +14763,7 @@ Public Class FrmSaleInvoiceDirect_WithDimension
                     If ClsMain.IsScopeOfWorkContains(IndustryType.SubIndustryType.FallPico) Then
                         FOpenSaleOrderForSaleInvoice_FallPico(-1)
                     Else
-                        If AgL.StrCmp(AgL.PubDBName, "RVN") Or AgL.StrCmp(AgL.PubDBName, "Auto") Then
+                        If AgL.StrCmp(AgL.PubDBName, "RVN") Or AgL.StrCmp(AgL.PubDBName, "RVN1") Or AgL.StrCmp(AgL.PubDBName, "RVN2") Or AgL.StrCmp(AgL.PubDBName, "MLAW") Then
                             FOpenSaleChallanForSaleInvoice(-1)
                         Else
                             FOpenSaleOrderForSaleInvoice(-1)

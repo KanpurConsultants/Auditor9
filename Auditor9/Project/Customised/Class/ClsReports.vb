@@ -52,6 +52,7 @@ Public Class ClsReports
     Private Const MoneyReceiptReport As String = "MoneyReceiptReport"
     Private Const PackedBalesLocationReport As String = "PackedBaleLocationReport"
     Private Const BaleMovementReport As String = "BaleMovementReport"
+    Private Const VehicleDetailReport As String = "VehicleDetailReport"
     Private Const FsnAnalysis As String = "FSNAnalysis"
     Private Const EWayBillGeneration As String = "EWayBillGeneration"
     Private Const DebtorsOutstandingReport As String = "DebtorsOutstandingReport"
@@ -551,6 +552,22 @@ Public Class ClsReports
                     ReportFrm.CreateHelpGrid("Site", "Site", FrmRepDisplay.FieldFilterDataType.StringType, FrmRepDisplay.FieldDataType.MultiSelection, mHelpSiteQry, "[SITECODE]")
                     ReportFrm.CreateHelpGrid("Division", "Division", FrmRepDisplay.FieldFilterDataType.StringType, FrmRepDisplay.FieldDataType.MultiSelection, mHelpDivisionQry, "[DIVISIONCODE]")
 
+                Case VehicleDetailReport
+                    mQry = "Select 'All' as Code, 'All' as Name 
+                            Union All 
+                            Select 'Pending For Registration' as Code, 'Pending For Registration' as Name 
+                            Union All 
+                            Select 'Pending For Insurance' as Code, 'Pending For Insurance' as Name 
+                            Union All 
+                            Select 'Pending For Eirthing' as Code, 'Pending For Eirthing' as Name 
+                            Union All 
+                            Select 'Pending For Hypothication' as Code, 'Pending For Hypothication' as Name "
+                    ReportFrm.CreateHelpGrid("Report For", "Report For", FrmRepDisplay.FieldFilterDataType.StringType, FrmRepDisplay.FieldDataType.SingleSelection, mQry, "All",,, 300)
+
+                    ReportFrm.CreateHelpGrid("FromDate", "From Date", FrmRepDisplay.FieldFilterDataType.StringType, FrmRepDisplay.FieldDataType.DateType, "", AgL.PubStartDate)
+                    ReportFrm.CreateHelpGrid("ToDate", "To Date", FrmRepDisplay.FieldFilterDataType.StringType, FrmRepDisplay.FieldDataType.DateType, "", AgL.PubEndDate)
+                    ReportFrm.CreateHelpGrid("Party", "Party", FrmRepDisplay.FieldFilterDataType.StringType, FrmRepDisplay.FieldDataType.MultiSelection, mHelpPartyQry)
+                    ReportFrm.CreateHelpGrid("Site", "Site", FrmRepDisplay.FieldFilterDataType.StringType, FrmRepDisplay.FieldDataType.MultiSelection, mHelpSiteQry, "[SITECODE]")
 
                 Case FsnAnalysis
                     ReportFrm.CreateHelpGrid("FromDate", "From Date", FrmRepDisplay.FieldFilterDataType.StringType, FrmRepDisplay.FieldDataType.DateType, "", AgL.PubStartDate)
@@ -656,6 +673,9 @@ Public Class ClsReports
 
             Case BaleMovementReport
                 ProcBaleMovementReport()
+
+            Case VehicleDetailReport
+                ProcVehicleDetailReport()
 
             Case FsnAnalysis
                 ProcFsnAnalysis()
@@ -809,6 +829,104 @@ Public Class ClsReports
             DsHeader = Nothing
         End Try
     End Sub
+
+    Public Sub ProcVehicleDetailReport(Optional mFilterGrid As AgControls.AgDataGrid = Nothing,
+                                Optional mGridRow As DataGridViewRow = Nothing)
+        Try
+            Dim mCondStr$ = ""
+            Dim strGrpFld As String = "''", strGrpFldHead As String = "''", strGrpFldDesc As String = "''"
+            Dim mTags As String() = Nothing
+            Dim J As Integer
+
+
+
+            RepTitle = "Vehicle Detail Report"
+
+            ''If mFilterGrid IsNot Nothing And mGridRow IsNot Nothing Then
+            ''    If mGridRow.DataGridView.Columns.Contains("Search Code") = True Then
+            ''        If mFilterGrid.Item(GFilter, 0).Value = "Item Wise Balance" Or
+            ''                mFilterGrid.Item(GFilter, 0).Value = "Item Wise Status" Then
+            ''            ClsMain.FOpenForm(mGridRow.Cells("Search Code").Value, ReportFrm)
+            ''            ReportFrm.FiterGridCopy_Arr.RemoveAt(ReportFrm.FiterGridCopy_Arr.Count - 1)
+            ''            Exit Sub
+            ''        End If
+            ''    Else
+            ''        Exit Sub
+            ''    End If
+            ''End If
+
+            mCondStr = " Where VT.NCat In ('" & Ncat.SaleInvoice & "') AND H.V_Type  ='SIR' "
+            mCondStr = mCondStr & " AND H.Div_Code = '" & AgL.PubDivCode & "' "
+            mCondStr = mCondStr & " AND Date(H.V_Date) Between " & AgL.Chk_Date(CDate(ReportFrm.FGetText(1)).ToString("s")) & " And " & AgL.Chk_Date(CDate(ReportFrm.FGetText(2)).ToString("s")) & " "
+            mCondStr = mCondStr & ReportFrm.GetWhereCondition("H.SaleToParty", 3)
+            mCondStr = mCondStr & Replace(ReportFrm.GetWhereCondition("H.Site_Code", 4), "''", "'")
+
+            If ReportFrm.FGetText(0) = "Pending For Registration" Then
+                mCondStr = mCondStr & " AND SI.RegistrationNo IS NULL "
+            ElseIf ReportFrm.FGetText(0) = "Pending For Insurance" Then
+                mCondStr = mCondStr & " AND SI.PolicyNo IS NULL "
+            ElseIf ReportFrm.FGetText(0) = "Pending For Eirthing" Then
+                mCondStr = mCondStr & " AND SI.EirthingDate IS NULL "
+            ElseIf ReportFrm.FGetText(0) = "Pending For Hypothication" Then
+                mCondStr = mCondStr & " AND SI.HypothicationDate IS NULL "
+            End If
+
+            mQry = "  SELECT  L.DocID, L.Sr, strftime('%d/%m/%Y', H.V_Date) As V_Date,   Party.Name  ,H.V_Type || '-' || H.ManualRefNo as SaleInvoiceNo,  
+                    I.Description As Item, Barcode.Description AS ChesisNo, SI.RegistrationAgent, SI.RegistrationNo, SI.RegistrationDate, SI.RegistrationFees,
+                    SI.InsuranceAgent, SI.InsuranceCompany, SI.PolicyNo, SI.InsuranceFees, SI.EirthingAgent, SI.EirthingDate, SI.EirthingFees,
+                    SI.HypothicationAgent, SI.HypothicationCompany, SI.HypothicationDate, SI.HypothicationFees                                                  
+                    FROM SaleInvoice H 
+                    Left Join SaleInvoiceDetail L On H.DocID = L.DocID 
+                    Left Join 
+                    (
+	                select BL.ReferenceDocID, BL.ReferenceDocIDSr, 
+                    Max( Case When  BL.Item ='RTOREGISTRATION' Then Agent.Name Else Null End) AS RegistrationAgent ,
+                    Max( Case When  BL.Item ='RTOREGISTRATION' Then BL.Remark Else Null End) AS RegistrationNo,
+                    Max( Case When  BL.Item ='RTOREGISTRATION' Then strftime('%d/%m/%Y', BH.V_Date)  Else Null End) AS RegistrationDate,
+                    SUM( Case When  BL.Item ='RTOREGISTRATION' Then BL.Amount  Else Null End) AS RegistrationFees,
+                    Max( Case When  I.ItemCategory ='INSURANCE' Then Agent.Name Else Null End) AS InsuranceAgent ,
+                    Max( Case When  I.ItemCategory ='INSURANCE' Then I.Specification Else Null End) AS InsuranceCompany,
+                    Max( Case When  I.ItemCategory ='INSURANCE' Then BL.Remark Else Null End) AS PolicyNo,
+                    SUM( Case When  I.ItemCategory ='INSURANCE' Then BL.Amount  Else Null End) AS InsuranceFees,
+                    Max( Case When  BL.Item ='EIRTHING' Then Agent.Name Else Null End) AS EirthingAgent ,
+                    Max( Case When  BL.Item ='EIRTHING' Then strftime('%d/%m/%Y', BH.V_Date)  Else Null End) AS EirthingDate,
+                    SUM( Case When  BL.Item ='EIRTHING' Then BL.Amount  Else Null End) AS EirthingFees,
+                    Max( Case When  I.ItemCategory ='HYPOTHICATION' Then Agent.Name Else Null End) AS HypothicationAgent ,
+                    Max( Case When  I.ItemCategory ='HYPOTHICATION' Then I.Specification Else Null End) AS HypothicationCompany,
+                    Max( Case When  I.ItemCategory ='HYPOTHICATION' Then strftime('%d/%m/%Y', BH.V_Date)  Else Null End) AS HypothicationDate,
+                    SUM( Case When  I.ItemCategory ='HYPOTHICATION' Then BL.Amount  Else Null End) AS HypothicationFees
+                    from SaleInvoice   BH With (NoLock) 
+                    Left Join viewHelpSubgroup Agent On BH.Agent  =Agent.Code   
+                    Left Join SaleInvoiceDetail BL With (NoLock) On BH.DocId = BL.DocID  
+                    Left Join Item I On BL.Item = I.Code 
+					Where BH.V_Type ='SIS'       and BL.ReferenceDocID is Not Null
+					Group By BL.ReferenceDocID, BL.ReferenceDocIDSr
+                    ) SI On L.DocID = SI.ReferenceDocID AND L.Sr = SI.ReferenceDocIDSr
+                    Left Join Item I On L.Item = I.Code 
+                    Left Join Barcode  With (NoLock) On L.Barcode = Barcode.Code
+                    Left Join viewHelpSubgroup Party On H.SaleToParty = Party.Code                                                     
+                    LEFT JOIN Voucher_Type Vt On H.V_Type = Vt.V_Type     
+                    Left Join SiteMast Site On H.Site_Code = Site.Code
+                    Left Join Division Div On H.Div_Code = Div.Div_Code
+                    " & mCondStr
+
+
+
+            DsHeader = AgL.FillData(mQry, AgL.GCn)
+
+            If DsHeader.Tables(0).Rows.Count = 0 Then Err.Raise(1, , "No Records To Print!")
+
+            ReportFrm.Text = "Vehicle Detail - " + ReportFrm.FGetText(0)
+            ReportFrm.ClsRep = Me
+            ReportFrm.ReportProcName = "ProcSaleInvoiceStatus"
+
+            ReportFrm.ProcFillGrid(DsHeader)
+        Catch ex As Exception
+            MsgBox(ex.Message)
+            DsHeader = Nothing
+        End Try
+    End Sub
+
 
     Public Sub ProcSaleChallanStatus(Optional mFilterGrid As AgControls.AgDataGrid = Nothing,
                                 Optional mGridRow As DataGridViewRow = Nothing)
@@ -1062,7 +1180,13 @@ Public Class ClsReports
             ElseIf ReportFrm.FGetText(7) = "Credit" Then
                 mCondStr = mCondStr & " AND BillToParty.Nature <> 'Cash'"
             End If
-            mCondStr = mCondStr & ReportFrm.GetWhereCondition("LTV.Agent", 8)
+
+            If AgL.StrCmp(AgL.PubDBName, "RVN") Or AgL.StrCmp(AgL.PubDBName, "RVN1") Or AgL.StrCmp(AgL.PubDBName, "RVN2") Or AgL.StrCmp(AgL.PubDBName, "MLAW") Then
+                mCondStr = mCondStr & ReportFrm.GetWhereCondition("H.Agent", 8)
+            Else
+                mCondStr = mCondStr & ReportFrm.GetWhereCondition("LTV.Agent", 8)
+            End If
+
             mCondStr = mCondStr & ReportFrm.GetWhereCondition("I.ItemGroup", 9)
             mCondStr = mCondStr & ReportFrm.GetWhereCondition("I.ItemCategory", 10)
             mCondStr = mCondStr & ReportFrm.GetWhereCondition("I.ItemType", 11)

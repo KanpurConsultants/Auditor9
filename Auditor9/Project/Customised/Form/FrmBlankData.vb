@@ -83,6 +83,7 @@ Public Class FrmBlankData
         mQry += "Select " & mSr & " As Sr,'SaleInvoiceTransport' As TableName Union All " : mSr = mSr + 1
         mQry += "Select " & mSr & " As Sr,'SaleInvoicePayment' As TableName Union All " : mSr = mSr + 1
         mQry += "Select " & mSr & " As Sr,'SaleInvoice' As TableName Union All " : mSr = mSr + 1
+        mQry += "Select " & mSr & " As Sr,'SaleInvoiceTrnSetting' As TableName Union All " : mSr = mSr + 1
 
         mQry += "Select " & mSr & " As Sr,'PurchInvoiceDimensionDetailSku' As TableName Union All " : mSr = mSr + 1
         mQry += "Select " & mSr & " As Sr,'PurchInvoiceDimensionDetail' As TableName Union All " : mSr = mSr + 1
@@ -98,7 +99,7 @@ Public Class FrmBlankData
         mQry += "Select " & mSr & " As Sr,'LedgerHeadCharges' As TableName Union All " : mSr = mSr + 1
         mQry += "Select " & mSr & " As Sr,'LedgerHead' As TableName Union All " : mSr = mSr + 1
         mQry += "Select " & mSr & " As Sr,'LedgerM' As TableName Union All " : mSr = mSr + 1
-
+        mQry += "Select " & mSr & " As Sr,'Ledger' As TableName Union All " : mSr = mSr + 1
 
         mQry += "Select " & mSr & " As Sr,'StockHeadDetailBarCodeValues' As TableName Union All " : mSr = mSr + 1
         mQry += "Select " & mSr & " As Sr,'StockHeadDetailBase' As TableName Union All " : mSr = mSr + 1

@@ -5,12 +5,12 @@ DocNoCaption	string	255	Doc.No.
 DocDateCaption	string	255	Doc.Date	
 SiteStateCode	string	255	09	
 SiteStateName	string	255	Uttar Pradesh	
-DocID	string	255	D2    JV 2021     134	
+DocID	string	255	D1   JVO 2024       1	
 Sr	number	1	
-V_Date	datetime	16/Mar/2022 12:00:00 AM	
-Voucher_Type	string	255	JOURNAL	
-NCat	string	255	JV	
-InvoiceNo	string	255	JV136	
+V_Date	datetime	27/Mar/2025 00:00:00	
+Voucher_Type	string	255	Journal Other	
+NCat	string	255	JVO	
+InvoiceNo	string	255	JVO1	
 PartySubcode	string	255		
 PartyName	string	255		
 PartyAddress	string	255		
@@ -25,20 +25,20 @@ PartyAadharNo	string	255
 PartyPanNo	string	255		
 TermsAndConditions	string	255		
 ReferenceNo	string	255		
-LineAccountName	string	255	ASHOK JAISWAL (Branch), MANAURI.	
+LineAccountName	string	255	SAUD REHMAN ANSARI, KANPUR	
 LineSpecification	string	255		
-EffectiveDate	datetime	01/Jan/1900 12:00:00 AM	
-Amount	number	0	
-AmountCr	number	49000	
+EffectiveDate	string	255		
+Amount	number	100	
+AmountCr	number	0	
 ChqRefNo	string	255		
-ChqRefDate	datetime	01/Jan/1900 12:00:00 AM	
-LRemarks	string	255	cash deposited in hdfc	
-HRemarks	string	255	hdfc cash receipt	
-Default_BankAccountDetail	string	255	Bank Detail : 	HDFC A/c : 50200003154727    IFSC : HDFC0002006	
+ChqRefDate	string	255		
+LRemarks	string	255		
+HRemarks	string	255		
+Default_BankAccountDetail	string	255	<B> Bank Detail :- <BR> HDFC : 99915400000007  IFSC : HDFC0009597 <BR>	
 DocumentPrintHeaderPattern	string	255	Center Aligned	
 PrintedByUser	string	255	SUPER	
-EntryByUser	string	255	DURGESH	
-PrintTitle	string	255	JOURNAL	
+EntryByUser	string	255	SUPER	
+PrintTitle	string	255	Journal Other	
 DocumentPrintShowPrintDateTimeYn	string	255	1	
 CompanyLogo	BLOB		
 CompanyAuthorisedSignature	BLOB		

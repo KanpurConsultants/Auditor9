@@ -51,11 +51,14 @@ Public Class FrmPurchaseInvoiceHeader
         Set(ByVal value As String)
             mEntryMode = value
 
-            'If mEntryMode.ToString.ToUpper() = "BROWSE" Then
-            '    Dgl1.ReadOnly = True
-            'Else
-            '    Dgl1.ReadOnly = False
-            'End If
+            If AgL.StrCmp(AgL.PubDBName, "Sadhvi") And mV_Type = Ncat.PurchaseGoodsReceipt Then
+                If mEntryMode.ToString.ToUpper() = "BROWSE" Then
+                    Dgl1.ReadOnly = True
+                Else
+                    Dgl1.ReadOnly = False
+                End If
+            End If
+
         End Set
     End Property
     Public Property PartyCode() As String
@@ -328,10 +331,18 @@ Public Class FrmPurchaseInvoiceHeader
         Dim I As Integer = 0
 
         If SearchCode = "" Then
-            mQry = "Select H.Transporter, Transporter.Name as TransporterName 
+            If AgL.StrCmp(AgL.PubDBName, "Sadhvi") And mV_Type = Ncat.PurchaseGoodsReceipt Then
+                mQry = "Select H.SubCode AS Transporter, H.Name as TransporterName 
+                    From Subgroup H  With (NoLock)
+                    Where H.Subcode='D100001006' "
+
+            Else
+                mQry = "Select H.Transporter, Transporter.Name as TransporterName 
                     From SubgroupSiteDivisionDetail H  With (NoLock)
                     Left Join viewHelpSubgroup Transporter  With (NoLock) On H.Transporter = Transporter.Code
                     Where H.Subcode='" & mPartyCode & "' "
+
+            End If
             DtTemp = AgL.FillData(mQry, AgL.GCn).Tables(0)
             If DtTemp.Rows.Count > 0 Then
                 Dgl1.Item(Col1Value, rowTransporter).Tag = AgL.XNull(DtTemp.Rows(0)("Transporter"))

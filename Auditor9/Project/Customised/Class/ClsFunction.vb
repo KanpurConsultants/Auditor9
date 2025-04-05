@@ -145,6 +145,8 @@ Public Class ClsFunction
                     FrmObj = New FrmJournalEntry(StrUserPermission, DTUP, "OB,JV")
                 Case MDI.MnuJournalAdjustmentEntry.Name
                     FrmObj = New FrmJournalEntry(StrUserPermission, DTUP, "JV", "Shyama Shyam")
+                Case MDI.MnuJournalAdjustment.Name
+                    FrmObj = New FrmJournalEntry(StrUserPermission, DTUP, "JVO")
                 Case MDI.MnuUpdateLinkedAccount.Name
                     FrmObj = New FrmUpdateLinkAccount
                 Case MDI.MnuSerializeEntryNo.Name
@@ -236,7 +238,11 @@ Public Class ClsFunction
                     FrmObj = New FrmImportDataFromBranch()
 
                 Case MDI.MnuImportDataCustom.Name
-                    FrmObj = New FrmSyncDataFromOtherDatabase()
+                    If AgL.StrCmp(AgL.PubDBName, "RVN2") Then
+                        FrmObj = New FrmSyncDataFromOtherDatabase_RVN()
+                    Else
+                        FrmObj = New FrmSyncDataFromOtherDatabase()
+                    End If
 
                 Case MDI.MnuMatchData.Name
                     FrmObj = New FrmMatchDataFromOtherDatabase()
@@ -1122,8 +1128,8 @@ Public Class ClsFunction
                     CRep.Ini_Grid()
                     FrmObj = GridReportFrm
 
-                Case MDI.MnuBarcodeDetailUpdation.Name
-                    Dim CRep As ClsBarcodeDetailUpdation = New ClsBarcodeDetailUpdation(GridReportFrm)
+                Case MDI.MnuBiltyUpdation.Name
+                    Dim CRep As ClsBiltyUpdation = New ClsBiltyUpdation(GridReportFrm)
                     CRep.GRepFormName = Replace(Replace(Replace(Replace(StrSenderText, "&", ""), " ", ""), "(", ""), ")", "")
                     CRep.Ini_Grid()
                     FrmObj = GridReportFrm

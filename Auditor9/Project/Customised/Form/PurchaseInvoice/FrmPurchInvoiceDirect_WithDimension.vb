@@ -1289,7 +1289,7 @@ Public Class FrmPurchInvoiceDirect_WithDimension
             End If
         End If
 
-        If AgL.StrCmp(AgL.PubDBName, "RVN") Or AgL.StrCmp(AgL.PubDBName, "Auto") Then
+        If AgL.StrCmp(AgL.PubDBName, "RVN") Or AgL.StrCmp(AgL.PubDBName, "RVN1") Or AgL.StrCmp(AgL.PubDBName, "RVN2") Or AgL.StrCmp(AgL.PubDBName, "MLAW") Then
             Dgl1.Columns(Col1Remark1).Visible = True
             Dgl1.Columns(Col1Remark2).Visible = True
             Dgl1.Columns(Col1Remark3).Visible = True
@@ -1461,7 +1461,7 @@ Public Class FrmPurchInvoiceDirect_WithDimension
                 .AddAgTextColumn(Dgl1, Col1FromProcess, 100, 255, Col1FromProcess, True, False)
                 .AddAgTextColumn(Dgl1, Col1Catalog, 100, 0, Col1Catalog, False, False)
 
-                If AgL.StrCmp(AgL.PubDBName, "RVN") Or AgL.StrCmp(AgL.PubDBName, "Auto") Then
+                If AgL.StrCmp(AgL.PubDBName, "RVN") Or AgL.StrCmp(AgL.PubDBName, "RVN1") Or AgL.StrCmp(AgL.PubDBName, "RVN2") Or AgL.StrCmp(AgL.PubDBName, "MLAW") Then
                     .AddAgTextColumn(Dgl1, Col1Remark, 150, 255, "MOTOR NO", True, False)
                     .AddAgTextColumn(Dgl1, Col1Remark1, 150, 255, "CONTROLLER NO", True, False)
                     .AddAgTextColumn(Dgl1, Col1Remark2, 150, 255, "CHASIS NO", True, False)
@@ -5025,7 +5025,7 @@ Public Class FrmPurchInvoiceDirect_WithDimension
                         End If
                     End If
 
-                    If (AgL.StrCmp(AgL.PubDBName, "RVN") Or AgL.StrCmp(AgL.PubDBName, "Auto")) And LblV_Type.Tag = Ncat.StockTransfer Then
+                    If (AgL.StrCmp(AgL.PubDBName, "RVN") Or AgL.StrCmp(AgL.PubDBName, "RVN1") Or AgL.StrCmp(AgL.PubDBName, "RVN2") Or AgL.StrCmp(AgL.PubDBName, "MLAW")) And LblV_Type.Tag = Ncat.StockTransfer Then
                         If AgL.XNull(Dgl1.Item(Col1Barcode, I).Tag) <> "" And AgL.XNull(Dgl1.Item(Col1Item, I).Tag) <> "" Then
                             Dim BarcodeItem As String
                             mQry = "Select Item From Barcode 
@@ -5085,9 +5085,22 @@ Public Class FrmPurchInvoiceDirect_WithDimension
                         If Dgl1.Item(Col1BaleNo, I).Value = "" Or Dgl1.Columns(Col1BaleNo).Visible = False Then
                             Dgl1.Item(Col1BaleNo, I).Value = CType(Dgl2.Item(Col1Value, rowBtnTransportDetail).Tag, FrmPurchaseInvoiceHeader).Dgl1.Item(FrmPurchaseInvoiceHeader.Col1Value, FrmPurchaseInvoiceHeader.rowLrNo).Value
                         End If
+
+                        If AgL.StrCmp(AgL.PubDBName, "Sadhvi") And LblV_Type.Tag = Ncat.PurchaseGoodsReceipt Then
+                            If CType(Dgl2.Item(Col1Value, rowBtnTransportDetail).Tag, FrmPurchaseInvoiceHeader).Dgl1.Item(FrmPurchaseInvoiceHeader.Col1Value, FrmPurchaseInvoiceHeader.rowLrNo).Value <> "" And CType(Dgl2.Item(Col1Value, rowBtnTransportDetail).Tag, FrmPurchaseInvoiceHeader).Dgl1.Item(FrmPurchaseInvoiceHeader.Col1Value, FrmPurchaseInvoiceHeader.rowTransporter).Tag <> "" Then
+                                mQry = "Select count(DocID) AS Cnt From PurchInvoiceTransport 
+                                    Where Transporter = '" & CType(Dgl2.Item(Col1Value, rowBtnTransportDetail).Tag, FrmPurchaseInvoiceHeader).Dgl1.Item(FrmPurchaseInvoiceHeader.Col1Value, FrmPurchaseInvoiceHeader.rowTransporter).Tag & "'
+                                    AND LrNo =  '" & CType(Dgl2.Item(Col1Value, rowBtnTransportDetail).Tag, FrmPurchaseInvoiceHeader).Dgl1.Item(FrmPurchaseInvoiceHeader.Col1Value, FrmPurchaseInvoiceHeader.rowLrNo).Value & "' AND DocID <> '" & mSearchCode & "' "
+                                If (AgL.VNull(AgL.Dman_Execute(mQry, AgL.GCn).ExecuteScalar()) > 0) Then
+                                    MsgBox("LR Already Find ! ")
+                                    passed = False : Exit Sub
+                                End If
+                            End If
+                        End If
+
                     End If
 
-                    If AgL.VNull(Dgl1.Item(Col1IsNewItemAllowedPurch, I).Value) <> 0 Then
+                        If AgL.VNull(Dgl1.Item(Col1IsNewItemAllowedPurch, I).Value) <> 0 Then
                         If Dgl1.Item(Col1Item, I).Value <> "" Then
                             Dgl1.Item(Col1Item, I).Tag = FCreateItem(Dgl1.Item(Col1Item, I).Tag, AgL.GCn, AgL.ECmd, ItemV_Type.Item, Dgl1.Item(Col1Item, I).Value, I)
                         End If
@@ -9123,6 +9136,10 @@ Public Class FrmPurchInvoiceDirect_WithDimension
                 End If
             Else
                 strCond += " And I.V_Type In  ('ITEM','IC') "
+            End If
+
+            If AgL.StrCmp(AgL.PubDBName, "Sadhvi") And LblV_Type.Tag = Ncat.PurchaseGoodsReceipt Then
+                strCond += " And I.Code ='D1172053' "
             End If
 
 

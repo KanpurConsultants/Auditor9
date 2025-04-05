@@ -5,46 +5,44 @@ DocNoCaption	string	255	Invoice No.
 DocDateCaption	string	255	Invoice Date	
 SiteStateCode	string	255	09	
 SiteStateName	string	255	Uttar Pradesh	
-DocID	string	255	D1    SI 2024   20703	
+DocID	string	255	D1   SIS 2024       3	
 Sr	number	1	
-V_Date	datetime	01/Mar/2025 00:00:00	
+V_Date	datetime	31/Mar/2025 00:00:00	
 DeliveryDate	datetime		
-Voucher_Type	string	255	Tax Invoice	
+Voucher_Type	string	255	Sale Invoice Service	
 NCat	string	255	SI	
-InvoiceNo	string	255	SI-20702	
-RateType	string	255	Dhara	
+InvoiceNo	string	255	-3	
+RateType	string	255	Super Net	
 DocumentPrintShowRateType	string	255	Show If Not Blank	
-AgentName	string	255	DIRECT (CASH)	
+AgentName	string	255	KANCHAN SINGH	
 AgentCaption	string	255	Agent	
 BillToPartyNature	string	255	Customer	
-SaleToPartyName	string	255	 JANTA VASTRALAYA	
-SaleToPartyAddress	string	255	NAI BAZAR RAEBARELI SALON DIST:-RAEBARELI 
-	
-CityName	string	255	SALLON	
-SaleToPartyPincode	string	255	229127	
+SaleToPartyName	string	255	ABHAI KUMAR ASHOK KUMAR	
+SaleToPartyAddress	string	255	NEAR GALLA MANDI JARWAL ROAD DIST:-BAHRICH	
+CityName	string	255	JARWAL ROAD	
+SaleToPartyPincode	string	255	271901	
 StateCode	string	255	09	
 StateName	string	255	Uttar Pradesh	
-SaleToPartyMobile	string	255	8182857747	
-ContactPerson	string	255	MOHD TARIQ	
-SaleToPartySalesTaxNo	string	255	09BBNPT6507L1ZV	
+SaleToPartyMobile	string	255	9451882869	
+ContactPerson	string	255	ABHAY KUMAR	
+SaleToPartySalesTaxNo	string	255	09AAQPJ9243G1Z9	
 SaleToPartyAadharNo	string	255		
-SaleToPartyPanNo	string	255	BBNPT6507L	
-ShipToPartyName	string	255	 JANTA VASTRALAYA	
-ShipToPartyAddress	string	255	NAI BAZAR RAEBARELI SALON DIST:-RAEBARELI 
-	
-ShipToPartyCity	string	255	SALLON	
-ShipToPartyPincode	string	255	229127	
+SaleToPartyPanNo	string	255	AAQPJ9243G	
+ShipToPartyName	string	255	ABHAI KUMAR ASHOK KUMAR	
+ShipToPartyAddress	string	255	NEAR GALLA MANDI JARWAL ROAD DIST:-BAHRICH	
+ShipToPartyCity	string	255	JARWAL ROAD	
+ShipToPartyPincode	string	255	271901	
 ShipToPartyStateCode	string	255	09	
 ShipToPartyStateName	string	255	Uttar Pradesh	
-ShipToPartyMobile	string	255	8182857747	
-ShipToPartySalesTaxNo	string	255	09BBNPT6507L1ZV	
+ShipToPartyMobile	string	255	9451882869	
+ShipToPartySalesTaxNo	string	255	09AAQPJ9243G1Z9	
 ShipToPartyAadharNo	string	255		
-ShipToPartyPanNo	string	255	BBNPT6507L	
+ShipToPartyPanNo	string	255	AAQPJ9243G	
 ShipToAddress	string	255		
 TermsAndConditions	string	255	<b>1.</b> Goods once sold will not be taken back. <b>2.</b> No Guarantee in the Age of Fashion. <b>3.</b> Interest @ 24% per annum will be charge after 30 days from the date of bill. <b>4.</b> All disputes subject to Kanpur Jurisdiction OR disputes will be settle through Cawnpore Kapda Committee Arbitration Board which will be abide by the both parties	
-TransporterName	string	255	KANPUR SANGIPUR TRANSPORT CO , KANPUR	
-TransporterMobile	string	255	9450065996,7880776118	
-TransporterAddress	string	255	133/135 TP NAGAR NEAR AZAMGARH BALLIA TRANSPORT-KANPUR	
+TransporterName	string	255	BAHRAICH ROADWAYS, KANPUR	
+TransporterMobile	string	255	9415428737,9936377488	
+TransporterAddress	string	255	133/15,TP NAGAR-KANPUR	
 LrNo	string	255		
 LrDate	datetime		
 PrivateMark	string	255		
@@ -63,57 +61,57 @@ BookedTo	string	255
 Destination	string	255		
 DescriptionOfGoods	string	255		
 DescriptionOfPacking	string	255		
-TransporterSalesTaxNo	string	255	09AECPT1872M2ZW	
+TransporterSalesTaxNo	string	255	09AAHFB9456E1Z8	
 ReferenceNo	string	255		
-ItemName	string	255	GOVINDA PRINT          [KAYAAN PRINTS PVT LTD | SAREE HALKA PRI..]	
-ItemGroupName	string	255	S-ENT-44-BOX	
-ItemCatName	string	255	SAREE HALKA PRI..	
-ItemSpecification	string	255	GOVINDA PRINT	
+ItemName	string	255	RENT RE          [ | ]	
+ItemGroupName	string	255		
+ItemCatName	string	255		
+ItemSpecification	string	255	RENT RE	
 InvoiceLineSpecification	string	255		
 HSN	string	255	540752	
 MaintainStockYn	boolean	True	
 SalesTaxGroupItem	string	255	GST 5%	
 GrossTaxRate	number	5	
-Pcs	number	1	
-Qty	number	1	
-Rate	number	332.03	
-Unit	string	255	Pcs	
+Pcs	number	0	
+Qty	number	0	
+Rate	number	0	
+Unit	string	255	Nos	
 UnitDecimalPlaces	number	0	
-DiscountPer	number	3	
-DiscountAmount	number	9.78	
+DiscountPer	number	0	
+DiscountAmount	number	0	
 AdditionalDiscountPer	number	0	
 AdditionalDiscountAmount	number	0	
-AdditionPer	number	5	
-AdditionAmount	number	15.81	
-TotalDiscount	number	-6.03	
-AmountBeforeDiscount	number	341.81	
-Amount	number	332.03	
-Taxable_Amount	number	332.03	
+AdditionPer	number	0	
+AdditionAmount	number	0	
+TotalDiscount	number	0	
+AmountBeforeDiscount	number	8000	
+Amount	number	8000	
+Taxable_Amount	number	8000	
 Tax1_Per	number	0	
 Tax1	number	0	
 Tax2_Per	number	2.5	
-Tax2	number	8.3	
+Tax2	number	200	
 Tax3_Per	number	2.5	
-Tax3	number	8.3	
+Tax3	number	200	
 Tax4_Per	number	0	
 Tax4	number	0	
 Tax5_Per	number	0	
 Tax5	number	0	
-Net_Amount	number	349	
+Net_Amount	number	8400	
 LRemarks	string	255		
 HRemarks	string	255		
-H_TotalDiscount	number	-6.03	
-H_AmountBeforeDiscount	number	326	
-H_Gross_Amount	number	332.03	
+H_TotalDiscount	number	0	
+H_AmountBeforeDiscount	number	8000	
+H_Gross_Amount	number	8000	
 H_SpecialDiscount_Per	number	0	
 H_SpecialDiscount	number	0	
-H_Taxable_Amount	number	332.03	
+H_Taxable_Amount	number	8000	
 H_Tax1_Per	number	0	
 H_Tax1	number	0	
 H_Tax2_Per	number	0	
-H_Tax2	number	8.3	
+H_Tax2	number	200	
 H_Tax3_Per	number	0	
-H_Tax3	number	8.3	
+H_Tax3	number	200	
 H_Tax4_Per	number	0	
 H_Tax4	number	0	
 H_Tax5_Per	number	0	
@@ -122,8 +120,8 @@ H_Deduction_Per	number	0
 H_Deduction	number	0	
 H_Other_Charge_Per	number	0	
 H_Other_Charge	number	0	
-Round_Off	number	0.37	
-H_Net_Amount	number	349	
+Round_Off	number	0	
+H_Net_Amount	number	8400	
 EInvoiceIRN	string	255		
 EInvoiceAckNo	string	255		
 EInvoiceAckDate	datetime		
@@ -132,7 +130,7 @@ DocumentPrintHeaderPattern	string	255	Center Aligned
 DimDetail	string	255		
 PrintedByUser	string	255	SUPER	
 EntryByUser	string	255	SUPER	
-PrintTitle	string	255	TAX INVOICE	
+PrintTitle	string	255	SALE INVOICE SERVICE	
 DocumentPrintShowPrintDateTimeYn	string	255	1	
 DocumentPrintShowPartyBalance	string	255	Hide	
 TodaysOpeningBalance	number	0	

@@ -157,6 +157,7 @@ Partial Class MDIMain
         Me.MnuPurchaseAgentCommissionOnPayment = New System.Windows.Forms.ToolStripMenuItem()
         Me.MnuLocalFreightReport = New System.Windows.Forms.ToolStripMenuItem()
         Me.MnuMissingVoucherReport = New System.Windows.Forms.ToolStripMenuItem()
+        Me.MnuBiltyUpdation = New System.Windows.Forms.ToolStripMenuItem()
         Me.MnuSale = New System.Windows.Forms.ToolStripMenuItem()
         Me.MnuSalesEnquiry = New System.Windows.Forms.ToolStripMenuItem()
         Me.MnuSalesOrder = New System.Windows.Forms.ToolStripMenuItem()
@@ -173,6 +174,7 @@ Partial Class MDIMain
         Me.MnuQuotation = New System.Windows.Forms.ToolStripMenuItem()
         Me.MnuSalesEntryAadhat = New System.Windows.Forms.ToolStripMenuItem()
         Me.MnuPacking = New System.Windows.Forms.ToolStripMenuItem()
+        Me.MnuVehicleDetailReport = New System.Windows.Forms.ToolStripMenuItem()
         Me.MnuLRUpdation = New System.Windows.Forms.ToolStripMenuItem()
         Me.MnuSaleReports = New System.Windows.Forms.ToolStripMenuItem()
         Me.MnuSaleInvoiceReport = New System.Windows.Forms.ToolStripMenuItem()
@@ -328,7 +330,7 @@ Partial Class MDIMain
         Me.MnuPrintCheque = New System.Windows.Forms.ToolStripMenuItem()
         Me.MnuBank = New System.Windows.Forms.ToolStripMenuItem()
         Me.MnuChequePrinting = New System.Windows.Forms.ToolStripMenuItem()
-        Me.MnuBarcodeDetailUpdation = New System.Windows.Forms.ToolStripMenuItem()
+        Me.MnuJournalAdjustment = New System.Windows.Forms.ToolStripMenuItem()
         Me.MnuMain.SuspendLayout()
         Me.SuspendLayout()
         '
@@ -653,7 +655,7 @@ Partial Class MDIMain
         '
         'MnuAccounts
         '
-        Me.MnuAccounts.DropDownItems.AddRange(New System.Windows.Forms.ToolStripItem() {Me.MnuVoucherEntry, Me.MnuDebitNote, Me.MnuCreditNote, Me.MnuExpenseIncomeVoucher, Me.MnuCustomerReceiptEntry, Me.MnuReceiptEntry, Me.MnuPaymentEntry, Me.MnuJournalEntry, Me.MnuReverseChargeEntry, Me.MnuPaymentSettlementEntry, Me.MnuCustomerAccountSettlement, Me.FrmVoucherAdjustment, Me.MnuBankReconsilationEntry, Me.MnuPaymentEntryJobWorker, Me.MnuDebtorsOpeningEntry, Me.MnuCreditorsOpeningEntry, Me.MnuJournalAdjustmentEntry, Me.MnuAccountsReports, Me.MnuAccountReports1, Me.MnuAccountReports2})
+        Me.MnuAccounts.DropDownItems.AddRange(New System.Windows.Forms.ToolStripItem() {Me.MnuVoucherEntry, Me.MnuDebitNote, Me.MnuCreditNote, Me.MnuExpenseIncomeVoucher, Me.MnuCustomerReceiptEntry, Me.MnuReceiptEntry, Me.MnuPaymentEntry, Me.MnuJournalEntry, Me.MnuReverseChargeEntry, Me.MnuPaymentSettlementEntry, Me.MnuCustomerAccountSettlement, Me.FrmVoucherAdjustment, Me.MnuBankReconsilationEntry, Me.MnuPaymentEntryJobWorker, Me.MnuDebtorsOpeningEntry, Me.MnuCreditorsOpeningEntry, Me.MnuJournalAdjustmentEntry, Me.MnuJournalAdjustment, Me.MnuAccountsReports, Me.MnuAccountReports1, Me.MnuAccountReports2})
         Me.MnuAccounts.Name = "MnuAccounts"
         Me.MnuAccounts.Size = New System.Drawing.Size(69, 20)
         Me.MnuAccounts.Text = "Accounts"
@@ -1163,7 +1165,7 @@ Partial Class MDIMain
         '
         'MnuPurchase
         '
-        Me.MnuPurchase.DropDownItems.AddRange(New System.Windows.Forms.ToolStripItem() {Me.MnuPurchaseOrder, Me.MnuPurchaseGoodsReceipt, Me.MnuPurchaseEntry, Me.MnuPurchaseReturnEntry, Me.MnuGenerateBarcodeSS, Me.MnuGenerateBarcode, Me.MnuLocalFreightEntry, Me.MnuLREntry, Me.MnuLRTransfer, Me.MnuBarcodeRateRevision, Me.MnuPurchaseReports})
+        Me.MnuPurchase.DropDownItems.AddRange(New System.Windows.Forms.ToolStripItem() {Me.MnuPurchaseOrder, Me.MnuPurchaseGoodsReceipt, Me.MnuPurchaseEntry, Me.MnuPurchaseReturnEntry, Me.MnuGenerateBarcodeSS, Me.MnuGenerateBarcode, Me.MnuLocalFreightEntry, Me.MnuLREntry, Me.MnuLRTransfer, Me.MnuBiltyUpdation, Me.MnuBarcodeRateRevision, Me.MnuPurchaseReports})
         Me.MnuPurchase.Name = "MnuPurchase"
         Me.MnuPurchase.Size = New System.Drawing.Size(67, 20)
         Me.MnuPurchase.Text = "Purchase"
@@ -1310,9 +1312,16 @@ Partial Class MDIMain
         Me.MnuMissingVoucherReport.Tag = "GRID REPORT"
         Me.MnuMissingVoucherReport.Text = "Missing Voucher Report"
         '
+        'MnuBiltyUpdation
+        '
+        Me.MnuBiltyUpdation.Name = "MnuBiltyUpdation"
+        Me.MnuBiltyUpdation.Size = New System.Drawing.Size(201, 22)
+        Me.MnuBiltyUpdation.Tag = "GRID REPORT"
+        Me.MnuBiltyUpdation.Text = "Bilty Updation"
+        '
         'MnuSale
         '
-        Me.MnuSale.DropDownItems.AddRange(New System.Windows.Forms.ToolStripItem() {Me.MnuSalesEnquiry, Me.MnuSalesOrder, Me.MnuSaleChallan, Me.MnuSalesEntry, Me.MnuSalesEntryRetail, Me.MnuSaleEntryOverlay, Me.MnuSaleEntryOverlayRetail, Me.MnuSalesReturnEntry, Me.MnuSalesReturnEntryRetail, Me.MnuSalesDelivery, Me.MnuSaleInvoiceW, Me.MnuSaleReturnW, Me.MnuQuotation, Me.MnuSalesEntryAadhat, Me.MnuPacking, Me.MnuBarcodeDetailUpdation, Me.MnuLRUpdation, Me.MnuSaleReports, Me.MnuSaleTools, Me.MnuLeadManagement, Me.MnuFallPico})
+        Me.MnuSale.DropDownItems.AddRange(New System.Windows.Forms.ToolStripItem() {Me.MnuSalesEnquiry, Me.MnuSalesOrder, Me.MnuSaleChallan, Me.MnuSalesEntry, Me.MnuSalesEntryRetail, Me.MnuSaleEntryOverlay, Me.MnuSaleEntryOverlayRetail, Me.MnuSalesReturnEntry, Me.MnuSalesReturnEntryRetail, Me.MnuSalesDelivery, Me.MnuSaleInvoiceW, Me.MnuSaleReturnW, Me.MnuQuotation, Me.MnuSalesEntryAadhat, Me.MnuPacking, Me.MnuVehicleDetailReport, Me.MnuLRUpdation, Me.MnuSaleReports, Me.MnuSaleTools, Me.MnuLeadManagement, Me.MnuFallPico})
         Me.MnuSale.Name = "MnuSale"
         Me.MnuSale.Size = New System.Drawing.Size(40, 20)
         Me.MnuSale.Text = "Sale"
@@ -1418,6 +1427,13 @@ Partial Class MDIMain
         Me.MnuPacking.Name = "MnuPacking"
         Me.MnuPacking.Size = New System.Drawing.Size(208, 22)
         Me.MnuPacking.Text = "Packing"
+        '
+        'MnuVehicleDetailReport
+        '
+        Me.MnuVehicleDetailReport.Name = "MnuVehicleDetailReport"
+        Me.MnuVehicleDetailReport.Size = New System.Drawing.Size(208, 22)
+        Me.MnuVehicleDetailReport.Tag = "GRID REPORT"
+        Me.MnuVehicleDetailReport.Text = "Vehicle Detail Report"
         '
         'MnuLRUpdation
         '
@@ -2512,12 +2528,11 @@ Partial Class MDIMain
         Me.MnuChequePrinting.Size = New System.Drawing.Size(160, 22)
         Me.MnuChequePrinting.Text = "Cheque Printing"
         '
-        'MnuBarcodeDetailUpdation
+        'MnuJournalAdjustment
         '
-        Me.MnuBarcodeDetailUpdation.Name = "MnuBarcodeDetailUpdation"
-        Me.MnuBarcodeDetailUpdation.Size = New System.Drawing.Size(208, 22)
-        Me.MnuBarcodeDetailUpdation.Tag = "GRID REPORT"
-        Me.MnuBarcodeDetailUpdation.Text = "Barcode Detail Updation"
+        Me.MnuJournalAdjustment.Name = "MnuJournalAdjustment"
+        Me.MnuJournalAdjustment.Size = New System.Drawing.Size(234, 22)
+        Me.MnuJournalAdjustment.Text = "Journal Adjustment"
         '
         'MDIMain
         '
@@ -2850,5 +2865,7 @@ Partial Class MDIMain
     Friend WithEvents MnuSaleChallan As ToolStripMenuItem
     Friend WithEvents MnuSaleChallanStatus As ToolStripMenuItem
     Friend WithEvents MnuSaleCertificate As ToolStripMenuItem
-    Friend WithEvents MnuBarcodeDetailUpdation As ToolStripMenuItem
+    Friend WithEvents MnuVehicleDetailReport As ToolStripMenuItem
+    Friend WithEvents MnuBiltyUpdation As ToolStripMenuItem
+    Friend WithEvents MnuJournalAdjustment As ToolStripMenuItem
 End Class

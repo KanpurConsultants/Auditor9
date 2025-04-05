@@ -3404,4 +3404,5 @@ D:\Active Projects\Auditor9\Auditor9\Project\Customised\obj\Debug\Customised.vbp
 D:\Active Projects\Auditor9\Auditor9\Project\Customised\obj\Debug\Customised.exe
 D:\Active Projects\Auditor9\Auditor9\Project\Customised\obj\Debug\Customised.xml
 D:\Active Projects\Auditor9\Auditor9\Project\Customised\obj\Debug\Customised.pdb
+D:\Active Projects\Auditor9\Auditor9\Project\Customised\obj\Debug\Customised.FrmSyncDataFromOtherDatabase_RVN.resources
 D:\Active Projects\Auditor9\Auditor9\Project\Customised\obj\Debug\Customised.vbprojResolveAssemblyReference.cache
