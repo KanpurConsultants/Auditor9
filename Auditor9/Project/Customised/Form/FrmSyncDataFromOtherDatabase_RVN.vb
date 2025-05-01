@@ -414,6 +414,12 @@ Public Class FrmSyncDataFromOtherDatabase_RVN
                 LEFT JOIN Voucher_Type Vt On H.V_Type = Vt.V_Type "
         DtPurchInvoice = AgL.FillData(mQry, AgL.GCn).Tables(0)
 
+        mQry = " UPDATE PurchInvoiceDetail SET UploadDate = NULL WHERE UploadDate IS NOT NULL "
+        AgL.Dman_ExecuteNonQry(mQry, AgL.GCn, AgL.ECmd)
+
+        mQry = " UPDATE PurchInvoiceDetail SET ReferenceDate = NULL WHERE ReferenceDate IS NOT NULL "
+        AgL.Dman_ExecuteNonQry(mQry, AgL.GCn, AgL.ECmd)
+
         mQry = " Select L.* 
                 From PurchInvoice H With (NoLock)
                 LEFT JOIN PurchInvoiceDetail L With (NoLock) On H.DocId = L.DocId
@@ -434,7 +440,7 @@ Public Class FrmSyncDataFromOtherDatabase_RVN
                                       DtLocalData As DataTable, RowIndexLocalData As Integer,
                                       FieldName As String, Optional DataType As String = "")
         If AgL.XNull(DtExternalData.Rows(RowIndexExternalData)(FieldName)) <> AgL.XNull(DtLocalData.Rows(RowIndexLocalData)(FieldName)) Then
-            If DataType = "Date" Then
+            If DataType = "Date" Or DataType = "DateTime" Then
                 FGetUpdateClause = FieldName + " = " & AgL.Chk_Date(AgL.XNull(DtExternalData.Rows(RowIndexExternalData)(FieldName))) & "" + ","
             ElseIf DataType = "Number" Then
                 FGetUpdateClause = FieldName + " = " & AgL.VNull(DtExternalData.Rows(RowIndexExternalData)(FieldName)) & "" + ","
@@ -520,7 +526,7 @@ Public Class FrmSyncDataFromOtherDatabase_RVN
                     AcGroupTable.GroupNature = ""
                     AcGroupTable.Nature = ""
                     AcGroupTable.SysGroup = ""
-                    AcGroupTable.LockText = "Synced From Other Database."
+                    AcGroupTable.LockText = "Entry Locked !"
                     AcGroupTable.U_Name = AgL.PubUserName
                     AcGroupTable.U_EntDt = AgL.GetDateTime(AgL.GcnRead)
                     AcGroupTable.U_AE = "A"
@@ -604,7 +610,6 @@ Public Class FrmSyncDataFromOtherDatabase_RVN
 
 
         Dim bLastSubCode As String = AgL.GetMaxId("SubGroup", "SubCode", AgL.GCn, AgL.PubDivCode, AgL.PubSiteCode, 8, True, True, AgL.ECmd, AgL.Gcn_ConnectionString)
-        'Dim ExportSiteCode As String = FGetExportSiteCodeFromSiteCode(AgL.XNull(DtExternalData_Header.Rows(0)("Site_Code")))
 
         mChildPrgCnt = 0
         mChildPrgMaxVal = DtExternalData_Header.Rows.Count
@@ -664,7 +669,7 @@ Public Class FrmSyncDataFromOtherDatabase_RVN
                 SubGroupTable.PANNo = AgL.XNull(DtExternalData_Header.Rows(I)("PANNo"))
                 SubGroupTable.AadharNo = AgL.XNull(DtExternalData_Header.Rows(I)("AadharNo"))
                 SubGroupTable.OMSId = AgL.XNull(DtExternalData_Header.Rows(I)("SubCode"))
-                SubGroupTable.LockText = "Synced From Other Database."
+                SubGroupTable.LockText = "Entry Locked !"
                 SubGroupTable.Cnt = I
 
                 Try
@@ -696,7 +701,6 @@ Public Class FrmSyncDataFromOtherDatabase_RVN
         Dim DtFieldList_Header As DataTable
 
         Dim bExternalDocIdStr As String = ""
-        Dim ExportSiteCode As String = FGetExportSiteCodeFromSiteCode(AgL.XNull(DtExternalData_Header.Rows(0)("Site_Code")))
         For I As Integer = 0 To DtExternalData_Header.Rows.Count - 1
             If bExternalDocIdStr <> "" Then bExternalDocIdStr += ","
             bExternalDocIdStr += AgL.Chk_Text(AgL.XNull(DtExternalData_Header.Rows(I)("SubCode")))
@@ -707,7 +711,7 @@ Public Class FrmSyncDataFromOtherDatabase_RVN
                 LEFT JOIN SubGroup PSg On Sg.Parent = PSg.SubCode
                 LEFT JOIN City C ON Sg.CityCode = C.CityCode
                 LEFT JOIN Area A On Sg.Area = A.Code
-                Where Sg.OMSId In (" & bExternalDocIdStr & ") AND Sg.Site_Code =  '" & ExportSiteCode & "'"
+                Where Sg.OMSId In (" & bExternalDocIdStr & ") "
         Dim DtHeaderLocal As DataTable = AgL.FillData(mQry, IIf(AgL.PubServerName = "", AgL.GCn, AgL.GcnRead)).Tables(0)
         mQry = "PRAGMA table_info(SubGroup);"
         DtFieldList_Header = AgL.FillData(mQry, Connection_ExternalDatabase).Tables(0)
@@ -803,7 +807,7 @@ Public Class FrmSyncDataFromOtherDatabase_RVN
                 ItemCategoryTable.EntryBy = AgL.PubUserName
                 ItemCategoryTable.EntryDate = AgL.GetDateTime(AgL.GcnRead)
                 ItemCategoryTable.EntryType = "Add"
-                ItemCategoryTable.LockText = "Synced From Other Database."
+                ItemCategoryTable.LockText = "Entry Locked !"
                 ItemCategoryTable.EntryStatus = LogStatus.LogOpen
                 ItemCategoryTable.Div_Code = AgL.PubDivCode
                 ItemCategoryTable.Status = "Active"
@@ -852,7 +856,7 @@ Public Class FrmSyncDataFromOtherDatabase_RVN
                 ItemGroupTable.EntryBy = AgL.PubUserName
                 ItemGroupTable.EntryDate = AgL.GetDateTime(AgL.GcnRead)
                 ItemGroupTable.EntryType = "Add"
-                ItemGroupTable.LockText = "Synced From Other Database."
+                ItemGroupTable.LockText = "Entry Locked !"
                 ItemGroupTable.EntryStatus = LogStatus.LogOpen
                 ItemGroupTable.Div_Code = AgL.PubDivCode
                 ItemGroupTable.Status = "Active"
@@ -910,7 +914,7 @@ Public Class FrmSyncDataFromOtherDatabase_RVN
                 ItemTable.EntryStatus = LogStatus.LogOpen
                 ItemTable.Div_Code = AgL.PubDivCode
                 ItemTable.Status = "Active"
-                ItemTable.LockText = "Synced From Other Database."
+                ItemTable.LockText = "Entry Locked !"
                 ItemTable.OMSId = AgL.XNull(DtExternalData_Header.Rows(I)("Code"))
                 ItemTable.StockYN = 1
                 ItemTable.IsSystemDefine = 0
@@ -1024,10 +1028,6 @@ Public Class FrmSyncDataFromOtherDatabase_RVN
 
         Dim DtLocalData_Header As DataTable
         Dim DtLocalData_Line As DataTable
-        Dim ExportSiteCode As String
-        If DtExternalData_Header.Rows.Count > 0 Then
-            ExportSiteCode = FGetExportSiteCodeFromSiteCode(AgL.XNull(DtExternalData_Header.Rows(0)("Site_Code")))
-        End If
         Dim bEntryType As String = ""
         If DtExternalData_Header.Rows.Count > 0 Then
             mQry = " Select NCat From Voucher_Type Where V_Type = '" & AgL.XNull(DtExternalData_Header.Rows(0)("V_Type")) & "'"
@@ -1056,7 +1056,7 @@ Public Class FrmSyncDataFromOtherDatabase_RVN
                 LEFT JOIN SubGroup Sg On H.SaleToParty = Sg.SubCode
                 LEFT JOIN SubGroup BSg On H.BillToParty = BSg.SubCode
                 LEFT JOIN City C On H.SaleToPartyCity = C.CityCode
-                Where H.OMSId In (" & bExternalDocIdStr & ")  AND H.Site_Code =  '" & ExportSiteCode & "'"
+                Where H.OMSId In (" & bExternalDocIdStr & ") "
         DtLocalData_Header = AgL.FillData(mQry, IIf(AgL.PubServerName = "", AgL.GCn, AgL.GcnRead)).Tables(0)
         mQry = "PRAGMA table_info(SaleInvoice);"
         DtFieldList_Header = AgL.FillData(mQry, Connection_ExternalDatabase).Tables(0)
@@ -1070,7 +1070,7 @@ Public Class FrmSyncDataFromOtherDatabase_RVN
             UpdateParentProgressBar("Updating Sale" & bEntryType, mParentPrgBarMaxVal)
             UpdateChildProgressBar("Checking Sale" & bEntryType + AgL.XNull(DtExternalData_Header.Rows(I)("V_Type")) + "-" + AgL.XNull(DtExternalData_Header.Rows(I)("ManualRefNo")) + " exists or not.", mChildPrgMaxVal, mChildPrgCnt)
             For J As Integer = 0 To DtLocalData_Header.Rows.Count - 1
-                If AgL.XNull(DtExternalData_Header.Rows(I)("DocId")) = AgL.XNull(DtLocalData_Header.Rows(J)("OMSId")) And ExportSiteCode = AgL.XNull(DtLocalData_Header.Rows(J)("Site_Code")) Then
+                If AgL.XNull(DtExternalData_Header.Rows(I)("DocId")) = AgL.XNull(DtLocalData_Header.Rows(J)("OMSId")) Then
                     bUpdateClauseQry = ""
                     For F As Integer = 0 To DtFieldList_Header.Rows.Count - 1
                         If DtFieldList_Header.Rows(F)("Name") = "DocId" Or
@@ -1160,12 +1160,9 @@ Public Class FrmSyncDataFromOtherDatabase_RVN
                                             DtFieldList_Line.Rows(F)("Name") = "SaleInvoice" Or DtFieldList_Line.Rows(F)("Name") = "SaleInvoiceSr" Or DtFieldList_Line.Rows(F)("Name") = "OMSId" Then
                                             'Do Nothing
                                         ElseIf DtFieldList_Line.Rows(F)("Name") = "Item" Or DtFieldList_Line.Rows(F)("Name") = "ItemState" Then
-                                            'bUpdateClauseQry += FGetUpdateClauseForCodes(DtExternalData_Line, K, DtLocalData_Line, L, DtFieldList_Line.Rows(F)("Name"), "Code", DtItem)
-                                            If AgL.StrCmp(ClsMain.FDivisionNameForCustomization(6), "SADHVI") And ExportSiteCode = "6" Then
-                                                bUpdateClauseQry += FGetUpdateClauseForCodesNandiItem(DtExternalData_Line, K, DtLocalData_Line, L, DtFieldList_Line.Rows(F)("Name"), "Code", DtItem, "Item")
-                                            Else
-                                                bUpdateClauseQry += FGetUpdateClauseForCodes(DtExternalData_Line, K, DtLocalData_Line, L, DtFieldList_Line.Rows(F)("Name"), "Code", DtItem, "Item")
-                                            End If
+
+                                            bUpdateClauseQry += FGetUpdateClauseForCodes(DtExternalData_Line, K, DtLocalData_Line, L, DtFieldList_Line.Rows(F)("Name"), "Code", DtItem, "Item")
+
                                         ElseIf DtFieldList_Line.Rows(F)("Name") = "Godown" Or DtFieldList_Line.Rows(F)("Name") = "SalesRepresentative" Then
                                             bUpdateClauseQry += FGetUpdateClauseForCodes(DtExternalData_Line, K, DtLocalData_Line, L, DtFieldList_Line.Rows(F)("Name"), "SubCode", DtSubGroup, "SubGroup")
                                         ElseIf DtFieldList_Line.Rows(F)("Name") = "Catalog" Then
@@ -1223,7 +1220,13 @@ Public Class FrmSyncDataFromOtherDatabase_RVN
                                 WHERE L.DocId =  '" & AgL.XNull(DtLocalData_Header.Rows(J)("DocId")) & "' "
                             AgL.Dman_ExecuteNonQry(mQry, AgL.GCn, AgL.ECmd)
 
-                            FrmSaleInvoiceDirect_WithDimension.FGetCalculationData(AgL.XNull(DtLocalData_Header.Rows(J)("DocId")), AgL.GCn, AgL.ECmd)
+                            If AgL.StrCmp(AgL.PubDBName, "RVN2") And DtExternalData_Header.Rows(I)("V_Type") = Ncat.SaleChallan Then
+
+                            Else
+                                FrmSaleInvoiceDirect_WithDimension.FGetCalculationData(AgL.XNull(DtLocalData_Header.Rows(J)("DocId")), AgL.GCn, AgL.ECmd)
+
+                            End If
+
 
                             Dim SaleInvoicePaymentTable As DataTable
                             Dim SaleInvoiceTable As DataTable
@@ -1242,7 +1245,7 @@ Public Class FrmSyncDataFromOtherDatabase_RVN
 
                                 For K As Integer = 0 To SaleInvoicePaymentTable.Rows.Count - 1
                                     If Val(SaleInvoicePaymentTable.Rows(K)("Amount")) > 0 Then
-                                        Dim PostToAc = FGetCodeFromOMSId(AgL.XNull(SaleInvoicePaymentTable.Rows(K)("PostToAc")), ExportSiteCode, DtSubGroup, "SubCode")
+                                        Dim PostToAc = FGetCodeFromOMSId(AgL.XNull(SaleInvoicePaymentTable.Rows(K)("PostToAc")), "", DtSubGroup, "SubCode")
 
                                         If PostToAc = "" Then
                                             mQry = ""
@@ -1360,6 +1363,8 @@ Public Class FrmSyncDataFromOtherDatabase_RVN
             Dim bNCat As String = AgL.XNull(AgL.Dman_Execute(mQry, AgL.GCn).ExecuteScalar())
             If bNCat = Ncat.SaleInvoice Then
                 bEntryType = " Invoice "
+            ElseIf bNCat = Ncat.SaleChallan Then
+                bEntryType = " Invoice "
             ElseIf bNCat = Ncat.SaleReturn Then
                 bEntryType = " Return "
             ElseIf bNCat = Ncat.SaleOrder Then
@@ -1421,7 +1426,7 @@ Public Class FrmSyncDataFromOtherDatabase_RVN
                 SaleInvoiceTable.MoveToLogDate = ""
                 SaleInvoiceTable.UploadDate = ""
                 SaleInvoiceTable.OmsId = AgL.XNull(DtExternalData_Header.Rows(I)("DocId"))
-                SaleInvoiceTable.LockText = "Synced From Other Database."
+                SaleInvoiceTable.LockText = "Entry Locked !"
 
                 SaleInvoiceTable.Gross_Amount = AgL.VNull(DtExternalData_Header.Rows(I)("Gross_Amount"))
                 SaleInvoiceTable.SpecialDiscount_Per = AgL.VNull(DtExternalData_Header.Rows(I)("SpecialDiscount_Per"))
@@ -1582,33 +1587,29 @@ Public Class FrmSyncDataFromOtherDatabase_RVN
         End If
 
 
-        Dim ExportSiteCode As String
-        If (DtExternalData_Header.Rows.Count > 0) Then
-            ExportSiteCode = FGetExportSiteCodeFromSiteCode(AgL.XNull(DtExternalData_Header.Rows(0)("Site_Code")))
-        End If
 
         mChildPrgCnt = 0
         mChildPrgMaxVal = DtExternalData_Header.Rows.Count
         For I = 0 To DtExternalData_Header.Rows.Count - 1
             UpdateParentProgressBar("Inserting Purch" & bEntryType, mParentPrgBarMaxVal)
             UpdateChildProgressBar("Checking Purch" & bEntryType & AgL.XNull(DtExternalData_Header.Rows(I)("V_Type")) & "-" & AgL.XNull(DtExternalData_Header.Rows(I)("ManualRefNo")) & " exist or not.", mChildPrgMaxVal, mChildPrgCnt)
-            If DtPurchInvoice.Select("OMSId = '" & AgL.XNull(DtExternalData_Header.Rows(I)("DocId")) & "' AND Site_Code = '" & ExportSiteCode & "' ").Length = 0 Then
+            If DtPurchInvoice.Select("OMSId = '" & AgL.XNull(DtExternalData_Header.Rows(I)("DocId")) & "'").Length = 0 Then
                 Dim PurchInvoiceTableList(0) As FrmPurchInvoiceDirect_WithDimension.StructPurchInvoice
                 Dim PurchInvoiceTable As New FrmPurchInvoiceDirect_WithDimension.StructPurchInvoice
 
                 PurchInvoiceTable.DocID = ""
                 PurchInvoiceTable.V_Type = AgL.XNull(DtExternalData_Header.Rows(I)("V_Type"))
                 PurchInvoiceTable.V_Prefix = AgL.XNull(DtExternalData_Header.Rows(I)("V_Prefix"))
-                PurchInvoiceTable.Site_Code = ExportSiteCode
+                PurchInvoiceTable.Site_Code = AgL.XNull(DtExternalData_Header.Rows(I)("Site_Code"))
                 PurchInvoiceTable.Div_Code = AgL.XNull(DtExternalData_Header.Rows(I)("Div_Code"))
                 PurchInvoiceTable.V_No = 0
                 PurchInvoiceTable.V_Date = AgL.XNull(DtExternalData_Header.Rows(I)("V_Date"))
                 PurchInvoiceTable.ManualRefNo = AgL.XNull(DtExternalData_Header.Rows(I)("ManualRefNo"))
-                PurchInvoiceTable.Vendor = FGetCodeFromOMSId(AgL.XNull(DtExternalData_Header.Rows(I)("Vendor")), ExportSiteCode, DtSubGroup, "SubCode")
+                PurchInvoiceTable.Vendor = FGetCodeFromOMSId(AgL.XNull(DtExternalData_Header.Rows(I)("Vendor")), "", DtSubGroup, "SubCode")
                 PurchInvoiceTable.VendorName = AgL.XNull(DtExternalData_Header.Rows(I)("VendorName"))
-                PurchInvoiceTable.AgentCode = FGetCodeFromOMSId(AgL.XNull(DtExternalData_Header.Rows(I)("Agent")), ExportSiteCode, DtSubGroup, "SubCode")
+                PurchInvoiceTable.AgentCode = FGetCodeFromOMSId(AgL.XNull(DtExternalData_Header.Rows(I)("Agent")), "", DtSubGroup, "SubCode")
                 PurchInvoiceTable.AgentName = ""
-                PurchInvoiceTable.BillToPartyCode = FGetCodeFromOMSId(AgL.XNull(DtExternalData_Header.Rows(I)("BillToParty")), ExportSiteCode, DtSubGroup, "SubCode")
+                PurchInvoiceTable.BillToPartyCode = FGetCodeFromOMSId(AgL.XNull(DtExternalData_Header.Rows(I)("BillToParty")), "", DtSubGroup, "SubCode")
                 PurchInvoiceTable.BillToPartyName = AgL.XNull(DtExternalData_Header.Rows(I)("BillToPartyName"))
                 PurchInvoiceTable.VendorAddress = AgL.XNull(DtExternalData_Header.Rows(I)("VendorAddress"))
                 PurchInvoiceTable.VendorMobile = AgL.XNull(DtExternalData_Header.Rows(I)("VendorMobile"))
@@ -1631,7 +1632,7 @@ Public Class FrmSyncDataFromOtherDatabase_RVN
                 PurchInvoiceTable.MoveToLogDate = ""
                 PurchInvoiceTable.UploadDate = ""
                 PurchInvoiceTable.OmsId = AgL.XNull(DtExternalData_Header.Rows(I)("DocId"))
-                PurchInvoiceTable.LockText = "Synced From Other Database."
+                PurchInvoiceTable.LockText = "Entry Locked !"
 
                 PurchInvoiceTable.Gross_Amount = AgL.VNull(DtExternalData_Header.Rows(I)("Gross_Amount"))
                 PurchInvoiceTable.SpecialDiscount_Per = AgL.VNull(DtExternalData_Header.Rows(I)("SpecialDiscount_Per"))
@@ -1659,15 +1660,7 @@ Public Class FrmSyncDataFromOtherDatabase_RVN
 
                 For J = 0 To DtExternalData_Line.Rows.Count - 1
                     PurchInvoiceTable.Line_Sr = AgL.XNull(DtExternalData_Line.Rows(J)("Sr"))
-                    If AgL.StrCmp(ClsMain.FDivisionNameForCustomization(6), "SADHVI") Then
-                        If ExportSiteCode = "6" Then
-                            PurchInvoiceTable.Line_ItemCode = AgL.XNull(DtExternalData_Line.Rows(J)("ItemOmsId"))
-                        Else
-                            PurchInvoiceTable.Line_ItemCode = AgL.XNull(DtExternalData_Line.Rows(J)("Item"))
-                        End If
-                    Else
-                        PurchInvoiceTable.Line_ItemCode = FGetCodeFromOMSId(AgL.XNull(DtExternalData_Line.Rows(J)("Item")), ExportSiteCode, DtItem, "Code")
-                    End If
+                    PurchInvoiceTable.Line_ItemCode = FGetCodeFromOMSId(AgL.XNull(DtExternalData_Line.Rows(J)("Item")), "", DtItem, "Code")
                     PurchInvoiceTable.Line_ItemName = AgL.XNull(DtExternalData_Line.Rows(J)("ItemDesc"))
                     PurchInvoiceTable.Line_Specification = AgL.XNull(DtExternalData_Line.Rows(J)("Specification"))
                     PurchInvoiceTable.Line_SalesTaxGroupItem = AgL.XNull(DtExternalData_Line.Rows(J)("SalesTaxGroupItem"))
@@ -1772,28 +1765,24 @@ Public Class FrmSyncDataFromOtherDatabase_RVN
 
         mChildPrgCnt = 0
         mChildPrgMaxVal = DtExternalData_Header.Rows.Count
-        Dim ExportSiteCode As String
 
-        If (DtExternalData_Header.Rows.Count > 0) Then
-            ExportSiteCode = FGetExportSiteCodeFromSiteCode(AgL.XNull(DtExternalData_Header.Rows(0)("Site_Code")))
-        End If
 
         For I = 0 To DtExternalData_Header.Rows.Count - 1
             UpdateParentProgressBar("Inserting Ledger Heads", mParentPrgBarMaxVal)
             UpdateChildProgressBar("Checking " + AgL.XNull(DtExternalData_Header.Rows(I)("V_Type")) + "-" + AgL.XNull(DtExternalData_Header.Rows(I)("ManualRefNo")) + " exists or not.", mChildPrgMaxVal, mChildPrgCnt)
-            If DtLedgerHead.Select("OMSId = '" & AgL.XNull(DtExternalData_Header.Rows(I)("DocId")) & "' AND Site_Code = '" & ExportSiteCode & "' ").Length = 0 Then
+            If DtLedgerHead.Select("OMSId = '" & AgL.XNull(DtExternalData_Header.Rows(I)("DocId")) & "' ").Length = 0 Then
                 Dim LedgerHeadTableList(0) As FrmVoucherEntry.StructLedgerHead
                 Dim LedgerHeadTable As New FrmVoucherEntry.StructLedgerHead
 
                 LedgerHeadTable.DocID = ""
                 LedgerHeadTable.V_Type = AgL.XNull(DtExternalData_Header.Rows(I)("V_Type"))
                 LedgerHeadTable.V_Prefix = AgL.XNull(DtExternalData_Header.Rows(I)("V_Prefix"))
-                LedgerHeadTable.Site_Code = ExportSiteCode
+                LedgerHeadTable.Site_Code = AgL.XNull(DtExternalData_Header.Rows(I)("Site_Code"))
                 LedgerHeadTable.Div_Code = AgL.XNull(DtExternalData_Header.Rows(I)("Div_Code"))
                 LedgerHeadTable.V_No = 0
                 LedgerHeadTable.V_Date = AgL.XNull(DtExternalData_Header.Rows(I)("V_Date"))
                 LedgerHeadTable.ManualRefNo = AgL.XNull(DtExternalData_Header.Rows(I)("ManualRefNo"))
-                LedgerHeadTable.Subcode = FGetCodeFromOMSId(AgL.XNull(DtExternalData_Header.Rows(I)("SubCode")), ExportSiteCode, DtSubGroup, "SubCode")
+                LedgerHeadTable.Subcode = FGetCodeFromOMSId(AgL.XNull(DtExternalData_Header.Rows(I)("SubCode")), "", DtSubGroup, "SubCode")
                 LedgerHeadTable.SubcodeName = AgL.XNull(DtExternalData_Header.Rows(I)("PartyName_Master"))
                 LedgerHeadTable.SalesTaxGroupParty = AgL.XNull(DtExternalData_Header.Rows(I)("SalesTaxGroupParty"))
                 LedgerHeadTable.PlaceOfSupply = AgL.XNull(DtExternalData_Header.Rows(I)("PlaceOfSupply"))
@@ -1815,7 +1804,7 @@ Public Class FrmSyncDataFromOtherDatabase_RVN
                 LedgerHeadTable.MoveToLogDate = ""
                 LedgerHeadTable.UploadDate = ""
                 LedgerHeadTable.OMSId = AgL.XNull(DtExternalData_Header.Rows(I)("DocId"))
-                LedgerHeadTable.LockText = "Synced From Other Database."
+                LedgerHeadTable.LockText = "Entry Locked !"
 
                 LedgerHeadTable.Gross_Amount = AgL.VNull(DtExternalData_Header.Rows(I)("Gross_Amount"))
                 LedgerHeadTable.Taxable_Amount = AgL.VNull(DtExternalData_Header.Rows(I)("Taxable_Amount"))
@@ -1840,9 +1829,9 @@ Public Class FrmSyncDataFromOtherDatabase_RVN
 
                 For J = 0 To DtExternalData_Line.Rows.Count - 1
                     LedgerHeadTable.Line_Sr = AgL.XNull(DtExternalData_Line.Rows(J)("Sr"))
-                    LedgerHeadTable.Line_SubCode = FGetCodeFromOMSId(AgL.XNull(DtExternalData_Line.Rows(J)("SubCode")), ExportSiteCode, DtSubGroup, "SubCode")
+                    LedgerHeadTable.Line_SubCode = FGetCodeFromOMSId(AgL.XNull(DtExternalData_Line.Rows(J)("SubCode")), "", DtSubGroup, "SubCode")
                     LedgerHeadTable.Line_SubCodeName = AgL.XNull(DtExternalData_Line.Rows(J)("SubCodeName"))
-                    LedgerHeadTable.Line_LinkedSubCode = FGetCodeFromOMSId(AgL.XNull(DtExternalData_Line.Rows(J)("LinkedSubCode")), ExportSiteCode, DtSubGroup, "SubCode")
+                    LedgerHeadTable.Line_LinkedSubCode = FGetCodeFromOMSId(AgL.XNull(DtExternalData_Line.Rows(J)("LinkedSubCode")), "", DtSubGroup, "SubCode")
                     LedgerHeadTable.Line_LinkedSubCodeName = AgL.XNull(DtExternalData_Line.Rows(J)("LinkedSubCodeName"))
                     LedgerHeadTable.Line_Specification = AgL.XNull(DtExternalData_Line.Rows(J)("Specification"))
                     LedgerHeadTable.Line_SalesTaxGroupItem = AgL.XNull(DtExternalData_Line.Rows(J)("SalesTaxGroupItem"))
@@ -1937,13 +1926,12 @@ Public Class FrmSyncDataFromOtherDatabase_RVN
         Next
 
         If bExternalDocIdStr = "" Then Exit Sub
-        Dim ExportSiteCode As String = FGetExportSiteCodeFromSiteCode(AgL.XNull(DtExternalData_Header.Rows(0)("Site_Code")))
 
         mQry = " Select H.*, Sg.OMSId As SubCodeOMSId, C.OMSID As PartyCityOMSId 
                 From LedgerHead H
                 LEFT JOIN SubGroup Sg On H.SubCode = Sg.SubCode
                 LEFT JOIN City C On H.PartyCity = C.CityCode
-                Where H.OMSId In (" & bExternalDocIdStr & ") AND H.Site_Code =  '" & ExportSiteCode & "' "
+                Where H.OMSId In (" & bExternalDocIdStr & ") "
         DtLocalData_Header = AgL.FillData(mQry, IIf(AgL.PubServerName = "", AgL.GCn, AgL.GcnRead)).Tables(0)
         mQry = "PRAGMA table_info(LedgerHead);"
         DtFieldList_Header = AgL.FillData(mQry, Connection_ExternalDatabase).Tables(0)
@@ -1957,7 +1945,7 @@ Public Class FrmSyncDataFromOtherDatabase_RVN
             UpdateParentProgressBar("Updating Ledger Heads", mParentPrgBarMaxVal)
             UpdateChildProgressBar("Checking " + AgL.XNull(DtExternalData_Header.Rows(I)("V_Type")) + "-" + AgL.XNull(DtExternalData_Header.Rows(I)("ManualRefNo")) + " exists or not.", mChildPrgMaxVal, mChildPrgCnt)
             For J As Integer = 0 To DtLocalData_Header.Rows.Count - 1
-                If AgL.XNull(DtExternalData_Header.Rows(I)("DocId")) = AgL.XNull(DtLocalData_Header.Rows(J)("OMSId")) And ExportSiteCode = AgL.XNull(DtLocalData_Header.Rows(J)("Site_Code")) Then
+                If AgL.XNull(DtExternalData_Header.Rows(I)("DocId")) = AgL.XNull(DtLocalData_Header.Rows(J)("OMSId")) Then
                     bUpdateClauseQry = ""
                     For F As Integer = 0 To DtFieldList_Header.Rows.Count - 1
                         If DtFieldList_Header.Rows(F)("Name") = "DocId" Or
@@ -2206,10 +2194,6 @@ Public Class FrmSyncDataFromOtherDatabase_RVN
             End If
         End If
 
-        Dim ExportSiteCode As String
-        If (DtExternalData_Header.Rows.Count > 0) Then
-            ExportSiteCode = FGetExportSiteCodeFromSiteCode(AgL.XNull(DtExternalData_Header.Rows(0)("Site_Code")))
-        End If
 
         Dim bExternalDocIdStr As String = ""
         For I As Integer = 0 To DtExternalData_Header.Rows.Count - 1
@@ -2225,7 +2209,7 @@ Public Class FrmSyncDataFromOtherDatabase_RVN
                 LEFT JOIN SubGroup Sg On H.Vendor = Sg.SubCode
                 LEFT JOIN SubGroup BSg On H.BillToParty = BSg.SubCode
                 LEFT JOIN City C On H.VendorCity = C.CityCode
-                Where H.OMSId In (" & bExternalDocIdStr & ") AND H.Site_Code =  '" & ExportSiteCode & "'"
+                Where H.OMSId In (" & bExternalDocIdStr & ") "
         DtLocalData_Header = AgL.FillData(mQry, IIf(AgL.PubServerName = "", AgL.GCn, AgL.GcnRead)).Tables(0)
         mQry = "PRAGMA table_info(PurchInvoice);"
         DtFieldList_Header = AgL.FillData(mQry, Connection_ExternalDatabase).Tables(0)
@@ -2239,7 +2223,7 @@ Public Class FrmSyncDataFromOtherDatabase_RVN
             UpdateParentProgressBar("Updating Purch" & bEntryType, mParentPrgBarMaxVal)
             UpdateChildProgressBar("Checking Purch" & bEntryType + AgL.XNull(DtExternalData_Header.Rows(I)("V_Type")) + "-" + AgL.XNull(DtExternalData_Header.Rows(I)("ManualRefNo")) + " exists or not.", mChildPrgMaxVal, mChildPrgCnt)
             For J As Integer = 0 To DtLocalData_Header.Rows.Count - 1
-                If AgL.XNull(DtExternalData_Header.Rows(I)("DocId")) = AgL.XNull(DtLocalData_Header.Rows(J)("OMSId")) And ExportSiteCode = AgL.XNull(DtLocalData_Header.Rows(J)("Site_Code")) Then
+                If AgL.XNull(DtExternalData_Header.Rows(I)("DocId")) = AgL.XNull(DtLocalData_Header.Rows(J)("OMSId")) Then
                     bUpdateClauseQry = ""
                     For F As Integer = 0 To DtFieldList_Header.Rows.Count - 1
                         If DtFieldList_Header.Rows(F)("Name") = "DocId" Or
@@ -2327,11 +2311,7 @@ Public Class FrmSyncDataFromOtherDatabase_RVN
                                             DtFieldList_Line.Rows(F)("Name") = "PurchInvoice" Or DtFieldList_Line.Rows(F)("Name") = "PurchInvoiceSr" Or DtFieldList_Line.Rows(F)("Name") = "OMSId" Then
                                             'Do Nothing
                                         ElseIf DtFieldList_Line.Rows(F)("Name") = "Item" Or DtFieldList_Line.Rows(F)("Name") = "ItemState" Then
-                                            If AgL.StrCmp(ClsMain.FDivisionNameForCustomization(6), "SADHVI") And ExportSiteCode = "6" Then
-                                                bUpdateClauseQry += FGetUpdateClauseForCodesNandiItem(DtExternalData_Line, K, DtLocalData_Line, L, DtFieldList_Line.Rows(F)("Name"), "Code", DtItem, "Item")
-                                            Else
-                                                bUpdateClauseQry += FGetUpdateClauseForCodes(DtExternalData_Line, K, DtLocalData_Line, L, DtFieldList_Line.Rows(F)("Name"), "Code", DtItem, "Item")
-                                            End If
+                                            bUpdateClauseQry += FGetUpdateClauseForCodes(DtExternalData_Line, K, DtLocalData_Line, L, DtFieldList_Line.Rows(F)("Name"), "Code", DtItem, "Item")
                                         ElseIf DtFieldList_Line.Rows(F)("Name") = "Godown" Then
                                             bUpdateClauseQry += FGetUpdateClauseForCodes(DtExternalData_Line, K, DtLocalData_Line, L, DtFieldList_Line.Rows(F)("Name"), "SubCode", DtSubGroup, "SubGroup")
                                         Else
@@ -2385,7 +2365,11 @@ Public Class FrmSyncDataFromOtherDatabase_RVN
                                     WHERE L.DocId =  '" & AgL.XNull(DtLocalData_Header.Rows(J)("DocId")) & "' "
                             AgL.Dman_ExecuteNonQry(mQry, AgL.GCn, AgL.ECmd)
 
-                            FrmPurchInvoiceDirect_WithDimension.FGetCalculationData(AgL.XNull(DtLocalData_Header.Rows(J)("DocId")), AgL.GCn, AgL.ECmd)
+                            If AgL.StrCmp(AgL.PubDBName, "RVN2") And DtExternalData_Header.Rows(I)("V_Type") = Ncat.StockTransfer Then
+
+                            Else
+                                FrmPurchInvoiceDirect_WithDimension.FGetCalculationData(AgL.XNull(DtLocalData_Header.Rows(J)("DocId")), AgL.GCn, AgL.ECmd)
+                            End If
 
                             If AgL.StrCmp(ClsMain.FDivisionNameForCustomization(6), "SADHVI") Then
                                 mQry = "UPDATE Ledger Set SubCode = 'GOODS' Where DocId = '" & AgL.XNull(DtLocalData_Header.Rows(J)("DocId")) & "' And SubCode = 'PURCH'"
@@ -2540,7 +2524,7 @@ Public Class FrmSyncDataFromOtherDatabase_RVN
                     LEFT JOIN Voucher_Type Vt On H.V_Type = Vt.V_Type
                     LEFT JOIN SubGroup Sg On H.BillToParty = Sg.SubCode
                     LEFT JOIN SubGroup Sg1 ON H.SaleToParty = Sg1.SubCode 
-                    Where Vt.NCat = '" & Ncat.SaleInvoice & "'"
+                    Where Vt.NCat in ( '" & Ncat.SaleInvoice & "','" & Ncat.SaleChallan & "')"
             mQry = mQry & " AND Date(H.V_Date) >= " & AgL.Chk_Date(CDate(DglMain.Item(Col1Value, rowDataSyncFromDate).Value).ToString("s")) & ""
             mQry = mQry & " AND ISNULL(VT.IsStopToSync,0) =0 "
 
@@ -2564,7 +2548,7 @@ Public Class FrmSyncDataFromOtherDatabase_RVN
                     LEFT JOIN Voucher_Type Vt On H.V_Type = Vt.V_Type
                     LEFT JOIN SubGroup Sg On H.BillToParty = Sg.SubCode
                     LEFT JOIN SubGroup Sg1 ON H.Vendor = Sg1.SubCode 
-                    Where Vt.NCat = '" & Ncat.PurchaseInvoice & "'"
+                    Where Vt.NCat in ('" & Ncat.PurchaseInvoice & "', '" & Ncat.StockTransfer & "')"
             mQry = mQry & " AND Date(H.V_Date) >= " & AgL.Chk_Date(CDate(DglMain.Item(Col1Value, rowDataSyncFromDate).Value).ToString("s")) & ""
             mQry = mQry & " AND ISNULL(VT.IsStopToSync,0) =0 "
             DtExternalData_PurchInvoice = AgL.FillData(mQry, Connection_ExternalDatabase).Tables(0)

@@ -36,7 +36,7 @@ Public Class ClsReports
 #End Region
 
 #Region "Reports Constant"
-    'Private Const StockReport As String = "StockReport"
+    Private Const SaleProfitAnalysis As String = "SaleProfitAnalysis"
     Private Const SaleInvoiceReport As String = "SaleInvoiceReport"
     Private Const SaleOrderReport As String = "SaleOrderReport"
     Private Const SaleInvoiceReportAadhat As String = "SaleInvoiceReportAadhat"
@@ -199,6 +199,20 @@ Public Class ClsReports
                     ReportFrm.CreateHelpGrid("Account Nature", "Account Nature", FrmRepDisplay.FieldFilterDataType.StringType, FrmRepDisplay.FieldDataType.MultiSelection, mHelpAccountNature)
                     ReportFrm.CreateHelpGrid("Department", "Department", FrmRepDisplay.FieldFilterDataType.StringType, FrmRepDisplay.FieldDataType.MultiSelection, mHelpDepartment)
                     ReportFrm.FilterGrid.Rows(19).Visible = False 'Hide HSN Row
+
+
+                Case SaleProfitAnalysis
+                    mQry = "Select 'Item Wise Summary' as Code, 'Item Wise Summary' as Name 
+                            Union All Select 'Item Group Wise Summary' as Code, 'Item Group Wise Summary' as Name 
+                            "
+                    ReportFrm.CreateHelpGrid("Report Type", "Report Type", FrmRepDisplay.FieldFilterDataType.StringType, FrmRepDisplay.FieldDataType.SingleSelection, mQry, "Item Group Wise Summary",,, 300)
+                    ReportFrm.CreateHelpGrid("FromDate", "From Date", FrmRepDisplay.FieldFilterDataType.StringType, FrmRepDisplay.FieldDataType.DateType, "", AgL.PubStartDate)
+                    ReportFrm.CreateHelpGrid("ToDate", "To Date", FrmRepDisplay.FieldFilterDataType.StringType, FrmRepDisplay.FieldDataType.DateType, "", AgL.PubEndDate)
+                    ReportFrm.CreateHelpGrid("Site", "Site", FrmRepDisplay.FieldFilterDataType.StringType, FrmRepDisplay.FieldDataType.MultiSelection, mHelpSiteQry, "[SITECODE]")
+                    ReportFrm.CreateHelpGrid("Party", "Party", FrmRepDisplay.FieldFilterDataType.StringType, FrmRepDisplay.FieldDataType.MultiSelection, mHelpPartyQry)
+                    ReportFrm.CreateHelpGrid("Item", "Item", FrmRepDisplay.FieldFilterDataType.StringType, FrmRepDisplay.FieldDataType.MultiSelection, mHelpItemQry)
+                    ReportFrm.CreateHelpGrid("Item Group", "Item Group", FrmRepDisplay.FieldFilterDataType.StringType, FrmRepDisplay.FieldDataType.MultiSelection, mHelpItemGroupQry)
+
 
 
                 Case SaleInvoiceReportAadhat
@@ -636,6 +650,9 @@ Public Class ClsReports
         Select Case mGRepFormName
             Case SaleInvoiceReport, SaleOrderReport
                 ProcSaleReport()
+
+            Case SaleProfitAnalysis
+                ProcSaleProfitAnalysis()
 
             Case SaleInvoiceReportAadhat
                 ProcSaleReportAadhat()
@@ -1591,6 +1608,151 @@ Public Class ClsReports
                     Order By Year(VMain.V_Date_ActualFormat), Month(VMain.V_Date_ActualFormat) "
                 End If
             End If
+
+
+
+
+            DsHeader = AgL.FillData(mQry, AgL.GCn)
+
+
+
+            If DsHeader.Tables(0).Rows.Count = 0 Then Err.Raise(1, , "No Records To Print!")
+
+            ReportFrm.Text = "Sale Invoice Report - " + ReportFrm.FGetText(0)
+            ReportFrm.ClsRep = Me
+            ReportFrm.ReportProcName = "ProcSaleReport"
+            ReportFrm.InputColumnsStr = "Tags"
+
+            ReportFrm.ProcFillGrid(DsHeader)
+
+            If AgL.VNull(ReportFrm.DGL2.Item("Taxable Amount", 0).Value) = AgL.VNull(ReportFrm.DGL2.Item("Amount", 0).Value) Then
+                ReportFrm.DGL1.Columns("Taxable Amount").Visible = False
+                ReportFrm.DGL2.Columns("Taxable Amount").Visible = False
+            End If
+
+            If AgL.VNull(ReportFrm.DGL2.Item("Amount", 0).Value) = AgL.VNull(ReportFrm.DGL2.Item("Net Amount", 0).Value) Then
+                ReportFrm.DGL1.Columns("Amount").Visible = False
+                ReportFrm.DGL2.Columns("Amount").Visible = False
+            End If
+
+
+        Catch ex As Exception
+            MsgBox(ex.Message)
+            DsHeader = Nothing
+        End Try
+    End Sub
+
+
+    Public Sub ProcSaleProfitAnalysis(Optional mFilterGrid As AgControls.AgDataGrid = Nothing,
+                                Optional mGridRow As DataGridViewRow = Nothing)
+        Try
+            Dim mCondStr$ = ""
+            Dim mCondStrPurch$ = ""
+
+
+
+            RepTitle = "Sale Invoice Report"
+
+            If mFilterGrid IsNot Nothing And mGridRow IsNot Nothing Then
+                If mGridRow.DataGridView.Columns.Contains("Search Code") = True Then
+                    If mFilterGrid.Item(GFilter, 0).Value = "Item Wise Summary" Then
+                        mFilterGrid.Item(GFilter, 0).Value = "Item Wise Detail"
+                        mFilterGrid.Item(GFilter, 4).Value = mGridRow.Cells("Item").Value
+                        mFilterGrid.Item(GFilterCode, 4).Value = "'" + mGridRow.Cells("Search Code").Value + "'"
+                    ElseIf mFilterGrid.Item(GFilter, 0).Value = "Item Group Wise Summary" Then
+                        mFilterGrid.Item(GFilter, 0).Value = "Item Wise Detail"
+                        mFilterGrid.Item(GFilter, 9).Value = mGridRow.Cells("Item Group").Value
+                        mFilterGrid.Item(GFilterCode, 9).Value = "'" + mGridRow.Cells("Search Code").Value + "'"
+                    End If
+                Else
+                    Exit Sub
+                End If
+            End If
+
+
+            mCondStr = " Where VT.NCat In ('" & Ncat.SaleInvoice & "', '" & Ncat.SaleReturn & "') "
+            mCondStr = mCondStr & " AND Date(H.V_Date) Between " & AgL.Chk_Date(CDate(ReportFrm.FGetText(1)).ToString("s")) & " And " & AgL.Chk_Date(CDate(ReportFrm.FGetText(2)).ToString("s")) & " "
+            mCondStr = mCondStr & Replace(ReportFrm.GetWhereCondition("H.Site_Code", 3), "''", "'")
+            mCondStr = mCondStr & ReportFrm.GetWhereCondition("H.SaleToParty", 4)
+            mCondStr = mCondStr & ReportFrm.GetWhereCondition("L.Item", 5)
+            mCondStr = mCondStr & ReportFrm.GetWhereCondition("I.ItemGroup", 6)
+
+            mCondStrPurch = " Where VT.NCat In ('" & Ncat.PurchaseInvoice & "', '" & Ncat.PurchaseReturn & "') "
+            mCondStrPurch = mCondStrPurch & Replace(ReportFrm.GetWhereCondition("PI.Site_Code", 3), "''", "'")
+            mCondStrPurch = mCondStrPurch & ReportFrm.GetWhereCondition("L.Item", 5)
+            mCondStrPurch = mCondStrPurch & ReportFrm.GetWhereCondition("I.ItemGroup", 6)
+
+
+            mQry = "  SELECT H.DocID, H.V_Type, Vt.Description as VoucherType, H.Site_Code, H.Div_Code, Site.Name as Site, Div.Div_Name as Division,
+                    (Case When H.SaleToParty=H.BillToParty And (Party.Nature='Cash' Or Party.SubgroupType='Revenue Point') Then Party.Name || ' - ' || IfNull(H.SaleToPartyName,'') When H.SaleToParty=H.BillToParty Then Party.Name When BillToParty.Nature='Cash' And H.SaleToParty<>H.BillToParty Then  BillToParty.Name || ' - ' || Party.Name  Else Party.Name || ' - ' || BillToParty.Name End) As SaleToPartyName ,                     
+                    Cast(Replace(H.ManualRefNo,'-','') as Integer) as InvoiceNo, H.ManualRefNo, L.Item, I.ItemGroup,
+                    I.Specification as ItemSpecification, I.Description As ItemDesc, IfNull(IfNull(I.HSN,IC.HSN),Bi.HSN) as HSN,IG.Description as ItemGroupDescription, IC.Description as ItemCategoryDescription,  
+                    CASE WHEN VPI.Amount <> 0 AND VPI.Qty <> 0  THEN VPI.Amount/VPI.Qty ELSE I.PurchaseRate END AS  PurchaseRate,
+                    (Case When L.DiscountPer = 0 Then '' else Cast(L.DiscountPer as nVarchar) End)  || (Case When L.AdditionalDiscountPer>0 Then '+' else '' End) || (Case When L.AdditionalDiscountPer=0 Then '' else Cast(L.AdditionalDiscountPer as nVarchar) End)  as DiscountPer, 
+                    L.DiscountAmount as Discount, L.AdditionalDiscountAmount as AdditionalDiscount, L.AdditionAmount as Addition, 
+                    L.SpecialDiscount_Per, L.SpecialDiscount, L.SpecialAddition_Per, L.SpecialAddition, 
+                    L.Taxable_Amount, (Case When L.Net_Amount=0 Then L.Amount Else L.Net_Amount End) as Net_Amount, L.Qty, L.Unit, L.DealQty, L.DealUnit, L.Rate, L.Amount +(L.DiscountAmount + L.AdditionalDiscountAmount - L.AdditionAmount) as AmountExDiscount, L.Amount,
+                    L.Tax1, L.Tax2, L.Tax3, L.Tax4, L.Tax5, L.Tax1+L.Tax2+L.Tax3+L.Tax4+L.Tax5 as TotalTax
+                    FROM SaleInvoice H 
+                    Left Join SaleInvoiceTransport SIT On H.DocID = SIT.DocID
+                    Left Join SaleInvoiceDetail L On H.DocID = L.DocID 
+                    Left Join SaleInvoiceDetailSku LS On L.DocID = LS.DocID And LS.Sr = L.Sr
+                    Left Join Item I On L.Item = I.Code 
+                    Left Join Item IG On LS.ItemGroup = IG.Code
+                    Left Join Item IC On I.ItemCategory = IC.Code
+                    LEFT JOIN Item Bi On I.BaseItem = Bi.Code
+                    Left Join viewHelpSubgroup Party On H.SaleToParty = Party.Code 
+                    Left Join viewHelpSubgroup BillToParty On H.BillToParty = BillToParty.Code                  
+                    LEFT JOIN Voucher_Type Vt On H.V_Type = Vt.V_Type     
+                    Left Join SiteMast Site On H.Site_Code = Site.Code
+                    Left Join Division Div On H.Div_Code = Div.Div_Code  
+                    LEFT JOIN 
+                    (
+                    SELECT PID.Item, Sum(PID.Qty) AS Qty, Sum(PID.Amount) AS Amount    
+					FROM PurchInvoice PI
+					LEFT JOIN Voucher_Type Vt On PI.V_Type = Vt.V_Type 
+					LEFT JOIN PurchInvoiceDetail PID ON PID.DocID = PI.DocID 
+					" & mCondStrPurch & "
+					GROUP BY PID.Item 
+                    ) VPI ON VPI.Item =   L.Item    
+                    " & mCondStr
+
+
+            If ReportFrm.FGetText(0) = "Item Wise Summary" Then
+                'IfNull(Sum(VMain.Taxable_Amount), 0)/Round(Sum(VMain.Qty),3) As AvgSaleRate,
+
+                mQry = " Select VMain.Item As SearchCode, Max(VMain.ItemDesc) As [Item],  
+                    Round(Sum(VMain.Qty),3) as Qty,
+                    Sum(VMain.AmountExDiscount) as GoodsValue, Sum(VMain.Discount) as Discount, Sum(VMain.Addition) as Addition, Sum(VMain.SpecialDiscount) as SpecialDiscount, Sum(VMain.SpecialAddition) as SpecialAddition,
+                    Sum(VMain.Amount) As Amount, IfNull(Sum(VMain.Taxable_Amount),0) As [Taxable Amount], IfNull(Sum(VMain.TotalTax),0) As TaxAmount, IfNull(Sum(VMain.Net_Amount),0) As [Net Amount],
+                     Max(VMain.PurchaseRate) AS AvgPurchaseRate, IsNull(Sum(VMain.Taxable_Amount),0)-Max(VMain.PurchaseRate)*Sum(VMain.Qty) AS Diif
+                    From (" & mQry & ") As VMain
+                    GROUP By VMain.Item 
+                    Order By Max(VMain.ItemDesc)"
+
+            ElseIf ReportFrm.FGetText(0) = "Item Group Wise Summary" Then
+
+                mQry = " Select V.ItemGroup as SearchCode, Max(V.ItemGroupDescription) As [Item Group],  
+                    Round(Sum(V.Qty),3) as Qty,
+                    Sum(V.AmountExDiscount) as GoodsValue, Sum(V.Discount) as Discount, Sum(V.Addition) as Addition, Sum(V.SpecialDiscount) as SpecialDiscount, Sum(V.SpecialAddition) as SpecialAddition,
+                    Sum(V.Amount) As Amount, IfNull(Sum(V.Taxable_Amount),0) As [Taxable Amount], IfNull(Sum(V.TotalTax),0) As TaxAmount, IfNull(Sum(V.Net_Amount),0) As [Net Amount],
+                    IfNull(Sum(V.Diff),0) As [Diff]
+                    From
+                    (
+                    Select VMain.Item , Max(VMain.ItemDesc) As ItemDesc,  
+                    Max(VMain.ItemGroup) ItemGroup, Max(VMain.ItemGroupDescription) ItemGroupDescription,
+                    Round(Sum(VMain.Qty),3) as Qty,
+                    Sum(VMain.AmountExDiscount) as AmountExDiscount, Sum(VMain.Discount) as Discount, Sum(VMain.Addition) as Addition, Sum(VMain.SpecialDiscount) as SpecialDiscount, Sum(VMain.SpecialAddition) as SpecialAddition,
+                    Sum(VMain.Amount) As Amount, IfNull(Sum(VMain.Taxable_Amount),0) As Taxable_Amount, IfNull(Sum(VMain.TotalTax),0) As TotalTax, IfNull(Sum(VMain.Net_Amount),0) As Net_Amount,
+                    Max(VMain.PurchaseRate) AS AvgPurchaseRate, IsNull(Sum(VMain.Taxable_Amount),0)-Max(VMain.PurchaseRate)*Sum(VMain.Qty) AS Diff
+                    From (" & mQry & ") As VMain
+                    GROUP By VMain.Item ) AS V 
+                    Group By V.ItemGroup
+                    Order By Max(V.ItemGroupDescription) "
+
+
+            End If
+
 
 
 

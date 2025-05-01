@@ -58,7 +58,7 @@ Public Class MDIMain
                     'End
 
 
-                    AgIniVar.FOpenConnection("7", AgL.PubSiteCode, False)
+                    AgIniVar.FOpenConnection("8", AgL.PubSiteCode, False)
                 End If
                 AgL.PubStopWatch.Start()
 
@@ -332,6 +332,7 @@ Public Class MDIMain
     Private Sub MnuRecheckBills_Click(sender As Object, e As EventArgs) Handles MnuRecheckBills.Click
 
     End Sub
+
     'Private Sub FOpenEntryFromShortCut(ByVal e As System.Windows.Forms.KeyEventArgs)
     '    Dim mKeyPressed As String = ""
     '    Dim mQry As String = ""

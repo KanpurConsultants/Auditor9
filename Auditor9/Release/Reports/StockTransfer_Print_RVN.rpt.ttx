@@ -3,14 +3,14 @@ Copies	string	255	1
 CopyPrintingCaption	string	255		
 DocNoCaption	string	255	Doc.No.	
 DocDateCaption	string	255	Doc.Date	
-DocID	string	255	D3   STF 2024      79	
+DocID	string	255	D3   STF 2025      54	
 SiteStateCode	string	255	09	
 SiteStateName	string	255	Uttar Pradesh	
 Sr	number	1	
-V_Date	datetime	15/Feb/2025 00:00:00	
+V_Date	datetime	19/Apr/2025 00:00:00	
 Voucher_Type	string	255	Stock Transfer	
 NCat	string	255	STF	
-DocNo	string	255	D3-STF-79	
+DocNo	string	255	D3-STF-54	
 AgentName	string	255		
 AgentCaption	string	255	Agent	
 PartyName	string	255		
@@ -44,13 +44,13 @@ FreightType	string	255
 RoadPermitNo	string	255		
 RoadPermitDate	datetime		
 ReferenceNo	string	255		
-ItemName	string	255	TVS KING EP4-3W EV BLUE - TVS - EV	
-ItemGroupName	string	255	TVS	
-ItemCatName	string	255	EV	
-BarcodeName	string	255	MD6EVM1D7S4A00052	
-ItemSpecification	string	255	TVS KING EP4-3W EV BLUE	
-InvoiceLineSpecification	string	255	TVS KING EP4-3W EV BLUE	
-HSN	string	255	87038040	
+ItemName	string	255	TVS KING ZD 225 LC FI - TVS-CNG - CNG	
+ItemGroupName	string	255	TVS-CNG	
+ItemCatName	string	255	CNG	
+BarcodeName	string	255	MD6M1LCF2S4AA0780	
+ItemSpecification	string	255	TVS KING ZD 225 LC FI	
+InvoiceLineSpecification	string	255	TVS KING ZD 225 LC FI	
+HSN	string	255	87032120	
 D1Spec	string	255		
 D2Spec	string	255		
 D3Spec	string	255		
@@ -65,8 +65,8 @@ D1Caption	string	255	Design
 D2Caption	string	255	Shade	
 D3Caption	string	255		
 D4Caption	string	255		
-SalesTaxGroupItem	string	255	GST 5%	
-GrossTaxRate	number	5	
+SalesTaxGroupItem	string	255	GST 28%	
+GrossTaxRate	number	28	
 Pcs	number	0	
 Qty	number	1	
 DocQty	number	1	
@@ -103,8 +103,10 @@ LRemarks2	string	255
 LRemarks3	string	255		
 LRemarks4	string	255		
 GodownName	string	255		
-FromGodownName	string	255	TVS GALAMANDI	
-ToGodownName	string	255	TVS KANPUR	
+FromGodownName	string	255	TVS AKBARPUR	
+ToGodownName	string	255	TVS PUKHRAYA	
+FGodownAddress	string	255	Aaraazi No 801, Akbarpur Road, Indian Oil Petrol Pump, Akbarpur Kanpur Dehat	
+TGodownAddress	string	255	Ward no 21, Kidwai Nagar, Kamal Agency, Pukhrayan	
 H_Gross_Amount	number	0	
 H_SpecialDiscount_Per	number	0	
 H_SpecialDiscount	number	0	
@@ -129,7 +131,7 @@ H_TotalDiscount	number	0
 H_AmountBeforeDiscount	number	0	
 Default_BankAccountDetail	string	255	<B> Bank Detail :- <BR> KMB : 5400000007  IFSC : KKBK0005135 <BR>	
 DocumentPrintHeaderPattern	string	255	Center Aligned	
-DimDetail	string	255	MD6EVM1D7S4A00052	
+DimDetail	string	255	MD6M1LCF2S4AA0780	
 HsnDescription	string	255		
 PrintedByUser	string	255	SUPER	
 PrintTitle	string	255	Stock Transfer	

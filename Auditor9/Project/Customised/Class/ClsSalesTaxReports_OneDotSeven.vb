@@ -1890,7 +1890,7 @@ Public Class ClsSalesTaxReports_OneDotSeven
             mCondStr = mCondStr & " And H.Div_Code = '" & Replace(ReportFrm.FGetCode(rowDivision), "'", "") & "' "
             mCondStr = mCondStr & " And Vt.NCat In ('" & Ncat.SaleInvoice & "','" & Ncat.SaleReturn & "',
                                         '" & Ncat.DebitNoteSupplier & "','" & Ncat.DebitNoteCustomer & "','" & Ncat.CreditNoteCustomer & "','" & Ncat.CreditNoteSupplier & "',
-                                        '" & Ncat.PurchaseInvoice & "','" & Ncat.PurchaseReturn & "', '" & Ncat.ExpenseVoucher & "', '" & Ncat.IncomeVoucher & "', '" & Ncat.ReverseCharge & "', '" & Ncat.JobInvoice & "')"
+                                        '" & Ncat.PurchaseGoodsReceipt & "','" & Ncat.PurchaseInvoice & "','" & Ncat.PurchaseReturn & "', '" & Ncat.ExpenseVoucher & "', '" & Ncat.IncomeVoucher & "', '" & Ncat.ReverseCharge & "', '" & Ncat.JobInvoice & "')"
             mCondStr = mCondStr & " AND Date(H.V_Date) Between " & AgL.Chk_Date(CDate(ReportFrm.FGetText(rowFromDate)).ToString("s")) & " And " & AgL.Chk_Date(CDate(ReportFrm.FGetText(rowToDate)).ToString("s")) & " "
             mCondStr = mCondStr & " And CharIndex('" & ClsMain.VoucherTypeTags.ExcludeInSalesTaxReturns & "','+' || IfNull(Vt.VoucherTypeTags,'')) = 0 "
 
@@ -1903,7 +1903,7 @@ Public Class ClsSalesTaxReports_OneDotSeven
             mCondStrITC = mCondStrITC & " And H.Div_Code = '" & Replace(ReportFrm.FGetCode(rowDivision), "'", "") & "' "
             mCondStrITC = mCondStrITC & " And Vt.NCat In ('" & Ncat.SaleInvoice & "','" & Ncat.SaleReturn & "',
                                         '" & Ncat.DebitNoteSupplier & "','" & Ncat.DebitNoteCustomer & "','" & Ncat.CreditNoteCustomer & "','" & Ncat.CreditNoteSupplier & "',
-                                        '" & Ncat.PurchaseInvoice & "','" & Ncat.PurchaseReturn & "', '" & Ncat.ExpenseVoucher & "', '" & Ncat.IncomeVoucher & "', '" & Ncat.ReverseCharge & "', '" & Ncat.JobInvoice & "')"
+                                        '" & Ncat.PurchaseGoodsReceipt & "','" & Ncat.PurchaseInvoice & "','" & Ncat.PurchaseReturn & "', '" & Ncat.ExpenseVoucher & "', '" & Ncat.IncomeVoucher & "', '" & Ncat.ReverseCharge & "', '" & Ncat.JobInvoice & "')"
             mCondStrITC = mCondStrITC & " And CharIndex('" & ClsMain.VoucherTypeTags.ExcludeInSalesTaxReturns & "','+' || IfNull(Vt.VoucherTypeTags,'')) = 0 "
 
 

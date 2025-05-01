@@ -1383,10 +1383,13 @@ Public Class FrmPurchInvoiceDirect_WithDimension
         AgL.PubFindQry = " SELECT H.DocID AS SearchCode, Vt.Description AS [Invoice_Type], H.V_Date AS Date, 
                              H.ManualRefNo As [Manual_No], SGV.DispName As Vendor, H.SalesTaxGroupParty As [Sales_Tax_Group_Party], H.VendorDocNo As [Vendor_Doc_No],  
                              H.VendorDocDate As [Vendor_Doc_Date], H.Remarks,
+                             Transporter.Name as TransporterName, PIT.LrNo, PIT.LrDate, PIT.PrivateMark,
                              H.EntryBy As [Entry_By], H.EntryDate As [Entry_Date] 
                              From PurchInvoice H   With (NoLock)
                              LEFT Join Voucher_Type Vt  With (NoLock) On H.V_Type = Vt.V_Type 
-                             Left Join SubGroup SGV  With (NoLock) On SGV.SubCode  = H.Vendor  
+                             Left Join SubGroup SGV  With (NoLock) On SGV.SubCode  = H.Vendor 
+                             Left JOIN PurchInvoiceTransport PIT With (NoLock) ON PIT.DocID = H.DocID                    
+                             LEFT JOIN viewHelpSubgroup Transporter  With (NoLock) On PIT.Transporter = Transporter.Code  
                              Where 1 = 1 " & mCondStr
 
         AgL.PubFindQryOrdBy = "[Entry Date]"
@@ -6141,7 +6144,7 @@ Public Class FrmPurchInvoiceDirect_WithDimension
                 (Case when L.EntryType ='Receive' Then L.Amount Else abs(L.Amount) End )+L.DiscountAmount+L.AdditionalDiscountAmount-L.AdditionAmount as AmountBeforeDiscount,
                 Abs(L.Amount) as Amount,Abs(L.Taxable_Amount) as Taxable_Amount,Abs(L.Tax1_Per) Tax1_Per, Abs(L.Tax1) as Tax1, Abs(L.Tax2_Per) as Tax2_Per, Abs(L.Tax2) as Tax2, Abs(L.Tax3_Per) as Tax3_Per, Abs(L.Tax3) as Tax3, Abs(L.Tax4_Per) as Tax4_Per, Abs(L.Tax4) as Tax4, Abs(L.Tax5_Per) as Tax5_Per, Abs(L.Tax5) as Tax5, Abs(L.Net_Amount) as Net_Amount,
                 IfNull(H.Remarks,'') as HRemarks, IfNull(L.Remark,'') as LRemarks,L.Remark AS LRemarks, L.Remarks1 AS LRemarks1, L.Remarks2 AS LRemarks2,  L.Remarks3 AS LRemarks3,  L.Remarks4 AS LRemarks4,
-                IfNull(G.Name,'') as GodownName, IfNull(FGodown.Name,'') As FromGodownName, IfNull(TGodown.Name,'')  As ToGodownName,
+                IfNull(G.Name,'') as GodownName, IfNull(FGodown.Name,'') As FromGodownName, IfNull(TGodown.Name,'')  As ToGodownName, IfNull(FGodown.Address,'') as FGodownAddress, IfNull(TGodown.Address,'') as TGodownAddress,
                 abs(H.Gross_Amount) as H_Gross_Amount, H.SpecialDiscount_Per as H_SpecialDiscount_Per, H.SpecialDiscount as H_SpecialDiscount,abs(H.Taxable_Amount) as H_Taxable_Amount,abs(H.Tax1_Per) as H_Tax1_Per, abs(H.Tax1) as H_Tax1, 
                 abs(H.Tax2_Per) as H_Tax2_Per, abs(H.Tax2) as H_Tax2, abs(H.Tax3_Per) as H_Tax3_Per, abs(H.Tax3) as H_Tax3, abs(H.Tax4_Per) as H_Tax4_Per, abs(H.Tax4) as H_Tax4, 
                 abs(H.Tax5_Per) as H_Tax5_Per, abs(H.Tax5) as H_Tax5, abs(H.Deduction_Per) as H_Deduction_Per, abs(H.Deduction) as H_Deduction, abs(H.Other_Charge_Per) as H_Other_Charge_Per, abs(H.Other_Charge) as H_Other_Charge, H.Round_Off, abs(H.Net_Amount) as H_Net_Amount, 
@@ -10732,7 +10735,11 @@ Public Class FrmPurchInvoiceDirect_WithDimension
             AgL.Dman_ExecuteNonQry(mQry, AgL.GCn, AgL.ECmd)
 
             If mFlag_Import = False And AgL.StrCmp(PurchInvoiceTableList(0).V_Type, "REC") = False Then
-                FGetCalculationData(PurchInvoiceTableList(0).DocID, AgL.GCn, AgL.ECmd)
+                If AgL.StrCmp(AgL.PubDBName, "RVN2") And PurchInvoiceTableList(0).V_Type = Ncat.StockTransfer Then
+
+                Else
+                    FGetCalculationData(PurchInvoiceTableList(0).DocID, AgL.GCn, AgL.ECmd)
+                End If
             End If
             AgL.UpdateVoucherCounter(PurchInvoiceTableList(0).DocID, CDate(PurchInvoiceTableList(0).V_Date), AgL.GCn, AgL.ECmd, PurchInvoiceTableList(0).Div_Code, PurchInvoiceTableList(0).Site_Code)
         End If

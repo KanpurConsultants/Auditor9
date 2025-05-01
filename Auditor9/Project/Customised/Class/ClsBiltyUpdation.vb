@@ -32,7 +32,8 @@ Public Class ClsBiltyUpdation
     Dim mShowReportType As String = ""
     Dim DsHeader As DataSet = Nothing
 
-    Const mReportType_PendingForReceive As String = "Pending For Recive"
+    Const mReportType_Pending As String = "Pending"
+    Const mReportType_Received As String = "Recived"
     Const mReportType_All As String = "All"
 
     Private Const rowReportType As Integer = 0
@@ -51,15 +52,17 @@ Public Class ClsBiltyUpdation
     Public Col1BiltyDate As String = "Bilty Date"
     Public Col1PrivateMark As String = "Private Mark"
     Public Col1NoOfBales As String = "No Of Bales"
-    Public Col1Rate As String = "Rate"
+    Public Col1Amount As String = "Amount"
     Public Col1UploadDate As String = "Upload Date"
 
     Public Sub Ini_Grid()
         Try
-            mQry = "Select '" & mReportType_PendingForReceive & "' as Code, '" & mReportType_PendingForReceive & "' as Name 
+            mQry = "Select '" & mReportType_Pending & "' as Code, '" & mReportType_Pending & "' as Name 
+                    Union All 
+                    Select '" & mReportType_Received & "' as Code, '" & mReportType_Received & "' as Name 
                     Union All 
                     Select '" & mReportType_All & "' as Code, '" & mReportType_All & "' as Name"
-            ReportFrm.CreateHelpGrid("Report Type", "Report Type", FrmRepDisplay.FieldFilterDataType.StringType, FrmRepDisplay.FieldDataType.SingleSelection, mQry, mReportType_PendingForReceive,,, 300)
+            ReportFrm.CreateHelpGrid("Report Type", "Report Type", FrmRepDisplay.FieldFilterDataType.StringType, FrmRepDisplay.FieldDataType.SingleSelection, mQry, mReportType_Pending,,, 300)
             ReportFrm.CreateHelpGrid("FromDate", "From Date", FrmRepDisplay.FieldFilterDataType.StringType, FrmRepDisplay.FieldDataType.DateType, "", AgL.PubStartDate)
             ReportFrm.CreateHelpGrid("ToDate", "To Date", FrmRepDisplay.FieldFilterDataType.StringType, FrmRepDisplay.FieldDataType.DateType, "", AgL.PubEndDate)
             ReportFrm.CreateHelpGrid("Transport", "Transport", FrmRepDisplay.FieldFilterDataType.StringType, FrmRepDisplay.FieldDataType.MultiSelection, mHelpTransportQry)
@@ -125,13 +128,15 @@ Public Class ClsBiltyUpdation
             mCondStr += " And H.Site_Code = '" & AgL.PubSiteCode & "' "
             mCondStr += ReportFrm.GetWhereCondition("H.BillToParty", rowSupplier)
             mCondStr += ReportFrm.GetWhereCondition("Sit.Transporter", rowTransport)
-            If AgL.XNull(ReportFrm.FilterGrid.Item(GFilter, rowReportType).Value) = mReportType_PendingForReceive Then
+            If AgL.XNull(ReportFrm.FilterGrid.Item(GFilter, rowReportType).Value) = mReportType_Pending Then
                 mCondStr += " And SIt.UploadDate IS NULL "
+            ElseIf AgL.XNull(ReportFrm.FilterGrid.Item(GFilter, rowReportType).Value) = mReportType_Received Then
+                mCondStr += " And SIt.UploadDate IS Not NULL "
             End If
 
             mQry = "SELECT H.DocID As SearchCode, H.V_Type + '-' + H.ManualRefNo AS InvoiceNo, 
                     H.V_Date AS InvoiceDate, T.Name As Transporter, Sg.Name AS Party, City.CityName BookedFrom, 'KANPUR' BookedTo,
-                     SIt.LrNo as BiltyNo, SIt.LrDate As BiltyDate, SIt.PrivateMark, SIt.NoOfBales AS NoOfBales, L.Rate, SIt.UploadDate AS UploadDate
+                     SIt.LrNo as BiltyNo, SIt.LrDate As BiltyDate, SIt.PrivateMark, SIt.NoOfBales AS NoOfBales, L.Remark, L.Net_Amount AS Amount, SIt.UploadDate AS UploadDate
                     FROM PurchInvoice H 
                     LEFT JOIN PurchInvoiceTransport SIt ON H.DocID = SIt.DocID
                     LEFT JOIN PurchInvoiceDetail L ON H.DocID = L.DocID
@@ -161,7 +166,7 @@ Public Class ClsBiltyUpdation
                 ReportFrm.DGL1.Columns(I).ReadOnly = True
             Next
 
-            ReportFrm.DGL1.Columns(Col1Rate).ReadOnly = False
+            ReportFrm.DGL1.Columns(Col1Amount).ReadOnly = False
             ReportFrm.DGL1.Columns(Col1UploadDate).ReadOnly = False
             ReportFrm.DGL1.Columns(Col1UploadDate).HeaderText = "Received Date"
 
@@ -273,7 +278,7 @@ Public Class ClsBiltyUpdation
                     AgL.Dman_ExecuteNonQry(mQry, AgL.GCn, AgL.ECmd)
 
                     mQry = "INSERT INTO Ledger (DocId, V_SNo, V_No, V_Type, V_Prefix, V_Date, SubCode, AmtDr, AmtCr, TdsOnAmt, TdsPer, Tds_Of_V_Sno, Site_Code, DivCode, System_Generated, ContraText, RecId) 
-                        SELECT H.DocId, 1 V_SNo, H.V_No, H.V_Type, H.V_Prefix, H.V_Date, T.Transporter AS SubCode, 0 AmtDr, L.Amount AS AmtCr, 0 TdsOnAmt, 0 TdsPer, 0 Tds_Of_V_Sno, H.Site_Code, H.Div_Code DivCode, 'Y' System_Generated,  'A.Name '+ convert(NVARCHAR,L.Amount)+ ' Cr '  AS  ContraText, H.ManualRefNo  RecId 
+                        SELECT H.DocId, 1 V_SNo, H.V_No, H.V_Type, H.V_Prefix, H.V_Date, T.Transporter AS SubCode, 0 AmtDr, L.Net_Amount AS AmtCr, 0 TdsOnAmt, 0 TdsPer, 0 Tds_Of_V_Sno, H.Site_Code, H.Div_Code DivCode, 'Y' System_Generated,  'A.Name '+ convert(NVARCHAR,L.Amount)+ ' Cr '  AS  ContraText, H.ManualRefNo  RecId 
                         FROM PurchInvoice H WITH (Nolock)
                         LEFT JOIN PurchInvoiceTransport  T ON T.DocID = H.DocID 
                         LEFT JOIN PurchInvoiceDetail L WITH (Nolock) ON L.DocID = H.DocID 
@@ -282,7 +287,7 @@ Public Class ClsBiltyUpdation
                     AgL.Dman_ExecuteNonQry(mQry, AgL.GCn, AgL.ECmd)
 
                     mQry = "INSERT INTO Ledger (DocId, V_SNo, V_No, V_Type, V_Prefix, V_Date, SubCode, AmtDr, AmtCr, TdsOnAmt, TdsPer, Tds_Of_V_Sno, Site_Code, DivCode, System_Generated, ContraText, RecId) 
-                        SELECT H.DocId, 2 V_SNo, H.V_No, H.V_Type, H.V_Prefix, H.V_Date, I.PurchaseAc  AS SubCode, L.Amount AmtDr, 0 AS AmtCr, 0 TdsOnAmt, 0 TdsPer, 0 Tds_Of_V_Sno, H.Site_Code, H.Div_Code DivCode, 'Y' System_Generated,  'A.Name '+ convert(NVARCHAR,L.Amount)+ ' Cr '  AS  ContraText, H.ManualRefNo  RecId 
+                        SELECT H.DocId, 2 V_SNo, H.V_No, H.V_Type, H.V_Prefix, H.V_Date, I.PurchaseAc  AS SubCode, L.Net_Amount AmtDr, 0 AS AmtCr, 0 TdsOnAmt, 0 TdsPer, 0 Tds_Of_V_Sno, H.Site_Code, H.Div_Code DivCode, 'Y' System_Generated,  'A.Name '+ convert(NVARCHAR,L.Amount)+ ' Cr '  AS  ContraText, H.ManualRefNo  RecId 
                         FROM PurchInvoice H WITH (Nolock)
                         LEFT JOIN Subgroup A ON A.Subcode = H.Agent 
                         LEFT JOIN PurchInvoiceDetail L WITH (Nolock) ON L.DocID = H.DocID 
@@ -296,8 +301,8 @@ Public Class ClsBiltyUpdation
 
                 End If
 
-            ElseIf FieldName = "Rate" Then
-                    mQry = " Update PurchInvoiceDetail Set Rate =" & AgL.Chk_Text(Value) & ", Amount =" & AgL.Chk_Text(Value) & ", Gross_Amount =" & AgL.Chk_Text(Value) & ",  
+            ElseIf FieldName = "Amount" Then
+                mQry = " Update PurchInvoiceDetail Set Rate =" & AgL.Chk_Text(Value) & ", Amount =" & AgL.Chk_Text(Value) & ", Gross_Amount =" & AgL.Chk_Text(Value) & ",  
                                  Taxable_Amount =" & AgL.Chk_Text(Value) & ", SubTotal1 =" & AgL.Chk_Text(Value) & ", Net_Amount =" & AgL.Chk_Text(Value) & " Where DocId = '" & ReportFrm.DGL1.Item(Col1SearchCode, mRow).Value & "'"
                     AgL.Dman_ExecuteNonQry(mQry, AgL.GCn, AgL.ECmd)
 

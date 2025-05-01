@@ -5,51 +5,52 @@ DocNoCaption	string	255	Invoice No.
 DocDateCaption	string	255	Invoice Date	
 SiteStateCode	string	255	09	
 SiteStateName	string	255	Uttar Pradesh	
-DocID	string	255	D3   SIS 2024       1	
+DocID	string	255	D1   SIR 2025      42	
 Sr	number	1	
-V_Date	datetime	07/Mar/2025 00:00:00	
+V_Date	datetime	20/Apr/2025 00:00:00	
 DeliveryDate	datetime		
-Voucher_Type	string	255	Sale Invoice Service	
+Voucher_Type	string	255	Sale Invoice Retail	
 NCat	string	255	SI	
-InvoiceNo	string	255	TVS--1	
+InvoiceNo	string	255	KNP-SIR-41	
 GenDocNo	string	255		
 AmsDocNo	string	255		
 AmsDocDate	datetime		
 AmsDocNetAmount	number	0	
 RateType	string	255		
 DocumentPrintShowRateType	string	255	Show If Not Blank	
-AgentName	string	255		
-GodownName	string	255	TVS KANPUR	
+AgentName	string	255	ASHISH-ACHRYA NAGAR	
+GodownName	string	255	YAKUZA ACHRYA NAGAR	
+GodownAddress	string	255	87/155, Acharya Nagar G.T. Road, Acharya Nagar, Kanpur	
 SalesRepName	string	255		
 SalesRepCode	string	255		
 ResponsiblePersonName	string	255		
 AgentCaption	string	255	Agent	
-SaleToPartyName	string	255	ABHAY KUMAR DIXIT S/O PREM NARAYAN DIXIT	
-SaleToPartyAddress	string	255	1/81 NAWABGANJ NEAR LAL PHATAK KATARIJIYARA NAWABGANJ	
+SaleToPartyName	string	255	MOHAMMAD BILAL	
+SaleToPartyAddress	string	255	79/25, BANSMANDI	
 CityName	string	255	KANPUR	
-SaleToPartyPincode	string	255		
+SaleToPartyPincode	string	255	208001	
 StateCode	string	255	09	
 StateName	string	255	Uttar Pradesh	
-SaleToPartyMobile	string	255	8853888466	
+SaleToPartyMobile	string	255	8317067119	
 ContactPerson	string	255		
 SaleToPartySalesTaxNo	string	255		
-SaleToPartyAadharNo	string	255	663208483725	
+SaleToPartyAadharNo	string	255	368339506810	
 SaleToPartyPanNo	string	255		
 SaleToPartyLicenseNo	string	255		
-ShipToPartyName	string	255	ABHAY KUMAR DIXIT S/O PREM NARAYAN DIXIT	
-ShipToPartyAddress	string	255	1/81 NAWABGANJ NEAR LAL PHATAK KATARIJIYARA NAWABGANJ	
+ShipToPartyName	string	255	AANAM FURNITURE	
+ShipToPartyAddress	string	255	166 CHANDARI COD KANPUR NAGAR	
 ShipToPartyCity	string	255	KANPUR	
-ShipToPartyPincode	string	255		
+ShipToPartyPincode	string	255	208013	
 ShipToPartyStateCode	string	255	09	
 ShipToPartyStateName	string	255	Uttar Pradesh	
-ShipToPartyMobile	string	255	8853888466	
-ShipToPartySalesTaxNo	string	255		
-ShipToPartyAadharNo	string	255	663208483725	
-ShipToPartyPanNo	string	255		
+ShipToPartyMobile	string	255	8840610570	
+ShipToPartySalesTaxNo	string	255	09HZLPS6775K1Z3	
+ShipToPartyAadharNo	string	255	399746038938	
+ShipToPartyPanNo	string	255	HZLPS6775K	
 ShipToPartyLicenseNo	string	255		
 TransporterSalesTaxNo	string	255		
 ShipToAddress	string	255		
-TermsAndConditions	string	255		
+TermsAndConditions	string	255	(1) Motor warranty one year. <BR>(2) Controller warranty one year. <BR>(3) Battery warranty one year.	
 TransporterName	string	255		
 LrNo	string	255		
 LrDate	datetime		
@@ -72,13 +73,13 @@ DescriptionOfGoods	string	255
 DescriptionOfPacking	string	255		
 ReferenceNo	string	255		
 BarcodeName	string	255		
-ItemName	string	255	1339510 BALL BEARING 15X42X13 C  - SPARES TVS - SPARES	
-ItemGroupName	string	255	SPARES TVS	
-ItemCatName	string	255	SPARES	
-ItemManualCode	string	255	548	
-ItemSpecification	string	255	1339510 BALL BEARING 15X42X13 C 	
+ItemName	string	255	RUBIE 60 V BLACK - YAKUZA - EV	
+ItemGroupName	string	255	YAKUZA	
+ItemCatName	string	255	EV	
+ItemManualCode	string	255	38	
+ItemSpecification	string	255	RUBIE 60 V BLACK	
 InvoiceLineSpecification	string	255		
-HSN	string	255	84821030	
+HSN	string	255	871190	
 MaintainStockYn	boolean	True	
 D1Spec	string	255		
 D2Spec	string	255		
@@ -96,15 +97,15 @@ D1Caption	string	255	Design
 D2Caption	string	255	Shade	
 D3Caption	string	255		
 D4Caption	string	255		
-SalesTaxGroupItem	string	255	GST 18%	
-GrossTaxRate	number	18	
+SalesTaxGroupItem	string	255	GST 5%	
+GrossTaxRate	number	5	
 MRP	number	0	
 LotNo	string	255		
 ExpiryDate	datetime		
 ItemRemark1	string	255		
 Pcs	number	1	
 Qty	number	1	
-Rate	number	151	
+Rate	number	39500	
 ItemState	string	255		
 CatalogSpecification	string	255		
 CatalogSiteName	string	255		
@@ -118,26 +119,26 @@ AdditionPer	number	0
 AdditionAmount	number	0	
 TotalDiscount	number	0	
 Deal	string	255		
-AmountBeforeDiscount	number	151	
-Amount	number	151	
-Taxable_Amount	number	151	
+AmountBeforeDiscount	number	39500	
+Amount	number	39500	
+Taxable_Amount	number	37619.05	
 Tax1_Per	number	0	
 Tax1	number	0	
-Tax2_Per	number	9	
-Tax2	number	13.59	
-Tax3_Per	number	9	
-Tax3	number	13.59	
+Tax2_Per	number	2.5	
+Tax2	number	940.48	
+Tax3_Per	number	2.5	
+Tax3	number	940.48	
 Tax4_Per	number	0	
 Tax4	number	0	
 Tax5_Per	number	0	
 Tax5	number	0	
-Net_Amount	number	178	
-LRemarks	string	255		
-LRemarks1	string	255		
-LRemarks2	string	255		
-LRemarks3	string	255		
-LRemarks4	string	255		
-HRemarks	string	255		
+Net_Amount	number	39500	
+LRemarks	string	255	MLM/159897	
+LRemarks1	string	255	KLKV/D25/12M	
+LRemarks2	string	255	R7KS1Y2G5SH204148	
+LRemarks3	string	255	KWKV/D25/WB/12M	
+LRemarks4	string	255	KLKV/D25/12M	
+HRemarks	string	255	1 YEAR WARRANTY ( NO FREE SERVICE)	
 HRemarks1	string	255		
 HRemarks2	string	255		
 SalesTaxSummaryStr	string	255		
@@ -145,17 +146,17 @@ H_Discount	number	0
 H_AdditionalDiscount	number	0	
 H_Additional	number	0	
 H_TotalDiscount	number	0	
-H_AmountBeforeDiscount	number	151	
-H_Gross_Amount	number	151	
+H_AmountBeforeDiscount	number	39500	
+H_Gross_Amount	number	39500	
 H_SpecialDiscount_Per	number	0	
 H_SpecialDiscount	number	0	
-H_Taxable_Amount	number	151	
+H_Taxable_Amount	number	37619.05	
 H_Tax1_Per	number	0	
 H_Tax1	number	0	
 H_Tax2_Per	number	0	
-H_Tax2	number	13.59	
+H_Tax2	number	940.48	
 H_Tax3_Per	number	0	
-H_Tax3	number	13.59	
+H_Tax3	number	940.48	
 H_Tax4_Per	number	0	
 H_Tax4	number	0	
 H_Tax5_Per	number	0	
@@ -168,17 +169,17 @@ H_Other_Charge1_Per	number	0
 H_Other_Charge1	number	0	
 H_Other_Charge2_Per	number	0	
 H_Other_Charge2	number	0	
-Round_Off	number	-0.18	
-H_Net_Amount	number	178	
+Round_Off	number	-0.01	
+H_Net_Amount	number	39500	
 EInvoiceIRN	string	255		
 EInvoiceACKNo	string	255		
 EInvoiceACKDate	datetime		
-Default_BankAccountDetail	string	255	<B> Bank Detail :- <BR> KMB : 5400000007  IFSC : KKBK0005135 <BR>	
+Default_BankAccountDetail	string	255	<B> Bank Detail :- <BR> HDFC : 99915400000007  IFSC : HDFC0009597 <BR>	
 DocumentPrintHeaderPattern	string	255	Center Aligned	
 DimDetail	string	255		
 PrintedByUser	string	255	SUPER	
-EntryByUser	string	255	SUPER	
-PrintTitle	string	255	SALE INVOICE SERVICE	
+EntryByUser	string	255	SHOWROOM	
+PrintTitle	string	255	Sale Invoice Retail	
 DocumentPrintShowPrintDateTimeYn	string	255	1	
 DocumentPrintShowPartyBalance	string	255	Hide	
 TodaysOpeningBalance	long	0	

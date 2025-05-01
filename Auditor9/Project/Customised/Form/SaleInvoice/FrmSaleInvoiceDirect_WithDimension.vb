@@ -8919,7 +8919,7 @@ Public Class FrmSaleInvoiceDirect_WithDimension
                 Replace(Replace(Replace(Replace(Replace('" & mDocumentNoPattern & "','<DIVISION>',IfNull(Dm.ShortName,'')),'<SITE>',IfNull(Site.ShortName,'')),'<DOCTYPE>',IfNull(Vt.Short_Name,'')),'<DOCNO>',IfNull(H.ManualRefNo,'')),'<COMPANYPREFIX>', '" & mCompanyPrefix & "') As InvoiceNo,
                 Gen.ManualRefNo as GenDocNo, H.AmsDocNo, H.AmsDocDate, H.AmsDocNetAmount, IfNull(RT.Description,'" & AgL.XNull(DtV_TypeSettings.Rows(0)("SaleRate_Caption")) & "') as RateType, 
                 '" & FGetSettings(SettingFields.DocumentPrintShowRateType, SettingType.General) & "' as DocumentPrintShowRateType,
-                IfNull(Agent.DispName,'') as AgentName, IfNull(G.Name,'') as GodownName, IfNull(SRep.Name,'') as SalesRepName, IfNull(SRep.ManualCode,'') as SalesRepCode, IfNull(RP.Name,'') as ResponsiblePersonName, '" & AgL.PubDtEnviro.Rows(0)("Caption_SalesAgent") & "' as AgentCaption,
+                IfNull(Agent.DispName,'') as AgentName, IfNull(G.Name,'') as GodownName, IfNull(G.Address,'') as GodownAddress,  IfNull(SRep.Name,'') as SalesRepName, IfNull(SRep.ManualCode,'') as SalesRepCode, IfNull(RP.Name,'') as ResponsiblePersonName, '" & AgL.PubDtEnviro.Rows(0)("Caption_SalesAgent") & "' as AgentCaption,
                 (Case When BP.Nature = 'Cash' Then BP.DispName || ' - ' || IsNull(H.SaleToPartyName,'') Else H.SaletoPartyName End) as SaleToPartyName, 
                 IfNull(H.SaleToPartyAddress,'') as SaleToPartyAddress, IfNull(C.CityName,'') as CityName, IfNull(H.SaleToPartyPincode,'') as SaleToPartyPincode, 
                 IfNull(State.ManualCode,'') as StateCode, IfNull(State.Description,'')  as StateName, 
@@ -12674,7 +12674,12 @@ Public Class FrmSaleInvoiceDirect_WithDimension
                 AgL.Dman_ExecuteNonQry(mQry, AgL.GCn, AgL.ECmd)
 
                 If mFlag_Import = False Then
-                    FGetCalculationData(SaleInvoiceTableList(0).DocID, AgL.GCn, AgL.ECmd)
+                    If AgL.StrCmp(AgL.PubDBName, "RVN2") And SaleInvoiceTableList(0).V_Type = Ncat.SaleChallan Then
+
+                    Else
+                        FGetCalculationData(SaleInvoiceTableList(0).DocID, AgL.GCn, AgL.ECmd)
+                    End If
+
                 End If
 
 
@@ -14111,7 +14116,7 @@ Public Class FrmSaleInvoiceDirect_WithDimension
         mQry = "SELECT Sd.* 
                 FROM SaleInvoice H With (NoLock)
                 LEFT JOIN StructureDetail Sd With (NoLock) ON H.Structure = Sd.Code
-                WHERE H.DocID = '" & mSearchCode & "'"
+                WHERE H.DocID = '" & mSearchCode & "' "
         Dim DtCalcHeaderData As DataTable = AgL.FillData(mQry, IIf(AgL.PubServerName = "", AgL.GCn, AgL.GcnRead)).Tables(0)
 
         mQry = "Select * From SaleInvoice With (NoLock) Where DocId = '" & mSearchCode & "'"

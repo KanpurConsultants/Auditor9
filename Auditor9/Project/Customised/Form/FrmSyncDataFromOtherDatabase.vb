@@ -285,7 +285,7 @@ Public Class FrmSyncDataFromOtherDatabase
         If IsApplicableImport_SaleInvoice = True Then
             FLoadSale()
             FDeleteSale(DtExternalData_SaleInvoice, Ncat.SaleInvoice)
-            FUpdateSale(DtExternalData_SaleInvoice)
+            'FUpdateSale(DtExternalData_SaleInvoice)
             FAddSale(DtExternalData_SaleInvoice)
         End If
 

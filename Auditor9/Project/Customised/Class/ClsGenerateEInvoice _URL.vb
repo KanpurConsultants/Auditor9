@@ -1047,7 +1047,9 @@ Public Class ClsGenerateEInvoice_URL
 
         If AgL.XNull(DtSaleInvoice.Rows(0)("ShipToPartyName")) <> "" Then
             strdata += ControlChars.Tab + ControlChars.Tab + ControlChars.Tab + """ShipDtls"": {" & vbCrLf
-            strdata += ControlChars.Tab + ControlChars.Tab + ControlChars.Tab + """Gstin"" :  """ & AgL.XNull(DtSaleInvoice.Rows(0)("ShipToPartySalesTaxNo")) & """," & vbCrLf
+            If AgL.XNull(DtSaleInvoice.Rows(0)("ShipToPartySalesTaxNo")) <> "" Then
+                strdata += ControlChars.Tab + ControlChars.Tab + ControlChars.Tab + """Gstin"" :  """ & AgL.XNull(DtSaleInvoice.Rows(0)("ShipToPartySalesTaxNo")) & """," & vbCrLf
+            End If
             strdata += ControlChars.Tab + ControlChars.Tab + ControlChars.Tab + """LglNm"" :  """ & AgL.XNull(DtSaleInvoice.Rows(0)("ShipToPartyName")) & """," & vbCrLf
             'strdata += ControlChars.Tab + ControlChars.Tab + ControlChars.Tab + """TrdNm"" :  """"," & vbCrLf
             strdata += ControlChars.Tab + ControlChars.Tab + ControlChars.Tab + """Addr1"" :  """ & AgL.XNull(DtSaleInvoice.Rows(0)("ShipToPartyAddress")).ToString.Replace("\", "").Replace(vbCrLf, "") & """," & vbCrLf

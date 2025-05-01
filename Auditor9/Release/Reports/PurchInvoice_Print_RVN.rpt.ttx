@@ -3,53 +3,53 @@ Copies	string	255	1
 CopyPrintingCaption	string	255		
 DocNoCaption	string	255	Invoice No.	
 DocDateCaption	string	255	Invoice Date	
-DocID	string	255	D1    PI 2024      86	
+DocID	string	255	D3    PI 2025      15	
 SiteStateCode	string	255	09	
 SiteStateName	string	255	Uttar Pradesh	
 Sr	number	1	
-V_Date	datetime	14/Jan/2025 00:00:00	
+V_Date	datetime	16/Apr/2025 00:00:00	
 Voucher_Type	string	255	Purchase Invoice	
 NCat	string	255	PI	
-DocNo	string	255	D1-PI-86	
+DocNo	string	255	D3-PI-15	
 AgentName	string	255		
 AgentCaption	string	255	Agent	
-PartyName	string	255	MAA LUXMI AUTO(SPARE PARTS)	
-PartyAddress	string	255	FACTORY NO.28,INDUSTRIAL AREA,DELHI PULL	
-PartyPinCode	string	255	125055	
-PartyCityName	string	255	SIRSA	
-PartyStateCode	string	255	06	
-PartyStateName	string	255	Haryana	
+PartyName	string	255	FUTURE ACCESSORIES LLP	
+PartyAddress	string	255		
+PartyPinCode	string	255		
+PartyCityName	string	255	HOSUR	
+PartyStateCode	string	255	33	
+PartyStateName	string	255	Tamil Nadu	
 PartyMobile	string	255		
 ContactPerson	string	255		
-PartySalesTaxNo	string	255	06BEHPK3814G1ZP	
+PartySalesTaxNo	string	255	33AAIFF6389B1ZG	
 PartyAadharNo	string	255		
-PartyPanNo	string	255	BEHPK3814G	
-ShipToPartyName	string	255	MAA LUXMI AUTO(SPARE PARTS)	
-ShipToPartyAddress	string	255	FACTORY NO.28,INDUSTRIAL AREA,DELHI PULL	
-ShipToPartyCity	string	255	SIRSA	
-ShipToPartyPincode	string	255	125055	
-ShipToPartyStateCode	string	255	06	
-ShipToPartyStateName	string	255	Haryana	
+PartyPanNo	string	255	AAIFF6389B	
+ShipToPartyName	string	255	FUTURE ACCESSORIES LLP	
+ShipToPartyAddress	string	255		
+ShipToPartyCity	string	255	HOSUR	
+ShipToPartyPincode	string	255		
+ShipToPartyStateCode	string	255	33	
+ShipToPartyStateName	string	255	Tamil Nadu	
 ShipToPartyMobile	string	255		
-ShipToPartySalesTaxNo	string	255	06BEHPK3814G1ZP	
+ShipToPartySalesTaxNo	string	255	33AAIFF6389B1ZG	
 ShipToPartyAadharNo	string	255		
 ShipToPartyPanNo	string	255		
-TransporterName	string	255		
+TransporterName	string	255	BY COURIER, KANPUR	
 LrNo	string	255		
 LrDate	datetime		
 PrivateMark	string	255		
-Weight	number		
-Freight	number		
+Weight	number	0	
+Freight	number	0	
 FreightType	string	255		
 RoadPermitNo	string	255		
 RoadPermitDate	datetime		
 ReferenceNo	string	255		
-ItemName	string	255	YEV RE 25 FRONT FENDER - YAKUZA SPARES - EV SPARES	
-ItemGroupName	string	255	YAKUZA SPARES	
+ItemName	string	255	HSRP KIT - TVS SPARES - EV SPARES	
+ItemGroupName	string	255	TVS SPARES	
 ItemCatName	string	255	EV SPARES	
 BarcodeName	string	255		
-ItemSpecification	string	255	YEV RE 25 FRONT FENDER	
-InvoiceLineSpecification	string	255	YEV RE 25 FRONT FENDER	
+ItemSpecification	string	255	HSRP KIT	
+InvoiceLineSpecification	string	255	HSRP KIT	
 HSN	string	255	87142090	
 D1Spec	string	255		
 D2Spec	string	255		
@@ -65,27 +65,27 @@ D1Caption	string	255	Design
 D2Caption	string	255	Shade	
 D3Caption	string	255		
 D4Caption	string	255		
-SalesTaxGroupItem	string	255	GST 28%	
-GrossTaxRate	number	28	
+SalesTaxGroupItem	string	255	GST 18%	
+GrossTaxRate	number	18	
 Pcs	number	0	
-Qty	number	6	
-DocQty	number	6	
+Qty	number	8	
+DocQty	number	8	
 FreeQty	number	0	
 LossQty	number	0	
 RejQty	number	0	
-Rate	number	253.91	
+Rate	number	243.21	
 Unit	string	255	Pcs	
 UnitDecimalPlaces	number	0	
-DiscountPer	number	28	
-DiscountAmount	number	426.57	
+DiscountPer	number	0	
+DiscountAmount	number	0	
 AdditionalDiscountPer	number	0	
 AdditionalDiscountAmount	number	0	
-TotalDiscount	number	426.57	
-AmountBeforeDiscount	number	1523.46	
-Amount	number	1096.89	
-Taxable_Amount	number	1096.89	
-Tax1_Per	number	28	
-Tax1	number	307.13	
+TotalDiscount	number	0	
+AmountBeforeDiscount	number	1945.68	
+Amount	number	1945.68	
+Taxable_Amount	number	1945.68	
+Tax1_Per	number	18	
+Tax1	number	350.22	
 Tax2_Per	number	0	
 Tax2	number	0	
 Tax3_Per	number	0	
@@ -94,7 +94,7 @@ Tax4_Per	number	0
 Tax4	number	0	
 Tax5_Per	number	0	
 Tax5	number	0	
-Net_Amount	number	1404.08	
+Net_Amount	number	2296	
 HRemarks	string	255		
 LRemarks	string	255		
 LRemarks5	string	255		
@@ -102,15 +102,17 @@ LRemarks1	string	255
 LRemarks2	string	255		
 LRemarks3	string	255		
 LRemarks4	string	255		
-GodownName	string	255	YAKUZA ACHRYA NAGAR	
+GodownName	string	255	TVS KANPUR	
 FromGodownName	string	255		
 ToGodownName	string	255		
-H_Gross_Amount	number	9523.1	
+FGodownAddress	string	255		
+TGodownAddress	string	255		
+H_Gross_Amount	number	1945.68	
 H_SpecialDiscount_Per	number	0	
 H_SpecialDiscount	number	0	
-H_Taxable_Amount	number	9523.1	
+H_Taxable_Amount	number	1945.68	
 H_Tax1_Per	number	0	
-H_Tax1	number	2666.48	
+H_Tax1	number	350.22	
 H_Tax2_Per	number	0	
 H_Tax2	number	0	
 H_Tax3_Per	number	0	
@@ -123,11 +125,11 @@ H_Deduction_Per	number	0
 H_Deduction	number	0	
 H_Other_Charge_Per	number	0	
 H_Other_Charge	number	0	
-Round_Off	number	0.42	
-H_Net_Amount	number	12190	
-H_TotalDiscount	number	3703.43	
-H_AmountBeforeDiscount	number	13226.53	
-Default_BankAccountDetail	string	255	<B> Bank Detail :- <BR> HDFC : 99915400000007  IFSC : HDFC0009597 <BR>	
+Round_Off	number	0.1	
+H_Net_Amount	number	2296	
+H_TotalDiscount	number	0	
+H_AmountBeforeDiscount	number	1945.68	
+Default_BankAccountDetail	string	255	<B> Bank Detail :- <BR> KMB : 5400000007  IFSC : KKBK0005135 <BR>	
 DocumentPrintHeaderPattern	string	255	Center Aligned	
 DimDetail	string	255		
 HsnDescription	string	255		
