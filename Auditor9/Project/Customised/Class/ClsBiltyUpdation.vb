@@ -95,10 +95,121 @@ Public Class ClsBiltyUpdation
         ReportFrm = mReportFrm
     End Sub
 
+    'Public Sub ProcMain(Optional mFilterGrid As AgControls.AgDataGrid = Nothing,
+    '                            Optional mGridRow As DataGridViewRow = Nothing, Optional bDocId As String = "")
+    '    Try
+    '        Dim mCondStr$ = ""
+    '        Dim strGrpFld As String = "''", strGrpFldHead As String = "''", strGrpFldDesc As String = "''"
+
+    '        Dim mDbPath As String
+    '        mDbPath = AgL.INIRead(StrPath + "\" + IniName, "CompanyInfo", "ActualDBPath", "")
+    '        Try
+    '            AgL.Dman_ExecuteNonQry(" attach '" & mDbPath & "' as ODB", AgL.GCn)
+    '        Catch ex As Exception
+    '            'MsgBox(ex.Message)
+    '        End Try
+
+
+
+    '        RepTitle = "Bilty Updation"
+    '        If mFilterGrid IsNot Nothing And mGridRow IsNot Nothing Then
+    '            If mGridRow.DataGridView.Columns.Contains("Search Code") = True Then
+    '                ClsMain.FOpenForm(mGridRow.Cells("Search Code").Value, ReportFrm)
+    '                ReportFrm.FiterGridCopy_Arr.RemoveAt(ReportFrm.FiterGridCopy_Arr.Count - 1)
+    '            Else
+    '                Exit Sub
+    '            End If
+    '        End If
+
+    '        mCondStr = " AND H.V_Type ='PGR' "
+
+    '        mCondStr += " And Date(H.V_Date) Between " & AgL.Chk_Date(ReportFrm.FGetText(rowFromDate)) & " And " & AgL.Chk_Date(ReportFrm.FGetText(rowToDate)) & " "
+    '        mCondStr += " And H.Div_Code = '" & AgL.PubDivCode & "' "
+    '        mCondStr += " And H.Site_Code = '" & AgL.PubSiteCode & "' "
+    '        mCondStr += ReportFrm.GetWhereCondition("H.BillToParty", rowSupplier)
+    '        mCondStr += ReportFrm.GetWhereCondition("Sit.Transporter", rowTransport)
+    '        If AgL.XNull(ReportFrm.FilterGrid.Item(GFilter, rowReportType).Value) = mReportType_Pending Then
+    '            mCondStr += " And SIt.UploadDate IS NULL "
+    '        ElseIf AgL.XNull(ReportFrm.FilterGrid.Item(GFilter, rowReportType).Value) = mReportType_Received Then
+    '            mCondStr += " And SIt.UploadDate IS Not NULL "
+    '        End If
+
+    '        mQry = "SELECT H.DocID As SearchCode, H.V_Type + '-' + H.ManualRefNo AS InvoiceNo, 
+    '                H.V_Date AS InvoiceDate, H.VendorName As Transporter, Sg.Name AS Party, City.CityName BookedFrom, 'KANPUR' BookedTo,
+    '                 SIt.LrNo as BiltyNo, SIt.LrDate As BiltyDate, SIt.PrivateMark, SIt.NoOfBales AS NoOfBales, L.Remark, L.Net_Amount AS Amount, SIt.UploadDate AS UploadDate
+    '                FROM PurchInvoice H 
+    '                LEFT JOIN PurchInvoiceTransport SIt ON H.DocID = SIt.DocID
+    '                LEFT JOIN PurchInvoiceDetail L ON H.DocID = L.DocID
+    '                LEFT JOIN ViewHelpSubgroup Sg ON H.LinkedParty  = Sg.code
+    '                LEFT JOIN SubGroup T On Sit.Transporter = T.SubCode
+    '                LEFT JOIN City ON City.CityCode = Sg.CityCode 
+    '                LEFT JOIN Voucher_Type Vt ON H.V_Type = Vt.V_Type
+    '                WHERE 1=1 " & mCondStr
+    '        mQry = mQry + " Order By H.V_Date,H.V_Type,H.V_No "
+
+    '        DsHeader = AgL.FillData(mQry, AgL.GCn)
+
+    '        If DsHeader.Tables(0).Rows.Count = 0 Then Err.Raise(1, , "No Records To Print!")
+
+
+    '        ReportFrm.Text = "Bilty Update"
+    '        ReportFrm.ClsRep = Me
+    '        ReportFrm.ReportProcName = "ProcMain"
+
+
+    '        ReportFrm.ProcFillGrid(DsHeader)
+
+    '        ReportFrm.IsHideZeroColumns = False
+
+    '        ReportFrm.DGL1.ReadOnly = False
+    '        For I As Integer = 0 To ReportFrm.DGL1.Columns.Count - 1
+    '            ReportFrm.DGL1.Columns(I).ReadOnly = True
+    '        Next
+
+    '        ReportFrm.DGL1.Columns(Col1Amount).ReadOnly = False
+    '        ReportFrm.DGL1.Columns(Col1UploadDate).ReadOnly = False
+    '        ReportFrm.DGL1.Columns(Col1UploadDate).HeaderText = "Received Date"
+
+    '        'ReportFrm.DGL1.Columns(Col1Transporter).ReadOnly = False
+
+    '        'ReportFrm.DGL1.Columns(Col1LrDate).ReadOnly = False
+    '        'ReportFrm.DGL1.Columns(Col1NoOfBales).ReadOnly = False
+    '        'ReportFrm.DGL1.Columns(Col1PrivateMark).ReadOnly = False
+    '        'ReportFrm.DGL1.Columns(Col1Weight).ReadOnly = False
+    '        'ReportFrm.DGL1.Columns(Col1Freight).ReadOnly = False
+    '        'ReportFrm.DGL1.Columns(Col1PaymentType).ReadOnly = False
+    '        'ReportFrm.DGL1.Columns(Col1RoadPermitNo).ReadOnly = False
+    '        'ReportFrm.DGL1.Columns(Col1RoadPermitDate).ReadOnly = False
+
+    '        ''ReportFrm.DGL1.Columns(Col1RoadPermitNo).HeaderText = "EWay Bill No"
+
+
+    '        'ReportFrm.DGL1.Columns(Col1Transporter).Visible = True
+    '        'ReportFrm.DGL1.Columns(Col1LrNo).Visible = True
+    '        'ReportFrm.DGL1.Columns(Col1LrDate).Visible = True
+    '        'ReportFrm.DGL1.Columns(Col1NoOfBales).Visible = True
+
+
+    '        'ReportFrm.DGL1.Columns(Col1PrivateMark).Visible = True
+    '        'ReportFrm.DGL1.Columns(Col1Weight).Visible = True
+    '        'ReportFrm.DGL1.Columns(Col1Freight).Visible = True
+    '        'ReportFrm.DGL1.Columns(Col1PaymentType).Visible = True
+    '        'ReportFrm.DGL1.Columns(Col1RoadPermitNo).Visible = True
+    '        'ReportFrm.DGL1.Columns(Col1RoadPermitDate).Visible = True
+
+    '        'ReportFrm.DGL1.AutoResizeRows()
+
+    '    Catch ex As Exception
+    '        MsgBox(ex.Message)
+    '        DsHeader = Nothing
+    '    End Try
+    'End Sub
+
     Public Sub ProcMain(Optional mFilterGrid As AgControls.AgDataGrid = Nothing,
                                 Optional mGridRow As DataGridViewRow = Nothing, Optional bDocId As String = "")
         Try
             Dim mCondStr$ = ""
+            Dim mCondStr1$ = ""
             Dim strGrpFld As String = "''", strGrpFldHead As String = "''", strGrpFldDesc As String = "''"
 
             Dim mDbPath As String
@@ -121,30 +232,47 @@ Public Class ClsBiltyUpdation
                 End If
             End If
 
-            mCondStr = " AND H.V_Type ='PGR' "
+            mCondStr = "  "
 
             mCondStr += " And Date(H.V_Date) Between " & AgL.Chk_Date(ReportFrm.FGetText(rowFromDate)) & " And " & AgL.Chk_Date(ReportFrm.FGetText(rowToDate)) & " "
             mCondStr += " And H.Div_Code = '" & AgL.PubDivCode & "' "
             mCondStr += " And H.Site_Code = '" & AgL.PubSiteCode & "' "
-            mCondStr += ReportFrm.GetWhereCondition("H.BillToParty", rowSupplier)
-            mCondStr += ReportFrm.GetWhereCondition("Sit.Transporter", rowTransport)
+            mCondStr += ReportFrm.GetWhereCondition("H.Vendor", rowTransport)
+            mCondStr += ReportFrm.GetWhereCondition("H.LinkedParty", rowSupplier)
             If AgL.XNull(ReportFrm.FilterGrid.Item(GFilter, rowReportType).Value) = mReportType_Pending Then
-                mCondStr += " And SIt.UploadDate IS NULL "
+                mCondStr1 += " And SI.Qty_REC - ISNull(SR.Qty_Ret,0) >0 "
             ElseIf AgL.XNull(ReportFrm.FilterGrid.Item(GFilter, rowReportType).Value) = mReportType_Received Then
-                mCondStr += " And SIt.UploadDate IS Not NULL "
+                mCondStr1 += " And SI.Qty_REC - ISNull(SR.Qty_Ret,0) <=0 "
             End If
 
-            mQry = "SELECT H.DocID As SearchCode, H.V_Type + '-' + H.ManualRefNo AS InvoiceNo, 
-                    H.V_Date AS InvoiceDate, T.Name As Transporter, Sg.Name AS Party, City.CityName BookedFrom, 'KANPUR' BookedTo,
-                     SIt.LrNo as BiltyNo, SIt.LrDate As BiltyDate, SIt.PrivateMark, SIt.NoOfBales AS NoOfBales, L.Remark, L.Net_Amount AS Amount, SIt.UploadDate AS UploadDate
-                    FROM PurchInvoice H 
-                    LEFT JOIN PurchInvoiceTransport SIt ON H.DocID = SIt.DocID
-                    LEFT JOIN PurchInvoiceDetail L ON H.DocID = L.DocID
-                    LEFT JOIN ViewHelpSubgroup Sg ON H.BillToParty = Sg.code
-                    LEFT JOIN SubGroup T On Sit.Transporter = T.SubCode
-                    LEFT JOIN City ON City.CityCode = H.VendorCity 
-                    LEFT JOIN Voucher_Type Vt ON H.V_Type = Vt.V_Type
-                    WHERE 1=1 " & mCondStr
+            mQry = " SELECT H.DocID As SearchCode, H.V_Type + '-' + H.ManualRefNo AS InvoiceNo, 
+                    H.V_Date AS InvoiceDate, H.VendorName As Transporter, Sg.Name AS Party, City.CityName BookedFrom, 'KANPUR' BookedTo,
+                     SIt.LrNo as BiltyNo, SIt.LrDate As BiltyDate, SIt.PrivateMark, SIt.NoOfBales AS NoOfBales, L.Remark, L.Net_Amount AS Amount, SR.ReceivedDate
+                From
+                    (    
+                    select S.DocID, S.Sr,  S.Item, S.Qty AS Qty_Rec, S.Unit, S.Rate 
+                    FROM PurchInvoice H With (NoLock)
+                    LEFT JOIN PurchInvoiceDetail S  With (NoLock) ON S.DocID = H.DocID
+                    LEFT JOIN Item Sku With (NoLock) On S.Item = Sku.Code
+                    Left Join Voucher_Type Vt  With (NoLock) on H.V_Type = VT.V_Type
+                    where VT.NCat = 'WB'  " & mCondStr & "
+                    ) as SI
+                Left Join 
+                    (
+                    select S.ReferenceDocID,  S.ReferenceSr, Max(H.V_Date) AS ReceivedDate, Sum(S.Qty) as Qty_Ret
+                    FROM PurchInvoice H With (NoLock)
+                    LEFT JOIN PurchInvoiceDetail S  With (NoLock) ON S.DocID = H.DocID
+                    LEFT JOIN Item Sku With (NoLock) On S.Item = Sku.Code
+                    Left Join Voucher_Type Vt  With (NoLock) on H.V_Type = VT.V_Type
+                    where VT.nCat='WBI'  Group By S.ReferenceDocID,  S.ReferenceSr
+                    ) As SR On SI.DocID = SR.ReferenceDocID  And SI.Sr = SR.ReferenceSr
+                Left Join PurchInvoice H  With (NoLock) On SI.DocID = H.DocID
+                LEFT JOIN PurchInvoiceTransport SIt ON H.DocID = SIt.DocID
+                LEFT JOIN PurchInvoiceDetail L ON H.DocID = L.DocID
+                LEFT JOIN ViewHelpSubgroup Sg ON H.LinkedParty  = Sg.code
+                LEFT JOIN SubGroup T On Sit.Transporter = T.SubCode
+                LEFT JOIN City ON City.CityCode = Sg.CityCode Where 1=1 "
+            mQry = mQry + mCondStr1
             mQry = mQry + " Order By H.V_Date,H.V_Type,H.V_No "
 
             DsHeader = AgL.FillData(mQry, AgL.GCn)
@@ -166,9 +294,9 @@ Public Class ClsBiltyUpdation
                 ReportFrm.DGL1.Columns(I).ReadOnly = True
             Next
 
-            ReportFrm.DGL1.Columns(Col1Amount).ReadOnly = False
-            ReportFrm.DGL1.Columns(Col1UploadDate).ReadOnly = False
-            ReportFrm.DGL1.Columns(Col1UploadDate).HeaderText = "Received Date"
+            'ReportFrm.DGL1.Columns(Col1Amount).ReadOnly = False
+            'ReportFrm.DGL1.Columns(Col1UploadDate).ReadOnly = False
+            'ReportFrm.DGL1.Columns(Col1UploadDate).HeaderText = "Received Date"
 
             'ReportFrm.DGL1.Columns(Col1Transporter).ReadOnly = False
 
@@ -204,6 +332,7 @@ Public Class ClsBiltyUpdation
             DsHeader = Nothing
         End Try
     End Sub
+
     Private Sub ReportFrm_DGL1EditingControl_Validating(sender As Object, e As CancelEventArgs) Handles ReportFrm.DGL1EditingControl_Validating
         Dim mRowIndex As Integer, mColumnIndex As Integer
         Dim I As Integer = 0, Cnt = 0
@@ -222,7 +351,7 @@ Public Class ClsBiltyUpdation
                     End If
             End Select
 
-            ProcSave(mRowIndex, ReportFrm.DGL1.Columns(mColumnIndex).Name.Replace(" ", ""), AgL.XNull(ReportFrm.DGL1.Item(mColumnIndex, mRowIndex).Value))
+            'ProcSave(mRowIndex, ReportFrm.DGL1.Columns(mColumnIndex).Name.Replace(" ", ""), AgL.XNull(ReportFrm.DGL1.Item(mColumnIndex, mRowIndex).Value))
 
             ReportFrm.DGL1.CurrentCell.Style.BackColor = Color.BurlyWood
         Catch ex As Exception

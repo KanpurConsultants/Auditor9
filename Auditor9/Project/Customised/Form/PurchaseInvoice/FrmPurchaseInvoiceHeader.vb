@@ -331,7 +331,7 @@ Public Class FrmPurchaseInvoiceHeader
         Dim I As Integer = 0
 
         If SearchCode = "" Then
-            If AgL.StrCmp(AgL.PubDBName, "Sadhvi") And mV_Type = Ncat.PurchaseGoodsReceipt Then
+            If AgL.StrCmp(AgL.PubDBName, "Sadhvi") And mV_Type = Ncat.WayBill Then
                 mQry = "Select H.SubCode AS Transporter, H.Name as TransporterName 
                     From Subgroup H  With (NoLock)
                     Where H.Subcode='D100001006' "

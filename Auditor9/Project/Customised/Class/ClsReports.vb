@@ -1670,7 +1670,7 @@ Public Class ClsReports
             End If
 
 
-            mCondStr = " Where VT.NCat In ('" & Ncat.SaleInvoice & "', '" & Ncat.SaleReturn & "') "
+            mCondStr = " "
             mCondStr = mCondStr & " AND Date(H.V_Date) Between " & AgL.Chk_Date(CDate(ReportFrm.FGetText(1)).ToString("s")) & " And " & AgL.Chk_Date(CDate(ReportFrm.FGetText(2)).ToString("s")) & " "
             mCondStr = mCondStr & Replace(ReportFrm.GetWhereCondition("H.Site_Code", 3), "''", "'")
             mCondStr = mCondStr & ReportFrm.GetWhereCondition("H.SaleToParty", 4)
@@ -1678,53 +1678,64 @@ Public Class ClsReports
             mCondStr = mCondStr & ReportFrm.GetWhereCondition("I.ItemGroup", 6)
 
             mCondStrPurch = " Where VT.NCat In ('" & Ncat.PurchaseInvoice & "', '" & Ncat.PurchaseReturn & "') "
+            mCondStrPurch = mCondStrPurch & " AND Date(PI.V_Date) Between " & AgL.Chk_Date(CDate(ReportFrm.FGetText(1)).ToString("s")) & " And " & AgL.Chk_Date(CDate(ReportFrm.FGetText(2)).ToString("s")) & " "
             mCondStrPurch = mCondStrPurch & Replace(ReportFrm.GetWhereCondition("PI.Site_Code", 3), "''", "'")
             mCondStrPurch = mCondStrPurch & ReportFrm.GetWhereCondition("L.Item", 5)
             mCondStrPurch = mCondStrPurch & ReportFrm.GetWhereCondition("I.ItemGroup", 6)
 
 
-            mQry = "  SELECT H.DocID, H.V_Type, Vt.Description as VoucherType, H.Site_Code, H.Div_Code, Site.Name as Site, Div.Div_Name as Division,
-                    (Case When H.SaleToParty=H.BillToParty And (Party.Nature='Cash' Or Party.SubgroupType='Revenue Point') Then Party.Name || ' - ' || IfNull(H.SaleToPartyName,'') When H.SaleToParty=H.BillToParty Then Party.Name When BillToParty.Nature='Cash' And H.SaleToParty<>H.BillToParty Then  BillToParty.Name || ' - ' || Party.Name  Else Party.Name || ' - ' || BillToParty.Name End) As SaleToPartyName ,                     
+            mQry = "SELECT H.DocID, H.V_Type, Vt.Description as VoucherType, H.Site_Code, H.Div_Code,                   
                     Cast(Replace(H.ManualRefNo,'-','') as Integer) as InvoiceNo, H.ManualRefNo, L.Item, I.ItemGroup,
-                    I.Specification as ItemSpecification, I.Description As ItemDesc, IfNull(IfNull(I.HSN,IC.HSN),Bi.HSN) as HSN,IG.Description as ItemGroupDescription, IC.Description as ItemCategoryDescription,  
-                    CASE WHEN VPI.Amount <> 0 AND VPI.Qty <> 0  THEN VPI.Amount/VPI.Qty ELSE I.PurchaseRate END AS  PurchaseRate,
-                    (Case When L.DiscountPer = 0 Then '' else Cast(L.DiscountPer as nVarchar) End)  || (Case When L.AdditionalDiscountPer>0 Then '+' else '' End) || (Case When L.AdditionalDiscountPer=0 Then '' else Cast(L.AdditionalDiscountPer as nVarchar) End)  as DiscountPer, 
-                    L.DiscountAmount as Discount, L.AdditionalDiscountAmount as AdditionalDiscount, L.AdditionAmount as Addition, 
-                    L.SpecialDiscount_Per, L.SpecialDiscount, L.SpecialAddition_Per, L.SpecialAddition, 
-                    L.Taxable_Amount, (Case When L.Net_Amount=0 Then L.Amount Else L.Net_Amount End) as Net_Amount, L.Qty, L.Unit, L.DealQty, L.DealUnit, L.Rate, L.Amount +(L.DiscountAmount + L.AdditionalDiscountAmount - L.AdditionAmount) as AmountExDiscount, L.Amount,
-                    L.Tax1, L.Tax2, L.Tax3, L.Tax4, L.Tax5, L.Tax1+L.Tax2+L.Tax3+L.Tax4+L.Tax5 as TotalTax
-                    FROM SaleInvoice H 
-                    Left Join SaleInvoiceTransport SIT On H.DocID = SIT.DocID
-                    Left Join SaleInvoiceDetail L On H.DocID = L.DocID 
-                    Left Join SaleInvoiceDetailSku LS On L.DocID = LS.DocID And LS.Sr = L.Sr
-                    Left Join Item I On L.Item = I.Code 
-                    Left Join Item IG On LS.ItemGroup = IG.Code
-                    Left Join Item IC On I.ItemCategory = IC.Code
-                    LEFT JOIN Item Bi On I.BaseItem = Bi.Code
-                    Left Join viewHelpSubgroup Party On H.SaleToParty = Party.Code 
-                    Left Join viewHelpSubgroup BillToParty On H.BillToParty = BillToParty.Code                  
-                    LEFT JOIN Voucher_Type Vt On H.V_Type = Vt.V_Type     
-                    Left Join SiteMast Site On H.Site_Code = Site.Code
-                    Left Join Division Div On H.Div_Code = Div.Div_Code  
+                    I.Specification as ItemSpecification, I.Description As ItemDesc,
+                    L.Taxable_Amount, (Case When L.Net_Amount=0 Then L.Amount Else L.Net_Amount End) as Net_Amount, L.Qty, L.Unit, L.DealQty, L.DealUnit, L.Rate, L.Amount,
+                    CASE WHEN VPI.Amount <> 0 AND VPI.Qty <> 0  THEN VPI.Amount/VPI.Qty ELSE I.PurchaseRate END AS  PurchaseRate
+                    FROM SaleInvoice H WITH (Nolock)
+                    Left Join SaleInvoiceDetail L WITH (Nolock) On H.DocID = L.DocID 
+                    Left Join Item I WITH (Nolock) On L.Item = I.Code 
+                    Left Join Item IG WITH (Nolock) On I.ItemGroup = IG.Code             
+                    LEFT JOIN Voucher_Type Vt WITH (Nolock) On H.V_Type = Vt.V_Type     
                     LEFT JOIN 
                     (
                     SELECT PID.Item, Sum(PID.Qty) AS Qty, Sum(PID.Amount) AS Amount    
-					FROM PurchInvoice PI
-					LEFT JOIN Voucher_Type Vt On PI.V_Type = Vt.V_Type 
-					LEFT JOIN PurchInvoiceDetail PID ON PID.DocID = PI.DocID 
+					FROM PurchInvoice PI WITH (Nolock)
+					LEFT JOIN Voucher_Type Vt WITH (Nolock) On PI.V_Type = Vt.V_Type 
+					LEFT JOIN PurchInvoiceDetail PID WITH (Nolock) ON PID.DocID = PI.DocID 
+                    Left Join Item I WITH (Nolock) On PID.Item = I.Code 
 					" & mCondStrPurch & "
 					GROUP BY PID.Item 
-                    ) VPI ON VPI.Item =   L.Item    
+                    ) VPI ON VPI.Item =   L.Item   
+                    Where VT.NCat In ('" & Ncat.SaleInvoice & "', '" & Ncat.SaleReturn & "') 
+                    " & mCondStr & "
+
+                     UNION ALL 
+
+                    SELECT H.DocID, H.V_Type, Vt.Description as VoucherType, H.Site_Code, H.Div_Code,                   
+                    Cast(Replace(H.ManualRefNo,'-','') as Integer) as InvoiceNo, H.ManualRefNo, L.Item, I.ItemGroup,
+                    I.Specification as ItemSpecification, I.Description As ItemDesc,
+                    L.Net_Amount AS Taxable_Amount, (Case When L.Net_Amount=0 Then L.Amount Else L.Net_Amount End) as Net_Amount, L.Qty, L.Unit, L.DealQty, L.DealUnit, L.Rate, L.Amount,
+                    CASE WHEN VPI.Amount <> 0 AND VPI.Qty <> 0  THEN VPI.Amount/VPI.Qty ELSE I.PurchaseRate END AS  PurchaseRate
+                    FROM SaleInvoice H WITH (Nolock)
+                    Left Join SaleInvoiceDetail L WITH (Nolock) On H.DocID = L.DocID 
+                    Left Join Item I WITH (Nolock) On L.Item = I.Code 
+                    Left Join Item IG WITH (Nolock) On I.ItemGroup = IG.Code             
+                    LEFT JOIN Voucher_Type Vt WITH (Nolock) On H.V_Type = Vt.V_Type     
+                    LEFT JOIN 
+                    (
+                    SELECT PID.Item, Sum(PID.Qty) AS Qty, Sum(PID.Amount) AS Amount    
+					FROM PurchInvoice PI WITH (Nolock)
+					LEFT JOIN Voucher_Type Vt WITH (Nolock) On PI.V_Type = Vt.V_Type 
+					LEFT JOIN PurchInvoiceDetail PID WITH (Nolock) ON PID.DocID = PI.DocID 
+                    Left Join Item I WITH (Nolock) On PID.Item = I.Code 
+					" & mCondStrPurch & "
+					GROUP BY PID.Item 
+                    ) VPI ON VPI.Item =   L.Item 
+                     Where VT.NCat In ('" & Ncat.StockIssue & "', '" & Ncat.StockReceive & "')   
                     " & mCondStr
 
 
             If ReportFrm.FGetText(0) = "Item Wise Summary" Then
-                'IfNull(Sum(VMain.Taxable_Amount), 0)/Round(Sum(VMain.Qty),3) As AvgSaleRate,
-
-                mQry = " Select VMain.Item As SearchCode, Max(VMain.ItemDesc) As [Item],  
-                    Round(Sum(VMain.Qty),3) as Qty,
-                    Sum(VMain.AmountExDiscount) as GoodsValue, Sum(VMain.Discount) as Discount, Sum(VMain.Addition) as Addition, Sum(VMain.SpecialDiscount) as SpecialDiscount, Sum(VMain.SpecialAddition) as SpecialAddition,
-                    Sum(VMain.Amount) As Amount, IfNull(Sum(VMain.Taxable_Amount),0) As [Taxable Amount], IfNull(Sum(VMain.TotalTax),0) As TaxAmount, IfNull(Sum(VMain.Net_Amount),0) As [Net Amount],
+                mQry = "  Select VMain.Item As SearchCode, Max(VMain.ItemDesc) As [Item],  
+                    Round(Sum(VMain.Qty),3) as Qty, IsNull(Sum(VMain.Taxable_Amount),0) As [Taxable Amount], 
                      Max(VMain.PurchaseRate) AS AvgPurchaseRate, IsNull(Sum(VMain.Taxable_Amount),0)-Max(VMain.PurchaseRate)*Sum(VMain.Qty) AS Diif
                     From (" & mQry & ") As VMain
                     GROUP By VMain.Item 
@@ -1733,20 +1744,18 @@ Public Class ClsReports
             ElseIf ReportFrm.FGetText(0) = "Item Group Wise Summary" Then
 
                 mQry = " Select V.ItemGroup as SearchCode, Max(V.ItemGroupDescription) As [Item Group],  
-                    Round(Sum(V.Qty),3) as Qty,
-                    Sum(V.AmountExDiscount) as GoodsValue, Sum(V.Discount) as Discount, Sum(V.Addition) as Addition, Sum(V.SpecialDiscount) as SpecialDiscount, Sum(V.SpecialAddition) as SpecialAddition,
-                    Sum(V.Amount) As Amount, IfNull(Sum(V.Taxable_Amount),0) As [Taxable Amount], IfNull(Sum(V.TotalTax),0) As TaxAmount, IfNull(Sum(V.Net_Amount),0) As [Net Amount],
+                    Round(Sum(V.Qty),3) as Qty, IfNull(Sum(V.Taxable_Amount),0) As [Taxable Amount],
                     IfNull(Sum(V.Diff),0) As [Diff]
                     From
                     (
                     Select VMain.Item , Max(VMain.ItemDesc) As ItemDesc,  
                     Max(VMain.ItemGroup) ItemGroup, Max(VMain.ItemGroupDescription) ItemGroupDescription,
                     Round(Sum(VMain.Qty),3) as Qty,
-                    Sum(VMain.AmountExDiscount) as AmountExDiscount, Sum(VMain.Discount) as Discount, Sum(VMain.Addition) as Addition, Sum(VMain.SpecialDiscount) as SpecialDiscount, Sum(VMain.SpecialAddition) as SpecialAddition,
-                    Sum(VMain.Amount) As Amount, IfNull(Sum(VMain.Taxable_Amount),0) As Taxable_Amount, IfNull(Sum(VMain.TotalTax),0) As TotalTax, IfNull(Sum(VMain.Net_Amount),0) As Net_Amount,
+                    Sum(VMain.Amount) As Amount, IfNull(Sum(VMain.Taxable_Amount),0) As Taxable_Amount, 
                     Max(VMain.PurchaseRate) AS AvgPurchaseRate, IsNull(Sum(VMain.Taxable_Amount),0)-Max(VMain.PurchaseRate)*Sum(VMain.Qty) AS Diff
                     From (" & mQry & ") As VMain
-                    GROUP By VMain.Item ) AS V 
+                    GROUP By VMain.Item 
+                    ) AS V 
                     Group By V.ItemGroup
                     Order By Max(V.ItemGroupDescription) "
 
@@ -3366,7 +3375,7 @@ Public Class ClsReports
 
                     mQry = " Select VMain.Subcode || '^' || VMain.Div_Code  As SearchCode, Max(VMain.PartyName) As [Party], Max(VMain.PartyCity) as City, 
                         IfNull(Max(Party.Mobile),'') || (Case  When IfNull(Max(Party.Phone),'')='' Then '' Else ', ' || IfNull(Max(Party.Phone),'')  End)  as ContactNo, 
-                        Max(Agent.Name) as AgentName,
+                        Max(VPartyGST.SalesTaxNo) as GstNo, Max(Agent.Name) as AgentName,
                         sum(VMain.PendingAmt) as [Amount], 
                         Sum(VMain.AmtDay0) As " & StrDays0 & ",
                         Sum(VMain.AmtDay30) As " & StrDays1 & ",
@@ -3378,6 +3387,9 @@ Public Class ClsReports
                         From (" & mQry & ") As VMain
                         Left Join Subgroup Division On VMain.Div_Code  COLLATE DATABASE_DEFAULT = Division.Subcode  COLLATE DATABASE_DEFAULT
                         Left Join Subgroup Party On VMain.Subcode  COLLATE DATABASE_DEFAULT = Party.SubCode  COLLATE DATABASE_DEFAULT
+                        LEFT JOIN (Select Subcode, RegistrationNo As SalesTaxNo
+                            From SubgroupRegistration 
+                            Where RegistrationType = 'Sales Tax No') As VPartyGST On VMain.Subcode COLLATE DATABASE_DEFAULT = VPartyGST.SubCode COLLATE DATABASE_DEFAULT
                         Left Join (Select SILTV.Subcode, SILTV.Div_Code, Max(SILTV.Agent) as Agent From SubgroupSiteDivisionDetail SILTV  Group By SILTV.Subcode, SILTV.Div_Code) as LTV On Party.Subcode  COLLATE DATABASE_DEFAULT = LTV.Subcode  COLLATE DATABASE_DEFAULT And VMain.Div_Code COLLATE DATABASE_DEFAULT = LTV.Div_Code  COLLATE DATABASE_DEFAULT                    
                         Left Join viewHelpSubgroup Agent On LTV.Agent  COLLATE DATABASE_DEFAULT = Agent.Code  COLLATE DATABASE_DEFAULT
                         GROUP By VMain.Subcode, VMain.Div_Code
@@ -3817,7 +3829,7 @@ Public Class ClsReports
 
                     mQry = " Select VMain.Subcode || '^' || VMain.Div_Code  As SearchCode, Max(VMain.PartyName) As [Party], Max(VMain.PartyCity) as City, 
                         IfNull(Max(Party.Mobile),'') || (Case  When IfNull(Max(Party.Phone),'')='' Then '' Else ', ' || IfNull(Max(Party.Phone),'')  End)  as ContactNo, 
-                        Max(Agent.Name) as AgentName,
+                        Max(VPartyGST.SalesTaxNo) as GstNo, Max(Agent.Name) as AgentName,
                         sum(VMain.PendingAmt) as [Amount], 
                         Sum(VMain.AmtDay0) As " & StrDays0 & ",
                         Sum(VMain.AmtDay30) As " & StrDays1 & ",
@@ -3829,6 +3841,9 @@ Public Class ClsReports
                         From (" & mQry & ") As VMain
                         Left Join Subgroup Division On VMain.Div_Code  COLLATE DATABASE_DEFAULT = Division.Subcode  COLLATE DATABASE_DEFAULT
                         Left Join Subgroup Party On VMain.Subcode  COLLATE DATABASE_DEFAULT = Party.SubCode  COLLATE DATABASE_DEFAULT
+                        LEFT JOIN (Select Subcode, RegistrationNo As SalesTaxNo
+                            From SubgroupRegistration 
+                            Where RegistrationType = 'Sales Tax No') As VPartyGST On VMain.Subcode COLLATE DATABASE_DEFAULT = VPartyGST.SubCode COLLATE DATABASE_DEFAULT
                         Left Join (Select SILTV.Subcode, SILTV.Div_Code, Max(SILTV.Agent) as Agent From SubgroupSiteDivisionDetail SILTV  Group By SILTV.Subcode, SILTV.Div_Code) as LTV On Party.Subcode  COLLATE DATABASE_DEFAULT = LTV.Subcode  COLLATE DATABASE_DEFAULT And VMain.Div_Code COLLATE DATABASE_DEFAULT = LTV.Div_Code  COLLATE DATABASE_DEFAULT                    
                         Left Join viewHelpSubgroup Agent On LTV.Agent  COLLATE DATABASE_DEFAULT = Agent.Code  COLLATE DATABASE_DEFAULT
                         GROUP By VMain.Subcode, VMain.Div_Code

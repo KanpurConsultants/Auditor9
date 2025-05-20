@@ -5,53 +5,53 @@ DocNoCaption	string	255	Invoice No.
 DocDateCaption	string	255	Invoice Date	
 SiteStateCode	string	255	09	
 SiteStateName	string	255	Uttar Pradesh	
-DocID	string	255	D1    SI 2024   22381	
+DocID	string	255	D1    SI 2025    5398	
 Sr	number	1	
-V_Date	datetime	24/Mar/2025 00:00:00	
+V_Date	datetime	14/May/2025 00:00:00	
 DeliveryDate	datetime		
 Voucher_Type	string	255	Tax Invoice	
 NCat	string	255	SI	
-InvoiceNo	string	255	SI-22380	
+InvoiceNo	string	255	SI-5397	
 RateType	string	255	Super Net	
 DocumentPrintShowRateType	string	255	Show If Not Blank	
-AgentName	string	255	DIRECT (CASH)	
+AgentName	string	255	AWADHESH KUMAR MISHRA	
 AgentCaption	string	255	Agent	
 BillToPartyNature	string	255	Customer	
-SaleToPartyName	string	255	NARENDRA KUMAR 	
-SaleToPartyAddress	string	255	GURUBAKSH GANJ -RAEBAREILLY	
-CityName	string	255	GURUBAKSHGANJ	
-SaleToPartyPincode	string	255	229122	
+SaleToPartyName	string	255	SHIV POOJAN SONI VASTRA VIKRETA	
+SaleToPartyAddress	string	255	BHAGWANT NAGAR UNNAO	
+CityName	string	255	BHAGVANT NAGER	
+SaleToPartyPincode	string	255	209864	
 StateCode	string	255	09	
 StateName	string	255	Uttar Pradesh	
-SaleToPartyMobile	string	255	9896874853	
-ContactPerson	string	255		
-SaleToPartySalesTaxNo	string	255		
-SaleToPartyAadharNo	string	255	773752430606	
-SaleToPartyPanNo	string	255		
-ShipToPartyName	string	255	NARENDRA KUMAR 	
-ShipToPartyAddress	string	255	GURUBAKSH GANJ -RAEBAREILLY	
-ShipToPartyCity	string	255	GURUBAKSHGANJ	
-ShipToPartyPincode	string	255	229122	
+SaleToPartyMobile	string	255	8736979832	
+ContactPerson	string	255	SHIV POOJAN	
+SaleToPartySalesTaxNo	string	255	09BLPPP9126D1ZO	
+SaleToPartyAadharNo	string	255		
+SaleToPartyPanNo	string	255	BLPPP9126D	
+ShipToPartyName	string	255	SHIV POOJAN SONI VASTRA VIKRETA	
+ShipToPartyAddress	string	255	BHAGWANT NAGAR UNNAO	
+ShipToPartyCity	string	255	BHAGVANT NAGER	
+ShipToPartyPincode	string	255	209864	
 ShipToPartyStateCode	string	255	09	
 ShipToPartyStateName	string	255	Uttar Pradesh	
-ShipToPartyMobile	string	255	9896874853	
-ShipToPartySalesTaxNo	string	255		
-ShipToPartyAadharNo	string	255	773752430606	
-ShipToPartyPanNo	string	255		
+ShipToPartyMobile	string	255	8736979832	
+ShipToPartySalesTaxNo	string	255	09BLPPP9126D1ZO	
+ShipToPartyAadharNo	string	255		
+ShipToPartyPanNo	string	255	BLPPP9126D	
 ShipToAddress	string	255		
 TermsAndConditions	string	255	<b>1.</b> Goods once sold will not be taken back. <b>2.</b> No Guarantee in the Age of Fashion. <b>3.</b> Interest @ 24% per annum will be charge after 30 days from the date of bill. <b>4.</b> All disputes subject to Kanpur Jurisdiction OR disputes will be settle through Cawnpore Kapda Committee Arbitration Board which will be abide by the both parties	
-TransporterName	string	255		
+TransporterName	string	255	BHAGWANT NAGAR TRANSPORT AGENCY, KANPUR	
 TransporterMobile	string	255		
 TransporterAddress	string	255		
 LrNo	string	255		
 LrDate	datetime		
 PrivateMark	string	255		
-Weight	number		
-Freight	number		
-ChargedWeight	number		
+Weight	number	0	
+Freight	number	0	
+ChargedWeight	number	0	
 FreightType	string	255		
-RoadPermitNo	string	255		
-RoadPermitDate	datetime		
+RoadPermitNo	string	255	441567881598	
+RoadPermitDate	datetime	14/May/2025 19:58:00	
 VehicleNo	string	255		
 ShipMethod	string	255		
 PreCarriageBy	string	255		
@@ -61,20 +61,20 @@ BookedTo	string	255
 Destination	string	255		
 DescriptionOfGoods	string	255		
 DescriptionOfPacking	string	255		
-TransporterSalesTaxNo	string	255		
+TransporterSalesTaxNo	string	255	09AGIPS5012J1Z6	
 ReferenceNo	string	255		
-ItemName	string	255	VATIKA          [SHIV SHAKTI(816) | SAREE]	
-ItemGroupName	string	255	S-ENT-816 DYD	
+ItemName	string	255	SOUNDARIYA          [MAA LAXMIPATI SAREE-376 | SAREE]	
+ItemGroupName	string	255	S-ENT-376 HALKI	
 ItemCatName	string	255	SAREE	
-ItemSpecification	string	255	VATIKA	
+ItemSpecification	string	255	SOUNDARIYA	
 InvoiceLineSpecification	string	255		
 HSN	string	255	540752	
 MaintainStockYn	boolean	True	
 SalesTaxGroupItem	string	255	GST 5%	
 GrossTaxRate	number	5	
-Pcs	number	3	
-Qty	number	3	
-Rate	number	975	
+Pcs	number	6	
+Qty	number	6	
+Rate	number	595	
 Unit	string	255	Pcs	
 UnitDecimalPlaces	number	0	
 DiscountPer	number	0	
@@ -84,34 +84,34 @@ AdditionalDiscountAmount	number	0
 AdditionPer	number	0	
 AdditionAmount	number	0	
 TotalDiscount	number	0	
-AmountBeforeDiscount	number	2925	
-Amount	number	2925	
-Taxable_Amount	number	2925	
+AmountBeforeDiscount	number	3570	
+Amount	number	3570	
+Taxable_Amount	number	3570	
 Tax1_Per	number	0	
 Tax1	number	0	
 Tax2_Per	number	2.5	
-Tax2	number	73.13	
+Tax2	number	89.25	
 Tax3_Per	number	2.5	
-Tax3	number	73.13	
+Tax3	number	89.25	
 Tax4_Per	number	0	
 Tax4	number	0	
 Tax5_Per	number	0	
 Tax5	number	0	
-Net_Amount	number	3071.24	
+Net_Amount	number	3748.6	
 LRemarks	string	255		
 HRemarks	string	255		
 H_TotalDiscount	number	0	
-H_AmountBeforeDiscount	number	3720	
-H_Gross_Amount	number	3720	
+H_AmountBeforeDiscount	number	8855	
+H_Gross_Amount	number	8855	
 H_SpecialDiscount_Per	number	0	
 H_SpecialDiscount	number	0	
-H_Taxable_Amount	number	3720	
+H_Taxable_Amount	number	8855	
 H_Tax1_Per	number	0	
 H_Tax1	number	0	
 H_Tax2_Per	number	0	
-H_Tax2	number	93.01	
+H_Tax2	number	221.38	
 H_Tax3_Per	number	0	
-H_Tax3	number	93.01	
+H_Tax3	number	221.38	
 H_Tax4_Per	number	0	
 H_Tax4	number	0	
 H_Tax5_Per	number	0	
@@ -120,16 +120,17 @@ H_Deduction_Per	number	0
 H_Deduction	number	0	
 H_Other_Charge_Per	number	0	
 H_Other_Charge	number	0	
-Round_Off	number	-0.02	
-H_Net_Amount	number	3906	
-EInvoiceIRN	string	255		
-EInvoiceAckNo	string	255		
-EInvoiceAckDate	datetime		
+Round_Off	number	0.24	
+H_Net_Amount	number	9298	
+EInvoiceIRN	string	255	4b2c838e807b9d431c6e5537c194c92130b03e3fd74630d43c97d5e2c42820a1	
+EInvoiceAckNo	string	255	142517363771382	
+EInvoiceAckDate	datetime	14/May/2025 19:58:00	
 Default_BankAccountDetail	string	255	Bank Detail : 	HDFC A/c : 50200003154727    IFSC : HDFC0002006	
+PaymentLink	string	255		
 DocumentPrintHeaderPattern	string	255	Center Aligned	
 DimDetail	string	255		
 PrintedByUser	string	255	SUPER	
-EntryByUser	string	255	SADHVI 1	
+EntryByUser	string	255	PANKAJ	
 PrintTitle	string	255	TAX INVOICE	
 DocumentPrintShowPrintDateTimeYn	string	255	1	
 DocumentPrintShowPartyBalance	string	255	Hide	
@@ -140,3 +141,4 @@ TodaysClosingBalance	number	0
 CompanyLogo	BLOB		
 CompanyAuthorisedSignature	BLOB		
 EInvoiceQrCode	BLOB		
+PaymentQrCode	BLOB		

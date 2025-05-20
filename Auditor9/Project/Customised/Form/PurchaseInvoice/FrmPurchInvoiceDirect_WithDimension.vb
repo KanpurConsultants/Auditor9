@@ -4286,8 +4286,32 @@ Public Class FrmPurchInvoiceDirect_WithDimension
         End If
 
         FGetSettingVariableValuesForAddAndEdit()
+        If AgL.StrCmp(AgL.PubDBName, "Sadhvi") And (LblV_Type.Tag = Ncat.WayBill Or LblV_Type.Tag = Ncat.WayBillInvoice) Then
+            mQry = "Select H.SubCode AS Transporter, H.Name as TransporterName 
+                    From Subgroup H  With (NoLock)
+                    Where H.Subcode='D100001006' "
+            Dim DtDefaultTransport As DataTable = AgL.FillData(mQry, AgL.GCn).Tables(0)
 
-        If SettingFields_MaximumItemLimit = 1 Then
+            DglMain(Col1Value, rowVendor).Tag = AgL.XNull(DtDefaultTransport.Rows(0)("Transporter"))
+            DglMain(Col1Value, rowBillToParty).Tag = AgL.XNull(DtDefaultTransport.Rows(0)("Transporter"))
+            DglMain(Col1Value, rowVendor).Value = AgL.XNull(DtDefaultTransport.Rows(0)("TransporterName"))
+            DglMain(Col1Value, rowBillToParty).Value = AgL.XNull(DtDefaultTransport.Rows(0)("TransporterName"))
+            FValidateSalesTaxGroup()
+
+            DglMain.Item(Col1BtnDetail, rowVendor).Tag = Nothing
+            ShowPurchaseInvoiceParty("", DglMain.Item(Col1Value, rowVendor).Tag, TxtNature.Text, True)
+
+            If DglMain.Item(Col1BtnDetail, rowVendor).Tag IsNot Nothing Then
+                Dgl2.Item(Col1Value, rowSalesTaxNo).Value = CType(DglMain.Item(Col1BtnDetail, rowVendor).Tag, FrmPurchaseInvoiceParty).Dgl1.Item(Col1Value, FrmPurchaseInvoiceParty.rowSalesTaxNo).Value
+            End If
+
+            If AgL.StrCmp(AgL.PubDBName, "Sadhvi") And (LblV_Type.Tag = Ncat.WayBill) Then
+                DglMain.CurrentCell = DglMain(Col1Value, rowLinkedParty)
+            End If
+        End If
+
+
+            If SettingFields_MaximumItemLimit = 1 Then
             Dgl1.AllowUserToAddRows = False
             Dgl1.Rows.Clear()
             Dgl1.Rows.Add(1)
@@ -5089,11 +5113,13 @@ Public Class FrmPurchInvoiceDirect_WithDimension
                             Dgl1.Item(Col1BaleNo, I).Value = CType(Dgl2.Item(Col1Value, rowBtnTransportDetail).Tag, FrmPurchaseInvoiceHeader).Dgl1.Item(FrmPurchaseInvoiceHeader.Col1Value, FrmPurchaseInvoiceHeader.rowLrNo).Value
                         End If
 
-                        If AgL.StrCmp(AgL.PubDBName, "Sadhvi") And LblV_Type.Tag = Ncat.PurchaseGoodsReceipt Then
+                        If AgL.StrCmp(AgL.PubDBName, "Sadhvi") And (LblV_Type.Tag = Ncat.WayBill Or LblV_Type.Tag = Ncat.WayBillInvoice) Then
                             If CType(Dgl2.Item(Col1Value, rowBtnTransportDetail).Tag, FrmPurchaseInvoiceHeader).Dgl1.Item(FrmPurchaseInvoiceHeader.Col1Value, FrmPurchaseInvoiceHeader.rowLrNo).Value <> "" And CType(Dgl2.Item(Col1Value, rowBtnTransportDetail).Tag, FrmPurchaseInvoiceHeader).Dgl1.Item(FrmPurchaseInvoiceHeader.Col1Value, FrmPurchaseInvoiceHeader.rowTransporter).Tag <> "" Then
-                                mQry = "Select count(DocID) AS Cnt From PurchInvoiceTransport 
-                                    Where Transporter = '" & CType(Dgl2.Item(Col1Value, rowBtnTransportDetail).Tag, FrmPurchaseInvoiceHeader).Dgl1.Item(FrmPurchaseInvoiceHeader.Col1Value, FrmPurchaseInvoiceHeader.rowTransporter).Tag & "'
-                                    AND LrNo =  '" & CType(Dgl2.Item(Col1Value, rowBtnTransportDetail).Tag, FrmPurchaseInvoiceHeader).Dgl1.Item(FrmPurchaseInvoiceHeader.Col1Value, FrmPurchaseInvoiceHeader.rowLrNo).Value & "' AND DocID <> '" & mSearchCode & "' "
+                                mQry = "Select count(H.DocID) AS Cnt 
+                                        From PurchInvoiceTransport H
+                                        LEFT JOIN PurchInvoice PI ON PI.DocID = H.DocID
+                                    Where H.Transporter = '" & CType(Dgl2.Item(Col1Value, rowBtnTransportDetail).Tag, FrmPurchaseInvoiceHeader).Dgl1.Item(FrmPurchaseInvoiceHeader.Col1Value, FrmPurchaseInvoiceHeader.rowTransporter).Tag & "' AND PI.V_Type =  '" & Ncat.WayBill & "' 
+                                    And H.LrNo =  '" & CType(Dgl2.Item(Col1Value, rowBtnTransportDetail).Tag, FrmPurchaseInvoiceHeader).Dgl1.Item(FrmPurchaseInvoiceHeader.Col1Value, FrmPurchaseInvoiceHeader.rowLrNo).Value & "' AND H.DocID <> '" & mSearchCode & "' "
                                 If (AgL.VNull(AgL.Dman_Execute(mQry, AgL.GCn).ExecuteScalar()) > 0) Then
                                     MsgBox("LR Already Find ! ")
                                     passed = False : Exit Sub
@@ -5478,6 +5504,24 @@ Public Class FrmPurchInvoiceDirect_WithDimension
                             passed = False
                             Exit Sub
                         End If
+                    End If
+                End If
+            End If
+        End If
+
+        If LblV_Type.Tag = Ncat.WayBill Then
+            If Dgl2.Item(Col1Value, rowBtnTransportDetail).Tag IsNot Nothing Then
+                If CType(Dgl2.Item(Col1Value, rowBtnTransportDetail).Tag, FrmPurchaseInvoiceHeader).Dgl1.Item(FrmPurchaseInvoiceHeader.Col1Value, FrmPurchaseInvoiceHeader.rowLrNo).Value <> "" Then
+                    mQry = "Select count(H.DocID) AS Cnt 
+                                        From PurchInvoiceTransport H
+                                        LEFT JOIN PurchInvoice PI ON PI.DocID = H.DocID
+                    Where H.LrNo = '" & CType(Dgl2.Item(Col1Value, rowBtnTransportDetail).Tag, FrmPurchaseInvoiceHeader).Dgl1.Item(FrmPurchaseInvoiceHeader.Col1Value, FrmPurchaseInvoiceHeader.rowLrNo).Value & "' AND PI.V_Type =  '" & Ncat.WayBill & "' 
+                    And H.Transporter = '" & CType(Dgl2.Item(Col1Value, rowBtnTransportDetail).Tag, FrmPurchaseInvoiceHeader).Dgl1.Item(FrmPurchaseInvoiceHeader.Col1Value, FrmPurchaseInvoiceHeader.rowTransporter).Tag & "'
+                    And H.DocId <> '" & mSearchCode & "'"
+                    If AgL.VNull(AgL.Dman_Execute(mQry, AgL.GCn).ExecuteScalar()) > 0 Then
+                        MsgBox("LR No " & CType(Dgl2.Item(Col1Value, rowBtnTransportDetail).Tag, FrmPurchaseInvoiceHeader).Dgl1.Item(FrmPurchaseInvoiceHeader.Col1Value, FrmPurchaseInvoiceHeader.rowLrNo).Value & " is alredy entered for " & CType(Dgl2.Item(Col1Value, rowBtnTransportDetail).Tag, FrmPurchaseInvoiceHeader).Dgl1.Item(FrmPurchaseInvoiceHeader.Col1Value, FrmPurchaseInvoiceHeader.rowTransporter).Value, MsgBoxStyle.Information)
+                        passed = False
+                        Exit Sub
                     End If
                 End If
             End If
@@ -7575,7 +7619,7 @@ Public Class FrmPurchInvoiceDirect_WithDimension
             Dgl1(Col1AdditionalDiscountCalculationPattern, mRow).Value = AgL.XNull(DrItemTypeSetting("AdditionalDiscountCalculationPatternPurchase"))
             Dgl1(Col1AdditionCalculationPattern, mRow).Value = AgL.XNull(DrItemTypeSetting("AdditionCalculationPatternPurchase"))
 
-            If LblV_Type.Tag = AgLibrary.ClsMain.agConstants.Ncat.PurchaseReturn Then
+            If LblV_Type.Tag = AgLibrary.ClsMain.agConstants.Ncat.PurchaseReturn Or LblV_Type.Tag = AgLibrary.ClsMain.agConstants.Ncat.WayBillInvoice Then
                 If AgL.XNull(Dgl1(Col1Barcode, mRow).Value) <> "" Then
                     mQry = "Select H.DocID, H.ManualRefNo, H.V_Date From PurchInvoice H Where H.DocID = (Select GenDocID from Barcode Where Description ='" & AgL.XNull(Dgl1(Col1Barcode, mRow).Value) & "')"
                     dtInvoices = AgL.FillData(mQry, AgL.GCn).Tables(0)
@@ -8008,7 +8052,14 @@ Public Class FrmPurchInvoiceDirect_WithDimension
 
         If bContraWindowBaseField = Dgl1.Columns(mColumnName).Name Then
             mFirstInvoiceForSelectedParty = False
-            StrRtn = FHPGD_PendingSaleChallan(mRow)
+
+            If LblV_Type.Tag = Ncat.WayBillInvoice Then
+                StrRtn = FHPGD_PendingWayBill(mRow)
+            Else
+                StrRtn = FHPGD_PendingSaleChallan(mRow)
+            End If
+
+
             If StrRtn <> "" Then
                 FillGridForPurchaseReturn(StrRtn, True)
             Else
@@ -8155,6 +8206,8 @@ Public Class FrmPurchInvoiceDirect_WithDimension
                 Order By H.V_Date Desc "
 
 
+
+
         mQry = "
                 Select 'o' As Tick, SI.DocID || '#' || Cast(SI.TSr as Varchar) || '#' || Cast(SI.Sr as Varchar) as SearchKey, H.Div_Code || H.Site_Code || '-' || H.V_Type || '-' || H.ManualRefNo as InvoiceNo, IfNull(H.VendorDocNo,'') as PartyDocNo, H.V_Date as InvoiceDate, 
                 SI.Item, I.Description As Item,
@@ -8221,6 +8274,88 @@ Public Class FrmPurchInvoiceDirect_WithDimension
 
         FRH_Multiple = Nothing
     End Function
+
+    Private Function FHPGD_PendingWayBill(mRow As Integer) As String
+        Dim FRH_Multiple As DMHelpGrid.FrmHelpGrid_Multi
+        Dim StrRtn As String = ""
+        Dim mLineCond As String = ""
+        Dim DtTemp As DataTable
+
+
+        mLineCond = " And S.Subcode = '" & DglMain.Item(Col1Value, rowVendor).Tag & "' "
+
+        If AgL.XNull(Dgl1.Item(Col1ItemCategory, mRow).Tag) <> "" Then
+            mLineCond = " And Sku.ItemCategory = '" & Dgl1.Item(Col1ItemCategory, mRow).Tag & "' "
+        End If
+        If AgL.XNull(Dgl1.Item(Col1ItemGroup, mRow).Tag) <> "" Then
+            mLineCond = " And Sku.ItemGroup = '" & Dgl1.Item(Col1ItemGroup, mRow).Tag & "' "
+        End If
+        If AgL.XNull(Dgl1.Item(Col1Item, mRow).Tag) <> "" Then
+            mLineCond = " And Sku.Code = '" & Dgl1.Item(Col1Item, mRow).Tag & "' "
+        End If
+
+        mQry = "
+                Select 'o' As Tick, SI.DocID || '#' || Cast(SI.Sr as Varchar) as SearchKey, 
+                 SIt.LrNo as BiltyNo, SIt.LrDate As BiltyDate, SIt.PrivateMark, SIt.NoOfBales AS NoOfBales,Sg.Name AS Party, 
+                L.Net_Amount AS Amount, H.Div_Code || H.Site_Code || '-' || H.V_Type || '-' || H.ManualRefNo as InvoiceNo, H.V_Date as InvoiceDate
+                From
+                    (    
+                    select S.DocID, S.Sr,  S.Item, S.Qty AS Qty_Rec, S.Unit, S.Rate 
+                    FROM PurchInvoice H
+                    LEFT JOIN PurchInvoiceDetail S  With (NoLock) ON S.DocID = H.DocID
+                    LEFT JOIN Item Sku With (NoLock) On S.Item = Sku.Code
+                    Left Join Voucher_Type Vt  With (NoLock) on H.V_Type = VT.V_Type
+                    where VT.NCat = '" & AgLibrary.ClsMain.agConstants.Ncat.WayBill & "' " & mLineCond & "
+                    ) as SI
+                Left Join 
+                    (
+                    select S.ReferenceDocID,  S.ReferenceSr, Sum(S.Qty) as Qty_Ret
+                    FROM PurchInvoice H
+                    LEFT JOIN PurchInvoiceDetail S  With (NoLock) ON S.DocID = H.DocID
+                    LEFT JOIN Item Sku With (NoLock) On S.Item = Sku.Code
+                    Left Join Voucher_Type Vt  With (NoLock) on H.V_Type = VT.V_Type
+                    where VT.nCat='" & AgLibrary.ClsMain.agConstants.Ncat.WayBillInvoice & "'  " & mLineCond & "
+                    Group By S.ReferenceDocID,  S.ReferenceSr
+                    ) As SR On SI.DocID = SR.ReferenceDocID  And SI.Sr = SR.ReferenceSr
+                Left Join PurchInvoice H  With (NoLock) On SI.DocID = H.DocID
+                LEFT JOIN PurchInvoiceTransport SIt ON H.DocID = SIt.DocID
+                LEFT JOIN PurchInvoiceDetail L ON H.DocID = L.DocID
+                LEFT JOIN ViewHelpSubgroup Sg ON H.LinkedParty  = Sg.code
+                LEFT JOIN SubGroup T On Sit.Transporter = T.SubCode
+                LEFT JOIN City ON City.CityCode = Sg.CityCode 
+                Where Vendor='" & DglMain.Item(Col1Value, rowVendor).Tag & "' And SI.Qty_REC - IfNull(SR.Qty_Ret,0) >0
+                And H.V_Date <= " & AgL.Chk_Date(DglMain.Item(Col1Value, rowV_Date).Value) & "                
+                Order By H.V_Date Desc "
+
+
+            DtTemp = AgL.FillData(mQry, AgL.GCn).Tables(0)
+        If DtTemp.Rows.Count = 0 Then
+            Exit Function
+        End If
+
+        FRH_Multiple = New DMHelpGrid.FrmHelpGrid_Multi(New DataView(DtTemp), "", 600, 1000, , , False)
+        FRH_Multiple.FFormatColumn(0, "Tick", 40, DataGridViewContentAlignment.MiddleCenter, True)
+        FRH_Multiple.FFormatColumn(1, , 0, , False)
+        FRH_Multiple.FFormatColumn(2, "Bilty No", 100, DataGridViewContentAlignment.MiddleLeft)
+        FRH_Multiple.FFormatColumn(3, , 100, DataGridViewContentAlignment.MiddleLeft)
+        FRH_Multiple.FFormatColumn(4, , 100, DataGridViewContentAlignment.MiddleLeft)
+        FRH_Multiple.FFormatColumn(5, , 30, DataGridViewContentAlignment.MiddleLeft)
+        FRH_Multiple.FFormatColumn(6, , 200, DataGridViewContentAlignment.MiddleLeft)
+        FRH_Multiple.FFormatColumn(7, , 50, DataGridViewContentAlignment.MiddleLeft)
+        FRH_Multiple.FFormatColumn(8, "Invoice No.", 100, DataGridViewContentAlignment.MiddleLeft)
+        FRH_Multiple.FFormatColumn(9, "Invoice Date", 100, DataGridViewContentAlignment.MiddleLeft)
+
+        FRH_Multiple.StartPosition = FormStartPosition.CenterScreen
+        FRH_Multiple.ShowDialog()
+
+        If FRH_Multiple.BytBtnValue = 0 Then
+            StrRtn = FRH_Multiple.FFetchData(1, "'", "'", ",", True)
+        End If
+        FHPGD_PendingWayBill = StrRtn
+
+        FRH_Multiple = Nothing
+    End Function
+
     Private Sub FillGridForPurchaseReturn(strInvoiceLines As String, IsFilledFromLine As Boolean)
         Dim DrTemp As DataRow() = Nothing
         Dim DtTemp As DataTable = Nothing
@@ -8229,8 +8364,57 @@ Public Class FrmPurchInvoiceDirect_WithDimension
         Dim I As Integer
         Try
 
-
-            mQry = "    Select  H.DocID,  H.Div_Code || H.Site_Code || '-' || H.V_Type || '-' || H.ManualRefNo as InvoiceNo, IfNull(H.VendorDocNo,'') as PartyDocNo, H.VendorDocDate as PartyDocDate, H.V_Date as InvoiceDate, 
+            If LblV_Type.Tag = Ncat.WayBillInvoice Then
+                mQry = "    Select  H.DocID,  H.Div_Code || H.Site_Code || '-' || H.V_Type || '-' || H.ManualRefNo as InvoiceNo, IfNull(H.VendorDocNo,'') as PartyDocNo, H.VendorDocDate as PartyDocDate, H.V_Date as InvoiceDate, 
+                Sku.Description As SkuDescription, It.Name As ItemType, Ic.Description As ItemCategory, 
+                Ig.Description As ItemGroup, I.Description As Item, I.ManualCode As ItemManualCode,
+                D1.Description As Dimension1, D2.Description As Dimension2, 
+                D3.Description As Dimension3, D4.Description As Dimension4,
+                Size.Description As Size, 
+                SI.Qty_Rec - IfNull(SR.Qty_Ret,0) Qty_Bal, SI.Unit, L.DiscountPer, L.AdditionalDiscountPer, L.Rate,
+                Sku.Code As SkuCode, It.Code As ItemTypeCode, Ic.Code As ItemCategoryCode, Ig.Code As ItemGroupCode, I.Code As ItemCode,
+                D1.Code As Dimension1Code, D2.Code As Dimension2Code, 
+                D3.Code As Dimension3Code, D4.Code As Dimension4Code,
+                Size.Code As SizeCode, 
+                Case When IfNull(U.ShowDimensionDetailInPurchase,0) = 1 Or IfNull(Ic.ShowDimensionDetailInPurchase,0) = 1 Then 1
+                            Else 0 End As ShowDimensionDetailInPurchase, 
+                U.DecimalPlaces as QtyDecimalPlaces, IG.Default_DiscountPerPurchase, L.SalesTaxGroupItem, SI.DocID as StockDocID, Null as StockTSr, SI.Sr as StockSr 
+                From
+                    (    
+                    select S.DocID, S.Sr,  S.Item, S.Qty AS Qty_Rec, S.Unit, S.Rate 
+                    FROM PurchInvoice H
+                    LEFT JOIN PurchInvoiceDetail S  With (NoLock) ON S.DocID = H.DocID
+                    LEFT JOIN Item Sku With (NoLock) On S.Item = Sku.Code
+                    Left Join Voucher_Type Vt  With (NoLock) on H.V_Type = VT.V_Type
+                    where VT.NCat = '" & AgLibrary.ClsMain.agConstants.Ncat.WayBill & "'
+                    ) as SI
+                Left Join 
+                    (
+                    select S.ReferenceDocID,  S.ReferenceSr, Sum(S.Qty) as Qty_Ret
+                    FROM PurchInvoice H
+                    LEFT JOIN PurchInvoiceDetail S  With (NoLock) ON S.DocID = H.DocID
+                    LEFT JOIN Item Sku With (NoLock) On S.Item = Sku.Code
+                    Left Join Voucher_Type Vt  With (NoLock) on H.V_Type = VT.V_Type
+                    where VT.nCat='" & AgLibrary.ClsMain.agConstants.Ncat.WayBillInvoice & "'
+                    Group By S.ReferenceDocID,  S.ReferenceSr
+                    ) As SR On SI.DocID = SR.ReferenceDocID  And SI.Sr = SR.ReferenceSr
+                Left Join PurchInvoice H  With (NoLock) On SI.DocID = H.DocID
+                LEFT JOIN Item Sku ON Sku.Code = SI.Item
+                LEFT JOIN Item I ON I.Code = IsNull(Sku.BaseItem,Sku.Code) And I.V_Type <> '" & ItemV_Type.SKU & "'
+                LEFT JOIN ItemType It On Sku.ItemType = It.Code
+                LEFT JOIN Item IC On Sku.ItemCategory = IC.Code
+                LEFT JOIN Item IG On Sku.ItemGroup = IG.Code
+                LEFT JOIN Item D1 ON D1.Code = Sku.Dimension1  
+                LEFT JOIN Item D2 ON D2.Code = Sku.Dimension2
+                LEFT JOIN Item D3 ON D3.Code = Sku.Dimension3
+                LEFT JOIN Item D4 ON D4.Code = Sku.Dimension4
+                LEFT JOIN Item Size ON Size.Code = Sku.Size 
+                Left Join Unit U  With (NoLock) On I.Unit = U.Code 
+                Left Join PurchInvoiceDetail L  With (NoLock) On L.DocID = SI.DocID And L.Sr = SI.Sr
+                Where SI.DocID || '#' || Cast(SI.Sr as Varchar) in (" & strInvoiceLines & ")
+                "
+            Else
+                mQry = "    Select  H.DocID,  H.Div_Code || H.Site_Code || '-' || H.V_Type || '-' || H.ManualRefNo as InvoiceNo, IfNull(H.VendorDocNo,'') as PartyDocNo, H.VendorDocDate as PartyDocDate, H.V_Date as InvoiceDate, 
                 Sku.Description As SkuDescription, It.Name As ItemType, Ic.Description As ItemCategory, 
                 Ig.Description As ItemGroup, I.Description As Item, I.ManualCode As ItemManualCode,
                 D1.Description As Dimension1, D2.Description As Dimension2, 
@@ -8274,8 +8458,7 @@ Public Class FrmPurchInvoiceDirect_WithDimension
                 Left Join PurchInvoiceDetail L  With (NoLock) On L.DocID = SI.DocID And L.Sr = SI.TSr
                 Where SI.DocID || '#' || Cast(SI.TSr as varchar) || '#' || Cast(SI.Sr as Varchar) in (" & strInvoiceLines & ")
                 "
-
-
+            End If
             DtTemp = AgL.FillData(mQry, AgL.GCn).Tables(0)
             If DtTemp.Rows.Count > 0 Then
                 'Dgl1.Rows(Dgl1.CurrentCell.RowIndex).Visible = False
@@ -8332,6 +8515,8 @@ Public Class FrmPurchInvoiceDirect_WithDimension
                         Dgl1.Item(Col1Rate, mRow).Value = AgL.VNull(DtTemp.Rows(I)("Rate"))
                     End If
 
+
+
                     If FDivisionNameForCustomization(4) = "X DEVI" Then
                         Dgl1.Item(Col1Rate, mRow).Value = FGetLastPurchaseRate(mRow)
                     End If
@@ -8343,6 +8528,12 @@ Public Class FrmPurchInvoiceDirect_WithDimension
                     Dgl1.Item(Col1ReferenceDocID, mRow).Value = AgL.XNull(DtTemp.Rows(I)("StockDocID"))
                     Dgl1.Item(Col1ReferenceTSr, mRow).Value = AgL.XNull(DtTemp.Rows(I)("StockTSr"))
                     Dgl1.Item(Col1ReferenceSr, mRow).Value = AgL.XNull(DtTemp.Rows(I)("StockSr"))
+
+                    If LblV_Type.Tag = Ncat.WayBillInvoice Then
+                        Dgl1.Item(Col1DocQty, mRow).Value = AgL.VNull(DtTemp.Rows(I)("Qty_Bal"))
+                        Dgl1.Item(Col1Qty, mRow).Value = AgL.VNull(DtTemp.Rows(I)("Qty_Bal"))
+                        Dgl1.Item(Col1Rate, mRow).Value = AgL.VNull(DtTemp.Rows(I)("Rate"))
+                    End If
 
                 Next
 
@@ -8610,11 +8801,19 @@ Public Class FrmPurchInvoiceDirect_WithDimension
                 Case rowLinkedParty
                     If e.KeyCode <> Keys.Enter Then
                         If DglMain.Item(Col1Head, DglMain.CurrentCell.RowIndex).Tag Is Nothing Then
-                            DglMain.Item(Col1Head, DglMain.CurrentCell.RowIndex).Tag = FCreateHelpLinkedParty()
+                            If AgL.StrCmp(AgL.PubDBName, "Sadhvi") And (LblV_Type.Tag = Ncat.WayBill Or LblV_Type.Tag = Ncat.WayBillInvoice) Then
+                                DglMain.Item(Col1Head, DglMain.CurrentCell.RowIndex).Tag = FCreateHelpSubgroup()
+                            Else
+                                DglMain.Item(Col1Head, DglMain.CurrentCell.RowIndex).Tag = FCreateHelpLinkedParty()
+                            End If
                         End If
 
                         If DglMain.AgHelpDataSet(Col1Value) Is Nothing Then
-                            DglMain.AgHelpDataSet(Col1Value, 6, TabControl1.Top + TP1.Top, TabControl1.Left + TP1.Left) = DglMain.Item(Col1Head, DglMain.CurrentCell.RowIndex).Tag
+                            If AgL.StrCmp(AgL.PubDBName, "Sadhvi") And (LblV_Type.Tag = Ncat.WayBill Or LblV_Type.Tag = Ncat.WayBillInvoice) Then
+                                DglMain.AgHelpDataSet(Col1Value, 0, TabControl1.Top + TP1.Top, TabControl1.Left + TP1.Left) = DglMain.Item(Col1Head, DglMain.CurrentCell.RowIndex).Tag
+                            Else
+                                DglMain.AgHelpDataSet(Col1Value, 6, TabControl1.Top + TP1.Top, TabControl1.Left + TP1.Left) = DglMain.Item(Col1Head, DglMain.CurrentCell.RowIndex).Tag
+                            End If
                         End If
                     End If
             End Select
@@ -9141,7 +9340,7 @@ Public Class FrmPurchInvoiceDirect_WithDimension
                 strCond += " And I.V_Type In  ('ITEM','IC') "
             End If
 
-            If AgL.StrCmp(AgL.PubDBName, "Sadhvi") And LblV_Type.Tag = Ncat.PurchaseGoodsReceipt Then
+            If AgL.StrCmp(AgL.PubDBName, "Sadhvi") And (LblV_Type.Tag = Ncat.WayBill Or LblV_Type.Tag = Ncat.WayBillInvoice) Then
                 strCond += " And I.Code ='D1172053' "
             End If
 

@@ -5,13 +5,13 @@ DocNoCaption	string	255	Doc.No.
 DocDateCaption	string	255	Doc.Date	
 SiteStateCode	string	255	09	
 SiteStateName	string	255	Uttar Pradesh	
-DocID	string	255	D3    SC 2024     103	
+DocID	string	255	D3    SC 2025     119	
 Sr	number	1	
-V_Date	datetime	24/Jan/2025 00:00:00	
+V_Date	datetime	09/May/2025 00:00:00	
 DeliveryDate	datetime		
 Voucher_Type	string	255	Sale Challan	
 NCat	string	255	SC	
-InvoiceNo	string	255	TVS-SC-105	
+InvoiceNo	string	255	TVS-SC-119	
 GenDocNo	string	255		
 AmsDocNo	string	255		
 AmsDocDate	datetime		
@@ -20,31 +20,32 @@ RateType	string	255
 DocumentPrintShowRateType	string	255	Show If Not Blank	
 AgentName	string	255		
 GodownName	string	255	TVS RAMADEVI	
+GodownAddress	string	255	6 C, Bangali Coloney, Ma Vaishno Telecom, Safipur 2nd, Kanpur	
 SalesRepName	string	255		
 SalesRepCode	string	255		
 ResponsiblePersonName	string	255		
 AgentCaption	string	255	Agent	
-SaleToPartyName	string	255	ANAND VERMA S/O PURUSHOTTAM KUMAR	
-SaleToPartyAddress	string	255	39 A, AHIRWAN, KANPUR NAGAR	
+SaleToPartyName	string	255	VIJENDRA GUPTA S/O BADRI PRASAD GUPTA	
+SaleToPartyAddress	string	255	113 MAWAIYA HARIJINDER NAGAR KANPUR NAGAR UTTAR PRADESH	
 CityName	string	255	KANPUR	
 SaleToPartyPincode	string	255	208007	
 StateCode	string	255	09	
 StateName	string	255	Uttar Pradesh	
-SaleToPartyMobile	string	255	7905073524	
+SaleToPartyMobile	string	255	7408831847	
 ContactPerson	string	255		
 SaleToPartySalesTaxNo	string	255		
-SaleToPartyAadharNo	string	255	543265981760	
+SaleToPartyAadharNo	string	255	888260816038	
 SaleToPartyPanNo	string	255		
 SaleToPartyLicenseNo	string	255		
-ShipToPartyName	string	255	ANAND VERMA S/O PURUSHOTTAM KUMAR	
-ShipToPartyAddress	string	255	39 A, AHIRWAN, KANPUR NAGAR	
+ShipToPartyName	string	255	VIJENDRA GUPTA S/O BADRI PRASAD GUPTA	
+ShipToPartyAddress	string	255	113 MAWAIYA HARIJINDER NAGAR KANPUR NAGAR UTTAR PRADESH	
 ShipToPartyCity	string	255	KANPUR	
 ShipToPartyPincode	string	255	208007	
 ShipToPartyStateCode	string	255	09	
 ShipToPartyStateName	string	255	Uttar Pradesh	
-ShipToPartyMobile	string	255	7905073524	
+ShipToPartyMobile	string	255	7408831847	
 ShipToPartySalesTaxNo	string	255		
-ShipToPartyAadharNo	string	255	543265981760	
+ShipToPartyAadharNo	string	255	888260816038	
 ShipToPartyPanNo	string	255		
 ShipToPartyLicenseNo	string	255		
 TransporterSalesTaxNo	string	255		
@@ -71,12 +72,12 @@ Destination	string	255
 DescriptionOfGoods	string	255		
 DescriptionOfPacking	string	255		
 ReferenceNo	string	255		
-BarcodeName	string	255	MD6EVM1C3R4L00007	
-ItemName	string	255	TVS KING EP3 NEP BLUE COLOUR - TVS - EV	
+BarcodeName	string	255	MD6EVM1D2S4D01084	
+ItemName	string	255	TVS KING EV MAX EP4-3W EV BLUE - TVS - EV	
 ItemGroupName	string	255	TVS	
 ItemCatName	string	255	EV	
-ItemManualCode	string	255	265	
-ItemSpecification	string	255	TVS KING EP3 NEP BLUE COLOUR	
+ItemManualCode	string	255	498	
+ItemSpecification	string	255	TVS KING EV MAX EP4-3W EV BLUE	
 InvoiceLineSpecification	string	255		
 HSN	string	255	87038040	
 MaintainStockYn	boolean	True	
@@ -104,7 +105,7 @@ ExpiryDate	datetime
 ItemRemark1	string	255		
 Pcs	number	1	
 Qty	number	1	
-Rate	number	345000	
+Rate	number	50000	
 ItemState	string	255		
 CatalogSpecification	string	255		
 CatalogSiteName	string	255		
@@ -118,8 +119,8 @@ AdditionPer	number	0
 AdditionAmount	number	0	
 TotalDiscount	number	0	
 Deal	string	255		
-AmountBeforeDiscount	number	345000	
-Amount	number	345000	
+AmountBeforeDiscount	number	50000	
+Amount	number	50000	
 Taxable_Amount	number	0	
 Tax1_Per	number	0	
 Tax1	number	0	
@@ -132,20 +133,20 @@ Tax4	number	0
 Tax5_Per	number	0	
 Tax5	number	0	
 Net_Amount	number	0	
-LRemarks	string	255	AM1LR4300009	
+LRemarks	string	255		
 LRemarks1	string	255		
-LRemarks2	string	255	MD6EVM1C3R4L00007	
+LRemarks2	string	255		
 LRemarks3	string	255		
 LRemarks4	string	255		
 HRemarks	string	255		
 HRemarks1	string	255		
-HRemarks2	string	255	ECOFY FINANCE PVT LTD	
+HRemarks2	string	255		
 SalesTaxSummaryStr	string	255		
 H_Discount	number	0	
 H_AdditionalDiscount	number	0	
 H_Additional	number	0	
 H_TotalDiscount	number	0	
-H_AmountBeforeDiscount	number	345000	
+H_AmountBeforeDiscount	number	50000	
 H_Gross_Amount	number	0	
 H_SpecialDiscount_Per	number	0	
 H_SpecialDiscount	number	0	
@@ -177,7 +178,7 @@ Default_BankAccountDetail	string	255	<B> Bank Detail :- <BR> KMB : 5400000007  I
 DocumentPrintHeaderPattern	string	255	Center Aligned	
 DimDetail	string	255		
 PrintedByUser	string	255	SUPER	
-EntryByUser	string	255	tvs	
+EntryByUser	string	255	SUPER	
 PrintTitle	string	255	Sale Challan	
 DocumentPrintShowPrintDateTimeYn	string	255	1	
 DocumentPrintShowPartyBalance	string	255	Hide	

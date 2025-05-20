@@ -2134,15 +2134,26 @@ Public Class FrmVoucherEntry
         mLedgerPostingData = "Select TSr, SubCode, LinkedSubcode, ContraAc, Narration, AmtDr*1.0 as AmtDr, AmtCr*1.0 as AmtCr, ChqNo, ChqDate, EffectiveDate, ReferenceDocId, ReferenceDocIdSr 
                               From (" & mLedgerPostingData & ") as X  "
         DtTemp = AgL.FillData(mLedgerPostingData, IIf(AgL.PubServerName = "", Conn, AgL.GcnRead)).Tables(0)
+
+        Dim StrLedgerDate As String = TxtV_Date.Text
+
         If DtTemp.Rows.Count > 0 Then
             For I = 0 To DtTemp.Rows.Count - 1
+                If AgL.XNull(DtTemp.Rows(I)("ChqDate")) <> Nothing Then
+                    If AgL.XNull(DtTemp.Rows(I)("ChqDate")) <> "" Then
+                        If Date.Parse(TxtV_Date.Text) < Date.Parse(DtTemp.Rows(I)("ChqDate")) Then
+                            StrLedgerDate = DtTemp.Rows(I)("ChqDate")
+                        End If
+                    End If
+                End If
+
                 mQry = "INSERT INTO Ledger
                         (DocId, V_SNo, TSr, V_No, V_Type, RecID, V_Prefix, 
                         V_Date, SubCode, LinkedSubcode, ContraSub, AmtDr, AmtCr, 
                         Chq_No, Chq_Date, EffectiveDate, ReferenceDocId, ReferenceDocIdSr, Narration, Site_Code, DivCode, 
                         U_Name, U_EntDt, U_AE)
                         VALUES('" & DocID & "', " & I + mSr + 1 & ", " & AgL.Chk_Text(AgL.XNull(DtTemp.Rows(I)("TSr"))) & ", " & Val(TxtV_No.Text) & ", " & AgL.Chk_Text(TxtV_Type.Tag) & ", " & AgL.Chk_Text(TxtReferenceNo.Text) & ", " & AgL.Chk_Text(LblPrefix.Text) & ",
-                        " & AgL.Chk_Date(TxtV_Date.Text) & ", " & AgL.Chk_Text(AgL.XNull(DtTemp.Rows(I)("Subcode"))) & ", " & AgL.Chk_Text(AgL.XNull(DtTemp.Rows(I)("LinkedSubcode"))) & ", " & AgL.Chk_Text(AgL.XNull(DtTemp.Rows(I)("ContraAc"))) & ", " & Val(AgL.VNull(DtTemp.Rows(I)("AmtDr"))) & ", " & Val(AgL.VNull(DtTemp.Rows(I)("AmtCr"))) & ",
+                        " & AgL.Chk_Date(StrLedgerDate) & ", " & AgL.Chk_Text(AgL.XNull(DtTemp.Rows(I)("Subcode"))) & ", " & AgL.Chk_Text(AgL.XNull(DtTemp.Rows(I)("LinkedSubcode"))) & ", " & AgL.Chk_Text(AgL.XNull(DtTemp.Rows(I)("ContraAc"))) & ", " & Val(AgL.VNull(DtTemp.Rows(I)("AmtDr"))) & ", " & Val(AgL.VNull(DtTemp.Rows(I)("AmtCr"))) & ",
                         " & AgL.Chk_Text(AgL.XNull(DtTemp.Rows(I)("ChqNo"))) & "," & AgL.Chk_Text(AgL.XNull(DtTemp.Rows(I)("ChqDate"))) & "," & AgL.Chk_Text(AgL.XNull(DtTemp.Rows(I)("EffectiveDate"))) & ",
                         " & AgL.Chk_Text(AgL.XNull(DtTemp.Rows(I)("ReferenceDocId"))) & ",
                         " & Val(AgL.VNull(DtTemp.Rows(I)("ReferenceDocIdSr"))) & ",
@@ -3554,9 +3565,16 @@ Public Class FrmVoucherEntry
     Private Sub FCreateHelpLinkedSubgroupLine()
         Dim strCond As String = ""
 
-        mQry = "SELECT Sg.Code, Sg.Name, Sg.Address
+        If AgL.StrCmp(AgL.PubDBName, "RVN") Or AgL.StrCmp(AgL.PubDBName, "RVN1") Or AgL.StrCmp(AgL.PubDBName, "RVN2") Or AgL.StrCmp(AgL.PubDBName, "MLAW") Then
+            mQry = "SELECT Sg.Code, Sg.Name, Sg.Address
+                FROM viewHelpSubGroup Sg  With (NoLock)                
+                Where Sg.SubgroupType In ('Hypothecation') "
+        Else
+            mQry = "SELECT Sg.Code, Sg.Name, Sg.Address
                 FROM viewHelpSubGroup Sg  With (NoLock)                
                 Where Sg.Code In (Select LinkedSubcode From Ledger Where Subcode='" & Dgl1(Col1Subcode, Dgl1.CurrentCell.RowIndex).Tag & "') or Sg.Code =(Select Parent From Subgroup Where Subcode ='" & Dgl1(Col1Subcode, Dgl1.CurrentCell.RowIndex).Tag & "') "
+        End If
+
         Dgl1.AgHelpDataSet(Col1LinkedSubcode) = AgL.FillData(mQry, AgL.GCn)
         'If Dgl1.AgHelpDataSet(Col1LinkedSubcode).Tables(0).Rows.Count = 1 Then
         '    Dgl1(Col1LinkedSubcode, Dgl1.CurrentCell.RowIndex).Tag = Dgl1.AgHelpDataSet(Col1LinkedSubcode).Tables(0).Rows(0)("Code")

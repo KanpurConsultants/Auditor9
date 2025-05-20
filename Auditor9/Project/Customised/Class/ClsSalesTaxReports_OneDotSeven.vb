@@ -1903,7 +1903,7 @@ Public Class ClsSalesTaxReports_OneDotSeven
             mCondStrITC = mCondStrITC & " And H.Div_Code = '" & Replace(ReportFrm.FGetCode(rowDivision), "'", "") & "' "
             mCondStrITC = mCondStrITC & " And Vt.NCat In ('" & Ncat.SaleInvoice & "','" & Ncat.SaleReturn & "',
                                         '" & Ncat.DebitNoteSupplier & "','" & Ncat.DebitNoteCustomer & "','" & Ncat.CreditNoteCustomer & "','" & Ncat.CreditNoteSupplier & "',
-                                        '" & Ncat.PurchaseGoodsReceipt & "','" & Ncat.PurchaseInvoice & "','" & Ncat.PurchaseReturn & "', '" & Ncat.ExpenseVoucher & "', '" & Ncat.IncomeVoucher & "', '" & Ncat.ReverseCharge & "', '" & Ncat.JobInvoice & "')"
+                                        '" & Ncat.WayBillInvoice & "','" & Ncat.PurchaseInvoice & "','" & Ncat.PurchaseReturn & "', '" & Ncat.ExpenseVoucher & "', '" & Ncat.IncomeVoucher & "', '" & Ncat.ReverseCharge & "', '" & Ncat.JobInvoice & "')"
             mCondStrITC = mCondStrITC & " And CharIndex('" & ClsMain.VoucherTypeTags.ExcludeInSalesTaxReturns & "','+' || IfNull(Vt.VoucherTypeTags,'')) = 0 "
 
 

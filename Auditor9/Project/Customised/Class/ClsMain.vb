@@ -6113,6 +6113,18 @@ Sincerely
             FSeedSingleIfNotExist_Setting(SettingType.General, "", Ncat.PurchaseOrder, SettingFields.MaximumItemLimit, "", AgDataType.Number, "50",,,,,,,,,, "+SUPPORT")
         End If
     End Sub
+
+    Private Sub FSeedTable_Settings_NCatWise_WayBill()
+        If ClsMain.IsScopeOfWorkContains(IndustryType.CommonModules.WayBillModule) Then
+            FSeedSingleIfNotExist_Setting(SettingType.General, "", Ncat.WayBill, SettingFields.PostInStockYn, "0", AgDataType.YesNo, "50")
+            FSeedSingleIfNotExist_Setting(SettingType.General, "", Ncat.WayBill, SettingFields.PostInStockProcessYn, "0", AgDataType.YesNo, "50")
+            FSeedSingleIfNotExist_Setting(SettingType.General, "", Ncat.WayBill, SettingFields.MaximumItemLimit, "", AgDataType.Number, "50",,,,,,,,,, "+SUPPORT")
+
+            FSeedSingleIfNotExist_Setting(SettingType.General, "", Ncat.WayBillInvoice, SettingFields.PostInStockYn, "0", AgDataType.YesNo, "50")
+            FSeedSingleIfNotExist_Setting(SettingType.General, "", Ncat.WayBillInvoice, SettingFields.PostInStockProcessYn, "0", AgDataType.YesNo, "50")
+            FSeedSingleIfNotExist_Setting(SettingType.General, "", Ncat.WayBillInvoice, SettingFields.MaximumItemLimit, "", AgDataType.Number, "50",,,,,,,,,, "+SUPPORT")
+        End If
+    End Sub
     Private Sub FSeedTable_Settings_NCatWise_SaleOrder()
         If ClsMain.IsScopeOfWorkContains(IndustryType.CommonModules.SalesOrder) Then
             FSeedSingleIfNotExist_Setting(SettingType.General, "", Ncat.SaleOrder, SettingFields.FilterInclude_ItemType, "", AgDataType.Text, "255", mItemTypeFieldQry, AgHelpQueryType.SqlQuery, AgHelpSelectionType.MultiSelect,,,,, ,, "+SUPPORT")
@@ -6276,6 +6288,7 @@ Sincerely
         FSeedTable_Settings_NCatWise_ReceiptSettlement()
         FSeedTable_Settings_NCatWise_Ratelist()
         FSeedTable_Settings_NCatWise_PurchaseOrder()
+        FSeedTable_Settings_NCatWise_WayBill()
         FSeedTable_Settings_NCatWise_SaleOrder()
         FSeedTable_Settings_NCatWise_GoodsReceipt()
         FSeedTable_Settings_NCatWise_SalesEnquiry()
@@ -6443,6 +6456,7 @@ Sincerely
         FSeedSingleIfNotExist_Setting(SettingType.General, "", "", SettingFields.PartyCanDepositCashAtBankYn, "0", AgDataType.YesNo, "50",,,,,,,, ,, "+SUPPORT")
         FSeedSingleIfNotExist_Setting(SettingType.General, "", "", SettingFields.DocumentPrintShowPrintDateTimeYn, "1", AgDataType.YesNo, "50",,,,,,,, , "+SUPPORT")
         FSeedSingleIfNotExist_Setting(SettingType.General, "", "", SettingFields.CompanyLogoFileName, "", AgDataType.Text, "255",,,,,,,,, "+SUPPORT")
+        FSeedSingleIfNotExist_Setting(SettingType.General, "", "", SettingFields.PaymentQrCodeFileName, "", AgDataType.Text, "255",,,,,,,,, "+SUPPORT")
         FSeedSingleIfNotExist_Setting(SettingType.General, "", "", SettingFields.CompanyAuthorisedSignatoryFileName, "", AgDataType.Text, "255",,,,,,,,, "+SUPPORT")
         FSeedSingleIfNotExist_Setting(SettingType.General, "", "", SettingFields.FilterInclude_AcGroupLine, "", AgDataType.Text, "255", mAcGroupFieldQry, AgHelpQueryType.SqlQuery, AgHelpSelectionType.MultiSelect)
         FSeedSingleIfNotExist_Setting(SettingType.General, "", "", SettingFields.FilterInclude_SubgroupTypeLine, "", AgDataType.Text, "255", mSubGroupTypeFieldQry, AgHelpQueryType.SqlQuery, AgHelpSelectionType.MultiSelect)
@@ -6544,6 +6558,7 @@ Thanks
 
         Public Shared CompanyLogoFileName As String = "Company Logo File Name"
         Public Shared CompanyAuthorisedSignatoryFileName As String = "Company Authorised Signatory File Name"
+        Public Shared PaymentQrCodeFileName As String = "Payment Qr Code File Name"
 
         Public Shared BarcodePrintReportFileName As String = "Barcode Print Report File Name"
 
@@ -6867,6 +6882,24 @@ Thanks
             FSeedSingleIfNotExist_EntryHeaderUISetting("FrmPurchaseInvoiceHeader", Ncat.PurchaseOrder, "DGL1", FrmPurchaseInvoiceHeader.HcPrivateMark, 1)
             FSeedSingleIfNotExist_EntryHeaderUISetting("FrmPurchaseInvoiceHeader", Ncat.PurchaseOrder, "DGL1", FrmPurchaseInvoiceHeader.HcLrPaymentType, 1)
 
+
+            FSeedSingleIfNotExist_EntryHeaderUISetting("FrmPurchaseInvoiceHeader", Ncat.WayBill, "DGL1", FrmPurchaseInvoiceHeader.HcTransporter, 1)
+            FSeedSingleIfNotExist_EntryHeaderUISetting("FrmPurchaseInvoiceHeader", Ncat.WayBill, "DGL1", FrmPurchaseInvoiceHeader.HcLrNo, 1)
+            FSeedSingleIfNotExist_EntryHeaderUISetting("FrmPurchaseInvoiceHeader", Ncat.WayBill, "DGL1", FrmPurchaseInvoiceHeader.HcLrDate, 1)
+            FSeedSingleIfNotExist_EntryHeaderUISetting("FrmPurchaseInvoiceHeader", Ncat.WayBill, "DGL1", FrmPurchaseInvoiceHeader.hcNoOfBales, 1)
+            FSeedSingleIfNotExist_EntryHeaderUISetting("FrmPurchaseInvoiceHeader", Ncat.WayBill, "DGL1", FrmPurchaseInvoiceHeader.HcPrivateMark, 1)
+            FSeedSingleIfNotExist_EntryHeaderUISetting("FrmPurchaseInvoiceHeader", Ncat.WayBill, "DGL1", FrmPurchaseInvoiceHeader.HcWeight, 1)
+            FSeedSingleIfNotExist_EntryHeaderUISetting("FrmPurchaseInvoiceHeader", Ncat.WayBill, "DGL1", FrmPurchaseInvoiceHeader.HcFreight, 1)
+            FSeedSingleIfNotExist_EntryHeaderUISetting("FrmPurchaseInvoiceHeader", Ncat.WayBill, "DGL1", FrmPurchaseInvoiceHeader.HcLrPaymentType, 1)
+
+            FSeedSingleIfNotExist_EntryHeaderUISetting("FrmPurchaseInvoiceHeader", Ncat.WayBillInvoice, "DGL1", FrmPurchaseInvoiceHeader.HcTransporter, 1)
+            FSeedSingleIfNotExist_EntryHeaderUISetting("FrmPurchaseInvoiceHeader", Ncat.WayBillInvoice, "DGL1", FrmPurchaseInvoiceHeader.HcLrNo, 1)
+            FSeedSingleIfNotExist_EntryHeaderUISetting("FrmPurchaseInvoiceHeader", Ncat.WayBillInvoice, "DGL1", FrmPurchaseInvoiceHeader.HcLrDate, 1)
+            FSeedSingleIfNotExist_EntryHeaderUISetting("FrmPurchaseInvoiceHeader", Ncat.WayBillInvoice, "DGL1", FrmPurchaseInvoiceHeader.hcNoOfBales, 1)
+            FSeedSingleIfNotExist_EntryHeaderUISetting("FrmPurchaseInvoiceHeader", Ncat.WayBillInvoice, "DGL1", FrmPurchaseInvoiceHeader.HcPrivateMark, 1)
+            FSeedSingleIfNotExist_EntryHeaderUISetting("FrmPurchaseInvoiceHeader", Ncat.WayBillInvoice, "DGL1", FrmPurchaseInvoiceHeader.HcWeight, 1)
+            FSeedSingleIfNotExist_EntryHeaderUISetting("FrmPurchaseInvoiceHeader", Ncat.WayBillInvoice, "DGL1", FrmPurchaseInvoiceHeader.HcFreight, 1)
+            FSeedSingleIfNotExist_EntryHeaderUISetting("FrmPurchaseInvoiceHeader", Ncat.WayBillInvoice, "DGL1", FrmPurchaseInvoiceHeader.HcLrPaymentType, 1)
 
             'If ClsMain.IsScopeOfWorkContains(IndustryType.CommonModules.PurchaseTransportModule) Then
             FSeedSingleIfNotExist_EntryHeaderUISetting("FrmPurchaseInvoiceHeader", Ncat.PurchaseInvoice, "DGL1", FrmPurchaseInvoiceHeader.HcTransporter, 1)
@@ -7405,6 +7438,7 @@ Thanks
             FSeedSingleIfNotExist_EntryHeaderUISetting("FrmSaleInvoiceDirect", Ncat.SaleChallan, "DglMain", AgTemplate.TempTransaction1.hcSettingGroup, 0, 0, 0)
             FSeedSingleIfNotExist_EntryHeaderUISetting("FrmSaleInvoiceDirect", Ncat.SaleChallan, "DglMain", FrmSaleInvoiceDirect_WithDimension.hcSaleToParty, 1, 1, 1)
             FSeedSingleIfNotExist_EntryHeaderUISetting("FrmSaleInvoiceDirect", Ncat.SaleChallan, "DglMain", FrmSaleInvoiceDirect_WithDimension.hcBillToParty, 1, 1)
+            FSeedSingleIfNotExist_EntryHeaderUISetting("FrmSaleInvoiceDirect", Ncat.SaleChallan, "DglMain", FrmSaleInvoiceDirect_WithDimension.hcLinkedParty)
 
             FSeedSingleIfNotExist_EntryHeaderUISetting("FrmSaleInvoiceDirect", Ncat.SaleChallan, "Dgl2", FrmSaleInvoiceDirect_WithDimension.hcShipToParty)
             FSeedSingleIfNotExist_EntryHeaderUISetting("FrmSaleInvoiceDirect", Ncat.SaleChallan, "Dgl2", FrmSaleInvoiceDirect_WithDimension.HcBtnAttachments)
@@ -8703,6 +8737,50 @@ Thanks
                 FSeedSingleIfNotExist_EntryHeaderUISetting("FrmPurchInvoiceDirect", Ncat.PurchaseOrder, "Dgl2", FrmPurchInvoiceDirect_WithDimension.hcBtnAttachments)
             End If
 
+            If ClsMain.IsScopeOfWorkContains(IndustryType.CommonModules.WayBillModule) Then
+                FSeedSingleIfNotExist_EntryHeaderUISetting("FrmPurchInvoiceDirect", Ncat.WayBill, "DglMain", AgTemplate.TempTransaction1.hcSite_Code, 1, 1, 1)
+                FSeedSingleIfNotExist_EntryHeaderUISetting("FrmPurchInvoiceDirect", Ncat.WayBill, "DglMain", AgTemplate.TempTransaction1.hcV_Type, 1, 1, 1, "Order Type")
+                FSeedSingleIfNotExist_EntryHeaderUISetting("FrmPurchInvoiceDirect", Ncat.WayBill, "DglMain", AgTemplate.TempTransaction1.hcV_Date, 1, 1, 1, "Order Date")
+                FSeedSingleIfNotExist_EntryHeaderUISetting("FrmPurchInvoiceDirect", Ncat.WayBill, "DglMain", AgTemplate.TempTransaction1.hcV_No, 0, 1, 1)
+                FSeedSingleIfNotExist_EntryHeaderUISetting("FrmPurchInvoiceDirect", Ncat.WayBill, "DglMain", AgTemplate.TempTransaction1.hcReferenceNo, 1, 1, 1, "Order No")
+                FSeedSingleIfNotExist_EntryHeaderUISetting("FrmPurchInvoiceDirect", Ncat.WayBill, "DglMain", AgTemplate.TempTransaction1.hcSettingGroup, 0, 0, 0)
+                FSeedSingleIfNotExist_EntryHeaderUISetting("FrmPurchInvoiceDirect", Ncat.WayBill, "DglMain", FrmPurchInvoiceDirect_WithDimension.hcProcess, 0, 0)
+                FSeedSingleIfNotExist_EntryHeaderUISetting("FrmPurchInvoiceDirect", Ncat.WayBill, "DglMain", FrmPurchInvoiceDirect_WithDimension.hcVendor, 1, 1, 1)
+                FSeedSingleIfNotExist_EntryHeaderUISetting("FrmPurchInvoiceDirect", Ncat.WayBill, "DglMain", FrmPurchInvoiceDirect_WithDimension.hcBillToParty, 0, 0)
+                FSeedSingleIfNotExist_EntryHeaderUISetting("FrmPurchInvoiceDirect", Ncat.WayBill, "DglMain", FrmPurchInvoiceDirect_WithDimension.hcLinkedParty)
+
+                FSeedSingleIfNotExist_EntryHeaderUISetting("FrmPurchInvoiceDirect", Ncat.WayBill, "Dgl2", FrmPurchInvoiceDirect_WithDimension.hcVendorDocNo, 0)
+                FSeedSingleIfNotExist_EntryHeaderUISetting("FrmPurchInvoiceDirect", Ncat.WayBill, "Dgl2", FrmPurchInvoiceDirect_WithDimension.hcVendorDocDate, 0)
+                FSeedSingleIfNotExist_EntryHeaderUISetting("FrmPurchInvoiceDirect", Ncat.WayBill, "Dgl2", FrmPurchInvoiceDirect_WithDimension.hcDeliveryDate, 1)
+                FSeedSingleIfNotExist_EntryHeaderUISetting("FrmPurchInvoiceDirect", Ncat.WayBill, "Dgl2", FrmPurchInvoiceDirect_WithDimension.hcAgent, 0)
+                FSeedSingleIfNotExist_EntryHeaderUISetting("FrmPurchInvoiceDirect", Ncat.WayBill, "Dgl2", FrmPurchInvoiceDirect_WithDimension.hcTags, 0)
+                FSeedSingleIfNotExist_EntryHeaderUISetting("FrmPurchInvoiceDirect", Ncat.WayBill, "Dgl2", FrmPurchInvoiceDirect_WithDimension.hcRemarks, 1)
+                FSeedSingleIfNotExist_EntryHeaderUISetting("FrmPurchInvoiceDirect", Ncat.WayBill, "Dgl2", FrmPurchInvoiceDirect_WithDimension.hcBtnTransportDetail, 0)
+                FSeedSingleIfNotExist_EntryHeaderUISetting("FrmPurchInvoiceDirect", Ncat.WayBill, "Dgl2", FrmPurchInvoiceDirect_WithDimension.hcBtnPendingPurchPlan, 0)
+                FSeedSingleIfNotExist_EntryHeaderUISetting("FrmPurchInvoiceDirect", Ncat.WayBill, "Dgl2", FrmPurchInvoiceDirect_WithDimension.hcBtnAttachments)
+
+                FSeedSingleIfNotExist_EntryHeaderUISetting("FrmPurchInvoiceDirect", Ncat.WayBillInvoice, "DglMain", AgTemplate.TempTransaction1.hcSite_Code, 1, 1, 1)
+                FSeedSingleIfNotExist_EntryHeaderUISetting("FrmPurchInvoiceDirect", Ncat.WayBillInvoice, "DglMain", AgTemplate.TempTransaction1.hcV_Type, 1, 1, 1, "Order Type")
+                FSeedSingleIfNotExist_EntryHeaderUISetting("FrmPurchInvoiceDirect", Ncat.WayBillInvoice, "DglMain", AgTemplate.TempTransaction1.hcV_Date, 1, 1, 1, "Order Date")
+                FSeedSingleIfNotExist_EntryHeaderUISetting("FrmPurchInvoiceDirect", Ncat.WayBillInvoice, "DglMain", AgTemplate.TempTransaction1.hcV_No, 0, 1, 1)
+                FSeedSingleIfNotExist_EntryHeaderUISetting("FrmPurchInvoiceDirect", Ncat.WayBillInvoice, "DglMain", AgTemplate.TempTransaction1.hcReferenceNo, 1, 1, 1, "Order No")
+                FSeedSingleIfNotExist_EntryHeaderUISetting("FrmPurchInvoiceDirect", Ncat.WayBillInvoice, "DglMain", AgTemplate.TempTransaction1.hcSettingGroup, 0, 0, 0)
+                FSeedSingleIfNotExist_EntryHeaderUISetting("FrmPurchInvoiceDirect", Ncat.WayBillInvoice, "DglMain", FrmPurchInvoiceDirect_WithDimension.hcProcess, 0, 0)
+                FSeedSingleIfNotExist_EntryHeaderUISetting("FrmPurchInvoiceDirect", Ncat.WayBillInvoice, "DglMain", FrmPurchInvoiceDirect_WithDimension.hcVendor, 1, 1, 1)
+                FSeedSingleIfNotExist_EntryHeaderUISetting("FrmPurchInvoiceDirect", Ncat.WayBillInvoice, "DglMain", FrmPurchInvoiceDirect_WithDimension.hcBillToParty, 0, 0)
+                FSeedSingleIfNotExist_EntryHeaderUISetting("FrmPurchInvoiceDirect", Ncat.WayBillInvoice, "DglMain", FrmPurchInvoiceDirect_WithDimension.hcLinkedParty)
+
+                FSeedSingleIfNotExist_EntryHeaderUISetting("FrmPurchInvoiceDirect", Ncat.WayBillInvoice, "Dgl2", FrmPurchInvoiceDirect_WithDimension.hcVendorDocNo, 0)
+                FSeedSingleIfNotExist_EntryHeaderUISetting("FrmPurchInvoiceDirect", Ncat.WayBillInvoice, "Dgl2", FrmPurchInvoiceDirect_WithDimension.hcVendorDocDate, 0)
+                FSeedSingleIfNotExist_EntryHeaderUISetting("FrmPurchInvoiceDirect", Ncat.WayBillInvoice, "Dgl2", FrmPurchInvoiceDirect_WithDimension.hcDeliveryDate, 1)
+                FSeedSingleIfNotExist_EntryHeaderUISetting("FrmPurchInvoiceDirect", Ncat.WayBillInvoice, "Dgl2", FrmPurchInvoiceDirect_WithDimension.hcAgent, 0)
+                FSeedSingleIfNotExist_EntryHeaderUISetting("FrmPurchInvoiceDirect", Ncat.WayBillInvoice, "Dgl2", FrmPurchInvoiceDirect_WithDimension.hcTags, 0)
+                FSeedSingleIfNotExist_EntryHeaderUISetting("FrmPurchInvoiceDirect", Ncat.WayBillInvoice, "Dgl2", FrmPurchInvoiceDirect_WithDimension.hcRemarks, 1)
+                FSeedSingleIfNotExist_EntryHeaderUISetting("FrmPurchInvoiceDirect", Ncat.WayBillInvoice, "Dgl2", FrmPurchInvoiceDirect_WithDimension.hcBtnTransportDetail, 0)
+                FSeedSingleIfNotExist_EntryHeaderUISetting("FrmPurchInvoiceDirect", Ncat.WayBillInvoice, "Dgl2", FrmPurchInvoiceDirect_WithDimension.hcBtnPendingPurchPlan, 0)
+                FSeedSingleIfNotExist_EntryHeaderUISetting("FrmPurchInvoiceDirect", Ncat.WayBillInvoice, "Dgl2", FrmPurchInvoiceDirect_WithDimension.hcBtnAttachments)
+            End If
+
 
             If ClsMain.IsScopeOfWorkContains(IndustryType.CommonModules.BarcodeModule) Then
                 FSeedSingleIfNotExist_EntryHeaderUISetting("FrmBarcodeHistory", "", "DglMain", FrmBarcodeHistory.HcCurrentGodown, 0)
@@ -9844,6 +9922,84 @@ Thanks
             FSeedSingleIfNotExist_EntryLineUISetting("FrmPurchaseInvoiceDimension", Ncat.PurchaseReturn, "Dgl1", FrmPurchaseInvoiceDimension_WithDimension.Col1TotalDealQty, False)
 
 
+            If ClsMain.IsScopeOfWorkContains(IndustryType.CommonModules.WayBillModule) Then
+                FSeedSingleIfNotExist_EntryLineUISetting("FrmPurchInvoiceDirect", Ncat.WayBill, "Dgl1", FrmPurchInvoiceDirect_WithDimension.ColSNo, True, True,, False)
+                FSeedSingleIfNotExist_EntryLineUISetting("FrmPurchInvoiceDirect", Ncat.WayBill, "Dgl1", FrmPurchInvoiceDirect_WithDimension.Col1ItemCategory, False)
+                FSeedSingleIfNotExist_EntryLineUISetting("FrmPurchInvoiceDirect", Ncat.WayBill, "Dgl1", FrmPurchInvoiceDirect_WithDimension.Col1ItemGroup, False)
+                FSeedSingleIfNotExist_EntryLineUISetting("FrmPurchInvoiceDirect", Ncat.WayBill, "Dgl1", FrmPurchInvoiceDirect_WithDimension.Col1ItemCode, False)
+                FSeedSingleIfNotExist_EntryLineUISetting("FrmPurchInvoiceDirect", Ncat.WayBill, "Dgl1", FrmPurchInvoiceDirect_WithDimension.Col1Item, True)
+                If ClsMain.IsScopeOfWorkContains(IndustryType.CommonModules.Dimension1) Then
+                    FSeedSingleIfNotExist_EntryLineUISetting("FrmPurchInvoiceDirect", Ncat.WayBill, "Dgl1", FrmPurchInvoiceDirect_WithDimension.Col1Dimension1, False)
+                End If
+                If ClsMain.IsScopeOfWorkContains(IndustryType.CommonModules.Dimension2) Then
+                    FSeedSingleIfNotExist_EntryLineUISetting("FrmPurchInvoiceDirect", Ncat.WayBill, "Dgl1", FrmPurchInvoiceDirect_WithDimension.Col1Dimension2, False)
+                End If
+                If ClsMain.IsScopeOfWorkContains(IndustryType.CommonModules.Dimension3) Then
+                    FSeedSingleIfNotExist_EntryLineUISetting("FrmPurchInvoiceDirect", Ncat.WayBill, "Dgl1", FrmPurchInvoiceDirect_WithDimension.Col1Dimension3, False)
+                End If
+                If ClsMain.IsScopeOfWorkContains(IndustryType.CommonModules.Dimension4) Then
+                    FSeedSingleIfNotExist_EntryLineUISetting("FrmPurchInvoiceDirect", Ncat.WayBill, "Dgl1", FrmPurchInvoiceDirect_WithDimension.Col1Dimension4, False)
+                End If
+                FSeedSingleIfNotExist_EntryLineUISetting("FrmPurchInvoiceDirect", Ncat.WayBill, "Dgl1", FrmPurchInvoiceDirect_WithDimension.Col1Size, False)
+                FSeedSingleIfNotExist_EntryLineUISetting("FrmPurchInvoiceDirect", Ncat.WayBill, "Dgl1", FrmPurchInvoiceDirect_WithDimension.Col1Specification, False)
+                FSeedSingleIfNotExist_EntryLineUISetting("FrmPurchInvoiceDirect", Ncat.WayBill, "Dgl1", FrmPurchInvoiceDirect_WithDimension.Col1SalesTaxGroup, True)
+                FSeedSingleIfNotExist_EntryLineUISetting("FrmPurchInvoiceDirect", Ncat.WayBill, "Dgl1", FrmPurchInvoiceDirect_WithDimension.Col1BaleNo, False)
+                FSeedSingleIfNotExist_EntryLineUISetting("FrmPurchInvoiceDirect", Ncat.WayBill, "Dgl1", FrmPurchInvoiceDirect_WithDimension.Col1LotNo, False)
+                FSeedSingleIfNotExist_EntryLineUISetting("FrmPurchInvoiceDirect", Ncat.WayBill, "Dgl1", FrmPurchInvoiceDirect_WithDimension.Col1DocQty, True)
+                FSeedSingleIfNotExist_EntryLineUISetting("FrmPurchInvoiceDirect", Ncat.WayBill, "Dgl1", FrmPurchInvoiceDirect_WithDimension.Col1FreeQty,)
+                FSeedSingleIfNotExist_EntryLineUISetting("FrmPurchInvoiceDirect", Ncat.WayBill, "Dgl1", FrmPurchInvoiceDirect_WithDimension.Col1LossQty)
+                FSeedSingleIfNotExist_EntryLineUISetting("FrmPurchInvoiceDirect", Ncat.WayBill, "Dgl1", FrmPurchInvoiceDirect_WithDimension.Col1Unit, True,,, False)
+                FSeedSingleIfNotExist_EntryLineUISetting("FrmPurchInvoiceDirect", Ncat.WayBill, "Dgl1", FrmPurchInvoiceDirect_WithDimension.Col1Rate, True)
+                FSeedSingleIfNotExist_EntryLineUISetting("FrmPurchInvoiceDirect", Ncat.WayBill, "Dgl1", FrmPurchInvoiceDirect_WithDimension.Col1DiscountPer, True)
+                FSeedSingleIfNotExist_EntryLineUISetting("FrmPurchInvoiceDirect", Ncat.WayBill, "Dgl1", FrmPurchInvoiceDirect_WithDimension.Col1DiscountAmount, True)
+                FSeedSingleIfNotExist_EntryLineUISetting("FrmPurchInvoiceDirect", Ncat.WayBill, "Dgl1", FrmPurchInvoiceDirect_WithDimension.Col1AdditionalDiscountPer, False)
+                FSeedSingleIfNotExist_EntryLineUISetting("FrmPurchInvoiceDirect", Ncat.WayBill, "Dgl1", FrmPurchInvoiceDirect_WithDimension.Col1AdditionalDiscountAmount, False)
+                FSeedSingleIfNotExist_EntryLineUISetting("FrmPurchInvoiceDirect", Ncat.WayBill, "Dgl1", FrmPurchInvoiceDirect_WithDimension.Col1AdditionPer, False)
+                FSeedSingleIfNotExist_EntryLineUISetting("FrmPurchInvoiceDirect", Ncat.WayBill, "Dgl1", FrmPurchInvoiceDirect_WithDimension.Col1AdditionAmount, False)
+                FSeedSingleIfNotExist_EntryLineUISetting("FrmPurchInvoiceDirect", Ncat.WayBill, "Dgl1", FrmPurchInvoiceDirect_WithDimension.Col1Amount, True,,, False)
+                FSeedSingleIfNotExist_EntryLineUISetting("FrmPurchInvoiceDirect", Ncat.WayBill, "Dgl1", FrmPurchInvoiceDirect_WithDimension.Col1Remark, True)
+                FSeedSingleIfNotExist_EntryLineUISetting("FrmPurchInvoiceDirect", Ncat.WayBill, "Dgl1", FrmPurchInvoiceDirect_WithDimension.Col1PurchaseInvoice, False, False, "Quotation No")
+
+
+
+                FSeedSingleIfNotExist_EntryLineUISetting("FrmPurchInvoiceDirect", Ncat.WayBillInvoice, "Dgl1", FrmPurchInvoiceDirect_WithDimension.ColSNo, True, True,, False)
+                FSeedSingleIfNotExist_EntryLineUISetting("FrmPurchInvoiceDirect", Ncat.WayBillInvoice, "Dgl1", FrmPurchInvoiceDirect_WithDimension.Col1ItemCategory, False)
+                FSeedSingleIfNotExist_EntryLineUISetting("FrmPurchInvoiceDirect", Ncat.WayBillInvoice, "Dgl1", FrmPurchInvoiceDirect_WithDimension.Col1ItemGroup, False)
+                FSeedSingleIfNotExist_EntryLineUISetting("FrmPurchInvoiceDirect", Ncat.WayBillInvoice, "Dgl1", FrmPurchInvoiceDirect_WithDimension.Col1ItemCode, False)
+                FSeedSingleIfNotExist_EntryLineUISetting("FrmPurchInvoiceDirect", Ncat.WayBillInvoice, "Dgl1", FrmPurchInvoiceDirect_WithDimension.Col1Item, True)
+                If ClsMain.IsScopeOfWorkContains(IndustryType.CommonModules.Dimension1) Then
+                    FSeedSingleIfNotExist_EntryLineUISetting("FrmPurchInvoiceDirect", Ncat.WayBillInvoice, "Dgl1", FrmPurchInvoiceDirect_WithDimension.Col1Dimension1, False)
+                End If
+                If ClsMain.IsScopeOfWorkContains(IndustryType.CommonModules.Dimension2) Then
+                    FSeedSingleIfNotExist_EntryLineUISetting("FrmPurchInvoiceDirect", Ncat.WayBillInvoice, "Dgl1", FrmPurchInvoiceDirect_WithDimension.Col1Dimension2, False)
+                End If
+                If ClsMain.IsScopeOfWorkContains(IndustryType.CommonModules.Dimension3) Then
+                    FSeedSingleIfNotExist_EntryLineUISetting("FrmPurchInvoiceDirect", Ncat.WayBillInvoice, "Dgl1", FrmPurchInvoiceDirect_WithDimension.Col1Dimension3, False)
+                End If
+                If ClsMain.IsScopeOfWorkContains(IndustryType.CommonModules.Dimension4) Then
+                    FSeedSingleIfNotExist_EntryLineUISetting("FrmPurchInvoiceDirect", Ncat.WayBillInvoice, "Dgl1", FrmPurchInvoiceDirect_WithDimension.Col1Dimension4, False)
+                End If
+                FSeedSingleIfNotExist_EntryLineUISetting("FrmPurchInvoiceDirect", Ncat.WayBillInvoice, "Dgl1", FrmPurchInvoiceDirect_WithDimension.Col1Size, False)
+                FSeedSingleIfNotExist_EntryLineUISetting("FrmPurchInvoiceDirect", Ncat.WayBillInvoice, "Dgl1", FrmPurchInvoiceDirect_WithDimension.Col1Specification, False)
+                FSeedSingleIfNotExist_EntryLineUISetting("FrmPurchInvoiceDirect", Ncat.WayBillInvoice, "Dgl1", FrmPurchInvoiceDirect_WithDimension.Col1SalesTaxGroup, True)
+                FSeedSingleIfNotExist_EntryLineUISetting("FrmPurchInvoiceDirect", Ncat.WayBillInvoice, "Dgl1", FrmPurchInvoiceDirect_WithDimension.Col1BaleNo, False)
+                FSeedSingleIfNotExist_EntryLineUISetting("FrmPurchInvoiceDirect", Ncat.WayBillInvoice, "Dgl1", FrmPurchInvoiceDirect_WithDimension.Col1LotNo, False)
+                FSeedSingleIfNotExist_EntryLineUISetting("FrmPurchInvoiceDirect", Ncat.WayBillInvoice, "Dgl1", FrmPurchInvoiceDirect_WithDimension.Col1DocQty, True)
+                FSeedSingleIfNotExist_EntryLineUISetting("FrmPurchInvoiceDirect", Ncat.WayBillInvoice, "Dgl1", FrmPurchInvoiceDirect_WithDimension.Col1FreeQty,)
+                FSeedSingleIfNotExist_EntryLineUISetting("FrmPurchInvoiceDirect", Ncat.WayBillInvoice, "Dgl1", FrmPurchInvoiceDirect_WithDimension.Col1LossQty)
+                FSeedSingleIfNotExist_EntryLineUISetting("FrmPurchInvoiceDirect", Ncat.WayBillInvoice, "Dgl1", FrmPurchInvoiceDirect_WithDimension.Col1Unit, True,,, False)
+                FSeedSingleIfNotExist_EntryLineUISetting("FrmPurchInvoiceDirect", Ncat.WayBillInvoice, "Dgl1", FrmPurchInvoiceDirect_WithDimension.Col1Rate, True)
+                FSeedSingleIfNotExist_EntryLineUISetting("FrmPurchInvoiceDirect", Ncat.WayBillInvoice, "Dgl1", FrmPurchInvoiceDirect_WithDimension.Col1DiscountPer, True)
+                FSeedSingleIfNotExist_EntryLineUISetting("FrmPurchInvoiceDirect", Ncat.WayBillInvoice, "Dgl1", FrmPurchInvoiceDirect_WithDimension.Col1DiscountAmount, True)
+                FSeedSingleIfNotExist_EntryLineUISetting("FrmPurchInvoiceDirect", Ncat.WayBillInvoice, "Dgl1", FrmPurchInvoiceDirect_WithDimension.Col1AdditionalDiscountPer, False)
+                FSeedSingleIfNotExist_EntryLineUISetting("FrmPurchInvoiceDirect", Ncat.WayBillInvoice, "Dgl1", FrmPurchInvoiceDirect_WithDimension.Col1AdditionalDiscountAmount, False)
+                FSeedSingleIfNotExist_EntryLineUISetting("FrmPurchInvoiceDirect", Ncat.WayBillInvoice, "Dgl1", FrmPurchInvoiceDirect_WithDimension.Col1AdditionPer, False)
+                FSeedSingleIfNotExist_EntryLineUISetting("FrmPurchInvoiceDirect", Ncat.WayBillInvoice, "Dgl1", FrmPurchInvoiceDirect_WithDimension.Col1AdditionAmount, False)
+                FSeedSingleIfNotExist_EntryLineUISetting("FrmPurchInvoiceDirect", Ncat.WayBillInvoice, "Dgl1", FrmPurchInvoiceDirect_WithDimension.Col1Amount, True,,, False)
+                FSeedSingleIfNotExist_EntryLineUISetting("FrmPurchInvoiceDirect", Ncat.WayBillInvoice, "Dgl1", FrmPurchInvoiceDirect_WithDimension.Col1Remark, True)
+                FSeedSingleIfNotExist_EntryLineUISetting("FrmPurchInvoiceDirect", Ncat.WayBillInvoice, "Dgl1", FrmPurchInvoiceDirect_WithDimension.Col1PurchaseInvoice, False, False, "Quotation No")
+
+            End If
 
 
 
@@ -10334,6 +10490,7 @@ Thanks
                 FSeedSingleIfNotExist_EntryLineUISetting("FrmVoucherEntry", Ncat.Payment, "Dgl1", FrmVoucherEntry.Col1TdsAmount, True, False, "", False)
             End If
 
+            FSeedSingleIfNotExist_EntryLineUISetting("FrmVoucherEntry", Ncat.Receipt, "Dgl1", FrmVoucherEntry.Col1LinkedSubcode, False, False)
             FSeedSingleIfNotExist_EntryLineUISetting("FrmVoucherEntry", Ncat.Receipt, "Dgl1", FrmVoucherEntry.Col1EffectiveDate, False, False)
             FSeedSingleIfNotExist_EntryLineUISetting("FrmVoucherEntry", Ncat.Receipt, "Dgl1", FrmVoucherEntry.Col1Subcode, True, True, "Party Name")
             If ClsMain.IsScopeOfWorkContains("+Cloth Aadhat Module") Or ClsMain.IsScopeOfWorkContains("+Double Entry Module") Then
@@ -11177,6 +11334,11 @@ Thanks
             If ClsMain.IsScopeOfWorkContains(IndustryType.CommonModules.PurchaseOrderModule) Then
                 FSeedSingleIfNotExists_Voucher_Type(Ncat.PurchaseOrder, "Purchase Order", Ncat.PurchaseOrder, VoucherCategory.Purchase, "", "Customised", MdiObj.MnuPurchaseOrder.Name, MdiObj.MnuPurchaseOrder.Text)
                 'FSeedSingleIfNotExists_Voucher_Type(Ncat.PurchaseOrderCancel, "Purchase Order Cancel", Ncat.PurchaseOrderCancel, VoucherCategory.Purchase, "", "Customised", MdiObj.MnuPurchaseOrder.Name, MdiObj.MnuPurchaseOrder.Text)
+            End If
+
+            If ClsMain.IsScopeOfWorkContains(IndustryType.CommonModules.WayBillModule) Then
+                FSeedSingleIfNotExists_Voucher_Type(Ncat.WayBill, "Way Bill", Ncat.WayBill, VoucherCategory.Purchase, "", "Customised", MdiObj.MnuWayBillEntry.Name, MdiObj.MnuWayBillEntry.Text)
+                FSeedSingleIfNotExists_Voucher_Type(Ncat.WayBillInvoice, "Way Bill Invoice", Ncat.WayBillInvoice, VoucherCategory.Purchase, "", "Customised", MdiObj.MnuWayBillInvoice.Name, MdiObj.MnuWayBillInvoice.Text)
             End If
 
             If ClsMain.IsScopeOfWorkContains(IndustryType.CommonModules.SalesEnquiry) Then
@@ -18444,6 +18606,8 @@ Thanks
                 AgL.Dman_ExecuteNonQry(mQry, AgL.GcnMain)
             End If
 
+            AgL.AddFieldSqlite(AgL.GcnMain, "Enviro", "Default_PaymentLink", "nVarchar(255)", "", True)
+            AgL.AddFieldSqlite(AgL.GcnMain, "Enviro", "Default_BankQR", "varBinary(MAX)", "", True)
             AgL.AddFieldSqlite(AgL.GcnMain, "Enviro", "Default_BankAccountDetail", "nVarchar(255)", "", True)
             AgL.AddFieldSqlite(AgL.GcnMain, "Enviro", "Default_DebtorsCreditDays", "Integer", "30", True)
             AgL.AddFieldSqlite(AgL.GcnMain, "Enviro", "Default_DebtorsInterestRate", "float", "12", True)
@@ -24331,14 +24495,17 @@ Thanks
             Dim mCompanyLogoFileName As String
             Dim mCompanyAuthorisedSignatoryFileName As String
             Dim mEInvoiceQrCodeFileName As String = ""
+            Dim mPaymentQrCodeFileName As String
 
             AgL.PubTempStr = AgL.PubTempStr & "Start fetching logo & signature file name from setting : " & AgL.PubStopWatch.ElapsedMilliseconds.ToString & vbCrLf
             If TypeOf (objFrm) Is AgTemplate.TempTransaction Then
                 mCompanyLogoFileName = ClsMain.FGetSettings(SettingFields.CompanyLogoFileName, SettingType.General, objFrm.TxtDivision.Tag, objFrm.TxtSite_Code.Tag, "", "", "", "", "")
                 mCompanyAuthorisedSignatoryFileName = ClsMain.FGetSettings(SettingFields.CompanyAuthorisedSignatoryFileName, SettingType.General, objFrm.TxtDivision.Tag, objFrm.TxtSite_Code.Tag, "", "", "", "", "")
+                mPaymentQrCodeFileName = ClsMain.FGetSettings(SettingFields.PaymentQrCodeFileName, SettingType.General, objFrm.TxtDivision.Tag, objFrm.TxtSite_Code.Tag, "", "", "", "", "")
             Else
                 mCompanyLogoFileName = ClsMain.FGetSettings(SettingFields.CompanyLogoFileName, SettingType.General, AgL.PubDivCode, AgL.PubSiteCode, "", "", "", "", "")
                 mCompanyAuthorisedSignatoryFileName = ClsMain.FGetSettings(SettingFields.CompanyAuthorisedSignatoryFileName, SettingType.General, AgL.PubDivCode, AgL.PubSiteCode, "", "", "", "", "")
+                mPaymentQrCodeFileName = ClsMain.FGetSettings(SettingFields.PaymentQrCodeFileName, SettingType.General, AgL.PubDivCode, AgL.PubSiteCode, "", "", "", "", "")
             End If
             mEInvoiceQrCodeFileName = PubAttachmentPath + mSearchCode + "\" + "EInvoiceQrCode.PNG"
 
@@ -24347,6 +24514,7 @@ Thanks
             DsRep.Tables(0).Columns.Add("CompanyLogo", System.Type.GetType("System.Byte[]"))
             DsRep.Tables(0).Columns.Add("CompanyAuthorisedSignature", System.Type.GetType("System.Byte[]"))
             DsRep.Tables(0).Columns.Add("EInvoiceQrCode", System.Type.GetType("System.Byte[]"))
+            DsRep.Tables(0).Columns.Add("PaymentQrCode", System.Type.GetType("System.Byte[]"))
 
             AgL.PubTempStr = AgL.PubTempStr & "Start Reading Logo File : " & AgL.PubStopWatch.ElapsedMilliseconds.ToString & vbCrLf
             Dim FileCompanyLogo() As Byte
@@ -24376,6 +24544,21 @@ Thanks
                 DsRep.Tables(0).Rows(I)("CompanyAuthorisedSignature") = FileCompanySign
             Next
             AgL.PubTempStr = AgL.PubTempStr & "End Reading Signature File : " & AgL.PubStopWatch.ElapsedMilliseconds.ToString & vbCrLf
+
+
+            AgL.PubTempStr = AgL.PubTempStr & "Start Reading Payment Qr Code File : " & AgL.PubStopWatch.ElapsedMilliseconds.ToString & vbCrLf
+            Dim FilePaymentQrCode() As Byte
+            If File.Exists(mPaymentQrCodeFileName) Then
+                FilePaymentQrCode = ReadFile(mPaymentQrCodeFileName)
+            Else
+                FilePaymentQrCode = ConvertToByteArray(My.Resources.BlankImage)
+            End If
+
+
+            For I = 0 To DsRep.Tables(0).Rows.Count - 1
+                DsRep.Tables(0).Rows(I)("PaymentQrCode") = FilePaymentQrCode
+            Next
+            AgL.PubTempStr = AgL.PubTempStr & "End Reading Payment Qr Code File : " & AgL.PubStopWatch.ElapsedMilliseconds.ToString & vbCrLf
 
 
             AgL.PubTempStr = AgL.PubTempStr & "Start Reading EInvoice QR File : " & AgL.PubStopWatch.ElapsedMilliseconds.ToString & vbCrLf
@@ -25866,6 +26049,10 @@ Thanks
                 NCatDesc = "PurchaseInvoice"
             Case Ncat.PurchaseOrder
                 NCatDesc = "PurchaseOrder"
+            Case Ncat.WayBill
+                NCatDesc = "WayBill"
+            Case Ncat.WayBillInvoice
+                NCatDesc = "WayBillInvoice"
             Case Ncat.PurchaseGoodsReceipt
                 NCatDesc = "PurchaseGoodsReceipt"
             Case Ncat.PurchaseReturn

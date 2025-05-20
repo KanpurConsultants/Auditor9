@@ -396,7 +396,7 @@ Public Class ClsSendMessageForPayment
                 If DGL.Item("Search Code", I).Value IsNot Nothing And DGL.Item("Search Code", I).Value <> "" And DGL.Item("Tick", I).Value = "þ" Then
                     mSearchCode = DGL.Item("Search Code", I).Value
                     mMobileNo = DGL.Item("Contact No", I).Value
-                    mMessage = "Dear " + DGL.Item("Party", I).Value + ", Your Rs. " + DGL.Item("Amount", I).Value.ToString() + " Due. Please Do Payment"
+                    mMessage = "Dear " + DGL.Item("Party", I).Value + ", Your Rs. " + DGL.Item("Amount GE " & ReportFrm.FGetText(2) & " Days", I).Value.ToString() + " Due more than " & ReportFrm.FGetText(2) & " Days. Please Do Payment To SADHVI " + ReportFrm.FGetText(9)
 
                     IsSuccess = FSendWhatsappMessage(mMobileNo, mMessage, "Message", "")
 

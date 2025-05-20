@@ -7840,7 +7840,12 @@ Public Class FrmSaleInvoiceDirect_WithDimension
             strCond += " And Sg.SubCode In (Select Parent From SubGroup Where Subcode = '" & DglMain.Item(Col1Value, rowSaleToParty).Tag & "')"
         End If
 
-        strCond += " And Sg.Parent = '" & DglMain.Item(Col1Value, rowSaleToParty).Tag & "' "
+        If AgL.StrCmp(AgL.PubDBName, "RVN") Or AgL.StrCmp(AgL.PubDBName, "RVN1") Or AgL.StrCmp(AgL.PubDBName, "RVN2") Or AgL.StrCmp(AgL.PubDBName, "MLAW") Then
+
+        Else
+            strCond += " And Sg.Parent = '" & DglMain.Item(Col1Value, rowSaleToParty).Tag & "' "
+        End If
+
 
         mQry = "SELECT Sg.SubCode As Code, Sg.Name || ',' || IfNull(C.CityName,'') As Party, Sg.Address, Ag.GroupName, Sg.SalesTaxPostingGroup, " &
                 " Sg.SalesTaxPostingGroup, " &
@@ -8700,7 +8705,7 @@ Public Class FrmSaleInvoiceDirect_WithDimension
         'AddHandler Me._backgroundWorker1.DoWork, New DoWorkEventHandler(AddressOf Me.FGetPrint)
 
         '_backgroundWorker1.RunWorkerAsync(SearchCode, ClsMain.PrintFor.DocumentPrint)
-
+        'Send_WhatsApp()
         FGetPrint(SearchCode, ClsMain.PrintFor.DocumentPrint)
     End Sub
 
@@ -9705,6 +9710,16 @@ Public Class FrmSaleInvoiceDirect_WithDimension
 
             End Select
         Next
+    End Sub
+
+    Private Sub Send_WhatsApp()
+        Dim sender1 As New WhatsAppSender()
+        'sender1.SendPdfViaWhatsApp(
+        '"+91 8299399688",
+        '"D:\55.pdf",
+        '"Here's the document you requested")
+
+        sender1.SendPdfWithAttachment("+91 8299399688", "D:\55.pdf", "Ok")
     End Sub
 
 

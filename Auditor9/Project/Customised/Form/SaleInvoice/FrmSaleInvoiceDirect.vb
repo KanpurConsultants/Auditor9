@@ -6062,6 +6062,7 @@ Public Class FrmSaleInvoiceDirect
         mQry = ""
         For I = 1 To PrintingCopies.Length
             If mQry <> "" Then mQry = mQry + " Union All "
+            ''" & AgL.XNull(AgL.PubDtEnviro.Rows(0)("Default_BankQR")) & "' as Default_BankQR,
             '(Case When DP.Prefix Is Not Null Then DP.Prefix || H.ManualRefNo Else H.Div_Code || H.Site_Code || '-' || H.V_Type || '-' || H.ManualRefNo End) as InvoiceNo, 
             ''" & IIf(AgL.PubPrintDivisionShortNameOnDocumentsYn, AgL.PubDivShortName, "") & IIf(AgL.PubPrintSiteShortNameOnDocumentsYn, AgL.PubSiteShortName, "") & "' || (Case When VT.Short_Name Is Not Null Then VT.Short_Name Else '' End) || H.ManualRefNo  as InvoiceNo, 
             mQry = mQry + "
@@ -6112,7 +6113,7 @@ Public Class FrmSaleInvoiceDirect
                 H.Tax5_Per as H_Tax5_Per, abs(H.Tax5) as H_Tax5, H.Deduction_Per as H_Deduction_Per, H.Deduction as H_Deduction, 
                 H.Other_Charge_Per as H_Other_Charge_Per, H.Other_Charge as H_Other_Charge, H.Round_Off, abs(H.Net_Amount) as H_Net_Amount, 
                 IfNull(H.EInvoiceIRN,'') EInvoiceIRN, H.EInvoiceAckNo, H.EInvoiceAckDate,
-                '" & AgL.XNull(AgL.PubDtEnviro.Rows(0)("Default_BankAccountDetail")) & "' as Default_BankAccountDetail,
+                '" & AgL.XNull(AgL.PubDtEnviro.Rows(0)("Default_BankAccountDetail")) & "' as Default_BankAccountDetail,'" & AgL.XNull(AgL.PubDtEnviro.Rows(0)("Default_PaymentLink")) & "' as PaymentLink, 
                 '" & FGetSettings(SettingFields.DocumentPrintHeaderPattern, SettingType.General) & "' as DocumentPrintHeaderPattern, IfNull(L.DimensionDetail,'') as DimDetail,
                 '" & AgL.PubUserName & "' as PrintedByUser, H.EntryBy as EntryByUser, '" & mPrintTitle & "' as PrintTitle,
                 '" & FGetSettings(SettingFields.DocumentPrintShowPrintDateTimeYn, SettingType.General) & "' as DocumentPrintShowPrintDateTimeYn,

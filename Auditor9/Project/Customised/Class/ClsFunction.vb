@@ -316,6 +316,13 @@ Public Class ClsFunction
                     Else
                         FrmObj = New FrmPurchInvoiceDirect(StrUserPermission, DTUP, Ncat.PurchaseInvoice)
                     End If
+
+                Case MDI.MnuWayBillEntry.Name
+                    FrmObj = New FrmPurchInvoiceDirect_WithDimension(StrUserPermission, DTUP, Ncat.WayBill)
+
+                Case MDI.MnuWayBillInvoice.Name
+                    FrmObj = New FrmPurchInvoiceDirect_WithDimension(StrUserPermission, DTUP, Ncat.WayBillInvoice)
+
                 Case MDI.MnuPurchaseReturnEntry.Name
                     If FGetNewVersionFlag() = True Then
                         FrmObj = New FrmPurchInvoiceDirect_WithDimension(StrUserPermission, DTUP, Ncat.PurchaseReturn)

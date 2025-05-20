@@ -147,6 +147,8 @@ Partial Class MDIMain
         Me.MnuLocalFreightEntry = New System.Windows.Forms.ToolStripMenuItem()
         Me.MnuLREntry = New System.Windows.Forms.ToolStripMenuItem()
         Me.MnuLRTransfer = New System.Windows.Forms.ToolStripMenuItem()
+        Me.MnuWayBillEntry = New System.Windows.Forms.ToolStripMenuItem()
+        Me.MnuWayBillInvoice = New System.Windows.Forms.ToolStripMenuItem()
         Me.MnuBiltyUpdation = New System.Windows.Forms.ToolStripMenuItem()
         Me.MnuBarcodeRateRevision = New System.Windows.Forms.ToolStripMenuItem()
         Me.MnuPurchaseReports = New System.Windows.Forms.ToolStripMenuItem()
@@ -1172,7 +1174,7 @@ Partial Class MDIMain
         '
         'MnuPurchase
         '
-        Me.MnuPurchase.DropDownItems.AddRange(New System.Windows.Forms.ToolStripItem() {Me.MnuPurchaseOrder, Me.MnuPurchaseGoodsReceipt, Me.MnuPurchaseEntry, Me.MnuPurchaseReturnEntry, Me.MnuGenerateBarcodeSS, Me.MnuGenerateBarcode, Me.MnuLocalFreightEntry, Me.MnuLREntry, Me.MnuLRTransfer, Me.MnuBiltyUpdation, Me.MnuBarcodeRateRevision, Me.MnuPurchaseReports})
+        Me.MnuPurchase.DropDownItems.AddRange(New System.Windows.Forms.ToolStripItem() {Me.MnuPurchaseOrder, Me.MnuPurchaseGoodsReceipt, Me.MnuPurchaseEntry, Me.MnuPurchaseReturnEntry, Me.MnuGenerateBarcodeSS, Me.MnuGenerateBarcode, Me.MnuLocalFreightEntry, Me.MnuLREntry, Me.MnuLRTransfer, Me.MnuWayBillEntry, Me.MnuWayBillInvoice, Me.MnuBiltyUpdation, Me.MnuBarcodeRateRevision, Me.MnuPurchaseReports})
         Me.MnuPurchase.Name = "MnuPurchase"
         Me.MnuPurchase.Size = New System.Drawing.Size(67, 20)
         Me.MnuPurchase.Text = "Purchase"
@@ -1238,6 +1240,18 @@ Partial Class MDIMain
         Me.MnuLRTransfer.Size = New System.Drawing.Size(201, 22)
         Me.MnuLRTransfer.Tag = ""
         Me.MnuLRTransfer.Text = "LR Transfer"
+        '
+        'MnuWayBillEntry
+        '
+        Me.MnuWayBillEntry.Name = "MnuWayBillEntry"
+        Me.MnuWayBillEntry.Size = New System.Drawing.Size(201, 22)
+        Me.MnuWayBillEntry.Text = "Way Bill Entry"
+        '
+        'MnuWayBillInvoice
+        '
+        Me.MnuWayBillInvoice.Name = "MnuWayBillInvoice"
+        Me.MnuWayBillInvoice.Size = New System.Drawing.Size(201, 22)
+        Me.MnuWayBillInvoice.Text = "Way Bill Invoice"
         '
         'MnuBiltyUpdation
         '
@@ -2877,4 +2891,6 @@ Partial Class MDIMain
     Friend WithEvents MnuBiltyUpdation As ToolStripMenuItem
     Friend WithEvents MnuJournalAdjustment As ToolStripMenuItem
     Friend WithEvents MnuSaleProfitAnalysis As ToolStripMenuItem
+    Friend WithEvents MnuWayBillEntry As ToolStripMenuItem
+    Friend WithEvents MnuWayBillInvoice As ToolStripMenuItem
 End Class
