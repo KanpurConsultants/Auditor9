@@ -112,9 +112,10 @@ Public Class FrmRecelculateSales
                 LEFT JOIN Item Ig On I.ItemGroup = Ig.Code
                 LEFT JOIN Voucher_Type Vt On H.V_Type = Vt.V_Type
                 LEFT JOIN (Select DocId, Count(*) As CntPaymentModes From SaleInvoicePayment Where IfNull(PaymentMode,'') <> 'Cash' Group By DocId) As Sip On H.DocId = Sip.DocId
+                LEFT JOIN (Select DocId, Sum(DiscountAmount) as DiscountAmount From SaleInvoiceDetail  Group By DocId) As Sip1 On H.DocId = Sip1.DocId
                 Where Vt.NCat = '" & Ncat.SaleInvoice & "' 
                 And IfNull(Ig.CalcCode,0) > 0 
-                And IfNull(Sip.CntPaymentModes,0) = 0
+                And IfNull(Sip.CntPaymentModes,0) = 0 And IfNull(Sip1. DiscountAmount ,0) = 0
                 And H.ReCalculationBy Is Null "
         mQry = mQry & " AND Date(H.V_Date) >= " & AgL.Chk_Date(CDate(DglMain.Item(Col1Value, rowFromDate).Value).ToString("s")) & ""
         mQry = mQry & " AND Date(H.V_Date) <= " & AgL.Chk_Date(CDate(DglMain.Item(Col1Value, rowToDate).Value).ToString("s")) & ""

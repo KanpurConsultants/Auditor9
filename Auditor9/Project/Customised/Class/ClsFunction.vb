@@ -391,13 +391,13 @@ Public Class ClsFunction
                 Case MDI.MnuOpeningStockProcess.Name
                     FrmObj = New FrmPurchInvoiceDirect_WithDimension(StrUserPermission, DTUP, Ncat.OpeningStockProcess)
                 Case MDI.MnuStockIssue.Name, MdiKirana.MnuStockIssue.Name
-                    If ClsMain.FDivisionNameForCustomization(6) = "SADHVI" And AgL.StrCmp(AgL.PubDBName, "Sadhvi") Then
+                    If ClsMain.FDivisionNameForCustomization(6) = "SADHVI" And (AgL.StrCmp(AgL.PubDBName, "Sadhvi") Or AgL.StrCmp(AgL.PubDBName, "Sadhvi2")) Then
                         FrmObj = New FrmStockEntry(StrUserPermission, DTUP, Ncat.StockIssue)
                     Else
                         FrmObj = New FrmPurchInvoiceDirect_WithDimension(StrUserPermission, DTUP, Ncat.StockIssue)
                     End If
                 Case MDI.MnuStockReceive.Name, MdiKirana.MnuStockReceive.Name
-                    If ClsMain.FDivisionNameForCustomization(6) = "SADHVI" And AgL.StrCmp(AgL.PubDBName, "Sadhvi") Then
+                    If ClsMain.FDivisionNameForCustomization(6) = "SADHVI" And (AgL.StrCmp(AgL.PubDBName, "Sadhvi") Or AgL.StrCmp(AgL.PubDBName, "Sadhvi2")) Then
                         FrmObj = New FrmStockEntry(StrUserPermission, DTUP, Ncat.StockReceive)
                     Else
                         FrmObj = New FrmPurchInvoiceDirect_WithDimension(StrUserPermission, DTUP, Ncat.StockReceive)
@@ -1211,7 +1211,7 @@ Public Class ClsFunction
                     CRep.Ini_Grid()
                     FrmObj = GridReportFrm
                 Case MDI.MnuStockIssueReport.Name
-                    If ClsMain.FDivisionNameForCustomization(6) = "SADHVI" And AgL.StrCmp(AgL.PubDBName, "Sadhvi") Then
+                    If ClsMain.FDivisionNameForCustomization(6) = "SADHVI" And (AgL.StrCmp(AgL.PubDBName, "Sadhvi") Or AgL.StrCmp(AgL.PubDBName, "Sadhvi2")) Then
                         Dim CRep As ClsStockHeadReport = New ClsStockHeadReport(GridReportFrm, Ncat.StockIssue)
                         CRep.GRepFormName = Replace(Replace(Replace(Replace(StrSenderText, "&", ""), " ", ""), "(", ""), ")", "")
                         CRep.Ini_Grid()
@@ -1223,7 +1223,7 @@ Public Class ClsFunction
 
                     FrmObj = GridReportFrm
                 Case MDI.MnuStockReceiveReport.Name
-                    If ClsMain.FDivisionNameForCustomization(6) = "SADHVI" And AgL.StrCmp(AgL.PubDBName, "Sadhvi") Then
+                    If ClsMain.FDivisionNameForCustomization(6) = "SADHVI" And (AgL.StrCmp(AgL.PubDBName, "Sadhvi") Or AgL.StrCmp(AgL.PubDBName, "Sadhvi2")) Then
                         Dim CRep As ClsStockHeadReport = New ClsStockHeadReport(GridReportFrm, Ncat.StockReceive)
                         CRep.GRepFormName = Replace(Replace(Replace(Replace(StrSenderText, "&", ""), " ", ""), "(", ""), ")", "")
                         CRep.Ini_Grid()

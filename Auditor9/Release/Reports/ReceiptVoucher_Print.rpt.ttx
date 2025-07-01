@@ -5,33 +5,33 @@ DocNoCaption	string	255	Doc.No.
 DocDateCaption	string	255	Doc.Date	
 SiteStateCode	string	255	09	
 SiteStateName	string	255	Uttar Pradesh	
-DocID	string	255	D3   RCT 2025     442	
+DocID	string	255	D3   RCT 2025    1088	
 Sr	number	1	
-V_Date	datetime	09/May/2025 00:00:00	
+V_Date	datetime	16/Jun/2025 00:00:00	
 Voucher_Type	string	255	Receipt	
 NCat	string	255	RCT	
-InvoiceNo	string	255	RCT440	
-PartySubcode	string	255	D300000749	
-PartyName	string	255	VIJENDRA GUPTA S/O BADRI PRASAD GUPTA	
-PartyAddress	string	255	113 MAWAIYA HARIJINDER NAGAR KANPUR NAGAR UTTAR PRADESH	
+InvoiceNo	string	255	RCT1086	
+PartySubcode	string	255	D300000117	
+PartyName	string	255	TVS CREDIT SERVICES LTD	
+PartyAddress	string	255		
 CityName	string	255	KANPUR	
-PartyPincode	string	255	208007	
+PartyPincode	string	255		
 StateCode	string	255	09	
 StateName	string	255	Uttar Pradesh	
-PartyMobile	string	255	7408831847	
+PartyMobile	string	255		
 ContactPerson	string	255		
 PartySalesTaxNo	string	255		
-PartyAadharNo	string	255	888260816038	
+PartyAadharNo	string	255		
 PartyPanNo	string	255		
 TermsAndConditions	string	255		
 ReferenceNo	string	255		
-LineAccountName	string	255	CASH A/C-RAMADEVI, KANPUR	
+LineAccountName	string	255	KOTAK MAHINDRA BANK, KANPUR	
 LineSpecification	string	255		
 EffectiveDate	string	255		
-Amount	number	50000	
+Amount	number	10000	
 L_Deduction	number	0	
 L_OtherCharge	number	0	
-L_NetAmount	number	50000	
+L_NetAmount	number	10000	
 ChqRefNo	string	255		
 ChqRefDate	string	255		
 LRemarks	string	255		
@@ -45,3 +45,4 @@ DocumentPrintShowPrintDateTimeYn	string	255	1
 CompanyLogo	BLOB		
 CompanyAuthorisedSignature	BLOB		
 EInvoiceQrCode	BLOB		
+PaymentQrCode	BLOB		

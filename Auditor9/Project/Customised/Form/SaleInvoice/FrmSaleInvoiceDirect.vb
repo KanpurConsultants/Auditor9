@@ -7,7 +7,7 @@ Imports AgLibrary.ClsMain.agConstants
 Imports Customised.ClsMain
 Imports Customised.ClsMain.ConfigurableFields
 Imports System.Linq
-Imports Customised
+Imports System.Net
 
 Public Class FrmSaleInvoiceDirect
     Inherits AgTemplate.TempTransaction
@@ -1551,6 +1551,107 @@ Public Class FrmSaleInvoiceDirect
     Public WithEvents LblHelp As System.Windows.Forms.Label
 
 #End Region
+
+
+    Public Sub PostData()
+        'Dim request As HttpWebRequest = CType(WebRequest.Create("https://example.com/api/endpoint"), HttpWebRequest)
+        Dim request As HttpWebRequest = CType(System.Net.WebRequest.Create("http://app.laksmartindia.com/api/v1/message/create"), HttpWebRequest)
+        request.Method = "POST"
+        request.ContentType = "application/json"
+
+        ' JSON body (change this to your actual payload)
+        'Dim jsonData As String = "{""username"":""Satyam Tripathi"",""password"":""KC@12345""}"
+        Dim jsonData As String = "{""username"":""Satyam Tripathi"",""password"":""KC@12345"",""receiverMobileNo"":""8299399688"",""message"":""Hello""}"
+
+        ' Write the request body
+        Using streamWriter As New StreamWriter(request.GetRequestStream())
+            streamWriter.Write(jsonData)
+        End Using
+
+        ' Get the response
+        Dim response As HttpWebResponse = CType(request.GetResponse(), HttpWebResponse)
+        Using streamReader As New StreamReader(response.GetResponseStream())
+            Dim result As String = streamReader.ReadToEnd()
+            MsgBox("Response: " & result)
+        End Using
+    End Sub
+
+    Public Sub UploadFileViaFTP()
+        Dim ftpServer As String = "ftp://164.52.202.56/~equal2464/public_html/Sadhvi/"
+        Dim localFilePath As String = "D:\11.pdf"
+        Dim fileName As String = Path.GetFileName(localFilePath)
+
+        Try
+            Dim ftpUsername As String = "equal2464"
+            Dim ftpPassword As String = "tActL$*$P*67"
+
+
+            Dim ftpFullPath As String = ftpServer & fileName
+
+            Dim ftpRequest As FtpWebRequest = CType(System.Net.WebRequest.Create(ftpFullPath), FtpWebRequest)
+            ftpRequest.Credentials = New NetworkCredential(ftpUsername, ftpPassword)
+            ftpRequest.Method = WebRequestMethods.Ftp.UploadFile
+            ftpRequest.UseBinary = True
+            ftpRequest.KeepAlive = False
+            ftpRequest.Proxy = Nothing ' disable proxy
+
+            Dim fileContents As Byte() = File.ReadAllBytes(localFilePath)
+
+            Using requestStream As Stream = ftpRequest.GetRequestStream()
+                requestStream.Write(fileContents, 0, fileContents.Length)
+            End Using
+
+            Using response As FtpWebResponse = CType(ftpRequest.GetResponse(), FtpWebResponse)
+                MessageBox.Show($"Upload complete. Status: {response.StatusDescription}")
+            End Using
+
+        Catch ex As Exception
+            'MessageBox.Show($"Error uploading file: {ex.Message}")
+            MessageBox.Show("Uploading to: " & ftpServer & fileName)
+            MessageBox.Show($"Error uploading file: {ex.Message}{vbCrLf}{ex.StackTrace}")
+        End Try
+    End Sub
+
+
+    'Public Sub UploadFileViaFTP()
+    '    Try
+    '        ' FTP Server details
+    '        'Dim ftpServer As String = "ftp://yourserver.com/"
+    '        'Dim ftpServer As String = "ftp://164.52.202.56/~equal2464/public_html/Sadhvi/"
+    '        Dim ftpServer As String = "ftp://ftp.equal2.in/public_html/Sadhvi/"
+    '        Dim ftpUsername As String = "equal2464"
+    '        Dim ftpPassword As String = "tActL$*$P*67"
+
+    '        ' File to upload
+    '        Dim localFilePath As String = "D:\11.pdf"
+    '        Dim fileName As String = Path.GetFileName(localFilePath)
+    '        Dim ftpFullPath As String = ftpServer & fileName
+
+    '        ' Create FTP request
+    '        'Dim ftpRequest As FtpWebRequest = CType(WebRequest.Create(ftpFullPath), FtpWebRequest)
+    '        Dim ftpRequest As System.Net.FtpWebRequest = CType(System.Net.WebRequest.Create(ftpServer & fileName), FtpWebRequest)
+    '        ftpRequest.Proxy = Nothing
+    '        ftpRequest.Credentials = New NetworkCredential(ftpUsername, ftpPassword)
+    '        ftpRequest.Method = WebRequestMethods.Ftp.UploadFile
+    '        ftpRequest.UseBinary = True
+    '        ftpRequest.KeepAlive = False
+
+    '        ' Read file and upload
+    '        Dim fileContents As Byte() = File.ReadAllBytes(localFilePath)
+
+    '        Using requestStream As Stream = ftpRequest.GetRequestStream()
+    '            requestStream.Write(fileContents, 0, fileContents.Length)
+    '        End Using
+
+    '        ' Get response (optional)
+    '        Using response As FtpWebResponse = CType(ftpRequest.GetResponse(), FtpWebResponse)
+    '            MessageBox.Show($"Upload complete. Status: {response.StatusDescription}")
+    '        End Using
+
+    '    Catch ex As Exception
+    '        MessageBox.Show($"Error uploading file: {ex.Message}")
+    '    End Try
+    'End Sub
 
     Private Sub FrmSaleInvoice_BaseEvent_ApproveDeletion_InTrans(ByVal SearchCode As String, ByVal Conn As Object, ByVal Cmd As Object) Handles Me.BaseEvent_ApproveDeletion_InTrans
         Dim DtSaleInvoice As DataTable = Nothing
@@ -8367,7 +8468,8 @@ Public Class FrmSaleInvoiceDirect
                 FSendWhatsapp()
 
             Case MnuSendWhatsappPDF.Name
-                FSendWhatsappPDF()
+                'FSendWhatsappPDF()
+                PostData()
 
             Case MnuWhatsappDocument.Name
                 If AgL.StrCmp(AgL.PubUserName, "Super") Then
@@ -9860,8 +9962,9 @@ Public Class FrmSaleInvoiceDirect
                 Replace("<AgentName>", AgL.XNull(DtDocData.Rows(0)("AgentName"))).
                 Replace("<NetAmount>", Format(AgL.VNull(DtDocData.Rows(0)("Net_Amount")), "0.00")).
                 Replace("&", "And")
-        'IsSuccess = FSendWhatsappMessage(ToMobileNo, ToMessage, "PDF", "https://fixkaro.co.in/styam/13411.pdf")
-        IsSuccess = FSendWhatsappMessage(ToMobileNo, ToMessage, "PDF", "https://equal2.in/sadhvi/13413.pdf")
+        UploadFileViaFTP()
+        'IsSuccess = FSendWhatsappMessage(ToMobileNo, ToMessage, "PDF", "http://164.52.202.56/~equal2464/Sadhvi/SI6396.pdf")
+
     End Sub
     Private Function GetFieldAliasName(bImportFor As ImportFor, bFieldName As String)
         Dim bAliasName As String = bFieldName

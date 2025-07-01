@@ -112,6 +112,7 @@ Public Class FrmBlankData
         mQry += "Select " & mSr & " As Sr,'StockHeadDetail' As TableName Union All " : mSr = mSr + 1
         mQry += "Select " & mSr & " As Sr,'StockHead' As TableName Union All " : mSr = mSr + 1
 
+
         mQry += "Select " & mSr & " As Sr,'TransactionReferences' As TableName Union All " : mSr = mSr + 1
         mQry += "Select " & mSr & " As Sr,'ItemGroupPerson' As TableName Union All " : mSr = mSr + 1
         mQry += "Select " & mSr & " As Sr,'LogTable' As TableName Union All " : mSr = mSr + 1

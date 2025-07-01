@@ -23,6 +23,7 @@ Public Class FrmMatchDataFromOtherDatabase
     Dim DtSiteMast As DataTable
     Dim DtDivMast As DataTable
     Dim DtExternalData_Item As New DataTable
+    Dim DtExternalData_Subgroup As New DataTable
     Dim DtExternalData_SaleInvoice As New DataTable
     Dim DtExternalData_PurchInvoice As New DataTable
     Dim DtExternalData_LedgerHead As New DataTable
@@ -169,6 +170,9 @@ Public Class FrmMatchDataFromOtherDatabase
         mQry = "DELETE FROM TempToMatchItem"
         AgL.Dman_ExecuteNonQry(mQry, AgL.GCn, AgL.ECmd)
 
+        mQry = "DELETE FROM TempToMatchSubgroup"
+        AgL.Dman_ExecuteNonQry(mQry, AgL.GCn, AgL.ECmd)
+
         mQry = "DELETE FROM TempToMatchPurchInvoice"
         AgL.Dman_ExecuteNonQry(mQry, AgL.GCn, AgL.ECmd)
 
@@ -178,12 +182,21 @@ Public Class FrmMatchDataFromOtherDatabase
         mQry = "DELETE FROM TempToMatchLedger"
         AgL.Dman_ExecuteNonQry(mQry, AgL.GCn, AgL.ECmd)
 
+
+
         For I = 0 To DtExternalData_Item.Rows.Count - 1
             mQry = "INSERT INTO TempToMatchItem (Code, ManualCode, Description, DisplayName, Specification, Unit, DealQty, DealUnit, ItemGroup, ItemCategory, ItemType, OmsId)
                     SELECT '" & AgL.XNull(DtExternalData_Item.Rows(I)("Code")) & "', '" & AgL.XNull(DtExternalData_Item.Rows(I)("ManualCode")) & "', '" & AgL.XNull(DtExternalData_Item.Rows(I)("Description")) & "', 
                     '" & AgL.XNull(DtExternalData_Item.Rows(I)("DisplayName")) & "','" & AgL.XNull(DtExternalData_Item.Rows(I)("Specification")) & "', '" & AgL.XNull(DtExternalData_Item.Rows(I)("Unit")) & "', '" & AgL.XNull(DtExternalData_Item.Rows(I)("DealQty")) & "', '" & AgL.XNull(DtExternalData_Item.Rows(I)("DealUnit")) & "', 
                     '" & AgL.XNull(DtExternalData_Item.Rows(I)("ItemGroup")) & "', '" & AgL.XNull(DtExternalData_Item.Rows(I)("ItemCategory")) & "', 
                     '" & AgL.XNull(DtExternalData_Item.Rows(I)("ItemType")) & "', '" & AgL.XNull(DtExternalData_Item.Rows(I)("OmsId")) & "' "
+            AgL.Dman_ExecuteNonQry(mQry, AgL.GCn, AgL.ECmd)
+        Next
+
+        For I = 0 To DtExternalData_Subgroup.Rows.Count - 1
+            mQry = "INSERT INTO TempToMatchSubgroup (GroupName, Subcode, ManualCode, NamePrefix, Name, DispName, OmsId)
+                    SELECT '" & AgL.XNull(DtExternalData_Subgroup.Rows(I)("GroupName")) & "', '" & AgL.XNull(DtExternalData_Subgroup.Rows(I)("Subcode")) & "', '" & AgL.XNull(DtExternalData_Subgroup.Rows(I)("ManualCode")) & "', 
+                    '" & AgL.XNull(DtExternalData_Subgroup.Rows(I)("NamePrefix")) & "','" & AgL.XNull(DtExternalData_Subgroup.Rows(I)("Name")) & "', '" & AgL.XNull(DtExternalData_Subgroup.Rows(I)("DispName")) & "', '" & AgL.XNull(DtExternalData_Subgroup.Rows(I)("OmsId")) & "' "
             AgL.Dman_ExecuteNonQry(mQry, AgL.GCn, AgL.ECmd)
         Next
 
@@ -326,6 +339,11 @@ Public Class FrmMatchDataFromOtherDatabase
         mQry = "SELECT I.Code, I.ManualCode, I.Description, I.DisplayName, I.Specification, I.Unit, I.DealQty, I.DealUnit, I.ItemGroup, I.ItemCategory, I.ItemType, I.OmsId  
                 FROM Item I "
         DtExternalData_Item = AgL.FillData(mQry, Connection_ExternalDatabase).Tables(0)
+
+        mQry = "SELECT GroupName, SG.Subcode, SG.ManualCode, SG.NamePrefix, SG.Name, SG.DispName,SG.OmsId  
+                FROM Subgroup SG
+                LEFT JOIN AcGroup ON AcGroup.GroupCode = SG.GroupCode "
+        DtExternalData_Subgroup = AgL.FillData(mQry, Connection_ExternalDatabase).Tables(0)
 
         mQry = " SELECT H.DocID, H.V_Type, H.V_Prefix, H.V_Date, H.V_No, H.Div_Code, H.Site_Code, H.ManualRefNo, H.VendorDocNo, H.VendorDocDate, H.OmsId,
                     L.Sr, L.ReferenceNo, L.Barcode, L.Item, L.Qty, L.Rate, L.MRP, L.Amount

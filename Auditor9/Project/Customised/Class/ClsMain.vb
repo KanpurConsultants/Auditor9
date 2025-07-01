@@ -3042,7 +3042,7 @@ Sincerely
                 AgL.Dman_ExecuteNonQry(mQry, AgL.GcnMain)
             End If
 
-            If FDivisionNameForCustomization(6) = "SADHVI" And AgL.StrCmp(AgL.PubDBName, "Sadhvi") Then
+            If FDivisionNameForCustomization(6) = "SADHVI" And (AgL.StrCmp(AgL.PubDBName, "Sadhvi") Or AgL.StrCmp(AgL.PubDBName, "Sadhvi2")) Then
                 If Not AgL.IsTableExist("ItemBranchRate", AgL.GcnMain) Then
                     mQry = " CREATE TABLE [ItemBranchRate] (
                        [Code] nvarchar(10) NOT NULL,
@@ -6912,7 +6912,7 @@ Thanks
             FSeedSingleIfNotExist_EntryHeaderUISetting("FrmPurchaseInvoiceHeader", Ncat.PurchaseInvoice, "DGL1", FrmPurchaseInvoiceHeader.HcLrPaymentType, 1)
             'End If
 
-            If FDivisionNameForCustomization(6) = "SADHVI" And AgL.StrCmp(AgL.PubDBName, "Sadhvi") Then
+            If FDivisionNameForCustomization(6) = "SADHVI" And (AgL.StrCmp(AgL.PubDBName, "Sadhvi") Or AgL.StrCmp(AgL.PubDBName, "Sadhvi2")) Then
                 FSeedSingleIfNotExist_EntryHeaderUISetting("FrmStockHeader", Ncat.StockIssue, "DGL1", FrmStockHeader.HcRoadPermitNo, 1, 0, 0, "EWay Bill No")
                 FSeedSingleIfNotExist_EntryHeaderUISetting("FrmStockHeader", Ncat.StockIssue, "DGL1", FrmStockHeader.HcRoadPermitDate, 1, 0, 0, "EWay Bill Date")
             End If
@@ -9201,7 +9201,7 @@ Thanks
             FSeedSingleIfNotExist_EntryLineUISetting("FrmPurchInvoiceDirect", Ncat.StockExchange, "Dgl1", FrmPurchInvoiceDirect_WithDimension.Col1EntryType, False)
             FSeedSingleIfNotExist_EntryLineUISetting("FrmPurchInvoiceDirect", Ncat.StockExchange, "Dgl1", FrmPurchInvoiceDirect_WithDimension.Col1Remark, False)
 
-            If FDivisionNameForCustomization(6) = "SADHVI" And AgL.StrCmp(AgL.PubDBName, "Sadhvi") Then
+            If FDivisionNameForCustomization(6) = "SADHVI" And (AgL.StrCmp(AgL.PubDBName, "Sadhvi") Or AgL.StrCmp(AgL.PubDBName, "Sadhvi2")) Then
                 FSeedSingleIfNotExist_EntryLineUISetting("FrmStockEntry", Ncat.StockIssue, "Dgl1", FrmStockEntry.Col1MRP, True)
                 FSeedSingleIfNotExist_EntryLineUISetting("FrmStockEntry", Ncat.StockReceive, "Dgl1", FrmStockEntry.Col1MRP, True)
             End If
@@ -25005,6 +25005,43 @@ Thanks
             myResp.Close()
 
             FSendWhatsappMessage = True
+        Catch ex As Exception
+            MsgBox(ex.Message)
+        End Try
+
+    End Function
+
+    Public Shared Function UploadPdfToServer() As Boolean
+        'Dim ftpServer As String = "ftp://164.52.202.56/~equal2464/Sadhvi/"
+        Dim ftpServer As String = "ftp://164.52.202.56/~equal2464/public_html/sadhvi/"
+        Dim ftpUsername As String = "equal2464"
+        Dim ftpPassword As String = "tActL$*$P*67"
+        Dim filePath As String = "D:\11.pdf"
+        Dim fileName As String = Path.GetFileName(filePath)
+
+        Try
+
+
+            'Dim ftpUrl As String = "ftp://ftp.example.com/path/to/file.txt"
+            'Dim request As FtpWebRequest = CType(WebRequest.Create(ftpUrl), FtpWebRequest)
+
+            Dim request As System.Net.FtpWebRequest = CType(System.Net.WebRequest.Create(ftpServer & fileName), FtpWebRequest)
+            'Dim request As System.Net.FtpWebRequest = DirectCast(System.Net.WebRequest.Create("ftp://216.48.180.109/sadhvi/" & mAttachmentName + ".pdf"), System.Net.WebRequest)
+            request.Method = WebRequestMethods.Ftp.UploadFile
+            request.Credentials = New NetworkCredential(ftpUsername, ftpPassword)
+            request.UseBinary = True
+            request.UsePassive = True
+
+            Dim fileContents() As Byte = File.ReadAllBytes(filePath)
+            request.ContentLength = fileContents.Length
+
+            Using requestStream As Stream = request.GetRequestStream()
+                requestStream.Write(fileContents, 0, fileContents.Length)
+            End Using
+
+            Using response As FtpWebResponse = CType(request.GetResponse(), FtpWebResponse)
+                Console.WriteLine("Upload File Complete, status {0}", response.StatusDescription)
+            End Using
         Catch ex As Exception
             MsgBox(ex.Message)
         End Try

@@ -1198,7 +1198,7 @@ Public Class ClsSalesTaxReports_OneDotSeven
         xlApp.AlertBeforeOverwriting = False
         xlApp.DisplayAlerts = False
 
-        TemplateWorkBook = xlApp.Workbooks.Open(My.Application.Info.DirectoryPath + "\Templates\" + "GSTR1_Excel_Workbook_Template_V2.0.xlsx")
+        TemplateWorkBook = xlApp.Workbooks.Open(My.Application.Info.DirectoryPath + "\Templates\" + "GSTR1_Excel_Workbook_Template_V2.1.xlsx")
         TemplateWorkBook.SaveAs(OutputFile)
         xlApp.Workbooks.Close()
         OutputWorkBook = xlApp.Workbooks.Open(OutputFile)
@@ -1210,7 +1210,9 @@ Public Class ClsSalesTaxReports_OneDotSeven
             Dim DtTableCDNR As DataTable = Nothing
             Dim DtTableCDNUR As DataTable = Nothing
             Dim DtTableEXEMP As DataTable = Nothing
-            Dim DtTableHSN As DataTable = Nothing
+            Dim DtTableHSNB2b As DataTable = Nothing
+            Dim DtTableHSNB2CL As DataTable = Nothing
+            Dim DtTableHSNB2CS As DataTable = Nothing
             Dim DtTableDOCS As DataTable = Nothing
 
             Dim xlWorkSheet_B2b As Excel.Worksheet
@@ -1219,14 +1221,16 @@ Public Class ClsSalesTaxReports_OneDotSeven
             Dim xlWorkSheet_CDNR As Excel.Worksheet
             Dim xlWorkSheet_CDNUR As Excel.Worksheet
             Dim xlWorkSheet_EXEMP As Excel.Worksheet
-            Dim xlWorkSheet_HSN As Excel.Worksheet
+            Dim xlWorkSheet_HSN_B2b As Excel.Worksheet
+            Dim xlWorkSheet_HSN_B2CL As Excel.Worksheet
+            Dim xlWorkSheet_HSN_B2CS As Excel.Worksheet
             Dim xlWorkSheet_DOCS As Excel.Worksheet
 
 
             Dim I As Integer = 0
 
             FGetGSTR1FileCreationData(DtTableB2b, DtTableB2CL, DtTableB2CS, DtTableCDNR,
-                                      DtTableCDNUR, DtTableEXEMP, DtTableHSN, DtTableDOCS)
+                                      DtTableCDNUR, DtTableEXEMP, DtTableHSNB2b, DtTableHSNB2CL, DtTableHSNB2CS, DtTableDOCS)
 
             xlWorkSheet_B2b = OutputWorkBook.Worksheets("b2b,sez,de")
             FillGSTR1ExcelFiles(DtTableB2b, xlWorkSheet_B2b)
@@ -1246,8 +1250,14 @@ Public Class ClsSalesTaxReports_OneDotSeven
             xlWorkSheet_EXEMP = OutputWorkBook.Worksheets("EXEMP")
             FillGSTR1ExcelFiles(DtTableEXEMP, xlWorkSheet_EXEMP)
 
-            xlWorkSheet_HSN = OutputWorkBook.Worksheets("HSN")
-            FillGSTR1ExcelFiles(DtTableHSN, xlWorkSheet_HSN)
+            xlWorkSheet_HSN_B2b = OutputWorkBook.Worksheets("hsn(b2b)")
+            FillGSTR1ExcelFiles(DtTableHSNB2b, xlWorkSheet_HSN_B2b)
+
+            xlWorkSheet_HSN_B2CL = OutputWorkBook.Worksheets("hsn(b2c)")
+            FillGSTR1ExcelFiles(DtTableHSNB2CL, xlWorkSheet_HSN_B2CL)
+
+            'xlWorkSheet_HSN_B2CS = OutputWorkBook.Worksheets("HSNB2CS")
+            'FillGSTR1ExcelFiles(DtTableHSNB2CS, xlWorkSheet_HSN_B2CS)
 
             xlWorkSheet_DOCS = OutputWorkBook.Worksheets("docs")
             FillGSTR1ExcelFiles(DtTableDOCS, xlWorkSheet_DOCS)
@@ -1315,7 +1325,9 @@ Public Class ClsSalesTaxReports_OneDotSeven
             Dim DtTableCDNR As DataTable = Nothing
             Dim DtTableCDNUR As DataTable = Nothing
             Dim DtTableEXEMP As DataTable = Nothing
-            Dim DtTableHSN As DataTable = Nothing
+            Dim DtTableHSNB2B As DataTable = Nothing
+            Dim DtTableHSNB2CL As DataTable = Nothing
+            Dim DtTableHSNB2CS As DataTable = Nothing
             Dim DtTableDOCS As DataTable = Nothing
 
             Dim ToDate As DateTime = ReportFrm.FGetText(rowToDate)
@@ -1372,7 +1384,7 @@ Public Class ClsSalesTaxReports_OneDotSeven
 
 
             FGetGSTR1FileCreationData(DtTableB2b, DtTableB2CL, DtTableB2CS, DtTableCDNR,
-                                      DtTableCDNUR, DtTableEXEMP, DtTableHSN, DtTableDOCS)
+                                      DtTableCDNUR, DtTableEXEMP, DtTableHSNB2B, DtTableHSNB2CL, DtTableHSNB2CS, DtTableDOCS)
 
 
 
@@ -1647,17 +1659,17 @@ Public Class ClsSalesTaxReports_OneDotSeven
 
 
                 'HSN
-                For I = 0 To DtTableHSN.Rows.Count - 1
+                For I = 0 To DtTableHSNB2B.Rows.Count - 1
                     If I = 0 Then
                         sw.WriteLine(TabStr_1 + """hsn"": {")
                         sw.WriteLine(TabStr_2 + """data"": [")
                     End If
                     sw.WriteLine(TabStr_3 + "{")
                     sw.WriteLine(TabStr_4 + """num"": " & I + 1 & ",")
-                    sw.WriteLine(TabStr_4 + """hsn_sc"": """ & DtTableHSN.Rows(I)("HSN") & """,")
-                    sw.WriteLine(TabStr_4 + """desc"": """ & FRemoveSpecialCharactersForGSTReturns(RTrim(AgL.XNull(DtTableHSN.Rows(I)("ItemCategory")))) & """,")
+                    sw.WriteLine(TabStr_4 + """hsn_sc"": """ & DtTableHSNB2B.Rows(I)("HSN") & """,")
+                    sw.WriteLine(TabStr_4 + """desc"": """ & FRemoveSpecialCharactersForGSTReturns(RTrim(AgL.XNull(DtTableHSNB2B.Rows(I)("ItemCategory")))) & """,")
 
-                    Dim UQC As String = AgL.XNull(DtTableHSN.Rows(I)("UQC")).ToString()
+                    Dim UQC As String = AgL.XNull(DtTableHSNB2B.Rows(I)("UQC")).ToString()
                     Dim UnitName As String
                     If UQC <> "" Then
                         UnitName = UQC.Substring(0, UQC.IndexOf("-"))
@@ -1665,20 +1677,20 @@ Public Class ClsSalesTaxReports_OneDotSeven
                         UnitName = ""
                     End If
 
-                    If Math.Round(AgL.VNull(DtTableHSN.Rows(I)("TotalQty")), 2) = 0 Then
+                    If Math.Round(AgL.VNull(DtTableHSNB2B.Rows(I)("TotalQty")), 2) = 0 Then
                         UnitName = "NA"
                     End If
                     sw.WriteLine(TabStr_4 + """uqc"": """ & UnitName & """,")
-                    sw.WriteLine(TabStr_4 + """qty"": " & Math.Round(AgL.VNull(DtTableHSN.Rows(I)("TotalQty")), 2) & ",")
+                    sw.WriteLine(TabStr_4 + """qty"": " & Math.Round(AgL.VNull(DtTableHSNB2B.Rows(I)("TotalQty")), 2) & ",")
                     'sw.WriteLine(TabStr_4 + """val"": " & Math.Round(AgL.VNull(DtTableHSN.Rows(I)("InvoiceValue")), 2) & ",")
-                    sw.WriteLine(TabStr_4 + """rt"": " & Math.Round(AgL.VNull(DtTableHSN.Rows(I)("Rate")), 2) & ",")
-                    sw.WriteLine(TabStr_4 + """txval"": " & Math.Round(AgL.VNull(DtTableHSN.Rows(I)("TaxableValue")), 2) & ",")
-                    sw.WriteLine(TabStr_4 + """iamt"": " & Math.Round(AgL.VNull(DtTableHSN.Rows(I)("IntegratedTaxAmount")), 2) & ",")
-                    sw.WriteLine(TabStr_4 + """samt"": " & Math.Round(AgL.VNull(DtTableHSN.Rows(I)("StateTaxAmount")), 2) & ",")
-                    sw.WriteLine(TabStr_4 + """camt"": " & Math.Round(AgL.VNull(DtTableHSN.Rows(I)("CentralTaxAmount")), 2) & ",")
-                    sw.WriteLine(TabStr_4 + """csamt"": " & Math.Round(AgL.VNull(DtTableHSN.Rows(I)("CessAmount")), 2) & "")
-                    sw.WriteLine(TabStr_3 + "}" + IIf(I < DtTableHSN.Rows.Count - 1, ",", ""))
-                    If I = DtTableHSN.Rows.Count - 1 Then
+                    sw.WriteLine(TabStr_4 + """rt"": " & Math.Round(AgL.VNull(DtTableHSNB2B.Rows(I)("Rate")), 2) & ",")
+                    sw.WriteLine(TabStr_4 + """txval"": " & Math.Round(AgL.VNull(DtTableHSNB2B.Rows(I)("TaxableValue")), 2) & ",")
+                    sw.WriteLine(TabStr_4 + """iamt"": " & Math.Round(AgL.VNull(DtTableHSNB2B.Rows(I)("IntegratedTaxAmount")), 2) & ",")
+                    sw.WriteLine(TabStr_4 + """samt"": " & Math.Round(AgL.VNull(DtTableHSNB2B.Rows(I)("StateTaxAmount")), 2) & ",")
+                    sw.WriteLine(TabStr_4 + """camt"": " & Math.Round(AgL.VNull(DtTableHSNB2B.Rows(I)("CentralTaxAmount")), 2) & ",")
+                    sw.WriteLine(TabStr_4 + """csamt"": " & Math.Round(AgL.VNull(DtTableHSNB2B.Rows(I)("CessAmount")), 2) & "")
+                    sw.WriteLine(TabStr_3 + "}" + IIf(I < DtTableHSNB2B.Rows.Count - 1, ",", ""))
+                    If I = DtTableHSNB2B.Rows.Count - 1 Then
                         sw.WriteLine(TabStr_2 + "]")
                         sw.WriteLine(TabStr_1 + "}")
                     End If
@@ -1697,7 +1709,8 @@ Public Class ClsSalesTaxReports_OneDotSeven
     Private Sub FGetGSTR1FileCreationData(ByRef DtTableB2b As DataTable, ByRef DtTableB2CL As DataTable,
                                           ByRef DtTableB2CS As DataTable, ByRef DtTableCDNR As DataTable,
                                           ByRef DtTableCDNUR As DataTable, ByRef DtTableEXEMP As DataTable,
-                                          ByRef DtTableHSN As DataTable, ByRef DtTableDOCS As DataTable)
+                                          ByRef DtTableHSNB2b As DataTable, ByRef DtTableHSNB2CL As DataTable,
+                                          ByRef DtTableHSNB2CS As DataTable, ByRef DtTableDOCS As DataTable)
         Dim mCondStr As String = ""
 
         mCondStr = " Where 1=1"
@@ -1782,9 +1795,26 @@ Public Class ClsSalesTaxReports_OneDotSeven
                 Sum(H.IntegratedTaxAmount) As IntegratedTaxAmount, Sum(H.CentralTaxAmount) As CentralTaxAmount, 
                 Sum(H.StateTaxAmount) As StateTaxAmount, Sum(H.CessAmount) As CessAmount
                 From (" + FGetHSNQry(mCondStr) + ") As H 
+                Where H.GSTINofRecipient IS NOT NULL 
                 Group By H.HSN, H.GrossTaxRate "
-        DtTableHSN = AgL.FillData(mQry, AgL.GCn).Tables(0)
+        DtTableHSNB2b = AgL.FillData(mQry, AgL.GCn).Tables(0)
 
+        mQry = " SELECT H.HSN As HSN, Max(H.ItemCategory) As ItemCategory, Max(H.UQC) As UQC,
+                Sum(H.Qty) As TotalQty, Sum(H.InvoiceValue) As InvoiceValue, H.GrossTaxRate As Rate, Sum(H.TaxableValue) As TaxableValue, 
+                Sum(H.IntegratedTaxAmount) As IntegratedTaxAmount, Sum(H.CentralTaxAmount) As CentralTaxAmount, 
+                Sum(H.StateTaxAmount) As StateTaxAmount, Sum(H.CessAmount) As CessAmount
+                From (" + FGetHSNQry(mCondStr) + ") As H 
+                Where H.GSTINofRecipient IS NULL 
+                Group By H.HSN, H.GrossTaxRate "
+        DtTableHSNB2CL = AgL.FillData(mQry, AgL.GCn).Tables(0)
+
+        mQry = " SELECT H.HSN As HSN, Max(H.ItemCategory) As ItemCategory, Max(H.UQC) As UQC,
+                Sum(H.Qty) As TotalQty, Sum(H.InvoiceValue) As InvoiceValue, H.GrossTaxRate As Rate, Sum(H.TaxableValue) As TaxableValue, 
+                Sum(H.IntegratedTaxAmount) As IntegratedTaxAmount, Sum(H.CentralTaxAmount) As CentralTaxAmount, 
+                Sum(H.StateTaxAmount) As StateTaxAmount, Sum(H.CessAmount) As CessAmount
+                From (" + FGetHSNQry(mCondStr) + ") As H 
+                Group By H.HSN, H.GrossTaxRate "
+        DtTableHSNB2CS = AgL.FillData(mQry, AgL.GCn).Tables(0)
 
         mQry = " Select H.Type, 
                     Replace(Replace(Replace(Replace(Replace('" & mDocumentNoPattern & "','<DIVISION>',IfNull(Max(H.DivisionShortName),'')),'<SITE>',IfNull(Max(H.SiteShortName),'')),'<DOCTYPE>',IfNull(Max(H.VoucherTypeShortName),'')),'<DOCNO>',IfNull(Min(H.InvoiceNumber_Format),'')),'<COMPANYPREFIX>', '" & mCompanyPrefix & "') As SrNoFrom,
@@ -3035,7 +3065,7 @@ Public Class ClsSalesTaxReports_OneDotSeven
             mCondStrITC = mCondStrITC & " And H.Div_Code = '" & Replace(ReportFrm.FGetCode(rowDivision), "'", "") & "' "
             mCondStrITC = mCondStrITC & " And Vt.NCat In ('" & Ncat.SaleInvoice & "','" & Ncat.SaleReturn & "',
                                         '" & Ncat.DebitNoteSupplier & "','" & Ncat.DebitNoteCustomer & "','" & Ncat.CreditNoteCustomer & "','" & Ncat.CreditNoteSupplier & "',
-                                        '" & Ncat.PurchaseInvoice & "','" & Ncat.PurchaseReturn & "', '" & Ncat.ExpenseVoucher & "', '" & Ncat.IncomeVoucher & "', '" & Ncat.ReverseCharge & "')"
+                                        '" & Ncat.WayBillInvoice & "', '" & Ncat.PurchaseInvoice & "','" & Ncat.PurchaseReturn & "', '" & Ncat.ExpenseVoucher & "', '" & Ncat.IncomeVoucher & "', '" & Ncat.ReverseCharge & "')"
             mCondStrITC = mCondStrITC & " And CharIndex('" & ClsMain.VoucherTypeTags.ExcludeInSalesTaxReturns & "','+' || IfNull(Vt.VoucherTypeTags,'')) = 0 "
 
             'For GSTIN, Legal Name of the registered person

@@ -3566,9 +3566,11 @@ Public Class FrmVoucherEntry
         Dim strCond As String = ""
 
         If AgL.StrCmp(AgL.PubDBName, "RVN") Or AgL.StrCmp(AgL.PubDBName, "RVN1") Or AgL.StrCmp(AgL.PubDBName, "RVN2") Or AgL.StrCmp(AgL.PubDBName, "MLAW") Then
-            mQry = "SELECT Sg.Code, Sg.Name, Sg.Address
-                FROM viewHelpSubGroup Sg  With (NoLock)                
-                Where Sg.SubgroupType In ('Hypothecation') "
+            mQry = "SELECT Sg.Code, Sg.Name, Ag.GroupName
+                FROM viewHelpSubGroup Sg
+                Left Join AcGroup Ag On Sg.GroupCode = Ag.GroupCode                 
+                Where IfNull(Sg.Status,'" & AgTemplate.ClsMain.EntryStatus.Active & "') = '" & AgTemplate.ClsMain.EntryStatus.Active & "' " & strCond
+            mQry = mQry & " And Sg.SubgroupType Not In ('Master Customer','Master Supplier', 'Ship To Party')"
         Else
             mQry = "SELECT Sg.Code, Sg.Name, Sg.Address
                 FROM viewHelpSubGroup Sg  With (NoLock)                

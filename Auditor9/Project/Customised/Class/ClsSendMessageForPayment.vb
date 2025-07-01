@@ -77,6 +77,7 @@ Public Class ClsSendMessageForPayment
     Dim mHelpItemTypeQry$ = "Select 'o' As Tick, Code, Name FROM ItemType "
     Dim mHelpLocationQry$ = " Select 'o' As Tick,  Sg.Code, Sg.Name AS Party FROM viewHelpSubGroup Sg Where Sg.Nature In ('Supplier','Stock') "
     Dim mHelpTagQry$ = "Select Distinct 'o' As Tick, H.Tags as Code, H.Tags as Description  FROM PurchInvoiceDetail H "
+    Public Shared mHelpSalesAgentQry$ = " Select 'o' As Tick, Sg.Code, Sg.Name AS [Responsible Person] FROM viewHelpSubgroup Sg Where Sg.SubgroupType = '" & SubgroupType.SalesAgent & "' "
     Private Function FGetSettings(FieldName As String, SettingType As String) As String
         Dim mValue As String
         mValue = ClsMain.FGetSettings(FieldName, SettingType, AgL.PubDivCode, AgL.PubSiteCode, "", "", "", "", "")
@@ -96,6 +97,7 @@ Public Class ClsSendMessageForPayment
             ReportFrm.CreateHelpGrid("City", "City", FrmRepDisplay.FieldFilterDataType.StringType, FrmRepDisplay.FieldDataType.MultiSelection, mHelpCityQry)
             ReportFrm.CreateHelpGrid("State", "State", FrmRepDisplay.FieldFilterDataType.StringType, FrmRepDisplay.FieldDataType.MultiSelection, mHelpStateQry)
             ReportFrm.CreateHelpGrid("Area", "Area", FrmRepDisplay.FieldFilterDataType.StringType, FrmRepDisplay.FieldDataType.MultiSelection, mHelpAreaQry)
+            ReportFrm.CreateHelpGrid("Agent", "Agent", FrmRepDisplay.FieldFilterDataType.StringType, FrmRepDisplay.FieldDataType.MultiSelection, mHelpSalesAgentQry)
             ReportFrm.CreateHelpGrid("Site", "Site", FrmRepDisplay.FieldFilterDataType.StringType, FrmRepDisplay.FieldDataType.MultiSelection, mHelpSiteQry, "[SITECODE]")
             ReportFrm.CreateHelpGrid("Division", "Division", FrmRepDisplay.FieldFilterDataType.StringType, FrmRepDisplay.FieldDataType.MultiSelection, mHelpDivisionQry, "[DIVISIONCODE]")
             'ReportFrm.CreateHelpGrid("Site", "Site", FrmRepDisplay.FieldFilterDataType.StringType, FrmRepDisplay.FieldDataType.MultiSelection, mHelpSiteQry, "[SITECODE]")
@@ -160,8 +162,9 @@ Public Class ClsSendMessageForPayment
             mCondStr = mCondStr & ReportFrm.GetWhereCondition("CT.CityCode", 5)
             mCondStr = mCondStr & ReportFrm.GetWhereCondition("Ct.State", 6)
             mCondStr = mCondStr & ReportFrm.GetWhereCondition("SG.Area", 7)
-            mCondStr = mCondStr & Replace(ReportFrm.GetWhereCondition("LG.Site_Code", 8), "''", "'")
-            mCondStr = mCondStr & Replace(ReportFrm.GetWhereCondition("LG.DivCode", 9), "''", "'")
+            mCondStr = mCondStr & ReportFrm.GetWhereCondition("LTV.Agent", 8)
+            mCondStr = mCondStr & Replace(ReportFrm.GetWhereCondition("LG.Site_Code", 9), "''", "'")
+            mCondStr = mCondStr & Replace(ReportFrm.GetWhereCondition("LG.DivCode", 10), "''", "'")
 
             'mCondStr = mCondStr & " AND SG.Name LIKE 'a%' "
 

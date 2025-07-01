@@ -1459,12 +1459,13 @@ Public Class FrmDebitCreditNote
 
 
         AgL.PubFindQry = " SELECT H.DocID AS SearchCode, Vt.Description AS [Entry_Type], H.V_Date AS Date, SGV.Name AS [Party], " &
-                            " H.ManualRefNo AS [Entry_No], H.SalesTaxGroupParty AS [Sales_Tax_Group_Party], " &
+                            " H.ManualRefNo AS [Entry_No], H.SalesTaxGroupParty AS [Sales_Tax_Group_Party], LSC.Name AS LinkedParty, " &
                             " H.Remarks,  " &
                             " H.EntryBy AS [Entry_By], H.EntryDate AS [Entry_Date] " &
                             " FROM LedgerHead H  With (NoLock) " &
                             " LEFT JOIN Voucher_Type Vt With (NoLock) ON H.V_Type = Vt.V_Type " &
                             " LEFT JOIN SubGroup SGV With (NoLock) ON SGV.SubCode  = H.Subcode " &
+                            " LEFT JOIN Subgroup LSC With (NoLock) ON LSC.Subcode = H.LinkedSubCode " &
                             " Where 1=1 " & mCondStr
         AgL.PubFindQry = AgL.GetBackendBasedQuery(AgL.PubFindQry)
         AgL.PubFindQryOrdBy = "[Entry Date]"

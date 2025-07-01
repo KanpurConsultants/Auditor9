@@ -2670,7 +2670,7 @@ Public Class FrmSyncDataFromOtherDatabase
         End Try
     End Sub
     Private Sub FReverseEffectOnHOSite(SearchCode As String, Conn As Object, Cmd As Object)
-        If AgL.StrCmp(ClsMain.FDivisionNameForCustomization(6), "SADHVI") And AgL.StrCmp(AgL.PubDBName, "Sadhvi") Then
+        If AgL.StrCmp(ClsMain.FDivisionNameForCustomization(6), "SADHVI") And (AgL.StrCmp(AgL.PubDBName, "Sadhvi") Or AgL.StrCmp(AgL.PubDBName, "Sadhvi2")) Then
             mQry = " Select Count(*) From LedgerHead With (NoLock) Where GenDocId = '" & SearchCode & "'"
             If AgL.VNull(AgL.Dman_Execute(mQry, IIf(AgL.PubServerName = "", AgL.GCn, AgL.GcnRead)).ExecuteScalar()) > 0 Then
                 mQry = " Delete From Ledger Where DocId In (Select DocId From LedgerHead H Where GenDocId = '" & SearchCode & "')"
@@ -2839,7 +2839,7 @@ Public Class FrmSyncDataFromOtherDatabase
     End Sub
     Private Sub FPostReverEffectInBranchSite(SearchCode As String, Conn As Object, Cmd As Object)
         Dim dtLine As DataTable
-        If AgL.StrCmp(ClsMain.FDivisionNameForCustomization(6), "SADHVI") And AgL.StrCmp(AgL.PubDBName, "SADHVI") Then
+        If AgL.StrCmp(ClsMain.FDivisionNameForCustomization(6), "SADHVI") And (AgL.StrCmp(AgL.PubDBName, "Sadhvi") Or AgL.StrCmp(AgL.PubDBName, "Sadhvi2")) Then
             mQry = " Select Sg.Nature As SubGroupNature, Vt.NCat, H.*, Hc.* 
                     From LedgerHead H With (NoLock)
                     LEFT JOIN LedgerHeadCharges Hc With (NoLock) On H.DocId = Hc.DocId
@@ -2906,7 +2906,7 @@ Public Class FrmSyncDataFromOtherDatabase
         End If
     End Sub
     Private Sub FLinkVisitReceiptAndCashReceiptAccordingToBranch(SearchCode, ExternalDocId, Conn, Cmd)
-        If AgL.StrCmp(ClsMain.FDivisionNameForCustomization(6), "SADHVI") And AgL.StrCmp(AgL.PubDBName, "SADHVI") Then
+        If AgL.StrCmp(ClsMain.FDivisionNameForCustomization(6), "SADHVI") And (AgL.StrCmp(AgL.PubDBName, "Sadhvi") Or AgL.StrCmp(AgL.PubDBName, "Sadhvi2")) Then
             mQry = " Select Sg.Nature As SubGroupNature, Vt.NCat, H.*, Hc.* 
                     From LedgerHead H With (NoLock)
                     LEFT JOIN LedgerHeadCharges Hc With (NoLock) On H.DocId = Hc.DocId
