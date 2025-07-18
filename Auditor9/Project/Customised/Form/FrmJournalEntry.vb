@@ -1730,7 +1730,7 @@ Public Class FrmJournalEntry
             End If
             Dgl1.AgHelpDataSet(Col1LinkedSubcode) = AgL.FillData(mQry, AgL.GCn)
         Else
-            If TxtV_Type.Tag = "JVA" And (AgL.StrCmp(AgL.PubDBName, "RVN") Or AgL.StrCmp(AgL.PubDBName, "RVN1") Or AgL.StrCmp(AgL.PubDBName, "RVN2") Or AgL.StrCmp(AgL.PubDBName, "MLAW")) Then
+            If (TxtV_Type.Tag = "JVA" Or TxtV_Type.Tag = "JV") And (AgL.StrCmp(AgL.PubDBName, "RVN") Or AgL.StrCmp(AgL.PubDBName, "RVN1") Or AgL.StrCmp(AgL.PubDBName, "RVN2") Or AgL.StrCmp(AgL.PubDBName, "MLAW")) Then
                 mQry = "SELECT Sg.Code, Sg.Name, Ag.GroupName
                 FROM viewHelpSubGroup Sg
                 Left Join AcGroup Ag On Sg.GroupCode = Ag.GroupCode                 

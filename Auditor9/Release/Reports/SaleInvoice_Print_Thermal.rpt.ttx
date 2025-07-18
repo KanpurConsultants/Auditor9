@@ -5,13 +5,13 @@ DocNoCaption	string	255	Invoice No.
 DocDateCaption	string	255	Invoice Date	
 SiteStateCode	string	255	09	
 SiteStateName	string	255	Uttar Pradesh	
-DocID	string	255	D1   SIR 2025      27	
+DocID	string	255	D1   SIR 2025       1	
 Sr	number	1	
-V_Date	datetime	04/Apr/2025 00:00:00	
+V_Date	datetime	04/Jul/2025 00:00:00	
 DeliveryDate	datetime		
 Voucher_Type	string	255	Sale Invoice Retail	
 NCat	string	255	SI	
-InvoiceNo	string	255	SIR-27	
+InvoiceNo	string	255	SIR-1	
 GenDocNo	string	255		
 AmsDocNo	string	255		
 AmsDocDate	datetime		
@@ -21,29 +21,29 @@ DocumentPrintShowRateType	string	255	Show If Not Blank
 AgentName	string	255		
 GodownName	string	255		
 GodownAddress	string	255		
-SalesRepName	string	255	RITU SINGH	
-SalesRepCode	string	255	25	
+SalesRepName	string	255		
+SalesRepCode	string	255		
 ResponsiblePersonName	string	255		
 AgentCaption	string	255	Agent	
-SaleToPartyName	string	255	RANJEET SINGH	
+SaleToPartyName	string	255	radhe	
 SaleToPartyAddress	string	255		
-CityName	string	255	KANPUR	
+CityName	string	255		
 SaleToPartyPincode	string	255		
-StateCode	string	255	09	
-StateName	string	255	Uttar Pradesh	
-SaleToPartyMobile	string	255	7568452705	
+StateCode	string	255		
+StateName	string	255		
+SaleToPartyMobile	string	255	898898987	
 ContactPerson	string	255		
 SaleToPartySalesTaxNo	string	255		
 SaleToPartyAadharNo	string	255		
 SaleToPartyPanNo	string	255		
 SaleToPartyLicenseNo	string	255		
-ShipToPartyName	string	255	RANJEET SINGH	
+ShipToPartyName	string	255	radhe	
 ShipToPartyAddress	string	255		
-ShipToPartyCity	string	255	KANPUR	
+ShipToPartyCity	string	255		
 ShipToPartyPincode	string	255		
-ShipToPartyStateCode	string	255	09	
-ShipToPartyStateName	string	255	Uttar Pradesh	
-ShipToPartyMobile	string	255	7568452705	
+ShipToPartyStateCode	string	255		
+ShipToPartyStateName	string	255		
+ShipToPartyMobile	string	255	898898987	
 ShipToPartySalesTaxNo	string	255		
 ShipToPartyAadharNo	string	255		
 ShipToPartyPanNo	string	255		
@@ -72,14 +72,14 @@ Destination	string	255
 DescriptionOfGoods	string	255		
 DescriptionOfPacking	string	255		
 ReferenceNo	string	255		
-BarcodeName	string	255	18034	
-ItemName	string	255	SD330-S-ENT-815 DYD-SAREE	
-ItemGroupName	string	255	NEW	
-ItemCatName	string	255	SAREE	
-ItemManualCode	string	255	25606407	
-ItemSpecification	string	255	SD330	
+BarcodeName	string	255	1001	
+ItemName	string	255	0000 ARMANI GS 53-S-ENT-2114 D-SAREE 540754	
+ItemGroupName	string	255	S-ENT-2114 D	
+ItemCatName	string	255	SAREE 540754	
+ItemManualCode	string	255	25594794	
+ItemSpecification	string	255	0000 ARMANI GS 53	
 InvoiceLineSpecification	string	255		
-HSN	string	255	540752	
+HSN	string	255	540754	
 MaintainStockYn	boolean	True	
 D1Spec	string	255		
 D2Spec	string	255		
@@ -105,7 +105,7 @@ ExpiryDate	datetime
 ItemRemark1	string	255		
 Pcs	number	1	
 Qty	number	1	
-Rate	number	3895	
+Rate	number	2000	
 ItemState	string	255		
 CatalogSpecification	string	255		
 CatalogSiteName	string	255		
@@ -119,20 +119,20 @@ AdditionPer	number	0
 AdditionAmount	number	0	
 TotalDiscount	number	0	
 Deal	string	255		
-AmountBeforeDiscount	number	3895	
-Amount	number	3895	
-Taxable_Amount	number	3709.52	
+AmountBeforeDiscount	number	2000	
+Amount	number	2000	
+Taxable_Amount	number	1904.76	
 Tax1_Per	number	0	
 Tax1	number	0	
 Tax2_Per	number	2.5	
-Tax2	number	92.74	
+Tax2	number	47.62	
 Tax3_Per	number	2.5	
-Tax3	number	92.74	
+Tax3	number	47.62	
 Tax4_Per	number	0	
 Tax4	number	0	
 Tax5_Per	number	0	
 Tax5	number	0	
-Net_Amount	number	3895	
+Net_Amount	number	2000	
 LRemarks	string	255		
 LRemarks1	string	255		
 LRemarks2	string	255		
@@ -141,22 +141,22 @@ LRemarks4	string	255
 HRemarks	string	255		
 HRemarks1	string	255		
 HRemarks2	string	255		
-SalesTaxSummaryStr	string	255	540752 Taxable Amt : 3709.52 Tax Amt : 185.48, 	
+SalesTaxSummaryStr	string	255	540754 Taxable Amt : 1904.76 Tax Amt : 95.24, 	
 H_Discount	number	0	
 H_AdditionalDiscount	number	0	
 H_Additional	number	0	
 H_TotalDiscount	number	0	
-H_AmountBeforeDiscount	number	3895	
-H_Gross_Amount	number	3895	
+H_AmountBeforeDiscount	number	2000	
+H_Gross_Amount	number	2000	
 H_SpecialDiscount_Per	number	0	
 H_SpecialDiscount	number	0	
-H_Taxable_Amount	number	3709.52	
+H_Taxable_Amount	number	1904.76	
 H_Tax1_Per	number	0	
 H_Tax1	number	0	
 H_Tax2_Per	number	0	
-H_Tax2	number	92.74	
+H_Tax2	number	47.62	
 H_Tax3_Per	number	0	
-H_Tax3	number	92.74	
+H_Tax3	number	47.62	
 H_Tax4_Per	number	0	
 H_Tax4	number	0	
 H_Tax5_Per	number	0	
@@ -170,7 +170,7 @@ H_Other_Charge1	number	0
 H_Other_Charge2_Per	number	0	
 H_Other_Charge2	number	0	
 Round_Off	number	0	
-H_Net_Amount	number	3895	
+H_Net_Amount	number	2000	
 EInvoiceIRN	string	255		
 EInvoiceACKNo	string	255		
 EInvoiceACKDate	datetime		
@@ -178,7 +178,7 @@ Default_BankAccountDetail	string	255
 DocumentPrintHeaderPattern	string	255	Center Aligned	
 DimDetail	string	255		
 PrintedByUser	string	255	SUPER	
-EntryByUser	string	255	user	
+EntryByUser	string	255	SUPER	
 PrintTitle	string	255	Sale Invoice Retail	
 DocumentPrintShowPrintDateTimeYn	string	255	1	
 DocumentPrintShowPartyBalance	string	255	Hide	

@@ -7,7 +7,7 @@ Imports Customised
 Imports System.Linq
 Imports System.Net
 Imports System.Security.Authentication
-Imports System.Net.Http
+'Imports System.Net.Http
 Imports System.Threading.Tasks
 
 Public Class ClsMain
@@ -3021,7 +3021,7 @@ Sincerely
                 End If
             End If
 
-            If FDivisionNameForCustomization(6) = "SADHVI" And AgL.StrCmp(AgL.PubDBName, "SHADHVINEW") Then
+            If FDivisionNameForCustomization(6) = "SADHVI" And (AgL.StrCmp(AgL.PubDBName, "SHADHVINEW") Or AgL.StrCmp(AgL.PubDBName, "SHADHVIKNP2")) Then
                 If AgL.FillData("Select Subcode from SubGroup Where SubCode='GOODS'", AgL.GcnMain).tables(0).Rows.Count = 0 Then
                     mQry = " INSERT INTO SubGroup
                         (SubCode, Site_Code, Div_Code, NamePrefix, Name, DispName, GroupCode, GroupNature, ManualCode, Nature, CityCode, PIN, Phone, Mobile, EMail, Status, SalesTaxPostingGroup, Parent, SubgroupType, Address)
@@ -24650,8 +24650,16 @@ Thanks
 
                 AgL.PubTempStr = AgL.PubTempStr & "End Printing To Printer : " & AgL.PubStopWatch.ElapsedMilliseconds.ToString & vbCrLf
 
-            Else
-                AgL.PubTempStr = AgL.PubTempStr & "Start Printing To Screen : " & AgL.PubStopWatch.ElapsedMilliseconds.ToString & vbCrLf
+            ElseIf IsPrintToPrinter = True Then
+                AgL.PubTempStr = AgL.PubTempStr & "Start Printing To Printer : " & AgL.PubStopWatch.ElapsedMilliseconds.ToString & vbCrLf
+
+
+                AgL.PubCrystalDocument.PrintToPrinter(1, True, 0, 0)
+
+                AgL.PubTempStr = AgL.PubTempStr & "End Printing To Printer : " & AgL.PubStopWatch.ElapsedMilliseconds.ToString & vbCrLf
+
+                Else
+                    AgL.PubTempStr = AgL.PubTempStr & "Start Printing To Screen : " & AgL.PubStopWatch.ElapsedMilliseconds.ToString & vbCrLf
                 objRepFrm.MdiParent = objFrm.MdiParent
                 objRepFrm.Show()
                 AgL.PubTempStr = AgL.PubTempStr & "End Printing To Screen : " & AgL.PubStopWatch.ElapsedMilliseconds.ToString & vbCrLf

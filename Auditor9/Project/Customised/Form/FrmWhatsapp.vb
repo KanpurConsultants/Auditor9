@@ -12,7 +12,6 @@ Public Class FrmWhatsapp
     Dim mRepObj As New ReportDocument
 
     Dim mReportTitle As String = "", mReportSubTitle As String = ""
-    Friend WithEvents BtnAttachments As Button
     Dim mAttachmentName As String = ""
     Dim mAttachmentSaveFolderName As String = "EMail"
     Dim mSearchCode As String = ""
@@ -77,7 +76,6 @@ Public Class FrmWhatsapp
         Me.BtnSend = New System.Windows.Forms.Button()
         Me.GroupBox8 = New System.Windows.Forms.GroupBox()
         Me.GroupBox9 = New System.Windows.Forms.GroupBox()
-        Me.BtnAttachments = New System.Windows.Forms.Button()
         Me.BtnTo = New System.Windows.Forms.Button()
         Me.LblToEmail = New System.Windows.Forms.Label()
         Me.TxtToMobile = New AgControls.AgTextBox()
@@ -209,20 +207,6 @@ Public Class FrmWhatsapp
         Me.GroupBox9.TabIndex = 885
         Me.GroupBox9.TabStop = False
         '
-        'BtnAttachments
-        '
-        Me.BtnAttachments.BackColor = System.Drawing.Color.SteelBlue
-        Me.BtnAttachments.FlatStyle = System.Windows.Forms.FlatStyle.Flat
-        Me.BtnAttachments.Font = New System.Drawing.Font("Verdana", 9.0!, System.Drawing.FontStyle.Bold)
-        Me.BtnAttachments.ForeColor = System.Drawing.Color.White
-        Me.BtnAttachments.ImeMode = System.Windows.Forms.ImeMode.NoControl
-        Me.BtnAttachments.Location = New System.Drawing.Point(2, 583)
-        Me.BtnAttachments.Name = "BtnAttachments"
-        Me.BtnAttachments.Size = New System.Drawing.Size(111, 28)
-        Me.BtnAttachments.TabIndex = 922
-        Me.BtnAttachments.Text = "Attachments"
-        Me.BtnAttachments.UseVisualStyleBackColor = False
-        '
         'BtnTo
         '
         Me.BtnTo.Anchor = CType((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
@@ -245,9 +229,9 @@ Public Class FrmWhatsapp
         Me.LblToEmail.ImeMode = System.Windows.Forms.ImeMode.NoControl
         Me.LblToEmail.Location = New System.Drawing.Point(13, 39)
         Me.LblToEmail.Name = "LblToEmail"
-        Me.LblToEmail.Size = New System.Drawing.Size(25, 16)
+        Me.LblToEmail.Size = New System.Drawing.Size(78, 16)
         Me.LblToEmail.TabIndex = 924
-        Me.LblToEmail.Text = "To"
+        Me.LblToEmail.Text = "Mobile No"
         '
         'TxtToMobile
         '
@@ -269,10 +253,10 @@ Public Class FrmWhatsapp
             Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
         Me.TxtToMobile.BorderStyle = System.Windows.Forms.BorderStyle.None
         Me.TxtToMobile.Font = New System.Drawing.Font("Verdana", 11.25!)
-        Me.TxtToMobile.Location = New System.Drawing.Point(82, 38)
+        Me.TxtToMobile.Location = New System.Drawing.Point(114, 38)
         Me.TxtToMobile.MaxLength = 0
         Me.TxtToMobile.Name = "TxtToMobile"
-        Me.TxtToMobile.Size = New System.Drawing.Size(309, 19)
+        Me.TxtToMobile.Size = New System.Drawing.Size(273, 19)
         Me.TxtToMobile.TabIndex = 923
         '
         'FrmWhatsapp
@@ -283,7 +267,6 @@ Public Class FrmWhatsapp
         Me.Controls.Add(Me.BtnTo)
         Me.Controls.Add(Me.LblToEmail)
         Me.Controls.Add(Me.TxtToMobile)
-        Me.Controls.Add(Me.BtnAttachments)
         Me.Controls.Add(Me.GroupBox8)
         Me.Controls.Add(Me.BtnSend)
         Me.Controls.Add(Me.GroupBox6)
@@ -296,7 +279,7 @@ Public Class FrmWhatsapp
         Me.KeyPreview = True
         Me.MaximizeBox = False
         Me.Name = "FrmWhatsapp"
-        Me.Text = "EMail"
+        Me.Text = "Whatsapp"
         Me.TopMost = True
         Me.GroupBox6.ResumeLayout(False)
         Me.GroupBox3.ResumeLayout(False)
@@ -495,47 +478,9 @@ Public Class FrmWhatsapp
         End If
     End Sub
     Private Sub BtnSend_Click(sender As Object, e As EventArgs) Handles BtnSend.Click
-        If FSendWhatsapp() = True Then
-            MsgBox("Whatsapp Send Sucessfully...!", MsgBoxStyle.Information)
-        End If
+        MsgBox(FSendWhatsapp(), MsgBoxStyle.Information)
     End Sub
-    Public Function StreamToByteArray(inputStream As Stream) As Byte()
-        'Using memoryStream = New MemoryStream()
-        '    Dim count As Integer
-        '    While ((count = inputStream.Read(bytes, 0, bytes.Length)) > 0)
-        '        memoryStream.Write(bytes, 0, count)
-        '    End While
-        '    Return memoryStream.ToArray()
-        'End Using
 
-
-        Dim bytes = New Byte(inputStream.Length) {}
-        Using memoryStream = New MemoryStream()
-            For I As Integer = 0 To inputStream.Length - 1
-                memoryStream.Write(bytes, 0, I)
-            Next
-            Return memoryStream.ToArray()
-        End Using
-    End Function
-    Private Sub BtnAttachments_Click(sender As Object, e As EventArgs) Handles BtnAttachments.Click
-        Dim FrmObj As New AgLibrary.FrmAttachmentViewer(AgL)
-        FrmObj.LblDocNo.Text = mReportSubTitle
-        If mAttachmentSaveFolderName = "EMail" Then mAttachmentSaveFolderName = mAttachmentSaveFolderName + "\" + SearchCode
-        FrmObj.SearchCode = mAttachmentSaveFolderName
-        FrmObj.TableName = "SubGroupAttachments"
-        FrmObj.StartPosition = FormStartPosition.CenterParent
-        FrmObj.ShowDialog()
-
-        BtnAttachments.Tag = FrmObj
-
-        Dim AttachmentPath As String = PubAttachmentPath + mAttachmentSaveFolderName + "\" + mSearchCode + "\"
-        If Directory.Exists(AttachmentPath) Then
-            Dim FileCount As Integer = Directory.GetFiles(AttachmentPath).Count
-            If FileCount > 0 Then BtnAttachments.Text = FileCount.ToString + IIf(FileCount = 1, " Attachment", " Attachments") Else BtnAttachments.Text = "Attachments"
-        Else
-            BtnAttachments.Text = "Attachments"
-        End If
-    End Sub
     Private Sub BtnTo_Click(sender As Object, e As EventArgs) Handles BtnTo.Click
         Select Case sender.Name
             Case BtnTo.Name
@@ -590,31 +535,78 @@ Public Class FrmWhatsapp
         End If
         Try
             Dim MobileNoList As String = TxtToMobile.Text
-            'Dim MS As MemoryStream = CType((CType(CrvReport.ReportSource, ReportDocument).ExportToStream(ExportFormatType.PortableDocFormat)), MemoryStream)
-
-            ''Dim request As System.Net.FtpWebRequest = DirectCast(System.Net.WebRequest.Create("ftp://182.156.84.26/delivery_challan.pdf"), System.Net.WebRequest)
-            ''Dim request As System.Net.FtpWebRequest = DirectCast(System.Net.WebRequest.Create("ftp://182.156.84.26/" & mAttachmentName + ".pdf"), System.Net.WebRequest)
-            'Dim request As System.Net.FtpWebRequest = DirectCast(System.Net.WebRequest.Create("ftp://216.48.180.109/sadhvi/" & mAttachmentName + ".pdf"), System.Net.WebRequest)
-
-            'request.Credentials = New System.Net.NetworkCredential("equal2464", "tActL$*$P*67")
-            'request.Method = System.Net.WebRequestMethods.Ftp.UploadFile
-            'Dim file() As Byte = System.IO.File.ReadAllBytes("d:\delivery_challan - Copy.pdf")
-            ''Dim file() As Byte = MS.ToArray()
-            'Dim strz As System.IO.Stream = request.GetRequestStream()
-            'strz.Write(file, 0, file.Length)
-            'strz.Close()
-            'strz.Dispose()
-            Dim server As String = "ftp://216.48.180.109/public_html/sadhvi/"
-            Dim username As String = "equal2464"
-            Dim password As String = "tActL$*$P*67"
-            Dim filePath As String = "d:/Sadhvi/delivery_challan - Copy.pdf"
-            Dim remoteFileName As String = "delivery_challan1.pdf"
-
-            UploadFileToFtp(server, username, password, filePath, remoteFileName)
-            'UploadFile()
-            FSendWhatsapp = True
+            Dim FileName As String = ""
+            FileName = mAttachmentName + ".pdf"
+            Dim Message As String = TxtMessage.Text.Replace(vbCrLf, "\n").Replace(vbLf, "\n")
+            FSendWhatsapp = SendPDFByWhatsapp(MobileNoList, Message, FileName)
         Catch ex As Exception
             MsgBox(ex.Message)
+        End Try
+    End Function
+
+    Public Function SendPDFByWhatsapp(receiverMobileNo As String, message As String, FileName As String) As String
+        Dim url As String = "http://app.laksmartindia.com/api/v1/message/create"
+        Dim username As String = "Satyam Tripathi"
+        Dim password As String = "KC@12345"
+
+
+        ' 1. Combine username and password
+        Dim authString As String = username & ":" & password
+
+        ' 2. Convert to base64
+        Dim authBytes As Byte() = Encoding.UTF8.GetBytes(authString)
+        Dim authBase64 As String = Convert.ToBase64String(authBytes)
+
+        Dim MS As MemoryStream = CType((CType(CrvReport.ReportSource, ReportDocument).ExportToStream(ExportFormatType.PortableDocFormat)), MemoryStream)
+        Dim base64Body As String = Convert.ToBase64String(MS.ToArray())
+
+        Dim json As String = "{
+  ""receiverMobileNo"": ""+91" & receiverMobileNo & """,
+  ""message"": [
+    """ & message & """
+  ],
+  ""base64File"": [
+    {
+      ""name"": """ & FileName & """,
+      ""body"": """ & base64Body & """
+    }
+  ]
+}"
+
+        Try
+            Dim request As HttpWebRequest = CType(System.Net.WebRequest.Create(url), HttpWebRequest)
+            request.Method = "POST"
+            request.ContentType = "application/json"
+            request.Headers.Add("Authorization", "Basic " & authBase64)
+            request.Accept = "application/json"
+
+            ' Convert JSON to byte array
+            Dim bytes As Byte() = Encoding.UTF8.GetBytes(json)
+            request.ContentLength = bytes.Length
+
+            ' Write request body
+            Using stream As Stream = request.GetRequestStream()
+                stream.Write(bytes, 0, bytes.Length)
+            End Using
+
+            ' Get the response
+            Dim response As HttpWebResponse = CType(request.GetResponse(), HttpWebResponse)
+            Using reader As New StreamReader(response.GetResponseStream())
+                Dim responseText As String = reader.ReadToEnd()
+                Console.WriteLine("Response: " & responseText)
+            End Using
+            Return ("Whatsapp Send Sucessfully !")
+        Catch ex As WebException
+            Console.WriteLine("Error: " & ex.Message)
+            Return ("Server says: " & ex.Message)
+            ' Optional: print server error response if any
+            If ex.Response IsNot Nothing Then
+                Using reader As New StreamReader(ex.Response.GetResponseStream())
+                    Dim errorText As String = reader.ReadToEnd()
+                    Console.WriteLine("Server says: " & errorText)
+                    Return ("Server says: " & errorText)
+                End Using
+            End If
         End Try
     End Function
 
@@ -692,34 +684,34 @@ Public Class FrmWhatsapp
     '    End Try
     'End Function
     Function UploadFile() As String
-        Dim filePath As String, serverUrl As String
-        filePath = "d:\delivery_challan - Copy.pdf"
-        serverUrl = "ftp://216.48.180.109//sadhvi//"
-        Dim username As String = "equal2464"
-        Dim password As String = "tActL$*$P*67"
-        Try
-            ' Ensure the file exists
-            If Not File.Exists(filePath) Then
-                Throw New FileNotFoundException("The file does not exist.")
-            End If
+        'Dim filePath As String, serverUrl As String
+        'filePath = "d:\delivery_challan - Copy.pdf"
+        'serverUrl = "ftp://216.48.180.109//sadhvi//"
+        'Dim username As String = "equal2464"
+        'Dim password As String = "tActL$*$P*67"
+        'Try
+        '    ' Ensure the file exists
+        '    If Not File.Exists(filePath) Then
+        '        Throw New FileNotFoundException("The file does not exist.")
+        '    End If
 
-            ' Create a WebClient instance
-            Using client As New WebClient()
-                ' Add a header if needed (e.g., for authentication)
-                ' client.Headers.Add("Authorization", "Bearer your_token")
-                client.Credentials = New NetworkCredential(UserName, password)
+        '    ' Create a WebClient instance
+        '    Using client As New WebClient()
+        '        ' Add a header if needed (e.g., for authentication)
+        '        ' client.Headers.Add("Authorization", "Bearer your_token")
+        '        client.Credentials = New NetworkCredential(UserName, password)
 
-                ' Upload the file
-                Dim responseBytes As Byte() = client.UploadFile(serverUrl, filePath)
+        '        ' Upload the file
+        '        Dim responseBytes As Byte() = client.UploadFile(serverUrl, filePath)
 
-                ' Convert the response to a string and return it
-                Return System.Text.Encoding.UTF8.GetString(responseBytes)
-            End Using
+        '        ' Convert the response to a string and return it
+        '        Return System.Text.Encoding.UTF8.GetString(responseBytes)
+        '    End Using
 
-        Catch ex As Exception
-            ' Handle errors
-            Return "Error: " & ex.Message
-        End Try
+        'Catch ex As Exception
+        '    ' Handle errors
+        '    Return "Error: " & ex.Message
+        'End Try
     End Function
 
 End Class

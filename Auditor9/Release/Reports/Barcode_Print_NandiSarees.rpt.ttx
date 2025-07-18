@@ -1,27 +1,27 @@
 ; Field definition file for table: ADORecordset
-Code	string	255	16149	
-Barcode	string	255	17149	
+Code	string	255	1204	
+Barcode	string	255	2204	
 BarCodeImg	BLOB		
-ItemDesc	string	255	RS54820 D15	
-ItemCategoryDesc	string	255	SAREE 540822	
-ItemGroupDesc	string	255	S-ENT-2114 D	
+ItemDesc	string	255	LOT POT VOL01	
+ItemCategoryDesc	string	255	SAREE HALKA PRI..	
+ItemGroupDesc	string	255	S-ENT-44-BOX	
 Dimension1Desc	string	255		
 Dimension2Desc	string	255		
 Dimension3Desc	string	255		
 Dimension4Desc	string	255		
 SizeDesc	string	255		
-PurchaseRate	number	5550	
-SaleRate	number	7095	
-MRP	number	7095	
-ReceiveQty	number	1	
-GenSr	number	6	
-ItemMasterPurchaseRate	number	5550	
-ItemMasterSaleRate	number	7095	
+PurchaseRate	number	525	
+SaleRate	number	0	
+MRP	number	0	
+ReceiveQty	number	2	
+GenSr	number	1	
+ItemMasterPurchaseRate	number	525	
+ItemMasterSaleRate	number	0	
 BarcodeRatePrefix	string	255		
-Title1	string	255	SADHVI ENTERPRISES (R)	
+Title1	string	255	SADHVI SAREES PVT. LTD. (R)	
 Title2	string	255		
 Title3	string	255		
 SaleRate_RateType	string	255		
 SaleRate_RateTypeEncoded	long	0	
-RandomNo1	long	701	
-RandomNo2	long	570	
+RandomNo1	long	551	
+RandomNo2	long	751	

@@ -156,30 +156,6 @@ Public Class FrmSyncDataFromOtherDatabase_RVN
 
         DatabaseName = Connection_ExternalDatabase.ConnectionString
 
-        If DatabaseName.Contains("SHADHVINEW") And AgL.PubSiteCode = "2" Then
-            IsValidDatabase = "Yes"
-            BranchSupplierNameENTERPRISES = "SADHVI ENTERPRISES (Branch)"
-            BranchSupplierNameEMBROIDERY = "SADHVI EMBROIDERY (Branch)"
-        End If
-
-        If DatabaseName.Contains("SHADHVIJaunpur") And AgL.PubSiteCode = "4" Then
-            IsValidDatabase = "Yes"
-            BranchSupplierNameENTERPRISES = "SADHVI ENTERPRISES (Jaunpur)"
-            BranchSupplierNameEMBROIDERY = "SADHVI EMBROIDERY (Jaunpur)"
-        End If
-
-        If DatabaseName.Contains("SHADHVIKANPURB2") And AgL.PubSiteCode = "5" Then
-            IsValidDatabase = "Yes"
-            BranchSupplierNameENTERPRISES = "SADHVI ENTERPRISES (Branch2)"
-            BranchSupplierNameEMBROIDERY = "SADHVI EMBROIDERY (Branch2)"
-        End If
-
-        If DatabaseName.Contains("SHADHVINANDI") And AgL.PubSiteCode = "6" Then
-            IsValidDatabase = "Yes"
-            BranchSupplierNameENTERPRISES = "SADHVI ENTERPRISES (Nandi)"
-            BranchSupplierNameEMBROIDERY = "SADHVI EMBROIDERY (Nandi)"
-        End If
-
         If DatabaseName.Contains("RVN") And AgL.StrCmp(AgL.PubDBName, "RVN2") Then
             IsValidDatabase = "Yes"
             BranchSupplierNameENTERPRISES = "SADHVI ENTERPRISES (Branch)"
@@ -189,22 +165,7 @@ Public Class FrmSyncDataFromOtherDatabase_RVN
 
         UpdateChildProgressBar("Initializing...", 1, 0)
 
-        If AgL.StrCmp(ClsMain.FDivisionNameForCustomization(6), "SADHVI") Then
-            If IsValidDatabase = "Yes" Then
-                IsApplicableImport_Item = False
-                IsApplicableImport_Catalog = False
-                IsApplicableImport_SubGroup = True
-                IsApplicableImport_SaleInvoice = True
-                IsApplicableImport_SaleReturn = True
-                IsApplicableImport_PurchInvoice = True
-                IsApplicableImport_PurchReturn = True
-                IsApplicableImport_LedgerHead = True
-            Else
-                MsgBox("Wrong File.", MsgBoxStyle.Information)
-                Exit Sub
-            End If
 
-        End If
 
         If AgL.StrCmp(AgL.PubDBName, "RVN2") Then
             If IsValidDatabase = "Yes" Then
@@ -223,16 +184,6 @@ Public Class FrmSyncDataFromOtherDatabase_RVN
 
         End If
 
-        If ClsMain.FDivisionNameForCustomization(13) = "JAIN BROTHERS" Or ClsMain.FDivisionNameForCustomization(11) = "BOOK SHOPEE" Then
-            IsApplicableImport_Item = True
-            IsApplicableImport_Catalog = True
-            IsApplicableImport_SubGroup = True
-            IsApplicableImport_SaleInvoice = True
-            IsApplicableImport_SaleReturn = True
-            IsApplicableImport_PurchInvoice = False
-            IsApplicableImport_PurchReturn = False
-            IsApplicableImport_LedgerHead = False
-        End If
 
 
         FGetDataExternal()

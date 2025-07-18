@@ -140,10 +140,6 @@
     <Reference Include="Interop.Excel, Version=1.3.0.0, Culture=neutral, processorArchitecture=MSIL">
       <Private>False</Private>
     </Reference>
-    <Reference Include="jose-jwt, Version=3.0.0.0, Culture=neutral, processorArchitecture=MSIL">
-      <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\..\Release\jose-jwt.dll</HintPath>
-    </Reference>
     <Reference Include="MegaApiClient, Version=1.10.4.0, Culture=neutral, processorArchitecture=MSIL">
       <HintPath>packages\MegaApiClient.1.10.4\lib\netstandard2.0\MegaApiClient.dll</HintPath>
       <Private>True</Private>
@@ -189,14 +185,6 @@
       <SpecificVersion>False</SpecificVersion>
       <HintPath>..\..\Release\Topctrl.dll</HintPath>
     </Reference>
-    <Reference Include="zxing, Version=0.16.6.0, Culture=neutral, PublicKeyToken=4e88037ac681fe60, processorArchitecture=MSIL">
-      <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\..\Release\zxing.dll</HintPath>
-    </Reference>
-    <Reference Include="zxing.presentation, Version=0.16.6.0, Culture=neutral, PublicKeyToken=4e88037ac681fe60, processorArchitecture=MSIL">
-      <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\..\Release\zxing.presentation.dll</HintPath>
-    </Reference>
   </ItemGroup>
   <ItemGroup>
     <Import Include="Microsoft.VisualBasic" />
@@ -209,6 +197,7 @@
     <Import Include="System.Windows.Forms" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Class\ClsCreateFile.vb" />
     <Compile Include="Class\Clswhatsappd.vb" />
     <Compile Include="Class\ClsWhatsapp.vb" />
     <Compile Include="Class\ClsBatchWiseStockBalance.vb" />
@@ -231,6 +220,12 @@
     <Compile Include="EInvoice\JSON.vb" />
     <Compile Include="EInvoice\MobWebAPI.vb" />
     <Compile Include="Form\Aadhat\ClsDeleteLedgerAcData.vb" />
+    <Compile Include="Form\Aadhat\FrmWhatsapp1.Designer.vb">
+      <DependentUpon>FrmWhatsapp1.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Form\Aadhat\FrmWhatsapp1.vb">
+      <SubType>Form</SubType>
+    </Compile>
     <Compile Include="Form\FrmPrintBarcodeSS.Designer.vb">
       <DependentUpon>FrmPrintBarcodeSS.vb</DependentUpon>
     </Compile>
@@ -1406,6 +1401,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Class\FrmUploadFileOnline.resx">
       <DependentUpon>FrmUploadFileOnline.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Form\Aadhat\FrmWhatsapp1.resx">
+      <DependentUpon>FrmWhatsapp1.vb</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Form\Aadhat\FrmPerson_ShyamaShyam.resx">
       <DependentUpon>FrmPerson_ShyamaShyam.vb</DependentUpon>

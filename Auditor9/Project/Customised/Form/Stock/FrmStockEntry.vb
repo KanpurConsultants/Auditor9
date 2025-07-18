@@ -2108,7 +2108,7 @@ Public Class FrmStockEntry
         GetUISetting(Dgl1, Me.Name, AgL.PubDivCode, AgL.PubSiteCode, bNCat, DglMain.Item(Col1Value, rowV_Type).Tag, DglMain.Item(Col1Value, rowProcess).Tag, DglMain.Item(Col1Value, rowSettingGroup).Tag, ClsMain.GridTypeConstants.HorizontalGrid)
         GetUISetting(Dgl4, Me.Name, AgL.PubDivCode, AgL.PubSiteCode, bNCat, DglMain.Item(Col1Value, rowV_Type).Tag, DglMain.Item(Col1Value, rowProcess).Tag, DglMain.Item(Col1Value, rowSettingGroup).Tag, ClsMain.GridTypeConstants.HorizontalGrid)
         If Dgl4.Visible = False Then PnlConsumptionTotal.Visible = False
-        If AgL.StrCmp(AgL.PubDBName, "Sadhvi") And LblV_Type.Tag = Ncat.StockReceive Then
+        If (AgL.StrCmp(AgL.PubDBName, "Sadhvi") Or AgL.StrCmp(AgL.PubDBName, "Sadhvi2")) And LblV_Type.Tag = Ncat.StockReceive Then
             DglMain.Rows(rowPartyDocNo).Visible = True
             DglMain.Rows(rowPartyDocDate).Visible = True
         End If
@@ -2855,7 +2855,7 @@ Public Class FrmStockEntry
             Exit Sub
         End If
 
-        If AgL.StrCmp(AgL.PubDBName, "Sadhvi") And LblV_Type.Tag = Ncat.StockReceive And DglMain(Col1Value, rowPartyDocNo).Value = "" Then
+        If (AgL.StrCmp(AgL.PubDBName, "Sadhvi") Or AgL.StrCmp(AgL.PubDBName, "Sadhvi2")) And LblV_Type.Tag = Ncat.StockReceive And DglMain(Col1Value, rowPartyDocNo).Value = "" Then
             MsgBox("Party DocNo is Required . Record will not be saved")
             passed = False
             Exit Sub
@@ -2943,7 +2943,7 @@ Public Class FrmStockEntry
                         passed = False : Exit Sub
                     End If
 
-                    If AgL.StrCmp(AgL.PubDBName, "Sadhvi") Then
+                    If AgL.StrCmp(AgL.PubDBName, "Sadhvi") Or AgL.StrCmp(AgL.PubDBName, "Sadhvi2") Then
                         If DglMain.Item(Col1Value, rowParty).Tag = "D100027005" Or DglMain.Item(Col1Value, rowParty).Tag = "D100027015" Then
                             mQry = "SELECT isnull(V.MRP,0) AS LastMRP
                                     FROM 
@@ -3544,7 +3544,7 @@ Public Class FrmStockEntry
             SQryRate = "L.Rate "
         End If
 
-        If AgL.StrCmp(AgL.PubDBName, "Sadhvi") Then
+        If AgL.StrCmp(AgL.PubDBName, "Sadhvi") Or AgL.StrCmp(AgL.PubDBName, "Sadhvi2") Then
             If DglMain.Item(Col1Value, rowParty).Tag = "D100027005" Or DglMain.Item(Col1Value, rowParty).Tag = "D100027015" Then
                 SQryAmt = "(Case When IfNull(L.MRP,0)=0 then L.Rate else L.MRP End)*L.DocQty "
             Else
@@ -3554,7 +3554,7 @@ Public Class FrmStockEntry
             SQryAmt = "L.Amount"
         End If
 
-        If AgL.StrCmp(AgL.PubDBName, "Sadhvi") Then
+        If AgL.StrCmp(AgL.PubDBName, "Sadhvi") Or AgL.StrCmp(AgL.PubDBName, "Sadhvi2") Then
             If DglMain.Item(Col1Value, rowParty).Tag = "D100027005" Or DglMain.Item(Col1Value, rowParty).Tag = "D100027015" Then
                 SQryTaxableAmt = "(Case When IfNull(L.MRP,0)=0 then L.Rate else L.MRP End)*L.DocQty "
             Else
@@ -3564,7 +3564,7 @@ Public Class FrmStockEntry
             SQryTaxableAmt = "L.Taxable_Amount"
         End If
 
-        If AgL.StrCmp(AgL.PubDBName, "Sadhvi") And (DglMain(Col1Value, rowV_Type).Tag = "IGISS" Or DglMain(Col1Value, rowV_Type).Tag = "IGREC") And (AgL.PubDivCode = "F" Or AgL.PubDivCode = "G") Then
+        If (AgL.StrCmp(AgL.PubDBName, "Sadhvi") Or AgL.StrCmp(AgL.PubDBName, "Sadhvi2")) And (DglMain(Col1Value, rowV_Type).Tag = "IGISS" Or DglMain(Col1Value, rowV_Type).Tag = "IGREC") And (AgL.PubDivCode = "F" Or AgL.PubDivCode = "G") Then
             SQryItemGroup = "I.Description"
         Else
             SQryItemGroup = "IfNull(IG.PrintingDescription,IG.Description)"
@@ -4047,7 +4047,7 @@ Public Class FrmStockEntry
                 Dgl1.Item(Col1Unit, mRow).Value = AgL.XNull(DtItem.Rows(0)("Unit"))
                 Dgl1.Item(Col1QtyDecimalPlaces, mRow).Value = AgL.VNull(DtItem.Rows(0)("QtyDecimalPlaces"))
 
-                If AgL.StrCmp(AgL.PubDBName, "Sadhvi") Then
+                If AgL.StrCmp(AgL.PubDBName, "Sadhvi") Or AgL.StrCmp(AgL.PubDBName, "Sadhvi2") Then
                     mQry = "SELECT isnull(V.MRP,0) AS LastMRP FROM 
                             (SELECT row_number() OVER (ORDER BY  H.V_Date DESC,H.DocID DESC,L.Sr DESC) AS Sr, L.MRP 
                             FROM StockHead H
@@ -5443,7 +5443,7 @@ Public Class FrmStockEntry
         If e.ColumnIndex = Dgl2.Columns(Col1Value).Index And TypeOf (Dgl2(Col1Value, e.RowIndex)) Is DataGridViewButtonCell Then
             Select Case e.RowIndex
                 Case rowBtnTransportDetail
-                    If FDivisionNameForCustomization(6) = "SADHVI" And AgL.StrCmp(AgL.PubDBName, "Sadhvi") Then
+                    If FDivisionNameForCustomization(6) = "SADHVI" And (AgL.StrCmp(AgL.PubDBName, "Sadhvi") Or AgL.StrCmp(AgL.PubDBName, "Sadhvi2")) Then
                         If AgL.StrCmp(Topctrl1.Mode, "Browse") Then
                             Exit Sub
                         Else
@@ -6935,7 +6935,7 @@ Public Class FrmStockEntry
         End If
     End Sub
     Private Sub FPostInLedger(SearchCode As String, Conn As Object, Cmd As Object)
-        If FDivisionNameForCustomization(6) = "SADHVI" And AgL.StrCmp(AgL.PubDBName, "Sadhvi") Then
+        If FDivisionNameForCustomization(6) = "SADHVI" And (AgL.StrCmp(AgL.PubDBName, "Sadhvi") Or AgL.StrCmp(AgL.PubDBName, "Sadhvi2")) Then
             Dim bGoodsAc As String = "GOODS"
 
             mQry = " Delete From Ledger Where DocId = '" & SearchCode & "'"

@@ -158,7 +158,11 @@ Public Class ClsPartyLedgerGrid
                 mQry = " Select 'o' As Tick,  Sg.Code, Sg.Name AS Party, Sg.Address, Ag.GroupName FROM viewHelpSubGroup Sg  Left Join AcGroup Ag On Sg.groupCode= ag.GroupCode Where Sg.Nature In ('Supplier','Cash') And Sg.SubgroupType Not In ('Master Customer','Master Supplier') "
                 ReportFrm.CreateHelpGrid("Supplier", "Supplier", FrmRepDisplay.FieldFilterDataType.StringType, FrmRepDisplay.FieldDataType.MultiSelection, mQry, , 450, 825, 300)
             ElseIf GRepFormName.ToUpper = "CustomerLedger".ToUpper Then
-                mQry = " Select 'o' As Tick,  Sg.Code, Sg.Name AS Party, Sg.Address, Ag.GroupName FROM viewHelpSubGroup Sg  Left Join AcGroup Ag On Sg.groupCode= ag.GroupCode Where Sg.Nature In ('Customer','Cash') And Sg.SubgroupType Not In ('Master Customer','Master Supplier') "
+                If AgL.StrCmp(AgL.PubDBName, "RVN") Or AgL.StrCmp(AgL.PubDBName, "RVN1") Or AgL.StrCmp(AgL.PubDBName, "RVN2") Or AgL.StrCmp(AgL.PubDBName, "MLAW") Then
+                    mQry = " Select 'o' As Tick,  Sg.Code, Sg.Name AS Party, Sg.Address, Ag.GroupName FROM viewHelpSubGroup Sg  Left Join AcGroup Ag On Sg.groupCode= ag.GroupCode Where SG.SubGroupType ='Hypothecation' Order By Name"
+                Else
+                    mQry = " Select 'o' As Tick,  Sg.Code, Sg.Name AS Party, Sg.Address, Ag.GroupName FROM viewHelpSubGroup Sg  Left Join AcGroup Ag On Sg.groupCode= ag.GroupCode Where Sg.Nature In ('Customer','Cash') And Sg.SubgroupType Not In ('Master Customer','Master Supplier') "
+                End If
                 ReportFrm.CreateHelpGrid("Customer", "Customer", FrmRepDisplay.FieldFilterDataType.StringType, FrmRepDisplay.FieldDataType.MultiSelection, mQry, , 450, 825, 300)
             Else
                 mQry = " Select 'o' As Tick,  Sg.Code, Sg.Name AS Party, Sg.Address, Ag.GroupName FROM viewHelpSubGroup Sg  Left Join AcGroup Ag On Sg.groupCode= ag.GroupCode Where Sg.Nature In ('Customer','Supplier','Cash') And Sg.SubgroupType Not In ('Master Customer','Master Supplier') "
@@ -1810,12 +1814,22 @@ Public Class ClsPartyLedgerGrid
                             Sum(Case When Date(Lg.V_Date) >= " & AgL.Chk_Date(summaryFromDate) & " Then Lg.AmtCr Else 0 End)    as Credit,
                             Abs(Sum(Lg.AmtDr)-Sum(Lg.AmtCr)) as Closing, 
                             (Case When Sum(Lg.AmtDr)-Sum(Lg.AmtCr) >= 0 Then 'Dr' Else 'Cr'  End) as ct,
-                            Sum(LG.AmtDr) - Sum(LG.AmtCr) + IfNull(Sum(PI.Commission + PI.AdditionalCommission),0) as NetClosing
-                            From Ledger Lg "
+                            Sum(LG.AmtDr) - Sum(LG.AmtCr) + IfNull(Sum(PI.Commission + PI.AdditionalCommission),0) as NetClosing "
 
+
+        If AgL.StrCmp(AgL.PubDBName, "RVN") Or AgL.StrCmp(AgL.PubDBName, "RVN1") Or AgL.StrCmp(AgL.PubDBName, "RVN2") Or AgL.StrCmp(AgL.PubDBName, "MLAW") Then
+            mQry = mQry + ", SG1.Name, strftime('%d/%m/%Y',Max(Case When Date(Lg.V_Date) >= " & AgL.Chk_Date(summaryFromDate) & " AND Lg.AmtDr > 0 Then Lg.V_Date Else Null End))   as LastDebitDate
+                    From Ledger Lg "
+        Else
+            mQry = mQry + "From Ledger Lg "
+        End If
         If ReportFrm.FGetText(rowGroupOn) = "Linked Party" Then
             mQry = mQry & " Left Join Subgroup Sg On IfNull(Lg.LinkedSubcode,Lg.Subcode) = Sg.Subcode "
             mQry = mQry & " Left Join Subgroup PSg On IfNull(Lg.LinkedSubcode,Lg.Subcode) = PSg.Subcode "
+
+            If AgL.StrCmp(AgL.PubDBName, "RVN") Or AgL.StrCmp(AgL.PubDBName, "RVN1") Or AgL.StrCmp(AgL.PubDBName, "RVN2") Or AgL.StrCmp(AgL.PubDBName, "MLAW") Then
+                mQry = mQry & " Left Join Subgroup SG1 On Lg.Subcode = SG1.Subcode "
+            End If
         Else
             mQry = mQry & " Left Join Subgroup Sg On Lg.Subcode = Sg.Subcode "
             mQry = mQry & " Left Join Subgroup PSg On Sg.Parent = PSg.Subcode "
@@ -1827,6 +1841,10 @@ Public Class ClsPartyLedgerGrid
                             Where 1=1 "
         mQry = mQry & mCondStr
         mQry = mQry & " Group By Sg.Subcode"
+
+        If AgL.StrCmp(AgL.PubDBName, "RVN") Or AgL.StrCmp(AgL.PubDBName, "RVN1") Or AgL.StrCmp(AgL.PubDBName, "RVN2") Or AgL.StrCmp(AgL.PubDBName, "MLAW") Then
+            mQry = mQry & ", SG1.Name Having Abs(Sum(Lg.AmtDr)-Sum(Lg.AmtCr)) <> 0 Order By SG1.Name, Sg.name "
+        End If
 
         DsHeader = AgL.FillData(mQry, AgL.GCn)
 

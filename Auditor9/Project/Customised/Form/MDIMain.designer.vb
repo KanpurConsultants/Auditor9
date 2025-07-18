@@ -334,6 +334,7 @@ Partial Class MDIMain
         Me.MnuPrintCheque = New System.Windows.Forms.ToolStripMenuItem()
         Me.MnuBank = New System.Windows.Forms.ToolStripMenuItem()
         Me.MnuChequePrinting = New System.Windows.Forms.ToolStripMenuItem()
+        Me.MnuToTesting = New System.Windows.Forms.ToolStripMenuItem()
         Me.MnuMain.SuspendLayout()
         Me.SuspendLayout()
         '
@@ -2474,7 +2475,7 @@ Partial Class MDIMain
         'MnuDeveloperTools
         '
         Me.MnuDeveloperTools.AccessibleDescription = "+Developer Tools"
-        Me.MnuDeveloperTools.DropDownItems.AddRange(New System.Windows.Forms.ToolStripItem() {Me.MnuExportSqlServerData, Me.MnuImportData, Me.MnuReportSettings, Me.MnuLedgerPostingDifference, Me.MnuMakeDataBlank, Me.MnuSerializeEntryNo, Me.MnuExportSqliteDataToSqlServer})
+        Me.MnuDeveloperTools.DropDownItems.AddRange(New System.Windows.Forms.ToolStripItem() {Me.MnuExportSqlServerData, Me.MnuImportData, Me.MnuReportSettings, Me.MnuLedgerPostingDifference, Me.MnuMakeDataBlank, Me.MnuSerializeEntryNo, Me.MnuExportSqliteDataToSqlServer, Me.MnuToTesting})
         Me.MnuDeveloperTools.Name = "MnuDeveloperTools"
         Me.MnuDeveloperTools.Size = New System.Drawing.Size(103, 20)
         Me.MnuDeveloperTools.Text = "Developer Tools"
@@ -2555,6 +2556,12 @@ Partial Class MDIMain
         Me.MnuChequePrinting.Name = "MnuChequePrinting"
         Me.MnuChequePrinting.Size = New System.Drawing.Size(160, 22)
         Me.MnuChequePrinting.Text = "Cheque Printing"
+        '
+        'MnuToTesting
+        '
+        Me.MnuToTesting.Name = "MnuToTesting"
+        Me.MnuToTesting.Size = New System.Drawing.Size(236, 22)
+        Me.MnuToTesting.Text = "To Testing"
         '
         'MDIMain
         '
@@ -2893,4 +2900,5 @@ Partial Class MDIMain
     Friend WithEvents MnuSaleProfitAnalysis As ToolStripMenuItem
     Friend WithEvents MnuWayBillEntry As ToolStripMenuItem
     Friend WithEvents MnuWayBillInvoice As ToolStripMenuItem
+    Friend WithEvents MnuToTesting As ToolStripMenuItem
 End Class

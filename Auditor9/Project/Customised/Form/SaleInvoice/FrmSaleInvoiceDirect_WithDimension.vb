@@ -3004,7 +3004,7 @@ Public Class FrmSaleInvoiceDirect_WithDimension
         End If
 
         'If AgL.StrCmp(AgL.PubDBName, "SHADHVINEW") Or AgL.StrCmp(AgL.PubDBName, "SHADHVIKANPURB2") Or AgL.StrCmp(AgL.PubDBName, "SHADHVIjaunpur") Or AgL.StrCmp(AgL.PubDBName, "SHADHVINANDI") Then
-        If AgL.StrCmp(AgL.PubDBName, "SHADHVINEW") Or AgL.StrCmp(AgL.PubDBName, "SHADHVIKANPURB2") Or AgL.StrCmp(AgL.PubDBName, "SHADHVIjaunpur") Then
+        If AgL.StrCmp(AgL.PubDBName, "SHADHVINEW") Or AgL.StrCmp(AgL.PubDBName, "SHADHVIKNP2") Or AgL.StrCmp(AgL.PubDBName, "SHADHVIKANPURB2") Or AgL.StrCmp(AgL.PubDBName, "SHADHVIjaunpur") Or AgL.StrCmp(AgL.PubDBName, "SHADHVIJNP2") Then
             Dgl1.Columns(Col1Rate).ReadOnly = True
         End If
 

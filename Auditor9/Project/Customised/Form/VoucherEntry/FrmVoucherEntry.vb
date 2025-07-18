@@ -6355,7 +6355,7 @@ Public Class FrmVoucherEntry
     End Sub
     Private Sub FPostEntryForBranch(SearchCode As String, Conn As Object, Cmd As Object)
         Dim dtLine As DataTable
-        If FDivisionNameForCustomization(6) = "SADHVI" And (AgL.StrCmp(AgL.PubDBName, "SHADHVINEW") Or AgL.StrCmp(AgL.PubDBName, "SHADHVIJaunpur")) Then
+        If FDivisionNameForCustomization(6) = "SADHVI" And (AgL.StrCmp(AgL.PubDBName, "SHADHVINEW") Or AgL.StrCmp(AgL.PubDBName, "SHADHVIKNP2") Or AgL.StrCmp(AgL.PubDBName, "SHADHVIJaunpur") Or AgL.StrCmp(AgL.PubDBName, "SHADHVIJNP2")) Then
             If (LblV_Type.Tag = Ncat.Receipt Or LblV_Type.Tag = Ncat.VisitReceipt Or
                 LblV_Type.Tag = Ncat.Payment) And TxtNature.Text.ToUpper = "BANK" Then
                 Dim bSadhviHO As String = ""

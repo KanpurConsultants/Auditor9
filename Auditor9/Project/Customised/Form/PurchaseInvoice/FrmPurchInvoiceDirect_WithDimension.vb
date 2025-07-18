@@ -4286,7 +4286,7 @@ Public Class FrmPurchInvoiceDirect_WithDimension
         End If
 
         FGetSettingVariableValuesForAddAndEdit()
-        If AgL.StrCmp(AgL.PubDBName, "Sadhvi") And (LblV_Type.Tag = Ncat.WayBill Or LblV_Type.Tag = Ncat.WayBillInvoice) Then
+        If (AgL.StrCmp(AgL.PubDBName, "Sadhvi") Or AgL.StrCmp(AgL.PubDBName, "Sadhvi2")) And (LblV_Type.Tag = Ncat.WayBill Or LblV_Type.Tag = Ncat.WayBillInvoice) Then
             mQry = "Select H.SubCode AS Transporter, H.Name as TransporterName 
                     From Subgroup H  With (NoLock)
                     Where H.Subcode='D100001006' "
@@ -4305,13 +4305,13 @@ Public Class FrmPurchInvoiceDirect_WithDimension
                 Dgl2.Item(Col1Value, rowSalesTaxNo).Value = CType(DglMain.Item(Col1BtnDetail, rowVendor).Tag, FrmPurchaseInvoiceParty).Dgl1.Item(Col1Value, FrmPurchaseInvoiceParty.rowSalesTaxNo).Value
             End If
 
-            If AgL.StrCmp(AgL.PubDBName, "Sadhvi") And (LblV_Type.Tag = Ncat.WayBill) Then
+            If (AgL.StrCmp(AgL.PubDBName, "Sadhvi") Or AgL.StrCmp(AgL.PubDBName, "Sadhvi2")) And (LblV_Type.Tag = Ncat.WayBill) Then
                 DglMain.CurrentCell = DglMain(Col1Value, rowLinkedParty)
             End If
         End If
 
 
-            If SettingFields_MaximumItemLimit = 1 Then
+        If SettingFields_MaximumItemLimit = 1 Then
             Dgl1.AllowUserToAddRows = False
             Dgl1.Rows.Clear()
             Dgl1.Rows.Add(1)
@@ -5113,7 +5113,7 @@ Public Class FrmPurchInvoiceDirect_WithDimension
                             Dgl1.Item(Col1BaleNo, I).Value = CType(Dgl2.Item(Col1Value, rowBtnTransportDetail).Tag, FrmPurchaseInvoiceHeader).Dgl1.Item(FrmPurchaseInvoiceHeader.Col1Value, FrmPurchaseInvoiceHeader.rowLrNo).Value
                         End If
 
-                        If AgL.StrCmp(AgL.PubDBName, "Sadhvi") And (LblV_Type.Tag = Ncat.WayBill Or LblV_Type.Tag = Ncat.WayBillInvoice) Then
+                        If (AgL.StrCmp(AgL.PubDBName, "Sadhvi") Or AgL.StrCmp(AgL.PubDBName, "Sadhvi2")) And (LblV_Type.Tag = Ncat.WayBill Or LblV_Type.Tag = Ncat.WayBillInvoice) Then
                             If CType(Dgl2.Item(Col1Value, rowBtnTransportDetail).Tag, FrmPurchaseInvoiceHeader).Dgl1.Item(FrmPurchaseInvoiceHeader.Col1Value, FrmPurchaseInvoiceHeader.rowLrNo).Value <> "" And CType(Dgl2.Item(Col1Value, rowBtnTransportDetail).Tag, FrmPurchaseInvoiceHeader).Dgl1.Item(FrmPurchaseInvoiceHeader.Col1Value, FrmPurchaseInvoiceHeader.rowTransporter).Tag <> "" Then
                                 mQry = "Select count(H.DocID) AS Cnt 
                                         From PurchInvoiceTransport H
@@ -8801,7 +8801,7 @@ Public Class FrmPurchInvoiceDirect_WithDimension
                 Case rowLinkedParty
                     If e.KeyCode <> Keys.Enter Then
                         If DglMain.Item(Col1Head, DglMain.CurrentCell.RowIndex).Tag Is Nothing Then
-                            If AgL.StrCmp(AgL.PubDBName, "Sadhvi") And (LblV_Type.Tag = Ncat.WayBill Or LblV_Type.Tag = Ncat.WayBillInvoice) Then
+                            If (AgL.StrCmp(AgL.PubDBName, "Sadhvi") Or AgL.StrCmp(AgL.PubDBName, "Sadhvi2")) And (LblV_Type.Tag = Ncat.WayBill Or LblV_Type.Tag = Ncat.WayBillInvoice) Then
                                 DglMain.Item(Col1Head, DglMain.CurrentCell.RowIndex).Tag = FCreateHelpSubgroup()
                             Else
                                 DglMain.Item(Col1Head, DglMain.CurrentCell.RowIndex).Tag = FCreateHelpLinkedParty()
@@ -8809,7 +8809,7 @@ Public Class FrmPurchInvoiceDirect_WithDimension
                         End If
 
                         If DglMain.AgHelpDataSet(Col1Value) Is Nothing Then
-                            If AgL.StrCmp(AgL.PubDBName, "Sadhvi") And (LblV_Type.Tag = Ncat.WayBill Or LblV_Type.Tag = Ncat.WayBillInvoice) Then
+                            If (AgL.StrCmp(AgL.PubDBName, "Sadhvi") Or AgL.StrCmp(AgL.PubDBName, "Sadhvi2")) And (LblV_Type.Tag = Ncat.WayBill Or LblV_Type.Tag = Ncat.WayBillInvoice) Then
                                 DglMain.AgHelpDataSet(Col1Value, 0, TabControl1.Top + TP1.Top, TabControl1.Left + TP1.Left) = DglMain.Item(Col1Head, DglMain.CurrentCell.RowIndex).Tag
                             Else
                                 DglMain.AgHelpDataSet(Col1Value, 6, TabControl1.Top + TP1.Top, TabControl1.Left + TP1.Left) = DglMain.Item(Col1Head, DglMain.CurrentCell.RowIndex).Tag
@@ -9340,7 +9340,7 @@ Public Class FrmPurchInvoiceDirect_WithDimension
                 strCond += " And I.V_Type In  ('ITEM','IC') "
             End If
 
-            If AgL.StrCmp(AgL.PubDBName, "Sadhvi") And (LblV_Type.Tag = Ncat.WayBill Or LblV_Type.Tag = Ncat.WayBillInvoice) Then
+            If (AgL.StrCmp(AgL.PubDBName, "Sadhvi") Or AgL.StrCmp(AgL.PubDBName, "Sadhvi2")) And (LblV_Type.Tag = Ncat.WayBill Or LblV_Type.Tag = Ncat.WayBillInvoice) Then
                 strCond += " And I.Code ='D1172053' "
             End If
 

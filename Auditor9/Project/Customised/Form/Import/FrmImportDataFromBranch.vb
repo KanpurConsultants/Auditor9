@@ -14,9 +14,9 @@ Public Class FrmImportDataFromBranch
     Dim WithEvents GridReportFrm As AgLibrary.FrmRepDisplay
     Private Sub Button1_Click(sender As Object, e As EventArgs) Handles BtnImport.Click
         If ClsMain.FDivisionNameForCustomization(6) = "SADHVI" Then
-            If AgL.StrCmp(AgL.PubDBName, "SHADHVINEW") Or AgL.StrCmp(AgL.PubDBName, "SHADHVIKANPURB2") Or AgL.StrCmp(AgL.PubDBName, "SHADHVIjaunpur") Then
+            If AgL.StrCmp(AgL.PubDBName, "SHADHVINEW") Or AgL.StrCmp(AgL.PubDBName, "SHADHVIKNP2") Or AgL.StrCmp(AgL.PubDBName, "SHADHVIKANPURB2") Or AgL.StrCmp(AgL.PubDBName, "SHADHVIjaunpur") Or AgL.StrCmp(AgL.PubDBName, "SHADHVIJNP2") Then
                 ProcImportStockIssueDataFromSqlite_Sadhvi()
-            ElseIf AgL.StrCmp(AgL.PubDBName, "SHADHVINANDI")
+            ElseIf AgL.StrCmp(AgL.PubDBName, "SHADHVINANDI") Or AgL.StrCmp(AgL.PubDBName, "SHADHVINANDI2")
                 'ProcImportStockIssueDataFromSqlite_SadhviRetail()
                 ProcImportStockIssueDataFromSqlite_Sadhvi()
             Else
@@ -153,7 +153,7 @@ Public Class FrmImportDataFromBranch
             mQry = " Select H.*
                     From StockHead H "
             Dim DtHeaderSource As DataTable = AgL.FillData(mQry, Connection).Tables(0)
-            If AgL.StrCmp(AgL.PubDBName, "SHADHVINANDI") Then
+            If AgL.StrCmp(AgL.PubDBName, "SHADHVINANDI") Or AgL.StrCmp(AgL.PubDBName, "SHADHVINANDI2") Then
                 mQry = " Select H.V_Type, H.ManualRefNo, I.Description As ItemDesc, I.ItemGroup AS ItemGroupCode, I.ItemCategory AS ItemCategoryCode, I.SalesTaxPostingGroup AS SalesTaxGroupItem,
                 L.MRP*L.Qty AS Amount1, L.*
                 From StockHead H 
@@ -206,6 +206,11 @@ Public Class FrmImportDataFromBranch
                         Else
                             PurchInvoiceTable.VendorName = "SADHVI ENTERPRISES"
                         End If
+
+                        If AgL.StrCmp(AgL.PubDBName, "SHADHVIKNP2") Or AgL.StrCmp(AgL.PubDBName, "SHADHVINANDI2") Or AgL.StrCmp(AgL.PubDBName, "SHADHVIJNP2") Then
+                            PurchInvoiceTable.VendorName = "SADHVI SAREES PVT LTD"
+                        End If
+
                         PurchInvoiceTable.AgentCode = ""
                         PurchInvoiceTable.AgentName = ""
                         PurchInvoiceTable.BillToPartyCode = ""
@@ -268,7 +273,7 @@ Public Class FrmImportDataFromBranch
                         For J = 0 To DtPurchInvoiceDetail_ForHeader.Rows.Count - 1
                             PurchInvoiceTable.Line_Sr = AgL.XNull(DtPurchInvoiceDetail_ForHeader.Rows(J)("Sr"))
                             PurchInvoiceTable.Line_ItemCode = AgL.XNull(DtPurchInvoiceDetail_ForHeader.Rows(J)("Item"))
-                            If AgL.StrCmp(AgL.PubDBName, "SHADHVINANDI") Then
+                            If AgL.StrCmp(AgL.PubDBName, "SHADHVINANDI") Or AgL.StrCmp(AgL.PubDBName, "SHADHVINANDI2") Then
                                 PurchInvoiceTable.Line_ItemGroupCode = AgL.XNull(DtPurchInvoiceDetail_ForHeader.Rows(J)("ItemGroupCode"))
                                 PurchInvoiceTable.Line_ItemCategoryCode = AgL.XNull(DtPurchInvoiceDetail_ForHeader.Rows(J)("ItemCategoryCode"))
                             End If
@@ -288,7 +293,7 @@ Public Class FrmImportDataFromBranch
                             PurchInvoiceTable.Line_OmsId = AgL.XNull(DtPurchInvoiceDetail_ForHeader.Rows(J)("DocId")) + AgL.XNull(DtPurchInvoiceDetail_ForHeader.Rows(J)("Sr"))
                             PurchInvoiceTable.Line_Rate = AgL.XNull(DtPurchInvoiceDetail_ForHeader.Rows(J)("Rate"))
 
-                            If AgL.StrCmp(AgL.PubDBName, "SHADHVINANDI") Then
+                            If AgL.StrCmp(AgL.PubDBName, "SHADHVINANDI") Or AgL.StrCmp(AgL.PubDBName, "SHADHVINANDI2") Then
                                 PurchInvoiceTable.Line_MRP = AgL.XNull(DtPurchInvoiceDetail_ForHeader.Rows(J)("MRP"))
                                 PurchInvoiceTable.Line_Sale_Rate = AgL.XNull(DtPurchInvoiceDetail_ForHeader.Rows(J)("MRP"))
 
@@ -309,7 +314,7 @@ Public Class FrmImportDataFromBranch
                                     Where Code = '" & PurchInvoiceTable.Line_ItemCode & "'"
                                     AgL.Dman_ExecuteNonQry(mQry, AgL.GCn, AgL.ECmd)
 
-                                    If AgL.StrCmp(AgL.PubDBName, "SHADHVINANDI") Then
+                                    If AgL.StrCmp(AgL.PubDBName, "SHADHVINANDI") Or AgL.StrCmp(AgL.PubDBName, "SHADHVINANDI2") Then
                                         mQry = " Update Barcode Set SaleRate = " & PurchInvoiceTable.Line_Sale_Rate & ", MRP = " & PurchInvoiceTable.Line_Sale_Rate & ", PurchaseRate = " & PurchInvoiceTable.Line_Rate & "    Where Item = '" & PurchInvoiceTable.Line_ItemCode & "'"
                                         AgL.Dman_ExecuteNonQry(mQry, AgL.GCn, AgL.ECmd)
                                     End If
@@ -398,7 +403,7 @@ Public Class FrmImportDataFromBranch
                 End If
             Next
 
-            If AgL.StrCmp(AgL.PubDBName, "SHADHVINANDI") Then
+            If AgL.StrCmp(AgL.PubDBName, "SHADHVINANDI") Or AgL.StrCmp(AgL.PubDBName, "SHADHVINANDI2") Then
                 mQry = " SELECT H.* 
                     FROM PurchInvoice H
                     LEFT JOIN Barcode B ON B.GenDocID = H.DocID

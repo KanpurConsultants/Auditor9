@@ -354,6 +354,9 @@ Public Class ClsFunction
                         End If
                     End If
 
+                Case MDI.MnuToTesting.Name
+                    FrmObj = New FrmWhatsapp1()
+
                 Case MDI.MnuSalesEntryRetail.Name
                     FrmObj = New FrmSaleInvoiceDirect_WithDimension(StrUserPermission, DTUP, Ncat.SaleInvoice, mCustomUI_Retail)
 
@@ -1592,7 +1595,7 @@ Public Class ClsFunction
                ClsMain.FDivisionNameForCustomization().Contains("SITARAM HARISH") Or
                ClsMain.FDivisionNameForCustomization().Contains("SHREE RAM") Then
 
-            If ClsMain.FDivisionNameForCustomization() = "SADHVI ENTERPRISES (R)" Then
+            If ClsMain.FDivisionNameForCustomization() = "SADHVI ENTERPRISES (R)" Or ClsMain.FDivisionNameForCustomization() = "SADHVI SAREES PVT. LTD. (R)" Then
                 FGetNewVersionFlag = True
             Else
                 FGetNewVersionFlag = False

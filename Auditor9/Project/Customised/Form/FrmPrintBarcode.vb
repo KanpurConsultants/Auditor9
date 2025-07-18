@@ -572,7 +572,7 @@ Public Class FrmPrintBarcode
                 RepName = mDocReportFileName
             End If
 
-            If AgL.StrCmp(AgL.PubDBName, "SHADHVINANDI") Then
+            If AgL.StrCmp(AgL.PubDBName, "SHADHVINANDI") Or AgL.StrCmp(AgL.PubDBName, "SHADHVINANDI2") Then
                 mBarcodePrintTitle1 = AgL.PubDivPrintName
             End If
 

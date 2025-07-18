@@ -211,7 +211,6 @@ Public Class FrmSaleInvoiceDirect
     Friend WithEvents MnuWhatsappDocument As ToolStripMenuItem
     Friend WithEvents MnuGenerateEBill As ToolStripMenuItem
     Friend WithEvents MnuSendWhatsapp As ToolStripMenuItem
-    Friend WithEvents MnuSendWhatsappPDF As ToolStripMenuItem
     Dim UserMovedOverItemCategory As Boolean
 
 
@@ -313,7 +312,6 @@ Public Class FrmSaleInvoiceDirect
         Me.BtnAttachments = New System.Windows.Forms.Button()
         Me.Pnl3 = New System.Windows.Forms.Panel()
         Me.AgTextBox1 = New AgControls.AgTextBox()
-        Me.MnuSendWhatsappPDF = New System.Windows.Forms.ToolStripMenuItem()
         Me.GroupBox2.SuspendLayout()
         Me.GBoxMoveToLog.SuspendLayout()
         Me.GBoxApprove.SuspendLayout()
@@ -1217,110 +1215,110 @@ Public Class FrmSaleInvoiceDirect
         '
         'MnuOptions
         '
-        Me.MnuOptions.Items.AddRange(New System.Windows.Forms.ToolStripItem() {Me.MnuImportFromExcel, Me.MnuImportFromDos, Me.MnuImportFromTally, Me.MnuEditSave, Me.MnuGenerateEWayBill, Me.MnuReconcileBill, Me.MnuEMail, Me.MnuSendSms, Me.MnuSendWhatsapp, Me.MnuSendWhatsappPDF, Me.MnuWhatsappDocument, Me.MnuPrintQACopy, Me.MnuPrintBulk, Me.MnuReferenceEntries, Me.MnuHistory, Me.MnuShowLedgerPosting, Me.MnuReport, Me.MnuGenerateEBill})
+        Me.MnuOptions.Items.AddRange(New System.Windows.Forms.ToolStripItem() {Me.MnuImportFromExcel, Me.MnuImportFromDos, Me.MnuImportFromTally, Me.MnuEditSave, Me.MnuGenerateEWayBill, Me.MnuReconcileBill, Me.MnuEMail, Me.MnuSendSms, Me.MnuSendWhatsapp, Me.MnuWhatsappDocument, Me.MnuPrintQACopy, Me.MnuPrintBulk, Me.MnuReferenceEntries, Me.MnuHistory, Me.MnuShowLedgerPosting, Me.MnuReport, Me.MnuGenerateEBill})
         Me.MnuOptions.Name = "MnuOptions"
-        Me.MnuOptions.Size = New System.Drawing.Size(187, 422)
+        Me.MnuOptions.Size = New System.Drawing.Size(216, 378)
         '
         'MnuImportFromExcel
         '
         Me.MnuImportFromExcel.Name = "MnuImportFromExcel"
-        Me.MnuImportFromExcel.Size = New System.Drawing.Size(186, 22)
+        Me.MnuImportFromExcel.Size = New System.Drawing.Size(215, 22)
         Me.MnuImportFromExcel.Text = "Import From Excel"
         '
         'MnuImportFromDos
         '
         Me.MnuImportFromDos.Name = "MnuImportFromDos"
-        Me.MnuImportFromDos.Size = New System.Drawing.Size(186, 22)
+        Me.MnuImportFromDos.Size = New System.Drawing.Size(215, 22)
         Me.MnuImportFromDos.Text = "Import From Dos"
         '
         'MnuImportFromTally
         '
         Me.MnuImportFromTally.Name = "MnuImportFromTally"
-        Me.MnuImportFromTally.Size = New System.Drawing.Size(186, 22)
+        Me.MnuImportFromTally.Size = New System.Drawing.Size(215, 22)
         Me.MnuImportFromTally.Text = "Import From Tally"
         '
         'MnuEditSave
         '
         Me.MnuEditSave.Name = "MnuEditSave"
-        Me.MnuEditSave.Size = New System.Drawing.Size(186, 22)
+        Me.MnuEditSave.Size = New System.Drawing.Size(215, 22)
         Me.MnuEditSave.Text = "Edit & Save"
         '
         'MnuGenerateEWayBill
         '
         Me.MnuGenerateEWayBill.Name = "MnuGenerateEWayBill"
-        Me.MnuGenerateEWayBill.Size = New System.Drawing.Size(186, 22)
+        Me.MnuGenerateEWayBill.Size = New System.Drawing.Size(215, 22)
         Me.MnuGenerateEWayBill.Text = "Generate EWay Bill"
         '
         'MnuReconcileBill
         '
         Me.MnuReconcileBill.Name = "MnuReconcileBill"
-        Me.MnuReconcileBill.Size = New System.Drawing.Size(186, 22)
+        Me.MnuReconcileBill.Size = New System.Drawing.Size(215, 22)
         Me.MnuReconcileBill.Text = "Reconcile Document"
         '
         'MnuEMail
         '
         Me.MnuEMail.Name = "MnuEMail"
-        Me.MnuEMail.Size = New System.Drawing.Size(186, 22)
+        Me.MnuEMail.Size = New System.Drawing.Size(215, 22)
         Me.MnuEMail.Text = "E-Mail Document"
         '
         'MnuSendSms
         '
         Me.MnuSendSms.Name = "MnuSendSms"
-        Me.MnuSendSms.Size = New System.Drawing.Size(186, 22)
+        Me.MnuSendSms.Size = New System.Drawing.Size(215, 22)
         Me.MnuSendSms.Text = "Send Sms"
         '
         'MnuSendWhatsapp
         '
         Me.MnuSendWhatsapp.Name = "MnuSendWhatsapp"
-        Me.MnuSendWhatsapp.Size = New System.Drawing.Size(186, 22)
+        Me.MnuSendWhatsapp.Size = New System.Drawing.Size(215, 22)
         Me.MnuSendWhatsapp.Text = "Send Whatsapp"
         '
         'MnuWhatsappDocument
         '
         Me.MnuWhatsappDocument.Name = "MnuWhatsappDocument"
-        Me.MnuWhatsappDocument.Size = New System.Drawing.Size(186, 22)
-        Me.MnuWhatsappDocument.Text = "Whatsapp Document"
+        Me.MnuWhatsappDocument.Size = New System.Drawing.Size(215, 22)
+        Me.MnuWhatsappDocument.Text = "Send Whatsapp Document"
         '
         'MnuPrintQACopy
         '
         Me.MnuPrintQACopy.Name = "MnuPrintQACopy"
-        Me.MnuPrintQACopy.Size = New System.Drawing.Size(186, 22)
+        Me.MnuPrintQACopy.Size = New System.Drawing.Size(215, 22)
         Me.MnuPrintQACopy.Text = "Print QA Copy"
         '
         'MnuPrintBulk
         '
         Me.MnuPrintBulk.Name = "MnuPrintBulk"
-        Me.MnuPrintBulk.Size = New System.Drawing.Size(186, 22)
+        Me.MnuPrintBulk.Size = New System.Drawing.Size(215, 22)
         Me.MnuPrintBulk.Text = "Print Bulk"
         '
         'MnuReferenceEntries
         '
         Me.MnuReferenceEntries.Name = "MnuReferenceEntries"
-        Me.MnuReferenceEntries.Size = New System.Drawing.Size(186, 22)
+        Me.MnuReferenceEntries.Size = New System.Drawing.Size(215, 22)
         Me.MnuReferenceEntries.Text = "Reference Entries"
         '
         'MnuHistory
         '
         Me.MnuHistory.Name = "MnuHistory"
-        Me.MnuHistory.Size = New System.Drawing.Size(186, 22)
+        Me.MnuHistory.Size = New System.Drawing.Size(215, 22)
         Me.MnuHistory.Text = "History"
         '
         'MnuShowLedgerPosting
         '
         Me.MnuShowLedgerPosting.Name = "MnuShowLedgerPosting"
-        Me.MnuShowLedgerPosting.Size = New System.Drawing.Size(186, 22)
+        Me.MnuShowLedgerPosting.Size = New System.Drawing.Size(215, 22)
         Me.MnuShowLedgerPosting.Text = "Show Ledger Posting"
         '
         'MnuReport
         '
         Me.MnuReport.Name = "MnuReport"
-        Me.MnuReport.Size = New System.Drawing.Size(186, 22)
+        Me.MnuReport.Size = New System.Drawing.Size(215, 22)
         Me.MnuReport.Text = "Report"
         '
         'MnuGenerateEBill
         '
         Me.MnuGenerateEBill.Name = "MnuGenerateEBill"
-        Me.MnuGenerateEBill.Size = New System.Drawing.Size(186, 22)
+        Me.MnuGenerateEBill.Size = New System.Drawing.Size(215, 22)
         Me.MnuGenerateEBill.Text = "Generate E Bill"
         '
         'TxtBarcode
@@ -1426,12 +1424,6 @@ Public Class FrmSaleInvoiceDirect
         Me.AgTextBox1.TabStop = False
         Me.AgTextBox1.TextAlign = System.Windows.Forms.HorizontalAlignment.Right
         Me.AgTextBox1.UseWaitCursor = True
-        '
-        'MnuSendWhatsappPDF
-        '
-        Me.MnuSendWhatsappPDF.Name = "MnuSendWhatsappPDF"
-        Me.MnuSendWhatsappPDF.Size = New System.Drawing.Size(186, 22)
-        Me.MnuSendWhatsappPDF.Text = "Send Whatsapp PDF"
         '
         'FrmSaleInvoiceDirect
         '
@@ -1551,107 +1543,6 @@ Public Class FrmSaleInvoiceDirect
     Public WithEvents LblHelp As System.Windows.Forms.Label
 
 #End Region
-
-
-    Public Sub PostData()
-        'Dim request As HttpWebRequest = CType(WebRequest.Create("https://example.com/api/endpoint"), HttpWebRequest)
-        Dim request As HttpWebRequest = CType(System.Net.WebRequest.Create("http://app.laksmartindia.com/api/v1/message/create"), HttpWebRequest)
-        request.Method = "POST"
-        request.ContentType = "application/json"
-
-        ' JSON body (change this to your actual payload)
-        'Dim jsonData As String = "{""username"":""Satyam Tripathi"",""password"":""KC@12345""}"
-        Dim jsonData As String = "{""username"":""Satyam Tripathi"",""password"":""KC@12345"",""receiverMobileNo"":""8299399688"",""message"":""Hello""}"
-
-        ' Write the request body
-        Using streamWriter As New StreamWriter(request.GetRequestStream())
-            streamWriter.Write(jsonData)
-        End Using
-
-        ' Get the response
-        Dim response As HttpWebResponse = CType(request.GetResponse(), HttpWebResponse)
-        Using streamReader As New StreamReader(response.GetResponseStream())
-            Dim result As String = streamReader.ReadToEnd()
-            MsgBox("Response: " & result)
-        End Using
-    End Sub
-
-    Public Sub UploadFileViaFTP()
-        Dim ftpServer As String = "ftp://164.52.202.56/~equal2464/public_html/Sadhvi/"
-        Dim localFilePath As String = "D:\11.pdf"
-        Dim fileName As String = Path.GetFileName(localFilePath)
-
-        Try
-            Dim ftpUsername As String = "equal2464"
-            Dim ftpPassword As String = "tActL$*$P*67"
-
-
-            Dim ftpFullPath As String = ftpServer & fileName
-
-            Dim ftpRequest As FtpWebRequest = CType(System.Net.WebRequest.Create(ftpFullPath), FtpWebRequest)
-            ftpRequest.Credentials = New NetworkCredential(ftpUsername, ftpPassword)
-            ftpRequest.Method = WebRequestMethods.Ftp.UploadFile
-            ftpRequest.UseBinary = True
-            ftpRequest.KeepAlive = False
-            ftpRequest.Proxy = Nothing ' disable proxy
-
-            Dim fileContents As Byte() = File.ReadAllBytes(localFilePath)
-
-            Using requestStream As Stream = ftpRequest.GetRequestStream()
-                requestStream.Write(fileContents, 0, fileContents.Length)
-            End Using
-
-            Using response As FtpWebResponse = CType(ftpRequest.GetResponse(), FtpWebResponse)
-                MessageBox.Show($"Upload complete. Status: {response.StatusDescription}")
-            End Using
-
-        Catch ex As Exception
-            'MessageBox.Show($"Error uploading file: {ex.Message}")
-            MessageBox.Show("Uploading to: " & ftpServer & fileName)
-            MessageBox.Show($"Error uploading file: {ex.Message}{vbCrLf}{ex.StackTrace}")
-        End Try
-    End Sub
-
-
-    'Public Sub UploadFileViaFTP()
-    '    Try
-    '        ' FTP Server details
-    '        'Dim ftpServer As String = "ftp://yourserver.com/"
-    '        'Dim ftpServer As String = "ftp://164.52.202.56/~equal2464/public_html/Sadhvi/"
-    '        Dim ftpServer As String = "ftp://ftp.equal2.in/public_html/Sadhvi/"
-    '        Dim ftpUsername As String = "equal2464"
-    '        Dim ftpPassword As String = "tActL$*$P*67"
-
-    '        ' File to upload
-    '        Dim localFilePath As String = "D:\11.pdf"
-    '        Dim fileName As String = Path.GetFileName(localFilePath)
-    '        Dim ftpFullPath As String = ftpServer & fileName
-
-    '        ' Create FTP request
-    '        'Dim ftpRequest As FtpWebRequest = CType(WebRequest.Create(ftpFullPath), FtpWebRequest)
-    '        Dim ftpRequest As System.Net.FtpWebRequest = CType(System.Net.WebRequest.Create(ftpServer & fileName), FtpWebRequest)
-    '        ftpRequest.Proxy = Nothing
-    '        ftpRequest.Credentials = New NetworkCredential(ftpUsername, ftpPassword)
-    '        ftpRequest.Method = WebRequestMethods.Ftp.UploadFile
-    '        ftpRequest.UseBinary = True
-    '        ftpRequest.KeepAlive = False
-
-    '        ' Read file and upload
-    '        Dim fileContents As Byte() = File.ReadAllBytes(localFilePath)
-
-    '        Using requestStream As Stream = ftpRequest.GetRequestStream()
-    '            requestStream.Write(fileContents, 0, fileContents.Length)
-    '        End Using
-
-    '        ' Get response (optional)
-    '        Using response As FtpWebResponse = CType(ftpRequest.GetResponse(), FtpWebResponse)
-    '            MessageBox.Show($"Upload complete. Status: {response.StatusDescription}")
-    '        End Using
-
-    '    Catch ex As Exception
-    '        MessageBox.Show($"Error uploading file: {ex.Message}")
-    '    End Try
-    'End Sub
 
     Private Sub FrmSaleInvoice_BaseEvent_ApproveDeletion_InTrans(ByVal SearchCode As String, ByVal Conn As Object, ByVal Cmd As Object) Handles Me.BaseEvent_ApproveDeletion_InTrans
         Dim DtSaleInvoice As DataTable = Nothing
@@ -2503,7 +2394,7 @@ Public Class FrmSaleInvoiceDirect
                                 LastTrnV_Type=" & AgL.Chk_Text(TxtV_Type.Tag) & ",
                                 LastTrnManualRefNo = " & AgL.Chk_Text(TxtReferenceNo.Text) & ",
                                 LastTrnSubcode=" & AgL.Chk_Text(TxtSaleToParty.Tag) & ",
-                                LastTrnProcess=" & AgL.Chk_Text(Process.Sales) & ",
+                                LastTrnProcess=" & AgL.Chk_Text(AgLibrary.ClsMain.agConstants.Process.Sales) & ",
                                 CurrentGodown=" & AgL.Chk_Text(Dgl1.Item(Col1Godown, LineGridRowIndex).Tag) & ",
                                 Status = " & AgL.Chk_Text(mBarcodeStatus) & "
                                 WHERE CODE='" & Dgl1.Item(Col1Barcode, LineGridRowIndex).Tag & "' AND Div_Code='" & TxtDivision.Tag & "' And Site_code='" & TxtSite_Code.Tag & "'                    
@@ -2671,7 +2562,7 @@ Public Class FrmSaleInvoiceDirect
                 Dgl1.Columns(Col1ReferenceDate).Visible = True
             End If
 
-            If AgL.StrCmp(AgL.PubDBName, "SHADHVINEW") Or AgL.StrCmp(AgL.PubDBName, "SHADHVIKANPURB2") Or AgL.StrCmp(AgL.PubDBName, "SHADHVIjaunpur") Or AgL.StrCmp(AgL.PubDBName, "SHADHVINANDI") Then
+            If AgL.StrCmp(AgL.PubDBName, "SHADHVINEW") Or AgL.StrCmp(AgL.PubDBName, "SHADHVIKANPURB2") Or AgL.StrCmp(AgL.PubDBName, "SHADHVIjaunpur") Or AgL.StrCmp(AgL.PubDBName, "SHADHVINANDI") Or AgL.StrCmp(AgL.PubDBName, "SHADHVINANDI2") Or AgL.StrCmp(AgL.PubDBName, "SHADHVIJNP2") Then
                 Dgl1.Columns(Col1Rate).ReadOnly = True
             End If
 
@@ -4609,7 +4500,7 @@ Public Class FrmSaleInvoiceDirect
             End If
         End If
 
-        If AgL.StrCmp(AgL.PubDBName, "SHADHVINEW") Or AgL.StrCmp(AgL.PubDBName, "SHADHVIKANPURB2") Or AgL.StrCmp(AgL.PubDBName, "SHADHVIjaunpur") Or AgL.StrCmp(AgL.PubDBName, "SHADHVINANDI") Then
+        If AgL.StrCmp(AgL.PubDBName, "SHADHVINEW") Or AgL.StrCmp(AgL.PubDBName, "SHADHVIKNP2") Or AgL.StrCmp(AgL.PubDBName, "SHADHVIKANPURB2") Or AgL.StrCmp(AgL.PubDBName, "SHADHVIjaunpur") Or AgL.StrCmp(AgL.PubDBName, "SHADHVINANDI") Or AgL.StrCmp(AgL.PubDBName, "SHADHVINANDI2") Or AgL.StrCmp(AgL.PubDBName, "SHADHVIJNP2") Then
             Dgl1.Columns(Col1Rate).ReadOnly = True
         End If
 
@@ -4984,7 +4875,7 @@ Public Class FrmSaleInvoiceDirect
     End Sub
 
     Private Sub Dgl1_EditingControl_KeyDown(ByVal sender As Object, ByVal e As System.Windows.Forms.KeyEventArgs) Handles Dgl1.EditingControl_KeyDown
-        If AgL.StrCmp(AgL.PubDBName, "SHADHVINEW") Or AgL.StrCmp(AgL.PubDBName, "SHADHVIKANPURB2") Or AgL.StrCmp(AgL.PubDBName, "SHADHVIjaunpur") Or AgL.StrCmp(AgL.PubDBName, "SHADHVINANDI") Then
+        If AgL.StrCmp(AgL.PubDBName, "SHADHVINEW") Or AgL.StrCmp(AgL.PubDBName, "SHADHVIKNP2") Or AgL.StrCmp(AgL.PubDBName, "SHADHVIKANPURB2") Or AgL.StrCmp(AgL.PubDBName, "SHADHVIjaunpur") Or AgL.StrCmp(AgL.PubDBName, "SHADHVIJNP2") Or AgL.StrCmp(AgL.PubDBName, "SHADHVINANDI") Or AgL.StrCmp(AgL.PubDBName, "SHADHVINANDI2") Then
             Dgl1.Columns(Col1Rate).ReadOnly = True
         End If
         Try
@@ -5502,9 +5393,9 @@ Public Class FrmSaleInvoiceDirect
 
         If FGetSettings(SettingFields.FilterInclude_Process, SettingType.General) <> "" Then
             If FGetSettings(SettingFields.FilterInclude_Process, SettingType.General).ToString.Substring(0, 1) = "+" Then
-                strCond += " And CharIndex('+' || IfNull(Sp.Process,'" & Process.Sales & "'),'" & FGetSettings(SettingFields.FilterInclude_Process, SettingType.General) & "') > 0 "
+                strCond += " And CharIndex('+' || IfNull(Sp.Process,'" & AgLibrary.ClsMain.agConstants.Process.Sales & "'),'" & FGetSettings(SettingFields.FilterInclude_Process, SettingType.General) & "') > 0 "
             ElseIf FGetSettings(SettingFields.FilterInclude_Process, SettingType.General).ToString.Substring(0, 1) = "-" Then
-                strCond += " And CharIndex('-' || IfNull(Sp.Process,'" & Process.Sales & "'),'" & FGetSettings(SettingFields.FilterInclude_Process, SettingType.General) & "') <= 0 "
+                strCond += " And CharIndex('-' || IfNull(Sp.Process,'" & AgLibrary.ClsMain.agConstants.Process.Sales & "'),'" & FGetSettings(SettingFields.FilterInclude_Process, SettingType.General) & "') <= 0 "
             End If
         End If
 
@@ -6343,34 +6234,34 @@ Public Class FrmSaleInvoiceDirect
 
 
             If AgL.XNull(dtDoc.Rows(0)("NCAT")) = Ncat.SaleInvoice Then
-                    mPrintTitle = "TAX INVOICE"
-                    mDocNoCaption = "Invoice No."
-                    mDocDateCaption = "Invoice Date"
-                End If
+                mPrintTitle = "TAX INVOICE"
+                mDocNoCaption = "Invoice No."
+                mDocDateCaption = "Invoice Date"
+            End If
 
 
-                'Dim mDocNoCaption As String = FGetSettings(SettingFields.DocumentPrintEntryNoCaption, SettingType.General)
-                'Dim mDocDateCaption As String = FGetSettings(SettingFields.DocumentPrintEntryDateCaption, SettingType.General)
-                'Dim mDocReportFileName As String = FGetSettings(SettingFields.DocumentPrintReportFileName, SettingType.General)
-                'Dim mDocNoPrefix As String = FGetSettings(SettingFields.DocumentPrintEntryNoPrefix, SettingType.General)
+            'Dim mDocNoCaption As String = FGetSettings(SettingFields.DocumentPrintEntryNoCaption, SettingType.General)
+            'Dim mDocDateCaption As String = FGetSettings(SettingFields.DocumentPrintEntryDateCaption, SettingType.General)
+            'Dim mDocReportFileName As String = FGetSettings(SettingFields.DocumentPrintReportFileName, SettingType.General)
+            'Dim mDocNoPrefix As String = FGetSettings(SettingFields.DocumentPrintEntryNoPrefix, SettingType.General)
 
 
 
-                Dim bPrimaryQry As String = ""
-                If BulkCondStr <> "" Then
-                    bPrimaryQry = " Select * From SaleInvoice  With (NoLock) Where DocID In (" & BulkCondStr & ")"
-                    PrintingCopies = PrintingCopiesStr.Split(",") 'FGetSettings(SettingFields.PrintingBulkCopyCaptions, SettingType.General).ToString.Split(",")
-                Else
-                    bPrimaryQry = " Select * From SaleInvoice  With (NoLock) Where DocID = '" & SearchCode & "'"
-                    PrintingCopies = PrintingCopiesStr.Split(",")
-                End If
+            Dim bPrimaryQry As String = ""
+            If BulkCondStr <> "" Then
+                bPrimaryQry = " Select * From SaleInvoice  With (NoLock) Where DocID In (" & BulkCondStr & ")"
+                PrintingCopies = PrintingCopiesStr.Split(",") 'FGetSettings(SettingFields.PrintingBulkCopyCaptions, SettingType.General).ToString.Split(",")
+            Else
+                bPrimaryQry = " Select * From SaleInvoice  With (NoLock) Where DocID = '" & SearchCode & "'"
+                PrintingCopies = PrintingCopiesStr.Split(",")
+            End If
 
             'PrintingCopies = AgL.XNull(DtV_TypeSettings.Rows(0)("PrintingCopyCaptions")).ToString.Split(",")
 
 
             mQry = ""
-                For I = 1 To PrintingCopies.Length
-                    If mQry <> "" Then mQry = mQry + " Union All "
+            For I = 1 To PrintingCopies.Length
+                If mQry <> "" Then mQry = mQry + " Union All "
 
                 mQry = mQry + "
                 Select '" & I & "' as Copies, '" & AgL.XNull(PrintingCopies(I - 1)) & "' as CopyPrintingCaption, '" & mDocNoCaption & "' as DocNoCaption, '" & mDocDateCaption & "' as DocDateCaption, SiteState.ManualCode as SiteStateCode, SiteState.Description as SiteStateName, H.DocID, L.Sr, H.V_Date, H.DeliveryDate, VT.Description as Voucher_Type, VT.NCat, '" & mDocNoPrefix & "' || H.ManualRefNo as InvoiceNo, RT.Description as RateType, IfNull(Agent.DispName,'') as AgentName, '" & AgL.PubDtEnviro.Rows(0)("Caption_SalesAgent") & "' as AgentCaption,
@@ -6457,32 +6348,32 @@ Public Class FrmSaleInvoiceDirect
                 "
 
             Next
-                mQry = mQry + " Order By Copies, H.DocID, L.Sr "
+            mQry = mQry + " Order By Copies, H.DocID, L.Sr "
 
 
-                Dim objRepPrint As Object
-                If mPrintFor = ClsMain.PrintFor.EMail Then
-                    objRepPrint = New AgLibrary.FrmMailComposeWithCrystal(AgL)
-                    FGetMailConfiguration(objRepPrint, SearchCode)
-                    objRepPrint.SearchCode = SearchCode
-                    objRepPrint.TxtToEmail.Text = AgL.XNull(AgL.Dman_Execute("Select Sg.EMail
+            Dim objRepPrint As Object
+            If mPrintFor = ClsMain.PrintFor.EMail Then
+                objRepPrint = New AgLibrary.FrmMailComposeWithCrystal(AgL)
+                FGetMailConfiguration(objRepPrint, SearchCode)
+                objRepPrint.SearchCode = SearchCode
+                objRepPrint.TxtToEmail.Text = AgL.XNull(AgL.Dman_Execute("Select Sg.EMail
                     From PurchInvoice H 
                     LEFT JOIN SubGroup Sg  On H.Vendor = Sg.SubCode
                     Where H.GenDocId = '" & SearchCode & "'", AgL.GCn).ExecuteScalar())
-                ElseIf mPrintFor = ClsMain.PrintFor.Whatsapp Then
-                    objRepPrint = New FrmWhatsapp(AgL)
-                    FGetWhatsappConfiguration(objRepPrint, SearchCode)
-                Else
-                    objRepPrint = New AgLibrary.RepView(AgL)
-                End If
-
-
-                If mDocReportFileName = "" Then
-                    ClsMain.FPrintThisDocument(ObjFrm, objRepPrint, AgL.XNull(dtDoc.Rows(0)("V_Type")), mQry, "SaleInvoice_Print.rpt", mPrintTitle, , , , AgL.XNull(dtDoc.Rows(0)("SaleToParty")), AgL.XNull(dtDoc.Rows(0)("V_Date")), IsPrintToPrinter,,, mSearchCode)
-                Else
-                    ClsMain.FPrintThisDocument(ObjFrm, objRepPrint, AgL.XNull(dtDoc.Rows(0)("V_Type")), mQry, mDocReportFileName, mPrintTitle, , , , AgL.XNull(dtDoc.Rows(0)("SaleToParty")), AgL.XNull(dtDoc.Rows(0)("V_Date")), IsPrintToPrinter,,, mSearchCode)
-                End If
+            ElseIf mPrintFor = ClsMain.PrintFor.Whatsapp Then
+                objRepPrint = New FrmWhatsapp(AgL)
+                FGetWhatsappConfiguration(objRepPrint, SearchCode)
+            Else
+                objRepPrint = New AgLibrary.RepView(AgL)
             End If
+
+
+            If mDocReportFileName = "" Then
+                ClsMain.FPrintThisDocument(ObjFrm, objRepPrint, AgL.XNull(dtDoc.Rows(0)("V_Type")), mQry, "SaleInvoice_Print.rpt", mPrintTitle, , , , AgL.XNull(dtDoc.Rows(0)("SaleToParty")), AgL.XNull(dtDoc.Rows(0)("V_Date")), IsPrintToPrinter,,, mSearchCode)
+            Else
+                ClsMain.FPrintThisDocument(ObjFrm, objRepPrint, AgL.XNull(dtDoc.Rows(0)("V_Type")), mQry, mDocReportFileName, mPrintTitle, , , , AgL.XNull(dtDoc.Rows(0)("SaleToParty")), AgL.XNull(dtDoc.Rows(0)("V_Date")), IsPrintToPrinter,,, mSearchCode)
+            End If
+        End If
     End Sub
 
     Public Sub FPrintThisDocument(ByVal objFrm As Object, ByVal objRepFrm As Object, ByVal V_Type As String,
@@ -8422,7 +8313,7 @@ Public Class FrmSaleInvoiceDirect
     End Sub
 
     Private Sub MnuImport_Click(sender As Object, e As EventArgs) Handles MnuImportFromExcel.Click, MnuImportFromDos.Click, MnuImportFromTally.Click, MnuEditSave.Click,
-            MnuGenerateEWayBill.Click, MnuReconcileBill.Click, MnuEMail.Click, MnuSendSms.Click, MnuSendWhatsapp.Click, MnuSendWhatsappPDF.Click, MnuWhatsappDocument.Click, MnuReferenceEntries.Click, MnuReport.Click, MnuHistory.Click, MnuPrintBulk.Click, MnuShowLedgerPosting.Click, MnuGenerateEBill.Click
+            MnuGenerateEWayBill.Click, MnuReconcileBill.Click, MnuEMail.Click, MnuSendSms.Click, MnuSendWhatsapp.Click, MnuWhatsappDocument.Click, MnuReferenceEntries.Click, MnuReport.Click, MnuHistory.Click, MnuPrintBulk.Click, MnuShowLedgerPosting.Click, MnuGenerateEBill.Click
         Select Case sender.name
             Case MnuImportFromExcel.Name
                 FImportFromExcel(ImportFor.Excel)
@@ -8466,10 +8357,6 @@ Public Class FrmSaleInvoiceDirect
 
             Case MnuSendWhatsapp.Name
                 FSendWhatsapp()
-
-            Case MnuSendWhatsappPDF.Name
-                'FSendWhatsappPDF()
-                PostData()
 
             Case MnuWhatsappDocument.Name
                 If AgL.StrCmp(AgL.PubUserName, "Super") Then
@@ -9936,36 +9823,6 @@ Public Class FrmSaleInvoiceDirect
         IsSuccess = FSendWhatsappMessage(ToMobileNo, ToMessage, "Message", "")
     End Sub
 
-    Private Sub FSendWhatsappPDF()
-        Dim mDocNoPrefix As String = FGetSettings(SettingFields.DocumentPrintEntryNoPrefix, SettingType.General)
-        Dim IsSuccess As Boolean
-        Dim ToMobileNo As String
-        Dim ToMessage As String
-        Dim DtDocData As DataTable = AgL.FillData("Select 
-                    Sg.DispName As DivisionName, 
-                    Party.DispName As PartyName, Party.Mobile As PartyMobile,
-                    Agent.DispName As AgentName, Agent.Mobile As AgentMobile, H.Net_Amount
-                    From SaleInvoice H 
-                    LEFT JOIN Division D On H.Div_Code = D.Div_Code
-                    LEFT JOIN SubGroup Sg On D.SubCode = Sg.SubCode
-                    LEFT JOIN SubGroup Party On H.SaleToParty = Party.SubCode
-                    LEFT JOIN SubGroup Agent On H.Agent = Agent.SubCode
-                    Where H.DocId = '" & mSearchCode & "'", AgL.GCn).Tables(0)
-
-
-        ToMobileNo = AgL.XNull(DtDocData.Rows(0)("PartyMobile"))
-        ToMessage = FGetSettings(SettingFields.SmsMessage, SettingType.General)
-        ToMessage = ToMessage.
-                Replace("<PartyName>", AgL.XNull(DtDocData.Rows(0)("PartyName"))).
-                Replace("<EntryNo>", mDocNoPrefix & TxtReferenceNo.Text).Replace("<EntryDate>", TxtV_Date.Text).
-                Replace("<DivisionName>", AgL.XNull(DtDocData.Rows(0)("DivisionName"))).
-                Replace("<AgentName>", AgL.XNull(DtDocData.Rows(0)("AgentName"))).
-                Replace("<NetAmount>", Format(AgL.VNull(DtDocData.Rows(0)("Net_Amount")), "0.00")).
-                Replace("&", "And")
-        UploadFileViaFTP()
-        'IsSuccess = FSendWhatsappMessage(ToMobileNo, ToMessage, "PDF", "http://164.52.202.56/~equal2464/Sadhvi/SI6396.pdf")
-
-    End Sub
     Private Function GetFieldAliasName(bImportFor As ImportFor, bFieldName As String)
         Dim bAliasName As String = bFieldName
         If bImportFor = ImportFor.Dos Then

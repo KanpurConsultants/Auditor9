@@ -811,7 +811,7 @@ Public Class FrmItemMaster
             End If
 
             If AgL.XNull(AgL.Dman_Execute("Select BarcodeType From Item IG With (NoLock) Where IG.Code = '" & Dgl1.Item(Col1Value, rowItemGroup).Tag & "' And BarcodePattern = '" & BarcodePattern.Auto & "' ", AgL.GCn).executescalar()) = BarcodeType.Fixed Then
-                If ClsMain.FDivisionNameForCustomization(6) = "SADHVI" And AgL.StrCmp(AgL.PubDBName, "Sadhvi") Then
+                If ClsMain.FDivisionNameForCustomization(6) = "SADHVI" And (AgL.StrCmp(AgL.PubDBName, "Sadhvi") Or AgL.StrCmp(AgL.PubDBName, "Sadhvi2")) Then
                     Dgl1.Item(Col1Value, rowBarcode).Value = AgL.Dman_Execute("Select IfNull(Max(CAST(Description as BIGINT)),0) + 1 From BarCode  With (NoLock) WHERE Item NOT IN ('Lr','LrBale') ", AgL.GCn).ExecuteScalar()
                 Else
                     Dgl1.Item(Col1Value, rowBarcode).Value = AgL.XNull(AgL.Dman_Execute("Select IfNull(Max(CAST(Description as BIGINT)),0) + 1 From BarCode  With (NoLock)", AgL.GCn).ExecuteScalar())
@@ -1589,7 +1589,7 @@ Public Class FrmItemMaster
 
         If Topctrl1.Mode = "Add" Then
             If AgL.XNull(AgL.Dman_Execute("Select BarcodeType From Item IG With (NoLock) Where IG.Code = '" & Dgl1.Item(Col1Value, rowItemGroup).Tag & "' And BarcodePattern = '" & BarcodePattern.Auto & "' ", AgL.GCn).executescalar()) = BarcodeType.Fixed Then
-                If ClsMain.FDivisionNameForCustomization(6) = "SADHVI" And AgL.StrCmp(AgL.PubDBName, "Sadhvi") Then
+                If ClsMain.FDivisionNameForCustomization(6) = "SADHVI" And (AgL.StrCmp(AgL.PubDBName, "Sadhvi") Or AgL.StrCmp(AgL.PubDBName, "Sadhvi2")) Then
                     Dgl1.Item(Col1Value, rowBarcode).Value = AgL.Dman_Execute("Select IfNull(Max(CAST(Description as BIGINT)),0) + 1 From BarCode  With (NoLock) WHERE Item NOT IN ('Lr','LrBale') ", AgL.GCn).ExecuteScalar()
                 Else
                     Dgl1.Item(Col1Value, rowBarcode).Value = AgL.Dman_Execute("Select IfNull(Max(CAST(Description as BIGINT)),0) + 1 From BarCode  With (NoLock)", AgL.GCn).ExecuteScalar()
