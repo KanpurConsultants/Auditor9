@@ -5,13 +5,13 @@ DocNoCaption	string	255	Invoice No.
 DocDateCaption	string	255	Invoice Date	
 SiteStateCode	string	255	09	
 SiteStateName	string	255	Uttar Pradesh	
-DocID	string	255	D1    SI 2025     127	
+DocID	string	255	D1    SI 2025     437	
 Sr	number	1	
-V_Date	datetime	15/Jul/2025 00:00:00	
+V_Date	datetime	22/Jul/2025 00:00:00	
 DeliveryDate	datetime		
 Voucher_Type	string	255	Tax Invoice	
 NCat	string	255	SI	
-InvoiceNo	string	255	SI-127	
+InvoiceNo	string	255	SI-437	
 RateType	string	255	Super Net	
 DocumentPrintShowRateType	string	255	Show If Not Blank	
 AgentName	string	255	DIRECT (CASH)	
@@ -63,55 +63,55 @@ DescriptionOfGoods	string	255
 DescriptionOfPacking	string	255		
 TransporterSalesTaxNo	string	255		
 ReferenceNo	string	255		
-ItemName	string	255	GREEN HOME PRINT          [SHREE GURUWANI-79 | SAREE HALKA PRI..]	
-ItemGroupName	string	255	S-ENT-79-PRINT	
-ItemCatName	string	255	SAREE HALKA PRI..	
-ItemSpecification	string	255	GREEN HOME PRINT	
+ItemName	string	255	MIRCHI          [SHIV SHAKTI(816) | SAREE]	
+ItemGroupName	string	255	S-ENT-816 DYD	
+ItemCatName	string	255	SAREE	
+ItemSpecification	string	255	MIRCHI	
 InvoiceLineSpecification	string	255		
 HSN	string	255	540752	
 MaintainStockYn	boolean	True	
 SalesTaxGroupItem	string	255	GST 5%	
 GrossTaxRate	number	5	
-Pcs	number	5	
-Qty	number	5	
-Rate	number	265	
+Pcs	number	6	
+Qty	number	6	
+Rate	number	651	
 Unit	string	255	Pcs	
 UnitDecimalPlaces	number	0	
 DiscountPer	number	0	
 DiscountAmount	number	0	
 AdditionalDiscountPer	number	0	
 AdditionalDiscountAmount	number	0	
-AdditionPer	number	0	
-AdditionAmount	number	0	
-TotalDiscount	number	0	
-AmountBeforeDiscount	number	1325	
-Amount	number	1325	
-Taxable_Amount	number	1325	
+AdditionPer	number	5	
+AdditionAmount	number	186	
+TotalDiscount	number	-186	
+AmountBeforeDiscount	number	3906	
+Amount	number	3906	
+Taxable_Amount	number	3906	
 Tax1_Per	number	0	
 Tax1	number	0	
 Tax2_Per	number	2.5	
-Tax2	number	33.13	
+Tax2	number	97.65	
 Tax3_Per	number	2.5	
-Tax3	number	33.13	
+Tax3	number	97.65	
 Tax4_Per	number	0	
 Tax4	number	0	
 Tax5_Per	number	0	
 Tax5	number	0	
-Net_Amount	number	1391.29	
+Net_Amount	number	4101.41	
 LRemarks	string	255		
-HRemarks	string	255	OPEN ORDER	
-H_TotalDiscount	number	0	
-H_AmountBeforeDiscount	number	11915	
-H_Gross_Amount	number	11915	
+HRemarks	string	255		
+H_TotalDiscount	number	-424.25	
+H_AmountBeforeDiscount	number	8485	
+H_Gross_Amount	number	8909.25	
 H_SpecialDiscount_Per	number	0	
 H_SpecialDiscount	number	0	
-H_Taxable_Amount	number	11915	
+H_Taxable_Amount	number	8909.25	
 H_Tax1_Per	number	0	
 H_Tax1	number	0	
 H_Tax2_Per	number	0	
-H_Tax2	number	297.89	
+H_Tax2	number	222.74	
 H_Tax3_Per	number	0	
-H_Tax3	number	297.89	
+H_Tax3	number	222.74	
 H_Tax4_Per	number	0	
 H_Tax4	number	0	
 H_Tax5_Per	number	0	
@@ -120,8 +120,8 @@ H_Deduction_Per	number	0
 H_Deduction	number	0	
 H_Other_Charge_Per	number	0	
 H_Other_Charge	number	0	
-Round_Off	number	0.22	
-H_Net_Amount	number	12511	
+Round_Off	number	0.27	
+H_Net_Amount	number	9355	
 EInvoiceIRN	string	255		
 EInvoiceAckNo	string	255		
 EInvoiceAckDate	datetime		
@@ -130,7 +130,7 @@ PaymentLink	string	255
 DocumentPrintHeaderPattern	string	255	Center Aligned	
 DimDetail	string	255		
 PrintedByUser	string	255	SUPER	
-EntryByUser	string	255	SADHVI 2	
+EntryByUser	string	255	SADHVI 	
 PrintTitle	string	255	TAX INVOICE	
 DocumentPrintShowPrintDateTimeYn	string	255	1	
 DocumentPrintShowPartyBalance	string	255	Hide	

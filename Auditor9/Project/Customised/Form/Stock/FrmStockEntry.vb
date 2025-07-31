@@ -47,6 +47,8 @@ Public Class FrmStockEntry
     Public Const Col1DealUnit As String = "Deal Unit"
     Public Const Col1DealUnitDecimalPlaces As String = "Deal Decimal Places"
     Public Const Col1Rate As String = "Rate"
+    Public Const Col1DiscountPer As String = "Disc. %"
+    Public Const Col1DiscountAmount As String = "Disc. Amt"
     Public Const Col1Amount As String = "Amount"
     Public Const Col1MRP As String = "MRP"
     Public Const Col1FromProcess As String = "From Process"
@@ -64,7 +66,6 @@ Public Class FrmStockEntry
     Public Const Col1StockQty As String = "Stock Qty"
     Public Const Col1StockProcessQty As String = "Stock Process Qty"
     Public Const Col1IsRecordLocked As String = "Is Record Locked"
-
     Public Const Col1MItemCategory As String = "M Item Category"
     Public Const Col1MItemGroup As String = "M Item Group"
     Public Const Col1MItemSpecification As String = "M Item Specification"
@@ -1054,6 +1055,8 @@ Public Class FrmStockEntry
             .AddAgNumberColumn(Dgl1, Col1Qty, 80, 10, 4, False, Col1Qty, True, False, True)
             .AddAgTextColumn(Dgl1, Col1Unit, 50, 0, Col1Unit, True, True)
             .AddAgNumberColumn(Dgl1, Col1Rate, 80, 8, 2, False, Col1Rate, True, False, True)
+            .AddAgNumberColumn(Dgl1, Col1DiscountPer, 50, 2, 2, False, Col1DiscountPer, False, False, True)
+            .AddAgNumberColumn(Dgl1, Col1DiscountAmount, 100, 8, 2, False, Col1DiscountAmount, False, False, True)
             .AddAgNumberColumn(Dgl1, Col1Amount, 100, 8, 2, False, Col1Amount, True, True, True)
             .AddAgNumberColumn(Dgl1, Col1MRP, 80, 8, 2, False, Col1MRP, True, False, True)
             .AddAgNumberColumn(Dgl1, Col1Pcs, 80, 8, 4, False, Col1Pcs, False, False, True)
@@ -1663,7 +1666,7 @@ Public Class FrmStockEntry
         mQry = "Insert Into StockHeadDetail(DocId, Sr, Barcode, Item, 
                            Specification, ItemState, BaleNo, LotNo, RawMaterial, RawMaterialConsumptionQty, Godown,
                            DocQty, LossQty, Qty, Unit, Pcs, UnitMultiplier, DealUnit, DealQty,
-                           Rate, Amount, MRP, ReferenceNo, ReferenceDocID, ReferenceTSr, ReferenceSr, ReferenceDocIdBalanceQty, Remark) "
+                           Rate, DiscountPer, DiscountAmount, Amount, MRP, ReferenceNo, ReferenceDocID, ReferenceTSr, ReferenceSr, ReferenceDocIdBalanceQty, Remark) "
         mQry += " Values( " & AgL.Chk_Text(DocID) & ", " & Sr & ", " &
                         " " & AgL.Chk_Text(Dgl1.Item(Col1Barcode, LineGridRowIndex).Tag) & ", " &
                         " " & AgL.Chk_Text(Dgl1.Item(Col1SKU, LineGridRowIndex).Tag) & ", " &
@@ -1683,6 +1686,8 @@ Public Class FrmStockEntry
                         " " & AgL.Chk_Text(Dgl1.Item(Col1DealUnit, LineGridRowIndex).Value) & ", " &
                         " " & Val(Dgl1.Item(Col1DealQty, LineGridRowIndex).Value) & ", " &
                         " " & Val(Dgl1.Item(Col1Rate, LineGridRowIndex).Value) & ", " &
+                        " " & Val(Dgl1.Item(Col1DiscountPer, LineGridRowIndex).Value) & ", " &
+                        " " & Val(Dgl1.Item(Col1DiscountAmount, LineGridRowIndex).Value) & ", " &
                         " " & Val(Dgl1.Item(Col1Amount, LineGridRowIndex).Value) & ", " &
                         " " & Val(Dgl1.Item(Col1MRP, LineGridRowIndex).Value) & ", " &
                         " " & AgL.Chk_Text(Dgl1.Item(Col1ReferenceDocId, LineGridRowIndex).Value) & ",  " &
@@ -1730,6 +1735,8 @@ Public Class FrmStockEntry
                     " DealUnit = " & AgL.Chk_Text(Dgl1.Item(Col1DealUnit, LineGridRowIndex).Value) & ", " &
                     " DealQty = " & Val(Dgl1.Item(Col1DealQty, LineGridRowIndex).Value) & ", " &
                     " Rate = " & Val(Dgl1.Item(Col1Rate, LineGridRowIndex).Value) & ", " &
+                    " DiscountPer = " & Val(Dgl1.Item(Col1DiscountPer, LineGridRowIndex).Value) & ", " &
+                    " DiscountAmount = " & Val(Dgl1.Item(Col1DiscountAmount, LineGridRowIndex).Value) & ", " &
                     " Amount = " & Val(Dgl1.Item(Col1Amount, LineGridRowIndex).Value) & ", " &
                     " MRP = " & Val(Dgl1.Item(Col1MRP, LineGridRowIndex).Value) & ", " &
                     " ReferenceNo = " & AgL.Chk_Text(Dgl1.Item(Col1ReferenceDocId, LineGridRowIndex).Value) & ", " &
@@ -2423,6 +2430,8 @@ Public Class FrmStockEntry
                             Dgl1.Item(Col1DealUnit, I).Value = AgL.XNull(.Rows(I)("DealUnit"))
                             Dgl1.Item(Col1DealQty, I).Value = Format(AgL.VNull(.Rows(I)("DealQty")), "0.".PadRight(AgL.VNull(.Rows(I)("DealUnitDecimalPlaces")) + 2, "0"))
                             Dgl1.Item(Col1Rate, I).Value = AgL.VNull(.Rows(I)("Rate"))
+                            Dgl1.Item(Col1DiscountPer, I).Value = AgL.VNull(.Rows(I)("DiscountPer"))
+                            Dgl1.Item(Col1DiscountAmount, I).Value = AgL.VNull(.Rows(I)("DiscountAmount"))
                             Dgl1.Item(Col1Amount, I).Value = Format(Math.Abs(AgL.VNull(.Rows(I)("Amount"))), "0.00")
                             Dgl1.Item(Col1MRP, I).Value = AgL.VNull(.Rows(I)("MRP"))
                             Dgl1.Item(Col1Remark, I).Value = AgL.XNull(.Rows(I)("Remark"))
@@ -3866,6 +3875,12 @@ Public Class FrmStockEntry
                     Dgl1.Item(Col1DealQty, I).Value = Format(Val(Dgl1.Item(Col1DocQty, I).Value) * Val(Dgl1.Item(Col1UnitMultiplier, I).Value), "0.".PadRight(Val(Dgl1.Item(Col1DealUnitDecimalPlaces, I).Value) + 2, "0"))
                 End If
 
+
+                If Val(Dgl1.Item(Col1DiscountPer, I).Value) > 0 Or Dgl1.Columns(Col1DiscountAmount).ReadOnly = True Or Dgl1.Columns(Col1DiscountAmount).Visible = False Then
+                    Dgl1.Item(Col1DiscountAmount, I).Value = Format(Val(Dgl1.Item(Col1DocQty, I).Value) * Val(Dgl1.Item(Col1Rate, I).Value) * Val(Dgl1.Item(Col1DiscountPer, I).Value) / 100, "0.00")
+                End If
+
+
                 'If Val(Dgl1.Item(Col1Amount, I).Value) <> 0 And Dgl1.Columns(Col1Amount).ReadOnly = False Then
                 'Else
                 'Dgl1.Item(Col1Amount, I).Value = Format(Val(Dgl1.Item(Col1DocQty, I).Value) * Val(Dgl1.Item(Col1Rate, I).Value), "0.".PadRight(CType(Dgl1.Columns(Col1Amount), AgControls.AgTextColumn).AgNumberRightPlaces + 2, "0"))
@@ -3874,8 +3889,14 @@ Public Class FrmStockEntry
                 'If DglMain.Item(Col1Value, rowParty).Tag = "D100027005" Or DglMain.Item(Col1Value, rowParty).Tag = "D100027015" Then
                 '    Dgl1.Item(Col1Amount, I).Value = Format(Val(Dgl1.Item(Col1DocQty, I).Value) * Val(Dgl1.Item(Col1MRP, I).Value), "0.".PadRight(CType(Dgl1.Columns(Col1Amount), AgControls.AgTextColumn).AgNumberRightPlaces + 2, "0"))
                 'Else
-                Dgl1.Item(Col1Amount, I).Value = Format(Val(Dgl1.Item(Col1DocQty, I).Value) * Val(Dgl1.Item(Col1Rate, I).Value), "0.".PadRight(CType(Dgl1.Columns(Col1Amount), AgControls.AgTextColumn).AgNumberRightPlaces + 2, "0"))
+                If Val(Dgl1.Item(Col1DiscountAmount, I).Value) > 0 Then
+                    Dgl1.Item(Col1Amount, I).Value = Format((Val(Dgl1.Item(Col1DocQty, I).Value) * Val(Dgl1.Item(Col1Rate, I).Value)) - Dgl1.Item(Col1DiscountAmount, I).Value, "0.".PadRight(CType(Dgl1.Columns(Col1Amount), AgControls.AgTextColumn).AgNumberRightPlaces + 2, "0"))
+                Else
+                    Dgl1.Item(Col1Amount, I).Value = Format(Val(Dgl1.Item(Col1DocQty, I).Value) * Val(Dgl1.Item(Col1Rate, I).Value), "0.".PadRight(CType(Dgl1.Columns(Col1Amount), AgControls.AgTextColumn).AgNumberRightPlaces + 2, "0"))
+                End If
+
                 'End If
+
 
 
                 If LblV_Type.Tag = Ncat.LrEntry Then
@@ -4048,6 +4069,9 @@ Public Class FrmStockEntry
                 Dgl1.Item(Col1QtyDecimalPlaces, mRow).Value = AgL.VNull(DtItem.Rows(0)("QtyDecimalPlaces"))
 
                 If AgL.StrCmp(AgL.PubDBName, "Sadhvi") Or AgL.StrCmp(AgL.PubDBName, "Sadhvi2") Then
+
+                    Dgl1.Item(Col1DiscountPer, mRow).Value = AgL.VNull(DtItem.Rows(0)("Default_DiscountPerSale"))
+
                     mQry = "SELECT isnull(V.MRP,0) AS LastMRP FROM 
                             (SELECT row_number() OVER (ORDER BY  H.V_Date DESC,H.DocID DESC,L.Sr DESC) AS Sr, L.MRP 
                             FROM StockHead H
@@ -4435,6 +4459,8 @@ Public Class FrmStockEntry
                             'Dgl1.Item(Col1Rate, mRowIndex).Value = FGetLastSaleRate(mRowIndex)
                             Dgl1.Item(Col1Rate, mRowIndex).Value = AgL.VNull(AgL.Dman_Execute("Select Rate 
                                     From Item Where Code = '" & AgL.XNull(Dgl1.Item(Col1Item, mRowIndex).Tag) & "'", AgL.GCn).ExecuteScalar())
+                            ''Dgl1.Item(Col1DiscountPer, mRowIndex).Value = AgL.VNull(DtBarcodeSiteDetail.Rows(0)("DiscountPer"))
+                            ''Dgl1.Item(Col1DiscountAmount, mRowIndex).Value = AgL.VNull(DtBarcodeSiteDetail.Rows(0)("DiscountAmount"))
                         End If
                     End If
 

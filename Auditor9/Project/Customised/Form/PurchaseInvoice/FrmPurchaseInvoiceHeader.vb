@@ -331,7 +331,7 @@ Public Class FrmPurchaseInvoiceHeader
         Dim I As Integer = 0
 
         If SearchCode = "" Then
-            If AgL.StrCmp(AgL.PubDBName, "Sadhvi") And mV_Type = Ncat.WayBill Then
+            If (AgL.StrCmp(AgL.PubDBName, "Sadhvi") Or AgL.StrCmp(AgL.PubDBName, "Sadhvi2")) And mV_Type = Ncat.WayBill Then
                 mQry = "Select H.SubCode AS Transporter, H.Name as TransporterName 
                     From Subgroup H  With (NoLock)
                     Where H.Subcode='D100001006' "
@@ -389,7 +389,7 @@ Public Class FrmPurchaseInvoiceHeader
         Dim IsDuplicateLrNo As Integer = 0
 
         If (Dgl1.Item(Col1Value, rowTransporter).Tag <> Nothing) And (Dgl1.Item(Col1Value, rowLrNo).Value <> Nothing) Then
-            If AgL.StrCmp(AgL.PubDBName, "Sadhvi") Then
+            If (AgL.StrCmp(AgL.PubDBName, "Sadhvi") Or AgL.StrCmp(AgL.PubDBName, "Sadhvi2")) Then
 
             Else
                 mQry = "Select count(*) From PurchInvoiceTransport Where Transporter ='" & Dgl1.Item(Col1Value, rowTransporter).Tag & "' AND LrNo = '" & Dgl1.Item(Col1Value, rowLrNo).Value & "' And DocID <>'" & SearchCode & "'"

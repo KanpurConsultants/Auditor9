@@ -14418,7 +14418,7 @@ Public Class FrmPurchInvoiceDirect_WithDimension
                         Exit Function
                     End If
                 ElseIf LblNCatNature.Tag = NCatNature.Return_ Then
-                    If AgL.StrCmp(AgL.PubDBName, "SHADHVINANDI") Then
+                    If AgL.StrCmp(AgL.PubDBName, "SHADHVINANDI") Or AgL.StrCmp(AgL.PubDBName, "SHADHVINANDI2") Then
 
                     Else
                         If AgL.VNull(DtBarcodeLastValues.Rows(0)("CurrentStock")) > 0 And AgL.VNull(DtBarcodeLastValues.Rows(0)("CurrentStock")) <> AgL.VNull(DtBarcodeLastValues.Rows(0)("Qty")) Then

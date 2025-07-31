@@ -54,7 +54,7 @@ Public Class ClsPartyLedgerGrid
     Dim rowSite As Integer = 13
     Dim rowNextStep As Integer = 14
     Dim rowInterestUptoDate As Integer = 15
-
+    Dim rowShowZeroBalance As Integer = 16
 
     Dim mPartyNature As String
 
@@ -242,6 +242,10 @@ Public Class ClsPartyLedgerGrid
             ReportFrm.CreateHelpGrid("Interest Upto Date", "Interest Upto Date", FrmRepDisplay.FieldFilterDataType.StringType, FrmRepDisplay.FieldDataType.DateType, "", AgL.PubLoginDate)
             'ReportFrm.CreateHelpGrid("Additional Credit Days", "Additional Credit Days", FrmRepDisplay.FieldFilterDataType.StringType, FrmRepDisplay.FieldDataType.StringType, "", "")
 
+            If AgL.StrCmp(AgL.PubDBName, "RVN") Or AgL.StrCmp(AgL.PubDBName, "RVN1") Or AgL.StrCmp(AgL.PubDBName, "RVN2") Or AgL.StrCmp(AgL.PubDBName, "MLAW") Then
+                Dim mHelpYesNoQry$ = " Select 'Yes' As Code, 'Yes' AS [Value] Union All Select 'No' As Code, 'No' AS [Value] "
+                ReportFrm.CreateHelpGrid("ShowZeroBalance", "Show Zero Balance", FrmRepDisplay.FieldFilterDataType.StringType, FrmRepDisplay.FieldDataType.SingleSelection, mHelpYesNoQry, "Yes")
+            End If
 
         Catch ex As Exception
             MsgBox(ex.Message)
@@ -1843,7 +1847,11 @@ Public Class ClsPartyLedgerGrid
         mQry = mQry & " Group By Sg.Subcode"
 
         If AgL.StrCmp(AgL.PubDBName, "RVN") Or AgL.StrCmp(AgL.PubDBName, "RVN1") Or AgL.StrCmp(AgL.PubDBName, "RVN2") Or AgL.StrCmp(AgL.PubDBName, "MLAW") Then
-            mQry = mQry & ", SG1.Name Having Abs(Sum(Lg.AmtDr)-Sum(Lg.AmtCr)) <> 0 Order By SG1.Name, Sg.name "
+            If UCase(ReportFrm.FGetText(rowShowZeroBalance)) = "NO" Then
+                mQry = mQry & ", SG1.Name Having Abs(Sum(Lg.AmtDr)-Sum(Lg.AmtCr)) <> 0 Order By SG1.Name, Sg.name "
+            Else
+                mQry = mQry & ", SG1.Name Order By SG1.Name, Sg.name "
+            End If
         End If
 
         DsHeader = AgL.FillData(mQry, AgL.GCn)

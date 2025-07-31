@@ -60,34 +60,41 @@ Public Class FrmPerson
     Public Const rowDiscount As Integer = 31
     Public Const rowExtraDiscount As Integer = 32
     Public Const rowAddition As Integer = 33
-    Public Const rowCreditDays As Integer = 34
-    Public Const rowCreditLimit As Integer = 35
-    Public Const rowBankName As Integer = 36
-    Public Const rowBankAccount As Integer = 37
-    Public Const rowBankIFSC As Integer = 38
-    Public Const rowShowAccountInOtherDivisions As Integer = 39
-    Public Const rowShowAccountInOtherSites As Integer = 40
-    Public Const rowWeekOffDays As Integer = 41
-    Public Const rowProcesses As Integer = 42
-    Public Const rowChequeFormat As Integer = 43
-    Public Const rowBlockedTransactions As Integer = 44
-    Public Const rowLockText As Integer = 45
-    Public Const rowGrade As Integer = 46
-    Public Const rowTdsGroup As Integer = 47
-    Public Const rowTdsCategory As Integer = 48
-    Public Const rowReligion As Integer = 49
-    Public Const rowCaste As Integer = 50
-    Public Const rowReconciliationUpToDate As Integer = 51
-    Public Const rowDivisionScopeOfWork As Integer = 52
-    Public Const rowFairDiscountPer As Integer = 53
-    Public Const rowPrevProcess As Integer = 54
-    Public Const rowProcessScopeOfWork As Integer = 55
-    Public Const rowCombinationOfProcesses As Integer = 56
-    Public Const rowFirstProcessOfCombination As Integer = 57
-    Public Const rowLastProcessOfCombination As Integer = 58
-    Public Const rowTags As Integer = 59
-    Public Const rowRemarks As Integer = 60
-    
+    Public Const rowAdditionalCommission As Integer = 34
+    Public Const rowCreditDays As Integer = 35
+    Public Const rowCreditLimit As Integer = 36
+    Public Const rowBankName As Integer = 37
+    Public Const rowBankAccount As Integer = 38
+    Public Const rowBankIFSC As Integer = 39
+    Public Const rowShowAccountInOtherDivisions As Integer = 40
+    Public Const rowShowAccountInOtherSites As Integer = 41
+    Public Const rowWeekOffDays As Integer = 42
+    Public Const rowProcesses As Integer = 43
+    Public Const rowChequeFormat As Integer = 44
+    Public Const rowBlockedTransactions As Integer = 45
+    Public Const rowLockText As Integer = 46
+    Public Const rowGrade As Integer = 47
+    Public Const rowTdsGroup As Integer = 48
+    Public Const rowTdsCategory As Integer = 49
+    Public Const rowReligion As Integer = 50
+    Public Const rowCaste As Integer = 51
+    Public Const rowReconciliationUpToDate As Integer = 52
+    Public Const rowDivisionScopeOfWork As Integer = 53
+    Public Const rowFairDiscountPer As Integer = 54
+    Public Const rowPrevProcess As Integer = 55
+    Public Const rowProcessScopeOfWork As Integer = 56
+    Public Const rowCombinationOfProcesses As Integer = 57
+    Public Const rowFirstProcessOfCombination As Integer = 58
+    Public Const rowLastProcessOfCombination As Integer = 59
+    Public Const rowTags As Integer = 60
+    Public Const rowIsMSMERegistred As Integer = 61
+    Public Const rowMSMEType As Integer = 62
+    Public Const rowTradeType As Integer = 63
+    Public Const rowUdyamNo As Integer = 64
+    Public Const rowRemarks As Integer = 65
+
+
+
     'Public Const rowContactPerson As Integer = 15
     'Public Const rowSalesTaxNo As Integer = 16
     'Public Const rowHSN As Integer = 17
@@ -151,7 +158,10 @@ Public Class FrmPerson
     Public Const hcFirstProcessOfCombination As String = "First Process Of Combination"
     Public Const hcLastProcessOfCombination As String = "Last Process Of Combination"
     Public Const hcTags As String = "Tags"
-
+    Public Const hcIsMSMERegistred As String = "Is MSME Registred"
+    Public Const hcMSMEType As String = "MSME Type"
+    Public Const hcTradeType As String = "Trade Type"
+    Public Const hcUdyamNo As String = "Udyam No"
 
 
     Friend WithEvents MnuOptions As ContextMenuStrip
@@ -423,18 +433,44 @@ Public Class FrmPerson
                          H.ManualCode As [Code], IfNull(ST.Description,H.SubgroupType) as [Subgroup Type], H.Address, C.CityName As [City Name], 
                          H.Mobile, H.Phone, H.EMail, H.SalesTaxPostingGroup,
                          H.EntryBy As [Entry By], H.EntryDate As [Entry Date], H.EntryType As [Entry Type], 
-                         H.Status, AG.GroupName As [GROUP Name], D.Div_Name As Division,SM.Name As [Site Name],
-                        (SELECT Max(RegistrationNo) FROM SubgroupRegistration WHERE RegistrationType ='Sales Tax No' AND Subcode =H.Subcode) as [Gst No]
+                         H.Status, AG.GroupName As [GROUP Name], D.Div_Name As Division,SM.Name As [Site Name], "
+
+        If ClsMain.FDivisionNameForCustomization(6) = "SADHVI" Then
+            AgL.PubFindQry = AgL.PubFindQry & "
+                         P.Name as Parent,A.Name AS Agent, T.Name AS Transporter, (
+                         SELECT  A.NCatName + ', '
+							FROM 
+							(
+	                        Select Vt.NCat, Max(Vt.Description) As NCatName
+			                From SubgroupBlockedTransactions L 
+			                LEFT JOIN Voucher_Type Vt ON L.NCat = Vt.NCat
+			                Where L.SubCode = H.SubCode
+			                Group By Vt.NCat
+			                ) A
+							FOR XML Path ('')
+                         ) AS BlockedTransactions,"
+        End If
+
+        AgL.PubFindQry = AgL.PubFindQry &
+                        " (SELECT Max(RegistrationNo) FROM SubgroupRegistration WHERE RegistrationType ='Sales Tax No' AND Subcode =H.Subcode) as [Gst No]
                          FROM SubGroup H 
                          LEFT JOIN Division D On D.Div_Code=H.Div_Code  
                          LEFT JOIN SiteMast SM On SM.Code=H.Site_Code 
                          LEFT JOIN AcGroup AG On AG.GroupCode = H.GroupCode 
                          LEFT JOIN City C On C.CityCode = H.CityCode  
                          Left Join SubgroupType ST On H.SubgroupType = ST.SubgroupType
-                        Where 1=1 
-                        "
+                         Left Join viewHelpSubgroup P on H.Parent = P.Code "
+
+        If ClsMain.FDivisionNameForCustomization(6) = "SADHVI" Then
+            AgL.PubFindQry = AgL.PubFindQry & " Left JOIN SubgroupSiteDivisionDetail SSDD On SSDD.SubCode = H.Subcode 
+                         Left Join viewHelpSubgroup A On SSDD.Agent = A.Code 
+                         Left Join viewHelpSubgroup T On SSDD.Transporter = T.Code "
+        End If
+
+        AgL.PubFindQry = AgL.PubFindQry & " Where 1=1 "
+
         If mSubgroupType <> "" Then
-            AgL.PubFindQry += " And   H.SubgroupType = '" & mSubgroupType & "' "
+            AgL.PubFindQry += " And H.SubgroupType = '" & mSubgroupType & "' "
         Else
             AgL.PubFindQry += " And   ST.IsCustomUI=0 "
         End If
@@ -716,6 +752,11 @@ Public Class FrmPerson
                 Dgl1.Item(Col1Value, rowChequeFormat).Tag = AgL.XNull(.Rows(0)("ChequeFormat"))
                 Dgl1.Item(Col1Value, rowChequeFormat).Value = AgL.XNull(.Rows(0)("ChequeFormatName"))
 
+                Dgl1(Col1Value, rowIsMSMERegistred).Value = AgL.XNull(.Rows(0)("IsMSMERegistred"))
+                Dgl1(Col1Value, rowMSMEType).Value = AgL.XNull(.Rows(0)("MSMEType"))
+                Dgl1(Col1Value, rowTradeType).Value = AgL.XNull(.Rows(0)("TradeType"))
+                Dgl1(Col1Value, rowUdyamNo).Value = AgL.XNull(.Rows(0)("UdyamNo"))
+
                 Dgl1(Col1Value, rowTags).Value = AgL.XNull(.Rows(0)("Tags"))
                 Dgl1.Item(Col1Value, rowContactPerson).Value = AgL.XNull(.Rows(0)("ContactPerson"))
                 Dgl1.Item(Col1Value, rowParent).Tag = AgL.XNull(.Rows(0)("Parent"))
@@ -807,6 +848,12 @@ Public Class FrmPerson
         DsTemp = AgL.FillData(mQry, AgL.GCn)
         If DsTemp.Tables(0).Rows.Count > 0 Then
             Dgl1.Item(Col1Value, rowAddition).Value = AgL.XNull(DsTemp.Tables(0).Rows(0)("AdditionPer"))
+        End If
+
+        mQry = "Select AdditionalCommissionPer from PersonAdditionalCommission With (NoLock) Where Person = '" & mSearchCode & "' And ItemCategory Is Null And ItemGroup Is Null And Process Is Null "
+        DsTemp = AgL.FillData(mQry, AgL.GCn)
+        If DsTemp.Tables(0).Rows.Count > 0 Then
+            Dgl1.Item(Col1Value, rowAdditionalCommission).Value = AgL.XNull(DsTemp.Tables(0).Rows(0)("AdditionalCommissionPer"))
         End If
 
         mQry = "Select ExtraDiscountPer from PersonExtraDiscount With (NoLock) Where Person = '" & mSearchCode & "' And ItemCategory Is Null And ItemGroup Is Null And Process Is Null "
@@ -1202,7 +1249,7 @@ Public Class FrmPerson
                 mQry = "INSERT INTO SubGroup(SubCode, Site_Code, Name, DispName, " &
                         " GroupCode, GroupNature, ManualCode, 	Nature,	Address, CityCode,  " &
                         " PIN, Phone,  ContactPerson, SubgroupType, ShowAccountInOtherDivisions, ShowAccountInOtherSites, WeekOffDays, Grade, TdsGroup, TdsCategory, " &
-                        " Religion, Caste, ReconciliationUpToDate, Tags, Remarks, " &
+                        " Religion, Caste, ReconciliationUpToDate, IsMSMERegistred, MSMEType, TradeType, UdyamNo, Tags, Remarks, " &
                         " Mobile, CreditDays, CreditLimit, FairDiscountPer, EMail, Parent, ChequeFormat, Area, InterestSlab, SalesTaxPostingGroup, SalesTaxGroupRegType, HSN, " &
                         " EntryBy, EntryDate,  EntryType, EntryStatus, Div_Code, Status) " &
                         " VALUES(" & AgL.Chk_Text(mSearchCode) & ", " &
@@ -1223,6 +1270,10 @@ Public Class FrmPerson
                         " " & AgL.Chk_Text(Dgl1(Col1Value, rowReligion).Tag) & ", " &
                         " " & AgL.Chk_Text(Dgl1(Col1Value, rowCaste).Tag) & ", " &
                         " " & AgL.Chk_Date(Dgl1(Col1Value, rowReconciliationUpToDate).Value) & ", " &
+                        " " & AgL.Chk_Text(Dgl1(Col1Value, rowIsMSMERegistred).Value) & ", " &
+                        " " & AgL.Chk_Text(Dgl1(Col1Value, rowMSMEType).Value) & ", " &
+                        " " & AgL.Chk_Text(Dgl1(Col1Value, rowTradeType).Value) & ", " &
+                        " " & AgL.Chk_Text(Dgl1(Col1Value, rowUdyamNo).Value) & ", " &
                         " " & AgL.Chk_Text(Dgl1(Col1Value, rowTags).Value) & ", " &
                         " " & AgL.Chk_Text(Dgl1(Col1Value, rowRemarks).Value) & ", " &
                         " " & AgL.Chk_Text(Dgl1(Col1Value, rowMobile).Value) & ", " &
@@ -1277,6 +1328,10 @@ Public Class FrmPerson
                         " Caste = " & AgL.Chk_Text(Dgl1(Col1Value, rowCaste).Tag) & ", " &
                         " ReconciliationUpToDate = " & AgL.Chk_Date(Dgl1(Col1Value, rowReconciliationUpToDate).Value) & ", " &
                         " FairDiscountPer = " & Val(Dgl1(Col1Value, rowFairDiscountPer).Value) & ", " &
+                        " IsMSMERegistred = " & AgL.Chk_Text(Dgl1(Col1Value, rowIsMSMERegistred).Value) & ", " &
+                        " MSMEType = " & AgL.Chk_Text(Dgl1(Col1Value, rowMSMEType).Value) & ", " &
+                        " TradeType = " & AgL.Chk_Text(Dgl1(Col1Value, rowTradeType).Value) & ", " &
+                        " UdyamNo = " & AgL.Chk_Text(Dgl1(Col1Value, rowUdyamNo).Value) & ", " &
                         " Tags = " & AgL.Chk_Text(Dgl1(Col1Value, rowTags).Value) & ", " &
                         " Remarks = " & AgL.Chk_Text(Dgl1(Col1Value, rowRemarks).Value) & ", " &
                         " EntryType = " & AgL.Chk_Text(Topctrl1.Mode) & ", " &
@@ -1339,6 +1394,13 @@ Public Class FrmPerson
             AgL.Dman_ExecuteNonQry(mQry, AgL.GCn, AgL.ECmd)
             If Val(Dgl1.Item(Col1Value, rowAddition).Value) > 0 Then
                 mQry = "Insert Into PersonAddition (Person, AdditionPer) Values (" & AgL.Chk_Text(mSearchCode) & ", " & Val(Dgl1.Item(Col1Value, rowAddition).Value) & ") "
+                AgL.Dman_ExecuteNonQry(mQry, AgL.GCn, AgL.ECmd)
+            End If
+
+            mQry = "Delete from PersonAdditionalCommission Where Person = '" & mSearchCode & "' And ItemGroup Is Null And ItemCategory Is Null And Process Is Null"
+            AgL.Dman_ExecuteNonQry(mQry, AgL.GCn, AgL.ECmd)
+            If Val(Dgl1.Item(Col1Value, rowAdditionalCommission).Value) > 0 Then
+                mQry = "Insert Into PersonAdditionalCommission (Person, AdditionalCommissionPer) Values (" & AgL.Chk_Text(mSearchCode) & ", " & Val(Dgl1.Item(Col1Value, rowAdditionalCommission).Value) & ") "
                 AgL.Dman_ExecuteNonQry(mQry, AgL.GCn, AgL.ECmd)
             End If
 
@@ -1530,7 +1592,7 @@ Public Class FrmPerson
                     mQry = "Update Subgroup set UploadDate=Null where Subcode  In (Select Subcode From Subgroup Where Parent = '" & mSearchCode & "')"
                     AgL.Dman_ExecuteNonQry(mQry, AgL.GCn, AgL.ECmd)
                 Else
-                    If ClsMain.FDivisionNameForCustomization(22) = "W SHYAMA SHYAM FABRICS" Then
+                    If ClsMain.FDivisionNameForCustomization(22) = "W SHYAMA SHYAM FABRICS" Or ClsMain.FDivisionNameForCustomization(27) = "W SHYAMA SHYAM VENTURES LLP" Then
                         mQry = "UPDATE SubgroupSiteDivisionDetail SET Agent =(SELECT sl.Agent FROM Subgroup ss  LEFT JOIN subgroup sp ON ss.Parent = sp.Subcode LEFT JOIN  SubgroupSiteDivisionDetail sL ON sp.Subcode = sl.SubCode AND sl.Site_Code = SubgroupSiteDivisionDetail.Site_Code Where SubgroupSiteDivisionDetail.SubCode = ss.Subcode)
                             WHERE Subcode ='" & mSearchCode & "'"
                         AgL.Dman_ExecuteNonQry(mQry, AgL.GCn, AgL.ECmd)
@@ -1903,7 +1965,7 @@ Public Class FrmPerson
 
 
 
-        Dgl1.Rows.Add(61)
+        Dgl1.Rows.Add(66)
 
         Dgl1.Item(Col1Head, rowSubgroupType).Value = ConfigurableFields.FrmPersonHeaderDgl1.SubgroupType
         Dgl1.Item(Col1Head, rowCode).Value = ConfigurableFields.FrmPersonHeaderDgl1.Code
@@ -1935,6 +1997,7 @@ Public Class FrmPerson
         Dgl1.Item(Col1Head, rowDistance).Value = ConfigurableFields.FrmPersonHeaderDgl1.Distance
         Dgl1.Item(Col1Head, rowDiscount).Value = ConfigurableFields.FrmPersonHeaderDgl1.Discount
         Dgl1.Item(Col1Head, rowAddition).Value = ConfigurableFields.FrmPersonHeaderDgl1.Addition
+        Dgl1.Item(Col1Head, rowAdditionalCommission).Value = ConfigurableFields.FrmPersonHeaderDgl1.AdditionalCommission
         Dgl1.Item(Col1Head, rowExtraDiscount).Value = ConfigurableFields.FrmPersonHeaderDgl1.ExtraDiscount
         Dgl1.Item(Col1Head, rowCreditDays).Value = ConfigurableFields.FrmPersonHeaderDgl1.CreditDays
         Dgl1.Item(Col1Head, rowCreditLimit).Value = ConfigurableFields.FrmPersonHeaderDgl1.CreditLimit
@@ -1965,6 +2028,11 @@ Public Class FrmPerson
         Dgl1.Item(Col1Head, rowFirstProcessOfCombination).Value = hcFirstProcessOfCombination
         Dgl1.Item(Col1Head, rowLastProcessOfCombination).Value = hcLastProcessOfCombination
         Dgl1.Item(Col1Head, rowTags).Value = hcTags
+
+        Dgl1.Item(Col1Head, rowIsMSMERegistred).Value = hcIsMSMERegistred
+        Dgl1.Item(Col1Head, rowMSMEType).Value = hcMSMEType
+        Dgl1.Item(Col1Head, rowTradeType).Value = hcTradeType
+        Dgl1.Item(Col1Head, rowUdyamNo).Value = hcUdyamNo
 
         Dgl1.Item(Col1Head, rowRemarks).Value = ConfigurableFields.FrmPersonHeaderDgl1.Remarks
         Dgl1.Rows(rowAddress).Height = 50
@@ -2243,7 +2311,11 @@ Public Class FrmPerson
 
                 Case rowTransporter
                     If Dgl1.Item(Col1Head, Dgl1.CurrentCell.RowIndex).Tag Is Nothing Then
-                        mQry = "select Code, Name From viewHelpSubgroup Where subgroupType = '" & AgLibrary.ClsMain.agConstants.SubgroupType.Transporter & "' Order By Name"
+                        If AgL.StrCmp(AgL.PubDBName, "Sadhvi") Then
+                            mQry = "select Code, Name From viewHelpSubgroup Where subgroupType = '" & AgLibrary.ClsMain.agConstants.SubgroupType.Transporter & "' AND Site_Code = '" & AgL.PubSiteCode & "' Order By Name"
+                        Else
+                            mQry = "select Code, Name From viewHelpSubgroup Where subgroupType = '" & AgLibrary.ClsMain.agConstants.SubgroupType.Transporter & "' Order By Name"
+                        End If
                         Dgl1.Item(Col1Head, Dgl1.CurrentCell.RowIndex).Tag = AgL.FillData(mQry, AgL.GCn)
                     End If
                     If Dgl1.AgHelpDataSet(Col1Value) Is Nothing Then
@@ -2287,6 +2359,41 @@ Public Class FrmPerson
                 Case rowSalesTaxGroupRegType
                     If Dgl1.Item(Col1Head, Dgl1.CurrentCell.RowIndex).Tag Is Nothing Then
                         mQry = " Select Name As Code, Name  FROM PostingGroupSalesTaxRegType "
+                        Dgl1.Item(Col1Head, Dgl1.CurrentCell.RowIndex).Tag = AgL.FillData(mQry, AgL.GCn)
+                    End If
+                    If Dgl1.AgHelpDataSet(Col1Value) Is Nothing Then
+                        Dgl1.AgHelpDataSet(Col1Value) = Dgl1.Item(Col1Head, Dgl1.CurrentCell.RowIndex).Tag
+                    End If
+
+                Case rowIsMSMERegistred
+                    If Dgl1.Item(Col1Head, Dgl1.CurrentCell.RowIndex).Tag Is Nothing Then
+                        mQry = " SELECT 'True' AS code, 'True' AS Name 
+                                UNION ALL 
+                                SELECT 'False' AS code, 'False' AS Name  "
+                        Dgl1.Item(Col1Head, Dgl1.CurrentCell.RowIndex).Tag = AgL.FillData(mQry, AgL.GCn)
+                    End If
+                    If Dgl1.AgHelpDataSet(Col1Value) Is Nothing Then
+                        Dgl1.AgHelpDataSet(Col1Value) = Dgl1.Item(Col1Head, Dgl1.CurrentCell.RowIndex).Tag
+                    End If
+
+                Case rowMSMEType
+                    If Dgl1.Item(Col1Head, Dgl1.CurrentCell.RowIndex).Tag Is Nothing Then
+                        mQry = " SELECT 'Medium' AS code, 'Medium' AS Name 
+                                UNION ALL 
+                                SELECT 'Small' AS code, 'Small' AS Name 
+                                UNION ALL 
+                                SELECT 'Micro' AS code, 'Micro' AS Name  "
+                        Dgl1.Item(Col1Head, Dgl1.CurrentCell.RowIndex).Tag = AgL.FillData(mQry, AgL.GCn)
+                    End If
+                    If Dgl1.AgHelpDataSet(Col1Value) Is Nothing Then
+                        Dgl1.AgHelpDataSet(Col1Value) = Dgl1.Item(Col1Head, Dgl1.CurrentCell.RowIndex).Tag
+                    End If
+
+                Case rowTradeType
+                    If Dgl1.Item(Col1Head, Dgl1.CurrentCell.RowIndex).Tag Is Nothing Then
+                        mQry = " SELECT 'Manufacturers' AS code, 'Manufacturers' AS Name 
+                                UNION ALL 
+                                SELECT 'Traders' AS code, 'Traders' AS Name  "
                         Dgl1.Item(Col1Head, Dgl1.CurrentCell.RowIndex).Tag = AgL.FillData(mQry, AgL.GCn)
                     End If
                     If Dgl1.AgHelpDataSet(Col1Value) Is Nothing Then
@@ -2461,7 +2568,7 @@ Public Class FrmPerson
             Exit Sub
         End If
 
-        If Dgl1.Item(Col1Value, rowSalesTaxNo).Value <> "" Then
+        If Dgl1.Item(Col1Value, rowSalesTaxNo).Value <> "" And Dgl1.Item(Col1Value, rowCity).Value <> "ALL INDIA" Then
             If GSTINValidator.IsValid(Dgl1.Item(Col1Value, rowSalesTaxNo).Value) = False Then
                 MsgBox("GST No is not valid...!", MsgBoxStyle.Information)
                 Dgl1.CurrentCell = Dgl1(Col1Value, rowSalesTaxNo)
@@ -3981,6 +4088,9 @@ Public Class FrmPerson
         mQry = "Delete from PersonAddition Where Person = '" & SearchCode & "'"
         AgL.Dman_ExecuteNonQry(mQry, Conn, Cmd)
 
+        mQry = "Delete from PersonAdditionalCommission Where Person = '" & SearchCode & "'"
+        AgL.Dman_ExecuteNonQry(mQry, Conn, Cmd)
+
         mQry = "Delete from PersonExtraDiscount Where Person = '" & SearchCode & "'"
         AgL.Dman_ExecuteNonQry(mQry, Conn, Cmd)
     End Sub
@@ -4373,6 +4483,13 @@ Public Class FrmPerson
         FRH_Multiple = Nothing
     End Sub
 
+    Private Sub FrmPerson_CausesValidationChanged(sender As Object, e As EventArgs) Handles Me.CausesValidationChanged
+
+    End Sub
+
+    Private Sub FrmPerson_ControlRemoved(sender As Object, e As ControlEventArgs) Handles Me.ControlRemoved
+
+    End Sub
 
     Public Structure StructPersonExtraDiscount
         Dim ItemCategory As String

@@ -3,35 +3,35 @@ Copies	string	255	1
 CopyPrintingCaption	string	255		
 DocNoCaption	string	255	Invoice No.	
 DocDateCaption	string	255	Invoice Date	
-DocID	string	255	D1    PI 2025       1	
+DocID	string	255	D1    PI 2025     543	
 SiteStateCode	string	255	09	
 SiteStateName	string	255	Uttar Pradesh	
 Sr	number	1	
-V_Date	datetime	04/Jul/2025 00:00:00	
+V_Date	datetime	22/Jul/2025 00:00:00	
 Voucher_Type	string	255	Purchase Invoice	
 NCat	string	255	PI	
-DocNo	string	255	D1-PI-1	
+DocNo	string	255	D1-PI-543	
 AgentName	string	255		
 AgentCaption	string	255	Agent	
 PartyName	string	255	SADHVI ENTERPRISES	
-PartyAddress	string	255		
-PartyPinCode	string	255		
-PartyCityName	string	255		
-PartyStateCode	string	255		
-PartyStateName	string	255		
+PartyAddress	string	255	SHOP NO. 33-35 JHAJHARIYA MARKET GENERAL GANJ KANPUR	
+PartyPinCode	string	255	208001	
+PartyCityName	string	255	KANPUR	
+PartyStateCode	string	255	09	
+PartyStateName	string	255	Uttar Pradesh	
 PartyMobile	string	255		
 ContactPerson	string	255		
-PartySalesTaxNo	string	255		
+PartySalesTaxNo	string	255	09ABNFS4736P1Z7	
 PartyAadharNo	string	255		
-PartyPanNo	string	255		
+PartyPanNo	string	255	ABNFS4736P	
 ShipToPartyName	string	255	SADHVI ENTERPRISES	
-ShipToPartyAddress	string	255		
-ShipToPartyCity	string	255		
-ShipToPartyPincode	string	255		
-ShipToPartyStateCode	string	255		
-ShipToPartyStateName	string	255		
+ShipToPartyAddress	string	255	SHOP NO. 33-35 JHAJHARIYA MARKET GENERAL GANJ KANPUR	
+ShipToPartyCity	string	255	KANPUR	
+ShipToPartyPincode	string	255	208001	
+ShipToPartyStateCode	string	255	09	
+ShipToPartyStateName	string	255	Uttar Pradesh	
 ShipToPartyMobile	string	255		
-ShipToPartySalesTaxNo	string	255		
+ShipToPartySalesTaxNo	string	255	09ABNFS4736P1Z7	
 ShipToPartyAadharNo	string	255		
 ShipToPartyPanNo	string	255		
 TransporterName	string	255		
@@ -43,37 +43,18 @@ Freight	number
 FreightType	string	255		
 RoadPermitNo	string	255		
 RoadPermitDate	datetime		
-ReferenceNo	string	255		
-ItemName	string	255	4564 GS56-S-ENT-2114 D-SAREE 540822	
-ItemGroupName	string	255	S-ENT-2114 D	
-ItemCatName	string	255	SAREE 540822	
-BarcodeName	string	255		
-ItemSpecification	string	255	4564 GS56	
-InvoiceLineSpecification	string	255		
-HSN	string	255	540822	
-D1Spec	string	255		
-D2Spec	string	255		
-D3Spec	string	255		
-D4Spec	string	255		
-SizeSpec	string	255		
-ItemTypeCaption	string	255	Item Type	
-ItemCategoryCaption	string	255	Item Category	
-ItemGroupCaption	string	255	Item Group	
-ItemCaption	string	255	Item	
-BarcodeCaption	string	255		
-D1Caption	string	255	Quality	
-D2Caption	string	255	Colour	
-D3Caption	string	255	Design	
-D4Caption	string	255	Width	
+ReferenceNo	string	255	SI-7414	
+ItemName	string	255	DISNEY PRINT          [SHIV POOJA SAREES(11) | SAREE HALKA PRI..]	
+ItemGroupName	string	255	SHIV POOJA SAREES(11)	
+ItemCatName	string	255	SAREE HALKA PRI..	
+ItemSpecification	string	255	DISNEY PRINT	
+InvoiceLineSpecification	string	255	DISNEY PRINT	
+HSN	string	255	540752	
 SalesTaxGroupItem	string	255	GST 5%	
 GrossTaxRate	number	5	
 Pcs	number	0	
-Qty	number	1	
-DocQty	number	1	
-FreeQty	number	0	
-LossQty	number	0	
-RejQty	number	0	
-Rate	number	7215	
+Qty	number	160	
+Rate	number	350	
 Unit	string	255	Pcs	
 UnitDecimalPlaces	number	0	
 DiscountPer	number	0	
@@ -81,42 +62,32 @@ DiscountAmount	number	0
 AdditionalDiscountPer	number	0	
 AdditionalDiscountAmount	number	0	
 TotalDiscount	number	0	
-AmountBeforeDiscount	number	7215	
-Amount	number	7215	
-Taxable_Amount	number	7215	
+AmountBeforeDiscount	number	56000	
+Amount	number	56000	
+Taxable_Amount	number	56000	
 Tax1_Per	number	0	
 Tax1	number	0	
-Tax2_Per	number	0	
-Tax2	number	0	
-Tax3_Per	number	0	
-Tax3	number	0	
+Tax2_Per	number	2.5	
+Tax2	number	1400	
+Tax3_Per	number	2.5	
+Tax3	number	1400	
 Tax4_Per	number	0	
 Tax4	number	0	
 Tax5_Per	number	0	
 Tax5	number	0	
-Net_Amount	number	7215	
+Net_Amount	number	58800	
 HRemarks	string	255		
 LRemarks	string	255		
-LRemarks5	string	255		
-LRemarks1	string	255		
-LRemarks2	string	255		
-LRemarks3	string	255		
-LRemarks4	string	255		
-GodownName	string	255		
-FromGodownName	string	255		
-ToGodownName	string	255		
-FGodownAddress	string	255		
-TGodownAddress	string	255		
-H_Gross_Amount	number	142754.87	
+H_Gross_Amount	number	56000	
 H_SpecialDiscount_Per	number	0	
 H_SpecialDiscount	number	0	
-H_Taxable_Amount	number	142754.87	
+H_Taxable_Amount	number	56000	
 H_Tax1_Per	number	0	
 H_Tax1	number	0	
 H_Tax2_Per	number	0	
-H_Tax2	number	0	
+H_Tax2	number	1400	
 H_Tax3_Per	number	0	
-H_Tax3	number	0	
+H_Tax3	number	1400	
 H_Tax4_Per	number	0	
 H_Tax4	number	0	
 H_Tax5_Per	number	0	
@@ -125,17 +96,16 @@ H_Deduction_Per	number	0
 H_Deduction	number	0	
 H_Other_Charge_Per	number	0	
 H_Other_Charge	number	0	
-Round_Off	number	0.13	
-H_Net_Amount	number	142755	
+Round_Off	number	0	
+H_Net_Amount	number	58800	
 H_TotalDiscount	number	0	
-H_AmountBeforeDiscount	number	142754.87	
-Default_BankAccountDetail	string	255		
+H_AmountBeforeDiscount	number	56000	
+Default_BankAccountDetail	string	255	Bank Detail : 	ICICI BANK A/C:- 695705601820     IFSC:- ICIC0006957	
 DocumentPrintHeaderPattern	string	255	Center Aligned	
 DimDetail	string	255		
 HsnDescription	string	255		
 PrintedByUser	string	255	SUPER	
 PrintTitle	string	255	Purchase Invoice	
-TermsAndConditions	string	255		
 CompanyLogo	BLOB		
 CompanyAuthorisedSignature	BLOB		
 EInvoiceQrCode	BLOB		

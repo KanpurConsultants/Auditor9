@@ -5,7 +5,8 @@ Imports Microsoft.Reporting.WinForms
 Imports CrystalDecisions.Shared
 Imports System.Linq
 Imports System.Text
-
+Imports System.Net
+Imports Customised.ClsMain
 Public Class FrmWhatsappComposeWithCrystal
     Inherits System.Windows.Forms.Form
     Dim mRepObj As New ReportDocument
@@ -13,7 +14,19 @@ Public Class FrmWhatsappComposeWithCrystal
     Dim mReportTitle As String = "", mReportSubTitle As String = ""
     Dim mAttachmentName As String = ""
     Dim mAttachmentSaveFolderName As String = "EMail"
+    Private RequestUrl As String = FGetSettings(SettingFields.WhatsappRequestUrl, "E Invoice", "", "", "", "", "", "", "")
+    Private Username As String = FGetSettings(SettingFields.WhatsappUsername, "E Invoice", "", "", "", "", "", "", "")
+    Private Password As String = FGetSettings(SettingFields.WhatsappPassword, "E Invoice", "", "", "", "", "", "", "")
+
+    'Dim RequestUrl As String = "http://app.laksmartindia.com/api/v1/message/create"
+    'Dim Username As String = "Satyam Tripathi"
+    'Dim Password As String = "KC@12345"
+
     Dim mSearchCode As String = ""
+    Friend WithEvents BtnTo As Button
+    Public WithEvents LblToEmail As Label
+    Public WithEvents TxtToMobile As AgControls.AgTextBox
+    Dim AgL As AgLibrary.ClsMain
     Public Property SearchCode() As String
         Get
             Return mSearchCode
@@ -41,16 +54,13 @@ Public Class FrmWhatsappComposeWithCrystal
     End Sub
 
     Private WithEvents CrvReport As CrystalDecisions.Windows.Forms.CrystalReportViewer
-    Friend WithEvents BtnTo As Button
     Friend WithEvents GroupBox6 As GroupBox
     Friend WithEvents GroupBox7 As GroupBox
     Friend WithEvents GroupBox5 As GroupBox
     Public WithEvents Label1 As Label
-    Friend WithEvents GroupBox1 As GroupBox
-    Friend WithEvents GroupBox2 As GroupBox
+    Friend WithEvents GroupBox3 As GroupBox
+    Friend WithEvents GroupBox4 As GroupBox
     Public WithEvents TxtMessage As AgControls.AgTextBox
-    Public WithEvents LblMobileNo As Label
-    Public WithEvents TxtMobileNo As AgControls.AgTextBox
     Friend WithEvents BtnSend As Button
     Friend WithEvents GroupBox8 As GroupBox
     Friend WithEvents GroupBox9 As GroupBox
@@ -64,21 +74,21 @@ Public Class FrmWhatsappComposeWithCrystal
     <System.Diagnostics.DebuggerStepThrough()> Private Sub InitializeComponent()
         Dim resources As System.ComponentModel.ComponentResourceManager = New System.ComponentModel.ComponentResourceManager(GetType(FrmWhatsappComposeWithCrystal))
         Me.CrvReport = New CrystalDecisions.Windows.Forms.CrystalReportViewer()
-        Me.BtnTo = New System.Windows.Forms.Button()
         Me.GroupBox6 = New System.Windows.Forms.GroupBox()
         Me.GroupBox7 = New System.Windows.Forms.GroupBox()
         Me.GroupBox5 = New System.Windows.Forms.GroupBox()
         Me.Label1 = New System.Windows.Forms.Label()
-        Me.GroupBox1 = New System.Windows.Forms.GroupBox()
-        Me.GroupBox2 = New System.Windows.Forms.GroupBox()
+        Me.GroupBox3 = New System.Windows.Forms.GroupBox()
+        Me.GroupBox4 = New System.Windows.Forms.GroupBox()
         Me.TxtMessage = New AgControls.AgTextBox()
-        Me.LblMobileNo = New System.Windows.Forms.Label()
-        Me.TxtMobileNo = New AgControls.AgTextBox()
         Me.BtnSend = New System.Windows.Forms.Button()
         Me.GroupBox8 = New System.Windows.Forms.GroupBox()
         Me.GroupBox9 = New System.Windows.Forms.GroupBox()
+        Me.BtnTo = New System.Windows.Forms.Button()
+        Me.LblToEmail = New System.Windows.Forms.Label()
+        Me.TxtToMobile = New AgControls.AgTextBox()
         Me.GroupBox6.SuspendLayout()
-        Me.GroupBox1.SuspendLayout()
+        Me.GroupBox3.SuspendLayout()
         Me.GroupBox8.SuspendLayout()
         Me.SuspendLayout()
         '
@@ -95,24 +105,10 @@ Public Class FrmWhatsappComposeWithCrystal
         Me.CrvReport.TabIndex = 0
         Me.CrvReport.ViewTimeSelectionFormula = ""
         '
-        'BtnTo
-        '
-        Me.BtnTo.BackColor = System.Drawing.Color.Transparent
-        Me.BtnTo.FlatStyle = System.Windows.Forms.FlatStyle.Flat
-        Me.BtnTo.Font = New System.Drawing.Font("Verdana", 9.0!, System.Drawing.FontStyle.Bold)
-        Me.BtnTo.ForeColor = System.Drawing.Color.White
-        Me.BtnTo.Image = CType(resources.GetObject("BtnTo.Image"), System.Drawing.Image)
-        Me.BtnTo.ImeMode = System.Windows.Forms.ImeMode.NoControl
-        Me.BtnTo.Location = New System.Drawing.Point(386, 26)
-        Me.BtnTo.Name = "BtnTo"
-        Me.BtnTo.Size = New System.Drawing.Size(31, 28)
-        Me.BtnTo.TabIndex = 918
-        Me.BtnTo.UseVisualStyleBackColor = False
-        '
         'GroupBox6
         '
         Me.GroupBox6.Controls.Add(Me.GroupBox7)
-        Me.GroupBox6.Location = New System.Drawing.Point(2, 108)
+        Me.GroupBox6.Location = New System.Drawing.Point(2, 124)
         Me.GroupBox6.Name = "GroupBox6"
         Me.GroupBox6.Size = New System.Drawing.Size(421, 2)
         Me.GroupBox6.TabIndex = 915
@@ -139,28 +135,28 @@ Public Class FrmWhatsappComposeWithCrystal
         Me.Label1.AutoSize = True
         Me.Label1.Font = New System.Drawing.Font("Verdana", 9.75!, System.Drawing.FontStyle.Bold)
         Me.Label1.ImeMode = System.Windows.Forms.ImeMode.NoControl
-        Me.Label1.Location = New System.Drawing.Point(6, 81)
+        Me.Label1.Location = New System.Drawing.Point(6, 99)
         Me.Label1.Name = "Label1"
         Me.Label1.Size = New System.Drawing.Size(72, 16)
         Me.Label1.TabIndex = 913
         Me.Label1.Text = "Message"
         '
-        'GroupBox1
+        'GroupBox3
         '
-        Me.GroupBox1.Controls.Add(Me.GroupBox2)
-        Me.GroupBox1.Location = New System.Drawing.Point(0, 54)
-        Me.GroupBox1.Name = "GroupBox1"
-        Me.GroupBox1.Size = New System.Drawing.Size(421, 2)
-        Me.GroupBox1.TabIndex = 911
-        Me.GroupBox1.TabStop = False
+        Me.GroupBox3.Controls.Add(Me.GroupBox4)
+        Me.GroupBox3.Location = New System.Drawing.Point(0, 66)
+        Me.GroupBox3.Name = "GroupBox3"
+        Me.GroupBox3.Size = New System.Drawing.Size(421, 2)
+        Me.GroupBox3.TabIndex = 912
+        Me.GroupBox3.TabStop = False
         '
-        'GroupBox2
+        'GroupBox4
         '
-        Me.GroupBox2.Location = New System.Drawing.Point(0, 39)
-        Me.GroupBox2.Name = "GroupBox2"
-        Me.GroupBox2.Size = New System.Drawing.Size(415, 10)
-        Me.GroupBox2.TabIndex = 885
-        Me.GroupBox2.TabStop = False
+        Me.GroupBox4.Location = New System.Drawing.Point(0, 39)
+        Me.GroupBox4.Name = "GroupBox4"
+        Me.GroupBox4.Size = New System.Drawing.Size(415, 10)
+        Me.GroupBox4.TabIndex = 885
+        Me.GroupBox4.TabStop = False
         '
         'TxtMessage
         '
@@ -181,47 +177,12 @@ Public Class FrmWhatsappComposeWithCrystal
         Me.TxtMessage.BackColor = System.Drawing.Color.White
         Me.TxtMessage.BorderStyle = System.Windows.Forms.BorderStyle.None
         Me.TxtMessage.Font = New System.Drawing.Font("Verdana", 11.25!)
-        Me.TxtMessage.Location = New System.Drawing.Point(6, 127)
+        Me.TxtMessage.Location = New System.Drawing.Point(6, 143)
         Me.TxtMessage.MaxLength = 0
         Me.TxtMessage.Multiline = True
         Me.TxtMessage.Name = "TxtMessage"
-        Me.TxtMessage.Size = New System.Drawing.Size(415, 434)
+        Me.TxtMessage.Size = New System.Drawing.Size(415, 418)
         Me.TxtMessage.TabIndex = 908
-        '
-        'LblMobileNo
-        '
-        Me.LblMobileNo.AutoSize = True
-        Me.LblMobileNo.Font = New System.Drawing.Font("Verdana", 9.75!, System.Drawing.FontStyle.Bold)
-        Me.LblMobileNo.ImeMode = System.Windows.Forms.ImeMode.NoControl
-        Me.LblMobileNo.Location = New System.Drawing.Point(6, 33)
-        Me.LblMobileNo.Name = "LblMobileNo"
-        Me.LblMobileNo.Size = New System.Drawing.Size(78, 16)
-        Me.LblMobileNo.TabIndex = 909
-        Me.LblMobileNo.Text = "Mobile No"
-        '
-        'TxtMobileNo
-        '
-        Me.TxtMobileNo.AgAllowUserToEnableMasterHelp = False
-        Me.TxtMobileNo.AgLastValueTag = Nothing
-        Me.TxtMobileNo.AgLastValueText = Nothing
-        Me.TxtMobileNo.AgMandatory = False
-        Me.TxtMobileNo.AgMasterHelp = False
-        Me.TxtMobileNo.AgNumberLeftPlaces = 0
-        Me.TxtMobileNo.AgNumberNegetiveAllow = False
-        Me.TxtMobileNo.AgNumberRightPlaces = 0
-        Me.TxtMobileNo.AgPickFromLastValue = False
-        Me.TxtMobileNo.AgRowFilter = ""
-        Me.TxtMobileNo.AgSearchMethod = AgControls.AgLib.TxtSearchMethod.Simple
-        Me.TxtMobileNo.AgSelectedValue = Nothing
-        Me.TxtMobileNo.AgTxtCase = AgControls.AgTextBox.TxtCase.None
-        Me.TxtMobileNo.AgValueType = AgControls.AgTextBox.TxtValueType.Text_Value
-        Me.TxtMobileNo.BorderStyle = System.Windows.Forms.BorderStyle.None
-        Me.TxtMobileNo.Font = New System.Drawing.Font("Verdana", 11.25!)
-        Me.TxtMobileNo.Location = New System.Drawing.Point(75, 32)
-        Me.TxtMobileNo.MaxLength = 0
-        Me.TxtMobileNo.Name = "TxtMobileNo"
-        Me.TxtMobileNo.Size = New System.Drawing.Size(309, 19)
-        Me.TxtMobileNo.TabIndex = 905
         '
         'BtnSend
         '
@@ -254,30 +215,82 @@ Public Class FrmWhatsappComposeWithCrystal
         Me.GroupBox9.TabIndex = 885
         Me.GroupBox9.TabStop = False
         '
-        'FrmWhatsappComposeWithCrystal
+        'BtnTo
+        '
+        Me.BtnTo.Anchor = CType((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
+        Me.BtnTo.BackColor = System.Drawing.Color.Transparent
+        Me.BtnTo.FlatStyle = System.Windows.Forms.FlatStyle.Flat
+        Me.BtnTo.Font = New System.Drawing.Font("Verdana", 9.0!, System.Drawing.FontStyle.Bold)
+        Me.BtnTo.ForeColor = System.Drawing.Color.White
+        Me.BtnTo.Image = CType(resources.GetObject("BtnTo.Image"), System.Drawing.Image)
+        Me.BtnTo.ImeMode = System.Windows.Forms.ImeMode.NoControl
+        Me.BtnTo.Location = New System.Drawing.Point(393, 32)
+        Me.BtnTo.Name = "BtnTo"
+        Me.BtnTo.Size = New System.Drawing.Size(31, 28)
+        Me.BtnTo.TabIndex = 925
+        Me.BtnTo.UseVisualStyleBackColor = False
+        '
+        'LblToEmail
+        '
+        Me.LblToEmail.AutoSize = True
+        Me.LblToEmail.Font = New System.Drawing.Font("Verdana", 9.75!, System.Drawing.FontStyle.Bold)
+        Me.LblToEmail.ImeMode = System.Windows.Forms.ImeMode.NoControl
+        Me.LblToEmail.Location = New System.Drawing.Point(13, 39)
+        Me.LblToEmail.Name = "LblToEmail"
+        Me.LblToEmail.Size = New System.Drawing.Size(78, 16)
+        Me.LblToEmail.TabIndex = 924
+        Me.LblToEmail.Text = "Mobile No"
+        '
+        'TxtToMobile
+        '
+        Me.TxtToMobile.AgAllowUserToEnableMasterHelp = False
+        Me.TxtToMobile.AgLastValueTag = Nothing
+        Me.TxtToMobile.AgLastValueText = Nothing
+        Me.TxtToMobile.AgMandatory = False
+        Me.TxtToMobile.AgMasterHelp = False
+        Me.TxtToMobile.AgNumberLeftPlaces = 0
+        Me.TxtToMobile.AgNumberNegetiveAllow = False
+        Me.TxtToMobile.AgNumberRightPlaces = 0
+        Me.TxtToMobile.AgPickFromLastValue = False
+        Me.TxtToMobile.AgRowFilter = ""
+        Me.TxtToMobile.AgSearchMethod = AgControls.AgLib.TxtSearchMethod.Simple
+        Me.TxtToMobile.AgSelectedValue = Nothing
+        Me.TxtToMobile.AgTxtCase = AgControls.AgTextBox.TxtCase.None
+        Me.TxtToMobile.AgValueType = AgControls.AgTextBox.TxtValueType.Text_Value
+        Me.TxtToMobile.Anchor = CType(((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Left) _
+            Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
+        Me.TxtToMobile.BorderStyle = System.Windows.Forms.BorderStyle.None
+        Me.TxtToMobile.Font = New System.Drawing.Font("Verdana", 11.25!)
+        Me.TxtToMobile.Location = New System.Drawing.Point(114, 38)
+        Me.TxtToMobile.MaxLength = 0
+        Me.TxtToMobile.Name = "TxtToMobile"
+        Me.TxtToMobile.Size = New System.Drawing.Size(273, 19)
+        Me.TxtToMobile.TabIndex = 923
+        '
+        'FrmWhatsapp
         '
         Me.AutoScaleBaseSize = New System.Drawing.Size(5, 13)
         Me.BackColor = System.Drawing.Color.White
         Me.ClientSize = New System.Drawing.Size(970, 611)
+        Me.Controls.Add(Me.BtnTo)
+        Me.Controls.Add(Me.LblToEmail)
+        Me.Controls.Add(Me.TxtToMobile)
         Me.Controls.Add(Me.GroupBox8)
         Me.Controls.Add(Me.BtnSend)
-        Me.Controls.Add(Me.BtnTo)
         Me.Controls.Add(Me.GroupBox6)
         Me.Controls.Add(Me.GroupBox5)
         Me.Controls.Add(Me.Label1)
-        Me.Controls.Add(Me.GroupBox1)
+        Me.Controls.Add(Me.GroupBox3)
         Me.Controls.Add(Me.TxtMessage)
-        Me.Controls.Add(Me.LblMobileNo)
-        Me.Controls.Add(Me.TxtMobileNo)
         Me.Controls.Add(Me.CrvReport)
         Me.FormBorderStyle = System.Windows.Forms.FormBorderStyle.Fixed3D
         Me.KeyPreview = True
         Me.MaximizeBox = False
-        Me.Name = "FrmWhatsappComposeWithCrystal"
-        Me.Text = "EMail"
+        Me.Name = "FrmWhatsapp"
+        Me.Text = "Whatsapp"
         Me.TopMost = True
         Me.GroupBox6.ResumeLayout(False)
-        Me.GroupBox1.ResumeLayout(False)
+        Me.GroupBox3.ResumeLayout(False)
         Me.GroupBox8.ResumeLayout(False)
         Me.ResumeLayout(False)
         Me.PerformLayout()
@@ -291,6 +304,12 @@ Public Class FrmWhatsappComposeWithCrystal
             mRepObj = Value
         End Set
     End Property
+    Public Sub New(ByVal AgLibVar As AgLibrary.ClsMain)
+        ' This call is required by the designer.
+        InitializeComponent()
+        ' Add any initialization after the InitializeComponent() call.
+        AgL = AgLibVar
+    End Sub
     Public Property AttachmentName() As String
         Get
             AttachmentName = mAttachmentName
@@ -456,7 +475,7 @@ Public Class FrmWhatsappComposeWithCrystal
             mRepObj.PrintToPrinter(PrintDialog1.PrinterSettings.Copies, PrintDialog1.PrinterSettings.Collate, PrintDialog1.PrinterSettings.FromPage, PrintDialog1.PrinterSettings.ToPage)
         End If
     End Sub
-    Private Sub FrmMailComposeWithCrystal_Load(sender As Object, e As EventArgs) Handles Me.Load
+    Private Sub FrmWhatsapp_Load(sender As Object, e As EventArgs) Handles Me.Load
         Me.Location = New System.Drawing.Point(0, 0)
         CrvReport.EnableDrillDown = False
         CrvReport.Zoom(1)
@@ -466,203 +485,242 @@ Public Class FrmWhatsappComposeWithCrystal
             Me.Close()
         End If
     End Sub
-    Public Function FSendEMail() As Boolean
-        Dim DtTemp As DataTable = Nothing
-        Dim MLDFrom As System.Net.Mail.MailAddress
-        Dim MLMMain As System.Net.Mail.MailMessage
-        Dim SMTPMain As System.Net.Mail.SmtpClient
-        Dim I As Integer
-        Dim bBlnEnableSsl As Boolean = False
-        Dim mQry$ = ""
-        'Dim SmtpHost As String = "smtp.gmail.com"
-        'Dim SmtpPort As String = "587"
-        'Dim FromEmail As String = "equal2.noreply@gmail.com"
-        'Dim FromEmailPassword As String = "P@ssw0rd!"
-        Dim SmtpHost As String = ""
-        Dim SmtpPort As String = ""
-        Dim FromEmail As String = ""
-        Dim FromEmailPassword As String = ""
-        Dim FileName As String = ""
-        Dim ToEMailArr As String() = Nothing
-        Dim CcEMailArr As String() = Nothing
+    Private Sub BtnSend_Click(sender As Object, e As EventArgs) Handles BtnSend.Click
+        MsgBox(FSendWhatsapp(), MsgBoxStyle.Information)
+    End Sub
 
-
-        mQry = "Select * From MailSender Where Div_Code = '" & AgL.PubDivCode & "' And Site_Code = '" & AgL.PubSiteCode & "'"
-        DtTemp = AgL.FillData(mQry, AgL.GCn).Tables(0)
-        If DtTemp.Rows.Count = 0 Then
-            mQry = "Select * From MailSender Where Div_Code = '" & AgL.PubDivCode & "' "
-            DtTemp = AgL.FillData(mQry, AgL.GCn).Tables(0)
-            If DtTemp.Rows.Count = 0 Then
-                mQry = "Select * From MailSender Where Site_Code = '" & AgL.PubSiteCode & "' "
-                DtTemp = AgL.FillData(mQry, AgL.GCn).Tables(0)
-                If DtTemp.Rows.Count = 0 Then
-                    mQry = "Select * From MailSender "
-                    DtTemp = AgL.FillData(mQry, AgL.GCn).Tables(0)
+    Private Sub BtnTo_Click(sender As Object, e As EventArgs) Handles BtnTo.Click
+        Select Case sender.Name
+            Case BtnTo.Name
+                If TxtToMobile.Text <> "" Then
+                    TxtToMobile.Text = TxtToMobile.Text + "," + FHPGD_PhoneContacts()
+                Else
+                    TxtToMobile.Text = FHPGD_PhoneContacts()
                 End If
-            End If
-        End If
-
-        If DtTemp.Rows.Count = 0 Then
-            MsgBox("Please define mail settings...!", MsgBoxStyle.Information)
-            Exit Function
-        End If
-
-        If DtTemp.Rows.Count > 0 Then
-            SmtpHost = AgL.XNull(DtTemp.Rows(0)("SmtpHost"))
-            SmtpPort = AgL.XNull(DtTemp.Rows(0)("SmtpPort"))
-            FromEmail = AgL.XNull(DtTemp.Rows(0)("FromEmailAddress"))
-            FromEmailPassword = AgL.XNull(DtTemp.Rows(0)("FromEmailPassword"))
-        End If
-
-        If SmtpHost = "" Then MsgBox("Smtp Host is not defined in settings.") : Exit Function
-        If SmtpPort = "" Then MsgBox("Smtp Port is not defined in settings.") : Exit Function
-        If FromEmail = "" Then MsgBox("From Email is not defined in settings.") : Exit Function
-        If FromEmailPassword = "" Then MsgBox("From Email Password is not defined in settings.") : Exit Function
-
-        FileName = mAttachmentName + ".pdf"
-
-        ToEMailArr = TxtMobileNo.Text.Split(",")
-        'CcEMailArr = TxtCcEMail.Text.Split(",")
-
-        Try
-            SmtpHost = AgL.XNull(SmtpHost)
-            SmtpPort = AgL.XNull(SmtpPort)
-
-            MLDFrom = New System.Net.Mail.MailAddress(FromEmail)
-            MLMMain = New System.Net.Mail.MailMessage()
-            MLMMain.From = MLDFrom
-            SMTPMain = New System.Net.Mail.SmtpClient(SmtpHost, SmtpPort)
-            MLMMain.Body = TxtMessage.Text
-            'MLMMain.Subject = TxtSubject.Text
-
-            For I = 0 To ToEMailArr.Length - 1
-                If ToEMailArr(I) <> "" Then
-                    MLMMain.To.Add(ToEMailArr(I))
-                End If
-            Next
-
-            For I = 0 To CcEMailArr.Length - 1
-                If CcEMailArr(I) <> "" Then
-                    MLMMain.CC.Add(CcEMailArr(I))
-                End If
-            Next
-
-            'Dim inputStream As MemoryStream = CType((CType(CrvReport.ReportSource, ReportDocument).ExportToStream(ExportFormatType.PortableDocFormat)), MemoryStream)
-            'Dim PdfContent() As Byte = inputStream.ToArray
-
-
-            'Dim MS As MemoryStream = New System.IO.MemoryStream(PdfContent)
-            Dim MS As MemoryStream = CType((CType(CrvReport.ReportSource, ReportDocument).ExportToStream(ExportFormatType.PortableDocFormat)), MemoryStream)
-
-            MLMMain.Attachments.Add(New System.Net.Mail.Attachment(MS, FileName))
-
-
-            'If BtnAttachments.Tag IsNot Nothing Then
-            '    Dim AttachmentPath As String = PubAttachmentPath + mAttachmentSaveFolderName + "\"
-            '    If Directory.Exists(AttachmentPath) Then
-            '        Dim di As New IO.DirectoryInfo(AttachmentPath)
-            '        Dim diar1 As IO.FileInfo() = di.GetFiles().ToArray
-            '        Dim dra As IO.FileInfo
-            '        For Each dra In diar1
-            '            MLMMain.Attachments.Add(New System.Net.Mail.Attachment(dra.FullName))
-            '        Next
-            '    End If
-            'End If
-
-
-
-
-            SMTPMain.Credentials = New Net.NetworkCredential(FromEmail, FromEmailPassword)
-            SMTPMain.EnableSsl = True
-            SMTPMain.Send(MLMMain)
-
-            MLMMain.Dispose()
-            FSendEMail = True
-
-
-        Catch ex As Exception
-            MsgBox(ex.Message)
-        End Try
-    End Function
-    Private Function FHPGD_EmailContacts() As String
+        End Select
+    End Sub
+    Private Function FHPGD_PhoneContacts() As String
         Dim FRH_Multiple As DMHelpGrid.FrmHelpGrid_Multi
         Dim StrRtn As String = ""
         Dim mLineCond As String = ""
         Dim DtTemp As DataTable
         Dim mQry As String = ""
 
-        mQry = " Select 'o' As Tick, SubCode As SearchKey, Name, Email From SubGroup Where EMail Is Not Null "
+        mQry = " Select 'o' As Tick, Sg.SubCode As SearchKey, Sg.Name, C.CityName, Ag.GroupName, IfNull(Sg.Mobile,Sg.Phone) 
+                From SubGroup Sg
+                Left Join City C On Sg.CityCode = C.CityCode
+                Left Join AcGroup AG On Sg.GroupCode = Ag.GroupCode
+                Where IfNull(Sg.Mobile,Sg.Phone) Is Not Null And IfNull(Sg.Mobile,Sg.Phone) <> '' 
+                Order By Sg.Name, C.CityName"
         DtTemp = AgL.FillData(mQry, AgL.GCn).Tables(0)
         If DtTemp.Rows.Count = 0 Then
             Exit Function
         End If
 
-        FRH_Multiple = New DMHelpGrid.FrmHelpGrid_Multi(New DataView(DtTemp), "", 400, 720, , , False)
+        FRH_Multiple = New DMHelpGrid.FrmHelpGrid_Multi(New DataView(DtTemp), "", 400, 800, , , False)
         FRH_Multiple.FFormatColumn(0, "Tick", 40, DataGridViewContentAlignment.MiddleCenter, True)
         FRH_Multiple.FFormatColumn(1, , 0, , False)
-        FRH_Multiple.FFormatColumn(2, "Name", 300, DataGridViewContentAlignment.MiddleLeft)
-        FRH_Multiple.FFormatColumn(3, "EMail", 300, DataGridViewContentAlignment.MiddleLeft)
+        FRH_Multiple.FFormatColumn(2, "Name", 280, DataGridViewContentAlignment.MiddleLeft)
+        FRH_Multiple.FFormatColumn(3, "City", 130, DataGridViewContentAlignment.MiddleLeft)
+        FRH_Multiple.FFormatColumn(4, "Ac Group", 130, DataGridViewContentAlignment.MiddleLeft)
+        FRH_Multiple.FFormatColumn(5, "Mobile", 130, DataGridViewContentAlignment.MiddleLeft)
 
         FRH_Multiple.StartPosition = FormStartPosition.CenterScreen
         FRH_Multiple.ShowDialog()
 
         If FRH_Multiple.BytBtnValue = 0 Then
-            StrRtn = FRH_Multiple.FFetchData(3, "", "", ",", True)
+            StrRtn = FRH_Multiple.FFetchData(5, "", "", ",", True)
         End If
-        FHPGD_EmailContacts = StrRtn
+        FHPGD_PhoneContacts = StrRtn
 
         FRH_Multiple = Nothing
     End Function
-    Private Sub BtnSend_Click(sender As Object, e As EventArgs) Handles BtnSend.Click
-        If FSendEMail() = True Then
-            MsgBox("Mail Send Sucessfully...!", MsgBoxStyle.Information)
+    Public Function FSendWhatsapp()
+        Dim mQry As String = ""
+        Dim DtTemp As DataTable = Nothing
+        If TxtToMobile.Text.ToString.Replace(",", "") = "" Then
+            FSendWhatsapp = "Invalid Mobile No"
+            Exit Function
         End If
-    End Sub
-    Private Sub BtnTo_Click(sender As Object, e As EventArgs) Handles BtnTo.Click
-        Select Case sender.Name
-            Case BtnTo.Name
-                TxtMobileNo.Text = TxtMobileNo.Text + "," + FHPGD_EmailContacts()
-                'Case BtnCc.Name
-                '    TxtCcEMail.Text = TxtCcEMail.Text + "," + FHPGD_EmailContacts()
-        End Select
-    End Sub
-    Public Function StreamToByteArray(inputStream As Stream) As Byte()
-
-        'Using memoryStream = New MemoryStream()
-        '    Dim count As Integer
-        '    While ((count = inputStream.Read(bytes, 0, bytes.Length)) > 0)
-        '        memoryStream.Write(bytes, 0, count)
-        '    End While
-        '    Return memoryStream.ToArray()
-        'End Using
-
-
-        Dim bytes = New Byte(inputStream.Length) {}
-        Using memoryStream = New MemoryStream()
-            For I As Integer = 0 To inputStream.Length - 1
-                memoryStream.Write(bytes, 0, I)
-            Next
-            Return memoryStream.ToArray()
-        End Using
+        Try
+            Dim MobileNoList As String = TxtToMobile.Text
+            Dim FileName As String = ""
+            FileName = mAttachmentName + ".pdf"
+            Dim Message As String = TxtMessage.Text.Replace(vbCrLf, "\n").Replace(vbLf, "\n")
+            FSendWhatsapp = SendPDFByWhatsapp(MobileNoList, Message, FileName)
+        Catch ex As Exception
+            MsgBox(ex.Message)
+        End Try
     End Function
-    'Private Sub BtnAttachments_Click(sender As Object, e As EventArgs)
-    '    Dim FrmObj As New FrmAttachmentViewer()
-    '    FrmObj.LblDocNo.Text = mReportSubTitle
-    '    If mAttachmentSaveFolderName = "EMail" Then mAttachmentSaveFolderName = mAttachmentSaveFolderName + "\" + SearchCode
-    '    FrmObj.SearchCode = mAttachmentSaveFolderName
-    '    FrmObj.TableName = "SubGroupAttachments"
-    '    FrmObj.StartPosition = FormStartPosition.CenterParent
-    '    FrmObj.ShowDialog()
 
-    '    BtnAttachments.Tag = FrmObj
+    Public Function SendPDFByWhatsapp(receiverMobileNo As String, message As String, FileName As String) As String
+        'Dim url As String = "http://app.laksmartindia.com/api/v1/message/create"
+        'Dim username As String = "Satyam Tripathi"
+        'Dim password As String = "KC@12345"
 
-    '    Dim AttachmentPath As String = PubAttachmentPath + mAttachmentSaveFolderName + "\" + mSearchCode + "\"
-    '    If Directory.Exists(AttachmentPath) Then
-    '        Dim FileCount As Integer = Directory.GetFiles(AttachmentPath).Count
-    '        If FileCount > 0 Then BtnAttachments.Text = FileCount.ToString + IIf(FileCount = 1, " Attachment", " Attachments") Else BtnAttachments.Text = "Attachments"
-    '    Else
-    '        BtnAttachments.Text = "Attachments"
-    '    End If
-    'End Sub
+
+        ' 1. Combine username and password
+        Dim authString As String = Username & ":" & Password
+
+        ' 2. Convert to base64
+        Dim authBytes As Byte() = Encoding.UTF8.GetBytes(authString)
+        Dim authBase64 As String = Convert.ToBase64String(authBytes)
+
+        Dim MS As MemoryStream = CType((CType(CrvReport.ReportSource, ReportDocument).ExportToStream(ExportFormatType.PortableDocFormat)), MemoryStream)
+        Dim base64Body As String = Convert.ToBase64String(MS.ToArray())
+
+        Dim json As String = "{
+  ""receiverMobileNo"": ""+91" & receiverMobileNo & """,
+  ""message"": [
+    """ & message & """
+  ],
+  ""base64File"": [
+    {
+      ""name"": """ & FileName & """,
+      ""body"": """ & base64Body & """
+    }
+  ]
+}"
+
+        Try
+            Dim request As HttpWebRequest = CType(System.Net.WebRequest.Create(RequestUrl), HttpWebRequest)
+            request.Method = "POST"
+            request.ContentType = "application/json"
+            request.Headers.Add("Authorization", "Basic " & authBase64)
+            request.Accept = "application/json"
+
+            ' Convert JSON to byte array
+            Dim bytes As Byte() = Encoding.UTF8.GetBytes(json)
+            request.ContentLength = bytes.Length
+
+            ' Write request body
+            Using stream As Stream = request.GetRequestStream()
+                stream.Write(bytes, 0, bytes.Length)
+            End Using
+
+            ' Get the response
+            Dim response As HttpWebResponse = CType(request.GetResponse(), HttpWebResponse)
+            Using reader As New StreamReader(response.GetResponseStream())
+                Dim responseText As String = reader.ReadToEnd()
+                Console.WriteLine("Response: " & responseText)
+            End Using
+            Return ("Whatsapp Send Sucessfully !")
+        Catch ex As WebException
+            Console.WriteLine("Error: " & ex.Message)
+            Return ("Server says: " & ex.Message)
+            ' Optional: print server error response if any
+            If ex.Response IsNot Nothing Then
+                Using reader As New StreamReader(ex.Response.GetResponseStream())
+                    Dim errorText As String = reader.ReadToEnd()
+                    Console.WriteLine("Server says: " & errorText)
+                    Return ("Server says: " & errorText)
+                End Using
+            End If
+        End Try
+    End Function
+
+    Sub UploadFileToFtp(server As String, username As String, password As String, filePath As String, remoteFileName As String)
+        Try
+            ' Create an FTP request
+            'Dim FUri As Uri = New Uri(server & remoteFileName)
+
+            Dim request As System.Net.FtpWebRequest = DirectCast(System.Net.WebRequest.Create("ftp://216.48.180.109/public_html/sadhvi/" & mAttachmentName + ".pdf"), System.Net.WebRequest)
+
+            'Dim request As FtpWebRequest = CType(WebRequest.Create(FUri), FtpWebRequest)
+            'Dim request As FtpWebRequest = WebRequest.Create(server & "" & remoteFileName)
+            'Dim request As FtpWebRequest = (FtpWebRequest)FtpWebRequest.Create(New Uri("ftp://" + ftpServerIP + "/outbox/" + objFile.Name));
+
+            request.Method = WebRequestMethods.Ftp.UploadFile
+
+            ' Set FTP credentials
+            request.Credentials = New NetworkCredential(username, password)
+
+            ' Enable binary transfer mode for file upload
+            request.UseBinary = True
+            request.UsePassive = True
+            request.KeepAlive = False
+
+            ' Read the file into a byte array
+            Dim fileContents As Byte() = File.ReadAllBytes(filePath)
+
+            ' Get the request stream and upload the file
+            Using requestStream As Stream = request.GetRequestStream()
+                requestStream.Write(fileContents, 0, fileContents.Length)
+            End Using
+
+            ' Get the response from the FTP server
+            Using response As FtpWebResponse = CType(request.GetResponse(), FtpWebResponse)
+                Console.WriteLine("Upload File Complete, status: " & response.StatusDescription)
+            End Using
+        Catch ex As Exception
+            Console.WriteLine("Error: " & ex.Message)
+        End Try
+    End Sub
+    'Function UploadFileToFTPServer() As String
+    '    ' FTP Server Information
+    '    Dim ftpServer As String = "ftp://216.48.180.109"
+    '    Dim ftpUsername As String = "equal2464"
+    '    Dim ftpPassword As String = "tActL$*$P*67"
+    '    Dim filePath As String = "d:/Sadhvi/13414.pdf"
+    '    Dim remotePath As String = "/public_html/sadhvi/13414.pdf"
+
+    '    Try
+    '        ' Combine FTP server address and remote path
+    '        Dim ftpUri As String = ftpServer & remotePath
+    '        ' Create FTP Request
+    '        Dim request As FtpWebRequest = CType(WebRequest.Create(ftpUri), FtpWebRequest)
+    '        request.Method = WebRequestMethods.Ftp.UploadFile
+    '        request.Credentials = New NetworkCredential(ftpUsername, ftpPassword)
+    '        request.UseBinary = True
+    '        request.KeepAlive = False
+
+    '        ' Read the file to upload
+    '        Dim fileContents As Byte() = File.ReadAllBytes(filePath)
+    '        request.ContentLength = fileContents.Length
+
+    '        ' Upload file to server
+    '        Using requestStream As Stream = request.GetRequestStream()
+    '            requestStream.Write(fileContents, 0, fileContents.Length)
+    '        End Using
+
+    '        ' Get response from server
+    '        Using response As FtpWebResponse = CType(request.GetResponse(), FtpWebResponse)
+    '            Console.WriteLine("Upload status: " & response.StatusDescription)
+    '        End Using
+
+    '    Catch ex As Exception
+    '        Console.WriteLine("Error: " & ex.Message)
+    '    End Try
+    'End Function
+    Function UploadFile() As String
+        'Dim filePath As String, serverUrl As String
+        'filePath = "d:\delivery_challan - Copy.pdf"
+        'serverUrl = "ftp://216.48.180.109//sadhvi//"
+        'Dim username As String = "equal2464"
+        'Dim password As String = "tActL$*$P*67"
+        'Try
+        '    ' Ensure the file exists
+        '    If Not File.Exists(filePath) Then
+        '        Throw New FileNotFoundException("The file does not exist.")
+        '    End If
+
+        '    ' Create a WebClient instance
+        '    Using client As New WebClient()
+        '        ' Add a header if needed (e.g., for authentication)
+        '        ' client.Headers.Add("Authorization", "Bearer your_token")
+        '        client.Credentials = New NetworkCredential(UserName, password)
+
+        '        ' Upload the file
+        '        Dim responseBytes As Byte() = client.UploadFile(serverUrl, filePath)
+
+        '        ' Convert the response to a string and return it
+        '        Return System.Text.Encoding.UTF8.GetString(responseBytes)
+        '    End Using
+
+        'Catch ex As Exception
+        '    ' Handle errors
+        '    Return "Error: " & ex.Message
+        'End Try
+    End Function
 
 End Class

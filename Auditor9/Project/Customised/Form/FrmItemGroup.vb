@@ -46,10 +46,11 @@ Public Class FrmItemGroup
     Dim rowBarcodePattern As Integer = 15
     Dim rowDefaultSupplier As Integer = 16
     Dim rowDepartment As Integer = 17
-    Dim rowSite As Integer = 18
-    Dim rowItemInvoiceGroup As Integer = 19
-    Dim rowParent As Integer = 20
-    Dim rowRemark As Integer = 21
+    Dim rowSalesPerson As Integer = 18
+    Dim rowSite As Integer = 19
+    Dim rowItemInvoiceGroup As Integer = 20
+    Dim rowParent As Integer = 21
+    Dim rowRemark As Integer = 22
 
     Dim DtItemTypeSetting As DataTable
     Friend WithEvents Pnl1 As Panel
@@ -316,6 +317,7 @@ Public Class FrmItemGroup
                 CalcCode = " & Val(Dgl1.Item(Col1Value, rowCalcCode).Value) & ",
                 DefaultSupplier = " & AgL.Chk_Text(Dgl1.Item(Col1Value, rowDefaultSupplier).Tag) & ",                 
                 Department = " & AgL.Chk_Text(Dgl1.Item(Col1Value, rowDepartment).Tag) & ",
+                SalesPerson = " & AgL.Chk_Text(Dgl1.Item(Col1Value, rowSalesPerson).Tag) & ",
                 Parent = " & AgL.Chk_Text(Dgl1.Item(Col1Value, rowParent).Tag) & ", 
                 Remark = " & AgL.Chk_Text(Dgl1.Item(Col1Value, rowRemark).Value) & ", 
                 SalesRepresentativeCommissionPer = " & Val(Dgl1.Item(Col1Value, rowSalesRepresentativeCommissionPer).Value) & ",
@@ -358,11 +360,12 @@ Public Class FrmItemGroup
         Dim DsTemp As DataSet
 
         mQry = "Select H.*, C.Description as ItemCategoryDesc, Supplier.Name as SupplierName, " &
-            " T.Name as ItemTypeName, Department.Description as DepartmentName, IIg.Description As ItemInvoiceGroupDesc, Sm.Name As SiteName, Parent.Description as ParentName  " &
+            " T.Name as ItemTypeName, Department.Description as DepartmentName,SP.Name as SalesPersonName,  IIg.Description As ItemInvoiceGroupDesc, Sm.Name As SiteName, Parent.Description as ParentName  " &
             " From Item H " &
             " Left Join ItemCategory C On H.ItemCategory = C.Code " &
             " Left Join viewHelpSubgroup Supplier On H.DefaultSupplier = Supplier.Code " &
             " Left Join Department On H.Department = Department.Code " &
+            " Left Join viewHelpSubgroup SP On H.SalesPerson = SP.Code " &
             " Left Join ItemType T On H.ItemType = T.Code " &
             " Left Join Item IIg On H.ItemInvoiceGroup = IIg.Code " &
             " LEFT JOIN Item Parent With (NoLock) ON Parent.Code = H.Parent " &
@@ -400,6 +403,8 @@ Public Class FrmItemGroup
                 Dgl1.Item(Col1Value, rowDefaultSupplier).Value = AgL.XNull(.Rows(0)("SupplierName"))
                 Dgl1.Item(Col1Value, rowDepartment).Tag = AgL.XNull(.Rows(0)("Department"))
                 Dgl1.Item(Col1Value, rowDepartment).Value = AgL.XNull(.Rows(0)("DepartmentName"))
+                Dgl1.Item(Col1Value, rowSalesPerson).Tag = AgL.XNull(.Rows(0)("SalesPerson"))
+                Dgl1.Item(Col1Value, rowSalesPerson).Value = AgL.XNull(.Rows(0)("SalesPersonName"))
                 Dgl1.Item(Col1Value, rowItemInvoiceGroup).Tag = AgL.XNull(.Rows(0)("ItemInvoiceGroup"))
                 Dgl1.Item(Col1Value, rowItemInvoiceGroup).Value = AgL.XNull(.Rows(0)("ItemInvoiceGroupDesc"))
                 Dgl1.Item(Col1Value, rowParent).Tag = AgL.XNull(.Rows(0)("Parent"))
@@ -710,7 +715,7 @@ Public Class FrmItemGroup
         AgL.GridDesign(Dgl1)
         Dgl1.Anchor = AnchorStyles.Top + AnchorStyles.Left + AnchorStyles.Right + AnchorStyles.Bottom
 
-        Dgl1.Rows.Add(22)
+        Dgl1.Rows.Add(23)
 
         Dgl1.Item(Col1Head, rowItemType).Value = FrmItemGroupHeaderDgl1.ItemType
         Dgl1.Item(Col1Head, rowItemCategory).Value = FrmItemGroupHeaderDgl1.ItemCategory
@@ -729,6 +734,7 @@ Public Class FrmItemGroup
         Dgl1.Item(Col1Head, rowShowItemGroupInOtherSite).Value = FrmItemGroupHeaderDgl1.ShowItemGroupInOtherSites
         Dgl1.Item(Col1Head, rowDefaultSupplier).Value = FrmItemGroupHeaderDgl1.DefaultSupplier
         Dgl1.Item(Col1Head, rowDepartment).Value = FrmItemGroupHeaderDgl1.Department
+        Dgl1.Item(Col1Head, rowSalesPerson).Value = FrmItemGroupHeaderDgl1.SalesPerson
         Dgl1.Item(Col1Head, rowItemInvoiceGroup).Value = FrmItemGroupHeaderDgl1.ItemInvoiceGroup
         Dgl1.Item(Col1Head, rowParent).Value = FrmItemGroupHeaderDgl1.Parent
         Dgl1.Item(Col1Head, rowRemark).Value = FrmItemGroupHeaderDgl1.Remark
@@ -1027,6 +1033,19 @@ Public Class FrmItemGroup
                         If AgL.XNull(DtItemTypeSetting.Rows(0)("FilterInclude_SupplierTreeNodeType")).ToString.ToUpper = "+ROOT" Then
                             mQry += " And H.Parent Is Null "
                         End If
+                        mQry += " Order By Name"
+
+                        Dgl1.Item(Col1Head, Dgl1.CurrentCell.RowIndex).Tag = AgL.FillData(mQry, AgL.GCn)
+                    End If
+                    If Dgl1.AgHelpDataSet(Col1Value) Is Nothing Then
+                        Dgl1.AgHelpDataSet(Col1Value) = Dgl1.Item(Col1Head, Dgl1.CurrentCell.RowIndex).Tag
+                    End If
+
+                Case rowSalesPerson
+                    If Dgl1.Item(Col1Head, Dgl1.CurrentCell.RowIndex).Tag Is Nothing Then
+                        mQry = "SELECT H.Code, H.Name From viewHelpSubgroup H 
+                                LEFT JOIN SubGroupType Sgt On H.SubgroupType = Sgt.SubgroupType
+                                Where IfNull(Sgt.Parent,Sgt.SubgroupType) = '" & SubgroupType.SalesPerson & "' "
                         mQry += " Order By Name"
 
                         Dgl1.Item(Col1Head, Dgl1.CurrentCell.RowIndex).Tag = AgL.FillData(mQry, AgL.GCn)

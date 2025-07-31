@@ -4912,6 +4912,8 @@ Sincerely
             AgL.AddFieldSqlite(AgL.GcnMain, "StockHeadDetail", "Round_Off", "Float", "0", False)
             AgL.AddFieldSqlite(AgL.GcnMain, "StockHeadDetail", "Net_Amount", "Float", "0", False)
             AgL.AddFieldSqlite(AgL.GcnMain, "StockHeadDetail", "MRP", "Float", "0", False)
+            AgL.AddFieldSqlite(AgL.GcnMain, "StockHeadDetail", "DiscountPer", "Float", "0", False)
+            AgL.AddFieldSqlite(AgL.GcnMain, "StockHeadDetail", "DiscountAmount", "Float", "0", False)
             AgL.AddFieldSqlite(AgL.GcnMain, "StockHeadDetail", "EntryType", "nVarchar(50)", "", True)
             AgL.AddFieldSqlite(AgL.GcnMain, "PurchInvoiceDetail", "EntryType", "nVarchar(50)", "", True)
 
@@ -6531,6 +6533,9 @@ Thanks
         FSeedSingleIfNotExist_Setting("E Invoice", "", "", SettingFields.WhatsappMessageURL, "", AgDataType.Text, "50",,,,)
         FSeedSingleIfNotExist_Setting("E Invoice", "", "", SettingFields.WhatsappPDFURL, "", AgDataType.Text, "50",,,,)
         FSeedSingleIfNotExist_Setting("E Invoice", "", "", SettingFields.WhatsappImageURL, "", AgDataType.Text, "50",,,,)
+        FSeedSingleIfNotExist_Setting("E Invoice", "", "", SettingFields.WhatsappRequestUrl, "", AgDataType.Text, "50",,,,)
+        FSeedSingleIfNotExist_Setting("E Invoice", "", "", SettingFields.WhatsappUsername, "", AgDataType.Text, "50",,,,)
+        FSeedSingleIfNotExist_Setting("E Invoice", "", "", SettingFields.WhatsappPassword, "", AgDataType.Text, "50",,,,)
 
         FSeedSingleIfNotExist_Setting("E Invoice", "", "", SettingFields.AuthGenerationURL, "https://einvapi.charteredinfo.com/eivital/dec/v1.03/auth?&aspid=<AspUserId>&password=<AspPassword>&Gstin=<Gstin>&user_name=<EInvioceUserName>&eInvPwd=<EInviocePassword>", AgDataType.Text, "500",,,,,,,, ,, "+SUPPORT")
         FSeedSingleIfNotExist_Setting("E Invoice", "", "", SettingFields.IRNGenerationURL, "https://einvapi.charteredinfo.com/eicore/dec/v1.03/Invoice?&aspid=<AspUserId>&password=<AspPassword>&Gstin=<Gstin>&user_name=<EInvioceUserName>&&AuthToken=<AuthToken>&QrCodeSize=250", AgDataType.Text, "500",,,,,,,, ,, "+SUPPORT")
@@ -6801,6 +6806,9 @@ Thanks
         Public Shared WhatsappMessageURL As String = "Whatsapp Message URL"
         Public Shared WhatsappPDFURL As String = "Whatsapp PDF URL"
         Public Shared WhatsappImageURL As String = "Whatsapp Image URL"
+        Public Shared WhatsappRequestUrl As String = "Whatsapp Request Url"
+        Public Shared WhatsappUsername As String = "Whatsapp Username"
+        Public Shared WhatsappPassword As String = "Whatsapp Password"
     End Class
     Public Sub FSeedSingleIfNotExist_EntryHeaderUISetting(EntryName As String, NCat As String, GridName As String, FieldName As String, Optional IsVisible As Boolean = False, Optional IsMandatory As Boolean = False, Optional IsSystemDefined As Boolean = False, Optional Caption As String = "", Optional V_Type As String = "", Optional Process As String = "", Optional SettingGroup As String = "")
         Dim mQry As String
@@ -6998,6 +7006,7 @@ Thanks
             FSeedSingleIfNotExist_EntryHeaderUISetting("FrmItemGroup", ItemTypeCode.TradingProduct, "Dgl1", ConfigurableFields.FrmItemGroupHeaderDgl1.ShowItemGroupInOtherSites)
             FSeedSingleIfNotExist_EntryHeaderUISetting("FrmItemGroup", ItemTypeCode.TradingProduct, "Dgl1", ConfigurableFields.FrmItemGroupHeaderDgl1.DefaultSupplier)
             FSeedSingleIfNotExist_EntryHeaderUISetting("FrmItemGroup", ItemTypeCode.TradingProduct, "Dgl1", ConfigurableFields.FrmItemGroupHeaderDgl1.Department)
+            FSeedSingleIfNotExist_EntryHeaderUISetting("FrmItemGroup", ItemTypeCode.TradingProduct, "Dgl1", ConfigurableFields.FrmItemGroupHeaderDgl1.SalesPerson)
             FSeedSingleIfNotExist_EntryHeaderUISetting("FrmItemGroup", ItemTypeCode.TradingProduct, "Dgl1", ConfigurableFields.FrmItemGroupHeaderDgl1.ItemInvoiceGroup)
             FSeedSingleIfNotExist_EntryHeaderUISetting("FrmItemGroup", ItemTypeCode.TradingProduct, "Dgl1", ConfigurableFields.FrmItemGroupHeaderDgl1.Parent)
             FSeedSingleIfNotExist_EntryHeaderUISetting("FrmItemGroup", ItemTypeCode.TradingProduct, "Dgl1", ConfigurableFields.FrmItemGroupHeaderDgl1.SalesRepresentativeCommissionPer)
@@ -8350,6 +8359,33 @@ Thanks
                 FSeedSingleIfNotExist_EntryHeaderUISetting("FrmPerson", SubgroupType.SalesAgent, "Dgl1", FrmPerson.hcBankName, 0, 0)
                 FSeedSingleIfNotExist_EntryHeaderUISetting("FrmPerson", SubgroupType.SalesAgent, "Dgl1", FrmPerson.hcBankAccount, 0, 0)
                 FSeedSingleIfNotExist_EntryHeaderUISetting("FrmPerson", SubgroupType.SalesAgent, "Dgl1", FrmPerson.hcBankIFSC, 0, 0)
+
+
+                FSeedSingleIfNotExist_EntryHeaderUISetting("FrmPerson", SubgroupType.SalesPerson, "Dgl1", ConfigurableFields.FrmPersonHeaderDgl1.SubgroupType, 1, 1, 1)
+                FSeedSingleIfNotExist_EntryHeaderUISetting("FrmPerson", SubgroupType.SalesPerson, "Dgl1", ConfigurableFields.FrmPersonHeaderDgl1.Code, 0, 1, 1)
+                FSeedSingleIfNotExist_EntryHeaderUISetting("FrmPerson", SubgroupType.SalesPerson, "Dgl1", ConfigurableFields.FrmPersonHeaderDgl1.Name, 1, 1, 1)
+                FSeedSingleIfNotExist_EntryHeaderUISetting("FrmPerson", SubgroupType.SalesPerson, "Dgl1", ConfigurableFields.FrmPersonHeaderDgl1.PrintingDescription, 1, 0)
+                FSeedSingleIfNotExist_EntryHeaderUISetting("FrmPerson", SubgroupType.SalesPerson, "Dgl1", ConfigurableFields.FrmPersonHeaderDgl1.Address, 1, 0)
+                FSeedSingleIfNotExist_EntryHeaderUISetting("FrmPerson", SubgroupType.SalesPerson, "Dgl1", ConfigurableFields.FrmPersonHeaderDgl1.City, 1, 1, 1)
+                FSeedSingleIfNotExist_EntryHeaderUISetting("FrmPerson", SubgroupType.SalesPerson, "Dgl1", ConfigurableFields.FrmPersonHeaderDgl1.Pincode, 1, 0)
+                FSeedSingleIfNotExist_EntryHeaderUISetting("FrmPerson", SubgroupType.SalesPerson, "Dgl1", ConfigurableFields.FrmPersonHeaderDgl1.ContactNo, 1, 0)
+                FSeedSingleIfNotExist_EntryHeaderUISetting("FrmPerson", SubgroupType.SalesPerson, "Dgl1", ConfigurableFields.FrmPersonHeaderDgl1.Mobile, 1, 0)
+                FSeedSingleIfNotExist_EntryHeaderUISetting("FrmPerson", SubgroupType.SalesPerson, "Dgl1", ConfigurableFields.FrmPersonHeaderDgl1.Email, 1, 0)
+                FSeedSingleIfNotExist_EntryHeaderUISetting("FrmPerson", SubgroupType.SalesPerson, "Dgl1", ConfigurableFields.FrmPersonHeaderDgl1.AcGroup, 1, 1, 0)
+                FSeedSingleIfNotExist_EntryHeaderUISetting("FrmPerson", SubgroupType.SalesPerson, "Dgl1", ConfigurableFields.FrmPersonHeaderDgl1.SalesTaxGroup, 0, 1, 0)
+                FSeedSingleIfNotExist_EntryHeaderUISetting("FrmPerson", SubgroupType.SalesPerson, "Dgl1", ConfigurableFields.FrmPersonHeaderDgl1.SalesTaxGroupRegType, 0, 0, 0)
+                FSeedSingleIfNotExist_EntryHeaderUISetting("FrmPerson", SubgroupType.SalesPerson, "Dgl1", ConfigurableFields.FrmPersonHeaderDgl1.ContactPerson, 0, 0)
+                FSeedSingleIfNotExist_EntryHeaderUISetting("FrmPerson", SubgroupType.SalesPerson, "Dgl1", ConfigurableFields.FrmPersonHeaderDgl1.SalesTaxNo, 0, 0)
+                FSeedSingleIfNotExist_EntryHeaderUISetting("FrmPerson", SubgroupType.SalesPerson, "Dgl1", ConfigurableFields.FrmPersonHeaderDgl1.PanNo, 1, 0)
+                FSeedSingleIfNotExist_EntryHeaderUISetting("FrmPerson", SubgroupType.SalesPerson, "Dgl1", ConfigurableFields.FrmPersonHeaderDgl1.AadharNo, 1, 0)
+                FSeedSingleIfNotExist_EntryHeaderUISetting("FrmPerson", SubgroupType.SalesPerson, "Dgl1", ConfigurableFields.FrmPersonHeaderDgl1.Parent, 0, 0)
+                FSeedSingleIfNotExist_EntryHeaderUISetting("FrmPerson", SubgroupType.SalesPerson, "Dgl1", ConfigurableFields.FrmPersonHeaderDgl1.Area, 0, 0)
+                FSeedSingleIfNotExist_EntryHeaderUISetting("FrmPerson", SubgroupType.SalesPerson, "Dgl1", ConfigurableFields.FrmPersonHeaderDgl1.CreditDays, 0, 0)
+                FSeedSingleIfNotExist_EntryHeaderUISetting("FrmPerson", SubgroupType.SalesPerson, "Dgl1", ConfigurableFields.FrmPersonHeaderDgl1.CreditLimit, 0, 0)
+                FSeedSingleIfNotExist_EntryHeaderUISetting("FrmPerson", SubgroupType.SalesPerson, "Dgl1", ConfigurableFields.FrmPersonHeaderDgl1.Remarks, 0, 0)
+                FSeedSingleIfNotExist_EntryHeaderUISetting("FrmPerson", SubgroupType.SalesPerson, "Dgl1", FrmPerson.hcBankName, 0, 0)
+                FSeedSingleIfNotExist_EntryHeaderUISetting("FrmPerson", SubgroupType.SalesPerson, "Dgl1", FrmPerson.hcBankAccount, 0, 0)
+                FSeedSingleIfNotExist_EntryHeaderUISetting("FrmPerson", SubgroupType.SalesPerson, "Dgl1", FrmPerson.hcBankIFSC, 0, 0)
             End If
 
             If AgL.StrCmp(AgL.PubDBName, "RVN") Or AgL.StrCmp(AgL.PubDBName, "RVN1") Or AgL.StrCmp(AgL.PubDBName, "RVN2") Or AgL.StrCmp(AgL.PubDBName, "MLAW") Then
@@ -9204,6 +9240,8 @@ Thanks
             If FDivisionNameForCustomization(6) = "SADHVI" And (AgL.StrCmp(AgL.PubDBName, "Sadhvi") Or AgL.StrCmp(AgL.PubDBName, "Sadhvi2")) Then
                 FSeedSingleIfNotExist_EntryLineUISetting("FrmStockEntry", Ncat.StockIssue, "Dgl1", FrmStockEntry.Col1MRP, True)
                 FSeedSingleIfNotExist_EntryLineUISetting("FrmStockEntry", Ncat.StockReceive, "Dgl1", FrmStockEntry.Col1MRP, True)
+                FSeedSingleIfNotExist_EntryLineUISetting("FrmStockEntry", Ncat.StockIssue, "Dgl1", FrmStockEntry.Col1DiscountPer, True)
+                FSeedSingleIfNotExist_EntryLineUISetting("FrmStockEntry", Ncat.StockIssue, "Dgl1", FrmStockEntry.Col1DiscountAmount, True)
             End If
 
 
@@ -11036,6 +11074,7 @@ Thanks
             Public Const ShowItemGroupInOtherSites As String = "Show Item Group In Other Sites"
             Public Const DefaultSupplier As String = "Default Supplier"
             Public Const Department As String = "Department"
+            Public Const SalesPerson As String = "Sales Person"
             Public Const ItemInvoiceGroup As String = "Item Invoice Group"
             Public Const Parent As String = "Parent"
             Public Const Remark As String = "Remark"
@@ -15215,6 +15254,7 @@ Thanks
             AgL.AddFieldSqlite(AgL.GcnMain, "Item", "BarcodePattern", "nvarchar(20)", BarcodePattern.Auto, True)
             AgL.AddFieldSqlite(AgL.GcnMain, "Item", "PrintingDescription", "nvarchar(50)", "", True)
             AgL.AddFieldSqlite(AgL.GcnMain, "Item", "Department", "nvarchar(10)", "", True, " References Department(Code) ")
+            AgL.AddFieldSqlite(AgL.GcnMain, "Item", "SalesPerson", "nvarchar(10)", "", True, "References Subgroup(Subcode)")
             AgL.AddFieldSqlite(AgL.GcnMain, "Item", "Dimension1", "nVarchar(10)", "", True, "References Item(Code)")
             AgL.AddFieldSqlite(AgL.GcnMain, "Item", "Dimension2", "nVarchar(10)", "", True, "References Item(Code)")
             AgL.AddFieldSqlite(AgL.GcnMain, "Item", "Dimension3", "nVarchar(10)", "", True, "References Item(Code)")

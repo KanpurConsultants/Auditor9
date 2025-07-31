@@ -245,6 +245,9 @@
     <Compile Include="Form\FrmRepPrint.vb">
       <SubType>Form</SubType>
     </Compile>
+    <Compile Include="Form\FrmWhatsappComposeWithCrystal.vb">
+      <SubType>Form</SubType>
+    </Compile>
     <Compile Include="Form\MDIMain.designer.vb">
       <DependentUpon>MDIMain.vb</DependentUpon>
     </Compile>
@@ -330,6 +333,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Form\FrmRepPrint.resx">
       <DependentUpon>FrmRepPrint.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Form\FrmWhatsappComposeWithCrystal.resx">
+      <DependentUpon>FrmWhatsappComposeWithCrystal.vb</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Form\MDIMain.resx">
       <DependentUpon>MDIMain.vb</DependentUpon>

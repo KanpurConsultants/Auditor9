@@ -5727,6 +5727,7 @@ err1:
             Public Const Customer As String = "Customer"
             Public Const Supplier As String = "Supplier"
             Public Const SalesAgent As String = "Sales Agent"
+            Public Const SalesPerson As String = "Sales Person"
             Public Const PurchaseAgent As String = "Purchase Agent"
             Public Const Employee As String = "Employee"
             Public Const Jobworker As String = "Jobworker"

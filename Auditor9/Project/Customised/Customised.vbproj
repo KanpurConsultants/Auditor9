@@ -197,8 +197,6 @@
     <Import Include="System.Windows.Forms" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Class\ClsCreateFile.vb" />
-    <Compile Include="Class\Clswhatsappd.vb" />
     <Compile Include="Class\ClsWhatsapp.vb" />
     <Compile Include="Class\ClsBatchWiseStockBalance.vb" />
     <Compile Include="Class\ClsBillWiseProfitability.vb" />
@@ -274,13 +272,7 @@
     <Compile Include="Form\FrmSyncDataFromOtherDatabase_RVN.vb">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Form\FrmWhatsapp.vb">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="Form\FrmWhatsappAttachmentTest.Designer.vb">
-      <DependentUpon>FrmWhatsappAttachmentTest.vb</DependentUpon>
-    </Compile>
-    <Compile Include="Form\FrmWhatsappAttachmentTest.vb">
+    <Compile Include="Form\FrmWhatsappComposeWithCrystal.vb">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="Form\Kirana\ClsCompleteBalancePosition_Kirana.vb" />
@@ -1478,11 +1470,8 @@
       <DependentUpon>FrmSyncDataFromOtherDatabase_RVN.vb</DependentUpon>
       <SubType>Designer</SubType>
     </EmbeddedResource>
-    <EmbeddedResource Include="Form\FrmWhatsapp.resx">
-      <DependentUpon>FrmWhatsapp.vb</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Form\FrmWhatsappAttachmentTest.resx">
-      <DependentUpon>FrmWhatsappAttachmentTest.vb</DependentUpon>
+    <EmbeddedResource Include="Form\FrmWhatsappComposeWithCrystal.resx">
+      <DependentUpon>FrmWhatsappComposeWithCrystal.vb</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Form\Kirana\FrmOrderSettlement_Kirana.resx">
       <DependentUpon>FrmOrderSettlement_Kirana.vb</DependentUpon>

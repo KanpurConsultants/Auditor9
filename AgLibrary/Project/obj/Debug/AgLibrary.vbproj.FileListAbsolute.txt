@@ -399,7 +399,6 @@ D:\Active Projects\Auditor9\AgLibrary\Release\AgLibrary.dll.config
 D:\Active Projects\Auditor9\AgLibrary\Release\AgLibrary.dll
 D:\Active Projects\Auditor9\AgLibrary\Release\AgLibrary.pdb
 D:\Active Projects\Auditor9\AgLibrary\Release\AgLibrary.xml
-D:\Active Projects\Auditor9\AgLibrary\Project\obj\Debug\AgLibrary.vbprojResolveAssemblyReference.cache
 D:\Active Projects\Auditor9\AgLibrary\Project\obj\Debug\AgLibrary.FrmAgZip.resources
 D:\Active Projects\Auditor9\AgLibrary\Project\obj\Debug\AgLibrary.FrmAttachmentViewer.resources
 D:\Active Projects\Auditor9\AgLibrary\Project\obj\Debug\AgLibrary.FrmBackupDatase.resources
@@ -423,3 +422,5 @@ D:\Active Projects\Auditor9\AgLibrary\Project\obj\Debug\AgLibrary.vbproj.Generat
 D:\Active Projects\Auditor9\AgLibrary\Project\obj\Debug\AgLibrary.dll
 D:\Active Projects\Auditor9\AgLibrary\Project\obj\Debug\AgLibrary.xml
 D:\Active Projects\Auditor9\AgLibrary\Project\obj\Debug\AgLibrary.pdb
+D:\Active Projects\Auditor9\AgLibrary\Project\obj\Debug\AgLibrary.FrmWhatsappComposeWithCrystal.resources
+D:\Active Projects\Auditor9\AgLibrary\Project\obj\Debug\AgLibrary.vbprojResolveAssemblyReference.cache

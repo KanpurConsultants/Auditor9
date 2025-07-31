@@ -5961,7 +5961,7 @@ Public Class FrmSaleInvoiceDirect_WithDimension
                             End If
                         End If
 
-                        If AgL.VNull(DtV_TypeSettings.Rows(0)("IsAllowedNegativeStock")) = False Then
+                        If AgL.VNull(DtV_TypeSettings.Rows(0)("IsAllowedNegativeStock")) = False And LblV_Type.Tag = Ncat.SaleInvoice Then
                             If Val(Dgl1.Item(Col1Qty, I).Value) > 0 Then
                                 Dim bItemStockQty As Double = 0
                                 mQry = " Select IfNull(Sum(Qty_Rec), 0) - IfNull(Sum(Qty_Iss), 0) " &
@@ -9072,7 +9072,7 @@ Public Class FrmSaleInvoiceDirect_WithDimension
             FGetMailConfiguration(objRepPrint, SearchCode)
             'objRepPrint.AttachmentName = "Invoice"
         ElseIf mPrintFor = ClsMain.PrintFor.Whatsapp Then
-            objRepPrint = New FrmWhatsapp(AgL)
+            objRepPrint = New FrmWhatsappComposeWithCrystal(AgL)
             FGetWhatsappConfiguration(objRepPrint, SearchCode)
         Else
             objRepPrint = New AgLibrary.RepView(AgL)
@@ -9524,7 +9524,7 @@ Public Class FrmSaleInvoiceDirect_WithDimension
                     LEFT JOIN SubGroup Sg  On H.Vendor = Sg.SubCode
                     Where H.GenDocId = '" & SearchCode & "'", AgL.GCn).ExecuteScalar())
             ElseIf mPrintFor = ClsMain.PrintFor.Whatsapp Then
-                objRepPrint = New FrmWhatsapp(AgL)
+                objRepPrint = New FrmWhatsappComposeWithCrystal(AgL)
                 FGetWhatsappConfiguration(objRepPrint, SearchCode)
             Else
                 objRepPrint = New AgLibrary.RepView(AgL)

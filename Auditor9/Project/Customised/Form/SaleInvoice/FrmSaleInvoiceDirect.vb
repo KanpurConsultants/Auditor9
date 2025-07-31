@@ -12,6 +12,7 @@ Imports System.Net
 Public Class FrmSaleInvoiceDirect
     Inherits AgTemplate.TempTransaction
     Dim mQry$
+    Private Username As String = Customised.ClsMain.FGetSettings(SettingFields.WhatsappUsername, "E Invoice", "", "", "", "", "", "", "")
 
     Public WithEvents AgCalcGrid1 As New AgStructure.AgCalcGrid
     Public WithEvents AgCustomGrid1 As New AgCustomFields.AgCustomGrid
@@ -6168,7 +6169,7 @@ Public Class FrmSaleInvoiceDirect
             FGetMailConfiguration(objRepPrint, SearchCode)
             'objRepPrint.AttachmentName = "Invoice"
         ElseIf mPrintFor = ClsMain.PrintFor.Whatsapp Then
-            objRepPrint = New FrmWhatsapp(AgL)
+            objRepPrint = New FrmWhatsappComposeWithCrystal(AgL)
             FGetWhatsappConfiguration(objRepPrint, SearchCode)
         Else
             objRepPrint = New AgLibrary.RepView(AgL)
@@ -6361,7 +6362,7 @@ Public Class FrmSaleInvoiceDirect
                     LEFT JOIN SubGroup Sg  On H.Vendor = Sg.SubCode
                     Where H.GenDocId = '" & SearchCode & "'", AgL.GCn).ExecuteScalar())
             ElseIf mPrintFor = ClsMain.PrintFor.Whatsapp Then
-                objRepPrint = New FrmWhatsapp(AgL)
+                objRepPrint = New FrmWhatsappComposeWithCrystal(AgL)
                 FGetWhatsappConfiguration(objRepPrint, SearchCode)
             Else
                 objRepPrint = New AgLibrary.RepView(AgL)
@@ -8362,10 +8363,14 @@ Public Class FrmSaleInvoiceDirect
                 If AgL.StrCmp(AgL.PubUserName, "Super") Then
                     FGetPrint(mSearchCode, ClsMain.PrintFor.Whatsapp)
                 Else
-                    MsgBox("This is a paid service. Contact to software vendor.", MsgBoxStyle.Information)
+                    If Username <> "" Then
+                        FGetPrint(mSearchCode, ClsMain.PrintFor.Whatsapp)
+                    Else
+                        MsgBox("This is a paid service. Contact to software vendor.", MsgBoxStyle.Information)
+                    End If
                 End If
 
-            Case MnuReport.Name
+                    Case MnuReport.Name
                 Dim StrSenderText As String = "Sale Order Report"
                 GridReportFrm = New AgLibrary.FrmRepDisplay(StrSenderText, AgL)
                 GridReportFrm.Filter_IniGrid()

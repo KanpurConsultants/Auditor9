@@ -433,16 +433,40 @@ Public Class FrmPerson
                          H.ManualCode As [Code], IfNull(ST.Description,H.SubgroupType) as [Subgroup Type], H.Address, C.CityName As [City Name], 
                          H.Mobile, H.Phone, H.EMail, H.SalesTaxPostingGroup,
                          H.EntryBy As [Entry By], H.EntryDate As [Entry Date], H.EntryType As [Entry Type], 
-                         H.Status, AG.GroupName As [GROUP Name], D.Div_Name As Division,SM.Name As [Site Name],
-                        (SELECT Max(RegistrationNo) FROM SubgroupRegistration WHERE RegistrationType ='Sales Tax No' AND Subcode =H.Subcode) as [Gst No]
+                         H.Status, AG.GroupName As [GROUP Name], D.Div_Name As Division,SM.Name As [Site Name], "
+
+        If ClsMain.FDivisionNameForCustomization(6) = "SADHVI" Then
+            AgL.PubFindQry = AgL.PubFindQry & " P.Name as Parent,A.Name AS Agent, T.Name AS Transporter, (
+                         SELECT  A.NCatName + ', '
+							FROM 
+							(
+	                        Select Vt.NCat, Max(Vt.Description) As NCatName
+			                From SubgroupBlockedTransactions L 
+			                LEFT JOIN Voucher_Type Vt ON L.NCat = Vt.NCat
+			                Where L.SubCode = H.SubCode
+                            GROUP BY Vt.NCat
+			                ) A
+							FOR XML Path ('')
+                         ) AS BlockedTransactions,"
+        End If
+
+        AgL.PubFindQry = AgL.PubFindQry &
+                        " (SELECT Max(RegistrationNo) FROM SubgroupRegistration WHERE RegistrationType ='Sales Tax No' AND Subcode =H.Subcode) as [Gst No]
                          FROM SubGroup H 
                          LEFT JOIN Division D On D.Div_Code=H.Div_Code  
                          LEFT JOIN SiteMast SM On SM.Code=H.Site_Code 
                          LEFT JOIN AcGroup AG On AG.GroupCode = H.GroupCode 
                          LEFT JOIN City C On C.CityCode = H.CityCode  
                          Left Join SubgroupType ST On H.SubgroupType = ST.SubgroupType
-                        Where 1=1 
-                        "
+                         Left Join viewHelpSubgroup P on H.Parent = P.Code "
+
+        If ClsMain.FDivisionNameForCustomization(6) = "SADHVI" Then
+            AgL.PubFindQry += "  Left Join SubgroupSiteDivisionDetail SSDD ON SSDD.SubCode = H.Subcode AND SSDD.Site_Code = '" & AgL.PubSiteCode & "' AND SSDD.Div_Code = '" & AgL.PubDivCode & "' 
+                         Left Join viewHelpSubgroup A On SSDD.Agent = A.Code 
+                         Left Join viewHelpSubgroup T On SSDD.Transporter = T.Code 
+                        Where 1 = 1 "
+        End If
+
         If mSubgroupType <> "" Then
             AgL.PubFindQry += " And   H.SubgroupType = '" & mSubgroupType & "' "
         Else
@@ -4457,6 +4481,13 @@ Public Class FrmPerson
         FRH_Multiple = Nothing
     End Sub
 
+    Private Sub FrmPerson_CausesValidationChanged(sender As Object, e As EventArgs) Handles Me.CausesValidationChanged
+
+    End Sub
+
+    Private Sub FrmPerson_ControlRemoved(sender As Object, e As ControlEventArgs) Handles Me.ControlRemoved
+
+    End Sub
 
     Public Structure StructPersonExtraDiscount
         Dim ItemCategory As String

@@ -156,6 +156,7 @@ Public Class ClsReports
                             Union All Select 'Account Type Wise Summary' as Code, 'Account Type Wise Summary' as Name
                             Union All Select 'Account Nature Wise Summary' as Code, 'Account Nature Wise Summary' as Name
                             Union All Select 'Department Wise Summary' as Code, 'Department Wise Summary' as Name
+                            Union All Select 'Sales Person Wise Summary' as Code, 'Sales Person Wise Summary' as Name
                             "
                     If ClsMain.FDivisionNameForCustomization(13) = "JAIN BROTHERS" Or ClsMain.FDivisionNameForCustomization(11) = "BOOK SHOPEE" Then
                         mQry = mQry & " Union All Select 'Catalog Wise Summary' as Code, 'Catalog Wise Summary' as Name "
@@ -1217,7 +1218,13 @@ Public Class ClsReports
             mCondStr = mCondStr & ReportFrm.GetWhereCondition("L.ItemState", 24)
             mCondStr = mCondStr & ReportFrm.GetWhereCondition("Party.SubgroupType", 25)
             mCondStr = mCondStr & ReportFrm.GetWhereCondition("Party.Nature", 26)
-            mCondStr = mCondStr & ReportFrm.GetWhereCondition("IG.Department", 27)
+
+            If ReportFrm.FGetText(0) = "Sales Person Wise Summary" And (AgL.StrCmp(AgL.PubDBName, "SADHVI") Or AgL.StrCmp(AgL.PubDBName, "SADHVI2")) Then
+
+            Else
+                mCondStr = mCondStr & ReportFrm.GetWhereCondition("IG.Department", 27)
+            End If
+
 
             'If ReportFrm.FGetText(8) <> "All" Then
             '    mCondStr += " And H.Agent = '" & ReportFrm.FGetCode(8) & "' "
@@ -1250,7 +1257,7 @@ Public Class ClsReports
                     City.CityCode, City.CityName, Area.Code As AreaCode, Area.Description As AreaName, State.Code As StateCode, State.Description As StateName,
                     Cast(Replace(H.ManualRefNo,'-','') as Integer) as InvoiceNo, H.ManualRefNo, L.Item,
                     I.Specification as ItemSpecification, I.Description As ItemDesc, IfNull(IfNull(I.HSN,IC.HSN),Bi.HSN) as HSN,IG.Description as ItemGroupDescription, IC.Description as ItemCategoryDescription,  
-                    I.PurchaseRate, L.Catalog, Catalog.Description as CatalogDesc, IG.Department, Department.Description as DepartmentDesc,
+                    I.PurchaseRate, L.Catalog, Catalog.Description as CatalogDesc, IG.Department, Department.Description as DepartmentDesc, IG.SalesPerson, SP.Name as SalesPersonName,
                     (Case When L.DiscountPer = 0 Then '' else Cast(L.DiscountPer as nVarchar) End)  || (Case When L.AdditionalDiscountPer>0 Then '+' else '' End) || (Case When L.AdditionalDiscountPer=0 Then '' else Cast(L.AdditionalDiscountPer as nVarchar) End)  as DiscountPer, 
                     L.DiscountAmount as Discount, L.AdditionalDiscountAmount as AdditionalDiscount, L.AdditionAmount as Addition, 
                     L.SpecialDiscount_Per, L.SpecialDiscount, L.SpecialAddition_Per, L.SpecialAddition, 
@@ -1282,7 +1289,8 @@ Public Class ClsReports
                     Left Join Division Div On H.Div_Code = Div.Div_Code
                     Left Join Catalog On L.Catalog = Catalog.Code
                     Left Join Subgroup DS On IG.DefaultSupplier = Ds.Subcode 
-                    Left join Department On IG.Department = Department.Code                   
+                    Left join Department On IG.Department = Department.Code
+                    Left Join Subgroup SP On IG.SalesPerson = SP.Subcode                    
                     " & mCondStr
 
 
@@ -1490,6 +1498,37 @@ Public Class ClsReports
                     From (" & mQry & ") As VMain
                     GROUP By VMain.Department
                     Order By Max(VMain.DepartmentDesc)"
+
+            ElseIf ReportFrm.FGetText(0) = "Sales Person Wise Summary" Then
+                If AgL.StrCmp(AgL.PubDBName, "SADHVI") Or AgL.StrCmp(AgL.PubDBName, "SADHVI2") Then
+                    mQry = "SELECT D.Description AS  Department, SP.Name AS SalesPerson,isnull(V.Qty,0) AS Qty , isnull(V.Amount,0) AS Amount, isnull(V.[Taxable Amount],0) AS [Taxable Amount], isnull(V.[Net Amount],0) AS [Net Amount]
+                            FROM Item IG 
+                            LEFT JOIN Department D ON D.Code = IG.Department 
+                            LEFT JOIN Subgroup SP ON SP.Subcode = IG.SalesPerson 
+                            LEFT JOIN 
+                            ( Select VMain.Department as Department, Max(VMain.SalesPersonName) As SalesPerson,
+                                                Count(Distinct Vmain.DocID) as [Doc.Count],  Sum(VMain.Qty) as Qty,
+                                                Sum(VMain.AmountExDiscount) as GoodsValue, Sum(VMain.Discount) as Discount, Sum(VMain.Addition) as Addition, Sum(VMain.SpecialDiscount) as SpecialDiscount, Sum(VMain.SpecialAddition) as SpecialAddition,
+                                                Sum(VMain.Amount) As Amount, Sum(VMain.Taxable_Amount) As [Taxable Amount], IfNull(Sum(VMain.TotalTax),0) As TaxAmount, Sum(VMain.Net_Amount) As [Net Amount]
+                                                From (" & mQry & ") As VMain
+                                                GROUP By VMain.Department, VMain.SalesPerson
+                                                ) V ON SP.Name =  V.SalesPerson AND D.Code =  V.Department
+                            WHERE IG.ItemType ='TP' AND IG.V_Type ='IG' AND D.Description IS NOT NULL AND SP.Name IS NOT NULL "
+
+                    If ReportFrm.FGetText(0) = "Sales Person Wise Summary" And (AgL.StrCmp(AgL.PubDBName, "SADHVI") Or AgL.StrCmp(AgL.PubDBName, "SADHVI2")) Then
+                        mQry = mQry & ReportFrm.GetWhereCondition("IG.Department", 27)
+                    End If
+
+                    mQry = mQry & "Order By D.Description, SP.Name "
+                Else
+                    mQry = " Select VMain.SalesPerson As SearchCode, Max(VMain.SalesPersonName) As SalesPerson, 
+                    Count(Distinct Vmain.DocID) as [Doc.Count],  Sum(VMain.Qty) as Qty,
+                    Sum(VMain.AmountExDiscount) as GoodsValue, Sum(VMain.Discount) as Discount, Sum(VMain.Addition) as Addition, Sum(VMain.SpecialDiscount) as SpecialDiscount, Sum(VMain.SpecialAddition) as SpecialAddition,
+                    Sum(VMain.Amount) As Amount, Sum(VMain.Taxable_Amount) As [Taxable Amount], IfNull(Sum(VMain.TotalTax),0) As TaxAmount, Sum(VMain.Net_Amount) As [Net Amount]
+                    From (" & mQry & ") As VMain
+                    GROUP By VMain.SalesPerson
+                    Order By Max(VMain.SalesPersonName)"
+                End If
 
             ElseIf ReportFrm.FGetText(0) = "Item Wise Summary" Then
                 mQry = " Select VMain.Item As SearchCode, Max(VMain.ItemDesc) As [Item],  
