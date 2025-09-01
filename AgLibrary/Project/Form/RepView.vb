@@ -5,6 +5,7 @@ Public Class RepView
     Dim mRepObj As New ReportDocument
     Friend WithEvents BtnWhatsapp As Button
     Dim AgL As AgLibrary.ClsMain
+    Public mDefaultMobileNo As String = ""
 
 #Region " Windows Form Designer generated code "
 
@@ -23,6 +24,14 @@ Public Class RepView
         ' Add any initialization after the InitializeComponent() call.
         AgL = AgLibVar
     End Sub
+    Public Property DefaultMobileNo() As String
+        Get
+            DefaultMobileNo = mDefaultMobileNo
+        End Get
+        Set(ByVal value As String)
+            mDefaultMobileNo = value
+        End Set
+    End Property
 
     'Form overrides dispose to clean up the component list.
     Protected Overloads Overrides Sub Dispose(ByVal disposing As Boolean)
@@ -436,6 +445,7 @@ Public Class RepView
         CType(mObjEMail.Controls("CrvReport"), CrystalDecisions.Windows.Forms.CrystalReportViewer).ReportSource = CType(Me.Controls("CrvReport"), CrystalDecisions.Windows.Forms.CrystalReportViewer).ReportSource
         mObjEMail.AttachmentName = Me.Text
         mObjEMail.MdiParent = Me.MdiParent
+        mObjEMail.DefaultMobileNo = mDefaultMobileNo
         mObjEMail.WindowState = FormWindowState.Maximized
         mObjEMail.Show()
         mObjEMail.TxtToMobile.Text = AgL.FGetSettings(AgL, "Mobile No", "General", AgL.PubDivCode, AgL.PubSiteCode, "", "", "", "", "")

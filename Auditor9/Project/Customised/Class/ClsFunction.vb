@@ -477,6 +477,10 @@ Public Class ClsFunction
                     clsM.UpdateTableStructure()
                 Case MDI.MnuSyncWithActualDatabase.Name
                     FrmObj = New FrmSyncData()
+
+                Case MDI.MnuSendWhatsappMessage.Name
+                    FrmObj = New FrmSendWhatsappMessage()
+
                 Case MDI.MnuDataCorrection.Name
                     FrmObj = New FrmChequeDateCorrection()
 

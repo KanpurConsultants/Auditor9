@@ -3213,7 +3213,6 @@ D:\Active Projects\Auditor9\Auditor9\Project\Customised\obj\Debug\Customised.Frm
 D:\Active Projects\Auditor9\Auditor9\Project\Customised\obj\Debug\Customised.FrmBlankData.resources
 D:\Active Projects\Auditor9\Auditor9\Project\Customised\obj\Debug\Customised.FrmMatchDataFromOtherDatabase.resources
 D:\Active Projects\Auditor9\Auditor9\Project\Customised\obj\Debug\Customised.FrmSyncDataFromOtherDatabase_RVN.resources
-D:\Active Projects\Auditor9\Auditor9\Project\Customised\obj\Debug\Customised.FrmWhatsappComposeWithCrystal.resources
 D:\Active Projects\Auditor9\Auditor9\Project\Customised\obj\Debug\Customised.FrmOrderSettlement_Kirana.resources
 D:\Active Projects\Auditor9\Auditor9\Project\Customised\obj\Debug\Customised.FrmPaymentReceiptSettlement_Kirana.resources
 D:\Active Projects\Auditor9\Auditor9\Project\Customised\obj\Debug\Customised.FrmTag.resources
@@ -3405,3 +3404,5 @@ D:\Active Projects\Auditor9\Auditor9\Project\Customised\obj\Debug\Customised.vbp
 D:\Active Projects\Auditor9\Auditor9\Project\Customised\obj\Debug\Customised.exe
 D:\Active Projects\Auditor9\Auditor9\Project\Customised\obj\Debug\Customised.xml
 D:\Active Projects\Auditor9\Auditor9\Project\Customised\obj\Debug\Customised.pdb
+D:\Active Projects\Auditor9\Auditor9\Project\Customised\obj\Debug\Customised.FrmSendWhatsappMessage.resources
+D:\Active Projects\Auditor9\Auditor9\Project\Customised\obj\Debug\Customised.vbprojResolveAssemblyReference.cache

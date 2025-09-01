@@ -3,16 +3,15 @@
   <Table>
     <Code>1</Code>
     <EffectiveUptoDate>2000-01-01T00:00:00+05:30</EffectiveUptoDate>
-    <DocumentHeaderRow1Left>BHAGWANT SINGH &amp; SONS</DocumentHeaderRow1Left>
-    <DocumentHeaderRow2Left>49/2, NAUGHARA,,KANPUR-208001</DocumentHeaderRow2Left>
-    <DocumentHeaderRow3Left />
-    <DocumentHeaderRow4Left />
-    <DocumentHeaderRow1Right>Phone : 9936400702, 7860950982</DocumentHeaderRow1Right>
-    <DocumentHeaderRow2Right>GSTIN : 09ACCPS3957J1Z2</DocumentHeaderRow2Right>
-    <DocumentHeaderRow3Right>Helpline    : 8400400702 </DocumentHeaderRow3Right>
+    <Div_Code>D</Div_Code>
+    <DocumentHeaderRow1Left>SADHVI SAREES PVT. LTD.</DocumentHeaderRow1Left>
+    <DocumentHeaderRow2Left>49/29 JHAJHARIA MARKET</DocumentHeaderRow2Left>
+    <DocumentHeaderRow3Left>GENERALGANJ KANPUR (U.P.), PIN : 208001</DocumentHeaderRow3Left>
+    <DocumentHeaderRow1Right>MOBILE : 7080999555, 9839991757</DocumentHeaderRow1Right>
+    <DocumentHeaderRow2Right>GSTIN : 09ABQCS2021M1ZY</DocumentHeaderRow2Right>
     <IsSalesTaxApplicable>true</IsSalesTaxApplicable>
     <WeekOffDays>0</WeekOffDays>
     <EntryBy>System</EntryBy>
-    <EntryDate>2018-11-26T11:05:33+05:30</EntryDate>
+    <EntryDate>2018-09-05T09:33:00+05:30</EntryDate>
   </Table>
 </NewDataSet>

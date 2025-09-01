@@ -1,0 +1,21 @@
+; Field definition file for table: ADORecordset
+V_Type	string	255		
+V_No	string	255		
+V_Date	datetime		
+V_Prefix	string	255		
+PName	string	255	AMAR CLOTH HOUSE (FATEHPUR)	
+SubCode	string	255	D100004150	
+Narration	string	255	OPENING BALANCE	
+AmtDr	number	207548	
+AmtCr	number	0	
+SNo	number	0	
+Division	string	255	HO	
+ContraName	string	255		
+Chq_No	string	255		
+Chq_Date	datetime		
+PCity	string	255	FATEHPUR	
+Site_Code	string	255		
+CompanyLogo	BLOB		
+CompanyAuthorisedSignature	BLOB		
+EInvoiceQrCode	BLOB		
+PaymentQrCode	BLOB		

@@ -7474,47 +7474,47 @@ Thanks
 
 
             FSeedSingleIfNotExist_EntryLineUISetting("FrmSaleInvoiceDirect", Ncat.SaleChallan, "Dgl1", FrmSaleInvoiceDirect_WithDimension.ColSNo, True)
-                FSeedSingleIfNotExist_EntryLineUISetting("FrmSaleInvoiceDirect", Ncat.SaleChallan, "Dgl1", FrmSaleInvoiceDirect_WithDimension.Col1ItemCategory, False)
-                FSeedSingleIfNotExist_EntryLineUISetting("FrmSaleInvoiceDirect", Ncat.SaleChallan, "Dgl1", FrmSaleInvoiceDirect_WithDimension.Col1ItemGroup, False)
-                FSeedSingleIfNotExist_EntryLineUISetting("FrmSaleInvoiceDirect", Ncat.SaleChallan, "Dgl1", FrmSaleInvoiceDirect_WithDimension.Col1ItemCode, False)
-                FSeedSingleIfNotExist_EntryLineUISetting("FrmSaleInvoiceDirect", Ncat.SaleChallan, "Dgl1", FrmSaleInvoiceDirect_WithDimension.Col1Item, True)
-                If ClsMain.IsScopeOfWorkContains(IndustryType.CommonModules.Dimension1) Then
-                    FSeedSingleIfNotExist_EntryLineUISetting("FrmSaleInvoiceDirect", Ncat.SaleChallan, "Dgl1", FrmSaleInvoiceDirect_WithDimension.Col1Dimension1, False)
-                End If
-                If ClsMain.IsScopeOfWorkContains(IndustryType.CommonModules.Dimension2) Then
-                    FSeedSingleIfNotExist_EntryLineUISetting("FrmSaleInvoiceDirect", Ncat.SaleChallan, "Dgl1", FrmSaleInvoiceDirect_WithDimension.Col1Dimension2, False)
-                End If
-                If ClsMain.IsScopeOfWorkContains(IndustryType.CommonModules.Dimension3) Then
-                    FSeedSingleIfNotExist_EntryLineUISetting("FrmSaleInvoiceDirect", Ncat.SaleChallan, "Dgl1", FrmSaleInvoiceDirect_WithDimension.Col1Dimension3, False)
-                End If
-                If ClsMain.IsScopeOfWorkContains(IndustryType.CommonModules.Dimension4) Then
-                    FSeedSingleIfNotExist_EntryLineUISetting("FrmSaleInvoiceDirect", Ncat.SaleChallan, "Dgl1", FrmSaleInvoiceDirect_WithDimension.Col1Dimension4, False)
-                End If
-                FSeedSingleIfNotExist_EntryLineUISetting("FrmSaleInvoiceDirect", Ncat.SaleChallan, "Dgl1", FrmSaleInvoiceDirect_WithDimension.Col1Size, False)
-                FSeedSingleIfNotExist_EntryLineUISetting("FrmSaleInvoiceDirect", Ncat.SaleChallan, "Dgl1", FrmSaleInvoiceDirect_WithDimension.Col1Specification, False)
-                FSeedSingleIfNotExist_EntryLineUISetting("FrmSaleInvoiceDirect", Ncat.SaleChallan, "Dgl1", FrmSaleInvoiceDirect_WithDimension.Col1SalesTaxGroup, True)
-                FSeedSingleIfNotExist_EntryLineUISetting("FrmSaleInvoiceDirect", Ncat.SaleChallan, "Dgl1", FrmSaleInvoiceDirect_WithDimension.Col1BaleNo, False)
-                FSeedSingleIfNotExist_EntryLineUISetting("FrmSaleInvoiceDirect", Ncat.SaleChallan, "Dgl1", FrmSaleInvoiceDirect_WithDimension.Col1LotNo, False)
-                FSeedSingleIfNotExist_EntryLineUISetting("FrmSaleInvoiceDirect", Ncat.SaleChallan, "Dgl1", FrmSaleInvoiceDirect_WithDimension.Col1DocQty, True)
-                FSeedSingleIfNotExist_EntryLineUISetting("FrmSaleInvoiceDirect", Ncat.SaleChallan, "Dgl1", FrmSaleInvoiceDirect_WithDimension.Col1FreeQty, False)
-                FSeedSingleIfNotExist_EntryLineUISetting("FrmSaleInvoiceDirect", Ncat.SaleChallan, "Dgl1", FrmSaleInvoiceDirect_WithDimension.Col1Qty, False)
-                FSeedSingleIfNotExist_EntryLineUISetting("FrmSaleInvoiceDirect", Ncat.SaleChallan, "Dgl1", FrmSaleInvoiceDirect_WithDimension.Col1Unit, True)
-                FSeedSingleIfNotExist_EntryLineUISetting("FrmSaleInvoiceDirect", Ncat.SaleChallan, "Dgl1", FrmSaleInvoiceDirect_WithDimension.Col1QtyDecimalPlaces, False)
-                FSeedSingleIfNotExist_EntryLineUISetting("FrmSaleInvoiceDirect", Ncat.SaleChallan, "Dgl1", FrmSaleInvoiceDirect_WithDimension.Col1Pcs, False)
-                FSeedSingleIfNotExist_EntryLineUISetting("FrmSaleInvoiceDirect", Ncat.SaleChallan, "Dgl1", FrmSaleInvoiceDirect_WithDimension.Col1MasterSaleRate, False,,, False)
-                FSeedSingleIfNotExist_EntryLineUISetting("FrmSaleInvoiceDirect", Ncat.SaleChallan, "Dgl1", FrmSaleInvoiceDirect_WithDimension.Col1RateDiscountPer, False)
-                FSeedSingleIfNotExist_EntryLineUISetting("FrmSaleInvoiceDirect", Ncat.SaleChallan, "Dgl1", FrmSaleInvoiceDirect_WithDimension.Col1Rate, True)
-                FSeedSingleIfNotExist_EntryLineUISetting("FrmSaleInvoiceDirect", Ncat.SaleChallan, "Dgl1", FrmSaleInvoiceDirect_WithDimension.Col1DiscountPer, True)
-                FSeedSingleIfNotExist_EntryLineUISetting("FrmSaleInvoiceDirect", Ncat.SaleChallan, "Dgl1", FrmSaleInvoiceDirect_WithDimension.Col1DiscountAmount, True)
-                FSeedSingleIfNotExist_EntryLineUISetting("FrmSaleInvoiceDirect", Ncat.SaleChallan, "Dgl1", FrmSaleInvoiceDirect_WithDimension.Col1AdditionalDiscountPer, False)
-                FSeedSingleIfNotExist_EntryLineUISetting("FrmSaleInvoiceDirect", Ncat.SaleChallan, "Dgl1", FrmSaleInvoiceDirect_WithDimension.Col1AdditionalDiscountAmount, False)
-                FSeedSingleIfNotExist_EntryLineUISetting("FrmSaleInvoiceDirect", Ncat.SaleChallan, "Dgl1", FrmSaleInvoiceDirect_WithDimension.Col1AdditionPer, False)
-                FSeedSingleIfNotExist_EntryLineUISetting("FrmSaleInvoiceDirect", Ncat.SaleChallan, "Dgl1", FrmSaleInvoiceDirect_WithDimension.Col1AdditionAmount, False)
-                FSeedSingleIfNotExist_EntryLineUISetting("FrmSaleInvoiceDirect", Ncat.SaleChallan, "Dgl1", FrmSaleInvoiceDirect_WithDimension.Col1Amount, True,,, False)
-                FSeedSingleIfNotExist_EntryLineUISetting("FrmSaleInvoiceDirect", Ncat.SaleChallan, "Dgl1", FrmSaleInvoiceDirect_WithDimension.Col1Remark, True)
-                FSeedSingleIfNotExist_EntryLineUISetting("FrmSaleInvoiceDirect", Ncat.SaleChallan, "Dgl1", FrmSaleInvoiceDirect_WithDimension.Col1Godown, False)
-                FSeedSingleIfNotExist_EntryLineUISetting("FrmSaleInvoiceDirect", Ncat.SaleChallan, "Dgl1", FrmSaleInvoiceDirect_WithDimension.Col1SaleInvoice, False, False, "Quot.No")
-                FSeedSingleIfNotExist_EntryLineUISetting("FrmSaleInvoiceDirect", Ncat.SaleChallan, "Dgl1", FrmSaleInvoiceDirect_WithDimension.Col1Progress, True, False)
+            FSeedSingleIfNotExist_EntryLineUISetting("FrmSaleInvoiceDirect", Ncat.SaleChallan, "Dgl1", FrmSaleInvoiceDirect_WithDimension.Col1ItemCategory, False)
+            FSeedSingleIfNotExist_EntryLineUISetting("FrmSaleInvoiceDirect", Ncat.SaleChallan, "Dgl1", FrmSaleInvoiceDirect_WithDimension.Col1ItemGroup, False)
+            FSeedSingleIfNotExist_EntryLineUISetting("FrmSaleInvoiceDirect", Ncat.SaleChallan, "Dgl1", FrmSaleInvoiceDirect_WithDimension.Col1ItemCode, False)
+            FSeedSingleIfNotExist_EntryLineUISetting("FrmSaleInvoiceDirect", Ncat.SaleChallan, "Dgl1", FrmSaleInvoiceDirect_WithDimension.Col1Item, True)
+            If ClsMain.IsScopeOfWorkContains(IndustryType.CommonModules.Dimension1) Then
+                FSeedSingleIfNotExist_EntryLineUISetting("FrmSaleInvoiceDirect", Ncat.SaleChallan, "Dgl1", FrmSaleInvoiceDirect_WithDimension.Col1Dimension1, False)
+            End If
+            If ClsMain.IsScopeOfWorkContains(IndustryType.CommonModules.Dimension2) Then
+                FSeedSingleIfNotExist_EntryLineUISetting("FrmSaleInvoiceDirect", Ncat.SaleChallan, "Dgl1", FrmSaleInvoiceDirect_WithDimension.Col1Dimension2, False)
+            End If
+            If ClsMain.IsScopeOfWorkContains(IndustryType.CommonModules.Dimension3) Then
+                FSeedSingleIfNotExist_EntryLineUISetting("FrmSaleInvoiceDirect", Ncat.SaleChallan, "Dgl1", FrmSaleInvoiceDirect_WithDimension.Col1Dimension3, False)
+            End If
+            If ClsMain.IsScopeOfWorkContains(IndustryType.CommonModules.Dimension4) Then
+                FSeedSingleIfNotExist_EntryLineUISetting("FrmSaleInvoiceDirect", Ncat.SaleChallan, "Dgl1", FrmSaleInvoiceDirect_WithDimension.Col1Dimension4, False)
+            End If
+            FSeedSingleIfNotExist_EntryLineUISetting("FrmSaleInvoiceDirect", Ncat.SaleChallan, "Dgl1", FrmSaleInvoiceDirect_WithDimension.Col1Size, False)
+            FSeedSingleIfNotExist_EntryLineUISetting("FrmSaleInvoiceDirect", Ncat.SaleChallan, "Dgl1", FrmSaleInvoiceDirect_WithDimension.Col1Specification, False)
+            FSeedSingleIfNotExist_EntryLineUISetting("FrmSaleInvoiceDirect", Ncat.SaleChallan, "Dgl1", FrmSaleInvoiceDirect_WithDimension.Col1SalesTaxGroup, True)
+            FSeedSingleIfNotExist_EntryLineUISetting("FrmSaleInvoiceDirect", Ncat.SaleChallan, "Dgl1", FrmSaleInvoiceDirect_WithDimension.Col1BaleNo, False)
+            FSeedSingleIfNotExist_EntryLineUISetting("FrmSaleInvoiceDirect", Ncat.SaleChallan, "Dgl1", FrmSaleInvoiceDirect_WithDimension.Col1LotNo, False)
+            FSeedSingleIfNotExist_EntryLineUISetting("FrmSaleInvoiceDirect", Ncat.SaleChallan, "Dgl1", FrmSaleInvoiceDirect_WithDimension.Col1DocQty, True)
+            FSeedSingleIfNotExist_EntryLineUISetting("FrmSaleInvoiceDirect", Ncat.SaleChallan, "Dgl1", FrmSaleInvoiceDirect_WithDimension.Col1FreeQty, False)
+            FSeedSingleIfNotExist_EntryLineUISetting("FrmSaleInvoiceDirect", Ncat.SaleChallan, "Dgl1", FrmSaleInvoiceDirect_WithDimension.Col1Qty, False)
+            FSeedSingleIfNotExist_EntryLineUISetting("FrmSaleInvoiceDirect", Ncat.SaleChallan, "Dgl1", FrmSaleInvoiceDirect_WithDimension.Col1Unit, True)
+            FSeedSingleIfNotExist_EntryLineUISetting("FrmSaleInvoiceDirect", Ncat.SaleChallan, "Dgl1", FrmSaleInvoiceDirect_WithDimension.Col1QtyDecimalPlaces, False)
+            FSeedSingleIfNotExist_EntryLineUISetting("FrmSaleInvoiceDirect", Ncat.SaleChallan, "Dgl1", FrmSaleInvoiceDirect_WithDimension.Col1Pcs, False)
+            FSeedSingleIfNotExist_EntryLineUISetting("FrmSaleInvoiceDirect", Ncat.SaleChallan, "Dgl1", FrmSaleInvoiceDirect_WithDimension.Col1MasterSaleRate, False,,, False)
+            FSeedSingleIfNotExist_EntryLineUISetting("FrmSaleInvoiceDirect", Ncat.SaleChallan, "Dgl1", FrmSaleInvoiceDirect_WithDimension.Col1RateDiscountPer, False)
+            FSeedSingleIfNotExist_EntryLineUISetting("FrmSaleInvoiceDirect", Ncat.SaleChallan, "Dgl1", FrmSaleInvoiceDirect_WithDimension.Col1Rate, True)
+            FSeedSingleIfNotExist_EntryLineUISetting("FrmSaleInvoiceDirect", Ncat.SaleChallan, "Dgl1", FrmSaleInvoiceDirect_WithDimension.Col1DiscountPer, True)
+            FSeedSingleIfNotExist_EntryLineUISetting("FrmSaleInvoiceDirect", Ncat.SaleChallan, "Dgl1", FrmSaleInvoiceDirect_WithDimension.Col1DiscountAmount, True)
+            FSeedSingleIfNotExist_EntryLineUISetting("FrmSaleInvoiceDirect", Ncat.SaleChallan, "Dgl1", FrmSaleInvoiceDirect_WithDimension.Col1AdditionalDiscountPer, False)
+            FSeedSingleIfNotExist_EntryLineUISetting("FrmSaleInvoiceDirect", Ncat.SaleChallan, "Dgl1", FrmSaleInvoiceDirect_WithDimension.Col1AdditionalDiscountAmount, False)
+            FSeedSingleIfNotExist_EntryLineUISetting("FrmSaleInvoiceDirect", Ncat.SaleChallan, "Dgl1", FrmSaleInvoiceDirect_WithDimension.Col1AdditionPer, False)
+            FSeedSingleIfNotExist_EntryLineUISetting("FrmSaleInvoiceDirect", Ncat.SaleChallan, "Dgl1", FrmSaleInvoiceDirect_WithDimension.Col1AdditionAmount, False)
+            FSeedSingleIfNotExist_EntryLineUISetting("FrmSaleInvoiceDirect", Ncat.SaleChallan, "Dgl1", FrmSaleInvoiceDirect_WithDimension.Col1Amount, True,,, False)
+            FSeedSingleIfNotExist_EntryLineUISetting("FrmSaleInvoiceDirect", Ncat.SaleChallan, "Dgl1", FrmSaleInvoiceDirect_WithDimension.Col1Remark, True)
+            FSeedSingleIfNotExist_EntryLineUISetting("FrmSaleInvoiceDirect", Ncat.SaleChallan, "Dgl1", FrmSaleInvoiceDirect_WithDimension.Col1Godown, False)
+            FSeedSingleIfNotExist_EntryLineUISetting("FrmSaleInvoiceDirect", Ncat.SaleChallan, "Dgl1", FrmSaleInvoiceDirect_WithDimension.Col1SaleInvoice, False, False, "Quot.No")
+            FSeedSingleIfNotExist_EntryLineUISetting("FrmSaleInvoiceDirect", Ncat.SaleChallan, "Dgl1", FrmSaleInvoiceDirect_WithDimension.Col1Progress, True, False)
 
 
             FSeedSingleIfNotExist_EntryHeaderUISetting("FrmSaleInvoiceDirect", Ncat.SaleOrder, "DglMain", AgTemplate.TempTransaction1.hcSite_Code, 1, 1, 1)
@@ -24698,8 +24698,8 @@ Thanks
 
                 AgL.PubTempStr = AgL.PubTempStr & "End Printing To Printer : " & AgL.PubStopWatch.ElapsedMilliseconds.ToString & vbCrLf
 
-                Else
-                    AgL.PubTempStr = AgL.PubTempStr & "Start Printing To Screen : " & AgL.PubStopWatch.ElapsedMilliseconds.ToString & vbCrLf
+            Else
+                AgL.PubTempStr = AgL.PubTempStr & "Start Printing To Screen : " & AgL.PubStopWatch.ElapsedMilliseconds.ToString & vbCrLf
                 objRepFrm.MdiParent = objFrm.MdiParent
                 objRepFrm.Show()
                 AgL.PubTempStr = AgL.PubTempStr & "End Printing To Screen : " & AgL.PubStopWatch.ElapsedMilliseconds.ToString & vbCrLf

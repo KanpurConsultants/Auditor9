@@ -1,8 +1,0 @@
-; Field definition file for table: ADORecordset
-Srl	string	255	2	
-DocNo	string	255	1	
-V_Date	datetime	02/Apr/2021 00:00:00	
-VType	string	255	Sale Return Retail	
-PartyName	string	255	Revenue Point 1, SAHARANPUR	
-PaymentMode	string	255		
-Amount	number	-858	

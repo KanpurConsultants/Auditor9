@@ -1059,6 +1059,10 @@ Public Class FrmPerson
                             Where SR.RegistrationNo='" & Dgl1(Col1Value, rowSalesTaxNo).Value & "' 
                             And SR.RegistrationType = '" & SubgroupRegistrationType.SalesTaxNo & "' 
                             And Sg.SubgroupType = '" & Dgl1(Col1Value, rowSubgroupType).Tag & "' "
+                    If AgL.StrCmp(AgL.PubDBName, "Sadhvi") Or AgL.StrCmp(AgL.PubDBName, "Sadhvi2") Then
+                        mQry = mQry & " AND Sg.Site_Code ='" & AgL.PubSiteCode & "' "
+                    End If
+
                     DtTemp = AgL.FillData(mQry, AgL.GCn).Tables(0)
                     If DtTemp.Rows.Count > 0 Then
                         If AgL.XNull(DtTemp.Rows(0)("Code")) = Dgl1(Col1Value, rowParent).Tag Or
@@ -1113,6 +1117,10 @@ Public Class FrmPerson
                             Where RegistrationNo='" & Dgl1(Col1Value, rowPanNo).Value & "' 
                             And RegistrationType = '" & SubgroupRegistrationType.PanNo & "' 
                             And Sg.SubgroupType  = '" & Dgl1(Col1Value, rowSubgroupType).Tag & "' "
+                    If AgL.StrCmp(AgL.PubDBName, "Sadhvi") Or AgL.StrCmp(AgL.PubDBName, "Sadhvi2") Then
+                        mQry = mQry & " AND Sg.Site_Code ='" & AgL.PubSiteCode & "' "
+                    End If
+
                     DtTemp = AgL.FillData(mQry, AgL.GCn).Tables(0)
                     If DtTemp.Rows.Count > 0 Then
                         If AgL.XNull(DtTemp.Rows(0)("Code")) = Dgl1(Col1Value, rowParent).Tag Or
@@ -1149,6 +1157,10 @@ Public Class FrmPerson
                             And SR.RegistrationType = '" & SubgroupRegistrationType.SalesTaxNo & "' 
                             And Sg.SubgroupType = '" & Dgl1(Col1Value, rowSubgroupType).Tag & "' 
                             And SubCode<>'" & mInternalCode & "' "
+                    If AgL.StrCmp(AgL.PubDBName, "Sadhvi") Or AgL.StrCmp(AgL.PubDBName, "Sadhvi2") Then
+                        mQry = mQry & " AND Sg.Site_Code ='" & AgL.PubSiteCode & "' "
+                    End If
+
                     DtTemp = AgL.FillData(mQry, AgL.GCn).Tables(0)
                     If DtTemp.Rows.Count > 0 Then
                         If AgL.XNull(DtTemp.Rows(0)("Code")) = Dgl1(Col1Value, rowParent).Tag Or
@@ -1204,6 +1216,10 @@ Public Class FrmPerson
                             And RegistrationType = '" & SubgroupRegistrationType.PanNo & "' 
                             And Sg.SubgroupType  = '" & Dgl1(Col1Value, rowSubgroupType).Tag & "' 
                             And SubCode<>'" & mInternalCode & "' "
+                    If AgL.StrCmp(AgL.PubDBName, "Sadhvi") Or AgL.StrCmp(AgL.PubDBName, "Sadhvi2") Then
+                        mQry = mQry & " AND Sg.Site_Code ='" & AgL.PubSiteCode & "' "
+                    End If
+
                     DtTemp = AgL.FillData(mQry, AgL.GCn).Tables(0)
                     If DtTemp.Rows.Count > 0 Then
                         If AgL.XNull(DtTemp.Rows(0)("Code")) = Dgl1(Col1Value, rowParent).Tag Or

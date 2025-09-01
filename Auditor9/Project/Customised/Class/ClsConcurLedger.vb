@@ -105,13 +105,6 @@ Public Class ClsConcurLedger
         ReportFrm = mReportFrm
     End Sub
 
-
-
-
-
-
-
-
     Public Function FunConcurLedger(Conn As Object) As DataSet
         Dim mCondStr$ = ""
         Dim mCondStrOp$ = ""
@@ -749,6 +742,8 @@ Public Class ClsConcurLedger
         Dim DsRep As DataSet = FunConcurLedger(AgL.GCn)
 
         If DsRep.Tables(0).Rows.Count = 0 Then Err.Raise(1, , "No Records to Print!")
+        ReportFrm.DefaultMobileNo = AgL.XNull(DsRep.Tables(0).Rows(0)("Mobile"))
+        'ReportFrm.DefaultMobileNo = "8299399688"
         ReportFrm.PrintReport(DsRep, RepName, RepTitle)
     End Sub
 

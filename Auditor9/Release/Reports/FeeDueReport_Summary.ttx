@@ -1,5 +1,0 @@
-; Field definition file for table: ADORecordset
-Student	string	255	ABHINAV TRIPATHI , 124	
-FatherName	string	255	AMARESH KUMAR TRIPATHI 	
-Class	string	255	10TH 	
-BalanceAmount	number	45200	

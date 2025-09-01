@@ -2860,7 +2860,7 @@ Public Class FrmDebitCreditNote
             Exit Sub
         End If
 
-        If AgL.StrCmp(AgL.PubDBName, "Sadhvi") And TxtV_Type.Tag = "CNC" Then
+        If (AgL.StrCmp(AgL.PubDBName, "Sadhvi") Or AgL.StrCmp(AgL.PubDBName, "Sadhvi2")) And TxtV_Type.Tag = "CNC" Then
             If TxtLinkedParty.Tag = "" Then
                 MsgBox("Entry For Can Not Be Blank")
                 TxtLinkedParty.Focus()
@@ -2971,7 +2971,7 @@ Public Class FrmDebitCreditNote
                 Case TxtLinkedParty.Name
                     If e.KeyCode <> Keys.Enter Then
                         If sender.AgHelpDataset Is Nothing Then
-                            If AgL.StrCmp(AgL.PubDBName, "Sadhvi") Then
+                            If AgL.StrCmp(AgL.PubDBName, "Sadhvi") Or AgL.StrCmp(AgL.PubDBName, "Sadhvi2") Then
                                 mQry = " Select Code, Name From ViewHelpSubGroup Where Code in ('D100037067','D100037068','D100037144','D100038098') "
                             Else
                                 mQry = " Select Code, Name From ViewHelpSubGroup "
@@ -3177,7 +3177,7 @@ Public Class FrmDebitCreditNote
         If FDivisionNameForCustomization(20) = "SHYAMA SHYAM FABRICS" Or FDivisionNameForCustomization(22) = "W SHYAMA SHYAM FABRICS" Or ClsMain.FDivisionNameForCustomization(25) = "SHYAMA SHYAM VENTURES LLP" Or ClsMain.FDivisionNameForCustomization(27) = "W SHYAMA SHYAM VENTURES LLP" Then
             TxtLinkedParty.Visible = True
             LblLinkedParty.Visible = True
-        ElseIf AgL.StrCmp(AgL.PubDBName, "Sadhvi") Then
+        ElseIf AgL.StrCmp(AgL.PubDBName, "Sadhvi") Or AgL.StrCmp(AgL.PubDBName, "Sadhvi2") Then
             TxtLinkedParty.Visible = True
             TxtLinkedParty.Enabled = True
             LblLinkedParty.Visible = True

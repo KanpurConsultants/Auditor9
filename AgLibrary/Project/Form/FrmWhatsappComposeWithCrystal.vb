@@ -13,6 +13,7 @@ Public Class FrmWhatsappComposeWithCrystal
 
     Dim mReportTitle As String = "", mReportSubTitle As String = ""
     Dim mAttachmentName As String = ""
+    Public mDefaultMobileNo As String = ""
     Dim mAttachmentSaveFolderName As String = "EMail"
 
 
@@ -308,6 +309,16 @@ Public Class FrmWhatsappComposeWithCrystal
         ' Add any initialization after the InitializeComponent() call.
         AgL = AgLibVar
     End Sub
+    Public Property DefaultMobileNo() As String
+        Get
+            DefaultMobileNo = mDefaultMobileNo
+        End Get
+        Set(ByVal value As String)
+            mDefaultMobileNo = value
+            'MsgBox(mDefaultMobileNo)
+            'TxtToMobile.Text = mDefaultMobileNo
+        End Set
+    End Property
     Public Property AttachmentName() As String
         Get
             AttachmentName = mAttachmentName
@@ -536,12 +547,19 @@ Public Class FrmWhatsappComposeWithCrystal
     Public Function FSendWhatsapp()
         Dim mQry As String = ""
         Dim DtTemp As DataTable = Nothing
-        If TxtToMobile.Text.ToString.Replace(",", "") = "" Then
+        If TxtToMobile.Text.ToString.Replace(",", "") = "" And mDefaultMobileNo = "" Then
             FSendWhatsapp = "Invalid Mobile No"
             Exit Function
         End If
         Try
-            Dim MobileNoList As String = TxtToMobile.Text
+            Dim MobileNoList As String
+            If TxtToMobile.Text <> "" And mDefaultMobileNo <> "" Then
+                MobileNoList = mDefaultMobileNo + "," + TxtToMobile.Text
+            ElseIf TxtToMobile.Text = "" And mDefaultMobileNo <> "" Then
+                MobileNoList = mDefaultMobileNo
+            ElseIf TxtToMobile.Text <> "" And mDefaultMobileNo = "" Then
+                MobileNoList = TxtToMobile.Text
+            End If
             Dim FileName As String = ""
             FileName = mAttachmentName + ".pdf"
             Dim Message As String = TxtMessage.Text.Replace(vbCrLf, "\n").Replace(vbLf, "\n")
@@ -620,109 +638,4 @@ Public Class FrmWhatsappComposeWithCrystal
             End If
         End Try
     End Function
-
-    Sub UploadFileToFtp(server As String, username As String, password As String, filePath As String, remoteFileName As String)
-        Try
-            ' Create an FTP request
-            'Dim FUri As Uri = New Uri(server & remoteFileName)
-
-            Dim request As System.Net.FtpWebRequest = DirectCast(System.Net.WebRequest.Create("ftp://216.48.180.109/public_html/sadhvi/" & mAttachmentName + ".pdf"), System.Net.WebRequest)
-
-            'Dim request As FtpWebRequest = CType(WebRequest.Create(FUri), FtpWebRequest)
-            'Dim request As FtpWebRequest = WebRequest.Create(server & "" & remoteFileName)
-            'Dim request As FtpWebRequest = (FtpWebRequest)FtpWebRequest.Create(New Uri("ftp://" + ftpServerIP + "/outbox/" + objFile.Name));
-
-            request.Method = WebRequestMethods.Ftp.UploadFile
-
-            ' Set FTP credentials
-            request.Credentials = New NetworkCredential(username, password)
-
-            ' Enable binary transfer mode for file upload
-            request.UseBinary = True
-            request.UsePassive = True
-            request.KeepAlive = False
-
-            ' Read the file into a byte array
-            Dim fileContents As Byte() = File.ReadAllBytes(filePath)
-
-            ' Get the request stream and upload the file
-            Using requestStream As Stream = request.GetRequestStream()
-                requestStream.Write(fileContents, 0, fileContents.Length)
-            End Using
-
-            ' Get the response from the FTP server
-            Using response As FtpWebResponse = CType(request.GetResponse(), FtpWebResponse)
-                Console.WriteLine("Upload File Complete, status: " & response.StatusDescription)
-            End Using
-        Catch ex As Exception
-            Console.WriteLine("Error: " & ex.Message)
-        End Try
-    End Sub
-    'Function UploadFileToFTPServer() As String
-    '    ' FTP Server Information
-    '    Dim ftpServer As String = "ftp://216.48.180.109"
-    '    Dim ftpUsername As String = "equal2464"
-    '    Dim ftpPassword As String = "tActL$*$P*67"
-    '    Dim filePath As String = "d:/Sadhvi/13414.pdf"
-    '    Dim remotePath As String = "/public_html/sadhvi/13414.pdf"
-
-    '    Try
-    '        ' Combine FTP server address and remote path
-    '        Dim ftpUri As String = ftpServer & remotePath
-    '        ' Create FTP Request
-    '        Dim request As FtpWebRequest = CType(WebRequest.Create(ftpUri), FtpWebRequest)
-    '        request.Method = WebRequestMethods.Ftp.UploadFile
-    '        request.Credentials = New NetworkCredential(ftpUsername, ftpPassword)
-    '        request.UseBinary = True
-    '        request.KeepAlive = False
-
-    '        ' Read the file to upload
-    '        Dim fileContents As Byte() = File.ReadAllBytes(filePath)
-    '        request.ContentLength = fileContents.Length
-
-    '        ' Upload file to server
-    '        Using requestStream As Stream = request.GetRequestStream()
-    '            requestStream.Write(fileContents, 0, fileContents.Length)
-    '        End Using
-
-    '        ' Get response from server
-    '        Using response As FtpWebResponse = CType(request.GetResponse(), FtpWebResponse)
-    '            Console.WriteLine("Upload status: " & response.StatusDescription)
-    '        End Using
-
-    '    Catch ex As Exception
-    '        Console.WriteLine("Error: " & ex.Message)
-    '    End Try
-    'End Function
-    Function UploadFile() As String
-        'Dim filePath As String, serverUrl As String
-        'filePath = "d:\delivery_challan - Copy.pdf"
-        'serverUrl = "ftp://216.48.180.109//sadhvi//"
-        'Dim username As String = "equal2464"
-        'Dim password As String = "tActL$*$P*67"
-        'Try
-        '    ' Ensure the file exists
-        '    If Not File.Exists(filePath) Then
-        '        Throw New FileNotFoundException("The file does not exist.")
-        '    End If
-
-        '    ' Create a WebClient instance
-        '    Using client As New WebClient()
-        '        ' Add a header if needed (e.g., for authentication)
-        '        ' client.Headers.Add("Authorization", "Bearer your_token")
-        '        client.Credentials = New NetworkCredential(UserName, password)
-
-        '        ' Upload the file
-        '        Dim responseBytes As Byte() = client.UploadFile(serverUrl, filePath)
-
-        '        ' Convert the response to a string and return it
-        '        Return System.Text.Encoding.UTF8.GetString(responseBytes)
-        '    End Using
-
-        'Catch ex As Exception
-        '    ' Handle errors
-        '    Return "Error: " & ex.Message
-        'End Try
-    End Function
-
 End Class

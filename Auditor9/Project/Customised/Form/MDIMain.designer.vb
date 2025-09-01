@@ -241,6 +241,7 @@ Partial Class MDIMain
         Me.MnuTCSInputReport = New System.Windows.Forms.ToolStripMenuItem()
         Me.MnuEBillGeneration = New System.Windows.Forms.ToolStripMenuItem()
         Me.MnuSendMessageForPayment = New System.Windows.Forms.ToolStripMenuItem()
+        Me.MnuSendWhatsappMessage = New System.Windows.Forms.ToolStripMenuItem()
         Me.MnuTimeOffice = New System.Windows.Forms.ToolStripMenuItem()
         Me.MnuHolidayMaster = New System.Windows.Forms.ToolStripMenuItem()
         Me.MnuDesignationMaster = New System.Windows.Forms.ToolStripMenuItem()
@@ -329,12 +330,12 @@ Partial Class MDIMain
         Me.MnuMakeDataBlank = New System.Windows.Forms.ToolStripMenuItem()
         Me.MnuSerializeEntryNo = New System.Windows.Forms.ToolStripMenuItem()
         Me.MnuExportSqliteDataToSqlServer = New System.Windows.Forms.ToolStripMenuItem()
+        Me.MnuToTesting = New System.Windows.Forms.ToolStripMenuItem()
         Me.MnuChequeManagement = New System.Windows.Forms.ToolStripMenuItem()
         Me.MnuBankInfo = New System.Windows.Forms.ToolStripMenuItem()
         Me.MnuPrintCheque = New System.Windows.Forms.ToolStripMenuItem()
         Me.MnuBank = New System.Windows.Forms.ToolStripMenuItem()
         Me.MnuChequePrinting = New System.Windows.Forms.ToolStripMenuItem()
-        Me.MnuToTesting = New System.Windows.Forms.ToolStripMenuItem()
         Me.MnuMain.SuspendLayout()
         Me.SuspendLayout()
         '
@@ -1841,7 +1842,7 @@ Partial Class MDIMain
         '
         'MnuStatutory
         '
-        Me.MnuStatutory.DropDownItems.AddRange(New System.Windows.Forms.ToolStripItem() {Me.MnuGSTReports, Me.MnuEWayBillGeneration, Me.MnuInputTaxRegister, Me.MnuGSTOutputTaxReport, Me.MnuGSTInputTaxReport, Me.MnuTCSOutputReport, Me.MnuTCSInputReport, Me.MnuEBillGeneration, Me.MnuSendMessageForPayment})
+        Me.MnuStatutory.DropDownItems.AddRange(New System.Windows.Forms.ToolStripItem() {Me.MnuGSTReports, Me.MnuEWayBillGeneration, Me.MnuInputTaxRegister, Me.MnuGSTOutputTaxReport, Me.MnuGSTInputTaxReport, Me.MnuTCSOutputReport, Me.MnuTCSInputReport, Me.MnuEBillGeneration, Me.MnuSendMessageForPayment, Me.MnuSendWhatsappMessage})
         Me.MnuStatutory.Name = "MnuStatutory"
         Me.MnuStatutory.Size = New System.Drawing.Size(67, 20)
         Me.MnuStatutory.Text = "Statutory"
@@ -1909,6 +1910,12 @@ Partial Class MDIMain
         Me.MnuSendMessageForPayment.Size = New System.Drawing.Size(219, 22)
         Me.MnuSendMessageForPayment.Tag = "GRID REPORT"
         Me.MnuSendMessageForPayment.Text = "Send Message For Payment"
+        '
+        'MnuSendWhatsappMessage
+        '
+        Me.MnuSendWhatsappMessage.Name = "MnuSendWhatsappMessage"
+        Me.MnuSendWhatsappMessage.Size = New System.Drawing.Size(219, 22)
+        Me.MnuSendWhatsappMessage.Text = "Send Whatsapp Message"
         '
         'MnuTimeOffice
         '
@@ -2525,6 +2532,12 @@ Partial Class MDIMain
         Me.MnuExportSqliteDataToSqlServer.Size = New System.Drawing.Size(236, 22)
         Me.MnuExportSqliteDataToSqlServer.Text = "Export Sqlite Data To Sql Server"
         '
+        'MnuToTesting
+        '
+        Me.MnuToTesting.Name = "MnuToTesting"
+        Me.MnuToTesting.Size = New System.Drawing.Size(236, 22)
+        Me.MnuToTesting.Text = "To Testing"
+        '
         'MnuChequeManagement
         '
         Me.MnuChequeManagement.AccessibleDescription = "+Cheque"
@@ -2556,12 +2569,6 @@ Partial Class MDIMain
         Me.MnuChequePrinting.Name = "MnuChequePrinting"
         Me.MnuChequePrinting.Size = New System.Drawing.Size(160, 22)
         Me.MnuChequePrinting.Text = "Cheque Printing"
-        '
-        'MnuToTesting
-        '
-        Me.MnuToTesting.Name = "MnuToTesting"
-        Me.MnuToTesting.Size = New System.Drawing.Size(236, 22)
-        Me.MnuToTesting.Text = "To Testing"
         '
         'MDIMain
         '
@@ -2901,4 +2908,5 @@ Partial Class MDIMain
     Friend WithEvents MnuWayBillEntry As ToolStripMenuItem
     Friend WithEvents MnuWayBillInvoice As ToolStripMenuItem
     Friend WithEvents MnuToTesting As ToolStripMenuItem
+    Friend WithEvents MnuSendWhatsappMessage As ToolStripMenuItem
 End Class

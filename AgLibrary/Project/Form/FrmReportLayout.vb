@@ -2,7 +2,7 @@ Imports CrystalDecisions.CrystalReports.Engine
 Imports System.Text
 Public Class FrmReportLayout
     Public Agl As AgLibrary.ClsMain
-
+    Public mDefaultMobileNo As String = ""
 #Region "General Variable Declaration Don't Change It."
     '********************************* By VineetJ 8************************************
     '============= This Region Contains General Variable Declaration ==================
@@ -441,7 +441,14 @@ Public Class FrmReportLayout
         NumericType = 1
         StringType = 2
     End Enum
-
+    Public Property DefaultMobileNo() As String
+        Get
+            DefaultMobileNo = mDefaultMobileNo
+        End Get
+        Set(ByVal value As String)
+            mDefaultMobileNo = value
+        End Set
+    End Property
 
     Private Sub IniGrid()
         Dim DTTemp As DataTable
@@ -705,6 +712,7 @@ Public Class FrmReportLayout
             'NRepView = New RepView(PRDGMain)
             NRepView = New AgLibrary.RepView(Agl)
             NRepView.RepObj = RpdReg
+            NRepView.DefaultMobileNo = mDefaultMobileNo
             NRepView.MdiParent = FrmMDI
             NRepView.Text = StrReportCaption
             NRepView.Show()
@@ -817,6 +825,7 @@ Public Class FrmReportLayout
 
         Try
             Me.Cursor = Cursors.WaitCursor
+            ReportView.DefaultMobileNo = DefaultMobileNo
 
             If ReportPath.Trim = "" Then ReportPath = Agl.PubReportPath
 

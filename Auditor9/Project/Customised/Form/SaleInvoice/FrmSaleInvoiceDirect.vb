@@ -8,6 +8,7 @@ Imports Customised.ClsMain
 Imports Customised.ClsMain.ConfigurableFields
 Imports System.Linq
 Imports System.Net
+Imports AgLibrary
 
 Public Class FrmSaleInvoiceDirect
     Inherits AgTemplate.TempTransaction
@@ -5973,6 +5974,8 @@ Public Class FrmSaleInvoiceDirect
         Dim DtDoc As DataTable
         Dim dtTemp As DataTable
         Dim mSaleToParty As String
+        Dim mPartyMobileNo As String
+        Dim mDocNo As String
         Dim mSalesTaxGroupParty As String
 
 
@@ -5989,10 +5992,12 @@ Public Class FrmSaleInvoiceDirect
         AgL.PubTempStr = AgL.PubTempStr & "End Feching basic header detail of document : " & AgL.PubStopWatch.ElapsedMilliseconds.ToString & vbCrLf
 
         AgL.PubTempStr = AgL.PubTempStr & "Start Feching Party Detail from document Header Table : " & AgL.PubStopWatch.ElapsedMilliseconds.ToString & vbCrLf
-        mQry = "Select IfNull(SalesTaxGroupParty,'') as SalesTaxGroupParty, IfNull(SaleToParty,'') as SaleToParty From SaleInvoice Where DocID = '" & SearchCode & "'"
+        mQry = "Select IfNull(SalesTaxGroupParty,'') as SalesTaxGroupParty, IfNull(SaleToParty,'') as SaleToParty, IfNull(SaleToPartyMobile,'') as SaleToPartyMobile, V_Type +'-'+ ManualRefNo AS DocNo From SaleInvoice Where DocID = '" & SearchCode & "'"
         dtTemp = AgL.FillData(mQry, AgL.GCn).Tables(0)
         If dtTemp.Rows.Count > 0 Then
             mSaleToParty = AgL.XNull(dtTemp.Rows(0)("SaleToParty"))
+            mPartyMobileNo = AgL.XNull(dtTemp.Rows(0)("SaleToPartyMobile"))
+            mDocNo = AgL.XNull(dtTemp.Rows(0)("DocNo"))
             mSalesTaxGroupParty = AgL.XNull(dtTemp.Rows(0)("SalesTaxGroupParty"))
         Else
             MsgBox("Party detail can not be fetched for selected invoice. Can't generate print.")
@@ -6081,7 +6086,7 @@ Public Class FrmSaleInvoiceDirect
                 (Case When SP.DispName Is Null Then IfNull(H.SaleToPartyPanNo,'') Else IfNull((Select RegistrationNo From SubgroupRegistration Where Subcode=H.ShipToParty And RegistrationType = '" & SubgroupRegistrationType.PanNo & "'),'') End) as ShipToPartyPanNo, 
                 H.ShipToAddress, H.TermsAndConditions, IfNull(Transporter.Name,'') as TransporterName, IfNull(Transporter.Mobile,'') as TransporterMobile, IfNull(Transporter.Address,'') as TransporterAddress, IfNull(TD.LrNo,'') as LrNo, TD.LrDate, IfNull(TD.PrivateMark,'') PrivateMark, TD.Weight, TD.Freight, TD.ChargedWeight, IfNull(TD.PaymentType,'') as FreightType, 
                 IfNull(TD.RoadPermitNo,'') as RoadPermitNo, TD.RoadPermitDate, IfNull(TD.VehicleNo,'') as VehicleNo, IfNull(TD.ShipMethod,'') as ShipMethod, IfNull(TD.PreCarriageBy,'') PreCarriageBy, IfNull(TD.PreCarriagePlace,'') as PreCarriagePlace, IfNull(TD.BookedFrom,'') as BookedFrom, IfNull(TD.BookedTo,'') as BookedTo, IfNull(TD.Destination,'') as Destination, IfNull(TD.DescriptionOfGoods,'') as DescriptionOfGoods, IfNull(TD.DescriptionOfPacking,'') as DescriptionOfPacking, 
-                IsNull((Select RegistrationNo From SubgroupRegistration Where Subcode=Transporter.Code And RegistrationType = 'Sales Tax No'),'')  as TransporterSalesTaxNo,
+                IsNull((Select RegistrationNo From SubgroupRegistration Where Subcode=Transporter.SubCode And RegistrationType = 'Sales Tax No'),'')  as TransporterSalesTaxNo,
                 IfNull(H.SaleToPartyDocNo,IfNull(L.ReferenceNo,'')) as ReferenceNo,
                 I.Description as ItemName, " & IIf(mPrintFor = ClsMain.PrintFor.QA, "IG.Description", "IfNull(IG.PrintingDescription,IG.Description)") & " as ItemGroupName, 
                 IC.Description as ItemCatName, I.Specification as ItemSpecification, L.Specification as InvoiceLineSpecification, IfNull(I.HSN, IC.HSN) as HSN, IfNull(I.MaintainStockYn, IC.MaintainStockYn) as MaintainStockYn,
@@ -6122,7 +6127,7 @@ Public Class FrmSaleInvoiceDirect
                 Left Join City C  With (NoLock) On H.SaleToPartyCity = C.CityCode
                 Left Join State  With (NoLock) On C.State = State.Code
                 Left Join SaleInvoiceTransport TD  With (NoLock) On H.DocID = TD.DocID
-                Left Join ViewHelpSubgroup Transporter  With (NoLock) On TD.Transporter= Transporter.Code
+                Left Join Subgroup Transporter  With (NoLock) On TD.Transporter= Transporter.Subcode
                 Left Join PostingGroupSalesTaxItem STGI  With (NoLock) On L.SalesTaxGroupItem = STGI.Description
                 Left Join Subgroup Sg  With (NoLock) On H.SaleToParty = Sg.Subcode
                 Left Join Subgroup BP With (NoLock) On H.BillToParty = BP.Subcode
@@ -6190,7 +6195,11 @@ Public Class FrmSaleInvoiceDirect
         If mDocReportFileName = "" Then
             ClsMain.FPrintThisDocument(Me, objRepPrint, TxtV_Type.Tag, mQry, "SaleInvoice_Print.rpt", mPrintTitle, , sQry, sQryRepName, TxtSaleToParty.Tag, TxtV_Date.Text, IsPrintToPrinter,,, mSearchCode)
         Else
-            ClsMain.FPrintThisDocument(Me, objRepPrint, TxtV_Type.Tag, mQry, mDocReportFileName, mPrintTitle, , sQry, sQryRepName, TxtSaleToParty.Tag, TxtV_Date.Text, IsPrintToPrinter,,, mSearchCode)
+            If mPrintFor = ClsMain.PrintFor.Whatsapp Then
+                WhatsAppSender.FPrintThisDocument(Me, objRepPrint, TxtV_Type.Tag, mQry, mDocReportFileName, mPrintTitle, , sQry, sQryRepName, ,, mSearchCode, True, mPartyMobileNo, "Hello", mDocNo)
+            Else
+                ClsMain.FPrintThisDocument(Me, objRepPrint, TxtV_Type.Tag, mQry, mDocReportFileName, mPrintTitle, , sQry, sQryRepName, TxtSaleToParty.Tag, TxtV_Date.Text, IsPrintToPrinter,,, mSearchCode)
+            End If
         End If
     End Sub
     Public Sub FGetPrintCrystal_Aadhat(ObjFrm As Object, ByVal SearchCode As String, mPrintFor As ClsMain.PrintFor, IsPrintToPrinter As Boolean, BulkCondStr As String, PrintingCopiesStr As String)
@@ -8370,7 +8379,7 @@ Public Class FrmSaleInvoiceDirect
                     End If
                 End If
 
-                    Case MnuReport.Name
+            Case MnuReport.Name
                 Dim StrSenderText As String = "Sale Order Report"
                 GridReportFrm = New AgLibrary.FrmRepDisplay(StrSenderText, AgL)
                 GridReportFrm.Filter_IniGrid()

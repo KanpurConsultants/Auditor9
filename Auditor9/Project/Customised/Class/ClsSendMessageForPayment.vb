@@ -18,6 +18,7 @@ Public Class ClsSendMessageForPayment
     Dim mQry As String = ""
     Dim RepTitle As String = ""
     Dim EntryNCat As String = ""
+    Public Property Text As String = "Send Message"
 
 
     Dim DsReport As DataSet = New DataSet
@@ -336,7 +337,7 @@ Public Class ClsSendMessageForPayment
 
 
 
-                mQry = " Select " & IIf(mDocId <> "", "'þ'", "'o'") & " As Tick, '' As Exception, VMain.Subcode || '^' || VMain.Div_Code  As SearchCode, Max(VMain.PartyName) As [Party], Max(VMain.PartyCity) as City, 
+                mQry = " Select " & IIf(mDocId <> "", "'þ'", "'o'") & " As Tick, '' As Exception, VMain.Subcode || '^' || VMain.Div_Code  As SearchCode, VMain.Subcode, Max(VMain.PartyName) As [Party], Max(VMain.PartyCity) as City, 
                         IfNull(Max(Party.Mobile),'') || (Case  When IfNull(Max(Party.Phone),'')='' Then '' Else ', ' || IfNull(Max(Party.Phone),'')  End)  as ContactNo, 
                         Max(VPartyGST.SalesTaxNo) as GstNo, Max(Division.ManualCode) as Division, Max(Agent.Name) as AgentName,
                         sum(VMain.PendingAmt) as [Amount], Sum(VMain.AmtDay2) As [Amount GE " & mLeavergeDays.ToString & " Days],
@@ -364,7 +365,7 @@ Public Class ClsSendMessageForPayment
 
                 ReportFrm.Text = "Send Message For Payment"
                 ReportFrm.ClsRep = Me
-                ReportFrm.ReportProcName = "ProcDebtorsOutstaningReport"
+                ReportFrm.ReportProcName = "ProcFillOutstaning"
                 ReportFrm.DTCustomMenus = DtMenuList
                 ReportFrm.ProcFillGrid(DsHeader)
 
@@ -386,20 +387,11 @@ Public Class ClsSendMessageForPayment
         Dim mMessage As String = ""
 
         Try
-            'For I = 0 To DGL.Rows.Count - 1
-            '    If DGL.Item("Search Code", I).Value IsNot Nothing And DGL.Item("Search Code", I).Value <> "" Then
-            '        If AgL.XNull(DGL.Item("Irn", I).Value) IsNot Nothing And AgL.XNull(DGL.Item("Irn", I).Value) <> "" Then
-            '            MsgBox("IRN Generated Already For Invoice No." & DGL.Item("Invoice No", I).Value & ". Can't Generate Again.", MsgBoxStyle.Information)
-            '            Exit Sub
-            '        End If
-            '    End If
-            'Next
-
             For I = 0 To DGL.Rows.Count - 1
                 If DGL.Item("Search Code", I).Value IsNot Nothing And DGL.Item("Search Code", I).Value <> "" And DGL.Item("Tick", I).Value = "þ" Then
                     mSearchCode = DGL.Item("Search Code", I).Value
                     mMobileNo = DGL.Item("Contact No", I).Value
-                    mMessage = "Dear " + DGL.Item("Party", I).Value + ", Your Rs. " + DGL.Item("Amount GE " & ReportFrm.FGetText(2) & " Days", I).Value.ToString() + " Due more than " & ReportFrm.FGetText(2) & " Days. Please Do Payment To SADHVI " + ReportFrm.FGetText(9)
+                    mMessage = "Dear " + DGL.Item("Party", I).Value + ", Your Rs. " + DGL.Item("Amount GE " & ReportFrm.FGetText(2) & " Days", I).Value.ToString() + " Due more than " & ReportFrm.FGetText(2) & " Days. Please Do Payment To " + ReportFrm.FGetText(10)
 
                     IsSuccess = FSendWhatsappMessage(mMobileNo, mMessage, "Message", "")
 
@@ -414,22 +406,15 @@ Public Class ClsSendMessageForPayment
 
     Public Sub SendWhatsappPDF(DGL As AgControls.AgDataGrid)
         Dim mSearchCode As String = ""
-        'Dim strIrn As String, strAckNo As String, strAckDate As String, strQrCodeImage As String
-        'Dim Result As String, url As String, strdata As String
-        Dim IsSuccess As Boolean
+        Dim StrCondition As String
+        Dim mFileName As String = ""
+
+
         Dim I As Integer = 0
         Dim mMobileNo As String = ""
         Dim mMessage As String = ""
 
         Try
-            'For I = 0 To DGL.Rows.Count - 1
-            '    If DGL.Item("Search Code", I).Value IsNot Nothing And DGL.Item("Search Code", I).Value <> "" Then
-            '        If AgL.XNull(DGL.Item("Irn", I).Value) IsNot Nothing And AgL.XNull(DGL.Item("Irn", I).Value) <> "" Then
-            '            MsgBox("IRN Generated Already For Invoice No." & DGL.Item("Invoice No", I).Value & ". Can't Generate Again.", MsgBoxStyle.Information)
-            '            Exit Sub
-            '        End If
-            '    End If
-            'Next
 
             For I = 0 To DGL.Rows.Count - 1
                 If DGL.Item("Search Code", I).Value IsNot Nothing And DGL.Item("Search Code", I).Value <> "" And DGL.Item("Tick", I).Value = "þ" Then
@@ -437,78 +422,42 @@ Public Class ClsSendMessageForPayment
                     mMobileNo = DGL.Item("Contact No", I).Value
                     mMessage = "Dear " + DGL.Item("Party", I).Value + ", Your Rs. " + DGL.Item("Amount", I).Value.ToString() + " Due. Please Do Payment"
 
-                    IsSuccess = FSendWhatsappMessage(mMobileNo, mMessage, "PDF", "")
+                    StrCondition = " And LG.SubCode ='" & DGL.Item("Subcode", I).Value & "'"
+                    mFileName = "LEDGER " + DGL.Item("Party", I).Value
 
-                    'strdata = FGetJsonForIrn(mSearchCode)
+                    Dim objRepPrint As Object
+                    objRepPrint = New FrmWhatsappComposeWithCrystal(AgL)
 
-                    'url = "http://testapi.taxprogsp.co.in/eicore/dec/v1.03/Invoice?&aspid=" & mAspUserId & "&password=" & mAspPassword & "&Gstin=" & mGstin & "&user_name=" & mUserName & "&&AuthToken=" & AuthToken() & "&QrCodeSize=250"
+                    mQry = " Select	Null As V_Type,Null As V_No,Null As V_Date,Null As V_Prefix, max(SG.Name)   As PName,LG.SubCode,'OPENING BALANCE' As Narration, (Case When (IsNull(Sum(LG.AmtDr),0)-IsNull(Sum(LG.AmtCr),0))>0 Then  (IsNull(Sum(LG.AmtDr),0)-IsNull(Sum(LG.AmtCr),0)) Else 0 End) As AmtDr, (Case When (IsNull(Sum(LG.AmtCr),0)-IsNull(Sum(LG.AmtDr),0))>0 Then (IsNull(Sum(LG.AmtCr),0)-IsNull(Sum(LG.AmtDr),0)) Else 0 End) As AmtCr,0 As SNo,max(SM.name) as Division,Null As ContraName,Null As Chq_No,Null As Chq_Date,IsNull(max(C.CityName),'') as PCity,Null As Site_Code,
+                            '" & AgL.PubStartDate & "' AS FromDate, '" & AgL.PubLoginDate & "' AS ToDate 
+                            From Ledger LG Left 
+                            Join SubGroup SG On LG.Subcode=SG.SubCode 
+                            Left Join Sitemast SM On LG.Site_Code=SM.Code 
+                            Left Join City C On C.CityCode=SG.CityCode  
+                            Where Date(LG.V_Date) < " & AgL.Chk_Date(CDate(AgL.PubStartDate).ToString("s")) & " " & StrCondition & "   
+                            Group By LG.SubCode "
+                    mQry = mQry + " Union All 
+                            Select	LG.V_Type, LG.DivCode + LG.Site_Code + '-' + LG.V_Type + '-' + LG.RecId As V_No,LG.V_Date,LG.V_Prefix,SG.Name  As PName,LG.SubCode, LG.Narration, LG.AmtDr,LG.AmtCr,1 As SNo,SM.Name As Division,LG.ContraText As ContraName,LG.Chq_No,LG.Chq_Date,IsNull(C.CityName,'') as PCity,IsNull(LG.Site_Code,'') As Site_Code,
+                            '" & AgL.PubStartDate & "' AS FromDate, '" & AgL.PubLoginDate & "' AS ToDate 
+                            From Ledger LG 
+                            Left Join SubGroup SG On LG.Subcode=SG.SubCode 
+                            Left Join Sitemast SM On LG.Site_Code=SM.Code 
+                            Left Join City C On C.CityCode=SG.CityCode  
+                            Where ( Date(LG.V_Date) Between " & AgL.Chk_Date(CDate(AgL.PubStartDate).ToString("s")) & " And " & AgL.Chk_Date(CDate(AgL.PubLoginDate).ToString("s")) & ")  " & StrCondition & " "
 
-                    'mAuthToken = AuthToken()
-                    'url = mWhatsappMessageURL.Replace("<AspUserId>", mAspUserId).
-                    '            Replace("<AspPassword>", mAspPassword).
-                    '            Replace("<Gstin>", mGstin).
-                    '            Replace("<EInvioceUserName>", mUserName).
-                    '            Replace("<EInviocePassword>", mPassword).
-                    '            Replace("<AuthToken>", mAuthToken)
-
-                    'Result = WebRequestbody(url, strdata)
-
-                    'Dim p As Object = JSON.parse(Result)
+                    mQry = " SELECT Row_Number() OVER(PARTITION BY VMain.PName  ORDER BY VMain.V_Date, VMain.V_Type,  VMain.V_No, VMain.SNo ) AS Sr,
+                            sum(isnull(VMain.AmtDr,0)) OVER( PARTITION BY VMain.PName  ORDER BY VMain.V_Date, VMain.V_Type,  VMain.V_No, VMain.SNo ) - sum(isnull(VMain.AmtCr,0)) OVER( PARTITION BY VMain.PName  ORDER BY VMain.V_Date, VMain.V_Type,  VMain.V_No, VMain.SNo )  AS Balance,
+                             VMain.* 
+                            FROM 
+                            ( " & mQry & " ) VMain
+                            Order By PName,V_Date,V_Type,V_No,SNo "
+                    WhatsAppSender.FPrintThisDocument(Me, objRepPrint, "SI", mQry, "Ledger1.rpt", mFileName, , "", "", "", , mSearchCode, True, mMobileNo, "Hello", mFileName)
 
 
-                    'If p.Item("Status") = "0" Then
-                    'If p.Item("ErrorDetails")(1).Item("ErrorCode") <> "0" Then
-                    '    mMessage += p.Item("ErrorDetails")(1).Item("ErrorCode") & " : " & p.Item("ErrorDetails")(1).Item("ErrorMessage") & ". Error In Invoice No." & mInvoiceNo & vbCrLf
-                    '    Continue For
-                    'End If
-                    'End If
-
-                    'Dim sOutputJson As Object = p.Item("Data")
-                    'p = JSON.parse(sOutputJson)
-
-                    'strIrn = p.Item("Irn")
-                    'strAckNo = p.Item("AckNo")
-                    'strAckDate = p.Item("AckDt")
-                    'strQrCodeImage = p.Item("QrCodeImage")
-
-                    'Dim DestinationPath As String = PubAttachmentPath + mSearchCode + "\"
-                    'If Not Directory.Exists(DestinationPath) Then
-                    '    Directory.CreateDirectory(DestinationPath)
-                    'End If
-
-                    'Dim mByte() As Byte = Convert.FromBase64String(strQrCodeImage)
-                    'System.IO.File.WriteAllBytes(DestinationPath + "EInvoiceQRCode.png", mByte)
-
-                    'If strIrn = "" Then
-                    '    mMessage = " IRN not generated for Invoice No." & mInvoiceNo & vbCrLf
-                    '    Exit Sub
-                    'Else
-                    '    mQry = " UPDATE SaleInvoice Set EInvoiceIRN = " & AgL.Chk_Text(strIrn) & ",
-                    '        EInvoiceACKNo = " & AgL.Chk_Text(strAckNo) & ",
-                    '        EInvoiceACKDate = " & AgL.Chk_Date(strAckDate) & "
-                    '        Where DocId = '" & mSearchCode & "'"
-                    '    AgL.Dman_ExecuteNonQry(mQry, AgL.GCn, AgL.ECmd)
-
-                    '    mQry = " UPDATE LedgerHead Set EInvoiceIRN = " & AgL.Chk_Text(strIrn) & ",
-                    '        EInvoiceACKNo = " & AgL.Chk_Text(strAckNo) & ",
-                    '        EInvoiceACKDate = " & AgL.Chk_Date(strAckDate) & "
-                    '        Where DocId = '" & mSearchCode & "'"
-                    '    AgL.Dman_ExecuteNonQry(mQry, AgL.GCn, AgL.ECmd)
-
-                    '    mQry = "Insert Into TransactionReferences (DocID, ReferenceDocID, Type, Remark, IsEditingAllowed, IsDeletingAllowed) 
-                    '        Values (" & AgL.Chk_Text(mSearchCode) & ", " & AgL.Chk_Text(mSearchCode) & ", 'E Invoice',
-                    '        'E-Invoice is created. To make changes in this invoice yoou have to first cancel E-invoice.', 0, 0) "
-                    '    AgL.Dman_ExecuteNonQry(mQry, AgL.GCn, AgL.ECmd)
-
-                    '    mMessage += " E-Invoice Generated Successfully For Invoice No." & mInvoiceNo & vbCrLf
-                    '    ReportFrm.DGL1.DataSource = Nothing
-                    'End If
                 End If
             Next
 
-            mMessage = " E-Invoice Generated Successfully."
-
-            'MsgBox(mMessage, MsgBoxStyle.Information)
+            mMessage = " Ledger Send Successfully."
         Catch ex As Exception
             MsgBox(ex.Message, MsgBoxStyle.Critical)
         End Try

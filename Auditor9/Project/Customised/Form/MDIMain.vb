@@ -49,7 +49,7 @@ Public Class MDIMain
             If AgL Is Nothing Then
                 If FOpenIni(StrPath + IniName, AgLibrary.ClsConstant.PubSuperUserName, AgLibrary.ClsConstant.PubSuperUserPassword) Then
                     'If FOpenIni(StrPath + IniName, "Sa", "") Then
-                    AgL.PubSiteCode = "1"
+                    AgL.PubSiteCode = "6"
                     AgL.PubDivCode = "D"
                     AgL.PubLoginDate = DateTime.Now()
                     AgL.PubLastTransactionDate = Now()
@@ -58,7 +58,7 @@ Public Class MDIMain
                     'End
 
 
-                    AgIniVar.FOpenConnection("8", AgL.PubSiteCode, False)
+                    AgIniVar.FOpenConnection("7", AgL.PubSiteCode, False)
                 End If
                 AgL.PubStopWatch.Start()
 
@@ -327,10 +327,6 @@ Public Class MDIMain
                 Mnu.Text = Mnu.ToString.Replace("Dimension4", AgL.PubCaptionDimension4)
             End If
         Next
-    End Sub
-
-    Private Sub MnuRecheckBills_Click(sender As Object, e As EventArgs) Handles MnuRecheckBills.Click
-
     End Sub
 
     'Private Sub FOpenEntryFromShortCut(ByVal e As System.Windows.Forms.KeyEventArgs)

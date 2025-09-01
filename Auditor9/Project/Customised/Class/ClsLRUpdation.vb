@@ -3,6 +3,7 @@ Imports System.IO
 Imports AgLibrary
 Imports AgLibrary.ClsMain
 Imports AgLibrary.ClsMain.agConstants
+Imports Customised.ClsMain
 Imports Microsoft.Reporting.WinForms
 Public Class ClsLRUpdation
 
@@ -266,11 +267,66 @@ Public Class ClsLRUpdation
 
             AgL.ETrans.Commit()
             mTrans = "Commit"
+
+            Dim valLRNo = ReportFrm.DGL1.Item(Col1LrNo, mRow).Value
+            Dim valLRDate = ReportFrm.DGL1.Item(Col1LrDate, mRow).Value
+
+            If valLRNo IsNot Nothing AndAlso Not IsDBNull(valLRNo) And valLRDate IsNot Nothing AndAlso Not IsDBNull(valLRDate) Then
+                FSendWhatsapp(ReportFrm.DGL1.Item(Col1SearchCode, mRow).Value)
+            End If
+
         Catch ex As Exception
             AgL.ETrans.Rollback()
             MsgBox(ex.Message)
         End Try
     End Sub
+
+    Private Sub FSendWhatsapp(SearchCode As String)
+        Dim IsSuccess As Boolean
+        Dim ToMobileNo As String
+        Dim ToMessage As String
+        mQry = "Select 
+                    Sg.DispName As DivisionName, VT.Short_Name +'-'+ H.ManualRefNo AS SaleNo, replace(Convert(NVARCHAR,H.V_Date,106),' ','/') AS SaleDate,
+                    Party.DispName As PartyName, Party.Mobile As PartyMobile,
+                    T.Name As TransporterName, SIt.LrNo, replace(Convert(NVARCHAR,SIt.LrDate,106),' ','/') As LrDate, H.Net_Amount
+                    From SaleInvoice H 
+                    LEFT JOIN Division D On H.Div_Code = D.Div_Code
+                    LEFT JOIN Voucher_Type VT ON VT.V_Type = H.V_Type 
+                    LEFT JOIN SubGroup Sg On D.SubCode = Sg.SubCode
+                    LEFT JOIN SubGroup Party On H.SaleToParty = Party.SubCode
+                    LEFT JOIN SaleInvoiceTransport SIt ON H.DocID = SIt.DocID
+                    LEFT JOIN SubGroup T On SIT.Transporter = T.SubCode
+                    Where H.DocId = '" & SearchCode & "'"
+        Dim DtDocData As DataTable = AgL.FillData(mQry, AgL.GCn).Tables(0)
+
+        ToMobileNo = AgL.XNull(DtDocData.Rows(0)("PartyMobile"))
+        'ToMobileNo = "8299399688"
+        'ToMessage = FGetSettings(SettingFields.SmsMessage, SettingType.General)
+        ToMessage = "Dear <PartyName>,
+
+                    Your Inv.No. <EntryNo> Dated <EntryDate> of Rs.<NetAmount> has been dispatched
+                    By Transport <TransporterName> with LR No. <LRNo> on Date <LRDate> .
+
+                    Sincerely
+                    <DivisionName>"
+        ToMessage = ToMessage.
+                Replace("<PartyName>", AgL.XNull(DtDocData.Rows(0)("PartyName"))).
+                Replace("<EntryNo>", AgL.XNull(DtDocData.Rows(0)("SaleNo"))).
+                Replace("<EntryDate>", AgL.XNull(DtDocData.Rows(0)("SaleDate"))).
+                Replace("<LRNo>", AgL.XNull(DtDocData.Rows(0)("LRNo"))).
+                Replace("<LRDate>", AgL.XNull(DtDocData.Rows(0)("LRDate"))).
+                Replace("<DivisionName>", AgL.XNull(DtDocData.Rows(0)("DivisionName"))).
+                Replace("<TransporterName>", AgL.XNull(DtDocData.Rows(0)("TransporterName"))).
+                Replace("<NetAmount>", Format(AgL.VNull(DtDocData.Rows(0)("Net_Amount")), "0.00")).
+                Replace("&", "And")
+        IsSuccess = FSendWhatsappMessage(ToMobileNo, ToMessage, "Message", "")
+    End Sub
+    Private Function FGetSettings(FieldName As String, SettingType As String) As String
+        Dim mValue As String
+        mValue = ClsMain.FGetSettings(FieldName, SettingType, AgL.PubDivCode, AgL.PubSiteCode, "", "", "", "", "")
+        FGetSettings = mValue
+    End Function
+
     Private Sub ObjRepFormGlobal_Dgl1KeyDown(ByVal sender As Object, ByVal e As System.Windows.Forms.KeyEventArgs) Handles ReportFrm.Dgl1KeyDown
         Dim bRowIndex As Integer = 0, bColumnIndex As Integer = 0
         Dim bItemCode As String = ""

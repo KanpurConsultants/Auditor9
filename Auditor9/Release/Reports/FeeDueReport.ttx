@@ -1,9 +1,0 @@
-; Field definition file for table: ADORecordset
-Comp_Name	string	255	School	
-Student	string	255	AJAY SINGH	
-Class	string	255	1ST	
-Fee	string	255	ADMISSION FEE	
-SubHead	string	255	SUB HEAD-1	
-FeeAmount	number	3000	
-ReceivedAmount	long	0	
-BalanceAmount	number	3000	

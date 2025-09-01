@@ -8,6 +8,7 @@ Imports Customised.ClsMain
 Imports Customised.ClsMain.ConfigurableFields
 Imports System.Linq
 Imports Customised
+Imports AgLibrary
 
 Public Class FrmSaleInvoiceDirect_WithDimension
     Inherits AgTemplate.TempTransaction1
@@ -2249,6 +2250,22 @@ Public Class FrmSaleInvoiceDirect_WithDimension
         mQry = " UPDATE Ledger Set CreditDays = " & Val(Dgl3(Col1Value, rowCreditDays).Value) & " Where DocId = '" & mSearchCode & "'"
         AgL.Dman_ExecuteNonQry(mQry, Conn, Cmd)
 
+        If AgL.StrCmp(AgL.PubDBName, "SKYF") And DglMain.Item(Col1Value, rowV_Type).Tag = "SIS" And Dgl3(Col1Value, rowAgent).Tag <> "" Then
+            mQry = "INSERT INTO Ledger  (DocId, V_SNo, V_No, V_Type, V_Prefix, V_Date, SubCode, ContraSub, AmtDr, AmtCr, Chq_No, Chq_Date, Clg_Date, TDSCategory, TdsDesc, TdsOnAmt, TdsPer, Tds_Of_V_Sno, Narration, Site_Code, U_Name, U_EntDt, U_AE, DivCode, PQty, SQty, AgRefNo, GroupCode, GroupNature, RowId, UpLoadDate, AddBy, AddDate, ModifyBy, ModifyDate, ApprovedBy, ApprovedDate, GPX1, GPX2, GPN1, GPN2, OldDocid, CostCenter, System_Generated, FarmulaString, ContraText, RecId, FormulaString, OrignalAmt, TDSDeductFrom, ReferenceDocId, ReferenceDocIdSr, CreditDays, EffectiveDate, LinkedSubcode, TSr)
+                select L.DocId, L.V_SNo+3, L.V_No, L.V_Type, L.V_Prefix, L.V_Date, L.SubCode, L.ContraSub, L.AmtCr AS AmtDr, 0 AS AmtCr, L.Chq_No, Chq_Date, L.Clg_Date, L.TDSCategory, L.TdsDesc, L.TdsOnAmt, L.TdsPer, L.Tds_Of_V_Sno, L.Narration, L.Site_Code, L.U_Name, L.U_EntDt, L.U_AE, L.DivCode,  L.PQty, L.SQty, L.AgRefNo, L.GroupCode, L.GroupNature, L.RowId, L.UpLoadDate, L.AddBy, L.AddDate, L.ModifyBy, L.ModifyDate, L.ApprovedBy, L.ApprovedDate, L.GPX1, L.GPX2, L.GPN1, L.GPN2, L.OldDocid, L.CostCenter, L.System_Generated, L.FarmulaString, L.ContraText, L.RecId, L.FormulaString, L.OrignalAmt, L.TDSDeductFrom, L.ReferenceDocId, L.ReferenceDocIdSr, L.CreditDays, L.EffectiveDate, L.LinkedSubcode, L.TSr 
+                From Ledger L
+                Where L.DocId ='" & mSearchCode & "' AND AmtCr > 0 "
+            AgL.Dman_ExecuteNonQry(mQry, Conn, Cmd)
+
+            mQry = "INSERT INTO Ledger  (DocId, V_SNo, V_No, V_Type, V_Prefix, V_Date, SubCode, ContraSub, AmtDr, AmtCr, Chq_No, Chq_Date, Clg_Date, TDSCategory, TdsDesc, TdsOnAmt, TdsPer, Tds_Of_V_Sno, Narration, Site_Code, U_Name, U_EntDt, U_AE, DivCode, PQty, SQty, AgRefNo, GroupCode, GroupNature, RowId, UpLoadDate, AddBy, AddDate, ModifyBy, ModifyDate, ApprovedBy, ApprovedDate, GPX1, GPX2, GPN1, GPN2, OldDocid, CostCenter, System_Generated, FarmulaString, ContraText, RecId, FormulaString, OrignalAmt, TDSDeductFrom, ReferenceDocId, ReferenceDocIdSr, CreditDays, EffectiveDate, LinkedSubcode, TSr)
+                select L.DocId, L.V_SNo+4, L.V_No, L.V_Type, L.V_Prefix, L.V_Date, " & AgL.Chk_Text(Dgl3(Col1Value, rowAgent).Tag) & "  SubCode, L.ContraSub, 0 AS AmtDr, L.AmtCr, L.Chq_No, Chq_Date, L.Clg_Date, L.TDSCategory, L.TdsDesc, L.TdsOnAmt, L.TdsPer, L.Tds_Of_V_Sno, L.Narration, L.Site_Code, L.U_Name, L.U_EntDt, L.U_AE, L.DivCode,  L.PQty, L.SQty, L.AgRefNo, L.GroupCode, L.GroupNature, L.RowId, L.UpLoadDate, L.AddBy, L.AddDate, L.ModifyBy, L.ModifyDate, L.ApprovedBy, L.ApprovedDate, L.GPX1, L.GPX2, L.GPN1, L.GPN2, L.OldDocid, L.CostCenter, L.System_Generated, L.FarmulaString, L.ContraText, L.RecId, L.FormulaString, L.OrignalAmt, L.TDSDeductFrom, L.ReferenceDocId, L.ReferenceDocIdSr, L.CreditDays, L.EffectiveDate, L.LinkedSubcode, L.TSr 
+                From Ledger L
+                Where L.DocId ='" & mSearchCode & "' AND AmtCr > 0 "
+            AgL.Dman_ExecuteNonQry(mQry, Conn, Cmd)
+
+        End If
+
+
 
         If Dgl1.Columns(Col1Barcode).Visible Then
             For I = 0 To Dgl1.Rows.Count - 1
@@ -4096,58 +4113,58 @@ Public Class FrmSaleInvoiceDirect_WithDimension
                                     Left Join viewHelpSubgroup Transporter With (NoLock) On H.Transporter = Transporter.Code
                                     Left Join viewHelpSubgroup SalesRep With (NoLock) On H.SalesRepresentative = SalesRep.Code
                                     Where H.Subcode = '" & Subcode & "' And H.Site_Code='" & DglMain.Item(Col1Value, rowSite_Code).Tag & "' And H.Div_Code='" & TxtDivision.Tag & "'"
-                DtTemp = AgL.FillData(mQry, AgL.GCn).Tables(0)
-                If DtTemp.Rows.Count > 0 Then
+            DtTemp = AgL.FillData(mQry, AgL.GCn).Tables(0)
+            If DtTemp.Rows.Count > 0 Then
 
-                    Dgl2(Col1Value, rowSalesRepresentative).Tag = AgL.XNull(DtTemp.Rows(0)("SalesRepresentative"))
-                    Dgl2(Col1Value, rowSalesRepresentative).Value = AgL.XNull(DtTemp.Rows(0)("SalesRepName"))
-                    Dgl2(Col1Value, rowRateType).Tag = AgL.XNull(DtTemp.Rows(0)("RateType"))
-                    Dgl2(Col1Value, rowRateType).Value = AgL.XNull(DtTemp.Rows(0)("RateTypeName"))
-                    Dgl3(Col1Value, rowAgent).Tag = AgL.XNull(DtTemp.Rows(0)("Agent"))
-                    Dgl3(Col1Value, rowAgent).Value = AgL.XNull(DtTemp.Rows(0)("AgentName"))
-                    Dgl3(Col1Value, rowTransporter).Tag = AgL.XNull(DtTemp.Rows(0)("Transporter"))
-                    Dgl3(Col1Value, rowTransporter).Value = AgL.XNull(DtTemp.Rows(0)("TransporterName"))
-
-
+                Dgl2(Col1Value, rowSalesRepresentative).Tag = AgL.XNull(DtTemp.Rows(0)("SalesRepresentative"))
+                Dgl2(Col1Value, rowSalesRepresentative).Value = AgL.XNull(DtTemp.Rows(0)("SalesRepName"))
+                Dgl2(Col1Value, rowRateType).Tag = AgL.XNull(DtTemp.Rows(0)("RateType"))
+                Dgl2(Col1Value, rowRateType).Value = AgL.XNull(DtTemp.Rows(0)("RateTypeName"))
+                Dgl3(Col1Value, rowAgent).Tag = AgL.XNull(DtTemp.Rows(0)("Agent"))
+                Dgl3(Col1Value, rowAgent).Value = AgL.XNull(DtTemp.Rows(0)("AgentName"))
+                Dgl3(Col1Value, rowTransporter).Tag = AgL.XNull(DtTemp.Rows(0)("Transporter"))
+                Dgl3(Col1Value, rowTransporter).Value = AgL.XNull(DtTemp.Rows(0)("TransporterName"))
 
 
 
-                    If AgL.XNull(DtTemp.Rows(0)("TermsAndConditions")) <> "" Then
-                        If TxtNature.Text.ToUpper = "CASH" Then
-                            Dgl3(Col1Value, rowTermsAndConditions).Value = AgL.XNull(DtV_TypeSettings.Rows(0)("Default_TermsAndConditionsCash"))
-                        Else
-                            Dgl3(Col1Value, rowTermsAndConditions).Value = AgL.XNull(DtTemp.Rows(0)("TermsAndConditions"))
-                        End If
+
+
+                If AgL.XNull(DtTemp.Rows(0)("TermsAndConditions")) <> "" Then
+                    If TxtNature.Text.ToUpper = "CASH" Then
+                        Dgl3(Col1Value, rowTermsAndConditions).Value = AgL.XNull(DtV_TypeSettings.Rows(0)("Default_TermsAndConditionsCash"))
                     Else
-                        If TxtNature.Text.ToUpper = "CASH" Then
-                            Dgl3(Col1Value, rowTermsAndConditions).Value = AgL.XNull(DtV_TypeSettings.Rows(0)("Default_TermsAndConditionsCash"))
-                        Else
-                            Dgl3(Col1Value, rowTermsAndConditions).Value = AgL.XNull(DtV_TypeSettings.Rows(0)("Default_TermsAndConditions"))
-                        End If
+                        Dgl3(Col1Value, rowTermsAndConditions).Value = AgL.XNull(DtTemp.Rows(0)("TermsAndConditions"))
                     End If
                 Else
-                    'TxtRateType.Tag = AgL.XNull(DtV_TypeSettings.Rows(0)("Default_RateType"))
-                    'If TxtRateType.Tag <> "" Then
-                    '    TxtRateType.Text = AgL.Dman_Execute("Select Description from RateType Where Code ='" & TxtRateType.Tag & "'", AgL.GCn).ExecuteScalar
-                    'End If
                     If TxtNature.Text.ToUpper = "CASH" Then
                         Dgl3(Col1Value, rowTermsAndConditions).Value = AgL.XNull(DtV_TypeSettings.Rows(0)("Default_TermsAndConditionsCash"))
                     Else
                         Dgl3(Col1Value, rowTermsAndConditions).Value = AgL.XNull(DtV_TypeSettings.Rows(0)("Default_TermsAndConditions"))
                     End If
-
+                End If
+            Else
+                'TxtRateType.Tag = AgL.XNull(DtV_TypeSettings.Rows(0)("Default_RateType"))
+                'If TxtRateType.Tag <> "" Then
+                '    TxtRateType.Text = AgL.Dman_Execute("Select Description from RateType Where Code ='" & TxtRateType.Tag & "'", AgL.GCn).ExecuteScalar
+                'End If
+                If TxtNature.Text.ToUpper = "CASH" Then
+                    Dgl3(Col1Value, rowTermsAndConditions).Value = AgL.XNull(DtV_TypeSettings.Rows(0)("Default_TermsAndConditionsCash"))
+                Else
+                    Dgl3(Col1Value, rowTermsAndConditions).Value = AgL.XNull(DtV_TypeSettings.Rows(0)("Default_TermsAndConditions"))
                 End If
 
+            End If
 
 
 
 
 
-                DglMain.Item(Col1BtnDetail, rowSaleToParty).Tag = Nothing
-                ShowSaleInvoiceParty("", Subcode, TxtNature.Text, ShowDialogForCashParty)
-                DglMain.Item(Col1Value, rowBillToParty).Tag = DglMain.Item(Col1Value, rowSaleToParty).Tag
-                DglMain.Item(Col1Value, rowBillToParty).Value = DglMain.Item(Col1Value, rowSaleToParty).Value
-                DglMain(Col1Head, rowBillToParty).Tag = Nothing
+
+            DglMain.Item(Col1BtnDetail, rowSaleToParty).Tag = Nothing
+            ShowSaleInvoiceParty("", Subcode, TxtNature.Text, ShowDialogForCashParty)
+            DglMain.Item(Col1Value, rowBillToParty).Tag = DglMain.Item(Col1Value, rowSaleToParty).Tag
+            DglMain.Item(Col1Value, rowBillToParty).Value = DglMain.Item(Col1Value, rowSaleToParty).Value
+            DglMain(Col1Head, rowBillToParty).Tag = Nothing
 
             If FDivisionNameForCustomization(20) = "SHYAMA SHYAM FABRICS" Or FDivisionNameForCustomization(22) = "W SHYAMA SHYAM FABRICS" Or ClsMain.FDivisionNameForCustomization(25) = "SHYAMA SHYAM VENTURES LLP" Or ClsMain.FDivisionNameForCustomization(27) = "W SHYAMA SHYAM VENTURES LLP" Then
                 mQry = "Select Par.Code, Par.Name
@@ -4180,39 +4197,39 @@ Public Class FrmSaleInvoiceDirect_WithDimension
 
 
             If DglMain.Item(Col1BtnDetail, rowSaleToParty).Tag IsNot Nothing Then
-                    Dgl2.Item(Col1Value, rowSalesTaxNo).Value = CType(DglMain.Item(Col1BtnDetail, rowSaleToParty).Tag, FrmSaleInvoiceParty_WithDimension).Dgl1.Item(FrmSaleInvoiceParty_WithDimension.Col1Value, FrmSaleInvoiceParty_WithDimension.rowSalesTaxNo).Value
-                    Dgl2.Item(Col1Value, rowAadharNo).Value = CType(DglMain.Item(Col1BtnDetail, rowSaleToParty).Tag, FrmSaleInvoiceParty_WithDimension).Dgl1.Item(FrmSaleInvoiceParty_WithDimension.Col1Value, FrmSaleInvoiceParty_WithDimension.rowAadharNo).Value
-                End If
+                Dgl2.Item(Col1Value, rowSalesTaxNo).Value = CType(DglMain.Item(Col1BtnDetail, rowSaleToParty).Tag, FrmSaleInvoiceParty_WithDimension).Dgl1.Item(FrmSaleInvoiceParty_WithDimension.Col1Value, FrmSaleInvoiceParty_WithDimension.rowSalesTaxNo).Value
+                Dgl2.Item(Col1Value, rowAadharNo).Value = CType(DglMain.Item(Col1BtnDetail, rowSaleToParty).Tag, FrmSaleInvoiceParty_WithDimension).Dgl1.Item(FrmSaleInvoiceParty_WithDimension.Col1Value, FrmSaleInvoiceParty_WithDimension.rowAadharNo).Value
+            End If
 
 
 
-                If DglMain.Item(Col1Value, rowSaleToParty).Tag IsNot Nothing And DglMain.Item(Col1Value, rowSaleToParty).Value <> "" Then
-                    If AgL.XNull(DtV_TypeSettings.Rows(0)("FilterInclude_AcTreeNodeType")).ToString.Contains(TreeNodeType.Leaf) Then
-                        mQry = "Select Par.Code, Par.Name
+            If DglMain.Item(Col1Value, rowSaleToParty).Tag IsNot Nothing And DglMain.Item(Col1Value, rowSaleToParty).Value <> "" Then
+                If AgL.XNull(DtV_TypeSettings.Rows(0)("FilterInclude_AcTreeNodeType")).ToString.Contains(TreeNodeType.Leaf) Then
+                    mQry = "Select Par.Code, Par.Name
                             From SubGroup Sg
                             LEFT JOIN ViewHelpSubGroup Par On Sg.Parent = Par.Code
                             Where Sg.SubCode = '" & DglMain.Item(Col1Value, rowSaleToParty).Tag & "'"
-                        Dim DtBillToParty As DataTable = AgL.FillData(mQry, AgL.GCn).Tables(0)
-                        If DtBillToParty.Rows.Count > 0 Then
-                            DglMain.Item(Col1Value, rowBillToParty).Tag = AgL.XNull(DtBillToParty.Rows(0)("Code"))
-                            DglMain.Item(Col1Value, rowBillToParty).Value = AgL.XNull(DtBillToParty.Rows(0)("Name"))
-                        End If
+                    Dim DtBillToParty As DataTable = AgL.FillData(mQry, AgL.GCn).Tables(0)
+                    If DtBillToParty.Rows.Count > 0 Then
+                        DglMain.Item(Col1Value, rowBillToParty).Tag = AgL.XNull(DtBillToParty.Rows(0)("Code"))
+                        DglMain.Item(Col1Value, rowBillToParty).Value = AgL.XNull(DtBillToParty.Rows(0)("Name"))
                     End If
                 End If
+            End If
 
 
-                If LblV_Type.Tag = Ncat.SaleReturn Then
-                    mQry = "Select Count(*) 
+            If LblV_Type.Tag = Ncat.SaleReturn Then
+                mQry = "Select Count(*) 
                             From SaleInvoice H With (NoLock) 
                             Left Join Voucher_Type VT With (NoLock) On H.V_Type = VT.V_Type
                             Where VT.NCat = '" & Ncat.SaleInvoice & "' 
                             And H.SaleToParty = '" & DglMain.Item(Col1Value, rowSaleToParty).Tag & "'
                             And H.V_Date <= " & AgL.Chk_Date(DglMain.Item(Col1Value, rowV_Date).Value) & " 
                            "
-                    Dgl3.Item(Col1Value, rowCustomerInvoiceCount).Value = AgL.Dman_Execute(mQry, AgL.GCn).ExecuteScalar()
-                End If
-
+                Dgl3.Item(Col1Value, rowCustomerInvoiceCount).Value = AgL.Dman_Execute(mQry, AgL.GCn).ExecuteScalar()
             End If
+
+        End If
         'End If
     End Sub
     Private Sub FGetCurrBal(ByVal Party As String)
@@ -9711,17 +9728,6 @@ Public Class FrmSaleInvoiceDirect_WithDimension
             End Select
         Next
     End Sub
-
-    Private Sub Send_WhatsApp()
-        Dim sender1 As New WhatsAppSender()
-        'sender1.SendPdfViaWhatsApp(
-        '"+91 8299399688",
-        '"D:\55.pdf",
-        '"Here's the document you requested")
-
-        sender1.SendPdfWithAttachment("+91 8299399688", "D:\55.pdf", "Ok")
-    End Sub
-
 
     Public Function FReplaceInvoiceVariables(ByRef dtTable As DataTable, DivisionCode As String, SiteCode As String) As DataTable
         Dim I As Integer, J As Integer
@@ -16889,7 +16895,7 @@ Public Class FrmSaleInvoiceDirect_WithDimension
 
         If AgL.StrCmp(Topctrl1.Mode, "Browse") Then Exit Sub
 
-        bPendingOrderQry = " SELECT VOrder.SaleOrder, VOrder.SaleOrderSr, IsNull(VOrder.OrderQty,0) - IsNull(VInvoice.InvoiceQty,0) AS BalanceQty
+        bPendingOrderQry = " SELECT VOrder.SaleOrder, VOrder.SaleOrderSr, IsNull(VOrder.OrderQty,0) - IsNull(VInvoice.InvoiceQty,0)- IsNull(VInvoiceR.InvoiceQty,0) AS BalanceQty
                 FROM (
                     SELECT L.DocID AS SaleOrder, L.Sr AS SaleOrderSr, Sum(L.Qty) AS OrderQty
                     From SaleInvoice H 
@@ -16908,8 +16914,18 @@ Public Class FrmSaleInvoiceDirect_WithDimension
                     AND Vt.NCat = '" & Ncat.SaleInvoice & "'	
 	                GROUP BY L.SaleInvoice, L.SaleInvoiceSr
                 ) AS VInvoice ON VOrder.SaleOrder = VInvoice.SaleInvoice AND VOrder.SaleOrderSr = VInvoice.SaleInvoiceSr 
+                LEFT JOIN (
+                    SELECT SIL.SaleInvoice, SIL.SaleInvoiceSr, Sum(L.Qty) AS InvoiceQty
+                    From SaleInvoice H 
+	                Left Join SaleInvoiceDetail L ON H.DocID = L.DocID
+                    LEFT JOIN SaleInvoiceDetail SIL ON SIL.DocId = L.ReferenceDocId AND SIL.Sr = L.ReferenceDocIdSr
+                    Left Join Voucher_Type Vt ON H.V_Type = Vt.V_Type
+                    Where H.SaleToParty = '" & DglMain.Item(Col1Value, rowSaleToParty).Tag & "'
+                    AND Vt.NCat = '" & Ncat.SaleReturn & "'	
+	                GROUP BY SIL.SaleInvoice, SIL.SaleInvoiceSr
+                ) AS VInvoiceR ON VOrder.SaleOrder = VInvoiceR.SaleInvoice AND VOrder.SaleOrderSr = VInvoiceR.SaleInvoiceSr
                 WHERE 1=1 
-                And IsNull(VOrder.OrderQty,0) - IsNull(VInvoice.InvoiceQty,0) > 0 "
+                And IsNull(VOrder.OrderQty,0) - IsNull(VInvoice.InvoiceQty,0) - IsNull(VInvoiceR.InvoiceQty,0) > 0 "
 
         mQry = " Select 'o' As Tick, L.DocID || '#' || Cast(L.Sr as Varchar) As SearchKey, 
                 H.V_Type || '-' || H.ManualRefNo As SaleOrderNo, H.V_Date As SaleOrderDate, 

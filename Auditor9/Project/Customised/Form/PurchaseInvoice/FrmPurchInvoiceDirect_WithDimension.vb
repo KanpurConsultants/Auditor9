@@ -14557,6 +14557,9 @@ Public Class FrmPurchInvoiceDirect_WithDimension
         If AgL.StrCmp(AgL.PubDBName, "SHADHVINANDI") And LblV_Type.Tag = "PR" Then
             mQry = " Update Ledger set SubCode ='PURCH' Where DocId ='" & mSearchCode & "' and AmtCr > 0 "
             AgL.Dman_ExecuteNonQry(mQry, AgL.GCn, AgL.ECmd)
+        ElseIf (AgL.StrCmp(AgL.PubDBName, "Sadhvi") Or AgL.StrCmp(AgL.PubDBName, "Sadhvi2")) And (LblV_Type.Tag = Ncat.WayBillInvoice) Then
+            mQry = " UPDATE Ledger SET SubCode ='D100000961' WHERE V_Type = 'WBI' AND SubCode IN ('PURWU0','PURWR0') "
+            AgL.Dman_ExecuteNonQry(mQry, AgL.GCn, AgL.ECmd)
         End If
     End Sub
     Private Function FValidateSalesTaxGroup() As Boolean

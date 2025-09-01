@@ -5,38 +5,38 @@ DocNoCaption	string	255	Invoice No.
 DocDateCaption	string	255	Invoice Date	
 SiteStateCode	string	255	09	
 SiteStateName	string	255	Uttar Pradesh	
-DocID	string	255	D1    SI 2025     437	
+DocID	string	255	D1    SI 2025    1608	
 Sr	number	1	
-V_Date	datetime	22/Jul/2025 00:00:00	
+V_Date	datetime	21/Aug/2025 00:00:00	
 DeliveryDate	datetime		
 Voucher_Type	string	255	Tax Invoice	
 NCat	string	255	SI	
-InvoiceNo	string	255	SI-437	
+InvoiceNo	string	255	SI-1608	
 RateType	string	255	Super Net	
 DocumentPrintShowRateType	string	255	Show If Not Blank	
-AgentName	string	255	DIRECT (CASH)	
+AgentName	string	255		
 AgentCaption	string	255	Agent	
 BillToPartyNature	string	255	Customer	
 SaleToPartyName	string	255	SATYAM TRIPATHI	
-SaleToPartyAddress	string	255	RAMGANJ,PAKKA TALAB-FATEHPUR	
+SaleToPartyAddress	string	255		
 CityName	string	255	FATEHPUR	
-SaleToPartyPincode	string	255	212601	
+SaleToPartyPincode	string	255		
 StateCode	string	255	09	
 StateName	string	255	Uttar Pradesh	
 SaleToPartyMobile	string	255	8299399688	
-ContactPerson	string	255	SATYAM TRIPATHI	
+ContactPerson	string	255		
 SaleToPartySalesTaxNo	string	255		
-SaleToPartyAadharNo	string	255	424442144924	
+SaleToPartyAadharNo	string	255		
 SaleToPartyPanNo	string	255		
 ShipToPartyName	string	255	SATYAM TRIPATHI	
-ShipToPartyAddress	string	255	RAMGANJ,PAKKA TALAB-FATEHPUR	
+ShipToPartyAddress	string	255		
 ShipToPartyCity	string	255	FATEHPUR	
-ShipToPartyPincode	string	255	212601	
+ShipToPartyPincode	string	255		
 ShipToPartyStateCode	string	255	09	
 ShipToPartyStateName	string	255	Uttar Pradesh	
 ShipToPartyMobile	string	255	8299399688	
 ShipToPartySalesTaxNo	string	255		
-ShipToPartyAadharNo	string	255	424442144924	
+ShipToPartyAadharNo	string	255		
 ShipToPartyPanNo	string	255		
 ShipToAddress	string	255		
 TermsAndConditions	string	255	<b>1.</b> Goods once sold will not be taken back. <b>2.</b> No Guarantee in the Age of Fashion. <b>3.</b> Interest @ 24% per annum will be charge after 30 days from the date of bill. <b>4.</b> All disputes subject to Kanpur Jurisdiction OR disputes will be settle through Cawnpore Kapda Committee Arbitration Board which will be abide by the both parties	
@@ -46,9 +46,9 @@ TransporterAddress	string	255
 LrNo	string	255		
 LrDate	datetime		
 PrivateMark	string	255		
-Weight	number	0	
-Freight	number	0	
-ChargedWeight	number	0	
+Weight	number		
+Freight	number		
+ChargedWeight	number		
 FreightType	string	255		
 RoadPermitNo	string	255		
 RoadPermitDate	datetime		
@@ -63,55 +63,55 @@ DescriptionOfGoods	string	255
 DescriptionOfPacking	string	255		
 TransporterSalesTaxNo	string	255		
 ReferenceNo	string	255		
-ItemName	string	255	MIRCHI          [SHIV SHAKTI(816) | SAREE]	
-ItemGroupName	string	255	S-ENT-816 DYD	
+ItemName	string	255	A238          [SAMP DESIGNER(SAMBHAV) | SAREE]	
+ItemGroupName	string	255	S-ENT-905 DYD	
 ItemCatName	string	255	SAREE	
-ItemSpecification	string	255	MIRCHI	
+ItemSpecification	string	255	A238	
 InvoiceLineSpecification	string	255		
 HSN	string	255	540752	
 MaintainStockYn	boolean	True	
 SalesTaxGroupItem	string	255	GST 5%	
 GrossTaxRate	number	5	
-Pcs	number	6	
-Qty	number	6	
-Rate	number	651	
+Pcs	number	10	
+Qty	number	10	
+Rate	number	1195	
 Unit	string	255	Pcs	
 UnitDecimalPlaces	number	0	
 DiscountPer	number	0	
 DiscountAmount	number	0	
 AdditionalDiscountPer	number	0	
 AdditionalDiscountAmount	number	0	
-AdditionPer	number	5	
-AdditionAmount	number	186	
-TotalDiscount	number	-186	
-AmountBeforeDiscount	number	3906	
-Amount	number	3906	
-Taxable_Amount	number	3906	
+AdditionPer	number	0	
+AdditionAmount	number	0	
+TotalDiscount	number	0	
+AmountBeforeDiscount	number	11950	
+Amount	number	11950	
+Taxable_Amount	number	11950	
 Tax1_Per	number	0	
 Tax1	number	0	
 Tax2_Per	number	2.5	
-Tax2	number	97.65	
+Tax2	number	298.75	
 Tax3_Per	number	2.5	
-Tax3	number	97.65	
+Tax3	number	298.75	
 Tax4_Per	number	0	
 Tax4	number	0	
 Tax5_Per	number	0	
 Tax5	number	0	
-Net_Amount	number	4101.41	
+Net_Amount	number	12547	
 LRemarks	string	255		
 HRemarks	string	255		
-H_TotalDiscount	number	-424.25	
-H_AmountBeforeDiscount	number	8485	
-H_Gross_Amount	number	8909.25	
+H_TotalDiscount	number	0	
+H_AmountBeforeDiscount	number	12050	
+H_Gross_Amount	number	12050	
 H_SpecialDiscount_Per	number	0	
 H_SpecialDiscount	number	0	
-H_Taxable_Amount	number	8909.25	
+H_Taxable_Amount	number	12050	
 H_Tax1_Per	number	0	
 H_Tax1	number	0	
 H_Tax2_Per	number	0	
-H_Tax2	number	222.74	
+H_Tax2	number	301.25	
 H_Tax3_Per	number	0	
-H_Tax3	number	222.74	
+H_Tax3	number	301.25	
 H_Tax4_Per	number	0	
 H_Tax4	number	0	
 H_Tax5_Per	number	0	
@@ -120,17 +120,20 @@ H_Deduction_Per	number	0
 H_Deduction	number	0	
 H_Other_Charge_Per	number	0	
 H_Other_Charge	number	0	
-Round_Off	number	0.27	
-H_Net_Amount	number	9355	
+Round_Off	number	-0.5	
+H_Net_Amount	number	12652	
 EInvoiceIRN	string	255		
 EInvoiceAckNo	string	255		
 EInvoiceAckDate	datetime		
-Default_BankAccountDetail	string	255	Bank Detail : 	ICICI BANK A/C:- 695705601820     IFSC:- ICIC0006957	
+Default_BankAccountDetail	string	255	Bank Detail : 	
+ICICI BANK 
+A/C:- 695705601820     
+IFSC:- ICIC0006957	
 PaymentLink	string	255		
 DocumentPrintHeaderPattern	string	255	Center Aligned	
 DimDetail	string	255		
 PrintedByUser	string	255	SUPER	
-EntryByUser	string	255	SADHVI 	
+EntryByUser	string	255	SUPER	
 PrintTitle	string	255	TAX INVOICE	
 DocumentPrintShowPrintDateTimeYn	string	255	1	
 DocumentPrintShowPartyBalance	string	255	Hide	

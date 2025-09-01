@@ -1,0 +1,29 @@
+; Field definition file for table: ADORecordset
+Sr	long	1	
+Balance	number	84034	
+V_Type	string	255	SI	
+V_No	string	255	D1-SI-192	
+V_Date	datetime	18/Jul/2025 00:00:00	
+V_Prefix	string	255	2025	
+PName	string	255	AMAR CLOTH HOUSE (FATEHPUR)	
+SubCode	string	255	D100004150	
+Narration	string	255	Tax Invoice	
+AmtDr	number	84034	
+AmtCr	number	0	
+SNo	number	1	
+Division	string	255	HO	
+ContraName	string	255	AMAR CLOTH HOUSE (FATEHPUR)                   84,034.00 Dr
+Output CGST 5% Registered                      2,000.83 Cr
+Round Off A/c                                      0.34 Cr
+Output SGST 5% Registered                      2,000.83 Cr
+Sales A/c Within State 5% Registere           80,032.00 Cr	
+Chq_No	string	255		
+Chq_Date	datetime		
+PCity	string	255	FATEHPUR	
+Site_Code	string	255	1	
+FromDate	string	255	01/Apr/2025	
+ToDate	string	255	18/Aug/2025	
+CompanyLogo	BLOB		
+CompanyAuthorisedSignature	BLOB		
+EInvoiceQrCode	BLOB		
+PaymentQrCode	BLOB		
