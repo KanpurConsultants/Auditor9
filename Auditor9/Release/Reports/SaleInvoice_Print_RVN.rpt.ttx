@@ -1,0 +1,191 @@
+; Field definition file for table: ADORecordset
+Copies	string	255	1	
+CopyPrintingCaption	string	255		
+DocNoCaption	string	255	Invoice No.	
+DocDateCaption	string	255	Invoice Date	
+SiteStateCode	string	255	09	
+SiteStateName	string	255	Uttar Pradesh	
+DocID	string	255	D3   SIS 2025    2117	
+Sr	number	1	
+V_Date	datetime	29/Aug/2025 00:00:00	
+DeliveryDate	datetime		
+Voucher_Type	string	255	Sale Invoice Service	
+NCat	string	255	SI	
+InvoiceNo	string	255	TVS--2117	
+GenDocNo	string	255		
+AmsDocNo	string	255		
+AmsDocDate	datetime		
+AmsDocNetAmount	number	0	
+RateType	string	255		
+DocumentPrintShowRateType	string	255	Show If Not Blank	
+AgentName	string	255	RTO DUBEYJI	
+GodownName	string	255		
+GodownAddress	string	255		
+SalesRepName	string	255	RADHEY SHYAM	
+SalesRepCode	string	255	3633	
+ResponsiblePersonName	string	255		
+AgentCaption	string	255	Agent	
+SaleToPartyName	string	255	REETA MAINRA W/O JITENDRA MOHAN	
+SaleToPartyAddress	string	255	33/182, MANI RAM BAGIYA CHOWK, KANPUR, KANPUR NAGAR	
+CityName	string	255	KANPUR	
+SaleToPartyPincode	string	255	208001	
+StateCode	string	255	09	
+StateName	string	255	Uttar Pradesh	
+SaleToPartyMobile	string	255	9335084129	
+ContactPerson	string	255		
+SaleToPartySalesTaxNo	string	255		
+SaleToPartyAadharNo	string	255	353868663717	
+SaleToPartyPanNo	string	255		
+SaleToPartyLicenseNo	string	255		
+ShipToPartyName	string	255	REETA MAINRA W/O JITENDRA MOHAN	
+ShipToPartyAddress	string	255	33/182, MANI RAM BAGIYA CHOWK, KANPUR, KANPUR NAGAR	
+ShipToPartyCity	string	255	KANPUR	
+ShipToPartyPincode	string	255	208001	
+ShipToPartyStateCode	string	255	09	
+ShipToPartyStateName	string	255	Uttar Pradesh	
+ShipToPartyMobile	string	255	9335084129	
+ShipToPartySalesTaxNo	string	255		
+ShipToPartyAadharNo	string	255	353868663717	
+ShipToPartyPanNo	string	255		
+ShipToPartyLicenseNo	string	255		
+TransporterSalesTaxNo	string	255		
+ShipToAddress	string	255		
+TermsAndConditions	string	255		
+TransporterName	string	255		
+LrNo	string	255		
+LrDate	datetime		
+NoOfBales	number		
+PrivateMark	string	255		
+Weight	number		
+Freight	number		
+ChargedWeight	number		
+FreightType	string	255		
+RoadPermitNo	string	255		
+RoadPermitDate	datetime		
+VehicleNo	string	255		
+ShipMethod	string	255		
+PreCarriageBy	string	255		
+PreCarriagePlace	string	255		
+BookedFrom	string	255		
+BookedTo	string	255		
+Destination	string	255		
+DescriptionOfGoods	string	255		
+DescriptionOfPacking	string	255		
+ReferenceNo	string	255	SIR573-MD6EVM1D3S4H00599	
+BarcodeName	string	255		
+ItemName	string	255	RTO REGISTRATION -  - 	
+ItemGroupName	string	255		
+ItemCatName	string	255		
+ItemManualCode	string	255	250	
+ItemSpecification	string	255	RTO REGISTRATION	
+InvoiceLineSpecification	string	255		
+HSN	string	255		
+MaintainStockYn	boolean	True	
+D1Spec	string	255		
+D2Spec	string	255		
+D3Spec	string	255		
+D4Spec	string	255		
+SizeSpec	string	255		
+ItemInvoiceGroupCode	string	255		
+ItemInvoiceGroupDesc	string	255		
+ItemTypeCaption	string	255	Item Type	
+ItemCategoryCaption	string	255	Item Category	
+ItemGroupCaption	string	255	Item Group	
+ItemCaption	string	255	Item	
+BarcodeCaption	string	255		
+D1Caption	string	255	Design	
+D2Caption	string	255	Shade	
+D3Caption	string	255		
+D4Caption	string	255		
+SalesTaxGroupItem	string	255	GST 0%	
+GrossTaxRate	number	0	
+MRP	number	0	
+LotNo	string	255		
+ExpiryDate	datetime		
+ItemRemark1	string	255		
+Pcs	long	0	
+Qty	long	0	
+Rate	long	0	
+ItemState	string	255		
+CatalogSpecification	string	255		
+CatalogSiteName	string	255		
+Unit	string	255	Pcs	
+UnitDecimalPlaces	number	0	
+DiscountPer	number	0	
+DiscountAmount	number	0	
+AdditionalDiscountPer	number	0	
+AdditionalDiscountAmount	number	0	
+AdditionPer	number	0	
+AdditionAmount	number	0	
+TotalDiscount	number	0	
+Deal	string	255		
+AmountBeforeDiscount	number	2500	
+Amount	number	2500	
+Taxable_Amount	number	2500	
+Tax1_Per	number	0	
+Tax1	number	0	
+Tax2_Per	number	0	
+Tax2	number	0	
+Tax3_Per	number	0	
+Tax3	number	0	
+Tax4_Per	number	0	
+Tax4	number	0	
+Tax5_Per	number	0	
+Tax5	number	0	
+Net_Amount	number	2500	
+LRemarks	string	255	UP78LN8553	
+LRemarks1	string	255		
+LRemarks2	string	255		
+LRemarks3	string	255		
+LRemarks4	string	255		
+HRemarks	string	255		
+HRemarks1	string	255		
+HRemarks2	string	255		
+SalesTaxSummaryStr	string	255		
+H_Discount	number	0	
+H_AdditionalDiscount	number	0	
+H_Additional	number	0	
+H_TotalDiscount	number	0	
+H_AmountBeforeDiscount	number	2500	
+H_Gross_Amount	number	2500	
+H_SpecialDiscount_Per	number	0	
+H_SpecialDiscount	number	0	
+H_Taxable_Amount	number	2500	
+H_Tax1_Per	number	0	
+H_Tax1	number	0	
+H_Tax2_Per	number	0	
+H_Tax2	number	0	
+H_Tax3_Per	number	0	
+H_Tax3	number	0	
+H_Tax4_Per	number	0	
+H_Tax4	number	0	
+H_Tax5_Per	number	0	
+H_Tax5	number	0	
+H_Deduction_Per	number	0	
+H_Deduction	number	0	
+H_Other_Charge_Per	number	0	
+H_Other_Charge	number	0	
+H_Other_Charge1_Per	number	0	
+H_Other_Charge1	number	0	
+H_Other_Charge2_Per	number	0	
+H_Other_Charge2	number	0	
+Round_Off	number	0	
+H_Net_Amount	number	2500	
+EInvoiceIRN	string	255		
+EInvoiceACKNo	string	255		
+EInvoiceACKDate	datetime		
+Default_BankAccountDetail	string	255	<B> Bank Detail :- <BR> KMB : 5400000007  IFSC : KKBK0005135 <BR>	
+DocumentPrintHeaderPattern	string	255	Center Aligned	
+DimDetail	string	255		
+PrintedByUser	string	255	SUPER	
+EntryByUser	string	255	ranjana	
+PrintTitle	string	255	SALE INVOICE SERVICE	
+DocumentPrintShowPrintDateTimeYn	string	255	1	
+DocumentPrintShowPartyBalance	string	255	Hide	
+TodaysOpeningBalance	long	0	
+TodaysDr	long	0	
+TodaysCr	long	0	
+TodaysClosingBalance	long	0	
+CompanyLogo	BLOB		
+CompanyAuthorisedSignature	BLOB		
+EInvoiceQrCode	BLOB		

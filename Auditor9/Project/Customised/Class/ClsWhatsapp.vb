@@ -9,119 +9,78 @@ Imports CrystalDecisions.CrystalReports.Engine
 Imports CrystalDecisions.Shared
 Imports Customised.ClsMain
 Public Class WhatsAppSender
+    'Dim RequestUrl As String = "http://app.laksmartindia.com/api/v1/message/create"
+    'Dim Username As String = "Satyam Tripathi"
+    'Dim Password As String = "KC@12345"
+
     Private RequestUrl As String = FGetSettings(SettingFields.WhatsappRequestUrl, "E Invoice", "", "", "", "", "", "", "")
     Private Username As String = FGetSettings(SettingFields.WhatsappUsername, "E Invoice", "", "", "", "", "", "", "")
     Private Password As String = FGetSettings(SettingFields.WhatsappPassword, "E Invoice", "", "", "", "", "", "", "")
-    'Public Property Task As Object
 
-    'Public Sub SendPdfViaWhatsApp(phoneNumber As String, pdfPath As String, Optional message As String = "")
-    '    ' Step 1: Validate inputs
-    '    If Not File.Exists(pdfPath) Then
-    '        MessageBox.Show("PDF file not found!")
-    '        Return
-    '    End If
+    Public Function SendMessageByWhatsapp(receiverMobileNo As String, message As String) As String
+        'receiverMobileNo = "8299399688"
+        ' 1. Combine username and password
+        Dim authString As String = Username & ":" & Password
 
-    '    ' Step 2: Format phone number (remove all non-digits)
-    '    Dim cleanNumber As String = New String(phoneNumber.Where(Function(c) Char.IsDigit(c)).ToArray())
+        ' 2. Convert to base64
+        Dim authBytes As Byte() = Encoding.UTF8.GetBytes(authString)
+        Dim authBase64 As String = Convert.ToBase64String(authBytes)
 
-    '    ' Step 3: Create temporary copy in accessible location
-    '    Dim tempFolder As String = Path.Combine(Path.GetTempPath(), "WhatsAppSend")
-    '    Directory.CreateDirectory(tempFolder)
-    '    Dim tempFilePath As String = Path.Combine(tempFolder, Path.GetFileName(pdfPath))
-    '    File.Copy(pdfPath, tempFilePath, True)
+        'Dim MS As MemoryStream = CType((CType(CrvReport.ReportSource, ReportDocument).ExportToStream(ExportFormatType.PortableDocFormat)), MemoryStream)
+        Dim ms As MemoryStream = DirectCast(AgL.PubCrystalDocument.ExportToStream(ExportFormatType.PortableDocFormat), MemoryStream)
+        'Dim ms As MemoryStream = DirectCast(AgL.PubCrystalDocument.ExportToStream(ExportFormatType.WordForWindows), MemoryStream)
 
-    '    Try
-    '        ' Step 4: Generate WhatsApp deep link
-    '        Dim whatsappUrl As String = $"https://wa.me/{cleanNumber}?text={Uri.EscapeDataString(message)}"
 
-    '        ' Step 5: Open WhatsApp with the file attached
-    '        Process.Start(New ProcessStartInfo() With {
-    '            .FileName = whatsappUrl,
-    '            .UseShellExecute = True
-    '        })
 
-    '        ' Step 6: Wait for WhatsApp to open
-    '        Threading.Thread.Sleep(2000)
+        'AgL.PubCrystalDocument.ExportToDisk(ExportFormatType.)
+        Dim base64Body As String = Convert.ToBase64String(ms.ToArray())
 
-    '        ' Step 7: Simulate ALT+TAB to bring window to focus (optional)
-    '        SendKeys.SendWait("%{TAB}")
+        Dim json As String = "{
+          ""receiverMobileNo"": ""+91" & receiverMobileNo & """,
+          ""message"": [
+            """ & message & """
+          ]
+          ]
+        }"
 
-    '        ' Step 8: Auto-attach the file (requires UI automation)
-    '        Threading.Thread.Sleep(1000)
-    '        SendKeys.SendWait("^a")  ' Select existing text
-    '        SendKeys.SendWait("{DEL}") ' Clear text
-    '        SendKeys.SendWait("^t")  ' Ctrl+T to attach (works in WhatsApp Web)
-    '        Threading.Thread.Sleep(500)
-    '        SendKeys.SendWait(tempFilePath)
-    '        SendKeys.SendWait("{ENTER}")
+        Try
+            Dim request As HttpWebRequest = CType(System.Net.WebRequest.Create(RequestUrl), HttpWebRequest)
+            request.Method = "POST"
+            request.ContentType = "application/json"
+            request.Headers.Add("Authorization", "Basic " & authBase64)
+            request.Accept = "application/json"
 
-    '        ' Note: User still needs to manually press send button
-    '        MessageBox.Show("Please click SEND in WhatsApp to complete the process")
+            ' Convert JSON to byte array
+            Dim bytes As Byte() = Encoding.UTF8.GetBytes(json)
+            request.ContentLength = bytes.Length
 
-    '    Catch ex As Exception
-    '        MessageBox.Show($"Error: {ex.Message}")
-    '    Finally
-    '        ' Clean up after 5 minutes
-    '        Task.Delay(300000).ContinueWith(Sub(t) Directory.Delete(tempFolder, True))
-    '    End Try
-    'End Sub
+            ' Write request body
+            Using stream As Stream = request.GetRequestStream()
+                stream.Write(bytes, 0, bytes.Length)
+            End Using
 
-    'Public Sub SendPdfViaWhatsAppWeb(phoneNumber As String, pdfPath As String)
-    '    ' Open WhatsApp Web with the phone number
-    '    Process.Start($"https://web.whatsapp.com/send?phone={phoneNumber}")
+            ' Get the response
+            Dim response As HttpWebResponse = CType(request.GetResponse(), HttpWebResponse)
+            Using reader As New StreamReader(response.GetResponseStream())
+                Dim responseText As String = reader.ReadToEnd()
+                Console.WriteLine("Response: " & responseText)
+            End Using
+            Return ("Whatsapp Send Sucessfully !")
+        Catch ex As WebException
+            Console.WriteLine("Error: " & ex.Message)
+            Return ("Server says: " & ex.Message)
+            ' Optional: print server error response if any
+            If ex.Response IsNot Nothing Then
+                Using reader As New StreamReader(ex.Response.GetResponseStream())
+                    Dim errorText As String = reader.ReadToEnd()
+                    Console.WriteLine("Server says: " & errorText)
+                    Return ("Server says: " & errorText)
+                End Using
+            End If
+        End Try
+    End Function
 
-    '    ' Instruct user to manually attach the file
-    '    MessageBox.Show("Please manually attach this file: " & pdfPath)
-    'End Sub
-
-    'Public Sub SendPdfWithAttachment(phoneNumber As String, pdfPath As String, Optional message As String = "")
-    '    ' Clean phone number (remove all non-digits)
-    '    Dim cleanNumber As String = New String(phoneNumber.Where(Function(c) Char.IsDigit(c)).ToArray())
-
-    '    ' Verify file exists
-    '    If Not File.Exists(pdfPath) Then
-    '        MessageBox.Show("PDF file not found!")
-    '        Return
-    '    End If
-
-    '    ' Create a temporary copy in a safe location
-    '    Dim tempFolder As String = Path.Combine(Path.GetTempPath(), "WhatsAppSend")
-    '    Directory.CreateDirectory(tempFolder)
-    '    Dim tempFilePath As String = Path.Combine(tempFolder, Path.GetFileName(pdfPath))
-    '    File.Copy(pdfPath, tempFilePath, True)
-
-    '    Try
-    '        ' Open WhatsApp with the phone number
-    '        Process.Start($"whatsapp://send?phone={cleanNumber}")
-
-    '        ' Wait for WhatsApp to open (adjust delay as needed)
-    '        Threading.Thread.Sleep(3000)
-
-    '        ' Send keys to attach file
-    '        SendKeys.SendWait("^t") ' Ctrl+T (attach file shortcut)
-    '        Threading.Thread.Sleep(1000)
-    '        SendKeys.SendWait(tempFilePath) ' Path to the file
-    '        SendKeys.SendWait("{ENTER}") ' Confirm file selection
-    '        Threading.Thread.Sleep(1000)
-
-    '        ' Type the message (if any)
-    '        If Not String.IsNullOrEmpty(message) Then
-    '            SendKeys.SendWait(message)
-    '        End If
-
-    '        ' Note: User must still manually click "Send"
-    '        MessageBox.Show("Please click SEND in WhatsApp")
-
-    '    Catch ex As Exception
-    '        MessageBox.Show($"Error: {ex.Message}")
-    '    End Try
-    'End Sub
-
-    Public Function SendPDFByWhatsapp(receiverMobileNo As String, message As String, FileName As String) As String
-        'Dim url As String = "http://app.laksmartindia.com/api/v1/message/create"
-        'Dim username As String = "Satyam Tripathi"
-        'Dim password As String = "KC@12345"
-
+    Public Function SendPDFByWhatsapp(receiverMobileNo As String, FileName As String) As String
         'receiverMobileNo = "8299399688"
         ' 1. Combine username and password
         Dim authString As String = Username & ":" & Password
@@ -198,7 +157,6 @@ Public Class WhatsAppSender
             End If
         End Try
     End Function
-
 
     Public Shared Sub FPrintThisDocument(ByVal objFrm As Object, ByVal objRepFrm As Object, ByVal V_Type As String,
      Optional ByVal Report_QueryList As String = "", Optional ByVal Report_NameList As String = "",
@@ -439,7 +397,7 @@ Public Class WhatsAppSender
                 ''objRepFrm.MdiParent = objFrm.MdiParent
                 Dim FSendWhatsapp As String = ""
                 Dim sender As New WhatsAppSender()
-                FSendWhatsapp = sender.SendPDFByWhatsapp(PartyMobileNo, WhatsappMessage, WhatsappFileName)
+                FSendWhatsapp = sender.SendPDFByWhatsapp(PartyMobileNo, WhatsappFileName)
                 AgL.PubTempStr = AgL.PubTempStr & "End Send To Whatsapp : " & AgL.PubStopWatch.ElapsedMilliseconds.ToString & vbCrLf
             Else
                 AgL.PubTempStr = AgL.PubTempStr & "Start Printing To Screen : " & AgL.PubStopWatch.ElapsedMilliseconds.ToString & vbCrLf
@@ -460,59 +418,6 @@ Public Class WhatsAppSender
             MsgBox(Ex.Message)
         End Try
     End Sub
-
-
-    Public Sub ExportMultiplePdfs(dt As DataTable)
-        Try
-            ' Suppose you have multiple DataTables to export
-            'Dim dsList As New List(Of DataTable)
-            'dsList.Add(GetDataForCustomer(1))
-            'dsList.Add(GetDataForCustomer(2))
-            'dsList.Add(GetDataForCustomer(3))
-
-            ' Path for export
-            Dim exportFolder As String = "D:\Documents\"
-            If Not IO.Directory.Exists(exportFolder) Then
-                IO.Directory.CreateDirectory(exportFolder)
-            End If
-
-            Dim counter As Integer = 1
-
-            Using rpt As New ReportDocument()
-                rpt.Load("D:\Active Projects\Auditor9\Auditor9\Release\Reports\SaleInvoice_Print_Sadhvi.rpt")
-
-                ' Set the datasource (DataTable or DataSet)
-                rpt.SetDataSource(dt)
-
-                ' Export file name
-                Dim filePath As String = IO.Path.Combine(exportFolder, "Report_" & counter & ".pdf")
-
-                ' Export options
-                rpt.ExportToDisk(ExportFormatType.PortableDocFormat, filePath)
-
-                Console.WriteLine("Exported: " & filePath)
-            End Using
-
-            counter += 1
-
-            MessageBox.Show("All PDFs exported successfully!")
-
-        Catch ex As Exception
-            MessageBox.Show("Error: " & ex.Message)
-        End Try
-    End Sub
-
-    ' Example: Dummy function to return a DataTable
-    Private Function GetDataForCustomer(customerId As Integer) As DataTable
-        Dim dt As New DataTable("CustomerData")
-        dt.Columns.Add("Id", GetType(Integer))
-        dt.Columns.Add("Name", GetType(String))
-        dt.Columns.Add("Amount", GetType(Decimal))
-
-        ' Add some sample rows
-        dt.Rows.Add(customerId, "Customer " & customerId, 100 * customerId)
-        Return dt
-    End Function
 
 
 End Class

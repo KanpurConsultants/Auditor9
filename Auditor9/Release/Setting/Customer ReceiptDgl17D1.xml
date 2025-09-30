@@ -11,7 +11,7 @@
     <Name>Effective Date</Name>
     <Index>1</Index>
     <Width>115</Width>
-    <Visible>True</Visible>
+    <Visible>False</Visible>
     <AggregateFunction />
   </Column>
   <Column>
@@ -298,7 +298,7 @@
     <Name>Deduction</Name>
     <Index>41</Index>
     <Width>100</Width>
-    <Visible>False</Visible>
+    <Visible>True</Visible>
     <AggregateFunction />
   </Column>
   <Column>

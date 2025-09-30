@@ -1,0 +1,27 @@
+; Field definition file for table: ADORecordset
+Code	string	255	295436	
+Barcode	string	255	447798	
+BarCodeImg	BLOB		
+ItemDesc	string	255	ZUMEE	
+ItemCategoryDesc	string	255	SAREE	
+ItemGroupDesc	string	255	S-ENT-801 DYD	
+Dimension1Desc	string	255		
+Dimension2Desc	string	255		
+Dimension3Desc	string	255		
+Dimension4Desc	string	255		
+SizeDesc	string	255	SADHVI SAREES PVT. LTD.	
+PurchaseRate	number	0	
+SaleRate	number	0	
+MRP	number	0	
+ReceiveQty	number	15	
+GenSr	number	1	
+ItemMasterPurchaseRate	number	795	
+ItemMasterSaleRate	number	895	
+BarcodeRatePrefix	number		
+Title1	number		
+Title2	number		
+Title3	number		
+SaleRate_RateType	number		
+SaleRate_RateTypeEncoded	number	0	
+RandomNo1	number	796	
+RandomNo2	number	645	

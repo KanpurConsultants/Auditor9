@@ -47,7 +47,7 @@ Thank you for your business.
 Sincerely
 <DivisionName>"
 
-        mQry = "SELECT H.SaleToParty, Max(H.SaleToPartyName) AS SaleToPartyName, Max(H.SaleToPartyMobile) AS  SaleToPartyMobile, count(H.DocId) NoBill,
+        mQry = "SELECT H.SaleToParty, Max(VP.Name) AS SaleToPartyName, Max(H.SaleToPartyMobile) AS  SaleToPartyMobile, count(H.DocId) NoBill,
                 replace( convert(NVARCHAR, Max(H.V_Date),106),' ','/') AS V_Date, Sum(H.Net_Amount) AS TotalAmount, Max(Sg.DispName) As DivisionName,
                 (
                 SELECT  A.InvoiceDetail + ', ' + CHAR(10) 
@@ -63,6 +63,7 @@ Sincerely
                 FOR XML Path ('')
                 ) AS InvoiceDetail 
                 FROM SaleInvoice H WITH (Nolock)
+                LEFT JOIN ViewHelpSubgroup VP WITH (Nolock) On VP.Code = H.SaleToParty
                 LEFT JOIN Division D WITH (Nolock) On H.Div_Code = D.Div_Code
                 LEFT JOIN SubGroup Sg WITH (Nolock) On D.SubCode = Sg.SubCode
                 WHERE H.V_Date = '" & AgL.PubLoginDate & "' AND H.SaleToPartyMobile IS NOT NULL 

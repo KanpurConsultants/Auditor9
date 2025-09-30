@@ -4904,6 +4904,7 @@ Public Class FrmPurchInvoiceDirect_WithDimension
         End If
 
 
+
         'If mFlag_Import = False Then
         '    If AgCL.AgIsDuplicate(Dgl1, "" + Dgl1.Columns(Col1Item).Index.ToString + "," + Dgl1.Columns(Col1Specification).Index.ToString + "," + Dgl1.Columns(Col1LotNo).Index.ToString + "," + Dgl1.Columns(Col1BaleNo).Index.ToString + "," & Dgl1.Columns(Col1Dimension1).Index & "," & Dgl1.Columns(Col1Dimension2).Index & "") = True Then passed = False : Exit Sub
         'End If
@@ -5101,6 +5102,22 @@ Public Class FrmPurchInvoiceDirect_WithDimension
                         End If
                     End If
 
+                    If AgL.VNull(DtV_TypeSettings.Rows(0)("IsAllowedNegativeStock")) = False And LblV_Type.Tag = Ncat.PurchaseReturn Then
+                        If Val(Dgl1.Item(Col1Qty, I).Value) > 0 Then
+                            Dim bItemStockQty As Double = 0
+                            mQry = " Select IfNull(Sum(Qty_Rec), 0) - IfNull(Sum(Qty_Iss), 0) " &
+                                          " FROM Stock  With (NoLock) " &
+                                          " WHERE Item = '" & Dgl1.Item(Col1Item, I).Tag & "' " &
+                                          " And DocId <> '" & mSearchCode & "'"
+                            bItemStockQty = AgL.VNull(AgL.Dman_Execute(mQry, AgL.GCn).ExecuteScalar)
+                            If Val(bItemStockQty) < Val(Dgl1.Item(Col1Qty, I).Value) Then
+                                MsgBox(Dgl1.Item(Col1Item, I).Value & " Have Only " & bItemStockQty.ToString() & " Stock .")
+                                passed = False : Exit Sub
+                            End If
+
+                        End If
+                    End If
+
                     If Dgl2.Item(Col1Value, rowBtnTransportDetail).Tag IsNot Nothing Then
                         If CType(Dgl2.Item(Col1Value, rowBtnTransportDetail).Tag, FrmPurchaseInvoiceHeader).Dgl1.Item(FrmPurchaseInvoiceHeader.Col1Value, FrmPurchaseInvoiceHeader.rowLrNo).Value <> "" Then
                             If Dgl1.Item(Col1LRNo, I).Value = "" Or Dgl1.Columns(Col1LRNo).Visible = False Then
@@ -5112,6 +5129,8 @@ Public Class FrmPurchInvoiceDirect_WithDimension
                         If Dgl1.Item(Col1BaleNo, I).Value = "" Or Dgl1.Columns(Col1BaleNo).Visible = False Then
                             Dgl1.Item(Col1BaleNo, I).Value = CType(Dgl2.Item(Col1Value, rowBtnTransportDetail).Tag, FrmPurchaseInvoiceHeader).Dgl1.Item(FrmPurchaseInvoiceHeader.Col1Value, FrmPurchaseInvoiceHeader.rowLrNo).Value
                         End If
+
+
 
                         If (AgL.StrCmp(AgL.PubDBName, "Sadhvi") Or AgL.StrCmp(AgL.PubDBName, "Sadhvi2")) And (LblV_Type.Tag = Ncat.WayBill Or LblV_Type.Tag = Ncat.WayBillInvoice) Then
                             If CType(Dgl2.Item(Col1Value, rowBtnTransportDetail).Tag, FrmPurchaseInvoiceHeader).Dgl1.Item(FrmPurchaseInvoiceHeader.Col1Value, FrmPurchaseInvoiceHeader.rowLrNo).Value <> "" And CType(Dgl2.Item(Col1Value, rowBtnTransportDetail).Tag, FrmPurchaseInvoiceHeader).Dgl1.Item(FrmPurchaseInvoiceHeader.Col1Value, FrmPurchaseInvoiceHeader.rowTransporter).Tag <> "" Then
@@ -14554,11 +14573,11 @@ Public Class FrmPurchInvoiceDirect_WithDimension
             End If
         End If
 
-        If AgL.StrCmp(AgL.PubDBName, "SHADHVINANDI") And LblV_Type.Tag = "PR" Then
+        If (AgL.StrCmp(AgL.PubDBName, "SHADHVINANDI") Or AgL.StrCmp(AgL.PubDBName, "SHADHVINANDI2")) And LblV_Type.Tag = "PR" Then
             mQry = " Update Ledger set SubCode ='PURCH' Where DocId ='" & mSearchCode & "' and AmtCr > 0 "
             AgL.Dman_ExecuteNonQry(mQry, AgL.GCn, AgL.ECmd)
         ElseIf (AgL.StrCmp(AgL.PubDBName, "Sadhvi") Or AgL.StrCmp(AgL.PubDBName, "Sadhvi2")) And (LblV_Type.Tag = Ncat.WayBillInvoice) Then
-            mQry = " UPDATE Ledger SET SubCode ='D100000961' WHERE V_Type = 'WBI' AND SubCode IN ('PURWU0','PURWR0') "
+            mQry = " UPDATE Ledger SET SubCode ='D100000961' WHERE V_Type = 'WBI' AND SubCode IN ('PURWU0','PURWR0','PURWR12') "
             AgL.Dman_ExecuteNonQry(mQry, AgL.GCn, AgL.ECmd)
         End If
     End Sub

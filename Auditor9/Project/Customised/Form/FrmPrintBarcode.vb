@@ -94,7 +94,7 @@ Public Class FrmPrintBarcode
         AgL.GridDesign(Dgl1)
 
         ApplyUISetting()
-        If PrintBarcodeFrom = "FrmItemMaster" And AgL.StrCmp(AgL.PubDBName, "Sadhvi") Then
+        If PrintBarcodeFrom = "FrmItemMaster" And (AgL.StrCmp(AgL.PubDBName, "Sadhvi") Or AgL.StrCmp(AgL.PubDBName, "Sadhvi2")) Then
             TxtFromDate.Visible = True
             TxtToDate.Visible = True
             LblFromDate.Visible = True
@@ -225,7 +225,7 @@ Public Class FrmPrintBarcode
         Dim I As Integer = 0
 
         If (PrintBarcodeFrom = "FrmItemMaster") Then
-            If AgL.StrCmp(AgL.PubDBName, "Sadhvi") Then
+            If (AgL.StrCmp(AgL.PubDBName, "Sadhvi") Or AgL.StrCmp(AgL.PubDBName, "Sadhvi2")) Then
                 mQry = "Select L.GenDocId AS DocId, 1 AS Sr, L.GenDocId As RecId, SKU.EntryDate As V_Date, 
                 L.Item as ItemCode,
                 Case When Sku.V_Type = '" & ItemV_Type.SKU & "' Then I.Specification Else Sku.Specification End as ItemName,
@@ -262,7 +262,7 @@ Public Class FrmPrintBarcode
                 End If
 
             Else
-                    mQry = "Select L.GenDocId AS DocId, 1 AS Sr, L.GenDocId As RecId, SKU.EntryDate As V_Date, 
+                mQry = "Select L.GenDocId AS DocId, 1 AS Sr, L.GenDocId As RecId, SKU.EntryDate As V_Date, 
                             L.Item as ItemCode,
                             Case When Sku.V_Type = '" & ItemV_Type.SKU & "' Then I.Specification Else Sku.Specification End as ItemName,
                             1 As Qty, SKU.Rate, NULL Sale_Rate, L.MRP,

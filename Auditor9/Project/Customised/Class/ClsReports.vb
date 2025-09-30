@@ -162,9 +162,10 @@ Public Class ClsReports
                         mQry = mQry & " Union All Select 'Catalog Wise Summary' as Code, 'Catalog Wise Summary' as Name "
                     End If
 
-                    If AgL.StrCmp(ClsMain.FDivisionNameForCustomization(6), "SADHVI") And AgL.StrCmp(AgL.PubDBName, "SADHVI") Then
+                    If AgL.StrCmp(AgL.PubDBName, "SADHVI") Or AgL.StrCmp(AgL.PubDBName, "SADHVI2") Then
                         mQry = mQry & " Union All Select 'All Addition' as Code, 'All Addition' as Name "
                         mQry = mQry & " Union All Select 'Un-Adjusted Addition' as Code, 'Un-Adjusted Addition' as Name "
+                        mQry = mQry & " Union All Select 'Party Sale Return Summary' as Code, 'Party Sale Return Summary' as Name "
                     End If
 
                     ReportFrm.CreateHelpGrid("Report Type", "Report Type", FrmRepDisplay.FieldFilterDataType.StringType, FrmRepDisplay.FieldDataType.SingleSelection, mQry, "Month Wise Summary",,, 300)
@@ -176,7 +177,12 @@ Public Class ClsReports
                     If GRepFormName = SaleOrderReport Then
                         ReportFrm.CreateHelpGrid("VoucherType", "Voucher Type", FrmRepDisplay.FieldFilterDataType.StringType, FrmRepDisplay.FieldDataType.MultiSelection, FGetVoucher_TypeQry("SaleInvoice", Ncat.SaleOrder + "," + Ncat.SaleOrderCancel))
                     Else
-                        ReportFrm.CreateHelpGrid("VoucherType", "Voucher Type", FrmRepDisplay.FieldFilterDataType.StringType, FrmRepDisplay.FieldDataType.MultiSelection, FGetVoucher_TypeQry("SaleInvoice", Ncat.SaleInvoice + "," + Ncat.SaleReturn))
+                        If AgL.StrCmp(AgL.PubDBName, "RVN") Or AgL.StrCmp(AgL.PubDBName, "RVN1") Or AgL.StrCmp(AgL.PubDBName, "RVN2") Or AgL.StrCmp(AgL.PubDBName, "MLAW") Then
+                            ReportFrm.CreateHelpGrid("VoucherType", "Voucher Type", FrmRepDisplay.FieldFilterDataType.StringType, FrmRepDisplay.FieldDataType.MultiSelection, FGetVoucher_TypeQry("SaleInvoice", Ncat.SaleInvoice + "," + Ncat.SaleReturn + "," + Ncat.SaleChallan))
+                        Else
+                            ReportFrm.CreateHelpGrid("VoucherType", "Voucher Type", FrmRepDisplay.FieldFilterDataType.StringType, FrmRepDisplay.FieldDataType.MultiSelection, FGetVoucher_TypeQry("SaleInvoice", Ncat.SaleInvoice + "," + Ncat.SaleReturn))
+                        End If
+
                     End If
                     ReportFrm.CreateHelpGrid("CashCredit", "Cash/Credit", FrmRepDisplay.FieldFilterDataType.StringType, FrmRepDisplay.FieldDataType.SingleSelection, "Select 'Cash' as Code, 'Cash' as Name Union All Select 'Credit' as Code, 'Credit' as Name Union All Select 'Both' as Code, 'Both' as Name", "Both")
                     ReportFrm.CreateHelpGrid("Agent", "Agent", FrmRepDisplay.FieldFilterDataType.StringType, FrmRepDisplay.FieldDataType.MultiSelection, mHelpSalesAgentQry)
@@ -199,6 +205,9 @@ Public Class ClsReports
                     ReportFrm.CreateHelpGrid("Account Type", "Account Type", FrmRepDisplay.FieldFilterDataType.StringType, FrmRepDisplay.FieldDataType.MultiSelection, mHelpAccountType)
                     ReportFrm.CreateHelpGrid("Account Nature", "Account Nature", FrmRepDisplay.FieldFilterDataType.StringType, FrmRepDisplay.FieldDataType.MultiSelection, mHelpAccountNature)
                     ReportFrm.CreateHelpGrid("Department", "Department", FrmRepDisplay.FieldFilterDataType.StringType, FrmRepDisplay.FieldDataType.MultiSelection, mHelpDepartment)
+                    If AgL.StrCmp(AgL.PubDBName, "SADHVI") Or AgL.StrCmp(AgL.PubDBName, "SADHVI2") Then
+                        ReportFrm.CreateHelpGrid("MinRate", "Min Rate", FrmRepDisplay.FieldFilterDataType.NumericType, FrmRepDisplay.FieldDataType.NumericType, "", "")
+                    End If
                     ReportFrm.FilterGrid.Rows(19).Visible = False 'Hide HSN Row
 
 
@@ -1185,7 +1194,12 @@ Public Class ClsReports
             If GRepFormName = SaleOrderReport Then
                 mCondStr = " Where VT.NCat In ('" & Ncat.SaleOrder & "', '" & Ncat.SaleOrderCancel & "') "
             Else
-                mCondStr = " Where VT.NCat In ('" & Ncat.SaleInvoice & "', '" & Ncat.SaleReturn & "') "
+                If AgL.StrCmp(AgL.PubDBName, "RVN") Or AgL.StrCmp(AgL.PubDBName, "RVN1") Or AgL.StrCmp(AgL.PubDBName, "RVN2") Or AgL.StrCmp(AgL.PubDBName, "MLAW") Then
+                    mCondStr = " Where VT.NCat In ('" & Ncat.SaleInvoice & "', '" & Ncat.SaleReturn & "', '" & Ncat.SaleChallan & "') "
+                Else
+                    mCondStr = " Where VT.NCat In ('" & Ncat.SaleInvoice & "', '" & Ncat.SaleReturn & "') "
+                End If
+
             End If
             'mCondStr = mCondStr & " AND H.Div_Code = '" & AgL.PubDivCode & "' "
             mCondStr = mCondStr & " AND Date(H.V_Date) Between " & AgL.Chk_Date(CDate(ReportFrm.FGetText(1)).ToString("s")) & " And " & AgL.Chk_Date(CDate(ReportFrm.FGetText(2)).ToString("s")) & " "
@@ -1225,6 +1239,9 @@ Public Class ClsReports
                 mCondStr = mCondStr & ReportFrm.GetWhereCondition("IG.Department", 27)
             End If
 
+            If ReportFrm.FGetText(28) <> "" And (AgL.StrCmp(AgL.PubDBName, "SADHVI") Or AgL.StrCmp(AgL.PubDBName, "SADHVI2")) Then
+                mCondStr = mCondStr & " AND L.Rate >= " + ReportFrm.FGetText(28) + " "
+            End If
 
             'If ReportFrm.FGetText(8) <> "All" Then
             '    mCondStr += " And H.Agent = '" & ReportFrm.FGetCode(8) & "' "
@@ -1260,7 +1277,7 @@ Public Class ClsReports
                     I.PurchaseRate, L.Catalog, Catalog.Description as CatalogDesc, IG.Department, Department.Description as DepartmentDesc, IG.SalesPerson, SP.Name as SalesPersonName,
                     (Case When L.DiscountPer = 0 Then '' else Cast(L.DiscountPer as nVarchar) End)  || (Case When L.AdditionalDiscountPer>0 Then '+' else '' End) || (Case When L.AdditionalDiscountPer=0 Then '' else Cast(L.AdditionalDiscountPer as nVarchar) End)  as DiscountPer, 
                     L.DiscountAmount as Discount, L.AdditionalDiscountAmount as AdditionalDiscount, L.AdditionAmount as Addition, 
-                    L.SpecialDiscount_Per, L.SpecialDiscount, L.SpecialAddition_Per, L.SpecialAddition, 
+                    L.SpecialDiscount_Per, L.SpecialDiscount, L.SpecialAddition_Per, L.SpecialAddition, L.Remark AS LineRemark, L.Remarks1, L.Remarks2,
                     L.Taxable_Amount, (Case When L.Net_Amount=0 Then L.Amount Else L.Net_Amount End) as Net_Amount, L.Qty, L.Unit, L.DealQty, L.DealUnit, L.Rate, L.Amount +(L.DiscountAmount + L.AdditionalDiscountAmount - L.AdditionAmount) as AmountExDiscount, L.Amount,
                     L.Tax1, L.Tax2, L.Tax3, L.Tax4, L.Tax5, L.Tax1+L.Tax2+L.Tax3+L.Tax4+L.Tax5 as TotalTax, H.EntryBy as EntryByUser,
                     H.Tags,
@@ -1393,6 +1410,8 @@ Public Class ClsReports
                     Max(VMain.SaleToPartyName) As Party, Max(VMain.ItemDesc) As Item, Max(VMain.ItemGroupDescription) as ItemGroup, Max(VMain.OrderNo) as [Order No], Sum(VMain.Qty) As Qty, Max(VMain.Unit) As Unit, Max(VMain.HSN) As HSN, 
                     Max(VMain.DealQty)  as DealQty, Max(VMain.DealUnit) as DealUnit,
                     Max(VMain.Rate) As Rate,
+                    Max(VMain.LineRemark) As LineRemark,
+                    Max(VMain.Remarks1) As Remarks1,
                     Sum(VMain.AmountExDiscount) As Amount, Max(VMain.DiscountPer) As [Discount Per], 
                     Sum(VMain.Discount) As Discount,
                     Sum(VMain.AdditionalDiscount) As AdditionalDiscount,
@@ -1423,6 +1442,13 @@ Public Class ClsReports
                     Sum(VMain.AmountExDiscount) as GoodsValue, Sum(VMain.Discount) as Discount, Sum(VMain.Addition) as Addition, Sum(VMain.SpecialDiscount) as SpecialDiscount, Sum(VMain.SpecialAddition) as SpecialAddition,
                     Sum(VMain.Amount) As Amount, Sum(VMain.Taxable_Amount) As [Taxable Amount], IfNull(Sum(VMain.TotalTax),0) As TaxAmount, Sum(VMain.Net_Amount) As [Net Amount]
                     From (" & mQry & ") As VMain
+                    GROUP By VMain.SaleToParty 
+                    Order By Max(VMain.SaleToPartyName)"
+            ElseIf ReportFrm.FGetText(0) = "Party Sale Return Summary" Then
+                mQry = " Select VMain.SaleToParty as SearchCode, Max(VMain.SaleToPartyName) As Party, 
+                    Sum(VMain.Qty) AS NetSale, Sum(VMain.Amount) As Amount,  Sum(VMain.Taxable_Amount) As [Taxable Amount], Sum(VMain.Net_Amount) As [Net Amount], Sum( CASE WHEN VMain.V_Type ='SR' AND VMain.Remarks1 ='FRESH' THEN VMain.Qty ELSE 0 END ) as FreshReturn,
+                    Sum(CASE WHEN VMain.V_Type ='SR' AND VMain.Remarks1 ='DEFECT' THEN VMain.Qty ELSE 0 END ) as DefectReturn
+                    From ( " & mQry & ") As VMain
                     GROUP By VMain.SaleToParty 
                     Order By Max(VMain.SaleToPartyName)"
             ElseIf ReportFrm.FGetText(0) = "Account Wise Summary" Then

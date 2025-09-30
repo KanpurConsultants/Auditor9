@@ -61,6 +61,10 @@ Public Class FrmSaleInvoiceDirect
     Public Const Col1AdditionAmount As String = "Addition Amt"
     Public Const Col1Amount As String = "Amount"
     Public Const Col1Remark As String = "Remark"
+    Public Const Col1Remark1 As String = "Remark1"
+    Public Const Col1Remark2 As String = "Remark2"
+    Public Const Col1Remark3 As String = "Remark3"
+    Public Const Col1Remark4 As String = "Remark4"
     Public Const Col1Godown As String = "Godown"
     Public Const Col1ReferenceNo As String = "Reference No"
     Public Const Col1ReferenceDate As String = "Reference Date"
@@ -1683,6 +1687,10 @@ Public Class FrmSaleInvoiceDirect
             .AddAgTextColumn(Dgl1, Col1DealUnit, 60, 0, Col1DealUnit, False, True)
             .AddAgTextColumn(Dgl1, Col1DealUnitDecimalPlaces, 50, 0, Col1DealUnitDecimalPlaces, False, True, False)
             .AddAgTextColumn(Dgl1, Col1Remark, 150, 255, Col1Remark, True, False)
+            .AddAgTextColumn(Dgl1, Col1Remark1, 150, 255, Col1Remark1, True, False)
+            .AddAgTextColumn(Dgl1, Col1Remark2, 150, 255, Col1Remark2, True, False)
+            .AddAgTextColumn(Dgl1, Col1Remark3, 150, 255, Col1Remark3, True, False)
+            .AddAgTextColumn(Dgl1, Col1Remark4, 150, 255, Col1Remark4, True, False)
             .AddAgTextColumn(Dgl1, Col1Godown, 100, 0, Col1Godown, AgL.IsFeatureApplicable_Godown, False)
             .AddAgTextColumn(Dgl1, Col1ReferenceNo, 100, 0, Col1ReferenceNo, LblV_Type.Tag = Ncat.SaleReturn, False)
             .AddAgDateColumn(Dgl1, Col1ReferenceDate, 100, Col1ReferenceDate, False, False, False)
@@ -2245,7 +2253,7 @@ Public Class FrmSaleInvoiceDirect
                            DocQty, FreeQty, Qty, Unit, Pcs, UnitMultiplier, DealUnit, 
                            DocDealQty, MasterSaleRate, RateDiscountPer, Rate, DiscountPer, DiscountAmount, AdditionalDiscountPer, AdditionalDiscountAmount,  
                            AdditionPer, AdditionAmount, PurityPer, 
-                           Amount, Remark, SalesRepresentative, BaleNo, LotNo, Godown,  
+                           Amount, Remark, Remarks1, Remarks2, Remarks3, Remarks4, SalesRepresentative, BaleNo, LotNo, Godown,  
                            ReferenceNo, ReferenceDate, ReferenceDocId, ReferenceDocIDTSr, ReferenceDocIdSr, SaleInvoice, SaleInvoiceSr,
                            V_Nature " & IIf(TxtStructure.Tag = "", "", ",") & AgCalcGrid1.FLineTableFieldNameStr() & ") "
         mQry += " Values( " & AgL.Chk_Text(DocID) & ", " & Sr & ", " &
@@ -2274,6 +2282,10 @@ Public Class FrmSaleInvoiceDirect
                                         " " & Val(Dgl1.Item(Col1PurityPer, LineGridRowIndex).Value) & ", " &
                                         " " & Val(Dgl1.Item(Col1Amount, LineGridRowIndex).Value) & ", " &
                                         " " & AgL.Chk_Text(Dgl1.Item(Col1Remark, LineGridRowIndex).Value) & ", " &
+                                        " " & AgL.Chk_Text(Dgl1.Item(Col1Remark1, LineGridRowIndex).Value) & ", " &
+                                        " " & AgL.Chk_Text(Dgl1.Item(Col1Remark2, LineGridRowIndex).Value) & ", " &
+                                        " " & AgL.Chk_Text(Dgl1.Item(Col1Remark3, LineGridRowIndex).Value) & ", " &
+                                        " " & AgL.Chk_Text(Dgl1.Item(Col1Remark4, LineGridRowIndex).Value) & ", " &
                                         " " & AgL.Chk_Text(Dgl3(Col1Value, rowSalesRepresentative).Tag) & ", " &
                                         " " & AgL.Chk_Text(Dgl1.Item(Col1BaleNo, LineGridRowIndex).Value) & " , " &
                                         " " & AgL.Chk_Text(Dgl1.Item(Col1LotNo, LineGridRowIndex).Value) & " , " &
@@ -2333,6 +2345,10 @@ Public Class FrmSaleInvoiceDirect
                                     " PurityPer = " & Val(Dgl1.Item(Col1PurityPer, LineGridRowIndex).Value) & ", " &
                                     " Amount = " & Val(Dgl1.Item(Col1Amount, LineGridRowIndex).Value) & ", " &
                                     " Remark = " & AgL.Chk_Text(Dgl1.Item(Col1Remark, LineGridRowIndex).Value) & ", " &
+                                    " Remarks1 = " & AgL.Chk_Text(Dgl1.Item(Col1Remark1, LineGridRowIndex).Value) & ", " &
+                                    " Remarks2 = " & AgL.Chk_Text(Dgl1.Item(Col1Remark2, LineGridRowIndex).Value) & ", " &
+                                    " Remarks3 = " & AgL.Chk_Text(Dgl1.Item(Col1Remark3, LineGridRowIndex).Value) & ", " &
+                                    " Remarks4 = " & AgL.Chk_Text(Dgl1.Item(Col1Remark4, LineGridRowIndex).Value) & ", " &
                                     " SalesRepresentative = " & AgL.Chk_Text(Dgl3(Col1Value, rowSalesRepresentative).Tag) & ", " &
                                     " BaleNo = " & AgL.Chk_Text(Dgl1.Item(Col1BaleNo, LineGridRowIndex).Value) & ", " &
                                     " LotNo = " & AgL.Chk_Text(Dgl1.Item(Col1LotNo, LineGridRowIndex).Value) & ", " &
@@ -2566,6 +2582,11 @@ Public Class FrmSaleInvoiceDirect
 
             If AgL.StrCmp(AgL.PubDBName, "SHADHVINEW") Or AgL.StrCmp(AgL.PubDBName, "SHADHVIKANPURB2") Or AgL.StrCmp(AgL.PubDBName, "SHADHVIjaunpur") Or AgL.StrCmp(AgL.PubDBName, "SHADHVINANDI") Or AgL.StrCmp(AgL.PubDBName, "SHADHVINANDI2") Or AgL.StrCmp(AgL.PubDBName, "SHADHVIJNP2") Then
                 Dgl1.Columns(Col1Rate).ReadOnly = True
+            End If
+
+
+            If AgL.StrCmp(AgL.PubDBName, "Sadhvi2") And LblV_Type.Tag.ToString.ToUpper = AgLibrary.ClsMain.agConstants.Ncat.SaleReturn Then
+                Dgl1.Columns(Col1Remark1).Visible = True
             End If
 
             'mQry = "Select H.*
@@ -2925,6 +2946,10 @@ Public Class FrmSaleInvoiceDirect
                             Dgl1.Item(Col1AdditionAmount, I).Value = AgL.VNull(.Rows(I)("AdditionAmount"))
                             Dgl1.Item(Col1PurchaseRate, I).Value = Format(AgL.VNull(.Rows(I)("PurchaseRate")), "0.00")
                             Dgl1.Item(Col1Remark, I).Value = AgL.XNull(.Rows(I)("Remark"))
+                            Dgl1.Item(Col1Remark1, I).Value = AgL.XNull(.Rows(I)("Remarks1"))
+                            Dgl1.Item(Col1Remark2, I).Value = AgL.XNull(.Rows(I)("Remarks2"))
+                            Dgl1.Item(Col1Remark3, I).Value = AgL.XNull(.Rows(I)("Remarks3"))
+                            Dgl1.Item(Col1Remark4, I).Value = AgL.XNull(.Rows(I)("Remarks4"))
                             Dgl1.Item(Col1BaleNo, I).Value = AgL.XNull(.Rows(I)("BaleNo"))
                             Dgl1.Item(Col1LotNo, I).Value = AgL.XNull(.Rows(I)("LotNo"))
                             Dgl1.Item(Col1ReferenceNo, I).Value = AgL.XNull(.Rows(I)("ReferenceNo"))
@@ -4058,6 +4083,13 @@ Public Class FrmSaleInvoiceDirect
                             End If
                         End If
 
+                        If AgL.StrCmp(AgL.PubDBName, "Sadhvi2") And LblV_Type.Tag.ToString.ToUpper = AgLibrary.ClsMain.agConstants.Ncat.SaleReturn Then
+                            If .Item(Col1Remark1, I).Value = "" Then
+                                MsgBox("Remark1 Is Mandatory At Row No " & Dgl1.Item(ColSNo, I).Value & "")
+                                .CurrentCell = .Item(Col1Remark1, I) : Dgl1.Focus()
+                                passed = False : Exit Sub
+                            End If
+                        End If
 
                         If Val(.Item(Col1DocQty, I).Value) = 0 Then
                             MsgBox("Qty Is 0 At Row No " & Dgl1.Item(ColSNo, I).Value & "")
@@ -4962,6 +4994,18 @@ Public Class FrmSaleInvoiceDirect
                         If Dgl1.AgHelpDataSet(Col1SaleInvoice) Is Nothing Then
                             mQry = " Select Description As Code, Description  FROM PostingGroupSalesTaxParty "
                             Dgl1.AgHelpDataSet(Col1SaleInvoice) = AgL.FillData(mQry, AgL.GCn)
+                        End If
+                    End If
+
+                Case Col1Remark1
+                    If AgL.StrCmp(AgL.PubDBName, "Sadhvi2") And LblV_Type.Tag.ToString.ToUpper = AgLibrary.ClsMain.agConstants.Ncat.SaleReturn Then
+                        If e.KeyCode <> Keys.Enter Then
+                            If Dgl1.AgHelpDataSet(Dgl1.CurrentCell.ColumnIndex) Is Nothing Then
+                                mQry = "Select 'FRESH' AS Code, 'FRESH' AS Name
+                                    UNION ALL 
+                                    Select 'DEFECT' AS Code, 'DEFECT' AS Name "
+                                Dgl1.AgHelpDataSet(Dgl1.CurrentCell.ColumnIndex) = AgL.FillData(mQry, AgL.GCn)
+                            End If
                         End If
                     End If
             End Select

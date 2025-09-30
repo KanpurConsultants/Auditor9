@@ -1503,7 +1503,7 @@ Public Class FrmPurchInvoiceDirect
                 TxtShipToParty.Visible = False
             End If
 
-            If NCAT = AgLibrary.ClsMain.agConstants.Ncat.PurchaseReturn And AgL.StrCmp(AgL.PubDBName, "Sadhvi") Then
+            If NCAT = AgLibrary.ClsMain.agConstants.Ncat.PurchaseReturn And (AgL.StrCmp(AgL.PubDBName, "Sadhvi") Or AgL.StrCmp(AgL.PubDBName, "Sadhvi2")) Then
                 LblTags.Visible = True
                 TxtTags.Visible = True
             End If
@@ -3040,7 +3040,7 @@ Public Class FrmPurchInvoiceDirect
         End If
 
 
-        If AgL.StrCmp(AgL.PubDBName, "Sadhvi") And TxtV_Type.Tag = "PR" And TxtTags.Text = "" Then
+        If (AgL.StrCmp(AgL.PubDBName, "Sadhvi") Or AgL.StrCmp(AgL.PubDBName, "Sadhvi2")) And TxtV_Type.Tag = "PR" And TxtTags.Text = "" Then
             MsgBox("Return Tag is Mandatory. Can not continue.")
             passed = False : Exit Sub
         End If
@@ -3146,7 +3146,7 @@ Public Class FrmPurchInvoiceDirect
 
         If BtnHeaderDetail.Tag IsNot Nothing Then
             If CType(BtnHeaderDetail.Tag, FrmPurchaseInvoiceHeader).Dgl1.Item(FrmPurchaseInvoiceHeader.Col1Value, FrmPurchaseInvoiceHeader.rowLrNo).Value <> "" Then
-                If AgL.StrCmp(AgL.PubDBName, "Sadhvi") Then
+                If (AgL.StrCmp(AgL.PubDBName, "Sadhvi") Or AgL.StrCmp(AgL.PubDBName, "Sadhvi2")) Then
 
                 Else
                     mQry = "Select Count(*) From PurchInvoiceTransport 
@@ -4845,7 +4845,7 @@ Public Class FrmPurchInvoiceDirect
 
 
                 Case TxtTags.Name
-                    If AgL.StrCmp(AgL.PubDBName, "Sadhvi") And TxtV_Type.Tag = "PR" Then
+                    If (AgL.StrCmp(AgL.PubDBName, "Sadhvi") Or AgL.StrCmp(AgL.PubDBName, "Sadhvi2")) And TxtV_Type.Tag = "PR" Then
                         If TxtTags.AgHelpDataSet Is Nothing Then
                             mQry = "SELECT 'FRESH' AS Code, 'FRESH' AS Name
                                     UNION ALL 

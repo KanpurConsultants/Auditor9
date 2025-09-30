@@ -19607,6 +19607,7 @@ Thanks
             AgL.AddFieldSqlite(AgL.GcnMain, "PurchaseInvoiceSetting", "ItemHelpType", "nVarchar(20)", "", True)
             AgL.AddFieldSqlite(AgL.GcnMain, "PurchaseInvoiceSetting", "FilterInclude_Process", "nVarchar(255)", "", True)
             AgL.AddFieldSqlite(AgL.GcnMain, "PurchaseInvoiceSetting", "IsBarcodeHelpFromStock", "bit", "0", True)
+            AgL.AddFieldSqlite(AgL.GcnMain, "PurchaseInvoiceSetting", "IsAllowedNegativeStock", "bit", "", True)
             AgL.AddFieldSqlite(AgL.GcnMain, "PurchaseInvoiceSetting", "FilterInclude_ItemType", "nVarchar(255)", "", True)
             AgL.AddFieldSqlite(AgL.GcnMain, "PurchaseInvoiceSetting", "FilterInclude_ItemCategory", "nVarchar(255)", "", True)
             AgL.AddFieldSqlite(AgL.GcnMain, "PurchaseInvoiceSetting", "FilterInclude_ItemGroup", "nVarchar(255)", "", True)

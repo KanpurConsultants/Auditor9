@@ -435,7 +435,7 @@ Public Class FrmPerson
                          H.EntryBy As [Entry By], H.EntryDate As [Entry Date], H.EntryType As [Entry Type], 
                          H.Status, AG.GroupName As [GROUP Name], D.Div_Name As Division,SM.Name As [Site Name], "
 
-        If ClsMain.FDivisionNameForCustomization(6) = "SADHVI" Then
+        If AgL.StrCmp(AgL.PubDBName, "Sadhvi") Or AgL.StrCmp(AgL.PubDBName, "Sadhvi2") Then
             AgL.PubFindQry = AgL.PubFindQry & " P.Name as Parent,A.Name AS Agent, T.Name AS Transporter, (
                          SELECT  A.NCatName + ', '
 							FROM 

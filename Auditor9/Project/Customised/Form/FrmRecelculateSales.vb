@@ -310,7 +310,7 @@ Public Class FrmRecelculateSales
                 SaleInvoiceTable.Line_Cost = AgL.XNull(DtSaleInvoiceDetail_ForHeader.Rows(J)("Rate"))
                 SaleInvoiceTable.Line_SalesRepresentative = AgL.XNull(DtSaleInvoiceDetail_ForHeader.Rows(J)("SalesRepresentative"))
 
-                If AgL.StrCmp(AgL.PubDBName, "SHADHVINANDI") Then
+                If AgL.StrCmp(AgL.PubDBName, "SHADHVINANDI") Or AgL.StrCmp(AgL.PubDBName, "SHADHVINANDI2") Then
                     SaleInvoiceTable.Line_Rate = Math.Round(AgL.VNull(DtSaleInvoiceDetail_ForHeader.Rows(J)("Rate")) - (AgL.VNull(DtSaleInvoiceDetail_ForHeader.Rows(J)("Rate")) * AgL.VNull(DtSaleInvoiceDetail_ForHeader.Rows(J)("CalcCode")) / 100), 0)
                 Else
                     SaleInvoiceTable.Line_Rate = Math.Round(AgL.VNull(DtSaleInvoiceDetail_ForHeader.Rows(J)("Rate")) - (AgL.VNull(DtSaleInvoiceDetail_ForHeader.Rows(J)("Rate")) * AgL.VNull(DtSaleInvoiceDetail_ForHeader.Rows(J)("CalcCode")) / 100), 2)
@@ -351,7 +351,7 @@ Public Class FrmRecelculateSales
                 SaleInvoiceTable.Line_Tax4_Per = AgL.VNull(DtSaleInvoiceDetail_ForHeader.Rows(J)("Tax4_Per"))
                 SaleInvoiceTable.Line_Tax5_Per = AgL.VNull(DtSaleInvoiceDetail_ForHeader.Rows(J)("Tax5_Per"))
 
-                If AgL.StrCmp(AgL.PubDBName, "SHADHVINANDI") Then
+                If AgL.StrCmp(AgL.PubDBName, "SHADHVINANDI") Or AgL.StrCmp(AgL.PubDBName, "SHADHVINANDI2") Then
                     Dim Tax As Double = 0
                     Tax = SaleInvoiceTable.Line_Tax1_Per + SaleInvoiceTable.Line_Tax2_Per + SaleInvoiceTable.Line_Tax3_Per + SaleInvoiceTable.Line_Tax4_Per + SaleInvoiceTable.Line_Tax5_Per
                     SaleInvoiceTable.Line_Taxable_Amount = SaleInvoiceTable.Line_Amount * 100 / (100 + Tax)

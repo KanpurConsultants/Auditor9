@@ -2208,13 +2208,13 @@ Public Class FrmSaleInvoiceDirect_WithDimension
 
 
 
-        If (AgL.StrCmp(AgL.PubDBName, "RVN") Or AgL.StrCmp(AgL.PubDBName, "RVN1") Or AgL.StrCmp(AgL.PubDBName, "RVN2") Or AgL.StrCmp(AgL.PubDBName, "MLAW")) And (DglMain.Item(Col1Value, rowV_Type).Tag = "SIS") Then
-            mNarrParty = DglMain.Item(Col1Value, rowV_Type).Value & " : " & DglMain.Item(Col1Value, rowSaleToPartyName).Value & " : " & Dgl1.Item(Col1Item, 0).Value
+        If (AgL.StrCmp(AgL.PubDBName, "RVN") Or AgL.StrCmp(AgL.PubDBName, "RVN1") Or AgL.StrCmp(AgL.PubDBName, "RVN2") Or AgL.StrCmp(AgL.PubDBName, "MLAW") Or AgL.StrCmp(AgL.PubDBName, "SKYF")) And (DglMain.Item(Col1Value, rowV_Type).Tag = "SIS") Then
+            mNarrParty = DglMain.Item(Col1Value, rowV_Type).Value & " : " & DglMain.Item(Col1Value, rowSaleToParty).Value & " : " & Dgl1.Item(Col1Item, 0).Value
         Else
             mNarrParty = DglMain.Item(Col1Value, rowV_Type).Value
         End If
 
-        mNarr = DglMain.Item(Col1Value, rowV_Type).Value & " : " & DglMain.Item(Col1Value, rowSaleToPartyName).Value
+        mNarr = DglMain.Item(Col1Value, rowV_Type).Value & " : " & DglMain.Item(Col1Value, rowSaleToParty).Value
         If Not ClsMain.IsScopeOfWorkContains(IndustryType.SubIndustryType.RetailModule) Then
             If DglMain.Item(Col1Value, rowSaleToPartyMobile).Value <> "" Then
                 mNarr = mNarr + " (Mobile : " & DglMain.Item(Col1Value, rowSaleToPartyMobile).Value + ")"
