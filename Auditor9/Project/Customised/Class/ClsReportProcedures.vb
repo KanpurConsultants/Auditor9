@@ -1221,14 +1221,14 @@ Public Class ClsReportProcedures
 
             If ReportFrm.FGetText(0) = "Form 21" Then
                 RepName = "SalesCertificate_Form21" : RepTitle = "Form 21"
-                If AgL.StrCmp(AgL.PubDBName, "RVN") Or AgL.StrCmp(AgL.PubDBName, "RVN1") Or AgL.StrCmp(AgL.PubDBName, "RVN2") Or AgL.StrCmp(AgL.PubDBName, "MLAW") Then
+                If AgL.StrCmp(AgL.PubDBName, "RVN") Or AgL.StrCmp(AgL.PubDBName, "RVN1") Or AgL.StrCmp(AgL.PubDBName, "RVN2") Or AgL.StrCmp(AgL.PubDBName, "MLAW") Or AgL.StrCmp(AgL.PubDBName, "SHRIJIAW") Then
                     RepName = "SalesCertificate_RVN_Form21"
                 End If
             End If
             Dim mCondStr$ = ""
 
 
-            If AgL.StrCmp(AgL.PubDBName, "RVN") Or AgL.StrCmp(AgL.PubDBName, "RVN1") Or AgL.StrCmp(AgL.PubDBName, "RVN2") Or AgL.StrCmp(AgL.PubDBName, "MLAW") Then
+            If AgL.StrCmp(AgL.PubDBName, "RVN") Or AgL.StrCmp(AgL.PubDBName, "RVN1") Or AgL.StrCmp(AgL.PubDBName, "RVN2") Or AgL.StrCmp(AgL.PubDBName, "MLAW") Or AgL.StrCmp(AgL.PubDBName, "SHRIJIAW") Then
                 mCondStr = " Where 1 = 1 AND IC.Description IN ('EV','CNG') "
             Else
                 mCondStr = " Where 1 = 1 "

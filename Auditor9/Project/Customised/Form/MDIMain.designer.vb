@@ -336,6 +336,7 @@ Partial Class MDIMain
         Me.MnuPrintCheque = New System.Windows.Forms.ToolStripMenuItem()
         Me.MnuBank = New System.Windows.Forms.ToolStripMenuItem()
         Me.MnuChequePrinting = New System.Windows.Forms.ToolStripMenuItem()
+        Me.MnuLedgerUpdation = New System.Windows.Forms.ToolStripMenuItem()
         Me.MnuMain.SuspendLayout()
         Me.SuspendLayout()
         '
@@ -660,7 +661,7 @@ Partial Class MDIMain
         '
         'MnuAccounts
         '
-        Me.MnuAccounts.DropDownItems.AddRange(New System.Windows.Forms.ToolStripItem() {Me.MnuVoucherEntry, Me.MnuDebitNote, Me.MnuCreditNote, Me.MnuExpenseIncomeVoucher, Me.MnuCustomerReceiptEntry, Me.MnuReceiptEntry, Me.MnuPaymentEntry, Me.MnuJournalEntry, Me.MnuReverseChargeEntry, Me.MnuPaymentSettlementEntry, Me.MnuCustomerAccountSettlement, Me.FrmVoucherAdjustment, Me.MnuBankReconsilationEntry, Me.MnuPaymentEntryJobWorker, Me.MnuDebtorsOpeningEntry, Me.MnuCreditorsOpeningEntry, Me.MnuJournalAdjustmentEntry, Me.MnuJournalAdjustment, Me.MnuAccountsReports, Me.MnuAccountReports1, Me.MnuAccountReports2})
+        Me.MnuAccounts.DropDownItems.AddRange(New System.Windows.Forms.ToolStripItem() {Me.MnuVoucherEntry, Me.MnuDebitNote, Me.MnuCreditNote, Me.MnuExpenseIncomeVoucher, Me.MnuCustomerReceiptEntry, Me.MnuReceiptEntry, Me.MnuPaymentEntry, Me.MnuJournalEntry, Me.MnuReverseChargeEntry, Me.MnuPaymentSettlementEntry, Me.MnuCustomerAccountSettlement, Me.FrmVoucherAdjustment, Me.MnuBankReconsilationEntry, Me.MnuPaymentEntryJobWorker, Me.MnuDebtorsOpeningEntry, Me.MnuCreditorsOpeningEntry, Me.MnuJournalAdjustmentEntry, Me.MnuJournalAdjustment, Me.MnuLedgerUpdation, Me.MnuAccountsReports, Me.MnuAccountReports1, Me.MnuAccountReports2})
         Me.MnuAccounts.Name = "MnuAccounts"
         Me.MnuAccounts.Size = New System.Drawing.Size(69, 20)
         Me.MnuAccounts.Text = "Accounts"
@@ -2570,6 +2571,13 @@ Partial Class MDIMain
         Me.MnuChequePrinting.Size = New System.Drawing.Size(160, 22)
         Me.MnuChequePrinting.Text = "Cheque Printing"
         '
+        'MnuLedgerUpdation
+        '
+        Me.MnuLedgerUpdation.Name = "MnuLedgerUpdation"
+        Me.MnuLedgerUpdation.Size = New System.Drawing.Size(234, 22)
+        Me.MnuLedgerUpdation.Tag = "GRID REPORT"
+        Me.MnuLedgerUpdation.Text = "Ledger Updation"
+        '
         'MDIMain
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
@@ -2909,4 +2917,5 @@ Partial Class MDIMain
     Friend WithEvents MnuWayBillInvoice As ToolStripMenuItem
     Friend WithEvents MnuToTesting As ToolStripMenuItem
     Friend WithEvents MnuSendWhatsappMessage As ToolStripMenuItem
+    Friend WithEvents MnuLedgerUpdation As ToolStripMenuItem
 End Class

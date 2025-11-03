@@ -1289,7 +1289,7 @@ Public Class FrmPurchInvoiceDirect_WithDimension
             End If
         End If
 
-        If AgL.StrCmp(AgL.PubDBName, "RVN") Or AgL.StrCmp(AgL.PubDBName, "RVN1") Or AgL.StrCmp(AgL.PubDBName, "RVN2") Or AgL.StrCmp(AgL.PubDBName, "MLAW") Then
+        If AgL.StrCmp(AgL.PubDBName, "RVN") Or AgL.StrCmp(AgL.PubDBName, "RVN1") Or AgL.StrCmp(AgL.PubDBName, "RVN2") Or AgL.StrCmp(AgL.PubDBName, "MLAW") Or AgL.StrCmp(AgL.PubDBName, "SHRIJIAW") Then
             Dgl1.Columns(Col1Remark1).Visible = True
             Dgl1.Columns(Col1Remark2).Visible = True
             Dgl1.Columns(Col1Remark3).Visible = True
@@ -1464,7 +1464,7 @@ Public Class FrmPurchInvoiceDirect_WithDimension
                 .AddAgTextColumn(Dgl1, Col1FromProcess, 100, 255, Col1FromProcess, True, False)
                 .AddAgTextColumn(Dgl1, Col1Catalog, 100, 0, Col1Catalog, False, False)
 
-                If AgL.StrCmp(AgL.PubDBName, "RVN") Or AgL.StrCmp(AgL.PubDBName, "RVN1") Or AgL.StrCmp(AgL.PubDBName, "RVN2") Or AgL.StrCmp(AgL.PubDBName, "MLAW") Then
+                If AgL.StrCmp(AgL.PubDBName, "RVN") Or AgL.StrCmp(AgL.PubDBName, "RVN1") Or AgL.StrCmp(AgL.PubDBName, "RVN2") Or AgL.StrCmp(AgL.PubDBName, "MLAW") Or AgL.StrCmp(AgL.PubDBName, "SHRIJIAW") Then
                     .AddAgTextColumn(Dgl1, Col1Remark, 150, 255, "MOTOR NO", True, False)
                     .AddAgTextColumn(Dgl1, Col1Remark1, 150, 255, "CONTROLLER NO", True, False)
                     .AddAgTextColumn(Dgl1, Col1Remark2, 150, 255, "CHASIS NO", True, False)
@@ -5053,7 +5053,7 @@ Public Class FrmPurchInvoiceDirect_WithDimension
                         End If
                     End If
 
-                    If (AgL.StrCmp(AgL.PubDBName, "RVN") Or AgL.StrCmp(AgL.PubDBName, "RVN1") Or AgL.StrCmp(AgL.PubDBName, "RVN2") Or AgL.StrCmp(AgL.PubDBName, "MLAW")) And LblV_Type.Tag = Ncat.StockTransfer Then
+                    If (AgL.StrCmp(AgL.PubDBName, "RVN") Or AgL.StrCmp(AgL.PubDBName, "RVN1") Or AgL.StrCmp(AgL.PubDBName, "RVN2") Or AgL.StrCmp(AgL.PubDBName, "MLAW") Or AgL.StrCmp(AgL.PubDBName, "SHRIJIAW")) And LblV_Type.Tag = Ncat.StockTransfer Then
                         If AgL.XNull(Dgl1.Item(Col1Barcode, I).Tag) <> "" And AgL.XNull(Dgl1.Item(Col1Item, I).Tag) <> "" Then
                             Dim BarcodeItem As String
                             mQry = "Select Item From Barcode 
@@ -14577,7 +14577,7 @@ Public Class FrmPurchInvoiceDirect_WithDimension
             mQry = " Update Ledger set SubCode ='PURCH' Where DocId ='" & mSearchCode & "' and AmtCr > 0 "
             AgL.Dman_ExecuteNonQry(mQry, AgL.GCn, AgL.ECmd)
         ElseIf (AgL.StrCmp(AgL.PubDBName, "Sadhvi") Or AgL.StrCmp(AgL.PubDBName, "Sadhvi2")) And (LblV_Type.Tag = Ncat.WayBillInvoice) Then
-            mQry = " UPDATE Ledger SET SubCode ='D100000961' WHERE V_Type = 'WBI' AND SubCode IN ('PURWU0','PURWR0','PURWR12') "
+            mQry = " UPDATE Ledger SET SubCode ='D100000961' WHERE V_Type = 'WBI' AND SubCode IN ('PURWU0','PURWR0','PURWR12','PURWR18') "
             AgL.Dman_ExecuteNonQry(mQry, AgL.GCn, AgL.ECmd)
         End If
     End Sub

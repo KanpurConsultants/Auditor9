@@ -1148,6 +1148,12 @@ Public Class ClsFunction
                     CRep.Ini_Grid()
                     FrmObj = GridReportFrm
 
+                Case MDI.MnuLedgerUpdation.Name
+                    Dim CRep As ClsLedgerUpdation = New ClsLedgerUpdation(GridReportFrm)
+                    CRep.GRepFormName = Replace(Replace(Replace(Replace(StrSenderText, "&", ""), " ", ""), "(", ""), ")", "")
+                    CRep.Ini_Grid()
+                    FrmObj = GridReportFrm
+
                 '#Region "Carpet Reports"
                 '                Case MDI.MnuDyeingOrderReport.Name
                 '                    Dim CRep As ClsPurchaseReport = New ClsPurchaseReport(GridReportFrm, ClsCarpet.NCat_DyeingOrder, "")

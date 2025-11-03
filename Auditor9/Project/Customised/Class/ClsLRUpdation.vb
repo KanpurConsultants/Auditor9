@@ -302,13 +302,10 @@ Public Class ClsLRUpdation
         ToMobileNo = AgL.XNull(DtDocData.Rows(0)("PartyMobile"))
         'ToMobileNo = "8299399688"
         'ToMessage = FGetSettings(SettingFields.SmsMessage, SettingType.General)
-        ToMessage = "Dear <PartyName>,
-
-                    Your Inv.No. <EntryNo> Dated <EntryDate> of Rs.<NetAmount> has been dispatched
-                    By Transport <TransporterName> with LR No. <LRNo> on Date <LRDate> .
-
-                    Sincerely
-                    <DivisionName>"
+        ToMessage = "Dear <PartyName>," & vbCrLf &
+                    "Your Inv.No. <EntryNo> Dated <EntryDate> of Rs.<NetAmount> has been dispatched By Transport <TransporterName> with LR No. <LRNo> on Date <LRDate> ." & vbCrLf &
+                    "Sincerely" & vbCrLf &
+                    "<DivisionName>"
         ToMessage = ToMessage.
                 Replace("<PartyName>", AgL.XNull(DtDocData.Rows(0)("PartyName"))).
                 Replace("<EntryNo>", AgL.XNull(DtDocData.Rows(0)("SaleNo"))).
@@ -319,7 +316,10 @@ Public Class ClsLRUpdation
                 Replace("<TransporterName>", AgL.XNull(DtDocData.Rows(0)("TransporterName"))).
                 Replace("<NetAmount>", Format(AgL.VNull(DtDocData.Rows(0)("Net_Amount")), "0.00")).
                 Replace("&", "And")
-        IsSuccess = FSendWhatsappMessage(ToMobileNo, ToMessage, "Message", "")
+        'IsSuccess = FSendWhatsappMessage(ToMobileNo, ToMessage, "Message", "")
+        Dim sender As New WhatsAppSender()
+        ToMessage = ToMessage.Replace(vbCrLf, "\n").Replace(vbCr, "\n").Replace(vbLf, "\n")
+        sender.EntrySendWhatsapp(ToMobileNo, ToMessage, "Message From LR Updation", AgL.GCn)
     End Sub
     Private Function FGetSettings(FieldName As String, SettingType As String) As String
         Dim mValue As String

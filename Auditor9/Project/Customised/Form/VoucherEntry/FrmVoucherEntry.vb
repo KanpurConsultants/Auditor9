@@ -3565,7 +3565,7 @@ Public Class FrmVoucherEntry
     Private Sub FCreateHelpLinkedSubgroupLine()
         Dim strCond As String = ""
 
-        If AgL.StrCmp(AgL.PubDBName, "RVN") Or AgL.StrCmp(AgL.PubDBName, "RVN1") Or AgL.StrCmp(AgL.PubDBName, "RVN2") Or AgL.StrCmp(AgL.PubDBName, "MLAW") Then
+        If AgL.StrCmp(AgL.PubDBName, "RVN") Or AgL.StrCmp(AgL.PubDBName, "RVN1") Or AgL.StrCmp(AgL.PubDBName, "RVN2") Or AgL.StrCmp(AgL.PubDBName, "MLAW") Or AgL.StrCmp(AgL.PubDBName, "SHRIJIAW") Then
             mQry = "SELECT Sg.Code, Sg.Name, Ag.GroupName
                 FROM viewHelpSubGroup Sg
                 Left Join AcGroup Ag On Sg.GroupCode = Ag.GroupCode                 

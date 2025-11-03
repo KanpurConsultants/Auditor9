@@ -585,6 +585,7 @@ Public Class ClsMain
             FCreateTable_ItemTypeSetting()
             FCreateTable_Item()
             FCreateTable_Shape()
+            FCreateTable_SendWhatsapp()
             FCreateTable_ItemSize()
             FCreateTable_ItemRatePattern()
             FCreateTable_ItemSubgroup()
@@ -8388,7 +8389,7 @@ Thanks
                 FSeedSingleIfNotExist_EntryHeaderUISetting("FrmPerson", SubgroupType.SalesPerson, "Dgl1", FrmPerson.hcBankIFSC, 0, 0)
             End If
 
-            If AgL.StrCmp(AgL.PubDBName, "RVN") Or AgL.StrCmp(AgL.PubDBName, "RVN1") Or AgL.StrCmp(AgL.PubDBName, "RVN2") Or AgL.StrCmp(AgL.PubDBName, "MLAW") Then
+            If AgL.StrCmp(AgL.PubDBName, "RVN") Or AgL.StrCmp(AgL.PubDBName, "RVN1") Or AgL.StrCmp(AgL.PubDBName, "RVN2") Or AgL.StrCmp(AgL.PubDBName, "MLAW") Or AgL.StrCmp(AgL.PubDBName, "SHRIJIAW") Then
                 FSeedSingleIfNotExist_EntryHeaderUISetting("FrmPerson", "Hypothecation", "Dgl1", ConfigurableFields.FrmPersonHeaderDgl1.SubgroupType, 1, 1, 1)
                 FSeedSingleIfNotExist_EntryHeaderUISetting("FrmPerson", "Hypothecation", "Dgl1", ConfigurableFields.FrmPersonHeaderDgl1.Code, 0, 1, 1)
                 FSeedSingleIfNotExist_EntryHeaderUISetting("FrmPerson", "Hypothecation", "Dgl1", ConfigurableFields.FrmPersonHeaderDgl1.Name, 1, 1, 1)
@@ -15592,6 +15593,27 @@ Thanks
             AgL.AddFieldSqlite(AgL.GcnMain, "Shape", "Div_Code", "nVarchar(10)", "", True)
         Catch ex As Exception
             MsgBox(ex.Message & "  [FCreateTable_Shape]")
+        End Try
+    End Sub
+
+    Private Sub FCreateTable_SendWhatsapp()
+        Dim mQry As String
+        Try
+            If Not AgL.IsTableExist("SendWhatsapp", AgL.GcnMain) Then
+                mQry = " CREATE TABLE [SendWhatsapp] ([SendWhatsappId] INT IDENTITY NOT NULL, PRIMARY KEY ([SendWhatsappId]) ); "
+                AgL.Dman_ExecuteNonQry(mQry, AgL.GcnMain)
+            End If
+            AgL.AddFieldSqlite(AgL.GcnMain, "SendWhatsapp", "MobileNo", "nVarchar(15)", "", True)
+            AgL.AddFieldSqlite(AgL.GcnMain, "SendWhatsapp", "Message", "nVarchar(Max)", "", True)
+            AgL.AddFieldSqlite(AgL.GcnMain, "SendWhatsapp", "FileName", "nVarchar(100)", "", True)
+            AgL.AddFieldSqlite(AgL.GcnMain, "SendWhatsapp", "EntryDate", "DateTime", "", True)
+            AgL.AddFieldSqlite(AgL.GcnMain, "SendWhatsapp", "EntryType", "nVarchar(50)", "", True)
+            AgL.AddFieldSqlite(AgL.GcnMain, "SendWhatsapp", "EntryBy", "nVarchar(50)", "", True)
+            AgL.AddFieldSqlite(AgL.GcnMain, "SendWhatsapp", "WhatsappSendBy", "nVarchar(50)", "", True)
+            AgL.AddFieldSqlite(AgL.GcnMain, "SendWhatsapp", "WhatsappSendDate", "DateTime", "", True)
+            AgL.AddFieldSqlite(AgL.GcnMain, "SendWhatsapp", "Status", "nVarchar(10)", "", True)
+        Catch ex As Exception
+            MsgBox(ex.Message & "  [FCreateTable_SendWhatsapp]")
         End Try
     End Sub
 

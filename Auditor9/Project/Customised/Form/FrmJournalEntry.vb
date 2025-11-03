@@ -90,7 +90,7 @@ Public Class FrmJournalEntry
             End If
             If mDgl1ColumnCount = 0 Then Dgl1.Visible = False Else Dgl1.Visible = True
 
-            If AgL.StrCmp(AgL.PubDBName, "RVN") Or AgL.StrCmp(AgL.PubDBName, "RVN1") Or AgL.StrCmp(AgL.PubDBName, "RVN2") Or AgL.StrCmp(AgL.PubDBName, "MLAW") Then
+            If AgL.StrCmp(AgL.PubDBName, "RVN") Or AgL.StrCmp(AgL.PubDBName, "RVN1") Or AgL.StrCmp(AgL.PubDBName, "RVN2") Or AgL.StrCmp(AgL.PubDBName, "MLAW") Or AgL.StrCmp(AgL.PubDBName, "SHRIJIAW") Then
                 Dgl1.Columns(Col1LinkedSubcode).Visible = True
             End If
 
@@ -1730,7 +1730,7 @@ Public Class FrmJournalEntry
             End If
             Dgl1.AgHelpDataSet(Col1LinkedSubcode) = AgL.FillData(mQry, AgL.GCn)
         Else
-            If (TxtV_Type.Tag = "JVA" Or TxtV_Type.Tag = "JV") And (AgL.StrCmp(AgL.PubDBName, "RVN") Or AgL.StrCmp(AgL.PubDBName, "RVN1") Or AgL.StrCmp(AgL.PubDBName, "RVN2") Or AgL.StrCmp(AgL.PubDBName, "MLAW")) Then
+            If (TxtV_Type.Tag = "JVA" Or TxtV_Type.Tag = "JV") And (AgL.StrCmp(AgL.PubDBName, "RVN") Or AgL.StrCmp(AgL.PubDBName, "RVN1") Or AgL.StrCmp(AgL.PubDBName, "RVN2") Or AgL.StrCmp(AgL.PubDBName, "MLAW") Or AgL.StrCmp(AgL.PubDBName, "SHRIJIAW")) Then
                 mQry = "SELECT Sg.Code, Sg.Name, Ag.GroupName
                 FROM viewHelpSubGroup Sg
                 Left Join AcGroup Ag On Sg.GroupCode = Ag.GroupCode                 

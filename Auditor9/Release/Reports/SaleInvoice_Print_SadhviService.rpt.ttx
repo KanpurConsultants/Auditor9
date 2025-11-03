@@ -5,13 +5,13 @@ DocNoCaption	string	255	Invoice No.
 DocDateCaption	string	255	Invoice Date	
 SiteStateCode	string	255	09	
 SiteStateName	string	255	Uttar Pradesh	
-DocID	string	255	D1   SIS 2025       3	
+DocID	string	255	D1   SIS 2025       2	
 Sr	number	1	
 V_Date	datetime	25/Sep/2025 00:00:00	
 DeliveryDate	datetime		
 Voucher_Type	string	255	Sale Invoice Service	
 NCat	string	255	SI	
-InvoiceNo	string	255	SIS-3	
+InvoiceNo	string	255	SIS-2	
 RateType	string	255	Super Net	
 DocumentPrintShowRateType	string	255	Show If Not Blank	
 AgentName	string	255		

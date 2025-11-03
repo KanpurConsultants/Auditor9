@@ -197,6 +197,7 @@
     <Import Include="System.Windows.Forms" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Class\ClsLedgerUpdation.vb" />
     <Compile Include="Class\ClsWhatsapp.vb" />
     <Compile Include="Class\ClsBatchWiseStockBalance.vb" />
     <Compile Include="Class\ClsBillWiseProfitability.vb" />

@@ -1,4 +1,4 @@
-﻿Imports AgLibrary.ClsMain.agConstants
+﻿Imports System.Data.SqlClient
 Imports System.Threading
 Imports System.ComponentModel
 Imports System.IO
@@ -6,7 +6,8 @@ Imports System.IO
 Public Class FrmSendWhatsappMessage
     Dim mQry As String = ""
     Private _backgroundWorker1 As System.ComponentModel.BackgroundWorker
-
+    Dim WhatsAppSender As New WhatsAppSender()
+    Dim WithEvents checkThread As Thread
     Public Sub New()
 
         ' This call is required by the designer.
@@ -15,6 +16,38 @@ Public Class FrmSendWhatsappMessage
         ' Add any initialization after the InitializeComponent() call.
 
     End Sub
+
+    Private Sub Form1_Load(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles MyBase.Load
+        ' Start background thread
+        checkThread = New Thread(AddressOf CheckDataLoop)
+        checkThread.IsBackground = True
+        checkThread.Start()
+        WhatsAppSender.StartChecking()
+    End Sub
+
+    Private Sub CheckDataLoop()
+        While True
+            Try
+                Dim count As Integer = GetTableCount()
+                ' Update button text safely from another thread
+                Me.Invoke(New MethodInvoker(Sub()
+                                                BtnStartToSendWhatsapp.Text = "Pending Whatsapp To Send : " & count.ToString()
+                                            End Sub))
+            Catch ex As Exception
+                ' Optional: handle error
+            End Try
+
+            Thread.Sleep(120000) ' Wait 2 minutes (120000 milliseconds)
+        End While
+    End Sub
+
+    Private Function GetTableCount() As Integer
+        Dim count As Integer = 0
+        mQry = "SELECT COUNT(*) FROM SendWhatsapp H WHERE H.WhatsappSendDate IS NULL "
+        count = AgL.Dman_Execute(mQry, AgL.GcnRead).ExecuteScalar
+        Return count
+    End Function
+
     Private Sub Button1_Click(sender As Object, e As EventArgs) Handles BtnSendMessageForTodaySaleInvoice.Click
         BtnSendMessageForTodaySaleInvoice.Enabled = False
         _backgroundWorker1 = New System.ComponentModel.BackgroundWorker()
@@ -25,27 +58,19 @@ Public Class FrmSendWhatsappMessage
     End Sub
 
     Public Sub FProcMessageForTodaySaleInvoice()
-        Dim IsSuccess As Boolean
         Dim ToMobileNo As String
         Dim ToMessage As String
         Dim I As Integer
         Dim MessageFormat As String
-        MessageFormat = "Subject: New Invoices Generated
-
-Dear <PartyName>,
-
-Your invoices have been successfully generated on <EntryDate>.
-
-Invoice Details:
-
-<InvoiceDetails>
-
-Total Amount : ₹ <TotalAmount>
-
-Thank you for your business.
-
-Sincerely
-<DivisionName>"
+        MessageFormat = "Subject: New Invoices Generated" & vbCrLf &
+                    "Dear <PartyName>," & vbCrLf &
+                    "Your invoices have been successfully generated on <EntryDate>." & vbCrLf &
+                    "Invoice Details:" & vbCrLf &
+                    "<InvoiceDetails>" & vbCrLf &
+                    "Total Amount : ₹ <TotalAmount>" & vbCrLf &
+                    "Thank you for your business." & vbCrLf &
+                    "Sincerely" & vbCrLf &
+                    "<DivisionName>"
 
         mQry = "SELECT H.SaleToParty, Max(VP.Name) AS SaleToPartyName, Max(H.SaleToPartyMobile) AS  SaleToPartyMobile, count(H.DocId) NoBill,
                 replace( convert(NVARCHAR, Max(H.V_Date),106),' ','/') AS V_Date, Sum(H.Net_Amount) AS TotalAmount, Max(Sg.DispName) As DivisionName,
@@ -79,7 +104,12 @@ Sincerely
                             Replace("<TotalAmount>", AgL.XNull(DtDocData.Rows(I)("TotalAmount"))).
                             Replace("<DivisionName>", AgL.XNull(DtDocData.Rows(I)("DivisionName")))
 
-                IsSuccess = ClsMain.FSendWhatsappMessage(ToMobileNo, ToMessage, "Message", "")
+                'IsSuccess = ClsMain.FSendWhatsappMessage(ToMobileNo, ToMessage, "Message", "")
+                Dim FSendWhatsapp As String = ""
+                Dim sender As New WhatsAppSender()
+                'FSendWhatsapp = sender.SendMessageByWhatsapp(ToMobileNo, ToMessage)
+                ToMessage = ToMessage.Replace(vbCrLf, "\n").Replace(vbCr, "\n").Replace(vbLf, "\n")
+                sender.EntrySendWhatsapp(ToMobileNo, ToMessage, "Message For Today SaleInvoice", AgL.GCn)
             Next
         End If
 
@@ -87,13 +117,5 @@ Sincerely
 
     End Sub
 
-    Private Sub BtnSyncImages_Click(sender As Object, e As EventArgs)
-        'BtnSync.Enabled = False
-        'BtnSyncImages.Enabled = False
-        '_backgroundWorker1 = New System.ComponentModel.BackgroundWorker()
-        '_backgroundWorker1.WorkerSupportsCancellation = False
-        '_backgroundWorker1.WorkerReportsProgress = False
-        'AddHandler Me._backgroundWorker1.DoWork, New DoWorkEventHandler(AddressOf Me.FSyncDocuments)
-        '_backgroundWorker1.RunWorkerAsync()
-    End Sub
+
 End Class

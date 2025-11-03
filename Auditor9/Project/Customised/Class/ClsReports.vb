@@ -177,7 +177,7 @@ Public Class ClsReports
                     If GRepFormName = SaleOrderReport Then
                         ReportFrm.CreateHelpGrid("VoucherType", "Voucher Type", FrmRepDisplay.FieldFilterDataType.StringType, FrmRepDisplay.FieldDataType.MultiSelection, FGetVoucher_TypeQry("SaleInvoice", Ncat.SaleOrder + "," + Ncat.SaleOrderCancel))
                     Else
-                        If AgL.StrCmp(AgL.PubDBName, "RVN") Or AgL.StrCmp(AgL.PubDBName, "RVN1") Or AgL.StrCmp(AgL.PubDBName, "RVN2") Or AgL.StrCmp(AgL.PubDBName, "MLAW") Then
+                        If AgL.StrCmp(AgL.PubDBName, "RVN") Or AgL.StrCmp(AgL.PubDBName, "RVN1") Or AgL.StrCmp(AgL.PubDBName, "RVN2") Or AgL.StrCmp(AgL.PubDBName, "MLAW") Or AgL.StrCmp(AgL.PubDBName, "SHRIJIAW") Then
                             ReportFrm.CreateHelpGrid("VoucherType", "Voucher Type", FrmRepDisplay.FieldFilterDataType.StringType, FrmRepDisplay.FieldDataType.MultiSelection, FGetVoucher_TypeQry("SaleInvoice", Ncat.SaleInvoice + "," + Ncat.SaleReturn + "," + Ncat.SaleChallan))
                         Else
                             ReportFrm.CreateHelpGrid("VoucherType", "Voucher Type", FrmRepDisplay.FieldFilterDataType.StringType, FrmRepDisplay.FieldDataType.MultiSelection, FGetVoucher_TypeQry("SaleInvoice", Ncat.SaleInvoice + "," + Ncat.SaleReturn))
@@ -1194,7 +1194,7 @@ Public Class ClsReports
             If GRepFormName = SaleOrderReport Then
                 mCondStr = " Where VT.NCat In ('" & Ncat.SaleOrder & "', '" & Ncat.SaleOrderCancel & "') "
             Else
-                If AgL.StrCmp(AgL.PubDBName, "RVN") Or AgL.StrCmp(AgL.PubDBName, "RVN1") Or AgL.StrCmp(AgL.PubDBName, "RVN2") Or AgL.StrCmp(AgL.PubDBName, "MLAW") Then
+                If AgL.StrCmp(AgL.PubDBName, "RVN") Or AgL.StrCmp(AgL.PubDBName, "RVN1") Or AgL.StrCmp(AgL.PubDBName, "RVN2") Or AgL.StrCmp(AgL.PubDBName, "MLAW") Or AgL.StrCmp(AgL.PubDBName, "SHRIJIAW") Then
                     mCondStr = " Where VT.NCat In ('" & Ncat.SaleInvoice & "', '" & Ncat.SaleReturn & "', '" & Ncat.SaleChallan & "') "
                 Else
                     mCondStr = " Where VT.NCat In ('" & Ncat.SaleInvoice & "', '" & Ncat.SaleReturn & "') "
@@ -1213,7 +1213,7 @@ Public Class ClsReports
                 mCondStr = mCondStr & " AND BillToParty.Nature <> 'Cash'"
             End If
 
-            If AgL.StrCmp(AgL.PubDBName, "RVN") Or AgL.StrCmp(AgL.PubDBName, "RVN1") Or AgL.StrCmp(AgL.PubDBName, "RVN2") Or AgL.StrCmp(AgL.PubDBName, "MLAW") Then
+            If AgL.StrCmp(AgL.PubDBName, "RVN") Or AgL.StrCmp(AgL.PubDBName, "RVN1") Or AgL.StrCmp(AgL.PubDBName, "RVN2") Or AgL.StrCmp(AgL.PubDBName, "MLAW") Or AgL.StrCmp(AgL.PubDBName, "SHRIJIAW") Then
                 mCondStr = mCondStr & ReportFrm.GetWhereCondition("H.Agent", 8)
             Else
                 mCondStr = mCondStr & ReportFrm.GetWhereCondition("LTV.Agent", 8)
@@ -1239,10 +1239,11 @@ Public Class ClsReports
                 mCondStr = mCondStr & ReportFrm.GetWhereCondition("IG.Department", 27)
             End If
 
-            If ReportFrm.FGetText(28) <> "" And (AgL.StrCmp(AgL.PubDBName, "SADHVI") Or AgL.StrCmp(AgL.PubDBName, "SADHVI2")) Then
-                mCondStr = mCondStr & " AND L.Rate >= " + ReportFrm.FGetText(28) + " "
+            If (AgL.StrCmp(AgL.PubDBName, "SADHVI") Or AgL.StrCmp(AgL.PubDBName, "SADHVI2")) Then
+                If ReportFrm.FGetText(28) <> "" Then
+                    mCondStr = mCondStr & " AND L.Rate >= " + ReportFrm.FGetText(28) + " "
+                End If
             End If
-
             'If ReportFrm.FGetText(8) <> "All" Then
             '    mCondStr += " And H.Agent = '" & ReportFrm.FGetCode(8) & "' "
             'End If
@@ -1268,7 +1269,7 @@ Public Class ClsReports
                     strftime('%d/%m/%Y', H.V_Date) As V_Date, H.V_Date As V_Date_ActualFormat,
                     H.SaleToParty, Party.SubgroupType, Party.Nature as AccountNature, I.ItemGroup, I.ItemCategory,
                     (Case When H.SaleToParty=H.BillToParty And (Party.Nature='Cash' Or Party.SubgroupType='" & SubgroupType.RevenuePoint & "') Then Party.Name || ' - ' || IfNull(H.SaleToPartyName,'') When H.SaleToParty=H.BillToParty Then Party.Name When BillToParty.Nature='Cash' And H.SaleToParty<>H.BillToParty Then  BillToParty.Name || ' - ' || Party.Name  Else Party.Name || ' - ' || BillToParty.Name End) As SaleToPartyName ,                     
-                    Party.Mobile, SIT.NoOfBales,
+                    Party.Mobile, SIT.NoOfBales, AG.GroupName,
                     LTV.Agent As AgentCode, Agent.Name As AgentName, H.ResponsiblePerson, ResponsiblePerson.Name as ResponsiblePersonName,G.Name as GodownName,
                     L.SalesRepresentative, SalesRep.Name as SalesRepresentativeName, H.SalesTaxGroupParty, L.SalesTaxGroupItem,
                     City.CityCode, City.CityName, Area.Code As AreaCode, Area.Description As AreaName, State.Code As StateCode, State.Description As StateName,
@@ -1280,7 +1281,7 @@ Public Class ClsReports
                     L.SpecialDiscount_Per, L.SpecialDiscount, L.SpecialAddition_Per, L.SpecialAddition, L.Remark AS LineRemark, L.Remarks1, L.Remarks2,
                     L.Taxable_Amount, (Case When L.Net_Amount=0 Then L.Amount Else L.Net_Amount End) as Net_Amount, L.Qty, L.Unit, L.DealQty, L.DealUnit, L.Rate, L.Amount +(L.DiscountAmount + L.AdditionalDiscountAmount - L.AdditionAmount) as AmountExDiscount, L.Amount,
                     L.Tax1, L.Tax2, L.Tax3, L.Tax4, L.Tax5, L.Tax1+L.Tax2+L.Tax3+L.Tax4+L.Tax5 as TotalTax, H.EntryBy as EntryByUser,
-                    H.Tags,
+                    H.Tags, H.Remarks as HRemarks,
                     (select Max(Tags) From SaleInvoice Where DocId In (Select SaleInvoice From SaleInvoiceDetail Where DocId=H.DocID)) as OrderTags,
                     (Select Max(I1.Description) from SaleInvoiceDetailSKU DSKU Left Join Item I1 On IfNull(DSKU.ItemGroup, DSKU.Item) = I1.Code Where DSKU.DocID = H.DocID And I1.V_Type='IG') as Brand 
                     FROM SaleInvoice H 
@@ -1293,6 +1294,7 @@ Public Class ClsReports
                     LEFT JOIN Item Bi On I.BaseItem = Bi.Code
                     Left Join viewHelpSubgroup Party On H.SaleToParty = Party.Code 
                     Left Join viewHelpSubgroup BillToParty On H.BillToParty = BillToParty.Code 
+                    Left Join AcGroup AG On Party.GroupCode = AG.GroupCode
                     Left Join (Select SILTV.Subcode, SILTV.Div_Code, SILTV.Site_Code, Max(SILTV.Agent) as Agent From SubgroupSiteDivisionDetail SILTV  Group By SILTV.Subcode, SILTV.Div_Code, SILTV.Site_Code) as LTV On Party.code = LTV.Subcode And H.Site_Code = LTV.Site_Code And H.Div_Code = LTV.Div_Code
                     Left Join viewHelpSubGroup Agent On LTV.Agent = Agent.Code 
                     Left Join viewHelpSubGroup SalesRep On L.SalesRepresentative = SalesRep.Code 
@@ -1325,7 +1327,7 @@ Public Class ClsReports
                                 Max(VMain.V_Date) As InvoiceDate, Max(VMain.V_Type) as DocType, Max(VMain.InvoiceNo) As InvoiceNo, Max(VMain.NoOfBales) AS NoOfBales, Max(VMain.GodownName) AS GodownName,
                                 Max(VMain.SaleToPartyName) As Party, Max(Vmain.Brand) as Brand, Max(VMain.SalesTaxGroupParty) As SalesTaxGroupParty, IfNull(Sum(VMain.AmountExDiscount),0) As AmountExDiscount, 
                                 IfNull(Sum(VMain.Discount+VMain.AdditionalDiscount),0) As Discount, IfNull(Sum(VMain.Addition),0) as Addition, IfNull(Sum(VMain.SpecialDiscount),0) As SpecialDiscount, IfNull(Sum(VMain.SpecialAddition),0) As SpecialAddition,
-                                IfNull(Sum(VMain.Amount),0) As Amount,IfNull(Sum(VMain.Taxable_Amount),0) As TaxableAmount, IfNull(Sum(VMain.TotalTax),0) As TaxAmount, IfNull(Sum(VMain.Net_Amount),0) As NetAmount, Max(VMain.Tags) as Tags, Max(VMain.OrderTags) as OrderTags
+                                IfNull(Sum(VMain.Amount),0) As Amount,IfNull(Sum(VMain.Taxable_Amount),0) As TaxableAmount, IfNull(Sum(VMain.TotalTax),0) As TaxAmount, IfNull(Sum(VMain.Net_Amount),0) As NetAmount, Max(VMain.Tags) as Tags, Max(VMain.HRemarks) as Remarks, Max(VMain.OrderTags) as OrderTags
                                 From (" & mQry & ") As VMain
                                 GROUP By VMain.DocId 
                                 Order By Max(VMain.V_Date_ActualFormat), Cast(Max(Replace(Vmain.ManualRefNo,'-','')) as Integer),VMain.DocId "
@@ -1334,7 +1336,7 @@ Public Class ClsReports
                                 Max(VMain.V_Date) As InvoiceDate, Max(VMain.V_Type) as DocType, Max(VMain.InvoiceNo) As InvoiceNo, IfNull(Cast(Max(VMain.NoOfBales) as Integer),0) AS NoOfBales, Max(VMain.GodownName) AS GodownName,
                                 Max(VMain.SaleToPartyName) As Party, Max(Vmain.Brand) as Brand, Max(VMain.SalesTaxGroupParty) As SalesTaxGroupParty, IfNull(Sum(VMain.AmountExDiscount),0) As AmountExDiscount, 
                                 IfNull(Sum(VMain.Discount+VMain.AdditionalDiscount),0) As Discount, IfNull(Sum(VMain.Addition),0) as Addition, IfNull(Sum(VMain.SpecialDiscount),0) As SpecialDiscount, IfNull(Sum(VMain.SpecialAddition),0) As SpecialAddition,
-                                IfNull(Sum(VMain.Amount),0) As Amount,IfNull(Sum(VMain.Taxable_Amount),0) As TaxableAmount, IfNull(Sum(VMain.TotalTax),0) As TaxAmount, IfNull(Sum(VMain.Net_Amount),0) As NetAmount, Max(VMain.Tags) as Tags, Max(VMain.OrderTags) as OrderTags
+                                IfNull(Sum(VMain.Amount),0) As Amount,IfNull(Sum(VMain.Taxable_Amount),0) As TaxableAmount, IfNull(Sum(VMain.TotalTax),0) As TaxAmount, IfNull(Sum(VMain.Net_Amount),0) As NetAmount, Max(VMain.Tags) as Tags, Max(VMain.HRemarks) as Remarks, Max(VMain.OrderTags) as OrderTags
                                 From (" & mQry & ") As VMain
                                 GROUP By VMain.DocId 
                                 Order By Max(VMain.V_Date_ActualFormat), Cast(Max(Replace(Vmain.ManualRefNo,'-','')) as Integer) "
@@ -1437,7 +1439,7 @@ Public Class ClsReports
                     GROUP By VMain.V_Type
                     Order By Max(VMain.VoucherType)"
             ElseIf ReportFrm.FGetText(0) = "Party Wise Summary" Then
-                mQry = " Select VMain.SaleToParty as SearchCode, Max(VMain.SaleToPartyName) As Party, Max(Vmain.Mobile) as Mobile,
+                mQry = " Select VMain.SaleToParty as SearchCode, Max(VMain.GroupName) AS ACGroup, Max(VMain.SaleToPartyName) As Party, Max(Vmain.Mobile) as Mobile,
                     Count(Distinct Vmain.DocID) as [Doc.Count],  Sum(VMain.Qty) as Qty,
                     Sum(VMain.AmountExDiscount) as GoodsValue, Sum(VMain.Discount) as Discount, Sum(VMain.Addition) as Addition, Sum(VMain.SpecialDiscount) as SpecialDiscount, Sum(VMain.SpecialAddition) as SpecialAddition,
                     Sum(VMain.Amount) As Amount, Sum(VMain.Taxable_Amount) As [Taxable Amount], IfNull(Sum(VMain.TotalTax),0) As TaxAmount, Sum(VMain.Net_Amount) As [Net Amount]

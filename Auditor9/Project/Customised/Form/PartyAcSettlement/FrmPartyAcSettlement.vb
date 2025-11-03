@@ -195,7 +195,7 @@ Public Class FrmPartyAcSettlement
         '
         'GroupBox2
         '
-        Me.GroupBox2.Location = New System.Drawing.Point(733, 656)
+        Me.GroupBox2.Location = New System.Drawing.Point(733, 620)
         Me.GroupBox2.Size = New System.Drawing.Size(148, 40)
         '
         'TxtStatus
@@ -210,7 +210,7 @@ Public Class FrmPartyAcSettlement
         '
         'GBoxMoveToLog
         '
-        Me.GBoxMoveToLog.Location = New System.Drawing.Point(582, 656)
+        Me.GBoxMoveToLog.Location = New System.Drawing.Point(582, 620)
         Me.GBoxMoveToLog.Size = New System.Drawing.Size(148, 40)
         '
         'TxtMoveToLog
@@ -221,7 +221,7 @@ Public Class FrmPartyAcSettlement
         '
         'GBoxApprove
         '
-        Me.GBoxApprove.Location = New System.Drawing.Point(415, 656)
+        Me.GBoxApprove.Location = New System.Drawing.Point(415, 620)
         Me.GBoxApprove.Size = New System.Drawing.Size(148, 40)
         Me.GBoxApprove.Text = "Approved By"
         '
@@ -240,7 +240,7 @@ Public Class FrmPartyAcSettlement
         '
         'GBoxEntryType
         '
-        Me.GBoxEntryType.Location = New System.Drawing.Point(906, 656)
+        Me.GBoxEntryType.Location = New System.Drawing.Point(906, 620)
         Me.GBoxEntryType.Size = New System.Drawing.Size(119, 40)
         '
         'TxtEntryType
@@ -250,7 +250,7 @@ Public Class FrmPartyAcSettlement
         '
         'GrpUP
         '
-        Me.GrpUP.Location = New System.Drawing.Point(16, 656)
+        Me.GrpUP.Location = New System.Drawing.Point(16, 620)
         Me.GrpUP.Size = New System.Drawing.Size(119, 40)
         '
         'TxtEntryBy
@@ -262,12 +262,12 @@ Public Class FrmPartyAcSettlement
         'GroupBox1
         '
         Me.GroupBox1.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!)
-        Me.GroupBox1.Location = New System.Drawing.Point(2, 652)
-        Me.GroupBox1.Size = New System.Drawing.Size(1003, 4)
+        Me.GroupBox1.Location = New System.Drawing.Point(2, 616)
+        Me.GroupBox1.Size = New System.Drawing.Size(1079, 4)
         '
         'GBoxDivision
         '
-        Me.GBoxDivision.Location = New System.Drawing.Point(285, 656)
+        Me.GBoxDivision.Location = New System.Drawing.Point(285, 620)
         Me.GBoxDivision.Size = New System.Drawing.Size(114, 40)
         '
         'TxtDivision
@@ -384,7 +384,7 @@ Public Class FrmPartyAcSettlement
         '
         Me.TabControl1.Font = New System.Drawing.Font("Tahoma", 8.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.TabControl1.Location = New System.Drawing.Point(-9, 5)
-        Me.TabControl1.Size = New System.Drawing.Size(907, 100)
+        Me.TabControl1.Size = New System.Drawing.Size(1070, 100)
         Me.TabControl1.TabIndex = 1
         '
         'TP1
@@ -402,7 +402,7 @@ Public Class FrmPartyAcSettlement
         Me.TP1.Controls.Add(Me.Label30)
         Me.TP1.Controls.Add(Me.TxtRemarks)
         Me.TP1.Location = New System.Drawing.Point(4, 22)
-        Me.TP1.Size = New System.Drawing.Size(899, 74)
+        Me.TP1.Size = New System.Drawing.Size(1062, 74)
         Me.TP1.Text = "Document Detail"
         Me.TP1.Controls.SetChildIndex(Me.TxtV_No, 0)
         Me.TP1.Controls.SetChildIndex(Me.TxtSite_Code, 0)
@@ -435,7 +435,7 @@ Public Class FrmPartyAcSettlement
         '
         'Topctrl1
         '
-        Me.Topctrl1.Size = New System.Drawing.Size(985, 41)
+        Me.Topctrl1.Size = New System.Drawing.Size(1061, 41)
         Me.Topctrl1.TabIndex = 0
         '
         'Label1
@@ -487,7 +487,7 @@ Public Class FrmPartyAcSettlement
         Me.Panel1.Controls.Add(Me.LblBillAmountText)
         Me.Panel1.Location = New System.Drawing.Point(7, 105)
         Me.Panel1.Name = "Panel1"
-        Me.Panel1.Size = New System.Drawing.Size(877, 21)
+        Me.Panel1.Size = New System.Drawing.Size(1050, 21)
         Me.Panel1.TabIndex = 694
         '
         'LblTotalSettledInvoiceAmount
@@ -538,9 +538,9 @@ Public Class FrmPartyAcSettlement
         '
         'Pnl1
         '
-        Me.Pnl1.Location = New System.Drawing.Point(4, 583)
+        Me.Pnl1.Location = New System.Drawing.Point(678, 471)
         Me.Pnl1.Name = "Pnl1"
-        Me.Pnl1.Size = New System.Drawing.Size(807, 65)
+        Me.Pnl1.Size = New System.Drawing.Size(499, 86)
         Me.Pnl1.TabIndex = 12
         '
         'Label30
@@ -680,7 +680,7 @@ Public Class FrmPartyAcSettlement
         Me.LinkLabel1.Font = New System.Drawing.Font("Tahoma", 8.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.LinkLabel1.LinkBehavior = System.Windows.Forms.LinkBehavior.NeverUnderline
         Me.LinkLabel1.LinkColor = System.Drawing.Color.White
-        Me.LinkLabel1.Location = New System.Drawing.Point(5, 409)
+        Me.LinkLabel1.Location = New System.Drawing.Point(5, 447)
         Me.LinkLabel1.Name = "LinkLabel1"
         Me.LinkLabel1.Size = New System.Drawing.Size(247, 19)
         Me.LinkLabel1.TabIndex = 807
@@ -693,9 +693,9 @@ Public Class FrmPartyAcSettlement
         Me.Panel2.BackColor = System.Drawing.Color.Cornsilk
         Me.Panel2.Controls.Add(Me.LblPaidAmt)
         Me.Panel2.Controls.Add(Me.Label5)
-        Me.Panel2.Location = New System.Drawing.Point(7, 408)
+        Me.Panel2.Location = New System.Drawing.Point(7, 446)
         Me.Panel2.Name = "Panel2"
-        Me.Panel2.Size = New System.Drawing.Size(878, 21)
+        Me.Panel2.Size = New System.Drawing.Size(665, 21)
         Me.Panel2.TabIndex = 806
         '
         'LblPaidAmt
@@ -723,12 +723,9 @@ Public Class FrmPartyAcSettlement
         '
         'Pnl2
         '
-        Me.Pnl2.Anchor = CType((((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Bottom) _
-            Or System.Windows.Forms.AnchorStyles.Left) _
-            Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
         Me.Pnl2.Location = New System.Drawing.Point(4, 127)
         Me.Pnl2.Name = "Pnl2"
-        Me.Pnl2.Size = New System.Drawing.Size(976, 275)
+        Me.Pnl2.Size = New System.Drawing.Size(1053, 313)
         Me.Pnl2.TabIndex = 10
         '
         'LinkLabel2
@@ -738,9 +735,9 @@ Public Class FrmPartyAcSettlement
         Me.LinkLabel2.Font = New System.Drawing.Font("Tahoma", 8.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.LinkLabel2.LinkBehavior = System.Windows.Forms.LinkBehavior.NeverUnderline
         Me.LinkLabel2.LinkColor = System.Drawing.Color.White
-        Me.LinkLabel2.Location = New System.Drawing.Point(5, 559)
+        Me.LinkLabel2.Location = New System.Drawing.Point(1, 1)
         Me.LinkLabel2.Name = "LinkLabel2"
-        Me.LinkLabel2.Size = New System.Drawing.Size(247, 19)
+        Me.LinkLabel2.Size = New System.Drawing.Size(110, 19)
         Me.LinkLabel2.TabIndex = 810
         Me.LinkLabel2.TabStop = True
         Me.LinkLabel2.Text = "Final Payments"
@@ -751,9 +748,10 @@ Public Class FrmPartyAcSettlement
         Me.Panel4.BackColor = System.Drawing.Color.Cornsilk
         Me.Panel4.Controls.Add(Me.LblSettlementAmt)
         Me.Panel4.Controls.Add(Me.Label8)
-        Me.Panel4.Location = New System.Drawing.Point(7, 558)
+        Me.Panel4.Controls.Add(Me.LinkLabel2)
+        Me.Panel4.Location = New System.Drawing.Point(678, 446)
         Me.Panel4.Name = "Panel4"
-        Me.Panel4.Size = New System.Drawing.Size(665, 21)
+        Me.Panel4.Size = New System.Drawing.Size(347, 21)
         Me.Panel4.TabIndex = 809
         '
         'LblSettlementAmt
@@ -761,7 +759,7 @@ Public Class FrmPartyAcSettlement
         Me.LblSettlementAmt.AutoSize = True
         Me.LblSettlementAmt.Font = New System.Drawing.Font("Verdana", 9.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.LblSettlementAmt.ForeColor = System.Drawing.SystemColors.ControlDarkDark
-        Me.LblSettlementAmt.Location = New System.Drawing.Point(402, 4)
+        Me.LblSettlementAmt.Location = New System.Drawing.Point(276, 4)
         Me.LblSettlementAmt.Name = "LblSettlementAmt"
         Me.LblSettlementAmt.Size = New System.Drawing.Size(11, 14)
         Me.LblSettlementAmt.TabIndex = 660
@@ -773,7 +771,7 @@ Public Class FrmPartyAcSettlement
         Me.Label8.AutoSize = True
         Me.Label8.Font = New System.Drawing.Font("Verdana", 9.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.Label8.ForeColor = System.Drawing.Color.Maroon
-        Me.Label8.Location = New System.Drawing.Point(248, 3)
+        Me.Label8.Location = New System.Drawing.Point(117, 3)
         Me.Label8.Name = "Label8"
         Me.Label8.Size = New System.Drawing.Size(155, 14)
         Me.Label8.TabIndex = 659
@@ -781,12 +779,9 @@ Public Class FrmPartyAcSettlement
         '
         'Pnl3
         '
-        Me.Pnl3.Anchor = CType((((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Bottom) _
-            Or System.Windows.Forms.AnchorStyles.Left) _
-            Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
-        Me.Pnl3.Location = New System.Drawing.Point(4, 431)
+        Me.Pnl3.Location = New System.Drawing.Point(4, 468)
         Me.Pnl3.Name = "Pnl3"
-        Me.Pnl3.Size = New System.Drawing.Size(807, 121)
+        Me.Pnl3.Size = New System.Drawing.Size(668, 146)
         Me.Pnl3.TabIndex = 11
         '
         'BtnFill
@@ -844,7 +839,7 @@ Public Class FrmPartyAcSettlement
         Me.LblDifferenceAmount.AutoSize = True
         Me.LblDifferenceAmount.Font = New System.Drawing.Font("Verdana", 9.75!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.LblDifferenceAmount.ForeColor = System.Drawing.Color.Black
-        Me.LblDifferenceAmount.Location = New System.Drawing.Point(852, 504)
+        Me.LblDifferenceAmount.Location = New System.Drawing.Point(816, 582)
         Me.LblDifferenceAmount.Name = "LblDifferenceAmount"
         Me.LblDifferenceAmount.Size = New System.Drawing.Size(13, 16)
         Me.LblDifferenceAmount.TabIndex = 812
@@ -856,7 +851,7 @@ Public Class FrmPartyAcSettlement
         Me.Label10.AutoSize = True
         Me.Label10.Font = New System.Drawing.Font("Verdana", 9.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.Label10.ForeColor = System.Drawing.Color.Maroon
-        Me.Label10.Location = New System.Drawing.Point(823, 490)
+        Me.Label10.Location = New System.Drawing.Point(685, 582)
         Me.Label10.Name = "Label10"
         Me.Label10.Size = New System.Drawing.Size(115, 14)
         Me.Label10.TabIndex = 811
@@ -908,7 +903,7 @@ Public Class FrmPartyAcSettlement
         '
         Me.Label7.AutoSize = True
         Me.Label7.Font = New System.Drawing.Font("Verdana", 9.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Label7.Location = New System.Drawing.Point(826, 527)
+        Me.Label7.Location = New System.Drawing.Point(684, 596)
         Me.Label7.Name = "Label7"
         Me.Label7.Size = New System.Drawing.Size(151, 14)
         Me.Label7.TabIndex = 815
@@ -932,7 +927,7 @@ Public Class FrmPartyAcSettlement
         Me.TxtDifferenceJVDocNo.AgValueType = AgControls.AgTextBox.TxtValueType.Text_Value
         Me.TxtDifferenceJVDocNo.BorderStyle = System.Windows.Forms.BorderStyle.None
         Me.TxtDifferenceJVDocNo.Font = New System.Drawing.Font("Verdana", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.TxtDifferenceJVDocNo.Location = New System.Drawing.Point(829, 546)
+        Me.TxtDifferenceJVDocNo.Location = New System.Drawing.Point(841, 595)
         Me.TxtDifferenceJVDocNo.MaxLength = 255
         Me.TxtDifferenceJVDocNo.Name = "TxtDifferenceJVDocNo"
         Me.TxtDifferenceJVDocNo.Size = New System.Drawing.Size(148, 16)
@@ -956,7 +951,7 @@ Public Class FrmPartyAcSettlement
         Me.TxtLinkedParty.AgValueType = AgControls.AgTextBox.TxtValueType.Text_Value
         Me.TxtLinkedParty.BorderStyle = System.Windows.Forms.BorderStyle.None
         Me.TxtLinkedParty.Font = New System.Drawing.Font("Verdana", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.TxtLinkedParty.Location = New System.Drawing.Point(817, 462)
+        Me.TxtLinkedParty.Location = New System.Drawing.Point(825, 560)
         Me.TxtLinkedParty.MaxLength = 0
         Me.TxtLinkedParty.Name = "TxtLinkedParty"
         Me.TxtLinkedParty.Size = New System.Drawing.Size(207, 16)
@@ -967,7 +962,7 @@ Public Class FrmPartyAcSettlement
         Me.LblLinkedParty.AutoSize = True
         Me.LblLinkedParty.BackColor = System.Drawing.Color.Transparent
         Me.LblLinkedParty.Font = New System.Drawing.Font("Verdana", 9.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.LblLinkedParty.Location = New System.Drawing.Point(812, 445)
+        Me.LblLinkedParty.Location = New System.Drawing.Point(685, 560)
         Me.LblLinkedParty.Name = "LblLinkedParty"
         Me.LblLinkedParty.Size = New System.Drawing.Size(91, 14)
         Me.LblLinkedParty.TabIndex = 3022
@@ -987,7 +982,7 @@ Public Class FrmPartyAcSettlement
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.BackColor = System.Drawing.SystemColors.ButtonShadow
-        Me.ClientSize = New System.Drawing.Size(985, 697)
+        Me.ClientSize = New System.Drawing.Size(1061, 661)
         Me.ContextMenuStrip = Me.MnuOptions
         Me.Controls.Add(Me.TxtLinkedParty)
         Me.Controls.Add(Me.LblLinkedParty)
@@ -995,7 +990,6 @@ Public Class FrmPartyAcSettlement
         Me.Controls.Add(Me.LblDifferenceAmount)
         Me.Controls.Add(Me.TxtDifferenceJVDocNo)
         Me.Controls.Add(Me.Label10)
-        Me.Controls.Add(Me.LinkLabel2)
         Me.Controls.Add(Me.Panel4)
         Me.Controls.Add(Me.Pnl3)
         Me.Controls.Add(Me.LinkLabel1)
@@ -1015,7 +1009,6 @@ Public Class FrmPartyAcSettlement
         Me.Controls.SetChildIndex(Me.LinkLabel1, 0)
         Me.Controls.SetChildIndex(Me.Pnl3, 0)
         Me.Controls.SetChildIndex(Me.Panel4, 0)
-        Me.Controls.SetChildIndex(Me.LinkLabel2, 0)
         Me.Controls.SetChildIndex(Me.TabControl1, 0)
         Me.Controls.SetChildIndex(Me.GroupBox1, 0)
         Me.Controls.SetChildIndex(Me.GrpUP, 0)
@@ -1115,14 +1108,14 @@ Public Class FrmPartyAcSettlement
         'End If
 
         AgL.PubFindQry = " SELECT H.DocID AS SearchCode, H.V_Type AS [Entry_Type], H.V_Date AS Voucher_Date, " &
-                " H.ManualRefNo, Sg.Name  as PartyName, " &
-                " H.Remarks,  " &
+                " H.ManualRefNo, Sg.Name  as PartyName, H.Remarks,  L.Amount, L.ChqRefNo, " &
                 " H.EntryBy AS [Entry_By], H.EntryDate AS [Entry_Date], H.ApproveBy as Approved_By, H.ApproveDate as Approve_Date  " &
                 " FROM  LedgerHead H   " &
                 " Left Join viewHelpSubgroup Sg  on H.SubCode = Sg.Code " &
                 " LEFT JOIN Division D  ON D.Div_Code=H.Div_Code  " &
                 " LEFT JOIN SiteMast SM  ON SM.Code=H.Site_Code  " &
                 " LEFT JOIN Voucher_Type Vt  ON H.V_Type = Vt.V_Type " &
+                " LEFT JOIN LedgerHeadDetail L ON L.DocID = H.DocID AND L.Sr =1 " &
                 " Where 1=1  " & mCondStr
 
         AgL.PubFindQryOrdBy = "[Voucher_Date]"
@@ -3274,12 +3267,12 @@ Public Class FrmPartyAcSettlement
         dsInvoice.WriteXml(AgL.PubReportPath + "\PaymentSettlement_DsInvoice.xml")
         dsPayment.WriteXml(AgL.PubReportPath + "\PaymentSettlement_DsPayment.xml")
         dsCompany.WriteXml(AgL.PubReportPath + "\PaymentSettlement_DsCompany.xml")
+
         If ClsMain.FDivisionNameForCustomization(6) = "SADHVI" And (AgL.StrCmp(AgL.PubDBName, "Sadhvi") Or AgL.StrCmp(AgL.PubDBName, "Sadhvi2")) Then
             objRepPrint.reportViewer1.LocalReport.ReportPath = AgL.PubReportPath + "\PaymentSettlement_SE.rdl"
         Else
             objRepPrint.reportViewer1.LocalReport.ReportPath = AgL.PubReportPath + "\PaymentSettlement.rdl"
         End If
-
 
         If (dsMain.Rows.Count = 0) Then
             MsgBox("No records found to print.")

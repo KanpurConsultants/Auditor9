@@ -1,9 +1,7 @@
-Imports System.Diagnostics
 Imports System.IO
-Imports System.Linq
 Imports System.Net
 Imports System.Text
-Imports System.Threading.Tasks
+Imports System.Threading
 Imports AgLibrary.ClsMain.agConstants
 Imports CrystalDecisions.CrystalReports.Engine
 Imports CrystalDecisions.Shared
@@ -12,13 +10,64 @@ Public Class WhatsAppSender
     'Dim RequestUrl As String = "http://app.laksmartindia.com/api/v1/message/create"
     'Dim Username As String = "Satyam Tripathi"
     'Dim Password As String = "KC@12345"
+    Dim mQry$
+    Private _stopChecking As Boolean = False
 
     Private RequestUrl As String = FGetSettings(SettingFields.WhatsappRequestUrl, "E Invoice", "", "", "", "", "", "", "")
     Private Username As String = FGetSettings(SettingFields.WhatsappUsername, "E Invoice", "", "", "", "", "", "", "")
     Private Password As String = FGetSettings(SettingFields.WhatsappPassword, "E Invoice", "", "", "", "", "", "", "")
 
+    Public Sub EntrySendWhatsapp(receiverMobileNo As String, message As String, EntryType As String, ByVal Conn As Object)
+        mQry = "INSERT INTO SendWhatsapp (MobileNo, Message, FileName, EntryDate, EntryType, EntryBy)
+                VALUES ('" & AgL.XNull(receiverMobileNo) & "', '" & AgL.XNull(message) & "', Null, GetDate(), '" & EntryType & "', '" & AgL.PubUserName & "') "
+        AgL.Dman_ExecuteNonQry(mQry, Conn)
+    End Sub
+
+    Public Sub StartChecking()
+        Dim checkThread As New Thread(AddressOf CheckLoop)
+        checkThread.IsBackground = True
+        checkThread.Start()
+    End Sub
+
+    ' Optional: call this to stop the loop
+    Public Sub StopChecking()
+        _stopChecking = True
+    End Sub
+
+    Private Sub CheckLoop()
+        While Not _stopChecking
+            Try
+                SendWhatsappFromTable()
+            Catch ex As Exception
+                Console.WriteLine("Error: " & ex.Message)
+            End Try
+
+            ' Wait 2 minutes (120000 milliseconds)
+            Thread.Sleep(120000)
+        End While
+    End Sub
+
+    Public Sub SendWhatsappFromTable()
+        Dim ToMobileNo As String
+        Dim ToMessage As String
+
+        mQry = "SELECT * FROM SendWhatsapp H WHERE H.WhatsappSendDate IS NULL ORDER BY H.EntryDate "
+        Dim DtDocData As DataTable = AgL.FillData(mQry, AgL.GCn).Tables(0)
+        If DtDocData.Rows.Count > 0 Then
+
+            ToMobileNo = AgL.XNull(DtDocData.Rows(0)("MobileNo"))
+            ToMessage = AgL.XNull(DtDocData.Rows(0)("Message"))
+            SendMessageByWhatsapp(ToMobileNo, ToMessage)
+            'ClsMain.FSendWhatsappMessage(ToMobileNo, ToMessage, "Message", "")
+            mQry = "UPDATE SendWhatsapp SET WhatsappSendDate = getdate(), WhatsappSendBy ='" + AgL.PubUserName + "' WHERE SendWhatsappId = " + AgL.XNull(DtDocData.Rows(0)("SendWhatsappId")) + ""
+            AgL.Dman_ExecuteNonQry(mQry, AgL.GCn)
+        End If
+    End Sub
+
+
     Public Function SendMessageByWhatsapp(receiverMobileNo As String, message As String) As String
         'receiverMobileNo = "8299399688"
+        'message = "Hello"
         ' 1. Combine username and password
         Dim authString As String = Username & ":" & Password
 
@@ -26,20 +75,11 @@ Public Class WhatsAppSender
         Dim authBytes As Byte() = Encoding.UTF8.GetBytes(authString)
         Dim authBase64 As String = Convert.ToBase64String(authBytes)
 
-        'Dim MS As MemoryStream = CType((CType(CrvReport.ReportSource, ReportDocument).ExportToStream(ExportFormatType.PortableDocFormat)), MemoryStream)
-        Dim ms As MemoryStream = DirectCast(AgL.PubCrystalDocument.ExportToStream(ExportFormatType.PortableDocFormat), MemoryStream)
-        'Dim ms As MemoryStream = DirectCast(AgL.PubCrystalDocument.ExportToStream(ExportFormatType.WordForWindows), MemoryStream)
-
-
-
-        'AgL.PubCrystalDocument.ExportToDisk(ExportFormatType.)
-        Dim base64Body As String = Convert.ToBase64String(ms.ToArray())
 
         Dim json As String = "{
           ""receiverMobileNo"": ""+91" & receiverMobileNo & """,
           ""message"": [
             """ & message & """
-          ]
           ]
         }"
 

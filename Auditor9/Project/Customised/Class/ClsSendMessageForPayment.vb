@@ -393,8 +393,9 @@ Public Class ClsSendMessageForPayment
                     mMobileNo = DGL.Item("Contact No", I).Value
                     mMessage = "Dear " + DGL.Item("Party", I).Value + ", Your Rs. " + DGL.Item("Amount GE " & ReportFrm.FGetText(2) & " Days", I).Value.ToString() + " Due more than " & ReportFrm.FGetText(2) & " Days. Please Do Payment To " + ReportFrm.FGetText(10)
 
-                    IsSuccess = FSendWhatsappMessage(mMobileNo, mMessage, "Message", "")
-
+                    'IsSuccess = FSendWhatsappMessage(mMobileNo, mMessage, "Message", "")
+                    Dim sender As New WhatsAppSender()
+                    sender.EntrySendWhatsapp(mMobileNo, mMessage, "Message For Payment", AgL.GCn)
                 End If
             Next
             mMessage = "Message Send Successfully."

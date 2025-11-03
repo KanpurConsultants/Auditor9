@@ -1673,7 +1673,7 @@ Public Class FrmSaleInvoiceDirect_WithDimension
 
 
 
-            If (AgL.StrCmp(AgL.PubDBName, "RVN") Or AgL.StrCmp(AgL.PubDBName, "RVN1") Or AgL.StrCmp(AgL.PubDBName, "RVN2") Or AgL.StrCmp(AgL.PubDBName, "MLAW")) And AgL.PubSiteCode = "1" Then
+            If (AgL.StrCmp(AgL.PubDBName, "RVN") Or AgL.StrCmp(AgL.PubDBName, "RVN1") Or AgL.StrCmp(AgL.PubDBName, "RVN2") Or AgL.StrCmp(AgL.PubDBName, "MLAW") Or AgL.StrCmp(AgL.PubDBName, "SHRIJIAW")) And AgL.PubSiteCode = "1" Then
                 .AddAgTextColumn(Dgl1, Col1Remark, 150, 255, "MOTOR NO", True, False)
                 .AddAgTextColumn(Dgl1, Col1Remark1, 150, 255, "CONTROLLER NO", True, False)
                 .AddAgTextColumn(Dgl1, Col1Remark2, 150, 255, "CHASIS NO", True, False)
@@ -1905,7 +1905,7 @@ Public Class FrmSaleInvoiceDirect_WithDimension
         Dgl3.Item(Col1Head, rowAgent).Value = hcAgent
         Dgl3.Item(Col1Head, rowTransporter).Value = hcTransporter
         Dgl3.Item(Col1Head, rowResponsiblePerson).Value = hcResponsiblePerson
-        If AgL.StrCmp(AgL.PubDBName, "RVN") Or AgL.StrCmp(AgL.PubDBName, "RVN1") Or AgL.StrCmp(AgL.PubDBName, "RVN2") Or AgL.StrCmp(AgL.PubDBName, "MLAW") Then
+        If AgL.StrCmp(AgL.PubDBName, "RVN") Or AgL.StrCmp(AgL.PubDBName, "RVN1") Or AgL.StrCmp(AgL.PubDBName, "RVN2") Or AgL.StrCmp(AgL.PubDBName, "MLAW") Or AgL.StrCmp(AgL.PubDBName, "SHRIJIAW") Then
             Dgl3.Item(Col1Head, rowRemarks1).Value = "Vehicle No"
             Dgl3.Item(Col1Head, rowRemarks2).Value = "Hypothecation"
         Else
@@ -2208,7 +2208,7 @@ Public Class FrmSaleInvoiceDirect_WithDimension
 
 
 
-        If (AgL.StrCmp(AgL.PubDBName, "RVN") Or AgL.StrCmp(AgL.PubDBName, "RVN1") Or AgL.StrCmp(AgL.PubDBName, "RVN2") Or AgL.StrCmp(AgL.PubDBName, "MLAW") Or AgL.StrCmp(AgL.PubDBName, "SKYF")) And (DglMain.Item(Col1Value, rowV_Type).Tag = "SIS") Then
+        If (AgL.StrCmp(AgL.PubDBName, "RVN") Or AgL.StrCmp(AgL.PubDBName, "RVN1") Or AgL.StrCmp(AgL.PubDBName, "RVN2") Or AgL.StrCmp(AgL.PubDBName, "MLAW") Or AgL.StrCmp(AgL.PubDBName, "SHRIJIAW") Or AgL.StrCmp(AgL.PubDBName, "SKYF")) And (DglMain.Item(Col1Value, rowV_Type).Tag = "SIS") Then
             mNarrParty = DglMain.Item(Col1Value, rowV_Type).Value & " : " & DglMain.Item(Col1Value, rowSaleToParty).Value & " : " & Dgl1.Item(Col1Item, 0).Value
         Else
             mNarrParty = DglMain.Item(Col1Value, rowV_Type).Value
@@ -3025,7 +3025,7 @@ Public Class FrmSaleInvoiceDirect_WithDimension
             Dgl1.Columns(Col1Rate).ReadOnly = True
         End If
 
-        If AgL.StrCmp(AgL.PubDBName, "RVN") Or AgL.StrCmp(AgL.PubDBName, "RVN1") Or AgL.StrCmp(AgL.PubDBName, "RVN2") Or AgL.StrCmp(AgL.PubDBName, "MLAW") Then
+        If AgL.StrCmp(AgL.PubDBName, "RVN") Or AgL.StrCmp(AgL.PubDBName, "RVN1") Or AgL.StrCmp(AgL.PubDBName, "RVN2") Or AgL.StrCmp(AgL.PubDBName, "MLAW") Or AgL.StrCmp(AgL.PubDBName, "SHRIJIAW") Then
             If AgL.PubSiteCode = "1" Then
                 Dgl1.Columns(Col1Remark1).Visible = True
                 Dgl1.Columns(Col1Remark2).Visible = True
@@ -5389,7 +5389,7 @@ Public Class FrmSaleInvoiceDirect_WithDimension
                     End If
                 Case Col1ReferenceNo
                     If Dgl1.Item(Col1ReferenceNo, mRowIndex).Tag <> "" Then
-                        If DglMain.Item(Col1Value, rowV_Type).Tag = "SIS" And (AgL.StrCmp(AgL.PubDBName, "RVN") Or AgL.StrCmp(AgL.PubDBName, "RVN1") Or AgL.StrCmp(AgL.PubDBName, "RVN2") Or AgL.StrCmp(AgL.PubDBName, "MLAW")) Then
+                        If DglMain.Item(Col1Value, rowV_Type).Tag = "SIS" And (AgL.StrCmp(AgL.PubDBName, "RVN") Or AgL.StrCmp(AgL.PubDBName, "RVN1") Or AgL.StrCmp(AgL.PubDBName, "RVN2") Or AgL.StrCmp(AgL.PubDBName, "MLAW") Or AgL.StrCmp(AgL.PubDBName, "SHRIJIAW")) Then
                             Validating_ReferenceNo(mColumnIndex, mRowIndex)
                         Else
                             Dgl1.Item(Col1ReferenceDocId, mRowIndex).Value = Dgl1.Item(Col1ReferenceNo, mRowIndex).Tag
@@ -6014,7 +6014,7 @@ Public Class FrmSaleInvoiceDirect_WithDimension
                         End If
 
 
-                        If (AgL.StrCmp(AgL.PubDBName, "RVN") Or AgL.StrCmp(AgL.PubDBName, "RVN1") Or AgL.StrCmp(AgL.PubDBName, "RVN2") Or AgL.StrCmp(AgL.PubDBName, "MLAW")) And (DglMain.Item(Col1Value, rowV_Type).Tag <> "SIS") Then
+                        If (AgL.StrCmp(AgL.PubDBName, "RVN") Or AgL.StrCmp(AgL.PubDBName, "RVN1") Or AgL.StrCmp(AgL.PubDBName, "RVN2") Or AgL.StrCmp(AgL.PubDBName, "MLAW") Or AgL.StrCmp(AgL.PubDBName, "SHRIJIAW")) And (DglMain.Item(Col1Value, rowV_Type).Tag <> "SIS") Then
                             If AgL.XNull(Dgl1.Item(Col1Barcode, I).Tag) <> "" And AgL.XNull(Dgl1.Item(Col1Item, I).Tag) <> "" Then
                                 Dim BarcodeItem As String
                                 mQry = "Select Item From Barcode 
@@ -7119,7 +7119,7 @@ Public Class FrmSaleInvoiceDirect_WithDimension
                                          And H.V_Date <= " & AgL.Chk_Date(DglMain.Item(Col1Value, rowV_Date).Value) & "  "
                                 Dgl1.AgHelpDataSet(Col1ReferenceNo) = AgL.FillData(mQry, AgL.GCn)
                             End If
-                        ElseIf DglMain.Item(Col1Value, rowV_Type).Tag = "SIS" And (AgL.StrCmp(AgL.PubDBName, "RVN") Or AgL.StrCmp(AgL.PubDBName, "RVN1") Or AgL.StrCmp(AgL.PubDBName, "RVN2") Or AgL.StrCmp(AgL.PubDBName, "MLAW")) Then
+                        ElseIf DglMain.Item(Col1Value, rowV_Type).Tag = "SIS" And (AgL.StrCmp(AgL.PubDBName, "RVN") Or AgL.StrCmp(AgL.PubDBName, "RVN1") Or AgL.StrCmp(AgL.PubDBName, "RVN2") Or AgL.StrCmp(AgL.PubDBName, "MLAW") Or AgL.StrCmp(AgL.PubDBName, "SHRIJIAW")) Then
                             If Dgl1.AgHelpDataSet(Col1ReferenceNo) Is Nothing Then
                                 mQry = " SELECT H.DocID, '" & IIf(AgL.PubPrintDivisionShortNameOnDocumentsYn, AgL.PubDivShortName, "") & IIf(AgL.PubPrintSiteShortNameOnDocumentsYn, AgL.PubSiteShortName, "") & "' || (Case When VT.Short_Name Is Not Null Then VT.Short_Name Else '' End) || H.ManualRefNo ||'-' || ifnull(Barcode.Description,'')  as [Invoice No],  Barcode.Description as [Barcode]  
                                          FROM SaleInvoice H  With (NoLock)  
@@ -7857,7 +7857,7 @@ Public Class FrmSaleInvoiceDirect_WithDimension
             strCond += " And Sg.SubCode In (Select Parent From SubGroup Where Subcode = '" & DglMain.Item(Col1Value, rowSaleToParty).Tag & "')"
         End If
 
-        If AgL.StrCmp(AgL.PubDBName, "RVN") Or AgL.StrCmp(AgL.PubDBName, "RVN1") Or AgL.StrCmp(AgL.PubDBName, "RVN2") Or AgL.StrCmp(AgL.PubDBName, "MLAW") Then
+        If AgL.StrCmp(AgL.PubDBName, "RVN") Or AgL.StrCmp(AgL.PubDBName, "RVN1") Or AgL.StrCmp(AgL.PubDBName, "RVN2") Or AgL.StrCmp(AgL.PubDBName, "MLAW") Or AgL.StrCmp(AgL.PubDBName, "SHRIJIAW") Then
 
         Else
             strCond += " And Sg.Parent = '" & DglMain.Item(Col1Value, rowSaleToParty).Tag & "' "
@@ -13910,7 +13910,7 @@ Public Class FrmSaleInvoiceDirect_WithDimension
                     End If
 
                 Case rowRemarks2
-                    If AgL.StrCmp(AgL.PubDBName, "RVN") Or AgL.StrCmp(AgL.PubDBName, "RVN1") Or AgL.StrCmp(AgL.PubDBName, "RVN2") Or AgL.StrCmp(AgL.PubDBName, "MLAW") Then
+                    If AgL.StrCmp(AgL.PubDBName, "RVN") Or AgL.StrCmp(AgL.PubDBName, "RVN1") Or AgL.StrCmp(AgL.PubDBName, "RVN2") Or AgL.StrCmp(AgL.PubDBName, "MLAW") Or AgL.StrCmp(AgL.PubDBName, "SHRIJIAW") Then
                         If e.KeyCode <> Keys.Enter Then
                             If Dgl3.Item(Col1Head, Dgl3.CurrentCell.RowIndex).Tag Is Nothing Then
                                 mQry = "SELECT Name AS Code, Name From viewHelpSubgroup Sg  With (NoLock) Where SubgroupType ='Hypothecation' Order By Name"
@@ -14789,7 +14789,7 @@ Public Class FrmSaleInvoiceDirect_WithDimension
                     If ClsMain.IsScopeOfWorkContains(IndustryType.SubIndustryType.FallPico) Then
                         FOpenSaleOrderForSaleInvoice_FallPico(-1)
                     Else
-                        If AgL.StrCmp(AgL.PubDBName, "RVN") Or AgL.StrCmp(AgL.PubDBName, "RVN1") Or AgL.StrCmp(AgL.PubDBName, "RVN2") Or AgL.StrCmp(AgL.PubDBName, "MLAW") Then
+                        If AgL.StrCmp(AgL.PubDBName, "RVN") Or AgL.StrCmp(AgL.PubDBName, "RVN1") Or AgL.StrCmp(AgL.PubDBName, "RVN2") Or AgL.StrCmp(AgL.PubDBName, "MLAW") Or AgL.StrCmp(AgL.PubDBName, "SHRIJIAW") Then
                             FOpenSaleChallanForSaleInvoice(-1)
                         Else
                             FOpenSaleOrderForSaleInvoice(-1)

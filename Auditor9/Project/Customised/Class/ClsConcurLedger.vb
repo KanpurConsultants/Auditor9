@@ -398,25 +398,46 @@ Public Class ClsConcurLedger
                     End If
 
 
-                    mQry = mQry & "select L.DocId, IfNull(L.EffectiveDate,L.V_Date) as V_Date, L.V_Type || '-' || L.RecId as DocNo, 
-                    (Case When IfNull(Trd.Type,'')='Cancelled' OR IfNull(Trr.Type,'')='Cancelled' Then 0 Else L.AmtDr End) as AmtDr, 
-                    (Case When IfNull(L.Chq_No,'') <>'' Then 'Chq : ' || IfNull(L.Chq_No,'') Else '' End) || 
-                    (Case When IfNull(LH.PartyDocNo,'') <>'' Then 'Inv : ' || IfNull(LH.PartyDocNo,'') Else '' End) ||
-                    (Case When IfNull(Inv.RateType,'') <>'' Then 'RT : ' || IfNull(RT.Description,'') Else '' End) ||
-                    (Case When IfNull(Trd.Type,'')='Cancelled' OR IfNull(Trr.Type,'')='Cancelled' Then ' Cancelled Amt.' || Cast(L.AmtDr as NVarchar) Else '' End) || IfNull(L.Narration,'')||
-                    (Case When PI.V_Type ='PR' AND PI.Tags IS NOT NULL Then ' '+PI.Tags Else '' End)||
-                    (Case When INV.V_Type IN ('SI','SR') AND INV.Remarks IS NOT NULL Then ' '||Substr(INV.Remarks,0,15) Else '' End)||
-                    (Case When PI.V_Type IN ('PI','PR') AND PI.Remarks IS NOT NULL Then ' '||Substr(PI.Remarks,0,15) Else '' End)
-                    as DrNarration,
-                    INV.Taxable_Amount, INV.Tax1+INV.Tax2+INV.Tax3+INV.Tax4+INV.Tax5 as Tax_Amount
-                    " & mLQry & "
-                    Left Join LedgerHead LH With (NoLock) on L.DocID = LH.DocID
-                    Left Join SaleInvoice INV With (NoLock) On L.DocID = INV.DocID
-                    Left Join PurchInvoice PI With (NoLock) On L.DocID = PI.DocID
-                    Left Join RateType Rt On Inv.RateType = Rt.Code
-                    Left Join TransactionReferences Trd With (NoLock) On L.DocID = Trd.DocId And L.V_SNo = Trd.DocIDSr And L.V_Date >= '2019-07-01'
-                    Left Join TransactionReferences Trr With (NoLock) On L.DocID = Trr.ReferenceDocId And L.TSr = Trr.ReferenceSr And L.V_Date >= '2019-07-01'
-                    where L.AmtDr>0  " & mCondStr & "  "
+                    If ClsMain.FDivisionNameForCustomization(6) = "SADHVI" Then
+                        mQry = mQry & "select L.DocId, IfNull(L.EffectiveDate,L.V_Date) as V_Date, L.V_Type || '-' || L.RecId as DocNo, 
+                                 L.AmtDr as AmtDr, 
+                                (Case When IfNull(L.Chq_No,'') <>'' Then 'Chq : ' || IfNull(L.Chq_No,'') Else '' End) || 
+                                (Case When IfNull(LH.PartyDocNo,'') <>'' Then 'Inv : ' || IfNull(LH.PartyDocNo,'') Else '' End) ||
+                                (Case When IfNull(Inv.RateType,'') <>'' Then 'RT : ' || IfNull(RT.Description,'') Else '' End) ||
+                                 IfNull(L.Narration,'')||
+                                (Case When PI.V_Type ='PR' AND PI.Tags IS NOT NULL Then ' '+PI.Tags Else '' End)||
+                                (Case When INV.V_Type IN ('SI','SR') AND INV.Remarks IS NOT NULL Then ' '||Substr(INV.Remarks,0,15) Else '' End)||
+                                (Case When PI.V_Type IN ('PI','PR') AND PI.Remarks IS NOT NULL Then ' '||Substr(PI.Remarks,0,15) Else '' End)
+                                as DrNarration,
+                                INV.Taxable_Amount, INV.Tax1+INV.Tax2+INV.Tax3+INV.Tax4+INV.Tax5 as Tax_Amount
+                                " & mLQry & "
+                                Left Join LedgerHead LH With (NoLock) on L.DocID = LH.DocID
+                                Left Join SaleInvoice INV With (NoLock) On L.DocID = INV.DocID
+                                Left Join PurchInvoice PI With (NoLock) On L.DocID = PI.DocID
+                                Left Join RateType Rt On Inv.RateType = Rt.Code
+                                where L.AmtDr>0  " & mCondStr & "  "
+                    Else
+                        mQry = mQry & "select L.DocId, IfNull(L.EffectiveDate,L.V_Date) as V_Date, L.V_Type || '-' || L.RecId as DocNo, 
+                            (Case When IfNull(Trd.Type,'')='Cancelled' OR IfNull(Trr.Type,'')='Cancelled' Then 0 Else L.AmtDr End) as AmtDr, 
+                            (Case When IfNull(L.Chq_No,'') <>'' Then 'Chq : ' || IfNull(L.Chq_No,'') Else '' End) || 
+                            (Case When IfNull(LH.PartyDocNo,'') <>'' Then 'Inv : ' || IfNull(LH.PartyDocNo,'') Else '' End) ||
+                            (Case When IfNull(Inv.RateType,'') <>'' Then 'RT : ' || IfNull(RT.Description,'') Else '' End) ||
+                            (Case When IfNull(Trd.Type,'')='Cancelled' OR IfNull(Trr.Type,'')='Cancelled' Then ' Cancelled Amt.' || Cast(L.AmtDr as NVarchar) Else '' End) || IfNull(L.Narration,'')||
+                            (Case When PI.V_Type ='PR' AND PI.Tags IS NOT NULL Then ' '+PI.Tags Else '' End)||
+                            (Case When INV.V_Type IN ('SI','SR') AND INV.Remarks IS NOT NULL Then ' '||Substr(INV.Remarks,0,15) Else '' End)||
+                            (Case When PI.V_Type IN ('PI','PR') AND PI.Remarks IS NOT NULL Then ' '||Substr(PI.Remarks,0,15) Else '' End)
+                            as DrNarration,
+                            INV.Taxable_Amount, INV.Tax1+INV.Tax2+INV.Tax3+INV.Tax4+INV.Tax5 as Tax_Amount
+                            " & mLQry & "
+                            Left Join LedgerHead LH With (NoLock) on L.DocID = LH.DocID
+                            Left Join SaleInvoice INV With (NoLock) On L.DocID = INV.DocID
+                            Left Join PurchInvoice PI With (NoLock) On L.DocID = PI.DocID
+                            Left Join RateType Rt On Inv.RateType = Rt.Code
+                            Left Join TransactionReferences Trd With (NoLock) On L.DocID = Trd.DocId And L.V_SNo = Trd.DocIDSr And L.V_Date >= '2019-07-01'
+                            Left Join TransactionReferences Trr With (NoLock) On L.DocID = Trr.ReferenceDocId And L.TSr = Trr.ReferenceSr And L.V_Date >= '2019-07-01'
+                            where L.AmtDr>0  " & mCondStr & "  "
+                    End If
+
 
                     If ReportFrm.FGetText(4) = "Financial Year Opening" Then
                         mQry = mQry & " Order By V_Date,  DocNo "
