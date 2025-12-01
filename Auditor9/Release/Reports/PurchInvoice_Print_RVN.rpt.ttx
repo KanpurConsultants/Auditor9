@@ -1,0 +1,144 @@
+; Field definition file for table: ADORecordset
+Copies	string	255	1	
+CopyPrintingCaption	string	255		
+DocNoCaption	string	255	Invoice No.	
+DocDateCaption	string	255	Invoice Date	
+DocID	string	255	D3    PI 2025     350	
+SiteStateCode	string	255	09	
+SiteStateName	string	255	Uttar Pradesh	
+Sr	number	1	
+V_Date	datetime	22/Sep/2025 00:00:00	
+Voucher_Type	string	255	Purchase Invoice	
+NCat	string	255	PI	
+DocNo	string	255	D3-PI-351	
+AgentName	string	255		
+AgentCaption	string	255	Agent	
+PartyName	string	255	KAZAM EV TECH PRIVATE LIMITED	
+PartyAddress	string	255	1ST FLOOR, 18, MP KRISHNA MANSION, ENZYME TECH PARK, 1ST CROSS ROAD, KHB COLONY, 5TH BLOCK,, KORAMANGALA, BENGALURU, BENGALURU URBAN, KARNATAKA
+	
+PartyPinCode	string	255	560095	
+PartyCityName	string	255	BENGALURU	
+PartyStateCode	string	255	29	
+PartyStateName	string	255	Karnataka	
+PartyMobile	string	255		
+ContactPerson	string	255		
+PartySalesTaxNo	string	255	29AAICK4818R1ZN	
+PartyAadharNo	string	255		
+PartyPanNo	string	255	AAICK4818R	
+ShipToPartyName	string	255	KAZAM EV TECH PRIVATE LIMITED	
+ShipToPartyAddress	string	255	1ST FLOOR, 18, MP KRISHNA MANSION, ENZYME TECH PARK, 1ST CROSS ROAD, KHB COLONY, 5TH BLOCK,, KORAMANGALA, BENGALURU, BENGALURU URBAN, KARNATAKA
+	
+ShipToPartyCity	string	255	BENGALURU	
+ShipToPartyPincode	string	255	560095	
+ShipToPartyStateCode	string	255	29	
+ShipToPartyStateName	string	255	Karnataka	
+ShipToPartyMobile	string	255		
+ShipToPartySalesTaxNo	string	255	29AAICK4818R1ZN	
+ShipToPartyAadharNo	string	255		
+ShipToPartyPanNo	string	255		
+TransporterName	string	255		
+LrNo	string	255		
+LrDate	datetime		
+PrivateMark	string	255		
+Weight	number		
+Freight	number		
+FreightType	string	255		
+RoadPermitNo	string	255		
+RoadPermitDate	datetime		
+ReferenceNo	string	255		
+ItemName	string	255		
+ItemGroupName	string	255		
+ItemCatName	string	255		
+BarcodeName	string	255		
+ItemSpecification	string	255		
+InvoiceLineSpecification	string	255	KAZAM MINI WITH WIFI	
+HSN	string	255		
+D1Spec	string	255		
+D2Spec	string	255		
+D3Spec	string	255		
+D4Spec	string	255		
+SizeSpec	string	255		
+ItemTypeCaption	string	255	Item Type	
+ItemCategoryCaption	string	255	Item Category	
+ItemGroupCaption	string	255	Item Group	
+ItemCaption	string	255	Item	
+BarcodeCaption	string	255		
+D1Caption	string	255	Design	
+D2Caption	string	255	Shade	
+D3Caption	string	255		
+D4Caption	string	255		
+SalesTaxGroupItem	string	255	GST 5%	
+GrossTaxRate	number	5	
+Pcs	number	0	
+Qty	number	10	
+DocQty	number	10	
+FreeQty	number	0	
+LossQty	number	0	
+RejQty	number	0	
+Rate	number	8026.67	
+Unit	string	255	Pcs	
+UnitDecimalPlaces	number		
+DiscountPer	number	0	
+DiscountAmount	number	0	
+AdditionalDiscountPer	number	0	
+AdditionalDiscountAmount	number	0	
+TotalDiscount	number	0	
+AmountBeforeDiscount	number	80266.7	
+Amount	number	80266.7	
+Taxable_Amount	number	80266.7	
+Tax1_Per	number	5	
+Tax1	number	4013.34	
+Tax2_Per	number	0	
+Tax2	number	0	
+Tax3_Per	number	0	
+Tax3	number	0	
+Tax4_Per	number	0	
+Tax4	number	0	
+Tax5_Per	number	0	
+Tax5	number	0	
+Net_Amount	number	84280	
+HRemarks	string	255		
+LRemarks	string	255		
+LRemarks5	string	255		
+LRemarks1	string	255		
+LRemarks2	string	255		
+LRemarks3	string	255		
+LRemarks4	string	255		
+GodownName	string	255	TVS KANPUR	
+FromGodownName	string	255		
+ToGodownName	string	255		
+FGodownAddress	string	255		
+TGodownAddress	string	255		
+H_Gross_Amount	number	80266.7	
+H_SpecialDiscount_Per	number	0	
+H_SpecialDiscount	number	0	
+H_Taxable_Amount	number	80266.7	
+H_Tax1_Per	number	0	
+H_Tax1	number	4013.34	
+H_Tax2_Per	number	0	
+H_Tax2	number	0	
+H_Tax3_Per	number	0	
+H_Tax3	number	0	
+H_Tax4_Per	number	0	
+H_Tax4	number	0	
+H_Tax5_Per	number	0	
+H_Tax5	number	0	
+H_Deduction_Per	number	0	
+H_Deduction	number	0	
+H_Other_Charge_Per	number	0	
+H_Other_Charge	number	0	
+Round_Off	number	-0.04	
+H_Net_Amount	number	84280	
+H_TotalDiscount	number	0	
+H_AmountBeforeDiscount	number	80266.7	
+Default_BankAccountDetail	string	255	<B> Bank Detail :- <BR> KMB : 5400000007  IFSC : KKBK0005135 <BR>	
+DocumentPrintHeaderPattern	string	255	Center Aligned	
+DimDetail	string	255		
+HsnDescription	string	255		
+PrintedByUser	string	255	SUPER	
+PrintTitle	string	255	Purchase Invoice	
+TermsAndConditions	string	255		
+CompanyLogo	BLOB		
+CompanyAuthorisedSignature	BLOB		
+EInvoiceQrCode	BLOB		
+PaymentQrCode	BLOB		

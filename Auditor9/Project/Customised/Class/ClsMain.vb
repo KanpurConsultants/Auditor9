@@ -12094,6 +12094,7 @@ Thanks
             AgL.AddFieldSqlite(AgL.GcnMain, "SaleInvoiceTransport", "RoadPermitNo", "nVarchar(50)", "", True)
             AgL.AddFieldSqlite(AgL.GcnMain, "SaleInvoiceTransport", "RoadPermitDate", "DateTime", "", True)
             AgL.AddFieldSqlite(AgL.GcnMain, "SaleInvoiceTransport", "UploadDate", "DateTime", "", True)
+            AgL.AddFieldSqlite(AgL.GcnMain, "SaleInvoiceTransport", "LRUpdatedDate", "DateTime", "", True)
         Catch ex As Exception
             MsgBox(ex.Message & "  [FCreateTable_SaleInvoiceTransport]")
         End Try

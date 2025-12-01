@@ -75,6 +75,7 @@ Public Class FrmPartyAcSettlement
     Protected WithEvents Label7 As Label
     Protected WithEvents TxtDifferenceJVDocNo As AgControls.AgTextBox
     Friend WithEvents MnuPrintCheque As ToolStripMenuItem
+    Friend WithEvents MnuPrintBulk As ToolStripMenuItem
     Public WithEvents TxtLinkedParty As AgControls.AgTextBox
     Protected WithEvents LblLinkedParty As Label
     Protected WithEvents LblPartyDisc As Label
@@ -172,6 +173,7 @@ Public Class FrmPartyAcSettlement
         Me.MnuEMail = New System.Windows.Forms.ToolStripMenuItem()
         Me.MnuSendSms = New System.Windows.Forms.ToolStripMenuItem()
         Me.MnuPrintCheque = New System.Windows.Forms.ToolStripMenuItem()
+        Me.MnuPrintBulk = New System.Windows.Forms.ToolStripMenuItem()
         Me.Label7 = New System.Windows.Forms.Label()
         Me.TxtDifferenceJVDocNo = New AgControls.AgTextBox()
         Me.TxtLinkedParty = New AgControls.AgTextBox()
@@ -263,7 +265,7 @@ Public Class FrmPartyAcSettlement
         '
         Me.GroupBox1.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!)
         Me.GroupBox1.Location = New System.Drawing.Point(2, 616)
-        Me.GroupBox1.Size = New System.Drawing.Size(1079, 4)
+        Me.GroupBox1.Size = New System.Drawing.Size(1279, 4)
         '
         'GBoxDivision
         '
@@ -435,7 +437,7 @@ Public Class FrmPartyAcSettlement
         '
         'Topctrl1
         '
-        Me.Topctrl1.Size = New System.Drawing.Size(1061, 41)
+        Me.Topctrl1.Size = New System.Drawing.Size(1261, 41)
         Me.Topctrl1.TabIndex = 0
         '
         'Label1
@@ -487,7 +489,7 @@ Public Class FrmPartyAcSettlement
         Me.Panel1.Controls.Add(Me.LblBillAmountText)
         Me.Panel1.Location = New System.Drawing.Point(7, 105)
         Me.Panel1.Name = "Panel1"
-        Me.Panel1.Size = New System.Drawing.Size(1050, 21)
+        Me.Panel1.Size = New System.Drawing.Size(665, 21)
         Me.Panel1.TabIndex = 694
         '
         'LblTotalSettledInvoiceAmount
@@ -495,7 +497,7 @@ Public Class FrmPartyAcSettlement
         Me.LblTotalSettledInvoiceAmount.AutoSize = True
         Me.LblTotalSettledInvoiceAmount.Font = New System.Drawing.Font("Verdana", 9.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.LblTotalSettledInvoiceAmount.ForeColor = System.Drawing.SystemColors.ControlDarkDark
-        Me.LblTotalSettledInvoiceAmount.Location = New System.Drawing.Point(705, 2)
+        Me.LblTotalSettledInvoiceAmount.Location = New System.Drawing.Point(542, 2)
         Me.LblTotalSettledInvoiceAmount.Name = "LblTotalSettledInvoiceAmount"
         Me.LblTotalSettledInvoiceAmount.Size = New System.Drawing.Size(11, 14)
         Me.LblTotalSettledInvoiceAmount.TabIndex = 662
@@ -507,7 +509,7 @@ Public Class FrmPartyAcSettlement
         Me.Label9.AutoSize = True
         Me.Label9.Font = New System.Drawing.Font("Verdana", 9.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.Label9.ForeColor = System.Drawing.Color.Maroon
-        Me.Label9.Location = New System.Drawing.Point(522, 2)
+        Me.Label9.Location = New System.Drawing.Point(359, 2)
         Me.Label9.Name = "Label9"
         Me.Label9.Size = New System.Drawing.Size(183, 14)
         Me.Label9.TabIndex = 661
@@ -518,7 +520,7 @@ Public Class FrmPartyAcSettlement
         Me.LblInvoiceAmt.AutoSize = True
         Me.LblInvoiceAmt.Font = New System.Drawing.Font("Verdana", 9.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.LblInvoiceAmt.ForeColor = System.Drawing.SystemColors.ControlDarkDark
-        Me.LblInvoiceAmt.Location = New System.Drawing.Point(379, 3)
+        Me.LblInvoiceAmt.Location = New System.Drawing.Point(260, 3)
         Me.LblInvoiceAmt.Name = "LblInvoiceAmt"
         Me.LblInvoiceAmt.Size = New System.Drawing.Size(11, 14)
         Me.LblInvoiceAmt.TabIndex = 660
@@ -530,7 +532,7 @@ Public Class FrmPartyAcSettlement
         Me.LblBillAmountText.AutoSize = True
         Me.LblBillAmountText.Font = New System.Drawing.Font("Verdana", 9.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.LblBillAmountText.ForeColor = System.Drawing.Color.Maroon
-        Me.LblBillAmountText.Location = New System.Drawing.Point(248, 3)
+        Me.LblBillAmountText.Location = New System.Drawing.Point(129, 3)
         Me.LblBillAmountText.Name = "LblBillAmountText"
         Me.LblBillAmountText.Size = New System.Drawing.Size(132, 14)
         Me.LblBillAmountText.TabIndex = 659
@@ -538,9 +540,9 @@ Public Class FrmPartyAcSettlement
         '
         'Pnl1
         '
-        Me.Pnl1.Location = New System.Drawing.Point(678, 471)
+        Me.Pnl1.Location = New System.Drawing.Point(678, 421)
         Me.Pnl1.Name = "Pnl1"
-        Me.Pnl1.Size = New System.Drawing.Size(499, 86)
+        Me.Pnl1.Size = New System.Drawing.Size(583, 86)
         Me.Pnl1.TabIndex = 12
         '
         'Label30
@@ -586,10 +588,10 @@ Public Class FrmPartyAcSettlement
         Me.LblMaterialPlanForFollowingItems.LinkColor = System.Drawing.Color.White
         Me.LblMaterialPlanForFollowingItems.Location = New System.Drawing.Point(5, 106)
         Me.LblMaterialPlanForFollowingItems.Name = "LblMaterialPlanForFollowingItems"
-        Me.LblMaterialPlanForFollowingItems.Size = New System.Drawing.Size(247, 19)
+        Me.LblMaterialPlanForFollowingItems.Size = New System.Drawing.Size(115, 19)
         Me.LblMaterialPlanForFollowingItems.TabIndex = 804
         Me.LblMaterialPlanForFollowingItems.TabStop = True
-        Me.LblMaterialPlanForFollowingItems.Text = "Purchase Invoices / Purchase Returns"
+        Me.LblMaterialPlanForFollowingItems.Text = "Invoices / Returns"
         Me.LblMaterialPlanForFollowingItems.TextAlign = System.Drawing.ContentAlignment.MiddleCenter
         '
         'LblReq_SubCode
@@ -680,9 +682,9 @@ Public Class FrmPartyAcSettlement
         Me.LinkLabel1.Font = New System.Drawing.Font("Tahoma", 8.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.LinkLabel1.LinkBehavior = System.Windows.Forms.LinkBehavior.NeverUnderline
         Me.LinkLabel1.LinkColor = System.Drawing.Color.White
-        Me.LinkLabel1.Location = New System.Drawing.Point(5, 447)
+        Me.LinkLabel1.Location = New System.Drawing.Point(-2, 1)
         Me.LinkLabel1.Name = "LinkLabel1"
-        Me.LinkLabel1.Size = New System.Drawing.Size(247, 19)
+        Me.LinkLabel1.Size = New System.Drawing.Size(199, 19)
         Me.LinkLabel1.TabIndex = 807
         Me.LinkLabel1.TabStop = True
         Me.LinkLabel1.Text = "Advance Payments / Debit Notes"
@@ -693,9 +695,10 @@ Public Class FrmPartyAcSettlement
         Me.Panel2.BackColor = System.Drawing.Color.Cornsilk
         Me.Panel2.Controls.Add(Me.LblPaidAmt)
         Me.Panel2.Controls.Add(Me.Label5)
-        Me.Panel2.Location = New System.Drawing.Point(7, 446)
+        Me.Panel2.Controls.Add(Me.LinkLabel1)
+        Me.Panel2.Location = New System.Drawing.Point(673, 107)
         Me.Panel2.Name = "Panel2"
-        Me.Panel2.Size = New System.Drawing.Size(665, 21)
+        Me.Panel2.Size = New System.Drawing.Size(588, 21)
         Me.Panel2.TabIndex = 806
         '
         'LblPaidAmt
@@ -703,7 +706,7 @@ Public Class FrmPartyAcSettlement
         Me.LblPaidAmt.AutoSize = True
         Me.LblPaidAmt.Font = New System.Drawing.Font("Verdana", 9.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.LblPaidAmt.ForeColor = System.Drawing.SystemColors.ControlDarkDark
-        Me.LblPaidAmt.Location = New System.Drawing.Point(362, 3)
+        Me.LblPaidAmt.Location = New System.Drawing.Point(314, 3)
         Me.LblPaidAmt.Name = "LblPaidAmt"
         Me.LblPaidAmt.Size = New System.Drawing.Size(11, 14)
         Me.LblPaidAmt.TabIndex = 660
@@ -715,7 +718,7 @@ Public Class FrmPartyAcSettlement
         Me.Label5.AutoSize = True
         Me.Label5.Font = New System.Drawing.Font("Verdana", 9.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.Label5.ForeColor = System.Drawing.Color.Maroon
-        Me.Label5.Location = New System.Drawing.Point(249, 3)
+        Me.Label5.Location = New System.Drawing.Point(201, 3)
         Me.Label5.Name = "Label5"
         Me.Label5.Size = New System.Drawing.Size(116, 14)
         Me.Label5.TabIndex = 659
@@ -725,7 +728,7 @@ Public Class FrmPartyAcSettlement
         '
         Me.Pnl2.Location = New System.Drawing.Point(4, 127)
         Me.Pnl2.Name = "Pnl2"
-        Me.Pnl2.Size = New System.Drawing.Size(1053, 313)
+        Me.Pnl2.Size = New System.Drawing.Size(668, 483)
         Me.Pnl2.TabIndex = 10
         '
         'LinkLabel2
@@ -749,9 +752,9 @@ Public Class FrmPartyAcSettlement
         Me.Panel4.Controls.Add(Me.LblSettlementAmt)
         Me.Panel4.Controls.Add(Me.Label8)
         Me.Panel4.Controls.Add(Me.LinkLabel2)
-        Me.Panel4.Location = New System.Drawing.Point(678, 446)
+        Me.Panel4.Location = New System.Drawing.Point(678, 391)
         Me.Panel4.Name = "Panel4"
-        Me.Panel4.Size = New System.Drawing.Size(347, 21)
+        Me.Panel4.Size = New System.Drawing.Size(583, 21)
         Me.Panel4.TabIndex = 809
         '
         'LblSettlementAmt
@@ -779,9 +782,9 @@ Public Class FrmPartyAcSettlement
         '
         'Pnl3
         '
-        Me.Pnl3.Location = New System.Drawing.Point(4, 468)
+        Me.Pnl3.Location = New System.Drawing.Point(679, 138)
         Me.Pnl3.Name = "Pnl3"
-        Me.Pnl3.Size = New System.Drawing.Size(668, 146)
+        Me.Pnl3.Size = New System.Drawing.Size(582, 244)
         Me.Pnl3.TabIndex = 11
         '
         'BtnFill
@@ -839,7 +842,7 @@ Public Class FrmPartyAcSettlement
         Me.LblDifferenceAmount.AutoSize = True
         Me.LblDifferenceAmount.Font = New System.Drawing.Font("Verdana", 9.75!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.LblDifferenceAmount.ForeColor = System.Drawing.Color.Black
-        Me.LblDifferenceAmount.Location = New System.Drawing.Point(816, 582)
+        Me.LblDifferenceAmount.Location = New System.Drawing.Point(816, 560)
         Me.LblDifferenceAmount.Name = "LblDifferenceAmount"
         Me.LblDifferenceAmount.Size = New System.Drawing.Size(13, 16)
         Me.LblDifferenceAmount.TabIndex = 812
@@ -851,7 +854,7 @@ Public Class FrmPartyAcSettlement
         Me.Label10.AutoSize = True
         Me.Label10.Font = New System.Drawing.Font("Verdana", 9.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.Label10.ForeColor = System.Drawing.Color.Maroon
-        Me.Label10.Location = New System.Drawing.Point(685, 582)
+        Me.Label10.Location = New System.Drawing.Point(685, 560)
         Me.Label10.Name = "Label10"
         Me.Label10.Size = New System.Drawing.Size(115, 14)
         Me.Label10.TabIndex = 811
@@ -859,7 +862,7 @@ Public Class FrmPartyAcSettlement
         '
         'MnuOptions
         '
-        Me.MnuOptions.Items.AddRange(New System.Windows.Forms.ToolStripItem() {Me.MnuImportPartPaymentFromDos, Me.MnuImportFinalPaymentFromDos, Me.MnuEditSave, Me.MnuEMail, Me.MnuSendSms, Me.MnuPrintCheque})
+        Me.MnuOptions.Items.AddRange(New System.Windows.Forms.ToolStripItem() {Me.MnuImportPartPaymentFromDos, Me.MnuImportFinalPaymentFromDos, Me.MnuEditSave, Me.MnuEMail, Me.MnuSendSms, Me.MnuPrintCheque, Me.MnuPrintBulk})
         Me.MnuOptions.Name = "MnuOptions"
         Me.MnuOptions.Size = New System.Drawing.Size(243, 136)
         '
@@ -899,11 +902,17 @@ Public Class FrmPartyAcSettlement
         Me.MnuPrintCheque.Size = New System.Drawing.Size(242, 22)
         Me.MnuPrintCheque.Text = "Print Cheque"
         '
+        'MnuPrintBulk
+        '
+        Me.MnuPrintBulk.Name = "MnuPrintBulk"
+        Me.MnuPrintBulk.Size = New System.Drawing.Size(242, 22)
+        Me.MnuPrintBulk.Text = "Print Bulk"
+        '
         'Label7
         '
         Me.Label7.AutoSize = True
         Me.Label7.Font = New System.Drawing.Font("Verdana", 9.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Label7.Location = New System.Drawing.Point(684, 596)
+        Me.Label7.Location = New System.Drawing.Point(684, 574)
         Me.Label7.Name = "Label7"
         Me.Label7.Size = New System.Drawing.Size(151, 14)
         Me.Label7.TabIndex = 815
@@ -927,7 +936,7 @@ Public Class FrmPartyAcSettlement
         Me.TxtDifferenceJVDocNo.AgValueType = AgControls.AgTextBox.TxtValueType.Text_Value
         Me.TxtDifferenceJVDocNo.BorderStyle = System.Windows.Forms.BorderStyle.None
         Me.TxtDifferenceJVDocNo.Font = New System.Drawing.Font("Verdana", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.TxtDifferenceJVDocNo.Location = New System.Drawing.Point(841, 595)
+        Me.TxtDifferenceJVDocNo.Location = New System.Drawing.Point(841, 573)
         Me.TxtDifferenceJVDocNo.MaxLength = 255
         Me.TxtDifferenceJVDocNo.Name = "TxtDifferenceJVDocNo"
         Me.TxtDifferenceJVDocNo.Size = New System.Drawing.Size(148, 16)
@@ -951,7 +960,7 @@ Public Class FrmPartyAcSettlement
         Me.TxtLinkedParty.AgValueType = AgControls.AgTextBox.TxtValueType.Text_Value
         Me.TxtLinkedParty.BorderStyle = System.Windows.Forms.BorderStyle.None
         Me.TxtLinkedParty.Font = New System.Drawing.Font("Verdana", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.TxtLinkedParty.Location = New System.Drawing.Point(825, 560)
+        Me.TxtLinkedParty.Location = New System.Drawing.Point(825, 538)
         Me.TxtLinkedParty.MaxLength = 0
         Me.TxtLinkedParty.Name = "TxtLinkedParty"
         Me.TxtLinkedParty.Size = New System.Drawing.Size(207, 16)
@@ -962,7 +971,7 @@ Public Class FrmPartyAcSettlement
         Me.LblLinkedParty.AutoSize = True
         Me.LblLinkedParty.BackColor = System.Drawing.Color.Transparent
         Me.LblLinkedParty.Font = New System.Drawing.Font("Verdana", 9.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.LblLinkedParty.Location = New System.Drawing.Point(685, 560)
+        Me.LblLinkedParty.Location = New System.Drawing.Point(685, 538)
         Me.LblLinkedParty.Name = "LblLinkedParty"
         Me.LblLinkedParty.Size = New System.Drawing.Size(91, 14)
         Me.LblLinkedParty.TabIndex = 3022
@@ -982,7 +991,7 @@ Public Class FrmPartyAcSettlement
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.BackColor = System.Drawing.SystemColors.ButtonShadow
-        Me.ClientSize = New System.Drawing.Size(1061, 661)
+        Me.ClientSize = New System.Drawing.Size(1261, 661)
         Me.ContextMenuStrip = Me.MnuOptions
         Me.Controls.Add(Me.TxtLinkedParty)
         Me.Controls.Add(Me.LblLinkedParty)
@@ -992,7 +1001,6 @@ Public Class FrmPartyAcSettlement
         Me.Controls.Add(Me.Label10)
         Me.Controls.Add(Me.Panel4)
         Me.Controls.Add(Me.Pnl3)
-        Me.Controls.Add(Me.LinkLabel1)
         Me.Controls.Add(Me.Panel2)
         Me.Controls.Add(Me.Pnl2)
         Me.Controls.Add(Me.LblMaterialPlanForFollowingItems)
@@ -1006,7 +1014,6 @@ Public Class FrmPartyAcSettlement
         Me.Controls.SetChildIndex(Me.LblMaterialPlanForFollowingItems, 0)
         Me.Controls.SetChildIndex(Me.Pnl2, 0)
         Me.Controls.SetChildIndex(Me.Panel2, 0)
-        Me.Controls.SetChildIndex(Me.LinkLabel1, 0)
         Me.Controls.SetChildIndex(Me.Pnl3, 0)
         Me.Controls.SetChildIndex(Me.Panel4, 0)
         Me.Controls.SetChildIndex(Me.TabControl1, 0)
@@ -2643,7 +2650,7 @@ Public Class FrmPartyAcSettlement
     'End Sub
 
     Private Sub FrmStoreIssue_BaseEvent_Topctrl_tbPrn(ByVal SearchCode As String) Handles Me.BaseEvent_Topctrl_tbPrn
-        FGetPrint(ClsMain.PrintFor.DocumentPrint)
+        FGetPrint(mSearchCode, ClsMain.PrintFor.DocumentPrint)
     End Sub
 
     Private Sub FrmStoreReceiveNew_BaseEvent_Topctrl_tbRef() Handles Me.BaseEvent_Topctrl_tbRef
@@ -2732,9 +2739,13 @@ Public Class FrmPartyAcSettlement
                     Left Join PurchInvoice PI On H.DocID = PI.DocId
                     where H.DivCode = '" & AgL.PubDivCode & "' And  H.AmtCr>0 And H.SubCode = '" & TxtParty.Tag & "' 
                     And Date(H.V_Date) <= " & AgL.Chk_Date(CDate(AgL.RetDate(TxtUptoDate.Text)).ToString("s")) & " 
-                    And Round(H.AmtCr - IfNull(Adj.AdjAmt,0.0),2) > 0   
-                    Order By H.V_Date, (Case When HH.PartyDocNo is Null Then H.DivCode || H.Site_Code || '-' || H.V_Type || '-' || H.RecId Else HH.PartyDocNo End)
-                    "
+                    And Round(H.AmtCr - IfNull(Adj.AdjAmt,0.0),2) > 0 "
+                If AgL.StrCmp(AgL.PubDBName, "Sadhvi") Or AgL.StrCmp(AgL.PubDBName, "Sadhvi2") Then
+                    mQry = mQry & " Order By H.V_Date,  Cast((Case When IsNumeric(Replace(H.RecId,'-',''))=1 Then Replace(H.RecId,'-','') Else Null End) as BigInt) "
+                Else
+                    mQry = mQry & " Order By H.V_Date, (Case When HH.PartyDocNo is Null Then H.DivCode || H.Site_Code || '-' || H.V_Type || '-' || H.RecId Else HH.PartyDocNo End) "
+                End If
+
 
                 DtTemp = AgL.FillData(mQry, AgL.GCn).Tables(0)
             Else
@@ -3147,10 +3158,10 @@ Public Class FrmPartyAcSettlement
         End Try
     End Sub
 
-    Private Sub MnuImport_Click(sender As Object, e As EventArgs) Handles MnuEMail.Click, MnuSendSms.Click, MnuImportPartPaymentFromDos.Click, MnuImportFinalPaymentFromDos.Click, MnuEditSave.Click, MnuPrintCheque.Click
+    Private Sub MnuImport_Click(sender As Object, e As EventArgs) Handles MnuEMail.Click, MnuSendSms.Click, MnuImportPartPaymentFromDos.Click, MnuImportFinalPaymentFromDos.Click, MnuEditSave.Click, MnuPrintCheque.Click, MnuPrintBulk.Click
         Select Case sender.name
             Case MnuEMail.Name
-                FGetPrint(ClsMain.PrintFor.EMail)
+                FGetPrint(mSearchCode, ClsMain.PrintFor.EMail)
             Case MnuSendSms.Name
                 FSendSms()
             Case MnuImportPartPaymentFromDos.Name
@@ -3159,6 +3170,8 @@ Public Class FrmPartyAcSettlement
                 FImportFromExcel(ImportFor.Dos, "Final")
             Case MnuEditSave.Name
                 FEditSaveAllEntries()
+            Case MnuPrintBulk.Name
+                FPrintBulk(mSearchCode)
             Case MnuPrintCheque.Name
                 Dim StrSenderText As String = "Cheque Printing"
                 GridReportFrm = New AgLibrary.FrmRepDisplay(StrSenderText, AgL)
@@ -3171,7 +3184,43 @@ Public Class FrmPartyAcSettlement
                 CRep.ProcMain(,, mSearchCode, LblV_Type.Tag)
         End Select
     End Sub
-    Private Sub FGetPrint(mPrintFor As ClsMain.PrintFor)
+    Private Sub FPrintBulk(SearchCode As String)
+        Dim dtTemp As DataTable
+        Dim I As Integer
+        Dim FrmObj As New FrmPrintDialog
+        FrmObj.IniGrid()
+        FrmObj.Dgl1.Item(FrmPrintDialog.Col1Value, FrmPrintDialog.rowFromNo).Value = TxtReferenceNo.Text
+        FrmObj.Dgl1.Item(FrmPrintDialog.Col1Value, FrmPrintDialog.rowToNo).Value = TxtReferenceNo.Text
+        FrmObj.StartPosition = FormStartPosition.CenterParent
+        FrmObj.ShowDialog()
+
+        If FrmObj.mOkButtonPressed Then
+            mQry = "SELECT H.DocID FROM ledgerHead H WHERE H.V_Type = '" & TxtV_Type.Tag & "' 
+                    And H.Div_Code = '" & TxtDivision.Tag & "' And H.Site_Code = '" & TxtSite_Code.Tag & "' And Date(H.V_Date) Between " & AgL.Chk_Date(AgL.PubStartDate) & " And " & AgL.Chk_Date(AgL.PubEndDate) & " "
+            If FrmObj.Dgl1.Item(FrmPrintDialog.Col1Value, FrmPrintDialog.rowFromNo).Value <> "" Then
+                mQry += " AND Cast(H.ManualRefNo AS BIGINT) >= " & Val(FrmObj.Dgl1.Item(FrmPrintDialog.Col1Value, FrmPrintDialog.rowFromNo).Value) & " "
+            End If
+            If FrmObj.Dgl1.Item(FrmPrintDialog.Col1Value, FrmPrintDialog.rowToNo).Value <> "" Then
+                mQry += " AND Cast(H.ManualRefNo AS BIGINT) <= " & Val(FrmObj.Dgl1.Item(FrmPrintDialog.Col1Value, FrmPrintDialog.rowToNo).Value) & ""
+            End If
+            If FrmObj.Dgl1.Item(FrmPrintDialog.Col1Value, FrmPrintDialog.rowFromDate).Value <> "" Then
+                mQry += " AND Date(H.V_Date) <= " & AgL.Chk_Date(FrmObj.Dgl1.Item(FrmPrintDialog.Col1Value, FrmPrintDialog.rowFromDate).Value) & ""
+            End If
+            If FrmObj.Dgl1.Item(FrmPrintDialog.Col1Value, FrmPrintDialog.rowToDate).Value <> "" Then
+                mQry += " AND Date(H.V_Date) >= " & AgL.Chk_Date(FrmObj.Dgl1.Item(FrmPrintDialog.Col1Value, FrmPrintDialog.rowToDate).Value) & ""
+            End If
+
+            'FGetPrint(SearchCode, ClsMain.PrintFor.DocumentPrint,, mQry)
+
+            dtTemp = AgL.FillData(mQry, AgL.GCn).Tables(0)
+            If dtTemp.Rows.Count > 0 Then
+                For I = 0 To dtTemp.Rows.Count - 1
+                    FGetPrint(AgL.XNull(dtTemp.Rows(I)("DocID")), ClsMain.PrintFor.DocumentPrint)
+                Next
+            End If
+        End If
+    End Sub
+    Private Sub FGetPrint(ByVal SearchCode As String, mPrintFor As ClsMain.PrintFor)
         Dim dsMain As DataTable
         Dim dsInvoice As DataTable
         Dim dsPayment As DataTable
@@ -3183,7 +3232,7 @@ Public Class FrmPartyAcSettlement
         sQryDiffJvNo = "(Select Max(L.V_Type || '-' || L.RecID) as ManualRefNo, Max(L.AmtDr) as Amount
                         From TransactionReferences TR With (NoLock) 
                         Left Join Ledger L  With (NoLock) On TR.ReferenceDocID = L.DocID
-                        Where TR.DocID = '" & mSearchCode & "' 
+                        Where TR.DocID = '" & SearchCode & "' 
                         And Tr.Type = '" & ClsMain.TransactionReferenceTypeConstants.SettlementDifference & "')  "
 
 
@@ -3213,10 +3262,10 @@ Public Class FrmPartyAcSettlement
                 Left Join (Select Tr.DocID, Max(L.V_Type || '-' || L.RecID) as ManualRefNo, Max(L.AmtDr) as Amount
                         From TransactionReferences TR With (NoLock) 
                         Left Join Ledger L  With (NoLock) On TR.ReferenceDocID = L.DocID
-                        Where TR.DocID = '" & mSearchCode & "' 
+                        Where TR.DocID = '" & SearchCode & "' 
                         And Tr.Type = '" & ClsMain.TransactionReferenceTypeConstants.SettlementDifference & "'
                         Group By Tr.DocID) as DiffJV On DiffJV.DocID = H.DocID
-                where H.DocID ='" & mSearchCode & "'"
+                where H.DocID ='" & SearchCode & "'"
         dsMain = AgL.FillData(mQry, AgL.GCn).Tables(0)
 
 
@@ -3226,7 +3275,7 @@ Public Class FrmPartyAcSettlement
                 Left Join LedgerHead LH On H.DocID = LH.DocId
                 Left Join Ledger L On H.PurchaseInvoiceDocID =  L.DocID  And IfNull(H.PurchaseInvoiceDocIDSr,L.V_SNo) = L.V_SNo And LH.Subcode = L.Subcode
                 Left Join LedgerHead IH On L.DocID = IH.DocID
-                where H.DocID ='" & mSearchCode & "' Order By H.DocID, H.Sr "
+                where H.DocID ='" & SearchCode & "' Order By H.DocID, H.Sr "
 
         dsInvoice = AgL.FillData(mQry, AgL.GCn).Tables(0)
 
@@ -3237,7 +3286,7 @@ Public Class FrmPartyAcSettlement
                 Left Join Ledger L On H.PaymentDocId =  L.DocID And IfNull(H.PaymentDocIDSr, L.V_SNo) = L.V_SNo And LH.Subcode = L.Subcode
                 Left Join LedgerHead IH On L.DocID = IH.DocID
                 Left Join viewHelpSubgroup cSg On L.ContraSub = cSg.Code And cSg.Nature In ('Cash','Bank')                       
-                Where H.DocID ='" & mSearchCode & "'
+                Where H.DocID ='" & SearchCode & "'
                 "
         dsPayment = AgL.FillData(mQry, AgL.GCn).Tables(0)
 
@@ -3250,7 +3299,7 @@ Public Class FrmPartyAcSettlement
             objRepPrint.TxtToEmail.Text = AgL.XNull(AgL.Dman_Execute("Select Sg.Email
                     From ledgerHead H 
                     LEFT JOIN SubGroup Sg On H.SubCode = Sg.SubCode
-                    Where H.DocId = '" & mSearchCode & "'", AgL.GCn).ExecuteScalar())
+                    Where H.DocId = '" & SearchCode & "'", AgL.GCn).ExecuteScalar())
             objRepPrint.AttachmentName = "Payment Settlement"
 
             objRepPrint.reportViewer1.SetDisplayMode(DisplayMode.PrintLayout)
@@ -4160,4 +4209,5 @@ Public Class FrmPartyAcSettlement
             Exit Sub
         End If
     End Sub
+
 End Class

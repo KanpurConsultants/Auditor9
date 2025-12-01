@@ -260,7 +260,7 @@ Public Class ClsLRUpdation
                 bUpdateStr = FieldName + " = " + AgL.Chk_Text(Value)
             End If
 
-            mQry = " Update SaleInvoiceTransport Set " & bUpdateStr &
+            mQry = " Update SaleInvoiceTransport Set LRUpdatedDate = getdate(), " & bUpdateStr &
                     " Where DocId = '" & ReportFrm.DGL1.Item(Col1SearchCode, mRow).Value & "'"
             AgL.Dman_ExecuteNonQry(mQry, AgL.GCn, AgL.ECmd)
 
@@ -268,12 +268,12 @@ Public Class ClsLRUpdation
             AgL.ETrans.Commit()
             mTrans = "Commit"
 
-            Dim valLRNo = ReportFrm.DGL1.Item(Col1LrNo, mRow).Value
-            Dim valLRDate = ReportFrm.DGL1.Item(Col1LrDate, mRow).Value
+            'Dim valLRNo = ReportFrm.DGL1.Item(Col1LrNo, mRow).Value
+            'Dim valLRDate = ReportFrm.DGL1.Item(Col1LrDate, mRow).Value
 
-            If valLRNo IsNot Nothing AndAlso Not IsDBNull(valLRNo) And valLRDate IsNot Nothing AndAlso Not IsDBNull(valLRDate) Then
-                FSendWhatsapp(ReportFrm.DGL1.Item(Col1SearchCode, mRow).Value)
-            End If
+            'If valLRNo IsNot Nothing AndAlso Not IsDBNull(valLRNo) And valLRDate IsNot Nothing AndAlso Not IsDBNull(valLRDate) Then
+            '    FSendWhatsapp(ReportFrm.DGL1.Item(Col1SearchCode, mRow).Value)
+            'End If
 
         Catch ex As Exception
             AgL.ETrans.Rollback()
@@ -317,9 +317,9 @@ Public Class ClsLRUpdation
                 Replace("<NetAmount>", Format(AgL.VNull(DtDocData.Rows(0)("Net_Amount")), "0.00")).
                 Replace("&", "And")
         'IsSuccess = FSendWhatsappMessage(ToMobileNo, ToMessage, "Message", "")
-        Dim sender As New WhatsAppSender()
-        ToMessage = ToMessage.Replace(vbCrLf, "\n").Replace(vbCr, "\n").Replace(vbLf, "\n")
-        sender.EntrySendWhatsapp(ToMobileNo, ToMessage, "Message From LR Updation", AgL.GCn)
+        'Dim sender As New WhatsAppSender()
+        'ToMessage = ToMessage.Replace(vbCrLf, "\n").Replace(vbCr, "\n").Replace(vbLf, "\n")
+        'sender.EntrySendWhatsapp(ToMobileNo, ToMessage, "Message From LR Updation", AgL.GCn)
     End Sub
     Private Function FGetSettings(FieldName As String, SettingType As String) As String
         Dim mValue As String

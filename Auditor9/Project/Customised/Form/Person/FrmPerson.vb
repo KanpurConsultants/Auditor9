@@ -2545,6 +2545,15 @@ Public Class FrmPerson
             Exit Sub
         End If
 
+        mQry = "SELECT Count(*) FROM SubgroupRegistration H WHERE H.RegistrationType = '" & SubgroupRegistrationType.AadharNo.ToUpper & "' AND H.RegistrationNo = '" & Dgl1.Item(Col1Value, rowAadharNo).Value & "'
+                And SubCode <> '" & mSearchCode & "' "
+        If AgL.VNull(AgL.Dman_Execute(mQry, AgL.GCn).ExecuteScalar()) > 0 Then
+            MsgBox("Aadhar No already exists.", MsgBoxStyle.Information)
+            Dgl1.CurrentCell = Dgl1.Item(Col1Value, rowAadharNo)
+            Dgl1.Focus()
+            passed = False
+            Exit Sub
+        End If
 
 
         If Dgl1(Col1Value, rowSalesTaxGroup).Value.ToUpper = "UNREGISTERED" Then

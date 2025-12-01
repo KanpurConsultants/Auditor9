@@ -5,44 +5,44 @@ DocNoCaption	string	255	Invoice No.
 DocDateCaption	string	255	Invoice Date	
 SiteStateCode	string	255	09	
 SiteStateName	string	255	Uttar Pradesh	
-DocID	string	255	D1    SI 2025    8623	
+DocID	string	255	D1    SI 2025   10967	
 Sr	number	1	
-V_Date	datetime	28/Oct/2025 00:00:00	
+V_Date	datetime	13/Nov/2025 00:00:00	
 DeliveryDate	datetime		
 Voucher_Type	string	255	Tax Invoice	
 NCat	string	255	SI	
-InvoiceNo	string	255	SI-8623	
+InvoiceNo	string	255	SI-10967	
 RateType	string	255	Super Net	
 DocumentPrintShowRateType	string	255	Show If Not Blank	
-AgentName	string	255	DIRECT (CASH)	
+AgentName	string	255	HARI MOHAN BAJPAI(KRISHNA BAJPAI)	
 AgentCaption	string	255	Agent	
 BillToPartyNature	string	255	Customer	
-SaleToPartyName	string	255	KIRTI SAREE CENTER	
-SaleToPartyAddress	string	255	160-GANDHI NAGAR SHUKLAGANJ DIST:-UNNAO	
-CityName	string	255	SHUKLA GANJ	
-SaleToPartyPincode	string	255	209861	
+SaleToPartyName	string	255	AMAR CLOTH HOUSE	
+SaleToPartyAddress	string	255	BAKARGANJ FATEHPUR DIST:-FATHEPUR	
+CityName	string	255	FATEHPUR	
+SaleToPartyPincode	string	255	212601	
 StateCode	string	255	09	
 StateName	string	255	Uttar Pradesh	
-SaleToPartyMobile	string	255	9889977442	
-ContactPerson	string	255	HARI NARAYAN GUPTA	
-SaleToPartySalesTaxNo	string	255	09ALNPG3357J1ZQ	
+SaleToPartyMobile	string	255	9839930797	
+ContactPerson	string	255	AMAR RSATOGI	
+SaleToPartySalesTaxNo	string	255	09AGDPR4119A1ZP	
 SaleToPartyAadharNo	string	255		
-SaleToPartyPanNo	string	255	ALNPG3357J	
-ShipToPartyName	string	255	KIRTI SAREE CENTER	
-ShipToPartyAddress	string	255	160-GANDHI NAGAR SHUKLAGANJ DIST:-UNNAO	
-ShipToPartyCity	string	255	SHUKLA GANJ	
-ShipToPartyPincode	string	255	209861	
+SaleToPartyPanNo	string	255	AGDPR4119A	
+ShipToPartyName	string	255	AMAR CLOTH HOUSE	
+ShipToPartyAddress	string	255	BAKARGANJ FATEHPUR DIST:-FATHEPUR	
+ShipToPartyCity	string	255	FATEHPUR	
+ShipToPartyPincode	string	255	212601	
 ShipToPartyStateCode	string	255	09	
 ShipToPartyStateName	string	255	Uttar Pradesh	
-ShipToPartyMobile	string	255	9889977442	
-ShipToPartySalesTaxNo	string	255	09ALNPG3357J1ZQ	
+ShipToPartyMobile	string	255	9839930797	
+ShipToPartySalesTaxNo	string	255	09AGDPR4119A1ZP	
 ShipToPartyAadharNo	string	255		
-ShipToPartyPanNo	string	255	ALNPG3357J	
+ShipToPartyPanNo	string	255	AGDPR4119A	
 ShipToAddress	string	255		
 TermsAndConditions	string	255	<b>1.</b> Goods once sold will not be taken back. <b>2.</b> No Guarantee in the Age of Fashion. <b>3.</b> Interest @ 24% per annum will be charge after 30 days from the date of bill. <b>4.</b> All disputes subject to Kanpur Jurisdiction OR disputes will be settle through Cawnpore Kapda Committee Arbitration Board which will be abide by the both parties	
-TransporterName	string	255	LOCAL	
-TransporterMobile	string	255		
-TransporterAddress	string	255		
+TransporterName	string	255	HAJI ROAD CARRIER	
+TransporterMobile	string	255	8317045633,9838707838	
+TransporterAddress	string	255	COPERGANJ-KANPUR	
 LrNo	string	255		
 LrDate	datetime		
 PrivateMark	string	255		
@@ -50,8 +50,8 @@ Weight	number	0
 Freight	number	0	
 ChargedWeight	number	0	
 FreightType	string	255		
-RoadPermitNo	string	255		
-RoadPermitDate	datetime		
+RoadPermitNo	string	255	411646215664	
+RoadPermitDate	datetime	13/Nov/2025 20:33:00	
 VehicleNo	string	255		
 ShipMethod	string	255		
 PreCarriageBy	string	255		
@@ -61,20 +61,20 @@ BookedTo	string	255
 Destination	string	255		
 DescriptionOfGoods	string	255		
 DescriptionOfPacking	string	255		
-TransporterSalesTaxNo	string	255		
+TransporterSalesTaxNo	string	255	09AUOPM4065B1ZJ	
 ReferenceNo	string	255		
-ItemName	string	255	6294          [DULHAN CREATION RED-610 | SAREE RED]	
-ItemGroupName	string	255	S-EMB-610 RED CHUNARI	
-ItemCatName	string	255	SAREE RED	
-ItemSpecification	string	255	6294	
+ItemName	string	255	PINK LADY          [GAURINANDAN SAREES | SAREE]	
+ItemGroupName	string	255	S-ENT-924 DYD	
+ItemCatName	string	255	SAREE	
+ItemSpecification	string	255	PINK LADY	
 InvoiceLineSpecification	string	255		
 HSN	string	255	540752	
 MaintainStockYn	boolean	True	
 SalesTaxGroupItem	string	255	GST 5%	
 GrossTaxRate	number	5	
-Pcs	number	2	
-Qty	number	2	
-Rate	number	235	
+Pcs	number	4	
+Qty	number	4	
+Rate	number	1295	
 Unit	string	255	Pcs	
 UnitDecimalPlaces	number	0	
 DiscountPer	number	0	
@@ -84,34 +84,34 @@ AdditionalDiscountAmount	number	0
 AdditionPer	number	0	
 AdditionAmount	number	0	
 TotalDiscount	number	0	
-AmountBeforeDiscount	number	470	
-Amount	number	470	
-Taxable_Amount	number	470	
+AmountBeforeDiscount	number	5180	
+Amount	number	5180	
+Taxable_Amount	number	5180	
 Tax1_Per	number	0	
 Tax1	number	0	
 Tax2_Per	number	2.5	
-Tax2	number	11.75	
+Tax2	number	129.5	
 Tax3_Per	number	2.5	
-Tax3	number	11.75	
+Tax3	number	129.5	
 Tax4_Per	number	0	
 Tax4	number	0	
 Tax5_Per	number	0	
 Tax5	number	0	
-Net_Amount	number	493.59	
+Net_Amount	number	5439.03	
 LRemarks	string	255		
 HRemarks	string	255		
 H_TotalDiscount	number	0	
-H_AmountBeforeDiscount	number	2451	
-H_Gross_Amount	number	2451	
+H_AmountBeforeDiscount	number	100610	
+H_Gross_Amount	number	100610	
 H_SpecialDiscount_Per	number	0	
 H_SpecialDiscount	number	0	
-H_Taxable_Amount	number	2451	
+H_Taxable_Amount	number	100610	
 H_Tax1_Per	number	0	
 H_Tax1	number	0	
 H_Tax2_Per	number	0	
-H_Tax2	number	61.28	
+H_Tax2	number	2515.3	
 H_Tax3_Per	number	0	
-H_Tax3	number	61.28	
+H_Tax3	number	2515.3	
 H_Tax4_Per	number	0	
 H_Tax4	number	0	
 H_Tax5_Per	number	0	
@@ -120,11 +120,11 @@ H_Deduction_Per	number	0
 H_Deduction	number	0	
 H_Other_Charge_Per	number	0	
 H_Other_Charge	number	0	
-Round_Off	number	0.44	
-H_Net_Amount	number	2574	
-EInvoiceIRN	string	255		
-EInvoiceAckNo	string	255		
-EInvoiceAckDate	datetime		
+Round_Off	number	0.4	
+H_Net_Amount	number	105641	
+EInvoiceIRN	string	255	7d0774e7265509267ed5bbd87b85d760f49ba04a7d89af2b8bcf7b9c10875a40	
+EInvoiceAckNo	string	255	142518793415790	
+EInvoiceAckDate	datetime	13/Nov/2025 20:33:00	
 Default_BankAccountDetail	string	255	Bank Detail : 	
 ICICI BANK 
 A/C:- 695705601820     
@@ -133,7 +133,7 @@ PaymentLink	string	255
 DocumentPrintHeaderPattern	string	255	Center Aligned	
 DimDetail	string	255		
 PrintedByUser	string	255	SUPER	
-EntryByUser	string	255	HIMANSHU	
+EntryByUser	string	255	SADHVI 4	
 PrintTitle	string	255	TAX INVOICE	
 DocumentPrintShowPrintDateTimeYn	string	255	1	
 DocumentPrintShowPartyBalance	string	255	Hide	

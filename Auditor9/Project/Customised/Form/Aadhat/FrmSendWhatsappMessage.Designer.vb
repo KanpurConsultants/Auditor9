@@ -25,6 +25,7 @@ Partial Class FrmSendWhatsappMessage
         Me.BtnSendMessageForTodaySaleInvoice = New System.Windows.Forms.Button()
         Me.LblProgress = New System.Windows.Forms.Label()
         Me.BtnStartToSendWhatsapp = New System.Windows.Forms.Button()
+        Me.BtnSendMessageForTodayLRUpdate = New System.Windows.Forms.Button()
         Me.SuspendLayout()
         '
         'BtnSendMessageForTodaySaleInvoice
@@ -59,11 +60,23 @@ Partial Class FrmSendWhatsappMessage
         Me.BtnStartToSendWhatsapp.Text = "Start To Send Whatsapp"
         Me.BtnStartToSendWhatsapp.UseVisualStyleBackColor = True
         '
+        'BtnSendMessageForTodayLRUpdate
+        '
+        Me.BtnSendMessageForTodayLRUpdate.FlatStyle = System.Windows.Forms.FlatStyle.Flat
+        Me.BtnSendMessageForTodayLRUpdate.Font = New System.Drawing.Font("Verdana", 8.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.BtnSendMessageForTodayLRUpdate.Location = New System.Drawing.Point(71, 93)
+        Me.BtnSendMessageForTodayLRUpdate.Name = "BtnSendMessageForTodayLRUpdate"
+        Me.BtnSendMessageForTodayLRUpdate.Size = New System.Drawing.Size(303, 23)
+        Me.BtnSendMessageForTodayLRUpdate.TabIndex = 3
+        Me.BtnSendMessageForTodayLRUpdate.Text = "Send Message For Today LR Update"
+        Me.BtnSendMessageForTodayLRUpdate.UseVisualStyleBackColor = True
+        '
         'FrmSendWhatsappMessage
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
         Me.ClientSize = New System.Drawing.Size(456, 208)
+        Me.Controls.Add(Me.BtnSendMessageForTodayLRUpdate)
         Me.Controls.Add(Me.BtnStartToSendWhatsapp)
         Me.Controls.Add(Me.LblProgress)
         Me.Controls.Add(Me.BtnSendMessageForTodaySaleInvoice)
@@ -77,4 +90,5 @@ Partial Class FrmSendWhatsappMessage
     Friend WithEvents BtnSendMessageForTodaySaleInvoice As Button
     Friend WithEvents LblProgress As Label
     Friend WithEvents BtnStartToSendWhatsapp As Button
+    Friend WithEvents BtnSendMessageForTodayLRUpdate As Button
 End Class

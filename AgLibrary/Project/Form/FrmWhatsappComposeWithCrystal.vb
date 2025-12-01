@@ -563,6 +563,7 @@ Public Class FrmWhatsappComposeWithCrystal
             Dim FileName As String = ""
             FileName = mAttachmentName + ".pdf"
             Dim Message As String = TxtMessage.Text.Replace(vbCrLf, "\n").Replace(vbLf, "\n")
+            'MsgBox(MobileNoList)
             FSendWhatsapp = SendPDFByWhatsapp(MobileNoList, Message, FileName)
         Catch ex As Exception
             MsgBox(ex.Message)

@@ -48,12 +48,21 @@ Public Class FrmSendWhatsappMessage
         Return count
     End Function
 
-    Private Sub Button1_Click(sender As Object, e As EventArgs) Handles BtnSendMessageForTodaySaleInvoice.Click
-        BtnSendMessageForTodaySaleInvoice.Enabled = False
+    Private Sub BtnSendMessageForTodaySaleInvoice_Click(sender As Object, e As EventArgs) Handles BtnSendMessageForTodaySaleInvoice.Click
+        'BtnSendMessageForTodaySaleInvoice.Enabled = False
+        '_backgroundWorker1 = New System.ComponentModel.BackgroundWorker()
+        '_backgroundWorker1.WorkerSupportsCancellation = False
+        '_backgroundWorker1.WorkerReportsProgress = False
+        ''AddHandler Me._backgroundWorker1.DoWork, New DoWorkEventHandler(AddressOf Me.FProcMessageForTodaySaleInvoice)
+        '_backgroundWorker1.RunWorkerAsync()
+    End Sub
+
+    Private Sub BtnSendMessageForTodayLRUpdate_Click(sender As Object, e As EventArgs) Handles BtnSendMessageForTodayLRUpdate.Click
+        BtnSendMessageForTodayLRUpdate.Enabled = False
         _backgroundWorker1 = New System.ComponentModel.BackgroundWorker()
         _backgroundWorker1.WorkerSupportsCancellation = False
         _backgroundWorker1.WorkerReportsProgress = False
-        AddHandler Me._backgroundWorker1.DoWork, New DoWorkEventHandler(AddressOf Me.FProcMessageForTodaySaleInvoice)
+        AddHandler Me._backgroundWorker1.DoWork, New DoWorkEventHandler(AddressOf Me.FProcMessageForTodayLRUpdate)
         _backgroundWorker1.RunWorkerAsync()
     End Sub
 
@@ -117,5 +126,63 @@ Public Class FrmSendWhatsappMessage
 
     End Sub
 
+    Public Sub FProcMessageForTodayLRUpdate()
+        Dim ToMobileNo As String
+        Dim ToMessage As String
+        Dim I As Integer
+        Dim MessageFormat As String
+        MessageFormat = "Dear <PartyName>," & vbCrLf &
+                    "Your Inv.No. <EntryNo> Dated <EntryDate> of Rs.<NetAmount> has been dispatched By Transport <TransporterName> with LR No. <LRNo> on Date <LRDate> ." & vbCrLf &
+                    "Sincerely" & vbCrLf &
+                    "<DivisionName>"
+
+        mQry = "Select 
+                    Max(Sg.DispName) As DivisionName, 
+                    replace(Convert(NVARCHAR,H.V_Date,106),' ','/') AS SaleDate,
+                    Max(Party.DispName) As PartyName, Max(Party.Mobile) As PartyMobile,
+                    Max(T.Name) As TransporterName, SIt.LrNo, replace(Convert(NVARCHAR,SIt.LrDate,106),' ','/') As LrDate, Sum(H.Net_Amount) Net_Amount,
+                    (
+                    SELECT H1.ManualRefNo + ', '
+                    From SaleInvoice H1 
+                                     LEFT JOIN SaleInvoiceTransport SIt1 ON H1.DocID = SIt1.DocID
+                                     Where Sit1.LRUpdatedDate >'" & AgL.PubLoginDate & "' AND H1.V_Date = H.V_Date AND H1.SaleToParty = H.SaleToParty  AND SIT1.Transporter = SIT.Transporter AND SIT1.LrNo = SIT.LrNo
+                    FOR XML Path ('')
+                    ) AS SaleNo
+                    From SaleInvoice H 
+                    LEFT JOIN Division D On H.Div_Code = D.Div_Code
+                    LEFT JOIN Voucher_Type VT ON VT.V_Type = H.V_Type 
+                    LEFT JOIN SubGroup Sg On D.SubCode = Sg.SubCode
+                    LEFT JOIN SubGroup Party On H.SaleToParty = Party.SubCode
+                    LEFT JOIN SaleInvoiceTransport SIt ON H.DocID = SIt.DocID
+                    LEFT JOIN SubGroup T On SIT.Transporter = T.SubCode
+                    Where Sit.LRUpdatedDate >'" & AgL.PubLoginDate & "'
+                    GROUP BY H.SaleToParty,H.V_Date,SIT.Transporter,SIt.LrDate,SIt.LrNo "
+        Dim DtDocData As DataTable = AgL.FillData(mQry, AgL.GCn).Tables(0)
+        If DtDocData.Rows.Count > 0 Then
+            For I = 0 To DtDocData.Rows.Count - 1
+                ToMobileNo = AgL.XNull(DtDocData.Rows(I)("PartyMobile"))
+                ToMessage = MessageFormat.
+                            Replace("<PartyName>", AgL.XNull(DtDocData.Rows(I)("PartyName"))).
+                            Replace("<EntryNo>", AgL.XNull(DtDocData.Rows(I)("SaleNo"))).
+                            Replace("<EntryDate>", AgL.XNull(DtDocData.Rows(I)("SaleDate"))).
+                            Replace("<LRNo>", AgL.XNull(DtDocData.Rows(I)("LRNo"))).
+                            Replace("<LRDate>", AgL.XNull(DtDocData.Rows(I)("LRDate"))).
+                            Replace("<DivisionName>", AgL.XNull(DtDocData.Rows(I)("DivisionName"))).
+                            Replace("<TransporterName>", AgL.XNull(DtDocData.Rows(I)("TransporterName"))).
+                            Replace("<NetAmount>", Format(AgL.VNull(DtDocData.Rows(I)("Net_Amount")), "0.00")).
+                            Replace("&", "And")
+
+                'IsSuccess = ClsMain.FSendWhatsappMessage(ToMobileNo, ToMessage, "Message", "")
+                Dim FSendWhatsapp As String = ""
+                Dim sender As New WhatsAppSender()
+                'FSendWhatsapp = sender.SendMessageByWhatsapp(ToMobileNo, ToMessage)
+                ToMessage = ToMessage.Replace(vbCrLf, "\n").Replace(vbCr, "\n").Replace(vbLf, "\n")
+                sender.EntrySendWhatsapp(ToMobileNo, ToMessage, "Message For Today LR Update", AgL.GCn)
+            Next
+        End If
+
+        MsgBox("Message Send For Today LR Update Successfully...", MsgBoxStyle.Information)
+
+    End Sub
 
 End Class

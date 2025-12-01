@@ -1,47 +1,51 @@
 ; Field definition file for table: ADORecordset
 DivisionName	string	255	SADHVI SAREES PVT. LTD., KANPUR	
 CreditLimit	number	0	
-PartyName	string	255	SHYAM CREATION, JAIPUR	
-Address	string	255	HOUSE NO-2033 OPPOSIT DAL MIL RAM LALA JI KA RASTA JOHRI BAZAR JAIPUR RAJASTHAN -302003	
-Mobile	string	255	9829619799, 93951919799	
-AgentName	string	255	TRISHLA AGENCY, JAIPUR	
+PartyName	string	255	JANANI DESIGNER SURAT, SURAT	
+Address	string	255	5165 TO 5172,5TH FLOOR,MILLENNIUM-4 NR.BHATHENA UDHNA,SURAT	
+Mobile	string	255	9537271213	
+AgentName	string	255	N.B.AGENCY, SURAT	
+AgentMobileNo	string	255		
+TransporterName	string	255	GREEN ROADWAYS TRANSPORT DELHI PVT.LTD., KANPUR	
+RegistrationNo	string	255	24BBWPB2833E2ZT	
+RegistrationType	string	255	GST No	
 SalesRepresentativeName	string	255		
 AreaName	string	255		
-DrDocID	string	255	D1    PS 2025       6	
+DrDocID	string	255	D1    PR 2025     267	
 DrDivision	string	255	D	
-DrSubcode	string	255	D100038286	
+DrSubcode	string	255	D100002522	
 DrSr	number	0	
-DrDate	datetime	18-08-25 00:00:00	
-DrDocNo	string	255	PS-3	
-DrAmount	number	123164	
+DrDate	datetime	13/Oct/2025 00:00:00	
+DrDocNo	string	255	PR-267	
+DrAmount	number	73806	
 DrTaxableAmount	number	0	
 DrTaxAmount	number	0	
-DrDays	number	52	
+DrDays	number	44	
 DrInterest	number	0	
-DrCumAmount	number	123164	
+DrCumAmount	number	73806	
 DrBalAmount	number	0	
-DrTotal	number	138152	
-DrNarration	string	255	Chq : 000231Payment Settlement for Invoices : D1-PI-SC-3905, D1-PI-SC-4011	
-CrDocID	string	255	D1    PI 2025    1056	
+DrTotal	number	342014	
+DrNarration	string	255	Purchase Return FRESH	
+CrDocID	string	255	D1    PI 2025    2666	
 CrDivision	string	255	D	
-CrSubcode	string	255	D100038286	
+CrSubcode	string	255	D100002522	
 CrSr	number	0	
-CrDate	datetime	17-07-25 00:00:00	
-CrDocNo	string	255	PI-1056	
-CrAmount	number	68506	
-CrTaxableAmount	number	65244	
-CrTaxAmount	number	3262.2	
-CrDays	number	54	
+CrDate	datetime	26/Aug/2025 00:00:00	
+CrDocNo	string	255	PI-2666	
+CrAmount	number	51813	
+CrTaxableAmount	number	46261.24	
+CrTaxAmount	number	5551.34	
+CrDays	number	62	
 CrInterest	number	0	
-CrCumAmount	number	68506	
+CrCumAmount	number	51813	
 CrBalAmount	number	0	
-CrTotal	number	208334	
-CrNarration	string	255	Inv : SC-3905	
+CrTotal	number	3361373	
+CrNarration	string	255	Inv : JD969	
 AdditionPer	number		
 AdditionAmount	number		
-GrReturnAmt	number	8505	
-GrSaleAmt	number	208334	
-ReturnPer	number	4.08	
+GrReturnAmt	number	342014	
+GrSaleAmt	number	3361373	
+ReturnPer	number	10.17	
 AveragePaymentDays	number	0	
-DrMonth	string	255	08/2025	
-CrMonth	string	255	07/2025	
+DrMonth	string	255	10/2025	
+CrMonth	string	255	08/2025	

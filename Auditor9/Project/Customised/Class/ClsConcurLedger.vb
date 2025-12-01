@@ -488,6 +488,7 @@ Public Class ClsConcurLedger
                     (Case When IfNull(L.Chq_No,'') <>'' Then 'Chq : ' || IfNull(L.Chq_No,'') Else '' End) || 
                     (Case When IfNull(LH.PartyDocNo,'') <>'' Then 'Inv : ' || IfNull(LH.PartyDocNo,'') Else '' End) ||                    
                     (Case When VT.NCAT Not In ('" & Ncat.SaleInvoice & "', '" & Ncat.PurchaseInvoice & "') And '" & ClsMain.FDivisionNameForCustomization(6) & "' = 'SADHVI' Then IfNull(L.Narration,'') Else '' End) ||
+                    (Case When VT.V_Type Not In ('CASH RECEIPT') And '" & ClsMain.FDivisionNameForCustomization(6) & "' = 'SADHVI' Then IfNull(LHD1.Remarks,'') Else '' End) ||
                     (Case When IfNull(Trd.Type,'')='Cancelled' OR IfNull(Trr.Type,'')='Cancelled' Then ' Cancelled Amt.' || Cast(L.AmtCr as NVarchar)  Else '' End) ||
                     (Case When IfNull(LTrim(Substr(L.ReferenceDocID,4,5)),'VR') <>'VR' Then ' Ref : ' || IfNull(LTrim(Substr(L.ReferenceDocID,4,5)),'') Else '' End)||
                     (Case When INV.V_Type IN ('PI','PR') AND INV.Remarks IS NOT NULL Then ' '+Substr(INV.Remarks,0,15) Else '' End)||
@@ -496,6 +497,7 @@ Public Class ClsConcurLedger
                     INV.Taxable_Amount, INV.Tax1+INV.Tax2+INV.Tax3+INV.Tax4+INV.Tax5 as Tax_Amount
                     from ledger L  With (NoLock)
                     Left Join LedgerHead LH  With (NoLock) On L.DocID = LH.DocID
+                    LEFT JOIN LedgerHeadDetail LHD1 ON LHD1.DocID = L.ReferenceDocId  AND LHD1.Sr = L.ReferenceDocIdSr AND L.V_Type = 'CR'
                     Left Join PurchInvoice INV With (NoLock) On L.DocID = INV.DocID
                     Left Join SaleInvoice SI With (NoLock) On L.DocID = SI.DocID
                     Left Join TransactionReferences Trd With (NoLock) On L.DocID = Trd.DocId And L.V_SNo = Trd.DocIDSr And L.V_Date >= '2019-07-01'
@@ -707,7 +709,7 @@ Public Class ClsConcurLedger
 
 
 
-            mQry = "Select D.Name as DivisionName, SG.CreditLimit, Sg.Name as PartyName, Sg.Address, Sg.Mobile, Agent.Name as AgentName, 
+            mQry = "Select D.Name as DivisionName, SG.CreditLimit, Sg.Name as PartyName, Sg.Address, Sg.Mobile, Agent.Name as AgentName, Agent.Mobile as AgentMobileNo, TR.Name as TransporterName, isnull(VSGR.GSTNo,AADHARNo) AS RegistrationNo, CASE WHEN VSGR.GSTNo IS NULL THEN 'AADHAR No' ELSE 'GST No' END RegistrationType,
                     SRep.Name as SalesRepresentativeName, Area.Description as AreaName, H.*, SL.AdditionPer, SL.AdditionAmount, Gr.GrReturnAmt, Gr.GrSaleAmt, Gr.ReturnPer, CASE WHEN sg1.SubgroupType ='Customer' THEN Sg1.AveragePaymentDays ELSE 0 END AveragePaymentDays,"
             If AgL.PubServerName <> "" Then
                 mQry = mQry & "Substring(Convert(NVARCHAR, H.DrDate,103),4,7) As [DrMonth], Substring(Convert(NVARCHAR, H.CrDate,103),4,7) As [CrMonth]  "
@@ -720,12 +722,18 @@ Public Class ClsConcurLedger
                     Left Join subgroup sg1 on sg.code= Sg1.Subcode
                     Left Join viewHelpSubgroup D On D.Code COLLATE DATABASE_DEFAULT = H.DrDivision COLLATE DATABASE_DEFAULT
                     Left Join (
-                                select subcode, Max(Agent) as Agent, Max(SalesRepresentative) as SalesRepresentative
+                                select subcode, Max(Agent) as Agent, Max(SalesRepresentative) as SalesRepresentative, Max(Transporter) as Transporter
                                 From SubgroupSiteDivisionDetail
                                 Group By Subcode
                               ) as LTV On LTV.Subcode = Sg.Code
+                    Left Join (
+                                SELECT SGR.Subcode, Max(CASE WHEN SGR.RegistrationType ='Sales Tax No' THEN SGR.RegistrationNo ELSE NULL END) AS GSTNo,  Max(CASE WHEN SGR.RegistrationType ='PAN No' THEN SGR.RegistrationNo ELSE NULL END) AS PANNo ,Max(CASE WHEN SGR.RegistrationType ='AADHAR NO' THEN SGR.RegistrationNo ELSE NULL END) AS AADHARNo 
+								FROM SubgroupRegistration SGR 
+								GROUP BY SGR.Subcode
+                              ) as VSGR On VSGR.Subcode = Sg.Code
                     Left Join viewHelpSubgroup Agent  On LTV.Agent COLLATE DATABASE_DEFAULT = Agent.Code COLLATE DATABASE_DEFAULT
                     Left Join viewHelpSubgroup SRep  On  LTV.SalesRepresentative COLLATE DATABASE_DEFAULT = SRep.Code COLLATE DATABASE_DEFAULT
+                    Left Join viewHelpSubgroup TR  On  LTV.Transporter COLLATE DATABASE_DEFAULT = TR.Code COLLATE DATABASE_DEFAULT
                     Left Join Area On Sg1.Area = Area.Code
                     Left Join (
                                 SELECT L.SubCode, L.DivCode, Sum(L.AmtCr) AS GrReturnAmt, (CASE WHEN Sum(L.AmtDr) = 0 THEN Sum(L.AmtCr) ELSE Sum(L.AmtDr) END) AS GrSaleAmt,  Round((Sum(L.AmtCr) /  (CASE WHEN Sum(L.AmtDr) = 0 THEN Sum(L.AmtCr) ELSE Sum(L.AmtDr) END))*100,2) 	AS ReturnPer
@@ -761,10 +769,14 @@ Public Class ClsConcurLedger
 
     Private Sub ProcConcurLedger()
         Dim DsRep As DataSet = FunConcurLedger(AgL.GCn)
-
+        Dim AgentMobileNo As String = ""
         If DsRep.Tables(0).Rows.Count = 0 Then Err.Raise(1, , "No Records to Print!")
         ReportFrm.DefaultMobileNo = AgL.XNull(DsRep.Tables(0).Rows(0)("Mobile"))
-        'ReportFrm.DefaultMobileNo = "8299399688"
+        'ReportFrm.DefaultMobileNo = "7905929156"
+        AgentMobileNo = AgL.XNull(DsRep.Tables(0).Rows(0)("AgentMobileNo"))
+        If AgentMobileNo <> "" Then
+            ReportFrm.DefaultMobileNo = ReportFrm.DefaultMobileNo & "," & AgentMobileNo
+        End If
         ReportFrm.PrintReport(DsRep, RepName, RepTitle)
     End Sub
 

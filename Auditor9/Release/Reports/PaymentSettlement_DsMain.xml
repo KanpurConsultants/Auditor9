@@ -1,24 +1,24 @@
 <?xml version="1.0" standalone="yes"?>
 <NewDataSet>
   <Table>
-    <DocNo>D1-PS-1</DocNo>
-    <V_Date>2025-08-01T00:00:00+05:30</V_Date>
-    <HSubcodeName>KAPIL CREATION </HSubcodeName>
-    <Address>SHOP NO.245 MILLENIUM TEXTILE MARKET-2 KAMELA DARWAJA, SURAT</Address>
+    <DocNo>D1-PS-115</DocNo>
+    <V_Date>2025-11-11T00:00:00+05:30</V_Date>
+    <HSubcodeName>SAI KABRA DESIGNER</HSubcodeName>
+    <Address>D-4187/88, 2ND FLOOR, MILLENIUM TEXTILE MARKET, RING ROAD , SURAT - 395002</Address>
     <CityName>SURAT</CityName>
     <StateCode>24</StateCode>
     <StateName>Gujarat</StateName>
-    <Mobile>7046114448</Mobile>
-    <Phone>9974751990</Phone>
-    <PartyGSTNo>24AAVFK8080F1ZX</PartyGSTNo>
-    <AgentName>RAVIRAJ TEXTILE AGENCY</AgentName>
-    <UpToDate>2025-08-01T00:00:00+05:30</UpToDate>
+    <Mobile>9727390963, 9510808411</Mobile>
+    <PartyGSTNo>24ASDPK6643C1Z2</PartyGSTNo>
+    <AgentName>DIRECT SUPPLIER</AgentName>
+    <UpToDate>2025-09-20T00:00:00+05:30</UpToDate>
     <DrCr>Cr</DrCr>
-    <LSubcodeName>ICICI A/C 695705601820</LSubcodeName>
-    <Amount>539999</Amount>
-    <ChqRefNo>123456</ChqRefNo>
-    <ChqRefDate>2025-08-01T00:00:00+05:30</ChqRefDate>
-    <LineTotalAmount>539999</LineTotalAmount>
+    <HRemarks>DISCOUNT@13</HRemarks>
+    <LSubcodeName>ICICI A/C 777705052546</LSubcodeName>
+    <Amount>75241</Amount>
+    <ChqRefNo>000634</ChqRefNo>
+    <ChqRefDate>2025-11-11T00:00:00+05:30</ChqRefDate>
+    <LineTotalAmount>75241</LineTotalAmount>
     <PrintedByUser>SUPER</PrintedByUser>
     <PrintTitle>Payment Settlement</PrintTitle>
   </Table>

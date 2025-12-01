@@ -42,14 +42,15 @@ Public Class WhatsAppSender
                 Console.WriteLine("Error: " & ex.Message)
             End Try
 
-            ' Wait 2 minutes (120000 milliseconds)
-            Thread.Sleep(120000)
+            ' Wait 1 minutes (60000 milliseconds)
+            Thread.Sleep(180000)
         End While
     End Sub
 
     Public Sub SendWhatsappFromTable()
         Dim ToMobileNo As String
         Dim ToMessage As String
+        Dim SendWhatsappId As Integer
 
         mQry = "SELECT * FROM SendWhatsapp H WHERE H.WhatsappSendDate IS NULL ORDER BY H.EntryDate "
         Dim DtDocData As DataTable = AgL.FillData(mQry, AgL.GCn).Tables(0)
@@ -57,7 +58,23 @@ Public Class WhatsAppSender
 
             ToMobileNo = AgL.XNull(DtDocData.Rows(0)("MobileNo"))
             ToMessage = AgL.XNull(DtDocData.Rows(0)("Message"))
-            SendMessageByWhatsapp(ToMobileNo, ToMessage)
+
+
+
+            If AgL.StrCmp(AgL.PubDBName, "Sadhvi2") Then
+                SendWhatsappId = AgL.VNull(DtDocData.Rows(0)("SendWhatsappId"))
+                If SendWhatsappId Mod 3 = 1 Then
+                    SendMessageByWhatsapp(ToMobileNo, ToMessage, "9675764467:9675764467")
+                ElseIf SendWhatsappId Mod 3 = 2 Then
+                    SendMessageByWhatsapp(ToMobileNo, ToMessage, "8909999111:8909999111")
+                Else
+                    SendMessageByWhatsapp(ToMobileNo, ToMessage)
+                End If
+
+            Else
+                    SendMessageByWhatsapp(ToMobileNo, ToMessage)
+            End If
+
             'ClsMain.FSendWhatsappMessage(ToMobileNo, ToMessage, "Message", "")
             mQry = "UPDATE SendWhatsapp SET WhatsappSendDate = getdate(), WhatsappSendBy ='" + AgL.PubUserName + "' WHERE SendWhatsappId = " + AgL.XNull(DtDocData.Rows(0)("SendWhatsappId")) + ""
             AgL.Dman_ExecuteNonQry(mQry, AgL.GCn)
@@ -65,11 +82,15 @@ Public Class WhatsAppSender
     End Sub
 
 
-    Public Function SendMessageByWhatsapp(receiverMobileNo As String, message As String) As String
+    Public Function SendMessageByWhatsapp(receiverMobileNo As String, message As String, Optional mauthString As String = "") As String
         'receiverMobileNo = "8299399688"
         'message = "Hello"
         ' 1. Combine username and password
         Dim authString As String = Username & ":" & Password
+
+        If mauthString <> "" Then
+            authString = mauthString
+        End If
 
         ' 2. Convert to base64
         Dim authBytes As Byte() = Encoding.UTF8.GetBytes(authString)
@@ -120,7 +141,7 @@ Public Class WhatsAppSender
         End Try
     End Function
 
-    Public Function SendPDFByWhatsapp(receiverMobileNo As String, FileName As String) As String
+    Public Function SendPDFByWhatsapp(receiverMobileNo As String, FileName As String, Optional mauthString As String = "") As String
         'receiverMobileNo = "8299399688"
         ' 1. Combine username and password
         Dim authString As String = Username & ":" & Password

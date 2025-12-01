@@ -1786,6 +1786,7 @@ Public Class FrmSyncDataFromOtherDatabase_RVN
                     LedgerHeadTable.Line_LinkedSubCodeName = AgL.XNull(DtExternalData_Line.Rows(J)("LinkedSubCodeName"))
                     LedgerHeadTable.Line_Specification = AgL.XNull(DtExternalData_Line.Rows(J)("Specification"))
                     LedgerHeadTable.Line_SalesTaxGroupItem = AgL.XNull(DtExternalData_Line.Rows(J)("SalesTaxGroupItem"))
+                    LedgerHeadTable.Line_HSN = AgL.XNull(DtExternalData_Line.Rows(J)("HSN"))
                     LedgerHeadTable.Line_Qty = AgL.VNull(DtExternalData_Line.Rows(J)("Qty"))
                     LedgerHeadTable.Line_Unit = AgL.XNull(DtExternalData_Line.Rows(J)("Unit"))
                     LedgerHeadTable.Line_Rate = AgL.VNull(DtExternalData_Line.Rows(J)("Rate"))
