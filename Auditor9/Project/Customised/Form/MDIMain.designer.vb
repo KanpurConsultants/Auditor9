@@ -66,6 +66,7 @@ Partial Class MDIMain
         Me.MnuItemInvoiceGroup = New System.Windows.Forms.ToolStripMenuItem()
         Me.MnuCatalogMaster = New System.Windows.Forms.ToolStripMenuItem()
         Me.MnuLotMaster = New System.Windows.Forms.ToolStripMenuItem()
+        Me.MnuImportItemFromWeb = New System.Windows.Forms.ToolStripMenuItem()
         Me.MnuAccounts = New System.Windows.Forms.ToolStripMenuItem()
         Me.MnuVoucherEntry = New System.Windows.Forms.ToolStripMenuItem()
         Me.MnuDebitNote = New System.Windows.Forms.ToolStripMenuItem()
@@ -85,6 +86,7 @@ Partial Class MDIMain
         Me.MnuCreditorsOpeningEntry = New System.Windows.Forms.ToolStripMenuItem()
         Me.MnuJournalAdjustmentEntry = New System.Windows.Forms.ToolStripMenuItem()
         Me.MnuJournalAdjustment = New System.Windows.Forms.ToolStripMenuItem()
+        Me.MnuLedgerUpdation = New System.Windows.Forms.ToolStripMenuItem()
         Me.MnuAccountsReports = New System.Windows.Forms.ToolStripMenuItem()
         Me.MnuTrialBalance_Aadhat = New System.Windows.Forms.ToolStripMenuItem()
         Me.MnuDetailTrialBalance_Aadhat = New System.Windows.Forms.ToolStripMenuItem()
@@ -336,7 +338,6 @@ Partial Class MDIMain
         Me.MnuPrintCheque = New System.Windows.Forms.ToolStripMenuItem()
         Me.MnuBank = New System.Windows.Forms.ToolStripMenuItem()
         Me.MnuChequePrinting = New System.Windows.Forms.ToolStripMenuItem()
-        Me.MnuLedgerUpdation = New System.Windows.Forms.ToolStripMenuItem()
         Me.MnuMain.SuspendLayout()
         Me.SuspendLayout()
         '
@@ -533,7 +534,7 @@ Partial Class MDIMain
         '
         'MnuItem
         '
-        Me.MnuItem.DropDownItems.AddRange(New System.Windows.Forms.ToolStripItem() {Me.MnuItemMaster, Me.MnuItemGroupMaster, Me.MnuItemCategoryMaster, Me.MnuDimension1Master, Me.MnuDimension2Master, Me.MnuDimension3Master, Me.MnuDimension4Master, Me.MnuShape, Me.MnuSizeMaster, Me.MnuFabricConsumption, Me.MnuCuttingConsumption, Me.MnuRateList, Me.MnuRateListException, Me.MnuUnitMaster, Me.MnuItemTypeMaster, Me.MnuItemInvoiceGroup, Me.MnuCatalogMaster, Me.MnuLotMaster})
+        Me.MnuItem.DropDownItems.AddRange(New System.Windows.Forms.ToolStripItem() {Me.MnuItemMaster, Me.MnuItemGroupMaster, Me.MnuItemCategoryMaster, Me.MnuDimension1Master, Me.MnuDimension2Master, Me.MnuDimension3Master, Me.MnuDimension4Master, Me.MnuShape, Me.MnuSizeMaster, Me.MnuFabricConsumption, Me.MnuCuttingConsumption, Me.MnuRateList, Me.MnuRateListException, Me.MnuUnitMaster, Me.MnuItemTypeMaster, Me.MnuItemInvoiceGroup, Me.MnuCatalogMaster, Me.MnuLotMaster, Me.MnuImportItemFromWeb})
         Me.MnuItem.Name = "MnuItem"
         Me.MnuItem.Size = New System.Drawing.Size(43, 20)
         Me.MnuItem.Text = "Item"
@@ -658,6 +659,12 @@ Partial Class MDIMain
         Me.MnuLotMaster.Name = "MnuLotMaster"
         Me.MnuLotMaster.Size = New System.Drawing.Size(215, 22)
         Me.MnuLotMaster.Text = "Lot Master"
+        '
+        'MnuImportItemFromWeb
+        '
+        Me.MnuImportItemFromWeb.Name = "MnuImportItemFromWeb"
+        Me.MnuImportItemFromWeb.Size = New System.Drawing.Size(215, 22)
+        Me.MnuImportItemFromWeb.Text = "Import Item From Web"
         '
         'MnuAccounts
         '
@@ -784,6 +791,13 @@ Partial Class MDIMain
         Me.MnuJournalAdjustment.Name = "MnuJournalAdjustment"
         Me.MnuJournalAdjustment.Size = New System.Drawing.Size(234, 22)
         Me.MnuJournalAdjustment.Text = "Journal Adjustment"
+        '
+        'MnuLedgerUpdation
+        '
+        Me.MnuLedgerUpdation.Name = "MnuLedgerUpdation"
+        Me.MnuLedgerUpdation.Size = New System.Drawing.Size(234, 22)
+        Me.MnuLedgerUpdation.Tag = "GRID REPORT"
+        Me.MnuLedgerUpdation.Text = "Ledger Updation"
         '
         'MnuAccountsReports
         '
@@ -2571,13 +2585,6 @@ Partial Class MDIMain
         Me.MnuChequePrinting.Size = New System.Drawing.Size(160, 22)
         Me.MnuChequePrinting.Text = "Cheque Printing"
         '
-        'MnuLedgerUpdation
-        '
-        Me.MnuLedgerUpdation.Name = "MnuLedgerUpdation"
-        Me.MnuLedgerUpdation.Size = New System.Drawing.Size(234, 22)
-        Me.MnuLedgerUpdation.Tag = "GRID REPORT"
-        Me.MnuLedgerUpdation.Text = "Ledger Updation"
-        '
         'MDIMain
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
@@ -2918,4 +2925,5 @@ Partial Class MDIMain
     Friend WithEvents MnuToTesting As ToolStripMenuItem
     Friend WithEvents MnuSendWhatsappMessage As ToolStripMenuItem
     Friend WithEvents MnuLedgerUpdation As ToolStripMenuItem
+    Friend WithEvents MnuImportItemFromWeb As ToolStripMenuItem
 End Class

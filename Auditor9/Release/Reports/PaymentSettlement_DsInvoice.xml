@@ -1,84 +1,381 @@
 <?xml version="1.0" standalone="yes"?>
 <NewDataSet>
   <Table>
-    <InvoiceNo>309</InvoiceNo>
-    <V_Date>2025-07-14T00:00:00+05:30</V_Date>
-    <InvoiceAmount>151552</InvoiceAmount>
+    <InvoiceNo>1011</InvoiceNo>
+    <V_Date>2025-10-01T00:00:00+05:30</V_Date>
+    <InvoiceAmount>45077</InvoiceAmount>
     <SettlementAddition>0</SettlementAddition>
     <SettlementDeduction>0</SettlementDeduction>
     <LineDeduction>0</LineDeduction>
-    <SettlementInvoiceAmount>151552</SettlementInvoiceAmount>
+    <SettlementInvoiceAmount>45077</SettlementInvoiceAmount>
   </Table>
   <Table>
-    <InvoiceNo>310</InvoiceNo>
-    <V_Date>2025-07-14T00:00:00+05:30</V_Date>
-    <InvoiceAmount>139981</InvoiceAmount>
+    <InvoiceNo>1012</InvoiceNo>
+    <V_Date>2025-10-01T00:00:00+05:30</V_Date>
+    <InvoiceAmount>45077</InvoiceAmount>
     <SettlementAddition>0</SettlementAddition>
     <SettlementDeduction>0</SettlementDeduction>
     <LineDeduction>0</LineDeduction>
-    <SettlementInvoiceAmount>139981</SettlementInvoiceAmount>
+    <SettlementInvoiceAmount>45077</SettlementInvoiceAmount>
   </Table>
   <Table>
-    <InvoiceNo>312</InvoiceNo>
-    <V_Date>2025-07-15T00:00:00+05:30</V_Date>
-    <InvoiceAmount>67190</InvoiceAmount>
+    <InvoiceNo>1013</InvoiceNo>
+    <V_Date>2025-10-01T00:00:00+05:30</V_Date>
+    <InvoiceAmount>69741</InvoiceAmount>
     <SettlementAddition>0</SettlementAddition>
     <SettlementDeduction>0</SettlementDeduction>
     <LineDeduction>0</LineDeduction>
-    <SettlementInvoiceAmount>67190</SettlementInvoiceAmount>
+    <SettlementInvoiceAmount>69741</SettlementInvoiceAmount>
   </Table>
   <Table>
-    <InvoiceNo>432</InvoiceNo>
-    <V_Date>2025-09-01T00:00:00+05:30</V_Date>
-    <InvoiceAmount>102260</InvoiceAmount>
+    <InvoiceNo>1014</InvoiceNo>
+    <V_Date>2025-10-01T00:00:00+05:30</V_Date>
+    <InvoiceAmount>66481</InvoiceAmount>
     <SettlementAddition>0</SettlementAddition>
     <SettlementDeduction>0</SettlementDeduction>
     <LineDeduction>0</LineDeduction>
-    <SettlementInvoiceAmount>102260</SettlementInvoiceAmount>
+    <SettlementInvoiceAmount>66481</SettlementInvoiceAmount>
   </Table>
   <Table>
-    <InvoiceNo>433</InvoiceNo>
-    <V_Date>2025-09-01T00:00:00+05:30</V_Date>
-    <InvoiceAmount>139109</InvoiceAmount>
+    <InvoiceNo>1015</InvoiceNo>
+    <V_Date>2025-10-01T00:00:00+05:30</V_Date>
+    <InvoiceAmount>102958</InvoiceAmount>
     <SettlementAddition>0</SettlementAddition>
     <SettlementDeduction>0</SettlementDeduction>
     <LineDeduction>0</LineDeduction>
-    <SettlementInvoiceAmount>139109</SettlementInvoiceAmount>
+    <SettlementInvoiceAmount>102958</SettlementInvoiceAmount>
   </Table>
   <Table>
-    <InvoiceNo>434</InvoiceNo>
-    <V_Date>2025-09-01T00:00:00+05:30</V_Date>
-    <InvoiceAmount>111216</InvoiceAmount>
+    <InvoiceNo>1016</InvoiceNo>
+    <V_Date>2025-10-01T00:00:00+05:30</V_Date>
+    <InvoiceAmount>68375</InvoiceAmount>
     <SettlementAddition>0</SettlementAddition>
     <SettlementDeduction>0</SettlementDeduction>
     <LineDeduction>0</LineDeduction>
-    <SettlementInvoiceAmount>111216</SettlementInvoiceAmount>
+    <SettlementInvoiceAmount>68375</SettlementInvoiceAmount>
   </Table>
   <Table>
-    <InvoiceNo>661</InvoiceNo>
-    <V_Date>2025-09-17T00:00:00+05:30</V_Date>
-    <InvoiceAmount>101551</InvoiceAmount>
+    <InvoiceNo>979</InvoiceNo>
+    <V_Date>2025-10-01T00:00:00+05:30</V_Date>
+    <InvoiceAmount>71796</InvoiceAmount>
     <SettlementAddition>0</SettlementAddition>
     <SettlementDeduction>0</SettlementDeduction>
     <LineDeduction>0</LineDeduction>
-    <SettlementInvoiceAmount>101551</SettlementInvoiceAmount>
+    <SettlementInvoiceAmount>71796</SettlementInvoiceAmount>
   </Table>
   <Table>
-    <InvoiceNo>662</InvoiceNo>
-    <V_Date>2025-09-17T00:00:00+05:30</V_Date>
-    <InvoiceAmount>98485</InvoiceAmount>
+    <InvoiceNo>986</InvoiceNo>
+    <V_Date>2025-10-01T00:00:00+05:30</V_Date>
+    <InvoiceAmount>96395</InvoiceAmount>
     <SettlementAddition>0</SettlementAddition>
     <SettlementDeduction>0</SettlementDeduction>
     <LineDeduction>0</LineDeduction>
-    <SettlementInvoiceAmount>98485</SettlementInvoiceAmount>
+    <SettlementInvoiceAmount>96395</SettlementInvoiceAmount>
   </Table>
   <Table>
-    <InvoiceNo>726</InvoiceNo>
-    <V_Date>2025-09-20T00:00:00+05:30</V_Date>
-    <InvoiceAmount>116062</InvoiceAmount>
+    <InvoiceNo>1000</InvoiceNo>
+    <V_Date>2025-10-01T00:00:00+05:30</V_Date>
+    <InvoiceAmount>68834</InvoiceAmount>
     <SettlementAddition>0</SettlementAddition>
     <SettlementDeduction>0</SettlementDeduction>
     <LineDeduction>0</LineDeduction>
-    <SettlementInvoiceAmount>116062</SettlementInvoiceAmount>
+    <SettlementInvoiceAmount>68834</SettlementInvoiceAmount>
+  </Table>
+  <Table>
+    <InvoiceNo>980</InvoiceNo>
+    <V_Date>2025-10-01T00:00:00+05:30</V_Date>
+    <InvoiceAmount>73001</InvoiceAmount>
+    <SettlementAddition>0</SettlementAddition>
+    <SettlementDeduction>0</SettlementDeduction>
+    <LineDeduction>0</LineDeduction>
+    <SettlementInvoiceAmount>73001</SettlementInvoiceAmount>
+  </Table>
+  <Table>
+    <InvoiceNo>1027</InvoiceNo>
+    <V_Date>2025-10-02T00:00:00+05:30</V_Date>
+    <InvoiceAmount>72860</InvoiceAmount>
+    <SettlementAddition>0</SettlementAddition>
+    <SettlementDeduction>0</SettlementDeduction>
+    <LineDeduction>0</LineDeduction>
+    <SettlementInvoiceAmount>72860</SettlementInvoiceAmount>
+  </Table>
+  <Table>
+    <InvoiceNo>1028</InvoiceNo>
+    <V_Date>2025-10-02T00:00:00+05:30</V_Date>
+    <InvoiceAmount>61520</InvoiceAmount>
+    <SettlementAddition>0</SettlementAddition>
+    <SettlementDeduction>0</SettlementDeduction>
+    <LineDeduction>0</LineDeduction>
+    <SettlementInvoiceAmount>61520</SettlementInvoiceAmount>
+  </Table>
+  <Table>
+    <InvoiceNo>1039</InvoiceNo>
+    <V_Date>2025-10-03T00:00:00+05:30</V_Date>
+    <InvoiceAmount>59365</InvoiceAmount>
+    <SettlementAddition>0</SettlementAddition>
+    <SettlementDeduction>0</SettlementDeduction>
+    <LineDeduction>0</LineDeduction>
+    <SettlementInvoiceAmount>59365</SettlementInvoiceAmount>
+  </Table>
+  <Table>
+    <InvoiceNo>1038</InvoiceNo>
+    <V_Date>2025-10-03T00:00:00+05:30</V_Date>
+    <InvoiceAmount>75425</InvoiceAmount>
+    <SettlementAddition>0</SettlementAddition>
+    <SettlementDeduction>0</SettlementDeduction>
+    <LineDeduction>0</LineDeduction>
+    <SettlementInvoiceAmount>75425</SettlementInvoiceAmount>
+  </Table>
+  <Table>
+    <InvoiceNo>1040</InvoiceNo>
+    <V_Date>2025-10-03T00:00:00+05:30</V_Date>
+    <InvoiceAmount>95752</InvoiceAmount>
+    <SettlementAddition>0</SettlementAddition>
+    <SettlementDeduction>0</SettlementDeduction>
+    <LineDeduction>0</LineDeduction>
+    <SettlementInvoiceAmount>95752</SettlementInvoiceAmount>
+  </Table>
+  <Table>
+    <InvoiceNo>1036</InvoiceNo>
+    <V_Date>2025-10-03T00:00:00+05:30</V_Date>
+    <InvoiceAmount>68357</InvoiceAmount>
+    <SettlementAddition>0</SettlementAddition>
+    <SettlementDeduction>0</SettlementDeduction>
+    <LineDeduction>0</LineDeduction>
+    <SettlementInvoiceAmount>68357</SettlementInvoiceAmount>
+  </Table>
+  <Table>
+    <InvoiceNo>1037</InvoiceNo>
+    <V_Date>2025-10-03T00:00:00+05:30</V_Date>
+    <InvoiceAmount>56686</InvoiceAmount>
+    <SettlementAddition>0</SettlementAddition>
+    <SettlementDeduction>0</SettlementDeduction>
+    <LineDeduction>0</LineDeduction>
+    <SettlementInvoiceAmount>56686</SettlementInvoiceAmount>
+  </Table>
+  <Table>
+    <InvoiceNo>1035</InvoiceNo>
+    <V_Date>2025-10-03T00:00:00+05:30</V_Date>
+    <InvoiceAmount>65290</InvoiceAmount>
+    <SettlementAddition>0</SettlementAddition>
+    <SettlementDeduction>0</SettlementDeduction>
+    <LineDeduction>0</LineDeduction>
+    <SettlementInvoiceAmount>65290</SettlementInvoiceAmount>
+  </Table>
+  <Table>
+    <InvoiceNo>1041</InvoiceNo>
+    <V_Date>2025-10-04T00:00:00+05:30</V_Date>
+    <InvoiceAmount>65630</InvoiceAmount>
+    <SettlementAddition>0</SettlementAddition>
+    <SettlementDeduction>0</SettlementDeduction>
+    <LineDeduction>0</LineDeduction>
+    <SettlementInvoiceAmount>65630</SettlementInvoiceAmount>
+  </Table>
+  <Table>
+    <InvoiceNo>1042</InvoiceNo>
+    <V_Date>2025-10-04T00:00:00+05:30</V_Date>
+    <InvoiceAmount>86723</InvoiceAmount>
+    <SettlementAddition>0</SettlementAddition>
+    <SettlementDeduction>0</SettlementDeduction>
+    <LineDeduction>0</LineDeduction>
+    <SettlementInvoiceAmount>86723</SettlementInvoiceAmount>
+  </Table>
+  <Table>
+    <InvoiceNo>1043</InvoiceNo>
+    <V_Date>2025-10-04T00:00:00+05:30</V_Date>
+    <InvoiceAmount>74164</InvoiceAmount>
+    <SettlementAddition>0</SettlementAddition>
+    <SettlementDeduction>0</SettlementDeduction>
+    <LineDeduction>0</LineDeduction>
+    <SettlementInvoiceAmount>74164</SettlementInvoiceAmount>
+  </Table>
+  <Table>
+    <InvoiceNo>1059</InvoiceNo>
+    <V_Date>2025-10-05T00:00:00+05:30</V_Date>
+    <InvoiceAmount>65205</InvoiceAmount>
+    <SettlementAddition>0</SettlementAddition>
+    <SettlementDeduction>0</SettlementDeduction>
+    <LineDeduction>0</LineDeduction>
+    <SettlementInvoiceAmount>65205</SettlementInvoiceAmount>
+  </Table>
+  <Table>
+    <InvoiceNo>1061</InvoiceNo>
+    <V_Date>2025-10-05T00:00:00+05:30</V_Date>
+    <InvoiceAmount>77112</InvoiceAmount>
+    <SettlementAddition>0</SettlementAddition>
+    <SettlementDeduction>0</SettlementDeduction>
+    <LineDeduction>0</LineDeduction>
+    <SettlementInvoiceAmount>77112</SettlementInvoiceAmount>
+  </Table>
+  <Table>
+    <InvoiceNo>1060</InvoiceNo>
+    <V_Date>2025-10-05T00:00:00+05:30</V_Date>
+    <InvoiceAmount>65914</InvoiceAmount>
+    <SettlementAddition>0</SettlementAddition>
+    <SettlementDeduction>0</SettlementDeduction>
+    <LineDeduction>0</LineDeduction>
+    <SettlementInvoiceAmount>65914</SettlementInvoiceAmount>
+  </Table>
+  <Table>
+    <InvoiceNo>1067</InvoiceNo>
+    <V_Date>2025-10-06T00:00:00+05:30</V_Date>
+    <InvoiceAmount>69458</InvoiceAmount>
+    <SettlementAddition>0</SettlementAddition>
+    <SettlementDeduction>0</SettlementDeduction>
+    <LineDeduction>0</LineDeduction>
+    <SettlementInvoiceAmount>69458</SettlementInvoiceAmount>
+  </Table>
+  <Table>
+    <InvoiceNo>1069</InvoiceNo>
+    <V_Date>2025-10-06T00:00:00+05:30</V_Date>
+    <InvoiceAmount>86515</InvoiceAmount>
+    <SettlementAddition>0</SettlementAddition>
+    <SettlementDeduction>0</SettlementDeduction>
+    <LineDeduction>0</LineDeduction>
+    <SettlementInvoiceAmount>86515</SettlementInvoiceAmount>
+  </Table>
+  <Table>
+    <InvoiceNo>1068</InvoiceNo>
+    <V_Date>2025-10-06T00:00:00+05:30</V_Date>
+    <InvoiceAmount>77443</InvoiceAmount>
+    <SettlementAddition>0</SettlementAddition>
+    <SettlementDeduction>0</SettlementDeduction>
+    <LineDeduction>0</LineDeduction>
+    <SettlementInvoiceAmount>77443</SettlementInvoiceAmount>
+  </Table>
+  <Table>
+    <InvoiceNo>1080</InvoiceNo>
+    <V_Date>2025-10-07T00:00:00+05:30</V_Date>
+    <InvoiceAmount>65819</InvoiceAmount>
+    <SettlementAddition>0</SettlementAddition>
+    <SettlementDeduction>0</SettlementDeduction>
+    <LineDeduction>0</LineDeduction>
+    <SettlementInvoiceAmount>65819</SettlementInvoiceAmount>
+  </Table>
+  <Table>
+    <InvoiceNo>1081</InvoiceNo>
+    <V_Date>2025-10-07T00:00:00+05:30</V_Date>
+    <InvoiceAmount>85069</InvoiceAmount>
+    <SettlementAddition>0</SettlementAddition>
+    <SettlementDeduction>0</SettlementDeduction>
+    <LineDeduction>0</LineDeduction>
+    <SettlementInvoiceAmount>85069</SettlementInvoiceAmount>
+  </Table>
+  <Table>
+    <InvoiceNo>1084</InvoiceNo>
+    <V_Date>2025-10-07T00:00:00+05:30</V_Date>
+    <InvoiceAmount>80032</InvoiceAmount>
+    <SettlementAddition>0</SettlementAddition>
+    <SettlementDeduction>0</SettlementDeduction>
+    <LineDeduction>0</LineDeduction>
+    <SettlementInvoiceAmount>80032</SettlementInvoiceAmount>
+  </Table>
+  <Table>
+    <InvoiceNo>1085</InvoiceNo>
+    <V_Date>2025-10-07T00:00:00+05:30</V_Date>
+    <InvoiceAmount>88537</InvoiceAmount>
+    <SettlementAddition>0</SettlementAddition>
+    <SettlementDeduction>0</SettlementDeduction>
+    <LineDeduction>0</LineDeduction>
+    <SettlementInvoiceAmount>88537</SettlementInvoiceAmount>
+  </Table>
+  <Table>
+    <InvoiceNo>1083</InvoiceNo>
+    <V_Date>2025-10-07T00:00:00+05:30</V_Date>
+    <InvoiceAmount>83349</InvoiceAmount>
+    <SettlementAddition>0</SettlementAddition>
+    <SettlementDeduction>0</SettlementDeduction>
+    <LineDeduction>0</LineDeduction>
+    <SettlementInvoiceAmount>83349</SettlementInvoiceAmount>
+  </Table>
+  <Table>
+    <InvoiceNo>1082</InvoiceNo>
+    <V_Date>2025-10-07T00:00:00+05:30</V_Date>
+    <InvoiceAmount>74929</InvoiceAmount>
+    <SettlementAddition>0</SettlementAddition>
+    <SettlementDeduction>0</SettlementDeduction>
+    <LineDeduction>0</LineDeduction>
+    <SettlementInvoiceAmount>74929</SettlementInvoiceAmount>
+  </Table>
+  <Table>
+    <InvoiceNo>1107</InvoiceNo>
+    <V_Date>2025-10-09T00:00:00+05:30</V_Date>
+    <InvoiceAmount>58118</InvoiceAmount>
+    <SettlementAddition>0</SettlementAddition>
+    <SettlementDeduction>0</SettlementDeduction>
+    <LineDeduction>0</LineDeduction>
+    <SettlementInvoiceAmount>58118</SettlementInvoiceAmount>
+  </Table>
+  <Table>
+    <InvoiceNo>1109</InvoiceNo>
+    <V_Date>2025-10-09T00:00:00+05:30</V_Date>
+    <InvoiceAmount>103988</InvoiceAmount>
+    <SettlementAddition>0</SettlementAddition>
+    <SettlementDeduction>0</SettlementDeduction>
+    <LineDeduction>0</LineDeduction>
+    <SettlementInvoiceAmount>103988</SettlementInvoiceAmount>
+  </Table>
+  <Table>
+    <InvoiceNo>1110</InvoiceNo>
+    <V_Date>2025-10-09T00:00:00+05:30</V_Date>
+    <InvoiceAmount>90295</InvoiceAmount>
+    <SettlementAddition>0</SettlementAddition>
+    <SettlementDeduction>0</SettlementDeduction>
+    <LineDeduction>0</LineDeduction>
+    <SettlementInvoiceAmount>90295</SettlementInvoiceAmount>
+  </Table>
+  <Table>
+    <InvoiceNo>1120</InvoiceNo>
+    <V_Date>2025-10-10T00:00:00+05:30</V_Date>
+    <InvoiceAmount>67700</InvoiceAmount>
+    <SettlementAddition>0</SettlementAddition>
+    <SettlementDeduction>0</SettlementDeduction>
+    <LineDeduction>0</LineDeduction>
+    <SettlementInvoiceAmount>67700</SettlementInvoiceAmount>
+  </Table>
+  <Table>
+    <InvoiceNo>1150</InvoiceNo>
+    <V_Date>2025-10-13T00:00:00+05:30</V_Date>
+    <InvoiceAmount>104583</InvoiceAmount>
+    <SettlementAddition>0</SettlementAddition>
+    <SettlementDeduction>0</SettlementDeduction>
+    <LineDeduction>0</LineDeduction>
+    <SettlementInvoiceAmount>104583</SettlementInvoiceAmount>
+  </Table>
+  <Table>
+    <InvoiceNo>1148</InvoiceNo>
+    <V_Date>2025-10-13T00:00:00+05:30</V_Date>
+    <InvoiceAmount>72387</InvoiceAmount>
+    <SettlementAddition>0</SettlementAddition>
+    <SettlementDeduction>0</SettlementDeduction>
+    <LineDeduction>0</LineDeduction>
+    <SettlementInvoiceAmount>72387</SettlementInvoiceAmount>
+  </Table>
+  <Table>
+    <InvoiceNo>1149</InvoiceNo>
+    <V_Date>2025-10-13T00:00:00+05:30</V_Date>
+    <InvoiceAmount>84270</InvoiceAmount>
+    <SettlementAddition>0</SettlementAddition>
+    <SettlementDeduction>0</SettlementDeduction>
+    <LineDeduction>0</LineDeduction>
+    <SettlementInvoiceAmount>84270</SettlementInvoiceAmount>
+  </Table>
+  <Table>
+    <InvoiceNo>1162</InvoiceNo>
+    <V_Date>2025-10-14T00:00:00+05:30</V_Date>
+    <InvoiceAmount>68513</InvoiceAmount>
+    <SettlementAddition>0</SettlementAddition>
+    <SettlementDeduction>0</SettlementDeduction>
+    <LineDeduction>0</LineDeduction>
+    <SettlementInvoiceAmount>68513</SettlementInvoiceAmount>
+  </Table>
+  <Table>
+    <InvoiceNo>1159</InvoiceNo>
+    <V_Date>2025-10-14T00:00:00+05:30</V_Date>
+    <InvoiceAmount>101918</InvoiceAmount>
+    <SettlementAddition>0</SettlementAddition>
+    <SettlementDeduction>0</SettlementDeduction>
+    <LineDeduction>0</LineDeduction>
+    <SettlementInvoiceAmount>101918</SettlementInvoiceAmount>
   </Table>
 </NewDataSet>

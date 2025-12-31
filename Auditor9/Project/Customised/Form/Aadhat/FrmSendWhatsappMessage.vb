@@ -49,12 +49,12 @@ Public Class FrmSendWhatsappMessage
     End Function
 
     Private Sub BtnSendMessageForTodaySaleInvoice_Click(sender As Object, e As EventArgs) Handles BtnSendMessageForTodaySaleInvoice.Click
-        'BtnSendMessageForTodaySaleInvoice.Enabled = False
-        '_backgroundWorker1 = New System.ComponentModel.BackgroundWorker()
-        '_backgroundWorker1.WorkerSupportsCancellation = False
-        '_backgroundWorker1.WorkerReportsProgress = False
-        ''AddHandler Me._backgroundWorker1.DoWork, New DoWorkEventHandler(AddressOf Me.FProcMessageForTodaySaleInvoice)
-        '_backgroundWorker1.RunWorkerAsync()
+        BtnSendMessageForTodaySaleInvoice.Enabled = False
+        _backgroundWorker1 = New System.ComponentModel.BackgroundWorker()
+        _backgroundWorker1.WorkerSupportsCancellation = False
+        _backgroundWorker1.WorkerReportsProgress = False
+        AddHandler Me._backgroundWorker1.DoWork, New DoWorkEventHandler(AddressOf Me.FProcMessageForTodaySaleInvoice)
+        _backgroundWorker1.RunWorkerAsync()
     End Sub
 
     Private Sub BtnSendMessageForTodayLRUpdate_Click(sender As Object, e As EventArgs) Handles BtnSendMessageForTodayLRUpdate.Click

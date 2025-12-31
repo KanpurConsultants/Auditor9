@@ -231,6 +231,12 @@
     <Compile Include="Form\Aadhat\FrmWhatsapp1.vb">
       <SubType>Form</SubType>
     </Compile>
+    <Compile Include="Form\FrmImportDataFromWeb.Designer.vb">
+      <DependentUpon>FrmImportDataFromWeb.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Form\FrmImportDataFromWeb.vb">
+      <SubType>Form</SubType>
+    </Compile>
     <Compile Include="Form\FrmPrintBarcodeSS.Designer.vb">
       <DependentUpon>FrmPrintBarcodeSS.vb</DependentUpon>
     </Compile>
@@ -1418,6 +1424,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Form\Aadhat\FrmSaleReturnW.resx">
       <DependentUpon>FrmSaleReturnW.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Form\FrmImportDataFromWeb.resx">
+      <DependentUpon>FrmImportDataFromWeb.vb</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Form\FrmPrintBarcodeSS.resx">
       <DependentUpon>FrmPrintBarcodeSS.vb</DependentUpon>

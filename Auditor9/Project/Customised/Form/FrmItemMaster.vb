@@ -3441,6 +3441,7 @@ Public Class FrmItemMaster
                 ItemTable.SalesTaxPostingGroup = AgL.Dman_Execute("SELECT Description From PostingGroupSalesTaxItem With (NoLock) WHERE GrossTaxRate = " & AgL.Chk_Text(ItemTable.SalesTaxPostingGroup) & "", IIf(AgL.PubServerName = "", AgL.GCn, AgL.GcnRead)).ExecuteScalar()
             End If
 
+
             mQry = " INSERT INTO Item(Code, ManualCode, Description, DisplayName, Specification, ItemGroup, ItemCategory, ItemType, BaseItem, Dimension1, Dimension2, Dimension3, Dimension4, Size, V_Type, Unit,
                     PurchaseRate, Rate, 
                     SalesTaxPostingGroup, HSN, Remark, Remark1, BarcodeType, BarcodePattern, EntryBy, EntryDate, EntryType, EntryStatus, Status, Div_Code, LockText, OMSId, StockYN, IsSystemDefine) 
@@ -3478,31 +3479,49 @@ Public Class FrmItemMaster
                     " & AgL.Chk_Text(ItemTable.OMSId) & " As OMSId , 
                     " & AgL.Chk_Text(ItemTable.StockYN) & " As StockYN, 
                     " & AgL.Chk_Text(ItemTable.IsSystemDefine) & " As IsSystemDefine "
-            AgL.Dman_ExecuteNonQry(mQry, AgL.GCn, AgL.ECmd)
+                AgL.Dman_ExecuteNonQry(mQry, AgL.GCn, AgL.ECmd)
 
 
+
+            If (ItemTable.BarcodeDesc <> "") Then
+                Dim barcodecode As Integer = 0
+                barcodecode = AgL.Dman_Execute("Select IfNull(Max(Code),0) + 1 From BarCode With (NoLock)", AgL.GcnRead).ExecuteScalar()
+
+                mQry = "INSERT INTO Barcode (Code, Description, Div_Code, Item, GenDocID, GenSr, Qty, OmsId)
+                    Select " & barcodecode & " As Code, " & AgL.Chk_Text(ItemTable.BarcodeDesc) & " As Description, 'D' AS Div_Code, 
+                    '" & ItemTable.Code & "' As Item, '" & ItemTable.Code & "' As GenDocID, 1 AS GenSr, 0 AS Qty, '" & ItemTable.BarcodeOMSId & "' As OmsId "
+                AgL.Dman_ExecuteNonQry(mQry, AgL.GCn, AgL.ECmd)
+
+                mQry = "INSERT INTO dbo.BarcodeSiteDetail (Code, Div_Code, Site_Code, Status)
+                    Select " & barcodecode & " As Code, 'D' AS Div_Code, '1' AS Site_Code, 'Receive' As Status"
+                AgL.Dman_ExecuteNonQry(mQry, AgL.GCn, AgL.ECmd)
+
+                mQry = "UPDATE Item SET Barcode =" & barcodecode & " WHERE Code = '" & ItemTable.Code & "'"
+                AgL.Dman_ExecuteNonQry(mQry, AgL.GCn, AgL.ECmd)
+
+            End If
 
 
             Dim RateListTable As New StructRateList
 
-            RateListTable.Code = ItemTable.Code
-            RateListTable.WEF = AgL.PubLoginDate
-            RateListTable.RateType = ""
-            RateListTable.EntryBy = AgL.PubUserName
-            RateListTable.EntryDate = AgL.GetDateTime(IIf(AgL.PubServerName = "", AgL.GCn, AgL.GcnRead))
-            RateListTable.EntryType = "Add"
-            RateListTable.EntryStatus = LogStatus.LogOpen
-            RateListTable.Status = "Active"
-            RateListTable.Div_Code = AgL.PubDivCode
-            RateListTable.Line_Sr = 0
-            RateListTable.Line_WEF = AgL.PubStartDate
-            RateListTable.Line_Item = ItemTable.Code
-            RateListTable.Line_RateType = ""
-            RateListTable.Line_Rate = ItemTable.Rate
+                RateListTable.Code = ItemTable.Code
+                RateListTable.WEF = AgL.PubLoginDate
+                RateListTable.RateType = ""
+                RateListTable.EntryBy = AgL.PubUserName
+                RateListTable.EntryDate = AgL.GetDateTime(IIf(AgL.PubServerName = "", AgL.GCn, AgL.GcnRead))
+                RateListTable.EntryType = "Add"
+                RateListTable.EntryStatus = LogStatus.LogOpen
+                RateListTable.Status = "Active"
+                RateListTable.Div_Code = AgL.PubDivCode
+                RateListTable.Line_Sr = 0
+                RateListTable.Line_WEF = AgL.PubStartDate
+                RateListTable.Line_Item = ItemTable.Code
+                RateListTable.Line_RateType = ""
+                RateListTable.Line_Rate = ItemTable.Rate
 
-            ImportRateListTable(RateListTable)
-        Else
-            ItemTable.Code = AgL.Dman_Execute("SELECT Code From Item With (NoLock) where Description = " & AgL.Chk_Text(ItemTable.Description) & "", IIf(AgL.PubServerName = "", AgL.GCn, AgL.GcnRead)).ExecuteScalar
+                ImportRateListTable(RateListTable)
+            Else
+                ItemTable.Code = AgL.Dman_Execute("SELECT Code From Item With (NoLock) where Description = " & AgL.Chk_Text(ItemTable.Description) & "", IIf(AgL.PubServerName = "", AgL.GCn, AgL.GcnRead)).ExecuteScalar
             If AgL.XNull(ItemTable.ItemGroupCode) = "" And AgL.XNull(ItemTable.ItemGroupDesc) <> "" Then
                 ItemTable.ItemGroupCode = AgL.Dman_Execute("SELECT Code From ItemGroup With (NoLock) Where Replace(Description,' ','') = Replace(" & AgL.Chk_Text(ItemTable.ItemGroupDesc) & ",' ','')", IIf(AgL.PubServerName = "", AgL.GCn, AgL.GcnRead)).ExecuteScalar()
             End If
@@ -3685,6 +3704,7 @@ Public Class FrmItemMaster
         Dim Div_Code As String
         Dim Status As String
         Dim OMSId As String
+        Dim ProductGroupCode As String
     End Structure
     Public Structure StructItemGroupPerson
         Dim ItemCategory As String
@@ -3746,6 +3766,8 @@ Public Class FrmItemMaster
         Dim Unit As String
         Dim BarcodeType As String
         Dim BarcodePattern As String
+        Dim BarcodeOMSId As String
+        Dim BarcodeDesc As String
         Dim EntryBy As String
         Dim EntryDate As String
         Dim EntryType As String

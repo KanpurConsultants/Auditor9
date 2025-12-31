@@ -1192,13 +1192,13 @@ Public Class FrmPartyAcSettlement
             .AddAgDateColumn(Dgl2, Col2InvoiceDate, 90, Col2InvoiceDate, True, True)
             .AddAgNumberColumn(Dgl2, Col2TaxableAmount, 80, 8, 2, False, Col2TaxableAmount, True, True, True)
             .AddAgNumberColumn(Dgl2, Col2InvoiceAmount, 80, 8, 2, False, Col2InvoiceAmount, True, True, True)
+            .AddAgTextColumn(Dgl2, Col2SettlementRemark, 100, 0, Col2SettlementRemark, True, False, False)
             .AddAgNumberColumn(Dgl2, Col2SettlementAddition, 80, 8, 2, False, Col2SettlementAddition, True, True, True)
             .AddAgNumberColumn(Dgl2, Col2SettlementDeduction, 80, 8, 2, False, Col2SettlementDeduction, True, True, True)
             .AddAgNumberColumn(Dgl2, Col2ItemDeductions, 80, 8, 2, False, Col2ItemDeductions, True, True, True)
             .AddAgNumberColumn(Dgl2, Col2SettlementInvoiceAmount, 80, 8, 2, False, Col2SettlementInvoiceAmount, True, True, True)
             .AddAgButtonColumn(Dgl2, Col2BtnItemDetail, 35, Col2BtnItemDetail, True, False)
             .AddAgButtonColumn(Dgl2, Col2BtnAdjDetail, 35, Col2BtnAdjDetail, True, False)
-            .AddAgTextColumn(Dgl2, Col2SettlementRemark, 100, 0, Col2SettlementRemark, True, False, False)
             .AddAgNumberColumn(Dgl2, Col2AdjustedAmount, 90, 8, 2, False, Col2AdjustedAmount, False, True, False)
             .AddAgNumberColumn(Dgl2, Col2CommissionAmount, 90, 8, 2, False, Col2AdjustedAmount, False, True, False)
             .AddAgTextColumn(Dgl2, Col2CommissionRemark, 100, 0, Col2SettlementRemark, False, False, False)
@@ -1225,9 +1225,9 @@ Public Class FrmPartyAcSettlement
             .AddAgTextColumn(Dgl3, Col3PaymentNo, 100, 0, Col3PaymentNo, True, True, False)
             .AddAgTextColumn(Dgl3, Col3PaymentSr, 50, 0, Col3PaymentSr, False, True, False)
             .AddAgDateColumn(Dgl3, Col3PaymentDate, 90, Col3PaymentDate, True, True)
-            .AddAgTextColumn(Dgl3, Col3Subcode, 140, 0, Col3Subcode, True, True, False)
             .AddAgNumberColumn(Dgl3, Col3Amount, 90, 8, 2, False, Col3Amount, True, True, False)
-            .AddAgNumberColumn(Dgl3, Col3PaymentRemark, 90, 8, 2, False, Col3PaymentRemark, True, True, False)
+            .AddAgTextColumn(Dgl3, Col3PaymentRemark, 90, 0, Col3PaymentRemark, True, False, False)
+            .AddAgTextColumn(Dgl3, Col3Subcode, 140, 0, Col3Subcode, True, True, False)
             .AddAgNumberColumn(Dgl3, Col3AdjustedAmount, 90, 8, 2, False, Col3AdjustedAmount, True, True, False)
             .AddAgNumberColumn(Dgl3, Col3Discount, 90, 8, 2, False, Col3Discount, True, True, False)
         End With
@@ -1526,11 +1526,12 @@ Public Class FrmPartyAcSettlement
                 If Dgl3.Item(ColSNo, I).Tag Is Nothing And Dgl3.Rows(I).Visible = True Then
                     If Dgl3.Item(Col3Select, I).Value = "þ" Then
                         mSr += 1
-                        mQry = "Insert Into Cloth_SupplierSettlementPayments (DocID, Sr, PaymentDocID, PaymentDocIdSr, PaidAmount, AdjustedAmount, Discount)
+                        mQry = "Insert Into Cloth_SupplierSettlementPayments (DocID, Sr, PaymentDocID, PaymentDocIdSr, PaidAmount, SettlementRemark, AdjustedAmount, Discount)
                             Values ('" & mSearchCode & "', " & mSr & ",
                             " & AgL.Chk_Text(Dgl3.Item(Col3PaymentNo, I).Tag) & ",
                             " & AgL.Chk_Text(Dgl3.Item(Col3PaymentSr, I).Value) & ",
                             " & Val(Dgl3.Item(Col3Amount, I).Value) & ",
+                            " & AgL.Chk_Text(Dgl3.Item(Col3PaymentRemark, I).Value) & ",
                             " & Val(Dgl3.Item(Col3AdjustedAmount, I).Value) & ",
                             " & Val(Dgl3.Item(Col3Discount, I).Value) & "                            
                             )"
@@ -1547,6 +1548,7 @@ Public Class FrmPartyAcSettlement
                             PaymentDocId = " & AgL.Chk_Text(Dgl3.Item(Col3PaymentNo, I).Tag) & ",
                             PaymentDocIdSr = " & AgL.Chk_Text(Dgl3.Item(Col3PaymentSr, I).Value) & ",
                             PaidAmount = " & Val(Dgl3.Item(Col3Amount, I).Value) & ",
+                            SettlementRemark = " & AgL.Chk_Text(Dgl3.Item(Col3PaymentRemark, I).Value) & ",
                             AdjustedAmount = " & Val(Dgl3.Item(Col3AdjustedAmount, I).Value) & ",
                             Discount = " & Val(Dgl3.Item(Col3Discount, I).Value) & "
                             Where DocID = '" & mSearchCode & "'
@@ -2092,6 +2094,7 @@ Public Class FrmPartyAcSettlement
                             Dgl3.Item(Col3PaymentDate, I).Value = ClsMain.FormatDate(AgL.XNull(.Rows(I)("V_Date")))
                             Dgl3.Item(Col3Amount, I).Value = AgL.VNull(.Rows(I)("PaidAmount"))
                             Dgl3.Item(Col3Subcode, I).Value = AgL.XNull(.Rows(I)("ContraName"))
+                            Dgl3.Item(Col3PaymentRemark, I).Value = AgL.XNull(.Rows(I)("SettlementRemark"))
                             Dgl3.Item(Col3AdjustedAmount, I).Value = AgL.VNull(.Rows(I)("AdjustedAmount"))
                             Dgl3.Item(Col3Discount, I).Value = AgL.VNull(.Rows(I)("Discount"))
                             Dgl3.Item(Col3Select, I).Value = "þ"
@@ -3220,7 +3223,9 @@ Public Class FrmPartyAcSettlement
             End If
         End If
     End Sub
-    Private Sub FGetPrint(ByVal SearchCode As String, mPrintFor As ClsMain.PrintFor)
+
+    Public Sub FGetPrint(ByVal SearchCode As String, mPrintFor As ClsMain.PrintFor,
+                         Optional ByVal IsPrintToPrinter As Boolean = False, Optional BulkCondStr As String = "")
         Dim dsMain As DataTable
         Dim dsInvoice As DataTable
         Dim dsPayment As DataTable
@@ -3279,7 +3284,19 @@ Public Class FrmPartyAcSettlement
 
         dsInvoice = AgL.FillData(mQry, AgL.GCn).Tables(0)
 
-        mQry = "select (Case When IH.PartyDocNo Is Null Then L.DivCode || L.Site_Code || '-' || L.V_Type || '-' || L.RecId Else IH.PartyDocNo End) As PaymentNo,
+        If ClsMain.FDivisionNameForCustomization(6) = "SADHVI" And (AgL.StrCmp(AgL.PubDBName, "Sadhvi") Or AgL.StrCmp(AgL.PubDBName, "Sadhvi2")) Then
+            mQry = "select (Case When IH.PartyDocNo Is Null Then L.DivCode || L.Site_Code || '-' || L.V_Type || '-' || L.RecId Else IH.PartyDocNo End) As PaymentNo,
+                Max(L.V_Date) AS V_Date, isnull(Max(H.SettlementRemark),'') as Narration, Sum(H.PaidAmount) AS PaidAmount, Max(cSg.Name) as ContraName
+                from Cloth_SupplierSettlementPayments H
+                Left Join LedgerHead LH On H.DocID = LH.DocId
+                Left Join Ledger L On H.PaymentDocId =  L.DocID And IfNull(H.PaymentDocIDSr, L.V_SNo) = L.V_SNo And LH.Subcode = L.Subcode
+                Left Join LedgerHead IH On L.DocID = IH.DocID
+                Left Join viewHelpSubgroup cSg On L.ContraSub = cSg.Code And cSg.Nature In ('Cash','Bank')                       
+                Where H.DocID ='" & SearchCode & "'
+                GROUP BY (Case When IH.PartyDocNo Is Null Then L.DivCode + L.Site_Code + '-' + L.V_Type + '-' + L.RecId Else IH.PartyDocNo End) "
+        Else
+
+            mQry = "select (Case When IH.PartyDocNo Is Null Then L.DivCode || L.Site_Code || '-' || L.V_Type || '-' || L.RecId Else IH.PartyDocNo End) As PaymentNo,
                 L.V_Date, CASE WHEN L.Chq_No IS NOT NULL THEN 'Ch.-' || L. Chq_No || ',Dt.-' || Cast(strftime('%d/%m/%Y', IfNull(L.Chq_Date,L.V_Date)) As nvarchar)  When IH.PartyDocNo Is NOT Null Then L.DivCode + L.Site_Code + '-' + L.V_Type + '-' + L.RecId ELSE NULL END as Narration, H.PaidAmount, cSg.Name as ContraName
                 from Cloth_SupplierSettlementPayments H
                 Left Join LedgerHead LH On H.DocID = LH.DocId
@@ -3288,6 +3305,8 @@ Public Class FrmPartyAcSettlement
                 Left Join viewHelpSubgroup cSg On L.ContraSub = cSg.Code And cSg.Nature In ('Cash','Bank')                       
                 Where H.DocID ='" & SearchCode & "'
                 "
+        End If
+
         dsPayment = AgL.FillData(mQry, AgL.GCn).Tables(0)
 
         dsCompany = ClsMain.GetDocumentHeaderDataTable(TxtDivision.Tag, TxtSite_Code.Tag, TxtV_Type.Tag)

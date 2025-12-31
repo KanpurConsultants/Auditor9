@@ -357,7 +357,7 @@ Public Class FrmMatchDataFromOtherDatabase
         mQry = " Select SM.Export_Site_Code, H.DocID, H.V_Date, H.V_No, H.Div_Code, H.Site_Code, H.ManualRefNo,  
                     Sg.Name As BillToPartyName_Master, Sg1.Name As SaleToPartyName_Master, SIL.Qty, SIL.Amount, L.AmtDr, L.AmtCr
                     From SaleInvoice H
-                    LEFT Join SiteMast SM ON 1=1
+                    LEFT Join SiteMast SM ON SM.Code=H.Site_Code
                     LEFT JOIN 
                     (
                     SELECT SIL.DocID, Sum(SIL.Qty) Qty, Sum(SIL.Amount) Amount  FROM SaleInvoiceDetail SIL GROUP BY SIL.DocID 
@@ -375,7 +375,7 @@ Public Class FrmMatchDataFromOtherDatabase
 
         mQry = " SELECT Max(SM.Export_Site_Code) AS Export_Site_Code, Max(H.DivCode) as DivCode, H.DocId, H.SubCode, H.V_Date, Max(H.RecId) as RecId, Sum(H.AmtDr) AS AmtDr, Sum(H.AmtCr) AS AmtCr  
                  FROM Ledger H
-                 LEFT Join SiteMast SM ON 1=1
+                 LEFT Join SiteMast SM ON SM.Code=H.Site_Code
                  Where 1=1 "
         mQry = mQry & " AND Date(H.V_Date) >= " & AgL.Chk_Date(CDate(DglMain.Item(Col1Value, rowDataSyncFromDate).Value).ToString("s")) & "
                 GROUP BY H.DocId, H.V_Date, H.SubCode "

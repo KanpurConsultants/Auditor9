@@ -16,6 +16,7 @@ Public Class FrmSaleInvoiceDirect_WithDimension
 
     Dim mSW As New Stopwatch
 
+    Private WPUsername As String = Customised.ClsMain.FGetSettings(SettingFields.WhatsappUsername, "E Invoice", "", "", "", "", "", "", "")
 
     Public WithEvents AgCalcGrid1 As New AgStructure.AgCalcGrid
     Public WithEvents AgCustomGrid1 As New AgCustomFields.AgCustomGrid
@@ -11741,7 +11742,11 @@ Public Class FrmSaleInvoiceDirect_WithDimension
                 If AgL.StrCmp(AgL.PubUserName, "Super") Then
                     FGetPrint(mSearchCode, ClsMain.PrintFor.Whatsapp)
                 Else
-                    MsgBox("This is a paid service. Contact to software vendor.", MsgBoxStyle.Information)
+                    If WPUsername <> "" Then
+                        FGetPrint(mSearchCode, ClsMain.PrintFor.Whatsapp)
+                    Else
+                        MsgBox("This is a paid service. Contact to software vendor.", MsgBoxStyle.Information)
+                    End If
                 End If
 
             Case MnuReport.Name

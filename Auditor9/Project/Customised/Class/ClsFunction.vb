@@ -244,6 +244,10 @@ Public Class ClsFunction
                         FrmObj = New FrmSyncDataFromOtherDatabase()
                     End If
 
+                Case MDI.MnuImportItemFromWeb.Name
+                    FrmObj = New FrmImportDataFromWeb()
+
+
                 Case MDI.MnuMatchData.Name
                     FrmObj = New FrmMatchDataFromOtherDatabase()
 

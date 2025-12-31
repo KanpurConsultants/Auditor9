@@ -21192,6 +21192,7 @@ Thanks
             AgL.AddFieldSqlite(AgL.GcnMain, "Cloth_SupplierSettlementPayments", "PaymentDocIdSr", "Int", "", True)
             AgL.AddFieldSqlite(AgL.GcnMain, "Cloth_SupplierSettlementPayments", "PaidAmount", "Float", "0", True)
             AgL.AddFieldSqlite(AgL.GcnMain, "Cloth_SupplierSettlementPayments", "AdjustedAmount", "Float", "0", True)
+            AgL.AddFieldSqlite(AgL.GcnMain, "Cloth_SupplierSettlementPayments", "SettlementRemark", "nVarchar(50)", "", True)
             AgL.AddFieldSqlite(AgL.GcnMain, "Cloth_SupplierSettlementPayments", "Discount", "Float", "0", True)
             AgL.AddFieldSqlite(AgL.GcnMain, "Cloth_SupplierSettlementPayments", "Tags", "nVarchar(255)", "", True)
         Catch ex As Exception

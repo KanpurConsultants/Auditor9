@@ -1,0 +1,191 @@
+; Field definition file for table: ADORecordset
+Copies	string	255	1	
+CopyPrintingCaption	string	255	[Original]	
+DocNoCaption	string	255	Invoice No.	
+DocDateCaption	string	255	Invoice Date	
+SiteStateCode	string	255	09	
+SiteStateName	string	255	Uttar Pradesh	
+DocID	string	255	D1    SI 2025     432	
+Sr	number	1	
+V_Date	datetime	30/Nov/2025 00:00:00	
+DeliveryDate	datetime		
+Voucher_Type	string	255	Tax Invoice	
+NCat	string	255	SI	
+InvoiceNo	string	255	-432	
+GenDocNo	string	255		
+AmsDocNo	string	255		
+AmsDocDate	datetime		
+AmsDocNetAmount	number	0	
+RateType	string	255		
+DocumentPrintShowRateType	string	255	Show If Not Blank	
+AgentName	string	255	RAHUL AGNIHOTRI	
+GodownName	string	255		
+GodownAddress	string	255		
+SalesRepName	string	255		
+SalesRepCode	string	255		
+ResponsiblePersonName	string	255		
+AgentCaption	string	255	Agent	
+SaleToPartyName	string	255	ANKUR AGRWAL	
+SaleToPartyAddress	string	255	85,KATRA SHAMSHARE KHA ETAWAH	
+CityName	string	255	ETAWAH	
+SaleToPartyPincode	string	255	206001	
+StateCode	string	255	09	
+StateName	string	255	Uttar Pradesh	
+SaleToPartyMobile	string	255	8299399688	
+ContactPerson	string	255		
+SaleToPartySalesTaxNo	string	255	09AMDPA8754G1Z0	
+SaleToPartyAadharNo	string	255		
+SaleToPartyPanNo	string	255	AMDPA8754G	
+SaleToPartyLicenseNo	string	255		
+ShipToPartyName	string	255	ANKUR AGRWAL	
+ShipToPartyAddress	string	255	85,KATRA SHAMSHARE KHA ETAWAH	
+ShipToPartyCity	string	255	ETAWAH	
+ShipToPartyPincode	string	255	206001	
+ShipToPartyStateCode	string	255	09	
+ShipToPartyStateName	string	255	Uttar Pradesh	
+ShipToPartyMobile	string	255	8299399688	
+ShipToPartySalesTaxNo	string	255	09AMDPA8754G1Z0	
+ShipToPartyAadharNo	string	255		
+ShipToPartyPanNo	string	255	AMDPA8754G	
+ShipToPartyLicenseNo	string	255		
+TransporterSalesTaxNo	string	255	09AAFFV2062G1Z6	
+ShipToAddress	string	255		
+TermsAndConditions	string	255	(1) Payment within 45 days from date of Invoice. <BR>(2) Overdue Interest @18% <Default_DebtorsInterestRate> P.A. after due date. <BR>(3) Goods dispatched by transport at the owner risk. <BR>(4) All disputes are subject to KANPUR jurisdiction only.	
+TransporterName	string	255	VINODE FARWARDING AGENCY, KANPUR	
+LrNo	string	255		
+LrDate	datetime		
+NoOfBales	number	0	
+PrivateMark	string	255		
+Weight	number	0	
+Freight	number	0	
+ChargedWeight	number	0	
+FreightType	string	255		
+RoadPermitNo	string	255		
+RoadPermitDate	datetime		
+VehicleNo	string	255		
+ShipMethod	string	255		
+PreCarriageBy	string	255		
+PreCarriagePlace	string	255		
+BookedFrom	string	255		
+BookedTo	string	255		
+Destination	string	255		
+DescriptionOfGoods	string	255		
+DescriptionOfPacking	string	255		
+ReferenceNo	string	255		
+BarcodeName	string	255		
+ItemName	string	255		
+ItemGroupName	string	255		
+ItemCatName	string	255	COAT BLAZER	
+ItemManualCode	string	255		
+ItemSpecification	string	255		
+InvoiceLineSpecification	string	255		
+HSN	string	255	6203	
+MaintainStockYn	boolean		
+D1Spec	string	255	MONITOR	
+D2Spec	string	255	NAVY BLUE	
+D3Spec	string	255		
+D4Spec	string	255		
+SizeSpec	string	255	34	
+ItemInvoiceGroupCode	string	255		
+ItemInvoiceGroupDesc	string	255		
+ItemTypeCaption	string	255	Item Type	
+ItemCategoryCaption	string	255	Item Category	
+ItemGroupCaption	string	255	Item Group	
+ItemCaption	string	255	Item	
+BarcodeCaption	string	255		
+D1Caption	string	255	Quality	
+D2Caption	string	255	Colour	
+D3Caption	string	255	Design	
+D4Caption	string	255	Width	
+SalesTaxGroupItem	string	255	GST 5%	
+GrossTaxRate	number	5	
+MRP	number	0	
+LotNo	string	255		
+ExpiryDate	datetime		
+ItemRemark1	string	255		
+Pcs	number	5	
+Qty	number	5	
+Rate	number	510	
+ItemState	string	255		
+CatalogSpecification	string	255		
+CatalogSiteName	string	255		
+Unit	string	255	Pcs	
+UnitDecimalPlaces	number		
+DiscountPer	number	0	
+DiscountAmount	number	0	
+AdditionalDiscountPer	number	0	
+AdditionalDiscountAmount	number	0	
+AdditionPer	number	0	
+AdditionAmount	number	0	
+TotalDiscount	number	0	
+Deal	string	255		
+AmountBeforeDiscount	number	2550	
+Amount	number	2550	
+Taxable_Amount	number	2550	
+Tax1_Per	number	0	
+Tax1	number	0	
+Tax2_Per	number	2.5	
+Tax2	number	63.75	
+Tax3_Per	number	2.5	
+Tax3	number	63.75	
+Tax4_Per	number	0	
+Tax4	number	0	
+Tax5_Per	number	0	
+Tax5	number	0	
+Net_Amount	number	2677.49	
+LRemarks	string	255		
+LRemarks1	string	255		
+LRemarks2	string	255		
+LRemarks3	string	255		
+LRemarks4	string	255		
+HRemarks	string	255		
+HRemarks1	string	255		
+HRemarks2	string	255		
+SalesTaxSummaryStr	string	255		
+H_Discount	number	0	
+H_AdditionalDiscount	number	0	
+H_Additional	number	0	
+H_TotalDiscount	number	0	
+H_AmountBeforeDiscount	number	47662	
+H_Gross_Amount	number	47662	
+H_SpecialDiscount_Per	number	0	
+H_SpecialDiscount	number	0	
+H_Taxable_Amount	number	47662	
+H_Tax1_Per	number	0	
+H_Tax1	number	0	
+H_Tax2_Per	number	0	
+H_Tax2	number	1191.55	
+H_Tax3_Per	number	0	
+H_Tax3	number	1191.55	
+H_Tax4_Per	number	0	
+H_Tax4	number	0	
+H_Tax5_Per	number	0	
+H_Tax5	number	0	
+H_Deduction_Per	number	0	
+H_Deduction	number	0	
+H_Other_Charge_Per	number	0	
+H_Other_Charge	number	0	
+H_Other_Charge1_Per	number	0	
+H_Other_Charge1	number	0	
+H_Other_Charge2_Per	number	0	
+H_Other_Charge2	number	0	
+Round_Off	number	-0.1	
+H_Net_Amount	number	50045	
+EInvoiceIRN	string	255		
+EInvoiceAckNo	string	255		
+EInvoiceAckDate	datetime		
+Default_BankAccountDetail	string	255	<B> BANK DETAIL -: BANK OF INDIA A/C NO 696030110000045 IFSC CODE : BKID0006960 </B>	
+DocumentPrintHeaderPattern	string	255	Center Aligned	
+DimDetail	string	255		
+PrintedByUser	string	255	SUPER	
+EntryByUser	string	255	SA	
+PrintTitle	string	255	TAX INVOICE	
+DocumentPrintShowPrintDateTimeYn	string	255	1	
+DocumentPrintShowPartyBalance	string	255	Hide	
+TodaysOpeningBalance	number	0	
+TodaysDr	number	0	
+TodaysCr	number	0	
+TodaysClosingBalance	number	0	
+CompanyLogo	BLOB		
+CompanyAuthorisedSignature	BLOB		
+EInvoiceQrCode	BLOB		

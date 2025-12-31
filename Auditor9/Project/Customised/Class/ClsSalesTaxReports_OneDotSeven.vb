@@ -662,7 +662,7 @@ Public Class ClsSalesTaxReports_OneDotSeven
 
         mStrQry += " SELECT L.DocId, H.PartySalesTaxNo As GSTINofRecipient, Sg.Name As ReceiverName, 
                 Replace(Replace(Replace(Replace(Replace('" & mDocumentNoPattern & "','<DIVISION>',IfNull(Dm.ShortName,'')),'<SITE>',IfNull(Sm.ShortName,'')),'<DOCTYPE>',IfNull(Vt.Short_Name,'')),'<DOCNO>',IfNull(H.ManualRefNo,'')),'<COMPANYPREFIX>', '" & mCompanyPrefix & "') As InvoiceNumber,
-                strftime('%d/%m/%Y', H.V_Date) As InvoiceDate, -Lc.Net_Amount As LineNet_Amount, 0 As HeaderNet_Amount,  S.ManualCode + '-' + S.Description As PlaceOfSupply, 'N' As ReverseCharge,
+                strftime('%d/%m/%Y', H.V_Date) As InvoiceDate, -Lc.Net_Amount As LineNet_Amount, 0 As HeaderNet_Amount,  S.ManualCode || '-' || S.Description As PlaceOfSupply, 'N' As ReverseCharge,
                 '' As ApplicableTaxRate, 'Regular B2B' As InvoiceType,	Null As ECommerceGSTIN,	 L.SalesTaxGroupItem,
                 Isnull(Lc.Tax1_Per,0) + Isnull(Lc.Tax2_Per,0) + Isnull(Lc.Tax3_Per,0) As Rate,	-Lc.Taxable_Amount As TaxableValue, 
                 -Isnull(Lc.Tax1,0) As IntegratedTaxAmount,  -Isnull(Lc.Tax2,0) As CentralTaxAmount, 

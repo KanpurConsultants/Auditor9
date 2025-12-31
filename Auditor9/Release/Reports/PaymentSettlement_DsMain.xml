@@ -1,24 +1,24 @@
 <?xml version="1.0" standalone="yes"?>
 <NewDataSet>
   <Table>
-    <DocNo>D1-PS-115</DocNo>
-    <V_Date>2025-11-11T00:00:00+05:30</V_Date>
-    <HSubcodeName>SAI KABRA DESIGNER</HSubcodeName>
-    <Address>D-4187/88, 2ND FLOOR, MILLENIUM TEXTILE MARKET, RING ROAD , SURAT - 395002</Address>
+    <DocNo>D1-PS-262</DocNo>
+    <V_Date>2025-12-24T00:00:00+05:30</V_Date>
+    <HSubcodeName>SHRADDHA FABRICS</HSubcodeName>
+    <Address>D-4183-84,2ND  FLOOR,MILLENIUM  TEXTILE MARKET,RING ROAD,SURAT</Address>
     <CityName>SURAT</CityName>
     <StateCode>24</StateCode>
     <StateName>Gujarat</StateName>
-    <Mobile>9727390963, 9510808411</Mobile>
-    <PartyGSTNo>24ASDPK6643C1Z2</PartyGSTNo>
+    <Mobile>6352485229 , 9825199942</Mobile>
+    <Phone>9879322092</Phone>
+    <PartyGSTNo>24ABKFS4344N1ZQ</PartyGSTNo>
     <AgentName>DIRECT SUPPLIER</AgentName>
-    <UpToDate>2025-09-20T00:00:00+05:30</UpToDate>
+    <UpToDate>2025-10-14T00:00:00+05:30</UpToDate>
     <DrCr>Cr</DrCr>
-    <HRemarks>DISCOUNT@13</HRemarks>
     <LSubcodeName>ICICI A/C 777705052546</LSubcodeName>
-    <Amount>75241</Amount>
-    <ChqRefNo>000634</ChqRefNo>
-    <ChqRefDate>2025-11-11T00:00:00+05:30</ChqRefDate>
-    <LineTotalAmount>75241</LineTotalAmount>
+    <Amount>2009206</Amount>
+    <ChqRefNo>000793</ChqRefNo>
+    <ChqRefDate>2025-12-24T00:00:00+05:30</ChqRefDate>
+    <LineTotalAmount>2009206</LineTotalAmount>
     <PrintedByUser>SUPER</PrintedByUser>
     <PrintTitle>Payment Settlement</PrintTitle>
   </Table>
