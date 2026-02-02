@@ -451,7 +451,8 @@ Public Class FrmPerson
         End If
 
         AgL.PubFindQry = AgL.PubFindQry &
-                        " (SELECT Max(RegistrationNo) FROM SubgroupRegistration WHERE RegistrationType ='Sales Tax No' AND Subcode =H.Subcode) as [Gst No]
+                        " (SELECT Max(RegistrationNo) FROM SubgroupRegistration WHERE RegistrationType ='Sales Tax No' AND Subcode =H.Subcode) as [Gst No],
+                          (SELECT Max(RegistrationNo) FROM SubgroupRegistration WHERE RegistrationType ='AADHAR NO' AND Subcode =H.Subcode) as [Aadhar No]
                          FROM SubGroup H 
                          LEFT JOIN Division D On D.Div_Code=H.Div_Code  
                          LEFT JOIN SiteMast SM On SM.Code=H.Site_Code 
@@ -2545,15 +2546,23 @@ Public Class FrmPerson
             Exit Sub
         End If
 
-        mQry = "SELECT Count(*) FROM SubgroupRegistration H WHERE H.RegistrationType = '" & SubgroupRegistrationType.AadharNo.ToUpper & "' AND H.RegistrationNo = '" & Dgl1.Item(Col1Value, rowAadharNo).Value & "'
-                And SubCode <> '" & mSearchCode & "' "
-        If AgL.VNull(AgL.Dman_Execute(mQry, AgL.GCn).ExecuteScalar()) > 0 Then
-            MsgBox("Aadhar No already exists.", MsgBoxStyle.Information)
-            Dgl1.CurrentCell = Dgl1.Item(Col1Value, rowAadharNo)
-            Dgl1.Focus()
-            passed = False
-            Exit Sub
-        End If
+        ''mQry = "SELECT Count(*) FROM SubgroupRegistration H WHERE H.RegistrationType = '" & SubgroupRegistrationType.AadharNo.ToUpper & "' AND H.RegistrationNo = '" & Dgl1.Item(Col1Value, rowAadharNo).Value & "'
+        ''        And SubCode <> '" & mSearchCode & "' "
+        ''If AgL.VNull(AgL.Dman_Execute(mQry, AgL.GCn).ExecuteScalar()) > 0 Then
+        ''    mQry = "SELECT SG.Name
+        ''            FROM SubgroupRegistration H 
+        ''            LEFT JOIN Subgroup SG ON SG.Subcode = H.Subcode 
+        ''            WHERE H.RegistrationType = '" & SubgroupRegistrationType.AadharNo.ToUpper & "' AND H.RegistrationNo = '" & Dgl1.Item(Col1Value, rowAadharNo).Value & "'
+        ''            And H.SubCode <> '" & mSearchCode & "' "
+        ''    Dim Name As String
+        ''    Name = AgL.XNull(AgL.Dman_Execute(mQry, AgL.GCn).ExecuteScalar())
+
+        ''    MsgBox("Aadhar No already Register with " + Name + " .", MsgBoxStyle.Information)
+        ''    Dgl1.CurrentCell = Dgl1.Item(Col1Value, rowAadharNo)
+        ''    Dgl1.Focus()
+        ''    passed = False
+        ''    Exit Sub
+        ''End If
 
 
         If Dgl1(Col1Value, rowSalesTaxGroup).Value.ToUpper = "UNREGISTERED" Then

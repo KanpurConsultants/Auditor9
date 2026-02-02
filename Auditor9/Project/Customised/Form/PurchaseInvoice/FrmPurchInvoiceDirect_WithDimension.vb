@@ -6873,7 +6873,7 @@ Public Class FrmPurchInvoiceDirect_WithDimension
                 Case Col1Barcode
                     If e.KeyCode <> Keys.Enter Then
                         If Dgl1.AgHelpDataSet(Col1Barcode) Is Nothing Then
-                            If (LblV_Type.Tag = Ncat.StockTransfer Or LblV_Type.Tag = Ncat.StockIssue) And CType(AgL.VNull(DtV_TypeSettings.Rows(0)("IsBarcodeHelpFromStock")), Boolean) = True Then
+                            If (LblV_Type.Tag = Ncat.StockTransfer Or LblV_Type.Tag = Ncat.StockIssue Or LblV_Type.Tag = Ncat.PurchaseReturn) And CType(AgL.VNull(DtV_TypeSettings.Rows(0)("IsBarcodeHelpFromStock")), Boolean) = True Then
                                 FCreateHelpBarcodeHelpFromStock(Dgl1.CurrentCell.RowIndex)
                             End If
                         End If

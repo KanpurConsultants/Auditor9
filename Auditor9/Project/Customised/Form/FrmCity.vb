@@ -711,7 +711,7 @@ Public Class FrmCity
 
     Private Function FGetSettings(FieldName As String, SettingType As String) As String
         Dim mValue As String
-        mValue = ClsMain.FGetSettings(FieldName, SettingType, TxtDivision.Tag, AgL.PubSiteCode, "", "", "", "", "")
+        mValue = ClsMain.FGetSettings(FieldName, SettingType, AgL.PubDivCode, AgL.PubSiteCode, "", "", "", "", "")
         FGetSettings = mValue
     End Function
 

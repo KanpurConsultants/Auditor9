@@ -2193,9 +2193,19 @@ Public Class FrmItemMaster
             End If
         End If
 
+
         If ClsMain.IsEntryLockedWithLockText("Item", "Code", mSearchCode) = True Then
-            Passed = False
-            Exit Sub
+            If ClsMain.FDivisionNameForCustomization(6) = "SADHVI" Then
+                If MsgBox("Item Import From Other Data. Do you want to modify it.", MsgBoxStyle.YesNo, "Validation") = vbNo Then
+                    Topctrl1.FButtonClick(14, True)
+                    Exit Sub
+                End If
+            Else
+                Passed = False
+                Exit Sub
+            End If
+
+
         End If
 
         If Dgl1.Rows(rowSpecification).Visible = True Then Dgl1.CurrentCell = Dgl1(Col1Value, rowSpecification)

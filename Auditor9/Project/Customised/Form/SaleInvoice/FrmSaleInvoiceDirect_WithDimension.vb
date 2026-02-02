@@ -1674,7 +1674,7 @@ Public Class FrmSaleInvoiceDirect_WithDimension
 
 
 
-            If (AgL.StrCmp(AgL.PubDBName, "RVN") Or AgL.StrCmp(AgL.PubDBName, "RVN1") Or AgL.StrCmp(AgL.PubDBName, "RVN2") Or AgL.StrCmp(AgL.PubDBName, "MLAW") Or AgL.StrCmp(AgL.PubDBName, "SHRIJIAW")) And AgL.PubSiteCode = "1" Then
+            If (AgL.StrCmp(AgL.PubDBName, "RVN") Or AgL.StrCmp(AgL.PubDBName, "RVN1") Or AgL.StrCmp(AgL.PubDBName, "RVN2")) And AgL.PubSiteCode = "1" Then
                 .AddAgTextColumn(Dgl1, Col1Remark, 150, 255, "MOTOR NO", True, False)
                 .AddAgTextColumn(Dgl1, Col1Remark1, 150, 255, "CONTROLLER NO", True, False)
                 .AddAgTextColumn(Dgl1, Col1Remark2, 150, 255, "CHASIS NO", True, False)
@@ -3028,11 +3028,20 @@ Public Class FrmSaleInvoiceDirect_WithDimension
 
         If AgL.StrCmp(AgL.PubDBName, "RVN") Or AgL.StrCmp(AgL.PubDBName, "RVN1") Or AgL.StrCmp(AgL.PubDBName, "RVN2") Or AgL.StrCmp(AgL.PubDBName, "MLAW") Or AgL.StrCmp(AgL.PubDBName, "SHRIJIAW") Then
             If AgL.PubSiteCode = "1" Then
-                Dgl1.Columns(Col1Remark1).Visible = True
-                Dgl1.Columns(Col1Remark2).Visible = True
-                Dgl1.Columns(Col1Remark3).Visible = True
-                Dgl1.Columns(Col1Remark4).Visible = True
-                Dgl1.Columns(Col1Barcode).Visible = False
+                If AgL.StrCmp(AgL.PubDBName, "SHRIJIAW") Then
+                    Dgl1.Columns(Col1Barcode).Visible = True
+                    Dgl1.Columns(Col1Remark1).Visible = False
+                    Dgl1.Columns(Col1Remark2).Visible = False
+                    Dgl1.Columns(Col1Remark3).Visible = False
+                    Dgl1.Columns(Col1Remark4).Visible = False
+                Else
+                    Dgl1.Columns(Col1Barcode).Visible = False
+                    Dgl1.Columns(Col1Remark1).Visible = True
+                    Dgl1.Columns(Col1Remark2).Visible = True
+                    Dgl1.Columns(Col1Remark3).Visible = True
+                    Dgl1.Columns(Col1Remark4).Visible = True
+                End If
+
                 Dgl1.Columns(Col1SaleInvoice).Visible = False
             ElseIf AgL.PubSiteCode = "3" Then
 
@@ -7102,8 +7111,12 @@ Public Class FrmSaleInvoiceDirect_WithDimension
                 Case Col1Barcode
                     If e.KeyCode <> Keys.Enter Then
                         If Dgl1.AgHelpDataSet(Col1Barcode) Is Nothing Then
-                            If (LblV_Type.Tag = Ncat.SaleInvoice Or LblV_Type.Tag = Ncat.SaleChallan) And CType(AgL.VNull(DtV_TypeSettings.Rows(0)("IsBarcodeHelpFromStock")), Boolean) = True Then
-                                FCreateHelpBarcodeHelpFromStock(Dgl1.CurrentCell.RowIndex)
+                            If (LblV_Type.Tag = Ncat.SaleInvoice Or LblV_Type.Tag = Ncat.SaleChallan Or LblV_Type.Tag = Ncat.SaleReturn) And CType(AgL.VNull(DtV_TypeSettings.Rows(0)("IsBarcodeHelpFromStock")), Boolean) = True Then
+                                If DglMain.Item(Col1Value, rowV_Type).Tag = "SIS" And (AgL.StrCmp(AgL.PubDBName, "RVN") Or AgL.StrCmp(AgL.PubDBName, "RVN1") Or AgL.StrCmp(AgL.PubDBName, "RVN2") Or AgL.StrCmp(AgL.PubDBName, "MLAW") Or AgL.StrCmp(AgL.PubDBName, "SHRIJIAW")) Then
+                                    FCreateHelpBarcode(Dgl1.CurrentCell.RowIndex)
+                                Else
+                                    FCreateHelpBarcodeHelpFromStock(Dgl1.CurrentCell.RowIndex)
+                                End If
                             End If
                         End If
                     End If
@@ -8598,6 +8611,17 @@ Public Class FrmSaleInvoiceDirect_WithDimension
                 And I.Code Is Not Null " & strCond
 
         mQry += " Group By H.Item, H.Barcode HAVING Sum(isnull(H.Qty_Rec,0) - isnull(H.Qty_Iss,0)) > 0 "
+
+        Dgl1.AgHelpDataSet(Col1Barcode, 1) = AgL.FillData(mQry, AgL.GcnRead)
+    End Sub
+
+    Private Sub FCreateHelpBarcode(RowIndex As Integer)
+        Dim strCond As String = ""
+        mQry = "SELECT H.Code As Code,  (H.Description) As Description, (I.Description) As Item, H.Item 
+                FROM Barcode H
+                LEFT JOIN Item I On H.Item = I.Code 
+                LEFT JOIN Item IG ON Ig.Code = I.ItemGroup 
+                WHERE  H.Item Not in ('LrBale','Lr') "
 
         Dgl1.AgHelpDataSet(Col1Barcode, 1) = AgL.FillData(mQry, AgL.GcnRead)
     End Sub

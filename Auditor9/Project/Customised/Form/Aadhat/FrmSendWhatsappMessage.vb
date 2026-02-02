@@ -19,6 +19,7 @@ Public Class FrmSendWhatsappMessage
 
     Private Sub Form1_Load(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles MyBase.Load
         ' Start background thread
+        TxtDate.Text = ClsMain.FormatDate((CDate(AgL.PubLoginDate)))
         checkThread = New Thread(AddressOf CheckDataLoop)
         checkThread.IsBackground = True
         checkThread.Start()
@@ -90,7 +91,7 @@ Public Class FrmSendWhatsappMessage
                 SELECT  
                 Max(H1.V_Type) + '-' + Max(H1.ManualRefNo) + ' for Rs. ' +  ltrim (Str(Max(H1.Net_Amount), 25, 2))  AS InvoiceDetail
                 FROM SaleInvoice H1 WITH (Nolock)
-                WHERE H1.V_Date = '" & AgL.PubLoginDate & "' AND H1.SaleToPartyMobile IS NOT NULL 
+                WHERE H1.V_Date = '" & TxtDate.Text & "' AND H1.SaleToPartyMobile IS NOT NULL 
                 AND H1.SaleToParty = H.SaleToParty
                 GROUP BY H1.DocID  
                 ) A
@@ -100,7 +101,7 @@ Public Class FrmSendWhatsappMessage
                 LEFT JOIN ViewHelpSubgroup VP WITH (Nolock) On VP.Code = H.SaleToParty
                 LEFT JOIN Division D WITH (Nolock) On H.Div_Code = D.Div_Code
                 LEFT JOIN SubGroup Sg WITH (Nolock) On D.SubCode = Sg.SubCode
-                WHERE H.V_Date = '" & AgL.PubLoginDate & "' AND H.SaleToPartyMobile IS NOT NULL 
+                WHERE H.V_Date = '" & TxtDate.Text & "' AND H.SaleToPartyMobile IS NOT NULL 
                 GROUP BY H.SaleToParty "
         Dim DtDocData As DataTable = AgL.FillData(mQry, AgL.GCn).Tables(0)
         If DtDocData.Rows.Count > 0 Then
@@ -145,7 +146,7 @@ Public Class FrmSendWhatsappMessage
                     SELECT H1.ManualRefNo + ', '
                     From SaleInvoice H1 
                                      LEFT JOIN SaleInvoiceTransport SIt1 ON H1.DocID = SIt1.DocID
-                                     Where Sit1.LRUpdatedDate >'" & AgL.PubLoginDate & "' AND H1.V_Date = H.V_Date AND H1.SaleToParty = H.SaleToParty  AND SIT1.Transporter = SIT.Transporter AND SIT1.LrNo = SIT.LrNo
+                                     Where Sit1.LRUpdatedDate >'" & TxtDate.Text & "' AND H1.V_Date = H.V_Date AND H1.SaleToParty = H.SaleToParty  AND SIT1.Transporter = SIT.Transporter AND SIT1.LrNo = SIT.LrNo
                     FOR XML Path ('')
                     ) AS SaleNo
                     From SaleInvoice H 
@@ -155,7 +156,7 @@ Public Class FrmSendWhatsappMessage
                     LEFT JOIN SubGroup Party On H.SaleToParty = Party.SubCode
                     LEFT JOIN SaleInvoiceTransport SIt ON H.DocID = SIt.DocID
                     LEFT JOIN SubGroup T On SIT.Transporter = T.SubCode
-                    Where Sit.LRUpdatedDate >'" & AgL.PubLoginDate & "'
+                    Where Sit.LRUpdatedDate >'" & TxtDate.Text & "'
                     GROUP BY H.SaleToParty,H.V_Date,SIT.Transporter,SIt.LrDate,SIt.LrNo "
         Dim DtDocData As DataTable = AgL.FillData(mQry, AgL.GCn).Tables(0)
         If DtDocData.Rows.Count > 0 Then

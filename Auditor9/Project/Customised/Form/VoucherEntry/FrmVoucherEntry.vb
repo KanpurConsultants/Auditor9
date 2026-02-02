@@ -8,7 +8,7 @@ Imports System.Linq
 Public Class FrmVoucherEntry
     Inherits AgTemplate.TempTransaction
     Dim mQry$
-
+    Dim StrCopyDocId As String
     Public WithEvents AgCalcGrid1 As New AgStructure.AgCalcGrid
     Public WithEvents AgCustomGrid1 As New AgCustomFields.AgCustomGrid
 
@@ -109,6 +109,7 @@ Public Class FrmVoucherEntry
     Protected WithEvents BtnAttachments As Button
     Friend WithEvents MnuBankFormat As ToolStripMenuItem
     Friend WithEvents MnuShowLedgerPosting As ToolStripMenuItem
+    Public WithEvents BtnCopy As Button
     Dim WithEvents GridReportFrm As AgLibrary.FrmRepDisplay
 
     Class OutstandingBill
@@ -173,6 +174,7 @@ Public Class FrmVoucherEntry
         Me.MnuImportFromDos = New System.Windows.Forms.ToolStripMenuItem()
         Me.MnuEditSave = New System.Windows.Forms.ToolStripMenuItem()
         Me.MnuCancelEntry = New System.Windows.Forms.ToolStripMenuItem()
+        Me.MnuShowLedgerPosting = New System.Windows.Forms.ToolStripMenuItem()
         Me.MnuReport = New System.Windows.Forms.ToolStripMenuItem()
         Me.MnuPrintCheque = New System.Windows.Forms.ToolStripMenuItem()
         Me.MnuBankFormat = New System.Windows.Forms.ToolStripMenuItem()
@@ -187,7 +189,7 @@ Public Class FrmVoucherEntry
         Me.TxtType = New AgControls.AgTextBox()
         Me.LblType = New System.Windows.Forms.Label()
         Me.BtnAttachments = New System.Windows.Forms.Button()
-        Me.MnuShowLedgerPosting = New System.Windows.Forms.ToolStripMenuItem()
+        Me.BtnCopy = New System.Windows.Forms.Button()
         Me.GroupBox2.SuspendLayout()
         Me.GBoxMoveToLog.SuspendLayout()
         Me.GBoxApprove.SuspendLayout()
@@ -403,6 +405,7 @@ Public Class FrmVoucherEntry
         'TP1
         '
         Me.TP1.BackColor = System.Drawing.Color.FromArgb(CType(CType(234, Byte), Integer), CType(CType(234, Byte), Integer), CType(CType(234, Byte), Integer))
+        Me.TP1.Controls.Add(Me.BtnCopy)
         Me.TP1.Controls.Add(Me.BtnAttachments)
         Me.TP1.Controls.Add(Me.LblType)
         Me.TP1.Controls.Add(Me.TxtType)
@@ -465,6 +468,7 @@ Public Class FrmVoucherEntry
         Me.TP1.Controls.SetChildIndex(Me.TxtType, 0)
         Me.TP1.Controls.SetChildIndex(Me.LblType, 0)
         Me.TP1.Controls.SetChildIndex(Me.BtnAttachments, 0)
+        Me.TP1.Controls.SetChildIndex(Me.BtnCopy, 0)
         '
         'Topctrl1
         '
@@ -883,7 +887,7 @@ Public Class FrmVoucherEntry
         '
         Me.MnuOptions.Items.AddRange(New System.Windows.Forms.ToolStripItem() {Me.MnuImportFromExcel, Me.MnuImportGSTDataFromDos, Me.MnuImportGSTDataFromExcel, Me.MnuImportFromTally, Me.MnuImportFromDos, Me.MnuEditSave, Me.MnuCancelEntry, Me.MnuShowLedgerPosting, Me.MnuReport, Me.MnuPrintCheque, Me.MnuBankFormat})
         Me.MnuOptions.Name = "MnuOptions"
-        Me.MnuOptions.Size = New System.Drawing.Size(222, 268)
+        Me.MnuOptions.Size = New System.Drawing.Size(222, 246)
         '
         'MnuImportFromExcel
         '
@@ -926,6 +930,12 @@ Public Class FrmVoucherEntry
         Me.MnuCancelEntry.Name = "MnuCancelEntry"
         Me.MnuCancelEntry.Size = New System.Drawing.Size(221, 22)
         Me.MnuCancelEntry.Text = "Cancel Entry"
+        '
+        'MnuShowLedgerPosting
+        '
+        Me.MnuShowLedgerPosting.Name = "MnuShowLedgerPosting"
+        Me.MnuShowLedgerPosting.Size = New System.Drawing.Size(221, 22)
+        Me.MnuShowLedgerPosting.Text = "Show Ledger Posting"
         '
         'MnuReport
         '
@@ -1119,11 +1129,18 @@ Public Class FrmVoucherEntry
         Me.BtnAttachments.TextAlign = System.Drawing.ContentAlignment.TopCenter
         Me.BtnAttachments.UseVisualStyleBackColor = True
         '
-        'MnuShowLedgerPosting
+        'BtnCopy
         '
-        Me.MnuShowLedgerPosting.Name = "MnuShowLedgerPosting"
-        Me.MnuShowLedgerPosting.Size = New System.Drawing.Size(221, 22)
-        Me.MnuShowLedgerPosting.Text = "Show Ledger Posting"
+        Me.BtnCopy.FlatStyle = System.Windows.Forms.FlatStyle.Flat
+        Me.BtnCopy.Font = New System.Drawing.Font("Arial", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.BtnCopy.Location = New System.Drawing.Point(832, 14)
+        Me.BtnCopy.Name = "BtnCopy"
+        Me.BtnCopy.Size = New System.Drawing.Size(44, 25)
+        Me.BtnCopy.TabIndex = 3021
+        Me.BtnCopy.TabStop = False
+        Me.BtnCopy.Text = "Copy"
+        Me.BtnCopy.TextAlign = System.Drawing.ContentAlignment.TopCenter
+        Me.BtnCopy.UseVisualStyleBackColor = True
         '
         'FrmVoucherEntry
         '
@@ -6415,5 +6432,35 @@ Public Class FrmVoucherEntry
     Private Sub FGetSettingVariableValuesForAddAndEdit()
         SettingFields_CopyRemarkInNextLineYn = CType(AgL.VNull(FGetSettings(SettingFields.CopyRemarkInNextLineYn, SettingType.General)), Boolean)
         SettingFields_MaximumItemLimit = AgL.VNull(FGetSettings(SettingFields.MaximumItemLimit, SettingType.General))
+    End Sub
+
+    Private Sub BtnCopy_Click(sender As Object, e As EventArgs) Handles BtnCopy.Click
+        If BtnCopy.Text = "Copy" Then
+            StrCopyDocId = mSearchCode
+            BtnCopy.Text = "Paste"
+        End If
+        Dim I As Integer
+
+        If BtnCopy.Text = "Paste" And UCase(Topctrl1.Mode) = "ADD" Then
+            Dim TempDocId, TempVNo, TempManualRefNo, TempV_Type, TempV_TypeCode, TempDocDate As String
+            TempDocId = mSearchCode
+            TempDocDate = TxtV_Date.Text
+            TempVNo = TxtV_No.Text
+            TempManualRefNo = TxtReferenceNo.Text
+            TempV_Type = TxtV_Type.Text
+            TempV_TypeCode = TxtV_Type.Tag
+            Call FrmSaleOrder_BaseFunction_MoveRec(StrCopyDocId)
+            mSearchCode = TempDocId
+            TxtV_Date.Text = TempDocDate
+            TxtV_No.Text = TempVNo
+            TxtReferenceNo.Text = TempManualRefNo
+            TxtV_Type.Text = TempV_Type
+            TxtV_Type.Tag = TempV_TypeCode
+
+            For I = 0 To Dgl1.RowCount - 1
+                Dgl1.Item(ColSNo, I).Tag = Nothing
+            Next
+        End If
+
     End Sub
 End Class

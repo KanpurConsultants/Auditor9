@@ -5,52 +5,58 @@ DocNoCaption	string	255	Invoice No.
 DocDateCaption	string	255	Invoice Date	
 SiteStateCode	string	255	09	
 SiteStateName	string	255	Uttar Pradesh	
-DocID	string	255	D3   SIS 2025    2117	
+DocID	string	255	D1   SIR 2025       1	
 Sr	number	1	
-V_Date	datetime	29/Aug/2025 00:00:00	
+V_Date	datetime	21/Jan/2026 00:00:00	
 DeliveryDate	datetime		
-Voucher_Type	string	255	Sale Invoice Service	
+Voucher_Type	string	255	Sale Invoice Retail	
 NCat	string	255	SI	
-InvoiceNo	string	255	TVS--2117	
+InvoiceNo	string	255	KNP-SIR-1	
 GenDocNo	string	255		
 AmsDocNo	string	255		
 AmsDocDate	datetime		
 AmsDocNetAmount	number	0	
 RateType	string	255		
 DocumentPrintShowRateType	string	255	Show If Not Blank	
-AgentName	string	255	RTO DUBEYJI	
+AgentName	string	255		
 GodownName	string	255		
 GodownAddress	string	255		
-SalesRepName	string	255	RADHEY SHYAM	
-SalesRepCode	string	255	3633	
+SalesRepName	string	255		
+SalesRepCode	string	255		
 ResponsiblePersonName	string	255		
 AgentCaption	string	255	Agent	
-SaleToPartyName	string	255	REETA MAINRA W/O JITENDRA MOHAN	
-SaleToPartyAddress	string	255	33/182, MANI RAM BAGIYA CHOWK, KANPUR, KANPUR NAGAR	
-CityName	string	255	KANPUR	
-SaleToPartyPincode	string	255	208001	
+SaleToPartyName	string	255	ALOK KARI S/O ICHCHHARAM AYODHYA	
+SaleToPartyAddress	string	255	PURNI KA PURWA POST 
+DASHAAN NAGAR KUDHA 
+KESHAVPUR FAIZABAD
+	
+CityName	string	255	FAIZABAD	
+SaleToPartyPincode	string	255	224135	
 StateCode	string	255	09	
 StateName	string	255	Uttar Pradesh	
-SaleToPartyMobile	string	255	9335084129	
+SaleToPartyMobile	string	255		
 ContactPerson	string	255		
 SaleToPartySalesTaxNo	string	255		
-SaleToPartyAadharNo	string	255	353868663717	
+SaleToPartyAadharNo	string	255		
 SaleToPartyPanNo	string	255		
 SaleToPartyLicenseNo	string	255		
-ShipToPartyName	string	255	REETA MAINRA W/O JITENDRA MOHAN	
-ShipToPartyAddress	string	255	33/182, MANI RAM BAGIYA CHOWK, KANPUR, KANPUR NAGAR	
-ShipToPartyCity	string	255	KANPUR	
-ShipToPartyPincode	string	255	208001	
+ShipToPartyName	string	255	ALOK KARI S/O ICHCHHARAM AYODHYA	
+ShipToPartyAddress	string	255	PURNI KA PURWA POST 
+DASHAAN NAGAR KUDHA 
+KESHAVPUR FAIZABAD
+	
+ShipToPartyCity	string	255	FAIZABAD	
+ShipToPartyPincode	string	255	224135	
 ShipToPartyStateCode	string	255	09	
 ShipToPartyStateName	string	255	Uttar Pradesh	
-ShipToPartyMobile	string	255	9335084129	
+ShipToPartyMobile	string	255		
 ShipToPartySalesTaxNo	string	255		
-ShipToPartyAadharNo	string	255	353868663717	
+ShipToPartyAadharNo	string	255		
 ShipToPartyPanNo	string	255		
 ShipToPartyLicenseNo	string	255		
 TransporterSalesTaxNo	string	255		
 ShipToAddress	string	255		
-TermsAndConditions	string	255		
+TermsAndConditions	string	255	(1) Motor warranty one year. <BR>(2) Controller warranty one year. <BR>(3) Battery warranty one year.<BR>(4) Swell (???? ???) batteries are not covered under warranty.	
 TransporterName	string	255		
 LrNo	string	255		
 LrDate	datetime		
@@ -71,15 +77,15 @@ BookedTo	string	255
 Destination	string	255		
 DescriptionOfGoods	string	255		
 DescriptionOfPacking	string	255		
-ReferenceNo	string	255	SIR573-MD6EVM1D3S4H00599	
+ReferenceNo	string	255		
 BarcodeName	string	255		
-ItemName	string	255	RTO REGISTRATION -  - 	
-ItemGroupName	string	255		
-ItemCatName	string	255		
-ItemManualCode	string	255	250	
-ItemSpecification	string	255	RTO REGISTRATION	
+ItemName	string	255	TVS KING EV MAX EP4 - WEGO WHITE - TVS - EV	
+ItemGroupName	string	255	TVS	
+ItemCatName	string	255	EV	
+ItemManualCode	string	255	89	
+ItemSpecification	string	255	TVS KING EV MAX EP4 - WEGO WHITE	
 InvoiceLineSpecification	string	255		
-HSN	string	255		
+HSN	string	255	87038040	
 MaintainStockYn	boolean	True	
 D1Spec	string	255		
 D2Spec	string	255		
@@ -103,9 +109,9 @@ MRP	number	0
 LotNo	string	255		
 ExpiryDate	datetime		
 ItemRemark1	string	255		
-Pcs	long	0	
-Qty	long	0	
-Rate	long	0	
+Pcs	number	1	
+Qty	number	1	
+Rate	number	50000	
 ItemState	string	255		
 CatalogSpecification	string	255		
 CatalogSiteName	string	255		
@@ -119,9 +125,9 @@ AdditionPer	number	0
 AdditionAmount	number	0	
 TotalDiscount	number	0	
 Deal	string	255		
-AmountBeforeDiscount	number	2500	
-Amount	number	2500	
-Taxable_Amount	number	2500	
+AmountBeforeDiscount	number	50000	
+Amount	number	50000	
+Taxable_Amount	number	50000	
 Tax1_Per	number	0	
 Tax1	number	0	
 Tax2_Per	number	0	
@@ -132,8 +138,8 @@ Tax4_Per	number	0
 Tax4	number	0	
 Tax5_Per	number	0	
 Tax5	number	0	
-Net_Amount	number	2500	
-LRemarks	string	255	UP78LN8553	
+Net_Amount	number	50000	
+LRemarks	string	255		
 LRemarks1	string	255		
 LRemarks2	string	255		
 LRemarks3	string	255		
@@ -146,11 +152,11 @@ H_Discount	number	0
 H_AdditionalDiscount	number	0	
 H_Additional	number	0	
 H_TotalDiscount	number	0	
-H_AmountBeforeDiscount	number	2500	
-H_Gross_Amount	number	2500	
+H_AmountBeforeDiscount	number	50000	
+H_Gross_Amount	number	50000	
 H_SpecialDiscount_Per	number	0	
 H_SpecialDiscount	number	0	
-H_Taxable_Amount	number	2500	
+H_Taxable_Amount	number	50000	
 H_Tax1_Per	number	0	
 H_Tax1	number	0	
 H_Tax2_Per	number	0	
@@ -170,16 +176,19 @@ H_Other_Charge1	number	0
 H_Other_Charge2_Per	number	0	
 H_Other_Charge2	number	0	
 Round_Off	number	0	
-H_Net_Amount	number	2500	
+H_Net_Amount	number	50000	
 EInvoiceIRN	string	255		
 EInvoiceACKNo	string	255		
 EInvoiceACKDate	datetime		
-Default_BankAccountDetail	string	255	<B> Bank Detail :- <BR> KMB : 5400000007  IFSC : KKBK0005135 <BR>	
+Default_BankAccountDetail	string	255	Bank Detail : 	
+KOTAK MAHINDRA BANK 
+A/C:- 2025202627     
+IFSC:- KKBK0005135	
 DocumentPrintHeaderPattern	string	255	Center Aligned	
 DimDetail	string	255		
 PrintedByUser	string	255	SUPER	
-EntryByUser	string	255	ranjana	
-PrintTitle	string	255	SALE INVOICE SERVICE	
+EntryByUser	string	255	SUPER	
+PrintTitle	string	255	Sale Invoice Retail	
 DocumentPrintShowPrintDateTimeYn	string	255	1	
 DocumentPrintShowPartyBalance	string	255	Hide	
 TodaysOpeningBalance	long	0	

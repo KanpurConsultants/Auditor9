@@ -849,9 +849,15 @@ Public Class ClsStockReport
                     , Round(Max(VMain.TransactionRate),3) as TransactionRate                    
                     , Round(Max(VMain.ValuationRate),3) as ValuationRate                    
                     , Round(Sum(VMain.Amount),2) as Amount                    
-                    From (" & mMainQry & ") As VMain
-                    GROUP By VMain.DocID--, VMain.ItemCode,VMain.TransactionRate, VMain.ValuationRate                     
-                    Order By Max(VMain.ItemName), Max(VMain.V_Date_ActualFormat), Max(Cast(Replace(VMain.RecID,'-','') as Integer)), Max(VMain.Qty_Rec), Max(VMain.Qty_Iss)"
+                    From (" & mMainQry & ") As VMain "
+
+                If AgL.StrCmp(AgL.PubDBName, "RVN") Or AgL.StrCmp(AgL.PubDBName, "RVN1") Or AgL.StrCmp(AgL.PubDBName, "RVN2") Or AgL.StrCmp(AgL.PubDBName, "MLAW") Or AgL.StrCmp(AgL.PubDBName, "SHRIJIAW") Then
+                    mQry = mQry + "GROUP By VMain.DocID, VMain.Barcode "
+                Else
+                    mQry = mQry + "GROUP By VMain.DocID "
+                End If
+                'mQry = mQry + "GROUP By VMain.DocID--, VMain.ItemCode,VMain.TransactionRate, VMain.ValuationRate"
+                mQry = mQry + " Order By Max(VMain.ItemName), Max(VMain.V_Date_ActualFormat), Max(Cast(Replace(VMain.RecID,'-','') as Integer)), Max(VMain.Qty_Rec), Max(VMain.Qty_Iss)"
             End If
 
 

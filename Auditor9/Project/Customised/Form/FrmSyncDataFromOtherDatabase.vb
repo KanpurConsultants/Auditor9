@@ -166,30 +166,45 @@ Public Class FrmSyncDataFromOtherDatabase
 
         DatabaseName = Connection_ExternalDatabase.ConnectionString
 
-        If DatabaseName.Contains("SHADHVINEW") And AgL.PubSiteCode = "2" Then
+        If DatabaseName.Contains("SHADHVINEW") And AgL.PubSiteCode = "2" And AgL.PubDBName = "Sadhvi" Then
             IsValidDatabase = "Yes"
             BranchSupplierNameENTERPRISES = "SADHVI ENTERPRISES (Branch)"
             BranchSupplierNameEMBROIDERY = "SADHVI EMBROIDERY (Branch)"
         End If
 
-        If DatabaseName.Contains("SHADHVIJaunpur") And AgL.PubSiteCode = "4" Then
+        If DatabaseName.Contains("SHADHVIJaunpur") And AgL.PubSiteCode = "4" And AgL.PubDBName = "Sadhvi" Then
             IsValidDatabase = "Yes"
             BranchSupplierNameENTERPRISES = "SADHVI ENTERPRISES (Jaunpur)"
             BranchSupplierNameEMBROIDERY = "SADHVI EMBROIDERY (Jaunpur)"
         End If
 
-        If DatabaseName.Contains("SHADHVIKANPURB2") And AgL.PubSiteCode = "5" Then
+        If DatabaseName.Contains("SHADHVIKANPURB2") And AgL.PubSiteCode = "5" And AgL.PubDBName = "Sadhvi" Then
             IsValidDatabase = "Yes"
             BranchSupplierNameENTERPRISES = "SADHVI ENTERPRISES (Branch2)"
             BranchSupplierNameEMBROIDERY = "SADHVI EMBROIDERY (Branch2)"
         End If
 
-        If DatabaseName.Contains("SHADHVINANDI") And AgL.PubSiteCode = "6" Then
+        If DatabaseName.Contains("SHADHVINANDI") And AgL.PubSiteCode = "6" And AgL.PubDBName = "Sadhvi" Then
             IsValidDatabase = "Yes"
             BranchSupplierNameENTERPRISES = "SADHVI ENTERPRISES (Nandi)"
             BranchSupplierNameEMBROIDERY = "SADHVI EMBROIDERY (Nandi)"
         End If
 
+
+        If DatabaseName.Contains("SHADHVIKNP2") And AgL.PubSiteCode = "2" And AgL.PubDBName = "Sadhvi2" Then
+            IsValidDatabase = "Yes"
+            BranchSupplierNameENTERPRISES = "SADHVI SAREES (Branch)"
+        End If
+
+        If DatabaseName.Contains("SHADHVIJNP2") And AgL.PubSiteCode = "4" And AgL.PubDBName = "Sadhvi2" Then
+            IsValidDatabase = "Yes"
+            BranchSupplierNameENTERPRISES = "SADHVI SAREES (Jaunpur)"
+        End If
+
+        If DatabaseName.Contains("SHADHVINANDI2") And AgL.PubSiteCode = "6" And AgL.PubDBName = "Sadhvi2" Then
+            IsValidDatabase = "Yes"
+            BranchSupplierNameENTERPRISES = "SADHVI SAREES (Nandi)"
+        End If
 
         UpdateChildProgressBar("Initializing...", 1, 0)
 

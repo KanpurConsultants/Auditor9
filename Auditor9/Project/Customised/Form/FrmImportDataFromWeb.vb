@@ -201,15 +201,15 @@ Public Class FrmImportDataFromWeb
             '    LEFT JOIN (Select * From Item Where V_Type = 'IC') As Ic On I.ItemCategory = Ic.Code
             '    LEFT JOIN (Select * From Item Where V_Type = 'IG') As Ig On I.ItemGroup = Ig.Code "
             ' DtExternalData_Item = AgL.FillData(mQry, Connection_ExternalDatabase).Tables(0)
-            mQry = "SELECT 'SW_ProductGroup-' + Convert(NVARCHAR,P.ProductGroupID) AS ProductGroupCode,'SW_Product-' + Convert(NVARCHAR,P.ProductID) AS Code, P.ProductCode AS ManualCode,P.ProductDescription AS DisplayName, P.ProductDescription AS Description, 'Pcs' Unit, 0 DealQty, 'Pcs' DealUnit, PT.ProductTypeName As ItemCategoryDesc, PG.ProductGroupName As ItemGroupDesc, 'TP' AS ItemType, P.StandardCost AS PurchaseRate, 0 AS  Rate, 
-                    EntryBy, EntryDate, MoveToLog, MoveToLogDate, 'Active' AS Status, Div_Code, 'GST 5%' SalesTaxPostingGroup, Specification, StockYN, Gross_Weight, 0 IsSystemDefine, IsRestricted_InTransaction, IsMandatory_UnitConversion, '540752' AS HSN, PU.ProductUidName AS BarcodeDesc, 'SW_ProductUID-' + Convert(NVARCHAR,PU.ProductUIDId)  AS BarcodeId, ShowItemInOtherDivisions, MRP, DiscountPerPurchase, DiscountPerSale, AdditionPerSale, MaintainStockYn, 'ITEM' AS V_Type, Default_DiscountPerSale, Default_AdditionalDiscountPerSale, Default_AdditionPerSale, Default_DiscountPerPurchase, Default_AdditionalDiscountPerPurchase, Default_MarginPer, 
+            mQry = "SELECT 'SW_ProductGroup-' + Convert(NVARCHAR,P.ProductGroupID) AS ProductGroupCode,'SW_Product-' + Convert(NVARCHAR,P.ProductID) AS Code, P.ProductCode AS ManualCode,P.ProductName AS DisplayName, P.ProductName AS Description, 'Pcs' Unit, 0 DealQty, 'Pcs' DealUnit, PT.ProductTypeName As ItemCategoryDesc, PG.ProductGroupName As ItemGroupDesc, 'TP' AS ItemType, P.StandardCost AS PurchaseRate, 0 AS  Rate, 
+                    EntryBy, EntryDate, MoveToLog, MoveToLogDate, 'Active' AS Status, Div_Code, 'GST 5%' SalesTaxPostingGroup, P.ProductSpecification AS Specification, StockYN, Gross_Weight, 0 IsSystemDefine, IsRestricted_InTransaction, IsMandatory_UnitConversion, '540752' AS HSN, PU.ProductUidName AS BarcodeDesc, 'SW_ProductUID-' + Convert(NVARCHAR,PU.ProductUIDId)  AS BarcodeId, ShowItemInOtherDivisions, MRP, DiscountPerPurchase, DiscountPerSale, AdditionPerSale, MaintainStockYn, 'ITEM' AS V_Type, Default_DiscountPerSale, Default_AdditionalDiscountPerSale, Default_AdditionPerSale, Default_DiscountPerPurchase, Default_AdditionalDiscountPerPurchase, Default_MarginPer, 
                     'Fixed' AS BarcodeType, 'Auto' AS BarcodePattern, Default_AdditionPerPurchase, ShowItemInOtherSites, Site_Code, LockText, '' OmsId, IsNewItemAllowedPurch, IsNewDimension1AllowedPurch, IsNewDimension2AllowedPurch, IsNewDimension3AllowedPurch, IsNewDimension4AllowedPurch, Addition, Loss, ShowDimensionDetailInPurchase, ShowDimensionDetailInSales, IsLotApplicable, IsStockInPcsApplicable, LossQtyPer, LossQty, LossDealQtyPer, LossDealQty
                     FROM [SadhviW].Web.Products P
                     LEFT JOIN Item I ON I.OMSId = 'SW_Product-' + Convert(NVARCHAR,P.ProductID)
                     LEFT JOIN [SadhviW].Web.ProductGroups PG ON P.ProductGroupID = PG.ProductGroupID
                     LEFT JOIN [SadhviW].Web.ProductTypes PT ON PT.ProductTypeId = PG.ProductTypeId
                     LEFT JOIN [SadhviW].Web.ProductUids PU ON PU.ProductId = P.ProductID
-                    WHERE I.Code IS NULL "
+                    WHERE I.Code IS NULL AND P.OMSId IS NULL "
             DtExternalData_Item = AgL.FillData(mQry, AgL.GcnRead).Tables(0)
 
             FAddItem(DtExternalData_Item)
@@ -384,7 +384,7 @@ Public Class FrmImportDataFromWeb
                 ItemTable.ManualCode = AgL.XNull(DtExternalData_Header.Rows(I)("ManualCode"))
                 ItemTable.Description = AgL.XNull(DtExternalData_Header.Rows(I)("Description"))
                 ItemTable.DisplayName = AgL.XNull(DtExternalData_Header.Rows(I)("DisplayName"))
-                ItemTable.Specification = AgL.XNull(DtExternalData_Header.Rows(I)("ManualCode"))
+                ItemTable.Specification = AgL.XNull(DtExternalData_Header.Rows(I)("Specification"))
                 ItemTable.ItemGroupDesc = AgL.XNull(DtExternalData_Header.Rows(I)("ItemGroupDesc"))
                 ItemTable.ItemCategoryDesc = AgL.XNull(DtExternalData_Header.Rows(I)("ItemCategoryDesc"))
                 ItemTable.ItemType = AgL.XNull(DtExternalData_Header.Rows(I)("ItemType"))
