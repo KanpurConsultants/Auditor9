@@ -5,44 +5,44 @@ DocNoCaption	string	255	Invoice No.
 DocDateCaption	string	255	Invoice Date	
 SiteStateCode	string	255	09	
 SiteStateName	string	255	Uttar Pradesh	
-DocID	string	255	D1    SI 2025   14301	
+DocID	string	255	D1    SI 2025   18333	
 Sr	number	1	
-V_Date	datetime	13/Jan/2026 00:00:00	
+V_Date	datetime	05/Feb/2026 00:00:00	
 DeliveryDate	datetime		
 Voucher_Type	string	255	Tax Invoice	
 NCat	string	255	SI	
-InvoiceNo	string	255	SI-14301	
-RateType	string	255	Super Net	
+InvoiceNo	string	255	SI-18333	
+RateType	string	255	Dhara	
 DocumentPrintShowRateType	string	255	Show If Not Blank	
-AgentName	string	255	DIRECT (CASH)	
+AgentName	string	255	JAY SHANKER BAJYEPI	
 AgentCaption	string	255	Agent	
 BillToPartyNature	string	255	Customer	
-SaleToPartyName	string	255	A G COSMETICS	
-SaleToPartyAddress	string	255	LOHAI GALI BINDKI DIST: FATEHPUR,	
-CityName	string	255	BINDKI	
-SaleToPartyPincode	string	255	212635	
+SaleToPartyName	string	255	MANSURI TREDERS	
+SaleToPartyAddress	string	255	RAMNAGAR DIST:BARABANKI	
+CityName	string	255	RAMNAGAR	
+SaleToPartyPincode	string	255	225205	
 StateCode	string	255	09	
 StateName	string	255	Uttar Pradesh	
-SaleToPartyMobile	string	255	9236753387	
-ContactPerson	string	255	ARUN KUMAR GUPTA	
-SaleToPartySalesTaxNo	string	255	09AOWPG8228C1ZM	
-SaleToPartyAadharNo	string	255		
-SaleToPartyPanNo	string	255	AOWPG8228C	
-ShipToPartyName	string	255	A G COSMETICS	
-ShipToPartyAddress	string	255	LOHAI GALI BINDKI DIST: FATEHPUR,	
-ShipToPartyCity	string	255	BINDKI	
-ShipToPartyPincode	string	255	212635	
+SaleToPartyMobile	string	255	9305482418,9336900075	
+ContactPerson	string	255	IRSAD ALI	
+SaleToPartySalesTaxNo	string	255		
+SaleToPartyAadharNo	string	255	842717239456	
+SaleToPartyPanNo	string	255		
+ShipToPartyName	string	255	MANSURI TREDERS	
+ShipToPartyAddress	string	255	RAMNAGAR DIST:BARABANKI	
+ShipToPartyCity	string	255	RAMNAGAR	
+ShipToPartyPincode	string	255	225205	
 ShipToPartyStateCode	string	255	09	
 ShipToPartyStateName	string	255	Uttar Pradesh	
-ShipToPartyMobile	string	255	9236753387	
-ShipToPartySalesTaxNo	string	255	09AOWPG8228C1ZM	
-ShipToPartyAadharNo	string	255		
-ShipToPartyPanNo	string	255	AOWPG8228C	
+ShipToPartyMobile	string	255	9305482418,9336900075	
+ShipToPartySalesTaxNo	string	255		
+ShipToPartyAadharNo	string	255	842717239456	
+ShipToPartyPanNo	string	255		
 ShipToAddress	string	255		
 TermsAndConditions	string	255	<b>1.</b> Goods once sold will not be taken back. <b>2.</b> No Guarantee in the Age of Fashion. <b>3.</b> Interest @ 24% per annum will be charge after 30 days from the date of bill. <b>4.</b> All disputes subject to Kanpur Jurisdiction OR disputes will be settle through Cawnpore Kapda Committee Arbitration Board which will be abide by the both parties	
-TransporterName	string	255	BY HAND	
-TransporterMobile	string	255		
-TransporterAddress	string	255	SELF	
+TransporterName	string	255	BAHRAICH ROADWAYS	
+TransporterMobile	string	255	9415428737,9936377488	
+TransporterAddress	string	255	133/15,TP NAGAR-KANPUR	
 LrNo	string	255		
 LrDate	datetime		
 PrivateMark	string	255		
@@ -61,57 +61,57 @@ BookedTo	string	255
 Destination	string	255		
 DescriptionOfGoods	string	255		
 DescriptionOfPacking	string	255		
-TransporterSalesTaxNo	string	255		
+TransporterSalesTaxNo	string	255	09AAHFB9456E1Z8	
 ReferenceNo	string	255		
-ItemName	string	255	MABEL          [AALISA SAREE(364) | SAREE HALKI]	
-ItemGroupName	string	255	S-ENT-364HALKI	
-ItemCatName	string	255	SAREE HALKI	
-ItemSpecification	string	255	MABEL	
+ItemName	string	255	2990 LANCHA          [AYUSHI CREATION BRIDAL-537 | LEHNGA]	
+ItemGroupName	string	255	S-EMB-537 BRIDAL	
+ItemCatName	string	255	LEHNGA	
+ItemSpecification	string	255	2990 LANCHA	
 InvoiceLineSpecification	string	255		
-HSN	string	255	540752	
+HSN	string	255	630790	
 MaintainStockYn	boolean	True	
-SalesTaxGroupItem	string	255	GST 5%	
-GrossTaxRate	number	5	
+SalesTaxGroupItem	string	255	GST 18%	
+GrossTaxRate	number	18	
 Pcs	number	1	
 Qty	number	1	
-Rate	number	675	
+Rate	number	2619.75	
 Unit	string	255	Pcs	
 UnitDecimalPlaces	number	0	
 DiscountPer	number	0	
 DiscountAmount	number	0	
 AdditionalDiscountPer	number	0	
 AdditionalDiscountAmount	number	0	
-AdditionPer	number	0	
-AdditionAmount	number	0	
-TotalDiscount	number	0	
-AmountBeforeDiscount	number	675	
-Amount	number	675	
-Taxable_Amount	number	675	
+AdditionPer	number	5	
+AdditionAmount	number	124.75	
+TotalDiscount	number	-124.75	
+AmountBeforeDiscount	number	2619.75	
+Amount	number	2619.75	
+Taxable_Amount	number	2619.75	
 Tax1_Per	number	0	
 Tax1	number	0	
-Tax2_Per	number	2.5	
-Tax2	number	16.88	
-Tax3_Per	number	2.5	
-Tax3	number	16.88	
+Tax2_Per	number	9	
+Tax2	number	235.78	
+Tax3_Per	number	9	
+Tax3	number	235.78	
 Tax4_Per	number	0	
 Tax4	number	0	
 Tax5_Per	number	0	
 Tax5	number	0	
-Net_Amount	number	708.74	
+Net_Amount	number	3091	
 LRemarks	string	255		
 HRemarks	string	255		
-H_TotalDiscount	number	0	
-H_AmountBeforeDiscount	number	2720	
-H_Gross_Amount	number	2720	
+H_TotalDiscount	number	-124.75	
+H_AmountBeforeDiscount	number	2495	
+H_Gross_Amount	number	2619.75	
 H_SpecialDiscount_Per	number	0	
 H_SpecialDiscount	number	0	
-H_Taxable_Amount	number	2720	
+H_Taxable_Amount	number	2619.75	
 H_Tax1_Per	number	0	
 H_Tax1	number	0	
 H_Tax2_Per	number	0	
-H_Tax2	number	68.01	
+H_Tax2	number	235.78	
 H_Tax3_Per	number	0	
-H_Tax3	number	68.01	
+H_Tax3	number	235.78	
 H_Tax4_Per	number	0	
 H_Tax4	number	0	
 H_Tax5_Per	number	0	
@@ -120,8 +120,8 @@ H_Deduction_Per	number	0
 H_Deduction	number	0	
 H_Other_Charge_Per	number	0	
 H_Other_Charge	number	0	
-Round_Off	number	-0.02	
-H_Net_Amount	number	2856	
+Round_Off	number	-0.31	
+H_Net_Amount	number	3091	
 EInvoiceIRN	string	255		
 EInvoiceAckNo	string	255		
 EInvoiceAckDate	datetime		

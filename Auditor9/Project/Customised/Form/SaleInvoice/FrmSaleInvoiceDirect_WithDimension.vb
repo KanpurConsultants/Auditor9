@@ -3034,6 +3034,9 @@ Public Class FrmSaleInvoiceDirect_WithDimension
                     Dgl1.Columns(Col1Remark2).Visible = False
                     Dgl1.Columns(Col1Remark3).Visible = False
                     Dgl1.Columns(Col1Remark4).Visible = False
+                    If DglMain.Item(Col1Value, rowV_Type).Tag = "SIS" Then
+                        Dgl1.Columns(Col1ReferenceNo).Visible = True
+                    End If
                 Else
                     Dgl1.Columns(Col1Barcode).Visible = False
                     Dgl1.Columns(Col1Remark1).Visible = True

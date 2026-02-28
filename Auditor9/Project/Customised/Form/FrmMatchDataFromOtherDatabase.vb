@@ -121,7 +121,8 @@ Public Class FrmMatchDataFromOtherDatabase
             IsValidDatabase = "Yes"
         End If
 
-        If DatabaseName.Contains("SHADHVIJaunpur") Then
+
+        If DatabaseName.Contains("SHADHVIJaunpur") Or DatabaseName.Contains("SHADHVIJNP2") Then
             IsValidDatabase = "Yes"
         End If
 
@@ -132,6 +133,8 @@ Public Class FrmMatchDataFromOtherDatabase
         If DatabaseName.Contains("SHADHVINANDI") Then
             IsValidDatabase = "Yes"
         End If
+
+
 
 
         UpdateChildProgressBar("Initializing...", 1, 0)

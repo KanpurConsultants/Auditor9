@@ -5,13 +5,13 @@ DocNoCaption	string	255	Invoice No.
 DocDateCaption	string	255	Invoice Date	
 SiteStateCode	string	255	09	
 SiteStateName	string	255	Uttar Pradesh	
-DocID	string	255	D1   SIS 2025       2	
+DocID	string	255	E1   SIS 2025       1	
 Sr	number	1	
-V_Date	datetime	25/Sep/2025 00:00:00	
+V_Date	datetime	05/Sep/2025 00:00:00	
 DeliveryDate	datetime		
 Voucher_Type	string	255	Sale Invoice Service	
 NCat	string	255	SI	
-InvoiceNo	string	255	SIS-2	
+InvoiceNo	string	255	SIS-1	
 RateType	string	255	Super Net	
 DocumentPrintShowRateType	string	255	Show If Not Blank	
 AgentName	string	255		
@@ -84,34 +84,34 @@ AdditionalDiscountAmount	number	0
 AdditionPer	number	0	
 AdditionAmount	number	0	
 TotalDiscount	number	0	
-AmountBeforeDiscount	number	10000	
-Amount	number	10000	
-Taxable_Amount	number	10000	
+AmountBeforeDiscount	number	200000	
+Amount	number	200000	
+Taxable_Amount	number	200000	
 Tax1_Per	number	0	
 Tax1	number	0	
 Tax2_Per	number	9	
-Tax2	number	900	
+Tax2	number	18000	
 Tax3_Per	number	9	
-Tax3	number	900	
+Tax3	number	18000	
 Tax4_Per	number	0	
 Tax4	number	0	
 Tax5_Per	number	0	
 Tax5	number	0	
-Net_Amount	number	11800	
-LRemarks	string	255		
+Net_Amount	number	236000	
+LRemarks	string	255	ASSET RENT FROM 01.08.2025 TO 30.09.2025 @100000/-	
 HRemarks	string	255		
 H_TotalDiscount	number	0	
-H_AmountBeforeDiscount	number	10000	
-H_Gross_Amount	number	10000	
+H_AmountBeforeDiscount	number	200000	
+H_Gross_Amount	number	200000	
 H_SpecialDiscount_Per	number	0	
 H_SpecialDiscount	number	0	
-H_Taxable_Amount	number	10000	
+H_Taxable_Amount	number	200000	
 H_Tax1_Per	number	0	
 H_Tax1	number	0	
 H_Tax2_Per	number	0	
-H_Tax2	number	900	
+H_Tax2	number	18000	
 H_Tax3_Per	number	0	
-H_Tax3	number	900	
+H_Tax3	number	18000	
 H_Tax4_Per	number	0	
 H_Tax4	number	0	
 H_Tax5_Per	number	0	
@@ -121,16 +121,16 @@ H_Deduction	number	0
 H_Other_Charge_Per	number	0	
 H_Other_Charge	number	0	
 Round_Off	number	0	
-H_Net_Amount	number	11800	
-EInvoiceIRN	string	255		
-EInvoiceAckNo	string	255		
-EInvoiceAckDate	datetime		
-Default_BankAccountDetail	string	255	Bank Detail : 	HDFC A/c : 50200003154727    IFSC : HDFC0002006	
+H_Net_Amount	number	236000	
+EInvoiceIRN	string	255	db9bb7f50dfa79e584b4daaa7abcf4e2b2945d3ddd10ee4b3e51a8826a32d722	
+EInvoiceAckNo	string	255	142518244411843	
+EInvoiceAckDate	datetime	06/Sep/2025 19:22:00	
+Default_BankAccountDetail	string	255	Bank Detail : 	HDFC A/c : 50200017346518    IFSC : HDFC0002006	
 PaymentLink	string	255		
 DocumentPrintHeaderPattern	string	255	Center Aligned	
 DimDetail	string	255		
 PrintedByUser	string	255	SUPER	
-EntryByUser	string	255	SUPER	
+EntryByUser	string	255	account	
 PrintTitle	string	255	SALE INVOICE SERVICE	
 DocumentPrintShowPrintDateTimeYn	string	255	1	
 DocumentPrintShowPartyBalance	string	255	Hide	

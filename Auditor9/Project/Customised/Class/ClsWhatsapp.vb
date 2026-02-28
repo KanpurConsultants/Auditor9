@@ -35,6 +35,7 @@ Public Class WhatsAppSender
     End Sub
 
     Private Sub CheckLoop()
+        Dim DelayMinutes As Integer = 5
         While Not _stopChecking
             Try
                 SendWhatsappFromTable()
@@ -43,7 +44,7 @@ Public Class WhatsAppSender
             End Try
 
             ' Wait 1 minutes (60000 milliseconds)
-            Thread.Sleep(180000)
+            Thread.Sleep(DelayMinutes * 60000)
         End While
     End Sub
 

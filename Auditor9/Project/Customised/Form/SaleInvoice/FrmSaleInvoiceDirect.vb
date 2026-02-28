@@ -3665,8 +3665,15 @@ Public Class FrmSaleInvoiceDirect
                         End If
                     End If
 
-                    FSetSalesTaxGroupItemBasedOnRate(mRow)
-                    FSetPersonalDiscount(mRow)
+                    If AgL.PubDBName = "Sadhvi2" Then
+                        FSetPersonalDiscount(mRow)
+                        FSetSalesTaxGroupItemBasedOnRate(mRow)
+                    Else
+                        FSetSalesTaxGroupItemBasedOnRate(mRow)
+                        FSetPersonalDiscount(mRow)
+                    End If
+
+
                 End If
 
                 If LblV_Type.Tag = Ncat.SaleInvoice And
@@ -3772,17 +3779,25 @@ Public Class FrmSaleInvoiceDirect
         If Dgl1.Item(Col1ItemCategory, mRowIndex).Tag <> "" And Val(Dgl1.Item(Col1Rate, mRowIndex).Value) > 0 Then
             If AgL.PubServerName = "" Then
                 mQry = "Select SalesTaxGroupItem From ItemCategorySalesTax  With (NoLock)
-                Where Code='" & Dgl1.Item(Col1ItemCategory, mRowIndex).Tag & "' 
-                And RateGreaterThan < " & Val(Dgl1.Item(Col1Rate, mRowIndex).Value) & " 
-                And Date(WEF) <= " & AgL.Chk_Date(CDate(TxtV_Date.Text).ToString("s")) & " 
-                Order By WEF Desc, RateGreaterThan Desc Limit 1"
+                        Where Code='" & Dgl1.Item(Col1ItemCategory, mRowIndex).Tag & "' 
+                        And RateGreaterThan < " & Val(Dgl1.Item(Col1Rate, mRowIndex).Value) & " 
+                        And Date(WEF) <= " & AgL.Chk_Date(CDate(TxtV_Date.Text).ToString("s")) & " 
+                        Order By WEF Desc, RateGreaterThan Desc Limit 1"
             Else
-                mQry = "Select Top 1 SalesTaxGroupItem From ItemCategorySalesTax  With (NoLock)
-                Where Code='" & Dgl1.Item(Col1ItemCategory, mRowIndex).Tag & "' 
-                And RateGreaterThan < " & Val(Dgl1.Item(Col1Rate, mRowIndex).Value) & " 
-                And Date(WEF) <= " & AgL.Chk_Date(CDate(TxtV_Date.Text).ToString("s")) & " 
-                Order By WEF Desc, RateGreaterThan Desc"
+                If AgL.PubDBName = "Sadhvi2" Then
+                    mQry = "Select Top 1 SalesTaxGroupItem From ItemCategorySalesTax  With (NoLock)
+                        Where Code='" & Dgl1.Item(Col1ItemCategory, mRowIndex).Tag & "' 
+                        And RateGreaterThan < " & Val(Dgl1.Item(Col1Rate, mRowIndex).Value) + (Val(Dgl1.Item(Col1AdditionPer, mRowIndex).Value) * Val(Dgl1.Item(Col1Rate, mRowIndex).Value) / 100) & " 
+                        And Date(WEF) <= " & AgL.Chk_Date(CDate(TxtV_Date.Text).ToString("s")) & " 
+                        Order By WEF Desc, RateGreaterThan Desc"
+                Else mQry = "Select Top 1 SalesTaxGroupItem From ItemCategorySalesTax  With (NoLock)
+                        Where Code='" & Dgl1.Item(Col1ItemCategory, mRowIndex).Tag & "' 
+                        And RateGreaterThan < " & Val(Dgl1.Item(Col1Rate, mRowIndex).Value) & " 
+                        And Date(WEF) <= " & AgL.Chk_Date(CDate(TxtV_Date.Text).ToString("s")) & " 
+                        Order By WEF Desc, RateGreaterThan Desc"
+                End If
             End If
+
             DtMain = AgL.FillData(mQry, AgL.GCn).Tables(0)
             If DtMain.Rows.Count > 0 Then
                 Dgl1.Item(Col1SalesTaxGroup, mRowIndex).Value = AgL.XNull(DtMain.Rows(0)("SalesTaxGroupItem"))

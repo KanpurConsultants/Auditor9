@@ -193,17 +193,17 @@ Public Class FrmSyncDataFromOtherDatabase
 
         If DatabaseName.Contains("SHADHVIKNP2") And AgL.PubSiteCode = "2" And AgL.PubDBName = "Sadhvi2" Then
             IsValidDatabase = "Yes"
-            BranchSupplierNameENTERPRISES = "SADHVI SAREES (Branch)"
+            BranchSupplierNameENTERPRISES = "SADHVI SAREES PVT LTD (Branch)"
         End If
 
         If DatabaseName.Contains("SHADHVIJNP2") And AgL.PubSiteCode = "4" And AgL.PubDBName = "Sadhvi2" Then
             IsValidDatabase = "Yes"
-            BranchSupplierNameENTERPRISES = "SADHVI SAREES (Jaunpur)"
+            BranchSupplierNameENTERPRISES = "SADHVI SAREES PVT LTD (Jaunpur)"
         End If
 
         If DatabaseName.Contains("SHADHVINANDI2") And AgL.PubSiteCode = "6" And AgL.PubDBName = "Sadhvi2" Then
             IsValidDatabase = "Yes"
-            BranchSupplierNameENTERPRISES = "SADHVI SAREES (Nandi)"
+            BranchSupplierNameENTERPRISES = "SADHVI SAREES PVT LTD (Nandi)"
         End If
 
         UpdateChildProgressBar("Initializing...", 1, 0)
@@ -2498,7 +2498,7 @@ Public Class FrmSyncDataFromOtherDatabase
             If Code = "CASH" Or Code = "BANK" Or Code = "GRET" Or Code = "RevenuePnt" Then
                 DtRow = DtTable.Select("OMSId = '" & Code & "' ")
             Else
-                If AgL.StrCmp(ClsMain.FDivisionNameForCustomization(6), "SADHVI") And AgL.StrCmp(AgL.PubDBName, "Sadhvi") And (Code = "BNKHDFC8491" Or Code = "BNKHDFC8423" Or Code = "BNKICICI1597" Or Code = "BNKICICI1601") Then
+                If AgL.StrCmp(ClsMain.FDivisionNameForCustomization(6), "SADHVI") And (AgL.StrCmp(AgL.PubDBName, "Sadhvi") Or AgL.StrCmp(AgL.PubDBName, "Sadhvi2")) And (Code = "BNKHDFC8491" Or Code = "BNKHDFC8423" Or Code = "BNKICICI1597" Or Code = "BNKICICI1601") Then
                     DtRow = DtTable.Select("OMSId = '" & Code & "' ")
                 Else
                     DtRow = DtTable.Select("OMSId = '" & Code & "' AND Site_Code = '" & Site_Code & "' ")

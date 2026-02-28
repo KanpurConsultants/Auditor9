@@ -238,7 +238,7 @@ Public Class ClsFunction
                     FrmObj = New FrmImportDataFromBranch()
 
                 Case MDI.MnuImportDataCustom.Name
-                    If AgL.StrCmp(AgL.PubDBName, "RVN2") Then
+                    If AgL.StrCmp(AgL.PubDBName, "RVN2") Or AgL.StrCmp(AgL.PubDBName, "SHRIJIAW1") Or AgL.StrCmp(AgL.PubDBName, "MLREPLT1") Then
                         FrmObj = New FrmSyncDataFromOtherDatabase_RVN()
                     Else
                         FrmObj = New FrmSyncDataFromOtherDatabase()

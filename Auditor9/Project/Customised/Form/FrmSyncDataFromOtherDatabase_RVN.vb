@@ -162,6 +162,17 @@ Public Class FrmSyncDataFromOtherDatabase_RVN
             BranchSupplierNameEMBROIDERY = "SADHVI EMBROIDERY (Branch)"
         End If
 
+        If DatabaseName.Contains("SHRIJIAW") And AgL.StrCmp(AgL.PubDBName, "SHRIJIAW1") Then
+            IsValidDatabase = "Yes"
+            BranchSupplierNameENTERPRISES = "SADHVI ENTERPRISES (Branch)"
+            BranchSupplierNameEMBROIDERY = "SADHVI EMBROIDERY (Branch)"
+        End If
+
+        If DatabaseName.Contains("MLREPLT") And AgL.StrCmp(AgL.PubDBName, "MLREPLT1") Then
+            IsValidDatabase = "Yes"
+            BranchSupplierNameENTERPRISES = "SADHVI ENTERPRISES (Branch)"
+            BranchSupplierNameEMBROIDERY = "SADHVI EMBROIDERY (Branch)"
+        End If
 
         UpdateChildProgressBar("Initializing...", 1, 0)
 
