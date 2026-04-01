@@ -347,7 +347,7 @@ Public Class ClsStockReport
                 AgL.Dman_ExecuteNonQry(mQry, AgL.GCn)
 
 
-                If ClsMain.FDivisionNameForCustomization(14) = "PRATHAM APPARE" Or
+                If ClsMain.FDivisionNameForCustomization(14) = "PRATHAM APPARE" Or ClsMain.FDivisionNameForCustomization(20) = "UNIFORM WEAR COMPANY" Or
                         ClsMain.FDivisionNameForCustomization(15) = "AGARWAL UNIFORM" Then
                     mQry = "UPDATE Item
                                 SET Item.LastPurchaseRate = V1.LastPurchaseRate_New
@@ -490,7 +490,7 @@ Public Class ClsStockReport
                                     "
                             Dim DtItem As DataTable = AgL.FillData(mQry, AgL.GCn).Tables(0)
                             If DtItem.Rows.Count > 1 Then
-                                If ClsMain.FDivisionNameForCustomization(14) = "PRATHAM APPARE" Or
+                                If ClsMain.FDivisionNameForCustomization(14) = "PRATHAM APPARE" Or ClsMain.FDivisionNameForCustomization(20) = "UNIFORM WEAR COMPANY" Or
                                     ClsMain.FDivisionNameForCustomization(15) = "AGARWAL UNIFORM" Then
                                     mFilterGrid.Item(GFilter, rowReportType).Value = "Stock Ledger"
                                     For I As Integer = 0 To DtItem.Rows.Count - 1

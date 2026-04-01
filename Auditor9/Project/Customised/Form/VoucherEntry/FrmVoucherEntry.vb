@@ -2819,7 +2819,7 @@ Public Class FrmVoucherEntry
 
         If Not (LblV_Type.Tag = Ncat.DebitNoteCustomer Or LblV_Type.Tag = Ncat.DebitNoteSupplier Or LblV_Type.Tag = Ncat.CreditNoteCustomer Or LblV_Type.Tag = Ncat.CreditNoteSupplier) Then
             If ClsMain.IsPartyBlocked(Dgl1.Item(Col1Subcode, mRowIndex).Tag, LblV_Type.Tag) Then
-                MsgBox("Party is blocked for " & TxtV_Type.Text & ". Record will not be saved.")
+                MsgBox("Party " & Dgl1.Item(Col1Subcode, mRowIndex).Value & " is blocked for " & TxtV_Type.Text & ". Record will not be saved.")
             End If
         End If
 
@@ -3047,7 +3047,7 @@ Public Class FrmVoucherEntry
             For I = 0 To Dgl1.Rows.Count - 1
                 If AgL.XNull(Dgl1.Item(Col1Subcode, I).Value) <> "" Then
                     If ClsMain.IsPartyBlocked(AgL.XNull(Dgl1.Item(Col1Subcode, I).Tag), LblV_Type.Tag) Then
-                        MsgBox("Party is blocked for " & TxtV_Type.Text & ". Can not continue.")
+                        MsgBox("Party " & AgL.XNull(Dgl1.Item(Col1Subcode, I).Value) & " is blocked for " & TxtV_Type.Text & ". Can not continue.")
                         passed = False : Exit Sub
                     End If
                 End If
@@ -6380,8 +6380,13 @@ Public Class FrmVoucherEntry
                     bSadhviHO = AgL.XNull(AgL.Dman_Execute("Select SubCode From SubGroup With (NoLock)
                             Where Name = 'SADHVI EMBROIDERY'", IIf(AgL.PubServerName = "", Conn, AgL.GcnRead)).ExecuteScalar())
                 Else
-                    bSadhviHO = AgL.XNull(AgL.Dman_Execute("Select SubCode From SubGroup With (NoLock)
+                    If AgL.StrCmp(AgL.PubDBName, "SHADHVIKNP2") Or AgL.StrCmp(AgL.PubDBName, "SHADHVIJNP2") Then
+                        bSadhviHO = AgL.XNull(AgL.Dman_Execute("Select SubCode From SubGroup With (NoLock)
+                            Where Name = 'SADHVI SAREES PVT LTD'", IIf(AgL.PubServerName = "", Conn, AgL.GcnRead)).ExecuteScalar())
+                    Else
+                        bSadhviHO = AgL.XNull(AgL.Dman_Execute("Select SubCode From SubGroup With (NoLock)
                             Where Name = 'SADHVI ENTERPRISES'", IIf(AgL.PubServerName = "", Conn, AgL.GcnRead)).ExecuteScalar())
+                    End If
                 End If
 
                 mQry = "Select Sr From LedgerHeadDetail with (NoLock) Where DocId = '" & SearchCode & "'"

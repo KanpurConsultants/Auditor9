@@ -1628,6 +1628,7 @@ Public Class ClsFunction
                ClsMain.FDivisionNameForCustomization().Contains("HARSHEEN") Or
                ClsMain.FDivisionNameForCustomization().Contains("NEW SUPER") Or
                ClsMain.FDivisionNameForCustomization().Contains("PRATHAM") Or
+               ClsMain.FDivisionNameForCustomization().Contains("UNIFORM WEAR COMPANY") Or
                ClsMain.FDivisionNameForCustomization().Contains("VAISHNO") Or
                ClsMain.FDivisionNameForCustomization().Contains("MANOJ") Or
                ClsMain.FDivisionNameForCustomization().Contains("PAWAN") Or

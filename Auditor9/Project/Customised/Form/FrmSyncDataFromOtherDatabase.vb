@@ -82,6 +82,11 @@ Public Class FrmSyncDataFromOtherDatabase
 
     Private SadhviEnterprises_NandiSaree As String = "NANDI SAREES"
     Private SadhviEmbroidery_NandiSaree As String = "NANDI SAREES EMBROIDERY"
+
+    Private SadhviSarees_Kanpur As String = "SADHVI SAREES PVT. LTD. (KANPUR)"
+    Private SadhviSarees_Jaunpur As String = "SADHVI SAREES PVT. LTD. (JAUNPUR)"
+    Private SadhviSarees_Nandi As String = "SADHVI SAREES PVT. LTD. (RETAIL)"
+
     Private Sub BtnOK_Click(sender As Object, e As EventArgs) Handles BtnOK.Click
         BtnOK.Enabled = False
         _backgroundWorker1 = New System.ComponentModel.BackgroundWorker()
@@ -2713,47 +2718,63 @@ Public Class FrmSyncDataFromOtherDatabase
                 AgL.StrCmp(AgL.XNull(DtHeader.Rows(0)("SubGroupNature")), "BANK") Then
                 Dim bSadhviBranch As String = ""
 
-                If AgL.XNull(DtHeader.Rows(0)("Site_Code")) = "2" Then
-                    If AgL.XNull(DtHeader.Rows(0)("Div_Code")) = "E" Then
+                If AgL.PubDBName = "Sadhvi2" Then
+                    If AgL.XNull(DtHeader.Rows(0)("Site_Code")) = "2" Then
                         bSadhviBranch = AgL.XNull(AgL.Dman_Execute("Select SubCode From SubGroup With (NoLock)
+                        Where Name = '" & SadhviSarees_Kanpur & "'", IIf(AgL.PubServerName = "", Conn, AgL.GcnRead)).ExecuteScalar())
+                    ElseIf AgL.XNull(DtHeader.Rows(0)("Site_Code")) = "4" Then
+                        bSadhviBranch = AgL.XNull(AgL.Dman_Execute("Select SubCode From SubGroup With (NoLock)
+                        Where Name = '" & SadhviSarees_Jaunpur & "'", IIf(AgL.PubServerName = "", Conn, AgL.GcnRead)).ExecuteScalar())
+                    ElseIf AgL.XNull(DtHeader.Rows(0)("Site_Code")) = "6" Then
+                        bSadhviBranch = AgL.XNull(AgL.Dman_Execute("Select SubCode From SubGroup With (NoLock)
+                        Where Name = '" & SadhviSarees_Nandi & "'", IIf(AgL.PubServerName = "", Conn, AgL.GcnRead)).ExecuteScalar())
+                    End If
+
+                Else
+                    If AgL.XNull(DtHeader.Rows(0)("Site_Code")) = "2" Then
+                        If AgL.XNull(DtHeader.Rows(0)("Div_Code")) = "E" Then
+                            bSadhviBranch = AgL.XNull(AgL.Dman_Execute("Select SubCode From SubGroup With (NoLock)
                         Where Name = '" & SadhviEmbroidery_KanpurBranch & "'", IIf(AgL.PubServerName = "", Conn, AgL.GcnRead)).ExecuteScalar())
-                    Else
-                        bSadhviBranch = AgL.XNull(AgL.Dman_Execute("Select SubCode From SubGroup With (NoLock)
+                        Else
+                            bSadhviBranch = AgL.XNull(AgL.Dman_Execute("Select SubCode From SubGroup With (NoLock)
                         Where Name = '" & SadhviEnterprises_KanpurBranch & "'", IIf(AgL.PubServerName = "", Conn, AgL.GcnRead)).ExecuteScalar())
-                    End If
-                ElseIf AgL.XNull(DtHeader.Rows(0)("Site_Code")) = "3" Then
-                    If AgL.XNull(DtHeader.Rows(0)("Div_Code")) = "E" Then
-                        bSadhviBranch = AgL.XNull(AgL.Dman_Execute("Select SubCode From SubGroup With (NoLock)
+                        End If
+                    ElseIf AgL.XNull(DtHeader.Rows(0)("Site_Code")) = "3" Then
+                        If AgL.XNull(DtHeader.Rows(0)("Div_Code")) = "E" Then
+                            bSadhviBranch = AgL.XNull(AgL.Dman_Execute("Select SubCode From SubGroup With (NoLock)
                         Where Name = '" & SadhviEmbroidery_BhopalBranch & "'", IIf(AgL.PubServerName = "", Conn, AgL.GcnRead)).ExecuteScalar())
-                    Else
-                        bSadhviBranch = AgL.XNull(AgL.Dman_Execute("Select SubCode From SubGroup With (NoLock)
+                        Else
+                            bSadhviBranch = AgL.XNull(AgL.Dman_Execute("Select SubCode From SubGroup With (NoLock)
                         Where Name = '" & SadhviEnterprises_BhopalBranch & "'", IIf(AgL.PubServerName = "", Conn, AgL.GcnRead)).ExecuteScalar())
-                    End If
-                ElseIf AgL.XNull(DtHeader.Rows(0)("Site_Code")) = "4" Then
-                    If AgL.XNull(DtHeader.Rows(0)("Div_Code")) = "E" Then
-                        bSadhviBranch = AgL.XNull(AgL.Dman_Execute("Select SubCode From SubGroup With (NoLock)
+                        End If
+                    ElseIf AgL.XNull(DtHeader.Rows(0)("Site_Code")) = "4" Then
+                        If AgL.XNull(DtHeader.Rows(0)("Div_Code")) = "E" Then
+                            bSadhviBranch = AgL.XNull(AgL.Dman_Execute("Select SubCode From SubGroup With (NoLock)
                         Where Name = '" & SadhviEmbroidery_JaunpurBranch & "'", IIf(AgL.PubServerName = "", Conn, AgL.GcnRead)).ExecuteScalar())
-                    Else
-                        bSadhviBranch = AgL.XNull(AgL.Dman_Execute("Select SubCode From SubGroup With (NoLock)
+                        Else
+                            bSadhviBranch = AgL.XNull(AgL.Dman_Execute("Select SubCode From SubGroup With (NoLock)
                         Where Name = '" & SadhviEnterprises_JaunpurBranch & "'", IIf(AgL.PubServerName = "", Conn, AgL.GcnRead)).ExecuteScalar())
-                    End If
-                ElseIf AgL.XNull(DtHeader.Rows(0)("Site_Code")) = "5" Then
-                    If AgL.XNull(DtHeader.Rows(0)("Div_Code")) = "E" Then
-                        bSadhviBranch = AgL.XNull(AgL.Dman_Execute("Select SubCode From SubGroup With (NoLock)
+                        End If
+                    ElseIf AgL.XNull(DtHeader.Rows(0)("Site_Code")) = "5" Then
+                        If AgL.XNull(DtHeader.Rows(0)("Div_Code")) = "E" Then
+                            bSadhviBranch = AgL.XNull(AgL.Dman_Execute("Select SubCode From SubGroup With (NoLock)
                         Where Name = '" & SadhviEmbroidery_KanpurBranch2 & "'", IIf(AgL.PubServerName = "", Conn, AgL.GcnRead)).ExecuteScalar())
-                    Else
-                        bSadhviBranch = AgL.XNull(AgL.Dman_Execute("Select SubCode From SubGroup With (NoLock)
+                        Else
+                            bSadhviBranch = AgL.XNull(AgL.Dman_Execute("Select SubCode From SubGroup With (NoLock)
                         Where Name = '" & SadhviEnterprises_KanpurBranch2 & "'", IIf(AgL.PubServerName = "", Conn, AgL.GcnRead)).ExecuteScalar())
-                    End If
-                ElseIf AgL.XNull(DtHeader.Rows(0)("Site_Code")) = "6" Then
-                    If AgL.XNull(DtHeader.Rows(0)("Div_Code")) = "E" Then
-                        bSadhviBranch = AgL.XNull(AgL.Dman_Execute("Select SubCode From SubGroup With (NoLock)
+                        End If
+                    ElseIf AgL.XNull(DtHeader.Rows(0)("Site_Code")) = "6" Then
+                        If AgL.XNull(DtHeader.Rows(0)("Div_Code")) = "E" Then
+                            bSadhviBranch = AgL.XNull(AgL.Dman_Execute("Select SubCode From SubGroup With (NoLock)
                         Where Name = '" & SadhviEnterprises_NandiSaree & "'", IIf(AgL.PubServerName = "", Conn, AgL.GcnRead)).ExecuteScalar())
-                    Else
-                        bSadhviBranch = AgL.XNull(AgL.Dman_Execute("Select SubCode From SubGroup With (NoLock)
+                        Else
+                            bSadhviBranch = AgL.XNull(AgL.Dman_Execute("Select SubCode From SubGroup With (NoLock)
                         Where Name = '" & SadhviEmbroidery_NandiSaree & "'", IIf(AgL.PubServerName = "", Conn, AgL.GcnRead)).ExecuteScalar())
+                        End If
                     End If
+
                 End If
+
 
 
 

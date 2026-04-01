@@ -134,7 +134,8 @@ Public Class ClsReports
                 Case SaleInvoiceReport, SaleOrderReport
                     mQry = "Select 'Doc.Header Wise Detail' as Code, 'Doc.Header Wise Detail' as Name 
                             Union All Select 'Item Wise Detail' as Code, 'Item Wise Detail' as Name 
-                            Union All Select 'Month Wise Summary' as Code, 'Month Wise Summary' as Name 
+                            Union All Select 'Month Wise Summary' as Code, 'Month Wise Summary' as Name
+                            Union All Select 'Date Wise Summary' as Code, 'Date Wise Summary' as Name  
                             Union All Select 'Party Wise Summary' as Code, 'Party Wise Summary' as Name 
                             Union All Select 'Agent Wise Summary' as Code, 'Agent Wise Summary' as Name 
                             Union All Select 'Voucher Type Wise Summary' as Code, 'Voucher Type Wise Summary' as Name 
@@ -1093,6 +1094,10 @@ Public Class ClsReports
                         mFilterGrid.Item(GFilter, 0).Value = "Doc.Header Wise Detail"
                         mFilterGrid.Item(GFilter, 1).Value = AgL.RetMonthStartDate(CDate(mGridRow.Cells("Month").Value))
                         mFilterGrid.Item(GFilter, 2).Value = AgL.RetMonthEndDate(CDate(mGridRow.Cells("Month").Value))
+                    ElseIf mFilterGrid.Item(GFilter, 0).Value = "Date Wise Summary" Then
+                        mFilterGrid.Item(GFilter, 0).Value = "Doc.Header Wise Detail"
+                        mFilterGrid.Item(GFilter, 1).Value = AgL.RetMonthStartDate(CDate(mGridRow.Cells("Month").Value))
+                        mFilterGrid.Item(GFilter, 2).Value = AgL.RetMonthEndDate(CDate(mGridRow.Cells("Month").Value))
                     ElseIf mFilterGrid.Item(GFilter, 0).Value = "Party Wise Summary" Then
                         mFilterGrid.Item(GFilter, 0).Value = "Doc.Header Wise Detail"
                         mFilterGrid.Item(GFilter, 3).Value = mGridRow.Cells("Party").Value
@@ -1674,10 +1679,25 @@ Public Class ClsReports
                     GROUP By Substring(Convert(NVARCHAR, VMain.V_Date_ActualFormat,103),4,7), Year(VMain.V_Date_ActualFormat), Month(VMain.V_Date_ActualFormat)  
                     Order By Year(VMain.V_Date_ActualFormat), Month(VMain.V_Date_ActualFormat) "
                 End If
+            ElseIf ReportFrm.FGetText(0) = "Date Wise Summary" Then
+                If AgL.PubServerName = "" Then
+                    mQry = " Select VMain.V_Date_ActualFormat As SearchCode, VMain.V_Date_ActualFormat As [Date], Max(VMain.GodownName) AS GodownName,
+                    Count(Distinct Vmain.DocID) as [Doc.Count],  Round(Sum(VMain.Qty),3) as Qty,
+                    Sum(VMain.AmountExDiscount) as GoodsValue, Sum(VMain.Discount) as Discount, Sum(VMain.Addition) as Addition, Sum(VMain.SpecialDiscount) as SpecialDiscount, Sum(VMain.SpecialAddition) as SpecialAddition,
+                    Sum(VMain.Amount) As Amount, Sum(VMain.Taxable_Amount) As [Taxable Amount], IfNull(Sum(VMain.TotalTax),0) As TaxAmount, Sum(VMain.Net_Amount) As [Net Amount]
+                    From (" & mQry & ") As VMain
+                    GROUP By VMain.V_Date_ActualFormat,VMain.GodownName  
+                    Order By VMain.V_Date_ActualFormat,Max(VMain.GodownName)"
+                Else
+                    mQry = " Select Replace(Convert(NVARCHAR,Max(VMain.V_Date),106),' ','/') As SearchCode, Replace(Convert(NVARCHAR,Max(VMain.V_Date),106),' ','/') As [Date], 
+                    Count(Distinct Vmain.DocID) as [Doc.Count], 
+                    Sum(VMain.AmountExDiscount) as GoodsValue, Sum(VMain.Discount) as Discount, Sum(VMain.Addition) as Addition, Sum(VMain.SpecialDiscount) as SpecialDiscount, Sum(VMain.SpecialAddition) as SpecialAddition,
+                    Sum(VMain.Amount) As Amount, Sum(VMain.Taxable_Amount) As [Taxable Amount], IfNull(Sum(VMain.TotalTax),0) As TaxAmount, Sum(VMain.Net_Amount) As [Net Amount]
+                    From (" & mQry & ") As VMain
+                    GROUP By VMain.V_Date
+                    Order By VMain.V_Date "
+                End If
             End If
-
-
-
 
             DsHeader = AgL.FillData(mQry, AgL.GCn)
 

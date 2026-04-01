@@ -5370,7 +5370,7 @@ Public Class FrmSaleInvoiceDirect_WithDimension
                 Case Col1Dimension3
                     Validating_Dimension3(mColumnIndex, mRowIndex)
                     If Dgl1.Item(Col1Unit, mRowIndex).Tag Then ShowSaleInvoiceDimensionDetail(Dgl1.CurrentCell.RowIndex, False)
-                    If FDivisionNameForCustomization(14) = "PRATHAM APPARE" Or
+                    If FDivisionNameForCustomization(14) = "PRATHAM APPARE" Or ClsMain.FDivisionNameForCustomization(20) = "UNIFORM WEAR COMPANY" Or
             FDivisionNameForCustomization(15) = "AGARWAL UNIFORM" Then
                         If Dgl1.Item(Col1Dimension1, mRowIndex).Tag = "" Then
                             FCreateHelpDimension1(mRowIndex)
@@ -7975,7 +7975,7 @@ Public Class FrmSaleInvoiceDirect_WithDimension
         End If
 
         'This is only check for pratham not agarwal because there is no design wise rate.
-        If FDivisionNameForCustomization(14) = "PRATHAM APPARE" Then
+        If FDivisionNameForCustomization(14) = "PRATHAM APPARE" Or ClsMain.FDivisionNameForCustomization(20) = "UNIFORM WEAR COMPANY" Then
             If AgL.XNull(Dgl1.Item(Col1Dimension3, RowIndex).Tag) <> "" Then
                 strCond += " And I.Code In (SELECT DISTINCT L.Dimension1
                     FROM RateList H 
@@ -8032,7 +8032,7 @@ Public Class FrmSaleInvoiceDirect_WithDimension
         End If
 
         'This is only check for pratham not agarwal because there is no design wise rate.
-        If FDivisionNameForCustomization(14) = "PRATHAM APPARE" Then
+        If FDivisionNameForCustomization(14) = "PRATHAM APPARE" Or ClsMain.FDivisionNameForCustomization(20) = "UNIFORM WEAR COMPANY" Then
             If AgL.XNull(Dgl1.Item(Col1Dimension3, RowIndex).Tag) <> "" Then
                 strCond += " And I.Code In (SELECT DISTINCT L.Dimension2
                     FROM RateList H 

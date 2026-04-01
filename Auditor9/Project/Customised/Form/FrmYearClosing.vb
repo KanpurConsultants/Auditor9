@@ -43,7 +43,7 @@ Public Class FrmYearClosing
                         FProcess202425(AgL.GCn, AgL.ECmd, AgL)
                         FProcess202526(AgL.GCn, AgL.ECmd, AgL)
                         FProcess202627(AgL.GCn, AgL.ECmd, AgL)
-                        FProcess202728(AgL.GCn, AgL.ECmd, AgL)
+                        'FProcess202728(AgL.GCn, AgL.ECmd, AgL)
                         AgL.ETrans.Commit()
                         mTrans = "Commit"
                         MsgBox("Process Completed...!", MsgBoxStyle.Information)

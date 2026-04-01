@@ -104,7 +104,7 @@ Public Class ClsExportDataForBranch
             Else
                 ProcExportSaleInvoiceDataToSqlite_JainBrothersBranch()
             End If
-        ElseIf ClsMain.FDivisionNameForCustomization(14) = "PRATHAM APPARE" Then
+        ElseIf ClsMain.FDivisionNameForCustomization(14) = "PRATHAM APPARE" Or ClsMain.FDivisionNameForCustomization(20) = "UNIFORM WEAR COMPANY" Then
             ProcExportSaleInvoiceDataToSqlite_Pratham()
         ElseIf ClsMain.FDivisionNameForCustomization(9) = "GUR SHEEL" Then
             ProcExportSaleInvoiceDataToSqlite_Gurusheel()

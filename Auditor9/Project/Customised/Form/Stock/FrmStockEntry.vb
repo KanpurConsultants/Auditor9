@@ -1317,7 +1317,7 @@ Public Class FrmStockEntry
                     End If
 
                     If CType(AgL.VNull(FGetSettings(SettingFields.PostConsumptionYn, SettingType.General)), Boolean) = True Then
-                        If FDivisionNameForCustomization(14) = "PRATHAM APPARE" Or
+                        If FDivisionNameForCustomization(14) = "PRATHAM APPARE" Or ClsMain.FDivisionNameForCustomization(20) = "UNIFORM WEAR COMPANY" Or
             FDivisionNameForCustomization(15) = "AGARWAL UNIFORM" Then
                             FPostConsumption_Garment(mSearchCode, mSr, I, Conn, Cmd)
                         Else
@@ -1341,7 +1341,7 @@ Public Class FrmStockEntry
                         End If
 
                         If CType(AgL.VNull(FGetSettings(SettingFields.PostConsumptionYn, SettingType.General)), Boolean) = True Then
-                            If FDivisionNameForCustomization(14) = "PRATHAM APPARE" Or
+                            If FDivisionNameForCustomization(14) = "PRATHAM APPARE" Or ClsMain.FDivisionNameForCustomization(20) = "UNIFORM WEAR COMPANY" Or
             FDivisionNameForCustomization(15) = "AGARWAL UNIFORM" Then
                                 FPostConsumption_Garment(mSearchCode, Dgl1.Item(ColSNo, I).Tag, I, Conn, Cmd)
                             Else
@@ -3169,7 +3169,7 @@ Public Class FrmStockEntry
                         Dgl1.CurrentCell.ReadOnly = Dgl1.Item(Col1Unit, Dgl1.CurrentCell.RowIndex).Tag
                     End If
                 Case Col1Item
-                    If FDivisionNameForCustomization(14) = "PRATHAM APPARE" Or
+                    If FDivisionNameForCustomization(14) = "PRATHAM APPARE" Or ClsMain.FDivisionNameForCustomization(20) = "UNIFORM WEAR COMPANY" Or
             FDivisionNameForCustomization(15) = "AGARWAL UNIFORM" Then
                         If AgL.StrCmp(DglMain.Item(Col1Value, rowSettingGroup).Tag, ClsGarmentProduction.SettingGroup_RawAndOtherMaterial) Then
                             If AgL.StrCmp(Dgl1.Item(Col1ItemType, Dgl1.CurrentCell.RowIndex).Tag, ItemTypeCode.RawProduct) Then
@@ -3182,7 +3182,7 @@ Public Class FrmStockEntry
                         End If
                     End If
                 Case Col1Dimension1, Col1Dimension2, Col1Dimension3, Col1Dimension4
-                    If FDivisionNameForCustomization(14) = "PRATHAM APPARE" Or
+                    If FDivisionNameForCustomization(14) = "PRATHAM APPARE" Or ClsMain.FDivisionNameForCustomization(20) = "UNIFORM WEAR COMPANY" Or
             FDivisionNameForCustomization(15) = "AGARWAL UNIFORM" Then
                         If AgL.StrCmp(DglMain.Item(Col1Value, rowSettingGroup).Tag, ClsGarmentProduction.SettingGroup_RawAndOtherMaterial) Then
                             If AgL.StrCmp(Dgl1.Item(Col1ItemType, Dgl1.CurrentCell.RowIndex).Tag, ItemTypeCode.RawProduct) Then
@@ -4447,7 +4447,7 @@ Public Class FrmStockEntry
             FGeterateSkuName(mRowIndex)
             Select Case Dgl1.Columns(Dgl1.CurrentCell.ColumnIndex).Name
                 Case Col1Item, Col1ItemCode, Col1ItemCategory, Col1ItemGroup, Col1Item, Col1Dimension1, Col1Dimension2, Col1Dimension3, Col1Dimension3, Col1Dimension4, Col1Size
-                    If FDivisionNameForCustomization(14) = "PRATHAM APPARE" Or
+                    If FDivisionNameForCustomization(14) = "PRATHAM APPARE" Or ClsMain.FDivisionNameForCustomization(20) = "UNIFORM WEAR COMPANY" Or
             FDivisionNameForCustomization(15) = "AGARWAL UNIFORM" Then
                         If AgL.XNull(Dgl1.Item(Col1SKU, mRowIndex).Tag) <> "" Then
                             Dgl1.Item(Col1Rate, mRowIndex).Value = FGetLastPurchaseRate(mRowIndex)
@@ -5450,7 +5450,7 @@ Public Class FrmStockEntry
                 Case rowBtnStockBalance
                     FOpenStockBalance(-1)
                 Case rowBtnStandardConsumption
-                    If FDivisionNameForCustomization(14) = "PRATHAM APPARE" Or
+                    If FDivisionNameForCustomization(14) = "PRATHAM APPARE" Or ClsMain.FDivisionNameForCustomization(20) = "UNIFORM WEAR COMPANY" Or
             FDivisionNameForCustomization(15) = "AGARWAL UNIFORM" Then
                         FFillStandardConsumption_Garment()
                     Else

@@ -5563,7 +5563,7 @@ Public Class ClsReportProcedures
                 AgL.Dman_ExecuteNonQry(mQry, AgL.GCn)
 
 
-                If ClsMain.FDivisionNameForCustomization(14) = "PRATHAM APPARE" Or
+                If ClsMain.FDivisionNameForCustomization(14) = "PRATHAM APPARE" Or ClsMain.FDivisionNameForCustomization(20) = "UNIFORM WEAR COMPANY" Or
                         ClsMain.FDivisionNameForCustomization(15) = "AGARWAL UNIFORM" Then
                     mQry = "UPDATE Item
                                 SET Item.LastPurchaseRate = V1.LastPurchaseRate_New

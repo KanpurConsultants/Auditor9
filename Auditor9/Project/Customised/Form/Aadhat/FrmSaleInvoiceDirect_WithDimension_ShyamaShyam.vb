@@ -4722,7 +4722,7 @@ Public Class FrmSaleInvoiceDirect_WithDimension_ShyamaShyam
                 Case Col1Dimension3
                     Validating_Dimension3(mColumnIndex, mRowIndex)
                     If Dgl1.Item(Col1Unit, mRowIndex).Tag Then ShowSaleInvoiceDimensionDetail(Dgl1.CurrentCell.RowIndex, False)
-                    If FDivisionNameForCustomization(14) = "PRATHAM APPARE" Or
+                    If FDivisionNameForCustomization(14) = "PRATHAM APPARE" Or FDivisionNameForCustomization(20) = "UNIFORM WEAR COMPANY" Or
             FDivisionNameForCustomization(15) = "AGARWAL UNIFORM" Then
                         If Dgl1.Item(Col1Dimension1, mRowIndex).Tag = "" Then
                             FCreateHelpDimension1(mRowIndex)
@@ -6975,7 +6975,7 @@ Public Class FrmSaleInvoiceDirect_WithDimension_ShyamaShyam
         End If
 
         'This is only check for pratham not agarwal because there is no design wise rate.
-        If FDivisionNameForCustomization(14) = "PRATHAM APPARE" Then
+        If FDivisionNameForCustomization(14) = "PRATHAM APPARE" Or FDivisionNameForCustomization(20) = "UNIFORM WEAR COMPANY" Then
             If AgL.XNull(Dgl1.Item(Col1Dimension3, RowIndex).Tag) <> "" Then
                 strCond += " And I.Code In (SELECT DISTINCT L.Dimension1
                     FROM RateList H 
@@ -7032,7 +7032,7 @@ Public Class FrmSaleInvoiceDirect_WithDimension_ShyamaShyam
         End If
 
         'This is only check for pratham not agarwal because there is no design wise rate.
-        If FDivisionNameForCustomization(14) = "PRATHAM APPARE" Then
+        If FDivisionNameForCustomization(14) = "PRATHAM APPARE" Or FDivisionNameForCustomization(20) = "UNIFORM WEAR COMPANY" Then
             If AgL.XNull(Dgl1.Item(Col1Dimension3, RowIndex).Tag) <> "" Then
                 strCond += " And I.Code In (SELECT DISTINCT L.Dimension2
                     FROM RateList H 
@@ -12931,7 +12931,7 @@ Public Class FrmSaleInvoiceDirect_WithDimension_ShyamaShyam
         End Try
     End Function
     Private Sub FGetRateConsideringAllDimensions(mRowIndex As Integer)
-        If FDivisionNameForCustomization(14) = "PRATHAM APPARE" Or
+        If FDivisionNameForCustomization(14) = "PRATHAM APPARE" Or FDivisionNameForCustomization(20) = "UNIFORM WEAR COMPANY" Or
             FDivisionNameForCustomization(15) = "AGARWAL UNIFORM" Then
             Dgl1.Item(Col1Rate, mRowIndex).Value = ClsMain.FGetRateWithRatePattern("", DglMain.Item(Col1Value, rowSaleToParty).Tag, DglMain.Item(Col1Value, rowSettingGroup).Tag, TxtDivision.Tag, DglMain.Item(Col1Value, rowSite_Code).Tag, Process.Sales, DglMain.Item(Col1Value, rowV_Type).Tag,
                     Dgl2.Item(Col1Value, rowRateType).Tag,

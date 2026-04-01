@@ -3721,7 +3721,7 @@ Public Class FrmPhysicalStockAdjustment
                     Validating_Dimension2(mColumnIndex, mRowIndex)
                 Case Col1Dimension3
                     Validating_Dimension3(mColumnIndex, mRowIndex)
-                    If FDivisionNameForCustomization(14) = "PRATHAM APPARE" Or
+                    If FDivisionNameForCustomization(14) = "PRATHAM APPARE" Or ClsMain.FDivisionNameForCustomization(20) = "UNIFORM WEAR COMPANY" Or
                        FDivisionNameForCustomization(15) = "AGARWAL UNIFORM" Then
                         If Dgl1.Item(Col1Dimension1, mRowIndex).Tag = "" Then
                             FCreateHelpDimension1(mRowIndex)
@@ -4185,7 +4185,7 @@ Public Class FrmPhysicalStockAdjustment
         With Dgl1
             For I = 0 To .Rows.Count - 1
                 If .Item(Col1SKU, I).Value <> "" And Dgl1.Rows(I).Visible Then
-                    If (FDivisionNameForCustomization(14) = "PRATHAM APPARE" Or
+                    If (FDivisionNameForCustomization(14) = "PRATHAM APPARE" Or ClsMain.FDivisionNameForCustomization(20) = "UNIFORM WEAR COMPANY" Or
                                 FDivisionNameForCustomization(15) = "AGARWAL UNIFORM") And
                         LblV_Type.Tag = Ncat.JobReceive Then
                         If AgL.XNull(DglMain.Item(Col1Value, rowProcess).Tag) = ClsGarmentProduction.Process_Cutting Or
@@ -4647,7 +4647,7 @@ Public Class FrmPhysicalStockAdjustment
             End If
         End If
 
-        If (FDivisionNameForCustomization(14) = "PRATHAM APPARE" Or
+        If (FDivisionNameForCustomization(14) = "PRATHAM APPARE" Or ClsMain.FDivisionNameForCustomization(20) = "UNIFORM WEAR COMPANY" Or
             FDivisionNameForCustomization(15) = "AGARWAL UNIFORM") And LblV_Type.Tag = Ncat.JobInvoice Then
             If AgL.StrCmp(Topctrl1.Mode, "Add") Then
                 ShowPurchInvoicePayment()
@@ -8362,7 +8362,7 @@ Public Class FrmPhysicalStockAdjustment
         End If
 
         'This is only check for pratham not agarwal because there is no design wise rate.
-        If FDivisionNameForCustomization(14) = "PRATHAM APPARE" Then
+        If FDivisionNameForCustomization(14) = "PRATHAM APPARE" Or ClsMain.FDivisionNameForCustomization(20) = "UNIFORM WEAR COMPANY" Then
             If AgL.XNull(Dgl1.Item(Col1Dimension3, RowIndex).Tag) <> "" Then
                 strCond += " And I.Code In (SELECT DISTINCT L.Dimension1
                     FROM RateList H 
@@ -8427,7 +8427,7 @@ Public Class FrmPhysicalStockAdjustment
         End If
 
         'This is only check for pratham not agarwal because there is no design wise rate.
-        If FDivisionNameForCustomization(14) = "PRATHAM APPARE" Then
+        If FDivisionNameForCustomization(14) = "PRATHAM APPARE" Or ClsMain.FDivisionNameForCustomization(20) = "UNIFORM WEAR COMPANY" Then
             If AgL.XNull(Dgl1.Item(Col1Dimension3, RowIndex).Tag) <> "" Then
                 strCond += " And I.Code In (SELECT DISTINCT L.Dimension2
                     FROM RateList H 
@@ -8517,7 +8517,7 @@ Public Class FrmPhysicalStockAdjustment
     Private Sub FCreateHelpRawMaterial(RowIndex As Integer)
         Dim strCond As String = ""
 
-        If FDivisionNameForCustomization(14) = "PRATHAM APPARE" Or
+        If FDivisionNameForCustomization(14) = "PRATHAM APPARE" Or ClsMain.FDivisionNameForCustomization(20) = "UNIFORM WEAR COMPANY" Or
             FDivisionNameForCustomization(15) = "AGARWAL UNIFORM" Then
             strCond += " And I.V_Type = '" & ItemV_Type.Dimension4 & "' "
         End If
@@ -11912,7 +11912,7 @@ Public Class FrmPhysicalStockAdjustment
             Case rowCatalog
                 ShowCatalogDetail()
             Case rowBtnPendingPurchOrder
-                If FDivisionNameForCustomization(14) = "PRATHAM APPARE" Or
+                If FDivisionNameForCustomization(14) = "PRATHAM APPARE" Or ClsMain.FDivisionNameForCustomization(20) = "UNIFORM WEAR COMPANY" Or
             FDivisionNameForCustomization(15) = "AGARWAL UNIFORM" Then
                     FOpenSelectedPurchOrderBalanceForPurchReceive()
                 Else
@@ -11921,14 +11921,14 @@ Public Class FrmPhysicalStockAdjustment
             Case rowBtnPendingStockReceive
                 FOpenPurchReceiveForPurchInvoice(-1)
             Case rowBtnStockBalance
-                If FDivisionNameForCustomization(14) = "PRATHAM APPARE" Or
+                If FDivisionNameForCustomization(14) = "PRATHAM APPARE" Or ClsMain.FDivisionNameForCustomization(20) = "UNIFORM WEAR COMPANY" Or
             FDivisionNameForCustomization(15) = "AGARWAL UNIFORM" Then
                     FOpenSelectedStock()
                 Else
                     FOpenStockBalanceOption()
                 End If
             Case rowBtnMaterialIssue
-                If FDivisionNameForCustomization(14) = "PRATHAM APPARE" Or
+                If FDivisionNameForCustomization(14) = "PRATHAM APPARE" Or ClsMain.FDivisionNameForCustomization(20) = "UNIFORM WEAR COMPANY" Or
             FDivisionNameForCustomization(15) = "AGARWAL UNIFORM" Then
                 Else
                     FMaterialIssue()
@@ -13399,7 +13399,7 @@ Public Class FrmPhysicalStockAdjustment
                 FrmObj.Dgl2.Item(Col1Value, FrmObj.rowGodown).Value = Dgl2.Item(Col1Value, rowGodown).Value
             End If
 
-            If ClsMain.FDivisionNameForCustomization(14) = "PRATHAM APPARE" Or
+            If ClsMain.FDivisionNameForCustomization(14) = "PRATHAM APPARE" Or ClsMain.FDivisionNameForCustomization(20) = "UNIFORM WEAR COMPANY" Or
             FDivisionNameForCustomization(15) = "AGARWAL UNIFORM" Then
                 FrmObj.DglMain.Item(FrmStockEntry.Col1Value, FrmObj.rowSettingGroup).Tag = ClsGarmentProduction.SettingGroup_RawAndOtherMaterial
                 FrmObj.DglMain.Item(FrmStockEntry.Col1Value, FrmObj.rowSettingGroup).Value = AgL.XNull(AgL.Dman_Execute("Select Name From SettingGroup Where Code = '" & FrmObj.DglMain.Item(FrmStockEntry.Col1Value, FrmObj.rowSettingGroup).Tag & "'", AgL.GCn).ExecuteScalar())
@@ -13647,7 +13647,7 @@ Public Class FrmPhysicalStockAdjustment
         End If
     End Function
     Private Sub FGetRateConsideringAllDimensions(mRowIndex As Integer)
-        If FDivisionNameForCustomization(14) = "PRATHAM APPARE" Or
+        If FDivisionNameForCustomization(14) = "PRATHAM APPARE" Or ClsMain.FDivisionNameForCustomization(20) = "UNIFORM WEAR COMPANY" Or
             FDivisionNameForCustomization(15) = "AGARWAL UNIFORM" Then
             Dgl1.Item(Col1Rate, mRowIndex).Value = ClsMain.FGetRateWithRatePattern("", DglMain.Item(Col1Value, rowVendor).Tag, DglMain.Item(Col1Value, rowSettingGroup).Tag, TxtDivision.Tag, DglMain.Item(Col1Value, rowSite_Code).Tag, DglMain.Item(Col1Value, rowProcess).Tag, DglMain.Item(Col1Value, rowV_Type).Tag,
                     AgL.XNull(Dgl2.Item(Col1Value, rowRateType).Tag),
@@ -13991,7 +13991,7 @@ Public Class FrmPhysicalStockAdjustment
                 FrmObj.Dgl1.Item(Col1Value, FrmPurchaseInvoicePayment.rowOpeningBalance).Value = AgL.VNull(AgL.Dman_Execute(mQry, AgL.GCn).ExecuteScalar())
                 FrmObj.Dgl1.Item(Col1Value, FrmPurchaseInvoicePayment.rowInvoiceValue).Value = Val(AgCalcGrid1.AgChargesValue(AgTemplate.ClsMain.Charges.NETAMOUNT, AgStructure.AgCalcGrid.AgCalcGridColumn.Col_Amount))
                 FrmObj.Dgl1.Item(Col1Value, FrmPurchaseInvoicePayment.rowToPayAmount).Value = Val(FrmObj.Dgl1.Item(Col1Value, FrmPurchaseInvoicePayment.rowOpeningBalance).Value) + Val(FrmObj.Dgl1.Item(Col1Value, FrmPurchaseInvoicePayment.rowInvoiceValue).Value)
-                If FDivisionNameForCustomization(14) = "PRATHAM APPARE" Or
+                If FDivisionNameForCustomization(14) = "PRATHAM APPARE" Or ClsMain.FDivisionNameForCustomization(20) = "UNIFORM WEAR COMPANY" Or
             FDivisionNameForCustomization(15) = "AGARWAL UNIFORM" Then
                     mQry = "SELECT Sg.Subcode, Sg.Name FROM Subgroup Sg WHERE Sg.Nature = 'Cash'"
                     Dim DtCash As DataTable = AgL.FillData(mQry, AgL.GCn).Tables(0)
@@ -14305,7 +14305,7 @@ Public Class FrmPhysicalStockAdjustment
                     bProcess = Dgl1.Item(Col1FromProcess, I).Tag
 
                     If bProcess = "" Then
-                        If FDivisionNameForCustomization(14) = "PRATHAM APPARE" Or
+                        If FDivisionNameForCustomization(14) = "PRATHAM APPARE" Or ClsMain.FDivisionNameForCustomization(20) = "UNIFORM WEAR COMPANY" Or
                                 FDivisionNameForCustomization(15) = "AGARWAL UNIFORM" Then
                             bProcess = AgL.XNull(DglMain.Item(Col1Value, rowPrevProcess).Tag)
                         End If

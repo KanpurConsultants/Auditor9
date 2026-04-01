@@ -2980,7 +2980,7 @@ Sincerely
             End If
 
 
-            If FDivisionNameForCustomization(14) = "PRATHAM APPARE" Then
+            If FDivisionNameForCustomization(14) = "PRATHAM APPARE" Or FDivisionNameForCustomization(20) = "UNIFORM WEAR COMPANY" Then
 
             End If
 

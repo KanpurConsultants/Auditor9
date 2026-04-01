@@ -496,7 +496,7 @@ Public Class FrmConsumption
                             WHERE H.V_Type =" & AgL.Chk_Text(ItemV_Type.BOM) & " 
                             "
 
-        If FDivisionNameForCustomization(14) = "PRATHAM APPARE" Or
+        If FDivisionNameForCustomization(14) = "PRATHAM APPARE" Or ClsMain.FDivisionNameForCustomization(20) = "UNIFORM WEAR COMPANY" Or
             FDivisionNameForCustomization(15) = "AGARWAL UNIFORM" Then
             AgL.PubFindQry = "SELECT I.Code AS SearchCode, Max(I.Description) As Description
                     FROM Item I  
@@ -716,7 +716,7 @@ Public Class FrmConsumption
         mQry = "SELECT I.Code AS SearchCode FROM Item I  WHERE I.V_Type =  '" & ItemV_Type.BOM & "'" &
                 " Order By I.Code "
 
-        If FDivisionNameForCustomization(14) = "PRATHAM APPARE" Or
+        If FDivisionNameForCustomization(14) = "PRATHAM APPARE" Or ClsMain.FDivisionNameForCustomization(20) = "UNIFORM WEAR COMPANY" Or
             FDivisionNameForCustomization(15) = "AGARWAL UNIFORM" Then
             mQry = "SELECT I.Code AS SearchCode 
                     FROM Item I  
