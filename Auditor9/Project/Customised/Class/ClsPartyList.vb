@@ -27,6 +27,7 @@ Public Class ClsPartyList
     Dim mHelpCityQry$ = "Select 'o' As Tick, CityCode, CityName From City Order By CityName "
     Dim mHelpSubGroupTypeQry$ = "Select 'o' As Tick, SubgroupType as Code, SubgroupType as Name FROM SubgroupType Sg Where IfNull(IsCustomUI,0)=0 Order By SubgroupType  "
     Dim mHelpAgentQry$ = "Select 'o' As Tick, Sg.Code, Sg.Name, Sg.SubgroupType FROM ViewHelpSubgroup Sg Where Sg.SubGroupType In ('" & SubgroupType.PurchaseAgent & "','" & SubgroupType.SalesAgent & "')  "
+    Dim mHelpTransporterQry$ = "Select 'o' As Tick, Sg.Code, Sg.Name, Sg.SubgroupType FROM ViewHelpSubgroup Sg Where Sg.SubGroupType In ('" & SubgroupType.Transporter & "')  "
 
 
     Dim mShowReportType As String = ""
@@ -35,7 +36,7 @@ Public Class ClsPartyList
     Dim rowAccountType As Integer = 0
     Dim rowCity As Integer = 1
     Dim rowAgent As Integer = 2
-
+    Dim rowTransporter As Integer = 3
     Public Col1Status As String = "Status"
     Public Col1SearchCode As String = "Search Code"
 
@@ -46,6 +47,9 @@ Public Class ClsPartyList
             ReportFrm.CreateHelpGrid("Account Type", "Account Type", FrmRepDisplay.FieldFilterDataType.StringType, FrmRepDisplay.FieldDataType.MultiSelection, mHelpSubGroupTypeQry)
             ReportFrm.CreateHelpGrid("City", "City", FrmRepDisplay.FieldFilterDataType.StringType, FrmRepDisplay.FieldDataType.MultiSelection, mHelpCityQry)
             ReportFrm.CreateHelpGrid("Agent", "Agent", FrmRepDisplay.FieldFilterDataType.StringType, FrmRepDisplay.FieldDataType.MultiSelection, mHelpAgentQry)
+            ReportFrm.CreateHelpGrid("Transporter", "Transporter", FrmRepDisplay.FieldFilterDataType.StringType, FrmRepDisplay.FieldDataType.MultiSelection, mHelpTransporterQry)
+            ReportFrm.CreateHelpGrid("FromDate", "From Date", FrmRepDisplay.FieldFilterDataType.StringType, FrmRepDisplay.FieldDataType.DateType, "", AgL.PubStartDate)
+            ReportFrm.CreateHelpGrid("ToDate", "To Date", FrmRepDisplay.FieldFilterDataType.StringType, FrmRepDisplay.FieldDataType.DateType, "", AgL.PubEndDate)
         Catch ex As Exception
             MsgBox(ex.Message)
         End Try
@@ -111,18 +115,17 @@ Public Class ClsPartyList
             mCondStr += ReportFrm.GetWhereCondition("H.SubgroupType", rowAccountType)
             mCondStr += ReportFrm.GetWhereCondition("H.CityCode", rowCity)
             mCondStr += ReportFrm.GetWhereCondition("SDD.Agent", rowAgent)
+            mCondStr += ReportFrm.GetWhereCondition("SGT.Transporter", rowTransporter)
+            mCondStr = mCondStr & " AND Date(H.EntryDate) Between " & AgL.Chk_Date(CDate(ReportFrm.FGetText(4)).ToString("s")) & " And " & AgL.Chk_Date(CDate(ReportFrm.FGetText(5)).ToString("s")) & " "
 
-
-
-            mQry = "
-                    SELECT H.Subcode AS SearchCode, H.Name, H.DispName AS PrintingName, H.Address, 
+            mQry = "SELECT H.Subcode AS SearchCode, H.Name, H.DispName AS PrintingName, H.Address, 
                     C.CityName, S.Description as State, H.PIN, Area.Description AS Area, H.Phone, H.Mobile, H.Email, H.CreditLimit, 
                     H.CreditDays, H.SalesTaxPostingGroup AS SalesTaxGroup,  
                     (SELECT RegistrationNo FROM SubgroupRegistration WHERE Subcode = H.Subcode AND RegistrationType ='Sales Tax No') AS GstNo,
                     (SELECT RegistrationNo FROM SubgroupRegistration WHERE Subcode = H.Subcode AND RegistrationType ='AADHAR NO') AS AadharNo,
                     (SELECT RegistrationNo FROM SubgroupRegistration WHERE Subcode = H.Subcode AND RegistrationType ='PAN No') AS PanNo,
-                    Agent.Name as AgentName, BD.BankName, BD.BankAccount, BD.BankIFSC, Ag.GroupName as AccountGroup, H.ContactPerson, 
-                    Parent.Name as ParentName, H.LockText, H.Status
+                    Transporter.Name as TransporterName, Agent.Name as AgentName, BD.BankName, BD.BankAccount, BD.BankIFSC, Ag.GroupName as AccountGroup, H.ContactPerson, 
+                    Parent.Name as ParentName, H.LockText, H.Status, H.EntryDate
                     FROM Subgroup H
                     LEFT JOIN city C ON H.CityCode = C.CityCode 
                     Left Join State S On C.State = S.Code
@@ -132,6 +135,11 @@ Public Class ClsPartyList
 			                    FROM SubgroupSiteDivisionDetail
 			                    GROUP BY SubCode 
 		                      ) AS SDD ON H.Subcode = SDD.Subcode
+                    LEFT JOIN (
+			                    SELECT SubCode, Max(Transporter) AS Transporter 
+			                    FROM SubgroupSiteDivisionDetail
+			                    GROUP BY SubCode 
+		                      ) AS SGT ON H.Subcode = SGT.Subcode
                     Left Join (
                                 Select Subcode,BankName, BankAccount, BankIFSC
                                 From SubgroupBankAccount Where Sr=0
@@ -139,8 +147,8 @@ Public Class ClsPartyList
                     LEFT JOIN AcGroup Ag ON H.groupCode = Ag.GroupCode 
                     LEFT JOIN Area ON H.Area = Area.Code 
                     Left Join viewHelpSubgroup agent On SDD.Agent = Agent.Code
+                    Left Join viewHelpSubgroup Transporter On SGT.Transporter = Transporter.Code
                    " & mCondStr
-
 
 
             mQry = mQry + " Order By H.Name "

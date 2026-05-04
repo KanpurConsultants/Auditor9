@@ -61,6 +61,7 @@ Public Class ClsReports
     Private Const LedgerPostingDifference As String = "LedgerPostingDifference"
     Private Const ChequeSearching As String = "ChequeSearching"
     Private Const LogReport As String = "LogReport"
+    Private Const SkyFinzipReport As String = "SkyFinzipReport"
 #End Region
 
 #Region "Queries Definition"
@@ -638,6 +639,21 @@ Public Class ClsReports
                             Union All Select 'D' as Code, 'Only Delete' as Name 
                             Union All Select 'P' as Code, 'Only Print' as Name "
                     ReportFrm.CreateHelpGrid("Action", "Action", FrmRepDisplay.FieldFilterDataType.StringType, FrmRepDisplay.FieldDataType.SingleSelection, mQry, "All")
+
+                Case SkyFinzipReport
+                    ReportFrm.CreateHelpGrid("FromDate", "From Date", FrmRepDisplay.FieldFilterDataType.StringType, FrmRepDisplay.FieldDataType.DateType, "", AgL.PubStartDate)
+                    ReportFrm.CreateHelpGrid("ToDate", "To Date", FrmRepDisplay.FieldFilterDataType.StringType, FrmRepDisplay.FieldDataType.DateType, "", AgL.PubEndDate)
+                    ReportFrm.CreateHelpGrid("Site", "Site", FrmRepDisplay.FieldFilterDataType.StringType, FrmRepDisplay.FieldDataType.MultiSelection, mHelpSiteQry, "[SITECODE]")
+                    ReportFrm.CreateHelpGrid("Party", "Party", FrmRepDisplay.FieldFilterDataType.StringType, FrmRepDisplay.FieldDataType.MultiSelection, mHelpPartyQry)
+                    mQry = "Select 'All' as Code, 'All' as Name 
+                            Union All 
+                            Select 'Pending For EMI' as Code, 'Pending For EMI' as Name 
+                            Union All 
+                            Select 'All EMI Received' as Code, 'All EMI Received' as Name "
+                    ReportFrm.CreateHelpGrid("Report For", "Report For", FrmRepDisplay.FieldFilterDataType.StringType, FrmRepDisplay.FieldDataType.SingleSelection, mQry, "All",,, 300)
+
+
+
             End Select
         Catch ex As Exception
             MsgBox(ex.Message)
@@ -728,6 +744,10 @@ Public Class ClsReports
 
             Case LogReport
                 ProcLogReport()
+
+            Case SkyFinzipReport
+                ProcSkyFinzipReport()
+
         End Select
     End Sub
     Public Sub New(ByVal mReportFrm As FrmRepDisplay)
@@ -1875,6 +1895,77 @@ Public Class ClsReports
                 ReportFrm.DGL1.Columns("Amount").Visible = False
                 ReportFrm.DGL2.Columns("Amount").Visible = False
             End If
+
+
+        Catch ex As Exception
+            MsgBox(ex.Message)
+            DsHeader = Nothing
+        End Try
+    End Sub
+
+
+    Public Sub ProcSkyFinzipReport(Optional mFilterGrid As AgControls.AgDataGrid = Nothing, Optional mGridRow As DataGridViewRow = Nothing)
+        Try
+            Dim mCondStr$ = ""
+            Dim mCondStrPurch$ = ""
+
+            RepTitle = "Sky Finzip Report"
+
+            mCondStr = " "
+            mCondStr = mCondStr & " AND Date(H.V_Date) Between " & AgL.Chk_Date(CDate(ReportFrm.FGetText(0)).ToString("s")) & " And " & AgL.Chk_Date(CDate(ReportFrm.FGetText(1)).ToString("s")) & " "
+            mCondStr = mCondStr & Replace(ReportFrm.GetWhereCondition("H.Site_Code", 2), "''", "'")
+            mCondStr = mCondStr & ReportFrm.GetWhereCondition("H.SaleToParty", 3)
+
+
+
+            mQry = "Select A.PartyName ,  A.Mobile, strftime('%d/%m/%Y', A.V_Date) As Delivery_Date, A.Funding AS FundingAmount, B.FileCharge, strftime('%d/%m/%Y', A.EMIDate) As Emi_Date ,  
+                    A.EMI*A.Month AS TotalAmount, A.EMI, A.Month, A.Month-Isnull(C.Cnt,0) AS PendingEMI
+                    From 
+                    (
+                    select H.SaleToParty, Max(H.SaleToPartyName) AS PartyName, Max(SG.Mobile)  AS Mobile, Max(H.V_Date) AS V_Date,   Sum(L.Amount) AS Funding , Max(H.CreditDays) as Month, Max(L.MRP) AS EMI, Max(L.ExpiryDate) AS EMIDate
+                    FROM SaleInvoice H WITH (Nolock)
+                    LEFT JOIN SubGroup SG ON SG.SubCode = H.SaleToParty
+                    Left Join SaleInvoiceDetail L WITH (Nolock) On H.DocID = L.DocID 
+                    Where H.V_Type ='SIS'  AND L.Item  ='D10002'
+                    " & mCondStr & "
+                    Group BY H.SaleToParty
+                    ) A 
+                    LEFT JOIN 
+                    (
+                    select H.SaleToParty,  Sum(L.Amount) AS FileCharge
+                    FROM SaleInvoice H WITH (Nolock)
+                    Left Join SaleInvoiceDetail L WITH (Nolock) On H.DocID = L.DocID 
+                    Where H.V_Type ='SI'  AND L.Item ='D10001'  
+                    Group BY H.SaleToParty
+                    ) B on A.SaleToParty = B.SaleToParty  
+                    Left Join 
+                    (
+                    select L.SubCode, Count(L.DocId) as Cnt, Sum(AmtCr) as RecAmount  
+                    from Ledger L 
+                    Where L.V_Type ='RCT'   
+                    Group By L.SubCode 
+                    ) C on A.SaleToParty = C.Subcode  "
+
+
+            If ReportFrm.FGetText(4) = "Pending For EMI" Then
+                mQry = mQry + " Where A.Month-Isnull(C.Cnt,0) > 0 "
+            ElseIf ReportFrm.FGetText(4) = "All EMI Received" Then
+
+                mQry = mQry + " Where A.Month-Isnull(C.Cnt,0) <= 0 "
+            End If
+
+            DsHeader = AgL.FillData(mQry, AgL.GCn)
+
+
+
+            If DsHeader.Tables(0).Rows.Count = 0 Then Err.Raise(1, , "No Records To Print!")
+
+            ReportFrm.Text = "Sky Finzip Report "
+            ReportFrm.ClsRep = Me
+            'ReportFrm.ReportProcName = "ProcSaleReport"
+            'ReportFrm.InputColumnsStr = "Tags"
+
+            ReportFrm.ProcFillGrid(DsHeader)
 
 
         Catch ex As Exception

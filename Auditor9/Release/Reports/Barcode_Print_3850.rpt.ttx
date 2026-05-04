@@ -1,0 +1,27 @@
+; Field definition file for table: ADORecordset
+Code	string	255		
+Barcode	string	255		
+BarCodeImg	BLOB		
+ItemDesc	string	255		
+ItemCategoryDesc	string	255	SKIRT	
+ItemGroupDesc	string	255		
+Dimension1Desc	string	255	SUPER	
+Dimension2Desc	string	255	M GREEN	
+Dimension3Desc	string	255	MOTI DR RML	
+Dimension4Desc	string	255		
+SizeDesc	string	255	24*26	
+PurchaseRate	number	0	
+SaleRate	number	0	
+MRP	number	368	
+ReceiveQty	number	0	
+GenSr	number		
+ItemMasterPurchaseRate	number		
+ItemMasterSaleRate	number		
+BarcodeRatePrefix	number		
+Title1	string	255	Pratham Apparel India P Ltd.	
+Title2	string	255	www.Prathamapparel.com	
+Title3	number		
+SaleRate_RateType	number		
+SaleRate_RateTypeEncoded	number	0	
+RandomNo1	number	599	
+RandomNo2	number	173	

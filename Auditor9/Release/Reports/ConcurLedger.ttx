@@ -1,51 +1,51 @@
 ; Field definition file for table: ADORecordset
 DivisionName	string	255	SADHVI SAREES PVT. LTD., KANPUR	
-CreditLimit	number	0	
-PartyName	string	255	JANANI DESIGNER SURAT, SURAT	
-Address	string	255	5165 TO 5172,5TH FLOOR,MILLENNIUM-4 NR.BHATHENA UDHNA,SURAT	
-Mobile	string	255	9537271213	
-AgentName	string	255	N.B.AGENCY, SURAT	
-AgentMobileNo	string	255		
-TransporterName	string	255	GREEN ROADWAYS TRANSPORT DELHI PVT.LTD., KANPUR	
-RegistrationNo	string	255	24BBWPB2833E2ZT	
+CreditLimit	number	500000	
+PartyName	string	255	AMAR CLOTH HOUSE (FATEHPUR), FATEHPUR	
+Address	string	255	BAKARGANJ FATEHPUR DIST:-FATHEPUR	
+Mobile	string	255	9839930797	
+AgentName	string	255	HARI MOHAN BAJPAI(KRISHNA BAJPAI), KANPUR	
+AgentMobileNo	string	255	9389628590	
+TransporterName	string	255	HAJI ROAD CARRIER, KANPUR	
+RegistrationNo	string	255	09AGDPR4119A1ZP	
 RegistrationType	string	255	GST No	
 SalesRepresentativeName	string	255		
 AreaName	string	255		
-DrDocID	string	255	D1    PR 2025     267	
+DrDocID	string	255	D1    SI 2025   19822	
 DrDivision	string	255	D	
-DrSubcode	string	255	D100002522	
-DrSr	number	0	
-DrDate	datetime	13/Oct/2025 00:00:00	
-DrDocNo	string	255	PR-267	
-DrAmount	number	73806	
-DrTaxableAmount	number	0	
-DrTaxAmount	number	0	
-DrDays	number	44	
+DrSubcode	string	255	D100004150	
+DrSr	number	70	
+DrDate	datetime	12/Feb/2026 00:00:00	
+DrDocNo	string	255	SI-19822	
+DrAmount	number	16231	
+DrTaxableAmount	number	15457.92	
+DrTaxAmount	number	772.9	
+DrDays	number	38	
 DrInterest	number	0	
-DrCumAmount	number	73806	
+DrCumAmount	number	3619228	
 DrBalAmount	number	0	
-DrTotal	number	342014	
-DrNarration	string	255	Purchase Return FRESH	
-CrDocID	string	255	D1    PI 2025    2666	
+DrTotal	number	5409270	
+DrNarration	string	255	Tax Invoice	
+CrDocID	string	255	D1    SR 2025    5582	
 CrDivision	string	255	D	
-CrSubcode	string	255	D100002522	
-CrSr	number	0	
-CrDate	datetime	26/Aug/2025 00:00:00	
-CrDocNo	string	255	PI-2666	
-CrAmount	number	51813	
-CrTaxableAmount	number	46261.24	
-CrTaxAmount	number	5551.34	
-CrDays	number	62	
+CrSubcode	string	255	D100004150	
+CrSr	number	70	
+CrDate	datetime	19/Mar/2026 00:00:00	
+CrDocNo	string	255	SR-5582	
+CrAmount	number	5905	
+CrTaxableAmount	number	0	
+CrTaxAmount	number	0	
+CrDays	number	33	
 CrInterest	number	0	
-CrCumAmount	number	51813	
+CrCumAmount	number	3608902	
 CrBalAmount	number	0	
-CrTotal	number	3361373	
-CrNarration	string	255	Inv : JD969	
-AdditionPer	number		
-AdditionAmount	number		
-GrReturnAmt	number	342014	
-GrSaleAmt	number	3361373	
-ReturnPer	number	10.17	
-AveragePaymentDays	number	0	
-DrMonth	string	255	10/2025	
-CrMonth	string	255	08/2025	
+CrTotal	number	4218940	
+CrNarration	string	255	Sale Return	
+AdditionPer	number	0	
+AdditionAmount	number	0	
+GrReturnAmt	number	163001	
+GrSaleAmt	number	5409270	
+ReturnPer	number	3.01	
+AveragePaymentDays	number	41.2153122312912	
+DrMonth	string	255	02/2026	
+CrMonth	string	255	03/2026	

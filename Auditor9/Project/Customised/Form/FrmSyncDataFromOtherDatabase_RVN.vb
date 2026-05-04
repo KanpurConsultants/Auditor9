@@ -187,7 +187,7 @@ Public Class FrmSyncDataFromOtherDatabase_RVN
                 IsApplicableImport_SaleReturn = True
                 IsApplicableImport_PurchInvoice = True
                 IsApplicableImport_PurchReturn = True
-                IsApplicableImport_LedgerHead = True
+                IsApplicableImport_LedgerHead = False
             Else
                 MsgBox("Wrong File.", MsgBoxStyle.Information)
                 Exit Sub

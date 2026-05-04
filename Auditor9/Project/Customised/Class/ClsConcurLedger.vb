@@ -770,12 +770,17 @@ Public Class ClsConcurLedger
     Private Sub ProcConcurLedger()
         Dim DsRep As DataSet = FunConcurLedger(AgL.GCn)
         Dim AgentMobileNo As String = ""
+        Dim PartyName As String = ""
         If DsRep.Tables(0).Rows.Count = 0 Then Err.Raise(1, , "No Records to Print!")
         ReportFrm.DefaultMobileNo = AgL.XNull(DsRep.Tables(0).Rows(0)("Mobile"))
-        'ReportFrm.DefaultMobileNo = "7905929156"
+        PartyName = AgL.XNull(DsRep.Tables(0).Rows(0)("PartyName"))
         AgentMobileNo = AgL.XNull(DsRep.Tables(0).Rows(0)("AgentMobileNo"))
         If AgentMobileNo <> "" Then
             ReportFrm.DefaultMobileNo = ReportFrm.DefaultMobileNo & "," & AgentMobileNo
+        End If
+
+        If PartyName <> "" Then
+            RepTitle = " CHUKTI LEDGER " & PartyName
         End If
         ReportFrm.PrintReport(DsRep, RepName, RepTitle)
     End Sub

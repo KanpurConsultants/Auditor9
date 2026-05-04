@@ -2638,7 +2638,7 @@ Public Class FrmVoucherEntry
                 Case TxtPartyName.Name
                     If LblV_Type.Tag = Ncat.DebitNoteSupplier Or LblV_Type.Tag = Ncat.DebitNoteCustomer Or LblV_Type.Tag = Ncat.CreditNoteCustomer Or LblV_Type.Tag = Ncat.CreditNoteSupplier Then
                         If ClsMain.IsPartyBlocked(TxtPartyName.Tag, LblV_Type.Tag) Then
-                            MsgBox("Party is blocked for " & TxtV_Type.Text & ". Record will not be saved.")
+                            MsgBox("Party " & TxtPartyName.Text & " is blocked for " & TxtV_Type.Text & ". Record will not be saved.")
                         End If
                     End If
 
@@ -3040,7 +3040,7 @@ Public Class FrmVoucherEntry
 
         If LblV_Type.Tag = Ncat.DebitNoteSupplier Or LblV_Type.Tag = Ncat.CreditNoteCustomer Or LblV_Type.Tag = Ncat.CreditNoteSupplier Or LblV_Type.Tag = Ncat.DebitNoteCustomer Then
             If ClsMain.IsPartyBlocked(TxtPartyName.Tag, LblV_Type.Tag) Then
-                MsgBox("Party is blocked for " & TxtV_Type.Text & ". Can not continue.")
+                MsgBox("Party " & TxtPartyName.Text & " is blocked for " & TxtV_Type.Text & ". Can not continue.")
                 passed = False : Exit Sub
             End If
         Else

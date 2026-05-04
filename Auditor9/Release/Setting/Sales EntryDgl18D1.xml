@@ -25,7 +25,7 @@
     <Name>Barcode</Name>
     <Index>3</Index>
     <Width>100</Width>
-    <Visible>True</Visible>
+    <Visible>False</Visible>
     <AggregateFunction />
   </Column>
   <Column>
@@ -46,14 +46,14 @@
     <Name>Item Category</Name>
     <Index>5</Index>
     <Width>182</Width>
-    <Visible>False</Visible>
+    <Visible>True</Visible>
     <AggregateFunction />
   </Column>
   <Column>
     <Name>Item Group</Name>
     <Index>6</Index>
     <Width>166</Width>
-    <Visible>False</Visible>
+    <Visible>True</Visible>
     <AggregateFunction />
   </Column>
   <Column>
@@ -114,7 +114,7 @@
   </Column>
   <Column>
     <Name>Item Invoice Group</Name>
-    <Index>75</Index>
+    <Index>72</Index>
     <Width>100</Width>
     <Visible>False</Visible>
     <AggregateFunction />
@@ -289,21 +289,21 @@
   </Column>
   <Column>
     <Name>Free Deal Qty</Name>
-    <Index>79</Index>
-    <Width>80</Width>
-    <Visible>False</Visible>
-    <AggregateFunction />
-  </Column>
-  <Column>
-    <Name>Loss Deal Qty @</Name>
     <Index>113</Index>
     <Width>80</Width>
     <Visible>False</Visible>
     <AggregateFunction />
   </Column>
   <Column>
-    <Name>Loss Deal Qty</Name>
+    <Name>Loss Deal Qty @</Name>
     <Index>114</Index>
+    <Width>80</Width>
+    <Visible>False</Visible>
+    <AggregateFunction />
+  </Column>
+  <Column>
+    <Name>Loss Deal Qty</Name>
+    <Index>115</Index>
     <Width>80</Width>
     <Visible>False</Visible>
     <AggregateFunction />
@@ -324,42 +324,42 @@
   </Column>
   <Column>
     <Name>Deal Qty Decimal Places</Name>
-    <Index>115</Index>
+    <Index>116</Index>
     <Width>50</Width>
     <Visible>False</Visible>
     <AggregateFunction />
   </Column>
   <Column>
     <Name>Deal</Name>
-    <Index>116</Index>
+    <Index>117</Index>
     <Width>70</Width>
     <Visible>False</Visible>
     <AggregateFunction />
   </Column>
   <Column>
     <Name>Deal Amount</Name>
-    <Index>117</Index>
+    <Index>118</Index>
     <Width>100</Width>
     <Visible>False</Visible>
     <AggregateFunction />
   </Column>
   <Column>
     <Name>Expiry Date</Name>
-    <Index>118</Index>
+    <Index>119</Index>
     <Width>90</Width>
-    <Visible>False</Visible>
+    <Visible>True</Visible>
     <AggregateFunction />
   </Column>
   <Column>
     <Name>MRP</Name>
     <Index>120</Index>
     <Width>100</Width>
-    <Visible>False</Visible>
+    <Visible>True</Visible>
     <AggregateFunction />
   </Column>
   <Column>
     <Name>SalesAc</Name>
-    <Index>119</Index>
+    <Index>79</Index>
     <Width>100</Width>
     <Visible>False</Visible>
     <AggregateFunction />
@@ -424,7 +424,7 @@
     <Name>Reference No</Name>
     <Index>44</Index>
     <Width>100</Width>
-    <Visible>True</Visible>
+    <Visible>False</Visible>
     <AggregateFunction />
   </Column>
   <Column>
@@ -723,21 +723,21 @@
   </Column>
   <Column>
     <Name>Gross Amount</Name>
-    <Index>72</Index>
-    <Width>100</Width>
-    <Visible>False</Visible>
-    <AggregateFunction />
-  </Column>
-  <Column>
-    <Name>Gross Amount PostAc</Name>
     <Index>73</Index>
     <Width>100</Width>
     <Visible>False</Visible>
     <AggregateFunction />
   </Column>
   <Column>
-    <Name>Gross Amount ContraAc</Name>
+    <Name>Gross Amount PostAc</Name>
     <Index>74</Index>
+    <Width>100</Width>
+    <Visible>False</Visible>
+    <AggregateFunction />
+  </Column>
+  <Column>
+    <Name>Gross Amount ContraAc</Name>
+    <Index>75</Index>
     <Width>100</Width>
     <Visible>False</Visible>
     <AggregateFunction />

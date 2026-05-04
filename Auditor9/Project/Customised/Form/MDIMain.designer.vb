@@ -338,6 +338,7 @@ Partial Class MDIMain
         Me.MnuPrintCheque = New System.Windows.Forms.ToolStripMenuItem()
         Me.MnuBank = New System.Windows.Forms.ToolStripMenuItem()
         Me.MnuChequePrinting = New System.Windows.Forms.ToolStripMenuItem()
+        Me.MnuSkyFinzipReport = New System.Windows.Forms.ToolStripMenuItem()
         Me.MnuMain.SuspendLayout()
         Me.SuspendLayout()
         '
@@ -1482,7 +1483,7 @@ Partial Class MDIMain
         '
         'MnuSaleReports
         '
-        Me.MnuSaleReports.DropDownItems.AddRange(New System.Windows.Forms.ToolStripItem() {Me.MnuSaleInvoiceReport, Me.MnuSalesAgentCommissionOnPayment, Me.MnuSalesRepresentativeCommissionOnPayment, Me.MnuRateListReport, Me.MnuSaleOrderReport, Me.MnuSaleOrderRegister, Me.MnuSaleChallanStatus, Me.MnuSaleOrderStatus, Me.MnuSalesRepCommissionReport, Me.MnuSaleSummary, Me.MnuBarcodeHistory, Me.MnuPartyNotTransactedReport, Me.MnuCashCustomerReport, Me.MnuCashCustomerOutstandingReport, Me.MnuSaleCertificate, Me.MnuSaleProfitAnalysis})
+        Me.MnuSaleReports.DropDownItems.AddRange(New System.Windows.Forms.ToolStripItem() {Me.MnuSaleInvoiceReport, Me.MnuSalesAgentCommissionOnPayment, Me.MnuSalesRepresentativeCommissionOnPayment, Me.MnuRateListReport, Me.MnuSaleOrderReport, Me.MnuSaleOrderRegister, Me.MnuSaleChallanStatus, Me.MnuSaleOrderStatus, Me.MnuSalesRepCommissionReport, Me.MnuSaleSummary, Me.MnuBarcodeHistory, Me.MnuPartyNotTransactedReport, Me.MnuCashCustomerReport, Me.MnuCashCustomerOutstandingReport, Me.MnuSaleCertificate, Me.MnuSaleProfitAnalysis, Me.MnuSkyFinzipReport})
         Me.MnuSaleReports.Name = "MnuSaleReports"
         Me.MnuSaleReports.Size = New System.Drawing.Size(208, 22)
         Me.MnuSaleReports.Text = "Reports"
@@ -2585,6 +2586,13 @@ Partial Class MDIMain
         Me.MnuChequePrinting.Size = New System.Drawing.Size(160, 22)
         Me.MnuChequePrinting.Text = "Cheque Printing"
         '
+        'MnuSkyFinzipReport
+        '
+        Me.MnuSkyFinzipReport.Name = "MnuSkyFinzipReport"
+        Me.MnuSkyFinzipReport.Size = New System.Drawing.Size(319, 22)
+        Me.MnuSkyFinzipReport.Tag = "GRID REPORT"
+        Me.MnuSkyFinzipReport.Text = "Sky Finzip Report"
+        '
         'MDIMain
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
@@ -2926,4 +2934,5 @@ Partial Class MDIMain
     Friend WithEvents MnuSendWhatsappMessage As ToolStripMenuItem
     Friend WithEvents MnuLedgerUpdation As ToolStripMenuItem
     Friend WithEvents MnuImportItemFromWeb As ToolStripMenuItem
+    Friend WithEvents MnuSkyFinzipReport As ToolStripMenuItem
 End Class

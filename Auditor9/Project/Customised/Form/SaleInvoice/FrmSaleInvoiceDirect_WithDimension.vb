@@ -1600,11 +1600,12 @@ Public Class FrmSaleInvoiceDirect_WithDimension
 
         AgL.PubFindQry = " SELECT H.DocID AS SearchCode, Vt.Description AS [Invoice_Type], Cast(strftime('%d/%m/%Y', H.V_Date) As nvarchar) AS Date, H.SaleToPartyName [Party Name], H.SaleToPartyMobile as Mobile, " &
                             " H.ManualRefNo AS [Manual_No], H.SalesTaxGroupParty AS [Sales_Tax_Group_Party], " &
-                            " H.Remarks,  " &
+                            " H.Remarks, STP.Name AS ShipToParty, " &
                             " H.EntryBy AS [Entry_By], Cast(strftime('%d/%m/%Y', H.EntryDate) As nvarchar) AS [Entry_Date] " &
                             " FROM SaleInvoice H  With (NoLock) " &
                             " LEFT JOIN Voucher_Type Vt  With (NoLock) ON H.V_Type = Vt.V_Type " &
                             " LEFT JOIN SubGroup SGV  With (NoLock) ON SGV.SubCode  = H.SaleToParty " &
+                            " LEFT JOIN SubGroup STP  With (NoLock) ON STP.SubCode  = H.ShipToParty " &
                             " Where 1=1 " & mCondStr
 
         AgL.PubFindQryOrdBy = "[Entry Date]"
@@ -1668,8 +1669,14 @@ Public Class FrmSaleInvoiceDirect_WithDimension
             .AddAgTextColumn(Dgl1, Col1DealQtyDecimalPlaces, 50, 0, Col1DealQtyDecimalPlaces, False, True, False)
             .AddAgTextColumn(Dgl1, Col1Deal, 70, 255, Col1Deal, False, False)
             .AddAgNumberColumn(Dgl1, Col1DealAmount, 100, 8, 2, False, Col1DealAmount, False, False, True)
-            .AddAgDateColumn(Dgl1, Col1ExpiryDate, 90, Col1ExpiryDate, False, False)
-            .AddAgNumberColumn(Dgl1, Col1MRP, 100, 8, 2, False, Col1MRP, False, False, True)
+            If (AgL.StrCmp(AgL.PubDBName, "SKYF")) Then
+                .AddAgDateColumn(Dgl1, Col1ExpiryDate, 90, "EMI Date", True, False)
+                .AddAgNumberColumn(Dgl1, Col1MRP, 100, 8, 2, False, "EMI", True, False, True)
+            Else
+                .AddAgDateColumn(Dgl1, Col1ExpiryDate, 90, Col1ExpiryDate, False, False)
+                .AddAgNumberColumn(Dgl1, Col1MRP, 100, 8, 2, False, Col1MRP, False, False, True)
+            End If
+
             .AddAgTextColumn(Dgl1, Col1SalesAc, 100, 0, Col1SalesAc, False, True)
 
 
@@ -3072,6 +3079,10 @@ Public Class FrmSaleInvoiceDirect_WithDimension
             Dgl3.Rows(rowRemarks2).Visible = True
         End If
 
+        If AgL.StrCmp(AgL.PubDBName, "SKYF") Then
+            Dgl1.Columns(Col1MRP).Visible = True
+            Dgl1.Columns(Col1ExpiryDate).Visible = True
+        End If
         'If DglMain.Rows(rowSaleToPartyName).Visible = True And
         '    Not AgL.StrCmp(Topctrl1.Mode, "Browse") Then
         '    DglMain.Rows(rowSaleToPartyName).Visible = False

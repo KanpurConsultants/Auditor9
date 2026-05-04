@@ -6,7 +6,7 @@ Public Class RepView
     Friend WithEvents BtnWhatsapp As Button
     Dim AgL As AgLibrary.ClsMain
     Public mDefaultMobileNo As String = ""
-
+    Public mAttachmentName As String = ""
 #Region " Windows Form Designer generated code "
 
     Public Sub New()
@@ -30,6 +30,15 @@ Public Class RepView
         End Get
         Set(ByVal value As String)
             mDefaultMobileNo = value
+        End Set
+    End Property
+
+    Public Property AttachmentName() As String
+        Get
+            AttachmentName = mAttachmentName
+        End Get
+        Set(ByVal value As String)
+            mAttachmentName = value
         End Set
     End Property
 
@@ -446,6 +455,7 @@ Public Class RepView
         mObjEMail.AttachmentName = Me.Text
         mObjEMail.MdiParent = Me.MdiParent
         mObjEMail.DefaultMobileNo = mDefaultMobileNo
+        mObjEMail.AttachmentName = mAttachmentName
         mObjEMail.WindowState = FormWindowState.Maximized
         mObjEMail.Show()
         mObjEMail.TxtToMobile.Text = AgL.FGetSettings(AgL, "Mobile No", "General", AgL.PubDivCode, AgL.PubSiteCode, "", "", "", "", "")

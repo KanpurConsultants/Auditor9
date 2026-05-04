@@ -5,50 +5,50 @@ DocNoCaption	string	255	Invoice No.
 DocDateCaption	string	255	Invoice Date	
 SiteStateCode	string	255	09	
 SiteStateName	string	255	Uttar Pradesh	
-DocID	string	255	D1    SI 2025      57	
+DocID	string	255	D1    SI 2025     826	
 Sr	number	1	
-V_Date	datetime	18/Sep/2025 00:00:00	
+V_Date	datetime	19/Jul/2025 00:00:00	
 DeliveryDate	datetime		
 Voucher_Type	string	255	Tax Invoice	
 NCat	string	255	SI	
-InvoiceNo	string	255	SIB-57	
+InvoiceNo	string	255	SIJ-825	
 RateType	string	255		
 DocumentPrintShowRateType	string	255	Show If Not Blank	
-AgentName	string	255	VIKAS KUMAR  (KNP BRANCH)	
+AgentName	string	255		
 AgentCaption	string	255	Agent	
 BillToPartyNature	string	255	Customer	
-SaleToPartyName	string	255	MAA VAISHNAVI SAREES	
-SaleToPartyAddress	string	255	RADHEY PURWA ROAD , CIVIL LINES -HARDOI	
-CityName	string	255	HARDOI	
-SaleToPartyPincode	string	255	241001	
+SaleToPartyName	string	255	RAVI YADAV SIKARARA	
+SaleToPartyAddress	string	255	SIKARARA	
+CityName	string	255	JAUNPUR	
+SaleToPartyPincode	string	255		
 StateCode	string	255	09	
 StateName	string	255	Uttar Pradesh	
-SaleToPartyMobile	string	255	8840038294	
+SaleToPartyMobile	string	255	9005393613	
 ContactPerson	string	255		
-SaleToPartySalesTaxNo	string	255	09BRMPG0732K1ZN	
+SaleToPartySalesTaxNo	string	255		
 SaleToPartyAadharNo	string	255		
-SaleToPartyPanNo	string	255	BRMPG0732K	
-ShipToPartyName	string	255	MAA VAISHNAVI SAREES	
-ShipToPartyAddress	string	255	RADHEY PURWA ROAD , CIVIL LINES -HARDOI	
-ShipToPartyCity	string	255	HARDOI	
-ShipToPartyPincode	string	255	241001	
+SaleToPartyPanNo	string	255		
+ShipToPartyName	string	255	RAVI YADAV SIKARARA	
+ShipToPartyAddress	string	255	SIKARARA	
+ShipToPartyCity	string	255	JAUNPUR	
+ShipToPartyPincode	string	255		
 ShipToPartyStateCode	string	255	09	
 ShipToPartyStateName	string	255	Uttar Pradesh	
-ShipToPartyMobile	string	255	8840038294	
-ShipToPartySalesTaxNo	string	255	09BRMPG0732K1ZN	
+ShipToPartyMobile	string	255	9005393613	
+ShipToPartySalesTaxNo	string	255		
 ShipToPartyAadharNo	string	255		
-ShipToPartyPanNo	string	255	BRMPG0732K	
+ShipToPartyPanNo	string	255		
 ShipToAddress	string	255		
 TermsAndConditions	string	255	(1) Payment within 15 days from date of Invoice. (2) Overdue Interest @ 18% P.A. after due date. (3) Goods dispatched by transport at the owner risk. (4) All disputes are subject to Kanpur jurisdiction only.	
-TransporterName	string	255	HARDOI FORWARDING.	
+TransporterName	string	255		
 TransporterMobile	string	255		
 TransporterAddress	string	255		
 LrNo	string	255		
 LrDate	datetime		
 PrivateMark	string	255		
-Weight	number	0	
-Freight	number	0	
-ChargedWeight	number	0	
+Weight	number		
+Freight	number		
+ChargedWeight	number		
 FreightType	string	255		
 RoadPermitNo	string	255		
 RoadPermitDate	datetime		
@@ -61,20 +61,20 @@ BookedTo	string	255
 Destination	string	255		
 DescriptionOfGoods	string	255		
 DescriptionOfPacking	string	255		
-TransporterSalesTaxNo	string	255	09AADFN4073H1Z7	
+TransporterSalesTaxNo	string	255		
 ReferenceNo	string	255		
-ItemName	string	255	1433 LANCHA-S-EMB-541LEH.-LEHNGA	
-ItemGroupName	string	255	S-EMB-541LEH.	
-ItemCatName	string	255	LEHNGA	
-ItemSpecification	string	255	1433 LANCHA	
+ItemName	string	255	DHAMAL PRINT-S-ENT-65-PRINT-SAREE HALKA PRI..	
+ItemGroupName	string	255	S-ENT-65-PRINT	
+ItemCatName	string	255	SAREE	
+ItemSpecification	string	255	DHAMAL PRINT	
 InvoiceLineSpecification	string	255		
-HSN	string	255	630790	
+HSN	string	255	540752	
 MaintainStockYn	long	1	
-SalesTaxGroupItem	string	255	GST 18%	
-GrossTaxRate	number	18	
+SalesTaxGroupItem	string	255	GST 5%	
+GrossTaxRate	number	5	
 Pcs	number	1	
 Qty	number	1	
-Rate	number	2995	
+Rate	number	280	
 Unit	string	255	Pcs	
 UnitDecimalPlaces	number	0	
 DiscountPer	number	0	
@@ -84,34 +84,34 @@ AdditionalDiscountAmount	number	0
 AdditionPer	number	0	
 AdditionAmount	number	0	
 TotalDiscount	number	0	
-AmountBeforeDiscount	number	2995	
-Amount	number	2995	
-Taxable_Amount	number	2995	
+AmountBeforeDiscount	number	280	
+Amount	number	280	
+Taxable_Amount	number	280	
 Tax1_Per	number	0	
 Tax1	number	0	
-Tax2_Per	number	9	
-Tax2	number	269.55	
-Tax3_Per	number	9	
-Tax3	number	269.55	
+Tax2_Per	number	2.5	
+Tax2	number	7	
+Tax3_Per	number	2.5	
+Tax3	number	7	
 Tax4_Per	number	0	
 Tax4	number	0	
 Tax5_Per	number	0	
 Tax5	number	0	
-Net_Amount	number	3534	
+Net_Amount	number	294	
 LRemarks	string	255		
 HRemarks	string	255		
 H_TotalDiscount	number	0	
-H_AmountBeforeDiscount	number	2995	
-H_Gross_Amount	number	2995	
+H_AmountBeforeDiscount	number	280	
+H_Gross_Amount	number	280	
 H_SpecialDiscount_Per	number	0	
 H_SpecialDiscount	number	0	
-H_Taxable_Amount	number	2995	
+H_Taxable_Amount	number	280	
 H_Tax1_Per	number	0	
 H_Tax1	number	0	
 H_Tax2_Per	number	0	
-H_Tax2	number	269.55	
+H_Tax2	number	7	
 H_Tax3_Per	number	0	
-H_Tax3	number	269.55	
+H_Tax3	number	7	
 H_Tax4_Per	number	0	
 H_Tax4	number	0	
 H_Tax5_Per	number	0	
@@ -120,20 +120,19 @@ H_Deduction_Per	number	0
 H_Deduction	number	0	
 H_Other_Charge_Per	number	0	
 H_Other_Charge	number	0	
-Round_Off	number	-0.1	
-H_Net_Amount	number	3534	
+Round_Off	number	0	
+H_Net_Amount	number	294	
 EInvoiceIRN	string	255		
 EInvoiceACKNo	string	255		
 EInvoiceACKDate	datetime		
-Default_BankAccountDetail	string	255	Bank Detail    : 	     
-ICICI BANK 
-A/C:- 695705601829     
-IFSC:- ICIC0006957	
+Default_BankAccountDetail	string	255	BANK DETAIL : HDFC BANK
+A/C No.: 50200063468423
+IFSC: HDFC0002006	
 PaymentLink	string	255		
 DocumentPrintHeaderPattern	string	255	Center Aligned	
 DimDetail	string	255		
 PrintedByUser	string	255	SUPER	
-EntryByUser	string	255	SUPER	
+EntryByUser	string	255	user	
 PrintTitle	string	255	TAX INVOICE	
 DocumentPrintShowPrintDateTimeYn	string	255	1	
 DocumentPrintShowPartyBalance	string	255	Hide	
